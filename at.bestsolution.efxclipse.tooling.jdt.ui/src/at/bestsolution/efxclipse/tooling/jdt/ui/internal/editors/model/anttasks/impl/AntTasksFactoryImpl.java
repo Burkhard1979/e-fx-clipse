@@ -7,14 +7,18 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksFactory;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +65,6 @@ public class AntTasksFactoryImpl extends EFactoryImpl implements AntTasksFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AntTasksPackage.ANT_TASK: return createAntTask();
-			case AntTasksPackage.CSS_TO_BIN: return createCssToBin();
 			case AntTasksPackage.DEPLOY: return createDeploy();
 			case AntTasksPackage.JAR: return createJar();
 			case AntTasksPackage.SIGN_JAR: return createSignJar();
@@ -78,16 +81,6 @@ public class AntTasksFactoryImpl extends EFactoryImpl implements AntTasksFactory
 	public AntTask createAntTask() {
 		AntTaskImpl antTask = new AntTaskImpl();
 		return antTask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CssToBin createCssToBin() {
-		CssToBinImpl cssToBin = new CssToBinImpl();
-		return cssToBin;
 	}
 
 	/**

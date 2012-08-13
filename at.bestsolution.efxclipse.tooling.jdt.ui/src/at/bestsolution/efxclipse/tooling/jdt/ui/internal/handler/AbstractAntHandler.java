@@ -11,7 +11,6 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler;
 
 import java.io.File;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

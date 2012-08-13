@@ -7,11 +7,15 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.util;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,12 +80,6 @@ public class AntTasksSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AntTasksPackage.CSS_TO_BIN: {
-				CssToBin cssToBin = (CssToBin)theEObject;
-				T result = caseCssToBin(cssToBin);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AntTasksPackage.DEPLOY: {
 				Deploy deploy = (Deploy)theEObject;
 				T result = caseDeploy(deploy);
@@ -116,21 +114,6 @@ public class AntTasksSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAntTask(AntTask object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Css To Bin</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Css To Bin</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCssToBin(CssToBin object) {
 		return null;
 	}
 

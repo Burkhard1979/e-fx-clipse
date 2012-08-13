@@ -814,52 +814,6 @@ public interface ParametersPackage extends EPackage {
 	int SPLASH_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ResourcesImpl <em>Resources</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ResourcesImpl
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getResources()
-	 * @generated
-	 */
-	int RESOURCES = 15;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCES__ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Refid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCES__REFID = 1;
-
-	/**
-	 * The feature id for the '<em><b>Fileset</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCES__FILESET = 2;
-
-	/**
-	 * The number of structural features of the '<em>Resources</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCES_FEATURE_COUNT = 3;
-
-	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSetType <em>File Set Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -867,7 +821,7 @@ public interface ParametersPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getFileSetType()
 	 * @generated
 	 */
-	int FILE_SET_TYPE = 16;
+	int FILE_SET_TYPE = 15;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.IconType <em>Icon Type</em>}' enum.
@@ -877,7 +831,7 @@ public interface ParametersPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getIconType()
 	 * @generated
 	 */
-	int ICON_TYPE = 17;
+	int ICON_TYPE = 16;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode <em>Splash Mode</em>}' enum.
@@ -887,7 +841,7 @@ public interface ParametersPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getSplashMode()
 	 * @generated
 	 */
-	int SPLASH_MODE = 18;
+	int SPLASH_MODE = 17;
 
 
 	/**
@@ -1613,49 +1567,6 @@ public interface ParametersPackage extends EPackage {
 	EAttribute getSplash_Mode();
 
 	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Resources</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources
-	 * @generated
-	 */
-	EClass getResources();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources#getId()
-	 * @see #getResources()
-	 * @generated
-	 */
-	EAttribute getResources_Id();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources#getRefid <em>Refid</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Refid</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources#getRefid()
-	 * @see #getResources()
-	 * @generated
-	 */
-	EAttribute getResources_Refid();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources#getFileset <em>Fileset</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Fileset</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources#getFileset()
-	 * @see #getResources()
-	 * @generated
-	 */
-	EReference getResources_Fileset();
-
-	/**
 	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSetType <em>File Set Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2272,40 +2183,6 @@ public interface ParametersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SPLASH__MODE = eINSTANCE.getSplash_Mode();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ResourcesImpl <em>Resources</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ResourcesImpl
-		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getResources()
-		 * @generated
-		 */
-		EClass RESOURCES = eINSTANCE.getResources();
-
-		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOURCES__ID = eINSTANCE.getResources_Id();
-
-		/**
-		 * The meta object literal for the '<em><b>Refid</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOURCES__REFID = eINSTANCE.getResources_Refid();
-
-		/**
-		 * The meta object literal for the '<em><b>Fileset</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCES__FILESET = eINSTANCE.getResources_Fileset();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSetType <em>File Set Type</em>}' enum.

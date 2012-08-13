@@ -7,13 +7,16 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.util;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,10 +79,6 @@ public class AntTasksAdapterFactory extends AdapterFactoryImpl {
 				return createAntTaskAdapter();
 			}
 			@Override
-			public Adapter caseCssToBin(CssToBin object) {
-				return createCssToBinAdapter();
-			}
-			@Override
 			public Adapter caseDeploy(Deploy object) {
 				return createDeployAdapter();
 			}
@@ -122,20 +121,6 @@ public class AntTasksAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAntTaskAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin <em>Css To Bin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin
-	 * @generated
-	 */
-	public Adapter createCssToBinAdapter() {
 		return null;
 	}
 

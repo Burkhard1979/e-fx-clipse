@@ -7,7 +7,6 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

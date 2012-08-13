@@ -6,9 +6,10 @@
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks;
 
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getCssToBin <em>Css To Bin</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getDeploy <em>Deploy</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getJar <em>Jar</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getSignjar <em>Signjar</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getBuildDirectory <em>Build Directory</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getManifestEntries <em>Manifest Entries</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin <em>Css To Bin</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,32 +33,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface AntTask extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Css To Bin</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Css To Bin</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Css To Bin</em>' reference.
-	 * @see #setCssToBin(CssToBin)
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getAntTask_CssToBin()
-	 * @model
-	 * @generated
-	 */
-	CssToBin getCssToBin();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getCssToBin <em>Css To Bin</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Css To Bin</em>' reference.
-	 * @see #getCssToBin()
-	 * @generated
-	 */
-	void setCssToBin(CssToBin value);
-
 	/**
 	 * Returns the value of the '<em><b>Deploy</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -177,5 +152,31 @@ public interface AntTask extends EObject {
 	 * @generated
 	 */
 	EList<Param> getManifestEntries();
+
+	/**
+	 * Returns the value of the '<em><b>Css To Bin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Css To Bin</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Css To Bin</em>' attribute.
+	 * @see #setCssToBin(boolean)
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getAntTask_CssToBin()
+	 * @model
+	 * @generated
+	 */
+	boolean isCssToBin();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin <em>Css To Bin</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Css To Bin</em>' attribute.
+	 * @see #isCssToBin()
+	 * @generated
+	 */
+	void setCssToBin(boolean value);
 
 } // AntTask

@@ -6,34 +6,27 @@
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
-
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Application;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Info;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Permissions;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Platform;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Preferences;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Template;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,8 +40,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#isIncludeDT <em>Include DT</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#isOfflineAllowed <em>Offline Allowed</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getOutdir <em>Outdir</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getOutfile <em>Outfile</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getPlaceholderref <em>Placeholderref</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getPlaceholderid <em>Placeholderid</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getUpdatemode <em>Updatemode</em>}</li>
@@ -60,7 +51,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getTemplate <em>Template</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getCallbacks <em>Callbacks</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getInfo <em>Info</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#isNativePackage <em>Native Package</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getSplashImage <em>Splash Image</em>}</li>
  * </ul>
@@ -168,46 +158,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 	 * @ordered
 	 */
 	protected boolean offlineAllowed = OFFLINE_ALLOWED_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getOutdir() <em>Outdir</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutdir()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OUTDIR_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getOutdir() <em>Outdir</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutdir()
-	 * @generated
-	 * @ordered
-	 */
-	protected String outdir = OUTDIR_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getOutfile() <em>Outfile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutfile()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OUTFILE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getOutfile() <em>Outfile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutfile()
-	 * @generated
-	 * @ordered
-	 */
-	protected String outfile = OUTFILE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPlaceholderref() <em>Placeholderref</em>}' attribute.
@@ -358,16 +308,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 	 * @ordered
 	 */
 	protected Info info;
-
-	/**
-	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResources()
-	 * @generated
-	 * @ordered
-	 */
-	protected Resources resources;
 
 	/**
 	 * The default value of the '{@link #isNativePackage() <em>Native Package</em>}' attribute.
@@ -531,48 +471,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 		offlineAllowed = newOfflineAllowed;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__OFFLINE_ALLOWED, oldOfflineAllowed, offlineAllowed));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getOutdir() {
-		return outdir;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOutdir(String newOutdir) {
-		String oldOutdir = outdir;
-		outdir = newOutdir;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__OUTDIR, oldOutdir, outdir));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getOutfile() {
-		return outfile;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOutfile(String newOutfile) {
-		String oldOutfile = outfile;
-		outfile = newOutfile;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__OUTFILE, oldOutfile, outfile));
 	}
 
 	/**
@@ -934,49 +832,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Resources getResources() {
-		return resources;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetResources(Resources newResources, NotificationChain msgs) {
-		Resources oldResources = resources;
-		resources = newResources;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__RESOURCES, oldResources, newResources);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setResources(Resources newResources) {
-		if (newResources != resources) {
-			NotificationChain msgs = null;
-			if (resources != null)
-				msgs = ((InternalEObject)resources).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.DEPLOY__RESOURCES, null, msgs);
-			if (newResources != null)
-				msgs = ((InternalEObject)newResources).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.DEPLOY__RESOURCES, null, msgs);
-			msgs = basicSetResources(newResources, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__RESOURCES, newResources, newResources));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isNativePackage() {
 		return nativePackage;
 	}
@@ -1036,8 +891,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return ((InternalEList<?>)getCallbacks()).basicRemove(otherEnd, msgs);
 			case AntTasksPackage.DEPLOY__INFO:
 				return basicSetInfo(null, msgs);
-			case AntTasksPackage.DEPLOY__RESOURCES:
-				return basicSetResources(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1060,10 +913,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return isIncludeDT();
 			case AntTasksPackage.DEPLOY__OFFLINE_ALLOWED:
 				return isOfflineAllowed();
-			case AntTasksPackage.DEPLOY__OUTDIR:
-				return getOutdir();
-			case AntTasksPackage.DEPLOY__OUTFILE:
-				return getOutfile();
 			case AntTasksPackage.DEPLOY__PLACEHOLDERREF:
 				return getPlaceholderref();
 			case AntTasksPackage.DEPLOY__PLACEHOLDERID:
@@ -1086,8 +935,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return getCallbacks();
 			case AntTasksPackage.DEPLOY__INFO:
 				return getInfo();
-			case AntTasksPackage.DEPLOY__RESOURCES:
-				return getResources();
 			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
 				return isNativePackage();
 			case AntTasksPackage.DEPLOY__SPLASH_IMAGE:
@@ -1119,12 +966,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return;
 			case AntTasksPackage.DEPLOY__OFFLINE_ALLOWED:
 				setOfflineAllowed((Boolean)newValue);
-				return;
-			case AntTasksPackage.DEPLOY__OUTDIR:
-				setOutdir((String)newValue);
-				return;
-			case AntTasksPackage.DEPLOY__OUTFILE:
-				setOutfile((String)newValue);
 				return;
 			case AntTasksPackage.DEPLOY__PLACEHOLDERREF:
 				setPlaceholderref((String)newValue);
@@ -1160,9 +1001,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 			case AntTasksPackage.DEPLOY__INFO:
 				setInfo((Info)newValue);
 				return;
-			case AntTasksPackage.DEPLOY__RESOURCES:
-				setResources((Resources)newValue);
-				return;
 			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
 				setNativePackage((Boolean)newValue);
 				return;
@@ -1195,12 +1033,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return;
 			case AntTasksPackage.DEPLOY__OFFLINE_ALLOWED:
 				setOfflineAllowed(OFFLINE_ALLOWED_EDEFAULT);
-				return;
-			case AntTasksPackage.DEPLOY__OUTDIR:
-				setOutdir(OUTDIR_EDEFAULT);
-				return;
-			case AntTasksPackage.DEPLOY__OUTFILE:
-				setOutfile(OUTFILE_EDEFAULT);
 				return;
 			case AntTasksPackage.DEPLOY__PLACEHOLDERREF:
 				setPlaceholderref(PLACEHOLDERREF_EDEFAULT);
@@ -1235,9 +1067,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 			case AntTasksPackage.DEPLOY__INFO:
 				setInfo((Info)null);
 				return;
-			case AntTasksPackage.DEPLOY__RESOURCES:
-				setResources((Resources)null);
-				return;
 			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
 				setNativePackage(NATIVE_PACKAGE_EDEFAULT);
 				return;
@@ -1266,10 +1095,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return includeDT != INCLUDE_DT_EDEFAULT;
 			case AntTasksPackage.DEPLOY__OFFLINE_ALLOWED:
 				return offlineAllowed != OFFLINE_ALLOWED_EDEFAULT;
-			case AntTasksPackage.DEPLOY__OUTDIR:
-				return OUTDIR_EDEFAULT == null ? outdir != null : !OUTDIR_EDEFAULT.equals(outdir);
-			case AntTasksPackage.DEPLOY__OUTFILE:
-				return OUTFILE_EDEFAULT == null ? outfile != null : !OUTFILE_EDEFAULT.equals(outfile);
 			case AntTasksPackage.DEPLOY__PLACEHOLDERREF:
 				return PLACEHOLDERREF_EDEFAULT == null ? placeholderref != null : !PLACEHOLDERREF_EDEFAULT.equals(placeholderref);
 			case AntTasksPackage.DEPLOY__PLACEHOLDERID:
@@ -1292,8 +1117,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return callbacks != null && !callbacks.isEmpty();
 			case AntTasksPackage.DEPLOY__INFO:
 				return info != null;
-			case AntTasksPackage.DEPLOY__RESOURCES:
-				return resources != null;
 			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
 				return nativePackage != NATIVE_PACKAGE_EDEFAULT;
 			case AntTasksPackage.DEPLOY__SPLASH_IMAGE:
@@ -1322,10 +1145,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 		result.append(includeDT);
 		result.append(", offlineAllowed: ");
 		result.append(offlineAllowed);
-		result.append(", outdir: ");
-		result.append(outdir);
-		result.append(", outfile: ");
-		result.append(outfile);
 		result.append(", placeholderref: ");
 		result.append(placeholderref);
 		result.append(", placeholderid: ");

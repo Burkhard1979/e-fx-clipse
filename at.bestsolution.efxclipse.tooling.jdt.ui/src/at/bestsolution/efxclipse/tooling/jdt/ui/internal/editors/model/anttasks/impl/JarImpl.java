@@ -6,23 +6,19 @@
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
-
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Application;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSet;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Info;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Platform;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,38 +27,16 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl#getDestfile <em>Destfile</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl#getPlatform <em>Platform</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl#getFileset <em>Fileset</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl#getApplication <em>Application</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl#getInfo <em>Info</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl#getResources <em>Resources</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class JarImpl extends EObjectImpl implements Jar {
-	/**
-	 * The default value of the '{@link #getDestfile() <em>Destfile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDestfile()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DESTFILE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDestfile() <em>Destfile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDestfile()
-	 * @generated
-	 * @ordered
-	 */
-	protected String destfile = DESTFILE_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getPlatform() <em>Platform</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -104,16 +78,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 	protected Info info;
 
 	/**
-	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResources()
-	 * @generated
-	 * @ordered
-	 */
-	protected Resources resources;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -130,27 +94,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 	@Override
 	protected EClass eStaticClass() {
 		return AntTasksPackage.Literals.JAR;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getDestfile() {
-		return destfile;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDestfile(String newDestfile) {
-		String oldDestfile = destfile;
-		destfile = newDestfile;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.JAR__DESTFILE, oldDestfile, destfile));
 	}
 
 	/**
@@ -330,49 +273,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Resources getResources() {
-		return resources;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetResources(Resources newResources, NotificationChain msgs) {
-		Resources oldResources = resources;
-		resources = newResources;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AntTasksPackage.JAR__RESOURCES, oldResources, newResources);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setResources(Resources newResources) {
-		if (newResources != resources) {
-			NotificationChain msgs = null;
-			if (resources != null)
-				msgs = ((InternalEObject)resources).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.JAR__RESOURCES, null, msgs);
-			if (newResources != null)
-				msgs = ((InternalEObject)newResources).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.JAR__RESOURCES, null, msgs);
-			msgs = basicSetResources(newResources, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.JAR__RESOURCES, newResources, newResources));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -384,8 +284,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 				return basicSetApplication(null, msgs);
 			case AntTasksPackage.JAR__INFO:
 				return basicSetInfo(null, msgs);
-			case AntTasksPackage.JAR__RESOURCES:
-				return basicSetResources(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -398,8 +296,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AntTasksPackage.JAR__DESTFILE:
-				return getDestfile();
 			case AntTasksPackage.JAR__PLATFORM:
 				return getPlatform();
 			case AntTasksPackage.JAR__FILESET:
@@ -408,8 +304,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 				return getApplication();
 			case AntTasksPackage.JAR__INFO:
 				return getInfo();
-			case AntTasksPackage.JAR__RESOURCES:
-				return getResources();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -422,9 +316,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AntTasksPackage.JAR__DESTFILE:
-				setDestfile((String)newValue);
-				return;
 			case AntTasksPackage.JAR__PLATFORM:
 				setPlatform((Platform)newValue);
 				return;
@@ -436,9 +327,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 				return;
 			case AntTasksPackage.JAR__INFO:
 				setInfo((Info)newValue);
-				return;
-			case AntTasksPackage.JAR__RESOURCES:
-				setResources((Resources)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -452,9 +340,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AntTasksPackage.JAR__DESTFILE:
-				setDestfile(DESTFILE_EDEFAULT);
-				return;
 			case AntTasksPackage.JAR__PLATFORM:
 				setPlatform((Platform)null);
 				return;
@@ -466,9 +351,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 				return;
 			case AntTasksPackage.JAR__INFO:
 				setInfo((Info)null);
-				return;
-			case AntTasksPackage.JAR__RESOURCES:
-				setResources((Resources)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -482,8 +364,6 @@ public class JarImpl extends EObjectImpl implements Jar {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AntTasksPackage.JAR__DESTFILE:
-				return DESTFILE_EDEFAULT == null ? destfile != null : !DESTFILE_EDEFAULT.equals(destfile);
 			case AntTasksPackage.JAR__PLATFORM:
 				return platform != null;
 			case AntTasksPackage.JAR__FILESET:
@@ -492,26 +372,8 @@ public class JarImpl extends EObjectImpl implements Jar {
 				return application != null;
 			case AntTasksPackage.JAR__INFO:
 				return info != null;
-			case AntTasksPackage.JAR__RESOURCES:
-				return resources != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (destfile: ");
-		result.append(destfile);
-		result.append(')');
-		return result.toString();
 	}
 
 } //JarImpl

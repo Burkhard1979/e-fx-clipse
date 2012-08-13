@@ -156,7 +156,6 @@ class AntTemplate {
 		val mainClass = task.getDeploy().getApplication().getMainclass();
 		val appletWidth = task.getDeploy().getWidth();
 		val appletHeight = task.getDeploy().getHeight();
-		val appVendor = task.getDeploy().getInfo().getVendor();
 		val appTitle = task.getDeploy().getInfo().getTitle();
 		val appVersion = task.getDeploy().getApplication().getVersion();
 		val preloaderClass = task.getDeploy().getApplication().getPreloaderclass();
@@ -169,11 +168,6 @@ class AntTemplate {
 			preloaderPath = preloaderClass.replace('.','/');
 		}
 		val fallBackClass = task.getDeploy().getApplication().getFallbackclass();
-		
-		var keyStore = task.getSignjar().getKeystore();
-		var keyStoreAlias = task.getSignjar().getAlias();
-		var keyStorePass = task.getSignjar().getStorepass();
-		var keyPass = task.getSignjar().getKeypass();
 		
 		'''
 		<target name="do-deploy" depends="setup-staging-area, do-compile, init-fx-tasks">
@@ -227,7 +221,7 @@ class AntTemplate {
 				<fx:resources refid="appRes"/>
 				
 				<manifest>
-					<attribute name="Implementation-Vendor" value="«appVendor»"/>
+					<attribute name="Implementation-Vendor" value="«task.getDeploy().getInfo().getVendor()»"/>
 					<attribute name="Implementation-Title" value="«appTitle»"/>
 					<attribute name="Implementation-Version" value="«appVersion»"/>
 					«IF task.getDeploy().getSplashImage() != null»
@@ -239,9 +233,15 @@ class AntTemplate {
 				</manifest>
 			</fx:jar>
 			
-			«IF keyStore != null»
+			«IF task.getSignjar().getKeystore() != null»
 			<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
-			<fx:signjar keystore="«keyStore»" alias="«keyStoreAlias»" «IF keyPass != null»keypass="«keyPass»" «ENDIF»«IF keyStorePass != null»storepass="«keyStorePass»" «ENDIF»destDir="${basedir}/dist">
+			<fx:signjar"
+				" keystore="«task.getSignjar().getKeystore()»
+				" alias="«task.getSignjar().getAlias()» 
+				" keypass="«task.getSignjar().getKeypass()» 
+				" storepass="«task.getSignjar().getStorepass()» 
+				«IF task.getSignjar().getStoretype() != null»" storetype="«task.getSignjar().getStoretype()» «ENDIF»
+				" destDir="${basedir}/dist">
 				<fileset dir='dist'>
 					<include name='**/*.jar' />
 				</fileset>
@@ -251,11 +251,22 @@ class AntTemplate {
 			«IF (appletWidth != null && appletHeight != null) || nativePackage»
 			<mkdir dir="deploy" />
 			<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
-			<fx:deploy «IF appletWidth != null && appletHeight != null»width="«appletWidth»" height="«appletHeight»" embedJNLP="true"«ENDIF» outdir="${basedir}/deploy" outfile="«projectName»" «IF nativePackage»nativeBundles="all"«ENDIF»>
+			<fx:deploy
+				" embedJNLP="«task.getDeploy().isEmbedjnlp()»"
+				" extension="«task.getDeploy().isExtension()»"
+				«IF appletWidth != null && appletHeight != null»width="«appletWidth»" height="«appletHeight» «ENDIF» 
+				" includeDT="«task.getDeploy().isIncludeDT()»"
+				" offlineAllowed="«task.getDeploy().isOfflineAllowed()»"
+				" outdir="${basedir}/deploy""
+				" outfile="«projectName»" «IF nativePackage»nativeBundles="all"«ENDIF»">
+				«IF task.getDeploy().getPlaceholderref() != null »placeholderref="«task.getDeploy().getPlaceholderref()»«ENDIF» 
+				«IF task.getDeploy().getPlaceholderid() != null »placeholderid="«task.getDeploy().getPlaceholderid()»«ENDIF» 
+				«IF task.getDeploy().getUpdatemode() != null »updatemode="«task.getDeploy().getUpdatemode()»«ENDIF» 
+
 				«IF task.getDeploy().getInfo().getSplash().isEmpty() && task.getDeploy().getInfo().getIcon().isEmpty()»
-					<fx:info title="«projectName»" vendor="«appVendor»"/>
+					<fx:info title="«projectName»" vendor="«task.getDeploy().getInfo().getVendor()»"/>
 				«ELSE»
-					<fx:info title="«projectName»" vendor="«appVendor»">
+					<fx:info title="«projectName»" vendor="«task.getDeploy().getInfo().getVendor()»">
 						«FOR s : task.getDeploy().getInfo().getSplash()»
 							<fx:splash href="«s.getHref()»" «IF s.getMode() != null»mode="«s.getMode()»"«ENDIF» />
 						«ENDFOR»

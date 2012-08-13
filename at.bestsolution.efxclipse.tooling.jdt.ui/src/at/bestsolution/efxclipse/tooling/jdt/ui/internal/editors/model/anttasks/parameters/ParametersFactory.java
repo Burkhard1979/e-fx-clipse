@@ -161,15 +161,6 @@ public interface ParametersFactory extends EFactory {
 	Splash createSplash();
 
 	/**
-	 * Returns a new object of class '<em>Resources</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resources</em>'.
-	 * @generated
-	 */
-	Resources createResources();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

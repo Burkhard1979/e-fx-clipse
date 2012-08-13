@@ -4,18 +4,13 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="anttasks"
     nsURI="http://at.bestsolution.efxclipse.tooling.jdt/1.0" nsPrefix="anttasks">
   <eClassifiers xsi:type="ecore:EClass" name="AntTask">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cssToBin" eType="#//CssToBin"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deploy" eType="#//Deploy"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="jar" eType="#//Jar"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="signjar" eType="#//SignJar"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="manifestEntries" upperBound="-1"
         eType="#//parameters/Param"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CssToBin">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outdir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fileset" upperBound="-1"
-        eType="#//parameters/FileSet" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cssToBin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deploy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="embedjnlp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -27,8 +22,6 @@
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offlineAllowed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outdir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outfile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="placeholderref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="placeholderid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="updatemode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -48,13 +41,10 @@
         eType="#//parameters/Callback" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="info" eType="#//parameters/Info"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" eType="#//parameters/Resources"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nativePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="splashImage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Jar">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destfile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="platform" eType="#//parameters/Platform"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fileset" eType="#//parameters/FileSet"
@@ -63,19 +53,13 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="info" eType="#//parameters/Info"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" eType="#//parameters/Resources"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SignJar">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="destdir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keypass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keystore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcejar" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="storepass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="storetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fileset" eType="#//parameters/FileSet"
-        containment="true"/>
   </eClassifiers>
   <eSubpackages name="parameters" nsURI="http://at.bestsolution.efxclipse.tooling.jdt/parameters/1.0"
       nsPrefix="parameters">
@@ -192,12 +176,6 @@
     <eClassifiers xsi:type="ecore:EEnum" name="SplashMode">
       <eLiterals name="any" literal="any"/>
       <eLiterals name="webstart" literal="webstart"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Resources">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="refid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="fileset" eType="#//parameters/FileSet"
-          containment="true"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

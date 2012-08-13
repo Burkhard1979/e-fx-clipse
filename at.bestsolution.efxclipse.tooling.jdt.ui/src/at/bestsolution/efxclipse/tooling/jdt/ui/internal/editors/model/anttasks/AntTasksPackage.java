@@ -70,22 +70,13 @@ public interface AntTasksPackage extends EPackage {
 	int ANT_TASK = 0;
 
 	/**
-	 * The feature id for the '<em><b>Css To Bin</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANT_TASK__CSS_TO_BIN = 0;
-
-	/**
 	 * The feature id for the '<em><b>Deploy</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANT_TASK__DEPLOY = 1;
+	int ANT_TASK__DEPLOY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Jar</b></em>' reference.
@@ -94,7 +85,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANT_TASK__JAR = 2;
+	int ANT_TASK__JAR = 1;
 
 	/**
 	 * The feature id for the '<em><b>Signjar</b></em>' reference.
@@ -103,7 +94,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANT_TASK__SIGNJAR = 3;
+	int ANT_TASK__SIGNJAR = 2;
 
 	/**
 	 * The feature id for the '<em><b>Build Directory</b></em>' attribute.
@@ -112,7 +103,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANT_TASK__BUILD_DIRECTORY = 4;
+	int ANT_TASK__BUILD_DIRECTORY = 3;
 
 	/**
 	 * The feature id for the '<em><b>Manifest Entries</b></em>' reference list.
@@ -121,7 +112,16 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANT_TASK__MANIFEST_ENTRIES = 5;
+	int ANT_TASK__MANIFEST_ENTRIES = 4;
+
+	/**
+	 * The feature id for the '<em><b>Css To Bin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANT_TASK__CSS_TO_BIN = 5;
 
 	/**
 	 * The number of structural features of the '<em>Ant Task</em>' class.
@@ -133,43 +133,6 @@ public interface AntTasksPackage extends EPackage {
 	int ANT_TASK_FEATURE_COUNT = 6;
 
 	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.CssToBinImpl <em>Css To Bin</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.CssToBinImpl
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl#getCssToBin()
-	 * @generated
-	 */
-	int CSS_TO_BIN = 1;
-
-	/**
-	 * The feature id for the '<em><b>Outdir</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CSS_TO_BIN__OUTDIR = 0;
-
-	/**
-	 * The feature id for the '<em><b>Fileset</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CSS_TO_BIN__FILESET = 1;
-
-	/**
-	 * The number of structural features of the '<em>Css To Bin</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CSS_TO_BIN_FEATURE_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl <em>Deploy</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -177,7 +140,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl#getDeploy()
 	 * @generated
 	 */
-	int DEPLOY = 2;
+	int DEPLOY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Embedjnlp</b></em>' attribute.
@@ -225,31 +188,13 @@ public interface AntTasksPackage extends EPackage {
 	int DEPLOY__OFFLINE_ALLOWED = 4;
 
 	/**
-	 * The feature id for the '<em><b>Outdir</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOY__OUTDIR = 5;
-
-	/**
-	 * The feature id for the '<em><b>Outfile</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOY__OUTFILE = 6;
-
-	/**
 	 * The feature id for the '<em><b>Placeholderref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__PLACEHOLDERREF = 7;
+	int DEPLOY__PLACEHOLDERREF = 5;
 
 	/**
 	 * The feature id for the '<em><b>Placeholderid</b></em>' attribute.
@@ -258,7 +203,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__PLACEHOLDERID = 8;
+	int DEPLOY__PLACEHOLDERID = 6;
 
 	/**
 	 * The feature id for the '<em><b>Updatemode</b></em>' attribute.
@@ -267,7 +212,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__UPDATEMODE = 9;
+	int DEPLOY__UPDATEMODE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -276,7 +221,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__WIDTH = 10;
+	int DEPLOY__WIDTH = 8;
 
 	/**
 	 * The feature id for the '<em><b>Platform</b></em>' containment reference.
@@ -285,7 +230,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__PLATFORM = 11;
+	int DEPLOY__PLATFORM = 9;
 
 	/**
 	 * The feature id for the '<em><b>Preferences</b></em>' containment reference.
@@ -294,7 +239,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__PREFERENCES = 12;
+	int DEPLOY__PREFERENCES = 10;
 
 	/**
 	 * The feature id for the '<em><b>Application</b></em>' containment reference.
@@ -303,7 +248,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__APPLICATION = 13;
+	int DEPLOY__APPLICATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Permissions</b></em>' containment reference.
@@ -312,7 +257,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__PERMISSIONS = 14;
+	int DEPLOY__PERMISSIONS = 12;
 
 	/**
 	 * The feature id for the '<em><b>Template</b></em>' containment reference.
@@ -321,7 +266,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__TEMPLATE = 15;
+	int DEPLOY__TEMPLATE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Callbacks</b></em>' containment reference list.
@@ -330,7 +275,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__CALLBACKS = 16;
+	int DEPLOY__CALLBACKS = 14;
 
 	/**
 	 * The feature id for the '<em><b>Info</b></em>' containment reference.
@@ -339,16 +284,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__INFO = 17;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOY__RESOURCES = 18;
+	int DEPLOY__INFO = 15;
 
 	/**
 	 * The feature id for the '<em><b>Native Package</b></em>' attribute.
@@ -357,7 +293,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__NATIVE_PACKAGE = 19;
+	int DEPLOY__NATIVE_PACKAGE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Splash Image</b></em>' attribute.
@@ -366,7 +302,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__SPLASH_IMAGE = 20;
+	int DEPLOY__SPLASH_IMAGE = 17;
 
 	/**
 	 * The number of structural features of the '<em>Deploy</em>' class.
@@ -375,7 +311,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY_FEATURE_COUNT = 21;
+	int DEPLOY_FEATURE_COUNT = 18;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl <em>Jar</em>}' class.
@@ -385,16 +321,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl#getJar()
 	 * @generated
 	 */
-	int JAR = 3;
-
-	/**
-	 * The feature id for the '<em><b>Destfile</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAR__DESTFILE = 0;
+	int JAR = 2;
 
 	/**
 	 * The feature id for the '<em><b>Platform</b></em>' containment reference.
@@ -403,7 +330,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JAR__PLATFORM = 1;
+	int JAR__PLATFORM = 0;
 
 	/**
 	 * The feature id for the '<em><b>Fileset</b></em>' containment reference.
@@ -412,7 +339,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JAR__FILESET = 2;
+	int JAR__FILESET = 1;
 
 	/**
 	 * The feature id for the '<em><b>Application</b></em>' containment reference.
@@ -421,7 +348,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JAR__APPLICATION = 3;
+	int JAR__APPLICATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Info</b></em>' containment reference.
@@ -430,16 +357,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JAR__INFO = 4;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JAR__RESOURCES = 5;
+	int JAR__INFO = 3;
 
 	/**
 	 * The number of structural features of the '<em>Jar</em>' class.
@@ -448,7 +366,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JAR_FEATURE_COUNT = 6;
+	int JAR_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.SignJarImpl <em>Sign Jar</em>}' class.
@@ -458,7 +376,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl#getSignJar()
 	 * @generated
 	 */
-	int SIGN_JAR = 4;
+	int SIGN_JAR = 3;
 
 	/**
 	 * The feature id for the '<em><b>Alias</b></em>' attribute.
@@ -470,22 +388,13 @@ public interface AntTasksPackage extends EPackage {
 	int SIGN_JAR__ALIAS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Destdir</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGN_JAR__DESTDIR = 1;
-
-	/**
 	 * The feature id for the '<em><b>Keypass</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIGN_JAR__KEYPASS = 2;
+	int SIGN_JAR__KEYPASS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Keystore</b></em>' attribute.
@@ -494,16 +403,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIGN_JAR__KEYSTORE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Sourcejar</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGN_JAR__SOURCEJAR = 4;
+	int SIGN_JAR__KEYSTORE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Storepass</b></em>' attribute.
@@ -512,7 +412,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIGN_JAR__STOREPASS = 5;
+	int SIGN_JAR__STOREPASS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Storetype</b></em>' attribute.
@@ -521,16 +421,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIGN_JAR__STORETYPE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Fileset</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGN_JAR__FILESET = 7;
+	int SIGN_JAR__STORETYPE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Sign Jar</em>' class.
@@ -539,7 +430,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIGN_JAR_FEATURE_COUNT = 8;
+	int SIGN_JAR_FEATURE_COUNT = 5;
 
 
 	/**
@@ -553,15 +444,15 @@ public interface AntTasksPackage extends EPackage {
 	EClass getAntTask();
 
 	/**
-	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getCssToBin <em>Css To Bin</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin <em>Css To Bin</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Css To Bin</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getCssToBin()
+	 * @return the meta object for the attribute '<em>Css To Bin</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin()
 	 * @see #getAntTask()
 	 * @generated
 	 */
-	EReference getAntTask_CssToBin();
+	EAttribute getAntTask_CssToBin();
 
 	/**
 	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getDeploy <em>Deploy</em>}'.
@@ -617,38 +508,6 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAntTask_ManifestEntries();
-
-	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin <em>Css To Bin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Css To Bin</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin
-	 * @generated
-	 */
-	EClass getCssToBin();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin#getOutdir <em>Outdir</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Outdir</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin#getOutdir()
-	 * @see #getCssToBin()
-	 * @generated
-	 */
-	EAttribute getCssToBin_Outdir();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin#getFileset <em>Fileset</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Fileset</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.CssToBin#getFileset()
-	 * @see #getCssToBin()
-	 * @generated
-	 */
-	EReference getCssToBin_Fileset();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy <em>Deploy</em>}'.
@@ -714,28 +573,6 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDeploy_OfflineAllowed();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getOutdir <em>Outdir</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Outdir</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getOutdir()
-	 * @see #getDeploy()
-	 * @generated
-	 */
-	EAttribute getDeploy_Outdir();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getOutfile <em>Outfile</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Outfile</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getOutfile()
-	 * @see #getDeploy()
-	 * @generated
-	 */
-	EAttribute getDeploy_Outfile();
 
 	/**
 	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getPlaceholderref <em>Placeholderref</em>}'.
@@ -859,17 +696,6 @@ public interface AntTasksPackage extends EPackage {
 	EReference getDeploy_Info();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getResources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Resources</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getResources()
-	 * @see #getDeploy()
-	 * @generated
-	 */
-	EReference getDeploy_Resources();
-
-	/**
 	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isNativePackage <em>Native Package</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -900,17 +726,6 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getJar();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getDestfile <em>Destfile</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Destfile</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getDestfile()
-	 * @see #getJar()
-	 * @generated
-	 */
-	EAttribute getJar_Destfile();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getPlatform <em>Platform</em>}'.
@@ -957,17 +772,6 @@ public interface AntTasksPackage extends EPackage {
 	EReference getJar_Info();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getResources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Resources</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getResources()
-	 * @see #getJar()
-	 * @generated
-	 */
-	EReference getJar_Resources();
-
-	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar <em>Sign Jar</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -987,17 +791,6 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSignJar_Alias();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getDestdir <em>Destdir</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Destdir</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getDestdir()
-	 * @see #getSignJar()
-	 * @generated
-	 */
-	EAttribute getSignJar_Destdir();
 
 	/**
 	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getKeypass <em>Keypass</em>}'.
@@ -1022,17 +815,6 @@ public interface AntTasksPackage extends EPackage {
 	EAttribute getSignJar_Keystore();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getSourcejar <em>Sourcejar</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sourcejar</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getSourcejar()
-	 * @see #getSignJar()
-	 * @generated
-	 */
-	EAttribute getSignJar_Sourcejar();
-
-	/**
 	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getStorepass <em>Storepass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1053,17 +835,6 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSignJar_Storetype();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getFileset <em>Fileset</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Fileset</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar#getFileset()
-	 * @see #getSignJar()
-	 * @generated
-	 */
-	EReference getSignJar_Fileset();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1098,12 +869,12 @@ public interface AntTasksPackage extends EPackage {
 		EClass ANT_TASK = eINSTANCE.getAntTask();
 
 		/**
-		 * The meta object literal for the '<em><b>Css To Bin</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Css To Bin</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANT_TASK__CSS_TO_BIN = eINSTANCE.getAntTask_CssToBin();
+		EAttribute ANT_TASK__CSS_TO_BIN = eINSTANCE.getAntTask_CssToBin();
 
 		/**
 		 * The meta object literal for the '<em><b>Deploy</b></em>' reference feature.
@@ -1144,32 +915,6 @@ public interface AntTasksPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ANT_TASK__MANIFEST_ENTRIES = eINSTANCE.getAntTask_ManifestEntries();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.CssToBinImpl <em>Css To Bin</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.CssToBinImpl
-		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl#getCssToBin()
-		 * @generated
-		 */
-		EClass CSS_TO_BIN = eINSTANCE.getCssToBin();
-
-		/**
-		 * The meta object literal for the '<em><b>Outdir</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CSS_TO_BIN__OUTDIR = eINSTANCE.getCssToBin_Outdir();
-
-		/**
-		 * The meta object literal for the '<em><b>Fileset</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CSS_TO_BIN__FILESET = eINSTANCE.getCssToBin_Fileset();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl <em>Deploy</em>}' class.
@@ -1220,22 +965,6 @@ public interface AntTasksPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DEPLOY__OFFLINE_ALLOWED = eINSTANCE.getDeploy_OfflineAllowed();
-
-		/**
-		 * The meta object literal for the '<em><b>Outdir</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DEPLOY__OUTDIR = eINSTANCE.getDeploy_Outdir();
-
-		/**
-		 * The meta object literal for the '<em><b>Outfile</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DEPLOY__OUTFILE = eINSTANCE.getDeploy_Outfile();
 
 		/**
 		 * The meta object literal for the '<em><b>Placeholderref</b></em>' attribute feature.
@@ -1326,14 +1055,6 @@ public interface AntTasksPackage extends EPackage {
 		EReference DEPLOY__INFO = eINSTANCE.getDeploy_Info();
 
 		/**
-		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DEPLOY__RESOURCES = eINSTANCE.getDeploy_Resources();
-
-		/**
 		 * The meta object literal for the '<em><b>Native Package</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1358,14 +1079,6 @@ public interface AntTasksPackage extends EPackage {
 		 * @generated
 		 */
 		EClass JAR = eINSTANCE.getJar();
-
-		/**
-		 * The meta object literal for the '<em><b>Destfile</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JAR__DESTFILE = eINSTANCE.getJar_Destfile();
 
 		/**
 		 * The meta object literal for the '<em><b>Platform</b></em>' containment reference feature.
@@ -1400,14 +1113,6 @@ public interface AntTasksPackage extends EPackage {
 		EReference JAR__INFO = eINSTANCE.getJar_Info();
 
 		/**
-		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JAR__RESOURCES = eINSTANCE.getJar_Resources();
-
-		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.SignJarImpl <em>Sign Jar</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1426,14 +1131,6 @@ public interface AntTasksPackage extends EPackage {
 		EAttribute SIGN_JAR__ALIAS = eINSTANCE.getSignJar_Alias();
 
 		/**
-		 * The meta object literal for the '<em><b>Destdir</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIGN_JAR__DESTDIR = eINSTANCE.getSignJar_Destdir();
-
-		/**
 		 * The meta object literal for the '<em><b>Keypass</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1450,14 +1147,6 @@ public interface AntTasksPackage extends EPackage {
 		EAttribute SIGN_JAR__KEYSTORE = eINSTANCE.getSignJar_Keystore();
 
 		/**
-		 * The meta object literal for the '<em><b>Sourcejar</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIGN_JAR__SOURCEJAR = eINSTANCE.getSignJar_Sourcejar();
-
-		/**
 		 * The meta object literal for the '<em><b>Storepass</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1472,14 +1161,6 @@ public interface AntTasksPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIGN_JAR__STORETYPE = eINSTANCE.getSignJar_Storetype();
-
-		/**
-		 * The meta object literal for the '<em><b>Fileset</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SIGN_JAR__FILESET = eINSTANCE.getSignJar_Fileset();
 
 	}
 

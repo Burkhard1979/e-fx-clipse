@@ -6,13 +6,12 @@
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks;
 
+import org.eclipse.emf.ecore.EObject;
+
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Application;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSet;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Info;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Platform;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Resources;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,12 +21,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getDestfile <em>Destfile</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getPlatform <em>Platform</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getFileset <em>Fileset</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getApplication <em>Application</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getInfo <em>Info</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getResources <em>Resources</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,32 +33,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Jar extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Destfile</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Destfile</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Destfile</em>' attribute.
-	 * @see #setDestfile(String)
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getJar_Destfile()
-	 * @model
-	 * @generated
-	 */
-	String getDestfile();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getDestfile <em>Destfile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Destfile</em>' attribute.
-	 * @see #getDestfile()
-	 * @generated
-	 */
-	void setDestfile(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Platform</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -165,31 +136,5 @@ public interface Jar extends EObject {
 	 * @generated
 	 */
 	void setInfo(Info value);
-
-	/**
-	 * Returns the value of the '<em><b>Resources</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Resources</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resources</em>' containment reference.
-	 * @see #setResources(Resources)
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getJar_Resources()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Resources getResources();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar#getResources <em>Resources</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resources</em>' containment reference.
-	 * @see #getResources()
-	 * @generated
-	 */
-	void setResources(Resources value);
 
 } // Jar

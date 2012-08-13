@@ -35,15 +35,6 @@ public interface AntTasksFactory extends EFactory {
 	AntTask createAntTask();
 
 	/**
-	 * Returns a new object of class '<em>Css To Bin</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Css To Bin</em>'.
-	 * @generated
-	 */
-	CssToBin createCssToBin();
-
-	/**
 	 * Returns a new object of class '<em>Deploy</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
