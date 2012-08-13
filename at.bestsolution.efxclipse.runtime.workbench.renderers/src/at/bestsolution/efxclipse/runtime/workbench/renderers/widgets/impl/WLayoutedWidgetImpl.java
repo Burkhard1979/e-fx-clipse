@@ -2,8 +2,6 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.impl;
 
 import java.util.List;
 
-import javax.annotation.PreDestroy;
-
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 

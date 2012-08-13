@@ -131,29 +131,29 @@ public interface sub_selector extends EObject
   void setPseudoclass(String value);
 
   /**
-   * Returns the value of the '<em><b>Negotation</b></em>' attribute.
+   * Returns the value of the '<em><b>Negotation</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Negotation</em>' attribute isn't clear,
+   * If the meaning of the '<em>Negotation</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Negotation</em>' attribute.
-   * @see #setNegotation(String)
+   * @return the value of the '<em>Negotation</em>' containment reference.
+   * @see #setNegotation(css_negation)
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getsub_selector_Negotation()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getNegotation();
+  css_negation getNegotation();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector#getNegotation <em>Negotation</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector#getNegotation <em>Negotation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Negotation</em>' attribute.
+   * @param value the new value of the '<em>Negotation</em>' containment reference.
    * @see #getNegotation()
    * @generated
    */
-  void setNegotation(String value);
+  void setNegotation(css_negation value);
 
 } // sub_selector

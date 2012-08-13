@@ -1,0 +1,115 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application
+
+import javafx.scene.layout.GridPane
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
+import javafx.scene.control.ListView
+import javafx.scene.layout.VBox
+import javafx.scene.control.CheckBox
+import javafx.scene.control.Button
+import javafx.scene.layout.AnchorPane
+import at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application.DefaultTabController
+import javafx.scene.image.ImageView
+import javafx.scene.image.Image
+import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane
+import at.bestsolution.efxclipse.runtime.panels.GridData
+
+component DefaultTab controlledby DefaultTabController {
+	GridPane {
+		Label {
+			text : "Id", 
+			static columnIndex : 0, 
+			static rowIndex : 1
+		}, 
+		TextField id idField {
+			static columnIndex : 1, 
+			static rowIndex : 1, 
+			static columnSpan : 2
+		}, 
+		Label {
+			text : "Binding Contexts", 
+			static columnIndex : 0, 
+			static rowIndex : 2, 
+			static valignment : "TOP"
+		}, 
+		ListView id bindingContextsView {
+			static columnIndex : 1, 
+			static rowIndex : 2,
+			static hgrow : "ALWAYS"
+		},
+		AnchorPane {
+			GridLayoutPane {
+				Button {
+					text : "Up",
+					graphic : ImageView {
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_up.png"
+						}
+					},
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onBindingUp
+				},
+				Button {
+					text : "Down",
+					graphic : ImageView { 
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_down.png" 
+						}
+					},
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onBindingDown
+				},
+				Button {
+					text : "Add ...",
+					graphic : ImageView {
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/table_add.png"
+						}
+					},
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onBindingAdd
+				},
+				Button {
+					text : "Remove",
+					graphic : ImageView {
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/table_delete.png"
+						}
+					},
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onBindingRemove
+				},
+				static bottomAnchor : 1.0
+			},
+			static columnIndex : 2, 
+			static rowIndex : 2
+				
+		}, 
+		Label {
+			text : "To be rendered", 
+			static columnIndex : 0, 
+			static rowIndex : 3
+		}, 
+		CheckBox id renderField {
+			static columnIndex : 1, 
+			static rowIndex : 3
+		}, 
+		Label {
+			text : "Visible", 
+			static columnIndex : 0, 
+			static rowIndex : 4
+		}, 
+		CheckBox id visibleField {
+			static columnIndex : 1, 
+			static rowIndex : 4
+		}
+	}
+}

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Generic
+Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.bindings.generic
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.commands;bundle-version="3.6.0",
+ at.bestsolution.efxclipse.runtime.bindings;bundle-version="0.1.0"
+Service-Component: OSGI-INF/bindingfactory.xml

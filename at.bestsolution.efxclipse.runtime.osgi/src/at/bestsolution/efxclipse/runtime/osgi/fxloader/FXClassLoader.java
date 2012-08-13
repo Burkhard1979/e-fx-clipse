@@ -423,9 +423,25 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 				}
 				
 				// check if javafx is bundled inside an OSGi-Package
-				Bundle[] bundles = admin.getBundles("javafx.osgi", null);
+				String[] bundleNames = new String[] {
+						"javafx.osgi." + System.getProperty("osgi.os") + "/"+System.getProperty("osgi.arch"),
+						"javafx.osgi." + System.getProperty("osgi.os"),
+						"javafx.osgi"
+				};
 				
-				if (bundles != null) {
+				Bundle[] bundles = null;
+				
+				for(String n : bundleNames) {
+					bundles = admin.getBundles(n, null);
+					if( bundles != null && bundles.length > 0 ) {
+						if( FXClassLoadingConfigurator.DEBUG ) {
+							System.err.println("MyBundleClassLoader#createClassLoaderForDeployedPlugin - Using bundle " + n);	
+						}
+						break;
+					}
+				}
+				
+				if (bundles != null && bundles.length > 0) {
 					Bundle b = bundles[0];
 					if( FXClassLoadingConfigurator.DEBUG ) {
 						System.err.println("MyBundleClassLoader#createClassLoaderForDeployedPlugin - Found bundles checking if installed: " + b);	

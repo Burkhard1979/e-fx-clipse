@@ -5,14 +5,12 @@ import javafx.scene.Node;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 
+import at.bestsolution.efxclipse.runtime.panels.GridData;
 import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane;
-import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane.GridData;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseTrimBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WTrimBar;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.impl.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.impl.WWidgetImpl;
 
 @SuppressWarnings("restriction")
 public class DefTrimBarRenderer extends BaseTrimBarRenderer<GridLayoutPane> {
@@ -43,7 +41,7 @@ public class DefTrimBarRenderer extends BaseTrimBarRenderer<GridLayoutPane> {
 		public void addChild(WLayoutedWidget<MTrimElement> trimElementWidget) {
 			Node n = trimElementWidget.getStaticLayoutNode();
 			getWidget().getChildren().add(n);
-			getWidget().setConstraint(n, new GridData(GridData.FILL_BOTH));
+			GridLayoutPane.setConstraint(n, new GridData(GridData.FILL_BOTH));
 		}
 	}
 }

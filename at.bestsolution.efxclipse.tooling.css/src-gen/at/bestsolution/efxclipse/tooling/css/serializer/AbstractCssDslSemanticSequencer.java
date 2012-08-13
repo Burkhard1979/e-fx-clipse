@@ -4,6 +4,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.importExpression;
@@ -24,7 +25,7 @@ import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
 import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
-import org.eclipse.xtext.serializer.sequencer.AbstractSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
@@ -32,30 +33,10 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
-public class AbstractCssDslSemanticSequencer extends AbstractSemanticSequencer {
+public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
 	@Inject
-	protected CssDslGrammarAccess grammarAccess;
-	
-	@Inject
-	protected ISemanticSequencerDiagnosticProvider diagnosticProvider;
-	
-	@Inject
-	protected ITransientValueService transientValues;
-	
-	@Inject
-	@GenericSequencer
-	protected Provider<ISemanticSequencer> genericSequencerProvider;
-	
-	protected ISemanticSequencer genericSequencer;
-	
-	
-	@Override
-	public void init(ISemanticSequencer sequencer, ISemanticSequenceAcceptor sequenceAcceptor, Acceptor errorAcceptor) {
-		super.init(sequencer, sequenceAcceptor, errorAcceptor);
-		this.genericSequencer = genericSequencerProvider.get();
-		this.genericSequencer.init(sequencer, sequenceAcceptor, errorAcceptor);
-	}
+	private CssDslGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == CssDslPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
@@ -65,7 +46,7 @@ public class AbstractCssDslSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else if(context == grammarAccess.getImportExpressionRule()) {
-					sequence_importExpression(context, (URLType) semanticObject); 
+					sequence_URLType_importExpression(context, (URLType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -79,6 +60,12 @@ public class AbstractCssDslSemanticSequencer extends AbstractSemanticSequencer {
 				if(context == grammarAccess.getCss_declarationRule() ||
 				   context == grammarAccess.getCss_generic_declarationRule()) {
 					sequence_css_generic_declaration(context, (css_generic_declaration) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.CSS_NEGATION:
+				if(context == grammarAccess.getCss_negationRule()) {
+					sequence_css_negation(context, (css_negation) semanticObject); 
 					return; 
 				}
 				else break;
@@ -169,6 +156,15 @@ public class AbstractCssDslSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (url=STRING mediaList=media_list?)
+	 */
+	protected void sequence_URLType_importExpression(EObject context, URLType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     charset=STRING
 	 */
 	protected void sequence_charset(EObject context, charset semanticObject) {
@@ -189,6 +185,25 @@ public class AbstractCssDslSemanticSequencer extends AbstractSemanticSequencer {
 	 */
 	protected void sequence_css_generic_declaration(EObject context, css_generic_declaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (not=css_not negation_arg=css_negation_arg)
+	 */
+	protected void sequence_css_negation(EObject context, css_negation semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.CSS_NEGATION__NOT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.CSS_NEGATION__NOT));
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.CSS_NEGATION__NEGATION_ARG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.CSS_NEGATION__NEGATION_ARG));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCss_negationAccess().getNotCss_notEnumRuleCall_1_0(), semanticObject.getNot());
+		feeder.accept(grammarAccess.getCss_negationAccess().getNegation_argCss_negation_argParserRuleCall_2_0(), semanticObject.getNegation_arg());
+		feeder.finish();
 	}
 	
 	
@@ -217,15 +232,6 @@ public class AbstractCssDslSemanticSequencer extends AbstractSemanticSequencer {
 		feeder.accept(grammarAccess.getFunctionAccess().getNameIDENTTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getFunctionAccess().getExpressionExprParserRuleCall_4_0(), semanticObject.getExpression());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (url=STRING mediaList=media_list?)
-	 */
-	protected void sequence_importExpression(EObject context, URLType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

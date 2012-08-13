@@ -1529,6 +1529,26 @@ finally {
 
 
 
+// Rule css_not
+rulecss_not
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCss_notAccess().getNotEnumLiteralDeclaration()); }
+(	'not(' 
+)
+{ after(grammarAccess.getCss_notAccess().getNotEnumLiteralDeclaration()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 rule__Stylesheet__Alternatives_2
     @init {
 		int stackSize = keepStackSize();
@@ -4943,11 +4963,11 @@ rule__Css_negation__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getNotKeyword_0()); }
+{ before(grammarAccess.getCss_negationAccess().getColonKeyword_0()); }
 
-	':not' 
+	':' 
 
-{ after(grammarAccess.getCss_negationAccess().getNotKeyword_0()); }
+{ after(grammarAccess.getCss_negationAccess().getColonKeyword_0()); }
 )
 
 ;
@@ -4974,11 +4994,9 @@ rule__Css_negation__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getLeftParenthesisKeyword_1()); }
-
-	'(' 
-
-{ after(grammarAccess.getCss_negationAccess().getLeftParenthesisKeyword_1()); }
+{ before(grammarAccess.getCss_negationAccess().getNotAssignment_1()); }
+(rule__Css_negation__NotAssignment_1)
+{ after(grammarAccess.getCss_negationAccess().getNotAssignment_1()); }
 )
 
 ;
@@ -5005,9 +5023,9 @@ rule__Css_negation__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getCss_negation_argParserRuleCall_2()); }
-	rulecss_negation_arg
-{ after(grammarAccess.getCss_negationAccess().getCss_negation_argParserRuleCall_2()); }
+{ before(grammarAccess.getCss_negationAccess().getNegation_argAssignment_2()); }
+(rule__Css_negation__Negation_argAssignment_2)
+{ after(grammarAccess.getCss_negationAccess().getNegation_argAssignment_2()); }
 )
 
 ;
@@ -6698,6 +6716,36 @@ rule__Css_generic_declaration__PrioAssignment_3
 (
 { before(grammarAccess.getCss_generic_declarationAccess().getPrioCss_prioParserRuleCall_3_0()); }
 	rulecss_prio{ after(grammarAccess.getCss_generic_declarationAccess().getPrioCss_prioParserRuleCall_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Css_negation__NotAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCss_negationAccess().getNotCss_notEnumRuleCall_1_0()); }
+	rulecss_not{ after(grammarAccess.getCss_negationAccess().getNotCss_notEnumRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Css_negation__Negation_argAssignment_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCss_negationAccess().getNegation_argCss_negation_argParserRuleCall_2_0()); }
+	rulecss_negation_arg{ after(grammarAccess.getCss_negationAccess().getNegation_argCss_negation_argParserRuleCall_2_0()); }
 )
 
 ;

@@ -417,8 +417,8 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			application.getAddons().add(addon);
 
 			addon = MApplicationFactory.INSTANCE.createAddon();
-			addon.setElementId("org.eclipse.e4.ui.bindings.service");
-			addon.setContributionURI("bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon");
+			addon.setElementId("at.bestsolution.efxclipse.runtime.bindings.e4.service");
+			addon.setContributionURI("bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon");
 			application.getAddons().add(addon);
 
 			addon = MApplicationFactory.INSTANCE.createAddon();
@@ -431,6 +431,11 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			addon.setContributionURI("bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon");
 			application.getAddons().add(addon);
 
+			addon = MApplicationFactory.INSTANCE.createAddon();
+			addon.setElementId("at.bestsolution.efxclipse.runtime.bindings.e4.model");
+			addon.setContributionURI("bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingProcessingAddon");
+			application.getAddons().add(addon);
+			
 			MBindingContext rootContext = MCommandsFactory.INSTANCE.createBindingContext();
 			rootContext.setElementId("org.eclipse.ui.contexts.dialogAndWindow");
 			rootContext.setName("In Dialog and Windows");

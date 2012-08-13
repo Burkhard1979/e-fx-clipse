@@ -5,6 +5,7 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -75,6 +76,7 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
       case CssDslPackage.SUB_SELECTOR: return createsub_selector();
       case CssDslPackage.CSS_DECLARATION: return createcss_declaration();
       case CssDslPackage.CSS_GENERIC_DECLARATION: return createcss_generic_declaration();
+      case CssDslPackage.CSS_NEGATION: return createcss_negation();
       case CssDslPackage.EXPR: return createexpr();
       case CssDslPackage.TERM_GROUP: return createtermGroup();
       case CssDslPackage.TERM: return createterm();
@@ -82,6 +84,40 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
       case CssDslPackage.URL_TYPE: return createURLType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case CssDslPackage.CSS_NOT:
+        return createcss_notFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case CssDslPackage.CSS_NOT:
+        return convertcss_notToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -211,6 +247,17 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public css_negation createcss_negation()
+  {
+    css_negationImpl css_negation = new css_negationImpl();
+    return css_negation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public expr createexpr()
   {
     exprImpl expr = new exprImpl();
@@ -259,6 +306,28 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
   {
     URLTypeImpl urlType = new URLTypeImpl();
     return urlType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public css_not createcss_notFromString(EDataType eDataType, String initialValue)
+  {
+    css_not result = css_not.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertcss_notToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

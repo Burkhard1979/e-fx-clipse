@@ -7,13 +7,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 
 @SuppressWarnings("restriction")
 public interface WWindow<N> extends WWidget<MWindow> {
-	public void setX(double x);
-	public void setY(double y);
-	public void setWidth(double w);
-	public void setHeight(double h);
-	public void setBounds(double x, double y, double w, double h);
 	
-	public void setTitle(String title);
 	public void setMainMenu(WLayoutedWidget<MMenu> menuWidget);
 	public void setTopTrim(WLayoutedWidget<MTrimBar> trimBar);
 	public void setLeftTrim(WLayoutedWidget<MTrimBar> trimBar);

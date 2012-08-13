@@ -8,6 +8,8 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_not;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.importExpression;
@@ -23,6 +25,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -118,6 +121,13 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass css_negationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass exprEClass = null;
 
   /**
@@ -147,6 +157,13 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * @generated
    */
   private EClass urlTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum css_notEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -536,9 +553,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getsub_selector_Negotation()
+  public EReference getsub_selector_Negotation()
   {
-    return (EAttribute)sub_selectorEClass.getEStructuralFeatures().get(4);
+    return (EReference)sub_selectorEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -589,6 +606,36 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
   public EAttribute getcss_generic_declaration_Prio()
   {
     return (EAttribute)css_generic_declarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getcss_negation()
+  {
+    return css_negationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getcss_negation_Not()
+  {
+    return (EAttribute)css_negationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getcss_negation_Negation_arg()
+  {
+    return (EAttribute)css_negationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -766,6 +813,16 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getcss_not()
+  {
+    return css_notEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CssDslFactory getCssDslFactory()
   {
     return (CssDslFactory)getEFactoryInstance();
@@ -831,7 +888,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     createEAttribute(sub_selectorEClass, SUB_SELECTOR__CLASS);
     createEAttribute(sub_selectorEClass, SUB_SELECTOR__ATTRIB);
     createEAttribute(sub_selectorEClass, SUB_SELECTOR__PSEUDOCLASS);
-    createEAttribute(sub_selectorEClass, SUB_SELECTOR__NEGOTATION);
+    createEReference(sub_selectorEClass, SUB_SELECTOR__NEGOTATION);
 
     css_declarationEClass = createEClass(CSS_DECLARATION);
 
@@ -839,6 +896,10 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     createEAttribute(css_generic_declarationEClass, CSS_GENERIC_DECLARATION__PROPERTY);
     createEReference(css_generic_declarationEClass, CSS_GENERIC_DECLARATION__EXPRESSION);
     createEAttribute(css_generic_declarationEClass, CSS_GENERIC_DECLARATION__PRIO);
+
+    css_negationEClass = createEClass(CSS_NEGATION);
+    createEAttribute(css_negationEClass, CSS_NEGATION__NOT);
+    createEAttribute(css_negationEClass, CSS_NEGATION__NEGATION_ARG);
 
     exprEClass = createEClass(EXPR);
     createEReference(exprEClass, EXPR__TERM_GROUPS);
@@ -861,6 +922,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     urlTypeEClass = createEClass(URL_TYPE);
     createEAttribute(urlTypeEClass, URL_TYPE__MEDIA_LIST);
     createEAttribute(urlTypeEClass, URL_TYPE__URL);
+
+    // Create enums
+    css_notEEnum = createEEnum(CSS_NOT);
   }
 
   /**
@@ -936,7 +1000,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEAttribute(getsub_selector_Class(), ecorePackage.getEString(), "class", null, 0, 1, sub_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getsub_selector_Attrib(), ecorePackage.getEString(), "attrib", null, 0, 1, sub_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getsub_selector_Pseudoclass(), ecorePackage.getEString(), "pseudoclass", null, 0, 1, sub_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getsub_selector_Negotation(), ecorePackage.getEString(), "negotation", null, 0, 1, sub_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getsub_selector_Negotation(), this.getcss_negation(), null, "negotation", null, 0, 1, sub_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(css_declarationEClass, css_declaration.class, "css_declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -944,6 +1008,10 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEAttribute(getcss_generic_declaration_Property(), ecorePackage.getEString(), "property", null, 0, 1, css_generic_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getcss_generic_declaration_Expression(), this.getexpr(), null, "expression", null, 0, 1, css_generic_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getcss_generic_declaration_Prio(), ecorePackage.getEString(), "prio", null, 0, 1, css_generic_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(css_negationEClass, css_negation.class, "css_negation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getcss_negation_Not(), this.getcss_not(), "not", null, 0, 1, css_negation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getcss_negation_Negation_arg(), ecorePackage.getEString(), "negation_arg", null, 0, 1, css_negation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprEClass, expr.class, "expr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getexpr_TermGroups(), this.gettermGroup(), null, "termGroups", null, 0, -1, expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -966,6 +1034,10 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEClass(urlTypeEClass, URLType.class, "URLType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getURLType_MediaList(), ecorePackage.getEString(), "mediaList", null, 0, 1, URLType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getURLType_Url(), ecorePackage.getEString(), "url", null, 0, 1, URLType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(css_notEEnum, css_not.class, "css_not");
+    addEEnumLiteral(css_notEEnum, css_not.NOT);
 
     // Create resource
     createResource(eNS_URI);

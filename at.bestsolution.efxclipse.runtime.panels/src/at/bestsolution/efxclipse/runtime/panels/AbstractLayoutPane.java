@@ -6,16 +6,16 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 public abstract class AbstractLayoutPane<D> extends Pane {
-	static final int SWT_DEFAULT = -1;
-	static final int SWT_BEGINNING = 1;
-	static final int SWT_FILL = 4;
-	static final int SWT_LEFT = 16384;
-	static final int SWT_END = 16777224;
-	static final int SWT_RIGHT = 131072;
-	static final int SWT_CENTER = 16777216;
-	static final int SWT_BOTTOM = 1024;
-	static final int SWT_TOP = 128;
-	static final int SWT_HORIZONTAL = 256;
+	public static final int FX_DEFAULT = -1;
+	public static final int FX_BEGINNING = 1;
+	public static final int FX_FILL = 4;
+	public static final int FX_LEFT = 16384;
+	public static final int FX_END = 16777224;
+	public static final int FX_RIGHT = 131072;
+	public static final int FX_CENTER = 16777216;
+	public static final int FX_BOTTOM = 1024;
+	public static final int FX_TOP = 128;
+	public static final int FX_HORIZONTAL = 256;
 	
 	static class Size {
 		public final double width;
@@ -25,16 +25,6 @@ public abstract class AbstractLayoutPane<D> extends Pane {
 			this.width = width;
 			this.height = height;
 		}
-	}
-	
-	private WeakHashMap<Node, D> constraints = new WeakHashMap<Node, D>();
-	
-	public void setConstraint(Node n, D griddata) {
-		constraints.put(n, griddata);
-	}
-	
-	public D getConstraint(Node n) {
-		return constraints.get(n);
 	}
 	
 	protected abstract Size computeSize(double width, double height, boolean flushCache);
@@ -61,11 +51,11 @@ public abstract class AbstractLayoutPane<D> extends Pane {
 	
 	@Override
 	protected double computePrefHeight(double width) {
-		return computeSize(SWT_DEFAULT, SWT_DEFAULT, true).height;
+		return computeSize(FX_DEFAULT, FX_DEFAULT, true).height;
 	}
 	
 	@Override
 	protected double computePrefWidth(double height) {
-		return computeSize(SWT_DEFAULT, SWT_DEFAULT, true).width;
+		return computeSize(FX_DEFAULT, FX_DEFAULT, true).width;
 	}
 }

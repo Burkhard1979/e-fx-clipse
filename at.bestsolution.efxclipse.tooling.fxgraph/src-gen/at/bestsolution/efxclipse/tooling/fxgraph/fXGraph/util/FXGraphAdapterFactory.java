@@ -165,6 +165,11 @@ public class FXGraphAdapterFactory extends AdapterFactoryImpl
         return createSimpleValuePropertyAdapter();
       }
       @Override
+      public Adapter caseConstValueProperty(ConstValueProperty object)
+      {
+        return createConstValuePropertyAdapter();
+      }
+      @Override
       public Adapter caseReferenceType(ReferenceType object)
       {
         return createReferenceTypeAdapter();
@@ -512,6 +517,21 @@ public class FXGraphAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSimpleValuePropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty <em>Const Value Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty
+   * @generated
+   */
+  public Adapter createConstValuePropertyAdapter()
   {
     return null;
   }

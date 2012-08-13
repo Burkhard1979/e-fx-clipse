@@ -5,21 +5,30 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.contributions.IContributionFactory;
+import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.e4.ui.di.PersistState;
 import org.eclipse.e4.ui.internal.workbench.E4Workbench;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
+import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.ui.MContext;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
+import org.eclipse.e4.ui.workbench.UIEvents;
+import org.eclipse.e4.ui.workbench.UIEvents.UIElement;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.workbench.internal.key.KeyBindingDispatcher;
 import at.bestsolution.efxclipse.runtime.workbench.rendering.AbstractRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.rendering.RendererFactory;
 
@@ -33,19 +42,38 @@ public class PartRenderingEngine2 implements IPresentationEngine {
 
 	private final RendererFactory factory;
 	
-	private final EModelService modelService; 
+	private final EModelService modelService;
 	
 	@Inject
 	public PartRenderingEngine2(
 			@Named(E4Workbench.RENDERER_FACTORY_URI) @Optional String factoryUrl,
 			IEclipseContext context,
-			EModelService modelService) {
+			EModelService modelService,
+			IEventBroker eventBroker) {
 		if( factoryUrl == null ) {
 			factoryUrl = defaultFactoryUrl;
 		}
 		IContributionFactory contribFactory = context.get(IContributionFactory.class);
 		this.factory = (RendererFactory) contribFactory.create(factoryUrl, context);
 		this.modelService = modelService;
+		KeyBindingDispatcher dispatcher = ContextInjectionFactory.make(KeyBindingDispatcher.class, context);
+		context.set(KeyBindingDispatcher.class, dispatcher);
+		setupEventListener(eventBroker);
+	}
+	
+	void setupEventListener(IEventBroker eventBroker) {
+		eventBroker.subscribe(UIEvents.UIElement.TOPIC_TOBERENDERED, new EventHandler() {
+			
+			public void handleEvent(Event event) {
+				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+				
+				if (changedObj.isToBeRendered()) {
+					createGui(changedObj);
+				} else {
+					removeGui(changedObj);
+				}
+			}
+		});
 	}
 	
 	public Object createGui(MUIElement element, Object parentWidget, IEclipseContext parentContext) {
@@ -61,14 +89,14 @@ public class PartRenderingEngine2 implements IPresentationEngine {
 			createContext((MContext) element, parentContext);
 		}
 		
-		Object widget = createWidget(element, parentWidget);
+		Object widget = createWidget(element);
 		if( widget != null ) {
 			AbstractRenderer<MUIElement, Object> r = getRendererFor(element);
 			r.processContent(element);
 			r.postProcess(element);
 			
-			if (element.getParent() instanceof MUIElement) {
-				MElementContainer<MUIElement> parentElement = element.getParent();
+			if (((EObject)element).eContainer() instanceof MUIElement) {
+				MUIElement parentElement = (MUIElement) ((EObject)element).eContainer();
 				AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(parentElement);
 				if (parentRenderer != null) {
 					parentRenderer.childRendered(parentElement, element);
@@ -89,9 +117,8 @@ public class PartRenderingEngine2 implements IPresentationEngine {
 		return widget;
 	}
 	
-	private Object createWidget(MUIElement element, Object parent) {
-		AbstractRenderer<MUIElement,Object> renderer = getRenderer(element, parent);
-		System.err.println("Renderer: " + renderer);
+	private Object createWidget(MUIElement element) {
+		AbstractRenderer<MUIElement,Object> renderer = getRenderer(element);
 		if (renderer != null) {
 			// Remember which renderer is responsible for this widget
 			element.setRenderer(renderer);
@@ -105,13 +132,13 @@ public class PartRenderingEngine2 implements IPresentationEngine {
 		return null;
 	}
 	
-	private AbstractRenderer<MUIElement,Object> getRenderer(MUIElement uiElement, Object parent) {
+	private AbstractRenderer<MUIElement,Object> getRenderer(MUIElement uiElement) {
 		return factory.getRenderer(uiElement);
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected AbstractRenderer<MUIElement,Object> getRendererFor(MUIElement element) {
-		return (AbstractRenderer<MUIElement,Object>) element.getRenderer();
+	protected <R extends AbstractRenderer<? extends M,Object>, M extends MUIElement> R getRendererFor(MUIElement element) {
+		return (R) element.getRenderer();
 	}
 	
 	private IEclipseContext createContext(MContext model, IEclipseContext parentContext) {
@@ -175,9 +202,97 @@ public class PartRenderingEngine2 implements IPresentationEngine {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public void removeGui(MUIElement element) {
-		// TODO Auto-generated method stub
+		MUIElement container = (MUIElement) ((EObject)element).eContainer();
 		
+		if( container != null ) {
+			AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(container);
+			if (parentRenderer != null) {
+				parentRenderer.hideChild(container, element);
+			}
+			
+			AbstractRenderer<MUIElement, Object> renderer = getRendererFor(element);
+			
+			// Check if the control is already rendered
+			if( renderer != null ) {
+				// Need clean up everything below
+				EObject eo = (EObject) element;
+				// Make a defensive copy 
+				EObject[] l = eo.eContents().toArray(new EObject[0]);
+				
+				// Unrender ALL children
+				
+				MUIElement selectedElement = null;
+				if( element instanceof MElementContainer ) {
+					selectedElement = ((MElementContainer<MUIElement>) element).getSelectedElement();
+				}
+				
+				for( EObject c : l ) {
+					if( c instanceof UIElement ) {
+						if( selectedElement != c ) {
+							removeGui((MUIElement) c);
+						}
+					}
+				}
+				
+				if (selectedElement != null
+						&& eo.eContents().contains(selectedElement)) {
+					// now remove the selected element
+					removeGui(selectedElement);
+				}
+				
+				if (element instanceof MContribution) {
+					MContribution contribution = (MContribution) element;
+					Object client = contribution.getObject();
+					IEclipseContext parentContext = renderer.getModelContext(element);
+					if (parentContext != null && client != null) {
+						try {
+							ContextInjectionFactory.invoke(client,
+									PersistState.class, parentContext, null);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				
+				renderer.destroyWidget(element);
+				
+				if (element instanceof MContribution) {
+					MContribution contribution = (MContribution) element;
+					Object client = contribution.getObject();
+					IEclipseContext parentContext = renderer.getModelContext(element);
+					if (parentContext != null && client != null) {
+						try {
+							ContextInjectionFactory.uninject(client, parentContext);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+					contribution.setObject(null);
+				}
+
+				// dispose the context
+				if (element instanceof MContext) {
+					clearContext((MContext) element);
+				}
+			}
+		}
+	}
+	
+	private void clearContext(MContext contextME) {
+		MContext ctxt = (MContext) contextME;
+		IEclipseContext lclContext = ctxt.getContext();
+		if (lclContext != null) {
+			IEclipseContext parentContext = lclContext.getParent();
+			IEclipseContext child = parentContext.getActiveChild();
+			if (child == lclContext) {
+				child.deactivate();
+			}
+
+			ctxt.setContext(null);
+			lclContext.dispose();
+		}
 	}
 
 	public Object run(MApplicationElement uiRoot, IEclipseContext appContext) {

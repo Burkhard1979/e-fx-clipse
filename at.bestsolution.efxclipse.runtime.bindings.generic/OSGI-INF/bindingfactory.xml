@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.runtime.bindings.generic">
+   <implementation class="at.bestsolution.efxclipse.runtime.bindings.generic.BindingFactoryImpl"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.runtime.bindings.service.BindingFactory"/>
+   </service>
+</scr:component>

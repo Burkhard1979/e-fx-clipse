@@ -12,8 +12,8 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.jdt.core.IClasspathContainer;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
@@ -105,19 +105,7 @@ public class LivePreviewSynchronizer implements IPartListener, IPropertyListener
 		extraJarPath.addAll(previewUrls);
 		
 		if( file != null ) {
-			boolean pluginProject = false;
-			try {
-				if (file.getProject().hasNature("org.eclipse.pde.PluginNature")) {
-					pluginProject = true;
-				}
-			} catch (CoreException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-			
-			if( !pluginProject ) {
-				extraJarPath.addAll(calculateProjectClasspath(JavaCore.create(file.getProject())));
-			}
+			extraJarPath.addAll(calculateProjectClasspath(JavaCore.create(file.getProject())));
 		}
 		
 		return new ContentData(contents, previewSceneSetup, cssFiles, resourceBundle, extraJarPath, file);
@@ -136,6 +124,18 @@ public class LivePreviewSynchronizer implements IPartListener, IPropertyListener
 					}
 				} else if (e.getEntryKind() == IClasspathEntry.CPE_LIBRARY) {
 					listRefLibraries.add(e.getPath());
+				} else if( "org.eclipse.pde.core.requiredPlugins".equals(e.getPath().toString()) ) {
+					IClasspathContainer cpContainer = JavaCore.getClasspathContainer(e.getPath(), project);
+					for( IClasspathEntry cpEntry : cpContainer.getClasspathEntries() ) {
+						if( cpEntry.getEntryKind() == IClasspathEntry.CPE_PROJECT ) {
+							IProject p = ResourcesPlugin.getWorkspace().getRoot().getProject(cpEntry.getPath().lastSegment());
+							if (p.exists()) {
+								resolveDataProject(JavaCore.create(p), outputPath, listRefLibraries);
+							}
+						} else if( cpEntry.getEntryKind() == IClasspathEntry.CPE_LIBRARY ) {
+							listRefLibraries.add(cpEntry.getPath());
+						}
+					}
 				}
 			}
 		} catch (JavaModelException e) {
@@ -175,6 +175,8 @@ public class LivePreviewSynchronizer implements IPartListener, IPropertyListener
 				}
 			}
 		}
+		
+		System.err.println("Classpath: " + rv);
 
 		return rv;
 	}

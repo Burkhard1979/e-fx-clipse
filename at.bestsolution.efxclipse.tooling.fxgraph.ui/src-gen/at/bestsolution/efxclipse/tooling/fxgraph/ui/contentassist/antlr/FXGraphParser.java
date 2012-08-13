@@ -126,6 +126,7 @@ public class FXGraphParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMapValuePropertyAccess().getGroup(), "rule__MapValueProperty__Group__0");
 					put(grammarAccess.getMapValuePropertyAccess().getGroup_2(), "rule__MapValueProperty__Group_2__0");
 					put(grammarAccess.getSimpleValuePropertyAccess().getGroup_2(), "rule__SimpleValueProperty__Group_2__0");
+					put(grammarAccess.getConstValuePropertyAccess().getGroup(), "rule__ConstValueProperty__Group__0");
 					put(grammarAccess.getReferenceValuePropertyAccess().getGroup(), "rule__ReferenceValueProperty__Group__0");
 					put(grammarAccess.getReferenceValuePropertyAccess().getGroup_2(), "rule__ReferenceValueProperty__Group_2__0");
 					put(grammarAccess.getReferenceValuePropertyAccess().getGroup_2_2(), "rule__ReferenceValueProperty__Group_2_2__0");
@@ -344,6 +345,8 @@ public class FXGraphParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSimpleValuePropertyAccess().getNegativeAssignment_2_0(), "rule__SimpleValueProperty__NegativeAssignment_2_0");
 					put(grammarAccess.getSimpleValuePropertyAccess().getIntValueAssignment_2_1_0(), "rule__SimpleValueProperty__IntValueAssignment_2_1_0");
 					put(grammarAccess.getSimpleValuePropertyAccess().getRealValueAssignment_2_1_1(), "rule__SimpleValueProperty__RealValueAssignment_2_1_1");
+					put(grammarAccess.getConstValuePropertyAccess().getTypeAssignment_1(), "rule__ConstValueProperty__TypeAssignment_1");
+					put(grammarAccess.getConstValuePropertyAccess().getFieldAssignment_3(), "rule__ConstValueProperty__FieldAssignment_3");
 					put(grammarAccess.getReferenceValuePropertyAccess().getReferenceAssignment_1(), "rule__ReferenceValueProperty__ReferenceAssignment_1");
 					put(grammarAccess.getReferenceValuePropertyAccess().getStaticPropertiesAssignment_2_1_0(), "rule__ReferenceValueProperty__StaticPropertiesAssignment_2_1_0");
 					put(grammarAccess.getReferenceValuePropertyAccess().getStaticCallPropertiesAssignment_2_1_1(), "rule__ReferenceValueProperty__StaticCallPropertiesAssignment_2_1_1");

@@ -10,7 +10,6 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuBarRen
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenuBar;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.impl.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.impl.WWidgetImpl;
 
 @SuppressWarnings("restriction")
 public class DefMenuBarRenderer extends BaseMenuBarRenderer<MenuBar> {

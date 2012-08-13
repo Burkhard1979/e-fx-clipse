@@ -4,6 +4,7 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -426,7 +427,7 @@ public interface CssDslPackage extends EPackage
   int SUB_SELECTOR__PSEUDOCLASS = 3;
 
   /**
-   * The feature id for the '<em><b>Negotation</b></em>' attribute.
+   * The feature id for the '<em><b>Negotation</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -509,6 +510,43 @@ public interface CssDslPackage extends EPackage
   int CSS_GENERIC_DECLARATION_FEATURE_COUNT = CSS_DECLARATION_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_negationImpl <em>css negation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_negationImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_negation()
+   * @generated
+   */
+  int CSS_NEGATION = 11;
+
+  /**
+   * The feature id for the '<em><b>Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_NEGATION__NOT = 0;
+
+  /**
+   * The feature id for the '<em><b>Negation arg</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_NEGATION__NEGATION_ARG = 1;
+
+  /**
+   * The number of structural features of the '<em>css negation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_NEGATION_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.exprImpl <em>expr</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -516,7 +554,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getexpr()
    * @generated
    */
-  int EXPR = 11;
+  int EXPR = 12;
 
   /**
    * The feature id for the '<em><b>Term Groups</b></em>' containment reference list.
@@ -544,7 +582,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#gettermGroup()
    * @generated
    */
-  int TERM_GROUP = 12;
+  int TERM_GROUP = 13;
 
   /**
    * The feature id for the '<em><b>Terms</b></em>' containment reference list.
@@ -572,7 +610,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getterm()
    * @generated
    */
-  int TERM = 13;
+  int TERM = 14;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -645,7 +683,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getfunction()
    * @generated
    */
-  int FUNCTION = 14;
+  int FUNCTION = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -682,7 +720,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getURLType()
    * @generated
    */
-  int URL_TYPE = 15;
+  int URL_TYPE = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -719,6 +757,16 @@ public interface CssDslPackage extends EPackage
    * @ordered
    */
   int URL_TYPE_FEATURE_COUNT = IMPORT_EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_not
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_not()
+   * @generated
+   */
+  int CSS_NOT = 17;
 
 
   /**
@@ -1065,15 +1113,15 @@ public interface CssDslPackage extends EPackage
   EAttribute getsub_selector_Pseudoclass();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector#getNegotation <em>Negotation</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector#getNegotation <em>Negotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Negotation</em>'.
+   * @return the meta object for the containment reference '<em>Negotation</em>'.
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector#getNegotation()
    * @see #getsub_selector()
    * @generated
    */
-  EAttribute getsub_selector_Negotation();
+  EReference getsub_selector_Negotation();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration <em>css declaration</em>}'.
@@ -1127,6 +1175,38 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EAttribute getcss_generic_declaration_Prio();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation <em>css negation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>css negation</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation
+   * @generated
+   */
+  EClass getcss_negation();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation#getNot <em>Not</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Not</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation#getNot()
+   * @see #getcss_negation()
+   * @generated
+   */
+  EAttribute getcss_negation_Not();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation#getNegation_arg <em>Negation arg</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Negation arg</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation#getNegation_arg()
+   * @see #getcss_negation()
+   * @generated
+   */
+  EAttribute getcss_negation_Negation_arg();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.expr <em>expr</em>}'.
@@ -1309,6 +1389,16 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EAttribute getURLType_Url();
+
+  /**
+   * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>css not</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_not
+   * @generated
+   */
+  EEnum getcss_not();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1608,12 +1698,12 @@ public interface CssDslPackage extends EPackage
     EAttribute SUB_SELECTOR__PSEUDOCLASS = eINSTANCE.getsub_selector_Pseudoclass();
 
     /**
-     * The meta object literal for the '<em><b>Negotation</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Negotation</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SUB_SELECTOR__NEGOTATION = eINSTANCE.getsub_selector_Negotation();
+    EReference SUB_SELECTOR__NEGOTATION = eINSTANCE.getsub_selector_Negotation();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl <em>css declaration</em>}' class.
@@ -1658,6 +1748,32 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EAttribute CSS_GENERIC_DECLARATION__PRIO = eINSTANCE.getcss_generic_declaration_Prio();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_negationImpl <em>css negation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_negationImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_negation()
+     * @generated
+     */
+    EClass CSS_NEGATION = eINSTANCE.getcss_negation();
+
+    /**
+     * The meta object literal for the '<em><b>Not</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CSS_NEGATION__NOT = eINSTANCE.getcss_negation_Not();
+
+    /**
+     * The meta object literal for the '<em><b>Negation arg</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CSS_NEGATION__NEGATION_ARG = eINSTANCE.getcss_negation_Negation_arg();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.exprImpl <em>expr</em>}' class.
@@ -1804,6 +1920,16 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EAttribute URL_TYPE__URL = eINSTANCE.getURLType_Url();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_not
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_not()
+     * @generated
+     */
+    EEnum CSS_NOT = eINSTANCE.getcss_not();
 
   }
 

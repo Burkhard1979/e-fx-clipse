@@ -919,9 +919,9 @@ public class JFXDialectExtension implements CssDialectExtension {
 						return;
 					}
 				}
-				if( ! t.getIdentifier().startsWith("-") ) {
-					list.add(new ValidationResult(ValidationStatus.ERROR, "'"+t.getIdentifier()+"' is not a known color", t, CssDslPackage.Literals.TERM__IDENTIFIER, 0));	
-				}
+//				if( ! t.getIdentifier().startsWith("-") ) {
+//					list.add(new ValidationResult(ValidationStatus.ERROR, "'"+t.getIdentifier()+"' is not a known color", t, CssDslPackage.Literals.TERM__IDENTIFIER, 0));	
+//				}
 			} else if( t.getHexColor() != null ) {
 				if( !(t.getHexColor().length() == 4 || t.getHexColor().length() == 7 || t.getHexColor().length() == 9) ) {
 					list.add(new ValidationResult(ValidationStatus.ERROR, "A hex-color definition has to have 3, 6 or 9 hex-digits", t, CssDslPackage.Literals.TERM__HEX_COLOR, -1));
@@ -1030,7 +1030,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 							if( g.getTerms().size() == 1 ) {
 								term term = g.getTerms().get(0);
 								if( term.getNumber() != null ) {
-									ValidationResult res = Util.checkPercentage(term, "The saturation value has to be an integer between 0% and 100%",0);
+									ValidationResult res = Util.checkPercentage(term, "The saturation value has to be an integer between 0% and 100%",0,100);
 									if( res != null ) {
 										list.add(res);
 									}
@@ -1047,7 +1047,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 							if( g.getTerms().size() == 1 ) {
 								term term = g.getTerms().get(0);
 								if( term.getNumber() != null ) {
-									ValidationResult res = Util.checkPercentage(term, "The brightness value has to be an integer between 0% and 100%",0);
+									ValidationResult res = Util.checkPercentage(term, "The brightness value has to be an integer between 0% and 100%",0,100);
 									if( res != null ) {
 										list.add(res);
 									}
@@ -1091,7 +1091,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 							if( g.getTerms().size() == 1 ) {
 								term term = g.getTerms().get(0);
 								if( term.getNumber() != null ) {
-									ValidationResult res = Util.checkPercentage(term, "The brightness value has to be an integer between -100% and 100%",-100);
+									ValidationResult res = Util.checkPercentage(term, "The brightness value has to be an integer between -"+Integer.MIN_VALUE+"% and "+Integer.MAX_VALUE+"%",Integer.MIN_VALUE,Integer.MAX_VALUE);
 									if( res != null ) {
 										list.add(res);
 									}
@@ -1157,10 +1157,12 @@ public class JFXDialectExtension implements CssDialectExtension {
 			return;
 		}
 		
-		double i = Double.parseDouble(term.getNumber().substring(0,term.getNumber().length()-1));
-		if( i < 0 || i > 100 ) {
-			list.add(new ValidationResult(ValidationStatus.ERROR, "Percentage has to be between 0% and 100%", term, CssDslPackage.Literals.TERM__NUMBER, -1));
-		}
+//		double i = 
+		Double.parseDouble(term.getNumber().substring(0,term.getNumber().length()-1));
+// Percentage can be any value		
+//		if( i < 0 || i > 100 ) {
+//			list.add(new ValidationResult(ValidationStatus.ERROR, "Percentage has to be between 0% and 100%", term, CssDslPackage.Literals.TERM__NUMBER, -1));
+//		}
 	}
 	
 	public boolean isActive(URI uri) {

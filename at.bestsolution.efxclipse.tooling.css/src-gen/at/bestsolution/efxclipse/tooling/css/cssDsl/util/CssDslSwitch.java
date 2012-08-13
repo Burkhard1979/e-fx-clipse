@@ -150,6 +150,13 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CssDslPackage.CSS_NEGATION:
+      {
+        css_negation css_negation = (css_negation)theEObject;
+        T result = casecss_negation(css_negation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CssDslPackage.EXPR:
       {
         expr expr = (expr)theEObject;
@@ -362,6 +369,22 @@ public class CssDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T casecss_generic_declaration(css_generic_declaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>css negation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>css negation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casecss_negation(css_negation object)
   {
     return null;
   }

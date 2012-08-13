@@ -12,546 +12,40 @@
 package at.bestsolution.efxclipse.runtime.panels;
 
 
+import java.util.WeakHashMap;
+
+import at.bestsolution.efxclipse.runtime.panels.GridData.Alignment;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.WritableBooleanValue;
 import javafx.beans.value.WritableIntegerValue;
 import javafx.scene.Node;
 
-public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> {
-	private WritableIntegerValue numColumnsProperty = new SimpleIntegerProperty(this, "columns", 1);
+public class GridLayoutPane extends AbstractLayoutPane<GridData> {
+	private IntegerProperty numColumns = new SimpleIntegerProperty(this, "columns", 1);
+	 
+	private BooleanProperty makeColumnsEqualWidth = new SimpleBooleanProperty(this,"makeColumnsEqualWidth",false);
 	
-	private WritableBooleanValue makeColumnsEqualWidthProperty = new SimpleBooleanProperty(this,"makeColumnsEqualWidth",false);
-	private WritableIntegerValue marginWidth = new SimpleIntegerProperty(this, "marginWidth", 5);
-	private WritableIntegerValue marginHeight = new SimpleIntegerProperty(this, "marginHeight", 5);
+	private IntegerProperty marginWidth = new SimpleIntegerProperty(this, "marginWidth", 5);
+	private IntegerProperty marginHeight = new SimpleIntegerProperty(this, "marginHeight", 5);
 	
-	private WritableIntegerValue marginLeft = new SimpleIntegerProperty(this, "marginLeft", 0);
-	private WritableIntegerValue marginTop = new SimpleIntegerProperty(this, "marginTop", 0);
-	private WritableIntegerValue marginRight = new SimpleIntegerProperty(this, "marginRight", 0);
-	private WritableIntegerValue marginBottom = new SimpleIntegerProperty(this, "marginBottom", 0);
+	private IntegerProperty marginLeft = new SimpleIntegerProperty(this, "marginLeft", 0);
+	private IntegerProperty marginTop = new SimpleIntegerProperty(this, "marginTop", 0);
+	private IntegerProperty marginRight = new SimpleIntegerProperty(this, "marginRight", 0);
+	private IntegerProperty marginBottom = new SimpleIntegerProperty(this, "marginBottom", 0);
 	
-	private WritableIntegerValue horizontalSpacing = new SimpleIntegerProperty(this, "horizontalSpacing", 5);
-	private WritableIntegerValue verticalSpacing = new SimpleIntegerProperty(this, "verticalSpacing", 5);
+	private IntegerProperty horizontalSpacing = new SimpleIntegerProperty(this, "horizontalSpacing", 5);
+	private IntegerProperty verticalSpacing = new SimpleIntegerProperty(this, "verticalSpacing", 5);
 	
-	public static class GridData {
-		/**
-		 * verticalAlignment specifies how controls will be positioned 
-		 * vertically within a cell. 
-		 *
-		 * The default value is CENTER.
-		 *
-		 * Possible values are: <ul>
-		 *    <li>SWT.BEGINNING (or SWT.TOP): Position the control at the top of the cell</li>
-		 *    <li>SWT.CENTER: Position the control in the vertical center of the cell</li>
-		 *    <li>SWT.END (or SWT.BOTTOM): Position the control at the bottom of the cell</li>
-		 *    <li>SWT.FILL: Resize the control to fill the cell vertically</li>
-		 * </ul>
-		 */
-		public int verticalAlignment = CENTER;
-		
-		/**
-		 * horizontalAlignment specifies how controls will be positioned 
-		 * horizontally within a cell. 
-		 *
-		 * The default value is BEGINNING.
-		 *
-		 * Possible values are: <ul>
-		 *    <li>SWT.BEGINNING (or SWT.LEFT): Position the control at the left of the cell</li>
-		 *    <li>SWT.CENTER: Position the control in the horizontal center of the cell</li>
-		 *    <li>SWT.END (or SWT.RIGHT): Position the control at the right of the cell</li>
-		 *    <li>SWT.FILL: Resize the control to fill the cell horizontally</li>
-		 * </ul>
-		 */
-		public int horizontalAlignment = BEGINNING;
-		
-		/**
-		 * widthHint specifies the preferred width in pixels. This value
-		 * is the wHint passed into Control.computeSize(int, int, boolean) 
-		 * to determine the preferred size of the control.
-		 *
-		 * The default value is SWT.DEFAULT.
-		 * 
-		 * @see Control#computeSize(int, int, boolean)
-		 */
-		public int widthHint = SWT_DEFAULT;
-		
-		/**
-		 * heightHint specifies the preferred height in pixels. This value
-		 * is the hHint passed into Control.computeSize(int, int, boolean) 
-		 * to determine the preferred size of the control.
-		 *
-		 * The default value is SWT.DEFAULT.
-		 * 
-		 * @see Control#computeSize(int, int, boolean)
-		 */
-		public int heightHint = SWT_DEFAULT;
-		
-		/**
-		 * horizontalIndent specifies the number of pixels of indentation
-		 * that will be placed along the left side of the cell.
-		 *
-		 * The default value is 0.
-		 */
-		public int horizontalIndent = 0;
-		
-		/**
-		 * verticalIndent specifies the number of pixels of indentation
-		 * that will be placed along the top side of the cell.
-		 *
-		 * The default value is 0.
-		 * 
-		 * @since 3.1
-		 */
-		public int verticalIndent = 0;
-		
-		/**
-		 * horizontalSpan specifies the number of column cells that the control
-		 * will take up.
-		 *
-		 * The default value is 1.
-		 */
-		public int horizontalSpan = 1;
-		
-		/**
-		 * verticalSpan specifies the number of row cells that the control
-		 * will take up.
-		 *
-		 * The default value is 1.
-		 */
-		public int verticalSpan = 1;
-		
-		/**
-		 * <p>grabExcessHorizontalSpace specifies whether the width of the cell 
-		 * changes depending on the size of the parent Composite.  If 
-		 * grabExcessHorizontalSpace is <code>true</code>, the following rules
-		 * apply to the width of the cell:</p>
-		 * <ul>
-		 * <li>If extra horizontal space is available in the parent, the cell will 
-		 * grow to be wider than its preferred width.  The new width 
-		 * will be "preferred width + delta" where delta is the extra 
-		 * horizontal space divided by the number of grabbing columns.</li>
-		 * <li>If there is not enough horizontal space available in the parent, the 
-		 * cell will shrink until it reaches its minimum width as specified by 
-		 * GridData.minimumWidth. The new width will be the maximum of 
-		 * "minimumWidth" and "preferred width - delta", where delta is 
-		 * the amount of space missing divided by the number of grabbing columns.</li>
-		 * <li>If the parent is packed, the cell will be its preferred width 
-		 * as specified by GridData.widthHint.</li>
-		 * <li>If the control spans multiple columns and there are no other grabbing 
-		 * controls in any of the spanned columns, the last column in the span will
-		 * grab the extra space.  If there is at least one other grabbing control
-		 * in the span, the grabbing will be spread over the columns already 
-		 * marked as grabExcessHorizontalSpace.</li>
-		 * </ul>
-		 * 
-		 * <p>The default value is false.</p>
-		 * 
-		 * @see GridData#minimumWidth
-		 * @see GridData#widthHint
-		 */	
-		public boolean grabExcessHorizontalSpace = false;
-		
-		/**
-		 * <p>grabExcessVerticalSpace specifies whether the height of the cell 
-		 * changes depending on the size of the parent Composite.  If 
-		 * grabExcessVerticalSpace is <code>true</code>, the following rules
-		 * apply to the height of the cell:</p>
-		 * <ul>
-		 * <li>If extra vertical space is available in the parent, the cell will 
-		 * grow to be taller than its preferred height.  The new height 
-		 * will be "preferred height + delta" where delta is the extra 
-		 * vertical space divided by the number of grabbing rows.</li>
-		 * <li>If there is not enough vertical space available in the parent, the 
-		 * cell will shrink until it reaches its minimum height as specified by 
-		 * GridData.minimumHeight. The new height will be the maximum of 
-		 * "minimumHeight" and "preferred height - delta", where delta is 
-		 * the amount of space missing divided by the number of grabbing rows.</li>
-		 * <li>If the parent is packed, the cell will be its preferred height 
-		 * as specified by GridData.heightHint.</li>
-		 * <li>If the control spans multiple rows and there are no other grabbing 
-		 * controls in any of the spanned rows, the last row in the span will
-		 * grab the extra space.  If there is at least one other grabbing control
-		 * in the span, the grabbing will be spread over the rows already 
-		 * marked as grabExcessVerticalSpace.</li>
-		 * </ul>
-		 * 
-		 * <p>The default value is false.</p>
-		 * 
-		 * @see GridData#minimumHeight
-		 * @see GridData#heightHint
-		 */	
-		public boolean grabExcessVerticalSpace = false;
-
-		/**
-		 * minimumWidth specifies the minimum width in pixels.  This value
-		 * applies only if grabExcessHorizontalSpace is true. A value of 
-		 * SWT.DEFAULT means that the minimum width will be the result
-		 * of Control.computeSize(int, int, boolean) where wHint is 
-		 * determined by GridData.widthHint.
-		 *
-		 * The default value is 0.
-		 *
-		 * @since 3.1
-		 * @see Control#computeSize(int, int, boolean)
-		 * @see GridData#widthHint
-		 */
-		public int minimumWidth = 0;
-		
-		/**
-		 * minimumHeight specifies the minimum height in pixels.  This value
-		 * applies only if grabExcessVerticalSpace is true.  A value of 
-		 * SWT.DEFAULT means that the minimum height will be the result
-		 * of Control.computeSize(int, int, boolean) where hHint is 
-		 * determined by GridData.heightHint.
-		 *
-		 * The default value is 0.
-		 *
-		 * @since 3.1
-		 * @see Control#computeSize(int, int, boolean)
-		 * @see GridData#heightHint
-		 */
-		public int minimumHeight = 0;
-		
-		/**
-		 * exclude informs the layout to ignore this control when sizing
-		 * and positioning controls.  If this value is <code>true</code>,
-		 * the size and position of the control will not be managed by the
-		 * layout.  If this	value is <code>false</code>, the size and 
-		 * position of the control will be computed and assigned.
-		 * 
-		 * The default value is <code>false</code>.
-		 * 
-		 * @since 3.1
-		 */
-		public boolean exclude = false;
-		
-		/**
-		 * Value for horizontalAlignment or verticalAlignment.
-		 * Position the control at the top or left of the cell.
-		 * Not recommended. Use SWT.BEGINNING, SWT.TOP or SWT.LEFT instead.
-		 */
-		public static final int BEGINNING = SWT_BEGINNING;
-		
-		/**
-		 * Value for horizontalAlignment or verticalAlignment.
-		 * Position the control in the vertical or horizontal center of the cell
-		 * Not recommended. Use SWT.CENTER instead.
-		 */
-		public static final int CENTER = 2;
-		
-		/**
-		 * Value for horizontalAlignment or verticalAlignment.
-		 * Position the control at the bottom or right of the cell
-		 * Not recommended. Use SWT.END, SWT.BOTTOM or SWT.RIGHT instead.
-		 */
-		public static final int END = 3;
-		
-		/**
-		 * Value for horizontalAlignment or verticalAlignment.
-		 * Resize the control to fill the cell horizontally or vertically.
-		 * Not recommended. Use SWT.FILL instead.
-		 */
-		public static final int FILL = SWT_FILL;
-
-		/**
-		 * Style bit for <code>new GridData(int)</code>.
-		 * Position the control at the top of the cell.
-		 * Not recommended. Use 
-		 * <code>new GridData(int, SWT.BEGINNING, boolean, boolean)</code>
-		 * instead.
-		 */
-		public static final int VERTICAL_ALIGN_BEGINNING =  1 << 1;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to position the 
-		 * control in the vertical center of the cell.
-		 * Not recommended. Use
-		 * <code>new GridData(int, SWT.CENTER, boolean, boolean)</code>
-		 * instead.
-		 */
-		public static final int VERTICAL_ALIGN_CENTER = 1 << 2;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to position the 
-		 * control at the bottom of the cell.
-		 * Not recommended. Use
-		 * <code>new GridData(int, SWT.END, boolean, boolean)</code>
-		 * instead.
-		 */
-		public static final int VERTICAL_ALIGN_END = 1 << 3;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to resize the 
-		 * control to fill the cell vertically.
-		 * Not recommended. Use
-		 * <code>new GridData(int, SWT.FILL, boolean, boolean)</code>
-		 * instead
-		 */
-		public static final int VERTICAL_ALIGN_FILL = 1 << 4;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to position the 
-		 * control at the left of the cell.
-		 * Not recommended. Use
-		 * <code>new GridData(SWT.BEGINNING, int, boolean, boolean)</code>
-		 * instead.
-		 */
-		public static final int HORIZONTAL_ALIGN_BEGINNING =  1 << 5;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to position the 
-		 * control in the horizontal center of the cell.
-		 * Not recommended. Use
-		 * <code>new GridData(SWT.CENTER, int, boolean, boolean)</code>
-		 * instead.
-		 */
-		public static final int HORIZONTAL_ALIGN_CENTER = 1 << 6;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to position the 
-		 * control at the right of the cell.
-		 * Not recommended. Use
-		 * <code>new GridData(SWT.END, int, boolean, boolean)</code>
-		 * instead.
-		 */
-		public static final int HORIZONTAL_ALIGN_END = 1 << 7;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to resize the 
-		 * control to fill the cell horizontally.
-		 * Not recommended. Use
-		 * <code>new GridData(SWT.FILL, int, boolean, boolean)</code>
-		 * instead.
-		 */
-		public static final int HORIZONTAL_ALIGN_FILL = 1 << 8;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to resize the 
-		 * control to fit the remaining horizontal space.
-		 * Not recommended. Use
-		 * <code>new GridData(int, int, true, boolean)</code>
-		 * instead.
-		 */
-		public static final int GRAB_HORIZONTAL = 1 << 9;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to resize the 
-		 * control to fit the remaining vertical space.
-		 * Not recommended. Use
-		 * <code>new GridData(int, int, boolean, true)</code>
-		 * instead.
-		 */
-		public static final int GRAB_VERTICAL = 1 << 10;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to resize the 
-		 * control to fill the cell vertically and to fit the remaining
-		 * vertical space.
-		 * FILL_VERTICAL = VERTICAL_ALIGN_FILL | GRAB_VERTICAL
-		 * Not recommended. Use
-		 * <code>new GridData(int, SWT.FILL, boolean, true)</code>
-		 * instead.
-		 */	
-		public static final int FILL_VERTICAL = VERTICAL_ALIGN_FILL | GRAB_VERTICAL;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to resize the 
-		 * control to fill the cell horizontally and to fit the remaining
-		 * horizontal space.
-		 * FILL_HORIZONTAL = HORIZONTAL_ALIGN_FILL | GRAB_HORIZONTAL
-		 * Not recommended. Use
-		 * <code>new GridData(SWT.FILL, int, true, boolean)</code>
-		 * instead.
-		 */	
-		public static final int FILL_HORIZONTAL = HORIZONTAL_ALIGN_FILL | GRAB_HORIZONTAL;
-		
-		/**
-		 * Style bit for <code>new GridData(int)</code> to resize the 
-		 * control to fill the cell horizontally and vertically and 
-		 * to fit the remaining horizontal and vertical space.
-		 * FILL_BOTH = FILL_VERTICAL | FILL_HORIZONTAL
-		 * Not recommended. Use
-		 * <code>new GridData(SWT.FILL, SWT.FILL, true, true)</code>
-		 * instead.
-		 */	
-		public static final int FILL_BOTH = FILL_VERTICAL | FILL_HORIZONTAL;
-
-		double cacheWidth = -1, cacheHeight = -1;
-		double defaultWhint, defaultHhint, defaultWidth = -1, defaultHeight = -1;
-		double currentWhint, currentHhint, currentWidth = -1, currentHeight = -1;
-		
-		/**
-		 * Constructs a new instance of GridData using
-		 * default values.
-		 */
-		public GridData () {
-			super ();
-		}
-
-		/**
-		 * Constructs a new instance based on the GridData style.
-		 * This constructor is not recommended.
-		 * 
-		 * @param style the GridData style
-		 */
-		public GridData (int style) {
-			super ();
-			if ((style & VERTICAL_ALIGN_BEGINNING) != 0) verticalAlignment = BEGINNING;
-			if ((style & VERTICAL_ALIGN_CENTER) != 0) verticalAlignment = CENTER;
-			if ((style & VERTICAL_ALIGN_FILL) != 0) verticalAlignment = FILL;
-			if ((style & VERTICAL_ALIGN_END) != 0) verticalAlignment = END;
-			if ((style & HORIZONTAL_ALIGN_BEGINNING) != 0) horizontalAlignment = BEGINNING;
-			if ((style & HORIZONTAL_ALIGN_CENTER) != 0) horizontalAlignment = CENTER;
-			if ((style & HORIZONTAL_ALIGN_FILL) != 0) horizontalAlignment = FILL;
-			if ((style & HORIZONTAL_ALIGN_END) != 0) horizontalAlignment = END;
-			grabExcessHorizontalSpace = (style & GRAB_HORIZONTAL) != 0;
-			grabExcessVerticalSpace = (style & GRAB_VERTICAL) != 0;
-		}
-
-		/**
-		 * Constructs a new instance of GridData according to the parameters.
-		 * 
-		 * @param horizontalAlignment how control will be positioned horizontally within a cell,
-		 * 		one of: SWT.BEGINNING (or SWT.LEFT), SWT.CENTER, SWT.END (or SWT.RIGHT), or SWT.FILL
-		 * @param verticalAlignment how control will be positioned vertically within a cell,
-		 * 		one of: SWT.BEGINNING (or SWT.TOP), SWT.CENTER, SWT.END (or SWT.BOTTOM), or SWT.FILL
-		 * @param grabExcessHorizontalSpace whether cell will be made wide enough to fit the remaining horizontal space
-		 * @param grabExcessVerticalSpace whether cell will be made high enough to fit the remaining vertical space
-		 * 
-		 * @since 3.0
-		 */
-		public GridData (int horizontalAlignment, int verticalAlignment, boolean grabExcessHorizontalSpace, boolean grabExcessVerticalSpace) {
-			this (horizontalAlignment, verticalAlignment, grabExcessHorizontalSpace, grabExcessVerticalSpace, 1, 1);
-		}
-
-		/**
-		 * Constructs a new instance of GridData according to the parameters.
-		 *  
-		 * @param horizontalAlignment how control will be positioned horizontally within a cell,
-		 * 		one of: SWT.BEGINNING (or SWT.LEFT), SWT.CENTER, SWT.END (or SWT.RIGHT), or SWT.FILL
-		 * @param verticalAlignment how control will be positioned vertically within a cell,
-		 * 		one of: SWT.BEGINNING (or SWT.TOP), SWT.CENTER, SWT.END (or SWT.BOTTOM), or SWT.FILL
-		 * @param grabExcessHorizontalSpace whether cell will be made wide enough to fit the remaining horizontal space
-		 * @param grabExcessVerticalSpace whether cell will be made high enough to fit the remaining vertical space
-		 * @param horizontalSpan the number of column cells that the control will take up
-		 * @param verticalSpan the number of row cells that the control will take up
-		 * 
-		 * @since 3.0
-		 */
-		public GridData (int horizontalAlignment, int verticalAlignment, boolean grabExcessHorizontalSpace, boolean grabExcessVerticalSpace, int horizontalSpan, int verticalSpan) {
-			super ();
-			this.horizontalAlignment = horizontalAlignment;
-			this.verticalAlignment = verticalAlignment;
-			this.grabExcessHorizontalSpace = grabExcessHorizontalSpace;
-			this.grabExcessVerticalSpace = grabExcessVerticalSpace;
-			this.horizontalSpan = horizontalSpan;
-			this.verticalSpan = verticalSpan;
-		}
-
-		/**
-		 * Constructs a new instance of GridData according to the parameters.
-		 * A value of SWT.DEFAULT indicates that no minimum width or
-		 * no minimum height is specified.
-		 * 
-		 * @param width a minimum width for the column
-		 * @param height a minimum height for the row
-		 * 
-		 * @since 3.0
-		 */
-		public GridData (int width, int height) {
-			super ();
-			this.widthHint = width;
-			this.heightHint = height;
-		}
-
-		void computeSize (Node control, int wHint, int hHint, boolean flushCache) {
-			if (cacheWidth != -1 && cacheHeight != -1) return;
-			if (wHint == this.widthHint && hHint == this.heightHint) {
-				if (defaultWidth == -1 || defaultHeight == -1 || wHint != defaultWhint || hHint != defaultHhint) {
-//					Point size = control.computeSize (wHint, hHint, flushCache);
-					defaultWhint = wHint;
-					defaultHhint = hHint;
-					defaultWidth = control.prefWidth(wHint);
-					defaultHeight = control.prefHeight(hHint);
-				}
-				cacheWidth = defaultWidth;
-				cacheHeight = defaultHeight;
-				return;
-			}
-			if (currentWidth == -1 || currentHeight == -1 || wHint != currentWhint || hHint != currentHhint) {
-//				Point size = control.computeSize (wHint, hHint, flushCache);
-				currentWhint = wHint;
-				currentHhint = hHint;
-				currentWidth = control.getLayoutBounds().getWidth();
-				currentHeight = control.getLayoutBounds().getHeight();
-			}
-			cacheWidth = currentWidth;
-			cacheHeight = currentHeight;
-		}
-
-		void flushCache () {
-			cacheWidth = cacheHeight = -1;
-			defaultWidth = defaultHeight = -1;
-			currentWidth = currentHeight = -1;
-		}
-
-		String getName () {
-			String string = getClass ().getName ();
-			int index = string.lastIndexOf ('.');
-			if (index == -1) return string;
-			return string.substring (index + 1, string.length ());
-		}
-
-		/**
-		 * Returns a string containing a concise, human-readable
-		 * description of the receiver.
-		 *
-		 * @return a string representation of the GridData object
-		 */
-		public String toString () {
-			String hAlign = "";
-			switch (horizontalAlignment) {
-				case SWT_FILL: hAlign = "SWT.FILL"; break;
-				case SWT_BEGINNING: hAlign = "SWT.BEGINNING"; break;
-				case SWT_LEFT: hAlign = "SWT.LEFT"; break;
-				case SWT_END: hAlign = "SWT.END"; break;
-				case END: hAlign = "GridData.END"; break;
-				case SWT_RIGHT: hAlign = "SWT.RIGHT"; break;
-				case SWT_CENTER: hAlign = "SWT.CENTER"; break;
-				case CENTER: hAlign = "GridData.CENTER"; break;
-				default: hAlign = "Undefined "+horizontalAlignment; break;
-			}
-			String vAlign = "";
-			switch (verticalAlignment) {
-				case SWT_FILL: vAlign = "SWT.FILL"; break;
-				case SWT_BEGINNING: vAlign = "SWT.BEGINNING"; break;
-				case SWT_TOP: vAlign = "SWT.TOP"; break;
-				case SWT_END: vAlign = "SWT.END"; break;
-				case END: vAlign = "GridData.END"; break;
-				case SWT_BOTTOM: vAlign = "SWT.BOTTOM"; break;
-				case SWT_CENTER: vAlign = "SWT.CENTER"; break;
-				case CENTER: vAlign = "GridData.CENTER"; break;
-				default: vAlign = "Undefined "+verticalAlignment; break;
-			}
-		 	String string = getName()+" {";
-		 	string += "horizontalAlignment="+hAlign+" ";
-		 	if (horizontalIndent != 0) string += "horizontalIndent="+horizontalIndent+" ";
-		 	if (horizontalSpan != 1) string += "horizontalSpan="+horizontalSpan+" ";
-		 	if (grabExcessHorizontalSpace) string += "grabExcessHorizontalSpace="+grabExcessHorizontalSpace+" ";
-		 	if (widthHint != SWT_DEFAULT) string += "widthHint="+widthHint+" ";
-		 	if (minimumWidth != 0) string += "minimumWidth="+minimumWidth+" ";
-		 	string += "verticalAlignment="+vAlign+" ";
-		 	if (verticalIndent != 0) string += "verticalIndent="+verticalIndent+" ";
-			if (verticalSpan != 1) string += "verticalSpan="+verticalSpan+" ";
-		 	if (grabExcessVerticalSpace) string += "grabExcessVerticalSpace="+grabExcessVerticalSpace+" ";
-		 	if (heightHint != SWT_DEFAULT) string += "heightHint="+heightHint+" ";
-		 	if (minimumHeight != 0) string += "minimumHeight="+minimumHeight+" ";
-		 	if (exclude) string += "exclude="+exclude+" ";
-		 	string = string.trim();
-		 	string += "}";
-			return string;
-		}
-
+	private static WeakHashMap<Node, GridData> CONSTRAINTS = new WeakHashMap<Node, GridData>();
+	
+	public static void setConstraint(Node n, GridData griddata) {
+		CONSTRAINTS.put(n, griddata);
+	}
+	
+	public static GridData getConstraint(Node n) {
+		return CONSTRAINTS.get(n);
 	}
 	
 	@Override
@@ -568,7 +62,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 	
 	
 	private Size calculateLayout( boolean move, double x, double y, double width, double height, boolean flushCache) {
-		if (numColumnsProperty.get() < 1) {
+		if (numColumns.get() < 1) {
 			return new Size (marginLeft.get() + marginWidth.get() * 2 + marginRight.get(), marginTop.get() + marginHeight.get() * 2 + marginBottom.get());
 		}
 		
@@ -578,7 +72,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 		for (int i=0; i<children.length; i++) {
 			Node control = children [i];
 			GridData data = getConstraint(control);
-			if (data == null || !data.exclude) {
+			if (data == null || !data.exclude.get()) {
 				children [count++] = children [i];
 			} 
 		}
@@ -593,9 +87,9 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 				setConstraint(child, data);
 			}
 			if (flushCache) data.flushCache ();
-			data.computeSize (child, data.widthHint, data.heightHint, flushCache);
-			if (data.grabExcessHorizontalSpace && data.minimumWidth > 0) {
-				if (data.cacheWidth < data.minimumWidth) {
+			data.computeSize (child, data.widthHint.get(), data.heightHint.get(), flushCache);
+			if (data.grabExcessHorizontalSpace.get() && data.minimumWidth.get() > 0) {
+				if (data.cacheWidth < data.minimumWidth.get()) {
 					int trim = 0;
 					//TEMPORARY CODE
 //FIXME					
@@ -605,23 +99,23 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 //					} else {
 //						trim = child.getBorderWidth () * 2;
 //					}
-					data.cacheWidth = data.cacheHeight = SWT_DEFAULT;
-					data.computeSize (child, Math.max (0, data.minimumWidth - trim), data.heightHint, false);
+					data.cacheWidth = data.cacheHeight = FX_DEFAULT;
+					data.computeSize (child, Math.max (0, data.minimumWidth.get() - trim), data.heightHint.get(), false);
 				}
 			}
-			if (data.grabExcessVerticalSpace && data.minimumHeight > 0) {
-				data.cacheHeight = Math.max (data.cacheHeight, data.minimumHeight);
+			if (data.grabExcessVerticalSpace.get() && data.minimumHeight.get() > 0) {
+				data.cacheHeight = Math.max (data.cacheHeight, data.minimumHeight.get());
 			}
 		}
 
 		/* Build the grid */
-		int row = 0, column = 0, rowCount = 0, columnCount = numColumnsProperty.get();
+		int row = 0, column = 0, rowCount = 0, columnCount = numColumns.get();
 		Node [][] grid = new Node [4] [columnCount];
 		for (int i=0; i<count; i++) {	
 			Node child = children [i];
 			GridData data = getConstraint(child);
-			int hSpan = Math.max (1, Math.min (data.horizontalSpan, columnCount));
-			int vSpan = Math.max (1, data.verticalSpan);
+			int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
+			int vSpan = Math.max (1, data.verticalSpan.get());
 			while (true) {
 				int lastRow = row + vSpan;
 				if (lastRow >= grid.length) {
@@ -671,17 +165,17 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 			for (int i=0; i<rowCount; i++) {
 				GridData data = getData (grid, i, j, rowCount, columnCount, true);
 				if (data != null) {
-					int hSpan = Math.max (1, Math.min (data.horizontalSpan, columnCount));
+					int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
 					if (hSpan == 1) {
-						double w = data.cacheWidth + data.horizontalIndent;
+						double w = data.cacheWidth + data.horizontalIndent.get();
 						widths [j] = Math.max (widths [j], w);
-						if (data.grabExcessHorizontalSpace) {
+						if (data.grabExcessHorizontalSpace.get()) {
 							if (!expandColumn [j]) expandCount++;
 							expandColumn [j] = true;
 						}
-						if (!data.grabExcessHorizontalSpace || data.minimumWidth != 0) {
-							w = !data.grabExcessHorizontalSpace || data.minimumWidth == SWT_DEFAULT ? data.cacheWidth : data.minimumWidth;
-							w += data.horizontalIndent;
+						if (!data.grabExcessHorizontalSpace.get() || data.minimumWidth.get() != 0) {
+							w = !data.grabExcessHorizontalSpace.get() || data.minimumWidth.get() == FX_DEFAULT ? data.cacheWidth : data.minimumWidth.get();
+							w += data.horizontalIndent.get();
 							minWidths [j] = Math.max (minWidths [j], w);
 						}
 					}
@@ -690,7 +184,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 			for (int i=0; i<rowCount; i++) {
 				GridData data = getData (grid, i, j, rowCount, columnCount, false);
 				if (data != null) {
-					int hSpan = Math.max (1, Math.min (data.horizontalSpan, columnCount));
+					int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
 					if (hSpan > 1) {
 						int spanWidth = 0, spanMinWidth = 0, spanExpandCount = 0;
 						for (int k=0; k<hSpan; k++) {
@@ -698,13 +192,13 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 							spanMinWidth += minWidths [j-k];
 							if (expandColumn [j-k]) spanExpandCount++;
 						}
-						if (data.grabExcessHorizontalSpace && spanExpandCount == 0) {
+						if (data.grabExcessHorizontalSpace.get() && spanExpandCount == 0) {
 							expandCount++;
 							expandColumn [j] = true;
 						}
-						double w = data.cacheWidth + data.horizontalIndent - spanWidth - (hSpan - 1) * horizontalSpacing.get();
+						double w = data.cacheWidth + data.horizontalIndent.get() - spanWidth - (hSpan - 1) * horizontalSpacing.get();
 						if (w > 0) {
-							if (makeColumnsEqualWidthProperty.get()) {
+							if (makeColumnsEqualWidth.get()) {
 								double equalWidth = (w + spanWidth) / hSpan;
 								double remainder = (w + spanWidth) % hSpan;
 								int last = -1;
@@ -728,9 +222,9 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 								}
 							}
 						}
-						if (!data.grabExcessHorizontalSpace || data.minimumWidth != 0) {
-							w = !data.grabExcessHorizontalSpace || data.minimumWidth == SWT_DEFAULT ? data.cacheWidth : data.minimumWidth;
-							w += data.horizontalIndent - spanMinWidth - (hSpan - 1) * horizontalSpacing.get();
+						if (!data.grabExcessHorizontalSpace.get() || data.minimumWidth.get() != 0) {
+							w = !data.grabExcessHorizontalSpace.get() || data.minimumWidth.get() == FX_DEFAULT ? data.cacheWidth : data.minimumWidth.get();
+							w += data.horizontalIndent.get() - spanMinWidth - (hSpan - 1) * horizontalSpacing.get();
 							if (w > 0) {
 								if (spanExpandCount == 0) {
 									minWidths [j] += w;
@@ -751,20 +245,20 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 				}
 			}
 		}
-		if (makeColumnsEqualWidthProperty.get()) {
+		if (makeColumnsEqualWidth.get()) {
 			double minColumnWidth = 0;
 			double columnWidth = 0;
 			for (int i=0; i<columnCount; i++) {
 				minColumnWidth = Math.max (minColumnWidth, minWidths [i]);
 				columnWidth = Math.max (columnWidth, widths [i]);
 			}
-			columnWidth = width == SWT_DEFAULT || expandCount == 0 ? columnWidth : Math.max (minColumnWidth, availableWidth / columnCount);
+			columnWidth = width == FX_DEFAULT || expandCount == 0 ? columnWidth : Math.max (minColumnWidth, availableWidth / columnCount);
 			for (int i=0; i<columnCount; i++) {
 				expandColumn [i] = expandCount > 0;
 				widths [i] = columnWidth;
 			}
 		} else {
-			if (width != SWT_DEFAULT && expandCount > 0) {
+			if (width != FX_DEFAULT && expandCount > 0) {
 				int totalWidth = 0;
 				for (int i=0; i<columnCount; i++) {
 					totalWidth += widths [i];
@@ -791,16 +285,16 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 						for (int i=0; i<rowCount; i++) {
 							GridData data = getData (grid, i, j, rowCount, columnCount, false);
 							if (data != null) {
-								int hSpan = Math.max (1, Math.min (data.horizontalSpan, columnCount));
+								int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
 								if (hSpan > 1) {
-									if (!data.grabExcessHorizontalSpace || data.minimumWidth != 0) {
+									if (!data.grabExcessHorizontalSpace.get() || data.minimumWidth.get() != 0) {
 										int spanWidth = 0, spanExpandCount = 0;
 										for (int k=0; k<hSpan; k++) {
 											spanWidth += widths [j-k];
 											if (expandColumn [j-k]) spanExpandCount++;
 										}
-										double w = !data.grabExcessHorizontalSpace || data.minimumWidth == SWT_DEFAULT ? data.cacheWidth : data.minimumWidth;
-										w += data.horizontalIndent - spanWidth - (hSpan - 1) * horizontalSpacing.get();
+										double w = !data.grabExcessHorizontalSpace.get() || data.minimumWidth.get() == FX_DEFAULT ? data.cacheWidth : data.minimumWidth.get();
+										w += data.horizontalIndent.get() - spanWidth - (hSpan - 1) * horizontalSpacing.get();
 										if (w > 0) {
 											if (spanExpandCount == 0) {
 												widths [j] += w;
@@ -836,21 +330,21 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 		/* Wrapping */
 		GridData [] flush = null;
 		int flushLength = 0;
-		if (width != SWT_DEFAULT) {
+		if (width != FX_DEFAULT) {
 			for (int j=0; j<columnCount; j++) {
 				for (int i=0; i<rowCount; i++) {
 					GridData data = getData (grid, i, j, rowCount, columnCount, false);
 					if (data != null) {
-						if (data.heightHint == SWT_DEFAULT) {
+						if (data.heightHint.get() == FX_DEFAULT) {
 							Node child = grid [i][j];
 							//TEMPORARY CODE
-							int hSpan = Math.max (1, Math.min (data.horizontalSpan, columnCount));
+							int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
 							int currentWidth = 0;
 							for (int k=0; k<hSpan; k++) {
 								currentWidth += widths [j-k];
 							}
-							currentWidth += (hSpan - 1) * horizontalSpacing.get() - data.horizontalIndent;
-							if ((currentWidth != data.cacheWidth && data.horizontalAlignment == SWT_FILL) || (data.cacheWidth > currentWidth)) {
+							currentWidth += (hSpan - 1) * horizontalSpacing.get() - data.horizontalIndent.get();
+							if ((currentWidth != data.cacheWidth && data.horizontalAlignment.get() == Alignment.FILL) || (data.cacheWidth > currentWidth)) {
 								int trim = 0;
 //FIXME								
 //								if (child instanceof Scrollable) {
@@ -859,10 +353,10 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 //								} else {
 //									trim = child.getBorderWidth () * 2;
 //								}
-								data.cacheWidth = data.cacheHeight = SWT_DEFAULT;
-								data.computeSize (child, Math.max (0, currentWidth - trim), data.heightHint, false);
-								if (data.grabExcessVerticalSpace && data.minimumHeight > 0) {
-									data.cacheHeight = Math.max (data.cacheHeight, data.minimumHeight);
+								data.cacheWidth = data.cacheHeight = FX_DEFAULT;
+								data.computeSize (child, Math.max (0, currentWidth - trim), data.heightHint.get(), false);
+								if (data.grabExcessVerticalSpace.get() && data.minimumHeight.get() > 0) {
+									data.cacheHeight = Math.max (data.cacheHeight, data.minimumHeight.get());
 								}
 								if (flush == null) flush = new GridData [count];
 								flush [flushLength++] = data;
@@ -883,17 +377,17 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 			for (int j=0; j<columnCount; j++) {
 				GridData data = getData (grid, i, j, rowCount, columnCount, true);
 				if (data != null) {
-					int vSpan = Math.max (1, Math.min (data.verticalSpan, rowCount));
+					int vSpan = Math.max (1, Math.min (data.verticalSpan.get(), rowCount));
 					if (vSpan == 1) {
-						double h = data.cacheHeight + data.verticalIndent;
+						double h = data.cacheHeight + data.verticalIndent.get();
 						heights [i] = Math.max (heights [i], h);
-						if (data.grabExcessVerticalSpace) {
+						if (data.grabExcessVerticalSpace.get()) {
 							if (!expandRow [i]) expandCount++;
 							expandRow [i] = true;
 						}
-						if (!data.grabExcessVerticalSpace || data.minimumHeight != 0) {
-							h = !data.grabExcessVerticalSpace || data.minimumHeight == SWT_DEFAULT ? data.cacheHeight : data.minimumHeight;
-							h += data.verticalIndent;
+						if (!data.grabExcessVerticalSpace.get() || data.minimumHeight.get() != 0) {
+							h = !data.grabExcessVerticalSpace.get() || data.minimumHeight.get() == FX_DEFAULT ? data.cacheHeight : data.minimumHeight.get();
+							h += data.verticalIndent.get();
 							minHeights [i] = Math.max (minHeights [i], h);
 						}
 					}
@@ -902,7 +396,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 			for (int j=0; j<columnCount; j++) {
 				GridData data = getData (grid, i, j, rowCount, columnCount, false);
 				if (data != null) {
-					int vSpan = Math.max (1, Math.min (data.verticalSpan, rowCount));
+					int vSpan = Math.max (1, Math.min (data.verticalSpan.get(), rowCount));
 					if (vSpan > 1) {
 						int spanHeight = 0, spanMinHeight = 0, spanExpandCount = 0;
 						for (int k=0; k<vSpan; k++) {
@@ -910,11 +404,11 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 							spanMinHeight += minHeights [i-k];
 							if (expandRow [i-k]) spanExpandCount++;
 						}
-						if (data.grabExcessVerticalSpace && spanExpandCount == 0) {
+						if (data.grabExcessVerticalSpace.get() && spanExpandCount == 0) {
 							expandCount++;
 							expandRow [i] = true;
 						}
-						double h = data.cacheHeight + data.verticalIndent - spanHeight - (vSpan - 1) * verticalSpacing.get();
+						double h = data.cacheHeight + data.verticalIndent.get() - spanHeight - (vSpan - 1) * verticalSpacing.get();
 						if (h > 0) {
 							if (spanExpandCount == 0) {
 								heights [i] += h;
@@ -930,9 +424,9 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 								if (last > -1) heights [last] += remainder;	
 							}
 						}
-						if (!data.grabExcessVerticalSpace || data.minimumHeight != 0) {
-							h = !data.grabExcessVerticalSpace || data.minimumHeight == SWT_DEFAULT ? data.cacheHeight : data.minimumHeight;
-							h += data.verticalIndent - spanMinHeight - (vSpan - 1) * verticalSpacing.get();
+						if (!data.grabExcessVerticalSpace.get() || data.minimumHeight.get() != 0) {
+							h = !data.grabExcessVerticalSpace.get() || data.minimumHeight.get() == FX_DEFAULT ? data.cacheHeight : data.minimumHeight.get();
+							h += data.verticalIndent.get() - spanMinHeight - (vSpan - 1) * verticalSpacing.get();
 							if (h > 0) {
 								if (spanExpandCount == 0) {
 									minHeights [i] += h;
@@ -953,7 +447,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 				}
 			}
 		}
-		if (height != SWT_DEFAULT && expandCount > 0) {
+		if (height != FX_DEFAULT && expandCount > 0) {
 			int totalHeight = 0;
 			for (int i=0; i<rowCount; i++) {
 				totalHeight += heights [i];
@@ -980,16 +474,16 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 					for (int j=0; j<columnCount; j++) {
 						GridData data = getData (grid, i, j, rowCount, columnCount, false);
 						if (data != null) {
-							int vSpan = Math.max (1, Math.min (data.verticalSpan, rowCount));
+							int vSpan = Math.max (1, Math.min (data.verticalSpan.get(), rowCount));
 							if (vSpan > 1) {
-								if (!data.grabExcessVerticalSpace || data.minimumHeight != 0) {
+								if (!data.grabExcessVerticalSpace.get() || data.minimumHeight.get() != 0) {
 									int spanHeight = 0, spanExpandCount = 0;
 									for (int k=0; k<vSpan; k++) {
 										spanHeight += heights [i-k];
 										if (expandRow [i-k]) spanExpandCount++;
 									}
-									double h = !data.grabExcessVerticalSpace || data.minimumHeight == SWT_DEFAULT ? data.cacheHeight : data.minimumHeight;
-									h += data.verticalIndent - spanHeight - (vSpan - 1) * verticalSpacing.get();
+									double h = !data.grabExcessVerticalSpace.get() || data.minimumHeight.get() == FX_DEFAULT ? data.cacheHeight : data.minimumHeight.get();
+									h += data.verticalIndent.get() - spanHeight - (vSpan - 1) * verticalSpacing.get();
 									if (h > 0) {
 										if (spanExpandCount == 0) {
 											heights [i] += h;
@@ -1029,8 +523,8 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 				for (int j=0; j<columnCount; j++) {
 					GridData data = getData (grid, i, j, rowCount, columnCount, true);
 					if (data != null) {
-						int hSpan = Math.max (1, Math.min (data.horizontalSpan, columnCount));
-						int vSpan = Math.max (1, data.verticalSpan);
+						int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
+						int vSpan = Math.max (1, data.verticalSpan.get());
 						int cellWidth = 0, cellHeight = 0;
 						for (int k=0; k<hSpan; k++) {
 							cellWidth += widths [j+k];
@@ -1039,37 +533,37 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 							cellHeight += heights [i+k];
 						}
 						cellWidth += horizontalSpacing.get() * (hSpan - 1);
-						double childX = gridX + data.horizontalIndent;
+						double childX = gridX + data.horizontalIndent.get();
 						double childWidth = Math.min (data.cacheWidth, cellWidth);
-						switch (data.horizontalAlignment) {
-							case SWT_CENTER:
-							case GridData.CENTER:
-								childX += Math.max (0, (cellWidth - data.horizontalIndent - childWidth) / 2);
+						switch (data.horizontalAlignment.get()) {
+							case CENTER:
+								childX += Math.max (0, (cellWidth - data.horizontalIndent.get() - childWidth) / 2);
 								break;
-							case SWT_RIGHT:
-							case SWT_END:
-							case GridData.END:
-								childX += Math.max (0, cellWidth - data.horizontalIndent - childWidth);
+							case END:
+								childX += Math.max (0, cellWidth - data.horizontalIndent.get() - childWidth);
 								break;
-							case SWT_FILL:
-								childWidth = cellWidth - data.horizontalIndent;
+							case FILL:
+								childWidth = cellWidth - data.horizontalIndent.get();
+								break;
+							case BEGINNING:
+								// Nothing todo
 								break;
 						}
 						cellHeight += verticalSpacing.get() * (vSpan - 1);
-						double childY = gridY + data.verticalIndent;
+						double childY = gridY + data.verticalIndent.get();
 						double childHeight = Math.min (data.cacheHeight, cellHeight);
-						switch (data.verticalAlignment) {
-							case SWT_CENTER:
-							case GridData.CENTER:
-								childY += Math.max (0, (cellHeight - data.verticalIndent - childHeight) / 2);
+						switch (data.verticalAlignment.get()) {
+							case CENTER:
+								childY += Math.max (0, (cellHeight - data.verticalIndent.get() - childHeight) / 2);
 								break;
-							case SWT_BOTTOM:
-							case SWT_END:
-							case GridData.END:
-								childY += Math.max (0, cellHeight - data.verticalIndent - childHeight);
+							case END:
+								childY += Math.max (0, cellHeight - data.verticalIndent.get() - childHeight);
 								break;
-							case SWT_FILL:
-								childHeight = cellHeight - data.verticalIndent;
+							case FILL:
+								childHeight = cellHeight - data.verticalIndent.get();
+								break;
+							case BEGINNING:
+								// Nothing todo
 								break;
 						}
 						Node child = grid [i][j];
@@ -1105,8 +599,8 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 		Node control = grid [row] [column];
 		if (control != null) {
 			GridData data = getConstraint(control);
-			int hSpan = Math.max (1, Math.min (data.horizontalSpan, columnCount));
-			int vSpan = Math.max (1, data.verticalSpan);
+			int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
+			int vSpan = Math.max (1, data.verticalSpan.get());
 			int i = first ? row + vSpan - 1 : row - vSpan + 1;
 			int j = first ? column + hSpan - 1 : column - hSpan + 1;
 			if (0 <= i && i < rowCount) {
@@ -1118,39 +612,133 @@ public class GridLayoutPane extends AbstractLayoutPane<GridLayoutPane.GridData> 
 		return null;
 	}
 	
+	// --------
 	public void setNumColumns(int numColumns) {
-		this.numColumnsProperty.set(numColumns);
+		this.numColumns.set(numColumns);
 	}
 	
 	public int getNumColumns() {
-		return this.numColumnsProperty.get();
+		return this.numColumns.get();
 	}
 	
-	public WritableIntegerValue getNumColumnsProperty() {
-		return numColumnsProperty;
+	public WritableIntegerValue numColumnsProperty() {
+		return numColumns;
 	}
-	
+
+	// --------
 	public void setMakeColumnsEqualWidth(boolean makeColumnsEqualWidth) {
-		this.makeColumnsEqualWidthProperty.set(makeColumnsEqualWidth);
+		this.makeColumnsEqualWidth.set(makeColumnsEqualWidth);
 	}
 	
 	public boolean isMakeColumnsEqualWidth() {
-		return this.makeColumnsEqualWidthProperty.get();
+		return this.makeColumnsEqualWidth.get();
 	}
 	
-	public WritableBooleanValue getMakeColumnsEqualWidthProperty() {
-		return makeColumnsEqualWidthProperty;
+	public BooleanProperty makeColumnsEqualWidthProperty() {
+		return makeColumnsEqualWidth;
 	}
 	
+	// --------
 	public void setHorizontalSpacing(int value) {
 		horizontalSpacing.set(value);
 	}
 	
+	public void getHorizontalSpacing() {
+		horizontalSpacing.get();
+	}
+	
+	public IntegerProperty horizontalSpacing() {
+		return horizontalSpacing;
+	}
+	
+	// ----
 	public void setMarginWidth(int value) {
 		marginWidth.set(value);
 	}
 	
+	public int getMarginWidth() {
+		return marginWidth.get();
+	}
+	
+	public IntegerProperty getMarginWidthProperty() {
+		return marginWidth;
+	}
+	
+	// ----
 	public void setMarginHeight(int value) {
 		marginHeight.set(value);
+	}
+	
+	public int getMarginHeight() {
+		return marginHeight.get();
+	}
+	
+	public IntegerProperty getMarginHeightProperty() {
+		return marginHeight;
+	}
+	
+	// ----
+	public void setMarginLeft(int value) {
+		marginLeft.set(value);
+	}
+	
+	public int getMarginLeft() {
+		return marginLeft.get();
+	}
+	
+	public IntegerProperty getMarginLeftProperty() {
+		return marginLeft;
+	}
+	
+	// ----
+	public void setMarginTop(int value) {
+		marginTop.set(value);
+	}
+	
+	public int getMarginTop() {
+		return marginTop.get();
+	}
+	
+	public IntegerProperty getMarginTopProperty() {
+		return marginTop;
+	}
+	
+	// ----
+	public void setMarginRight(int value) {
+		marginRight.set(value);
+	}
+	
+	public int getMarginRight() {
+		return marginRight.get();
+	}
+	
+	public IntegerProperty getMarginRightProperty() {
+		return marginRight;
+	}
+	
+	// ----
+	public void setMarginBottom(int value) {
+		marginBottom.set(value);
+	}
+	
+	public int getMarginBottom() {
+		return marginBottom.get();
+	}
+	
+	public IntegerProperty getMarginBottomProperty() {
+		return marginBottom;
+	}
+	
+	// ----
+	public void setVerticalSpacing(int value) {
+		verticalSpacing.set(value);
+	}
+	
+	public int getVerticalSpacing() {
+		return verticalSpacing.get();
+	}
+	
+	public IntegerProperty getVerticalSpacingProperty() {
+		return verticalSpacing;
 	}
 }

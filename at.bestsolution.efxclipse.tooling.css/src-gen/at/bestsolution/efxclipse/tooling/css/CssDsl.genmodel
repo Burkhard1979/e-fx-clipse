@@ -8,6 +8,9 @@
     editorPluginID="at.bestsolution.efxclipse.tooling.css.editor" runtimeVersion="2.8">
   <genPackages prefix="CssDsl" basePackage="at.bestsolution.efxclipse.tooling.css"
       disposableProviderFactory="true" ecorePackage="CssDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CssDsl.ecore#//css_not">
+      <genEnumLiterals ecoreEnumLiteral="CssDsl.ecore#//css_not/not"/>
+    </genEnums>
     <genClasses ecoreClass="CssDsl.ecore#//stylesheet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//stylesheet/charset"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//stylesheet/imports"/>
@@ -48,13 +51,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/class"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/attrib"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/pseudoclass"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/negotation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//sub_selector/negotation"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//css_declaration"/>
     <genClasses ecoreClass="CssDsl.ecore#//css_generic_declaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_generic_declaration/property"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_generic_declaration/expression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_generic_declaration/prio"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//css_negation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_negation/not"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_negation/negation_arg"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//expr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//expr/termGroups"/>

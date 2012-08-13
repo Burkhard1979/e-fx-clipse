@@ -1,0 +1,36 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application
+
+import javafx.scene.layout.GridPane
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
+import javafx.scene.control.ListView
+import javafx.scene.layout.VBox
+import javafx.scene.control.CheckBox
+import javafx.scene.control.TabPane
+import javafx.scene.control.Tab
+
+import at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application.DefaultTab
+import at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application.SupplementaryTab
+import javafx.scene.layout.AnchorPane
+
+component EditorMain {
+	VBox {
+		children : [
+			Label {
+				text : "Application"
+			}, 
+			TabPane {
+				side : "BOTTOM",
+				Tab {
+					text : "Default",
+					content : include DefaultTab
+				},
+				Tab {
+					text : "Supplementary",
+					content : include SupplementaryTab
+				},
+				static vgrow : "ALWAYS"
+			}
+		]
+	}
+}

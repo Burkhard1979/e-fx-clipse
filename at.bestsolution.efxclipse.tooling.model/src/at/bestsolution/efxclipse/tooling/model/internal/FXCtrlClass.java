@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.jdt.core.IAnnotation;
+import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
@@ -75,6 +76,7 @@ public class FXCtrlClass implements IFXCtrlClass {
 					for (IAnnotation a : m.getAnnotations()) {
 						if (a.getElementName().endsWith("FXML")) {
 							annotated = true;
+							break;
 						}
 					}
 					
@@ -106,8 +108,41 @@ public class FXCtrlClass implements IFXCtrlClass {
 	}
 	
 	@Override
-	public Map<String,IFXCtrlField> getFields() {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String,IFXCtrlField> getAllFields() {
+		Map<String, IFXCtrlField> rv = new HashMap<String, IFXCtrlField>();
+		if( superClass != null ) {
+			rv.putAll(superClass.getAllFields());
+		}
+		rv.putAll(getLocalFields());
+		return Collections.unmodifiableMap(rv);
+	}
+	
+	private Map<String,IFXCtrlField> getLocalFields() {
+		if( fields == null ) {
+			fields = new HashMap<String, IFXCtrlField>();
+			try {
+				for( IField f : type.getFields() ) {
+					boolean annotated = false;
+					for (IAnnotation a : f.getAnnotations()) {
+						if (a.getElementName().endsWith("FXML")) {
+							annotated = true;
+							break;
+						}
+					}
+					
+					if( annotated ) {
+						String erasedFQNType = Util.getFQNType((IType)f.getParent(), Signature.getTypeErasure(Signature.toString(f.getTypeSignature())));
+						FXCtrlField field = new FXCtrlField(this, f, erasedFQNType);
+						fields.put(f.getElementName(), field);
+					}
+				}
+			} catch (JavaModelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return fields;
 	}
 }

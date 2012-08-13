@@ -122,6 +122,15 @@ public interface CssDslFactory extends EFactory
   css_generic_declaration createcss_generic_declaration();
 
   /**
+   * Returns a new object of class '<em>css negation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>css negation</em>'.
+   * @generated
+   */
+  css_negation createcss_negation();
+
+  /**
    * Returns a new object of class '<em>expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

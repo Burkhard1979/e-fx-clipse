@@ -5,9 +5,16 @@ Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.panels
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %Bundle-Vendor
-Export-Package: at.bestsolution.efxclipse.runtime.panels
-Import-Package: com.sun.javafx.scene.control.behavior,
+Export-Package: at.bestsolution.efxclipse.runtime.panels,
+ at.bestsolution.efxclipse.runtime.panels.fx,
+ at.bestsolution.efxclipse.runtime.panels.skins
+Import-Package: com.sun.javafx,
+ com.sun.javafx.css,
+ com.sun.javafx.css.converters,
+ com.sun.javafx.event,
+ com.sun.javafx.scene.control.behavior,
  com.sun.javafx.scene.control.skin,
+ com.sun.javafx.scene.traversal,
  javafx.animation;version="2.0.0",
  javafx.application;version="2.0.0",
  javafx.beans;version="2.0.0",

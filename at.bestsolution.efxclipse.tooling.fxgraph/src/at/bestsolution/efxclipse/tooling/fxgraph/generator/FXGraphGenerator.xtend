@@ -31,10 +31,9 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.xbase.compiler.ImportManager
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ValueProperty
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ReferenceType
-import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.StaticCallValueProperty
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.StaticValueProperty
-import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty
 
 class FXGraphGenerator implements IGenerator {
 	 
@@ -247,6 +246,8 @@ class FXGraphGenerator implements IGenerator {
 			«ELSEIF simpleAsElement»
 				<«prop.name»>«(prop.value as SimpleValueProperty).simpleAttributeValue»</«prop.name»>
 			«ENDIF»
+		«ELSEIF prop.value instanceof ConstValueProperty»
+			<«prop.name»><«(prop.value as ConstValueProperty).type.shortName(importManager)» fx:constant="«(prop.value as ConstValueProperty).field»" /></«prop.name»>
 		«ELSEIF prop.value instanceof ListValueProperty»
 			<«prop.name»>
 				«propListContent(prop.value as ListValueProperty,importManager, preview, skipController, skipIncludes)»
@@ -304,6 +305,8 @@ class FXGraphGenerator implements IGenerator {
 			«ELSE»
 				<«prop.type.shortName(importManager)».«prop.name»>«simpleAttributeValue(prop.value as SimpleValueProperty)»</«prop.type.shortName(importManager)».«prop.name»>
 			«ENDIF»
+		«ELSEIF prop.value instanceof ConstValueProperty»
+			<«prop.type.shortName(importManager)».«prop.name»><«(prop.value as ConstValueProperty).type.shortName(importManager)» fx:constant="«(prop.value as ConstValueProperty).field»" /></«prop.type.shortName(importManager)».«prop.name»>
 		«ELSEIF prop.value instanceof ListValueProperty»
 			<«prop.type.shortName(importManager)».«prop.name»>
 				«propListContent(prop.value as ListValueProperty,importManager, preview, skipController, skipIncludes)»
@@ -342,6 +345,8 @@ class FXGraphGenerator implements IGenerator {
 			«ELSE»
 				<«prop.type.shortName(importManager)».«prop.name»>«simpleAttributeValue(prop.value as SimpleValueProperty)»</«prop.type.shortName(importManager)».«prop.name»>
 			«ENDIF»
+		«ELSEIF prop.value instanceof ConstValueProperty»
+			<«prop.type.shortName(importManager)».«prop.name»><«(prop.value as ConstValueProperty).type.shortName(importManager)» fx:constant="«(prop.value as ConstValueProperty).field»" /></«prop.type.shortName(importManager)».«prop.name»>
 		«ELSEIF prop.value instanceof ListValueProperty»
 			<«prop.type.shortName(importManager)».«prop.name»>
 				«propListContent(prop.value as ListValueProperty,importManager, preview, skipController, skipIncludes)»

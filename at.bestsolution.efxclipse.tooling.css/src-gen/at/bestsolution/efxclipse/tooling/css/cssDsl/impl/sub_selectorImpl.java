@@ -3,11 +3,14 @@
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -112,24 +115,14 @@ public class sub_selectorImpl extends MinimalEObjectImpl.Container implements su
   protected String pseudoclass = PSEUDOCLASS_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getNegotation() <em>Negotation</em>}' attribute.
+   * The cached value of the '{@link #getNegotation() <em>Negotation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getNegotation()
    * @generated
    * @ordered
    */
-  protected static final String NEGOTATION_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getNegotation() <em>Negotation</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNegotation()
-   * @generated
-   * @ordered
-   */
-  protected String negotation = NEGOTATION_EDEFAULT;
+  protected css_negation negotation;
 
   /**
    * <!-- begin-user-doc -->
@@ -249,7 +242,7 @@ public class sub_selectorImpl extends MinimalEObjectImpl.Container implements su
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getNegotation()
+  public css_negation getNegotation()
   {
     return negotation;
   }
@@ -259,12 +252,53 @@ public class sub_selectorImpl extends MinimalEObjectImpl.Container implements su
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNegotation(String newNegotation)
+  public NotificationChain basicSetNegotation(css_negation newNegotation, NotificationChain msgs)
   {
-    String oldNegotation = negotation;
+    css_negation oldNegotation = negotation;
     negotation = newNegotation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SUB_SELECTOR__NEGOTATION, oldNegotation, negotation));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.SUB_SELECTOR__NEGOTATION, oldNegotation, newNegotation);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setNegotation(css_negation newNegotation)
+  {
+    if (newNegotation != negotation)
+    {
+      NotificationChain msgs = null;
+      if (negotation != null)
+        msgs = ((InternalEObject)negotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SUB_SELECTOR__NEGOTATION, null, msgs);
+      if (newNegotation != null)
+        msgs = ((InternalEObject)newNegotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SUB_SELECTOR__NEGOTATION, null, msgs);
+      msgs = basicSetNegotation(newNegotation, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SUB_SELECTOR__NEGOTATION, newNegotation, newNegotation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case CssDslPackage.SUB_SELECTOR__NEGOTATION:
+        return basicSetNegotation(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -314,7 +348,7 @@ public class sub_selectorImpl extends MinimalEObjectImpl.Container implements su
         setPseudoclass((String)newValue);
         return;
       case CssDslPackage.SUB_SELECTOR__NEGOTATION:
-        setNegotation((String)newValue);
+        setNegotation((css_negation)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -343,7 +377,7 @@ public class sub_selectorImpl extends MinimalEObjectImpl.Container implements su
         setPseudoclass(PSEUDOCLASS_EDEFAULT);
         return;
       case CssDslPackage.SUB_SELECTOR__NEGOTATION:
-        setNegotation(NEGOTATION_EDEFAULT);
+        setNegotation((css_negation)null);
         return;
     }
     super.eUnset(featureID);
@@ -368,7 +402,7 @@ public class sub_selectorImpl extends MinimalEObjectImpl.Container implements su
       case CssDslPackage.SUB_SELECTOR__PSEUDOCLASS:
         return PSEUDOCLASS_EDEFAULT == null ? pseudoclass != null : !PSEUDOCLASS_EDEFAULT.equals(pseudoclass);
       case CssDslPackage.SUB_SELECTOR__NEGOTATION:
-        return NEGOTATION_EDEFAULT == null ? negotation != null : !NEGOTATION_EDEFAULT.equals(negotation);
+        return negotation != null;
     }
     return super.eIsSet(featureID);
   }
@@ -392,8 +426,6 @@ public class sub_selectorImpl extends MinimalEObjectImpl.Container implements su
     result.append(attrib);
     result.append(", pseudoclass: ");
     result.append(pseudoclass);
-    result.append(", negotation: ");
-    result.append(negotation);
     result.append(')');
     return result.toString();
   }

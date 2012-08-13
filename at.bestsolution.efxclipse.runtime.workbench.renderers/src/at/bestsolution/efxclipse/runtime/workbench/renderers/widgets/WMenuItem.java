@@ -5,6 +5,4 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 @SuppressWarnings("restriction")
 public interface WMenuItem<N> extends WMenuElement<MMenuItem> {
 
-	void setLabel(String label);
-
 }

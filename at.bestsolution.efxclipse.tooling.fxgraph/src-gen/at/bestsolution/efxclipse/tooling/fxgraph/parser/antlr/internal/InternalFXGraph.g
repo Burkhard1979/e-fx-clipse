@@ -1611,6 +1611,16 @@ ruleSingleValueProperty returns [EObject current=null]
         $current = $this_BindValueProperty_11.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getSingleValuePropertyAccess().getConstValuePropertyParserRuleCall_12()); 
+    }
+    this_ConstValueProperty_12=ruleConstValueProperty
+    { 
+        $current = $this_ConstValueProperty_12.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
 
@@ -2013,6 +2023,71 @@ ruleSimpleValueProperty returns [EObject current=null]
 
 )
 ))))
+;
+
+
+
+
+
+// Entry rule entryRuleConstValueProperty
+entryRuleConstValueProperty returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getConstValuePropertyRule()); }
+	 iv_ruleConstValueProperty=ruleConstValueProperty 
+	 { $current=$iv_ruleConstValueProperty.current; } 
+	 EOF 
+;
+
+// Rule ConstValueProperty
+ruleConstValueProperty returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='const' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getConstValuePropertyAccess().getConstKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getConstValuePropertyAccess().getTypeJvmTypeReferenceParserRuleCall_1_0()); 
+	    }
+		lv_type_1_0=ruleJvmTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getConstValuePropertyRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_1_0, 
+        		"JvmTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_2='#' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getConstValuePropertyAccess().getNumberSignKeyword_2());
+    }
+(
+(
+		lv_field_3_0=RULE_ID
+		{
+			newLeafNode(lv_field_3_0, grammarAccess.getConstValuePropertyAccess().getFieldIDTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstValuePropertyRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"field",
+        		lv_field_3_0, 
+        		"ID");
+	    }
+
+)
+))
 ;
 
 

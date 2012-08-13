@@ -24,6 +24,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -1609,50 +1610,65 @@ rulecss_pseudo returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToke
 
 
 // Entry rule entryRulecss_negation
-entryRulecss_negation returns [String current=null] 
+entryRulecss_negation returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getCss_negationRule()); } 
+	{ newCompositeNode(grammarAccess.getCss_negationRule()); }
 	 iv_rulecss_negation=rulecss_negation 
-	 { $current=$iv_rulecss_negation.current.getText(); }  
+	 { $current=$iv_rulecss_negation.current; } 
 	 EOF 
 ;
 
 // Rule css_negation
-rulecss_negation returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+rulecss_negation returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+(	otherlv_0=':' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getCss_negationAccess().getColonKeyword_0());
+    }
 (
-	kw=':not' 
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCss_negationAccess().getNotCss_notEnumRuleCall_1_0()); 
+	    }
+		lv_not_1_0=rulecss_not		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCss_negationRule());
+	        }
+       		set(
+       			$current, 
+       			"not",
+        		lv_not_1_0, 
+        		"css_not");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCss_negationAccess().getNegation_argCss_negation_argParserRuleCall_2_0()); 
+	    }
+		lv_negation_arg_2_0=rulecss_negation_arg		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCss_negationRule());
+	        }
+       		set(
+       			$current, 
+       			"negation_arg",
+        		lv_negation_arg_2_0, 
+        		"css_negation_arg");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_3=')' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCss_negationAccess().getNotKeyword_0()); 
-    }
-
-	kw='(' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCss_negationAccess().getLeftParenthesisKeyword_1()); 
-    }
-
-    { 
-        newCompositeNode(grammarAccess.getCss_negationAccess().getCss_negation_argParserRuleCall_2()); 
-    }
-    this_css_negation_arg_2=rulecss_negation_arg    {
-		$current.merge(this_css_negation_arg_2);
-    }
-
-    { 
-        afterParserOrEnumRuleCall();
-    }
-
-	kw=')' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCss_negationAccess().getRightParenthesisKeyword_3()); 
+    	newLeafNode(otherlv_3, grammarAccess.getCss_negationAccess().getRightParenthesisKeyword_3());
     }
 )
-    ;
+;
 
 
 
@@ -3219,6 +3235,19 @@ ruleReservedWords returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
     ;
 
 
+
+
+
+// Rule css_not
+rulecss_not returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+(	enumLiteral_0='not(' 
+	{
+        $current = grammarAccess.getCss_notAccess().getNotEnumLiteralDeclaration().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getCss_notAccess().getNotEnumLiteralDeclaration()); 
+    }
+);
 
 
 

@@ -6,12 +6,11 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WToolBar;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WWidget;
 
 @SuppressWarnings("restriction")
 public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToolBar<N>> {
 	@Override
-	public void processContent(MToolBar element) {
+	public void doProcessContent(MToolBar element) {
 		WToolBar<N> toolbar = getWidget(element);
 		for( MToolBarElement item : element.getChildren() ) {
 			WLayoutedWidget<MToolBarElement> itemWidget = engineCreateWidget(item);
@@ -23,8 +22,11 @@ public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToo
 
 	@Override
 	public void childRendered(MToolBar parentElement, MUIElement element) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
+	public void hideChild(MToolBar container, MUIElement changedObj) {
+		
+	}
 }

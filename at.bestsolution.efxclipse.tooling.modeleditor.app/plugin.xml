@@ -7,7 +7,11 @@
          point="org.eclipse.core.runtime.applications">
       <application>
          <run
-               class="at.bestsolution.efxclipse.tooling.modeleditor.app.Application">
+               class="at.bestsolution.efxclipse.runtime.di.DIApplication">
+            <parameter
+                  name="mainClass"
+                  value="at.bestsolution.efxclipse.tooling.modeleditor.app.Application">
+            </parameter>
          </run>
       </application>
    </extension>

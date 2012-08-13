@@ -15,7 +15,7 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
 @SuppressWarnings("all")
-public class AbstractCssDslSyntacticSequencer extends AbstractSyntacticSequencer {
+public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected CssDslGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0;
@@ -57,16 +57,29 @@ public class AbstractCssDslSyntacticSequencer extends AbstractSyntacticSequencer
 		return "";
 	}
 	
+	/**
+	 * terminal COMMA: ',';
+	 */
 	protected String getCOMMAToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return ",";
 	}
+	
+	/**
+	 * terminal WS			: (' '|'\t'|'\r'|'\n')+;
+	 */
 	protected String getWSToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return " ";
 	}
+	
+	/**
+	 * operator
+	 *   : '/' | COMMA
+	 *   ;
+	 */
 	protected String getoperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
@@ -107,7 +120,7 @@ public class AbstractCssDslSyntacticSequencer extends AbstractSyntacticSequencer
 
 	/**
 	 * Syntax:
-	 *     '@CHARSET' | '@charset'
+	 *     '@charset' | '@CHARSET'
 	 */
 	protected void emit_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -147,7 +160,7 @@ public class AbstractCssDslSyntacticSequencer extends AbstractSyntacticSequencer
 	
 	/**
 	 * Syntax:
-	 *     '@media' | '@MEDIA'
+	 *     '@MEDIA' | '@media'
 	 */
 	protected void emit_media_MEDIAKeyword_0_1_or_MediaKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

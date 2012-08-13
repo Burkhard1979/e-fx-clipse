@@ -4,13 +4,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.WeakHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import org.eclipse.core.runtime.Assert;
@@ -42,6 +47,7 @@ import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.IExceptionHandler;
 import org.eclipse.e4.ui.workbench.IModelResourceHandler;
+import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 import org.eclipse.e4.ui.workbench.lifecycle.PreSave;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
@@ -154,6 +160,34 @@ public class E4Application extends AbstractJFXApplication {
 			}
 		});
 		appContext.set(IApplicationContext.class, applicationContext);
+		appContext.set(IResourceUtilities.class, new IResourceUtilities<Image>() {
+			private WeakHashMap<URI, WeakReference<Image>> imageCache = new WeakHashMap<URI, WeakReference<Image>>();
+			
+			public Image imageDescriptorFromURI(URI iconPath) {
+				WeakReference<Image> r = imageCache.get(iconPath);
+				Image img = null;
+				if( r != null ) {
+					img = r.get();
+				}
+				
+				if( img == null ) {
+					try {
+						InputStream in = new URL(iconPath.toString()).openStream();
+						img = new Image(in);
+						in.close();
+						imageCache.put(iconPath, new WeakReference<Image>(img));
+					} catch (MalformedURLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+				return img;
+			}
+		});
 
 		// Check if DS is running
 		if (!appContext.containsKey("org.eclipse.e4.ui.workbench.modeling.EModelService")) {

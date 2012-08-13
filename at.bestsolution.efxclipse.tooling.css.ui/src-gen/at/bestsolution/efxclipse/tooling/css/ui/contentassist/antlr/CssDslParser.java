@@ -144,6 +144,8 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCss_generic_declarationAccess().getPropertyAssignment_0(), "rule__Css_generic_declaration__PropertyAssignment_0");
 					put(grammarAccess.getCss_generic_declarationAccess().getExpressionAssignment_2(), "rule__Css_generic_declaration__ExpressionAssignment_2");
 					put(grammarAccess.getCss_generic_declarationAccess().getPrioAssignment_3(), "rule__Css_generic_declaration__PrioAssignment_3");
+					put(grammarAccess.getCss_negationAccess().getNotAssignment_1(), "rule__Css_negation__NotAssignment_1");
+					put(grammarAccess.getCss_negationAccess().getNegation_argAssignment_2(), "rule__Css_negation__Negation_argAssignment_2");
 					put(grammarAccess.getExprAccess().getTermGroupsAssignment_0(), "rule__Expr__TermGroupsAssignment_0");
 					put(grammarAccess.getExprAccess().getTermGroupsAssignment_1_1(), "rule__Expr__TermGroupsAssignment_1_1");
 					put(grammarAccess.getTermGroupAccess().getTermsAssignment(), "rule__TermGroup__TermsAssignment");

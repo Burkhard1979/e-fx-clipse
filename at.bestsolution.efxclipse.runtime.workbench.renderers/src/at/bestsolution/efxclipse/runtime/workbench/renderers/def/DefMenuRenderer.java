@@ -2,6 +2,9 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.def;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
@@ -44,8 +47,8 @@ public class DefMenuRenderer extends BaseMenuRenderer<Menu> {
 			getWidget().setId(id);
 		}
 		
-		@Override
-		public void setLabel(String label) {
+		@Inject
+		public void setLabel(@Named(ATTRIBUTE_localizedLabel)String label) {
 			getWidget().setText(label);
 		}
 		

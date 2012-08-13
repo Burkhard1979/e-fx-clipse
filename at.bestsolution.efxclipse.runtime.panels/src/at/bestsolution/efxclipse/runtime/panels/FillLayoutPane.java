@@ -11,6 +11,8 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.panels;
 
+import java.util.WeakHashMap;
+
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.WritableBooleanValue;
@@ -76,7 +78,7 @@ public class FillLayoutPane extends AbstractLayoutPane<FillLayoutPane.FillData> 
 				boolean flushCache) {
 			if (flushCache)
 				flushCache();
-			if (wHint == SWT_DEFAULT && hHint == SWT_DEFAULT) {
+			if (wHint == FX_DEFAULT && hHint == FX_DEFAULT) {
 				if (defaultWidth == -1 || defaultHeight == -1) {
 					// Size size = computeSize (wHint, hHint, flushCache);
 					defaultWidth = control.prefWidth(hHint);
@@ -101,12 +103,27 @@ public class FillLayoutPane extends AbstractLayoutPane<FillLayoutPane.FillData> 
 		}
 	}
 
-	public void setMarginHeight(int marginHeight) {
-		this.marginHeight.set(marginHeight);
+	private static WeakHashMap<Node, FillData> CONSTRAINTS = new WeakHashMap<Node, FillData>();
+	
+	public static void setConstraint(Node n, FillData griddata) {
+		CONSTRAINTS.put(n, griddata);
 	}
 	
-	public int getMarginHeight() {
-		return this.marginHeight.get();
+	public static FillData getConstraint(Node n) {
+		return CONSTRAINTS.get(n);
+	}
+
+		
+	public void setHorizontal(boolean horizontal) {
+		this.horizontal.set(horizontal);
+	}
+	
+	public boolean isHorizontal() {
+		return this.horizontal.get();
+	}
+	
+	public WritableBooleanValue horizontalProperty() {
+		return horizontal;
 	}
 	
 	public void setMarginWidth(int marginWidth) {
@@ -117,25 +134,22 @@ public class FillLayoutPane extends AbstractLayoutPane<FillLayoutPane.FillData> 
 		return this.marginWidth.get();
 	}
 	
-	public void setHorizontal(boolean horizontal) {
-		this.horizontal.set(horizontal);
-	}
-	
-	public boolean isHorizontal() {
-		return this.horizontal.get();
-	}
-	
-	public WritableIntegerValue marginHeight() {
+	public WritableIntegerValue marginHeightProperty() {
 		return marginHeight;
 	}
 	
-	public WritableIntegerValue marginWidth() {
+	public void setMarginHeight(int marginHeight) {
+		this.marginHeight.set(marginHeight);
+	}
+	
+	public int getMarginHeight() {
+		return this.marginHeight.get();
+	}
+	
+	public WritableIntegerValue marginWidthProperty() {
 		return marginWidth;
 	}
 	
-	public WritableBooleanValue horizontal() {
-		return horizontal;
-	}
 	
 	protected Size computeSize(double wHint, double hHint, boolean flushCache) {
 		Node[] children = getChildren().toArray(new Node[0]);
@@ -145,11 +159,11 @@ public class FillLayoutPane extends AbstractLayoutPane<FillLayoutPane.FillData> 
 			Node child = children[i];
 			double w = wHint, h = hHint;
 			if (count > 0) {
-				if (horizontal.get() && wHint != SWT_DEFAULT) {
+				if (horizontal.get() && wHint != FX_DEFAULT) {
 					w = Math.max(0, (wHint - (count - 1) * spacing.get())
 							/ count);
 				}
-				if (!horizontal.get() && hHint != SWT_DEFAULT) {
+				if (!horizontal.get() && hHint != FX_DEFAULT) {
 					h = Math.max(0, (hHint - (count - 1) * spacing.get())
 							/ count);
 				}
@@ -172,9 +186,9 @@ public class FillLayoutPane extends AbstractLayoutPane<FillLayoutPane.FillData> 
 		}
 		width += marginWidth.get() * 2;
 		height += marginHeight.get() * 2;
-		if (wHint != SWT_DEFAULT)
+		if (wHint != FX_DEFAULT)
 			width = wHint;
-		if (hHint != SWT_DEFAULT)
+		if (hHint != FX_DEFAULT)
 			height = hHint;
 		return new Size(width, height);
 	}
@@ -187,7 +201,7 @@ public class FillLayoutPane extends AbstractLayoutPane<FillLayoutPane.FillData> 
 			setConstraint(control, data);
 		}
 		Size size = null;
-		if (wHint == SWT_DEFAULT && hHint == SWT_DEFAULT) {
+		if (wHint == FX_DEFAULT && hHint == FX_DEFAULT) {
 			size = data.computeSize(control, wHint, hHint, flushCache);
 		} else {
 			// TEMPORARY CODE
@@ -201,9 +215,9 @@ public class FillLayoutPane extends AbstractLayoutPane<FillLayoutPane.FillData> 
 			// } else {
 			// trimX = trimY = control.getBorderWidth() * 2;
 			// }
-			double w = wHint == SWT_DEFAULT ? wHint : Math
+			double w = wHint == FX_DEFAULT ? wHint : Math
 					.max(0, wHint - trimX);
-			double h = hHint == SWT_DEFAULT ? hHint : Math
+			double h = hHint == FX_DEFAULT ? hHint : Math
 					.max(0, hHint - trimY);
 			size = data.computeSize(control, w, h, flushCache);
 		}

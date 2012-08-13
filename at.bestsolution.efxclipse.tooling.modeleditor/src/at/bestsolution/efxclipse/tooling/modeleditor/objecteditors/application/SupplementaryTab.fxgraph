@@ -1,0 +1,161 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application
+
+import javafx.scene.layout.GridPane
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
+import javafx.scene.control.Button
+import javafx.scene.control.ListView
+import javafx.scene.layout.VBox
+import javafx.scene.layout.AnchorPane
+import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane
+import javafx.scene.image.ImageView
+import javafx.scene.image.Image
+import at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application.SupplementaryController
+import at.bestsolution.efxclipse.runtime.panels.GridData
+
+component SupplementaryTab controlledby at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application.SupplementaryTabController {
+	GridPane {
+		Label {
+			text : "Accessibility Phrase",
+			static columnIndex : 0,
+			static rowIndex : 0
+		},
+		TextField id accessField {
+			static columnIndex : 1,
+			static rowIndex : 0,
+			static columnSpan : 2,
+			static hgrow : "ALWAYS"
+		},
+		Label {
+			text : "Variables",
+			static columnIndex : 0,
+			static rowIndex : 1
+		},
+		TextField id variablesField {
+			static columnIndex : 1,
+			static rowIndex : 1
+		},
+		Button {
+			text : "Add",
+			static columnIndex : 2,
+			static rowIndex : 1,
+			onAction : controllermethod onVariableAdd
+		},
+		ListView id variablesList {
+			static columnIndex : 1,
+			static rowIndex : 2,
+			static hgrow : "ALWAYS"
+		},
+		AnchorPane {
+			GridLayoutPane {
+				Button {
+					text : "Up",
+					graphic : ImageView {
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_up.png"
+						}
+					},
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onVariableUp
+				},
+				Button {
+					text : "Down",
+					graphic : ImageView { 
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_down.png" 
+						}
+					},
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onVariableDown
+				},
+				Button {
+					text : "Remove",
+					graphic : ImageView {
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/table_delete.png"
+						}
+					},
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onVariableRemove
+				},
+				static bottomAnchor : 1.0
+			},
+			static columnIndex : 2,
+			static rowIndex : 2
+		},
+		Label {
+			text : "Tags",
+			static columnIndex : 0,
+			static rowIndex : 3,
+			onAction : controllermethod onTagAdd
+		},
+		TextField id tagsField {
+			static columnIndex : 1,
+			static rowIndex : 3
+		},
+		Button {
+			text : "Add",
+			static columnIndex : 2,
+			static rowIndex : 3
+		},
+		ListView id tagsList {
+			static columnIndex : 1,
+			static rowIndex : 4
+		},
+		AnchorPane {
+			GridLayoutPane {
+				Button {
+					text : "Up",
+					graphic : ImageView {
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_up.png"
+						}
+					},
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onTagUp
+				},
+				Button {
+					text : "Down",
+					graphic : ImageView { 
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_down.png" 
+						}
+					},
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onTagDown
+				},
+				Button {
+					text : "Remove",
+					graphic : ImageView {
+						image : Image {
+							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/table_delete.png"
+						}
+					},
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					},
+					onAction : controllermethod onTagRemove
+				},
+				static bottomAnchor : 1.0
+			},
+			static columnIndex : 2,
+			static rowIndex : 4
+		}
+	}
+}

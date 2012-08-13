@@ -42,5 +42,6 @@ public class FXClassmodel implements IFXClassmodel {
 		String fqn = type.getFullyQualifiedName();
 		fxClassCache.remove(fqn);
 		fxCtrlClassCache.remove(fqn);
+		System.err.println(fxCtrlClassCache);
 	}
 }

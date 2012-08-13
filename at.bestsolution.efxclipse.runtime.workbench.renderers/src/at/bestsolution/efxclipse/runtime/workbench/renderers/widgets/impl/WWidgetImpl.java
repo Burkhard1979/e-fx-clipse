@@ -1,5 +1,10 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.util.Callback;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
@@ -11,11 +16,38 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WWidget;
 public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> {
 	private N nativeWidget;
 	private M domElement;
+	private List<Callback<Boolean, Void>> activationCallbacks = new ArrayList<Callback<Boolean,Void>>();
+	private boolean active;
 	
 	protected abstract N createWidget();
 	
 	public WWidgetImpl() {
 		
+	}
+	
+	@Override
+	public void activate() {
+		this.active = true;
+		for( Callback<Boolean, Void> c : activationCallbacks ) {
+			c.call(Boolean.TRUE);
+		}
+	}
+	
+	@Override
+	public void deactivate() {
+		this.active = false;
+		for( Callback<Boolean, Void> c : activationCallbacks ) {
+			c.call(Boolean.FALSE);
+		}
+	}
+	
+	@Override
+	public boolean isActive() {
+		return active;
+	}
+	
+	public void registerActivationCallback(Callback<Boolean, Void> callback) {
+		activationCallbacks.add(callback);
 	}
 	
 	@PostConstruct
@@ -28,6 +60,7 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 		if( nativeWidget != null ) {
 			setUserData(null);
 		}
+		activationCallbacks.clear();
 	}
 	
 	@Override
@@ -44,6 +77,7 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	public N getWidget() {
 		if( nativeWidget == null ) {
 			nativeWidget = createWidget();
+			setUserData(this);
 		}
 		return nativeWidget;
 	}

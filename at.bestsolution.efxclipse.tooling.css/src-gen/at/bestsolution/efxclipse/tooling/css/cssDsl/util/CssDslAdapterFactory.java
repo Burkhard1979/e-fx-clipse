@@ -130,6 +130,11 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
         return createcss_generic_declarationAdapter();
       }
       @Override
+      public Adapter casecss_negation(css_negation object)
+      {
+        return createcss_negationAdapter();
+      }
+      @Override
       public Adapter caseexpr(expr object)
       {
         return createexprAdapter();
@@ -337,6 +342,21 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createcss_generic_declarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation <em>css negation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation
+   * @generated
+   */
+  public Adapter createcss_negationAdapter()
   {
     return null;
   }

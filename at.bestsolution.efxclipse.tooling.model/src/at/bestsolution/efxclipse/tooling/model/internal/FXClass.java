@@ -8,6 +8,7 @@ import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.Signature;
 import org.osgi.service.log.LogService;
 
 import at.bestsolution.efxclipse.tooling.model.FXPlugin;
@@ -36,7 +37,7 @@ public class FXClass implements IFXClass {
 			String s = type.getSuperclassName();
 			
 			if( s != null ) {
-				s = getFQNType(type,s);
+				s = getFQNType(type,Signature.getTypeErasure(s));
 				superClass = FXPlugin.getClassmodel().findClass(jp, jp.findType(s));
 			}
 		} catch (JavaModelException e) {

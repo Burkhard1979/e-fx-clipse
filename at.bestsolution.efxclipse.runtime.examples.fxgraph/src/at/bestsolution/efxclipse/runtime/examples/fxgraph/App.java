@@ -75,8 +75,7 @@ public class App extends Application {
     @Override public void start(Stage primaryStage) {
         try {
             stage = primaryStage;
-//            gotoLogin();
-            test();
+            gotoLogin();
             primaryStage.setWidth(600);
             primaryStage.setHeight(600);
             primaryStage.show();
@@ -85,27 +84,6 @@ public class App extends Application {
         }
         
         System.err.println("Start is done");
-    }
-
-    private void test() {
-    	
-    	SplitPane pane = new SplitPane();
-    	pane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-    	
-    	StackPane stack1 = new StackPane();
-    	stack1.getChildren().add(new Button("b1"));
-    	
-    	StackPane stack2 = new StackPane();
-    	stack2.getChildren().add(new Button("b1"));
-    	
-    	pane.getItems().addAll(stack1, stack2);
-    	pane.setDividerPosition(0, 0.5);
-    	
-    	Scene secene = new Scene(pane, 100, 100);
-    	stage.setHeight(600);
-    	stage.setWidth(800);
-    	stage.setScene(secene);
-    	
     }
     
     public User getLoggedUser() {

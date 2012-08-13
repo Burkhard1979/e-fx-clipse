@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
-<?scenebuilder-stylesheet at/bestsolution/efxclipse/runtime/examples/demo.css?>
+<?scenebuilder-stylesheet demo.css?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:id="Login" fx:controller="at.bestsolution.efxclipse.runtime.examples.fxgraph.LoginController" prefHeight="280.0" prefWidth="480.0">
 

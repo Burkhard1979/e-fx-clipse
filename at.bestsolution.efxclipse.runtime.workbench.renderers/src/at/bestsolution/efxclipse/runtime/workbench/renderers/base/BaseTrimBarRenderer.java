@@ -6,13 +6,12 @@ import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WTrimBar;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WWidget;
 
 @SuppressWarnings("restriction")
 public abstract class BaseTrimBarRenderer<N> extends BaseRenderer<MTrimBar, WTrimBar<N>> {
 
 	@Override
-	public void processContent(MTrimBar element) {
+	public void doProcessContent(MTrimBar element) {
 		WTrimBar<N> trimBar = getWidget(element);
 		for( MTrimElement e : element.getChildren() ) {
 			WLayoutedWidget<MTrimElement> trimElementWidget = engineCreateWidget(e);
@@ -24,6 +23,9 @@ public abstract class BaseTrimBarRenderer<N> extends BaseRenderer<MTrimBar, WTri
 
 	@Override
 	public void childRendered(MTrimBar parentElement, MUIElement element) {
-		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void hideChild(MTrimBar container, MUIElement changedObj) {
 	}
 }

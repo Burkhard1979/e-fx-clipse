@@ -655,10 +655,10 @@ public interface CssDialectExtension {
 			return null;
 		}
 		
-		public static ValidationResult checkPercentage(term term, String message, int min) {
+		public static ValidationResult checkPercentage(term term, String message, int min, int max) {
 			if( term.getNumber().matches("^\\d+(\\.\\d+)?%$") || term.getNumber().matches("^-\\d+(\\.\\d+)?%$") || term.getNumber().matches("^\\+\\d+(\\.\\d+)?%$") ) {
 				double v = Double.parseDouble(term.getNumber().substring(0, term.getNumber().length()-1));
-				if( v < min * 1.0 || v > 100.0 ) {
+				if( v < min * 1.0 || v > max * 1.0 ) {
 					return new ValidationResult(ValidationStatus.ERROR, message, term, null, -1);
 				}
 			} else {

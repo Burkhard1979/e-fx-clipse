@@ -16,6 +16,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
+import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.runtime.workbench.rendering.AbstractRenderer;
@@ -37,6 +38,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BaseMenuRenderer<?> menuRenderer;
 	private BaseMenuItemRenderer<?> menuItemRenderer;
 	private BaseMenuSeparatorRenderer<?> menuSeperatorRenderer;
+	private BaseToolItemMenuRenderer<?> toolItemMenuRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -63,6 +65,11 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 					menuBarRenderer = ContextInjectionFactory.make(getMenuBarRendererClass(), context);
 				}
 				return (R) menuBarRenderer;
+			} else if( MenuPackageImpl.Literals.TOOL_ITEM__MENU.equals(((EObject)modelObject).eContainmentFeature()) ) {
+				if( toolItemMenuRenderer == null ) {
+					toolItemMenuRenderer = ContextInjectionFactory.make(getToolItemMenuRendererClass(), context);
+				}
+				return (R) toolItemMenuRenderer;
 			} else {
 				if( menuRenderer == null ) {
 					menuRenderer = ContextInjectionFactory.make(getMenuRendererClass(), context);
@@ -120,4 +127,5 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BaseMenuRenderer<?>> getMenuRendererClass();
 	protected abstract Class<? extends BaseMenuItemRenderer<?>> getMenuItemRendererClass();
 	protected abstract Class<? extends BaseMenuSeparatorRenderer<?>> getMenuSeparatorRendererClass();
+	protected abstract Class<? extends BaseToolItemMenuRenderer<?>> getToolItemMenuRendererClass();
 }

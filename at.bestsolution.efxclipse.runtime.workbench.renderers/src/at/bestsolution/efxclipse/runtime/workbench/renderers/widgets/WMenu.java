@@ -6,8 +6,6 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 @SuppressWarnings("restriction")
 public interface WMenu<N> extends WMenuElement<MMenu> {
 
-	void setLabel(String label);
-
 	void addElement(WMenuElement<MMenuElement> widget);
 
 }

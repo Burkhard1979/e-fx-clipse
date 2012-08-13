@@ -196,4 +196,17 @@
             name="%category.name.0">
       </category>
    </extension>
+   <extension
+         id="id2"
+         point="org.eclipse.jdt.ui.javaCompletionProposalComputer">
+      <javaCompletionProposalComputer
+            activate="true"
+            categoryId="org.eclipse.jdt.ui.javaAllProposalCategory"
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.FXBeanJavaCompletionProposalComputer">
+            <partition type="__dftl_partition_content_type"/>
+            <partition
+                  type="__java_string">
+            </partition>
+      </javaCompletionProposalComputer>
+   </extension>
 </plugin>

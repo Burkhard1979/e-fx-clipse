@@ -267,7 +267,9 @@ class AntTemplate {
 				«ENDIF»
 				<fx:application refId="fxApplication"/>
 				<fx:resources refid="appRes"/>
+				«IF keyStore != null»
 				<fx:permissions elevated="true"/>
+				«ENDIF»
 			</fx:deploy>
 			«ENDIF»
 		</target>

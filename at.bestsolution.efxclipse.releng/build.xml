@@ -17,7 +17,7 @@
 	<target name="publish-p2">
 		<echo>Publshing p2-repo</echo>
 		<exec command="rsync -acz ${efx.update.sitezip} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" />
-		<exec command="rsync -acz --delete ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly/site ${efx.update.sitedir}" />
+		<exec command="rsync -acz --delete ${efx.update.sitedir} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly" />
 		<!--sshexec host="${efx.update.scp.name}" username="${efx.update.host.user}" command="rm ${efx.update.host.htdocs}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" keyfile="/var/lib/jenkins/.ssh/id_dsa"/>
 		<scp remoteToFile="${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" keyfile="/var/lib/jenkins/.ssh/id_dsa" file="${efx.update.sitezip}" />
 		
