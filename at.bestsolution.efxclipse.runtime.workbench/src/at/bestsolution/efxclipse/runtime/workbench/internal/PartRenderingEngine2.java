@@ -37,8 +37,8 @@ public class PartRenderingEngine2 implements IPresentationEngine {
 	public static final String engineURI = "bundleclass://at.bestsolution.efxclipse.runtime.workbench/"
 			+ "at.bestsolution.efxclipse.runtime.workbench.internal.PartRenderingEngine2";
 
-	private static final String defaultFactoryUrl = "bundleclass://at.bestsolution.efxclipse.runtime.workbench.renderers/"
-			+ "at.bestsolution.efxclipse.runtime.workbench.renderers.def.DefWorkbenchRendererFactory";
+	private static final String defaultFactoryUrl = "bundleclass://at.bestsolution.efxclipse.runtime.workbench.renderers.fx/"
+			+ "at.bestsolution.efxclipse.runtime.workbench.renderers.fx.DefWorkbenchRendererFactory";
 
 	private final RendererFactory factory;
 	
