@@ -1,7 +1,5 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
-import javafx.scene.layout.BorderPane;
-
 import org.eclipse.e4.core.services.contributions.IContributionFactory;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -40,7 +38,7 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 	public void doProcessContent(MPart element) {
 		WPart<N> widget = getWidget(element);
 		
-		element.getContext().set(BorderPane.class.getName(), widget.getWidget());
+		element.getContext().set(widget.getWidget().getClass().getName(), widget.getWidget());
 		IContributionFactory contributionFactory = (IContributionFactory) element.getContext().get(IContributionFactory.class
 				.getName());
 		Object newPart = contributionFactory.create(element.getContributionURI(), element.getContext());
