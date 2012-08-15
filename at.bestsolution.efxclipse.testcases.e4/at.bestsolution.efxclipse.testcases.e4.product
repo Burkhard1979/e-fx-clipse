@@ -28,7 +28,8 @@
       <plugin id="at.bestsolution.efxclipse.runtime.services"/>
       <plugin id="at.bestsolution.efxclipse.runtime.theme"/>
       <plugin id="at.bestsolution.efxclipse.runtime.workbench"/>
-      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.base"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.fx"/>
       <plugin id="at.bestsolution.efxclipse.testcases.e4"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="javafx.osgi"/>
