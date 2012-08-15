@@ -39,7 +39,7 @@ public class DefTrimBarRenderer extends BaseTrimBarRenderer<GridLayoutPane> {
 		
 		@Override
 		public void addChild(WLayoutedWidget<MTrimElement> trimElementWidget) {
-			Node n = trimElementWidget.getStaticLayoutNode();
+			Node n = (Node) trimElementWidget.getStaticLayoutNode();
 			getWidget().getChildren().add(n);
 			GridLayoutPane.setConstraint(n, new GridData(GridData.FILL_BOTH));
 		}

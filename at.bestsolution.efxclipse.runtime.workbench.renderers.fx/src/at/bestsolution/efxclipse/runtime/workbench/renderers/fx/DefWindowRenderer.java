@@ -64,8 +64,10 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 @SuppressWarnings("restriction")
 public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 	
-	protected Save[] promptToSave(IResourceUtilities<Image> resourceUtilities, Collection<MPart> dirtyParts, WWindow<Stage> widget) {
+	protected Save[] promptToSave(MWindow element, Collection<MPart> dirtyParts, WWindow<Stage> widget) {
 		Save[] response = new Save[dirtyParts.size()];
+		@SuppressWarnings("unchecked")
+		IResourceUtilities<Image> resourceUtilities = getModelContext(element).get(IResourceUtilities.class);
 		
 		MultiMessageDialog d = new MultiMessageDialog((Stage)widget.getWidget(), dirtyParts, resourceUtilities);
 		if( d.open() == Dialog.OK_BUTTON ) {
@@ -81,7 +83,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		return response;
 	}
 	
-	protected Save promptToSave(IResourceUtilities<Image> resourceUtilities, MPart dirtyPart, WWindow<Stage> widget) {
+	protected Save promptToSave(MWindow element, MPart dirtyPart, WWindow<Stage> widget) {
 		QuestionCancel r = MessageDialog.openQuestionCancelDialog((Stage)widget.getWidget(), "Unsaved changes", "'"+dirtyPart.getLocalizedLabel()+"' has been modified. Save changes?");
 		
 		switch (r) {
@@ -216,7 +218,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		
 		@Override
 		public void setMainMenu(WLayoutedWidget<MMenu> menuWidget) {
-			this.rootPane.setTop(menuWidget.getStaticLayoutNode());
+			this.rootPane.setTop((Node) menuWidget.getStaticLayoutNode());
 		}
 		
 		@Override
@@ -267,28 +269,28 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		
 		@Override
 		public void setBottomTrim(WLayoutedWidget<MTrimBar> trimBar) {
-			trimPane.setBottom(trimBar.getStaticLayoutNode());
+			trimPane.setBottom((Node) trimBar.getStaticLayoutNode());
 		} 
 		
 		@Override
 		public void setLeftTrim(WLayoutedWidget<MTrimBar> trimBar) {
-			trimPane.setLeft(trimBar.getStaticLayoutNode());
+			trimPane.setLeft((Node) trimBar.getStaticLayoutNode());
 		}
 		
 		@Override
 		public void setRightTrim(WLayoutedWidget<MTrimBar> trimBar) {
-			trimPane.setRight(trimBar.getStaticLayoutNode());
+			trimPane.setRight((Node) trimBar.getStaticLayoutNode());
 		}
 		
 		@Override
 		public void setTopTrim(WLayoutedWidget<MTrimBar> trimBar) {
-			Node g = trimBar.getStaticLayoutNode();
+			Node g = (Node) trimBar.getStaticLayoutNode();
 			trimPane.setTop(g);
 		}
 		
 		@Override
 		public void addChild(WLayoutedWidget<MWindowElement> widget) {
-			contentPane.getChildren().add(widget.getStaticLayoutNode());
+			contentPane.getChildren().add((Node) widget.getStaticLayoutNode());
 		}
 	}
 	

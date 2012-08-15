@@ -4,8 +4,6 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 
-import javafx.scene.image.Image;
-
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -14,7 +12,6 @@ import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindowElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
-import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler.Save;
@@ -41,24 +38,20 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 			
 			@Override
 			public Save[] promptToSave(Collection<MPart> dirtyParts) {
-				@SuppressWarnings("unchecked")
-				IResourceUtilities<Image> resourceUtilities = getModelContext(element).get(IResourceUtilities.class);
-				return BaseWindowRenderer.this.promptToSave(resourceUtilities, dirtyParts, widget);
+				return BaseWindowRenderer.this.promptToSave(element, dirtyParts, widget);
 			}
 			
 			@Override
 			public Save promptToSave(MPart dirtyPart) {
-				@SuppressWarnings("unchecked")
-				IResourceUtilities<Image> resourceUtilities = getModelContext(element).get(IResourceUtilities.class);
-				return BaseWindowRenderer.this.promptToSave(resourceUtilities, dirtyPart, widget);
+				return BaseWindowRenderer.this.promptToSave(element, dirtyPart, widget);
 //				Collection<MPart> c = Collections.singleton(dirtyPart);
 //				return BaseWindowRenderer.this.promptToSave(resourceUtilities,c, widget)[0];
 			}
 		});
 	}
 	
-	protected abstract Save[] promptToSave(IResourceUtilities<Image> resourceUtilities, Collection<MPart> dirtyParts, WWindow<N> widget);
-	protected abstract Save promptToSave(IResourceUtilities<Image> resourceUtilities, MPart dirtyPart, WWindow<N> widget);
+	protected abstract Save[] promptToSave(MWindow element, Collection<MPart> dirtyParts, WWindow<N> widget);
+	protected abstract Save promptToSave(MWindow element, MPart dirtyPart, WWindow<N> widget);
 
 	@Override
 	public void doProcessContent(MWindow element) {

@@ -2,8 +2,6 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget;
 
 import java.util.List;
 
-import javafx.scene.Node;
-
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 

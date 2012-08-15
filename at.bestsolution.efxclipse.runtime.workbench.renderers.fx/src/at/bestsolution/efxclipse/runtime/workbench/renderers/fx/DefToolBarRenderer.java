@@ -1,5 +1,6 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
+import javafx.scene.Node;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
@@ -42,7 +43,7 @@ public class DefToolBarRenderer extends BaseToolBarRenderer<ToolBar> {
 				}
 				group.getToggles().add((Toggle) itemWidget.getWidget());
 			}
-			getWidget().getItems().add(itemWidget.getStaticLayoutNode());
+			getWidget().getItems().add((Node) itemWidget.getStaticLayoutNode());
 		}
 	}
 }

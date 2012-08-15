@@ -39,7 +39,7 @@ public class DefSashRenderer extends BaseSashRenderer<SplitPane> {
 		@Override
 		public void addItem(WLayoutedWidget<MPartSashContainerElement> widget) {
 			SplitPane p = getWidget();
-			p.getItems().add(widget.getStaticLayoutNode());
+			p.getItems().add((Node) widget.getStaticLayoutNode());
 		}
 		
 		@Override
@@ -47,7 +47,7 @@ public class DefSashRenderer extends BaseSashRenderer<SplitPane> {
 			SplitPane p = getWidget();
 			List<Node> l = new ArrayList<Node>();
 			for( WLayoutedWidget<MPartSashContainerElement> i : list ) {
-				l.add(i.getStaticLayoutNode());
+				l.add((Node) i.getStaticLayoutNode());
 			}
 			p.getItems().addAll(index, l);
 		}
@@ -57,7 +57,7 @@ public class DefSashRenderer extends BaseSashRenderer<SplitPane> {
 			SplitPane p = getWidget();
 			List<Node> l = new ArrayList<Node>();
 			for( WLayoutedWidget<MPartSashContainerElement> i : list ) {
-				l.add(i.getStaticLayoutNode());
+				l.add((Node) i.getStaticLayoutNode());
 			}
 			p.getItems().addAll(l);
 		}
