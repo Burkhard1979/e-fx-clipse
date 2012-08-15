@@ -57,7 +57,7 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	}
 	
 	@Override
-	protected Class<? extends BaseStackRenderer<?, ?>> getStackRendererClass() {
+	protected Class<? extends BaseStackRenderer<?, ?, ?>> getStackRendererClass() {
 		return DefStackRenderer.class;
 	}
 	

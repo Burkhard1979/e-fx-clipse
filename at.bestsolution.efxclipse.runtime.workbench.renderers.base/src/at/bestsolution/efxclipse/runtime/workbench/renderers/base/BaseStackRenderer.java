@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.scene.Node;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -29,7 +27,7 @@ import at.bestsolution.efxclipse.runtime.workbench.rendering.AbstractRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.rendering.RendererFactory;
 
 @SuppressWarnings("restriction")
-public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, WStack<N, I>> {
+public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStack, WStack<N, I, IC>> {
 	// private static final String MAP_ITEM_KEY = "fx.rendering.stackitem";
 
 	@Inject
@@ -86,12 +84,12 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 	}
 
 	@Override
-	protected void initWidget(final MPartStack element, final WStack<N, I> widget) {
+	protected void initWidget(final MPartStack element, final WStack<N, I, IC> widget) {
 		super.initWidget(element, widget);
-		widget.setMouseSelectedItemCallback(new WCallback<WStackItem<I>, Void>() {
+		widget.setMouseSelectedItemCallback(new WCallback<WStackItem<I, IC>, Void>() {
 
 			@Override
-			public Void call(WStackItem<I> param) {
+			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
 					activatationJob((MPart) param.getDomElement(),true);
 				}
@@ -99,10 +97,10 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 				return null;
 			}
 		});
-		widget.setKeySelectedItemCallback(new WCallback<WStackItem<I>, Void>() {
+		widget.setKeySelectedItemCallback(new WCallback<WStackItem<I, IC>, Void>() {
 
 			@Override
-			public Void call(WStackItem<I> param) {
+			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
 					activatationJob((MPart) param.getDomElement(),false);
 				}
@@ -129,15 +127,15 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 
 	@Override
 	public void doProcessContent(MPartStack element) {
-		WStack<N, I> stack = getWidget(element);
-		List<WStackItem<I>> items = new ArrayList<WStackItem<I>>();
-		WStackItem<I> initalItem = null;
+		WStack<N, I, IC> stack = getWidget(element);
+		List<WStackItem<I, IC>> items = new ArrayList<WStackItem<I, IC>>();
+		WStackItem<I, IC> initalItem = null;
 
 		for (MStackElement e : element.getChildren()) {
 			// Precreate the rendering context for the subitem
 			AbstractRenderer<MStackElement, ?> renderer = factory.getRenderer(e);
 			if (renderer != null && e.isToBeRendered() ) {
-				WStackItem<I> item = createStackItem(stack, e, renderer);
+				WStackItem<I, IC> item = createStackItem(stack, e, renderer);
 				items.add(item);
 
 				if (e == element.getSelectedElement()) {
@@ -164,19 +162,20 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 
 	}
 
-	private WStackItem<I> createStackItem(WStack<N, I> stack, final MStackElement e, AbstractRenderer<MStackElement, ?> renderer) {
+	private WStackItem<I, IC> createStackItem(WStack<N, I, IC> stack, final MStackElement e, AbstractRenderer<MStackElement, ?> renderer) {
 		IEclipseContext context = renderer.setupRenderingContext(e);
-		WStackItem<I> item = ContextInjectionFactory.make(stack.getStackItemClass(), context);
+		WStackItem<I, IC> item = ContextInjectionFactory.make(stack.getStackItemClass(), context);
 		item.setDomElement(e);
-		item.setInitCallback(new WCallback<WStack.WStackItem<I>, Node>() {
+		item.setInitCallback(new WCallback<WStackItem<I, IC>, IC>() {
 
+			@SuppressWarnings("unchecked")
 			@Override
-			public Node call(WStackItem<I> param) {
+			public IC call(WStackItem<I, IC> param) {
 				inLazyInit = true;
 				try {
 					WLayoutedWidget<MStackElement> widget = engineCreateWidget(e);
 					if (widget != null) {
-						return widget.getStaticLayoutNode();
+						return (IC) widget.getStaticLayoutNode();
 					}
 					return null;					
 				} finally {
@@ -184,10 +183,10 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 				}
 			}
 		});
-		item.setOnCloseCallback(new WCallback<WStack.WStackItem<I>, Boolean>() {
+		item.setOnCloseCallback(new WCallback<WStack.WStackItem<I, IC>, Boolean>() {
 
 			@Override
-			public Boolean call(WStackItem<I> param) {
+			public Boolean call(WStackItem<I, IC> param) {
 				return ! handleStackItemClose(e, param);
 			}
 		});
@@ -199,8 +198,8 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 		int idx = parent.getChildren().indexOf(element);
 
 		AbstractRenderer<MStackElement, ?> renderer = factory.getRenderer(element);
-		WStack<N, I> stack = getWidget(parent);
-		WStackItem<I> item = createStackItem(getWidget(parent), element, renderer);
+		WStack<N, I, IC> stack = getWidget(parent);
+		WStackItem<I, IC> item = createStackItem(getWidget(parent), element, renderer);
 
 		if (parent.getChildren().size() - 1 == idx) {
 			stack.addItems(Collections.singletonList(item));
@@ -218,9 +217,9 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 	}
 
 	void handleSelectedElement(MPartStack parent, MStackElement oldElement, MStackElement newElement) {
-		WStack<N, I> stack = getWidget(parent);
+		WStack<N, I, IC> stack = getWidget(parent);
 		int idx = 0;
-		for( WStackItem<I> i : stack.getItems() ) {
+		for( WStackItem<I, IC> i : stack.getItems() ) {
 			if( i.getDomElement() == newElement ) {
 				stack.selectItem(idx);
 				break;
@@ -229,7 +228,7 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 		}
 	}
 
-	boolean handleStackItemClose(MStackElement e, WStackItem<I> item) {
+	boolean handleStackItemClose(MStackElement e, WStackItem<I, IC> item) {
 		MPart part = (MPart) e;
 		if( ! part.isCloseable() ) {
 			return false;
@@ -258,8 +257,8 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 			return;
 		}
 
-		WStack<N, I> stack = getWidget(parentElement);
-		for( WStackItem<I> i : stack.getItems() ) {
+		WStack<N, I, IC> stack = getWidget(parentElement);
+		for( WStackItem<I, IC> i : stack.getItems() ) {
 			if( i.getDomElement() == element ) {
 				return;
 			}
@@ -272,14 +271,14 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 	
 	@Override
 	public void hideChild(MPartStack container, MUIElement changedObj) {
-		WStack<N, I> stack = getWidget(container);
+		WStack<N, I, IC> stack = getWidget(container);
 		if( stack == null ) {
 			return;
 		}
 		
-		WStackItem<I> item = null;
+		WStackItem<I, IC> item = null;
 		
-		for( WStackItem<I> i : stack.getItems() ) {
+		for( WStackItem<I, IC> i : stack.getItems() ) {
 			if( i.getDomElement() == changedObj ) {
 				item = i;
 				break;
@@ -287,7 +286,7 @@ public abstract class BaseStackRenderer<N, I> extends BaseRenderer<MPartStack, W
 		}
 		
 		if( item != null ) {
-			List<WStackItem<I>> l = Collections.singletonList(item);
+			List<WStackItem<I, IC>> l = Collections.singletonList(item);
 			stack.removeItems(l); 
 		}
 	}

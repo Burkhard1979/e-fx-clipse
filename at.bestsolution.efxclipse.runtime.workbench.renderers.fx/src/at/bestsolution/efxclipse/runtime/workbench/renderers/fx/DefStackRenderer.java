@@ -29,30 +29,30 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {
+public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 
 	@Override
-	protected Class<? extends WStack<FXTabPane,FXTab>> getWidgetClass() {
+	protected Class<? extends WStack<FXTabPane,FXTab, Node>> getWidgetClass() {
 		return StackWidgetImpl.class;
 	}
 
 	
-	public static class StackWidgetImpl extends WLayoutedWidgetImpl<FXTabPane, FXTabPane, MPartStack> implements WStack<FXTabPane, FXTab> {
+	public static class StackWidgetImpl extends WLayoutedWidgetImpl<FXTabPane, FXTabPane, MPartStack> implements WStack<FXTabPane, FXTab, Node> {
 		
-		private WCallback<WStackItem<FXTab>, Void> mouseSelectedItemCallback;
-		private WCallback<WStackItem<FXTab>, Void> keySelectedItemCallback;
+		private WCallback<WStackItem<FXTab, Node>, Void> mouseSelectedItemCallback;
+		private WCallback<WStackItem<FXTab, Node>, Void> keySelectedItemCallback;
 		private boolean inKeyTraversal;
 		
-		public void setMouseSelectedItemCallback(WCallback<WStackItem<FXTab>, Void> mouseSelectedItemCallback) {
+		public void setMouseSelectedItemCallback(WCallback<WStackItem<FXTab, Node>, Void> mouseSelectedItemCallback) {
 			this.mouseSelectedItemCallback = mouseSelectedItemCallback;
 		}
 		
-		public void setKeySelectedItemCallback(WCallback<WStackItem<FXTab>, Void> keySelectedItemCallback) {
+		public void setKeySelectedItemCallback(WCallback<WStackItem<FXTab, Node>, Void> keySelectedItemCallback) {
 			this.keySelectedItemCallback = keySelectedItemCallback;
 		}
 		
 		@Override
-		public int indexOf(WStackItem<FXTab> item) {
+		public int indexOf(WStackItem<FXTab, Node> item) {
 			return getWidget().getTabs().indexOf(item.getNativeItem());
 		}
 		
@@ -93,7 +93,7 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {
 					final StackItemImpl w = (StackItemImpl) newValue.getUserData();
 					w.handleSelection();
 					 
-					final WCallback<WStackItem<FXTab>, Void> cb;
+					final WCallback<WStackItem<FXTab, Node>, Void> cb;
 					if( ! inKeyTraversal ) {
 						cb = mouseSelectedItemCallback;
 					} else {
@@ -138,28 +138,28 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {
 		}
 
 		@Override
-		public Class<? extends WStackItem<FXTab>> getStackItemClass() {
+		public Class<? extends WStackItem<FXTab, Node>> getStackItemClass() {
 			return StackItemImpl.class;
 		}
 		
 		@Override
-		public void addItem(WStackItem<FXTab> item) {
+		public void addItem(WStackItem<FXTab, Node> item) {
 			addItems(Collections.singletonList(item));
 		}
 		
 		@Override
-		public void addItems(List<WStackItem<FXTab>> items) {
+		public void addItems(List<WStackItem<FXTab, Node>> items) {
 			getWidget().getTabs().addAll(extractTabs(items));
 		}
 		
 		@Override
-		public void addItems(int index, List<WStackItem<FXTab>> items) {
+		public void addItems(int index, List<WStackItem<FXTab, Node>> items) {
 			getWidget().getTabs().addAll(index, extractTabs(items));
 		}
 		
-		private static final List<FXTab> extractTabs(List<WStackItem<FXTab>> items) {
+		private static final List<FXTab> extractTabs(List<WStackItem<FXTab, Node>> items) {
 			List<FXTab> tabs = new ArrayList<FXTab>(items.size());
-			for( WStackItem<FXTab> t : items ) {
+			for( WStackItem<FXTab, Node> t : items ) {
 				tabs.add(t.getNativeItem());
 			}
 			return tabs;
@@ -171,11 +171,11 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {
 		}
 
 		@Override
-		public List<WStackItem<FXTab>> getItems() {
-			List<WStackItem<FXTab>> rv = new ArrayList<WStackItem<FXTab>>();
+		public List<WStackItem<FXTab, Node>> getItems() {
+			List<WStackItem<FXTab, Node>> rv = new ArrayList<WStackItem<FXTab, Node>>();
 			for( FXTab t : getWidget().getTabs() ) {
 				@SuppressWarnings("unchecked")
-				WStackItem<FXTab> i = (WStackItem<FXTab>) t.getUserData();
+				WStackItem<FXTab, Node> i = (WStackItem<FXTab, Node>) t.getUserData();
 				if( i != null ) {
 					rv.add(i);	
 				}
@@ -184,19 +184,19 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {
 		}
 
 		@Override
-		public void removeItems(List<WStackItem<FXTab>> items) {
+		public void removeItems(List<WStackItem<FXTab, Node>> items) {
 			List<FXTab> l = new ArrayList<FXTab>();
-			for( WStackItem<FXTab> i : items ) {
+			for( WStackItem<FXTab, Node> i : items ) {
 				l.add(i.getNativeItem());
 			}
 			getWidget().getTabs().removeAll(l);
 		}
 	}
 	
-	public static class StackItemImpl implements WStackItem<FXTab> {
+	public static class StackItemImpl implements WStackItem<FXTab, Node> {
 		private FXTab tab;
-		private WCallback<WStackItem<FXTab>, Node> initCallback;
-		private WCallback<WStackItem<FXTab>, Boolean> closeCallback;
+		private WCallback<WStackItem<FXTab, Node>, Node> initCallback;
+		private WCallback<WStackItem<FXTab, Node>, Boolean> closeCallback;
 		private MStackElement domElement;
 		
 		@PostConstruct
@@ -244,7 +244,7 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {
 			}	
 		}
 		
-		public void setInitCallback(WCallback<WStackItem<FXTab>, Node> initCallback) {
+		public void setInitCallback(WCallback<WStackItem<FXTab, Node>, Node> initCallback) {
 			this.initCallback = initCallback;
 		}
 
@@ -259,7 +259,7 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {
 		}
 		
 		@Override
-		public void setOnCloseCallback(final WCallback<WStackItem<FXTab>, Boolean> callback) {
+		public void setOnCloseCallback(final WCallback<WStackItem<FXTab, Node>, Boolean> callback) {
 			this.closeCallback = callback;
 		}
 	}
