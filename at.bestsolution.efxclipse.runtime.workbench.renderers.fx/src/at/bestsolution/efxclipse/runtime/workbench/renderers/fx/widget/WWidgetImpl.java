@@ -11,10 +11,11 @@ import javax.annotation.PreDestroy;
 
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WCallback;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WPropertyChangeHandler;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WWidget;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WPropertyChangeHandler.WPropertyChangeEvent;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPropertyChangeHandler;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPropertyChangeHandler.WPropertyChangeEvent;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
+
 
 @SuppressWarnings("restriction")
 public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> {

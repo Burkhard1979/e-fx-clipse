@@ -8,9 +8,9 @@ import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 import at.bestsolution.efxclipse.runtime.panels.GridData;
 import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseTrimBarRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WTrimBar;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WTrimBar;
 
 @SuppressWarnings("restriction")
 public class DefTrimBarRenderer extends BaseTrimBarRenderer<GridLayoutPane> {

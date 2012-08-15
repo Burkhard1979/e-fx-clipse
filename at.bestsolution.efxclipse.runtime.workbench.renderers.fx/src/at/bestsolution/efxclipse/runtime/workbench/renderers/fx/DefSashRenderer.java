@@ -11,9 +11,9 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseSashRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WSash;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WSash;
 
 @SuppressWarnings("restriction")
 public class DefSashRenderer extends BaseSashRenderer<SplitPane> {

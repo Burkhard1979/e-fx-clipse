@@ -6,8 +6,8 @@ import javafx.scene.layout.BorderPane;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePartRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPart;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WPart;
 
 @SuppressWarnings("restriction")
 public class DefPartRenderer extends BasePartRenderer<BorderPane> {

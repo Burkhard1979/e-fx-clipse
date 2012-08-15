@@ -7,7 +7,8 @@ import javafx.scene.layout.AnchorPane;
 
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
+
 
 @SuppressWarnings("restriction")
 public abstract class WLayoutedWidgetImpl<N,NN extends Node,M extends MUIElement> extends WWidgetImpl<N,M> implements WLayoutedWidget<M> {

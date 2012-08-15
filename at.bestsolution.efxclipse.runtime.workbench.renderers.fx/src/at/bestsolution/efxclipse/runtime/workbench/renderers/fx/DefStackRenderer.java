@@ -23,10 +23,10 @@ import at.bestsolution.efxclipse.runtime.panels.fx.FXTab;
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane;
 import at.bestsolution.efxclipse.runtime.panels.skins.MinMaxTabPaneSkin;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.WStackItem;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WCallback;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WStack;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WStack.WStackItem;
 
 @SuppressWarnings("restriction")
 public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab> {

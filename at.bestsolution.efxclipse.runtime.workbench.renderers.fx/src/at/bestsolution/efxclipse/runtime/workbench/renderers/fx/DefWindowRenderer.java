@@ -56,10 +56,10 @@ import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog.QuestionCancel;
 import at.bestsolution.efxclipse.runtime.panels.FillLayoutPane;
 import at.bestsolution.efxclipse.runtime.workbench.internal.key.KeyBindingDispatcher;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseWindowRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWindow;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WWidget;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WWindow;
 
 @SuppressWarnings("restriction")
 public class DefWindowRenderer extends BaseWindowRenderer<Stage> {

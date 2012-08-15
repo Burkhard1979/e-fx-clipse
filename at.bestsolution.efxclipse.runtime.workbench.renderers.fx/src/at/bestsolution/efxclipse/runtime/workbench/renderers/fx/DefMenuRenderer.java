@@ -14,9 +14,9 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuElement;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenu;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenuElement;
 
 @SuppressWarnings("restriction")
 public class DefMenuRenderer extends BaseMenuRenderer<Menu> {

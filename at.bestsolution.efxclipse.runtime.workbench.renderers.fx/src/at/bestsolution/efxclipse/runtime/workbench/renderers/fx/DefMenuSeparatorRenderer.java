@@ -7,8 +7,8 @@ import javafx.scene.control.SeparatorMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuSeparatorRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuSeparator;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenuSeparator;
 
 @SuppressWarnings("restriction")
 public class DefMenuSeparatorRenderer extends BaseMenuSeparatorRenderer<SeparatorMenuItem> {

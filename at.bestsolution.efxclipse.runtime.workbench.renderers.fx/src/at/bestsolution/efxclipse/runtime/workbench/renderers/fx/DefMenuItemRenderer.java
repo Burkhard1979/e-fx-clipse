@@ -13,8 +13,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.ItemType;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuItemRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuItem;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenuItem;
 
 @SuppressWarnings("restriction")
 public class DefMenuItemRenderer extends BaseMenuItemRenderer<MenuItem> {

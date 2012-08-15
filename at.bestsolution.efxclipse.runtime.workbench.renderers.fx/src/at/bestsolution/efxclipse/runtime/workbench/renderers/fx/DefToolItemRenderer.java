@@ -17,8 +17,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WToolItem;
 
 @SuppressWarnings("restriction")
 public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {

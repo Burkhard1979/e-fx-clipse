@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemMenuRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuElement;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.ToolItemMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenu;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WMenuElement;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WToolItem;
 
 @SuppressWarnings("restriction")
 public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMenu> {

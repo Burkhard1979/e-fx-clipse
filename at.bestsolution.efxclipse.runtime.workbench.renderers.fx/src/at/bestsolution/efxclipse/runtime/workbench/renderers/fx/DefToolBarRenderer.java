@@ -8,9 +8,9 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolBarRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBar;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WLayoutedWidget;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.widgets.WToolBar;
 
 @SuppressWarnings("restriction")
 public class DefToolBarRenderer extends BaseToolBarRenderer<ToolBar> {
