@@ -6,7 +6,7 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
 
 @SuppressWarnings("restriction")
-public interface WSash<N> extends WWidget<MPartSashContainer> {
+public interface WSash<N> extends WLayoutedWidget<MPartSashContainer> {
 
 	public void addItem(WLayoutedWidget<MPartSashContainerElement> widget);
 

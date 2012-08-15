@@ -6,7 +6,7 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 
 @SuppressWarnings("restriction")
-public interface WStack<N,I,IC> extends WWidget<MPartStack> {
+public interface WStack<N,I,IC> extends WLayoutedWidget<MPartStack> {
 	public interface WStackItem<I,IC> {
 		public I getNativeItem();
 		public void setDomElement(MStackElement domElement);
