@@ -23,9 +23,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPropertyChangeHandler;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
-import at.bestsolution.efxclipse.runtime.workbench.rendering.AbstractRenderer;
 
 @SuppressWarnings("restriction")
 public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> extends AbstractRenderer<M, W> {

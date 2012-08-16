@@ -54,7 +54,7 @@ import at.bestsolution.efxclipse.runtime.dialogs.Dialog;
 import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog;
 import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog.QuestionCancel;
 import at.bestsolution.efxclipse.runtime.panels.FillLayoutPane;
-import at.bestsolution.efxclipse.runtime.workbench.internal.key.KeyBindingDispatcher;
+import at.bestsolution.efxclipse.runtime.workbench.fx.key.KeyBindingDispatcher;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseWindowRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;

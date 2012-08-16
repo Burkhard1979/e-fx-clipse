@@ -19,9 +19,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 import org.eclipse.emf.ecore.EObject;
 
-import at.bestsolution.efxclipse.runtime.workbench.rendering.AbstractRenderer;
-import at.bestsolution.efxclipse.runtime.workbench.rendering.RendererFactory;
-
+import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.base.rendering.RendererFactory;
 
 @SuppressWarnings("restriction")
 public abstract class BaseWorkbenchRendererFactory implements RendererFactory {

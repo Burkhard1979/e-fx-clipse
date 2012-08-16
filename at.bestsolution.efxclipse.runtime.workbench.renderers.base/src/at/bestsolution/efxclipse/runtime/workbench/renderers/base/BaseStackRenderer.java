@@ -19,12 +19,12 @@ import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.base.rendering.RendererFactory;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.WStackItem;
-import at.bestsolution.efxclipse.runtime.workbench.rendering.AbstractRenderer;
-import at.bestsolution.efxclipse.runtime.workbench.rendering.RendererFactory;
 
 @SuppressWarnings("restriction")
 public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStack, WStack<N, I, IC>> {
