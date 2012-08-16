@@ -6,7 +6,6 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: at.bestsolution.efxclipse.testcases.e4.Activator
 Require-Bundle: javax.inject;bundle-version="1.0.0",
  at.bestsolution.efxclipse.runtime.application,
- at.bestsolution.efxclipse.runtime.workbench,
  org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
  org.eclipse.e4.core.services;bundle-version="1.0.0",
  org.eclipse.e4.core.di;bundle-version="1.1.0",
