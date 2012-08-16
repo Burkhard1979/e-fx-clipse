@@ -95,8 +95,7 @@ component SupplementaryTab controlledby at.bestsolution.efxclipse.tooling.modele
 		Label {
 			text : "Tags",
 			static columnIndex : 0,
-			static rowIndex : 3,
-			onAction : controllermethod onTagAdd
+			static rowIndex : 3
 		},
 		TextField id tagsField {
 			static columnIndex : 1,
@@ -105,7 +104,8 @@ component SupplementaryTab controlledby at.bestsolution.efxclipse.tooling.modele
 		Button {
 			text : "Add",
 			static columnIndex : 2,
-			static rowIndex : 3
+			static rowIndex : 3,
+			onAction : controllermethod onTagAdd
 		},
 		ListView id tagsList {
 			static columnIndex : 1,
