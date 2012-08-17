@@ -10,7 +10,7 @@
 
 	<taskdef name="builder" classpath="${efx.distojar}" classname="at.bestsolution.releng.distrobuilder.ant.DistroBuilderTaskDef" />
 
-	<target name="publish" depends="publish-p2, build-distros, publish-distros">
+	<target name="publish" depends="publish-p2, build-distros, svg-standalone, publish-distros">
 		<echo>Publishing done</echo>
 	</target>
 
@@ -29,7 +29,7 @@
 		</scp-->
 	</target>
 
-	<target name="publish-distros">
+	<target name="publish-distros" depends="build-distros">
 		<echo>Publishing distros</echo>
 		<exec command="rsync -acz --delete /tmp/efx-build/dist ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/downloads/nightly" />
 		<!--sshexec host="${efx.update.scp.name}" username="${efx.update.host.user}" command="rm -rf ${efx.update.host.htdocs}/downloads/nightly/*" keyfile="/var/lib/jenkins/.ssh/id_dsa"/>
@@ -40,8 +40,54 @@
 			</fileset>
 		</scp-->
 	</target>
+	
+	<target name="svg-standalone" depends="build-distros">
+		<delete dir="/tmp/efx-build/svgrepack"/>
+		
+		<mkdir dir="/tmp/efx-build/svgrepack"/>
+		<mkdir dir="/tmp/efx-build/svgrepack/tmp"/>
+		
+		<gunzip dest="/tmp/efx-build/svgrepack" src="/tmp/efx-build/dist/eclipse-SDK-3.7.2-linux-gtk-efx-${efx.version}.tar.gz"/>
+		<untar dest="/tmp/efx-build/svgrepack" src="/tmp/efx-build/svgrepack/eclipse-SDK-3.7.2-linux-gtk-efx-${efx.version}.tar" />
+		<unjar dest="/tmp/efx-build/svgrepack/tmp">
+			<fileset dir="/tmp/efx-build/svgrepack/eclipse/plugins">
+				<include name="org.eclipse.emf.ecore_*.jar"/>
+				<include name="org.eclipse.emf.common_*.jar"/>
+				<include name="org.eclipse.xtext.xbase.lib_*.jar"/>
+				<include name="com.google.guava_*.jar"/>
+				<include name="at.bestsolution.efxclipse.formats.svg_*.jar"/>
+			</fileset>
+		</unjar>
+		<delete dir="/tmp/efx-build/svgrepack/tmp/META-INF" />
+		<delete dir="/tmp/efx-build/svgrepack/tmp/OSGI-INF" />
+		<delete dir="/tmp/efx-build/svgrepack/tmp/model" />
+		<delete dir="/tmp/efx-build/svgrepack/tmp/about_files" />
+		<delete dir="/tmp/efx-build/svgrepack/tmp/schema" />
+		
+		<delete file="/tmp/efx-build/svgrepack/tmp/about.html" />
+		<delete file="/tmp/efx-build/svgrepack/tmp/about.ini" />
+		<delete file="/tmp/efx-build/svgrepack/tmp/about.mappings" />
+		<delete file="/tmp/efx-build/svgrepack/tmp/about.properties" />	
+		<delete file="/tmp/efx-build/svgrepack/tmp/plugin.xml" />
+		<delete file="/tmp/efx-build/svgrepack/tmp/plugin.properties" />
+		<delete file="/tmp/efx-build/svgrepack/tmp/modeling32.png" />
+		
+		<jar destfile="/tmp/efx-build/dist/svg2fxml-${efx.version}.jar">
+			<manifest>
+				<attribute name="Main-Class" value="at.bestsolution.efxclipse.formats.svg.SVGToFXML"/>
+				<attribute name="Implementation-Title" value="Svg To FXML Converter"/>
+				<attribute name="Implementation-Vendor" value="BestSolution.at"/>
+				<attribute name="Implementation-Vendor-Id" value="at.bestsolution"/>
+				<attribute name="Implementation-Version" value="${efx.version}"/>
+			</manifest>
+			<fileset dir="/tmp/efx-build/svgrepack/tmp/">
+				<include name="**/*"/>
+			</fileset>
+		</jar>
+		
+	</target>
 
-	<target name="build-distros" description="Build distros">
+	<target name="build-distros" depends="publish-p2" description="Build distros">
 		<echo>Building distros</echo>
 		<builder builddirectory="/tmp/efx-build" p2directorexecutable="/var/lib/jenkins/efx-build/builder/eclipse" targetdirectory="/var/lib/jenkins/efx-build/targets" staticreposdirectory="/var/lib/jenkins/efx-build/repos" distdirectory="/tmp/efx-build/dist" version="${efx.version}">
 

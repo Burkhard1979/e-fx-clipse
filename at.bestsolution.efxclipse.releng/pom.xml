@@ -33,8 +33,15 @@
 		<module>../at.bestsolution.efxclipse.runtime.panels</module>
 		<module>../at.bestsolution.efxclipse.runtime.services</module>
 		<module>../at.bestsolution.efxclipse.runtime.theme</module>
+		<!-- Remove in 0.1.2 -->
 		<module>../at.bestsolution.efxclipse.runtime.workbench</module>
 		<module>../at.bestsolution.efxclipse.runtime.workbench.renderers</module>
+		
+		<module>../at.bestsolution.efxclipse.runtime.workbench.base</module>
+		<module>../at.bestsolution.efxclipse.runtime.workbench.fx</module>
+		<module>../at.bestsolution.efxclipse.runtime.workbench.renderers.base</module>
+		<module>../at.bestsolution.efxclipse.runtime.workbench.renderers.fx</module>
+		
 		<module>../at.bestsolution.efxclipse.runtime.workbench3</module>
 		<module>../at.bestsolution.efxclipse.runtime.bindings</module>
 		<module>../at.bestsolution.efxclipse.runtime.bindings.e4</module>

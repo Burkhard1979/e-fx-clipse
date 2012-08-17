@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="at.bestsolution.efxclipse.testcases.e4" id="at.bestsolution.efxclipse.testcases.e4.product" application="at.bestsolution.efxclipse.runtime.workbench.application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="at.bestsolution.efxclipse.testcases.e4" id="at.bestsolution.efxclipse.testcases.e4.product" application="at.bestsolution.efxclipse.runtime.workbench.fx.application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -27,8 +27,10 @@
       <plugin id="at.bestsolution.efxclipse.runtime.panels"/>
       <plugin id="at.bestsolution.efxclipse.runtime.services"/>
       <plugin id="at.bestsolution.efxclipse.runtime.theme"/>
-      <plugin id="at.bestsolution.efxclipse.runtime.workbench"/>
-      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.base"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.fx"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.base"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.fx"/>
       <plugin id="at.bestsolution.efxclipse.testcases.e4"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="javafx.osgi"/>
