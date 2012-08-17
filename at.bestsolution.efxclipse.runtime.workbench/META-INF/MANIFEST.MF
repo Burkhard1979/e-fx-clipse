@@ -54,7 +54,5 @@ Import-Package: javafx.animation;version="2.0.0",
  javax.inject;version="1.0.0"
 Bundle-Activator: at.bestsolution.efxclipse.runtime.workbench.internal.WorkbenchJFXActivator
 Bundle-ActivationPolicy: lazy
-Export-Package: at.bestsolution.efxclipse.runtime.workbench,
- at.bestsolution.efxclipse.runtime.workbench.internal.key;x-internal:=true,
- at.bestsolution.efxclipse.runtime.workbench.rendering
+Export-Package: at.bestsolution.efxclipse.runtime.workbench
 Service-Component: OSGI-INF/keylookup.xml
