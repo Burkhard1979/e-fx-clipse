@@ -1,5 +1,6 @@
 package at.bestsolution.efxclipse.runtime.examples.xtend;
 
+import at.bestsolution.efxclipse.runtime.examples.xtend.FXBuilder;
 import java.io.PrintStream;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -12,28 +13,32 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class MyWithApplication extends Application {
+public class MyStaticBuilderApplication extends Application {
+  private FXBuilder b = new Function0<FXBuilder>() {
+    public FXBuilder apply() {
+      FXBuilder _fXBuilder = new FXBuilder();
+      return _fXBuilder;
+    }
+  }.apply();
+  
   private PrintStream out = System.out;
   
   public void start(final Stage primaryStage) throws Exception {
-    HBox _hBox = new HBox();
     final Procedure1<HBox> _function = new Procedure1<HBox>() {
         public void apply(final HBox it) {
           ObservableList<Node> _children = it.getChildren();
-          TextField _textField = new TextField();
           final Procedure1<TextField> _function = new Procedure1<TextField>() {
               public void apply(final TextField it) {
                 it.setId("helloField");
               }
             };
-          TextField _doubleArrow = ObjectExtensions.<TextField>operator_doubleArrow(_textField, _function);
-          _children.add(_doubleArrow);
+          TextField _FxTextfield = MyStaticBuilderApplication.this.b.FxTextfield(it, _function);
+          _children.add(_FxTextfield);
           ObservableList<Node> _children_1 = it.getChildren();
-          Button _button = new Button();
           final Procedure1<Button> _function_1 = new Procedure1<Button>() {
               public void apply(final Button it) {
                 it.setText("Say hello");
@@ -44,7 +49,7 @@ public class MyWithApplication extends Application {
                       Node _lookup = _root.lookup("#helloField");
                       final TextField f = ((TextField) _lookup);
                       String _text = f.getText();
-                      MyWithApplication.this.out.println(_text);
+                      MyStaticBuilderApplication.this.out.println(_text);
                     }
                   };
                 it.setOnAction(new EventHandler<ActionEvent>() {
@@ -54,11 +59,11 @@ public class MyWithApplication extends Application {
                 });
               }
             };
-          Button _doubleArrow_1 = ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
-          _children_1.add(_doubleArrow_1);
+          Button _FxButton = MyStaticBuilderApplication.this.b.FxButton(it, _function_1);
+          _children_1.add(_FxButton);
         }
       };
-    final HBox p = ObjectExtensions.<HBox>operator_doubleArrow(_hBox, _function);
+    final HBox p = this.b.FxHBox(null, _function);
     Scene _scene = new Scene(p);
     primaryStage.setScene(_scene);
     primaryStage.setWidth(300);
