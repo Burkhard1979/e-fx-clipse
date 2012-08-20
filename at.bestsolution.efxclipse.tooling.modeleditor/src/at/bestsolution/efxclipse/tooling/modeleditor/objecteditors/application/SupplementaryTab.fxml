@@ -63,9 +63,9 @@
 			</Button>
 		</GridLayoutPane>
 	</AnchorPane>
-	<Label text="Tags" onAction="#onTagAdd" GridPane.columnIndex="0" GridPane.rowIndex="3"/> 
+	<Label text="Tags" GridPane.columnIndex="0" GridPane.rowIndex="3"/> 
 	<TextField fx:id="tagsField" GridPane.columnIndex="1" GridPane.rowIndex="3"/> 
-	<Button text="Add" GridPane.columnIndex="2" GridPane.rowIndex="3"/> 
+	<Button text="Add" onAction="#onTagAdd" GridPane.columnIndex="2" GridPane.rowIndex="3"/> 
 	<ListView fx:id="tagsList" GridPane.columnIndex="1" GridPane.rowIndex="4"/> 
 	<AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="4"> 
 		<GridLayoutPane AnchorPane.bottomAnchor="1.0"> 

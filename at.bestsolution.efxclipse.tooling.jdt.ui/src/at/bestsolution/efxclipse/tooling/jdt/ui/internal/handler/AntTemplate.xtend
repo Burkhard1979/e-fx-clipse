@@ -65,11 +65,16 @@ class AntTemplate {
 		val sdkAntPath = properties.get("jfxantjar") as String;
 		'''
 		<target name="init-fx-tasks">
-			<property name="javafx.tools.ant.jar" value="«sdkAntPath»"/>
-			
+			<path id="fxant">
+				<filelist>
+					<file name="«sdkAntPath»"/>
+					<file name="${java.home}\..\lib\ant-javafx.jar"/>
+				</filelist>
+			</path>
+		
 			<taskdef resource="com/sun/javafx/tools/ant/antlib.xml"      
 				uri="javafx:com.sun.javafx.tools.ant"
-				classpath="${javafx.tools.ant.jar}"/>
+				classpathref="fxant"/>
 		</target>
 		'''
 	}
