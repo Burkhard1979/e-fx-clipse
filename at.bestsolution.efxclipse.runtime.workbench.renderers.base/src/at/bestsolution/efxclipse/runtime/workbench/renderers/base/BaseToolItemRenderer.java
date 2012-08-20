@@ -4,15 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.e4.core.commands.ECommandService;
 import org.eclipse.e4.core.commands.EHandlerService;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.core.contexts.RunAndTrack;
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.core.services.contributions.IContributionFactory;
+import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.internal.workbench.ContributionsAnalyzer;
 import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.commands.MParameter;
@@ -24,8 +26,10 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
 
 @SuppressWarnings("restriction")
-public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WToolItem<N>> {
-
+public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WToolItem<N>> implements ToolElementEnabledCheck<MToolItem> {
+	@Inject
+	UISynchronize sync;
+	
 	@Override
 	protected void initWidget(final MToolItem element, final WToolItem<N> widget) {
 		super.initWidget(element, widget);
@@ -38,16 +42,22 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 				executeAction(element,modelContext.getActiveLeaf());
 			}
 		});
-		
-		final IEclipseContext parentContext = getContextForParent(element); 
-		parentContext.runAndTrack(new RunAndTrack() {
+	}
+	
+	@Override
+	public void checkEnablement(final MToolItem toolbarElement) {
+		@SuppressWarnings("unchecked")
+		final WToolItem<N> widget = (WToolItem<N>) toolbarElement.getWidget();
+
+		// can we call canExecute in the none ui thread????
+		sync.syncExec(new Runnable() {
 			
 			@Override
-			public boolean changed(IEclipseContext context) {
-				canExecute(element, widget, parentContext.getActiveLeaf());
-				return true;
+			public void run() {
+				widget.setHandled(canExecute(toolbarElement, getRenderingContext(toolbarElement)));
 			}
 		});
+		
 	}
 	
 	private ParameterizedCommand generateParameterizedCommand(
@@ -67,7 +77,7 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 		return cmd;
 	}
 	
-	protected void canExecute(MToolItem item, WToolItem<N> widget, IEclipseContext context) {
+	protected boolean canExecute(MToolItem item, IEclipseContext context) {
 		if( item instanceof MContribution ) {
 			MContribution contribution = (MContribution) item;
 			Object object = getContributionObject(context, contribution);
@@ -76,10 +86,12 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 			try {
 				ContributionsAnalyzer.populateModelInterfaces(item, runContext, item.getClass().getInterfaces());
 				runContext.set(MItem.class.getName(), item);
-				widget.setHandled(Boolean.TRUE.equals(ContextInjectionFactory.invoke(object, CanExecute.class, context, Boolean.TRUE)));
+				return Boolean.TRUE.equals(ContextInjectionFactory.invoke(object, CanExecute.class, context, Boolean.TRUE));
 			} finally {
 				runContext.dispose();
 			}
+		} else {
+			return true;
 		}
 	}
 	
