@@ -36,11 +36,11 @@ public class JavaFXPreferencesConstants {
 	public static final boolean isJDKBuiltin() {
 		Version v = new Version(System.getProperty("java.version").replaceFirst("_", "."));
 		if( Platform.getOS().equals(Constants.OS_LINUX) ) {
-			return false;
+			return v.getMinor() > 7 || (v.getMinor() >= 7 && (v.getMicro() == 0 && parseQualifier(v.getQualifier()) >= 6) || v.getMicro() > 0);
 		} else if( Platform.getOS().equals(Constants.OS_MACOSX) ) {
-			return v.getMinor() >= 7 && v.getMicro() >= 0;
+			return v.getMinor() > 7 || (v.getMinor() >= 7 && v.getMicro() >= 0);
 		} else if( Platform.getOS().equals(Constants.OS_WIN32) ) {
-			return v.getMinor() >= 7 && (v.getMicro() == 0 && parseQualifier(v.getQualifier()) >= 6) || v.getMicro() > 0;
+			return v.getMinor() > 7 || (v.getMinor() >= 7 && (v.getMicro() == 0 && parseQualifier(v.getQualifier()) >= 6) || v.getMicro() > 0);
 		}
 		return false;
 	}
