@@ -97,6 +97,9 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 		if( item instanceof MContribution ) {
 			MContribution contribution = (MContribution) item;
 			Object object = getContributionObject(context, contribution);
+			if( object == null ) {
+				return false;
+			}
 			
 			IEclipseContext runContext = context.createChild("DI-ToolItem");
 			try {
@@ -138,6 +141,9 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 		if( item instanceof MContribution ) {
 			MContribution contribution = (MContribution) item;
 			Object object = getContributionObject(context, contribution);
+			if( object == null ) {
+				return;
+			}
 			
 			IEclipseContext runContext = context.createChild("DI-ToolItem");
 			try {
@@ -172,6 +178,11 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 	private Object getContributionObject(IEclipseContext context, MContribution contribution) {
 		Object rv = contribution.getObject();
 		if( rv == null ) {
+			if( contribution.getContributionURI() == null ) {
+				System.err.println("No contribution uri defined");
+				return null;
+			}
+			
 			IContributionFactory cf = (IContributionFactory) context.get(IContributionFactory.class.getName());
 			rv = cf.create(contribution.getContributionURI(), context);
 			contribution.setObject(rv);
