@@ -29,10 +29,10 @@
     <trimBars xmi:id="_A7Q9o-L-EeGP-5z69KadAQ">
       <children xsi:type="menu:ToolBar" xmi:id="_A7Q9pOL-EeGP-5z69KadAQ" elementId="org.efxclipse.e4.maintoolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_fbkNAORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.0" label="Push - HI 0" command="_FEZr8OUcEeGP-5z69KadAQ"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_gbQvcORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.1" label="Check - HI 1" type="Check"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_suBhkORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.2" label="Radio - HI 2" type="Radio"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_3aRo4ORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.3" label="Radio - HI 3" type="Radio"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_88IH4ORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.4" label="Split - HI 4">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_gbQvcORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.1" label="Check - HI 1" selected="true" type="Check" command="_3PQSEOqiEeGrz8mV_3Gr5A"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_suBhkORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.2" label="Radio - HI 2" type="Radio" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_3aRo4ORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.3" label="Radio - HI 3" type="Radio" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_88IH4ORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.4" label="Split - HI 4" command="_FEZr8OUcEeGP-5z69KadAQ">
           <menu xmi:id="_WI3gUORdEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.0">
             <children xsi:type="menu:HandledMenuItem" xmi:id="_9EluEORdEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 1"/>
             <children xsi:type="menu:HandledMenuItem" xmi:id="_Eei-MOReEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 2"/>
@@ -49,6 +49,7 @@
     </trimBars>
   </children>
   <handlers xmi:id="_H2FJYOUcEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handler.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.Handler0" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+  <handlers xmi:id="_0_q1EOqiEeGrz8mV_3Gr5A" elementId="at.bestsolution.efxclipse.testcases.e4.handler.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.Handler1" command="_3PQSEOqiEeGrz8mV_3Gr5A"/>
   <bindingTables xmi:id="_A7QWm-L-EeGP-5z69KadAQ" bindingContext="_A7QWkeL-EeGP-5z69KadAQ">
     <bindings xmi:id="_XqO-oOUcEeGP-5z69KadAQ" keySequence="CTRL+I" command="_FEZr8OUcEeGP-5z69KadAQ"/>
   </bindingTables>
@@ -57,6 +58,7 @@
     <children xmi:id="_A7QWk-L-EeGP-5z69KadAQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
   <commands xmi:id="_FEZr8OUcEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.command.0" commandName="CMD 0"/>
+  <commands xmi:id="_3PQSEOqiEeGrz8mV_3Gr5A" elementId="at.bestsolution.efxclipse.testcases.e4.command.1" commandName="CMD 1"/>
   <addons xmi:id="_A7QWlOL-EeGP-5z69KadAQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_A7QWleL-EeGP-5z69KadAQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_A7QWluL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.runtime.bindings.e4.service" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon"/>
