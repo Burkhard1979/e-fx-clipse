@@ -8,12 +8,14 @@ import javafx.scene.control.ButtonBase;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.ToggleButton;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.ui.model.application.ui.menu.ItemType;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
+import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemRenderer;
@@ -44,9 +46,21 @@ public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 		}
 		
 		@Override
+		protected void bindProperties(ButtonBase widget) {
+			super.bindProperties(widget);
+			if( widget instanceof CheckBox ) {
+				bindProperty(UIEvents.Item.SELECTED, ((CheckBox) widget).selectedProperty());
+			} else if( widget instanceof ToggleButton ) {
+				bindProperty(UIEvents.Item.SELECTED, ((ToggleButton) widget).selectedProperty());
+			}
+		}
+		
+		@Override
 		public void setHandled(boolean handled) {
-			this.handled = handled;
-			updateEnabledState();
+			if( this.handled != handled ) {
+				this.handled = handled;
+				updateEnabledState();	
+			}
 		}
 		
 		private void updateEnabledState() {
@@ -56,6 +70,28 @@ public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 		@Inject
 		public void setLabel(@Named(ATTRIBUTE_localizedLabel)String label) {
 			getWidget().setText(label);
+		}
+		
+		@Inject
+		public void setEnabled(@Named(UIEvents.Item.ENABLED) boolean enabled) {
+			this.enabled = enabled;
+			updateEnabledState();
+		}
+		
+		@Inject
+		public void setSelected(@Named(UIEvents.Item.SELECTED) boolean selected) {
+			if( getWidget() instanceof CheckBox ) {
+				CheckBox b = (CheckBox) getWidget();
+				if( b.isSelected() != selected ) {
+					b.setSelected(selected);
+				}
+				
+			} else if( getWidget() instanceof ToggleButton ) {
+				RadioButton b = (RadioButton) getWidget();
+				if( b.isSelected() != selected ) {
+					b.setSelected(selected);
+				}
+			}
 		}
 		
 		public void setOnActionCallback(Runnable onActionCallback) {

@@ -54,7 +54,13 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 			
 			@Override
 			public void run() {
-				widget.setHandled(canExecute(toolbarElement, getRenderingContext(toolbarElement)));
+				try {
+					widget.setHandled(canExecute(toolbarElement, getRenderingContext(toolbarElement)));	
+				} catch(Throwable t) {
+					//TODO Log it
+					t.printStackTrace();
+				}
+				
 			}
 		});
 		
@@ -62,6 +68,16 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 	
 	private ParameterizedCommand generateParameterizedCommand(
 			final MHandledItem item, final IEclipseContext lclContext) {
+		if( item.getCommand() == null ) {
+			System.err.println("No command assigned to " + item);
+			return null;
+		}
+		
+		if( item.getCommand().getElementId() == null || item.getCommand().getElementId().trim().isEmpty() ) {
+			System.err.println("No command id assigned to " + item.getCommand().getElementId());
+			return null;
+		}
+		
 		ECommandService cmdService = (ECommandService) lclContext
 				.get(ECommandService.class.getName());
 		Map<String, Object> parameters = null;
@@ -90,9 +106,32 @@ public abstract class BaseToolItemRenderer<N> extends BaseRenderer<MToolItem, WT
 			} finally {
 				runContext.dispose();
 			}
-		} else {
-			return true;
+		} else if( item instanceof MHandledItem ) {
+			MHandledItem handledItem = (MHandledItem) item;
+			EHandlerService service = (EHandlerService) context.get(EHandlerService.class.getName());
+			if( service == null ) {
+				return false;
+			}
+			
+			ParameterizedCommand cmd = handledItem.getWbCommand();
+			if (cmd == null) {
+				cmd = generateParameterizedCommand(handledItem, context);
+				handledItem.setWbCommand(cmd);
+			}
+			if (cmd == null) {
+				return false;
+			}
+			
+			final IEclipseContext runContext = context.createChild("HI-ToolItem");
+			try {
+				ContributionsAnalyzer.populateModelInterfaces(item,runContext, item.getClass().getInterfaces());
+				return service.canExecute(cmd, runContext);
+			} finally {
+				runContext.dispose();				
+			}
 		}
+		
+		return false;
 	}
 	
 	protected void executeAction(MToolItem item, IEclipseContext context) {
