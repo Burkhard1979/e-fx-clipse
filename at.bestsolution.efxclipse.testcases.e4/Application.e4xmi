@@ -35,7 +35,7 @@
         <children xsi:type="menu:HandledToolItem" xmi:id="_88IH4ORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.4" label="Split - HI 4" command="_FEZr8OUcEeGP-5z69KadAQ">
           <menu xmi:id="_WI3gUORdEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.0">
             <children xsi:type="menu:HandledMenuItem" xmi:id="_9EluEORdEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 1" command="_FEZr8OUcEeGP-5z69KadAQ"/>
-            <children xsi:type="menu:HandledMenuItem" xmi:id="_Eei-MOReEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 2" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+            <children xsi:type="menu:HandledMenuItem" xmi:id="_Eei-MOReEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 2"/>
           </menu>
         </children>
       </children>
