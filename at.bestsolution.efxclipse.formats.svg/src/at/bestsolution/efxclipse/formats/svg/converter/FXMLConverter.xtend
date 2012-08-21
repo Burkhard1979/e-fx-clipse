@@ -16,9 +16,6 @@ import at.bestsolution.efxclipse.formats.svg.svg.SvgRectElement
 import at.bestsolution.efxclipse.formats.svg.svg.SvgStopElement
 import at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement
 import at.bestsolution.efxclipse.formats.svg.svg.XLinkAttributes
-import javafx.scene.paint.CycleMethod
-import javafx.scene.shape.StrokeLineCap
-import javafx.scene.shape.StrokeLineJoin
 import org.eclipse.emf.ecore.EObject
 import at.bestsolution.efxclipse.formats.svg.svg.SvgEllipseElement
 import at.bestsolution.efxclipse.formats.svg.svg.SvgCircleElement
@@ -959,41 +956,41 @@ class FXMLConverter {
 		
 	}
 	
-	def CycleMethod toFx(SpreadMethod m) {
+	def String toFx(SpreadMethod m) {
 		switch(m) {
 			case SpreadMethod::PAD:
-				return CycleMethod::NO_CYCLE
+				return "NO_CYCLE"
 			case SpreadMethod::REFLECT:
-				return CycleMethod::REFLECT
+				return "REFLECT"
 			case SpreadMethod::REPEAT:
-				return CycleMethod::REPEAT
+				return "REPEAT"
 		}
 		
-		return CycleMethod::NO_CYCLE;
+		return "NO_CYCLE";
 	}
 	
-	def StrokeLineCap toFx(Stroke_linecap m) {
+	def String toFx(Stroke_linecap m) {
 		switch(m) {
 			case Stroke_linecap::BUTT:
-				return StrokeLineCap::BUTT
+				return "BUTT"
 			case Stroke_linecap::ROUND:
-				return StrokeLineCap::ROUND
+				return "ROUND"
 			case Stroke_linecap::SQUARE:
-				return StrokeLineCap::SQUARE
+				return "SQUARE"
 		}
-		return StrokeLineCap::BUTT;
+		return "BUTT";
 	}
 	
-	def StrokeLineJoin toFx(Stroke_linejoin m) {
+	def String toFx(Stroke_linejoin m) {
 		switch(m) {
 			case Stroke_linejoin::BEVEL:
-				return StrokeLineJoin::BEVEL
+				return "BEVEL"
 			case Stroke_linejoin::MITER:
-				return StrokeLineJoin::MITER
+				return "MITER"
 			case Stroke_linejoin::ROUND:
-				return StrokeLineJoin::ROUND
+				return "ROUND"
 		}
-		return StrokeLineJoin::BEVEL;
+		return "BEVEL";
 	}
 	
 	def parseLength(String length) {
