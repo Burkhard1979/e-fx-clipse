@@ -34,39 +34,79 @@ public class ControlPanel {
 		
 		{
 			TitledPane pane = new TitledPane();
-			pane.setText("Part - to be rendered");
+			pane.setText("Part");
 			
-			HBox hbox = new HBox(10);
+			VBox vbox = new VBox();
 			
-			final ComboBox<MPart> dd = new ComboBox<>();
-			dd.setCellFactory(new Callback<ListView<MPart>, ListCell<MPart>>() {
+			{
+				HBox hbox = new HBox(10);
 				
-				@Override
-				public ListCell<MPart> call(ListView<MPart> param) {
-					return new ListCell<MPart>() {
-						@Override
-						protected void updateItem(MPart item, boolean empty) {
-							super.updateItem(item, empty);
-							if( item != null ) {
-								setText(item.getLocalizedLabel());
+				final ComboBox<MPart> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MPart>, ListCell<MPart>>() {
+					
+					@Override
+					public ListCell<MPart> call(ListView<MPart> param) {
+						return new ListCell<MPart>() {
+							@Override
+							protected void updateItem(MPart item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getLocalizedLabel());
+								}
 							}
-						}
-					};
-				}
-			});
-			dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MPart.class, null)));
-			hbox.getChildren().add(dd);
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MPart.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Toggle Rendering");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MPart part = dd.getSelectionModel().getSelectedItem();
+						part.setToBeRendered(!part.isToBeRendered());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
 			
-			Button b = new Button("Toggle");
-			b.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
-					MPart part = dd.getSelectionModel().getSelectedItem();
-					part.setToBeRendered(!part.isToBeRendered());
-				}
-			});
-			hbox.getChildren().add(b);
-			pane.setContent(hbox);
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MPart> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MPart>, ListCell<MPart>>() {
+					
+					@Override
+					public ListCell<MPart> call(ListView<MPart> param) {
+						return new ListCell<MPart>() {
+							@Override
+							protected void updateItem(MPart item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getLocalizedLabel());
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MPart.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Toggle Visibile");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MPart part = dd.getSelectionModel().getSelectedItem();
+						part.setVisible(!part.isVisible());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			pane.setContent(vbox);
 			box.getChildren().add(pane);
 		}
 		

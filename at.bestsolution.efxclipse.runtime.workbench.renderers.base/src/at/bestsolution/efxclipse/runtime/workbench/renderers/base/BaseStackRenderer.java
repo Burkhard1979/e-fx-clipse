@@ -81,6 +81,29 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 				}
 			}
 		});
+		eventBroker.subscribe(UIEvents.UIElement.TOPIC_VISIBLE, new EventHandler() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+				if( changedObj.isToBeRendered() ) {
+					MUIElement parent = changedObj.getParent();
+					if( BaseStackRenderer.this == parent.getRenderer() ) {
+						MPartStack stack = (MPartStack) parent;
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+						if (UIEvents.EventTypes.SET.equals(eventType)) {
+							Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							if( newValue.booleanValue() ) {
+								//TODO Is childRendered not dangerous to call here??
+								childRendered(stack, changedObj);
+							} else {
+								hideChild(stack, changedObj);
+							}
+						}
+					}
+				}
+			}
+		});
 	}
 
 	@Override
@@ -134,7 +157,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 		for (MStackElement e : element.getChildren()) {
 			// Precreate the rendering context for the subitem
 			AbstractRenderer<MStackElement, ?> renderer = factory.getRenderer(e);
-			if (renderer != null && e.isToBeRendered() ) {
+			if (renderer != null && e.isToBeRendered() && e.isVisible() ) {
 				WStackItem<I, IC> item = createStackItem(stack, e, renderer);
 				items.add(item);
 
@@ -253,7 +276,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 	
 	@Override
 	public void childRendered(MPartStack parentElement, MUIElement element) {
-		if( inLazyInit || isInContentProcessing() ) {
+		if( inLazyInit || isInContentProcessing() || ! element.isVisible() ) {
 			return;
 		}
 
