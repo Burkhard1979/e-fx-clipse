@@ -89,8 +89,7 @@ public class DefToolItemMenuRenderer extends BaseMenuRenderer<ToolItemMenu> {
 
 		@Override
 		public void setShowingCallback(Runnable showingCallback) {
-			// TODO Auto-generated method stub
-			
+			this.showingCallback = showingCallback;
 		}
 	}
 	
