@@ -93,6 +93,8 @@ public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 				Image img = resourceUtilities.imageDescriptorFromURI(URI.createURI(uri));
 				if( img != null ) {
 					getWidget().setGraphic(new ImageView(img));
+				} else {
+					getWidget().setGraphic(null);
 				}
 			}
 		}

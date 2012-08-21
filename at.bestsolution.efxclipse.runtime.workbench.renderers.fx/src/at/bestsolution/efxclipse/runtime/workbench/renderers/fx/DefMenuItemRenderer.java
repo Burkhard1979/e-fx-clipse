@@ -7,13 +7,17 @@ import javafx.event.EventHandler;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.ui.model.application.ui.menu.ItemType;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
+import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
+import org.eclipse.emf.common.util.URI;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuItemRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuItem;
@@ -32,6 +36,9 @@ public class DefMenuItemRenderer extends BaseMenuItemRenderer<MenuItem> {
 		private Runnable runnable;
 		private boolean handled = true;
 		private boolean enabled = true;
+		
+		@Inject
+		IResourceUtilities<Image> resourceUtilities;
 		
 		@Inject
 		public MenuItemImpl(@Named("type") ItemType type) {
@@ -115,6 +122,20 @@ public class DefMenuItemRenderer extends BaseMenuItemRenderer<MenuItem> {
 		public void setEnabled(@Named(UIEvents.Item.ENABLED) boolean enabled) {
 			this.enabled = enabled;
 			updateEnabledState();
+		}
+		
+		@Inject
+		public void setIconURI(@Named(UIEvents.UILabel.ICONURI) String uri) {
+			if( uri == null ) {
+				getWidget().setGraphic(null);
+			} else {
+				Image img = resourceUtilities.imageDescriptorFromURI(URI.createURI(uri));
+				if( img != null ) {
+					getWidget().setGraphic(new ImageView(img));
+				} else {
+					getWidget().setGraphic(null);
+				}
+			}
 		}
 
 		@Override
