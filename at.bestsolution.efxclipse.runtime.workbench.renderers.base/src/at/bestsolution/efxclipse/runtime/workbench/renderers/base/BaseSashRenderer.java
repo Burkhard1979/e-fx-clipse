@@ -4,16 +4,97 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
+import org.eclipse.e4.ui.workbench.UIEvents;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.workbench.base.rendering.RendererFactory;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WSash;
 
 @SuppressWarnings("restriction")
 public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContainer, WSash<N>> {
+	@Inject
+	RendererFactory factory;
+	
+	@PostConstruct
+	void init(IEventBroker eventBroker) {
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN, new EventHandler() {
 
+			@Override
+			public void handleEvent(Event event) {
+				Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+				if (changedObj instanceof MPartSashContainer) {
+					MPartSashContainer parent = (MPartSashContainer) changedObj;
+					if (BaseSashRenderer.this == parent.getRenderer()) {
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+						MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+
+						if (element instanceof MPartSashContainerElement) {
+							if (UIEvents.EventTypes.ADD.equals(eventType)) {
+								handleChildAddition(parent, (MPartSashContainerElement) element);
+							} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
+								handleChildRemove(parent, (MPartSashContainerElement) element);
+							} else {
+								handleChildMove(parent, (MPartSashContainerElement) element);
+							}
+						} else {
+							System.err.println("ERROR: " + element);
+						}
+					}
+				}
+			}
+		});
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_SELECTEDELEMENT, new EventHandler() {
+
+			@Override
+			public void handleEvent(Event event) {
+				Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+				if (changedObj instanceof MPartSashContainer) {
+					MPartSashContainer parent = (MPartSashContainer) changedObj;
+					if (BaseSashRenderer.this == parent.getRenderer()) {
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+						if (UIEvents.EventTypes.SET.equals(eventType)) {
+							MUIElement newValue = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							MUIElement oldValue = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
+							handleSelectedElement(parent, (MPartSashContainerElement) oldValue, (MPartSashContainerElement) newValue);
+						}
+					}
+				}
+			}
+		});
+		eventBroker.subscribe(UIEvents.UIElement.TOPIC_VISIBLE, new EventHandler() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+				if( changedObj.isToBeRendered() ) {
+					MUIElement parent = changedObj.getParent();
+					if( BaseSashRenderer.this == parent.getRenderer() ) {
+						MPartSashContainer stack = (MPartSashContainer) parent;
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+						if (UIEvents.EventTypes.SET.equals(eventType)) {
+							Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							if( newValue.booleanValue() ) {
+								//TODO Is childRendered not dangerous to call here??
+								childRendered(stack, changedObj);
+							} else {
+								hideChild(stack, changedObj);
+							}
+						}
+					}
+				}
+			}
+		});
+	}
+	
 	@Override
 	public void doProcessContent(MPartSashContainer element) {
 		WSash<N> sash = getWidget(element);
@@ -43,7 +124,7 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 		if( ! layoutData.isEmpty() && layoutData.size() > 1 ) {
 			double[] deviders = new double[layoutData.size()-1];
 			for( int i = 0; i < layoutData.size() - 1; i++ ) {
-				deviders[i] = layoutData.get(i) / total;
+				deviders[i] = (i == 0 ? 0 : deviders[i-1]) + (layoutData.get(i) / total);
 			}
 			
 			sash.setSplits(deviders);			
@@ -86,7 +167,7 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 		if( ! layoutData.isEmpty() && layoutData.size() > 1 ) {
 			double[] deviders = new double[layoutData.size()-1];
 			for( int i = 0; i < layoutData.size() - 1; i++ ) {
-				deviders[i] = layoutData.get(i) / total;
+				deviders[i] = (i == 0 ? 0 : deviders[i-1]) + (layoutData.get(i) / total);
 			}
 			
 			sash.setSplits(deviders);			
@@ -106,5 +187,23 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 		if( widget != null ) {
 			sash.removeItem(widget);
 		}
+	}
+	
+	void handleChildAddition(MPartSashContainer parent, MPartSashContainerElement element) {
+		if( element.isToBeRendered() && element.isVisible() ) {
+			engineCreateWidget(element);
+		}
+	}
+
+	void handleChildRemove(MPartSashContainer parent, MPartSashContainerElement element) {
+		// TODO Implement
+	}
+
+	void handleChildMove(MPartSashContainer parent, MPartSashContainerElement element) {
+		// TODO Implement
+	}
+	
+	void handleSelectedElement(MPartSashContainer parent, MPartSashContainerElement oldElement, MPartSashContainerElement newElement) {
+		// TODO Implement (is this needed the SWT renderes don't care about this!)
 	}
 }
