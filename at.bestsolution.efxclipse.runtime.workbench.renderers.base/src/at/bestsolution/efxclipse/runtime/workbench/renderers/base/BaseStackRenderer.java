@@ -219,13 +219,13 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 
 	void handleChildAddition(MPartStack parent, MStackElement element) {
 		if( element.isToBeRendered() && element.isVisible() ) {
-			int idx = parent.getChildren().indexOf(element);
+			int idx = getRenderedIndex(parent, element);
 
 			AbstractRenderer<MStackElement, ?> renderer = factory.getRenderer(element);
 			WStack<N, I, IC> stack = getWidget(parent);
 			WStackItem<I, IC> item = createStackItem(getWidget(parent), element, renderer);
 
-			if (parent.getChildren().size() - 1 == idx) {
+			if (stack.getItemCount() - 1 == idx) {
 				stack.addItems(Collections.singletonList(item));
 			} else {
 				stack.addItems(idx, Collections.singletonList(item));
