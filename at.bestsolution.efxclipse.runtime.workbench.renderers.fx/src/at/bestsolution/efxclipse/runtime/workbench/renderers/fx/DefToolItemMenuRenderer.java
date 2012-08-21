@@ -15,8 +15,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.emf.ecore.EObject;
 
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuElement;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
@@ -24,7 +24,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.ToolItemM
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMenu> {
+public class DefToolItemMenuRenderer extends BaseMenuRenderer<ToolItemMenu> {
 
 	@Override
 	protected Class<? extends WMenu<ToolItemMenu>> getWidgetClass() {

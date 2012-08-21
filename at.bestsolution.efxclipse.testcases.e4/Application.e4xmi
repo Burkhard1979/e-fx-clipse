@@ -14,15 +14,15 @@
     </children>
     <mainMenu xmi:id="_W8hHoORZEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.0">
       <children xsi:type="menu:Menu" xmi:id="_Xwuy0ORZEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.1" label="M1">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_f6s64ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="Push - HI 0"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_lb8V4ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.1" label="Check - HI 1" type="Check"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_pBaAsORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.2" label="Radio - HI 2" type="Radio"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_rnWvQORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.3" label="Radio - HI 3" type="Radio"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_f6s64ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="Push - HI 0" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_lb8V4ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.1" label="Check - HI 1" type="Check" command="_3PQSEOqiEeGrz8mV_3Gr5A"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_pBaAsORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.2" label="Radio - HI 2" type="Radio" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_rnWvQORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.3" label="Radio - HI 3" type="Radio" command="_FEZr8OUcEeGP-5z69KadAQ"/>
         <children xsi:type="menu:Menu" xmi:id="_yWJigORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.2" label="M1-1">
-          <children xsi:type="menu:DirectMenuItem" xmi:id="_1-PqkORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.0" label="Push - DI 0"/>
-          <children xsi:type="menu:DirectMenuItem" xmi:id="_4k8nEORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.1" label="Check - DI 1" type="Check"/>
-          <children xsi:type="menu:DirectMenuItem" xmi:id="_7Pm2gORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.2" label="Radio - DI 2" type="Radio"/>
-          <children xsi:type="menu:DirectMenuItem" xmi:id="_-21b4ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.3" label="Radio - DI 3" type="Radio"/>
+          <children xsi:type="menu:DirectMenuItem" xmi:id="_1-PqkORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.0" label="Push - DI 0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler"/>
+          <children xsi:type="menu:DirectMenuItem" xmi:id="_4k8nEORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.1" label="Check - DI 1" type="Check" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler"/>
+          <children xsi:type="menu:DirectMenuItem" xmi:id="_7Pm2gORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.2" label="Radio - DI 2" type="Radio" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler"/>
+          <children xsi:type="menu:DirectMenuItem" xmi:id="_-21b4ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.3" label="Radio - DI 3" type="Radio" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler"/>
         </children>
       </children>
     </mainMenu>
@@ -34,8 +34,8 @@
         <children xsi:type="menu:HandledToolItem" xmi:id="_3aRo4ORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.3" label="Radio - HI 3" type="Radio" command="_FEZr8OUcEeGP-5z69KadAQ"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_88IH4ORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.4" label="Split - HI 4" command="_FEZr8OUcEeGP-5z69KadAQ">
           <menu xmi:id="_WI3gUORdEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.0">
-            <children xsi:type="menu:HandledMenuItem" xmi:id="_9EluEORdEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 1"/>
-            <children xsi:type="menu:HandledMenuItem" xmi:id="_Eei-MOReEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 2"/>
+            <children xsi:type="menu:HandledMenuItem" xmi:id="_9EluEORdEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 1" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+            <children xsi:type="menu:HandledMenuItem" xmi:id="_Eei-MOReEeGcrYrtitkVHQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.0" label="ToolItem Menu 2" command="_FEZr8OUcEeGP-5z69KadAQ"/>
           </menu>
         </children>
       </children>
