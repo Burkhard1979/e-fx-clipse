@@ -182,6 +182,42 @@ public class ControlPanel {
 				vbox.getChildren().add(hbox);
 			}
 			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MElementContainer> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MElementContainer>, ListCell<MElementContainer>>() {
+					
+					@Override
+					public ListCell<MElementContainer> call(ListView<MElementContainer> param) {
+						return new ListCell<MElementContainer>() {
+							@Override
+							protected void updateItem(MElementContainer item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getClass().getSimpleName());	
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MElementContainer.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Move last Part");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MElementContainer container = dd.getSelectionModel().getSelectedItem();
+						Object o = container.getChildren().remove(container.getChildren().size()-1);
+						container.getChildren().add(container.getChildren().size()-1, o);
+						System.err.println(container.getChildren());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
 			pane.setContent(vbox);
 			box.getChildren().add(pane);
 		}

@@ -42,9 +42,6 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 						} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
 							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
 							handleChildRemove(parent, (MPartSashContainerElement) element);
-						} else {
-							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-							handleChildMove(parent, (MPartSashContainerElement) element);
 						}
 					}
 				}
@@ -190,7 +187,11 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 
 	void handleChildAddition(MPartSashContainer parent, MPartSashContainerElement element) {
 		if (element.isToBeRendered() && element.isVisible()) {
-			engineCreateWidget(element);
+			if( element.getWidget() == null ) {
+				engineCreateWidget(element);	
+			} else {
+				childRendered(parent, element);
+			}
 		}
 	}
 

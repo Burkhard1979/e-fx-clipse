@@ -53,9 +53,6 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 						} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
 							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
 							handleChildRemove(parent, (MStackElement) element);
-						} else {
-							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-							handleChildMove(parent, (MStackElement) element);
 						}
 					}
 				}
@@ -223,11 +220,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			WStack<N, I, IC> stack = getWidget(parent);
 			WStackItem<I, IC> item = createStackItem(getWidget(parent), element, renderer);
 
-			if (stack.getItemCount() - 1 == idx) {
-				stack.addItems(Collections.singletonList(item));
-			} else {
-				stack.addItems(idx, Collections.singletonList(item));
-			}	
+			stack.addItems(idx, Collections.singletonList(item));
 		}
 	}
 
