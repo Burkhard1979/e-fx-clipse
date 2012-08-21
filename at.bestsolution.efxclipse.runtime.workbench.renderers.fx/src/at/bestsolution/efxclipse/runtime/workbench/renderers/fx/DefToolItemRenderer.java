@@ -9,13 +9,17 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.ui.model.application.ui.menu.ItemType;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
+import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
+import org.eclipse.emf.common.util.URI;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemRenderer;
@@ -38,6 +42,9 @@ public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 		
 		private boolean handled = true;
 		private boolean enabled = true;
+		
+		@Inject
+		IResourceUtilities<Image> resourceUtilities;
 		
 		@Inject
 		public ToolItemImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MToolItem domElement) {
@@ -76,6 +83,18 @@ public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 		public void setEnabled(@Named(UIEvents.Item.ENABLED) boolean enabled) {
 			this.enabled = enabled;
 			updateEnabledState();
+		}
+		
+		@Inject
+		public void setIconURI(@Named(UIEvents.UILabel.ICONURI) String uri) {
+			if( uri == null ) {
+				getWidget().setGraphic(null);
+			} else {
+				Image img = resourceUtilities.imageDescriptorFromURI(URI.createURI(uri));
+				if( img != null ) {
+					getWidget().setGraphic(new ImageView(img));
+				}
+			}
 		}
 		
 		@Inject
