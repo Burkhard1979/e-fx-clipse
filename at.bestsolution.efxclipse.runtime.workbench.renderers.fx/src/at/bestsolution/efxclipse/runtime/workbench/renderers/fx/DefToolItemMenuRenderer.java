@@ -2,6 +2,8 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 
@@ -31,6 +33,7 @@ public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMe
 
 	static class WMenuImpl extends WWidgetImpl<ToolItemMenu, MMenu> implements WMenu<ToolItemMenu> {
 		private SplitMenuButton button;
+		Runnable showingCallback;
 		
 		@Inject
 		public WMenuImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MMenu domElement) {
@@ -38,6 +41,15 @@ public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMe
 			@SuppressWarnings("unchecked")
 			WToolItem<SplitMenuButton> w = (WToolItem<SplitMenuButton>) item.getWidget();
 			this.button = (SplitMenuButton) w.getWidget();
+			this.button.showingProperty().addListener(new ChangeListener<Boolean>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+					if( showingCallback != null && newValue.booleanValue() ) {
+						showingCallback.run();
+					}
+				}
+			});
 		}
 		
 		@Override
@@ -73,6 +85,12 @@ public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMe
 		@Override
 		public void addElement(WMenuElement<MMenuElement> widget) {
 			getWidget().getItems().add((MenuItem) widget.getWidget());
+		}
+
+		@Override
+		public void setShowingCallback(Runnable showingCallback) {
+			// TODO Auto-generated method stub
+			
 		}
 	}
 	

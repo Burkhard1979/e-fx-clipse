@@ -12,6 +12,28 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuEl
 public abstract class BaseMenuRenderer<N> extends BaseRenderer<MMenu, WMenu<N>> {
 
 	@Override
+	protected void initWidget(final MMenu element, WMenu<N> widget) {
+		super.initWidget(element, widget);
+		widget.setShowingCallback(new Runnable() {
+
+			@Override
+			public void run() {
+				handleShowing(element);
+			}
+		});
+	}
+	
+	void handleShowing(MMenu element) {
+		for( MMenuElement e : element.getChildren() ) {
+			if( e.getRenderer() instanceof BaseItemRenderer) {
+				@SuppressWarnings("unchecked")
+				BaseItemRenderer<MMenuElement, ?> r = (BaseItemRenderer<MMenuElement, ?>) e.getRenderer();
+				r.checkEnablement(e);
+			}
+		}
+	}
+	
+	@Override
 	public void doProcessContent(MMenu element) {
 		// TODO Should we do this creation lazy????
 		WMenu<N> menu = getWidget(element);

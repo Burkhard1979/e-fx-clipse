@@ -23,9 +23,9 @@ public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToo
 				while( true ) {
 					synchronized (widgets) {
 						for( MToolBarElement e : widgets ) {
-							if( e.getRenderer() instanceof ToolElementEnabledCheck<?> ) {
+							if( e.getRenderer() instanceof BaseItemRenderer<?,?> ) {
 								final MToolBarElement tmp = e;
-								final ToolElementEnabledCheck<MToolBarElement> r = (ToolElementEnabledCheck<MToolBarElement>) tmp.getRenderer();
+								final BaseItemRenderer<MToolBarElement,?> r = (BaseItemRenderer<MToolBarElement,?>) tmp.getRenderer();
 								r.checkEnablement(tmp);
 							}
 						}
