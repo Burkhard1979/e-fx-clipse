@@ -1,5 +1,6 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -54,6 +55,9 @@ import at.bestsolution.efxclipse.runtime.dialogs.Dialog;
 import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog;
 import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog.QuestionCancel;
 import at.bestsolution.efxclipse.runtime.panels.FillLayoutPane;
+import at.bestsolution.efxclipse.runtime.services.theme.Theme;
+import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
+import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager.Registration;
 import at.bestsolution.efxclipse.runtime.workbench.fx.key.KeyBindingDispatcher;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseWindowRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
@@ -111,11 +115,23 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		private KeyBindingDispatcher dispatcher;
 		
 		@Inject
+		@Optional
+		ThemeManager themeManager;
+
+		private Registration sceneRegistration;
+		
+		@Inject
 		public WWindowImpl(@Named("fx.scene.3d") @Optional Boolean support3d, KeyBindingDispatcher dispatcher) {
 			this.support3d = support3d != null && support3d.booleanValue();
 			this.dispatcher = dispatcher;
 		}
 
+		@Override
+		protected void doCleanup() {
+			super.doCleanup();
+			sceneRegistration.dispose();
+		}
+		
 		@Override
 		protected Stage createWidget() {
 			Stage stage = new Stage();
@@ -201,6 +217,19 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 					}
 				}
 			});
+			
+			if (themeManager != null) {
+				Theme theme = themeManager.getCurrentTheme();
+				if (theme != null) {
+					List<String> sUrls = new ArrayList<String>();
+					for (URL url : theme.getStylesheetURL()) {
+						sUrls.add(url.toExternalForm());
+					}
+
+					s.getStylesheets().addAll(sUrls);
+				}
+				sceneRegistration = themeManager.registerScene(s);
+			}
 			
 			stage.setScene(s);
 
