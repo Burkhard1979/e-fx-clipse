@@ -160,7 +160,6 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 				protected void layoutChildren() {
 					super.layoutChildren();
 					if (windowResizeButton != null) {
-						System.err.println("layouting");
 						windowResizeButton.autosize();
 						
 						windowResizeButton.setLayoutX(getWidth() - windowResizeButton.getLayoutBounds().getWidth());
