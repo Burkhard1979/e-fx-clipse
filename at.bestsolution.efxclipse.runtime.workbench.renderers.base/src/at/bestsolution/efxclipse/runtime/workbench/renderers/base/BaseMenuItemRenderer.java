@@ -9,7 +9,6 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuItem;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
 
 @SuppressWarnings("restriction")
 public abstract class BaseMenuItemRenderer<N> extends BaseItemRenderer<MMenuItem, WMenuItem<N>> {
