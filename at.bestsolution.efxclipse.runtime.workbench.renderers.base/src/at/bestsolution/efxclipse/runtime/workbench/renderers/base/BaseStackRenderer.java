@@ -230,10 +230,6 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 		}
 	}
 
-	void handleChildMove(MPartStack parent, MStackElement element) {
-		// TODO Implement
-	}
-
 	void handleSelectedElement(MPartStack parent, MStackElement oldElement, MStackElement newElement) {
 		WStack<N, I, IC> stack = getWidget(parent);
 		int idx = 0;

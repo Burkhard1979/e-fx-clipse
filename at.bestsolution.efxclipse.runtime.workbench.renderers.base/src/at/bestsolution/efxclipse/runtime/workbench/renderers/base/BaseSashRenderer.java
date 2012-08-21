@@ -201,10 +201,6 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 		}
 	}
 
-	void handleChildMove(MPartSashContainer parent, MPartSashContainerElement element) {
-		// TODO Implement
-	}
-
 	void handleSelectedElement(MPartSashContainer parent, MPartSashContainerElement oldElement, MPartSashContainerElement newElement) {
 		// TODO Implement (is this needed the SWT renderes don't care about
 		// this!)
