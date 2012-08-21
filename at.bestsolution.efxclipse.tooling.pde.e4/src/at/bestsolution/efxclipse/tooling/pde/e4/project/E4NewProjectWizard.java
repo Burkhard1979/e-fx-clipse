@@ -153,9 +153,26 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 				protected void adjustManifests(IProgressMonitor monitor, IProject project, IPluginBase bundle) throws CoreException {
 					super.adjustManifests(monitor, project, bundle);
 					IPluginBase pluginBase = model.getPluginBase();
-					String[] dependencyId = new String[] { "javax.inject", "at.bestsolution.efxclipse.runtime.application", "at.bestsolution.efxclipse.runtime.workbench", "org.eclipse.e4.ui.model.workbench", "org.eclipse.e4.core.services", "org.eclipse.e4.core.di", "org.eclipse.e4.ui.di",
-							"org.eclipse.e4.core.di.extensions", "at.bestsolution.efxclipse.runtime.theme", "at.bestsolution.efxclipse.runtime.di", "org.eclipse.e4.core.contexts", "at.bestsolution.efxclipse.runtime.databinding", "org.eclipse.core.databinding",
-							"org.eclipse.core.databinding.observable", "org.eclipse.core.databinding.property", "org.eclipse.e4.ui.workbench", "org.eclipse.equinox.common", "org.eclipse.e4.ui.services" };
+					String[] dependencyId = new String[] { 
+							"javax.inject", 
+							"at.bestsolution.efxclipse.runtime.application", 
+							"at.bestsolution.efxclipse.runtime.workbench.fx",
+							"org.eclipse.e4.ui.model.workbench", 
+							"org.eclipse.e4.core.services", 
+							"org.eclipse.e4.core.di", 
+							"org.eclipse.e4.ui.di",
+							"org.eclipse.e4.core.di.extensions", 
+							"at.bestsolution.efxclipse.runtime.theme", 
+							"at.bestsolution.efxclipse.runtime.di", 
+							"org.eclipse.e4.core.contexts", 
+							"at.bestsolution.efxclipse.runtime.databinding", 
+							"org.eclipse.core.databinding",
+							"org.eclipse.core.databinding.observable", 
+							"org.eclipse.core.databinding.property", 
+							"org.eclipse.e4.ui.workbench", 
+							"org.eclipse.equinox.common", 
+							"org.eclipse.e4.ui.services" 
+						};
 					for (String id : dependencyId) {
 						Bundle dependency = Platform.getBundle(id);
 
