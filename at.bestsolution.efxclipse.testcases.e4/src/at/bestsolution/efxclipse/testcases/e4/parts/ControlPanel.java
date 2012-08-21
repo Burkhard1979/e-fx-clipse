@@ -24,7 +24,6 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicFactoryImpl;
-import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
@@ -143,6 +142,40 @@ public class ControlPanel {
 						p.setLabel("New Part");
 						p.setContributionURI("bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel");
 						container.getChildren().add(p);
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MElementContainer> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MElementContainer>, ListCell<MElementContainer>>() {
+					
+					@Override
+					public ListCell<MElementContainer> call(ListView<MElementContainer> param) {
+						return new ListCell<MElementContainer>() {
+							@Override
+							protected void updateItem(MElementContainer item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getClass().getSimpleName());	
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MElementContainer.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Remove last Part");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MElementContainer container = dd.getSelectionModel().getSelectedItem();
+						container.getChildren().remove(container.getChildren().size()-1);
 					}
 				});
 				hbox.getChildren().add(b);

@@ -45,19 +45,17 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 				if (changedObj instanceof MPartStack) {
 					MPartStack parent = (MPartStack) changedObj;
 					if (BaseStackRenderer.this == parent.getRenderer()) {
-						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
-						MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-
-						if (element instanceof MStackElement) {
-							if (UIEvents.EventTypes.ADD.equals(eventType)) {
-								handleChildAddition(parent, (MStackElement) element);
-							} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
-								handleChildRemove(parent, (MStackElement) element);
-							} else {
-								handleChildMove(parent, (MStackElement) element);
-							}
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE); 
+						
+						if (UIEvents.EventTypes.ADD.equals(eventType)) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							handleChildAddition(parent, (MStackElement) element);
+						} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
+							handleChildRemove(parent, (MStackElement) element);
 						} else {
-							System.err.println("ERROR: " + element);
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							handleChildMove(parent, (MStackElement) element);
 						}
 					}
 				}
@@ -234,7 +232,9 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 	}
 
 	void handleChildRemove(MPartStack parent, MStackElement element) {
-		// TODO Implement
+		if( element.isToBeRendered() && element.isVisible() ) {
+			hideChild(parent, element);
+		}
 	}
 
 	void handleChildMove(MPartStack parent, MStackElement element) {

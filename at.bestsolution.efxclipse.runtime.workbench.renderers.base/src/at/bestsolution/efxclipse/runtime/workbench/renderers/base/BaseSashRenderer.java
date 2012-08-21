@@ -23,7 +23,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WSash;
 public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContainer, WSash<N>> {
 	@Inject
 	RendererFactory factory;
-	
+
 	@PostConstruct
 	void init(IEventBroker eventBroker) {
 		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN, new EventHandler() {
@@ -35,18 +35,16 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 					MPartSashContainer parent = (MPartSashContainer) changedObj;
 					if (BaseSashRenderer.this == parent.getRenderer()) {
 						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
-						MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-
-						if (element instanceof MPartSashContainerElement) {
-							if (UIEvents.EventTypes.ADD.equals(eventType)) {
-								handleChildAddition(parent, (MPartSashContainerElement) element);
-							} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
-								handleChildRemove(parent, (MPartSashContainerElement) element);
-							} else {
-								handleChildMove(parent, (MPartSashContainerElement) element);
-							}
+						
+						if (UIEvents.EventTypes.ADD.equals(eventType)) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							handleChildAddition(parent, (MPartSashContainerElement) element);
+						} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
+							handleChildRemove(parent, (MPartSashContainerElement) element);
 						} else {
-							System.err.println("ERROR: " + element);
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							handleChildMove(parent, (MPartSashContainerElement) element);
 						}
 					}
 				}
@@ -71,19 +69,20 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 			}
 		});
 		eventBroker.subscribe(UIEvents.UIElement.TOPIC_VISIBLE, new EventHandler() {
-			
+
 			@Override
 			public void handleEvent(Event event) {
 				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
-				if( changedObj.isToBeRendered() ) {
+				if (changedObj.isToBeRendered()) {
 					MUIElement parent = changedObj.getParent();
-					if( BaseSashRenderer.this == parent.getRenderer() ) {
+					if (BaseSashRenderer.this == parent.getRenderer()) {
 						MPartSashContainer stack = (MPartSashContainer) parent;
 						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
 						if (UIEvents.EventTypes.SET.equals(eventType)) {
 							Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-							if( newValue.booleanValue() ) {
-								//TODO Is childRendered not dangerous to call here??
+							if (newValue.booleanValue()) {
+								// TODO Is childRendered not dangerous to call
+								// here??
 								childRendered(stack, changedObj);
 							} else {
 								hideChild(stack, changedObj);
@@ -94,22 +93,22 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 			}
 		});
 	}
-	
+
 	@Override
 	public void doProcessContent(MPartSashContainer element) {
 		WSash<N> sash = getWidget(element);
-		
+
 		List<Double> layoutData = new ArrayList<Double>();
 		double total = 0;
-		
-		for( MPartSashContainerElement e : element.getChildren() ) {
+
+		for (MPartSashContainerElement e : element.getChildren()) {
 			WLayoutedWidget<MPartSashContainerElement> widget = engineCreateWidget(e);
-			if( widget != null ) {
+			if (widget != null) {
 				sash.addItem(widget);
 				double v;
-				if( e.getContainerData() != null ) {
+				if (e.getContainerData() != null) {
 					v = Double.parseDouble(e.getContainerData());
-					if( v > 0.9 ) {
+					if (v > 0.9) {
 						// Calc back to a potential percentage
 						v = v / Math.pow(10, e.getContainerData().length());
 					}
@@ -120,32 +119,32 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 				total += v;
 			}
 		}
-		
-		if( ! layoutData.isEmpty() && layoutData.size() > 1 ) {
-			double[] deviders = new double[layoutData.size()-1];
-			for( int i = 0; i < layoutData.size() - 1; i++ ) {
-				deviders[i] = (i == 0 ? 0 : deviders[i-1]) + (layoutData.get(i) / total);
+
+		if (!layoutData.isEmpty() && layoutData.size() > 1) {
+			double[] deviders = new double[layoutData.size() - 1];
+			for (int i = 0; i < layoutData.size() - 1; i++) {
+				deviders[i] = (i == 0 ? 0 : deviders[i - 1]) + (layoutData.get(i) / total);
 			}
-			
-			sash.setSplits(deviders);			
+
+			sash.setSplits(deviders);
 		}
 	}
 
 	@Override
 	public void childRendered(MPartSashContainer parentElement, MUIElement element) {
-		if( isInContentProcessing() ) {
+		if (isInContentProcessing()) {
 			return;
 		}
-		
+
 		List<Double> layoutData = new ArrayList<Double>();
 		double total = 0;
-		
-		for( MPartSashContainerElement e : parentElement.getChildren() ) {
+
+		for (MPartSashContainerElement e : parentElement.getChildren()) {
 			double v;
-			if( e.isToBeRendered() ) {
-				if( e.getContainerData() != null ) {
+			if (e.isToBeRendered()) {
+				if (e.getContainerData() != null) {
 					v = Double.parseDouble(e.getContainerData());
-					if( v > 0.9 ) {
+					if (v > 0.9) {
 						// Calc back to a potential percentage
 						v = v / Math.pow(10, e.getContainerData().length());
 					}
@@ -156,54 +155,57 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 				total += v;
 			}
 		}
-		
+
 		int idx = getRenderedIndex(parentElement, element);
 		WSash<N> sash = getWidget(parentElement);
-		
+
 		@SuppressWarnings("unchecked")
-		List<WLayoutedWidget<MPartSashContainerElement>> l = Collections.singletonList((WLayoutedWidget<MPartSashContainerElement>)element.getWidget());
-		sash.addItems(idx,l);
-		
-		if( ! layoutData.isEmpty() && layoutData.size() > 1 ) {
-			double[] deviders = new double[layoutData.size()-1];
-			for( int i = 0; i < layoutData.size() - 1; i++ ) {
-				deviders[i] = (i == 0 ? 0 : deviders[i-1]) + (layoutData.get(i) / total);
+		List<WLayoutedWidget<MPartSashContainerElement>> l = Collections.singletonList((WLayoutedWidget<MPartSashContainerElement>) element.getWidget());
+		sash.addItems(idx, l);
+
+		if (!layoutData.isEmpty() && layoutData.size() > 1) {
+			double[] deviders = new double[layoutData.size() - 1];
+			for (int i = 0; i < layoutData.size() - 1; i++) {
+				deviders[i] = (i == 0 ? 0 : deviders[i - 1]) + (layoutData.get(i) / total);
 			}
-			
-			sash.setSplits(deviders);			
+
+			sash.setSplits(deviders);
 		}
 	}
 
 	@Override
 	public void hideChild(MPartSashContainer container, MUIElement changedObj) {
 		WSash<N> sash = getWidget(container);
-		
-		if( sash == null ) {
+
+		if (sash == null) {
 			return;
 		}
-		
+
 		@SuppressWarnings("unchecked")
 		WLayoutedWidget<MPartSashContainerElement> widget = (WLayoutedWidget<MPartSashContainerElement>) changedObj.getWidget();
-		if( widget != null ) {
+		if (widget != null) {
 			sash.removeItem(widget);
 		}
 	}
-	
+
 	void handleChildAddition(MPartSashContainer parent, MPartSashContainerElement element) {
-		if( element.isToBeRendered() && element.isVisible() ) {
+		if (element.isToBeRendered() && element.isVisible()) {
 			engineCreateWidget(element);
 		}
 	}
 
 	void handleChildRemove(MPartSashContainer parent, MPartSashContainerElement element) {
-		// TODO Implement
+		if (element.isToBeRendered() && element.isVisible() && element.getWidget() != null) {
+			hideChild(parent, element);
+		}
 	}
 
 	void handleChildMove(MPartSashContainer parent, MPartSashContainerElement element) {
 		// TODO Implement
 	}
-	
+
 	void handleSelectedElement(MPartSashContainer parent, MPartSashContainerElement oldElement, MPartSashContainerElement newElement) {
-		// TODO Implement (is this needed the SWT renderes don't care about this!)
+		// TODO Implement (is this needed the SWT renderes don't care about
+		// this!)
 	}
 }
