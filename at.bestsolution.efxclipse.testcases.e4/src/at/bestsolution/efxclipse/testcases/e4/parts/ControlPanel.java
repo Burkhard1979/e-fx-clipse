@@ -19,15 +19,19 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicFactoryImpl;
+import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
 @SuppressWarnings("restriction")
 public class ControlPanel {
 	
+	@SuppressWarnings("rawtypes")
 	@Inject
 	public ControlPanel(BorderPane p, final MApplication application, final MWindow window, @Optional final MPerspective perspective, final EPartService partService, final EModelService modelService) {
 		VBox box = new VBox();
@@ -100,6 +104,45 @@ public class ControlPanel {
 					public void handle(ActionEvent event) {
 						MPart part = dd.getSelectionModel().getSelectedItem();
 						part.setVisible(!part.isVisible());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MElementContainer> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MElementContainer>, ListCell<MElementContainer>>() {
+					
+					@Override
+					public ListCell<MElementContainer> call(ListView<MElementContainer> param) {
+						return new ListCell<MElementContainer>() {
+							@Override
+							protected void updateItem(MElementContainer item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getClass().getSimpleName());	
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MElementContainer.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Add new Part");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@SuppressWarnings("unchecked")
+					@Override
+					public void handle(ActionEvent event) {
+						MElementContainer container = dd.getSelectionModel().getSelectedItem();
+						
+						MPart p = BasicFactoryImpl.eINSTANCE.createPart();
+						p.setLabel("New Part");
+						p.setContributionURI("bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel");
+						container.getChildren().add(p);
 					}
 				});
 				hbox.getChildren().add(b);
