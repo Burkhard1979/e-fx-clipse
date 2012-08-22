@@ -67,6 +67,11 @@ public class MinMaxTabPaneSkin extends FXTabPaneSkin {
 	class MaxButton extends Group {
 		public MaxButton() {
 			{
+				Rectangle r = new Rectangle(12,12,Color.TRANSPARENT);
+				getChildren().add(r);	
+			}
+			
+			{
 				Rectangle r = new Rectangle(10,2,Color.WHITE);
 				r.setStroke(Color.BLACK);
 				r.setStrokeWidth(0.5);
@@ -94,6 +99,11 @@ public class MinMaxTabPaneSkin extends FXTabPaneSkin {
 	class MinButton extends Group {
 		public MinButton() {
 			{
+				Rectangle r = new Rectangle(12,12,Color.TRANSPARENT);
+				getChildren().add(r);	
+			}
+			
+			{
 				Rectangle r = new Rectangle(10,2,Color.WHITE);
 				r.setStroke(Color.BLACK);
 				r.setStrokeWidth(0.5);
@@ -112,6 +122,10 @@ public class MinMaxTabPaneSkin extends FXTabPaneSkin {
 	
 	class RestoreButton extends Group {
 		public RestoreButton() {
+			{
+				Rectangle r = new Rectangle(12,12,Color.TRANSPARENT);
+				getChildren().add(r);	
+			}
 			{
 				Rectangle r = new Rectangle(8,2,Color.BLACK);
 				r.setStroke(Color.BLACK);
