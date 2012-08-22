@@ -480,7 +480,7 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 //			MCommand aboutCommand = createCommand("org.eclipse.ui.help.aboutAction", "aboutCommand", "AboutHandler", "M1+A", pluginName, fragment, application);
 
 			MTrimmedWindow mainWindow = MBasicFactory.INSTANCE.createTrimmedWindow();
-			mainWindow.getPersistedState().put("fx.stage.decoration", "platform:/plugin/at.bestsolution.efxclipse.testcases.e4/at/bestsolution/efxclipse/testcases/e4/decoration/TopArea.fxml");
+			mainWindow.getPersistedState().put("fx.stage.decoration", "platform:/plugin/"+pluginName+"/at/bestsolution/efxclipse/testcases/e4/decoration/TopArea.fxml");
 			application.getChildren().add(mainWindow);
 			{
 				mainWindow.setLabel(pluginName);
