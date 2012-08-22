@@ -471,7 +471,7 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			resource.getContents().add((EObject) application);
 
 			MCommand openCommand = createCommand("media.open", "openMedia", "OpenHandler", "M1+O", pluginName, fragment, application);
-			MCommand refreshCommand = createCommand("media.refresh", "refreshMedia", "RefreshHandler", "M1+O", pluginName, fragment, application);
+			MCommand refreshCommand = createCommand("media.refresh", "refreshMedia", "RefreshHandler", "M1+R", pluginName, fragment, application);
 
 ////			MCommand openCommand = createCommand(pluginName + ".open", "openCommand", "OpenHandler", "M1+O", pluginName, fragment, application);
 ////
