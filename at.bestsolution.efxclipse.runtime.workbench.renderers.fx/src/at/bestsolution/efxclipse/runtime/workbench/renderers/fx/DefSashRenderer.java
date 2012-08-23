@@ -1,7 +1,6 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javafx.scene.Node;
@@ -77,7 +76,6 @@ public class DefSashRenderer extends BaseSashRenderer<SplitPane> {
 
 		@Override
 		public void setSplits(double... splits) {
-			System.err.println(Arrays.toString(splits));
 			getWidget().setDividerPositions(splits);
 		}
 	}

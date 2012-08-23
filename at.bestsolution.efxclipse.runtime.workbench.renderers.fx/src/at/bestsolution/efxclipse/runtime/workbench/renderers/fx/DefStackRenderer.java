@@ -18,6 +18,7 @@ import javax.inject.Named;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
+import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTab;
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane;
@@ -256,6 +257,11 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		@Inject
 		public void setLabel(@Named(ATTRIBUTE_localizedLabel)String label) {
 			getWidget().setText(label);
+		}
+		
+		@Inject
+		public void setCloseable(@Named(UIEvents.Part.CLOSEABLE) boolean closeable) {
+			getWidget().setClosable(closeable);
 		}
 		
 		@Override

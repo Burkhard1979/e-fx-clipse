@@ -12,7 +12,6 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePartRender
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseSashRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolBarRenderer;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseTrimBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseWindowRenderer;
@@ -82,7 +81,7 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	}
 	
 	@Override
-	protected Class<? extends BaseToolItemMenuRenderer<?>> getToolItemMenuRendererClass() {
+	protected Class<? extends BaseMenuRenderer<?>> getToolItemMenuRendererClass() {
 		return DefToolItemMenuRenderer.class;
 	}
 }

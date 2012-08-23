@@ -37,7 +37,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BaseMenuRenderer<?> menuRenderer;
 	private BaseMenuItemRenderer<?> menuItemRenderer;
 	private BaseMenuSeparatorRenderer<?> menuSeperatorRenderer;
-	private BaseToolItemMenuRenderer<?> toolItemMenuRenderer;
+	private BaseMenuRenderer<?> toolItemMenuRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -126,5 +126,5 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BaseMenuRenderer<?>> getMenuRendererClass();
 	protected abstract Class<? extends BaseMenuItemRenderer<?>> getMenuItemRendererClass();
 	protected abstract Class<? extends BaseMenuSeparatorRenderer<?>> getMenuSeparatorRendererClass();
-	protected abstract Class<? extends BaseToolItemMenuRenderer<?>> getToolItemMenuRendererClass();
+	protected abstract Class<? extends BaseMenuRenderer<?>> getToolItemMenuRendererClass();
 }

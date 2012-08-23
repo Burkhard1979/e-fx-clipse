@@ -18,6 +18,7 @@ import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.service.event.Event;
@@ -184,10 +185,6 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 	
 	private void unbindWidget(M me, W widget) {
 		widget.setDomElement(null);
-//		widget.removeStyleClasses(me.getTags());
-//		if( me.getElementId() != null ) {
-//			widget.setStyleId(me.getElementId());
-//		}
 		me.setWidget(null);
 	}
 	
@@ -195,6 +192,14 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 	public void bindWidget(M me, W widget) {
 		widget.setDomElement(me);
 		widget.addStyleClasses(me.getTags());
+		
+		EObject eo = (EObject) me;
+		widget.addStyleClasses("M" + eo.eClass().getName());
+		
+		for( EClass e : eo.eClass().getEAllSuperTypes() ) {
+			widget.addStyleClasses("M" + e.getName());
+		}
+		
 		if( me.getElementId() != null ) {
 			widget.setStyleId(me.getElementId());
 		}

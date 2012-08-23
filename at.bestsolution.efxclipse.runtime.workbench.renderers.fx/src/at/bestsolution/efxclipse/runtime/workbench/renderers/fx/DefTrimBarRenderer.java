@@ -1,39 +1,34 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import javafx.scene.Node;
+import javafx.scene.layout.HBox;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimElement;
 
-import at.bestsolution.efxclipse.runtime.panels.GridData;
-import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseTrimBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WTrimBar;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefTrimBarRenderer extends BaseTrimBarRenderer<GridLayoutPane> {
+public class DefTrimBarRenderer extends BaseTrimBarRenderer<HBox> {
 
 	@Override
-	protected Class<? extends WTrimBar<GridLayoutPane>> getWidgetClass() {
+	protected Class<? extends WTrimBar<HBox>> getWidgetClass() {
 		return WTrimBarImpl.class;
 	}
 
-	public static class WTrimBarImpl extends WLayoutedWidgetImpl<GridLayoutPane, GridLayoutPane, MTrimBar> implements WTrimBar<GridLayoutPane> {
+	public static class WTrimBarImpl extends WLayoutedWidgetImpl<HBox, HBox, MTrimBar> implements WTrimBar<HBox> {
 
 		@Override
-		protected GridLayoutPane createWidget() {
-			GridLayoutPane box = new GridLayoutPane();
-			box.setHorizontalSpacing(0);
-			box.setMarginWidth(0);
-			box.setMarginHeight(0);
-			box.setStyle("-fx-background-color: red");
+		protected HBox createWidget() {
+			HBox box = new HBox();
 			return box;
 		}
 
 		@Override
-		protected GridLayoutPane getWidgetNode() {
+		protected HBox getWidgetNode() {
 			return getWidget();
 		}
 		
@@ -41,7 +36,6 @@ public class DefTrimBarRenderer extends BaseTrimBarRenderer<GridLayoutPane> {
 		public void addChild(WLayoutedWidget<MTrimElement> trimElementWidget) {
 			Node n = (Node) trimElementWidget.getStaticLayoutNode();
 			getWidget().getChildren().add(n);
-			GridLayoutPane.setConstraint(n, new GridData(GridData.FILL_BOTH));
 		}
 	}
 }

@@ -2,13 +2,15 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
@@ -28,13 +30,28 @@ public class DefMenuRenderer extends BaseMenuRenderer<Menu> {
 
 	public static class MenuImpl extends WWidgetImpl<Menu, MMenu> implements WMenu<Menu> {
 		private ToggleGroup group;
+		Runnable showingCallback;
 		
 		@Override
 		protected Menu createWidget() {
 			Menu m = new Menu();
+			m.setOnShowing(new EventHandler<Event>() {
+				
+				@Override
+				public void handle(Event event) {
+					if( showingCallback != null ) {
+						showingCallback.run();
+					}
+				}
+			});
 			return m;
 		}
 
+		@Override
+		public void setShowingCallback(Runnable showingCallback) {
+			this.showingCallback = showingCallback;
+		}
+		
 		@Override
 		public void addStyleClasses(List<String> classnames) {
 			getWidget().getStyleClass().addAll(classnames);

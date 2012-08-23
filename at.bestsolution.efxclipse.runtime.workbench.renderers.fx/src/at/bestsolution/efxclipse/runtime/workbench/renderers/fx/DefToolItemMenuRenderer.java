@@ -2,6 +2,8 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 
@@ -13,8 +15,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.emf.ecore.EObject;
 
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuElement;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
@@ -22,7 +24,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.ToolItemM
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMenu> {
+public class DefToolItemMenuRenderer extends BaseMenuRenderer<ToolItemMenu> {
 
 	@Override
 	protected Class<? extends WMenu<ToolItemMenu>> getWidgetClass() {
@@ -31,6 +33,7 @@ public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMe
 
 	static class WMenuImpl extends WWidgetImpl<ToolItemMenu, MMenu> implements WMenu<ToolItemMenu> {
 		private SplitMenuButton button;
+		Runnable showingCallback;
 		
 		@Inject
 		public WMenuImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MMenu domElement) {
@@ -38,6 +41,15 @@ public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMe
 			@SuppressWarnings("unchecked")
 			WToolItem<SplitMenuButton> w = (WToolItem<SplitMenuButton>) item.getWidget();
 			this.button = (SplitMenuButton) w.getWidget();
+			this.button.showingProperty().addListener(new ChangeListener<Boolean>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+					if( showingCallback != null && newValue.booleanValue() ) {
+						showingCallback.run();
+					}
+				}
+			});
 		}
 		
 		@Override
@@ -73,6 +85,11 @@ public class DefToolItemMenuRenderer extends BaseToolItemMenuRenderer<ToolItemMe
 		@Override
 		public void addElement(WMenuElement<MMenuElement> widget) {
 			getWidget().getItems().add((MenuItem) widget.getWidget());
+		}
+
+		@Override
+		public void setShowingCallback(Runnable showingCallback) {
+			this.showingCallback = showingCallback;
 		}
 	}
 	

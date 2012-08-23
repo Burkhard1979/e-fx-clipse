@@ -19,54 +19,206 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicFactoryImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
 @SuppressWarnings("restriction")
 public class ControlPanel {
 	
+	@SuppressWarnings("rawtypes")
 	@Inject
 	public ControlPanel(BorderPane p, final MApplication application, final MWindow window, @Optional final MPerspective perspective, final EPartService partService, final EModelService modelService) {
 		VBox box = new VBox();
 		
 		{
 			TitledPane pane = new TitledPane();
-			pane.setText("Part - to be rendered");
+			pane.setText("Part");
 			
-			HBox hbox = new HBox(10);
+			VBox vbox = new VBox();
 			
-			final ComboBox<MPart> dd = new ComboBox<>();
-			dd.setCellFactory(new Callback<ListView<MPart>, ListCell<MPart>>() {
+			{
+				HBox hbox = new HBox(10);
 				
-				@Override
-				public ListCell<MPart> call(ListView<MPart> param) {
-					return new ListCell<MPart>() {
-						@Override
-						protected void updateItem(MPart item, boolean empty) {
-							super.updateItem(item, empty);
-							if( item != null ) {
-								setText(item.getLocalizedLabel());
+				final ComboBox<MPart> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MPart>, ListCell<MPart>>() {
+					
+					@Override
+					public ListCell<MPart> call(ListView<MPart> param) {
+						return new ListCell<MPart>() {
+							@Override
+							protected void updateItem(MPart item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getLocalizedLabel());
+								}
 							}
-						}
-					};
-				}
-			});
-			dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MPart.class, null)));
-			hbox.getChildren().add(dd);
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MPart.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Toggle Rendering");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MPart part = dd.getSelectionModel().getSelectedItem();
+						part.setToBeRendered(!part.isToBeRendered());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
 			
-			Button b = new Button("Toggle");
-			b.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
-					MPart part = dd.getSelectionModel().getSelectedItem();
-					part.setToBeRendered(!part.isToBeRendered());
-				}
-			});
-			hbox.getChildren().add(b);
-			pane.setContent(hbox);
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MPart> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MPart>, ListCell<MPart>>() {
+					
+					@Override
+					public ListCell<MPart> call(ListView<MPart> param) {
+						return new ListCell<MPart>() {
+							@Override
+							protected void updateItem(MPart item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getLocalizedLabel());
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MPart.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Toggle Visibile");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MPart part = dd.getSelectionModel().getSelectedItem();
+						part.setVisible(!part.isVisible());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MElementContainer> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MElementContainer>, ListCell<MElementContainer>>() {
+					
+					@Override
+					public ListCell<MElementContainer> call(ListView<MElementContainer> param) {
+						return new ListCell<MElementContainer>() {
+							@Override
+							protected void updateItem(MElementContainer item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getClass().getSimpleName());	
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MElementContainer.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Add new Part");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@SuppressWarnings("unchecked")
+					@Override
+					public void handle(ActionEvent event) {
+						MElementContainer container = dd.getSelectionModel().getSelectedItem();
+						
+						MPart p = BasicFactoryImpl.eINSTANCE.createPart();
+						p.setLabel("New Part");
+						p.setContributionURI("bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel");
+						container.getChildren().add(p);
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MElementContainer> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MElementContainer>, ListCell<MElementContainer>>() {
+					
+					@Override
+					public ListCell<MElementContainer> call(ListView<MElementContainer> param) {
+						return new ListCell<MElementContainer>() {
+							@Override
+							protected void updateItem(MElementContainer item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getClass().getSimpleName());	
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MElementContainer.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Remove last Part");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MElementContainer container = dd.getSelectionModel().getSelectedItem();
+						container.getChildren().remove(container.getChildren().size()-1);
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MElementContainer> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MElementContainer>, ListCell<MElementContainer>>() {
+					
+					@Override
+					public ListCell<MElementContainer> call(ListView<MElementContainer> param) {
+						return new ListCell<MElementContainer>() {
+							@Override
+							protected void updateItem(MElementContainer item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getClass().getSimpleName());	
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MElementContainer.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Move last Part");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MElementContainer container = dd.getSelectionModel().getSelectedItem();
+						Object o = container.getChildren().remove(container.getChildren().size()-1);
+						container.getChildren().add(container.getChildren().size()-1, o);
+						System.err.println(container.getChildren());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			pane.setContent(vbox);
 			box.getChildren().add(pane);
 		}
 		

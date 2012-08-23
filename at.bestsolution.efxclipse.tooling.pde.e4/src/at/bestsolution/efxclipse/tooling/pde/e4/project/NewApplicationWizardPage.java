@@ -48,7 +48,7 @@ import org.eclipse.ui.branding.IProductConstants;
  */
 @SuppressWarnings("restriction")
 public class NewApplicationWizardPage extends WizardPage {
-	public static final String E4_APPLICATION = "at.bestsolution.efxclipse.runtime.workbench.application";
+	public static final String E4_APPLICATION = "at.bestsolution.efxclipse.runtime.workbench.fx.application";
 	public static final String APPLICATION_XMI_PROPERTY = "applicationXMI";
 	public static final String APPLICATION_CSS_PROPERTY = "applicationCSS";
 	public static final String PRODUCT_NAME = "productName";
