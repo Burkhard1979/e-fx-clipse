@@ -306,7 +306,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Build Directory*:" );
-				final Text t = toolkit.createText( sectionClient, "" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 				toolkit.createButton( sectionClient, "Filesystem ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
 					@Override
@@ -332,7 +332,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Vendor name*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__INFO, INFO__VENDOR ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -340,7 +340,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Application title*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__APPLICATION, APPLICATION__NAME ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -348,7 +348,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Application version*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__APPLICATION, APPLICATION__VERSION ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -356,7 +356,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Application class*:" );
-				final Text t = toolkit.createText( sectionClient, "" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
 				Button b = toolkit.createButton( sectionClient, "Browse ...", SWT.PUSH );
 				b.addSelectionListener( new SelectionAdapter() {
@@ -375,7 +375,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Preloader class:" );
-				final Text t = toolkit.createText( sectionClient, "" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
 				Button b = toolkit.createButton( sectionClient, "Browse ...", SWT.PUSH );
 				b.addSelectionListener( new SelectionAdapter() {
@@ -394,7 +394,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Splash:" );
-				final Text t = toolkit.createText( sectionClient, "" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
 				Button b = toolkit.createButton( sectionClient, "Browse ...", SWT.PUSH );
 				b.addSelectionListener( new SelectionAdapter() {
@@ -414,13 +414,14 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 			{
 				toolkit.createLabel( sectionClient, "Manifest-Attributes:" )
 						.setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
-				Composite container = toolkit.createComposite( sectionClient );
+				Composite tableContainer = toolkit.createComposite( sectionClient );
+				tableContainer.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
 				GridLayout gl = new GridLayout( 2, false );
-				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
-				container.setLayout( gl );
-				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+//				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				tableContainer.setLayout( gl );
+		//		tableContainer.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
-				Table t = toolkit.createTable( container, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL );
 				t.setHeaderVisible( true );
 				t.setLinesVisible( true );
 
@@ -456,7 +457,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 				v.setInput( task.getManifestEntries() );
 
-				Composite buttonComp = toolkit.createComposite( container );
+				Composite buttonComp = toolkit.createComposite( sectionClient );
 				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
 				buttonComp.setLayout( new GridLayout() );
 
@@ -489,7 +490,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					} );
 				}
 				{
-					Button b = toolkit.createButton( sectionClient, "Convert CSS into binary form:", SWT.CHECK );
+					Button b = toolkit.createButton( sectionClient, "Convert CSS into binary form", SWT.CHECK );
 					b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
 					IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__CSS_TO_BIN ) );
 					dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
@@ -622,7 +623,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Applet Width*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__WIDTH ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -630,7 +631,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Applet Height*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__HEIGHT ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -672,7 +673,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Placeholder Ref.*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__PLACEHOLDERREF ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -680,7 +681,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Placeholder ID*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__PLACEHOLDERID ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -937,7 +938,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 		dbc = new DataBindingContext();
 		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
-		IWidgetValueProperty selChange = WidgetProperties.selection();
+		//IWidgetValueProperty selChange = WidgetProperties.selection();
 
 		{
 			Section section = toolkit.createSection( sectionParent, Section.DESCRIPTION | Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED );
@@ -950,7 +951,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Alias*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__ALIAS ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -958,7 +959,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Key-Password*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__KEYPASS ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -966,7 +967,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Keystore*:" );
-				final Text t = toolkit.createText( sectionClient, "" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 				toolkit.createButton( sectionClient, "Filesystem ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
 					@Override
@@ -992,7 +993,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Store-Password*:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__STOREPASS ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -1000,7 +1001,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				toolkit.createLabel( sectionClient, "Storetype:" );
-				Text t = toolkit.createText( sectionClient, "" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
 				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 				IEMFValueProperty prop = EMFProperties.value( FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__STORETYPE ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
@@ -1027,7 +1028,9 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 		TitleAreaDialog d = new TitleAreaDialog( shell ) {
 			private Param o = ParametersFactory.eINSTANCE.createParam();
 			private DataBindingContext dbc = new DataBindingContext();
+			private Text tName ;
 
+			private Text tValue ;
 			@Override
 			protected Control createDialogArea( Composite parent ) {
 				Composite area = (Composite) super.createDialogArea( parent );
