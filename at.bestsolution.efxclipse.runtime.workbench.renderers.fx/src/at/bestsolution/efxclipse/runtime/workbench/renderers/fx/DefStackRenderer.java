@@ -22,6 +22,7 @@ import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTab;
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane;
+import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane.MinMaxState;
 import at.bestsolution.efxclipse.runtime.panels.skins.MinMaxTabPaneSkin;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
@@ -42,6 +43,7 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		
 		private WCallback<WStackItem<FXTab, Node>, Void> mouseSelectedItemCallback;
 		private WCallback<WStackItem<FXTab, Node>, Void> keySelectedItemCallback;
+		private WCallback<WMinMaxState, Void> minMaxCallback;
 		private boolean inKeyTraversal;
 		
 		public void setMouseSelectedItemCallback(WCallback<WStackItem<FXTab, Node>, Void> mouseSelectedItemCallback) {
@@ -63,10 +65,56 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		}
 		
 		@Override
+		public void setMinMaxCallback(WCallback<WMinMaxState, Void> minMaxCallback) {
+			this.minMaxCallback = minMaxCallback;
+		}
+		
+		@Override
+		public void setMinMaxState(WMinMaxState state) {
+			MinMaxState t = MinMaxState.RESTORED;
+			switch (state) {
+			case MAXIMIZED:
+				t = MinMaxState.MAXIMIZED;
+				break;
+			case MINIMIZED:
+				t = MinMaxState.MINIMIZED;
+				break;
+			case RESTORED:
+				t = MinMaxState.RESTORED;
+				break;
+			case NONE:
+				t = MinMaxState.NONE;
+				break;
+			}
+			getWidget().setMinMaxState(t);
+		}
+		
+		@Override
 		protected FXTabPane createWidget() {
 			FXTabPane p = new FXTabPane();
-//			p.setTabClosingPolicy(TabClosingPolicy.ALL_TABS);
 			p.setSkin(new MinMaxTabPaneSkin(p));
+			p.minMaxStateProperty().addListener(new ChangeListener<MinMaxState>() {
+
+				@Override
+				public void changed(ObservableValue<? extends MinMaxState> observable, MinMaxState oldValue, MinMaxState newValue) {
+					if( minMaxCallback != null ) {
+						switch (newValue) {
+						case RESTORED:
+							minMaxCallback.call(WMinMaxState.RESTORED);
+							break;
+						case MAXIMIZED:
+							minMaxCallback.call(WMinMaxState.MAXIMIZED);
+							break;
+						case MINIMIZED:
+							minMaxCallback.call(WMinMaxState.MINIMIZED);
+							break;
+						case NONE:
+							// Nothing to do
+							break;
+						}	
+					}
+				}
+			});
 			p.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
 
 				@Override
