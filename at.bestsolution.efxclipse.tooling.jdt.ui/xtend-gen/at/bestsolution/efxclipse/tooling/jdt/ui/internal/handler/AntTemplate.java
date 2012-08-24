@@ -1,21 +1,16 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler;
 
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.JFXBuildConfigurationEditor.BuildPropertyBean;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.JFXBuildConfigurationEditor.BuildPropertyIcon;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.JFXBuildConfigurationEditor.BuildPropertyManifestAttr;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.JFXBuildConfigurationEditor.BuildPropertySplash;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Application;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.IconType;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Info;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.SetupDirectory;
 import com.google.common.base.Objects;
 import java.io.File;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -46,7 +41,7 @@ public class AntTemplate {
       _builder.append(_compileTarget, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
-      CharSequence _createDoDeployTarget = this.createDoDeployTarget(task);
+      CharSequence _createDoDeployTarget = this.createDoDeployTarget(properties);
       _builder.append(_createDoDeployTarget, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("</project>");
@@ -195,11 +190,25 @@ public class AntTemplate {
       _builder.append("<target name=\"init-fx-tasks\">");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("<property name=\"javafx.tools.ant.jar\" value=\"");
-      _builder.append(sdkAntPath, "	");
+      _builder.append("<path id=\"fxant\">");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("<filelist>");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("<file name=\"");
+      _builder.append(sdkAntPath, "			");
       _builder.append("\"/>");
       _builder.newLineIfNotEmpty();
+      _builder.append("\t\t\t");
+      _builder.append("<file name=\"${java.home}\\..\\lib\\ant-javafx.jar\"/>");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("</filelist>");
+      _builder.newLine();
       _builder.append("\t");
+      _builder.append("</path>");
+      _builder.newLine();
       _builder.newLine();
       _builder.append("\t");
       _builder.append("<taskdef resource=\"com/sun/javafx/tools/ant/antlib.xml\"      ");
@@ -208,7 +217,7 @@ public class AntTemplate {
       _builder.append("uri=\"javafx:com.sun.javafx.tools.ant\"");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("classpath=\"${javafx.tools.ant.jar}\"/>");
+      _builder.append("classpathref=\"fxant\"/>");
       _builder.newLine();
       _builder.append("</target>");
       _builder.newLine();
@@ -442,30 +451,29 @@ public class AntTemplate {
     return _xblockexpression;
   }
   
-  public CharSequence createDoDeployTarget(final AntTask task) {
+  public CharSequence createDoDeployTarget(final Map<String,Object> properties) {
     CharSequence _xblockexpression = null;
     {
-      Deploy _deploy = task.getDeploy();
-      Application _application = _deploy.getApplication();
-      final String projectName = _application.getName();
-      Deploy _deploy_1 = task.getDeploy();
-      Application _application_1 = _deploy_1.getApplication();
-      final String mainClass = _application_1.getMainclass();
-      Deploy _deploy_2 = task.getDeploy();
-      final String appletWidth = _deploy_2.getWidth();
-      Deploy _deploy_3 = task.getDeploy();
-      final String appletHeight = _deploy_3.getHeight();
-      Deploy _deploy_4 = task.getDeploy();
-      Info _info = _deploy_4.getInfo();
-      final String appTitle = _info.getTitle();
-      Deploy _deploy_5 = task.getDeploy();
-      Application _application_2 = _deploy_5.getApplication();
-      final String appVersion = _application_2.getVersion();
-      Deploy _deploy_6 = task.getDeploy();
-      Application _application_3 = _deploy_6.getApplication();
-      final String preloaderClass = _application_3.getPreloaderclass();
-      Deploy _deploy_7 = task.getDeploy();
-      final boolean nativePackage = _deploy_7.isNativePackage();
+      Object _get = properties.get("projectName");
+      final String projectName = ((String) _get);
+      Object _get_1 = properties.get("applicationClass");
+      final String mainClass = ((String) _get_1);
+      Object _get_2 = properties.get("appletWith");
+      final String appletWidth = ((String) _get_2);
+      Object _get_3 = properties.get("appletHeight");
+      final String appletHeight = ((String) _get_3);
+      Object _get_4 = properties.get("appVendor");
+      final String appVendor = ((String) _get_4);
+      Object _get_5 = properties.get("appTitle");
+      final String appTitle = ((String) _get_5);
+      Object _get_6 = properties.get("appVersion");
+      final String appVersion = ((String) _get_6);
+      Object _get_7 = properties.get("preloaderClass");
+      final String preloaderClass = ((String) _get_7);
+      Object _get_8 = properties.get("nativePackage");
+      final Boolean nativePackage = Boolean.valueOf(((String) _get_8));
+      Object _get_9 = properties.get("propertyBean");
+      final BuildPropertyBean bean = ((BuildPropertyBean) _get_9);
       String preloaderPath = "";
       boolean _equals = Objects.equal(preloaderClass, null);
       if (_equals) {
@@ -474,9 +482,16 @@ public class AntTemplate {
         String _replace = preloaderClass.replace(".", "/");
         preloaderPath = _replace;
       }
-      Deploy _deploy_8 = task.getDeploy();
-      Application _application_4 = _deploy_8.getApplication();
-      final String fallBackClass = _application_4.getFallbackclass();
+      Object _get_10 = properties.get("fallbackClass");
+      final String fallBackClass = ((String) _get_10);
+      Object _get_11 = properties.get("keyStore");
+      String keyStore = ((String) _get_11);
+      Object _get_12 = properties.get("keyStoreAlias");
+      String keyStoreAlias = ((String) _get_12);
+      Object _get_13 = properties.get("keyStorePass");
+      String keyStorePass = ((String) _get_13);
+      Object _get_14 = properties.get("keyPass");
+      String keyPass = ((String) _get_14);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<target name=\"do-deploy\" depends=\"setup-staging-area, do-compile, init-fx-tasks\">");
       _builder.newLine();
@@ -644,10 +659,7 @@ public class AntTemplate {
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("<attribute name=\"Implementation-Vendor\" value=\"");
-      Deploy _deploy_9 = task.getDeploy();
-      Info _info_1 = _deploy_9.getInfo();
-      String _vendor = _info_1.getVendor();
-      _builder.append(_vendor, "			");
+      _builder.append(appVendor, "			");
       _builder.append("\"/>");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
@@ -661,29 +673,27 @@ public class AntTemplate {
       _builder.append("\"/>");
       _builder.newLineIfNotEmpty();
       {
-        Deploy _deploy_10 = task.getDeploy();
-        String _splashImage = _deploy_10.getSplashImage();
-        boolean _notEquals_5 = (!Objects.equal(_splashImage, null));
+        String _buildSplashImage = bean.getBuildSplashImage();
+        boolean _notEquals_5 = (!Objects.equal(_buildSplashImage, null));
         if (_notEquals_5) {
           _builder.append("\t\t\t");
           _builder.append("<attribute name=\"SplashScreen-Image\" value=\"");
-          Deploy _deploy_11 = task.getDeploy();
-          String _splashImage_1 = _deploy_11.getSplashImage();
-          _builder.append(_splashImage_1, "			");
+          String _buildSplashImage_1 = bean.getBuildSplashImage();
+          _builder.append(_buildSplashImage_1, "			");
           _builder.append("\"/>");
           _builder.newLineIfNotEmpty();
         }
       }
       {
-        EList<Param> _manifestEntries = task.getManifestEntries();
-        for(final Param a : _manifestEntries) {
+        List<BuildPropertyManifestAttr> _buildManifestAttrList = bean.getBuildManifestAttrList();
+        for(final BuildPropertyManifestAttr a : _buildManifestAttrList) {
           _builder.append("\t\t\t");
           _builder.append("<attribute name=\"");
-          String _name = a.getName();
-          _builder.append(_name, "			");
+          String _buildManifestAttrName = a.getBuildManifestAttrName();
+          _builder.append(_buildManifestAttrName, "			");
           _builder.append("\" value=\"");
-          String _value = a.getValue();
-          _builder.append(_value, "			");
+          String _buildManifestAttrValue = a.getBuildManifestAttrValue();
+          _builder.append(_buildManifestAttrValue, "			");
           _builder.append("\"/>");
           _builder.newLineIfNotEmpty();
         }
@@ -697,66 +707,35 @@ public class AntTemplate {
       _builder.append("\t");
       _builder.newLine();
       {
-        SignJar _signjar = task.getSignjar();
-        String _keystore = _signjar.getKeystore();
-        boolean _notEquals_6 = (!Objects.equal(_keystore, null));
+        boolean _notEquals_6 = (!Objects.equal(keyStore, null));
         if (_notEquals_6) {
           _builder.append("\t");
           _builder.append("<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->");
           _builder.newLine();
           _builder.append("\t");
-          _builder.append("<fx:signjar\"");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" keystore=\"");
-          SignJar _signjar_1 = task.getSignjar();
-          String _keystore_1 = _signjar_1.getKeystore();
-          _builder.append(_keystore_1, "		");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
+          _builder.append("<fx:signjar keystore=\"");
+          _builder.append(keyStore, "	");
           _builder.append("\" alias=\"");
-          SignJar _signjar_2 = task.getSignjar();
-          String _alias = _signjar_2.getAlias();
-          _builder.append(_alias, "		");
-          _builder.append(" ");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" keypass=\"");
-          SignJar _signjar_3 = task.getSignjar();
-          String _keypass = _signjar_3.getKeypass();
-          _builder.append(_keypass, "		");
-          _builder.append(" ");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" storepass=\"");
-          SignJar _signjar_4 = task.getSignjar();
-          String _storepass = _signjar_4.getStorepass();
-          _builder.append(_storepass, "		");
-          _builder.append(" ");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
+          _builder.append(keyStoreAlias, "	");
+          _builder.append("\" ");
           {
-            SignJar _signjar_5 = task.getSignjar();
-            String _storetype = _signjar_5.getStoretype();
-            boolean _notEquals_7 = (!Objects.equal(_storetype, null));
+            boolean _notEquals_7 = (!Objects.equal(keyPass, null));
             if (_notEquals_7) {
-              _builder.append("\" storetype=\"");
-              SignJar _signjar_6 = task.getSignjar();
-              String _storetype_1 = _signjar_6.getStoretype();
-              _builder.append(_storetype_1, "		");
-              _builder.append(" ");
+              _builder.append("keypass=\"");
+              _builder.append(keyPass, "	");
+              _builder.append("\" ");
             }
           }
+          {
+            boolean _notEquals_8 = (!Objects.equal(keyStorePass, null));
+            if (_notEquals_8) {
+              _builder.append("storepass=\"");
+              _builder.append(keyStorePass, "	");
+              _builder.append("\" ");
+            }
+          }
+          _builder.append("destDir=\"${basedir}/dist\">");
           _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" destDir=\"${basedir}/dist\">");
-          _builder.newLine();
           _builder.append("\t");
           _builder.append("\t");
           _builder.append("<fileset dir=\'dist\'>");
@@ -778,17 +757,17 @@ public class AntTemplate {
       {
         boolean _or = false;
         boolean _and = false;
-        boolean _notEquals_8 = (!Objects.equal(appletWidth, null));
-        if (!_notEquals_8) {
+        boolean _notEquals_9 = (!Objects.equal(appletWidth, null));
+        if (!_notEquals_9) {
           _and = false;
         } else {
-          boolean _notEquals_9 = (!Objects.equal(appletHeight, null));
-          _and = (_notEquals_8 && _notEquals_9);
+          boolean _notEquals_10 = (!Objects.equal(appletHeight, null));
+          _and = (_notEquals_9 && _notEquals_10);
         }
         if (_and) {
           _or = true;
         } else {
-          _or = (_and || nativePackage);
+          _or = (_and || (nativePackage).booleanValue());
         }
         if (_or) {
           _builder.append("\t");
@@ -798,136 +777,43 @@ public class AntTemplate {
           _builder.append("<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->");
           _builder.newLine();
           _builder.append("\t");
-          _builder.append("<fx:deploy");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" embedJNLP=\"");
-          Deploy _deploy_12 = task.getDeploy();
-          boolean _isEmbedjnlp = _deploy_12.isEmbedjnlp();
-          _builder.append(_isEmbedjnlp, "		");
-          _builder.append("\"");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" extension=\"");
-          Deploy _deploy_13 = task.getDeploy();
-          boolean _isExtension = _deploy_13.isExtension();
-          _builder.append(_isExtension, "		");
-          _builder.append("\"");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
+          _builder.append("<fx:deploy ");
           {
             boolean _and_1 = false;
-            boolean _notEquals_10 = (!Objects.equal(appletWidth, null));
-            if (!_notEquals_10) {
+            boolean _notEquals_11 = (!Objects.equal(appletWidth, null));
+            if (!_notEquals_11) {
               _and_1 = false;
             } else {
-              boolean _notEquals_11 = (!Objects.equal(appletHeight, null));
-              _and_1 = (_notEquals_10 && _notEquals_11);
+              boolean _notEquals_12 = (!Objects.equal(appletHeight, null));
+              _and_1 = (_notEquals_11 && _notEquals_12);
             }
             if (_and_1) {
               _builder.append("width=\"");
-              _builder.append(appletWidth, "		");
+              _builder.append(appletWidth, "	");
               _builder.append("\" height=\"");
-              _builder.append(appletHeight, "		");
-              _builder.append(" ");
+              _builder.append(appletHeight, "	");
+              _builder.append("\" embedJNLP=\"true\"");
             }
           }
-          _builder.append(" ");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" includeDT=\"");
-          Deploy _deploy_14 = task.getDeploy();
-          boolean _isIncludeDT = _deploy_14.isIncludeDT();
-          _builder.append(_isIncludeDT, "		");
-          _builder.append("\"");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" offlineAllowed=\"");
-          Deploy _deploy_15 = task.getDeploy();
-          boolean _isOfflineAllowed = _deploy_15.isOfflineAllowed();
-          _builder.append(_isOfflineAllowed, "		");
-          _builder.append("\"");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" outdir=\"${basedir}/deploy\"\"");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" outfile=\"");
-          _builder.append(projectName, "		");
+          _builder.append(" outdir=\"${basedir}/deploy\" outfile=\"");
+          _builder.append(projectName, "	");
           _builder.append("\" ");
           {
-            if (nativePackage) {
+            if ((nativePackage).booleanValue()) {
               _builder.append("nativeBundles=\"all\"");
             }
           }
-          _builder.append("\">");
+          _builder.append(">");
           _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          {
-            Deploy _deploy_16 = task.getDeploy();
-            String _placeholderref = _deploy_16.getPlaceholderref();
-            boolean _notEquals_12 = (!Objects.equal(_placeholderref, null));
-            if (_notEquals_12) {
-              _builder.append("placeholderref=\"");
-              Deploy _deploy_17 = task.getDeploy();
-              String _placeholderref_1 = _deploy_17.getPlaceholderref();
-              _builder.append(_placeholderref_1, "		");
-            }
-          }
-          _builder.append(" ");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          {
-            Deploy _deploy_18 = task.getDeploy();
-            String _placeholderid = _deploy_18.getPlaceholderid();
-            boolean _notEquals_13 = (!Objects.equal(_placeholderid, null));
-            if (_notEquals_13) {
-              _builder.append("placeholderid=\"");
-              Deploy _deploy_19 = task.getDeploy();
-              String _placeholderid_1 = _deploy_19.getPlaceholderid();
-              _builder.append(_placeholderid_1, "		");
-            }
-          }
-          _builder.append(" ");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          {
-            Deploy _deploy_20 = task.getDeploy();
-            String _updatemode = _deploy_20.getUpdatemode();
-            boolean _notEquals_14 = (!Objects.equal(_updatemode, null));
-            if (_notEquals_14) {
-              _builder.append("updatemode=\"");
-              Deploy _deploy_21 = task.getDeploy();
-              String _updatemode_1 = _deploy_21.getUpdatemode();
-              _builder.append(_updatemode_1, "		");
-            }
-          }
-          _builder.append(" ");
-          _builder.newLineIfNotEmpty();
-          _builder.newLine();
           {
             boolean _and_2 = false;
-            Deploy _deploy_22 = task.getDeploy();
-            Info _info_2 = _deploy_22.getInfo();
-            EList<Splash> _splash = _info_2.getSplash();
-            boolean _isEmpty = _splash.isEmpty();
+            List<BuildPropertySplash> _deploySplashList = bean.getDeploySplashList();
+            boolean _isEmpty = _deploySplashList.isEmpty();
             if (!_isEmpty) {
               _and_2 = false;
             } else {
-              Deploy _deploy_23 = task.getDeploy();
-              Info _info_3 = _deploy_23.getInfo();
-              EList<Icon> _icon = _info_3.getIcon();
-              boolean _isEmpty_1 = _icon.isEmpty();
+              List<BuildPropertyIcon> _deployIconList = bean.getDeployIconList();
+              boolean _isEmpty_1 = _deployIconList.isEmpty();
               _and_2 = (_isEmpty && _isEmpty_1);
             }
             if (_and_2) {
@@ -936,10 +822,7 @@ public class AntTemplate {
               _builder.append("<fx:info title=\"");
               _builder.append(projectName, "		");
               _builder.append("\" vendor=\"");
-              Deploy _deploy_24 = task.getDeploy();
-              Info _info_4 = _deploy_24.getInfo();
-              String _vendor_1 = _info_4.getVendor();
-              _builder.append(_vendor_1, "		");
+              _builder.append(appVendor, "		");
               _builder.append("\"/>");
               _builder.newLineIfNotEmpty();
             } else {
@@ -948,31 +831,26 @@ public class AntTemplate {
               _builder.append("<fx:info title=\"");
               _builder.append(projectName, "		");
               _builder.append("\" vendor=\"");
-              Deploy _deploy_25 = task.getDeploy();
-              Info _info_5 = _deploy_25.getInfo();
-              String _vendor_2 = _info_5.getVendor();
-              _builder.append(_vendor_2, "		");
+              _builder.append(appVendor, "		");
               _builder.append("\">");
               _builder.newLineIfNotEmpty();
               {
-                Deploy _deploy_26 = task.getDeploy();
-                Info _info_6 = _deploy_26.getInfo();
-                EList<Splash> _splash_1 = _info_6.getSplash();
-                for(final Splash s : _splash_1) {
+                List<BuildPropertySplash> _deploySplashList_1 = bean.getDeploySplashList();
+                for(final BuildPropertySplash s : _deploySplashList_1) {
                   _builder.append("\t");
                   _builder.append("\t");
                   _builder.append("\t");
                   _builder.append("<fx:splash href=\"");
-                  String _href = s.getHref();
-                  _builder.append(_href, "			");
+                  String _deploySplashHref = s.getDeploySplashHref();
+                  _builder.append(_deploySplashHref, "			");
                   _builder.append("\" ");
                   {
-                    SplashMode _mode = s.getMode();
-                    boolean _notEquals_15 = (!Objects.equal(_mode, null));
-                    if (_notEquals_15) {
+                    String _deploySplashMode = s.getDeploySplashMode();
+                    boolean _notEquals_13 = (!Objects.equal(_deploySplashMode, null));
+                    if (_notEquals_13) {
                       _builder.append("mode=\"");
-                      SplashMode _mode_1 = s.getMode();
-                      _builder.append(_mode_1, "			");
+                      String _deploySplashMode_1 = s.getDeploySplashMode();
+                      _builder.append(_deploySplashMode_1, "			");
                       _builder.append("\"");
                     }
                   }
@@ -981,57 +859,55 @@ public class AntTemplate {
                 }
               }
               {
-                Deploy _deploy_27 = task.getDeploy();
-                Info _info_7 = _deploy_27.getInfo();
-                EList<Icon> _icon_1 = _info_7.getIcon();
-                for(final Icon i : _icon_1) {
+                List<BuildPropertyIcon> _deployIconList_1 = bean.getDeployIconList();
+                for(final BuildPropertyIcon i : _deployIconList_1) {
                   _builder.append("\t");
                   _builder.append("\t");
                   _builder.append("\t");
                   _builder.append("<fx:icon href=\"");
-                  String _href_1 = i.getHref();
-                  _builder.append(_href_1, "			");
+                  String _deployIconHref = i.getDeployIconHref();
+                  _builder.append(_deployIconHref, "			");
                   _builder.append("\" ");
                   {
-                    String _depth = i.getDepth();
-                    boolean _notEquals_16 = (!Objects.equal(_depth, null));
-                    if (_notEquals_16) {
+                    String _deployIconDepth = i.getDeployIconDepth();
+                    boolean _notEquals_14 = (!Objects.equal(_deployIconDepth, null));
+                    if (_notEquals_14) {
                       _builder.append("depth=\"");
-                      String _depth_1 = i.getDepth();
-                      _builder.append(_depth_1, "			");
+                      String _deployIconDepth_1 = i.getDeployIconDepth();
+                      _builder.append(_deployIconDepth_1, "			");
                       _builder.append("\"");
                     }
                   }
                   _builder.append(" ");
                   {
-                    String _height = i.getHeight();
-                    boolean _notEquals_17 = (!Objects.equal(_height, null));
-                    if (_notEquals_17) {
+                    String _deployIconHeight = i.getDeployIconHeight();
+                    boolean _notEquals_15 = (!Objects.equal(_deployIconHeight, null));
+                    if (_notEquals_15) {
                       _builder.append("height=\"");
-                      String _height_1 = i.getHeight();
-                      _builder.append(_height_1, "			");
+                      String _deployIconHeight_1 = i.getDeployIconHeight();
+                      _builder.append(_deployIconHeight_1, "			");
                       _builder.append("\"");
                     }
                   }
                   _builder.append(" ");
                   {
-                    IconType _kind = i.getKind();
-                    boolean _notEquals_18 = (!Objects.equal(_kind, null));
-                    if (_notEquals_18) {
+                    String _deployIconKind = i.getDeployIconKind();
+                    boolean _notEquals_16 = (!Objects.equal(_deployIconKind, null));
+                    if (_notEquals_16) {
                       _builder.append("kind=\"");
-                      IconType _kind_1 = i.getKind();
-                      _builder.append(_kind_1, "			");
+                      String _deployIconKind_1 = i.getDeployIconKind();
+                      _builder.append(_deployIconKind_1, "			");
                       _builder.append("\"");
                     }
                   }
                   _builder.append(" ");
                   {
-                    String _width = i.getWidth();
-                    boolean _notEquals_19 = (!Objects.equal(_width, null));
-                    if (_notEquals_19) {
+                    String _deployIconWidth = i.getDeployIconWidth();
+                    boolean _notEquals_17 = (!Objects.equal(_deployIconWidth, null));
+                    if (_notEquals_17) {
                       _builder.append("width=\"");
-                      String _width_1 = i.getWidth();
-                      _builder.append(_width_1, "			");
+                      String _deployIconWidth_1 = i.getDeployIconWidth();
+                      _builder.append(_deployIconWidth_1, "			");
                       _builder.append("\"");
                     }
                   }
@@ -1053,10 +929,15 @@ public class AntTemplate {
           _builder.append("\t");
           _builder.append("<fx:resources refid=\"appRes\"/>");
           _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fx:permissions elevated=\"true\"/>");
-          _builder.newLine();
+          {
+            boolean _notEquals_18 = (!Objects.equal(keyStore, null));
+            if (_notEquals_18) {
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("<fx:permissions elevated=\"true\"/>");
+              _builder.newLine();
+            }
+          }
           _builder.append("\t");
           _builder.append("</fx:deploy>");
           _builder.newLine();
