@@ -137,11 +137,14 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Inject
 		IEclipseContext context;
+		
+		IEclipseContext modelContext;
 
 		@Inject
 		public WWindowImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MWindow window, KeyBindingDispatcher dispatcher) {
 			this.support3d = window.getPersistedState().get("fx.scene.3d") != null && Boolean.parseBoolean(window.getPersistedState().get("fx.scene.3d"));
 			this.dispatcher = dispatcher;
+			this.modelContext = window.getContext();
 			this.decorationFXML = window.getPersistedState().get("fx.stage.decoration");
 		}
 
@@ -273,6 +276,9 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 			
 			stage.setScene(s);
 
+			modelContext.set(Stage.class, stage);
+			modelContext.set(Scene.class, s);
+			
 			return stage;
 		}
 
