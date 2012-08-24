@@ -94,37 +94,16 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 	@Override
 	public void doProcessContent(MPartSashContainer element) {
 		WSash<N> sash = getWidget(element);
-
-		List<Double> layoutData = new ArrayList<Double>();
-		double total = 0;
-
+		List<WLayoutedWidget<MPartSashContainerElement>> list = new ArrayList<WLayoutedWidget<MPartSashContainerElement>>();
+		
 		for (MPartSashContainerElement e : element.getChildren()) {
 			WLayoutedWidget<MPartSashContainerElement> widget = engineCreateWidget(e);
 			if (widget != null) {
-				sash.addItem(widget);
-				double v;
-				if (e.getContainerData() != null) {
-					v = Double.parseDouble(e.getContainerData());
-					if (v > 0.9) {
-						// Calc back to a potential percentage
-						v = v / Math.pow(10, e.getContainerData().length());
-					}
-				} else {
-					v = 0.1;
-				}
-				layoutData.add(v);
-				total += v;
+				list.add(widget);
 			}
 		}
-
-		if (!layoutData.isEmpty() && layoutData.size() > 1) {
-			double[] deviders = new double[layoutData.size() - 1];
-			for (int i = 0; i < layoutData.size() - 1; i++) {
-				deviders[i] = (i == 0 ? 0 : deviders[i - 1]) + (layoutData.get(i) / total);
-			}
-
-			sash.setSplits(deviders);
-		}
+		
+		sash.addItems(list);
 	}
 
 	@Override
@@ -133,41 +112,12 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 			return;
 		}
 
-		List<Double> layoutData = new ArrayList<Double>();
-		double total = 0;
-
-		for (MPartSashContainerElement e : parentElement.getChildren()) {
-			double v;
-			if (e.isToBeRendered()) {
-				if (e.getContainerData() != null) {
-					v = Double.parseDouble(e.getContainerData());
-					if (v > 0.9) {
-						// Calc back to a potential percentage
-						v = v / Math.pow(10, e.getContainerData().length());
-					}
-				} else {
-					v = 0.1;
-				}
-				layoutData.add(v);
-				total += v;
-			}
-		}
-
 		int idx = getRenderedIndex(parentElement, element);
 		WSash<N> sash = getWidget(parentElement);
 
 		@SuppressWarnings("unchecked")
 		List<WLayoutedWidget<MPartSashContainerElement>> l = Collections.singletonList((WLayoutedWidget<MPartSashContainerElement>) element.getWidget());
 		sash.addItems(idx, l);
-
-		if (!layoutData.isEmpty() && layoutData.size() > 1) {
-			double[] deviders = new double[layoutData.size() - 1];
-			for (int i = 0; i < layoutData.size() - 1; i++) {
-				deviders[i] = (i == 0 ? 0 : deviders[i - 1]) + (layoutData.get(i) / total);
-			}
-
-			sash.setSplits(deviders);
-		}
 	}
 
 	@Override
