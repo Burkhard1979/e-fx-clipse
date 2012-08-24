@@ -5,7 +5,7 @@ import java.util.Collection
 import java.util.Map
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask
 
-class AntTemplate {
+class EMFAntTemplate {
 	def generateAnt(Map<String,Object> properties, AntTask task) {
 		val projectName = properties.get("projectName") as String;
 		

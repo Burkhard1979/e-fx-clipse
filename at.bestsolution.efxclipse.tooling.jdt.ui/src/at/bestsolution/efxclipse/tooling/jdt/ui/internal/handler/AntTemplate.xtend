@@ -1,14 +1,12 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler
 
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.JFXBuildConfigurationEditor$BuildPropertyBean
 import java.io.File
 import java.util.Collection
 import java.util.Map
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.JFXBuildConfigurationEditor$BuildPropertyBean
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask
 
 class AntTemplate {
-	// the task parameter is not used in this version but provides compatibility
-	def generateAnt(Map<String,Object> properties, AntTask task) {
+	def generateAnt(Map<String,Object> properties) {
 		val projectName = properties.get("projectName") as String;
 		
 		'''

@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class CreateBuildXML {
 	public File run(Map<String,Object> properties) {
-		AntTemplate template = new AntTemplate();
+		EMFAntTemplate template = new EMFAntTemplate();
 		// FIXME get the ant task here
 		String out = template.generateAnt(properties, null);
 		
