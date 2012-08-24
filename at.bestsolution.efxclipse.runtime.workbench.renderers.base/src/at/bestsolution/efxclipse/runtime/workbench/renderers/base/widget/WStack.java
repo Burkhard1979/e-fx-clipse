@@ -6,7 +6,7 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 
 @SuppressWarnings("restriction")
-public interface WStack<N,I,IC> extends WLayoutedWidget<MPartStack> {
+public interface WStack<N,I,IC> extends WLayoutedWidget<MPartStack>, WMinMaxableWidget {
 	public interface WStackItem<I,IC> {
 		public I getNativeItem();
 		public void setDomElement(MStackElement domElement);
@@ -26,6 +26,7 @@ public interface WStack<N,I,IC> extends WLayoutedWidget<MPartStack> {
 	
 	public void setMouseSelectedItemCallback(WCallback<WStackItem<I, IC>, Void> selectedItemCallback);
 	public void setKeySelectedItemCallback(WCallback<WStackItem<I, IC>, Void> selectedItemCallback);
+	
 	public int getItemCount();
 	
 }

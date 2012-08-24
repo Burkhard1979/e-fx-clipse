@@ -27,6 +27,8 @@ package at.bestsolution.efxclipse.runtime.panels.fx;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javafx.beans.DefaultProperty;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
@@ -37,6 +39,9 @@ import javafx.beans.value.WritableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.Side;
 import javafx.scene.control.Control;
 import javafx.scene.control.SingleSelectionModel;
@@ -45,7 +50,6 @@ import com.sun.javafx.css.StyleManager;
 import com.sun.javafx.css.StyleableDoubleProperty;
 import com.sun.javafx.css.StyleableProperty;
 import com.sun.javafx.css.converters.SizeConverter;
-import javafx.beans.DefaultProperty;
 
 /**
  * <p>A control that allows switching between a group of {@link FXTab Tabs}.  Only one tab
@@ -88,6 +92,27 @@ public class FXTabPane extends Control {
 
     private static final double DEFAULT_TAB_MAX_HEIGHT = Double.MAX_VALUE;
 
+    public enum MinMaxState {
+    	NONE,
+		RESTORED,
+		MINIMIZED,
+		MAXIMIZED
+	}
+	
+	private ObjectProperty<MinMaxState> minMaxState = new SimpleObjectProperty<FXTabPane.MinMaxState>(MinMaxState.NONE);
+
+	public void setMinMaxState(MinMaxState minMaxState) {
+		this.minMaxState.set(minMaxState);
+	}
+	
+	public MinMaxState getMinMaxState() {
+		return this.minMaxState.get();
+	}
+	
+	public ObjectProperty<MinMaxState> minMaxStateProperty() {
+		return minMaxState;
+	}
+    
     /**
      * TabPane mode will be changed to floating allowing the TabPane
      * to be placed alongside other control.

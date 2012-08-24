@@ -34,6 +34,8 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 
+import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane.MinMaxState;
+
 import com.sun.javafx.scene.control.behavior.BehaviorBase;
 import com.sun.javafx.scene.control.behavior.KeyBinding;
 import javafx.scene.control.SingleSelectionModel;
@@ -239,4 +241,16 @@ public class FXTabPaneBehavior extends BehaviorBase<FXTabPane> {
         }
         selectionModel.select(current);
     }
+
+	public void maximize() {
+		getControl().setMinMaxState(MinMaxState.MAXIMIZED);
+	}
+
+	public void minimize() {
+		getControl().setMinMaxState(MinMaxState.MINIMIZED);
+	}
+
+	public void restore() {
+		getControl().setMinMaxState(MinMaxState.RESTORED);
+	}
 }
