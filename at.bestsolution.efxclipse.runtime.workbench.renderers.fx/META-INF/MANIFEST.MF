@@ -21,6 +21,7 @@ Require-Bundle: org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
  org.eclipse.core.runtime;bundle-version="3.7.0",
  at.bestsolution.efxclipse.runtime.di;bundle-version="0.1.0"
 Import-Package: javafx.application,
+ javafx.beans;version="2.0.0",
  javafx.beans.property,
  javafx.beans.value,
  javafx.collections,
