@@ -65,7 +65,6 @@ public abstract class WLayoutedWidgetImpl<N,NN extends Node,M extends MUIElement
 	
 	@Inject
 	void setContainerData(@Named(UIEvents.UIElement.CONTAINERDATA) @Optional String data) {
-		System.err.println("Setting data: " + data);
 		if( data != null ) {
 			try {
 				weight = Double.parseDouble(data);
