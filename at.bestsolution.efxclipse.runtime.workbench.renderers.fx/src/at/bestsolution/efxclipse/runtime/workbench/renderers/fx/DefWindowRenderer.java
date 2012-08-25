@@ -247,8 +247,6 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 										for (WWidget<?> w : newTreeReversed) {
 											w.activate();
 										}
-									} else {
-										System.err.println("Canceled intermediate state");
 									}
 								}
 							});
@@ -426,7 +424,6 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 					selectedParts.add(r.element.get());
 				}
 			}
-			System.err.println(selectedParts);
 			super.okPressed();
 		}
 

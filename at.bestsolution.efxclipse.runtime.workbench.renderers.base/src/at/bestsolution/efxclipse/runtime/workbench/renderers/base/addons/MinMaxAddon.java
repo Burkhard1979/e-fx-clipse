@@ -47,7 +47,6 @@ public class MinMaxAddon {
 				
 				@Override
 				public Void call(WMinMaxState param) {
-					System.err.println("Calling out for: " + param);
 					return null;
 				}
 			});

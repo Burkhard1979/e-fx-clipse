@@ -176,8 +176,6 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			}
 		}
 
-		System.err.println("Selected: " + element.getSelectedElement());
-		
 		if( element.getSelectedElement() != null ) {
 			handleSelectedElement(element, null, element.getSelectedElement());
 		} else if( ! element.getChildren().isEmpty() ) {
@@ -240,7 +238,6 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 		WPerspectiveStack<N, I, IC> stack = getWidget(parent);
 		int idx = 0;
 		for( WStackItem<I, IC> i : stack.getItems() ) {
-			System.err.println(i);
 			if( i.getDomElement() == newElement ) {
 				stack.selectItem(idx);
 				break;
