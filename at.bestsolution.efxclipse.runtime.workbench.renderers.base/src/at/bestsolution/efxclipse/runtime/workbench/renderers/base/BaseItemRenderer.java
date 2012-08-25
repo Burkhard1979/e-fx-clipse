@@ -62,7 +62,7 @@ public abstract class BaseItemRenderer<M extends MUIElement, W extends WWidget<M
 			try {
 				ContributionsAnalyzer.populateModelInterfaces(item, runContext, item.getClass().getInterfaces());
 				runContext.set(MItem.class.getName(), item);
-				return Boolean.TRUE.equals(ContextInjectionFactory.invoke(object, CanExecute.class, context, Boolean.TRUE));
+				return Boolean.TRUE.equals(ContextInjectionFactory.invoke(object, CanExecute.class, context.getActiveLeaf(), runContext, Boolean.TRUE));
 			} finally {
 				runContext.dispose();
 			}
@@ -106,7 +106,7 @@ public abstract class BaseItemRenderer<M extends MUIElement, W extends WWidget<M
 			try {
 				ContributionsAnalyzer.populateModelInterfaces(item, runContext, item.getClass().getInterfaces());
 				runContext.set(MItem.class.getName(), item);
-				ContextInjectionFactory.invoke(object,Execute.class, runContext);
+				ContextInjectionFactory.invoke(object,Execute.class, context.getActiveLeaf(), runContext);
 			} finally {
 				runContext.dispose();	
 			}

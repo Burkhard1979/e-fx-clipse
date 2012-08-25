@@ -39,7 +39,7 @@ public abstract class BaseToolItemRenderer<N> extends BaseItemRenderer<MToolItem
 			@Override
 			public void run() {
 				try {
-					widget.setHandled(canExecute(toolbarElement, getRenderingContext(toolbarElement)));	
+					widget.setHandled(canExecute(toolbarElement, getModelContext(toolbarElement)));	
 				} catch(Throwable t) {
 					//TODO Log it
 					t.printStackTrace();
