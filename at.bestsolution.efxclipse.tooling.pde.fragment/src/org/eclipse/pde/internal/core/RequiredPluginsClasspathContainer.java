@@ -30,7 +30,6 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.tooling.jdt.core.internal.JavaFXCorePlugin;
-import at.bestsolution.efxclipse.tooling.jdt.core.internal.JavaFXPreferencesConstants;
 import at.bestsolution.efxclipse.tooling.pde.adaptor.IClasspathContributor;
 import at.bestsolution.efxclipse.tooling.pde.adaptor.IClasspathContributor.Contribution;
 
