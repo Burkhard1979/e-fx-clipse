@@ -63,8 +63,6 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.actions.WorkspaceModifyDelegatingOperation;
 
-import at.bestsolution.efxclipse.tooling.jdt.core.JavaFXCore;
-
 /**
  * The second page of the New Java project wizard. It allows to configure the build path and output location.
  * As addition to the {@link JavaCapabilityConfigurationPage}, the wizard page does an
@@ -301,8 +299,7 @@ public class NewJavaFXProjectWizardPageTwo extends JavaCapabilityConfigurationPa
 				}
 
 				cpEntries.addAll(Arrays.asList(fFirstPage.getDefaultClasspathEntries()));
-				cpEntries.add(JavaCore.newContainerEntry(JavaFXCore.JAVAFX_CONTAINER_PATH));
-
+				
 				entries= cpEntries.toArray(new IClasspathEntry[cpEntries.size()]);
 
 				outputLocation= fFirstPage.getOutputLocation();

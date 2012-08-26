@@ -11,7 +11,6 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler;
 
 import java.io.File;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -43,7 +42,7 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 		Map<String,Object> map = new HashMap<String, Object>();
 		String workbench = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 		
-		IPath[] paths = BuildPathSupport.getPreferencePaths();
+		IPath[] paths = BuildPathSupport.getFxJarPath(project);
 		if( paths != null ) {
 			map.put("jfxjar", paths[0].toFile().getAbsolutePath());
 			map.put("jfxantjar", paths[2].toFile().getAbsolutePath());
