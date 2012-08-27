@@ -14,6 +14,7 @@ import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jdt.core.search.IJavaSearchScope;
 import org.eclipse.jdt.core.search.SearchEngine;
@@ -29,6 +30,7 @@ import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextHoverExtension;
 import org.eclipse.jface.text.ITextViewer;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocumentRegion;
@@ -423,7 +425,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 					
 					if (parent.getParentNode() != null) {
 						Node n = null;
-						System.err.println(parent.getParentNode().getNodeName());
 						
 						if( "fx:root".equals(parent.getNodeName()) ) {
 							n = parent;
@@ -435,8 +436,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							}
 						}
 
-						System.err.println("NNN: " + n);
-						
 						if (n != null) {
 							IType type;
 							if( "fx:root".equals(n.getNodeName()) ) {
@@ -711,7 +710,35 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 
 			if (attribute != null) {
 				if ("http://javafx.com/fxml".equals(attribute.getNamespaceURI())) {
-					if ("controller".equals(attribute.getLocalName())) {
+					if("constant".equals(attribute.getLocalName())) {
+						IType type = findType(n.getNodeName(), contentAssistRequest, context);
+						if (type != null) {
+							try {
+								List<IField> fields = new ArrayList<IField>();
+								collectStaticFields(fields, type);
+								
+								for( IField f : fields ) {
+									StyledString s = new StyledString(f.getElementName() + " : " + Signature.getSimpleName(Signature.toString(f.getTypeSignature())));
+									String owner = ((IType)f.getAncestor(IJavaElement.TYPE)).getElementName();
+									s.append(" - " + Signature.getSimpleName(owner), StyledString.QUALIFIER_STYLER);
+									
+									FXMLCompletionProposal cp = createProposal(
+											contentAssistRequest, 
+											context, "\"" + f.getElementName(), 
+											s, 
+											IconKeys.getIcon(IconKeys.CLASS_KEY), CLASS_ATTRIBUTE_MATCHER);
+									
+									if( cp != null ) {
+										contentAssistRequest.addProposal(cp);
+									}									
+								}
+								
+							} catch (JavaModelException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					} else if ("controller".equals(attribute.getLocalName())) {
 						IJavaProject jproject = findProject(contentAssistRequest);
 
 						char[] typeName = null;
@@ -724,8 +751,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							}
 						}
 						
-						System.err.println("Type: " + new String(typeName));
-
 						IJavaSearchScope searchScope = SearchEngine.createJavaSearchScope(new IJavaElement[] { jproject });
 						SearchEngine searchEngine = new SearchEngine();
 						try {
@@ -792,6 +817,22 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 					}
 				}
 			}
+		}
+	}
+	
+	private void collectStaticFields(List<IField> fields, IType type) throws JavaModelException {
+		//FIXME Don't we have to check if the field is assignable???
+		for( IField f : type.getFields() ) {
+			if( Flags.isStatic(f.getFlags()) ) {
+				fields.add(f);
+			}
+		}
+		
+		String s = type.getSuperclassName();
+		
+		if( s != null) {
+			String fqn = at.bestsolution.efxclipse.tooling.model.internal.utils.Util.getFQNType(type, Signature.getTypeErasure(s));
+			collectStaticFields(fields, type.getJavaProject().findType(fqn));		
 		}
 	}
 
