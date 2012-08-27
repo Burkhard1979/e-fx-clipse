@@ -143,7 +143,12 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 			typeName = parent.getNodeName();
 		}
 
+		if( "fx:root".equals(typeName) ) {
+			typeName = parent.getAttributes().getNamedItem("type").getNodeValue();
+		}
+		
 		if (typeName != null) {
+			
 			if (Character.isLowerCase(typeName.charAt(0)) || typeName.contains(".")) {
 				// no proposal for static elements and attribute definitions
 				return;
