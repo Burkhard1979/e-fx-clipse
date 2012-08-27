@@ -13,9 +13,7 @@ import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
-import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.UIEvents;
-import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
@@ -107,7 +105,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob((MPart) param.getDomElement(),true);
+					activatationJob((MPerspective) param.getDomElement(),true);
 				}
 
 				return null;
@@ -118,7 +116,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob((MPart) param.getDomElement(),false);
+					activatationJob((MPerspective) param.getDomElement(),false);
 				}
 
 				return null;
@@ -130,15 +128,14 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			@Override
 			public Void call(Boolean param) {
 				if( param.booleanValue() && element.getSelectedElement() != null ) {
-					activatationJob((MPart) element.getSelectedElement(), true);
+					activatationJob((MPerspective) element.getSelectedElement(), true);
 				}
 				return null;
 			}
 		});
 	}
 	
-	private void activatationJob(final MPart p, final boolean focus) {
-		activate(p, focus);
+	private void activatationJob(final MPerspective p, final boolean focus) {
 	}
 
 	@Override
@@ -247,26 +244,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 	}
 
 	boolean handleStackItemClose(MPerspective e, WStackItem<I, IC> item) {
-		MPart part = (MPart) e;
-		if( ! part.isCloseable() ) {
-			return false;
-		}
-		
-		IEclipseContext partContext = part.getContext();
-		IEclipseContext parentContext = getContextForParent(part);
-		// a part may not have a context if it hasn't been rendered
-		IEclipseContext context = partContext == null ? parentContext : partContext;
-		// Allow closes to be 'canceled'
-		EPartService partService = (EPartService) context
-				.get(EPartService.class.getName());
-		if (partService.savePart(part, true)) {
-			partService.hidePart(part);
-			return true;
-		}
-		// the user has canceled out of the save operation, so don't close the
-		// part
-		return false;
-		
+		return true;		
 	}
 	
 	@Override
