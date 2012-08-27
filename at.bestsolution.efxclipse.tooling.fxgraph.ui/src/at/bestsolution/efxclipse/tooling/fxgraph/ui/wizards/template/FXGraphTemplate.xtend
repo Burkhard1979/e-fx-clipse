@@ -8,7 +8,7 @@ class FXGraphTemplate implements IGenerator<FXGraphElement> {
 		
 		import «element.rootElement.fullyQualifiedName»
 		
-		component «element.name» {
+		«IF element.dynamic»dynamic «ENDIF»component «element.name» {
 			«element.rootElement.elementName» {
 				//TODO Add Nodes
 			}
