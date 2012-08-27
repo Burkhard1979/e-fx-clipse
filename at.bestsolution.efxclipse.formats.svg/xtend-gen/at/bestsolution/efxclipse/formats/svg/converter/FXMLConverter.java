@@ -37,9 +37,6 @@ import java.awt.geom.Point2D;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
@@ -236,7 +233,7 @@ public class FXMLConverter {
       if (_notEquals_4) {
         _builder.append("cycleMethod=\"");
         SpreadMethod _spreadMethod_1 = element.getSpreadMethod();
-        CycleMethod _fx = this.toFx(_spreadMethod_1);
+        String _fx = this.toFx(_spreadMethod_1);
         _builder.append(_fx, "	");
         _builder.append("\"");
       }
@@ -403,7 +400,7 @@ public class FXMLConverter {
       if (_notEquals_7) {
         _builder.append("cycleMethod=\"");
         SpreadMethod _spreadMethod_1 = element.getSpreadMethod();
-        CycleMethod _fx_3 = this.toFx(_spreadMethod_1);
+        String _fx_3 = this.toFx(_spreadMethod_1);
         _builder.append(_fx_3, "	");
         _builder.append("\"");
       }
@@ -1827,7 +1824,7 @@ public class FXMLConverter {
       if (_notEquals_1) {
         _builder.append("strokeLineCap=\"");
         Object _lookupFeature_3 = this.lookupFeature(Literals.PRESENTATION_ATTRIBUTES__STROKE_LINECAP, element);
-        StrokeLineCap _fx = this.toFx(((Stroke_linecap) _lookupFeature_3));
+        String _fx = this.toFx(((Stroke_linecap) _lookupFeature_3));
         _builder.append(_fx, "");
         _builder.append("\"");
       }
@@ -1839,7 +1836,7 @@ public class FXMLConverter {
       if (_notEquals_2) {
         _builder.append("strokeLineJoin=\"");
         Object _lookupFeature_5 = this.lookupFeature(Literals.PRESENTATION_ATTRIBUTES__STROKE_LINEJOIN, element);
-        StrokeLineJoin _fx_1 = this.toFx(((Stroke_linejoin) _lookupFeature_5));
+        String _fx_1 = this.toFx(((Stroke_linejoin) _lookupFeature_5));
         _builder.append(_fx_1, "");
         _builder.append("\"");
       }
@@ -3633,73 +3630,73 @@ public class FXMLConverter {
     return null;
   }
   
-  public CycleMethod toFx(final SpreadMethod m) {
+  public String toFx(final SpreadMethod m) {
     boolean _matched = false;
     if (!_matched) {
       if (Objects.equal(m,SpreadMethod.PAD)) {
         _matched=true;
-        return CycleMethod.NO_CYCLE;
+        return "NO_CYCLE";
       }
     }
     if (!_matched) {
       if (Objects.equal(m,SpreadMethod.REFLECT)) {
         _matched=true;
-        return CycleMethod.REFLECT;
+        return "REFLECT";
       }
     }
     if (!_matched) {
       if (Objects.equal(m,SpreadMethod.REPEAT)) {
         _matched=true;
-        return CycleMethod.REPEAT;
+        return "REPEAT";
       }
     }
-    return CycleMethod.NO_CYCLE;
+    return "NO_CYCLE";
   }
   
-  public StrokeLineCap toFx(final Stroke_linecap m) {
+  public String toFx(final Stroke_linecap m) {
     boolean _matched = false;
     if (!_matched) {
       if (Objects.equal(m,Stroke_linecap.BUTT)) {
         _matched=true;
-        return StrokeLineCap.BUTT;
+        return "BUTT";
       }
     }
     if (!_matched) {
       if (Objects.equal(m,Stroke_linecap.ROUND)) {
         _matched=true;
-        return StrokeLineCap.ROUND;
+        return "ROUND";
       }
     }
     if (!_matched) {
       if (Objects.equal(m,Stroke_linecap.SQUARE)) {
         _matched=true;
-        return StrokeLineCap.SQUARE;
+        return "SQUARE";
       }
     }
-    return StrokeLineCap.BUTT;
+    return "BUTT";
   }
   
-  public StrokeLineJoin toFx(final Stroke_linejoin m) {
+  public String toFx(final Stroke_linejoin m) {
     boolean _matched = false;
     if (!_matched) {
       if (Objects.equal(m,Stroke_linejoin.BEVEL)) {
         _matched=true;
-        return StrokeLineJoin.BEVEL;
+        return "BEVEL";
       }
     }
     if (!_matched) {
       if (Objects.equal(m,Stroke_linejoin.MITER)) {
         _matched=true;
-        return StrokeLineJoin.MITER;
+        return "MITER";
       }
     }
     if (!_matched) {
       if (Objects.equal(m,Stroke_linejoin.ROUND)) {
         _matched=true;
-        return StrokeLineJoin.ROUND;
+        return "ROUND";
       }
     }
-    return StrokeLineJoin.BEVEL;
+    return "BEVEL";
   }
   
   public double parseLength(final String length) {

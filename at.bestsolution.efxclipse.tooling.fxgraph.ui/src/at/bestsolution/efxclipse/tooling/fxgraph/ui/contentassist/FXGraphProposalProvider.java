@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -26,6 +28,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.IRegion;
@@ -50,6 +53,7 @@ import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.BindValueProperty;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.FXGraphPackage;
@@ -208,7 +212,6 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 	@Override
 	public void completeElement_Properties(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		try {
-			System.err.println("property proposal: " + model);
 			Element el = (Element) model;
 			// Happens when we are in the default section and user typed
 			// something
@@ -1242,7 +1245,6 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 				IFXClass fxClazz = FXPlugin.getClassmodel().findClass(javaProject, type);
 				if (fxClazz != null) {
 					IFXProperty fxProp = fxClazz.getStaticProperty(staticProperty.getName());
-					System.err.println(fxProp);
 					if (fxProp != null) {
 						completeProperty_ValueProposals(fxProp, model, context, FXGraphPackage.Literals.STATIC_VALUE_PROPERTY__VALUE, acceptor);
 					}
@@ -1264,6 +1266,51 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 	public void completeComponentDefinition_Controller(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		typeProposalProviders.createTypeProposals(this, context, FXGraphPackage.Literals.COMPONENT_DEFINITION__CONTROLLER, acceptor);
 	
+	}
+	
+	@Override
+	public void completeConstValueProperty_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		typeProposalProviders.createTypeProposals(this, context, FXGraphPackage.Literals.CONST_VALUE_PROPERTY__TYPE, acceptor);
+	}
+	
+	@Override
+	public void completeConstValueProperty_Field(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		if( model instanceof ConstValueProperty ) {
+			ConstValueProperty constProp = (ConstValueProperty) model;
+			IJavaProject javaProject = projectProvider.getJavaProject(constProp.eResource().getResourceSet());
+			try {
+				IType type = javaProject.findType(constProp.getType().getQualifiedName());
+				List<IField> fields = new ArrayList<IField>();
+				collectStaticFields(fields, type);
+				
+				for( IField f : fields ) {
+					StyledString s = new StyledString(f.getElementName() + " : " + Signature.getSimpleName(Signature.toString(f.getTypeSignature())));
+					String owner = ((IType)f.getAncestor(IJavaElement.TYPE)).getElementName();
+					s.append(" - " + Signature.getSimpleName(owner), StyledString.QUALIFIER_STYLER);
+					ICompletionProposal prop = createCompletionProposal(f.getElementName(), s, IconKeys.getIcon(IconKeys.FIELD_KEY), context);
+					acceptor.accept(prop);
+				}
+				
+			} catch (JavaModelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private void collectStaticFields(List<IField> fields, IType type) throws JavaModelException {
+		for( IField f : type.getFields() ) {
+			if( Flags.isStatic(f.getFlags()) ) {
+				fields.add(f);
+			}
+		}
+		
+		String s = type.getSuperclassName();
+		
+		if( s != null) {
+			String fqn = at.bestsolution.efxclipse.tooling.model.internal.utils.Util.getFQNType(type, Signature.getTypeErasure(s));
+			collectStaticFields(fields, type.getJavaProject().findType(fqn));		
+		}
 	}
 	
 //	@Override

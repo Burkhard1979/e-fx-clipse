@@ -213,6 +213,15 @@ public class FXGraphSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case FXGraphPackage.CONST_VALUE_PROPERTY:
+      {
+        ConstValueProperty constValueProperty = (ConstValueProperty)theEObject;
+        T result = caseConstValueProperty(constValueProperty);
+        if (result == null) result = caseSingleValueProperty(constValueProperty);
+        if (result == null) result = caseValueProperty(constValueProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case FXGraphPackage.REFERENCE_TYPE:
       {
         ReferenceType referenceType = (ReferenceType)theEObject;
@@ -608,6 +617,22 @@ public class FXGraphSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSimpleValueProperty(SimpleValueProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Const Value Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Const Value Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstValueProperty(ConstValueProperty object)
   {
     return null;
   }

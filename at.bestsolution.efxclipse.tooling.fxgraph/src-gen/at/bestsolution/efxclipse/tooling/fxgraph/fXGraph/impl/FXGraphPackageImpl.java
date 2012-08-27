@@ -4,6 +4,7 @@ package at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.impl;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.BindValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ComponentDefinition;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ControllerHandledValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.CopyValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define;
@@ -177,6 +178,13 @@ public class FXGraphPackageImpl extends EPackageImpl implements FXGraphPackage
    * @generated
    */
   private EClass simpleValuePropertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constValuePropertyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -973,6 +981,36 @@ public class FXGraphPackageImpl extends EPackageImpl implements FXGraphPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getConstValueProperty()
+  {
+    return constValuePropertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConstValueProperty_Type()
+  {
+    return (EReference)constValuePropertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConstValueProperty_Field()
+  {
+    return (EAttribute)constValuePropertyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getReferenceType()
   {
     return referenceTypeEClass;
@@ -1370,6 +1408,10 @@ public class FXGraphPackageImpl extends EPackageImpl implements FXGraphPackage
     createEAttribute(simpleValuePropertyEClass, SIMPLE_VALUE_PROPERTY__INT_VALUE);
     createEAttribute(simpleValuePropertyEClass, SIMPLE_VALUE_PROPERTY__REAL_VALUE);
 
+    constValuePropertyEClass = createEClass(CONST_VALUE_PROPERTY);
+    createEReference(constValuePropertyEClass, CONST_VALUE_PROPERTY__TYPE);
+    createEAttribute(constValuePropertyEClass, CONST_VALUE_PROPERTY__FIELD);
+
     referenceTypeEClass = createEClass(REFERENCE_TYPE);
 
     referenceValuePropertyEClass = createEClass(REFERENCE_VALUE_PROPERTY);
@@ -1455,6 +1497,7 @@ public class FXGraphPackageImpl extends EPackageImpl implements FXGraphPackage
     simpleValuePropertyEClass.getESuperTypes().add(this.getSingleValueProperty());
     simpleValuePropertyEClass.getESuperTypes().add(this.getFactoryValueElement());
     simpleValuePropertyEClass.getESuperTypes().add(this.getListValueElement());
+    constValuePropertyEClass.getESuperTypes().add(this.getSingleValueProperty());
     referenceValuePropertyEClass.getESuperTypes().add(this.getSingleValueProperty());
     referenceValuePropertyEClass.getESuperTypes().add(this.getListValueElement());
     includeValuePropertyEClass.getESuperTypes().add(this.getSingleValueProperty());
@@ -1551,6 +1594,10 @@ public class FXGraphPackageImpl extends EPackageImpl implements FXGraphPackage
     initEAttribute(getSimpleValueProperty_Negative(), ecorePackage.getEBoolean(), "negative", null, 0, 1, SimpleValueProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSimpleValueProperty_IntValue(), ecorePackage.getEInt(), "intValue", null, 0, 1, SimpleValueProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSimpleValueProperty_RealValue(), ecorePackage.getEDouble(), "realValue", null, 0, 1, SimpleValueProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constValuePropertyEClass, ConstValueProperty.class, "ConstValueProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConstValueProperty_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, ConstValueProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstValueProperty_Field(), ecorePackage.getEString(), "field", null, 0, 1, ConstValueProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referenceTypeEClass, ReferenceType.class, "ReferenceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -11,6 +11,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import javax.inject.Inject;
@@ -33,9 +34,14 @@ import org.eclipse.emf.databinding.IEMFValueProperty;
 import at.bestsolution.efxclipse.runtime.databinding.AdapterFactory;
 import at.bestsolution.efxclipse.runtime.databinding.IJFXBeanValueProperty;
 import at.bestsolution.efxclipse.runtime.databinding.JFXBeanProperties;
+import at.bestsolution.efxclipse.runtime.di.ResourcePool;
+import at.bestsolution.efxclipse.tooling.modeleditor.ResourceProvider;
 
 @SuppressWarnings("restriction")
 public class DefaultTabController implements Initializable {
+	@Inject
+	private ResourcePool pool;
+	
 	private WritableValue master = new WritableValue();
 	
 	@FXML
@@ -116,12 +122,14 @@ public class DefaultTabController implements Initializable {
 		
 	}
 	
-	static class BindingCell extends ListCell<MBindingContext> {
+	class BindingCell extends ListCell<MBindingContext> {
 		@Override
 		protected void updateItem(MBindingContext item, boolean empty) {
 			super.updateItem(item, empty);
 			if( item != null ) {
 				setText("BindingContext - " + item.getName());
+				System.err.println(pool.getImageUnchecked(ResourceProvider.Model_BindingContext));
+				setGraphic(new ImageView(pool.getImageUnchecked(ResourceProvider.Model_BindingContext)));
 			}
 		}
 	}

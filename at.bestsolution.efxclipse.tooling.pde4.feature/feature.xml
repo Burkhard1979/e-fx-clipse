@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.bestsolution.efxclipse.tooling.pde4.feature"
-      label="e4 pde"
+      label="e(fx)clipse - Single - PDE support for e4"
       version="0.1.0.qualifier"
       provider-name="BestSolution.at">
 

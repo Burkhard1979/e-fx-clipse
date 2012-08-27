@@ -2,6 +2,7 @@ package at.bestsolution.efxclipse.tooling.fxgraph.generator;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.BindValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ComponentDefinition;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ControllerHandledValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.CopyValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define;
@@ -671,35 +672,36 @@ public class FXGraphGenerator implements IGenerator {
         }
       } else {
         ValueProperty _value_4 = prop.getValue();
-        if ((_value_4 instanceof ListValueProperty)) {
+        if ((_value_4 instanceof ConstValueProperty)) {
           _builder.append("<");
           String _name_4 = prop.getName();
           _builder.append(_name_4, "");
-          _builder.append(">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
+          _builder.append("><");
           ValueProperty _value_5 = prop.getValue();
-          CharSequence _propListContent = this.propListContent(((ListValueProperty) _value_5), importManager, preview, skipController, skipIncludes);
-          _builder.append(_propListContent, "	");
-          _builder.newLineIfNotEmpty();
-          _builder.append("</");
+          JvmTypeReference _type = ((ConstValueProperty) _value_5).getType();
+          String _shortName = this.shortName(_type, importManager);
+          _builder.append(_shortName, "");
+          _builder.append(" fx:constant=\"");
+          ValueProperty _value_6 = prop.getValue();
+          String _field = ((ConstValueProperty) _value_6).getField();
+          _builder.append(_field, "");
+          _builder.append("\" /></");
           String _name_5 = prop.getName();
           _builder.append(_name_5, "");
           _builder.append(">");
           _builder.newLineIfNotEmpty();
         } else {
-          ValueProperty _value_6 = prop.getValue();
-          if ((_value_6 instanceof MapValueProperty)) {
+          ValueProperty _value_7 = prop.getValue();
+          if ((_value_7 instanceof ListValueProperty)) {
             _builder.append("<");
             String _name_6 = prop.getName();
             _builder.append(_name_6, "");
             _builder.append(">");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            ValueProperty _value_7 = prop.getValue();
-            EList<Property> _properties = ((MapValueProperty) _value_7).getProperties();
-            CharSequence _propContents = this.propContents(_properties, importManager, preview, true, skipController, skipIncludes);
-            _builder.append(_propContents, "	");
+            ValueProperty _value_8 = prop.getValue();
+            CharSequence _propListContent = this.propListContent(((ListValueProperty) _value_8), importManager, preview, skipController, skipIncludes);
+            _builder.append(_propListContent, "	");
             _builder.newLineIfNotEmpty();
             _builder.append("</");
             String _name_7 = prop.getName();
@@ -707,17 +709,18 @@ public class FXGraphGenerator implements IGenerator {
             _builder.append(">");
             _builder.newLineIfNotEmpty();
           } else {
-            ValueProperty _value_8 = prop.getValue();
-            if ((_value_8 instanceof Element)) {
+            ValueProperty _value_9 = prop.getValue();
+            if ((_value_9 instanceof MapValueProperty)) {
               _builder.append("<");
               String _name_8 = prop.getName();
               _builder.append(_name_8, "");
               _builder.append(">");
               _builder.newLineIfNotEmpty();
               _builder.append("\t");
-              ValueProperty _value_9 = prop.getValue();
-              CharSequence _elementContent = this.elementContent(((Element) _value_9), importManager, preview, skipController, skipIncludes);
-              _builder.append(_elementContent, "	");
+              ValueProperty _value_10 = prop.getValue();
+              EList<Property> _properties = ((MapValueProperty) _value_10).getProperties();
+              CharSequence _propContents = this.propContents(_properties, importManager, preview, true, skipController, skipIncludes);
+              _builder.append(_propContents, "	");
               _builder.newLineIfNotEmpty();
               _builder.append("</");
               String _name_9 = prop.getName();
@@ -725,43 +728,38 @@ public class FXGraphGenerator implements IGenerator {
               _builder.append(">");
               _builder.newLineIfNotEmpty();
             } else {
-              ValueProperty _value_10 = prop.getValue();
-              if ((_value_10 instanceof ReferenceValueProperty)) {
-                {
-                  boolean _not = (!skipIncludes);
-                  if (_not) {
-                    _builder.append("<");
-                    String _name_10 = prop.getName();
-                    _builder.append(_name_10, "");
-                    _builder.append(">");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    ValueProperty _value_11 = prop.getValue();
-                    CharSequence _referenceContent = this.referenceContent(((ReferenceValueProperty) _value_11), importManager, preview, skipController, skipIncludes);
-                    _builder.append(_referenceContent, "	");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("</");
-                    String _name_11 = prop.getName();
-                    _builder.append(_name_11, "");
-                    _builder.append(">");
-                    _builder.newLineIfNotEmpty();
-                  }
-                }
-              } else {
+              ValueProperty _value_11 = prop.getValue();
+              if ((_value_11 instanceof Element)) {
+                _builder.append("<");
+                String _name_10 = prop.getName();
+                _builder.append(_name_10, "");
+                _builder.append(">");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
                 ValueProperty _value_12 = prop.getValue();
-                if ((_value_12 instanceof IncludeValueProperty)) {
+                CharSequence _elementContent = this.elementContent(((Element) _value_12), importManager, preview, skipController, skipIncludes);
+                _builder.append(_elementContent, "	");
+                _builder.newLineIfNotEmpty();
+                _builder.append("</");
+                String _name_11 = prop.getName();
+                _builder.append(_name_11, "");
+                _builder.append(">");
+                _builder.newLineIfNotEmpty();
+              } else {
+                ValueProperty _value_13 = prop.getValue();
+                if ((_value_13 instanceof ReferenceValueProperty)) {
                   {
-                    boolean _not_1 = (!skipIncludes);
-                    if (_not_1) {
+                    boolean _not = (!skipIncludes);
+                    if (_not) {
                       _builder.append("<");
                       String _name_12 = prop.getName();
                       _builder.append(_name_12, "");
                       _builder.append(">");
                       _builder.newLineIfNotEmpty();
                       _builder.append("\t");
-                      ValueProperty _value_13 = prop.getValue();
-                      CharSequence _includeContent = this.includeContent(((IncludeValueProperty) _value_13), importManager, preview, skipController, skipIncludes);
-                      _builder.append(_includeContent, "	");
+                      ValueProperty _value_14 = prop.getValue();
+                      CharSequence _referenceContent = this.referenceContent(((ReferenceValueProperty) _value_14), importManager, preview, skipController, skipIncludes);
+                      _builder.append(_referenceContent, "	");
                       _builder.newLineIfNotEmpty();
                       _builder.append("</");
                       String _name_13 = prop.getName();
@@ -771,26 +769,50 @@ public class FXGraphGenerator implements IGenerator {
                     }
                   }
                 } else {
-                  ValueProperty _value_14 = prop.getValue();
-                  if ((_value_14 instanceof CopyValueProperty)) {
-                    _builder.append("<");
-                    String _name_14 = prop.getName();
-                    _builder.append(_name_14, "");
-                    _builder.append(">");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("\t");
-                    _builder.append("<fx:copy source=\"");
-                    ValueProperty _value_15 = prop.getValue();
-                    Element _reference = ((CopyValueProperty) _value_15).getReference();
-                    String _name_15 = _reference.getName();
-                    _builder.append(_name_15, "	");
-                    _builder.append("\" />");
-                    _builder.newLineIfNotEmpty();
-                    _builder.append("</");
-                    String _name_16 = prop.getName();
-                    _builder.append(_name_16, "");
-                    _builder.append(">");
-                    _builder.newLineIfNotEmpty();
+                  ValueProperty _value_15 = prop.getValue();
+                  if ((_value_15 instanceof IncludeValueProperty)) {
+                    {
+                      boolean _not_1 = (!skipIncludes);
+                      if (_not_1) {
+                        _builder.append("<");
+                        String _name_14 = prop.getName();
+                        _builder.append(_name_14, "");
+                        _builder.append(">");
+                        _builder.newLineIfNotEmpty();
+                        _builder.append("\t");
+                        ValueProperty _value_16 = prop.getValue();
+                        CharSequence _includeContent = this.includeContent(((IncludeValueProperty) _value_16), importManager, preview, skipController, skipIncludes);
+                        _builder.append(_includeContent, "	");
+                        _builder.newLineIfNotEmpty();
+                        _builder.append("</");
+                        String _name_15 = prop.getName();
+                        _builder.append(_name_15, "");
+                        _builder.append(">");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
+                  } else {
+                    ValueProperty _value_17 = prop.getValue();
+                    if ((_value_17 instanceof CopyValueProperty)) {
+                      _builder.append("<");
+                      String _name_16 = prop.getName();
+                      _builder.append(_name_16, "");
+                      _builder.append(">");
+                      _builder.newLineIfNotEmpty();
+                      _builder.append("\t");
+                      _builder.append("<fx:copy source=\"");
+                      ValueProperty _value_18 = prop.getValue();
+                      Element _reference = ((CopyValueProperty) _value_18).getReference();
+                      String _name_17 = _reference.getName();
+                      _builder.append(_name_17, "	");
+                      _builder.append("\" />");
+                      _builder.newLineIfNotEmpty();
+                      _builder.append("</");
+                      String _name_18 = prop.getName();
+                      _builder.append(_name_18, "");
+                      _builder.append(">");
+                      _builder.newLineIfNotEmpty();
+                    }
                   }
                 }
               }
@@ -971,7 +993,7 @@ public class FXGraphGenerator implements IGenerator {
             }
           } else {
             ValueProperty _value_4 = prop.getValue();
-            if ((_value_4 instanceof ListValueProperty)) {
+            if ((_value_4 instanceof ConstValueProperty)) {
               _builder.append("<");
               JvmTypeReference _type_4 = prop.getType();
               String _shortName_4 = this.shortName(_type_4, importManager);
@@ -979,161 +1001,190 @@ public class FXGraphGenerator implements IGenerator {
               _builder.append(".");
               String _name_4 = prop.getName();
               _builder.append(_name_4, "");
-              _builder.append(">");
-              _builder.newLineIfNotEmpty();
-              _builder.append("\t");
+              _builder.append("><");
               ValueProperty _value_5 = prop.getValue();
-              CharSequence _propListContent = this.propListContent(((ListValueProperty) _value_5), importManager, preview, skipController, skipIncludes);
-              _builder.append(_propListContent, "	");
-              _builder.newLineIfNotEmpty();
-              _builder.append("</");
-              JvmTypeReference _type_5 = prop.getType();
+              JvmTypeReference _type_5 = ((ConstValueProperty) _value_5).getType();
               String _shortName_5 = this.shortName(_type_5, importManager);
               _builder.append(_shortName_5, "");
+              _builder.append(" fx:constant=\"");
+              ValueProperty _value_6 = prop.getValue();
+              String _field = ((ConstValueProperty) _value_6).getField();
+              _builder.append(_field, "");
+              _builder.append("\" /></");
+              JvmTypeReference _type_6 = prop.getType();
+              String _shortName_6 = this.shortName(_type_6, importManager);
+              _builder.append(_shortName_6, "");
               _builder.append(".");
               String _name_5 = prop.getName();
               _builder.append(_name_5, "");
               _builder.append(">");
               _builder.newLineIfNotEmpty();
             } else {
-              ValueProperty _value_6 = prop.getValue();
-              if ((_value_6 instanceof MapValueProperty)) {
+              ValueProperty _value_7 = prop.getValue();
+              if ((_value_7 instanceof ListValueProperty)) {
                 _builder.append("<");
-                JvmTypeReference _type_6 = prop.getType();
-                String _shortName_6 = this.shortName(_type_6, importManager);
-                _builder.append(_shortName_6, "");
+                JvmTypeReference _type_7 = prop.getType();
+                String _shortName_7 = this.shortName(_type_7, importManager);
+                _builder.append(_shortName_7, "");
                 _builder.append(".");
                 String _name_6 = prop.getName();
                 _builder.append(_name_6, "");
                 _builder.append(">");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
-                ValueProperty _value_7 = prop.getValue();
-                EList<Property> _properties = ((MapValueProperty) _value_7).getProperties();
-                CharSequence _propContents = this.propContents(_properties, importManager, preview, true, skipController, skipIncludes);
-                _builder.append(_propContents, "	");
+                ValueProperty _value_8 = prop.getValue();
+                CharSequence _propListContent = this.propListContent(((ListValueProperty) _value_8), importManager, preview, skipController, skipIncludes);
+                _builder.append(_propListContent, "	");
                 _builder.newLineIfNotEmpty();
                 _builder.append("</");
-                JvmTypeReference _type_7 = prop.getType();
-                String _shortName_7 = this.shortName(_type_7, importManager);
-                _builder.append(_shortName_7, "");
+                JvmTypeReference _type_8 = prop.getType();
+                String _shortName_8 = this.shortName(_type_8, importManager);
+                _builder.append(_shortName_8, "");
                 _builder.append(".");
                 String _name_7 = prop.getName();
                 _builder.append(_name_7, "");
                 _builder.append(">");
                 _builder.newLineIfNotEmpty();
               } else {
-                ValueProperty _value_8 = prop.getValue();
-                if ((_value_8 instanceof Element)) {
+                ValueProperty _value_9 = prop.getValue();
+                if ((_value_9 instanceof MapValueProperty)) {
                   _builder.append("<");
-                  JvmTypeReference _type_8 = prop.getType();
-                  String _shortName_8 = this.shortName(_type_8, importManager);
-                  _builder.append(_shortName_8, "");
+                  JvmTypeReference _type_9 = prop.getType();
+                  String _shortName_9 = this.shortName(_type_9, importManager);
+                  _builder.append(_shortName_9, "");
                   _builder.append(".");
                   String _name_8 = prop.getName();
                   _builder.append(_name_8, "");
                   _builder.append(">");
                   _builder.newLineIfNotEmpty();
                   _builder.append("\t");
-                  ValueProperty _value_9 = prop.getValue();
-                  CharSequence _elementContent = this.elementContent(((Element) _value_9), importManager, preview, skipController, skipIncludes);
-                  _builder.append(_elementContent, "	");
+                  ValueProperty _value_10 = prop.getValue();
+                  EList<Property> _properties = ((MapValueProperty) _value_10).getProperties();
+                  CharSequence _propContents = this.propContents(_properties, importManager, preview, true, skipController, skipIncludes);
+                  _builder.append(_propContents, "	");
                   _builder.newLineIfNotEmpty();
                   _builder.append("</");
-                  JvmTypeReference _type_9 = prop.getType();
-                  String _shortName_9 = this.shortName(_type_9, importManager);
-                  _builder.append(_shortName_9, "");
+                  JvmTypeReference _type_10 = prop.getType();
+                  String _shortName_10 = this.shortName(_type_10, importManager);
+                  _builder.append(_shortName_10, "");
                   _builder.append(".");
                   String _name_9 = prop.getName();
                   _builder.append(_name_9, "");
                   _builder.append(">");
                   _builder.newLineIfNotEmpty();
                 } else {
-                  ValueProperty _value_10 = prop.getValue();
-                  if ((_value_10 instanceof ReferenceValueProperty)) {
+                  ValueProperty _value_11 = prop.getValue();
+                  if ((_value_11 instanceof Element)) {
                     _builder.append("<");
-                    JvmTypeReference _type_10 = prop.getType();
-                    String _shortName_10 = this.shortName(_type_10, importManager);
-                    _builder.append(_shortName_10, "");
+                    JvmTypeReference _type_11 = prop.getType();
+                    String _shortName_11 = this.shortName(_type_11, importManager);
+                    _builder.append(_shortName_11, "");
                     _builder.append(".");
                     String _name_10 = prop.getName();
                     _builder.append(_name_10, "");
                     _builder.append(">");
                     _builder.newLineIfNotEmpty();
                     _builder.append("\t");
-                    ValueProperty _value_11 = prop.getValue();
-                    CharSequence _referenceContent = this.referenceContent(((ReferenceValueProperty) _value_11), importManager, preview, skipController, skipIncludes);
-                    _builder.append(_referenceContent, "	");
+                    ValueProperty _value_12 = prop.getValue();
+                    CharSequence _elementContent = this.elementContent(((Element) _value_12), importManager, preview, skipController, skipIncludes);
+                    _builder.append(_elementContent, "	");
                     _builder.newLineIfNotEmpty();
                     _builder.append("</");
-                    JvmTypeReference _type_11 = prop.getType();
-                    String _shortName_11 = this.shortName(_type_11, importManager);
-                    _builder.append(_shortName_11, "");
+                    JvmTypeReference _type_12 = prop.getType();
+                    String _shortName_12 = this.shortName(_type_12, importManager);
+                    _builder.append(_shortName_12, "");
                     _builder.append(".");
                     String _name_11 = prop.getName();
                     _builder.append(_name_11, "");
                     _builder.append(">");
                     _builder.newLineIfNotEmpty();
                   } else {
-                    ValueProperty _value_12 = prop.getValue();
-                    if ((_value_12 instanceof IncludeValueProperty)) {
-                      {
-                        boolean _not = (!skipIncludes);
-                        if (_not) {
+                    ValueProperty _value_13 = prop.getValue();
+                    if ((_value_13 instanceof ReferenceValueProperty)) {
+                      _builder.append("<");
+                      JvmTypeReference _type_13 = prop.getType();
+                      String _shortName_13 = this.shortName(_type_13, importManager);
+                      _builder.append(_shortName_13, "");
+                      _builder.append(".");
+                      String _name_12 = prop.getName();
+                      _builder.append(_name_12, "");
+                      _builder.append(">");
+                      _builder.newLineIfNotEmpty();
+                      _builder.append("\t");
+                      ValueProperty _value_14 = prop.getValue();
+                      CharSequence _referenceContent = this.referenceContent(((ReferenceValueProperty) _value_14), importManager, preview, skipController, skipIncludes);
+                      _builder.append(_referenceContent, "	");
+                      _builder.newLineIfNotEmpty();
+                      _builder.append("</");
+                      JvmTypeReference _type_14 = prop.getType();
+                      String _shortName_14 = this.shortName(_type_14, importManager);
+                      _builder.append(_shortName_14, "");
+                      _builder.append(".");
+                      String _name_13 = prop.getName();
+                      _builder.append(_name_13, "");
+                      _builder.append(">");
+                      _builder.newLineIfNotEmpty();
+                    } else {
+                      ValueProperty _value_15 = prop.getValue();
+                      if ((_value_15 instanceof IncludeValueProperty)) {
+                        {
+                          boolean _not = (!skipIncludes);
+                          if (_not) {
+                            _builder.append("<");
+                            JvmTypeReference _type_15 = prop.getType();
+                            String _shortName_15 = this.shortName(_type_15, importManager);
+                            _builder.append(_shortName_15, "");
+                            _builder.append(".");
+                            String _name_14 = prop.getName();
+                            _builder.append(_name_14, "");
+                            _builder.append(">");
+                            _builder.newLineIfNotEmpty();
+                            _builder.append("\t");
+                            ValueProperty _value_16 = prop.getValue();
+                            CharSequence _includeContent = this.includeContent(((IncludeValueProperty) _value_16), importManager, preview, skipController, skipIncludes);
+                            _builder.append(_includeContent, "	");
+                            _builder.newLineIfNotEmpty();
+                            _builder.append("</");
+                            JvmTypeReference _type_16 = prop.getType();
+                            String _shortName_16 = this.shortName(_type_16, importManager);
+                            _builder.append(_shortName_16, "");
+                            _builder.append(".");
+                            String _name_15 = prop.getName();
+                            _builder.append(_name_15, "");
+                            _builder.append(">");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      } else {
+                        ValueProperty _value_17 = prop.getValue();
+                        if ((_value_17 instanceof CopyValueProperty)) {
                           _builder.append("<");
-                          JvmTypeReference _type_12 = prop.getType();
-                          String _shortName_12 = this.shortName(_type_12, importManager);
-                          _builder.append(_shortName_12, "");
+                          JvmTypeReference _type_17 = prop.getType();
+                          String _shortName_17 = this.shortName(_type_17, importManager);
+                          _builder.append(_shortName_17, "");
                           _builder.append(".");
-                          String _name_12 = prop.getName();
-                          _builder.append(_name_12, "");
+                          String _name_16 = prop.getName();
+                          _builder.append(_name_16, "");
                           _builder.append(">");
                           _builder.newLineIfNotEmpty();
                           _builder.append("\t");
-                          ValueProperty _value_13 = prop.getValue();
-                          CharSequence _includeContent = this.includeContent(((IncludeValueProperty) _value_13), importManager, preview, skipController, skipIncludes);
-                          _builder.append(_includeContent, "	");
+                          _builder.append("<fx:copy source=\"");
+                          ValueProperty _value_18 = prop.getValue();
+                          Element _reference = ((CopyValueProperty) _value_18).getReference();
+                          String _name_17 = _reference.getName();
+                          _builder.append(_name_17, "	");
+                          _builder.append("\" />");
                           _builder.newLineIfNotEmpty();
                           _builder.append("</");
-                          JvmTypeReference _type_13 = prop.getType();
-                          String _shortName_13 = this.shortName(_type_13, importManager);
-                          _builder.append(_shortName_13, "");
+                          JvmTypeReference _type_18 = prop.getType();
+                          String _shortName_18 = this.shortName(_type_18, importManager);
+                          _builder.append(_shortName_18, "");
                           _builder.append(".");
-                          String _name_13 = prop.getName();
-                          _builder.append(_name_13, "");
+                          String _name_18 = prop.getName();
+                          _builder.append(_name_18, "");
                           _builder.append(">");
                           _builder.newLineIfNotEmpty();
                         }
-                      }
-                    } else {
-                      ValueProperty _value_14 = prop.getValue();
-                      if ((_value_14 instanceof CopyValueProperty)) {
-                        _builder.append("<");
-                        JvmTypeReference _type_14 = prop.getType();
-                        String _shortName_14 = this.shortName(_type_14, importManager);
-                        _builder.append(_shortName_14, "");
-                        _builder.append(".");
-                        String _name_14 = prop.getName();
-                        _builder.append(_name_14, "");
-                        _builder.append(">");
-                        _builder.newLineIfNotEmpty();
-                        _builder.append("\t");
-                        _builder.append("<fx:copy source=\"");
-                        ValueProperty _value_15 = prop.getValue();
-                        Element _reference = ((CopyValueProperty) _value_15).getReference();
-                        String _name_15 = _reference.getName();
-                        _builder.append(_name_15, "	");
-                        _builder.append("\" />");
-                        _builder.newLineIfNotEmpty();
-                        _builder.append("</");
-                        JvmTypeReference _type_15 = prop.getType();
-                        String _shortName_15 = this.shortName(_type_15, importManager);
-                        _builder.append(_shortName_15, "");
-                        _builder.append(".");
-                        String _name_16 = prop.getName();
-                        _builder.append(_name_16, "");
-                        _builder.append(">");
-                        _builder.newLineIfNotEmpty();
                       }
                     }
                   }
@@ -1218,7 +1269,7 @@ public class FXGraphGenerator implements IGenerator {
             }
           } else {
             ValueProperty _value_4 = prop.getValue();
-            if ((_value_4 instanceof ListValueProperty)) {
+            if ((_value_4 instanceof ConstValueProperty)) {
               _builder.append("<");
               JvmTypeReference _type_4 = this.type(prop);
               String _shortName_4 = this.shortName(_type_4, importManager);
@@ -1226,161 +1277,190 @@ public class FXGraphGenerator implements IGenerator {
               _builder.append(".");
               String _name_4 = prop.getName();
               _builder.append(_name_4, "");
-              _builder.append(">");
-              _builder.newLineIfNotEmpty();
-              _builder.append("\t");
+              _builder.append("><");
               ValueProperty _value_5 = prop.getValue();
-              CharSequence _propListContent = this.propListContent(((ListValueProperty) _value_5), importManager, preview, skipController, skipIncludes);
-              _builder.append(_propListContent, "	");
-              _builder.newLineIfNotEmpty();
-              _builder.append("</");
-              JvmTypeReference _type_5 = this.type(prop);
+              JvmTypeReference _type_5 = ((ConstValueProperty) _value_5).getType();
               String _shortName_5 = this.shortName(_type_5, importManager);
               _builder.append(_shortName_5, "");
+              _builder.append(" fx:constant=\"");
+              ValueProperty _value_6 = prop.getValue();
+              String _field = ((ConstValueProperty) _value_6).getField();
+              _builder.append(_field, "");
+              _builder.append("\" /></");
+              JvmTypeReference _type_6 = this.type(prop);
+              String _shortName_6 = this.shortName(_type_6, importManager);
+              _builder.append(_shortName_6, "");
               _builder.append(".");
               String _name_5 = prop.getName();
               _builder.append(_name_5, "");
               _builder.append(">");
               _builder.newLineIfNotEmpty();
             } else {
-              ValueProperty _value_6 = prop.getValue();
-              if ((_value_6 instanceof MapValueProperty)) {
+              ValueProperty _value_7 = prop.getValue();
+              if ((_value_7 instanceof ListValueProperty)) {
                 _builder.append("<");
-                JvmTypeReference _type_6 = this.type(prop);
-                String _shortName_6 = this.shortName(_type_6, importManager);
-                _builder.append(_shortName_6, "");
+                JvmTypeReference _type_7 = this.type(prop);
+                String _shortName_7 = this.shortName(_type_7, importManager);
+                _builder.append(_shortName_7, "");
                 _builder.append(".");
                 String _name_6 = prop.getName();
                 _builder.append(_name_6, "");
                 _builder.append(">");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
-                ValueProperty _value_7 = prop.getValue();
-                EList<Property> _properties = ((MapValueProperty) _value_7).getProperties();
-                CharSequence _propContents = this.propContents(_properties, importManager, preview, true, skipController, skipIncludes);
-                _builder.append(_propContents, "	");
+                ValueProperty _value_8 = prop.getValue();
+                CharSequence _propListContent = this.propListContent(((ListValueProperty) _value_8), importManager, preview, skipController, skipIncludes);
+                _builder.append(_propListContent, "	");
                 _builder.newLineIfNotEmpty();
                 _builder.append("</");
-                JvmTypeReference _type_7 = this.type(prop);
-                String _shortName_7 = this.shortName(_type_7, importManager);
-                _builder.append(_shortName_7, "");
+                JvmTypeReference _type_8 = this.type(prop);
+                String _shortName_8 = this.shortName(_type_8, importManager);
+                _builder.append(_shortName_8, "");
                 _builder.append(".");
                 String _name_7 = prop.getName();
                 _builder.append(_name_7, "");
                 _builder.append(">");
                 _builder.newLineIfNotEmpty();
               } else {
-                ValueProperty _value_8 = prop.getValue();
-                if ((_value_8 instanceof Element)) {
+                ValueProperty _value_9 = prop.getValue();
+                if ((_value_9 instanceof MapValueProperty)) {
                   _builder.append("<");
-                  JvmTypeReference _type_8 = this.type(prop);
-                  String _shortName_8 = this.shortName(_type_8, importManager);
-                  _builder.append(_shortName_8, "");
+                  JvmTypeReference _type_9 = this.type(prop);
+                  String _shortName_9 = this.shortName(_type_9, importManager);
+                  _builder.append(_shortName_9, "");
                   _builder.append(".");
                   String _name_8 = prop.getName();
                   _builder.append(_name_8, "");
                   _builder.append(">");
                   _builder.newLineIfNotEmpty();
                   _builder.append("\t");
-                  ValueProperty _value_9 = prop.getValue();
-                  CharSequence _elementContent = this.elementContent(((Element) _value_9), importManager, preview, skipController, skipIncludes);
-                  _builder.append(_elementContent, "	");
+                  ValueProperty _value_10 = prop.getValue();
+                  EList<Property> _properties = ((MapValueProperty) _value_10).getProperties();
+                  CharSequence _propContents = this.propContents(_properties, importManager, preview, true, skipController, skipIncludes);
+                  _builder.append(_propContents, "	");
                   _builder.newLineIfNotEmpty();
                   _builder.append("</");
-                  JvmTypeReference _type_9 = this.type(prop);
-                  String _shortName_9 = this.shortName(_type_9, importManager);
-                  _builder.append(_shortName_9, "");
+                  JvmTypeReference _type_10 = this.type(prop);
+                  String _shortName_10 = this.shortName(_type_10, importManager);
+                  _builder.append(_shortName_10, "");
                   _builder.append(".");
                   String _name_9 = prop.getName();
                   _builder.append(_name_9, "");
                   _builder.append(">");
                   _builder.newLineIfNotEmpty();
                 } else {
-                  ValueProperty _value_10 = prop.getValue();
-                  if ((_value_10 instanceof ReferenceValueProperty)) {
+                  ValueProperty _value_11 = prop.getValue();
+                  if ((_value_11 instanceof Element)) {
                     _builder.append("<");
-                    JvmTypeReference _type_10 = this.type(prop);
-                    String _shortName_10 = this.shortName(_type_10, importManager);
-                    _builder.append(_shortName_10, "");
+                    JvmTypeReference _type_11 = this.type(prop);
+                    String _shortName_11 = this.shortName(_type_11, importManager);
+                    _builder.append(_shortName_11, "");
                     _builder.append(".");
                     String _name_10 = prop.getName();
                     _builder.append(_name_10, "");
                     _builder.append(">");
                     _builder.newLineIfNotEmpty();
                     _builder.append("\t");
-                    ValueProperty _value_11 = prop.getValue();
-                    CharSequence _referenceContent = this.referenceContent(((ReferenceValueProperty) _value_11), importManager, preview, skipController, skipIncludes);
-                    _builder.append(_referenceContent, "	");
+                    ValueProperty _value_12 = prop.getValue();
+                    CharSequence _elementContent = this.elementContent(((Element) _value_12), importManager, preview, skipController, skipIncludes);
+                    _builder.append(_elementContent, "	");
                     _builder.newLineIfNotEmpty();
                     _builder.append("</");
-                    JvmTypeReference _type_11 = this.type(prop);
-                    String _shortName_11 = this.shortName(_type_11, importManager);
-                    _builder.append(_shortName_11, "");
+                    JvmTypeReference _type_12 = this.type(prop);
+                    String _shortName_12 = this.shortName(_type_12, importManager);
+                    _builder.append(_shortName_12, "");
                     _builder.append(".");
                     String _name_11 = prop.getName();
                     _builder.append(_name_11, "");
                     _builder.append(">");
                     _builder.newLineIfNotEmpty();
                   } else {
-                    ValueProperty _value_12 = prop.getValue();
-                    if ((_value_12 instanceof IncludeValueProperty)) {
-                      {
-                        boolean _not = (!skipIncludes);
-                        if (_not) {
+                    ValueProperty _value_13 = prop.getValue();
+                    if ((_value_13 instanceof ReferenceValueProperty)) {
+                      _builder.append("<");
+                      JvmTypeReference _type_13 = this.type(prop);
+                      String _shortName_13 = this.shortName(_type_13, importManager);
+                      _builder.append(_shortName_13, "");
+                      _builder.append(".");
+                      String _name_12 = prop.getName();
+                      _builder.append(_name_12, "");
+                      _builder.append(">");
+                      _builder.newLineIfNotEmpty();
+                      _builder.append("\t");
+                      ValueProperty _value_14 = prop.getValue();
+                      CharSequence _referenceContent = this.referenceContent(((ReferenceValueProperty) _value_14), importManager, preview, skipController, skipIncludes);
+                      _builder.append(_referenceContent, "	");
+                      _builder.newLineIfNotEmpty();
+                      _builder.append("</");
+                      JvmTypeReference _type_14 = this.type(prop);
+                      String _shortName_14 = this.shortName(_type_14, importManager);
+                      _builder.append(_shortName_14, "");
+                      _builder.append(".");
+                      String _name_13 = prop.getName();
+                      _builder.append(_name_13, "");
+                      _builder.append(">");
+                      _builder.newLineIfNotEmpty();
+                    } else {
+                      ValueProperty _value_15 = prop.getValue();
+                      if ((_value_15 instanceof IncludeValueProperty)) {
+                        {
+                          boolean _not = (!skipIncludes);
+                          if (_not) {
+                            _builder.append("<");
+                            JvmTypeReference _type_15 = this.type(prop);
+                            String _shortName_15 = this.shortName(_type_15, importManager);
+                            _builder.append(_shortName_15, "");
+                            _builder.append(".");
+                            String _name_14 = prop.getName();
+                            _builder.append(_name_14, "");
+                            _builder.append(">");
+                            _builder.newLineIfNotEmpty();
+                            _builder.append("\t");
+                            ValueProperty _value_16 = prop.getValue();
+                            CharSequence _includeContent = this.includeContent(((IncludeValueProperty) _value_16), importManager, preview, skipController, skipIncludes);
+                            _builder.append(_includeContent, "	");
+                            _builder.newLineIfNotEmpty();
+                            _builder.append("</");
+                            JvmTypeReference _type_16 = this.type(prop);
+                            String _shortName_16 = this.shortName(_type_16, importManager);
+                            _builder.append(_shortName_16, "");
+                            _builder.append(".");
+                            String _name_15 = prop.getName();
+                            _builder.append(_name_15, "");
+                            _builder.append(">");
+                            _builder.newLineIfNotEmpty();
+                          }
+                        }
+                      } else {
+                        ValueProperty _value_17 = prop.getValue();
+                        if ((_value_17 instanceof CopyValueProperty)) {
                           _builder.append("<");
-                          JvmTypeReference _type_12 = this.type(prop);
-                          String _shortName_12 = this.shortName(_type_12, importManager);
-                          _builder.append(_shortName_12, "");
+                          JvmTypeReference _type_17 = this.type(prop);
+                          String _shortName_17 = this.shortName(_type_17, importManager);
+                          _builder.append(_shortName_17, "");
                           _builder.append(".");
-                          String _name_12 = prop.getName();
-                          _builder.append(_name_12, "");
+                          String _name_16 = prop.getName();
+                          _builder.append(_name_16, "");
                           _builder.append(">");
                           _builder.newLineIfNotEmpty();
                           _builder.append("\t");
-                          ValueProperty _value_13 = prop.getValue();
-                          CharSequence _includeContent = this.includeContent(((IncludeValueProperty) _value_13), importManager, preview, skipController, skipIncludes);
-                          _builder.append(_includeContent, "	");
+                          _builder.append("<fx:copy source=\"");
+                          ValueProperty _value_18 = prop.getValue();
+                          Element _reference = ((CopyValueProperty) _value_18).getReference();
+                          String _name_17 = _reference.getName();
+                          _builder.append(_name_17, "	");
+                          _builder.append("\" />");
                           _builder.newLineIfNotEmpty();
                           _builder.append("</");
-                          JvmTypeReference _type_13 = this.type(prop);
-                          String _shortName_13 = this.shortName(_type_13, importManager);
-                          _builder.append(_shortName_13, "");
+                          JvmTypeReference _type_18 = this.type(prop);
+                          String _shortName_18 = this.shortName(_type_18, importManager);
+                          _builder.append(_shortName_18, "");
                           _builder.append(".");
-                          String _name_13 = prop.getName();
-                          _builder.append(_name_13, "");
+                          String _name_18 = prop.getName();
+                          _builder.append(_name_18, "");
                           _builder.append(">");
                           _builder.newLineIfNotEmpty();
                         }
-                      }
-                    } else {
-                      ValueProperty _value_14 = prop.getValue();
-                      if ((_value_14 instanceof CopyValueProperty)) {
-                        _builder.append("<");
-                        JvmTypeReference _type_14 = this.type(prop);
-                        String _shortName_14 = this.shortName(_type_14, importManager);
-                        _builder.append(_shortName_14, "");
-                        _builder.append(".");
-                        String _name_14 = prop.getName();
-                        _builder.append(_name_14, "");
-                        _builder.append(">");
-                        _builder.newLineIfNotEmpty();
-                        _builder.append("\t");
-                        _builder.append("<fx:copy source=\"");
-                        ValueProperty _value_15 = prop.getValue();
-                        Element _reference = ((CopyValueProperty) _value_15).getReference();
-                        String _name_15 = _reference.getName();
-                        _builder.append(_name_15, "	");
-                        _builder.append("\" />");
-                        _builder.newLineIfNotEmpty();
-                        _builder.append("</");
-                        JvmTypeReference _type_15 = this.type(prop);
-                        String _shortName_15 = this.shortName(_type_15, importManager);
-                        _builder.append(_shortName_15, "");
-                        _builder.append(".");
-                        String _name_16 = prop.getName();
-                        _builder.append(_name_16, "");
-                        _builder.append(">");
-                        _builder.newLineIfNotEmpty();
                       }
                     }
                   }

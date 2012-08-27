@@ -37,7 +37,7 @@ public class FXGraphQuickfixProvider extends DefaultQuickfixProvider {
 
 	@Fix(FXGraphJavaValidator.UNKNOWN_CONTROLLER_FIELD)
 	public void fixAddControllerField(final Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, "Add controller method", "Add a field of '"+issue.getData()[0]+"' to the controller '"+issue.getData()[1]+"'", null, new IModification() {
+		acceptor.accept(issue, "Add controller field", "Add a field of '"+issue.getData()[0]+"' to the controller '"+issue.getData()[1]+"'", null, new IModification() {
 			
 			@Override
 			public void apply(IModificationContext context) throws Exception {
@@ -79,6 +79,68 @@ public class FXGraphQuickfixProvider extends DefaultQuickfixProvider {
 				}
 				
 				xtextDocument.replace(start, (b + issue.getData()[0]).length(),"");
+			}
+		});
+	}
+	
+	@Fix(FXGraphJavaValidator.UNKNOWN_CONTROLLER_METHOD)
+	public void fixAddControllerMethod(final Issue issue, IssueResolutionAcceptor acceptor) {
+		final String methodName = issue.getData()[0];
+		final String controllerClass = issue.getData()[1];
+		final String argType = issue.getData()[2];
+		final String simpleArgType = Signature.getSimpleName(argType);
+		acceptor.accept(issue, "Add controller method "+methodName+"("+simpleArgType+")", "Add a controller method '"+methodName+"("+simpleArgType+")' to controller '"+controllerClass+"'", null, new IModification() {
+			
+			@Override
+			public void apply(IModificationContext context) throws Exception {
+				IJavaProject p = context.getXtextDocument().readOnly(new IUnitOfWork<IJavaProject, XtextResource>() {
+
+					@Override
+					public IJavaProject exec(XtextResource state) throws Exception {
+						return provider.getJavaProject(state.getResourceSet());
+					}
+					
+				});
+				
+				IType type = p.findType(controllerClass);
+				
+				String[][] resolvedType = type.resolveType("FXML");
+				
+				if( resolvedType == null ) {
+					type.getCompilationUnit().createImport("javafx.fxml.FXML", null, new NullProgressMonitor());	
+				}
+				
+				resolvedType = type.resolveType(simpleArgType);
+				
+				if( resolvedType == null ) {
+					type.getCompilationUnit().createImport(argType, null, new NullProgressMonitor());	
+				}
+				
+				type.createMethod("@FXML public void " + methodName + "("+simpleArgType+" event) {}", null, true, new NullProgressMonitor());
+			}
+		});
+		acceptor.accept(issue, "Add controller method "+methodName+"()", "Add a controller method '"+methodName+"()' to controller '"+controllerClass+"'", null, new IModification() {
+			
+			@Override
+			public void apply(IModificationContext context) throws Exception {
+				IJavaProject p = context.getXtextDocument().readOnly(new IUnitOfWork<IJavaProject, XtextResource>() {
+
+					@Override
+					public IJavaProject exec(XtextResource state) throws Exception {
+						return provider.getJavaProject(state.getResourceSet());
+					}
+					
+				});
+				
+				IType type = p.findType(controllerClass);
+				
+				String[][] resolvedType = type.resolveType("FXML");
+				
+				if( resolvedType == null ) {
+					type.getCompilationUnit().createImport("javafx.fxml.FXML", null, new NullProgressMonitor());	
+				}
+				
+				type.createMethod("@FXML public void " + methodName + "() {}", null, true, new NullProgressMonitor());
 			}
 		});
 	}

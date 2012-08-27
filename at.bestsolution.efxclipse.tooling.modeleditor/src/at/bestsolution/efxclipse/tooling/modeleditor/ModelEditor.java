@@ -13,6 +13,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
@@ -47,9 +48,11 @@ import at.bestsolution.efxclipse.runtime.databinding.TreeUtil.ObservableFactory;
 import at.bestsolution.efxclipse.runtime.di.FXMLBuilder;
 import at.bestsolution.efxclipse.runtime.di.FXMLLoader;
 import at.bestsolution.efxclipse.runtime.di.FXMLLoaderFactory;
+import at.bestsolution.efxclipse.runtime.di.ResourcePool;
 
 @SuppressWarnings("restriction")
 public class ModelEditor {
+	private ResourcePool pool;
 	private BorderPane contentPane;
 	
 	private Map<EClass, Node> editors = new HashMap<EClass, Node>();
@@ -59,9 +62,10 @@ public class ModelEditor {
 	private FXMLLoaderFactory factory;
 	
 	@PostConstruct
-	public void create(BorderPane parent, @Named("rootElement") MApplication application, IEclipseContext context, @FXMLLoader FXMLLoaderFactory factory) {
+	public void create(BorderPane parent, @Named("rootElement") MApplication application, IEclipseContext context, @FXMLLoader FXMLLoaderFactory factory, ResourcePool pool) {
 		this.context = context;
 		this.factory = factory;
+		this.pool = pool;
 		
 		SplitPane pane = new SplitPane();
 		
@@ -111,17 +115,22 @@ public class ModelEditor {
 						super.updateItem(item, empty);
 						if( item != null ) {
 							if( item instanceof MApplicationElement ) {
-								setText(((EObject)item).eClass().getName());
-								String img = getImage((MApplicationElement) item);
+								String name = ((EObject)item).eClass().getName();
+								setText(name);
+								Image img = pool.getImageUnchecked("efx_tooling_modeleditor_Model_" + name);
 								if( img != null ) {
-									System.err.println(img);
-									URL uri = ModelEditor.class.getResource("icons/modelelements/"+ img);
-									if( uri != null ) {
-										setGraphic(new ImageView(uri.toExternalForm()));	
-									}
-								} else {
-									setGraphic(null);
+									setGraphic(new ImageView(img));
 								}
+								
+//								String img = getImage((MApplicationElement) item);
+//								if( img != null ) {
+//									URL uri = ModelEditor.class.getResource("icons/modelelements/"+ img);
+//									if( uri != null ) {
+//										
+//									}
+//								} else {
+//									setGraphic(null);
+//								}
 							} else if( item instanceof VirtualEntry ) {
 								setText(((VirtualEntry) item).label);
 								setGraphic(null);

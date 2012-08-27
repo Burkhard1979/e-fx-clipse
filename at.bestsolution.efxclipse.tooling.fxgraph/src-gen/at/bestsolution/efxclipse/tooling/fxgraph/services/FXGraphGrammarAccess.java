@@ -890,16 +890,17 @@ public class FXGraphGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLocationValuePropertyParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		private final RuleCall cResourceValuePropertyParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		private final RuleCall cBindValuePropertyParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
+		private final RuleCall cConstValuePropertyParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
 		
 		//SingleValueProperty:
 		//	SimpleValueProperty | Element | ReferenceValueProperty | IncludeValueProperty | CopyValueProperty |
 		//	ControllerHandledValueProperty | ScriptValueExpression | ScriptHandlerHandledValueProperty | ScriptValueReference |
-		//	LocationValueProperty | ResourceValueProperty | BindValueProperty;
+		//	LocationValueProperty | ResourceValueProperty | BindValueProperty | ConstValueProperty;
 		public ParserRule getRule() { return rule; }
 
 		//SimpleValueProperty | Element | ReferenceValueProperty | IncludeValueProperty | CopyValueProperty |
 		//ControllerHandledValueProperty | ScriptValueExpression | ScriptHandlerHandledValueProperty | ScriptValueReference |
-		//LocationValueProperty | ResourceValueProperty | BindValueProperty
+		//LocationValueProperty | ResourceValueProperty | BindValueProperty | ConstValueProperty
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//SimpleValueProperty
@@ -937,6 +938,9 @@ public class FXGraphGrammarAccess extends AbstractGrammarElementFinder {
 
 		//BindValueProperty
 		public RuleCall getBindValuePropertyParserRuleCall_11() { return cBindValuePropertyParserRuleCall_11; }
+
+		//ConstValueProperty
+		public RuleCall getConstValuePropertyParserRuleCall_12() { return cConstValuePropertyParserRuleCall_12; }
 	}
 
 	public class MultiValuePropertyElements extends AbstractParserRuleElementFinder {
@@ -1161,6 +1165,42 @@ public class FXGraphGrammarAccess extends AbstractGrammarElementFinder {
 
 		//REAL
 		public RuleCall getRealValueREALTerminalRuleCall_2_1_1_0() { return cRealValueREALTerminalRuleCall_2_1_1_0; }
+	}
+
+	public class ConstValuePropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ConstValueProperty");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cConstKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Keyword cNumberSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cFieldAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cFieldIDTerminalRuleCall_3_0 = (RuleCall)cFieldAssignment_3.eContents().get(0);
+		
+		//ConstValueProperty:
+		//	"const" type=JvmTypeReference "#" field=ID;
+		public ParserRule getRule() { return rule; }
+
+		//"const" type=JvmTypeReference "#" field=ID
+		public Group getGroup() { return cGroup; }
+
+		//"const"
+		public Keyword getConstKeyword_0() { return cConstKeyword_0; }
+
+		//type=JvmTypeReference
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_1_0() { return cTypeJvmTypeReferenceParserRuleCall_1_0; }
+
+		//"#"
+		public Keyword getNumberSignKeyword_2() { return cNumberSignKeyword_2; }
+
+		//field=ID
+		public Assignment getFieldAssignment_3() { return cFieldAssignment_3; }
+
+		//ID
+		public RuleCall getFieldIDTerminalRuleCall_3_0() { return cFieldIDTerminalRuleCall_3_0; }
 	}
 
 	public class ReferenceTypeElements extends AbstractParserRuleElementFinder {
@@ -1660,6 +1700,7 @@ public class FXGraphGrammarAccess extends AbstractGrammarElementFinder {
 	private ListValuePropertyElements pListValueProperty;
 	private MapValuePropertyElements pMapValueProperty;
 	private SimpleValuePropertyElements pSimpleValueProperty;
+	private ConstValuePropertyElements pConstValueProperty;
 	private ReferenceTypeElements pReferenceType;
 	private ReferenceValuePropertyElements pReferenceValueProperty;
 	private IncludeValuePropertyElements pIncludeValueProperty;
@@ -1835,7 +1876,7 @@ public class FXGraphGrammarAccess extends AbstractGrammarElementFinder {
 	//SingleValueProperty:
 	//	SimpleValueProperty | Element | ReferenceValueProperty | IncludeValueProperty | CopyValueProperty |
 	//	ControllerHandledValueProperty | ScriptValueExpression | ScriptHandlerHandledValueProperty | ScriptValueReference |
-	//	LocationValueProperty | ResourceValueProperty | BindValueProperty;
+	//	LocationValueProperty | ResourceValueProperty | BindValueProperty | ConstValueProperty;
 	public SingleValuePropertyElements getSingleValuePropertyAccess() {
 		return (pSingleValueProperty != null) ? pSingleValueProperty : (pSingleValueProperty = new SingleValuePropertyElements());
 	}
@@ -1902,6 +1943,16 @@ public class FXGraphGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getSimpleValuePropertyRule() {
 		return getSimpleValuePropertyAccess().getRule();
+	}
+
+	//ConstValueProperty:
+	//	"const" type=JvmTypeReference "#" field=ID;
+	public ConstValuePropertyElements getConstValuePropertyAccess() {
+		return (pConstValueProperty != null) ? pConstValueProperty : (pConstValueProperty = new ConstValuePropertyElements());
+	}
+	
+	public ParserRule getConstValuePropertyRule() {
+		return getConstValuePropertyAccess().getRule();
 	}
 
 	//ReferenceType:

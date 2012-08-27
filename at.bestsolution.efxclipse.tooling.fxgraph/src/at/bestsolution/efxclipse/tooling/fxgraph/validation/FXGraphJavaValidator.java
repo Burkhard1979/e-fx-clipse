@@ -20,13 +20,19 @@ import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.validation.Check;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ComponentDefinition;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ControllerHandledValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.FXGraphPackage;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Import;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Model;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Property;
 import at.bestsolution.efxclipse.tooling.model.FXPlugin;
+import at.bestsolution.efxclipse.tooling.model.IFXClass;
 import at.bestsolution.efxclipse.tooling.model.IFXCtrlClass;
+import at.bestsolution.efxclipse.tooling.model.IFXCtrlEventMethod;
 import at.bestsolution.efxclipse.tooling.model.IFXCtrlField;
+import at.bestsolution.efxclipse.tooling.model.IFXEventHandlerProperty;
+import at.bestsolution.efxclipse.tooling.model.IFXProperty;
 import at.bestsolution.efxclipse.tooling.model.Util;
 import at.bestsolution.efxclipse.tooling.ui.util.RelativeFileLocator;
 
@@ -36,6 +42,7 @@ import com.google.inject.Inject;
 public class FXGraphJavaValidator extends AbstractFXGraphJavaValidator {
 	public static final String UNKNOWN_CONTROLLER_FIELD = "FXGraphJavaValidator.UNKNOWN_CONTROLLER_FIELD";
 	public static final String CONTROLLER_FIELD_NOT_ASSIGNABLE = "FXGraphJavaValidator.CONTROLLER_FIELD_NOT_ASSIGNABLE";
+	public static final String UNKNOWN_CONTROLLER_METHOD = "FXGraphJavaValidator.UNKNOWN_CONTROLLER_METHOD";
 	
 	@Inject
 	private IJvmTypeProvider.Factory jdtTypeProvider;
@@ -133,10 +140,41 @@ public class FXGraphJavaValidator extends AbstractFXGraphJavaValidator {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//			System.err.println("We have a controller");
-			
 		}
-		
+	}
+	
+	@Check
+	public void validate(ControllerHandledValueProperty element) {
+		JvmTypeReference controller = ((Model)element.eResource().getContents().get(0)).getComponentDef().getController();
+		if( controller != null && element.getMethodname() != null ) {
+			IJavaProject javaProject = projectProvider.getJavaProject(element.eResource().getResourceSet());
+			try {
+				IType ctrlType = javaProject.findType(controller.getQualifiedName());
+				Property propertyModel = (Property) element.eContainer();
+				Element elementModel = (Element)propertyModel.eContainer();
+				IType elType = javaProject.findType(elementModel.getType().getQualifiedName());
+				
+				IFXCtrlClass fxCtrlClazz = FXPlugin.getClassmodel().findCtrlClass(javaProject, ctrlType);
+				IFXClass fxElClass = FXPlugin.getClassmodel().findClass(javaProject, elType);
+				
+				IFXProperty fxProp = fxElClass.getAllProperties().get(propertyModel.getName());
+				
+				if( !(fxProp instanceof IFXEventHandlerProperty) ) {
+					error("Property is not an event property", propertyModel, FXGraphPackage.Literals.PROPERTY__NAME, -1);
+					return;
+				}
+				
+				if( fxCtrlClazz != null ) {
+					IFXCtrlEventMethod m = fxCtrlClazz.getAllEventMethods().get(element.getMethodname());
+					if( m == null ) {
+						warning("The controller '"+ ctrlType.getElementName() +"' has no event method '"+element.getMethodname()+"'", FXGraphPackage.Literals.CONTROLLER_HANDLED_VALUE_PROPERTY__METHODNAME,UNKNOWN_CONTROLLER_METHOD, element.getMethodname(), controller.getQualifiedName(), ((IFXEventHandlerProperty)fxProp).getEventType().getFullyQualifiedName());
+					}
+				}
+			} catch (JavaModelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@Check

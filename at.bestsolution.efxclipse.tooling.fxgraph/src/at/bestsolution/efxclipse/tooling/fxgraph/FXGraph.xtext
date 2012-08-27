@@ -64,7 +64,7 @@ ValueProperty:
 ;
 
 SingleValueProperty:
-	SimpleValueProperty | Element | ReferenceValueProperty | IncludeValueProperty | CopyValueProperty | ControllerHandledValueProperty | ScriptValueExpression | ScriptHandlerHandledValueProperty | ScriptValueReference | LocationValueProperty | ResourceValueProperty | BindValueProperty
+	SimpleValueProperty | Element | ReferenceValueProperty | IncludeValueProperty | CopyValueProperty | ControllerHandledValueProperty | ScriptValueExpression | ScriptHandlerHandledValueProperty | ScriptValueReference | LocationValueProperty | ResourceValueProperty | BindValueProperty | ConstValueProperty
 ;
 
 MultiValueProperty:
@@ -89,6 +89,10 @@ MapValueProperty:
 
 SimpleValueProperty:
 	stringValue=STRING | booleanValue=("true"|"false") | ( (negative?='-')? (intValue=INT | realValue=REAL))
+;
+
+ConstValueProperty:
+	'const' type=JvmTypeReference '#' field=ID
 ;
 
 ReferenceType:
