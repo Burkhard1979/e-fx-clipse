@@ -1299,6 +1299,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 	}
 	
 	private void collectStaticFields(List<IField> fields, IType type) throws JavaModelException {
+		//FIXME Don't we have to check if the field is assignable???
 		for( IField f : type.getFields() ) {
 			if( Flags.isStatic(f.getFlags()) ) {
 				fields.add(f);
