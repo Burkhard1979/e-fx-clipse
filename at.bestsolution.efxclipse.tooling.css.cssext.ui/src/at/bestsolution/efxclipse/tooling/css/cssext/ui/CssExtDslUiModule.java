@@ -4,6 +4,13 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtHighlightingConfiguration;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemanticHighlightingCalculator;
+
+import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -11,5 +18,15 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.cssext.ui.AbstractCssExtDslUiModule {
 	public CssExtDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	@Override
+	public void configure(Binder binder) {
+		
+		binder.bind(ISemanticHighlightingCalculator.class).to(CssExtSemanticHighlightingCalculator.class);
+		binder.bind(IHighlightingConfiguration.class).to(CssExtHighlightingConfiguration.class);
+		
+		
+		super.configure(binder);
 	}
 }

@@ -61,5 +61,20 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 	 * @return
 	 */
 	public String getDocForElement(String element);
+	/**
+	 * @param name
+	 * @return
+	 */
+	public String getDocHeadForProperty(String name);
+	/**
+	 * @param element
+	 * @return
+	 */
+	public String getDocHeadForElement(String element);
+	/**
+	 * @param o
+	 * @return
+	 */
+	public String getDocHead(EObject o);
 	
 }

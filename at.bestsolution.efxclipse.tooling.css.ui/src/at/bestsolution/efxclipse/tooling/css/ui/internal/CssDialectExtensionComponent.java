@@ -104,4 +104,46 @@ public class CssDialectExtensionComponent {
 		return "no extension capable :/";
 	}
 
+	/**
+	 * @param uri
+	 * @param name
+	 * @return
+	 */
+	public String getDocHeadForProperty(URI uri, String name) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocHeadForProperty(name);
+			}
+		}
+		return "no extension capable :/";
+	}
+
+	/**
+	 * @param uri
+	 * @param element
+	 * @return
+	 */
+	public String getDocForHeadElement(URI uri, String element) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocHeadForElement(element);
+			}
+		}
+		return "no extension capable :/";
+	}
+
+	/**
+	 * @param uri
+	 * @param o
+	 * @return
+	 */
+	public String getDocHead(URI uri, EObject o) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocHead(o);
+			}
+		}
+		return "no extension capable :/";
+	}
+
 }

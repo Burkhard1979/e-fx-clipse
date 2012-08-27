@@ -72,4 +72,19 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 		return docParser.getDocForElement(element);
 	}
 
+	@Override
+	public String getDocHeadForProperty(String name) {
+		return docParser.getDocHeadForProperty(name);
+	}
+
+	@Override
+	public String getDocHeadForElement(String element) {
+		return docParser.getDocHeadForElement(element);
+	}
+
+	@Override
+	public String getDocHead(EObject o) {
+		return docParser.getDocHead(o);
+	}
+
 }
