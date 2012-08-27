@@ -5,6 +5,8 @@ package at.bestsolution.efxclipse.tooling.css.cssext.ui.labeling;
 
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
+
 /**
  * Provides labels for a IEObjectDescriptions and IResourceDescriptions.
  * 
@@ -12,6 +14,12 @@ import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
  */
 public class CssExtDslDescriptionLabelProvider extends DefaultDescriptionLabelProvider {
 
+	
+	String text(CSSRuleDefinition model) {
+		return model.getName().getName() + " (description)";
+	}
+	
+	
 /*
 	//Labels and icons can be computed like this:
 	

@@ -16,6 +16,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 
@@ -39,9 +40,24 @@ public class CssObjectDocumentationProvider implements
 	@Override
 	public String getDocumentation(EObject o) {
 		if (o instanceof css_property) {
+			// Properties
 			return extension.getDocForProperty(o.eResource().getURI(), ((css_property) o).getName());
 		}
-		return "no docu support for this element :/";
+		
+		if (o instanceof simple_selector) {
+			simple_selector s = ((simple_selector)o);
+			return extension.getDocForElement(o.eResource().getURI(), s.getElement());
+		}
+		
+		// css ext rules
+		String doku = extension.getDocumentation(o.eResource().getURI(), o);
+		
+		if (doku == null) {
+			return "no docu support for this element :/";
+		}
+		else {
+			return doku;
+		}
 	}
 
 }

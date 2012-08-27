@@ -8,6 +8,32 @@ hallodrio {
 	btest: 123;
 	dingdong: lala;
 	m: asdf;
+	
+	reftest: func0( la );
+}
+
+Test {
+	
+}
+
+.Klasse {
+	
+}
+
+#Id {
+	
+}
+
+Element.Klasse {
+	
+}
+
+Element#Id {
+	
+}
+
+Element.Klasse#Id {
+	
 }
 
 Hallo.nix {

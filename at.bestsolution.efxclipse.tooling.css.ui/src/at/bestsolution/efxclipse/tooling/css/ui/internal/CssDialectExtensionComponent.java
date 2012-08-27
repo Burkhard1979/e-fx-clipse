@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
@@ -74,6 +75,33 @@ public class CssDialectExtensionComponent {
 			}
 		}
 		return result;
+	}
+
+	/**
+	 * @param o
+	 * @return
+	 */
+	public String getDocumentation(URI uri, EObject o) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocumentation(o);
+			}
+		}
+		return "no extension capable :/";
+	}
+
+	/**
+	 * @param uri
+	 * @param element
+	 * @return
+	 */
+	public String getDocForElement(URI uri, String element) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocForElement(element);
+			}
+		}
+		return "no extension capable :/";
 	}
 
 }

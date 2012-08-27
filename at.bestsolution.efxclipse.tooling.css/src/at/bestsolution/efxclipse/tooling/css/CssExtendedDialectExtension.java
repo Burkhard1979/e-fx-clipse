@@ -12,6 +12,8 @@ package at.bestsolution.efxclipse.tooling.css;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * @author ccaks
  *
@@ -48,4 +50,16 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 	public List<CssProperty> getValuesForProperty(String propertyName, String... preceedingValueParts);
 	
 	public String getDocForProperty(String propertyName);
+	
+	/**
+	 * @param o
+	 * @return
+	 */
+	public String getDocumentation(EObject o);
+	/**
+	 * @param element
+	 * @return
+	 */
+	public String getDocForElement(String element);
+	
 }

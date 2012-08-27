@@ -1,17 +1,28 @@
-package at.bestsolution.efxclipse.tooling.css.cssext;
+package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
-import at.bestsolution.efxclipse.tooling.css.cssext.parser.Parser;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.CssExtDslActivator;
 
 public class CssExtDialectExtension implements CssDialectExtension, CssExtendedDialectExtension {
 
+	CssExtDocParser docParser;
 	
+	public CssExtDialectExtension() {
+		
+		docParser = new CssExtDocParser();
+		
+	}
 	
 	@Override
 	public List<Property> getProperties() {
@@ -48,7 +59,17 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 	@Override
 	public String getDocForProperty(String propertyName) {
 		
-		return Parser.getDocForPropertyx(propertyName);
+		return docParser.getDocForProperty(propertyName);
+	}
+
+	@Override
+	public String getDocumentation(EObject o) {
+		return docParser.getDocumentation(o);
+	}
+
+	@Override
+	public String getDocForElement(String element) {
+		return docParser.getDocForElement(element);
 	}
 
 }

@@ -1,4 +1,4 @@
-package at.bestsolution.efxclipse.tooling.css.cssext.parser;
+package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +19,6 @@ import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssValuePart;
-import at.bestsolution.efxclipse.tooling.css.cssext.JavaDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleBracket;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcat;
@@ -122,6 +121,19 @@ public class Parser extends XtextSwitch<CssExtension> {
 		System.err.println("packages = " + model.getPackageDef());
 	}
 	
+	public List<ElementDefinition> findElements() {
+		List<ElementDefinition> result = new ArrayList<ElementDefinition>();
+		recFindElements(model.getPackageDef(), result);
+		return result;
+	}
+	
+	private void recFindElements(PackageDefinition pkg, List<ElementDefinition> result) {
+		result.addAll(pkg.getElements());
+		for (PackageDefinition subPkg : pkg.getSubpackages()) {
+			recFindElements(subPkg, result);
+		}
+	}
+	
 	public List<PropertyDefinition> findProperties() {
 		List<PropertyDefinition> result = new ArrayList<PropertyDefinition>();
 		recFindProperties(model.getPackageDef(), result);
@@ -188,7 +200,7 @@ public class Parser extends XtextSwitch<CssExtension> {
 	return null;
 //		final Parser p = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
 //		
-//		List<String> elements = p.findElementsInSelector(selector);
+//		List<String> elements = p.findElementssInSelector(selector);
 //		
 //		if (elements.size() == 0) {
 //		
@@ -214,82 +226,13 @@ public class Parser extends XtextSwitch<CssExtension> {
 //		return result;
 	}
 	
-	public String translateRule(CSSRule r) {
-		System.err.println("translateRule " + r);
-		String result = "";
-		if (r instanceof CSSRuleOr) {
-			Iterator<CSSRule> it =((CSSRuleOr) r).getOrs().iterator();
-			while (it.hasNext()) {
-				result += translateRule(it.next());
-				if (it.hasNext()) {
-					result +=" | ";
-				}
-			}
-		}
-		else if (r instanceof CSSRuleConcat) {
-			Iterator<CSSRule> it =((CSSRuleConcat) r).getConc().iterator();
-			while (it.hasNext()) {
-				result += translateRule(it.next());
-				if (it.hasNext()) {
-					result +=" ";
-				}
-			}
-		}
-		else if (r instanceof CSSRuleBracket) {
-			result +="[ " + translateRule(((CSSRuleBracket) r).getInner()) + " ]";
-		}
-		else if (r instanceof CSSRuleXor) {
-			Iterator<CSSRule> it =((CSSRuleXor) r).getXors().iterator();
-			while (it.hasNext()) {
-				result += translateRule(it.next());
-				if (it.hasNext()) {
-					result +=" || ";
-				}
-			}
-		}
-		else if (r instanceof CSSRuleLiteral) {
-			result += ((CSSRuleLiteral) r).getValue();
-		}
-		else if (r instanceof CSSRuleRef) {
-			result += "<a href=\"laal\" >&lt;" + ((CSSRuleRef)r).getRef().getName() + "&gt;</a>";
-		}
-		else if (r instanceof CSSRulePostfix) {
-			result += translateRule(((CSSRulePostfix) r).getRule()) + ((CSSRulePostfix) r).getCardinality();
-		}
-		else if (r instanceof CSSRuleRegex) {
-			result += ((CSSRuleRegex) r).getRegex();
-		}
-		else if (r instanceof CSSRuleSymbol) {
-			result += ((CSSRuleSymbol) r).getSymbol();
-		}
-		else {
-			result = r.getType();
-		}
-		return result;
-	}
+	
 	
 	
 
-	public String getDocForProperty(String propertyName) {
-		for (final PropertyDefinition property : findProperties()) {
-			if (property.getName().equals(propertyName)) {
-				String rule = "syntax = " +translateRule(property.getRule()) + "<br>";
-				String javadoc =  new JavaDocParser().parse(property.getDoku().getContent());
-				String defaultVal = property.getDefault()==null?"":"default = " + property.getDefault() + "<br>";
-				return rule  + defaultVal + javadoc;
-			}
-		}
-		
-		return "not found";
-	}
 	
-	public static String getDocForPropertyx(String propertyName) {
 	
-		final Parser p = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
-		
-		return p.getDocForProperty(propertyName);
-		
-	}
+	
 
 	public static List<CssValuePart> getValuesForProperty(String propertyName) {
 		final Parser p = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));

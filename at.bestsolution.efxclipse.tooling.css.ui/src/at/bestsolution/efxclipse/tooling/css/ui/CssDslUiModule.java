@@ -12,22 +12,44 @@ package at.bestsolution.efxclipse.tooling.css.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
-import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingCalculator;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
+import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
+import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 
 import com.google.inject.Binder;
+import com.google.inject.Provider;
 
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.AbstractCssDslUiModule {
+	
+	static class OsgiCssDialectExtensionComponentProvider implements Provider<CssDialectExtensionComponent> {
+
+		private CssDialectExtensionComponent instance = null;
+		
+		@Override
+		public CssDialectExtensionComponent get() {
+			if (instance == null) {
+				BundleContext context = CssDslActivator.getInstance().getBundle().getBundleContext();
+				ServiceReference<CssDialectExtensionComponent> ref = context.getServiceReference(CssDialectExtensionComponent.class);
+				instance = context.getService(ref);
+			}
+			return instance;
+		}
+		
+	}
+	
+	
 	public CssDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
@@ -39,6 +61,9 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		binder.bind(IHighlightingConfiguration.class).to(CssDslHighlightingConfiguration.class);
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
 		binder.bind(IEObjectDocumentationProvider.class).to(CssObjectDocumentationProvider.class);
+		
+		binder.bind(CssDialectExtensionComponent.class).toProvider(OsgiCssDialectExtensionComponentProvider.class);
+		
 	}
 	
 	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {

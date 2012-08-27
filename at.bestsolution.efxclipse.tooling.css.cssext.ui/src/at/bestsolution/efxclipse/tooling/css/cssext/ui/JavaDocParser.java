@@ -1,4 +1,4 @@
-package at.bestsolution.efxclipse.tooling.css.cssext;
+package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
 import java.util.StringTokenizer;
 

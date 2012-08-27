@@ -4,6 +4,25 @@ package KuddelMuddel {
  	
  	package martin {
  		
+ 		/**
+ 		 * important function for la or li - ing
+ 		 */
+ 		func0 = func0( la | li );
+ 		
+ 		/** Hallo Tom! */
+ 		link0 = c | d e f;
+ 		
+ 		/** bla bla hallo bla bla */
+ 		hallo = a | b | c | <link0> | <func0>;
+ 		
+ 		/** DOKU FOR Test el */
+ 		Test {
+ 			
+ 			/** bla bla reftest bla bla */
+ 			reftest <hallo>;
+ 			
+ 		}
+ 		
  		gnu = gnu?;
  		
  		
@@ -25,6 +44,7 @@ package KuddelMuddel {
  		
  		/** */
  		Table extends Div ,KuddelMuddel.Gnu {
+ 			
  			/**
  			 * 
  			 * @SeeAlso <m>
@@ -33,7 +53,7 @@ package KuddelMuddel {
  		}
  		
  		
- 		
+ 		/** this is hallo doc */
  		Hallo {
  			
  			/**
