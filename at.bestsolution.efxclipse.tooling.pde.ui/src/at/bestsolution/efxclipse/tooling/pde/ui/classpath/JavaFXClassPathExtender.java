@@ -41,6 +41,8 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 				for( ImportPackageSpecification i : desc.getImportPackages() ) {
 					if( i.getName().startsWith("javafx") ) {
 						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),false));
+					} else if( i.getName().contains("javafx") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
 					}
 				}
 				
