@@ -6,6 +6,7 @@ import at.bestsolution.efxclipse.tooling.ui.wizards.template.JDTElement;
 
 public class FXMLElement extends JDTElement {
 	private IType rootElement;
+	private boolean fxRoot;
 
 	public IType getRootElement() {
 		return rootElement;
@@ -15,5 +16,11 @@ public class FXMLElement extends JDTElement {
 		support.firePropertyChange("rootElement", this.rootElement, this.rootElement = rootElement);
 	}
 	
+	public void setFxRoot(boolean fxRoot) {
+		this.fxRoot = fxRoot;
+	}
 	
+	public boolean isFxRoot() {
+		return fxRoot;
+	}
 }
