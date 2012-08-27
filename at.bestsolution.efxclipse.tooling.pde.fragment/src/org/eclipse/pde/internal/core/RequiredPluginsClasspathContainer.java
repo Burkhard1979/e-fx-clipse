@@ -133,6 +133,24 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 			// to avoid cycles, e.g. when a bundle imports a package it exports
 			added.add(desc);
 
+			
+			
+			for( IClasspathContributor cc: contributors ) {
+				System.err.println(cc);
+				for( Contribution c : cc.getDynamicContributions(desc) ) {
+					Rule[] rs = new Rule[c.rules != null ? c.rules.length : 0];
+					for( int i = 0; i < rs.length; i++ ) {
+						Rule r = new Rule();
+						r.path = c.rules[i].path;
+						r.discouraged = c.rules[i].discouraged;
+						System.err.println(r.path);
+						rs[i] = r;
+					}
+					
+					addLibraryEntry(c.jarLocation, c.sourceLocation, rs, c.attributes, entries);
+				}
+			}
+			
 			HostSpecification host = desc.getHost();
 			if (host != null) {
 				addHostPlugin(host, added, map, entries);
