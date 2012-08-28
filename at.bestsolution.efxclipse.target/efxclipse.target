@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?><target name="efxclipse" sequenceNumber="21">
+<locations>
+<location path="${efxclipse_target}/wtp/3.4.0" type="Directory"/>
+<location path="${efxclipse_target}/eclipseplatform/4.2/eclipse/plugins" type="Directory"/>
+<location path="${efxclipse_target}/eclipseplatform/3.7/eclipse/plugins" type="Directory"/>
+<location path="${efxclipse_target}/mwe/2.3.0" type="Directory"/>
+<location path="${efxclipse_target}/mwe2/2.3.0" type="Directory"/>
+<location path="${efxclipse_target}/xtext/2.3.0" type="Directory"/>
+<location path="${efxclipse_target}/cdo/4.1.0" type="Directory"/>
+<location path="${efxclipse_target}/emf/2.7.0" type="Directory"/>
+</locations>
+</target>
