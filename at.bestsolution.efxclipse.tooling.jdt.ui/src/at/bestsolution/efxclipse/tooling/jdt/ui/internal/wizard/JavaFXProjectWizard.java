@@ -17,11 +17,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExecutableExtension;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart;
@@ -30,9 +33,7 @@ import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewWizardMessages;
 import org.eclipse.jdt.ui.IPackagesViewPart;
 import org.eclipse.jdt.ui.wizards.NewJavaProjectWizardPageOne;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -41,7 +42,7 @@ import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 
-import at.bestsolution.efxclipse.tooling.jdt.core.internal.BuildPathSupport;
+import at.bestsolution.efxclipse.tooling.jdt.core.JavaFXCore;
 
 @SuppressWarnings("restriction")
 public class JavaFXProjectWizard extends NewElementWizard implements IExecutableExtension {
@@ -62,14 +63,6 @@ public class JavaFXProjectWizard extends NewElementWizard implements IExecutable
 
 		fFirstPage= pageOne;
 		fSecondPage= pageTwo;
-		
-		IPath[] paths = BuildPathSupport.getPreferencePaths();
-		if( paths == null || paths[0] == null ) {
-			MessageBox box = new MessageBox(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),SWT.ICON_ERROR);
-			box.setText("JavaFX SDK not configured");
-			box.setMessage("It looks like JavaFX is not configured appropriately. Please configure the SDK location in the Preferences before proceeding.");
-			box.open();
-		}
 	}
 
 	/* (non-Javadoc)
@@ -108,6 +101,18 @@ public class JavaFXProjectWizard extends NewElementWizard implements IExecutable
 			IWorkingSet[] workingSets= fFirstPage.getWorkingSets();
 			if (workingSets.length > 0) {
 				PlatformUI.getWorkbench().getWorkingSetManager().addToWorkingSets(newElement, workingSets);
+			}
+			
+			try {
+				IJavaProject p = (IJavaProject) newElement;
+				IClasspathEntry[] current = p.getRawClasspath();
+				IClasspathEntry[] currentFX = new IClasspathEntry[current.length+1];
+				System.arraycopy(current, 0, currentFX, 0, current.length);
+				currentFX[current.length] = JavaCore.newContainerEntry(JavaFXCore.JAVAFX_CONTAINER_PATH);  
+				p.setRawClasspath(currentFX, new NullProgressMonitor());
+			} catch (JavaModelException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 
 			IFile buildFile = fSecondPage.getJavaProject().getProject().getFile(new Path("build.fxbuild"));

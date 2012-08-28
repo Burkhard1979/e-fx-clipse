@@ -45,14 +45,15 @@ public class JavaFXClasspathContainerInitializer extends
 	public void initialize(IPath containerPath, IJavaProject project)
 			throws CoreException {
 		if (isValidJUnitContainerPath(containerPath)) {
-			JavaFXContainer container= getNewContainer(containerPath);
+			JavaFXContainer container = getNewContainer(containerPath, project);
+
 			JavaCore.setClasspathContainer(containerPath, new IJavaProject[] { project }, 	new IClasspathContainer[] { container }, null);
 		}
 	}
 	
-	private static JavaFXContainer getNewContainer(IPath containerPath) {
+	private static JavaFXContainer getNewContainer(IPath containerPath, IJavaProject project) {
 		IClasspathEntry entry= null;
-		entry= BuildPathSupport.getJavaFXLibraryEntry();
+		entry= BuildPathSupport.getJavaFXLibraryEntry(project);
 		
 		IClasspathEntry[] entries;
 		if (entry == null) {

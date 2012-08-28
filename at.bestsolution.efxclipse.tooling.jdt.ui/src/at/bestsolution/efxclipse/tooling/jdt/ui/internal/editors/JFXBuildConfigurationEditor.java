@@ -129,7 +129,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.buildpath.JavaFXPreferencePage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.outline.PropertyContentOutlinePage;
 
 
@@ -1129,23 +1128,6 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements
 	
 	IStatus validateKeystoreAlias(Shell parent, String alias) {
 		return Status.OK_STATUS;
-	}
-	
-	String handleJFxSDKDirectorySelection(Shell parent,
-			String originalDir) {
-		DirectoryDialog dialog = new DirectoryDialog(parent);
-		dialog.setFilterPath(originalDir);
-		
-		String dir = dialog.open();
-		if( dir != null ) {
-			if( ! JavaFXPreferencePage.validateSDKDirectory(dir) ) {
-				MessageDialog.openError(parent, "Not a JFX-SDK Directory", "The directory '"+dir+"' is not a valid SDK-directory");
-				return handleJFxSDKDirectorySelection(parent, originalDir);
-			} else {
-				return dir;
-			}
-		}
-		return null;
 	}
 	
 	String handleBuildFilesystemDirectorySelection(Shell parent) {

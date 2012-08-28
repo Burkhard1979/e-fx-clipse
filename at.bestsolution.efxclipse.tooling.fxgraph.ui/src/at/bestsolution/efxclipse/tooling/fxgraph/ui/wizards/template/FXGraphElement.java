@@ -6,6 +6,7 @@ import at.bestsolution.efxclipse.tooling.ui.wizards.template.JDTElement;
 
 public class FXGraphElement extends JDTElement {
 	private IType rootElement;
+	private boolean dynamic;
 
 	public IType getRootElement() {
 		return rootElement;
@@ -15,5 +16,11 @@ public class FXGraphElement extends JDTElement {
 		support.firePropertyChange("rootElement", this.rootElement, this.rootElement = rootElement);
 	}
 	
+	public boolean isDynamic() {
+		return dynamic;
+	}
 	
+	public void setDynamic(boolean dynamic) {
+		this.dynamic = dynamic;
+	}
 }

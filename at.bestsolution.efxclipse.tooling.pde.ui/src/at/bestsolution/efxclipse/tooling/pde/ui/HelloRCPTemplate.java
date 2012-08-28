@@ -46,7 +46,6 @@ public class HelloRCPTemplate extends FXPDETemplateSection {
 
 	public static final String KEY_APPLICATION_CLASS = "applicationClass"; //$NON-NLS-1$
 	public static final String KEY_WINDOW_TITLE = "windowTitle"; //$NON-NLS-1$
-	public static final String KEY_PACKAGE_JAVAFX = "packageJavaFX";
 	public static final String KEY_VIEW_PART_CLASS = "viewPartClass"; //$NON-NLS-1$
 	public static final String KEY_VIEW_NAME = "viewName";
 	
@@ -72,8 +71,6 @@ public class HelloRCPTemplate extends FXPDETemplateSection {
 		addOption(KEY_VIEW_PART_CLASS, "ViewPart class", "MyViewPart", 0); //$NON-NLS-1$
 		addOption(KEY_VIEW_NAME, "Name", "My FX View", 0);
 		
-		addOption(KEY_PACKAGE_JAVAFX, "Package JavaFX", true, 0);
-
 		createBrandingOptions();
 	}
 
@@ -204,15 +201,6 @@ public class HelloRCPTemplate extends FXPDETemplateSection {
 		
 		super.execute(project, model, monitor);
 		
-		if( getBooleanOption(KEY_PACKAGE_JAVAFX) ) {
-			if( PluginRegistry.findModel("javafx.osgi") == null ) {
-				if( MessageDialog.openQuestion(getPage(0).getShell(), "No javafx.osgi bundle", "There's currently no javafx.osgi bundle in your workspace or target platform. Would you like to create one?") ) {
-					WizardDialog d = new WizardDialog(getPage(0).getShell(), new RepackageJavaFXWizard());
-					d.open();
-				}
-			}
-		}
-		
 		if (getBooleanOption(KEY_PRODUCT_BRANDING)) {
 			IFile file = project.getFile(new org.eclipse.core.runtime.Path(model.getPluginBase().getId() + ".product"));
 			
@@ -322,10 +310,6 @@ public class HelloRCPTemplate extends FXPDETemplateSection {
 										"org.eclipse.e4.ui.workbench.renderers.swt.cocoa"
 								));
 							}
-						}
-						
-						if( getBooleanOption(KEY_PACKAGE_JAVAFX) ) {
-							l.add("javafx.osgi");
 						}
 						
 						addPlugins(factory, product, l.toArray(new String[0]));

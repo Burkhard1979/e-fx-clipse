@@ -10,14 +10,6 @@
       </classpathContainerPage>
    </extension>
    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.buildpath.JavaFXPreferencePage"
-            id="at.bestsolution.efxclipse.tooling.jdt.ui.javafx"
-            name="%page.name">
-      </page>
-   </extension>
-   <extension
          point="org.eclipse.ui.newWizards">
       <wizard
             category="at.bestsolution.efxclipse.tooling"

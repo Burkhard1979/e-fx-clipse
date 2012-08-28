@@ -10,8 +10,6 @@ public interface WSash<N> extends WLayoutedWidget<MPartSashContainer> {
 
 	public void addItem(WLayoutedWidget<MPartSashContainerElement> widget);
 
-	public void setSplits(double... deviders);
-
 	public int getItemCount();
 
 	public void addItems(List<WLayoutedWidget<MPartSashContainerElement>> list);

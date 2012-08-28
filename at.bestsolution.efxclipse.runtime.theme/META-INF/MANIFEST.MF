@@ -7,7 +7,7 @@ Bundle-Activator: at.bestsolution.efxclipse.runtime.theme.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
  at.bestsolution.efxclipse.runtime.services
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Service-Component: OSGI-INF/thememanager.xml
 Import-Package: com.sun.javafx.css,
  javafx.collections;version="2.0.0",

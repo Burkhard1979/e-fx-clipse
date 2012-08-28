@@ -62,7 +62,7 @@ public abstract class BaseMenuItemRenderer<N> extends BaseItemRenderer<MMenuItem
 			@Override
 			public void run() {
 				try {
-					widget.setHandled(canExecute(menuElement, getRenderingContext(menuElement))); 	
+					widget.setHandled(canExecute(menuElement, getModelContext(menuElement))); 	
 				} catch(Throwable t) {
 					//TODO Log it
 					t.printStackTrace();

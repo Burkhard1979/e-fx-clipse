@@ -34,13 +34,16 @@ public class DefMenuRenderer extends BaseMenuRenderer<Menu> {
 		
 		@Override
 		protected Menu createWidget() {
-			Menu m = new Menu();
+			final Menu m = new Menu();
 			m.setOnShowing(new EventHandler<Event>() {
 				
 				@Override
 				public void handle(Event event) {
-					if( showingCallback != null ) {
-						showingCallback.run();
+					//TODO Work around for JIRA 24505
+					if( ! m.isShowing() ) {
+						if( showingCallback != null ) {
+							showingCallback.run();
+						}	
 					}
 				}
 			});

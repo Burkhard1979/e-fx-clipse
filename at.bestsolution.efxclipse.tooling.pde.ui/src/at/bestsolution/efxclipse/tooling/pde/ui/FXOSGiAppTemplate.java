@@ -33,7 +33,6 @@ import org.osgi.framework.Constants;
 public class FXOSGiAppTemplate extends FXPDETemplateSection {
 	public static final String KEY_APPLICATION_CLASS = "applicationClass"; //$NON-NLS-1$
 	public static final String KEY_WINDOW_TITLE = "windowTitle"; //$NON-NLS-1$
-	public static final String KEY_PACKAGE_JAVAFX = "packageJavaFX";
 
 	public FXOSGiAppTemplate() {
 		setPageCount(1);
@@ -44,7 +43,6 @@ public class FXOSGiAppTemplate extends FXPDETemplateSection {
 		addOption(KEY_WINDOW_TITLE, "Title", "Hello JavaFX", 0); //$NON-NLS-1$ 
 		addOption(KEY_PACKAGE_NAME, "Package", (String) null, 0);
 		addOption(KEY_APPLICATION_CLASS, "Application class", "Application", 0); //$NON-NLS-1$
-		addOption(KEY_PACKAGE_JAVAFX, "Package JavaFX", true, 0);
 		
 		createBrandingOptions();
 	}
@@ -150,15 +148,6 @@ public class FXOSGiAppTemplate extends FXPDETemplateSection {
 		
 		super.execute(project, model, monitor);
 		
-		if( getBooleanOption(KEY_PACKAGE_JAVAFX) ) {
-			if( PluginRegistry.findModel("javafx.osgi") == null ) {
-				if( MessageDialog.openQuestion(getPage(0).getShell(), "No javafx.osgi bundle", "There's currently no javafx.osgi bundle in your workspace or target platform. Would you like to create one?") ) {
-					WizardDialog d = new WizardDialog(getPage(0).getShell(), new RepackageJavaFXWizard());
-					d.open();
-				}
-			}
-		}
-		
 		if (getBooleanOption(KEY_PRODUCT_BRANDING)) {
 			IFile file = project.getFile(new org.eclipse.core.runtime.Path(model.getPluginBase().getId() + ".product"));
 			
@@ -215,9 +204,6 @@ public class FXOSGiAppTemplate extends FXPDETemplateSection {
 								"org.eclipse.core.jobs",
 								"org.eclipse.equinox.preferences",
 								"org.eclipse.core.contenttype"));
-						if( getBooleanOption(KEY_PACKAGE_JAVAFX) ) {
-							l.add("javafx.osgi");
-						}
 						
 						addPlugins(factory, product, l.toArray(new String[0]));
 					}

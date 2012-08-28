@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
@@ -38,6 +40,8 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BaseMenuItemRenderer<?> menuItemRenderer;
 	private BaseMenuSeparatorRenderer<?> menuSeperatorRenderer;
 	private BaseMenuRenderer<?> toolItemMenuRenderer;
+	private BasePerspectiveStackRenderer<?, ?, ?> perspectiveStackRenderer;
+	private BasePerspectiveRenderer<?> perspectiveRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -53,6 +57,16 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 				windowRenderer = ContextInjectionFactory.make(getWindowRendererClass(), context);
 			}
 			return (R) windowRenderer;
+		} else if( modelObject instanceof MPerspectiveStack ) {
+			if( perspectiveStackRenderer == null ) {
+				perspectiveStackRenderer = ContextInjectionFactory.make(getPerspectiveStackRendererClass(), context);
+			}
+			return (R) perspectiveStackRenderer;
+		} else if( modelObject instanceof MPerspective ) {
+			if( perspectiveRenderer == null ) {
+				perspectiveRenderer = ContextInjectionFactory.make(getPerspectiveRendererClass(), context);
+			}
+			return (R) perspectiveRenderer;
 		} else if( modelObject instanceof MPartSashContainer ) {
 			if( sashRenderer == null ) {
 				sashRenderer = ContextInjectionFactory.make(getSashRendererClass(), context);
@@ -105,7 +119,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 				menuItemRenderer = ContextInjectionFactory.make(getMenuItemRendererClass(), context);
 			}
 			return (R) menuItemRenderer;
-		}  else if( modelObject instanceof MMenuSeparator ) {
+		} else if( modelObject instanceof MMenuSeparator ) {
 			if( menuSeperatorRenderer == null ) {
 				menuSeperatorRenderer = ContextInjectionFactory.make(getMenuSeparatorRendererClass(), context);
 			}
@@ -127,4 +141,6 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BaseMenuItemRenderer<?>> getMenuItemRendererClass();
 	protected abstract Class<? extends BaseMenuSeparatorRenderer<?>> getMenuSeparatorRendererClass();
 	protected abstract Class<? extends BaseMenuRenderer<?>> getToolItemMenuRendererClass();
+	protected abstract Class<? extends BasePerspectiveStackRenderer<?, ?, ?>> getPerspectiveStackRendererClass();
+	protected abstract Class<? extends BasePerspectiveRenderer<?>> getPerspectiveRendererClass();
 }

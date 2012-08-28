@@ -17,6 +17,7 @@ import org.eclipse.jdt.core.search.IJavaSearchScope;
 import org.eclipse.jdt.core.search.SearchEngine;
 import org.eclipse.jdt.ui.IJavaElementSearchConstants;
 import org.eclipse.jdt.ui.JavaUI;
+import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -100,6 +101,14 @@ public class FXMLWizardPage extends AbstractJDTElementPage<FXMLElement> {
 			if( types.size() > 0 ) {
 				viewer.setSelection(new StructuredSelection(types.get(0)));
 			}
+		}
+		
+		{
+			Label l = new Label(parent, SWT.NONE);
+			l.setText("Dynamic Root (fx:root)");
+			
+			Button b = new Button(parent, SWT.CHECK);
+			dbc.bindValue(WidgetProperties.selection().observe(b), BeanProperties.value("fxRoot").observe(getClazz()));
 		}
 	}
 	
