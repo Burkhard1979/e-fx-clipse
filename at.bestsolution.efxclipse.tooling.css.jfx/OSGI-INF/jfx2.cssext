@@ -939,43 +939,76 @@ package javafx {
         	}			
 		}
 		package charts {
-	    	AreaChart {
+	    	AreaChart extends XYChart {
 	    		
 	    	}
-	    	BarChart {
+	    	BarChart extends XYChart {
+	    		-fx-bar-gap double default: 4;
+	    		-fx-category-gap double default: 10;
+	    	}
+	    	BubbleChart extends XYChart {
 	    		
 	    	}
-	    	BubbleChart {
+	    	Chart extends layout.Region {
+	    		-fx-legend-side [top|left|right|bottom] default: bottom;
+	    		-fx-legend-visible <boolean> default:true;
+	    		-fx-title-side [top|left|right|bottom] default: top;
+	    	}
+	    	LineChart extends XYChart {
+	    		-fx-create-symbols <boolean> default: true;
+	    	}
+	    	ScatterChart extends XYChart {
 	    		
 	    	}
-	    	Chart {
-	    		
+	    	PieChart extends Chart {
+	    		-fx-clockwise <boolean> default: true;
+	    		-fx-pie-label-visible <boolean> default: true;
+	    		-fx-label-line-length <size> default: 20;
+	    		-fx-start-angle double default: 0;
 	    	}
-	    	LineChart {
-	    		
+	    	XYChart extends Chart {
+	    		-fx-alternative-column-fill-visible <boolean> default: true;
+	    		-fx-alternative-row-fill-visible <boolean> default: true;
+	    		-fx-horizontal-grid-lines-visible <boolean> default: true;
+	    		-fx-horizontal-zero-line-visible <boolean> default: true;
+	    		-fx-vertical-grid-lines-visible <boolean> default: true;
+	    		-fx-vertical-zero-line-visible <boolean> default: true;
 	    	}
-	    	ScatterChart {
-	    		
+	    	Axis extends layout.Region {
+	    		-fx-side 	[top|left|right|bottom] default: null;	 
+				-fx-tick-length <size> default: 8; 	 
+				-fx-tick-label-font <font> default: 8;
+				-fx-tick-label-fill <paint> default: 8; 	 
+				-fx-tick-label-gap <size> default: 8; 	 
+				-fx-tick-mark-visible <boolean> default: true; 	 
+				-fx-tick-labels-visible <boolean> default: true; 	
 	    	}
-	    	PieChart {
-	    		
+	    	ValueAxis extends Axis {
+	    		-fx-minor-tick-length <size> default: 5; 	 
+				-fx-minor-tick-count <size> default: 5; 	 
+				-fx-minor-tick-visible <boolean> default: true; 	 
 	    	}
-	    	XYChart {
-	    		
+	    	NumberAxis extends ValueAxis {
+	    		/**
+	    		 * The value between each major tick mark in data units.
+	    		 */
+	    		-fx-tick-unit double default: 5;
 	    	}
-	    	Axis {
-	    		
+	    	CategoryAxis extends Axis {
+	    		/**
+	    		 * The margin between the axis start and the first tick-mark
+	    		 */
+	    		-fx-start-margin double default: 5;
+	    		/**
+	    		 * The margin between the axis start and the first tick-mark
+	    		 */
+				-fx-end-margin double default: 5;
+				/**
+				 * If this is true then half the space between ticks is left at the start and end
+				 */
+				-fx-gap-start-and-end <boolean> default: true;
 	    	}
-	    	ValueAxis {
-	    		
-	    	}
-	    	NumberAxis {
-	    		
-	    	}
-	    	CategoryAxis {
-	    		
-	    	}
-	    	Legend {
+	    	Legend extends layout.Region {
 	    		
 	    	}
 		}
