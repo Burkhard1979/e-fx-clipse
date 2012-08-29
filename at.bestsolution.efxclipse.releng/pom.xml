@@ -58,6 +58,8 @@
 		<module>../at.bestsolution.efxclipse.tooling.css.web</module>
 		<module>../at.bestsolution.efxclipse.tooling.jdt.core</module>
 		<module>../at.bestsolution.efxclipse.tooling.jdt.ui</module>
+		<module>../at.bestsolution.efxclipse.tooling.efxbean</module>
+		<module>../at.bestsolution.efxclipse.tooling.efxbean.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxml</module>
 		<module>../at.bestsolution.efxclipse.tooling.model</module>
