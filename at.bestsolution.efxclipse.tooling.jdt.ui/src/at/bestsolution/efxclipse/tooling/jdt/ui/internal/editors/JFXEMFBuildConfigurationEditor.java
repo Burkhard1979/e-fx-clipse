@@ -51,11 +51,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.EventObject;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.NotEnabledException;
@@ -71,12 +78,29 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.FeaturePath;
 import org.eclipse.emf.databinding.IEMFValueProperty;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -100,6 +124,7 @@ import org.eclipse.jface.databinding.viewers.IViewerValueProperty;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.DocumentEvent;
@@ -111,8 +136,10 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -131,6 +158,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -138,10 +166,12 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
+import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.dialogs.SelectionDialog;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.events.IHyperlinkListener;
@@ -156,6 +186,7 @@ import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksFactory;
@@ -167,7 +198,41 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.outline.PropertyContentOutlinePage;
 
+
 public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implements IResourceChangeListener {
+	/**
+	 * This keeps track of the editing domain that is used to track all changes to the model.
+	 */
+	private AdapterFactoryEditingDomain editingDomain;
+	/**
+	 * This is the one adapter factory used for providing views of the model.
+	 */
+	protected ComposedAdapterFactory adapterFactory;
+	/**
+	 * This is the property sheet page.
+	 */
+	protected PropertySheetPage propertySheetPage;
+	/**
+	 * This keeps track of the active content viewer, which may be either one of the viewers in the pages or the content outline viewer.
+	 */
+	protected Viewer currentViewer;
+	/**
+	 * Controls whether the problem indication should be updated.
+	 */
+	protected boolean updateProblemIndication = true;
+	/**
+	 * Resources that have been saved.
+	 */
+	protected Collection<Resource> savedResources = new ArrayList<Resource>();
+
+	/**
+	 * Map to store the diagnostic associated with a resource.
+	 */
+	protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
+
+	
+	
+
 	private PropertyTextEditor editor;
 
 	private FormToolkit toolkit;
@@ -180,37 +245,333 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 	public JFXEMFBuildConfigurationEditor() {
 		super();
-
-		task = AntTasksFactory.eINSTANCE.createAntTask();
-		task.setDeploy( AntTasksFactory.eINSTANCE.createDeploy() );
-		task.getDeploy().setInfo( ParametersFactory.eINSTANCE.createInfo() );
+		initializeEditingDomain();
 
 		ResourcesPlugin.getWorkspace().addResourceChangeListener( this );
 	}
 
+	/**
+	 * This sets up the editing domain for the model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected void initializeEditingDomain() {
+		// Create an adapter factory that yields item providers.
+		//
+		adapterFactory = new ComposedAdapterFactory( ComposedAdapterFactory.Descriptor.Registry.INSTANCE );
+
+		adapterFactory.addAdapterFactory( new ResourceItemProviderAdapterFactory() );
+		adapterFactory.addAdapterFactory( new AntTasksItemProviderAdapterFactory() );
+		adapterFactory.addAdapterFactory( new ParametersItemProviderAdapterFactory() );
+		adapterFactory.addAdapterFactory( new ReflectiveItemProviderAdapterFactory() );
+
+		// Create the command stack that will notify this editor as commands are executed.
+		//
+		BasicCommandStack commandStack = new BasicCommandStack();
+
+		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
+		//
+		commandStack.addCommandStackListener( new CommandStackListener() {
+			public void commandStackChanged( final EventObject event ) {
+				getContainer().getDisplay().asyncExec( new Runnable() {
+					public void run() {
+						firePropertyChange( IEditorPart.PROP_DIRTY );
+
+						// Try to select the affected objects.
+						//
+						Command mostRecentCommand = ( (CommandStack) event.getSource() ).getMostRecentCommand();
+						if ( mostRecentCommand != null ) {
+							setSelectionToViewer( mostRecentCommand.getAffectedObjects() );
+						}
+						if ( propertySheetPage != null && !propertySheetPage.getControl().isDisposed() ) {
+							propertySheetPage.refresh();
+						}
+					}
+				} );
+			}
+		} );
+
+		// Create the editing domain with a special command stack.
+		//
+		editingDomain = new AdapterFactoryEditingDomain( adapterFactory, commandStack, new HashMap<Resource, Boolean>() );
+	}
+
+	/**
+	 * This sets the selection into whichever viewer is active.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSelectionToViewer(Collection<?> collection) {
+		final Collection<?> theSelection = collection;
+		// Make sure it's okay.
+		//
+		if (theSelection != null && !theSelection.isEmpty()) {
+			Runnable runnable =
+				new Runnable() {
+					public void run() {
+						// Try to select the items in the current content viewer of the editor.
+						//
+						if (currentViewer != null) {
+							currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
+						}
+					}
+				};
+			getSite().getShell().getDisplay().asyncExec(runnable);
+		}
+	}
+
+	/**
+	 * This is for implementing {@link IEditorPart} and simply tests the command stack.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isDirty() {
+		return ((BasicCommandStack)editingDomain.getCommandStack()).isSaveNeeded();
+	}
+
+	/**
+	 * This is for implementing {@link IEditorPart} and simply saves the model file.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void doSave(IProgressMonitor progressMonitor) {
+		// Save only resources that have actually changed.
+		//
+		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+
+		// Do the work within an operation because this is a long running activity that modifies the workbench.
+		//
+		WorkspaceModifyOperation operation =
+			new WorkspaceModifyOperation() {
+				// This is the method that gets invoked when the operation runs.
+				//
+				@Override
+				public void execute(IProgressMonitor monitor) {
+					// Save the resources to the file system.
+					//
+					boolean first = true;
+					for (Resource resource : editingDomain.getResourceSet().getResources()) {
+						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
+							try {
+								long timeStamp = resource.getTimeStamp();
+								resource.save(saveOptions);
+								if (resource.getTimeStamp() != timeStamp) {
+									savedResources.add(resource);
+								}
+							}
+							catch (Exception exception) {
+								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+							}
+							first = false;
+						}
+					}
+				}
+			};
+
+		updateProblemIndication = false;
+		try {
+			// This runs the options, and shows progress.
+			//
+			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+
+			// Refresh the necessary state.
+			//
+			((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
+			firePropertyChange(IEditorPart.PROP_DIRTY);
+		}
+		catch (Exception exception) {
+			// TODO log this
+			exception.printStackTrace();
+		}
+		updateProblemIndication = true;
+		updateProblemIndication();
+	}
+
+	/**
+	 * Updates the problems indication with the information described in the specified diagnostic.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void updateProblemIndication() {
+		System.err.println("houston, we have a problem");
+//		if (updateProblemIndication) {
+//			BasicDiagnostic diagnostic =
+//				new BasicDiagnostic
+//					(Diagnostic.OK,
+//					 "at.bestsolution.efxclipse.tooling.jdt.ui.editor",
+//					 0,
+//					 null,
+//					 new Object [] { editingDomain.getResourceSet() });
+//			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
+//				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
+//					diagnostic.add(childDiagnostic);
+//				}
+//			}
+//
+//			int lastEditorPage = getPageCount() - 1;
+//			if (lastEditorPage >= 0 && getEditor(lastEditorPage) instanceof ProblemEditorPart) {
+//				((ProblemEditorPart)getEditor(lastEditorPage)).setDiagnostic(diagnostic);
+//				if (diagnostic.getSeverity() != Diagnostic.OK) {
+//					setActivePage(lastEditorPage);
+//				}
+//			}
+//			else if (diagnostic.getSeverity() != Diagnostic.OK) {
+//				ProblemEditorPart problemEditorPart = new ProblemEditorPart();
+//				problemEditorPart.setDiagnostic(diagnostic);
+//				problemEditorPart.setMarkerHelper(markerHelper);
+//				try {
+//					addPage(++lastEditorPage, problemEditorPart, getEditorInput());
+//					setPageText(lastEditorPage, problemEditorPart.getPartName());
+//					setActivePage(lastEditorPage);
+//					showTabs();
+//				}
+//				catch (PartInitException exception) {
+//					JavaFXAntTaskEditorPlugin.INSTANCE.log(exception);
+//				}
+//			}
+//
+//			if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
+//				markerHelper.deleteMarkers(editingDomain.getResourceSet());
+//				if (diagnostic.getSeverity() != Diagnostic.OK) {
+//					try {
+//						markerHelper.createMarkers(diagnostic);
+//					}
+//					catch (CoreException exception) {
+//						JavaFXAntTaskEditorPlugin.INSTANCE.log(exception);
+//					}
+//				}
+//			}
+//		}
+	}
+
+	
+	/**
+	 * Returns a diagnostic describing the errors and warnings listed in the resource
+	 * and the specified exception (if any).
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
+		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
+			BasicDiagnostic basicDiagnostic =
+				new BasicDiagnostic
+					(Diagnostic.ERROR,
+					 "at.bestsolution.efxclipse.tooling.jdt.ui.editor",
+					 0,
+					 "_UI_CreateModelError_message",
+					 new Object [] { exception == null ? (Object)resource : exception });
+			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
+			return basicDiagnostic;
+		}
+		else if (exception != null) {
+			return
+				new BasicDiagnostic
+					(Diagnostic.ERROR,
+					 "at.bestsolution.efxclipse.tooling.jdt.ui.editor",
+					 0,
+					 "_UI_CreateModelError_message",
+					 new Object[] { exception });
+		}
+		else {
+			return Diagnostic.OK_INSTANCE;
+		}
+	}
+	
+	
+	
+	/**
+	 * This returns whether something has been persisted to the URI of the specified resource.
+	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected boolean isPersisted(Resource resource) {
+		boolean result = false;
+		try {
+			InputStream stream = editingDomain.getResourceSet().getURIConverter().createInputStream(resource.getURI());
+			if (stream != null) {
+				result = true;
+				stream.close();
+			}
+		}
+		catch (IOException e) {
+			// Ignore
+		}
+		return result;
+	}
+
+	/**
+	 * This always returns true because it is not currently supported.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSaveAsAllowed() {
+		return true;
+	}
+
+	/**
+	 * This also changes the editor's input.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void doSaveAs() {
+		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
+		saveAsDialog.open();
+		IPath path = saveAsDialog.getResult();
+		if (path != null) {
+			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+			if (file != null) {
+				doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(file));
+			}
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void doSaveAs(URI uri, IEditorInput editorInput) {
+		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
+		setInputWithNotify(editorInput);
+		setPartName(editorInput.getName());
+		IProgressMonitor progressMonitor =
+			getActionBars().getStatusLineManager() != null ?
+				getActionBars().getStatusLineManager().getProgressMonitor() :
+				new NullProgressMonitor();
+		doSave(progressMonitor);
+	}
+	public EditingDomainActionBarContributor getActionBarContributor() {
+		return (EditingDomainActionBarContributor)getEditorSite().getActionBarContributor();
+	}
+
+	public IActionBars getActionBars() {
+		return getActionBarContributor().getActionBars();
+	}
+	
+	
+	
+	
+
+	
 	@Override
 	public void dispose() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener( this );
 		dbc.dispose();
 		super.dispose();
-	}
-
-	@Override
-	public void doSave( IProgressMonitor monitor ) {
-		getEditor( 1 ).doSave( monitor );
-	}
-
-	@Override
-	public void doSaveAs() {
-		IEditorPart editor = getEditor( 1 );
-		editor.doSaveAs();
-		setPageText( 0, editor.getTitle() );
-		setInput( editor.getEditorInput() );
-	}
-
-	@Override
-	public boolean isSaveAsAllowed() {
-		return true;
 	}
 
 	@Override
@@ -421,9 +782,9 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				Composite tableContainer = toolkit.createComposite( sectionClient );
 				tableContainer.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
 				GridLayout gl = new GridLayout( 2, false );
-//				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				// gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
 				tableContainer.setLayout( gl );
-		//		tableContainer.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				// tableContainer.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
 				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL );
 				t.setHeaderVisible( true );
@@ -942,7 +1303,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 		dbc = new DataBindingContext();
 		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
-		//IWidgetValueProperty selChange = WidgetProperties.selection();
+		// IWidgetValueProperty selChange = WidgetProperties.selection();
 
 		{
 			Section section = toolkit.createSection( sectionParent, Section.DESCRIPTION | Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED );
@@ -1032,9 +1393,10 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 		TitleAreaDialog d = new TitleAreaDialog( shell ) {
 			private Param o = ParametersFactory.eINSTANCE.createParam();
 			private DataBindingContext dbc = new DataBindingContext();
-			private Text tName ;
+			private Text tName;
 
-			private Text tValue ;
+			private Text tValue;
+
 			@Override
 			protected Control createDialogArea( Composite parent ) {
 				Composite area = (Composite) super.createDialogArea( parent );

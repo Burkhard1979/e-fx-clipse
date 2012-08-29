@@ -12,4 +12,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: jfx/lib/jfxrt.jar,
  .
-Import-Package: javafx.scene
+Import-Package: javafx.scene;version="2.2.0"
+
