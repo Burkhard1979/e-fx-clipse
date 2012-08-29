@@ -11,7 +11,7 @@
             default="true"
             extensions="fxbean"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
-            name="FXBean Editor">
+            name="%editor.name">
         </editor>
     </extension>
     <extension
@@ -52,21 +52,21 @@
         <page
             class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
-            name="FXBean">
+            name="%page.name">
             <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
         </page>
         <page
             category="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
             class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean.coloring"
-            name="Syntax Coloring">
+            name="%page.name.0">
             <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
         </page>
         <page
             category="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
             class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean.templates"
-            name="Templates">
+            name="%page.name.1">
             <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
         </page>
     </extension>
@@ -75,7 +75,7 @@
         <page
             class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
-            name="FXBean">
+            name="%page.name.2">
             <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
@@ -87,14 +87,14 @@
         point="org.eclipse.ui.keywords">
         <keyword
             id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"
-            label="FXBean"/>
+            label="%keyword.label"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
-            description="Trigger expensive validation"
+            description="%command.description"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean.validate"
-            name="Validate">
+            name="%command.name">
       </command>
     </extension>
     <extension point="org.eclipse.ui.menus">
@@ -103,7 +103,7 @@
              <command
                  commandId="at.bestsolution.efxclipse.tooling.efxbean.FXBean.validate"
                  style="push"
-                 tooltip="Trigger expensive validation">
+                 tooltip="%command.tooltip">
             <visibleWhen checkEnabled="false">
                 <reference
                     definitionId="at.bestsolution.efxclipse.tooling.efxbean.FXBean.Editor.opened">
@@ -154,21 +154,21 @@
     <!-- marker definitions for at.bestsolution.efxclipse.tooling.efxbean.FXBean -->
     <extension
             id="fxbean.check.fast"
-            name="FXBean Problem"
+            name="%extension.name"
             point="org.eclipse.core.resources.markers">
         <super type="org.eclipse.xtext.ui.check.fast"/>
         <persistent value="true"/>
     </extension>
     <extension
             id="fxbean.check.normal"
-            name="FXBean Problem"
+            name="%extension.name.0"
             point="org.eclipse.core.resources.markers">
         <super type="org.eclipse.xtext.ui.check.normal"/>
         <persistent value="true"/>
     </extension>
     <extension
             id="fxbean.check.expensive"
-            name="FXBean Problem"
+            name="%extension.name.1"
             point="org.eclipse.core.resources.markers">
         <super type="org.eclipse.xtext.ui.check.expensive"/>
         <persistent value="true"/>
@@ -186,7 +186,7 @@
             category="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
             class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean.compiler.preferencePage"
-            name="Compiler">
+            name="%page.name.3">
             <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
         </page>
     </extension>
@@ -196,7 +196,7 @@
             category="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
             class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
             id="at.bestsolution.efxclipse.tooling.efxbean.FXBean.compiler.propertyPage"
-            name="Compiler">
+            name="%page.name.4">
             <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
@@ -221,9 +221,9 @@
 	<extension
 		point="org.eclipse.ui.commands">
 		<command
-			description="Open the quick outline."
+			description="%command.description.0"
 			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
-			name="Quick Outline">
+			name="%command.name.0">
 		</command>
 	</extension>
 	<extension point="org.eclipse.ui.menus">
@@ -231,7 +231,7 @@
 			locationURI="popup:#TextEditorContext?after=group.open">
 			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
 				style="push"
-				tooltip="Open Quick Outline">
+				tooltip="%command.tooltip.0">
 				<visibleWhen checkEnabled="false">
 					<reference definitionId="at.bestsolution.efxclipse.tooling.efxbean.FXBean.Editor.opened"/>
 				</visibleWhen>
@@ -296,7 +296,7 @@
 	        category="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
 	        class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
 	        id="at.bestsolution.efxclipse.tooling.efxbean.FXBean.refactoring"
-	        name="Refactoring">
+	        name="%page.name.5">
 	        <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
 	    </page>
 	</extension>
@@ -310,7 +310,7 @@
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="at.bestsolution.efxclipse.tooling.efxbean.FXBean.compare.contentMergeViewers"
             class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="fxbean" label="FXBean Compare">
+            extensions="fxbean" label="%viewer.label">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">

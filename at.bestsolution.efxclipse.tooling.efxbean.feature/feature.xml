@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="at.bestsolution.efxclipse.tooling.feature"
-      label="e(fx)clipse - Composite - FX Tooling"
+      id="at.bestsolution.efxclipse.tooling.efxbean.feature"
+      label="e(fx)clipse - Single - EFX Bean Editor"
       version="0.1.0.qualifier"
-      provider-name="BestSolution.at"
-      plugin="at.bestsolution.efxclipse.tooling.ui">
+      provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
-      e(fx)clipse is an open tooling and runtime platform built on
-top of software provided from Eclipse.org
+      This feature provides a specialized JavaFX.Bean-Editor which removes the typing overhead when creating model with JavaFX-Properties
    </description>
 
    <copyright url="http://www.bestsolution.at">
-      Copyright (c) 2011-2012 BestSolution.at and others.
+      Copyright (c) 2012 BestSolution.at and others.
 All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License v1.0
+are made available under the terms of the Eclipse Public License
+v1.0
 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </copyright>
@@ -109,48 +108,15 @@ Everyone is permitted to copy and distribute copies of this Agreement, but in or
 This Agreement is governed by the laws of the State of New York and the intellectual property laws of the United States of America. No party to this Agreement will bring a legal action under this Agreement more than one year after the cause of action arose. Each party waives its rights to a jury trial in any resulting litigation.
    </license>
 
-   <includes
-         id="at.bestsolution.efxclipse.tooling.css.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="at.bestsolution.efxclipse.tooling.fxgraph.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="at.bestsolution.efxclipse.tooling.fxml.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="at.bestsolution.efxclipse.tooling.jdt.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="at.bestsolution.efxclipse.tooling.pde.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="at.bestsolution.efxclipse.tooling.convert.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="at.bestsolution.efxclipse.tooling.efxbean.feature"
-         version="0.0.0"/>
-
-   <requires>
-      <import feature="org.eclipse.xtext.sdk" version="2.3.0" match="greaterOrEqual"/>
-      <import feature="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.0.14" match="greaterOrEqual"/>
-   </requires>
-
    <plugin
-         id="at.bestsolution.efxclipse.tooling.ui"
+         id="at.bestsolution.efxclipse.tooling.efxbean"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="at.bestsolution.efxclipse.tooling.ui.preview"
+         id="at.bestsolution.efxclipse.tooling.efxbean.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
