@@ -35,6 +35,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.common;bundle-version="2.7.0",
  org.eclipse.emf.ecore;bundle-version="2.7.0",
  org.eclipse.emf.databinding;bundle-version="1.2.0",
+ org.eclipse.emf.databinding.edit;bundle-version="1.2.0",
  org.eclipse.emf.edit;bundle-version="2.7.2",
  org.eclipse.emf.edit.ui;bundle-version="2.7.0"
 Bundle-ActivationPolicy: lazy
