@@ -1,0 +1,49 @@
+grammar at.bestsolution.efxclipse.tooling.efxbean.FXBean with org.eclipse.xtext.xbase.Xbase
+
+generate fXBean "http://www.bestsolution.at/efxclipse/tooling/efxbean/FXBean"
+
+FXBeanUnit:
+	package=PackageDeclaration
+	imports+=Import*
+	bean=Bean
+;
+
+PackageDeclaration:
+	'package' name=QualifiedName
+;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+
+Bean:
+	reflective?='reflective'? 'bean' name=ValidID ('extends' superType=JvmParameterizedTypeReference)? '{'
+		(properties+=BeanPropertyDecl | attributes+=BeanAttributeDecl)*
+	'}'
+;
+
+BeanPropertyDecl:
+	readonly?='readonly'? lazy?='lazy'? reference?='reference'? 'property' type=TypeDef name=ID';'
+;
+
+BeanAttributeDecl:
+	readonly?='readonly'? lazy?='lazy'? reference?='reference'? 'attribute' type=TypeDef name=ID';'
+;
+
+TypeDef:
+	ValueListTypeDef | 	MapTypeDef	
+;
+
+ValueListTypeDef:
+	singleType=JvmTypeReference multi=Multiplicity?
+;
+
+MapTypeDef:
+	('<' keyType=JvmTypeReference ',' valueType=JvmTypeReference '>')
+;
+
+Multiplicity:
+	'[' (totalUnbound='*' | (lowerBound=INT '..' (upperBound=INT | noUpperBound?='*'))) ']'
+;
+
+QualifiedNameWithWildCard :
+	QualifiedName  ('.' '*')?;
