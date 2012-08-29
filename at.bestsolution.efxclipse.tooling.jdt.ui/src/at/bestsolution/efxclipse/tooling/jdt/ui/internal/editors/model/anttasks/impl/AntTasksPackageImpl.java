@@ -1,16 +1,16 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksFactory;
@@ -18,8 +18,17 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
+
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
+
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -136,15 +145,6 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAntTask_CssToBin() {
-		return (EAttribute)antTaskEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getAntTask_Deploy() {
 		return (EReference)antTaskEClass.getEStructuralFeatures().get(0);
 	}
@@ -183,6 +183,15 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 	 */
 	public EReference getAntTask_ManifestEntries() {
 		return (EReference)antTaskEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAntTask_CssToBin() {
+		return (EAttribute)antTaskEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -562,12 +571,12 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(antTaskEClass, AntTask.class, "AntTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAntTask_Deploy(), this.getDeploy(), null, "deploy", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAntTask_Jar(), this.getJar(), null, "jar", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAntTask_Signjar(), this.getSignJar(), null, "signjar", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAntTask_Deploy(), this.getDeploy(), null, "deploy", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAntTask_Jar(), this.getJar(), null, "jar", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAntTask_Signjar(), this.getSignJar(), null, "signjar", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAntTask_BuildDirectory(), ecorePackage.getEString(), "buildDirectory", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAntTask_ManifestEntries(), theParametersPackage.getParam(), null, "manifestEntries", null, 0, -1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAntTask_CssToBin(), ecorePackage.getEBoolean(), "cssToBin", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAntTask_ManifestEntries(), theParametersPackage.getParam(), null, "manifestEntries", null, 0, -1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAntTask_CssToBin(), ecorePackage.getEBoolean(), "cssToBin", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(deployEClass, Deploy.class, "Deploy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDeploy_Embedjnlp(), ecorePackage.getEBoolean(), "embedjnlp", "false", 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

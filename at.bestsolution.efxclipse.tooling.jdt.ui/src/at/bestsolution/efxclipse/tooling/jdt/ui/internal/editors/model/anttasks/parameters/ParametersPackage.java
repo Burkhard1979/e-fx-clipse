@@ -1,8 +1,14 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters;
 
@@ -631,7 +637,7 @@ public interface ParametersPackage extends EPackage {
 	int CALLBACK__REFID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Callbacks</b></em>' reference list.
+	 * The feature id for the '<em><b>Callbacks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1394,10 +1400,10 @@ public interface ParametersPackage extends EPackage {
 	EAttribute getCallback_Refid();
 
 	/**
-	 * Returns the meta object for the reference list '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback#getCallbacks <em>Callbacks</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback#getCallbacks <em>Callbacks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Callbacks</em>'.
+	 * @return the meta object for the containment reference list '<em>Callbacks</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback#getCallbacks()
 	 * @see #getCallback()
 	 * @generated
@@ -2051,7 +2057,7 @@ public interface ParametersPackage extends EPackage {
 		EAttribute CALLBACK__REFID = eINSTANCE.getCallback_Refid();
 
 		/**
-		 * The meta object literal for the '<em><b>Callbacks</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Callbacks</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -1,22 +1,35 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl;
+
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +67,7 @@ public class CallbackImpl extends EObjectImpl implements Callback {
 	protected String refid = REFID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCallbacks() <em>Callbacks</em>}' reference list.
+	 * The cached value of the '{@link #getCallbacks() <em>Callbacks</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCallbacks()
@@ -110,9 +123,23 @@ public class CallbackImpl extends EObjectImpl implements Callback {
 	 */
 	public EList<Callback> getCallbacks() {
 		if (callbacks == null) {
-			callbacks = new EObjectResolvingEList<Callback>(Callback.class, this, ParametersPackage.CALLBACK__CALLBACKS);
+			callbacks = new EObjectContainmentEList<Callback>(Callback.class, this, ParametersPackage.CALLBACK__CALLBACKS);
 		}
 		return callbacks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ParametersPackage.CALLBACK__CALLBACKS:
+				return ((InternalEList<?>)getCallbacks()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

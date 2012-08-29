@@ -1,27 +1,40 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
+
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +56,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
  */
 public class AntTaskImpl extends EObjectImpl implements AntTask {
 	/**
-	 * The cached value of the '{@link #getDeploy() <em>Deploy</em>}' reference.
+	 * The cached value of the '{@link #getDeploy() <em>Deploy</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDeploy()
@@ -53,7 +66,7 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	protected Deploy deploy;
 
 	/**
-	 * The cached value of the '{@link #getJar() <em>Jar</em>}' reference.
+	 * The cached value of the '{@link #getJar() <em>Jar</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getJar()
@@ -63,7 +76,7 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	protected Jar jar;
 
 	/**
-	 * The cached value of the '{@link #getSignjar() <em>Signjar</em>}' reference.
+	 * The cached value of the '{@link #getSignjar() <em>Signjar</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSignjar()
@@ -93,7 +106,7 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	protected String buildDirectory = BUILD_DIRECTORY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getManifestEntries() <em>Manifest Entries</em>}' reference list.
+	 * The cached value of the '{@link #getManifestEntries() <em>Manifest Entries</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getManifestEntries()
@@ -147,14 +160,6 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @generated
 	 */
 	public Deploy getDeploy() {
-		if (deploy != null && deploy.eIsProxy()) {
-			InternalEObject oldDeploy = (InternalEObject)deploy;
-			deploy = (Deploy)eResolveProxy(oldDeploy);
-			if (deploy != oldDeploy) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AntTasksPackage.ANT_TASK__DEPLOY, oldDeploy, deploy));
-			}
-		}
 		return deploy;
 	}
 
@@ -163,8 +168,14 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deploy basicGetDeploy() {
-		return deploy;
+	public NotificationChain basicSetDeploy(Deploy newDeploy, NotificationChain msgs) {
+		Deploy oldDeploy = deploy;
+		deploy = newDeploy;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__DEPLOY, oldDeploy, newDeploy);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -173,10 +184,17 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @generated
 	 */
 	public void setDeploy(Deploy newDeploy) {
-		Deploy oldDeploy = deploy;
-		deploy = newDeploy;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__DEPLOY, oldDeploy, deploy));
+		if (newDeploy != deploy) {
+			NotificationChain msgs = null;
+			if (deploy != null)
+				msgs = ((InternalEObject)deploy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.ANT_TASK__DEPLOY, null, msgs);
+			if (newDeploy != null)
+				msgs = ((InternalEObject)newDeploy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.ANT_TASK__DEPLOY, null, msgs);
+			msgs = basicSetDeploy(newDeploy, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__DEPLOY, newDeploy, newDeploy));
 	}
 
 	/**
@@ -185,14 +203,6 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @generated
 	 */
 	public Jar getJar() {
-		if (jar != null && jar.eIsProxy()) {
-			InternalEObject oldJar = (InternalEObject)jar;
-			jar = (Jar)eResolveProxy(oldJar);
-			if (jar != oldJar) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AntTasksPackage.ANT_TASK__JAR, oldJar, jar));
-			}
-		}
 		return jar;
 	}
 
@@ -201,8 +211,14 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Jar basicGetJar() {
-		return jar;
+	public NotificationChain basicSetJar(Jar newJar, NotificationChain msgs) {
+		Jar oldJar = jar;
+		jar = newJar;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__JAR, oldJar, newJar);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -211,10 +227,17 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @generated
 	 */
 	public void setJar(Jar newJar) {
-		Jar oldJar = jar;
-		jar = newJar;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__JAR, oldJar, jar));
+		if (newJar != jar) {
+			NotificationChain msgs = null;
+			if (jar != null)
+				msgs = ((InternalEObject)jar).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.ANT_TASK__JAR, null, msgs);
+			if (newJar != null)
+				msgs = ((InternalEObject)newJar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.ANT_TASK__JAR, null, msgs);
+			msgs = basicSetJar(newJar, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__JAR, newJar, newJar));
 	}
 
 	/**
@@ -223,14 +246,6 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @generated
 	 */
 	public SignJar getSignjar() {
-		if (signjar != null && signjar.eIsProxy()) {
-			InternalEObject oldSignjar = (InternalEObject)signjar;
-			signjar = (SignJar)eResolveProxy(oldSignjar);
-			if (signjar != oldSignjar) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AntTasksPackage.ANT_TASK__SIGNJAR, oldSignjar, signjar));
-			}
-		}
 		return signjar;
 	}
 
@@ -239,8 +254,14 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SignJar basicGetSignjar() {
-		return signjar;
+	public NotificationChain basicSetSignjar(SignJar newSignjar, NotificationChain msgs) {
+		SignJar oldSignjar = signjar;
+		signjar = newSignjar;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__SIGNJAR, oldSignjar, newSignjar);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -249,10 +270,17 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @generated
 	 */
 	public void setSignjar(SignJar newSignjar) {
-		SignJar oldSignjar = signjar;
-		signjar = newSignjar;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__SIGNJAR, oldSignjar, signjar));
+		if (newSignjar != signjar) {
+			NotificationChain msgs = null;
+			if (signjar != null)
+				msgs = ((InternalEObject)signjar).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.ANT_TASK__SIGNJAR, null, msgs);
+			if (newSignjar != null)
+				msgs = ((InternalEObject)newSignjar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AntTasksPackage.ANT_TASK__SIGNJAR, null, msgs);
+			msgs = basicSetSignjar(newSignjar, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.ANT_TASK__SIGNJAR, newSignjar, newSignjar));
 	}
 
 	/**
@@ -283,7 +311,7 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 */
 	public EList<Param> getManifestEntries() {
 		if (manifestEntries == null) {
-			manifestEntries = new EObjectResolvingEList<Param>(Param.class, this, AntTasksPackage.ANT_TASK__MANIFEST_ENTRIES);
+			manifestEntries = new EObjectContainmentEList<Param>(Param.class, this, AntTasksPackage.ANT_TASK__MANIFEST_ENTRIES);
 		}
 		return manifestEntries;
 	}
@@ -315,17 +343,34 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AntTasksPackage.ANT_TASK__DEPLOY:
+				return basicSetDeploy(null, msgs);
+			case AntTasksPackage.ANT_TASK__JAR:
+				return basicSetJar(null, msgs);
+			case AntTasksPackage.ANT_TASK__SIGNJAR:
+				return basicSetSignjar(null, msgs);
+			case AntTasksPackage.ANT_TASK__MANIFEST_ENTRIES:
+				return ((InternalEList<?>)getManifestEntries()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AntTasksPackage.ANT_TASK__DEPLOY:
-				if (resolve) return getDeploy();
-				return basicGetDeploy();
+				return getDeploy();
 			case AntTasksPackage.ANT_TASK__JAR:
-				if (resolve) return getJar();
-				return basicGetJar();
+				return getJar();
 			case AntTasksPackage.ANT_TASK__SIGNJAR:
-				if (resolve) return getSignjar();
-				return basicGetSignjar();
+				return getSignjar();
 			case AntTasksPackage.ANT_TASK__BUILD_DIRECTORY:
 				return getBuildDirectory();
 			case AntTasksPackage.ANT_TASK__MANIFEST_ENTRIES:

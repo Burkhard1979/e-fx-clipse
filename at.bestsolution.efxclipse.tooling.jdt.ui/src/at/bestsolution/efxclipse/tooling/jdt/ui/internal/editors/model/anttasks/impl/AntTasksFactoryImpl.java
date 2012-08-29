@@ -1,24 +1,26 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksFactory;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->

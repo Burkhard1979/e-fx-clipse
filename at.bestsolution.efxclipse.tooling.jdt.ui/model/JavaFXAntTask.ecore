@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="anttasks"
-    nsURI="http://at.bestsolution.efxclipse.tooling.jdt/1.0" nsPrefix="anttasks">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="anttasks" nsURI="http://at.bestsolution.efxclipse.tooling.jdt/1.0"
+    nsPrefix="anttasks">
   <eClassifiers xsi:type="ecore:EClass" name="AntTask">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="deploy" eType="#//Deploy"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jar" eType="#//Jar"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="signjar" eType="#//SignJar"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploy" eType="#//Deploy"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jar" eType="#//Jar" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signjar" eType="#//SignJar"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="manifestEntries" upperBound="-1"
-        eType="#//parameters/Param"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cssToBin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        eType="#//parameters/Param" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cssToBin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deploy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="embedjnlp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -144,7 +146,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Callback">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="refid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="callbacks" upperBound="-1"
-          eType="#//parameters/Callback"/>
+          eType="#//parameters/Callback" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Info">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

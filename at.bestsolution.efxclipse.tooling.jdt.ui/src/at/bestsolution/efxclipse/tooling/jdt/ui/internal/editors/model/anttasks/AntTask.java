@@ -1,15 +1,22 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,78 +41,78 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
  */
 public interface AntTask extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Deploy</b></em>' reference.
+	 * Returns the value of the '<em><b>Deploy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Deploy</em>' reference isn't clear,
+	 * If the meaning of the '<em>Deploy</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deploy</em>' reference.
+	 * @return the value of the '<em>Deploy</em>' containment reference.
 	 * @see #setDeploy(Deploy)
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getAntTask_Deploy()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Deploy getDeploy();
 
 	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getDeploy <em>Deploy</em>}' reference.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getDeploy <em>Deploy</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Deploy</em>' reference.
+	 * @param value the new value of the '<em>Deploy</em>' containment reference.
 	 * @see #getDeploy()
 	 * @generated
 	 */
 	void setDeploy(Deploy value);
 
 	/**
-	 * Returns the value of the '<em><b>Jar</b></em>' reference.
+	 * Returns the value of the '<em><b>Jar</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Jar</em>' reference isn't clear,
+	 * If the meaning of the '<em>Jar</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Jar</em>' reference.
+	 * @return the value of the '<em>Jar</em>' containment reference.
 	 * @see #setJar(Jar)
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getAntTask_Jar()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Jar getJar();
 
 	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getJar <em>Jar</em>}' reference.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getJar <em>Jar</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Jar</em>' reference.
+	 * @param value the new value of the '<em>Jar</em>' containment reference.
 	 * @see #getJar()
 	 * @generated
 	 */
 	void setJar(Jar value);
 
 	/**
-	 * Returns the value of the '<em><b>Signjar</b></em>' reference.
+	 * Returns the value of the '<em><b>Signjar</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Signjar</em>' reference isn't clear,
+	 * If the meaning of the '<em>Signjar</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Signjar</em>' reference.
+	 * @return the value of the '<em>Signjar</em>' containment reference.
 	 * @see #setSignjar(SignJar)
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getAntTask_Signjar()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	SignJar getSignjar();
 
 	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getSignjar <em>Signjar</em>}' reference.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getSignjar <em>Signjar</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Signjar</em>' reference.
+	 * @param value the new value of the '<em>Signjar</em>' containment reference.
 	 * @see #getSignjar()
 	 * @generated
 	 */
@@ -138,17 +145,17 @@ public interface AntTask extends EObject {
 	void setBuildDirectory(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Manifest Entries</b></em>' reference list.
+	 * Returns the value of the '<em><b>Manifest Entries</b></em>' containment reference list.
 	 * The list contents are of type {@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Manifest Entries</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Manifest Entries</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Manifest Entries</em>' reference list.
+	 * @return the value of the '<em>Manifest Entries</em>' containment reference list.
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getAntTask_ManifestEntries()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Param> getManifestEntries();
@@ -164,7 +171,7 @@ public interface AntTask extends EObject {
 	 * @return the value of the '<em>Css To Bin</em>' attribute.
 	 * @see #setCssToBin(boolean)
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getAntTask_CssToBin()
-	 * @model
+	 * @model derived="true"
 	 * @generated
 	 */
 	boolean isCssToBin();

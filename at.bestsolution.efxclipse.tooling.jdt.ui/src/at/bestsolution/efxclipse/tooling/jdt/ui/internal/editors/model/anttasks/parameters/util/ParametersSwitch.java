@@ -1,32 +1,23 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.util;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.*;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Application;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Argument;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSet;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.HtmlParam;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Info;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.JVmArg;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Permissions;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Platform;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Preferences;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Property;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Template;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->

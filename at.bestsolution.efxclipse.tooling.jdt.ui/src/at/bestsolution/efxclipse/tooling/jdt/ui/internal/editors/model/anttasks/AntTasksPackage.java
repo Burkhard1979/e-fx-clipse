@@ -1,8 +1,14 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
+ * ******************************************************************************
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks;
 
@@ -70,7 +76,7 @@ public interface AntTasksPackage extends EPackage {
 	int ANT_TASK = 0;
 
 	/**
-	 * The feature id for the '<em><b>Deploy</b></em>' reference.
+	 * The feature id for the '<em><b>Deploy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -79,7 +85,7 @@ public interface AntTasksPackage extends EPackage {
 	int ANT_TASK__DEPLOY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Jar</b></em>' reference.
+	 * The feature id for the '<em><b>Jar</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -88,7 +94,7 @@ public interface AntTasksPackage extends EPackage {
 	int ANT_TASK__JAR = 1;
 
 	/**
-	 * The feature id for the '<em><b>Signjar</b></em>' reference.
+	 * The feature id for the '<em><b>Signjar</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -106,7 +112,7 @@ public interface AntTasksPackage extends EPackage {
 	int ANT_TASK__BUILD_DIRECTORY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Manifest Entries</b></em>' reference list.
+	 * The feature id for the '<em><b>Manifest Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -444,21 +450,10 @@ public interface AntTasksPackage extends EPackage {
 	EClass getAntTask();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin <em>Css To Bin</em>}'.
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getDeploy <em>Deploy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Css To Bin</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin()
-	 * @see #getAntTask()
-	 * @generated
-	 */
-	EAttribute getAntTask_CssToBin();
-
-	/**
-	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getDeploy <em>Deploy</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Deploy</em>'.
+	 * @return the meta object for the containment reference '<em>Deploy</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getDeploy()
 	 * @see #getAntTask()
 	 * @generated
@@ -466,10 +461,10 @@ public interface AntTasksPackage extends EPackage {
 	EReference getAntTask_Deploy();
 
 	/**
-	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getJar <em>Jar</em>}'.
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getJar <em>Jar</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Jar</em>'.
+	 * @return the meta object for the containment reference '<em>Jar</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getJar()
 	 * @see #getAntTask()
 	 * @generated
@@ -477,10 +472,10 @@ public interface AntTasksPackage extends EPackage {
 	EReference getAntTask_Jar();
 
 	/**
-	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getSignjar <em>Signjar</em>}'.
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getSignjar <em>Signjar</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Signjar</em>'.
+	 * @return the meta object for the containment reference '<em>Signjar</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getSignjar()
 	 * @see #getAntTask()
 	 * @generated
@@ -499,15 +494,26 @@ public interface AntTasksPackage extends EPackage {
 	EAttribute getAntTask_BuildDirectory();
 
 	/**
-	 * Returns the meta object for the reference list '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getManifestEntries <em>Manifest Entries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getManifestEntries <em>Manifest Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Manifest Entries</em>'.
+	 * @return the meta object for the containment reference list '<em>Manifest Entries</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getManifestEntries()
 	 * @see #getAntTask()
 	 * @generated
 	 */
 	EReference getAntTask_ManifestEntries();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin <em>Css To Bin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Css To Bin</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#isCssToBin()
+	 * @see #getAntTask()
+	 * @generated
+	 */
+	EAttribute getAntTask_CssToBin();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy <em>Deploy</em>}'.
@@ -869,15 +875,7 @@ public interface AntTasksPackage extends EPackage {
 		EClass ANT_TASK = eINSTANCE.getAntTask();
 
 		/**
-		 * The meta object literal for the '<em><b>Css To Bin</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANT_TASK__CSS_TO_BIN = eINSTANCE.getAntTask_CssToBin();
-
-		/**
-		 * The meta object literal for the '<em><b>Deploy</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Deploy</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -885,7 +883,7 @@ public interface AntTasksPackage extends EPackage {
 		EReference ANT_TASK__DEPLOY = eINSTANCE.getAntTask_Deploy();
 
 		/**
-		 * The meta object literal for the '<em><b>Jar</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Jar</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -893,7 +891,7 @@ public interface AntTasksPackage extends EPackage {
 		EReference ANT_TASK__JAR = eINSTANCE.getAntTask_Jar();
 
 		/**
-		 * The meta object literal for the '<em><b>Signjar</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Signjar</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -909,12 +907,20 @@ public interface AntTasksPackage extends EPackage {
 		EAttribute ANT_TASK__BUILD_DIRECTORY = eINSTANCE.getAntTask_BuildDirectory();
 
 		/**
-		 * The meta object literal for the '<em><b>Manifest Entries</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Manifest Entries</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ANT_TASK__MANIFEST_ENTRIES = eINSTANCE.getAntTask_ManifestEntries();
+
+		/**
+		 * The meta object literal for the '<em><b>Css To Bin</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANT_TASK__CSS_TO_BIN = eINSTANCE.getAntTask_CssToBin();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl <em>Deploy</em>}' class.
