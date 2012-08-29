@@ -14,7 +14,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.xbase.compiler.ImportManager
 
-class FXBeanGenerator implements IGenerator {
+class FXBeanGenerator implements IGenerator { 
 	var ImportManager manager;
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val FXBeanUnit u = resource.contents.get(0) as FXBeanUnit;

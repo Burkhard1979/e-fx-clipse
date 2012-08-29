@@ -14,7 +14,7 @@ import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
-
+ 
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
