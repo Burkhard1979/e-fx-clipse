@@ -10,9 +10,13 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.model;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EFXBeanClass<O> {
-	public List<EFXFeature<O, ?>> features = new ArrayList<EFXFeature<O,?>>();
+	public List<? extends EFXFeature<O, ?>> features;
+	
+	public EFXBeanClass(List<? extends EFXFeature<O, ?>> features) {
+		this.features = Collections.unmodifiableList(features);
+	}
 }

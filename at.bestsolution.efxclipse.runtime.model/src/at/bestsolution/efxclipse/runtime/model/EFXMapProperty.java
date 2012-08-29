@@ -14,8 +14,8 @@ public class EFXMapProperty<O,T,K,V> extends EFXProperty<O, T> {
 	public final Class<K> keyType;
 	public final Class<V> valueType;
 	
-	public EFXMapProperty(String name, Class<T> type, Class<K> keyType, Class<V> valueType, boolean readonly, boolean lazy) {
-		super(name, type, readonly, lazy);
+	public EFXMapProperty(String name, Class<?> type, Class<K> keyType, Class<V> valueType, boolean readonly, boolean lazy) {
+		super(name, (Class<T>) type, readonly, lazy);
 		this.keyType = keyType;
 		this.valueType = valueType;
 	}

@@ -13,8 +13,8 @@ package at.bestsolution.efxclipse.runtime.model;
 public class EFXListProperty<O,T,E> extends EFXProperty<O, T> {
 	public final Class<E> elementType;
 	
-	public EFXListProperty(String name, Class<T> type, Class<E> elementType, boolean readonly, boolean lazy) {
-		super(name, type, readonly, lazy);
+	public EFXListProperty(String name, Class<?> type, Class<E> elementType, boolean readonly, boolean lazy) {
+		super(name, (Class<T>) type, readonly, lazy);
 		this.elementType = elementType;
 	}
 
