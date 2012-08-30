@@ -8,16 +8,13 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.tooling.model;
+package at.bestsolution.efxclipse.tooling.fxml.editors;
 
-import java.util.Map;
+import org.eclipse.wst.validation.internal.core.Message;
 
-import org.eclipse.jdt.core.IType;
-
-public interface IFXCtrlClass {
-	public IType getType();
-	public String getSimpleName();
-	public String getFQN();
-	public Map<String,IFXCtrlEventMethod> getAllEventMethods();
-	public Map<String,IFXCtrlField> getAllFields();
+@SuppressWarnings("restriction")
+public class FXMLValidationMessage extends Message {
+	public FXMLValidationMessage(int severity, String messageKey, String... aParams) {
+		super("at.bestsolution.efxclipse.tooling.fxml.editors.messages", severity, messageKey, aParams);
+	}
 }

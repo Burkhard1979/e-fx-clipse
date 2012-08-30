@@ -850,10 +850,8 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 		Document d = contentAssistRequest.getNode().getOwnerDocument();
 		Element e = d.getDocumentElement();
 		Attr a = e.getAttributeNodeNS("http://javafx.com/fxml", "controller");
-		System.err.println(a);
 		if (a != null) {
 			IType t = Util.findType(a.getValue(), d);
-			System.err.println(t);
 			if (t != null) {
 				IFXCtrlClass ctrlClass = FXPlugin.getClassmodel().findCtrlClass(t.getJavaProject(), t);
 				if (ctrlClass != null) {
