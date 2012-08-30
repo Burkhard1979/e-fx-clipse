@@ -176,8 +176,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				if (parent.getParentNode() != null) {
 					Node n = null;
 					
-					System.err.println(parent.getParentNode().getNodeName());
-					
 					if (Character.isUpperCase(parent.getParentNode().getNodeName().charAt(0)) || "fx:root".equals(parent.getParentNode().getNodeName())) {
 						n = parent.getParentNode();
 					} else if (parent.getParentNode().getParentNode() != null) {
@@ -185,8 +183,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							n = parent.getParentNode().getParentNode();
 						}
 					}
-					
-					System.err.println(n);
 					
 					if (n != null) {
 						IType containerType;
