@@ -86,8 +86,10 @@ public class FXCollectionProperty extends FXProperty implements IFXCollectionPro
 				} else if( genericType.contains("super") ) {
 					eType = genericType.substring(genericType.indexOf("super")+"super".length(), genericType.indexOf('>'));
 				} else {
-					eType = genericType.substring(genericType.indexOf('<')+1, genericType.indexOf('>'));	
+					eType = genericType.substring(genericType.indexOf('<')+1, genericType.lastIndexOf('>'));
+					eType = Signature.getTypeErasure(eType);
 				}
+				
 				
 				eType = eType.trim();
 				
