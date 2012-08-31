@@ -1,0 +1,174 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.trimmedwindow
+
+import javafx.scene.layout.GridPane
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
+import javafx.scene.layout.HBox
+import javafx.scene.control.Button
+import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane
+import at.bestsolution.efxclipse.runtime.panels.GridData
+import javafx.scene.control.CheckBox
+import javafx.scene.control.ComboBox
+import java.lang.Integer
+import javafx.scene.control.ListView
+import javafx.scene.layout.AnchorPane
+import javafx.scene.control.TableView
+
+component DefaultTab {
+	GridPane {
+		Label {
+			text : "Id",
+			static columnIndex : 0,
+			static rowIndex : 0
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 0,
+			static columnSpan : 2,
+			static hgrow : "ALWAYS"
+		},
+		Label {
+			text : "Bounds(x,y,w,h)",
+			static columnIndex : 0,
+			static rowIndex : 1
+		},
+		HBox {
+			prefWidth : 0,
+			TextField {
+				static hgrow : "ALWAYS"
+			},
+			TextField {
+				static hgrow : "ALWAYS"
+			},
+			TextField {
+				static hgrow : "ALWAYS"
+			},
+			TextField {
+				static hgrow : "ALWAYS"
+			},
+			static columnIndex : 1,
+			static rowIndex : 1,
+			static columnSpan : 2,
+			static hgrow : "ALWAYS"
+		},
+		Label {
+			text : "Label",
+			static columnIndex : 0,
+			static rowIndex : 2
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 2,
+			static columnSpan : 2,
+			static hgrow : "ALWAYS"
+		},
+		Label {
+			text : "Tooltip",
+			static columnIndex : 0,
+			static rowIndex : 3
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 3,
+			static columnSpan : 2,
+			static hgrow : "ALWAYS"
+		},
+		Label {
+			text : "Icon URI",
+			static columnIndex : 0,
+			static rowIndex : 4
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 4,
+			static hgrow : "ALWAYS"
+		},
+		Button {
+			static columnIndex : 2,
+			static rowIndex : 4
+		},
+		CheckBox {
+			text : "Main Menu",
+			static columnIndex : 1,
+			static rowIndex : 5
+		},
+		CheckBox {
+			text : "To be rendered",
+			static columnIndex : 1,
+			static rowIndex : 6
+		},
+		CheckBox {
+			text : "Visible",
+			static columnIndex : 1,
+			static rowIndex : 7
+		},
+		Label {
+			text : "Selected Element",
+			static columnIndex : 0,
+			static rowIndex : 8
+		},
+		ComboBox {
+			maxWidth : const Integer#MAX_VALUE,
+			static hgrow : "ALWAYS",
+			static columnSpan : 2,
+			static columnIndex : 1,
+			static rowIndex : 8
+		},
+		Label {
+			text : "Binding Context",
+			static columnIndex : 0,
+			static rowIndex : 9,
+			static valignment : "TOP"
+		},
+		ListView {
+			static columnIndex : 1,
+			static rowIndex : 9
+		},
+		AnchorPane {
+			GridLayoutPane {
+				Button {
+					text : "Up",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				Button {
+					text : "Down",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				Button {
+					text : "Add...",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				Button {
+					text : "Remove...",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				static bottomAnchor : 1.0	
+			},
+			static columnIndex : 2,
+			static rowIndex : 9
+		},
+		Label {
+			text : "Context Properties",
+			static columnIndex : 0,
+			static rowIndex : 10,
+			static valignment : "TOP"
+		},
+		TableView {
+			
+			static columnIndex : 1,
+			static rowIndex : 10
+		}
+	}
+}
