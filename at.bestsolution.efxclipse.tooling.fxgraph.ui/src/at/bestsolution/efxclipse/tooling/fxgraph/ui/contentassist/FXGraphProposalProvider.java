@@ -311,7 +311,8 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 			s.append(" - " + prop.getFXClass().getSimpleName(), StyledString.QUALIFIER_STYLER);
 			p = createCompletionProposal(prop.getName() + " : ", s, IconKeys.getIcon(IconKeys.LIST_KEY), getPropertiesProposalsProposals(), context.getPrefix(), context);
 		} else {
-			StyledString s = new StyledString(prop.getName() + " : [" + prop.getElementType().getElementName() + "]");
+//			System.err.println("EXec: " + prop.getName() + " => " + prop.getElementType());
+			StyledString s = new StyledString(prop.getName() + " : [" + (prop.getElementType() != null ? prop.getElementType().getElementName() : "?") + "]");
 			s.append(" - " + prop.getFXClass().getSimpleName(), StyledString.QUALIFIER_STYLER);
 			p = createCompletionProposal(prop.getName() + " : []", s, IconKeys.getIcon(IconKeys.LIST_KEY), getPropertiesProposalsProposals(), context.getPrefix(), context);
 		}
