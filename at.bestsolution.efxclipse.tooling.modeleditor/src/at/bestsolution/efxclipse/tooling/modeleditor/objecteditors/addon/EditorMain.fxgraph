@@ -1,0 +1,29 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.addon
+
+import javafx.scene.layout.HBox
+import javafx.scene.layout.VBox
+import javafx.scene.control.Label
+import javafx.scene.control.TabPane
+import javafx.scene.control.Tab
+
+import at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.addon.DefaultTab
+import at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.addon.SupplementaryTab
+
+component EditorMain {
+	VBox {
+		Label {
+			text : "Addon"
+		},
+		TabPane {
+			side : "BOTTOM",
+			Tab {
+				text : "Default",
+				content : include DefaultTab
+			},
+			Tab {
+				text : "Supplementary",
+				content : include SupplementaryTab
+			}
+		}
+	}
+}

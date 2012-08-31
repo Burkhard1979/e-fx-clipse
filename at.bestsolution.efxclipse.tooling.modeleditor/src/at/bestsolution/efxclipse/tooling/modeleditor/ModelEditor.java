@@ -11,8 +11,6 @@
 package at.bestsolution.efxclipse.tooling.modeleditor;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +36,9 @@ import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.commands.impl.CommandsPackageImpl;
 import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
+import org.eclipse.e4.ui.model.application.ui.advanced.impl.AdvancedPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
@@ -220,11 +221,20 @@ public class ModelEditor {
 					l.add(new VirtualEntry("TrimBars", (MApplicationElement) parent,BasicPackageImpl.Literals.TRIMMED_WINDOW__TRIM_BARS));
 				}
 				return l;
+			} else if( parent instanceof MPerspective ) {
+				WritableList l = new WritableList();
+				l.add(new VirtualEntry("Windows", (MApplicationElement) parent, AdvancedPackageImpl.Literals.PERSPECTIVE__WINDOWS));
+				l.add(new VirtualEntry("Controls", (MApplicationElement) parent, UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN));
+				return l;
 			} else if( parent instanceof MPartSashContainer ) {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
 			} else if( parent instanceof MTrimBar ) {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
 			} else if( parent instanceof MToolBar ) {
+				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
+			} else if( parent instanceof MPerspectiveStack ) {
+				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
+			} else if( parent instanceof MPartStack ) {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
 			}
 			
