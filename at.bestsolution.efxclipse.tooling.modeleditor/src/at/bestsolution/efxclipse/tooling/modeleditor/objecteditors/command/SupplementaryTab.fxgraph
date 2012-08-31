@@ -1,0 +1,62 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.command
+
+import javafx.scene.layout.GridPane
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
+import javafx.scene.control.Button
+import javafx.scene.control.ListView
+import javafx.scene.layout.AnchorPane
+import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane
+import at.bestsolution.efxclipse.runtime.panels.GridData
+
+component SupplementaryTab {
+	GridPane {
+		Label {
+			text : "Tags",
+			static columnIndex : 0,
+			static rowIndex : 0
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 0,
+			static hgrow : "ALWAYS"
+		},
+		Button {
+			text : "Add...",
+			static columnIndex : 2,
+			static rowIndex : 0
+		},
+		ListView {
+			static columnIndex : 1,
+			static rowIndex : 1
+		},
+		AnchorPane {
+			GridLayoutPane {
+				Button {
+					text : "Up",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				Button {
+					text : "Down",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				Button {
+					text : "Remove",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				static bottomAnchor : 1.0			
+			},
+			static columnIndex : 2,
+			static rowIndex : 2
+		}
+	}
+}

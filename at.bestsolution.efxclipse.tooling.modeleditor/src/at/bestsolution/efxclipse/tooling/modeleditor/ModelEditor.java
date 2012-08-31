@@ -34,6 +34,7 @@ import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
+import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.impl.CommandsPackageImpl;
 import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
@@ -236,6 +237,8 @@ public class ModelEditor {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
 			} else if( parent instanceof MPartStack ) {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
+			} else if( parent instanceof MCommand ) {
+				return EMFProperties.list(CommandsPackageImpl.Literals.COMMAND__PARAMETERS).observe(parent);
 			}
 			
 			return null;
