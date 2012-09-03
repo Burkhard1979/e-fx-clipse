@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
@@ -53,7 +56,7 @@ public interface page extends EObject
 
   /**
    * Returns the value of the '<em><b>Declarations</b></em>' containment reference list.
-   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration}.
+   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Declarations</em>' containment reference list isn't clear,
@@ -65,6 +68,6 @@ public interface page extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<css_generic_declaration> getDeclarations();
+  EList<css_declaration> getDeclarations();
 
 } // page

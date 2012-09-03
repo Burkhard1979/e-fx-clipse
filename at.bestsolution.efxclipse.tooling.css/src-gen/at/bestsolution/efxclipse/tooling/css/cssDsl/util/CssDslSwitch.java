@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.util;
 
@@ -142,11 +145,10 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssDslPackage.CSS_GENERIC_DECLARATION:
+      case CssDslPackage.CSS_PROPERTY:
       {
-        css_generic_declaration css_generic_declaration = (css_generic_declaration)theEObject;
-        T result = casecss_generic_declaration(css_generic_declaration);
-        if (result == null) result = casecss_declaration(css_generic_declaration);
+        css_property css_property = (css_property)theEObject;
+        T result = casecss_property(css_property);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -358,17 +360,17 @@ public class CssDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>css generic declaration</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>css property</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>css generic declaration</em>'.
+   * @return the result of interpreting the object as an instance of '<em>css property</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casecss_generic_declaration(css_generic_declaration object)
+  public T casecss_property(css_property object)
   {
     return null;
   }

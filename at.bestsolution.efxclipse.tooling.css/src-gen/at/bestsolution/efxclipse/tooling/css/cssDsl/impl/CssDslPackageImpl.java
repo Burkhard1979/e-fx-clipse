@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
@@ -7,9 +10,9 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_not;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.importExpression;
@@ -114,7 +117,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass css_generic_declarationEClass = null;
+  private EClass css_propertyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -573,9 +576,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getcss_generic_declaration()
+  public EReference getcss_declaration_Property()
   {
-    return css_generic_declarationEClass;
+    return (EReference)css_declarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -583,9 +586,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getcss_generic_declaration_Property()
+  public EReference getcss_declaration_Expression()
   {
-    return (EAttribute)css_generic_declarationEClass.getEStructuralFeatures().get(0);
+    return (EReference)css_declarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -593,9 +596,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getcss_generic_declaration_Expression()
+  public EAttribute getcss_declaration_Prio()
   {
-    return (EReference)css_generic_declarationEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)css_declarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -603,9 +606,19 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getcss_generic_declaration_Prio()
+  public EClass getcss_property()
   {
-    return (EAttribute)css_generic_declarationEClass.getEStructuralFeatures().get(2);
+    return css_propertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getcss_property_Name()
+  {
+    return (EAttribute)css_propertyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -891,11 +904,12 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     createEReference(sub_selectorEClass, SUB_SELECTOR__NEGOTATION);
 
     css_declarationEClass = createEClass(CSS_DECLARATION);
+    createEReference(css_declarationEClass, CSS_DECLARATION__PROPERTY);
+    createEReference(css_declarationEClass, CSS_DECLARATION__EXPRESSION);
+    createEAttribute(css_declarationEClass, CSS_DECLARATION__PRIO);
 
-    css_generic_declarationEClass = createEClass(CSS_GENERIC_DECLARATION);
-    createEAttribute(css_generic_declarationEClass, CSS_GENERIC_DECLARATION__PROPERTY);
-    createEReference(css_generic_declarationEClass, CSS_GENERIC_DECLARATION__EXPRESSION);
-    createEAttribute(css_generic_declarationEClass, CSS_GENERIC_DECLARATION__PRIO);
+    css_propertyEClass = createEClass(CSS_PROPERTY);
+    createEAttribute(css_propertyEClass, CSS_PROPERTY__NAME);
 
     css_negationEClass = createEClass(CSS_NEGATION);
     createEAttribute(css_negationEClass, CSS_NEGATION__NOT);
@@ -956,7 +970,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    css_generic_declarationEClass.getESuperTypes().add(this.getcss_declaration());
     urlTypeEClass.getESuperTypes().add(this.getimportExpression());
 
     // Initialize classes and features; add operations and parameters
@@ -975,7 +988,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
 
     initEClass(pageEClass, page.class, "page", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getpage_PseudoPage(), ecorePackage.getEString(), "pseudoPage", null, 0, 1, page.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getpage_Declarations(), this.getcss_generic_declaration(), null, "declarations", null, 0, -1, page.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getpage_Declarations(), this.getcss_declaration(), null, "declarations", null, 0, -1, page.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mediaEClass, media.class, "media", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getmedia_Medialist(), ecorePackage.getEString(), "medialist", null, 0, 1, media.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1003,11 +1016,12 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEReference(getsub_selector_Negotation(), this.getcss_negation(), null, "negotation", null, 0, 1, sub_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(css_declarationEClass, css_declaration.class, "css_declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getcss_declaration_Property(), this.getcss_property(), null, "property", null, 0, 1, css_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getcss_declaration_Expression(), this.getexpr(), null, "expression", null, 0, 1, css_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getcss_declaration_Prio(), ecorePackage.getEString(), "prio", null, 0, 1, css_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(css_generic_declarationEClass, css_generic_declaration.class, "css_generic_declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getcss_generic_declaration_Property(), ecorePackage.getEString(), "property", null, 0, 1, css_generic_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getcss_generic_declaration_Expression(), this.getexpr(), null, "expression", null, 0, 1, css_generic_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getcss_generic_declaration_Prio(), ecorePackage.getEString(), "prio", null, 0, 1, css_generic_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(css_propertyEClass, css_property.class, "css_property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getcss_property_Name(), ecorePackage.getEString(), "name", null, 0, 1, css_property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(css_negationEClass, css_negation.class, "css_negation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getcss_negation_Not(), this.getcss_not(), "not", null, 0, 1, css_negation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

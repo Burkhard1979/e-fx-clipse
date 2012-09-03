@@ -53,6 +53,8 @@
 		
 		<module>../at.bestsolution.efxclipse.tooling.converter</module>
 		<module>../at.bestsolution.efxclipse.tooling.css</module>
+		<module>../at.bestsolution.efxclipse.tooling.css.cssext</module>
+		<module>../at.bestsolution.efxclipse.tooling.css.cssext.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.css.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.css.jfx</module>
 		<module>../at.bestsolution.efxclipse.tooling.css.web</module>

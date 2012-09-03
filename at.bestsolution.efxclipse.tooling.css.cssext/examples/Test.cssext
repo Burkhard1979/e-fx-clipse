@@ -1,0 +1,10 @@
+package test {
+	
+	<bg-position> [ , <bg-position> ]*
+
+ <bg-position> = [
+    [ [ <size> | left | center | right ] [ <size> | top | center | bottom ]? ]
+    | [ [ center | [ left | right ] <size>? ] || [ center | [ top | bottom ] <size>? ]
+]
+
+}

@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.tooling.css.ui.labeling;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
@@ -64,6 +65,15 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		
 		return b.toString();
 	}
+	
+	String image(ruleset ele) {
+		return "selector_16x16.png";
+	}
+	
+	String image(css_property ele) {
+		return "property_16x16.png";
+	}
+	
 	
 	String text(simple_selector value) {
 		StringBuilder b = new StringBuilder(/*"si-"*/);

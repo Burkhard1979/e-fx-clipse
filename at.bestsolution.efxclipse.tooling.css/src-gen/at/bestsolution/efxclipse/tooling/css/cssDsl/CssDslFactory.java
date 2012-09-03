@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
@@ -113,13 +116,13 @@ public interface CssDslFactory extends EFactory
   css_declaration createcss_declaration();
 
   /**
-   * Returns a new object of class '<em>css generic declaration</em>'.
+   * Returns a new object of class '<em>css property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>css generic declaration</em>'.
+   * @return a new object of class '<em>css property</em>'.
    * @generated
    */
-  css_generic_declaration createcss_generic_declaration();
+  css_property createcss_property();
 
   /**
    * Returns a new object of class '<em>css negation</em>'.

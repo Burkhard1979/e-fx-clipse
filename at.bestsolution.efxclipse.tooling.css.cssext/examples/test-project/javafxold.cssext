@@ -1,0 +1,49 @@
+package javafx {
+	uri = TODO; //uri( STRING ); // <- wie zum teufel definier ma so was !?
+	unit-type = px | mm | cm | in | pt | pc | ex;
+	angle_symbols = deg | rad | grad | turn;
+	length = DOUBLE <unit-type>?;
+	
+	package scene {
+		fx-cursor = null | crosshair | default | hand | move | e-resize | h-resize | ne-resize | nw-resize | n-resize | se-resize | sw-resize | s-resize | w-resize | v-resize | text | wait;
+		 
+		/**
+		 * All attributes can be applied to Nodes
+		 */
+		Node { 
+			/**
+			 * lala blabla docu  
+			 */
+			-fx-blend-mode add | blue | color-burn | colordodge;
+			-fx-cursor <fx-cursor> | <uri> default: null;
+			-fx-focus-traversable BOOLEAN default: false;
+			-fx-opacity double(.0 -> 1.0) default: 0; // range: 0 -> 1;
+			/**
+			 * This is the angle of the rotation in degrees.
+			 * Zero degrees is at 3 o'clock (directly to the right).
+			 * Angle values are positive clockwise. Rotation is about the center.
+			 */
+			-fx-rotate float default: 0;
+			
+			-fx-scale-x ufloat default: 1;
+			-fx-scale-y ufloat default: 1;
+			-fx-scale-z ufloat default: 1;
+			 
+			visibility visible | hidden | collapse | inherit default: visible;
+			 
+			// pseudoclasses
+			/** applies when the disabled variable is true */
+			:disabled
+			/** applies when the focused variable is true */
+			:focused
+			/** applies when the hover variable is true */
+			:hover
+			/** applies when the pressed variable is true */
+			:pressed
+			/**
+			 * apples when the mnemonic affordance (typically an underscore) should be shown.
+			 */
+			:show-mnemonic
+		}
+	}
+}

@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
+import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
+import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 
 public class CssDialectExtensionComponent {
 	private List<CssDialectExtension> extensions = new ArrayList<CssDialectExtension>();
@@ -31,6 +34,16 @@ public class CssDialectExtensionComponent {
 		synchronized (extensions) {
 			extensions.remove(extension);
 		}
+	}
+	
+	public List<CssProperty> getAllProperties(URI uri) {
+		List<CssProperty> rv = new ArrayList<CssProperty>();
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				rv.addAll(((CssExtendedDialectExtension)ext).getAllProperties());
+			}
+		}
+		return rv;
 	}
 
 	public List<Property> getProperties(URI uri) {
@@ -53,6 +66,94 @@ public class CssDialectExtensionComponent {
 			}
 		}
 		return exts.toArray(new CssDialectExtension[0]);
+	}
+	
+	public String getDocForProperty(URI uri, String propertyName) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocForProperty(propertyName);
+			}
+		}
+		return "no extension capable :/";
+	}
+	
+	public List<CssProperty> getValuesForProperty(URI uri, String propertyName) {
+		List<CssProperty> result = new ArrayList<CssProperty>();
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				result.addAll(((CssExtendedDialectExtension)ext).getValuesForProperty(propertyName));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @param o
+	 * @return
+	 */
+	public String getDocumentation(URI uri, EObject o) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocumentation(o);
+			}
+		}
+		return "no extension capable :/";
+	}
+
+	/**
+	 * @param uri
+	 * @param element
+	 * @return
+	 */
+	public String getDocForElement(URI uri, String element) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocForElement(element);
+			}
+		}
+		return "no extension capable :/";
+	}
+
+	/**
+	 * @param uri
+	 * @param name
+	 * @return
+	 */
+	public String getDocHeadForProperty(URI uri, String name) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocHeadForProperty(name);
+			}
+		}
+		return "no extension capable :/";
+	}
+
+	/**
+	 * @param uri
+	 * @param element
+	 * @return
+	 */
+	public String getDocForHeadElement(URI uri, String element) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocHeadForElement(element);
+			}
+		}
+		return "no extension capable :/";
+	}
+
+	/**
+	 * @param uri
+	 * @param o
+	 * @return
+	 */
+	public String getDocHead(URI uri, EObject o) {
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				return ((CssExtendedDialectExtension)ext).getDocHead(o);
+			}
+		}
+		return "no extension capable :/";
 	}
 
 }

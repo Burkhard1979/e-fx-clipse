@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.util;
 
@@ -125,9 +128,9 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
         return createcss_declarationAdapter();
       }
       @Override
-      public Adapter casecss_generic_declaration(css_generic_declaration object)
+      public Adapter casecss_property(css_property object)
       {
-        return createcss_generic_declarationAdapter();
+        return createcss_propertyAdapter();
       }
       @Override
       public Adapter casecss_negation(css_negation object)
@@ -332,16 +335,16 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration <em>css generic declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_property <em>css property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_property
    * @generated
    */
-  public Adapter createcss_generic_declarationAdapter()
+  public Adapter createcss_propertyAdapter()
   {
     return null;
   }

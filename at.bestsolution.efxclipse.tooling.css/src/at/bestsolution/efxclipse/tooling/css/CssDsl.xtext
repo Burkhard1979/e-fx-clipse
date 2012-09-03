@@ -29,7 +29,7 @@ importExpression:
 
 page:
 	{page} ('@page'|'@PAGE') pseudoPage=pseudo_page?
-    '{' declarations+=css_generic_declaration? ( ';' declarations+=css_generic_declaration? )* '}'	
+    '{' declarations+=css_declaration? ( ';' declarations+=css_declaration? )* '}'	
 ;
 
 pseudo_page: 
@@ -97,10 +97,6 @@ css_attrib:
 ;
 
 css_declaration:
-	css_generic_declaration //| css_fx_declaration //| css_21_declaration
-;
-
-css_generic_declaration:
 	property=css_property ':' expression=expr prio=css_prio?
 ;
 
@@ -109,6 +105,10 @@ css_prio:
 ;
 
 css_property:
+	{css_property} name=ValidPropertyIdent
+;
+
+ValidPropertyIdent:
 	('-')?(IDENT)
 ;
 
@@ -167,7 +167,7 @@ termGroup:
 term
   :   number=numberTerm
   	| stringValue=STRING 
-  	| identifier=css_property 
+  	| identifier=ValidPropertyIdent // this is only a string and not a ref to css_property, becaus it also matches enums :/
   	| url=URLType 
   	| function=function
   	| hexColor=HexColor

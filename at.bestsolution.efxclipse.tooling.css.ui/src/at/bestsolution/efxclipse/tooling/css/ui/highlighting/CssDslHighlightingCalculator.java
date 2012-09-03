@@ -18,7 +18,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 
 public class CssDslHighlightingCalculator implements ISemanticHighlightingCalculator {
@@ -35,9 +35,9 @@ public class CssDslHighlightingCalculator implements ISemanticHighlightingCalcul
 		while( it.hasNext() ) {
 			Object o = it.next();
 			
-			if( o instanceof css_generic_declaration ) {
-				css_generic_declaration dec = (css_generic_declaration) o;
-				if( dec.getProperty() != null && dec.getProperty().trim().length() > 0 ) {
+			if( o instanceof css_declaration ) {
+				css_declaration dec = (css_declaration) o;
+				if( dec.getProperty() != null && dec.getProperty().getName() != null && dec.getProperty().getName().trim().length() > 0 ) {
 					ICompositeNode n = NodeModelUtils.getNode(dec);
 					if( n.hasChildren() ) {
 						acceptor.addPosition(n.getFirstChild().getOffset(), n.getFirstChild().getLength(), CssDslHighlightingConfiguration.DECLARATIONNAME);

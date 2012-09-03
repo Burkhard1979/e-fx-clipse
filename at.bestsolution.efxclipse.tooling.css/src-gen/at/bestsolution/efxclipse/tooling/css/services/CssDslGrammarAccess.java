@@ -177,20 +177,20 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPseudoPagePseudo_pageParserRuleCall_2_0 = (RuleCall)cPseudoPageAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cDeclarationsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cDeclarationsCss_generic_declarationParserRuleCall_4_0 = (RuleCall)cDeclarationsAssignment_4.eContents().get(0);
+		private final RuleCall cDeclarationsCss_declarationParserRuleCall_4_0 = (RuleCall)cDeclarationsAssignment_4.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cSemicolonKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Assignment cDeclarationsAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cDeclarationsCss_generic_declarationParserRuleCall_5_1_0 = (RuleCall)cDeclarationsAssignment_5_1.eContents().get(0);
+		private final RuleCall cDeclarationsCss_declarationParserRuleCall_5_1_0 = (RuleCall)cDeclarationsAssignment_5_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//page:
-		//	{page} ("@page" | "@PAGE") pseudoPage=pseudo_page? "{" declarations+=css_generic_declaration? (";"
-		//	declarations+=css_generic_declaration?)* "}";
+		//	{page} ("@page" | "@PAGE") pseudoPage=pseudo_page? "{" declarations+=css_declaration? (";"
+		//	declarations+=css_declaration?)* "}";
 		public ParserRule getRule() { return rule; }
 
-		//{page} ("@page" | "@PAGE") pseudoPage=pseudo_page? "{" declarations+=css_generic_declaration? (";"
-		//declarations+=css_generic_declaration?)* "}"
+		//{page} ("@page" | "@PAGE") pseudoPage=pseudo_page? "{" declarations+=css_declaration? (";"
+		//declarations+=css_declaration?)* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{page}
@@ -214,23 +214,23 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//declarations+=css_generic_declaration?
+		//declarations+=css_declaration?
 		public Assignment getDeclarationsAssignment_4() { return cDeclarationsAssignment_4; }
 
-		//css_generic_declaration
-		public RuleCall getDeclarationsCss_generic_declarationParserRuleCall_4_0() { return cDeclarationsCss_generic_declarationParserRuleCall_4_0; }
+		//css_declaration
+		public RuleCall getDeclarationsCss_declarationParserRuleCall_4_0() { return cDeclarationsCss_declarationParserRuleCall_4_0; }
 
-		//(";" declarations+=css_generic_declaration?)*
+		//(";" declarations+=css_declaration?)*
 		public Group getGroup_5() { return cGroup_5; }
 
 		//";"
 		public Keyword getSemicolonKeyword_5_0() { return cSemicolonKeyword_5_0; }
 
-		//declarations+=css_generic_declaration?
+		//declarations+=css_declaration?
 		public Assignment getDeclarationsAssignment_5_1() { return cDeclarationsAssignment_5_1; }
 
-		//css_generic_declaration
-		public RuleCall getDeclarationsCss_generic_declarationParserRuleCall_5_1_0() { return cDeclarationsCss_generic_declarationParserRuleCall_5_1_0; }
+		//css_declaration
+		public RuleCall getDeclarationsCss_declarationParserRuleCall_5_1_0() { return cDeclarationsCss_declarationParserRuleCall_5_1_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
@@ -797,19 +797,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class Css_declarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "css_declaration");
-		private final RuleCall cCss_generic_declarationParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//css_declaration: //| css_fx_declaration //| css_21_declaration
-		//	css_generic_declaration;
-		public ParserRule getRule() { return rule; }
-
-		////| css_fx_declaration //| css_21_declaration
-		//css_generic_declaration
-		public RuleCall getCss_generic_declarationParserRuleCall() { return cCss_generic_declarationParserRuleCall; }
-	}
-
-	public class Css_generic_declarationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "css_generic_declaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cPropertyAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cPropertyCss_propertyParserRuleCall_0_0 = (RuleCall)cPropertyAssignment_0.eContents().get(0);
@@ -819,7 +806,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPrioAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cPrioCss_prioParserRuleCall_3_0 = (RuleCall)cPrioAssignment_3.eContents().get(0);
 		
-		//css_generic_declaration:
+		//css_declaration:
 		//	property=css_property ":" expression=expr prio=css_prio?;
 		public ParserRule getRule() { return rule; }
 
@@ -863,10 +850,34 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class Css_propertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "css_property");
 		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCss_propertyAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameValidPropertyIdentParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//css_property:
+		//	{css_property} name=ValidPropertyIdent;
+		public ParserRule getRule() { return rule; }
+
+		//{css_property} name=ValidPropertyIdent
+		public Group getGroup() { return cGroup; }
+
+		//{css_property}
+		public Action getCss_propertyAction_0() { return cCss_propertyAction_0; }
+
+		//name=ValidPropertyIdent
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ValidPropertyIdent
+		public RuleCall getNameValidPropertyIdentParserRuleCall_1_0() { return cNameValidPropertyIdentParserRuleCall_1_0; }
+	}
+
+	public class ValidPropertyIdentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidPropertyIdent");
+		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final RuleCall cIDENTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
-		//css_property:
+		//ValidPropertyIdent:
 		//	"-"? IDENT;
 		public ParserRule getRule() { return rule; }
 
@@ -1220,7 +1231,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cStringValueAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cStringValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cStringValueAssignment_1.eContents().get(0);
 		private final Assignment cIdentifierAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cIdentifierCss_propertyParserRuleCall_2_0 = (RuleCall)cIdentifierAssignment_2.eContents().get(0);
+		private final RuleCall cIdentifierValidPropertyIdentParserRuleCall_2_0 = (RuleCall)cIdentifierAssignment_2.eContents().get(0);
 		private final Assignment cUrlAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
 		private final RuleCall cUrlURLTypeParserRuleCall_3_0 = (RuleCall)cUrlAssignment_3.eContents().get(0);
 		private final Assignment cFunctionAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
@@ -1231,11 +1242,12 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		////  	| gradient=Gradient
 		////  	| pair=pair
 		//term:
-		//	number=numberTerm | stringValue=STRING | identifier=css_property | url=URLType | function=function |
-		//	hexColor=HexColor;
+		//	number=numberTerm | stringValue=STRING | identifier= // this is only a string and not a ref to css_property, becaus it also matches enums :/
+		//	ValidPropertyIdent | url=URLType | function=function | hexColor=HexColor;
 		public ParserRule getRule() { return rule; }
 
-		//number=numberTerm | stringValue=STRING | identifier=css_property | url=URLType | function=function | hexColor=HexColor
+		//number=numberTerm | stringValue=STRING | identifier= // this is only a string and not a ref to css_property, becaus it also matches enums :/
+		//ValidPropertyIdent | url=URLType | function=function | hexColor=HexColor
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//number=numberTerm
@@ -1250,11 +1262,13 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getStringValueSTRINGTerminalRuleCall_1_0() { return cStringValueSTRINGTerminalRuleCall_1_0; }
 
-		//identifier=css_property
+		//identifier= // this is only a string and not a ref to css_property, becaus it also matches enums :/
+		//ValidPropertyIdent
 		public Assignment getIdentifierAssignment_2() { return cIdentifierAssignment_2; }
 
-		//css_property
-		public RuleCall getIdentifierCss_propertyParserRuleCall_2_0() { return cIdentifierCss_propertyParserRuleCall_2_0; }
+		//// this is only a string and not a ref to css_property, becaus it also matches enums :/
+		//ValidPropertyIdent
+		public RuleCall getIdentifierValidPropertyIdentParserRuleCall_2_0() { return cIdentifierValidPropertyIdentParserRuleCall_2_0; }
 
 		//url=URLType
 		public Assignment getUrlAssignment_3() { return cUrlAssignment_3; }
@@ -1786,9 +1800,9 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	private Css_idElements pCss_id;
 	private Css_attribElements pCss_attrib;
 	private Css_declarationElements pCss_declaration;
-	private Css_generic_declarationElements pCss_generic_declaration;
 	private Css_prioElements pCss_prio;
 	private Css_propertyElements pCss_property;
+	private ValidPropertyIdentElements pValidPropertyIdent;
 	private Css_pseudoElements pCss_pseudo;
 	private Css_negationElements pCss_negation;
 	private Css_notElements unknownRuleCss_not;
@@ -1889,8 +1903,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//page:
-	//	{page} ("@page" | "@PAGE") pseudoPage=pseudo_page? "{" declarations+=css_generic_declaration? (";"
-	//	declarations+=css_generic_declaration?)* "}";
+	//	{page} ("@page" | "@PAGE") pseudoPage=pseudo_page? "{" declarations+=css_declaration? (";"
+	//	declarations+=css_declaration?)* "}";
 	public PageElements getPageAccess() {
 		return (pPage != null) ? pPage : (pPage = new PageElements());
 	}
@@ -2051,24 +2065,14 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getCss_attribAccess().getRule();
 	}
 
-	//css_declaration: //| css_fx_declaration //| css_21_declaration
-	//	css_generic_declaration;
+	//css_declaration:
+	//	property=css_property ":" expression=expr prio=css_prio?;
 	public Css_declarationElements getCss_declarationAccess() {
 		return (pCss_declaration != null) ? pCss_declaration : (pCss_declaration = new Css_declarationElements());
 	}
 	
 	public ParserRule getCss_declarationRule() {
 		return getCss_declarationAccess().getRule();
-	}
-
-	//css_generic_declaration:
-	//	property=css_property ":" expression=expr prio=css_prio?;
-	public Css_generic_declarationElements getCss_generic_declarationAccess() {
-		return (pCss_generic_declaration != null) ? pCss_generic_declaration : (pCss_generic_declaration = new Css_generic_declarationElements());
-	}
-	
-	public ParserRule getCss_generic_declarationRule() {
-		return getCss_generic_declarationAccess().getRule();
 	}
 
 	//css_prio:
@@ -2082,13 +2086,23 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//css_property:
-	//	"-"? IDENT;
+	//	{css_property} name=ValidPropertyIdent;
 	public Css_propertyElements getCss_propertyAccess() {
 		return (pCss_property != null) ? pCss_property : (pCss_property = new Css_propertyElements());
 	}
 	
 	public ParserRule getCss_propertyRule() {
 		return getCss_propertyAccess().getRule();
+	}
+
+	//ValidPropertyIdent:
+	//	"-"? IDENT;
+	public ValidPropertyIdentElements getValidPropertyIdentAccess() {
+		return (pValidPropertyIdent != null) ? pValidPropertyIdent : (pValidPropertyIdent = new ValidPropertyIdentElements());
+	}
+	
+	public ParserRule getValidPropertyIdentRule() {
+		return getValidPropertyIdentAccess().getRule();
 	}
 
 	//css_pseudo:
@@ -2214,8 +2228,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	////  	| gradient=Gradient
 	////  	| pair=pair
 	//term:
-	//	number=numberTerm | stringValue=STRING | identifier=css_property | url=URLType | function=function |
-	//	hexColor=HexColor;
+	//	number=numberTerm | stringValue=STRING | identifier= // this is only a string and not a ref to css_property, becaus it also matches enums :/
+	//	ValidPropertyIdent | url=URLType | function=function | hexColor=HexColor;
 	public TermElements getTermAccess() {
 		return (pTerm != null) ? pTerm : (pTerm = new TermElements());
 	}

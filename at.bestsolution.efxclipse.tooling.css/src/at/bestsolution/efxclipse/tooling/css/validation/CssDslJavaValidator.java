@@ -19,7 +19,8 @@ import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationStatus;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.internal.CssDialectExtensionComponent;
  
 
@@ -41,8 +42,9 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 //	}
 
 	@Check
-	public void checkDeclaration(css_generic_declaration dec) {
-		String propertyName = dec.getProperty();
+	public void checkDeclaration(css_declaration dec) {
+		css_property property = dec.getProperty();
+		String propertyName = property.getName();
 		
 		if( propertyName == null || propertyName.trim().length() == 0 ) {
 			return;
@@ -70,7 +72,7 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 		for( ValidationResult r : results ) {
 			if( r.status == ValidationStatus.ERROR ) {
 				if( r.object == null ) {
-					error( r.message, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION );
+					error( r.message, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION );
 				} else if( r.index == -1 ) {
 					error(r.message, r.object, r.feature, 0);
 				} else {
@@ -78,7 +80,7 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 				}
 			} else if( r.status == ValidationStatus.WARNING ) {
 				if( r.object == null ) {
-					warning( r.message, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION );
+					warning( r.message, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION );
 				} else if( r.index == -1 ) {
 					warning(r.message, r.object, r.feature, 0);
 				} else {

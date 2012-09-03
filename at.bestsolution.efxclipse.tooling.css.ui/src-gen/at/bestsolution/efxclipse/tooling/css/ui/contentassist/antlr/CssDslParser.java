@@ -93,8 +93,9 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCss_classAccess().getGroup(), "rule__Css_class__Group__0");
 					put(grammarAccess.getCss_attribAccess().getGroup(), "rule__Css_attrib__Group__0");
 					put(grammarAccess.getCss_attribAccess().getGroup_2(), "rule__Css_attrib__Group_2__0");
-					put(grammarAccess.getCss_generic_declarationAccess().getGroup(), "rule__Css_generic_declaration__Group__0");
+					put(grammarAccess.getCss_declarationAccess().getGroup(), "rule__Css_declaration__Group__0");
 					put(grammarAccess.getCss_propertyAccess().getGroup(), "rule__Css_property__Group__0");
+					put(grammarAccess.getValidPropertyIdentAccess().getGroup(), "rule__ValidPropertyIdent__Group__0");
 					put(grammarAccess.getCss_pseudoAccess().getGroup(), "rule__Css_pseudo__Group__0");
 					put(grammarAccess.getCss_negationAccess().getGroup(), "rule__Css_negation__Group__0");
 					put(grammarAccess.getFunctional_pseudoAccess().getGroup(), "rule__Functional_pseudo__Group__0");
@@ -141,9 +142,10 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSub_selectorAccess().getAttribAssignment_2(), "rule__Sub_selector__AttribAssignment_2");
 					put(grammarAccess.getSub_selectorAccess().getPseudoclassAssignment_3(), "rule__Sub_selector__PseudoclassAssignment_3");
 					put(grammarAccess.getSub_selectorAccess().getNegotationAssignment_4(), "rule__Sub_selector__NegotationAssignment_4");
-					put(grammarAccess.getCss_generic_declarationAccess().getPropertyAssignment_0(), "rule__Css_generic_declaration__PropertyAssignment_0");
-					put(grammarAccess.getCss_generic_declarationAccess().getExpressionAssignment_2(), "rule__Css_generic_declaration__ExpressionAssignment_2");
-					put(grammarAccess.getCss_generic_declarationAccess().getPrioAssignment_3(), "rule__Css_generic_declaration__PrioAssignment_3");
+					put(grammarAccess.getCss_declarationAccess().getPropertyAssignment_0(), "rule__Css_declaration__PropertyAssignment_0");
+					put(grammarAccess.getCss_declarationAccess().getExpressionAssignment_2(), "rule__Css_declaration__ExpressionAssignment_2");
+					put(grammarAccess.getCss_declarationAccess().getPrioAssignment_3(), "rule__Css_declaration__PrioAssignment_3");
+					put(grammarAccess.getCss_propertyAccess().getNameAssignment_1(), "rule__Css_property__NameAssignment_1");
 					put(grammarAccess.getCss_negationAccess().getNotAssignment_1(), "rule__Css_negation__NotAssignment_1");
 					put(grammarAccess.getCss_negationAccess().getNegation_argAssignment_2(), "rule__Css_negation__Negation_argAssignment_2");
 					put(grammarAccess.getExprAccess().getTermGroupsAssignment_0(), "rule__Expr__TermGroupsAssignment_0");

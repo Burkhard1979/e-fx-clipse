@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/at.bestsolution.efxclipse.tooling.css/src-gen"
     editDirectory="/at.bestsolution.efxclipse.tooling.css.edit/src" editorDirectory="/at.bestsolution.efxclipse.tooling.css.editor/src"
     modelPluginID="at.bestsolution.efxclipse.tooling.css" forceOverwrite="true" modelName="CssDsl"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="at.bestsolution.efxclipse.tooling.css.edit"
-    editorPluginID="at.bestsolution.efxclipse.tooling.css.editor" runtimeVersion="2.8">
+    editorPluginID="at.bestsolution.efxclipse.tooling.css.editor" runtimeVersion="2.7">
   <genPackages prefix="CssDsl" basePackage="at.bestsolution.efxclipse.tooling.css"
       disposableProviderFactory="true" ecorePackage="CssDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CssDsl.ecore#//css_not">
@@ -53,11 +54,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/pseudoclass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//sub_selector/negotation"/>
     </genClasses>
-    <genClasses ecoreClass="CssDsl.ecore#//css_declaration"/>
-    <genClasses ecoreClass="CssDsl.ecore#//css_generic_declaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_generic_declaration/property"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_generic_declaration/expression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_generic_declaration/prio"/>
+    <genClasses ecoreClass="CssDsl.ecore#//css_declaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_declaration/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_declaration/expression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_declaration/prio"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//css_property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_property/name"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//css_negation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_negation/not"/>

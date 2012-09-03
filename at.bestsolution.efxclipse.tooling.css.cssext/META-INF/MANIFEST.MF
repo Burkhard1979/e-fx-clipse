@@ -1,0 +1,38 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: at.bestsolution.efxclipse.tooling.css.cssext
+Bundle-Vendor: BestSolution.at
+Bundle-Version: 0.1.0.qualifier
+Bundle-SymbolicName: at.bestsolution.efxclipse.tooling.css.cssext; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ at.bestsolution.efxclipse.tooling.css;bundle-version="0.1.0",
+ org.eclipse.osgi;bundle-version="3.7.2"
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: at.bestsolution.efxclipse.tooling.css.cssext,
+ at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl,
+ at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl,
+ at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.util,
+ at.bestsolution.efxclipse.tooling.css.cssext.formatting,
+ at.bestsolution.efxclipse.tooling.css.cssext.generator,
+ at.bestsolution.efxclipse.tooling.css.cssext.parseTreeConstruction,
+ at.bestsolution.efxclipse.tooling.css.cssext.parser.antlr,
+ at.bestsolution.efxclipse.tooling.css.cssext.parser.antlr.internal,
+ at.bestsolution.efxclipse.tooling.css.cssext.scoping,
+ at.bestsolution.efxclipse.tooling.css.cssext.services,
+ at.bestsolution.efxclipse.tooling.css.cssext.validation
+
+
