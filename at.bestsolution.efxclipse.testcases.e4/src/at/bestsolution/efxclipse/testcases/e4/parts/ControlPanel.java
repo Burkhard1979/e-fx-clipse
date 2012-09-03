@@ -211,7 +211,6 @@ public class ControlPanel {
 						MElementContainer container = dd.getSelectionModel().getSelectedItem();
 						Object o = container.getChildren().remove(container.getChildren().size()-1);
 						container.getChildren().add(container.getChildren().size()-1, o);
-						System.err.println(container.getChildren());
 					}
 				});
 				hbox.getChildren().add(b);
