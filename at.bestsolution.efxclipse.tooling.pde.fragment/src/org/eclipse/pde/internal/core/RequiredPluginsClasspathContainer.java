@@ -136,8 +136,10 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 			
 			
 			for( IClasspathContributor cc: contributors ) {
-				System.err.println(cc);
 				for( Contribution c : cc.getDynamicContributions(desc) ) {
+					if( c.jarLocation == null ) {
+						continue;
+					}
 					Rule[] rs = new Rule[c.rules != null ? c.rules.length : 0];
 					for( int i = 0; i < rs.length; i++ ) {
 						Rule r = new Rule();
