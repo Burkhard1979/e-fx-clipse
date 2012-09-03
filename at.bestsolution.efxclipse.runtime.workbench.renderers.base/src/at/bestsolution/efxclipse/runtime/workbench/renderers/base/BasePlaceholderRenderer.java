@@ -11,6 +11,7 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,6 +22,7 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.ui.MContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPlaceholderWidget;
@@ -77,6 +79,58 @@ public abstract class BasePlaceholderRenderer<N> extends BaseRenderer<MPlacehold
 	public void destroyWidget(MPlaceholder element) {
 		MUIElement refElement = element.getRef();
 		
+		Set<MPlaceholder> set = renderedMap.get(refElement);
+		if( set == null || ! set.remove(element) ) {
+			return;
+		}
+		
+		// Last reference removed so we can destroy it
+		if( set.isEmpty() ) {
+			if (refElement instanceof MPart) {
+				MPart thePart = (MPart) refElement;
+				String imageURI = thePart.getIconURI();
+				thePart.setIconURI(null);
+				thePart.setIconURI(imageURI);
+			}
+			getPresentationEngine().removeGui(refElement);
+		} else {
+			IEclipseContext curContext = modelService.getContainingContext(element);
+			MPlaceholder currentRef = refElement.getCurSharedRef();
+			IEclipseContext newParentContext = modelService
+					.getContainingContext(currentRef);
+			List<MContext> allContexts = modelService.findElements(
+					refElement, null, MContext.class, null);
+			for (MContext ctxtElement : allContexts) {
+				IEclipseContext theContext = ctxtElement.getContext();
+				// this may be null if it hasn't been rendered yet
+				if (theContext != null
+						&& theContext.getParent() == curContext) {
+					// about to reparent the context, if we're the
+					// active child of the current parent, deactivate
+					// ourselves first
+					if (curContext.getActiveChild() == theContext) {
+						theContext.deactivate();
+					}
+					theContext.setParent(newParentContext);
+				}
+			}
+		}
+		
 		super.destroyWidget(element);
+	}
+	
+	@Override
+	protected void doProcessContent(MPlaceholder element) {
+		
+	}
+
+	@Override
+	public void childRendered(MPlaceholder parentElement, MUIElement element) {
+		
+	}
+
+	@Override
+	public void hideChild(MPlaceholder container, MUIElement changedObj) {
+		
 	}
 }

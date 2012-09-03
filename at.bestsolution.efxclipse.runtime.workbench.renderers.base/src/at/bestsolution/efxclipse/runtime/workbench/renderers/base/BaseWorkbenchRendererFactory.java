@@ -59,6 +59,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BaseMenuRenderer<?> toolItemMenuRenderer;
 	private BasePerspectiveStackRenderer<?, ?, ?> perspectiveStackRenderer;
 	private BasePerspectiveRenderer<?> perspectiveRenderer;
+	private BasePlaceholderRenderer<?> placeholderRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -142,6 +143,11 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 				menuSeperatorRenderer = ContextInjectionFactory.make(getMenuSeparatorRendererClass(), context);
 			}
 			return (R) menuSeperatorRenderer;
+		} else if( modelObject instanceof MPlaceholder ) {
+			if( placeholderRenderer == null ) {
+				placeholderRenderer = ContextInjectionFactory.make(getPlaceholderRendererClass(), context);
+			}
+			return (R) placeholderRenderer;
 		}
 		
 		return null;
@@ -161,4 +167,5 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BaseMenuRenderer<?>> getToolItemMenuRendererClass();
 	protected abstract Class<? extends BasePerspectiveStackRenderer<?, ?, ?>> getPerspectiveStackRendererClass();
 	protected abstract Class<? extends BasePerspectiveRenderer<?>> getPerspectiveRendererClass();
+	protected abstract Class<? extends BasePlaceholderRenderer<?>> getPlaceholderRendererClass();
 }

@@ -22,6 +22,7 @@ import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.MUILabel;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.UIEvents;
@@ -117,14 +118,20 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 			
 			try {
 				inContextModification = true;
-				EObject eo = (EObject) element;
+				EObject eo;
+				if( element instanceof MPlaceholder ) {
+					eo = (EObject) ((MPlaceholder)element).getRef();
+				} else {
+					eo = (EObject) element;
+				}
+				
 				for( EAttribute e : eo.eClass().getEAllAttributes() ) {
 					context.set(e.getName(), eo.eGet(e));
 				}
 				
 				// Localized Label/Tooltip treatment
-				if( element instanceof MUILabel ) {
-					MUILabel l = (MUILabel) element;
+				if( eo instanceof MUILabel ) {
+					MUILabel l = (MUILabel) eo;
 					context.set(ATTRIBUTE_localizedLabel, l.getLocalizedLabel());
 					context.set(ATTRIBUTE_localizedTooltip, l.getLocalizedTooltip());
 				}
