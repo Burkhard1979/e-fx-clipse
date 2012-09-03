@@ -18,7 +18,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -41,7 +40,6 @@ import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.advanced.impl.AdvancedPackageImpl;
-import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
@@ -49,7 +47,6 @@ import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.impl.UiPackageImpl;
-import org.eclipse.e4.ui.model.application.ui.menu.MDirectToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.ecore.EClass;
@@ -164,36 +161,6 @@ public class ModelEditor {
 		
 		return treeView;
 	}
-	
-	private String getImage(MApplicationElement item) {
-		if( item instanceof MApplication ) {
-			return "Application.png";
-		} else if( item instanceof MTrimmedWindow ) {
-			return "WindowTrim.gif";
-		} else if( item instanceof MToolBar ) {
-			return "ToolBar.gif";
-		} else if( item instanceof MDirectToolItem ) {
-			return "DirectToolItem.gif";
-		} else if( item instanceof MPartSashContainer ) {
-			return ((MPartSashContainer) item).isHorizontal() ? "PartSashContainer.gif" : "PartSashContainer_vertical.gif";
-		} else if( item instanceof MPart ) {
-			return "Part.gif";
-		} else if( item instanceof MPartStack ) {
-			return "PartStack.gif";
-		} else if( item instanceof MTrimBar ) {
-			return "WindowTrim.gif";
-		}
-		return null;
-	}
-	
-//	private ObservableValue<String> createObservable(MApplicationElement item) {
-//		if( item instanceof MApplication ) {
-//			return AdapterFactory.adapt(EMFProperties.value(ApplicationPackageImpl.Literals.APPLICATION_ELEMENT__ELEMENT_ID).observe(item));
-//		} else if( item instanceof MWindow ) {
-//			return AdapterFactory.adapt(EMFProperties.value(UiPackageImpl.Literals.UI_LABEL__LABEL).observe(item));
-//		}
-//		return null;
-//	}
 	
 	static class ObservableFactoryImpl implements ObservableFactory<Object> {
 
