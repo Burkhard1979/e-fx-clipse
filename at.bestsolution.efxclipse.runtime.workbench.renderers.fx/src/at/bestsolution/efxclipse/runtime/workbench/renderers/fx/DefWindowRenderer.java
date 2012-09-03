@@ -360,6 +360,15 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		public void setHeight(@Named(UIEvents.Window.HEIGHT) int h) {
 			getWidget().setHeight(h);
 		}
+		
+		@Inject
+		public void setVisible(@Named(UIEvents.UIElement.VISIBLE) boolean visible) {
+			if( visible ) {
+				getWidget().show();
+			} else {
+				getWidget().hide();
+			}
+		}
 
 		@Override
 		public void addStyleClasses(List<String> classnames) {
@@ -416,7 +425,6 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		
 		@Override
 		public void addChild(int idx, WLayoutedWidget<MWindowElement> widget) {
-			System.err.println("Adding index child!!!!");
 			contentPane.getChildren().add(idx, (Node) widget.getStaticLayoutNode());
 		}
 	}

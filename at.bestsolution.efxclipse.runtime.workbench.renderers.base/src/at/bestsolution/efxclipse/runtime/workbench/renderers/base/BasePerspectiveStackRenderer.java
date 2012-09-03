@@ -312,7 +312,6 @@ public abstract class BasePerspectiveStackRenderer<N, I, IC> extends BaseRendere
 	}
 	
 	private void hideElementRecursive(MUIElement element) {
-		System.err.println("HIDING: " + element);
 		if (element == null || element.getWidget() == null) {
 			return;
 		}
