@@ -73,7 +73,7 @@ import org.osgi.framework.Bundle;
 import at.bestsolution.efxclipse.runtime.di.InjectingFXMLLoader;
 import at.bestsolution.efxclipse.runtime.dialogs.Dialog;
 import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog;
-import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog.QuestionCancel;
+import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog.QuestionCancelResult;
 import at.bestsolution.efxclipse.runtime.panels.FillLayoutPane;
 import at.bestsolution.efxclipse.runtime.services.theme.Theme;
 import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
@@ -109,7 +109,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 	}
 
 	protected Save promptToSave(MWindow element, MPart dirtyPart, WWindow<Stage> widget) {
-		QuestionCancel r = MessageDialog.openQuestionCancelDialog((Stage) widget.getWidget(), "Unsaved changes", "'" + dirtyPart.getLocalizedLabel() + "' has been modified. Save changes?");
+		QuestionCancelResult r = MessageDialog.openQuestionCancelDialog((Stage) widget.getWidget(), "Unsaved changes", "'" + dirtyPart.getLocalizedLabel() + "' has been modified. Save changes?");
 
 		switch (r) {
 		case CANCEL:
