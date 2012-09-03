@@ -97,12 +97,16 @@ public class MessageDialog extends Dialog {
 	private final Type type;
 	private final String message;
 	private final String[] dialogButtonLabels;
+	private final int okButton;
+	private final int cancelButton;
 	
-	public MessageDialog(Window parent, String windowTitle, String message, Type type, int defaultButton, String... dialogButtonLabels) {
+	public MessageDialog(Window parent, String windowTitle, String message, Type type, int okButton, int cancelButton, String... dialogButtonLabels) {
 		super(parent, windowTitle);
 		this.type = type;
 		this.message = message;
 		this.dialogButtonLabels = dialogButtonLabels;
+		this.okButton = okButton;
+		this.cancelButton = cancelButton;
 	}
 
 	@Override
@@ -123,16 +127,19 @@ public class MessageDialog extends Dialog {
 	}
 	
 	@Override
-	protected boolean isDefault(int buttonId) {
-		// TODO Auto-generated method stub
-		return super.isDefault(buttonId);
+	protected boolean isOkDefault(int buttonId) {
+		return okButton == buttonId;
+	}
+	
+	protected boolean isCancelDefault(int buttonId) {
+		return cancelButton == buttonId;
 	}
 	
 	@Override
 	protected List<Button> createButtonsForBar() {
 		List<Button> rv = new ArrayList<Button>();
 		for( int i = 0; i < dialogButtonLabels.length; i++ ) {
-			rv.add(createButtonForBar(i,dialogButtonLabels[i], isDefault(i)));
+			rv.add(createButtonForBar(i,dialogButtonLabels[i], isOkDefault(i), isCancelDefault(i)));
 		}
 		return rv;
 	}
@@ -183,15 +190,15 @@ public class MessageDialog extends Dialog {
 	}
 	
 	public static void openErrorDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.ERROR, 0, "Ok").open();
+		new MessageDialog(parent, title, message, Type.ERROR, 0, -1, "Ok").open();
 	}
 	
 	public static void openWarningDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.WARNING, 0, "Ok").open();
+		new MessageDialog(parent, title, message, Type.WARNING, 0, -1, "Ok").open();
 	}
 	
 	public static void openInformationDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.INFORMATION, 0, "Ok").open();
+		new MessageDialog(parent, title, message, Type.INFORMATION, 0, -1, "Ok").open();
 	}
 	
 	public static QuestionResult openQuestionDialog(Window parent, String title, String message) {
@@ -199,7 +206,7 @@ public class MessageDialog extends Dialog {
 	}
 	
 	public static QuestionResult openQuestionDialog(Window parent, String title, String message, QuestionResult defaultValue) {
-		return QuestionResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, defaultValue == QuestionResult.YES ? 0 : 1, "Yes", "No").open());
+		return QuestionResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, defaultValue == QuestionResult.YES ? 0 : 1, -1, "Yes", "No").open());
 	}
 	
 	public static QuestionCancelResult openQuestionCancelDialog(Window parent, String title, String message) {
@@ -221,7 +228,7 @@ public class MessageDialog extends Dialog {
 			break;
 		}
 		
-		return QuestionCancelResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, idx, "Yes", "No", "Cancel").open());
+		return QuestionCancelResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, idx, 2, "Yes", "No", "Cancel").open());
 	}
 	
 	public static ConfirmResult openConfirmDialog(Window parent, String title, String message) {
@@ -229,6 +236,6 @@ public class MessageDialog extends Dialog {
 	}
 	
 	public static ConfirmResult openConfirmDialog(Window parent, String title, String message, ConfirmResult defaultValue) {
-		return ConfirmResult.fromIndex(new MessageDialog(parent, title, message, Type.CONFIRM, defaultValue == ConfirmResult.OK ? 0 : 1, "Ok", "Cancel").open());
+		return ConfirmResult.fromIndex(new MessageDialog(parent, title, message, Type.CONFIRM, defaultValue == ConfirmResult.OK ? 0 : 1, 1, "Ok", "Cancel").open());
 	}
 }

@@ -85,18 +85,23 @@ public abstract class Dialog {
 	
 	protected List<Button> createButtonsForBar() {
 		List<Button> rv = new ArrayList<Button>();
-		rv.add(createButtonForBar(CANCEL_BUTTON, "Cancel",isDefault(CANCEL_BUTTON)));
-		rv.add(createButtonForBar(OK_BUTTON, "Ok", isDefault(OK_BUTTON)));
+		rv.add(createButtonForBar(CANCEL_BUTTON, "Cancel",isOkDefault(CANCEL_BUTTON),isCancelDefault(CANCEL_BUTTON)));
+		rv.add(createButtonForBar(OK_BUTTON, "Ok", isOkDefault(OK_BUTTON), isCancelDefault(OK_BUTTON)));
 		return rv;
 	}
 	
-	protected boolean isDefault(int buttonId) {
+	protected boolean isOkDefault(int buttonId) {
 		return buttonId == OK_BUTTON;
 	}
 	
-	protected Button createButtonForBar(final int type, String label, boolean defaultButton) {
+	protected boolean isCancelDefault(int buttonId) {
+		return buttonId == CANCEL_BUTTON;
+	}
+	
+	protected Button createButtonForBar(final int type, String label, boolean defaultOkButton, boolean defaultCancel) {
 		Button b = new Button(label);
-		b.setDefaultButton(defaultButton);
+		b.setDefaultButton(defaultOkButton);
+		b.setCancelButton(defaultCancel);
 		b.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
