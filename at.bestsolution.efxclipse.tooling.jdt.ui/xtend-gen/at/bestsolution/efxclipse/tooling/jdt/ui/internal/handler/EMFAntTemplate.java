@@ -10,21 +10,19 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.AbstractAntHandler.BuildConfiguration;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.SetupDirectory;
 import com.google.common.base.Objects;
 import java.io.File;
-import java.util.Collection;
-import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class EMFAntTemplate {
-  public String generateAnt(final Map<String,Object> properties, final AntTask task) {
+  public String generateAnt(final BuildConfiguration config) {
     String _xblockexpression = null;
     {
-      Object _get = properties.get("projectName");
-      final String projectName = ((String) _get);
+      final String projectName = ((String) config.projectName);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
       _builder.newLine();
@@ -34,19 +32,19 @@ public class EMFAntTemplate {
       _builder.append("\" default=\"do-deploy\" basedir=\".\"  xmlns:fx=\"javafx:com.sun.javafx.tools.ant\">");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
-      CharSequence _createInitTaskTarget = this.createInitTaskTarget(properties);
+      CharSequence _createInitTaskTarget = this.createInitTaskTarget(config);
       _builder.append(_createInitTaskTarget, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
-      CharSequence _createLocalSetup = this.createLocalSetup(properties);
+      CharSequence _createLocalSetup = this.createLocalSetup(config);
       _builder.append(_createLocalSetup, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
-      CharSequence _compileTarget = this.compileTarget(properties);
+      CharSequence _compileTarget = this.compileTarget(config);
       _builder.append(_compileTarget, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
-      CharSequence _createDoDeployTarget = this.createDoDeployTarget(task);
+      CharSequence _createDoDeployTarget = this.createDoDeployTarget(config.task);
       _builder.append(_createDoDeployTarget, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("</project>");
@@ -57,389 +55,364 @@ public class EMFAntTemplate {
     return _xblockexpression;
   }
   
-  public CharSequence createLocalSetup(final Map<String,Object> properties) {
-    CharSequence _xblockexpression = null;
+  public CharSequence createLocalSetup(final BuildConfiguration config) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<target name=\"setup-staging-area\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<delete dir=\"externalLibs\" />");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<delete dir=\"project\" />");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<delete dir=\"projectRefs\" />");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<mkdir dir=\"externalLibs\" />");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
     {
-      Object _get = properties.get("orig.externalLibs");
-      final Collection<File> externalLibs = ((Collection<File>) _get);
-      Object _get_1 = properties.get("orig.projectSourceDirs");
-      final Collection<SetupDirectory> projectSrcDirs = ((Collection<SetupDirectory>) _get_1);
-      Object _get_2 = properties.get("orig.projectRefSourceDirs");
-      Collection<SetupDirectory> projectRefs = ((Collection<SetupDirectory>) _get_2);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<target name=\"setup-staging-area\">");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<delete dir=\"externalLibs\" />");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<delete dir=\"project\" />");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<delete dir=\"projectRefs\" />");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<mkdir dir=\"externalLibs\" />");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      {
-        for(final File l : externalLibs) {
-          _builder.append("\t");
-          _builder.append("<copy todir=\"externalLibs\">");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fileset dir=\"");
-          String _parent = l.getParent();
-          _builder.append(_parent, "		");
-          _builder.append("\">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t\t");
-          _builder.append("<filename name=\"");
-          String _name = l.getName();
-          _builder.append(_name, "			");
-          _builder.append("\"/>\t");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("</fileset>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("</copy>");
-          _builder.newLine();
-        }
+      for(final File l : config.origExternalLibs) {
+        _builder.append("\t");
+        _builder.append("<copy todir=\"externalLibs\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<fileset dir=\"");
+        String _parent = l.getParent();
+        _builder.append(_parent, "		");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<filename name=\"");
+        String _name = l.getName();
+        _builder.append(_name, "			");
+        _builder.append("\"/>\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</fileset>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</copy>");
+        _builder.newLine();
       }
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<mkdir dir=\"project\" />");
-      _builder.newLine();
-      {
-        for(final SetupDirectory d : projectSrcDirs) {
-          _builder.append("\t");
-          _builder.append("<copy todir=\"project\">");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fileset dir=\"");
-          String _absolutePath = d.originalPath.getAbsolutePath();
-          _builder.append(_absolutePath, "		");
-          _builder.append("\">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t\t");
-          _builder.append("<include name=\"");
-          String _name_1 = d.relativePath.getName();
-          _builder.append(_name_1, "			");
-          _builder.append("/**\" />");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("</fileset>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("</copy>");
-          _builder.newLine();
-        }
-      }
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<mkdir dir=\"projectRefs\" />");
-      _builder.newLine();
-      {
-        for(final SetupDirectory d_1 : projectRefs) {
-          _builder.append("\t");
-          _builder.append("<copy todir=\"projectRefs\">");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fileset dir=\"");
-          String _absolutePath_1 = d_1.originalPath.getAbsolutePath();
-          _builder.append(_absolutePath_1, "		");
-          _builder.append("\">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t\t");
-          _builder.append("<include name=\"");
-          String _path = d_1.relativePath.getPath();
-          _builder.append(_path, "			");
-          _builder.append("/**\" />");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("</fileset>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("</copy>");
-          _builder.newLine();
-        }
-      }
-      _builder.append("</target>");
-      _builder.newLine();
-      _xblockexpression = (_builder);
     }
-    return _xblockexpression;
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<mkdir dir=\"project\" />");
+    _builder.newLine();
+    {
+      for(final SetupDirectory d : config.origProjectSourceDirs) {
+        _builder.append("\t");
+        _builder.append("<copy todir=\"project\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<fileset dir=\"");
+        String _absolutePath = d.originalPath.getAbsolutePath();
+        _builder.append(_absolutePath, "		");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<include name=\"");
+        String _name_1 = d.relativePath.getName();
+        _builder.append(_name_1, "			");
+        _builder.append("/**\" />");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</fileset>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</copy>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<mkdir dir=\"projectRefs\" />");
+    _builder.newLine();
+    {
+      for(final SetupDirectory d_1 : config.origProjectRefSourceDirs) {
+        _builder.append("\t");
+        _builder.append("<copy todir=\"projectRefs\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<fileset dir=\"");
+        String _absolutePath_1 = d_1.originalPath.getAbsolutePath();
+        _builder.append(_absolutePath_1, "		");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<include name=\"");
+        String _path = d_1.relativePath.getPath();
+        _builder.append(_path, "			");
+        _builder.append("/**\" />");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</fileset>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</copy>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("</target>");
+    _builder.newLine();
+    return _builder;
   }
   
-  public CharSequence createInitTaskTarget(final Map<String,Object> properties) {
-    CharSequence _xblockexpression = null;
-    {
-      Object _get = properties.get("jfxantjar");
-      final String sdkAntPath = ((String) _get);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<target name=\"init-fx-tasks\">");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<property name=\"javafx.tools.ant.jar\" value=\"");
-      _builder.append(sdkAntPath, "	");
-      _builder.append("\"/>");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<taskdef resource=\"com/sun/javafx/tools/ant/antlib.xml\"      ");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("uri=\"javafx:com.sun.javafx.tools.ant\"");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("classpath=\"${javafx.tools.ant.jar}\"/>");
-      _builder.newLine();
-      _builder.append("</target>");
-      _builder.newLine();
-      _xblockexpression = (_builder);
-    }
-    return _xblockexpression;
+  public CharSequence createInitTaskTarget(final BuildConfiguration config) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<target name=\"init-fx-tasks\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<path id=\"fxant\">");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("<filelist>");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("<file name=\"${java.home}\\..\\lib\\ant-javafx.jar\"/>");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("</filelist>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</path>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<taskdef resource=\"com/sun/javafx/tools/ant/antlib.xml\"      ");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("uri=\"javafx:com.sun.javafx.tools.ant\"");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("classpathref=\"fxant\"/>");
+    _builder.newLine();
+    _builder.append("</target>");
+    _builder.newLine();
+    return _builder;
   }
   
-  public CharSequence compileTarget(final Map<String,Object> properties) {
-    CharSequence _xblockexpression = null;
+  public CharSequence compileTarget(final BuildConfiguration config) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<target name=\'do-compile\'>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<delete dir=\"build\" />");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<mkdir dir=\"build/src\" />");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<mkdir dir=\"build/libs\" />");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<mkdir dir=\"build/classes\" />");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<!-- Copy project-libs references -->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<copy todir=\"build/libs\">");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("<fileset dir=\"externalLibs\">");
+    _builder.newLine();
     {
-      Object _get = properties.get("projectRefSourceDirs");
-      final Collection<String> projectRefs = ((Collection<String>) _get);
-      Object _get_1 = properties.get("externalLibs");
-      final Collection<String> externalLibs = ((Collection<String>) _get_1);
-      Object _get_2 = properties.get("projectSourceDirs");
-      final Collection<String> projectSourceDirs = ((Collection<String>) _get_2);
-      Object _get_3 = properties.get("jfxjar");
-      final String fxJarPath = ((String) _get_3);
-      Object _get_4 = properties.get("projectEncoding");
-      String encoding = ((String) _get_4);
-      Object _get_5 = properties.get("sourceCompliance");
-      String sourceCompliance = ((String) _get_5);
-      Object _get_6 = properties.get("targetCompliance");
-      String targetCompliance = ((String) _get_6);
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<target name=\'do-compile\'>");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<delete dir=\"build\" />");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<mkdir dir=\"build/src\" />");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<mkdir dir=\"build/libs\" />");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<mkdir dir=\"build/classes\" />");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<!-- Copy project-libs references -->");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<copy todir=\"build/libs\">");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("<fileset dir=\"externalLibs\">");
-      _builder.newLine();
-      {
-        for(final String s : externalLibs) {
-          _builder.append("\t\t\t");
-          _builder.append("<include name=\"");
-          _builder.append(s, "			");
-          _builder.append("\"/>");
-          _builder.newLineIfNotEmpty();
-        }
+      for(final String s : config.externalLibs) {
+        _builder.append("\t\t\t");
+        _builder.append("<include name=\"");
+        _builder.append(s, "			");
+        _builder.append("\"/>");
+        _builder.newLineIfNotEmpty();
       }
-      _builder.append("\t\t");
-      _builder.append("</fileset>");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("</copy>");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<!-- Copy project references -->");
-      _builder.newLine();
-      {
-        for(final String s_1 : projectRefs) {
-          _builder.append("\t");
-          _builder.append("<copy todir=\"build/src\">");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fileset dir=\"projectRefs/");
-          _builder.append(s_1, "		");
-          _builder.append("\">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t\t");
-          _builder.append("<include name=\"**/*\"/>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("</fileset>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("</copy>");
-          _builder.newLine();
-        }
-      }
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<!-- Copy project sources itself -->");
-      _builder.newLine();
-      {
-        for(final String s_2 : projectSourceDirs) {
-          _builder.append("\t");
-          _builder.append("<copy todir=\"build/src\">");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fileset dir=\"project/");
-          _builder.append(s_2, "		");
-          _builder.append("\">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t\t");
-          _builder.append("<include name=\"**/*\"/>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("</fileset>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("</copy>");
-          _builder.newLine();
-        }
-      }
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<javac includeantruntime=\"false\" source=\"");
-      _builder.append(sourceCompliance, "	");
-      _builder.append("\" target=\"");
-      _builder.append(targetCompliance, "	");
-      _builder.append("\" srcdir=\"build/src\" destdir=\"build/classes\"");
-      {
-        boolean _notEquals = (!Objects.equal(encoding, null));
-        if (_notEquals) {
-          _builder.append(" encoding=\"");
-          _builder.append(encoding, "	");
-          _builder.append("\"");
-        }
-      }
-      _builder.append(">");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t\t");
-      _builder.append("<classpath>");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("<fileset dir=\"build/libs\">");
-      _builder.newLine();
-      _builder.append("\t\t\t\t");
-      _builder.append("<include name=\"*\"/>");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("</fileset>");
-      _builder.newLine();
-      {
-        boolean _notEquals_1 = (!Objects.equal(fxJarPath, null));
-        if (_notEquals_1) {
-          _builder.append("\t\t\t");
-          _builder.append("<filelist>");
-          _builder.newLine();
-          _builder.append("\t\t\t");
-          _builder.append("\t");
-          _builder.append("<file name=\"");
-          _builder.append(fxJarPath, "				");
-          _builder.append("\"/>");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t\t\t");
-          _builder.append("</filelist>");
-          _builder.newLine();
-        }
-      }
-      _builder.append("\t\t");
-      _builder.append("</classpath>");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("</javac>");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<!-- Copy over none Java-Files -->");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("<copy todir=\"build/classes\">");
-      _builder.newLine();
-      {
-        for(final String s_3 : projectSourceDirs) {
-          _builder.append("\t");
-          _builder.append("<fileset dir=\"project/");
-          _builder.append(s_3, "	");
-          _builder.append("\">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<exclude name=\"**/*.java\"/>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("</fileset>");
-          _builder.newLine();
-        }
-      }
-      _builder.append("\t");
-      _builder.append("</copy>");
-      _builder.newLine();
-      _builder.newLine();
-      {
-        for(final String s_4 : projectRefs) {
-          _builder.append("\t");
-          _builder.append("<copy todir=\"build/classes\">");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fileset dir=\"projectRefs/");
-          _builder.append(s_4, "		");
-          _builder.append("\">");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t\t");
-          _builder.append("<exclude name=\"**/*.java\"/>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("</fileset>");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("</copy>");
-          _builder.newLine();
-        }
-      }
-      _builder.newLine();
-      _builder.append("</target>");
-      _builder.newLine();
-      _xblockexpression = (_builder);
     }
-    return _xblockexpression;
+    _builder.append("\t\t");
+    _builder.append("</fileset>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</copy>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<!-- Copy project references -->");
+    _builder.newLine();
+    {
+      for(final String s_1 : config.projectRefSourceDirs) {
+        _builder.append("\t");
+        _builder.append("<copy todir=\"build/src\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<fileset dir=\"projectRefs/");
+        _builder.append(s_1, "		");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<include name=\"**/*\"/>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</fileset>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</copy>");
+        _builder.newLine();
+      }
+    }
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<!-- Copy project sources itself -->");
+    _builder.newLine();
+    {
+      for(final String s_2 : config.projectSourceDirs) {
+        _builder.append("\t");
+        _builder.append("<copy todir=\"build/src\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<fileset dir=\"project/");
+        _builder.append(s_2, "		");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<include name=\"**/*\"/>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</fileset>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</copy>");
+        _builder.newLine();
+      }
+    }
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<javac includeantruntime=\"false\" source=\"");
+    _builder.append(config.sourceCompliance, "	");
+    _builder.append("\" target=\"");
+    _builder.append(config.targetCompliance, "	");
+    _builder.append("\" srcdir=\"build/src\" destdir=\"build/classes\"");
+    {
+      boolean _notEquals = (!Objects.equal(config.projectEncoding, null));
+      if (_notEquals) {
+        _builder.append(" encoding=\"");
+        _builder.append(config.projectEncoding, "	");
+        _builder.append("\"");
+      }
+    }
+    _builder.append(">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("<classpath>");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("<fileset dir=\"build/libs\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("<include name=\"*\"/>");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("</fileset>");
+    _builder.newLine();
+    {
+      boolean _notEquals_1 = (!Objects.equal(config.jfxjar, null));
+      if (_notEquals_1) {
+        _builder.append("\t\t\t");
+        _builder.append("<filelist>");
+        _builder.newLine();
+        _builder.append("\t\t\t");
+        _builder.append("\t");
+        _builder.append("<file name=\"");
+        _builder.append(config.jfxjar, "				");
+        _builder.append("\"/>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t");
+        _builder.append("</filelist>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.append("</classpath>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</javac>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<!-- Copy over none Java-Files -->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<copy todir=\"build/classes\">");
+    _builder.newLine();
+    {
+      for(final String s_3 : config.projectSourceDirs) {
+        _builder.append("\t");
+        _builder.append("<fileset dir=\"project/");
+        _builder.append(s_3, "	");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<exclude name=\"**/*.java\"/>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</fileset>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("</copy>");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      for(final String s_4 : config.projectRefSourceDirs) {
+        _builder.append("\t");
+        _builder.append("<copy todir=\"build/classes\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<fileset dir=\"projectRefs/");
+        _builder.append(s_4, "		");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<exclude name=\"**/*.java\"/>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</fileset>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</copy>");
+        _builder.newLine();
+      }
+    }
+    _builder.newLine();
+    _builder.append("</target>");
+    _builder.newLine();
+    return _builder;
   }
   
   public CharSequence createDoDeployTarget(final AntTask task) {
@@ -802,7 +775,7 @@ public class EMFAntTemplate {
           _builder.newLine();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" embedJNLP=\"");
+          _builder.append("embedJNLP=\"");
           Deploy _deploy_12 = task.getDeploy();
           boolean _isEmbedjnlp = _deploy_12.isEmbedjnlp();
           _builder.append(_isEmbedjnlp, "		");
@@ -810,7 +783,7 @@ public class EMFAntTemplate {
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" extension=\"");
+          _builder.append("extension=\"");
           Deploy _deploy_13 = task.getDeploy();
           boolean _isExtension = _deploy_13.isExtension();
           _builder.append(_isExtension, "		");
@@ -820,26 +793,42 @@ public class EMFAntTemplate {
           _builder.append("\t");
           {
             boolean _and_1 = false;
+            boolean _and_2 = false;
+            boolean _and_3 = false;
             boolean _notEquals_10 = (!Objects.equal(appletWidth, null));
             if (!_notEquals_10) {
-              _and_1 = false;
+              _and_3 = false;
+            } else {
+              int _length = appletWidth.length();
+              boolean _greaterThan = (_length > 0);
+              _and_3 = (_notEquals_10 && _greaterThan);
+            }
+            if (!_and_3) {
+              _and_2 = false;
             } else {
               boolean _notEquals_11 = (!Objects.equal(appletHeight, null));
-              _and_1 = (_notEquals_10 && _notEquals_11);
+              _and_2 = (_and_3 && _notEquals_11);
+            }
+            if (!_and_2) {
+              _and_1 = false;
+            } else {
+              int _length_1 = appletHeight.length();
+              boolean _greaterThan_1 = (_length_1 > 0);
+              _and_1 = (_and_2 && _greaterThan_1);
             }
             if (_and_1) {
               _builder.append("width=\"");
               _builder.append(appletWidth, "		");
               _builder.append("\" height=\"");
               _builder.append(appletHeight, "		");
-              _builder.append(" ");
+              _builder.append("\"");
             }
           }
           _builder.append(" ");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" includeDT=\"");
+          _builder.append("includeDT=\"");
           Deploy _deploy_14 = task.getDeploy();
           boolean _isIncludeDT = _deploy_14.isIncludeDT();
           _builder.append(_isIncludeDT, "		");
@@ -847,7 +836,7 @@ public class EMFAntTemplate {
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" offlineAllowed=\"");
+          _builder.append("offlineAllowed=\"");
           Deploy _deploy_15 = task.getDeploy();
           boolean _isOfflineAllowed = _deploy_15.isOfflineAllowed();
           _builder.append(_isOfflineAllowed, "		");
@@ -855,11 +844,11 @@ public class EMFAntTemplate {
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" outdir=\"${basedir}/deploy\"\"");
+          _builder.append("outdir=\"${basedir}/deploy\"");
           _builder.newLine();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" outfile=\"");
+          _builder.append("outfile=\"");
           _builder.append(projectName, "		");
           _builder.append("\" ");
           {
@@ -867,7 +856,6 @@ public class EMFAntTemplate {
               _builder.append("nativeBundles=\"all\"");
             }
           }
-          _builder.append("\">");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
@@ -910,27 +898,28 @@ public class EMFAntTemplate {
               Deploy _deploy_21 = task.getDeploy();
               String _updatemode_1 = _deploy_21.getUpdatemode();
               _builder.append(_updatemode_1, "		");
+              _builder.append("\"");
             }
           }
-          _builder.append(" ");
+          _builder.append(" >");
           _builder.newLineIfNotEmpty();
           _builder.newLine();
           {
-            boolean _and_2 = false;
+            boolean _and_4 = false;
             Deploy _deploy_22 = task.getDeploy();
             Info _info_2 = _deploy_22.getInfo();
             EList<Splash> _splash = _info_2.getSplash();
             boolean _isEmpty = _splash.isEmpty();
             if (!_isEmpty) {
-              _and_2 = false;
+              _and_4 = false;
             } else {
               Deploy _deploy_23 = task.getDeploy();
               Info _info_3 = _deploy_23.getInfo();
               EList<Icon> _icon = _info_3.getIcon();
               boolean _isEmpty_1 = _icon.isEmpty();
-              _and_2 = (_isEmpty && _isEmpty_1);
+              _and_4 = (_isEmpty && _isEmpty_1);
             }
-            if (_and_2) {
+            if (_and_4) {
               _builder.append("\t");
               _builder.append("\t");
               _builder.append("<fx:info title=\"");

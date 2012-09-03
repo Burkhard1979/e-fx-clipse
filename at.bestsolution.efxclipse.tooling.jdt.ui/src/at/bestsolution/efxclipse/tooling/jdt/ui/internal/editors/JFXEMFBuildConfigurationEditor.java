@@ -209,10 +209,12 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksFactory;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.IconType;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersFactory;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.outline.PropertyContentOutlinePage;
@@ -614,6 +616,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 		}
 		catch ( Exception e ) {
 			if ( !properties.isEmpty() ) {
+				// TODO show this in a progressmonitor
 				// This is an old properties file -> transform to EMF/XMI
 				task = AntTasksFactory.eINSTANCE.createAntTask();
 				task.setBuildDirectory( properties.getProperty( JFXBuildConfigurationEditor.MAPPING.get( JFXBuildConfigurationEditor.BUILD_DIRECTORY ) ) );
@@ -665,6 +668,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					System.err.println( o + "|" + properties.get( o ) );
 				}
 				editingDomain.getResourceSet().getResources().get( 0 ).getContents().add( 0, task );
+				doSave( new NullProgressMonitor() );
 			}
 			else {
 				throw new UnsupportedOperationException( "Could not read file" );
@@ -680,6 +684,10 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 	 * @generated
 	 */
 	private void createModel() {
+		// Initialize the model, this is important for the class loader.
+		AntTasksPackage.eINSTANCE.eClass();
+		ParametersPackage.eINSTANCE.eClass();
+		
 		URI resourceURI = EditUIUtil.getURI( getEditorInput() );
 		Exception exception = null;
 		Resource resource = null;
@@ -1064,19 +1072,26 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 					@Override
 					public void linkActivated( HyperlinkEvent e ) {
-						try {
-							if ( "generateAndRun".equals( e.getHref() ) ) {
-								IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
-								hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.export", null );
-							}
-							else {
-								IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
-								hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.generateAnt", null );
-							}
+						if ( isDirty() ) {
+							MessageDialog.openError( form.getShell(), "Error", "Unsaved changes in build configuration" );
 						}
-						catch ( Exception e1 ) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+						else {
+
+							IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
+							final String command;
+							try {
+								if ( "generateAndRun".equals( e.getHref() ) ) {
+									command = "at.bestsolution.efxclipse.tooling.jdt.ui.export";
+								}
+								else {
+									command = "at.bestsolution.efxclipse.tooling.jdt.ui.generateAnt";
+								}
+								hs.executeCommand( command, null );
+							}
+							catch ( Exception e1 ) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 						}
 					}
 				} );

@@ -1425,6 +1425,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 		return super.getAdapter( adapter );
 	}
 
+	@Deprecated
 	public static class BuildPropertyBean {
 		private PropertyChangeSupport support = new PropertyChangeSupport( this );
 		private Properties properties;
