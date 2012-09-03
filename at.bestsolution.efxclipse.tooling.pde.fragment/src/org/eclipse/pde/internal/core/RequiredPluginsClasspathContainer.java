@@ -297,6 +297,9 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 			if( cp.isActiveFor(desc) ) {
 				for( Contribution c : cp.getContributions(desc) ) {
 					IClasspathAttribute[] attributes = new IClasspathAttribute[0];
+					if( c.jarLocation == null ) {
+						continue;
+					}
 					
 					if( c.attributes == null ) {
 						if( c.javaDocLocation != null ) {
