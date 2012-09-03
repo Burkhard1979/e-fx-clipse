@@ -121,7 +121,8 @@ public class CssExtDocParser {
 			String rule = "syntax = " +translateRule(property.getRule()) + "<br>";
 			String javadoc =  prepareDoku(property.getDoku());
 			String defaultVal = property.getDefault()==null?"":"default = " + property.getDefault() + "<br>";
-			return "<p style=\"background:rgba(255,255,255,0.7);\">" + rule + "</p>"  + defaultVal + javadoc;
+			// TODO complete defaultvalue at language level and add here
+			return "<p style=\"background:rgba(255,255,255,0.7);\">" + rule + "</p>"  + javadoc;
 		}
 		return "no documentation found";
 	}
