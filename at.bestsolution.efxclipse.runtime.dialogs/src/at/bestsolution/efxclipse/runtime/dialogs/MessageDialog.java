@@ -34,17 +34,17 @@ public class MessageDialog extends Dialog {
 		QUESTION_CANCEL
 	}
 	
-	public enum Question {
+	public enum QuestionResult {
 		YES(0),
 		NO(1);
 		
 		private final int index;
 		
-		private Question(int index) {
+		private QuestionResult(int index) {
 			this.index = index;
 		}
 		
-		static Question fromIndex(int index) {
+		static QuestionResult fromIndex(int index) {
 			if( index == YES.index ) {
 				return YES;
 			} else {
@@ -53,18 +53,18 @@ public class MessageDialog extends Dialog {
 		}
 	}
 	
-	public enum QuestionCancel {
+	public enum QuestionCancelResult {
 		YES(0),
 		NO(1),
 		CANCEL(2);
 		
 		private final int index;
 		
-		private QuestionCancel(int index) {
+		private QuestionCancelResult(int index) {
 			this.index = index;
 		}
 		
-		static QuestionCancel fromIndex(int index) {
+		static QuestionCancelResult fromIndex(int index) {
 			if( index == YES.index ) {
 				return YES;
 			} else if( index == NO.index ) {
@@ -75,17 +75,17 @@ public class MessageDialog extends Dialog {
 		}
 	}
 	
-	public enum Confirm {
+	public enum ConfirmResult {
 		OK(0),
 		CANCEL(1);
 		
 		private final int index;
 		
-		private Confirm(int index) {
+		private ConfirmResult(int index) {
 			this.index = index;
 		}
 		
-		static Confirm fromIndex(int index) {
+		static ConfirmResult fromIndex(int index) {
 			if( index == OK.index ) {
 				return OK;
 			} else {
@@ -98,7 +98,7 @@ public class MessageDialog extends Dialog {
 	private final String message;
 	private final String[] dialogButtonLabels;
 	
-	public MessageDialog(Window parent, String windowTitle, String message, Type type, String... dialogButtonLabels) {
+	public MessageDialog(Window parent, String windowTitle, String message, Type type, int defaultButton, String... dialogButtonLabels) {
 		super(parent, windowTitle);
 		this.type = type;
 		this.message = message;
@@ -123,10 +123,16 @@ public class MessageDialog extends Dialog {
 	}
 	
 	@Override
+	protected boolean isDefault(int buttonId) {
+		// TODO Auto-generated method stub
+		return super.isDefault(buttonId);
+	}
+	
+	@Override
 	protected List<Button> createButtonsForBar() {
 		List<Button> rv = new ArrayList<Button>();
 		for( int i = 0; i < dialogButtonLabels.length; i++ ) {
-			rv.add(createButtonForBar(i,dialogButtonLabels[i]));
+			rv.add(createButtonForBar(i,dialogButtonLabels[i], isDefault(i)));
 		}
 		return rv;
 	}
@@ -177,26 +183,52 @@ public class MessageDialog extends Dialog {
 	}
 	
 	public static void openErrorDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.ERROR, "Ok").open();
+		new MessageDialog(parent, title, message, Type.ERROR, 0, "Ok").open();
 	}
 	
 	public static void openWarningDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.WARNING, "Ok").open();
+		new MessageDialog(parent, title, message, Type.WARNING, 0, "Ok").open();
 	}
 	
 	public static void openInformationDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.INFORMATION, "Ok").open();
+		new MessageDialog(parent, title, message, Type.INFORMATION, 0, "Ok").open();
 	}
 	
-	public static Question openQuestionDialog(Window parent, String title, String message) {
-		return Question.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, "Yes", "No").open());
+	public static QuestionResult openQuestionDialog(Window parent, String title, String message) {
+		return openQuestionDialog(parent, title, message, QuestionResult.YES);
 	}
 	
-	public static QuestionCancel openQuestionCancelDialog(Window parent, String title, String message) {
-		return QuestionCancel.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, "Yes", "No", "Cancel").open());
+	public static QuestionResult openQuestionDialog(Window parent, String title, String message, QuestionResult defaultValue) {
+		return QuestionResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, defaultValue == QuestionResult.YES ? 0 : 1, "Yes", "No").open());
 	}
 	
-	public static Confirm openConfirmDialog(Window parent, String title, String message) {
-		return Confirm.fromIndex(new MessageDialog(parent, title, message, Type.CONFIRM, "Ok", "Cancel").open());
+	public static QuestionCancelResult openQuestionCancelDialog(Window parent, String title, String message) {
+		return openQuestionCancelDialog(parent, title, message, QuestionCancelResult.YES);
+	}
+	
+	public static QuestionCancelResult openQuestionCancelDialog(Window parent, String title, String message, QuestionCancelResult defaultValue) {
+		int idx;
+		
+		switch (defaultValue) {
+		case CANCEL:
+			idx = 2;
+			break;
+		case NO:
+			idx = 1;
+			break;
+		default:
+			idx = 0;
+			break;
+		}
+		
+		return QuestionCancelResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, idx, "Yes", "No", "Cancel").open());
+	}
+	
+	public static ConfirmResult openConfirmDialog(Window parent, String title, String message) {
+		return openConfirmDialog(parent, title, message, ConfirmResult.OK);
+	}
+	
+	public static ConfirmResult openConfirmDialog(Window parent, String title, String message, ConfirmResult defaultValue) {
+		return ConfirmResult.fromIndex(new MessageDialog(parent, title, message, Type.CONFIRM, defaultValue == ConfirmResult.OK ? 0 : 1, "Ok", "Cancel").open());
 	}
 }
