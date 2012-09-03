@@ -231,6 +231,11 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 		return (LW) getPresentationEngine().createGui(pm);
 	}
 	
+	@SuppressWarnings("unchecked")
+	protected <LW extends WWidget<PM>, PM extends MUIElement> LW engineCreateWidget(PM pm, IEclipseContext context) {
+		return (LW) getPresentationEngine().createGui(pm,null,context);
+	}
+	
 	protected IEclipseContext getRenderingContext(M element) {
 		return (IEclipseContext) element.getTransientData().get(RENDERING_CONTEXT_KEY);
 	}

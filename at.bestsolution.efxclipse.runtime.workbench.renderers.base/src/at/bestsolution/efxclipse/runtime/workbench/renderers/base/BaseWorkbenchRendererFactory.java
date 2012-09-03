@@ -10,6 +10,9 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
+import java.util.HashMap;
+import java.util.Set;
+
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
@@ -17,6 +20,7 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
@@ -29,6 +33,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
+import org.eclipse.e4.ui.workbench.UIEvents.UIElement;
 import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRenderer;
@@ -36,6 +41,8 @@ import at.bestsolution.efxclipse.runtime.workbench.base.rendering.RendererFactor
 
 @SuppressWarnings("restriction")
 public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
+	public static final String SHARED_ELEMENTS_MAP = "EFX.RENDERING.SHARED_ELEMENTS_MAP";
+	
 	private IEclipseContext context;
 	
 	private BaseWindowRenderer<?> windowRenderer;
@@ -57,6 +64,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
 		this.context = context.createChild();
 		this.context.set(RendererFactory.class, this);
+		this.context.set(SHARED_ELEMENTS_MAP, new HashMap<UIElement, Set<MPlaceholder>>());
 	}
 	
 	@SuppressWarnings("unchecked")
