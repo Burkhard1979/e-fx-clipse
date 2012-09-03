@@ -42,6 +42,7 @@ public class CssExtManager implements ICssExtManager {
 	}
 	
 	public void registerExtenstion(URI uri) {
+		System.err.println("loading " + uri);
 		ResourceSet rs = new ResourceSetImpl();
 		Resource resource = rs.getResource(FixedExtensions.JavaFX2.uri, true);
 		CssExtension model = (CssExtension) resource.getContents().get(0);
@@ -78,6 +79,23 @@ public class CssExtManager implements ICssExtManager {
 		else return search.get(0);
 	}
 	
+	@Override
+	public List<PropertyDefinition> findAllProperties() {
+		load();
+		List<PropertyDefinition> defs = new SearchHelper(model).findPropertiesByFilter(new PropertyDefinitionFilter() {
+			
+			@Override
+			public boolean returnOnFirstHit() {
+				return false;
+			}
+			
+			@Override
+			public boolean filter(PropertyDefinition def) {
+				return true;
+			}
+		});
+		return defs;
+	}
 	
 	@Override
 	public ElementDefinition findElementByName(final String elName) {

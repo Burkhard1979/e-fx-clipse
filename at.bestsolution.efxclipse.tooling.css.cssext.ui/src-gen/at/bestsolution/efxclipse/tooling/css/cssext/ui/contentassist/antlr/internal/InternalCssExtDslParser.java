@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalCssExtDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_WS", "RULE_JDOC", "RULE_INT", "RULE_DOUBLE", "RULE_PSEUDO", "RULE_REGEX", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ANY_OTHER", "'*'", "'+'", "'?'", "'import'", "'.'", "'package'", "'{'", "'}'", "'('", "'->'", "')'", "'extends'", "','", "';'", "'default:'", "'<'", "'>'", "'='", "'|'", "'||'", "'['", "']'", "'int'", "'double'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_WS", "RULE_JDOC", "RULE_INT", "RULE_DOUBLE", "RULE_PSEUDO", "RULE_REGEX", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ANY_OTHER", "'*'", "'+'", "'?'", "','", "'%'", "'import'", "'.'", "'package'", "'{'", "'}'", "'('", "'->'", "')'", "'extends'", "';'", "'default:'", "'<'", "'>'", "'='", "'|'", "'||'", "'['", "']'", "'int'", "'double'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -57,6 +57,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     public static final int T__17=17;
     public static final int T__37=37;
     public static final int T__38=38;
+    public static final int T__39=39;
     public static final int RULE_INT=7;
     public static final int RULE_JDOC=6;
     public static final int RULE_WS=5;
@@ -2515,13 +2516,13 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             int alt2=4;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==37) ) {
+            if ( (LA2_0==38) ) {
                 int LA2_1 = input.LA(2);
 
-                if ( (LA2_1==EOF||(LA2_1>=RULE_ID && LA2_1<=RULE_WS)||LA2_1==RULE_INT||LA2_1==RULE_REGEX||(LA2_1>=15 && LA2_1<=17)||LA2_1==25||(LA2_1>=27 && LA2_1<=30)||(LA2_1>=33 && LA2_1<=38)) ) {
+                if ( (LA2_1==EOF||(LA2_1>=RULE_ID && LA2_1<=RULE_WS)||LA2_1==RULE_INT||LA2_1==RULE_REGEX||(LA2_1>=15 && LA2_1<=19)||LA2_1==27||(LA2_1>=29 && LA2_1<=31)||(LA2_1>=34 && LA2_1<=39)) ) {
                     alt2=3;
                 }
-                else if ( (LA2_1==23) ) {
+                else if ( (LA2_1==25) ) {
                     alt2=1;
                 }
                 else {
@@ -2532,14 +2533,14 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
                     throw nvae;
                 }
             }
-            else if ( (LA2_0==38) ) {
+            else if ( (LA2_0==39) ) {
                 int LA2_2 = input.LA(2);
 
-                if ( (LA2_2==EOF||(LA2_2>=RULE_ID && LA2_2<=RULE_WS)||LA2_2==RULE_INT||LA2_2==RULE_REGEX||(LA2_2>=15 && LA2_2<=17)||LA2_2==25||(LA2_2>=27 && LA2_2<=30)||(LA2_2>=33 && LA2_2<=38)) ) {
-                    alt2=4;
-                }
-                else if ( (LA2_2==23) ) {
+                if ( (LA2_2==25) ) {
                     alt2=2;
+                }
+                else if ( (LA2_2==EOF||(LA2_2>=RULE_ID && LA2_2<=RULE_WS)||LA2_2==RULE_INT||LA2_2==RULE_REGEX||(LA2_2>=15 && LA2_2<=19)||LA2_2==27||(LA2_2>=29 && LA2_2<=31)||(LA2_2>=34 && LA2_2<=39)) ) {
+                    alt2=4;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -2824,17 +2825,17 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==RULE_INT||LA4_0==RULE_REGEX||LA4_0==27||LA4_0==30||LA4_0==35||(LA4_0>=37 && LA4_0<=38)) ) {
+            if ( (LA4_0==RULE_INT||LA4_0==RULE_REGEX||(LA4_0>=18 && LA4_0<=19)||LA4_0==31||LA4_0==36||(LA4_0>=38 && LA4_0<=39)) ) {
                 alt4=1;
             }
             else if ( (LA4_0==RULE_ID) ) {
                 int LA4_2 = input.LA(2);
 
-                if ( (LA4_2==RULE_ID||LA4_2==RULE_INT||LA4_2==RULE_REGEX||(LA4_2>=15 && LA4_2<=17)||(LA4_2>=27 && LA4_2<=28)||LA4_2==30||(LA4_2>=33 && LA4_2<=35)||(LA4_2>=37 && LA4_2<=38)) ) {
-                    alt4=1;
-                }
-                else if ( (LA4_2==23) ) {
+                if ( (LA4_2==25) ) {
                     alt4=2;
+                }
+                else if ( (LA4_2==RULE_ID||LA4_2==RULE_INT||LA4_2==RULE_REGEX||(LA4_2>=15 && LA4_2<=19)||LA4_2==29||LA4_2==31||(LA4_2>=34 && LA4_2<=36)||(LA4_2>=38 && LA4_2<=39)) ) {
+                    alt4=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -3045,12 +3046,12 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1029:1: ( ( ruleCSSRuleRef ) | ( ruleCSSRuleBracket ) | ( ruleCSSRuleLiteral ) | ( ruleCSSRuleSymbol ) | ( ruleCSSBaseType ) | ( ruleCSSRuleRegex ) | ( ( rule__CSSRulePrimary__Group_6__0 ) ) )
             int alt6=7;
             switch ( input.LA(1) ) {
-            case 30:
+            case 31:
                 {
                 alt6=1;
                 }
                 break;
-            case 35:
+            case 36:
                 {
                 alt6=2;
                 }
@@ -3060,13 +3061,14 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
                 alt6=3;
                 }
                 break;
-            case 27:
+            case 18:
+            case 19:
                 {
                 alt6=4;
                 }
                 break;
-            case 37:
             case 38:
+            case 39:
                 {
                 alt6=5;
                 }
@@ -3274,58 +3276,138 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__CSSRulePrimary__Alternatives"
 
 
-    // $ANTLR start "rule__CSSDefaultValue__Alternatives"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1077:1: rule__CSSDefaultValue__Alternatives : ( ( ( rule__CSSDefaultValue__Group_0__0 ) ) | ( ( rule__CSSDefaultValue__IvalAssignment_1 ) ) | ( ( rule__CSSDefaultValue__DvalAssignment_2 ) ) | ( ( rule__CSSDefaultValue__SvalAssignment_3 ) ) );
-    public final void rule__CSSDefaultValue__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__CSSRuleSymbol__SymbolAlternatives_1_0"
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1077:1: rule__CSSRuleSymbol__SymbolAlternatives_1_0 : ( ( ',' ) | ( '%' ) );
+    public final void rule__CSSRuleSymbol__SymbolAlternatives_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1081:1: ( ( ( rule__CSSDefaultValue__Group_0__0 ) ) | ( ( rule__CSSDefaultValue__IvalAssignment_1 ) ) | ( ( rule__CSSDefaultValue__DvalAssignment_2 ) ) | ( ( rule__CSSDefaultValue__SvalAssignment_3 ) ) )
-            int alt7=4;
-            switch ( input.LA(1) ) {
-            case RULE_ID:
-                {
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1081:1: ( ( ',' ) | ( '%' ) )
+            int alt7=2;
+            int LA7_0 = input.LA(1);
+
+            if ( (LA7_0==18) ) {
                 alt7=1;
-                }
-                break;
-            case RULE_INT:
-                {
+            }
+            else if ( (LA7_0==19) ) {
                 alt7=2;
-                }
-                break;
-            case RULE_DOUBLE:
-                {
-                alt7=3;
-                }
-                break;
-            case RULE_STRING:
-                {
-                alt7=4;
-                }
-                break;
-            default:
+            }
+            else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
             }
-
             switch (alt7) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1082:1: ( ( rule__CSSDefaultValue__Group_0__0 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1082:1: ( ',' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1082:1: ( ( rule__CSSDefaultValue__Group_0__0 ) )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1083:1: ( rule__CSSDefaultValue__Group_0__0 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1082:1: ( ',' )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1083:1: ','
+                    {
+                    if ( state.backtracking==0 ) {
+                       before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0()); 
+                    }
+                    match(input,18,FOLLOW_18_in_rule__CSSRuleSymbol__SymbolAlternatives_1_02211); if (state.failed) return ;
+                    if ( state.backtracking==0 ) {
+                       after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0()); 
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1090:6: ( '%' )
+                    {
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1090:6: ( '%' )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1091:1: '%'
+                    {
+                    if ( state.backtracking==0 ) {
+                       before(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1()); 
+                    }
+                    match(input,19,FOLLOW_19_in_rule__CSSRuleSymbol__SymbolAlternatives_1_02231); if (state.failed) return ;
+                    if ( state.backtracking==0 ) {
+                       after(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1()); 
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CSSRuleSymbol__SymbolAlternatives_1_0"
+
+
+    // $ANTLR start "rule__CSSDefaultValue__Alternatives"
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1103:1: rule__CSSDefaultValue__Alternatives : ( ( ( rule__CSSDefaultValue__Group_0__0 ) ) | ( ( rule__CSSDefaultValue__IvalAssignment_1 ) ) | ( ( rule__CSSDefaultValue__DvalAssignment_2 ) ) | ( ( rule__CSSDefaultValue__SvalAssignment_3 ) ) );
+    public final void rule__CSSDefaultValue__Alternatives() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1107:1: ( ( ( rule__CSSDefaultValue__Group_0__0 ) ) | ( ( rule__CSSDefaultValue__IvalAssignment_1 ) ) | ( ( rule__CSSDefaultValue__DvalAssignment_2 ) ) | ( ( rule__CSSDefaultValue__SvalAssignment_3 ) ) )
+            int alt8=4;
+            switch ( input.LA(1) ) {
+            case RULE_ID:
+                {
+                alt8=1;
+                }
+                break;
+            case RULE_INT:
+                {
+                alt8=2;
+                }
+                break;
+            case RULE_DOUBLE:
+                {
+                alt8=3;
+                }
+                break;
+            case RULE_STRING:
+                {
+                alt8=4;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return ;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 8, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt8) {
+                case 1 :
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1108:1: ( ( rule__CSSDefaultValue__Group_0__0 ) )
+                    {
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1108:1: ( ( rule__CSSDefaultValue__Group_0__0 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1109:1: ( rule__CSSDefaultValue__Group_0__0 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCSSDefaultValueAccess().getGroup_0()); 
                     }
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1084:1: ( rule__CSSDefaultValue__Group_0__0 )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1084:2: rule__CSSDefaultValue__Group_0__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1110:1: ( rule__CSSDefaultValue__Group_0__0 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1110:2: rule__CSSDefaultValue__Group_0__0
                     {
-                    pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__0_in_rule__CSSDefaultValue__Alternatives2210);
+                    pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__0_in_rule__CSSDefaultValue__Alternatives2265);
                     rule__CSSDefaultValue__Group_0__0();
 
                     state._fsp--;
@@ -3343,18 +3425,18 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
                     }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1088:6: ( ( rule__CSSDefaultValue__IvalAssignment_1 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1114:6: ( ( rule__CSSDefaultValue__IvalAssignment_1 ) )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1088:6: ( ( rule__CSSDefaultValue__IvalAssignment_1 ) )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1089:1: ( rule__CSSDefaultValue__IvalAssignment_1 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1114:6: ( ( rule__CSSDefaultValue__IvalAssignment_1 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1115:1: ( rule__CSSDefaultValue__IvalAssignment_1 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCSSDefaultValueAccess().getIvalAssignment_1()); 
                     }
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1090:1: ( rule__CSSDefaultValue__IvalAssignment_1 )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1090:2: rule__CSSDefaultValue__IvalAssignment_1
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1116:1: ( rule__CSSDefaultValue__IvalAssignment_1 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1116:2: rule__CSSDefaultValue__IvalAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__CSSDefaultValue__IvalAssignment_1_in_rule__CSSDefaultValue__Alternatives2228);
+                    pushFollow(FOLLOW_rule__CSSDefaultValue__IvalAssignment_1_in_rule__CSSDefaultValue__Alternatives2283);
                     rule__CSSDefaultValue__IvalAssignment_1();
 
                     state._fsp--;
@@ -3372,18 +3454,18 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
                     }
                     break;
                 case 3 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1094:6: ( ( rule__CSSDefaultValue__DvalAssignment_2 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1120:6: ( ( rule__CSSDefaultValue__DvalAssignment_2 ) )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1094:6: ( ( rule__CSSDefaultValue__DvalAssignment_2 ) )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1095:1: ( rule__CSSDefaultValue__DvalAssignment_2 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1120:6: ( ( rule__CSSDefaultValue__DvalAssignment_2 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1121:1: ( rule__CSSDefaultValue__DvalAssignment_2 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCSSDefaultValueAccess().getDvalAssignment_2()); 
                     }
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1096:1: ( rule__CSSDefaultValue__DvalAssignment_2 )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1096:2: rule__CSSDefaultValue__DvalAssignment_2
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1122:1: ( rule__CSSDefaultValue__DvalAssignment_2 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1122:2: rule__CSSDefaultValue__DvalAssignment_2
                     {
-                    pushFollow(FOLLOW_rule__CSSDefaultValue__DvalAssignment_2_in_rule__CSSDefaultValue__Alternatives2246);
+                    pushFollow(FOLLOW_rule__CSSDefaultValue__DvalAssignment_2_in_rule__CSSDefaultValue__Alternatives2301);
                     rule__CSSDefaultValue__DvalAssignment_2();
 
                     state._fsp--;
@@ -3401,18 +3483,18 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
                     }
                     break;
                 case 4 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1100:6: ( ( rule__CSSDefaultValue__SvalAssignment_3 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1126:6: ( ( rule__CSSDefaultValue__SvalAssignment_3 ) )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1100:6: ( ( rule__CSSDefaultValue__SvalAssignment_3 ) )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1101:1: ( rule__CSSDefaultValue__SvalAssignment_3 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1126:6: ( ( rule__CSSDefaultValue__SvalAssignment_3 ) )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1127:1: ( rule__CSSDefaultValue__SvalAssignment_3 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCSSDefaultValueAccess().getSvalAssignment_3()); 
                     }
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1102:1: ( rule__CSSDefaultValue__SvalAssignment_3 )
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1102:2: rule__CSSDefaultValue__SvalAssignment_3
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1128:1: ( rule__CSSDefaultValue__SvalAssignment_3 )
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1128:2: rule__CSSDefaultValue__SvalAssignment_3
                     {
-                    pushFollow(FOLLOW_rule__CSSDefaultValue__SvalAssignment_3_in_rule__CSSDefaultValue__Alternatives2264);
+                    pushFollow(FOLLOW_rule__CSSDefaultValue__SvalAssignment_3_in_rule__CSSDefaultValue__Alternatives2319);
                     rule__CSSDefaultValue__SvalAssignment_3();
 
                     state._fsp--;
@@ -3447,21 +3529,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CssExtension__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1113:1: rule__CssExtension__Group__0 : rule__CssExtension__Group__0__Impl rule__CssExtension__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1139:1: rule__CssExtension__Group__0 : rule__CssExtension__Group__0__Impl rule__CssExtension__Group__1 ;
     public final void rule__CssExtension__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1117:1: ( rule__CssExtension__Group__0__Impl rule__CssExtension__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1118:2: rule__CssExtension__Group__0__Impl rule__CssExtension__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1143:1: ( rule__CssExtension__Group__0__Impl rule__CssExtension__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1144:2: rule__CssExtension__Group__0__Impl rule__CssExtension__Group__1
             {
-            pushFollow(FOLLOW_rule__CssExtension__Group__0__Impl_in_rule__CssExtension__Group__02295);
+            pushFollow(FOLLOW_rule__CssExtension__Group__0__Impl_in_rule__CssExtension__Group__02350);
             rule__CssExtension__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CssExtension__Group__1_in_rule__CssExtension__Group__02298);
+            pushFollow(FOLLOW_rule__CssExtension__Group__1_in_rule__CssExtension__Group__02353);
             rule__CssExtension__Group__1();
 
             state._fsp--;
@@ -3485,37 +3567,37 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CssExtension__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1125:1: rule__CssExtension__Group__0__Impl : ( ( rule__CssExtension__ImportsAssignment_0 )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1151:1: rule__CssExtension__Group__0__Impl : ( ( rule__CssExtension__ImportsAssignment_0 )* ) ;
     public final void rule__CssExtension__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1129:1: ( ( ( rule__CssExtension__ImportsAssignment_0 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1130:1: ( ( rule__CssExtension__ImportsAssignment_0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1155:1: ( ( ( rule__CssExtension__ImportsAssignment_0 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1156:1: ( ( rule__CssExtension__ImportsAssignment_0 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1130:1: ( ( rule__CssExtension__ImportsAssignment_0 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1131:1: ( rule__CssExtension__ImportsAssignment_0 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1156:1: ( ( rule__CssExtension__ImportsAssignment_0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1157:1: ( rule__CssExtension__ImportsAssignment_0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCssExtensionAccess().getImportsAssignment_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1132:1: ( rule__CssExtension__ImportsAssignment_0 )*
-            loop8:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1158:1: ( rule__CssExtension__ImportsAssignment_0 )*
+            loop9:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( (LA8_0==18) ) {
-                    alt8=1;
+                if ( (LA9_0==20) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt9) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1132:2: rule__CssExtension__ImportsAssignment_0
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1158:2: rule__CssExtension__ImportsAssignment_0
             	    {
-            	    pushFollow(FOLLOW_rule__CssExtension__ImportsAssignment_0_in_rule__CssExtension__Group__0__Impl2325);
+            	    pushFollow(FOLLOW_rule__CssExtension__ImportsAssignment_0_in_rule__CssExtension__Group__0__Impl2380);
             	    rule__CssExtension__ImportsAssignment_0();
 
             	    state._fsp--;
@@ -3525,7 +3607,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop9;
                 }
             } while (true);
 
@@ -3554,16 +3636,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CssExtension__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1142:1: rule__CssExtension__Group__1 : rule__CssExtension__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1168:1: rule__CssExtension__Group__1 : rule__CssExtension__Group__1__Impl ;
     public final void rule__CssExtension__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1146:1: ( rule__CssExtension__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1147:2: rule__CssExtension__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1172:1: ( rule__CssExtension__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1173:2: rule__CssExtension__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CssExtension__Group__1__Impl_in_rule__CssExtension__Group__12356);
+            pushFollow(FOLLOW_rule__CssExtension__Group__1__Impl_in_rule__CssExtension__Group__12411);
             rule__CssExtension__Group__1__Impl();
 
             state._fsp--;
@@ -3587,33 +3669,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CssExtension__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1153:1: rule__CssExtension__Group__1__Impl : ( ( rule__CssExtension__PackageDefAssignment_1 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1179:1: rule__CssExtension__Group__1__Impl : ( ( rule__CssExtension__PackageDefAssignment_1 )? ) ;
     public final void rule__CssExtension__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1157:1: ( ( ( rule__CssExtension__PackageDefAssignment_1 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1158:1: ( ( rule__CssExtension__PackageDefAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1183:1: ( ( ( rule__CssExtension__PackageDefAssignment_1 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1184:1: ( ( rule__CssExtension__PackageDefAssignment_1 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1158:1: ( ( rule__CssExtension__PackageDefAssignment_1 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1159:1: ( rule__CssExtension__PackageDefAssignment_1 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1184:1: ( ( rule__CssExtension__PackageDefAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1185:1: ( rule__CssExtension__PackageDefAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCssExtensionAccess().getPackageDefAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1160:1: ( rule__CssExtension__PackageDefAssignment_1 )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1186:1: ( rule__CssExtension__PackageDefAssignment_1 )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA9_0==20) ) {
-                alt9=1;
+            if ( (LA10_0==22) ) {
+                alt10=1;
             }
-            switch (alt9) {
+            switch (alt10) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1160:2: rule__CssExtension__PackageDefAssignment_1
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1186:2: rule__CssExtension__PackageDefAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__CssExtension__PackageDefAssignment_1_in_rule__CssExtension__Group__1__Impl2383);
+                    pushFollow(FOLLOW_rule__CssExtension__PackageDefAssignment_1_in_rule__CssExtension__Group__1__Impl2438);
                     rule__CssExtension__PackageDefAssignment_1();
 
                     state._fsp--;
@@ -3649,21 +3731,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Import__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1174:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1200:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
     public final void rule__Import__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1178:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1179:2: rule__Import__Group__0__Impl rule__Import__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1204:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1205:2: rule__Import__Group__0__Impl rule__Import__Group__1
             {
-            pushFollow(FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__02418);
+            pushFollow(FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__02473);
             rule__Import__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Import__Group__1_in_rule__Import__Group__02421);
+            pushFollow(FOLLOW_rule__Import__Group__1_in_rule__Import__Group__02476);
             rule__Import__Group__1();
 
             state._fsp--;
@@ -3687,22 +3769,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Import__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1186:1: rule__Import__Group__0__Impl : ( 'import' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1212:1: rule__Import__Group__0__Impl : ( 'import' ) ;
     public final void rule__Import__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1190:1: ( ( 'import' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1191:1: ( 'import' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1216:1: ( ( 'import' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1217:1: ( 'import' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1191:1: ( 'import' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1192:1: 'import'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1217:1: ( 'import' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1218:1: 'import'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportKeyword_0()); 
             }
-            match(input,18,FOLLOW_18_in_rule__Import__Group__0__Impl2449); if (state.failed) return ;
+            match(input,20,FOLLOW_20_in_rule__Import__Group__0__Impl2504); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getImportAccess().getImportKeyword_0()); 
             }
@@ -3728,16 +3810,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Import__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1205:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1231:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
     public final void rule__Import__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1209:1: ( rule__Import__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1210:2: rule__Import__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1235:1: ( rule__Import__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1236:2: rule__Import__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__12480);
+            pushFollow(FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__12535);
             rule__Import__Group__1__Impl();
 
             state._fsp--;
@@ -3761,25 +3843,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Import__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1216:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1242:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
     public final void rule__Import__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1220:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1221:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1246:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1247:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1221:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1222:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1247:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1248:1: ( rule__Import__ImportedNamespaceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1223:1: ( rule__Import__ImportedNamespaceAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1223:2: rule__Import__ImportedNamespaceAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1249:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1249:2: rule__Import__ImportedNamespaceAssignment_1
             {
-            pushFollow(FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl2507);
+            pushFollow(FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl2562);
             rule__Import__ImportedNamespaceAssignment_1();
 
             state._fsp--;
@@ -3812,21 +3894,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1237:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1263:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
     public final void rule__QualifiedName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1241:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1242:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1267:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1268:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__02541);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__02596);
             rule__QualifiedName__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__02544);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__02599);
             rule__QualifiedName__Group__1();
 
             state._fsp--;
@@ -3850,22 +3932,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1249:1: rule__QualifiedName__Group__0__Impl : ( ruleValidID ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1275:1: rule__QualifiedName__Group__0__Impl : ( ruleValidID ) ;
     public final void rule__QualifiedName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1253:1: ( ( ruleValidID ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1254:1: ( ruleValidID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1279:1: ( ( ruleValidID ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1280:1: ( ruleValidID )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1254:1: ( ruleValidID )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1255:1: ruleValidID
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1280:1: ( ruleValidID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1281:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl2571);
+            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl2626);
             ruleValidID();
 
             state._fsp--;
@@ -3895,16 +3977,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1266:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1292:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
     public final void rule__QualifiedName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1270:1: ( rule__QualifiedName__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1271:2: rule__QualifiedName__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1296:1: ( rule__QualifiedName__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1297:2: rule__QualifiedName__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__12600);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__12655);
             rule__QualifiedName__Group__1__Impl();
 
             state._fsp--;
@@ -3928,43 +4010,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1277:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1303:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
     public final void rule__QualifiedName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1281:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1282:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1307:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1308:1: ( ( rule__QualifiedName__Group_1__0 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1282:1: ( ( rule__QualifiedName__Group_1__0 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1283:1: ( rule__QualifiedName__Group_1__0 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1308:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1309:1: ( rule__QualifiedName__Group_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getGroup_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1284:1: ( rule__QualifiedName__Group_1__0 )*
-            loop10:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1310:1: ( rule__QualifiedName__Group_1__0 )*
+            loop11:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA10_0==19) ) {
-                    int LA10_2 = input.LA(2);
+                if ( (LA11_0==21) ) {
+                    int LA11_2 = input.LA(2);
 
-                    if ( (LA10_2==RULE_ID) ) {
-                        alt10=1;
+                    if ( (LA11_2==RULE_ID) ) {
+                        alt11=1;
                     }
 
 
                 }
 
 
-                switch (alt10) {
+                switch (alt11) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1284:2: rule__QualifiedName__Group_1__0
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1310:2: rule__QualifiedName__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl2627);
+            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl2682);
             	    rule__QualifiedName__Group_1__0();
 
             	    state._fsp--;
@@ -3974,7 +4056,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop11;
                 }
             } while (true);
 
@@ -4003,21 +4085,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1298:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1324:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
     public final void rule__QualifiedName__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1302:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1303:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1328:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1329:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__02662);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__02717);
             rule__QualifiedName__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__02665);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__02720);
             rule__QualifiedName__Group_1__1();
 
             state._fsp--;
@@ -4041,25 +4123,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1310:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1336:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
     public final void rule__QualifiedName__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1314:1: ( ( ( '.' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1315:1: ( ( '.' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1340:1: ( ( ( '.' ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1341:1: ( ( '.' ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1315:1: ( ( '.' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1316:1: ( '.' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1341:1: ( ( '.' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1342:1: ( '.' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1317:1: ( '.' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1318:2: '.'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1343:1: ( '.' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1344:2: '.'
             {
-            match(input,19,FOLLOW_19_in_rule__QualifiedName__Group_1__0__Impl2694); if (state.failed) return ;
+            match(input,21,FOLLOW_21_in_rule__QualifiedName__Group_1__0__Impl2749); if (state.failed) return ;
 
             }
 
@@ -4088,16 +4170,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1329:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1355:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
     public final void rule__QualifiedName__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1333:1: ( rule__QualifiedName__Group_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1334:2: rule__QualifiedName__Group_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1359:1: ( rule__QualifiedName__Group_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1360:2: rule__QualifiedName__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__12726);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__12781);
             rule__QualifiedName__Group_1__1__Impl();
 
             state._fsp--;
@@ -4121,22 +4203,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1340:1: rule__QualifiedName__Group_1__1__Impl : ( ruleValidID ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1366:1: rule__QualifiedName__Group_1__1__Impl : ( ruleValidID ) ;
     public final void rule__QualifiedName__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1344:1: ( ( ruleValidID ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1345:1: ( ruleValidID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1370:1: ( ( ruleValidID ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1371:1: ( ruleValidID )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1345:1: ( ruleValidID )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1346:1: ruleValidID
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1371:1: ( ruleValidID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1372:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl2753);
+            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl2808);
             ruleValidID();
 
             state._fsp--;
@@ -4166,21 +4248,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1361:1: rule__QualifiedNameWithWildCard__Group__0 : rule__QualifiedNameWithWildCard__Group__0__Impl rule__QualifiedNameWithWildCard__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1387:1: rule__QualifiedNameWithWildCard__Group__0 : rule__QualifiedNameWithWildCard__Group__0__Impl rule__QualifiedNameWithWildCard__Group__1 ;
     public final void rule__QualifiedNameWithWildCard__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1365:1: ( rule__QualifiedNameWithWildCard__Group__0__Impl rule__QualifiedNameWithWildCard__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1366:2: rule__QualifiedNameWithWildCard__Group__0__Impl rule__QualifiedNameWithWildCard__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1391:1: ( rule__QualifiedNameWithWildCard__Group__0__Impl rule__QualifiedNameWithWildCard__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1392:2: rule__QualifiedNameWithWildCard__Group__0__Impl rule__QualifiedNameWithWildCard__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group__0__Impl_in_rule__QualifiedNameWithWildCard__Group__02786);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group__0__Impl_in_rule__QualifiedNameWithWildCard__Group__02841);
             rule__QualifiedNameWithWildCard__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group__1_in_rule__QualifiedNameWithWildCard__Group__02789);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group__1_in_rule__QualifiedNameWithWildCard__Group__02844);
             rule__QualifiedNameWithWildCard__Group__1();
 
             state._fsp--;
@@ -4204,22 +4286,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1373:1: rule__QualifiedNameWithWildCard__Group__0__Impl : ( ruleQualifiedName ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1399:1: rule__QualifiedNameWithWildCard__Group__0__Impl : ( ruleQualifiedName ) ;
     public final void rule__QualifiedNameWithWildCard__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1377:1: ( ( ruleQualifiedName ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1378:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1403:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1404:1: ( ruleQualifiedName )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1378:1: ( ruleQualifiedName )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1379:1: ruleQualifiedName
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1404:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1405:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildCardAccess().getQualifiedNameParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildCard__Group__0__Impl2816);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildCard__Group__0__Impl2871);
             ruleQualifiedName();
 
             state._fsp--;
@@ -4249,16 +4331,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1390:1: rule__QualifiedNameWithWildCard__Group__1 : rule__QualifiedNameWithWildCard__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1416:1: rule__QualifiedNameWithWildCard__Group__1 : rule__QualifiedNameWithWildCard__Group__1__Impl ;
     public final void rule__QualifiedNameWithWildCard__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1394:1: ( rule__QualifiedNameWithWildCard__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1395:2: rule__QualifiedNameWithWildCard__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1420:1: ( rule__QualifiedNameWithWildCard__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1421:2: rule__QualifiedNameWithWildCard__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group__1__Impl_in_rule__QualifiedNameWithWildCard__Group__12845);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group__1__Impl_in_rule__QualifiedNameWithWildCard__Group__12900);
             rule__QualifiedNameWithWildCard__Group__1__Impl();
 
             state._fsp--;
@@ -4282,33 +4364,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1401:1: rule__QualifiedNameWithWildCard__Group__1__Impl : ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1427:1: rule__QualifiedNameWithWildCard__Group__1__Impl : ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? ) ;
     public final void rule__QualifiedNameWithWildCard__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1405:1: ( ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1406:1: ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1431:1: ( ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1432:1: ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1406:1: ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1407:1: ( rule__QualifiedNameWithWildCard__Group_1__0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1432:1: ( ( rule__QualifiedNameWithWildCard__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1433:1: ( rule__QualifiedNameWithWildCard__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1408:1: ( rule__QualifiedNameWithWildCard__Group_1__0 )?
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1434:1: ( rule__QualifiedNameWithWildCard__Group_1__0 )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA11_0==19) ) {
-                alt11=1;
+            if ( (LA12_0==21) ) {
+                alt12=1;
             }
-            switch (alt11) {
+            switch (alt12) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1408:2: rule__QualifiedNameWithWildCard__Group_1__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1434:2: rule__QualifiedNameWithWildCard__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0_in_rule__QualifiedNameWithWildCard__Group__1__Impl2872);
+                    pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0_in_rule__QualifiedNameWithWildCard__Group__1__Impl2927);
                     rule__QualifiedNameWithWildCard__Group_1__0();
 
                     state._fsp--;
@@ -4344,21 +4426,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1422:1: rule__QualifiedNameWithWildCard__Group_1__0 : rule__QualifiedNameWithWildCard__Group_1__0__Impl rule__QualifiedNameWithWildCard__Group_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1448:1: rule__QualifiedNameWithWildCard__Group_1__0 : rule__QualifiedNameWithWildCard__Group_1__0__Impl rule__QualifiedNameWithWildCard__Group_1__1 ;
     public final void rule__QualifiedNameWithWildCard__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1426:1: ( rule__QualifiedNameWithWildCard__Group_1__0__Impl rule__QualifiedNameWithWildCard__Group_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1427:2: rule__QualifiedNameWithWildCard__Group_1__0__Impl rule__QualifiedNameWithWildCard__Group_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1452:1: ( rule__QualifiedNameWithWildCard__Group_1__0__Impl rule__QualifiedNameWithWildCard__Group_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1453:2: rule__QualifiedNameWithWildCard__Group_1__0__Impl rule__QualifiedNameWithWildCard__Group_1__1
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0__Impl_in_rule__QualifiedNameWithWildCard__Group_1__02907);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0__Impl_in_rule__QualifiedNameWithWildCard__Group_1__02962);
             rule__QualifiedNameWithWildCard__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1_in_rule__QualifiedNameWithWildCard__Group_1__02910);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1_in_rule__QualifiedNameWithWildCard__Group_1__02965);
             rule__QualifiedNameWithWildCard__Group_1__1();
 
             state._fsp--;
@@ -4382,22 +4464,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1434:1: rule__QualifiedNameWithWildCard__Group_1__0__Impl : ( '.' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1460:1: rule__QualifiedNameWithWildCard__Group_1__0__Impl : ( '.' ) ;
     public final void rule__QualifiedNameWithWildCard__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1438:1: ( ( '.' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1439:1: ( '.' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1464:1: ( ( '.' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1465:1: ( '.' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1439:1: ( '.' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1440:1: '.'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1465:1: ( '.' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1466:1: '.'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildCardAccess().getFullStopKeyword_1_0()); 
             }
-            match(input,19,FOLLOW_19_in_rule__QualifiedNameWithWildCard__Group_1__0__Impl2938); if (state.failed) return ;
+            match(input,21,FOLLOW_21_in_rule__QualifiedNameWithWildCard__Group_1__0__Impl2993); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameWithWildCardAccess().getFullStopKeyword_1_0()); 
             }
@@ -4423,16 +4505,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1453:1: rule__QualifiedNameWithWildCard__Group_1__1 : rule__QualifiedNameWithWildCard__Group_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1479:1: rule__QualifiedNameWithWildCard__Group_1__1 : rule__QualifiedNameWithWildCard__Group_1__1__Impl ;
     public final void rule__QualifiedNameWithWildCard__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1457:1: ( rule__QualifiedNameWithWildCard__Group_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1458:2: rule__QualifiedNameWithWildCard__Group_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1483:1: ( rule__QualifiedNameWithWildCard__Group_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1484:2: rule__QualifiedNameWithWildCard__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1__Impl_in_rule__QualifiedNameWithWildCard__Group_1__12969);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1__Impl_in_rule__QualifiedNameWithWildCard__Group_1__13024);
             rule__QualifiedNameWithWildCard__Group_1__1__Impl();
 
             state._fsp--;
@@ -4456,22 +4538,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__QualifiedNameWithWildCard__Group_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1464:1: rule__QualifiedNameWithWildCard__Group_1__1__Impl : ( '*' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1490:1: rule__QualifiedNameWithWildCard__Group_1__1__Impl : ( '*' ) ;
     public final void rule__QualifiedNameWithWildCard__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1468:1: ( ( '*' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1469:1: ( '*' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1494:1: ( ( '*' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1495:1: ( '*' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1469:1: ( '*' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1470:1: '*'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1495:1: ( '*' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1496:1: '*'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildCardAccess().getAsteriskKeyword_1_1()); 
             }
-            match(input,15,FOLLOW_15_in_rule__QualifiedNameWithWildCard__Group_1__1__Impl2997); if (state.failed) return ;
+            match(input,15,FOLLOW_15_in_rule__QualifiedNameWithWildCard__Group_1__1__Impl3052); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameWithWildCardAccess().getAsteriskKeyword_1_1()); 
             }
@@ -4497,21 +4579,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1487:1: rule__PackageDefinition__Group__0 : rule__PackageDefinition__Group__0__Impl rule__PackageDefinition__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1513:1: rule__PackageDefinition__Group__0 : rule__PackageDefinition__Group__0__Impl rule__PackageDefinition__Group__1 ;
     public final void rule__PackageDefinition__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1491:1: ( rule__PackageDefinition__Group__0__Impl rule__PackageDefinition__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1492:2: rule__PackageDefinition__Group__0__Impl rule__PackageDefinition__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1517:1: ( rule__PackageDefinition__Group__0__Impl rule__PackageDefinition__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1518:2: rule__PackageDefinition__Group__0__Impl rule__PackageDefinition__Group__1
             {
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__0__Impl_in_rule__PackageDefinition__Group__03032);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__0__Impl_in_rule__PackageDefinition__Group__03087);
             rule__PackageDefinition__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__1_in_rule__PackageDefinition__Group__03035);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__1_in_rule__PackageDefinition__Group__03090);
             rule__PackageDefinition__Group__1();
 
             state._fsp--;
@@ -4535,22 +4617,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1499:1: rule__PackageDefinition__Group__0__Impl : ( 'package' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1525:1: rule__PackageDefinition__Group__0__Impl : ( 'package' ) ;
     public final void rule__PackageDefinition__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1503:1: ( ( 'package' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1504:1: ( 'package' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1529:1: ( ( 'package' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1530:1: ( 'package' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1504:1: ( 'package' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1505:1: 'package'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1530:1: ( 'package' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1531:1: 'package'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getPackageKeyword_0()); 
             }
-            match(input,20,FOLLOW_20_in_rule__PackageDefinition__Group__0__Impl3063); if (state.failed) return ;
+            match(input,22,FOLLOW_22_in_rule__PackageDefinition__Group__0__Impl3118); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPackageDefinitionAccess().getPackageKeyword_0()); 
             }
@@ -4576,21 +4658,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1518:1: rule__PackageDefinition__Group__1 : rule__PackageDefinition__Group__1__Impl rule__PackageDefinition__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1544:1: rule__PackageDefinition__Group__1 : rule__PackageDefinition__Group__1__Impl rule__PackageDefinition__Group__2 ;
     public final void rule__PackageDefinition__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1522:1: ( rule__PackageDefinition__Group__1__Impl rule__PackageDefinition__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1523:2: rule__PackageDefinition__Group__1__Impl rule__PackageDefinition__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1548:1: ( rule__PackageDefinition__Group__1__Impl rule__PackageDefinition__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1549:2: rule__PackageDefinition__Group__1__Impl rule__PackageDefinition__Group__2
             {
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__1__Impl_in_rule__PackageDefinition__Group__13094);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__1__Impl_in_rule__PackageDefinition__Group__13149);
             rule__PackageDefinition__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__2_in_rule__PackageDefinition__Group__13097);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__2_in_rule__PackageDefinition__Group__13152);
             rule__PackageDefinition__Group__2();
 
             state._fsp--;
@@ -4614,25 +4696,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1530:1: rule__PackageDefinition__Group__1__Impl : ( ( rule__PackageDefinition__NameAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1556:1: rule__PackageDefinition__Group__1__Impl : ( ( rule__PackageDefinition__NameAssignment_1 ) ) ;
     public final void rule__PackageDefinition__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1534:1: ( ( ( rule__PackageDefinition__NameAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1535:1: ( ( rule__PackageDefinition__NameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1560:1: ( ( ( rule__PackageDefinition__NameAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1561:1: ( ( rule__PackageDefinition__NameAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1535:1: ( ( rule__PackageDefinition__NameAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1536:1: ( rule__PackageDefinition__NameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1561:1: ( ( rule__PackageDefinition__NameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1562:1: ( rule__PackageDefinition__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getNameAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1537:1: ( rule__PackageDefinition__NameAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1537:2: rule__PackageDefinition__NameAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1563:1: ( rule__PackageDefinition__NameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1563:2: rule__PackageDefinition__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__PackageDefinition__NameAssignment_1_in_rule__PackageDefinition__Group__1__Impl3124);
+            pushFollow(FOLLOW_rule__PackageDefinition__NameAssignment_1_in_rule__PackageDefinition__Group__1__Impl3179);
             rule__PackageDefinition__NameAssignment_1();
 
             state._fsp--;
@@ -4665,21 +4747,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1547:1: rule__PackageDefinition__Group__2 : rule__PackageDefinition__Group__2__Impl rule__PackageDefinition__Group__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1573:1: rule__PackageDefinition__Group__2 : rule__PackageDefinition__Group__2__Impl rule__PackageDefinition__Group__3 ;
     public final void rule__PackageDefinition__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1551:1: ( rule__PackageDefinition__Group__2__Impl rule__PackageDefinition__Group__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1552:2: rule__PackageDefinition__Group__2__Impl rule__PackageDefinition__Group__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1577:1: ( rule__PackageDefinition__Group__2__Impl rule__PackageDefinition__Group__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1578:2: rule__PackageDefinition__Group__2__Impl rule__PackageDefinition__Group__3
             {
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__2__Impl_in_rule__PackageDefinition__Group__23154);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__2__Impl_in_rule__PackageDefinition__Group__23209);
             rule__PackageDefinition__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__3_in_rule__PackageDefinition__Group__23157);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__3_in_rule__PackageDefinition__Group__23212);
             rule__PackageDefinition__Group__3();
 
             state._fsp--;
@@ -4703,22 +4785,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1559:1: rule__PackageDefinition__Group__2__Impl : ( '{' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1585:1: rule__PackageDefinition__Group__2__Impl : ( '{' ) ;
     public final void rule__PackageDefinition__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1563:1: ( ( '{' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1564:1: ( '{' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1589:1: ( ( '{' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1590:1: ( '{' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1564:1: ( '{' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1565:1: '{'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1590:1: ( '{' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1591:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,21,FOLLOW_21_in_rule__PackageDefinition__Group__2__Impl3185); if (state.failed) return ;
+            match(input,23,FOLLOW_23_in_rule__PackageDefinition__Group__2__Impl3240); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPackageDefinitionAccess().getLeftCurlyBracketKeyword_2()); 
             }
@@ -4744,21 +4826,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1578:1: rule__PackageDefinition__Group__3 : rule__PackageDefinition__Group__3__Impl rule__PackageDefinition__Group__4 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1604:1: rule__PackageDefinition__Group__3 : rule__PackageDefinition__Group__3__Impl rule__PackageDefinition__Group__4 ;
     public final void rule__PackageDefinition__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1582:1: ( rule__PackageDefinition__Group__3__Impl rule__PackageDefinition__Group__4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1583:2: rule__PackageDefinition__Group__3__Impl rule__PackageDefinition__Group__4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1608:1: ( rule__PackageDefinition__Group__3__Impl rule__PackageDefinition__Group__4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1609:2: rule__PackageDefinition__Group__3__Impl rule__PackageDefinition__Group__4
             {
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__3__Impl_in_rule__PackageDefinition__Group__33216);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__3__Impl_in_rule__PackageDefinition__Group__33271);
             rule__PackageDefinition__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__4_in_rule__PackageDefinition__Group__33219);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__4_in_rule__PackageDefinition__Group__33274);
             rule__PackageDefinition__Group__4();
 
             state._fsp--;
@@ -4782,37 +4864,37 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1590:1: rule__PackageDefinition__Group__3__Impl : ( ( rule__PackageDefinition__Alternatives_3 )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1616:1: rule__PackageDefinition__Group__3__Impl : ( ( rule__PackageDefinition__Alternatives_3 )* ) ;
     public final void rule__PackageDefinition__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1594:1: ( ( ( rule__PackageDefinition__Alternatives_3 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1595:1: ( ( rule__PackageDefinition__Alternatives_3 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1620:1: ( ( ( rule__PackageDefinition__Alternatives_3 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1621:1: ( ( rule__PackageDefinition__Alternatives_3 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1595:1: ( ( rule__PackageDefinition__Alternatives_3 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1596:1: ( rule__PackageDefinition__Alternatives_3 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1621:1: ( ( rule__PackageDefinition__Alternatives_3 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1622:1: ( rule__PackageDefinition__Alternatives_3 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getAlternatives_3()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1597:1: ( rule__PackageDefinition__Alternatives_3 )*
-            loop12:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1623:1: ( rule__PackageDefinition__Alternatives_3 )*
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA12_0==RULE_ID||LA12_0==RULE_JDOC||LA12_0==20) ) {
-                    alt12=1;
+                if ( (LA13_0==RULE_ID||LA13_0==RULE_JDOC||LA13_0==22) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1597:2: rule__PackageDefinition__Alternatives_3
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1623:2: rule__PackageDefinition__Alternatives_3
             	    {
-            	    pushFollow(FOLLOW_rule__PackageDefinition__Alternatives_3_in_rule__PackageDefinition__Group__3__Impl3246);
+            	    pushFollow(FOLLOW_rule__PackageDefinition__Alternatives_3_in_rule__PackageDefinition__Group__3__Impl3301);
             	    rule__PackageDefinition__Alternatives_3();
 
             	    state._fsp--;
@@ -4822,7 +4904,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop13;
                 }
             } while (true);
 
@@ -4851,16 +4933,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1607:1: rule__PackageDefinition__Group__4 : rule__PackageDefinition__Group__4__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1633:1: rule__PackageDefinition__Group__4 : rule__PackageDefinition__Group__4__Impl ;
     public final void rule__PackageDefinition__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1611:1: ( rule__PackageDefinition__Group__4__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1612:2: rule__PackageDefinition__Group__4__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1637:1: ( rule__PackageDefinition__Group__4__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1638:2: rule__PackageDefinition__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__PackageDefinition__Group__4__Impl_in_rule__PackageDefinition__Group__43277);
+            pushFollow(FOLLOW_rule__PackageDefinition__Group__4__Impl_in_rule__PackageDefinition__Group__43332);
             rule__PackageDefinition__Group__4__Impl();
 
             state._fsp--;
@@ -4884,22 +4966,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__Group__4__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1618:1: rule__PackageDefinition__Group__4__Impl : ( '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1644:1: rule__PackageDefinition__Group__4__Impl : ( '}' ) ;
     public final void rule__PackageDefinition__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1622:1: ( ( '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1623:1: ( '}' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1648:1: ( ( '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1649:1: ( '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1623:1: ( '}' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1624:1: '}'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1649:1: ( '}' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1650:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,22,FOLLOW_22_in_rule__PackageDefinition__Group__4__Impl3305); if (state.failed) return ;
+            match(input,24,FOLLOW_24_in_rule__PackageDefinition__Group__4__Impl3360); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPackageDefinitionAccess().getRightCurlyBracketKeyword_4()); 
             }
@@ -4925,21 +5007,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1647:1: rule__CSSType__Group_0__0 : rule__CSSType__Group_0__0__Impl rule__CSSType__Group_0__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1673:1: rule__CSSType__Group_0__0 : rule__CSSType__Group_0__0__Impl rule__CSSType__Group_0__1 ;
     public final void rule__CSSType__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1651:1: ( rule__CSSType__Group_0__0__Impl rule__CSSType__Group_0__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1652:2: rule__CSSType__Group_0__0__Impl rule__CSSType__Group_0__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1677:1: ( rule__CSSType__Group_0__0__Impl rule__CSSType__Group_0__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1678:2: rule__CSSType__Group_0__0__Impl rule__CSSType__Group_0__1
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__0__Impl_in_rule__CSSType__Group_0__03346);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__0__Impl_in_rule__CSSType__Group_0__03401);
             rule__CSSType__Group_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__1_in_rule__CSSType__Group_0__03349);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__1_in_rule__CSSType__Group_0__03404);
             rule__CSSType__Group_0__1();
 
             state._fsp--;
@@ -4963,23 +5045,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1659:1: rule__CSSType__Group_0__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1685:1: rule__CSSType__Group_0__0__Impl : ( () ) ;
     public final void rule__CSSType__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1663:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1664:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1689:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1690:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1664:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1665:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1690:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1691:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1666:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1668:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1692:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1694:1: 
             {
             }
 
@@ -5004,21 +5086,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1678:1: rule__CSSType__Group_0__1 : rule__CSSType__Group_0__1__Impl rule__CSSType__Group_0__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1704:1: rule__CSSType__Group_0__1 : rule__CSSType__Group_0__1__Impl rule__CSSType__Group_0__2 ;
     public final void rule__CSSType__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1682:1: ( rule__CSSType__Group_0__1__Impl rule__CSSType__Group_0__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1683:2: rule__CSSType__Group_0__1__Impl rule__CSSType__Group_0__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1708:1: ( rule__CSSType__Group_0__1__Impl rule__CSSType__Group_0__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1709:2: rule__CSSType__Group_0__1__Impl rule__CSSType__Group_0__2
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__1__Impl_in_rule__CSSType__Group_0__13407);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__1__Impl_in_rule__CSSType__Group_0__13462);
             rule__CSSType__Group_0__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__2_in_rule__CSSType__Group_0__13410);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__2_in_rule__CSSType__Group_0__13465);
             rule__CSSType__Group_0__2();
 
             state._fsp--;
@@ -5042,25 +5124,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1690:1: rule__CSSType__Group_0__1__Impl : ( ( rule__CSSType__TypeAssignment_0_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1716:1: rule__CSSType__Group_0__1__Impl : ( ( rule__CSSType__TypeAssignment_0_1 ) ) ;
     public final void rule__CSSType__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1694:1: ( ( ( rule__CSSType__TypeAssignment_0_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1695:1: ( ( rule__CSSType__TypeAssignment_0_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1720:1: ( ( ( rule__CSSType__TypeAssignment_0_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1721:1: ( ( rule__CSSType__TypeAssignment_0_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1695:1: ( ( rule__CSSType__TypeAssignment_0_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1696:1: ( rule__CSSType__TypeAssignment_0_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1721:1: ( ( rule__CSSType__TypeAssignment_0_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1722:1: ( rule__CSSType__TypeAssignment_0_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeAssignment_0_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1697:1: ( rule__CSSType__TypeAssignment_0_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1697:2: rule__CSSType__TypeAssignment_0_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1723:1: ( rule__CSSType__TypeAssignment_0_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1723:2: rule__CSSType__TypeAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_0_1_in_rule__CSSType__Group_0__1__Impl3437);
+            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_0_1_in_rule__CSSType__Group_0__1__Impl3492);
             rule__CSSType__TypeAssignment_0_1();
 
             state._fsp--;
@@ -5093,21 +5175,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1707:1: rule__CSSType__Group_0__2 : rule__CSSType__Group_0__2__Impl rule__CSSType__Group_0__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1733:1: rule__CSSType__Group_0__2 : rule__CSSType__Group_0__2__Impl rule__CSSType__Group_0__3 ;
     public final void rule__CSSType__Group_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1711:1: ( rule__CSSType__Group_0__2__Impl rule__CSSType__Group_0__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1712:2: rule__CSSType__Group_0__2__Impl rule__CSSType__Group_0__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1737:1: ( rule__CSSType__Group_0__2__Impl rule__CSSType__Group_0__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1738:2: rule__CSSType__Group_0__2__Impl rule__CSSType__Group_0__3
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__2__Impl_in_rule__CSSType__Group_0__23467);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__2__Impl_in_rule__CSSType__Group_0__23522);
             rule__CSSType__Group_0__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__3_in_rule__CSSType__Group_0__23470);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__3_in_rule__CSSType__Group_0__23525);
             rule__CSSType__Group_0__3();
 
             state._fsp--;
@@ -5131,22 +5213,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1719:1: rule__CSSType__Group_0__2__Impl : ( '(' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1745:1: rule__CSSType__Group_0__2__Impl : ( '(' ) ;
     public final void rule__CSSType__Group_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1723:1: ( ( '(' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1724:1: ( '(' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1749:1: ( ( '(' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1750:1: ( '(' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1724:1: ( '(' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1725:1: '('
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1750:1: ( '(' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1751:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getLeftParenthesisKeyword_0_2()); 
             }
-            match(input,23,FOLLOW_23_in_rule__CSSType__Group_0__2__Impl3498); if (state.failed) return ;
+            match(input,25,FOLLOW_25_in_rule__CSSType__Group_0__2__Impl3553); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getLeftParenthesisKeyword_0_2()); 
             }
@@ -5172,21 +5254,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1738:1: rule__CSSType__Group_0__3 : rule__CSSType__Group_0__3__Impl rule__CSSType__Group_0__4 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1764:1: rule__CSSType__Group_0__3 : rule__CSSType__Group_0__3__Impl rule__CSSType__Group_0__4 ;
     public final void rule__CSSType__Group_0__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1742:1: ( rule__CSSType__Group_0__3__Impl rule__CSSType__Group_0__4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1743:2: rule__CSSType__Group_0__3__Impl rule__CSSType__Group_0__4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1768:1: ( rule__CSSType__Group_0__3__Impl rule__CSSType__Group_0__4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1769:2: rule__CSSType__Group_0__3__Impl rule__CSSType__Group_0__4
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__3__Impl_in_rule__CSSType__Group_0__33529);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__3__Impl_in_rule__CSSType__Group_0__33584);
             rule__CSSType__Group_0__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__4_in_rule__CSSType__Group_0__33532);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__4_in_rule__CSSType__Group_0__33587);
             rule__CSSType__Group_0__4();
 
             state._fsp--;
@@ -5210,43 +5292,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1750:1: rule__CSSType__Group_0__3__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1776:1: rule__CSSType__Group_0__3__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_0__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1754:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1755:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1780:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1781:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1755:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1756:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1781:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1782:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_0_3()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1757:1: ( RULE_WS )*
-            loop13:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1783:1: ( RULE_WS )*
+            loop14:
             do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-                if ( (LA13_0==RULE_WS) ) {
-                    alt13=1;
+                if ( (LA14_0==RULE_WS) ) {
+                    alt14=1;
                 }
 
 
-                switch (alt13) {
+                switch (alt14) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1757:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1783:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__3__Impl3560); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__3__Impl3615); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop13;
+            	    break loop14;
                 }
             } while (true);
 
@@ -5275,21 +5357,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1767:1: rule__CSSType__Group_0__4 : rule__CSSType__Group_0__4__Impl rule__CSSType__Group_0__5 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1793:1: rule__CSSType__Group_0__4 : rule__CSSType__Group_0__4__Impl rule__CSSType__Group_0__5 ;
     public final void rule__CSSType__Group_0__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1771:1: ( rule__CSSType__Group_0__4__Impl rule__CSSType__Group_0__5 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1772:2: rule__CSSType__Group_0__4__Impl rule__CSSType__Group_0__5
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1797:1: ( rule__CSSType__Group_0__4__Impl rule__CSSType__Group_0__5 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1798:2: rule__CSSType__Group_0__4__Impl rule__CSSType__Group_0__5
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__4__Impl_in_rule__CSSType__Group_0__43591);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__4__Impl_in_rule__CSSType__Group_0__43646);
             rule__CSSType__Group_0__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__5_in_rule__CSSType__Group_0__43594);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__5_in_rule__CSSType__Group_0__43649);
             rule__CSSType__Group_0__5();
 
             state._fsp--;
@@ -5313,25 +5395,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__4__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1779:1: rule__CSSType__Group_0__4__Impl : ( ( rule__CSSType__FromAssignment_0_4 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1805:1: rule__CSSType__Group_0__4__Impl : ( ( rule__CSSType__FromAssignment_0_4 ) ) ;
     public final void rule__CSSType__Group_0__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1783:1: ( ( ( rule__CSSType__FromAssignment_0_4 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1784:1: ( ( rule__CSSType__FromAssignment_0_4 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1809:1: ( ( ( rule__CSSType__FromAssignment_0_4 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1810:1: ( ( rule__CSSType__FromAssignment_0_4 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1784:1: ( ( rule__CSSType__FromAssignment_0_4 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1785:1: ( rule__CSSType__FromAssignment_0_4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1810:1: ( ( rule__CSSType__FromAssignment_0_4 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1811:1: ( rule__CSSType__FromAssignment_0_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getFromAssignment_0_4()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1786:1: ( rule__CSSType__FromAssignment_0_4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1786:2: rule__CSSType__FromAssignment_0_4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1812:1: ( rule__CSSType__FromAssignment_0_4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1812:2: rule__CSSType__FromAssignment_0_4
             {
-            pushFollow(FOLLOW_rule__CSSType__FromAssignment_0_4_in_rule__CSSType__Group_0__4__Impl3621);
+            pushFollow(FOLLOW_rule__CSSType__FromAssignment_0_4_in_rule__CSSType__Group_0__4__Impl3676);
             rule__CSSType__FromAssignment_0_4();
 
             state._fsp--;
@@ -5364,21 +5446,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__5"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1796:1: rule__CSSType__Group_0__5 : rule__CSSType__Group_0__5__Impl rule__CSSType__Group_0__6 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1822:1: rule__CSSType__Group_0__5 : rule__CSSType__Group_0__5__Impl rule__CSSType__Group_0__6 ;
     public final void rule__CSSType__Group_0__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1800:1: ( rule__CSSType__Group_0__5__Impl rule__CSSType__Group_0__6 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1801:2: rule__CSSType__Group_0__5__Impl rule__CSSType__Group_0__6
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1826:1: ( rule__CSSType__Group_0__5__Impl rule__CSSType__Group_0__6 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1827:2: rule__CSSType__Group_0__5__Impl rule__CSSType__Group_0__6
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__5__Impl_in_rule__CSSType__Group_0__53651);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__5__Impl_in_rule__CSSType__Group_0__53706);
             rule__CSSType__Group_0__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__6_in_rule__CSSType__Group_0__53654);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__6_in_rule__CSSType__Group_0__53709);
             rule__CSSType__Group_0__6();
 
             state._fsp--;
@@ -5402,43 +5484,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__5__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1808:1: rule__CSSType__Group_0__5__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1834:1: rule__CSSType__Group_0__5__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_0__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1812:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1813:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1838:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1839:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1813:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1814:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1839:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1840:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_0_5()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1815:1: ( RULE_WS )*
-            loop14:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1841:1: ( RULE_WS )*
+            loop15:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-                if ( (LA14_0==RULE_WS) ) {
-                    alt14=1;
+                if ( (LA15_0==RULE_WS) ) {
+                    alt15=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt15) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1815:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1841:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__5__Impl3682); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__5__Impl3737); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop15;
                 }
             } while (true);
 
@@ -5467,21 +5549,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__6"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1825:1: rule__CSSType__Group_0__6 : rule__CSSType__Group_0__6__Impl rule__CSSType__Group_0__7 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1851:1: rule__CSSType__Group_0__6 : rule__CSSType__Group_0__6__Impl rule__CSSType__Group_0__7 ;
     public final void rule__CSSType__Group_0__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1829:1: ( rule__CSSType__Group_0__6__Impl rule__CSSType__Group_0__7 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1830:2: rule__CSSType__Group_0__6__Impl rule__CSSType__Group_0__7
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1855:1: ( rule__CSSType__Group_0__6__Impl rule__CSSType__Group_0__7 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1856:2: rule__CSSType__Group_0__6__Impl rule__CSSType__Group_0__7
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__6__Impl_in_rule__CSSType__Group_0__63713);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__6__Impl_in_rule__CSSType__Group_0__63768);
             rule__CSSType__Group_0__6__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__7_in_rule__CSSType__Group_0__63716);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__7_in_rule__CSSType__Group_0__63771);
             rule__CSSType__Group_0__7();
 
             state._fsp--;
@@ -5505,22 +5587,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__6__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1837:1: rule__CSSType__Group_0__6__Impl : ( '->' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1863:1: rule__CSSType__Group_0__6__Impl : ( '->' ) ;
     public final void rule__CSSType__Group_0__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1841:1: ( ( '->' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1842:1: ( '->' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1867:1: ( ( '->' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1868:1: ( '->' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1842:1: ( '->' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1843:1: '->'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1868:1: ( '->' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1869:1: '->'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getHyphenMinusGreaterThanSignKeyword_0_6()); 
             }
-            match(input,24,FOLLOW_24_in_rule__CSSType__Group_0__6__Impl3744); if (state.failed) return ;
+            match(input,26,FOLLOW_26_in_rule__CSSType__Group_0__6__Impl3799); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getHyphenMinusGreaterThanSignKeyword_0_6()); 
             }
@@ -5546,21 +5628,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__7"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1856:1: rule__CSSType__Group_0__7 : rule__CSSType__Group_0__7__Impl rule__CSSType__Group_0__8 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1882:1: rule__CSSType__Group_0__7 : rule__CSSType__Group_0__7__Impl rule__CSSType__Group_0__8 ;
     public final void rule__CSSType__Group_0__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1860:1: ( rule__CSSType__Group_0__7__Impl rule__CSSType__Group_0__8 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1861:2: rule__CSSType__Group_0__7__Impl rule__CSSType__Group_0__8
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1886:1: ( rule__CSSType__Group_0__7__Impl rule__CSSType__Group_0__8 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1887:2: rule__CSSType__Group_0__7__Impl rule__CSSType__Group_0__8
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__7__Impl_in_rule__CSSType__Group_0__73775);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__7__Impl_in_rule__CSSType__Group_0__73830);
             rule__CSSType__Group_0__7__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__8_in_rule__CSSType__Group_0__73778);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__8_in_rule__CSSType__Group_0__73833);
             rule__CSSType__Group_0__8();
 
             state._fsp--;
@@ -5584,43 +5666,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__7__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1868:1: rule__CSSType__Group_0__7__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1894:1: rule__CSSType__Group_0__7__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_0__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1872:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1873:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1898:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1899:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1873:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1874:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1899:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1900:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_0_7()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1875:1: ( RULE_WS )*
-            loop15:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1901:1: ( RULE_WS )*
+            loop16:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-                if ( (LA15_0==RULE_WS) ) {
-                    alt15=1;
+                if ( (LA16_0==RULE_WS) ) {
+                    alt16=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt16) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1875:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1901:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__7__Impl3806); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__7__Impl3861); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop16;
                 }
             } while (true);
 
@@ -5649,21 +5731,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__8"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1885:1: rule__CSSType__Group_0__8 : rule__CSSType__Group_0__8__Impl rule__CSSType__Group_0__9 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1911:1: rule__CSSType__Group_0__8 : rule__CSSType__Group_0__8__Impl rule__CSSType__Group_0__9 ;
     public final void rule__CSSType__Group_0__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1889:1: ( rule__CSSType__Group_0__8__Impl rule__CSSType__Group_0__9 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1890:2: rule__CSSType__Group_0__8__Impl rule__CSSType__Group_0__9
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1915:1: ( rule__CSSType__Group_0__8__Impl rule__CSSType__Group_0__9 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1916:2: rule__CSSType__Group_0__8__Impl rule__CSSType__Group_0__9
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__8__Impl_in_rule__CSSType__Group_0__83837);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__8__Impl_in_rule__CSSType__Group_0__83892);
             rule__CSSType__Group_0__8__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__9_in_rule__CSSType__Group_0__83840);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__9_in_rule__CSSType__Group_0__83895);
             rule__CSSType__Group_0__9();
 
             state._fsp--;
@@ -5687,25 +5769,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__8__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1897:1: rule__CSSType__Group_0__8__Impl : ( ( rule__CSSType__ToAssignment_0_8 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1923:1: rule__CSSType__Group_0__8__Impl : ( ( rule__CSSType__ToAssignment_0_8 ) ) ;
     public final void rule__CSSType__Group_0__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1901:1: ( ( ( rule__CSSType__ToAssignment_0_8 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1902:1: ( ( rule__CSSType__ToAssignment_0_8 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1927:1: ( ( ( rule__CSSType__ToAssignment_0_8 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1928:1: ( ( rule__CSSType__ToAssignment_0_8 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1902:1: ( ( rule__CSSType__ToAssignment_0_8 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1903:1: ( rule__CSSType__ToAssignment_0_8 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1928:1: ( ( rule__CSSType__ToAssignment_0_8 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1929:1: ( rule__CSSType__ToAssignment_0_8 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getToAssignment_0_8()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1904:1: ( rule__CSSType__ToAssignment_0_8 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1904:2: rule__CSSType__ToAssignment_0_8
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1930:1: ( rule__CSSType__ToAssignment_0_8 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1930:2: rule__CSSType__ToAssignment_0_8
             {
-            pushFollow(FOLLOW_rule__CSSType__ToAssignment_0_8_in_rule__CSSType__Group_0__8__Impl3867);
+            pushFollow(FOLLOW_rule__CSSType__ToAssignment_0_8_in_rule__CSSType__Group_0__8__Impl3922);
             rule__CSSType__ToAssignment_0_8();
 
             state._fsp--;
@@ -5738,21 +5820,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__9"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1914:1: rule__CSSType__Group_0__9 : rule__CSSType__Group_0__9__Impl rule__CSSType__Group_0__10 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1940:1: rule__CSSType__Group_0__9 : rule__CSSType__Group_0__9__Impl rule__CSSType__Group_0__10 ;
     public final void rule__CSSType__Group_0__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1918:1: ( rule__CSSType__Group_0__9__Impl rule__CSSType__Group_0__10 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1919:2: rule__CSSType__Group_0__9__Impl rule__CSSType__Group_0__10
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1944:1: ( rule__CSSType__Group_0__9__Impl rule__CSSType__Group_0__10 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1945:2: rule__CSSType__Group_0__9__Impl rule__CSSType__Group_0__10
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__9__Impl_in_rule__CSSType__Group_0__93897);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__9__Impl_in_rule__CSSType__Group_0__93952);
             rule__CSSType__Group_0__9__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_0__10_in_rule__CSSType__Group_0__93900);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__10_in_rule__CSSType__Group_0__93955);
             rule__CSSType__Group_0__10();
 
             state._fsp--;
@@ -5776,43 +5858,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__9__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1926:1: rule__CSSType__Group_0__9__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1952:1: rule__CSSType__Group_0__9__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_0__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1930:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1931:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1956:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1957:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1931:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1932:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1957:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1958:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_0_9()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1933:1: ( RULE_WS )*
-            loop16:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1959:1: ( RULE_WS )*
+            loop17:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-                if ( (LA16_0==RULE_WS) ) {
-                    alt16=1;
+                if ( (LA17_0==RULE_WS) ) {
+                    alt17=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt17) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1933:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1959:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__9__Impl3928); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_0__9__Impl3983); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop16;
+            	    break loop17;
                 }
             } while (true);
 
@@ -5841,16 +5923,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__10"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1943:1: rule__CSSType__Group_0__10 : rule__CSSType__Group_0__10__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1969:1: rule__CSSType__Group_0__10 : rule__CSSType__Group_0__10__Impl ;
     public final void rule__CSSType__Group_0__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1947:1: ( rule__CSSType__Group_0__10__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1948:2: rule__CSSType__Group_0__10__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1973:1: ( rule__CSSType__Group_0__10__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1974:2: rule__CSSType__Group_0__10__Impl
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_0__10__Impl_in_rule__CSSType__Group_0__103959);
+            pushFollow(FOLLOW_rule__CSSType__Group_0__10__Impl_in_rule__CSSType__Group_0__104014);
             rule__CSSType__Group_0__10__Impl();
 
             state._fsp--;
@@ -5874,22 +5956,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_0__10__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1954:1: rule__CSSType__Group_0__10__Impl : ( ')' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1980:1: rule__CSSType__Group_0__10__Impl : ( ')' ) ;
     public final void rule__CSSType__Group_0__10__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1958:1: ( ( ')' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1959:1: ( ')' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1984:1: ( ( ')' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1985:1: ( ')' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1959:1: ( ')' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1960:1: ')'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1985:1: ( ')' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1986:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getRightParenthesisKeyword_0_10()); 
             }
-            match(input,25,FOLLOW_25_in_rule__CSSType__Group_0__10__Impl3987); if (state.failed) return ;
+            match(input,27,FOLLOW_27_in_rule__CSSType__Group_0__10__Impl4042); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getRightParenthesisKeyword_0_10()); 
             }
@@ -5915,21 +5997,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1995:1: rule__CSSType__Group_1__0 : rule__CSSType__Group_1__0__Impl rule__CSSType__Group_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2021:1: rule__CSSType__Group_1__0 : rule__CSSType__Group_1__0__Impl rule__CSSType__Group_1__1 ;
     public final void rule__CSSType__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:1999:1: ( rule__CSSType__Group_1__0__Impl rule__CSSType__Group_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2000:2: rule__CSSType__Group_1__0__Impl rule__CSSType__Group_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2025:1: ( rule__CSSType__Group_1__0__Impl rule__CSSType__Group_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2026:2: rule__CSSType__Group_1__0__Impl rule__CSSType__Group_1__1
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__0__Impl_in_rule__CSSType__Group_1__04040);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__0__Impl_in_rule__CSSType__Group_1__04095);
             rule__CSSType__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__1_in_rule__CSSType__Group_1__04043);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__1_in_rule__CSSType__Group_1__04098);
             rule__CSSType__Group_1__1();
 
             state._fsp--;
@@ -5953,23 +6035,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2007:1: rule__CSSType__Group_1__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2033:1: rule__CSSType__Group_1__0__Impl : ( () ) ;
     public final void rule__CSSType__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2011:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2012:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2037:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2038:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2012:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2013:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2038:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2039:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2014:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2016:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2040:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2042:1: 
             {
             }
 
@@ -5994,21 +6076,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2026:1: rule__CSSType__Group_1__1 : rule__CSSType__Group_1__1__Impl rule__CSSType__Group_1__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2052:1: rule__CSSType__Group_1__1 : rule__CSSType__Group_1__1__Impl rule__CSSType__Group_1__2 ;
     public final void rule__CSSType__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2030:1: ( rule__CSSType__Group_1__1__Impl rule__CSSType__Group_1__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2031:2: rule__CSSType__Group_1__1__Impl rule__CSSType__Group_1__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2056:1: ( rule__CSSType__Group_1__1__Impl rule__CSSType__Group_1__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2057:2: rule__CSSType__Group_1__1__Impl rule__CSSType__Group_1__2
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__1__Impl_in_rule__CSSType__Group_1__14101);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__1__Impl_in_rule__CSSType__Group_1__14156);
             rule__CSSType__Group_1__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__2_in_rule__CSSType__Group_1__14104);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__2_in_rule__CSSType__Group_1__14159);
             rule__CSSType__Group_1__2();
 
             state._fsp--;
@@ -6032,25 +6114,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2038:1: rule__CSSType__Group_1__1__Impl : ( ( rule__CSSType__TypeAssignment_1_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2064:1: rule__CSSType__Group_1__1__Impl : ( ( rule__CSSType__TypeAssignment_1_1 ) ) ;
     public final void rule__CSSType__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2042:1: ( ( ( rule__CSSType__TypeAssignment_1_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2043:1: ( ( rule__CSSType__TypeAssignment_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2068:1: ( ( ( rule__CSSType__TypeAssignment_1_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2069:1: ( ( rule__CSSType__TypeAssignment_1_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2043:1: ( ( rule__CSSType__TypeAssignment_1_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2044:1: ( rule__CSSType__TypeAssignment_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2069:1: ( ( rule__CSSType__TypeAssignment_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2070:1: ( rule__CSSType__TypeAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeAssignment_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2045:1: ( rule__CSSType__TypeAssignment_1_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2045:2: rule__CSSType__TypeAssignment_1_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2071:1: ( rule__CSSType__TypeAssignment_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2071:2: rule__CSSType__TypeAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_1_1_in_rule__CSSType__Group_1__1__Impl4131);
+            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_1_1_in_rule__CSSType__Group_1__1__Impl4186);
             rule__CSSType__TypeAssignment_1_1();
 
             state._fsp--;
@@ -6083,21 +6165,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2055:1: rule__CSSType__Group_1__2 : rule__CSSType__Group_1__2__Impl rule__CSSType__Group_1__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2081:1: rule__CSSType__Group_1__2 : rule__CSSType__Group_1__2__Impl rule__CSSType__Group_1__3 ;
     public final void rule__CSSType__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2059:1: ( rule__CSSType__Group_1__2__Impl rule__CSSType__Group_1__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2060:2: rule__CSSType__Group_1__2__Impl rule__CSSType__Group_1__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2085:1: ( rule__CSSType__Group_1__2__Impl rule__CSSType__Group_1__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2086:2: rule__CSSType__Group_1__2__Impl rule__CSSType__Group_1__3
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__2__Impl_in_rule__CSSType__Group_1__24161);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__2__Impl_in_rule__CSSType__Group_1__24216);
             rule__CSSType__Group_1__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__3_in_rule__CSSType__Group_1__24164);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__3_in_rule__CSSType__Group_1__24219);
             rule__CSSType__Group_1__3();
 
             state._fsp--;
@@ -6121,22 +6203,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2067:1: rule__CSSType__Group_1__2__Impl : ( '(' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2093:1: rule__CSSType__Group_1__2__Impl : ( '(' ) ;
     public final void rule__CSSType__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2071:1: ( ( '(' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2072:1: ( '(' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2097:1: ( ( '(' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2098:1: ( '(' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2072:1: ( '(' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2073:1: '('
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2098:1: ( '(' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2099:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getLeftParenthesisKeyword_1_2()); 
             }
-            match(input,23,FOLLOW_23_in_rule__CSSType__Group_1__2__Impl4192); if (state.failed) return ;
+            match(input,25,FOLLOW_25_in_rule__CSSType__Group_1__2__Impl4247); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getLeftParenthesisKeyword_1_2()); 
             }
@@ -6162,21 +6244,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2086:1: rule__CSSType__Group_1__3 : rule__CSSType__Group_1__3__Impl rule__CSSType__Group_1__4 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2112:1: rule__CSSType__Group_1__3 : rule__CSSType__Group_1__3__Impl rule__CSSType__Group_1__4 ;
     public final void rule__CSSType__Group_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2090:1: ( rule__CSSType__Group_1__3__Impl rule__CSSType__Group_1__4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2091:2: rule__CSSType__Group_1__3__Impl rule__CSSType__Group_1__4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2116:1: ( rule__CSSType__Group_1__3__Impl rule__CSSType__Group_1__4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2117:2: rule__CSSType__Group_1__3__Impl rule__CSSType__Group_1__4
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__3__Impl_in_rule__CSSType__Group_1__34223);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__3__Impl_in_rule__CSSType__Group_1__34278);
             rule__CSSType__Group_1__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__4_in_rule__CSSType__Group_1__34226);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__4_in_rule__CSSType__Group_1__34281);
             rule__CSSType__Group_1__4();
 
             state._fsp--;
@@ -6200,43 +6282,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2098:1: rule__CSSType__Group_1__3__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2124:1: rule__CSSType__Group_1__3__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2102:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2103:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2128:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2129:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2103:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2104:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2129:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2130:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_1_3()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2105:1: ( RULE_WS )*
-            loop17:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2131:1: ( RULE_WS )*
+            loop18:
             do {
-                int alt17=2;
-                int LA17_0 = input.LA(1);
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-                if ( (LA17_0==RULE_WS) ) {
-                    alt17=1;
+                if ( (LA18_0==RULE_WS) ) {
+                    alt18=1;
                 }
 
 
-                switch (alt17) {
+                switch (alt18) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2105:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2131:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__3__Impl4254); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__3__Impl4309); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop17;
+            	    break loop18;
                 }
             } while (true);
 
@@ -6265,21 +6347,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2115:1: rule__CSSType__Group_1__4 : rule__CSSType__Group_1__4__Impl rule__CSSType__Group_1__5 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2141:1: rule__CSSType__Group_1__4 : rule__CSSType__Group_1__4__Impl rule__CSSType__Group_1__5 ;
     public final void rule__CSSType__Group_1__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2119:1: ( rule__CSSType__Group_1__4__Impl rule__CSSType__Group_1__5 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2120:2: rule__CSSType__Group_1__4__Impl rule__CSSType__Group_1__5
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2145:1: ( rule__CSSType__Group_1__4__Impl rule__CSSType__Group_1__5 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2146:2: rule__CSSType__Group_1__4__Impl rule__CSSType__Group_1__5
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__4__Impl_in_rule__CSSType__Group_1__44285);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__4__Impl_in_rule__CSSType__Group_1__44340);
             rule__CSSType__Group_1__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__5_in_rule__CSSType__Group_1__44288);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__5_in_rule__CSSType__Group_1__44343);
             rule__CSSType__Group_1__5();
 
             state._fsp--;
@@ -6303,25 +6385,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__4__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2127:1: rule__CSSType__Group_1__4__Impl : ( ( rule__CSSType__FromAssignment_1_4 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2153:1: rule__CSSType__Group_1__4__Impl : ( ( rule__CSSType__FromAssignment_1_4 ) ) ;
     public final void rule__CSSType__Group_1__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2131:1: ( ( ( rule__CSSType__FromAssignment_1_4 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2132:1: ( ( rule__CSSType__FromAssignment_1_4 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2157:1: ( ( ( rule__CSSType__FromAssignment_1_4 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2158:1: ( ( rule__CSSType__FromAssignment_1_4 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2132:1: ( ( rule__CSSType__FromAssignment_1_4 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2133:1: ( rule__CSSType__FromAssignment_1_4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2158:1: ( ( rule__CSSType__FromAssignment_1_4 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2159:1: ( rule__CSSType__FromAssignment_1_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getFromAssignment_1_4()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2134:1: ( rule__CSSType__FromAssignment_1_4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2134:2: rule__CSSType__FromAssignment_1_4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2160:1: ( rule__CSSType__FromAssignment_1_4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2160:2: rule__CSSType__FromAssignment_1_4
             {
-            pushFollow(FOLLOW_rule__CSSType__FromAssignment_1_4_in_rule__CSSType__Group_1__4__Impl4315);
+            pushFollow(FOLLOW_rule__CSSType__FromAssignment_1_4_in_rule__CSSType__Group_1__4__Impl4370);
             rule__CSSType__FromAssignment_1_4();
 
             state._fsp--;
@@ -6354,21 +6436,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__5"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2144:1: rule__CSSType__Group_1__5 : rule__CSSType__Group_1__5__Impl rule__CSSType__Group_1__6 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2170:1: rule__CSSType__Group_1__5 : rule__CSSType__Group_1__5__Impl rule__CSSType__Group_1__6 ;
     public final void rule__CSSType__Group_1__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2148:1: ( rule__CSSType__Group_1__5__Impl rule__CSSType__Group_1__6 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2149:2: rule__CSSType__Group_1__5__Impl rule__CSSType__Group_1__6
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2174:1: ( rule__CSSType__Group_1__5__Impl rule__CSSType__Group_1__6 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2175:2: rule__CSSType__Group_1__5__Impl rule__CSSType__Group_1__6
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__5__Impl_in_rule__CSSType__Group_1__54345);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__5__Impl_in_rule__CSSType__Group_1__54400);
             rule__CSSType__Group_1__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__6_in_rule__CSSType__Group_1__54348);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__6_in_rule__CSSType__Group_1__54403);
             rule__CSSType__Group_1__6();
 
             state._fsp--;
@@ -6392,43 +6474,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__5__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2156:1: rule__CSSType__Group_1__5__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2182:1: rule__CSSType__Group_1__5__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_1__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2160:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2161:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2186:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2187:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2161:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2162:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2187:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2188:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_1_5()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2163:1: ( RULE_WS )*
-            loop18:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2189:1: ( RULE_WS )*
+            loop19:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA18_0==RULE_WS) ) {
-                    alt18=1;
+                if ( (LA19_0==RULE_WS) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt19) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2163:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2189:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__5__Impl4376); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__5__Impl4431); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop19;
                 }
             } while (true);
 
@@ -6457,21 +6539,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__6"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2173:1: rule__CSSType__Group_1__6 : rule__CSSType__Group_1__6__Impl rule__CSSType__Group_1__7 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2199:1: rule__CSSType__Group_1__6 : rule__CSSType__Group_1__6__Impl rule__CSSType__Group_1__7 ;
     public final void rule__CSSType__Group_1__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2177:1: ( rule__CSSType__Group_1__6__Impl rule__CSSType__Group_1__7 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2178:2: rule__CSSType__Group_1__6__Impl rule__CSSType__Group_1__7
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2203:1: ( rule__CSSType__Group_1__6__Impl rule__CSSType__Group_1__7 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2204:2: rule__CSSType__Group_1__6__Impl rule__CSSType__Group_1__7
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__6__Impl_in_rule__CSSType__Group_1__64407);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__6__Impl_in_rule__CSSType__Group_1__64462);
             rule__CSSType__Group_1__6__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__7_in_rule__CSSType__Group_1__64410);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__7_in_rule__CSSType__Group_1__64465);
             rule__CSSType__Group_1__7();
 
             state._fsp--;
@@ -6495,22 +6577,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__6__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2185:1: rule__CSSType__Group_1__6__Impl : ( '->' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2211:1: rule__CSSType__Group_1__6__Impl : ( '->' ) ;
     public final void rule__CSSType__Group_1__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2189:1: ( ( '->' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2190:1: ( '->' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2215:1: ( ( '->' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2216:1: ( '->' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2190:1: ( '->' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2191:1: '->'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2216:1: ( '->' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2217:1: '->'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getHyphenMinusGreaterThanSignKeyword_1_6()); 
             }
-            match(input,24,FOLLOW_24_in_rule__CSSType__Group_1__6__Impl4438); if (state.failed) return ;
+            match(input,26,FOLLOW_26_in_rule__CSSType__Group_1__6__Impl4493); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getHyphenMinusGreaterThanSignKeyword_1_6()); 
             }
@@ -6536,21 +6618,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__7"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2204:1: rule__CSSType__Group_1__7 : rule__CSSType__Group_1__7__Impl rule__CSSType__Group_1__8 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2230:1: rule__CSSType__Group_1__7 : rule__CSSType__Group_1__7__Impl rule__CSSType__Group_1__8 ;
     public final void rule__CSSType__Group_1__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2208:1: ( rule__CSSType__Group_1__7__Impl rule__CSSType__Group_1__8 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2209:2: rule__CSSType__Group_1__7__Impl rule__CSSType__Group_1__8
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2234:1: ( rule__CSSType__Group_1__7__Impl rule__CSSType__Group_1__8 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2235:2: rule__CSSType__Group_1__7__Impl rule__CSSType__Group_1__8
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__7__Impl_in_rule__CSSType__Group_1__74469);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__7__Impl_in_rule__CSSType__Group_1__74524);
             rule__CSSType__Group_1__7__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__8_in_rule__CSSType__Group_1__74472);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__8_in_rule__CSSType__Group_1__74527);
             rule__CSSType__Group_1__8();
 
             state._fsp--;
@@ -6574,43 +6656,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__7__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2216:1: rule__CSSType__Group_1__7__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2242:1: rule__CSSType__Group_1__7__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_1__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2220:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2221:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2246:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2247:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2221:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2222:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2247:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2248:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_1_7()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2223:1: ( RULE_WS )*
-            loop19:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2249:1: ( RULE_WS )*
+            loop20:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt20=2;
+                int LA20_0 = input.LA(1);
 
-                if ( (LA19_0==RULE_WS) ) {
-                    alt19=1;
+                if ( (LA20_0==RULE_WS) ) {
+                    alt20=1;
                 }
 
 
-                switch (alt19) {
+                switch (alt20) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2223:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2249:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__7__Impl4500); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__7__Impl4555); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop20;
                 }
             } while (true);
 
@@ -6639,21 +6721,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__8"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2233:1: rule__CSSType__Group_1__8 : rule__CSSType__Group_1__8__Impl rule__CSSType__Group_1__9 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2259:1: rule__CSSType__Group_1__8 : rule__CSSType__Group_1__8__Impl rule__CSSType__Group_1__9 ;
     public final void rule__CSSType__Group_1__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2237:1: ( rule__CSSType__Group_1__8__Impl rule__CSSType__Group_1__9 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2238:2: rule__CSSType__Group_1__8__Impl rule__CSSType__Group_1__9
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2263:1: ( rule__CSSType__Group_1__8__Impl rule__CSSType__Group_1__9 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2264:2: rule__CSSType__Group_1__8__Impl rule__CSSType__Group_1__9
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__8__Impl_in_rule__CSSType__Group_1__84531);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__8__Impl_in_rule__CSSType__Group_1__84586);
             rule__CSSType__Group_1__8__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__9_in_rule__CSSType__Group_1__84534);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__9_in_rule__CSSType__Group_1__84589);
             rule__CSSType__Group_1__9();
 
             state._fsp--;
@@ -6677,25 +6759,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__8__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2245:1: rule__CSSType__Group_1__8__Impl : ( ( rule__CSSType__ToAssignment_1_8 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2271:1: rule__CSSType__Group_1__8__Impl : ( ( rule__CSSType__ToAssignment_1_8 ) ) ;
     public final void rule__CSSType__Group_1__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2249:1: ( ( ( rule__CSSType__ToAssignment_1_8 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2250:1: ( ( rule__CSSType__ToAssignment_1_8 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2275:1: ( ( ( rule__CSSType__ToAssignment_1_8 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2276:1: ( ( rule__CSSType__ToAssignment_1_8 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2250:1: ( ( rule__CSSType__ToAssignment_1_8 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2251:1: ( rule__CSSType__ToAssignment_1_8 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2276:1: ( ( rule__CSSType__ToAssignment_1_8 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2277:1: ( rule__CSSType__ToAssignment_1_8 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getToAssignment_1_8()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2252:1: ( rule__CSSType__ToAssignment_1_8 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2252:2: rule__CSSType__ToAssignment_1_8
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2278:1: ( rule__CSSType__ToAssignment_1_8 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2278:2: rule__CSSType__ToAssignment_1_8
             {
-            pushFollow(FOLLOW_rule__CSSType__ToAssignment_1_8_in_rule__CSSType__Group_1__8__Impl4561);
+            pushFollow(FOLLOW_rule__CSSType__ToAssignment_1_8_in_rule__CSSType__Group_1__8__Impl4616);
             rule__CSSType__ToAssignment_1_8();
 
             state._fsp--;
@@ -6728,21 +6810,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__9"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2262:1: rule__CSSType__Group_1__9 : rule__CSSType__Group_1__9__Impl rule__CSSType__Group_1__10 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2288:1: rule__CSSType__Group_1__9 : rule__CSSType__Group_1__9__Impl rule__CSSType__Group_1__10 ;
     public final void rule__CSSType__Group_1__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2266:1: ( rule__CSSType__Group_1__9__Impl rule__CSSType__Group_1__10 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2267:2: rule__CSSType__Group_1__9__Impl rule__CSSType__Group_1__10
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2292:1: ( rule__CSSType__Group_1__9__Impl rule__CSSType__Group_1__10 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2293:2: rule__CSSType__Group_1__9__Impl rule__CSSType__Group_1__10
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__9__Impl_in_rule__CSSType__Group_1__94591);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__9__Impl_in_rule__CSSType__Group_1__94646);
             rule__CSSType__Group_1__9__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_1__10_in_rule__CSSType__Group_1__94594);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__10_in_rule__CSSType__Group_1__94649);
             rule__CSSType__Group_1__10();
 
             state._fsp--;
@@ -6766,43 +6848,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__9__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2274:1: rule__CSSType__Group_1__9__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2300:1: rule__CSSType__Group_1__9__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_1__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2278:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2279:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2304:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2305:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2279:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2280:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2305:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2306:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_1_9()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2281:1: ( RULE_WS )*
-            loop20:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2307:1: ( RULE_WS )*
+            loop21:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA20_0==RULE_WS) ) {
-                    alt20=1;
+                if ( (LA21_0==RULE_WS) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt21) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2281:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2307:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__9__Impl4622); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_1__9__Impl4677); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop20;
+            	    break loop21;
                 }
             } while (true);
 
@@ -6831,16 +6913,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__10"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2291:1: rule__CSSType__Group_1__10 : rule__CSSType__Group_1__10__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2317:1: rule__CSSType__Group_1__10 : rule__CSSType__Group_1__10__Impl ;
     public final void rule__CSSType__Group_1__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2295:1: ( rule__CSSType__Group_1__10__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2296:2: rule__CSSType__Group_1__10__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2321:1: ( rule__CSSType__Group_1__10__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2322:2: rule__CSSType__Group_1__10__Impl
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_1__10__Impl_in_rule__CSSType__Group_1__104653);
+            pushFollow(FOLLOW_rule__CSSType__Group_1__10__Impl_in_rule__CSSType__Group_1__104708);
             rule__CSSType__Group_1__10__Impl();
 
             state._fsp--;
@@ -6864,22 +6946,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_1__10__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2302:1: rule__CSSType__Group_1__10__Impl : ( ')' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2328:1: rule__CSSType__Group_1__10__Impl : ( ')' ) ;
     public final void rule__CSSType__Group_1__10__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2306:1: ( ( ')' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2307:1: ( ')' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2332:1: ( ( ')' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2333:1: ( ')' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2307:1: ( ')' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2308:1: ')'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2333:1: ( ')' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2334:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getRightParenthesisKeyword_1_10()); 
             }
-            match(input,25,FOLLOW_25_in_rule__CSSType__Group_1__10__Impl4681); if (state.failed) return ;
+            match(input,27,FOLLOW_27_in_rule__CSSType__Group_1__10__Impl4736); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getRightParenthesisKeyword_1_10()); 
             }
@@ -6905,21 +6987,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_2__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2343:1: rule__CSSType__Group_2__0 : rule__CSSType__Group_2__0__Impl rule__CSSType__Group_2__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2369:1: rule__CSSType__Group_2__0 : rule__CSSType__Group_2__0__Impl rule__CSSType__Group_2__1 ;
     public final void rule__CSSType__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2347:1: ( rule__CSSType__Group_2__0__Impl rule__CSSType__Group_2__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2348:2: rule__CSSType__Group_2__0__Impl rule__CSSType__Group_2__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2373:1: ( rule__CSSType__Group_2__0__Impl rule__CSSType__Group_2__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2374:2: rule__CSSType__Group_2__0__Impl rule__CSSType__Group_2__1
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_2__0__Impl_in_rule__CSSType__Group_2__04734);
+            pushFollow(FOLLOW_rule__CSSType__Group_2__0__Impl_in_rule__CSSType__Group_2__04789);
             rule__CSSType__Group_2__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_2__1_in_rule__CSSType__Group_2__04737);
+            pushFollow(FOLLOW_rule__CSSType__Group_2__1_in_rule__CSSType__Group_2__04792);
             rule__CSSType__Group_2__1();
 
             state._fsp--;
@@ -6943,25 +7025,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_2__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2355:1: rule__CSSType__Group_2__0__Impl : ( ( rule__CSSType__TypeAssignment_2_0 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2381:1: rule__CSSType__Group_2__0__Impl : ( ( rule__CSSType__TypeAssignment_2_0 ) ) ;
     public final void rule__CSSType__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2359:1: ( ( ( rule__CSSType__TypeAssignment_2_0 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2360:1: ( ( rule__CSSType__TypeAssignment_2_0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2385:1: ( ( ( rule__CSSType__TypeAssignment_2_0 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2386:1: ( ( rule__CSSType__TypeAssignment_2_0 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2360:1: ( ( rule__CSSType__TypeAssignment_2_0 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2361:1: ( rule__CSSType__TypeAssignment_2_0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2386:1: ( ( rule__CSSType__TypeAssignment_2_0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2387:1: ( rule__CSSType__TypeAssignment_2_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeAssignment_2_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2362:1: ( rule__CSSType__TypeAssignment_2_0 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2362:2: rule__CSSType__TypeAssignment_2_0
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2388:1: ( rule__CSSType__TypeAssignment_2_0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2388:2: rule__CSSType__TypeAssignment_2_0
             {
-            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_2_0_in_rule__CSSType__Group_2__0__Impl4764);
+            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_2_0_in_rule__CSSType__Group_2__0__Impl4819);
             rule__CSSType__TypeAssignment_2_0();
 
             state._fsp--;
@@ -6994,16 +7076,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_2__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2372:1: rule__CSSType__Group_2__1 : rule__CSSType__Group_2__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2398:1: rule__CSSType__Group_2__1 : rule__CSSType__Group_2__1__Impl ;
     public final void rule__CSSType__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2376:1: ( rule__CSSType__Group_2__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2377:2: rule__CSSType__Group_2__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2402:1: ( rule__CSSType__Group_2__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2403:2: rule__CSSType__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_2__1__Impl_in_rule__CSSType__Group_2__14794);
+            pushFollow(FOLLOW_rule__CSSType__Group_2__1__Impl_in_rule__CSSType__Group_2__14849);
             rule__CSSType__Group_2__1__Impl();
 
             state._fsp--;
@@ -7027,43 +7109,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_2__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2383:1: rule__CSSType__Group_2__1__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2409:1: rule__CSSType__Group_2__1__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2387:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2388:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2413:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2414:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2388:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2389:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2414:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2415:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_2_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2390:1: ( RULE_WS )*
-            loop21:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2416:1: ( RULE_WS )*
+            loop22:
             do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA21_0==RULE_WS) ) {
-                    alt21=1;
+                if ( (LA22_0==RULE_WS) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt21) {
+                switch (alt22) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2390:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2416:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_2__1__Impl4822); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_2__1__Impl4877); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop21;
+            	    break loop22;
                 }
             } while (true);
 
@@ -7092,21 +7174,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_3__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2404:1: rule__CSSType__Group_3__0 : rule__CSSType__Group_3__0__Impl rule__CSSType__Group_3__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2430:1: rule__CSSType__Group_3__0 : rule__CSSType__Group_3__0__Impl rule__CSSType__Group_3__1 ;
     public final void rule__CSSType__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2408:1: ( rule__CSSType__Group_3__0__Impl rule__CSSType__Group_3__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2409:2: rule__CSSType__Group_3__0__Impl rule__CSSType__Group_3__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2434:1: ( rule__CSSType__Group_3__0__Impl rule__CSSType__Group_3__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2435:2: rule__CSSType__Group_3__0__Impl rule__CSSType__Group_3__1
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_3__0__Impl_in_rule__CSSType__Group_3__04857);
+            pushFollow(FOLLOW_rule__CSSType__Group_3__0__Impl_in_rule__CSSType__Group_3__04912);
             rule__CSSType__Group_3__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSType__Group_3__1_in_rule__CSSType__Group_3__04860);
+            pushFollow(FOLLOW_rule__CSSType__Group_3__1_in_rule__CSSType__Group_3__04915);
             rule__CSSType__Group_3__1();
 
             state._fsp--;
@@ -7130,25 +7212,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_3__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2416:1: rule__CSSType__Group_3__0__Impl : ( ( rule__CSSType__TypeAssignment_3_0 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2442:1: rule__CSSType__Group_3__0__Impl : ( ( rule__CSSType__TypeAssignment_3_0 ) ) ;
     public final void rule__CSSType__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2420:1: ( ( ( rule__CSSType__TypeAssignment_3_0 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2421:1: ( ( rule__CSSType__TypeAssignment_3_0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2446:1: ( ( ( rule__CSSType__TypeAssignment_3_0 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2447:1: ( ( rule__CSSType__TypeAssignment_3_0 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2421:1: ( ( rule__CSSType__TypeAssignment_3_0 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2422:1: ( rule__CSSType__TypeAssignment_3_0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2447:1: ( ( rule__CSSType__TypeAssignment_3_0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2448:1: ( rule__CSSType__TypeAssignment_3_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeAssignment_3_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2423:1: ( rule__CSSType__TypeAssignment_3_0 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2423:2: rule__CSSType__TypeAssignment_3_0
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2449:1: ( rule__CSSType__TypeAssignment_3_0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2449:2: rule__CSSType__TypeAssignment_3_0
             {
-            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_3_0_in_rule__CSSType__Group_3__0__Impl4887);
+            pushFollow(FOLLOW_rule__CSSType__TypeAssignment_3_0_in_rule__CSSType__Group_3__0__Impl4942);
             rule__CSSType__TypeAssignment_3_0();
 
             state._fsp--;
@@ -7181,16 +7263,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_3__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2433:1: rule__CSSType__Group_3__1 : rule__CSSType__Group_3__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2459:1: rule__CSSType__Group_3__1 : rule__CSSType__Group_3__1__Impl ;
     public final void rule__CSSType__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2437:1: ( rule__CSSType__Group_3__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2438:2: rule__CSSType__Group_3__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2463:1: ( rule__CSSType__Group_3__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2464:2: rule__CSSType__Group_3__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSType__Group_3__1__Impl_in_rule__CSSType__Group_3__14917);
+            pushFollow(FOLLOW_rule__CSSType__Group_3__1__Impl_in_rule__CSSType__Group_3__14972);
             rule__CSSType__Group_3__1__Impl();
 
             state._fsp--;
@@ -7214,43 +7296,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__Group_3__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2444:1: rule__CSSType__Group_3__1__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2470:1: rule__CSSType__Group_3__1__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSType__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2448:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2449:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2474:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2475:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2449:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2450:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2475:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2476:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getWSTerminalRuleCall_3_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2451:1: ( RULE_WS )*
-            loop22:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2477:1: ( RULE_WS )*
+            loop23:
             do {
-                int alt22=2;
-                int LA22_0 = input.LA(1);
+                int alt23=2;
+                int LA23_0 = input.LA(1);
 
-                if ( (LA22_0==RULE_WS) ) {
-                    alt22=1;
+                if ( (LA23_0==RULE_WS) ) {
+                    alt23=1;
                 }
 
 
-                switch (alt22) {
+                switch (alt23) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2451:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2477:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_3__1__Impl4945); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSType__Group_3__1__Impl5000); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop22;
+            	    break loop23;
                 }
             } while (true);
 
@@ -7279,21 +7361,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2465:1: rule__ElementDefinition__Group__0 : rule__ElementDefinition__Group__0__Impl rule__ElementDefinition__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2491:1: rule__ElementDefinition__Group__0 : rule__ElementDefinition__Group__0__Impl rule__ElementDefinition__Group__1 ;
     public final void rule__ElementDefinition__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2469:1: ( rule__ElementDefinition__Group__0__Impl rule__ElementDefinition__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2470:2: rule__ElementDefinition__Group__0__Impl rule__ElementDefinition__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2495:1: ( rule__ElementDefinition__Group__0__Impl rule__ElementDefinition__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2496:2: rule__ElementDefinition__Group__0__Impl rule__ElementDefinition__Group__1
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__0__Impl_in_rule__ElementDefinition__Group__04980);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__0__Impl_in_rule__ElementDefinition__Group__05035);
             rule__ElementDefinition__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__1_in_rule__ElementDefinition__Group__04983);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__1_in_rule__ElementDefinition__Group__05038);
             rule__ElementDefinition__Group__1();
 
             state._fsp--;
@@ -7317,23 +7399,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2477:1: rule__ElementDefinition__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2503:1: rule__ElementDefinition__Group__0__Impl : ( () ) ;
     public final void rule__ElementDefinition__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2481:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2482:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2507:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2508:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2482:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2483:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2508:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2509:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getElementDefinitionAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2484:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2486:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2510:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2512:1: 
             {
             }
 
@@ -7358,21 +7440,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2496:1: rule__ElementDefinition__Group__1 : rule__ElementDefinition__Group__1__Impl rule__ElementDefinition__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2522:1: rule__ElementDefinition__Group__1 : rule__ElementDefinition__Group__1__Impl rule__ElementDefinition__Group__2 ;
     public final void rule__ElementDefinition__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2500:1: ( rule__ElementDefinition__Group__1__Impl rule__ElementDefinition__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2501:2: rule__ElementDefinition__Group__1__Impl rule__ElementDefinition__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2526:1: ( rule__ElementDefinition__Group__1__Impl rule__ElementDefinition__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2527:2: rule__ElementDefinition__Group__1__Impl rule__ElementDefinition__Group__2
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__1__Impl_in_rule__ElementDefinition__Group__15041);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__1__Impl_in_rule__ElementDefinition__Group__15096);
             rule__ElementDefinition__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__2_in_rule__ElementDefinition__Group__15044);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__2_in_rule__ElementDefinition__Group__15099);
             rule__ElementDefinition__Group__2();
 
             state._fsp--;
@@ -7396,33 +7478,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2508:1: rule__ElementDefinition__Group__1__Impl : ( ( rule__ElementDefinition__DokuAssignment_1 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2534:1: rule__ElementDefinition__Group__1__Impl : ( ( rule__ElementDefinition__DokuAssignment_1 )? ) ;
     public final void rule__ElementDefinition__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2512:1: ( ( ( rule__ElementDefinition__DokuAssignment_1 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2513:1: ( ( rule__ElementDefinition__DokuAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2538:1: ( ( ( rule__ElementDefinition__DokuAssignment_1 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2539:1: ( ( rule__ElementDefinition__DokuAssignment_1 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2513:1: ( ( rule__ElementDefinition__DokuAssignment_1 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2514:1: ( rule__ElementDefinition__DokuAssignment_1 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2539:1: ( ( rule__ElementDefinition__DokuAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2540:1: ( rule__ElementDefinition__DokuAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getDokuAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2515:1: ( rule__ElementDefinition__DokuAssignment_1 )?
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2541:1: ( rule__ElementDefinition__DokuAssignment_1 )?
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA23_0==RULE_JDOC) ) {
-                alt23=1;
+            if ( (LA24_0==RULE_JDOC) ) {
+                alt24=1;
             }
-            switch (alt23) {
+            switch (alt24) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2515:2: rule__ElementDefinition__DokuAssignment_1
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2541:2: rule__ElementDefinition__DokuAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__ElementDefinition__DokuAssignment_1_in_rule__ElementDefinition__Group__1__Impl5071);
+                    pushFollow(FOLLOW_rule__ElementDefinition__DokuAssignment_1_in_rule__ElementDefinition__Group__1__Impl5126);
                     rule__ElementDefinition__DokuAssignment_1();
 
                     state._fsp--;
@@ -7458,21 +7540,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2525:1: rule__ElementDefinition__Group__2 : rule__ElementDefinition__Group__2__Impl rule__ElementDefinition__Group__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2551:1: rule__ElementDefinition__Group__2 : rule__ElementDefinition__Group__2__Impl rule__ElementDefinition__Group__3 ;
     public final void rule__ElementDefinition__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2529:1: ( rule__ElementDefinition__Group__2__Impl rule__ElementDefinition__Group__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2530:2: rule__ElementDefinition__Group__2__Impl rule__ElementDefinition__Group__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2555:1: ( rule__ElementDefinition__Group__2__Impl rule__ElementDefinition__Group__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2556:2: rule__ElementDefinition__Group__2__Impl rule__ElementDefinition__Group__3
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__2__Impl_in_rule__ElementDefinition__Group__25102);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__2__Impl_in_rule__ElementDefinition__Group__25157);
             rule__ElementDefinition__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__3_in_rule__ElementDefinition__Group__25105);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__3_in_rule__ElementDefinition__Group__25160);
             rule__ElementDefinition__Group__3();
 
             state._fsp--;
@@ -7496,25 +7578,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2537:1: rule__ElementDefinition__Group__2__Impl : ( ( rule__ElementDefinition__NameAssignment_2 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2563:1: rule__ElementDefinition__Group__2__Impl : ( ( rule__ElementDefinition__NameAssignment_2 ) ) ;
     public final void rule__ElementDefinition__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2541:1: ( ( ( rule__ElementDefinition__NameAssignment_2 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2542:1: ( ( rule__ElementDefinition__NameAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2567:1: ( ( ( rule__ElementDefinition__NameAssignment_2 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2568:1: ( ( rule__ElementDefinition__NameAssignment_2 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2542:1: ( ( rule__ElementDefinition__NameAssignment_2 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2543:1: ( rule__ElementDefinition__NameAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2568:1: ( ( rule__ElementDefinition__NameAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2569:1: ( rule__ElementDefinition__NameAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getNameAssignment_2()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2544:1: ( rule__ElementDefinition__NameAssignment_2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2544:2: rule__ElementDefinition__NameAssignment_2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2570:1: ( rule__ElementDefinition__NameAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2570:2: rule__ElementDefinition__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__NameAssignment_2_in_rule__ElementDefinition__Group__2__Impl5132);
+            pushFollow(FOLLOW_rule__ElementDefinition__NameAssignment_2_in_rule__ElementDefinition__Group__2__Impl5187);
             rule__ElementDefinition__NameAssignment_2();
 
             state._fsp--;
@@ -7547,21 +7629,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2554:1: rule__ElementDefinition__Group__3 : rule__ElementDefinition__Group__3__Impl rule__ElementDefinition__Group__4 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2580:1: rule__ElementDefinition__Group__3 : rule__ElementDefinition__Group__3__Impl rule__ElementDefinition__Group__4 ;
     public final void rule__ElementDefinition__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2558:1: ( rule__ElementDefinition__Group__3__Impl rule__ElementDefinition__Group__4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2559:2: rule__ElementDefinition__Group__3__Impl rule__ElementDefinition__Group__4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2584:1: ( rule__ElementDefinition__Group__3__Impl rule__ElementDefinition__Group__4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2585:2: rule__ElementDefinition__Group__3__Impl rule__ElementDefinition__Group__4
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__3__Impl_in_rule__ElementDefinition__Group__35162);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__3__Impl_in_rule__ElementDefinition__Group__35217);
             rule__ElementDefinition__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__4_in_rule__ElementDefinition__Group__35165);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__4_in_rule__ElementDefinition__Group__35220);
             rule__ElementDefinition__Group__4();
 
             state._fsp--;
@@ -7585,33 +7667,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2566:1: rule__ElementDefinition__Group__3__Impl : ( ( rule__ElementDefinition__Group_3__0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2592:1: rule__ElementDefinition__Group__3__Impl : ( ( rule__ElementDefinition__Group_3__0 )? ) ;
     public final void rule__ElementDefinition__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2570:1: ( ( ( rule__ElementDefinition__Group_3__0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2571:1: ( ( rule__ElementDefinition__Group_3__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2596:1: ( ( ( rule__ElementDefinition__Group_3__0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2597:1: ( ( rule__ElementDefinition__Group_3__0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2571:1: ( ( rule__ElementDefinition__Group_3__0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2572:1: ( rule__ElementDefinition__Group_3__0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2597:1: ( ( rule__ElementDefinition__Group_3__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2598:1: ( rule__ElementDefinition__Group_3__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getGroup_3()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2573:1: ( rule__ElementDefinition__Group_3__0 )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2599:1: ( rule__ElementDefinition__Group_3__0 )?
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA24_0==26) ) {
-                alt24=1;
+            if ( (LA25_0==28) ) {
+                alt25=1;
             }
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2573:2: rule__ElementDefinition__Group_3__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2599:2: rule__ElementDefinition__Group_3__0
                     {
-                    pushFollow(FOLLOW_rule__ElementDefinition__Group_3__0_in_rule__ElementDefinition__Group__3__Impl5192);
+                    pushFollow(FOLLOW_rule__ElementDefinition__Group_3__0_in_rule__ElementDefinition__Group__3__Impl5247);
                     rule__ElementDefinition__Group_3__0();
 
                     state._fsp--;
@@ -7647,21 +7729,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2583:1: rule__ElementDefinition__Group__4 : rule__ElementDefinition__Group__4__Impl rule__ElementDefinition__Group__5 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2609:1: rule__ElementDefinition__Group__4 : rule__ElementDefinition__Group__4__Impl rule__ElementDefinition__Group__5 ;
     public final void rule__ElementDefinition__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2587:1: ( rule__ElementDefinition__Group__4__Impl rule__ElementDefinition__Group__5 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2588:2: rule__ElementDefinition__Group__4__Impl rule__ElementDefinition__Group__5
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2613:1: ( rule__ElementDefinition__Group__4__Impl rule__ElementDefinition__Group__5 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2614:2: rule__ElementDefinition__Group__4__Impl rule__ElementDefinition__Group__5
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__4__Impl_in_rule__ElementDefinition__Group__45223);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__4__Impl_in_rule__ElementDefinition__Group__45278);
             rule__ElementDefinition__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__5_in_rule__ElementDefinition__Group__45226);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__5_in_rule__ElementDefinition__Group__45281);
             rule__ElementDefinition__Group__5();
 
             state._fsp--;
@@ -7685,22 +7767,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__4__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2595:1: rule__ElementDefinition__Group__4__Impl : ( '{' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2621:1: rule__ElementDefinition__Group__4__Impl : ( '{' ) ;
     public final void rule__ElementDefinition__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2599:1: ( ( '{' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2600:1: ( '{' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2625:1: ( ( '{' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2626:1: ( '{' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2600:1: ( '{' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2601:1: '{'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2626:1: ( '{' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2627:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getLeftCurlyBracketKeyword_4()); 
             }
-            match(input,21,FOLLOW_21_in_rule__ElementDefinition__Group__4__Impl5254); if (state.failed) return ;
+            match(input,23,FOLLOW_23_in_rule__ElementDefinition__Group__4__Impl5309); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getElementDefinitionAccess().getLeftCurlyBracketKeyword_4()); 
             }
@@ -7726,21 +7808,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__5"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2614:1: rule__ElementDefinition__Group__5 : rule__ElementDefinition__Group__5__Impl rule__ElementDefinition__Group__6 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2640:1: rule__ElementDefinition__Group__5 : rule__ElementDefinition__Group__5__Impl rule__ElementDefinition__Group__6 ;
     public final void rule__ElementDefinition__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2618:1: ( rule__ElementDefinition__Group__5__Impl rule__ElementDefinition__Group__6 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2619:2: rule__ElementDefinition__Group__5__Impl rule__ElementDefinition__Group__6
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2644:1: ( rule__ElementDefinition__Group__5__Impl rule__ElementDefinition__Group__6 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2645:2: rule__ElementDefinition__Group__5__Impl rule__ElementDefinition__Group__6
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__5__Impl_in_rule__ElementDefinition__Group__55285);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__5__Impl_in_rule__ElementDefinition__Group__55340);
             rule__ElementDefinition__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__6_in_rule__ElementDefinition__Group__55288);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__6_in_rule__ElementDefinition__Group__55343);
             rule__ElementDefinition__Group__6();
 
             state._fsp--;
@@ -7764,37 +7846,37 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__5__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2626:1: rule__ElementDefinition__Group__5__Impl : ( ( rule__ElementDefinition__Alternatives_5 )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2652:1: rule__ElementDefinition__Group__5__Impl : ( ( rule__ElementDefinition__Alternatives_5 )* ) ;
     public final void rule__ElementDefinition__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2630:1: ( ( ( rule__ElementDefinition__Alternatives_5 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2631:1: ( ( rule__ElementDefinition__Alternatives_5 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2656:1: ( ( ( rule__ElementDefinition__Alternatives_5 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2657:1: ( ( rule__ElementDefinition__Alternatives_5 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2631:1: ( ( rule__ElementDefinition__Alternatives_5 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2632:1: ( rule__ElementDefinition__Alternatives_5 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2657:1: ( ( rule__ElementDefinition__Alternatives_5 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2658:1: ( rule__ElementDefinition__Alternatives_5 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getAlternatives_5()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2633:1: ( rule__ElementDefinition__Alternatives_5 )*
-            loop25:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2659:1: ( rule__ElementDefinition__Alternatives_5 )*
+            loop26:
             do {
-                int alt25=2;
-                int LA25_0 = input.LA(1);
+                int alt26=2;
+                int LA26_0 = input.LA(1);
 
-                if ( (LA25_0==RULE_ID||LA25_0==RULE_JDOC||LA25_0==RULE_PSEUDO) ) {
-                    alt25=1;
+                if ( (LA26_0==RULE_ID||LA26_0==RULE_JDOC||LA26_0==RULE_PSEUDO) ) {
+                    alt26=1;
                 }
 
 
-                switch (alt25) {
+                switch (alt26) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2633:2: rule__ElementDefinition__Alternatives_5
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2659:2: rule__ElementDefinition__Alternatives_5
             	    {
-            	    pushFollow(FOLLOW_rule__ElementDefinition__Alternatives_5_in_rule__ElementDefinition__Group__5__Impl5315);
+            	    pushFollow(FOLLOW_rule__ElementDefinition__Alternatives_5_in_rule__ElementDefinition__Group__5__Impl5370);
             	    rule__ElementDefinition__Alternatives_5();
 
             	    state._fsp--;
@@ -7804,7 +7886,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop25;
+            	    break loop26;
                 }
             } while (true);
 
@@ -7833,16 +7915,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__6"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2643:1: rule__ElementDefinition__Group__6 : rule__ElementDefinition__Group__6__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2669:1: rule__ElementDefinition__Group__6 : rule__ElementDefinition__Group__6__Impl ;
     public final void rule__ElementDefinition__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2647:1: ( rule__ElementDefinition__Group__6__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2648:2: rule__ElementDefinition__Group__6__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2673:1: ( rule__ElementDefinition__Group__6__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2674:2: rule__ElementDefinition__Group__6__Impl
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group__6__Impl_in_rule__ElementDefinition__Group__65346);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group__6__Impl_in_rule__ElementDefinition__Group__65401);
             rule__ElementDefinition__Group__6__Impl();
 
             state._fsp--;
@@ -7866,22 +7948,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group__6__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2654:1: rule__ElementDefinition__Group__6__Impl : ( '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2680:1: rule__ElementDefinition__Group__6__Impl : ( '}' ) ;
     public final void rule__ElementDefinition__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2658:1: ( ( '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2659:1: ( '}' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2684:1: ( ( '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2685:1: ( '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2659:1: ( '}' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2660:1: '}'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2685:1: ( '}' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2686:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getRightCurlyBracketKeyword_6()); 
             }
-            match(input,22,FOLLOW_22_in_rule__ElementDefinition__Group__6__Impl5374); if (state.failed) return ;
+            match(input,24,FOLLOW_24_in_rule__ElementDefinition__Group__6__Impl5429); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getElementDefinitionAccess().getRightCurlyBracketKeyword_6()); 
             }
@@ -7907,21 +7989,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2687:1: rule__ElementDefinition__Group_3__0 : rule__ElementDefinition__Group_3__0__Impl rule__ElementDefinition__Group_3__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2713:1: rule__ElementDefinition__Group_3__0 : rule__ElementDefinition__Group_3__0__Impl rule__ElementDefinition__Group_3__1 ;
     public final void rule__ElementDefinition__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2691:1: ( rule__ElementDefinition__Group_3__0__Impl rule__ElementDefinition__Group_3__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2692:2: rule__ElementDefinition__Group_3__0__Impl rule__ElementDefinition__Group_3__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2717:1: ( rule__ElementDefinition__Group_3__0__Impl rule__ElementDefinition__Group_3__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2718:2: rule__ElementDefinition__Group_3__0__Impl rule__ElementDefinition__Group_3__1
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__0__Impl_in_rule__ElementDefinition__Group_3__05419);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__0__Impl_in_rule__ElementDefinition__Group_3__05474);
             rule__ElementDefinition__Group_3__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__1_in_rule__ElementDefinition__Group_3__05422);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__1_in_rule__ElementDefinition__Group_3__05477);
             rule__ElementDefinition__Group_3__1();
 
             state._fsp--;
@@ -7945,22 +8027,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2699:1: rule__ElementDefinition__Group_3__0__Impl : ( 'extends' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2725:1: rule__ElementDefinition__Group_3__0__Impl : ( 'extends' ) ;
     public final void rule__ElementDefinition__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2703:1: ( ( 'extends' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2704:1: ( 'extends' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2729:1: ( ( 'extends' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2730:1: ( 'extends' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2704:1: ( 'extends' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2705:1: 'extends'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2730:1: ( 'extends' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2731:1: 'extends'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getExtendsKeyword_3_0()); 
             }
-            match(input,26,FOLLOW_26_in_rule__ElementDefinition__Group_3__0__Impl5450); if (state.failed) return ;
+            match(input,28,FOLLOW_28_in_rule__ElementDefinition__Group_3__0__Impl5505); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getElementDefinitionAccess().getExtendsKeyword_3_0()); 
             }
@@ -7986,21 +8068,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2718:1: rule__ElementDefinition__Group_3__1 : rule__ElementDefinition__Group_3__1__Impl rule__ElementDefinition__Group_3__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2744:1: rule__ElementDefinition__Group_3__1 : rule__ElementDefinition__Group_3__1__Impl rule__ElementDefinition__Group_3__2 ;
     public final void rule__ElementDefinition__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2722:1: ( rule__ElementDefinition__Group_3__1__Impl rule__ElementDefinition__Group_3__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2723:2: rule__ElementDefinition__Group_3__1__Impl rule__ElementDefinition__Group_3__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2748:1: ( rule__ElementDefinition__Group_3__1__Impl rule__ElementDefinition__Group_3__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2749:2: rule__ElementDefinition__Group_3__1__Impl rule__ElementDefinition__Group_3__2
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__1__Impl_in_rule__ElementDefinition__Group_3__15481);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__1__Impl_in_rule__ElementDefinition__Group_3__15536);
             rule__ElementDefinition__Group_3__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__2_in_rule__ElementDefinition__Group_3__15484);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__2_in_rule__ElementDefinition__Group_3__15539);
             rule__ElementDefinition__Group_3__2();
 
             state._fsp--;
@@ -8024,25 +8106,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2730:1: rule__ElementDefinition__Group_3__1__Impl : ( ( rule__ElementDefinition__SuperAssignment_3_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2756:1: rule__ElementDefinition__Group_3__1__Impl : ( ( rule__ElementDefinition__SuperAssignment_3_1 ) ) ;
     public final void rule__ElementDefinition__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2734:1: ( ( ( rule__ElementDefinition__SuperAssignment_3_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2735:1: ( ( rule__ElementDefinition__SuperAssignment_3_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2760:1: ( ( ( rule__ElementDefinition__SuperAssignment_3_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2761:1: ( ( rule__ElementDefinition__SuperAssignment_3_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2735:1: ( ( rule__ElementDefinition__SuperAssignment_3_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2736:1: ( rule__ElementDefinition__SuperAssignment_3_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2761:1: ( ( rule__ElementDefinition__SuperAssignment_3_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2762:1: ( rule__ElementDefinition__SuperAssignment_3_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getSuperAssignment_3_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2737:1: ( rule__ElementDefinition__SuperAssignment_3_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2737:2: rule__ElementDefinition__SuperAssignment_3_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2763:1: ( rule__ElementDefinition__SuperAssignment_3_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2763:2: rule__ElementDefinition__SuperAssignment_3_1
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__SuperAssignment_3_1_in_rule__ElementDefinition__Group_3__1__Impl5511);
+            pushFollow(FOLLOW_rule__ElementDefinition__SuperAssignment_3_1_in_rule__ElementDefinition__Group_3__1__Impl5566);
             rule__ElementDefinition__SuperAssignment_3_1();
 
             state._fsp--;
@@ -8075,16 +8157,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2747:1: rule__ElementDefinition__Group_3__2 : rule__ElementDefinition__Group_3__2__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2773:1: rule__ElementDefinition__Group_3__2 : rule__ElementDefinition__Group_3__2__Impl ;
     public final void rule__ElementDefinition__Group_3__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2751:1: ( rule__ElementDefinition__Group_3__2__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2752:2: rule__ElementDefinition__Group_3__2__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2777:1: ( rule__ElementDefinition__Group_3__2__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2778:2: rule__ElementDefinition__Group_3__2__Impl
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__2__Impl_in_rule__ElementDefinition__Group_3__25541);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3__2__Impl_in_rule__ElementDefinition__Group_3__25596);
             rule__ElementDefinition__Group_3__2__Impl();
 
             state._fsp--;
@@ -8108,37 +8190,37 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2758:1: rule__ElementDefinition__Group_3__2__Impl : ( ( rule__ElementDefinition__Group_3_2__0 )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2784:1: rule__ElementDefinition__Group_3__2__Impl : ( ( rule__ElementDefinition__Group_3_2__0 )* ) ;
     public final void rule__ElementDefinition__Group_3__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2762:1: ( ( ( rule__ElementDefinition__Group_3_2__0 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2763:1: ( ( rule__ElementDefinition__Group_3_2__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2788:1: ( ( ( rule__ElementDefinition__Group_3_2__0 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2789:1: ( ( rule__ElementDefinition__Group_3_2__0 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2763:1: ( ( rule__ElementDefinition__Group_3_2__0 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2764:1: ( rule__ElementDefinition__Group_3_2__0 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2789:1: ( ( rule__ElementDefinition__Group_3_2__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2790:1: ( rule__ElementDefinition__Group_3_2__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getGroup_3_2()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2765:1: ( rule__ElementDefinition__Group_3_2__0 )*
-            loop26:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2791:1: ( rule__ElementDefinition__Group_3_2__0 )*
+            loop27:
             do {
-                int alt26=2;
-                int LA26_0 = input.LA(1);
+                int alt27=2;
+                int LA27_0 = input.LA(1);
 
-                if ( (LA26_0==27) ) {
-                    alt26=1;
+                if ( (LA27_0==18) ) {
+                    alt27=1;
                 }
 
 
-                switch (alt26) {
+                switch (alt27) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2765:2: rule__ElementDefinition__Group_3_2__0
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2791:2: rule__ElementDefinition__Group_3_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__0_in_rule__ElementDefinition__Group_3__2__Impl5568);
+            	    pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__0_in_rule__ElementDefinition__Group_3__2__Impl5623);
             	    rule__ElementDefinition__Group_3_2__0();
 
             	    state._fsp--;
@@ -8148,7 +8230,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop26;
+            	    break loop27;
                 }
             } while (true);
 
@@ -8177,21 +8259,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3_2__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2781:1: rule__ElementDefinition__Group_3_2__0 : rule__ElementDefinition__Group_3_2__0__Impl rule__ElementDefinition__Group_3_2__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2807:1: rule__ElementDefinition__Group_3_2__0 : rule__ElementDefinition__Group_3_2__0__Impl rule__ElementDefinition__Group_3_2__1 ;
     public final void rule__ElementDefinition__Group_3_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2785:1: ( rule__ElementDefinition__Group_3_2__0__Impl rule__ElementDefinition__Group_3_2__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2786:2: rule__ElementDefinition__Group_3_2__0__Impl rule__ElementDefinition__Group_3_2__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2811:1: ( rule__ElementDefinition__Group_3_2__0__Impl rule__ElementDefinition__Group_3_2__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2812:2: rule__ElementDefinition__Group_3_2__0__Impl rule__ElementDefinition__Group_3_2__1
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__0__Impl_in_rule__ElementDefinition__Group_3_2__05605);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__0__Impl_in_rule__ElementDefinition__Group_3_2__05660);
             rule__ElementDefinition__Group_3_2__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__1_in_rule__ElementDefinition__Group_3_2__05608);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__1_in_rule__ElementDefinition__Group_3_2__05663);
             rule__ElementDefinition__Group_3_2__1();
 
             state._fsp--;
@@ -8215,22 +8297,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3_2__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2793:1: rule__ElementDefinition__Group_3_2__0__Impl : ( ',' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2819:1: rule__ElementDefinition__Group_3_2__0__Impl : ( ',' ) ;
     public final void rule__ElementDefinition__Group_3_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2797:1: ( ( ',' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2798:1: ( ',' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2823:1: ( ( ',' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2824:1: ( ',' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2798:1: ( ',' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2799:1: ','
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2824:1: ( ',' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2825:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getCommaKeyword_3_2_0()); 
             }
-            match(input,27,FOLLOW_27_in_rule__ElementDefinition__Group_3_2__0__Impl5636); if (state.failed) return ;
+            match(input,18,FOLLOW_18_in_rule__ElementDefinition__Group_3_2__0__Impl5691); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getElementDefinitionAccess().getCommaKeyword_3_2_0()); 
             }
@@ -8256,16 +8338,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3_2__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2812:1: rule__ElementDefinition__Group_3_2__1 : rule__ElementDefinition__Group_3_2__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2838:1: rule__ElementDefinition__Group_3_2__1 : rule__ElementDefinition__Group_3_2__1__Impl ;
     public final void rule__ElementDefinition__Group_3_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2816:1: ( rule__ElementDefinition__Group_3_2__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2817:2: rule__ElementDefinition__Group_3_2__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2842:1: ( rule__ElementDefinition__Group_3_2__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2843:2: rule__ElementDefinition__Group_3_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__1__Impl_in_rule__ElementDefinition__Group_3_2__15667);
+            pushFollow(FOLLOW_rule__ElementDefinition__Group_3_2__1__Impl_in_rule__ElementDefinition__Group_3_2__15722);
             rule__ElementDefinition__Group_3_2__1__Impl();
 
             state._fsp--;
@@ -8289,25 +8371,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__Group_3_2__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2823:1: rule__ElementDefinition__Group_3_2__1__Impl : ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2849:1: rule__ElementDefinition__Group_3_2__1__Impl : ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) ) ;
     public final void rule__ElementDefinition__Group_3_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2827:1: ( ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2828:1: ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2853:1: ( ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2854:1: ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2828:1: ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2829:1: ( rule__ElementDefinition__SuperAssignment_3_2_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2854:1: ( ( rule__ElementDefinition__SuperAssignment_3_2_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2855:1: ( rule__ElementDefinition__SuperAssignment_3_2_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getSuperAssignment_3_2_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2830:1: ( rule__ElementDefinition__SuperAssignment_3_2_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2830:2: rule__ElementDefinition__SuperAssignment_3_2_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2856:1: ( rule__ElementDefinition__SuperAssignment_3_2_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2856:2: rule__ElementDefinition__SuperAssignment_3_2_1
             {
-            pushFollow(FOLLOW_rule__ElementDefinition__SuperAssignment_3_2_1_in_rule__ElementDefinition__Group_3_2__1__Impl5694);
+            pushFollow(FOLLOW_rule__ElementDefinition__SuperAssignment_3_2_1_in_rule__ElementDefinition__Group_3_2__1__Impl5749);
             rule__ElementDefinition__SuperAssignment_3_2_1();
 
             state._fsp--;
@@ -8340,21 +8422,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2844:1: rule__PropertyDefinition__Group__0 : rule__PropertyDefinition__Group__0__Impl rule__PropertyDefinition__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2870:1: rule__PropertyDefinition__Group__0 : rule__PropertyDefinition__Group__0__Impl rule__PropertyDefinition__Group__1 ;
     public final void rule__PropertyDefinition__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2848:1: ( rule__PropertyDefinition__Group__0__Impl rule__PropertyDefinition__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2849:2: rule__PropertyDefinition__Group__0__Impl rule__PropertyDefinition__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2874:1: ( rule__PropertyDefinition__Group__0__Impl rule__PropertyDefinition__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2875:2: rule__PropertyDefinition__Group__0__Impl rule__PropertyDefinition__Group__1
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__0__Impl_in_rule__PropertyDefinition__Group__05728);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__0__Impl_in_rule__PropertyDefinition__Group__05783);
             rule__PropertyDefinition__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__1_in_rule__PropertyDefinition__Group__05731);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__1_in_rule__PropertyDefinition__Group__05786);
             rule__PropertyDefinition__Group__1();
 
             state._fsp--;
@@ -8378,23 +8460,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2856:1: rule__PropertyDefinition__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2882:1: rule__PropertyDefinition__Group__0__Impl : ( () ) ;
     public final void rule__PropertyDefinition__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2860:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2861:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2886:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2887:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2861:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2862:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2887:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2888:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getPropertyDefinitionAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2863:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2865:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2889:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2891:1: 
             {
             }
 
@@ -8419,21 +8501,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2875:1: rule__PropertyDefinition__Group__1 : rule__PropertyDefinition__Group__1__Impl rule__PropertyDefinition__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2901:1: rule__PropertyDefinition__Group__1 : rule__PropertyDefinition__Group__1__Impl rule__PropertyDefinition__Group__2 ;
     public final void rule__PropertyDefinition__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2879:1: ( rule__PropertyDefinition__Group__1__Impl rule__PropertyDefinition__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2880:2: rule__PropertyDefinition__Group__1__Impl rule__PropertyDefinition__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2905:1: ( rule__PropertyDefinition__Group__1__Impl rule__PropertyDefinition__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2906:2: rule__PropertyDefinition__Group__1__Impl rule__PropertyDefinition__Group__2
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__1__Impl_in_rule__PropertyDefinition__Group__15789);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__1__Impl_in_rule__PropertyDefinition__Group__15844);
             rule__PropertyDefinition__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__2_in_rule__PropertyDefinition__Group__15792);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__2_in_rule__PropertyDefinition__Group__15847);
             rule__PropertyDefinition__Group__2();
 
             state._fsp--;
@@ -8457,33 +8539,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2887:1: rule__PropertyDefinition__Group__1__Impl : ( ( rule__PropertyDefinition__DokuAssignment_1 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2913:1: rule__PropertyDefinition__Group__1__Impl : ( ( rule__PropertyDefinition__DokuAssignment_1 )? ) ;
     public final void rule__PropertyDefinition__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2891:1: ( ( ( rule__PropertyDefinition__DokuAssignment_1 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2892:1: ( ( rule__PropertyDefinition__DokuAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2917:1: ( ( ( rule__PropertyDefinition__DokuAssignment_1 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2918:1: ( ( rule__PropertyDefinition__DokuAssignment_1 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2892:1: ( ( rule__PropertyDefinition__DokuAssignment_1 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2893:1: ( rule__PropertyDefinition__DokuAssignment_1 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2918:1: ( ( rule__PropertyDefinition__DokuAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2919:1: ( rule__PropertyDefinition__DokuAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getDokuAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2894:1: ( rule__PropertyDefinition__DokuAssignment_1 )?
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2920:1: ( rule__PropertyDefinition__DokuAssignment_1 )?
+            int alt28=2;
+            int LA28_0 = input.LA(1);
 
-            if ( (LA27_0==RULE_JDOC) ) {
-                alt27=1;
+            if ( (LA28_0==RULE_JDOC) ) {
+                alt28=1;
             }
-            switch (alt27) {
+            switch (alt28) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2894:2: rule__PropertyDefinition__DokuAssignment_1
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2920:2: rule__PropertyDefinition__DokuAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__PropertyDefinition__DokuAssignment_1_in_rule__PropertyDefinition__Group__1__Impl5819);
+                    pushFollow(FOLLOW_rule__PropertyDefinition__DokuAssignment_1_in_rule__PropertyDefinition__Group__1__Impl5874);
                     rule__PropertyDefinition__DokuAssignment_1();
 
                     state._fsp--;
@@ -8519,21 +8601,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2904:1: rule__PropertyDefinition__Group__2 : rule__PropertyDefinition__Group__2__Impl rule__PropertyDefinition__Group__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2930:1: rule__PropertyDefinition__Group__2 : rule__PropertyDefinition__Group__2__Impl rule__PropertyDefinition__Group__3 ;
     public final void rule__PropertyDefinition__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2908:1: ( rule__PropertyDefinition__Group__2__Impl rule__PropertyDefinition__Group__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2909:2: rule__PropertyDefinition__Group__2__Impl rule__PropertyDefinition__Group__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2934:1: ( rule__PropertyDefinition__Group__2__Impl rule__PropertyDefinition__Group__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2935:2: rule__PropertyDefinition__Group__2__Impl rule__PropertyDefinition__Group__3
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__2__Impl_in_rule__PropertyDefinition__Group__25850);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__2__Impl_in_rule__PropertyDefinition__Group__25905);
             rule__PropertyDefinition__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__3_in_rule__PropertyDefinition__Group__25853);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__3_in_rule__PropertyDefinition__Group__25908);
             rule__PropertyDefinition__Group__3();
 
             state._fsp--;
@@ -8557,25 +8639,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2916:1: rule__PropertyDefinition__Group__2__Impl : ( ( rule__PropertyDefinition__NameAssignment_2 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2942:1: rule__PropertyDefinition__Group__2__Impl : ( ( rule__PropertyDefinition__NameAssignment_2 ) ) ;
     public final void rule__PropertyDefinition__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2920:1: ( ( ( rule__PropertyDefinition__NameAssignment_2 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2921:1: ( ( rule__PropertyDefinition__NameAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2946:1: ( ( ( rule__PropertyDefinition__NameAssignment_2 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2947:1: ( ( rule__PropertyDefinition__NameAssignment_2 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2921:1: ( ( rule__PropertyDefinition__NameAssignment_2 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2922:1: ( rule__PropertyDefinition__NameAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2947:1: ( ( rule__PropertyDefinition__NameAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2948:1: ( rule__PropertyDefinition__NameAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getNameAssignment_2()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2923:1: ( rule__PropertyDefinition__NameAssignment_2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2923:2: rule__PropertyDefinition__NameAssignment_2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2949:1: ( rule__PropertyDefinition__NameAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2949:2: rule__PropertyDefinition__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__NameAssignment_2_in_rule__PropertyDefinition__Group__2__Impl5880);
+            pushFollow(FOLLOW_rule__PropertyDefinition__NameAssignment_2_in_rule__PropertyDefinition__Group__2__Impl5935);
             rule__PropertyDefinition__NameAssignment_2();
 
             state._fsp--;
@@ -8608,21 +8690,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2933:1: rule__PropertyDefinition__Group__3 : rule__PropertyDefinition__Group__3__Impl rule__PropertyDefinition__Group__4 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2959:1: rule__PropertyDefinition__Group__3 : rule__PropertyDefinition__Group__3__Impl rule__PropertyDefinition__Group__4 ;
     public final void rule__PropertyDefinition__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2937:1: ( rule__PropertyDefinition__Group__3__Impl rule__PropertyDefinition__Group__4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2938:2: rule__PropertyDefinition__Group__3__Impl rule__PropertyDefinition__Group__4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2963:1: ( rule__PropertyDefinition__Group__3__Impl rule__PropertyDefinition__Group__4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2964:2: rule__PropertyDefinition__Group__3__Impl rule__PropertyDefinition__Group__4
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__3__Impl_in_rule__PropertyDefinition__Group__35910);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__3__Impl_in_rule__PropertyDefinition__Group__35965);
             rule__PropertyDefinition__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__4_in_rule__PropertyDefinition__Group__35913);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__4_in_rule__PropertyDefinition__Group__35968);
             rule__PropertyDefinition__Group__4();
 
             state._fsp--;
@@ -8646,25 +8728,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2945:1: rule__PropertyDefinition__Group__3__Impl : ( ( rule__PropertyDefinition__RuleAssignment_3 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2971:1: rule__PropertyDefinition__Group__3__Impl : ( ( rule__PropertyDefinition__RuleAssignment_3 ) ) ;
     public final void rule__PropertyDefinition__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2949:1: ( ( ( rule__PropertyDefinition__RuleAssignment_3 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2950:1: ( ( rule__PropertyDefinition__RuleAssignment_3 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2975:1: ( ( ( rule__PropertyDefinition__RuleAssignment_3 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2976:1: ( ( rule__PropertyDefinition__RuleAssignment_3 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2950:1: ( ( rule__PropertyDefinition__RuleAssignment_3 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2951:1: ( rule__PropertyDefinition__RuleAssignment_3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2976:1: ( ( rule__PropertyDefinition__RuleAssignment_3 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2977:1: ( rule__PropertyDefinition__RuleAssignment_3 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getRuleAssignment_3()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2952:1: ( rule__PropertyDefinition__RuleAssignment_3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2952:2: rule__PropertyDefinition__RuleAssignment_3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2978:1: ( rule__PropertyDefinition__RuleAssignment_3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2978:2: rule__PropertyDefinition__RuleAssignment_3
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__RuleAssignment_3_in_rule__PropertyDefinition__Group__3__Impl5940);
+            pushFollow(FOLLOW_rule__PropertyDefinition__RuleAssignment_3_in_rule__PropertyDefinition__Group__3__Impl5995);
             rule__PropertyDefinition__RuleAssignment_3();
 
             state._fsp--;
@@ -8697,21 +8779,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2962:1: rule__PropertyDefinition__Group__4 : rule__PropertyDefinition__Group__4__Impl rule__PropertyDefinition__Group__5 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2988:1: rule__PropertyDefinition__Group__4 : rule__PropertyDefinition__Group__4__Impl rule__PropertyDefinition__Group__5 ;
     public final void rule__PropertyDefinition__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2966:1: ( rule__PropertyDefinition__Group__4__Impl rule__PropertyDefinition__Group__5 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2967:2: rule__PropertyDefinition__Group__4__Impl rule__PropertyDefinition__Group__5
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2992:1: ( rule__PropertyDefinition__Group__4__Impl rule__PropertyDefinition__Group__5 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2993:2: rule__PropertyDefinition__Group__4__Impl rule__PropertyDefinition__Group__5
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__4__Impl_in_rule__PropertyDefinition__Group__45970);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__4__Impl_in_rule__PropertyDefinition__Group__46025);
             rule__PropertyDefinition__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__5_in_rule__PropertyDefinition__Group__45973);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__5_in_rule__PropertyDefinition__Group__46028);
             rule__PropertyDefinition__Group__5();
 
             state._fsp--;
@@ -8735,33 +8817,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__4__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2974:1: rule__PropertyDefinition__Group__4__Impl : ( ( rule__PropertyDefinition__Group_4__0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3000:1: rule__PropertyDefinition__Group__4__Impl : ( ( rule__PropertyDefinition__Group_4__0 )? ) ;
     public final void rule__PropertyDefinition__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2978:1: ( ( ( rule__PropertyDefinition__Group_4__0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2979:1: ( ( rule__PropertyDefinition__Group_4__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3004:1: ( ( ( rule__PropertyDefinition__Group_4__0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3005:1: ( ( rule__PropertyDefinition__Group_4__0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2979:1: ( ( rule__PropertyDefinition__Group_4__0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2980:1: ( rule__PropertyDefinition__Group_4__0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3005:1: ( ( rule__PropertyDefinition__Group_4__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3006:1: ( rule__PropertyDefinition__Group_4__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getGroup_4()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2981:1: ( rule__PropertyDefinition__Group_4__0 )?
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3007:1: ( rule__PropertyDefinition__Group_4__0 )?
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0==29) ) {
-                alt28=1;
+            if ( (LA29_0==30) ) {
+                alt29=1;
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2981:2: rule__PropertyDefinition__Group_4__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3007:2: rule__PropertyDefinition__Group_4__0
                     {
-                    pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__0_in_rule__PropertyDefinition__Group__4__Impl6000);
+                    pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__0_in_rule__PropertyDefinition__Group__4__Impl6055);
                     rule__PropertyDefinition__Group_4__0();
 
                     state._fsp--;
@@ -8797,16 +8879,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__5"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2991:1: rule__PropertyDefinition__Group__5 : rule__PropertyDefinition__Group__5__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3017:1: rule__PropertyDefinition__Group__5 : rule__PropertyDefinition__Group__5__Impl ;
     public final void rule__PropertyDefinition__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2995:1: ( rule__PropertyDefinition__Group__5__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:2996:2: rule__PropertyDefinition__Group__5__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3021:1: ( rule__PropertyDefinition__Group__5__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3022:2: rule__PropertyDefinition__Group__5__Impl
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group__5__Impl_in_rule__PropertyDefinition__Group__56031);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group__5__Impl_in_rule__PropertyDefinition__Group__56086);
             rule__PropertyDefinition__Group__5__Impl();
 
             state._fsp--;
@@ -8830,22 +8912,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group__5__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3002:1: rule__PropertyDefinition__Group__5__Impl : ( ';' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3028:1: rule__PropertyDefinition__Group__5__Impl : ( ';' ) ;
     public final void rule__PropertyDefinition__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3006:1: ( ( ';' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3007:1: ( ';' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3032:1: ( ( ';' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3033:1: ( ';' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3007:1: ( ';' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3008:1: ';'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3033:1: ( ';' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3034:1: ';'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getSemicolonKeyword_5()); 
             }
-            match(input,28,FOLLOW_28_in_rule__PropertyDefinition__Group__5__Impl6059); if (state.failed) return ;
+            match(input,29,FOLLOW_29_in_rule__PropertyDefinition__Group__5__Impl6114); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyDefinitionAccess().getSemicolonKeyword_5()); 
             }
@@ -8871,21 +8953,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group_4__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3033:1: rule__PropertyDefinition__Group_4__0 : rule__PropertyDefinition__Group_4__0__Impl rule__PropertyDefinition__Group_4__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3059:1: rule__PropertyDefinition__Group_4__0 : rule__PropertyDefinition__Group_4__0__Impl rule__PropertyDefinition__Group_4__1 ;
     public final void rule__PropertyDefinition__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3037:1: ( rule__PropertyDefinition__Group_4__0__Impl rule__PropertyDefinition__Group_4__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3038:2: rule__PropertyDefinition__Group_4__0__Impl rule__PropertyDefinition__Group_4__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3063:1: ( rule__PropertyDefinition__Group_4__0__Impl rule__PropertyDefinition__Group_4__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3064:2: rule__PropertyDefinition__Group_4__0__Impl rule__PropertyDefinition__Group_4__1
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__0__Impl_in_rule__PropertyDefinition__Group_4__06102);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__0__Impl_in_rule__PropertyDefinition__Group_4__06157);
             rule__PropertyDefinition__Group_4__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__1_in_rule__PropertyDefinition__Group_4__06105);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__1_in_rule__PropertyDefinition__Group_4__06160);
             rule__PropertyDefinition__Group_4__1();
 
             state._fsp--;
@@ -8909,22 +8991,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group_4__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3045:1: rule__PropertyDefinition__Group_4__0__Impl : ( 'default:' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3071:1: rule__PropertyDefinition__Group_4__0__Impl : ( 'default:' ) ;
     public final void rule__PropertyDefinition__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3049:1: ( ( 'default:' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3050:1: ( 'default:' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3075:1: ( ( 'default:' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3076:1: ( 'default:' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3050:1: ( 'default:' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3051:1: 'default:'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3076:1: ( 'default:' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3077:1: 'default:'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getDefaultKeyword_4_0()); 
             }
-            match(input,29,FOLLOW_29_in_rule__PropertyDefinition__Group_4__0__Impl6133); if (state.failed) return ;
+            match(input,30,FOLLOW_30_in_rule__PropertyDefinition__Group_4__0__Impl6188); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyDefinitionAccess().getDefaultKeyword_4_0()); 
             }
@@ -8950,16 +9032,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group_4__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3064:1: rule__PropertyDefinition__Group_4__1 : rule__PropertyDefinition__Group_4__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3090:1: rule__PropertyDefinition__Group_4__1 : rule__PropertyDefinition__Group_4__1__Impl ;
     public final void rule__PropertyDefinition__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3068:1: ( rule__PropertyDefinition__Group_4__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3069:2: rule__PropertyDefinition__Group_4__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3094:1: ( rule__PropertyDefinition__Group_4__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3095:2: rule__PropertyDefinition__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__1__Impl_in_rule__PropertyDefinition__Group_4__16164);
+            pushFollow(FOLLOW_rule__PropertyDefinition__Group_4__1__Impl_in_rule__PropertyDefinition__Group_4__16219);
             rule__PropertyDefinition__Group_4__1__Impl();
 
             state._fsp--;
@@ -8983,25 +9065,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__Group_4__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3075:1: rule__PropertyDefinition__Group_4__1__Impl : ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3101:1: rule__PropertyDefinition__Group_4__1__Impl : ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) ) ;
     public final void rule__PropertyDefinition__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3079:1: ( ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3080:1: ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3105:1: ( ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3106:1: ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3080:1: ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3081:1: ( rule__PropertyDefinition__DefaultAssignment_4_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3106:1: ( ( rule__PropertyDefinition__DefaultAssignment_4_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3107:1: ( rule__PropertyDefinition__DefaultAssignment_4_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getDefaultAssignment_4_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3082:1: ( rule__PropertyDefinition__DefaultAssignment_4_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3082:2: rule__PropertyDefinition__DefaultAssignment_4_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3108:1: ( rule__PropertyDefinition__DefaultAssignment_4_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3108:2: rule__PropertyDefinition__DefaultAssignment_4_1
             {
-            pushFollow(FOLLOW_rule__PropertyDefinition__DefaultAssignment_4_1_in_rule__PropertyDefinition__Group_4__1__Impl6191);
+            pushFollow(FOLLOW_rule__PropertyDefinition__DefaultAssignment_4_1_in_rule__PropertyDefinition__Group_4__1__Impl6246);
             rule__PropertyDefinition__DefaultAssignment_4_1();
 
             state._fsp--;
@@ -9034,21 +9116,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3096:1: rule__PseudoClassDefinition__Group__0 : rule__PseudoClassDefinition__Group__0__Impl rule__PseudoClassDefinition__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3122:1: rule__PseudoClassDefinition__Group__0 : rule__PseudoClassDefinition__Group__0__Impl rule__PseudoClassDefinition__Group__1 ;
     public final void rule__PseudoClassDefinition__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3100:1: ( rule__PseudoClassDefinition__Group__0__Impl rule__PseudoClassDefinition__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3101:2: rule__PseudoClassDefinition__Group__0__Impl rule__PseudoClassDefinition__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3126:1: ( rule__PseudoClassDefinition__Group__0__Impl rule__PseudoClassDefinition__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3127:2: rule__PseudoClassDefinition__Group__0__Impl rule__PseudoClassDefinition__Group__1
             {
-            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__0__Impl_in_rule__PseudoClassDefinition__Group__06225);
+            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__0__Impl_in_rule__PseudoClassDefinition__Group__06280);
             rule__PseudoClassDefinition__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__1_in_rule__PseudoClassDefinition__Group__06228);
+            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__1_in_rule__PseudoClassDefinition__Group__06283);
             rule__PseudoClassDefinition__Group__1();
 
             state._fsp--;
@@ -9072,23 +9154,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3108:1: rule__PseudoClassDefinition__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3134:1: rule__PseudoClassDefinition__Group__0__Impl : ( () ) ;
     public final void rule__PseudoClassDefinition__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3112:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3113:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3138:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3139:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3113:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3114:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3139:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3140:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPseudoClassDefinitionAccess().getPseudoClassDefinitionAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3115:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3117:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3141:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3143:1: 
             {
             }
 
@@ -9113,21 +9195,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3127:1: rule__PseudoClassDefinition__Group__1 : rule__PseudoClassDefinition__Group__1__Impl rule__PseudoClassDefinition__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3153:1: rule__PseudoClassDefinition__Group__1 : rule__PseudoClassDefinition__Group__1__Impl rule__PseudoClassDefinition__Group__2 ;
     public final void rule__PseudoClassDefinition__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3131:1: ( rule__PseudoClassDefinition__Group__1__Impl rule__PseudoClassDefinition__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3132:2: rule__PseudoClassDefinition__Group__1__Impl rule__PseudoClassDefinition__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3157:1: ( rule__PseudoClassDefinition__Group__1__Impl rule__PseudoClassDefinition__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3158:2: rule__PseudoClassDefinition__Group__1__Impl rule__PseudoClassDefinition__Group__2
             {
-            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__1__Impl_in_rule__PseudoClassDefinition__Group__16286);
+            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__1__Impl_in_rule__PseudoClassDefinition__Group__16341);
             rule__PseudoClassDefinition__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__2_in_rule__PseudoClassDefinition__Group__16289);
+            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__2_in_rule__PseudoClassDefinition__Group__16344);
             rule__PseudoClassDefinition__Group__2();
 
             state._fsp--;
@@ -9151,33 +9233,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3139:1: rule__PseudoClassDefinition__Group__1__Impl : ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3165:1: rule__PseudoClassDefinition__Group__1__Impl : ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? ) ;
     public final void rule__PseudoClassDefinition__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3143:1: ( ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3144:1: ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3169:1: ( ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3170:1: ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3144:1: ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3145:1: ( rule__PseudoClassDefinition__DokuAssignment_1 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3170:1: ( ( rule__PseudoClassDefinition__DokuAssignment_1 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3171:1: ( rule__PseudoClassDefinition__DokuAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPseudoClassDefinitionAccess().getDokuAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3146:1: ( rule__PseudoClassDefinition__DokuAssignment_1 )?
-            int alt29=2;
-            int LA29_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3172:1: ( rule__PseudoClassDefinition__DokuAssignment_1 )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA29_0==RULE_JDOC) ) {
-                alt29=1;
+            if ( (LA30_0==RULE_JDOC) ) {
+                alt30=1;
             }
-            switch (alt29) {
+            switch (alt30) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3146:2: rule__PseudoClassDefinition__DokuAssignment_1
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3172:2: rule__PseudoClassDefinition__DokuAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__PseudoClassDefinition__DokuAssignment_1_in_rule__PseudoClassDefinition__Group__1__Impl6316);
+                    pushFollow(FOLLOW_rule__PseudoClassDefinition__DokuAssignment_1_in_rule__PseudoClassDefinition__Group__1__Impl6371);
                     rule__PseudoClassDefinition__DokuAssignment_1();
 
                     state._fsp--;
@@ -9213,16 +9295,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3156:1: rule__PseudoClassDefinition__Group__2 : rule__PseudoClassDefinition__Group__2__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3182:1: rule__PseudoClassDefinition__Group__2 : rule__PseudoClassDefinition__Group__2__Impl ;
     public final void rule__PseudoClassDefinition__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3160:1: ( rule__PseudoClassDefinition__Group__2__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3161:2: rule__PseudoClassDefinition__Group__2__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3186:1: ( rule__PseudoClassDefinition__Group__2__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3187:2: rule__PseudoClassDefinition__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__2__Impl_in_rule__PseudoClassDefinition__Group__26347);
+            pushFollow(FOLLOW_rule__PseudoClassDefinition__Group__2__Impl_in_rule__PseudoClassDefinition__Group__26402);
             rule__PseudoClassDefinition__Group__2__Impl();
 
             state._fsp--;
@@ -9246,25 +9328,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3167:1: rule__PseudoClassDefinition__Group__2__Impl : ( ( rule__PseudoClassDefinition__NameAssignment_2 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3193:1: rule__PseudoClassDefinition__Group__2__Impl : ( ( rule__PseudoClassDefinition__NameAssignment_2 ) ) ;
     public final void rule__PseudoClassDefinition__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3171:1: ( ( ( rule__PseudoClassDefinition__NameAssignment_2 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3172:1: ( ( rule__PseudoClassDefinition__NameAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3197:1: ( ( ( rule__PseudoClassDefinition__NameAssignment_2 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3198:1: ( ( rule__PseudoClassDefinition__NameAssignment_2 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3172:1: ( ( rule__PseudoClassDefinition__NameAssignment_2 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3173:1: ( rule__PseudoClassDefinition__NameAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3198:1: ( ( rule__PseudoClassDefinition__NameAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3199:1: ( rule__PseudoClassDefinition__NameAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPseudoClassDefinitionAccess().getNameAssignment_2()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3174:1: ( rule__PseudoClassDefinition__NameAssignment_2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3174:2: rule__PseudoClassDefinition__NameAssignment_2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3200:1: ( rule__PseudoClassDefinition__NameAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3200:2: rule__PseudoClassDefinition__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__PseudoClassDefinition__NameAssignment_2_in_rule__PseudoClassDefinition__Group__2__Impl6374);
+            pushFollow(FOLLOW_rule__PseudoClassDefinition__NameAssignment_2_in_rule__PseudoClassDefinition__Group__2__Impl6429);
             rule__PseudoClassDefinition__NameAssignment_2();
 
             state._fsp--;
@@ -9297,21 +9379,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRef__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3190:1: rule__CSSRuleRef__Group__0 : rule__CSSRuleRef__Group__0__Impl rule__CSSRuleRef__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3216:1: rule__CSSRuleRef__Group__0 : rule__CSSRuleRef__Group__0__Impl rule__CSSRuleRef__Group__1 ;
     public final void rule__CSSRuleRef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3194:1: ( rule__CSSRuleRef__Group__0__Impl rule__CSSRuleRef__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3195:2: rule__CSSRuleRef__Group__0__Impl rule__CSSRuleRef__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3220:1: ( rule__CSSRuleRef__Group__0__Impl rule__CSSRuleRef__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3221:2: rule__CSSRuleRef__Group__0__Impl rule__CSSRuleRef__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleRef__Group__0__Impl_in_rule__CSSRuleRef__Group__06410);
+            pushFollow(FOLLOW_rule__CSSRuleRef__Group__0__Impl_in_rule__CSSRuleRef__Group__06465);
             rule__CSSRuleRef__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleRef__Group__1_in_rule__CSSRuleRef__Group__06413);
+            pushFollow(FOLLOW_rule__CSSRuleRef__Group__1_in_rule__CSSRuleRef__Group__06468);
             rule__CSSRuleRef__Group__1();
 
             state._fsp--;
@@ -9335,22 +9417,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRef__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3202:1: rule__CSSRuleRef__Group__0__Impl : ( '<' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3228:1: rule__CSSRuleRef__Group__0__Impl : ( '<' ) ;
     public final void rule__CSSRuleRef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3206:1: ( ( '<' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3207:1: ( '<' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3232:1: ( ( '<' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3233:1: ( '<' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3207:1: ( '<' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3208:1: '<'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3233:1: ( '<' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3234:1: '<'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRefAccess().getLessThanSignKeyword_0()); 
             }
-            match(input,30,FOLLOW_30_in_rule__CSSRuleRef__Group__0__Impl6441); if (state.failed) return ;
+            match(input,31,FOLLOW_31_in_rule__CSSRuleRef__Group__0__Impl6496); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleRefAccess().getLessThanSignKeyword_0()); 
             }
@@ -9376,21 +9458,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRef__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3221:1: rule__CSSRuleRef__Group__1 : rule__CSSRuleRef__Group__1__Impl rule__CSSRuleRef__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3247:1: rule__CSSRuleRef__Group__1 : rule__CSSRuleRef__Group__1__Impl rule__CSSRuleRef__Group__2 ;
     public final void rule__CSSRuleRef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3225:1: ( rule__CSSRuleRef__Group__1__Impl rule__CSSRuleRef__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3226:2: rule__CSSRuleRef__Group__1__Impl rule__CSSRuleRef__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3251:1: ( rule__CSSRuleRef__Group__1__Impl rule__CSSRuleRef__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3252:2: rule__CSSRuleRef__Group__1__Impl rule__CSSRuleRef__Group__2
             {
-            pushFollow(FOLLOW_rule__CSSRuleRef__Group__1__Impl_in_rule__CSSRuleRef__Group__16472);
+            pushFollow(FOLLOW_rule__CSSRuleRef__Group__1__Impl_in_rule__CSSRuleRef__Group__16527);
             rule__CSSRuleRef__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleRef__Group__2_in_rule__CSSRuleRef__Group__16475);
+            pushFollow(FOLLOW_rule__CSSRuleRef__Group__2_in_rule__CSSRuleRef__Group__16530);
             rule__CSSRuleRef__Group__2();
 
             state._fsp--;
@@ -9414,25 +9496,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRef__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3233:1: rule__CSSRuleRef__Group__1__Impl : ( ( rule__CSSRuleRef__RefAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3259:1: rule__CSSRuleRef__Group__1__Impl : ( ( rule__CSSRuleRef__RefAssignment_1 ) ) ;
     public final void rule__CSSRuleRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3237:1: ( ( ( rule__CSSRuleRef__RefAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3238:1: ( ( rule__CSSRuleRef__RefAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3263:1: ( ( ( rule__CSSRuleRef__RefAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3264:1: ( ( rule__CSSRuleRef__RefAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3238:1: ( ( rule__CSSRuleRef__RefAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3239:1: ( rule__CSSRuleRef__RefAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3264:1: ( ( rule__CSSRuleRef__RefAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3265:1: ( rule__CSSRuleRef__RefAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRefAccess().getRefAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3240:1: ( rule__CSSRuleRef__RefAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3240:2: rule__CSSRuleRef__RefAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3266:1: ( rule__CSSRuleRef__RefAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3266:2: rule__CSSRuleRef__RefAssignment_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleRef__RefAssignment_1_in_rule__CSSRuleRef__Group__1__Impl6502);
+            pushFollow(FOLLOW_rule__CSSRuleRef__RefAssignment_1_in_rule__CSSRuleRef__Group__1__Impl6557);
             rule__CSSRuleRef__RefAssignment_1();
 
             state._fsp--;
@@ -9465,16 +9547,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRef__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3250:1: rule__CSSRuleRef__Group__2 : rule__CSSRuleRef__Group__2__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3276:1: rule__CSSRuleRef__Group__2 : rule__CSSRuleRef__Group__2__Impl ;
     public final void rule__CSSRuleRef__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3254:1: ( rule__CSSRuleRef__Group__2__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3255:2: rule__CSSRuleRef__Group__2__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3280:1: ( rule__CSSRuleRef__Group__2__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3281:2: rule__CSSRuleRef__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleRef__Group__2__Impl_in_rule__CSSRuleRef__Group__26532);
+            pushFollow(FOLLOW_rule__CSSRuleRef__Group__2__Impl_in_rule__CSSRuleRef__Group__26587);
             rule__CSSRuleRef__Group__2__Impl();
 
             state._fsp--;
@@ -9498,22 +9580,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRef__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3261:1: rule__CSSRuleRef__Group__2__Impl : ( '>' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3287:1: rule__CSSRuleRef__Group__2__Impl : ( '>' ) ;
     public final void rule__CSSRuleRef__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3265:1: ( ( '>' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3266:1: ( '>' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3291:1: ( ( '>' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3292:1: ( '>' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3266:1: ( '>' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3267:1: '>'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3292:1: ( '>' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3293:1: '>'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRefAccess().getGreaterThanSignKeyword_2()); 
             }
-            match(input,31,FOLLOW_31_in_rule__CSSRuleRef__Group__2__Impl6560); if (state.failed) return ;
+            match(input,32,FOLLOW_32_in_rule__CSSRuleRef__Group__2__Impl6615); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleRefAccess().getGreaterThanSignKeyword_2()); 
             }
@@ -9539,21 +9621,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3286:1: rule__CSSRuleDefinition__Group__0 : rule__CSSRuleDefinition__Group__0__Impl rule__CSSRuleDefinition__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3312:1: rule__CSSRuleDefinition__Group__0 : rule__CSSRuleDefinition__Group__0__Impl rule__CSSRuleDefinition__Group__1 ;
     public final void rule__CSSRuleDefinition__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3290:1: ( rule__CSSRuleDefinition__Group__0__Impl rule__CSSRuleDefinition__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3291:2: rule__CSSRuleDefinition__Group__0__Impl rule__CSSRuleDefinition__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3316:1: ( rule__CSSRuleDefinition__Group__0__Impl rule__CSSRuleDefinition__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3317:2: rule__CSSRuleDefinition__Group__0__Impl rule__CSSRuleDefinition__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__0__Impl_in_rule__CSSRuleDefinition__Group__06597);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__0__Impl_in_rule__CSSRuleDefinition__Group__06652);
             rule__CSSRuleDefinition__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__1_in_rule__CSSRuleDefinition__Group__06600);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__1_in_rule__CSSRuleDefinition__Group__06655);
             rule__CSSRuleDefinition__Group__1();
 
             state._fsp--;
@@ -9577,33 +9659,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3298:1: rule__CSSRuleDefinition__Group__0__Impl : ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3324:1: rule__CSSRuleDefinition__Group__0__Impl : ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? ) ;
     public final void rule__CSSRuleDefinition__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3302:1: ( ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3303:1: ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3328:1: ( ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3329:1: ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3303:1: ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3304:1: ( rule__CSSRuleDefinition__DokuAssignment_0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3329:1: ( ( rule__CSSRuleDefinition__DokuAssignment_0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3330:1: ( rule__CSSRuleDefinition__DokuAssignment_0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getDokuAssignment_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3305:1: ( rule__CSSRuleDefinition__DokuAssignment_0 )?
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3331:1: ( rule__CSSRuleDefinition__DokuAssignment_0 )?
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( (LA30_0==RULE_JDOC) ) {
-                alt30=1;
+            if ( (LA31_0==RULE_JDOC) ) {
+                alt31=1;
             }
-            switch (alt30) {
+            switch (alt31) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3305:2: rule__CSSRuleDefinition__DokuAssignment_0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3331:2: rule__CSSRuleDefinition__DokuAssignment_0
                     {
-                    pushFollow(FOLLOW_rule__CSSRuleDefinition__DokuAssignment_0_in_rule__CSSRuleDefinition__Group__0__Impl6627);
+                    pushFollow(FOLLOW_rule__CSSRuleDefinition__DokuAssignment_0_in_rule__CSSRuleDefinition__Group__0__Impl6682);
                     rule__CSSRuleDefinition__DokuAssignment_0();
 
                     state._fsp--;
@@ -9639,21 +9721,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3315:1: rule__CSSRuleDefinition__Group__1 : rule__CSSRuleDefinition__Group__1__Impl rule__CSSRuleDefinition__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3341:1: rule__CSSRuleDefinition__Group__1 : rule__CSSRuleDefinition__Group__1__Impl rule__CSSRuleDefinition__Group__2 ;
     public final void rule__CSSRuleDefinition__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3319:1: ( rule__CSSRuleDefinition__Group__1__Impl rule__CSSRuleDefinition__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3320:2: rule__CSSRuleDefinition__Group__1__Impl rule__CSSRuleDefinition__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3345:1: ( rule__CSSRuleDefinition__Group__1__Impl rule__CSSRuleDefinition__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3346:2: rule__CSSRuleDefinition__Group__1__Impl rule__CSSRuleDefinition__Group__2
             {
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__1__Impl_in_rule__CSSRuleDefinition__Group__16658);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__1__Impl_in_rule__CSSRuleDefinition__Group__16713);
             rule__CSSRuleDefinition__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__2_in_rule__CSSRuleDefinition__Group__16661);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__2_in_rule__CSSRuleDefinition__Group__16716);
             rule__CSSRuleDefinition__Group__2();
 
             state._fsp--;
@@ -9677,25 +9759,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3327:1: rule__CSSRuleDefinition__Group__1__Impl : ( ( rule__CSSRuleDefinition__NameAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3353:1: rule__CSSRuleDefinition__Group__1__Impl : ( ( rule__CSSRuleDefinition__NameAssignment_1 ) ) ;
     public final void rule__CSSRuleDefinition__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3331:1: ( ( ( rule__CSSRuleDefinition__NameAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3332:1: ( ( rule__CSSRuleDefinition__NameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3357:1: ( ( ( rule__CSSRuleDefinition__NameAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3358:1: ( ( rule__CSSRuleDefinition__NameAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3332:1: ( ( rule__CSSRuleDefinition__NameAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3333:1: ( rule__CSSRuleDefinition__NameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3358:1: ( ( rule__CSSRuleDefinition__NameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3359:1: ( rule__CSSRuleDefinition__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getNameAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3334:1: ( rule__CSSRuleDefinition__NameAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3334:2: rule__CSSRuleDefinition__NameAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3360:1: ( rule__CSSRuleDefinition__NameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3360:2: rule__CSSRuleDefinition__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__NameAssignment_1_in_rule__CSSRuleDefinition__Group__1__Impl6688);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__NameAssignment_1_in_rule__CSSRuleDefinition__Group__1__Impl6743);
             rule__CSSRuleDefinition__NameAssignment_1();
 
             state._fsp--;
@@ -9728,21 +9810,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3344:1: rule__CSSRuleDefinition__Group__2 : rule__CSSRuleDefinition__Group__2__Impl rule__CSSRuleDefinition__Group__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3370:1: rule__CSSRuleDefinition__Group__2 : rule__CSSRuleDefinition__Group__2__Impl rule__CSSRuleDefinition__Group__3 ;
     public final void rule__CSSRuleDefinition__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3348:1: ( rule__CSSRuleDefinition__Group__2__Impl rule__CSSRuleDefinition__Group__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3349:2: rule__CSSRuleDefinition__Group__2__Impl rule__CSSRuleDefinition__Group__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3374:1: ( rule__CSSRuleDefinition__Group__2__Impl rule__CSSRuleDefinition__Group__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3375:2: rule__CSSRuleDefinition__Group__2__Impl rule__CSSRuleDefinition__Group__3
             {
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__2__Impl_in_rule__CSSRuleDefinition__Group__26718);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__2__Impl_in_rule__CSSRuleDefinition__Group__26773);
             rule__CSSRuleDefinition__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__3_in_rule__CSSRuleDefinition__Group__26721);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__3_in_rule__CSSRuleDefinition__Group__26776);
             rule__CSSRuleDefinition__Group__3();
 
             state._fsp--;
@@ -9766,22 +9848,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3356:1: rule__CSSRuleDefinition__Group__2__Impl : ( '=' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3382:1: rule__CSSRuleDefinition__Group__2__Impl : ( '=' ) ;
     public final void rule__CSSRuleDefinition__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3360:1: ( ( '=' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3361:1: ( '=' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3386:1: ( ( '=' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3387:1: ( '=' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3361:1: ( '=' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3362:1: '='
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3387:1: ( '=' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3388:1: '='
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getEqualsSignKeyword_2()); 
             }
-            match(input,32,FOLLOW_32_in_rule__CSSRuleDefinition__Group__2__Impl6749); if (state.failed) return ;
+            match(input,33,FOLLOW_33_in_rule__CSSRuleDefinition__Group__2__Impl6804); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleDefinitionAccess().getEqualsSignKeyword_2()); 
             }
@@ -9807,21 +9889,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3375:1: rule__CSSRuleDefinition__Group__3 : rule__CSSRuleDefinition__Group__3__Impl rule__CSSRuleDefinition__Group__4 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3401:1: rule__CSSRuleDefinition__Group__3 : rule__CSSRuleDefinition__Group__3__Impl rule__CSSRuleDefinition__Group__4 ;
     public final void rule__CSSRuleDefinition__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3379:1: ( rule__CSSRuleDefinition__Group__3__Impl rule__CSSRuleDefinition__Group__4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3380:2: rule__CSSRuleDefinition__Group__3__Impl rule__CSSRuleDefinition__Group__4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3405:1: ( rule__CSSRuleDefinition__Group__3__Impl rule__CSSRuleDefinition__Group__4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3406:2: rule__CSSRuleDefinition__Group__3__Impl rule__CSSRuleDefinition__Group__4
             {
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__3__Impl_in_rule__CSSRuleDefinition__Group__36780);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__3__Impl_in_rule__CSSRuleDefinition__Group__36835);
             rule__CSSRuleDefinition__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__4_in_rule__CSSRuleDefinition__Group__36783);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__4_in_rule__CSSRuleDefinition__Group__36838);
             rule__CSSRuleDefinition__Group__4();
 
             state._fsp--;
@@ -9845,25 +9927,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3387:1: rule__CSSRuleDefinition__Group__3__Impl : ( ( rule__CSSRuleDefinition__Alternatives_3 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3413:1: rule__CSSRuleDefinition__Group__3__Impl : ( ( rule__CSSRuleDefinition__Alternatives_3 ) ) ;
     public final void rule__CSSRuleDefinition__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3391:1: ( ( ( rule__CSSRuleDefinition__Alternatives_3 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3392:1: ( ( rule__CSSRuleDefinition__Alternatives_3 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3417:1: ( ( ( rule__CSSRuleDefinition__Alternatives_3 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3418:1: ( ( rule__CSSRuleDefinition__Alternatives_3 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3392:1: ( ( rule__CSSRuleDefinition__Alternatives_3 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3393:1: ( rule__CSSRuleDefinition__Alternatives_3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3418:1: ( ( rule__CSSRuleDefinition__Alternatives_3 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3419:1: ( rule__CSSRuleDefinition__Alternatives_3 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getAlternatives_3()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3394:1: ( rule__CSSRuleDefinition__Alternatives_3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3394:2: rule__CSSRuleDefinition__Alternatives_3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3420:1: ( rule__CSSRuleDefinition__Alternatives_3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3420:2: rule__CSSRuleDefinition__Alternatives_3
             {
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Alternatives_3_in_rule__CSSRuleDefinition__Group__3__Impl6810);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Alternatives_3_in_rule__CSSRuleDefinition__Group__3__Impl6865);
             rule__CSSRuleDefinition__Alternatives_3();
 
             state._fsp--;
@@ -9896,16 +9978,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3404:1: rule__CSSRuleDefinition__Group__4 : rule__CSSRuleDefinition__Group__4__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3430:1: rule__CSSRuleDefinition__Group__4 : rule__CSSRuleDefinition__Group__4__Impl ;
     public final void rule__CSSRuleDefinition__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3408:1: ( rule__CSSRuleDefinition__Group__4__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3409:2: rule__CSSRuleDefinition__Group__4__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3434:1: ( rule__CSSRuleDefinition__Group__4__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3435:2: rule__CSSRuleDefinition__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__4__Impl_in_rule__CSSRuleDefinition__Group__46840);
+            pushFollow(FOLLOW_rule__CSSRuleDefinition__Group__4__Impl_in_rule__CSSRuleDefinition__Group__46895);
             rule__CSSRuleDefinition__Group__4__Impl();
 
             state._fsp--;
@@ -9929,22 +10011,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__Group__4__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3415:1: rule__CSSRuleDefinition__Group__4__Impl : ( ';' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3441:1: rule__CSSRuleDefinition__Group__4__Impl : ( ';' ) ;
     public final void rule__CSSRuleDefinition__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3419:1: ( ( ';' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3420:1: ( ';' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3445:1: ( ( ';' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3446:1: ( ';' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3420:1: ( ';' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3421:1: ';'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3446:1: ( ';' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3447:1: ';'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getSemicolonKeyword_4()); 
             }
-            match(input,28,FOLLOW_28_in_rule__CSSRuleDefinition__Group__4__Impl6868); if (state.failed) return ;
+            match(input,29,FOLLOW_29_in_rule__CSSRuleDefinition__Group__4__Impl6923); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleDefinitionAccess().getSemicolonKeyword_4()); 
             }
@@ -9970,21 +10052,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3444:1: rule__CSSRuleFunc__Group__0 : rule__CSSRuleFunc__Group__0__Impl rule__CSSRuleFunc__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3470:1: rule__CSSRuleFunc__Group__0 : rule__CSSRuleFunc__Group__0__Impl rule__CSSRuleFunc__Group__1 ;
     public final void rule__CSSRuleFunc__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3448:1: ( rule__CSSRuleFunc__Group__0__Impl rule__CSSRuleFunc__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3449:2: rule__CSSRuleFunc__Group__0__Impl rule__CSSRuleFunc__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3474:1: ( rule__CSSRuleFunc__Group__0__Impl rule__CSSRuleFunc__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3475:2: rule__CSSRuleFunc__Group__0__Impl rule__CSSRuleFunc__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__0__Impl_in_rule__CSSRuleFunc__Group__06909);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__0__Impl_in_rule__CSSRuleFunc__Group__06964);
             rule__CSSRuleFunc__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__1_in_rule__CSSRuleFunc__Group__06912);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__1_in_rule__CSSRuleFunc__Group__06967);
             rule__CSSRuleFunc__Group__1();
 
             state._fsp--;
@@ -10008,23 +10090,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3456:1: rule__CSSRuleFunc__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3482:1: rule__CSSRuleFunc__Group__0__Impl : ( () ) ;
     public final void rule__CSSRuleFunc__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3460:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3461:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3486:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3487:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3461:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3462:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3487:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3488:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getCSSRuleFuncAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3463:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3465:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3489:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3491:1: 
             {
             }
 
@@ -10049,21 +10131,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3475:1: rule__CSSRuleFunc__Group__1 : rule__CSSRuleFunc__Group__1__Impl rule__CSSRuleFunc__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3501:1: rule__CSSRuleFunc__Group__1 : rule__CSSRuleFunc__Group__1__Impl rule__CSSRuleFunc__Group__2 ;
     public final void rule__CSSRuleFunc__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3479:1: ( rule__CSSRuleFunc__Group__1__Impl rule__CSSRuleFunc__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3480:2: rule__CSSRuleFunc__Group__1__Impl rule__CSSRuleFunc__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3505:1: ( rule__CSSRuleFunc__Group__1__Impl rule__CSSRuleFunc__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3506:2: rule__CSSRuleFunc__Group__1__Impl rule__CSSRuleFunc__Group__2
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__1__Impl_in_rule__CSSRuleFunc__Group__16970);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__1__Impl_in_rule__CSSRuleFunc__Group__17025);
             rule__CSSRuleFunc__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__2_in_rule__CSSRuleFunc__Group__16973);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__2_in_rule__CSSRuleFunc__Group__17028);
             rule__CSSRuleFunc__Group__2();
 
             state._fsp--;
@@ -10087,25 +10169,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3487:1: rule__CSSRuleFunc__Group__1__Impl : ( ( rule__CSSRuleFunc__NameAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3513:1: rule__CSSRuleFunc__Group__1__Impl : ( ( rule__CSSRuleFunc__NameAssignment_1 ) ) ;
     public final void rule__CSSRuleFunc__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3491:1: ( ( ( rule__CSSRuleFunc__NameAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3492:1: ( ( rule__CSSRuleFunc__NameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3517:1: ( ( ( rule__CSSRuleFunc__NameAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3518:1: ( ( rule__CSSRuleFunc__NameAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3492:1: ( ( rule__CSSRuleFunc__NameAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3493:1: ( rule__CSSRuleFunc__NameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3518:1: ( ( rule__CSSRuleFunc__NameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3519:1: ( rule__CSSRuleFunc__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getNameAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3494:1: ( rule__CSSRuleFunc__NameAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3494:2: rule__CSSRuleFunc__NameAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3520:1: ( rule__CSSRuleFunc__NameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3520:2: rule__CSSRuleFunc__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__NameAssignment_1_in_rule__CSSRuleFunc__Group__1__Impl7000);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__NameAssignment_1_in_rule__CSSRuleFunc__Group__1__Impl7055);
             rule__CSSRuleFunc__NameAssignment_1();
 
             state._fsp--;
@@ -10138,21 +10220,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3504:1: rule__CSSRuleFunc__Group__2 : rule__CSSRuleFunc__Group__2__Impl rule__CSSRuleFunc__Group__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3530:1: rule__CSSRuleFunc__Group__2 : rule__CSSRuleFunc__Group__2__Impl rule__CSSRuleFunc__Group__3 ;
     public final void rule__CSSRuleFunc__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3508:1: ( rule__CSSRuleFunc__Group__2__Impl rule__CSSRuleFunc__Group__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3509:2: rule__CSSRuleFunc__Group__2__Impl rule__CSSRuleFunc__Group__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3534:1: ( rule__CSSRuleFunc__Group__2__Impl rule__CSSRuleFunc__Group__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3535:2: rule__CSSRuleFunc__Group__2__Impl rule__CSSRuleFunc__Group__3
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__2__Impl_in_rule__CSSRuleFunc__Group__27030);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__2__Impl_in_rule__CSSRuleFunc__Group__27085);
             rule__CSSRuleFunc__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__3_in_rule__CSSRuleFunc__Group__27033);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__3_in_rule__CSSRuleFunc__Group__27088);
             rule__CSSRuleFunc__Group__3();
 
             state._fsp--;
@@ -10176,22 +10258,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3516:1: rule__CSSRuleFunc__Group__2__Impl : ( '(' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3542:1: rule__CSSRuleFunc__Group__2__Impl : ( '(' ) ;
     public final void rule__CSSRuleFunc__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3520:1: ( ( '(' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3521:1: ( '(' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3546:1: ( ( '(' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3547:1: ( '(' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3521:1: ( '(' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3522:1: '('
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3547:1: ( '(' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3548:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getLeftParenthesisKeyword_2()); 
             }
-            match(input,23,FOLLOW_23_in_rule__CSSRuleFunc__Group__2__Impl7061); if (state.failed) return ;
+            match(input,25,FOLLOW_25_in_rule__CSSRuleFunc__Group__2__Impl7116); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleFuncAccess().getLeftParenthesisKeyword_2()); 
             }
@@ -10217,21 +10299,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3535:1: rule__CSSRuleFunc__Group__3 : rule__CSSRuleFunc__Group__3__Impl rule__CSSRuleFunc__Group__4 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3561:1: rule__CSSRuleFunc__Group__3 : rule__CSSRuleFunc__Group__3__Impl rule__CSSRuleFunc__Group__4 ;
     public final void rule__CSSRuleFunc__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3539:1: ( rule__CSSRuleFunc__Group__3__Impl rule__CSSRuleFunc__Group__4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3540:2: rule__CSSRuleFunc__Group__3__Impl rule__CSSRuleFunc__Group__4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3565:1: ( rule__CSSRuleFunc__Group__3__Impl rule__CSSRuleFunc__Group__4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3566:2: rule__CSSRuleFunc__Group__3__Impl rule__CSSRuleFunc__Group__4
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__3__Impl_in_rule__CSSRuleFunc__Group__37092);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__3__Impl_in_rule__CSSRuleFunc__Group__37147);
             rule__CSSRuleFunc__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__4_in_rule__CSSRuleFunc__Group__37095);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__4_in_rule__CSSRuleFunc__Group__37150);
             rule__CSSRuleFunc__Group__4();
 
             state._fsp--;
@@ -10255,43 +10337,43 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3547:1: rule__CSSRuleFunc__Group__3__Impl : ( ( RULE_WS )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3573:1: rule__CSSRuleFunc__Group__3__Impl : ( ( RULE_WS )* ) ;
     public final void rule__CSSRuleFunc__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3551:1: ( ( ( RULE_WS )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3552:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3577:1: ( ( ( RULE_WS )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3578:1: ( ( RULE_WS )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3552:1: ( ( RULE_WS )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3553:1: ( RULE_WS )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3578:1: ( ( RULE_WS )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3579:1: ( RULE_WS )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getWSTerminalRuleCall_3()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3554:1: ( RULE_WS )*
-            loop31:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3580:1: ( RULE_WS )*
+            loop32:
             do {
-                int alt31=2;
-                int LA31_0 = input.LA(1);
+                int alt32=2;
+                int LA32_0 = input.LA(1);
 
-                if ( (LA31_0==RULE_WS) ) {
-                    alt31=1;
+                if ( (LA32_0==RULE_WS) ) {
+                    alt32=1;
                 }
 
 
-                switch (alt31) {
+                switch (alt32) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3554:3: RULE_WS
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3580:3: RULE_WS
             	    {
-            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSRuleFunc__Group__3__Impl7123); if (state.failed) return ;
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__CSSRuleFunc__Group__3__Impl7178); if (state.failed) return ;
 
             	    }
             	    break;
 
             	default :
-            	    break loop31;
+            	    break loop32;
                 }
             } while (true);
 
@@ -10320,21 +10402,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3564:1: rule__CSSRuleFunc__Group__4 : rule__CSSRuleFunc__Group__4__Impl rule__CSSRuleFunc__Group__5 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3590:1: rule__CSSRuleFunc__Group__4 : rule__CSSRuleFunc__Group__4__Impl rule__CSSRuleFunc__Group__5 ;
     public final void rule__CSSRuleFunc__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3568:1: ( rule__CSSRuleFunc__Group__4__Impl rule__CSSRuleFunc__Group__5 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3569:2: rule__CSSRuleFunc__Group__4__Impl rule__CSSRuleFunc__Group__5
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3594:1: ( rule__CSSRuleFunc__Group__4__Impl rule__CSSRuleFunc__Group__5 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3595:2: rule__CSSRuleFunc__Group__4__Impl rule__CSSRuleFunc__Group__5
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__4__Impl_in_rule__CSSRuleFunc__Group__47154);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__4__Impl_in_rule__CSSRuleFunc__Group__47209);
             rule__CSSRuleFunc__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__5_in_rule__CSSRuleFunc__Group__47157);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__5_in_rule__CSSRuleFunc__Group__47212);
             rule__CSSRuleFunc__Group__5();
 
             state._fsp--;
@@ -10358,25 +10440,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__4__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3576:1: rule__CSSRuleFunc__Group__4__Impl : ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3602:1: rule__CSSRuleFunc__Group__4__Impl : ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) ) ;
     public final void rule__CSSRuleFunc__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3580:1: ( ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3581:1: ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3606:1: ( ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3607:1: ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3581:1: ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3582:1: ( rule__CSSRuleFunc__ParamsAssignment_4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3607:1: ( ( rule__CSSRuleFunc__ParamsAssignment_4 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3608:1: ( rule__CSSRuleFunc__ParamsAssignment_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getParamsAssignment_4()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3583:1: ( rule__CSSRuleFunc__ParamsAssignment_4 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3583:2: rule__CSSRuleFunc__ParamsAssignment_4
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3609:1: ( rule__CSSRuleFunc__ParamsAssignment_4 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3609:2: rule__CSSRuleFunc__ParamsAssignment_4
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__ParamsAssignment_4_in_rule__CSSRuleFunc__Group__4__Impl7184);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__ParamsAssignment_4_in_rule__CSSRuleFunc__Group__4__Impl7239);
             rule__CSSRuleFunc__ParamsAssignment_4();
 
             state._fsp--;
@@ -10409,16 +10491,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__5"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3593:1: rule__CSSRuleFunc__Group__5 : rule__CSSRuleFunc__Group__5__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3619:1: rule__CSSRuleFunc__Group__5 : rule__CSSRuleFunc__Group__5__Impl ;
     public final void rule__CSSRuleFunc__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3597:1: ( rule__CSSRuleFunc__Group__5__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3598:2: rule__CSSRuleFunc__Group__5__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3623:1: ( rule__CSSRuleFunc__Group__5__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3624:2: rule__CSSRuleFunc__Group__5__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__5__Impl_in_rule__CSSRuleFunc__Group__57214);
+            pushFollow(FOLLOW_rule__CSSRuleFunc__Group__5__Impl_in_rule__CSSRuleFunc__Group__57269);
             rule__CSSRuleFunc__Group__5__Impl();
 
             state._fsp--;
@@ -10442,22 +10524,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__Group__5__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3604:1: rule__CSSRuleFunc__Group__5__Impl : ( ')' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3630:1: rule__CSSRuleFunc__Group__5__Impl : ( ')' ) ;
     public final void rule__CSSRuleFunc__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3608:1: ( ( ')' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3609:1: ( ')' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3634:1: ( ( ')' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3635:1: ( ')' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3609:1: ( ')' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3610:1: ')'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3635:1: ( ')' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3636:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getRightParenthesisKeyword_5()); 
             }
-            match(input,25,FOLLOW_25_in_rule__CSSRuleFunc__Group__5__Impl7242); if (state.failed) return ;
+            match(input,27,FOLLOW_27_in_rule__CSSRuleFunc__Group__5__Impl7297); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleFuncAccess().getRightParenthesisKeyword_5()); 
             }
@@ -10483,21 +10565,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3635:1: rule__CSSRuleOr__Group__0 : rule__CSSRuleOr__Group__0__Impl rule__CSSRuleOr__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3661:1: rule__CSSRuleOr__Group__0 : rule__CSSRuleOr__Group__0__Impl rule__CSSRuleOr__Group__1 ;
     public final void rule__CSSRuleOr__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3639:1: ( rule__CSSRuleOr__Group__0__Impl rule__CSSRuleOr__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3640:2: rule__CSSRuleOr__Group__0__Impl rule__CSSRuleOr__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3665:1: ( rule__CSSRuleOr__Group__0__Impl rule__CSSRuleOr__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3666:2: rule__CSSRuleOr__Group__0__Impl rule__CSSRuleOr__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group__0__Impl_in_rule__CSSRuleOr__Group__07285);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group__0__Impl_in_rule__CSSRuleOr__Group__07340);
             rule__CSSRuleOr__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group__1_in_rule__CSSRuleOr__Group__07288);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group__1_in_rule__CSSRuleOr__Group__07343);
             rule__CSSRuleOr__Group__1();
 
             state._fsp--;
@@ -10521,22 +10603,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3647:1: rule__CSSRuleOr__Group__0__Impl : ( ruleCSSRuleXor ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3673:1: rule__CSSRuleOr__Group__0__Impl : ( ruleCSSRuleXor ) ;
     public final void rule__CSSRuleOr__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3651:1: ( ( ruleCSSRuleXor ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3652:1: ( ruleCSSRuleXor )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3677:1: ( ( ruleCSSRuleXor ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3678:1: ( ruleCSSRuleXor )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3652:1: ( ruleCSSRuleXor )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3653:1: ruleCSSRuleXor
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3678:1: ( ruleCSSRuleXor )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3679:1: ruleCSSRuleXor
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getCSSRuleXorParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__Group__0__Impl7315);
+            pushFollow(FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__Group__0__Impl7370);
             ruleCSSRuleXor();
 
             state._fsp--;
@@ -10566,16 +10648,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3664:1: rule__CSSRuleOr__Group__1 : rule__CSSRuleOr__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3690:1: rule__CSSRuleOr__Group__1 : rule__CSSRuleOr__Group__1__Impl ;
     public final void rule__CSSRuleOr__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3668:1: ( rule__CSSRuleOr__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3669:2: rule__CSSRuleOr__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3694:1: ( rule__CSSRuleOr__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3695:2: rule__CSSRuleOr__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group__1__Impl_in_rule__CSSRuleOr__Group__17344);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group__1__Impl_in_rule__CSSRuleOr__Group__17399);
             rule__CSSRuleOr__Group__1__Impl();
 
             state._fsp--;
@@ -10599,33 +10681,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3675:1: rule__CSSRuleOr__Group__1__Impl : ( ( rule__CSSRuleOr__Group_1__0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3701:1: rule__CSSRuleOr__Group__1__Impl : ( ( rule__CSSRuleOr__Group_1__0 )? ) ;
     public final void rule__CSSRuleOr__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3679:1: ( ( ( rule__CSSRuleOr__Group_1__0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3680:1: ( ( rule__CSSRuleOr__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3705:1: ( ( ( rule__CSSRuleOr__Group_1__0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3706:1: ( ( rule__CSSRuleOr__Group_1__0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3680:1: ( ( rule__CSSRuleOr__Group_1__0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3681:1: ( rule__CSSRuleOr__Group_1__0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3706:1: ( ( rule__CSSRuleOr__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3707:1: ( rule__CSSRuleOr__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getGroup_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3682:1: ( rule__CSSRuleOr__Group_1__0 )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3708:1: ( rule__CSSRuleOr__Group_1__0 )?
+            int alt33=2;
+            int LA33_0 = input.LA(1);
 
-            if ( (LA32_0==33) ) {
-                alt32=1;
+            if ( (LA33_0==34) ) {
+                alt33=1;
             }
-            switch (alt32) {
+            switch (alt33) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3682:2: rule__CSSRuleOr__Group_1__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3708:2: rule__CSSRuleOr__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__0_in_rule__CSSRuleOr__Group__1__Impl7371);
+                    pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__0_in_rule__CSSRuleOr__Group__1__Impl7426);
                     rule__CSSRuleOr__Group_1__0();
 
                     state._fsp--;
@@ -10661,21 +10743,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3696:1: rule__CSSRuleOr__Group_1__0 : rule__CSSRuleOr__Group_1__0__Impl rule__CSSRuleOr__Group_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3722:1: rule__CSSRuleOr__Group_1__0 : rule__CSSRuleOr__Group_1__0__Impl rule__CSSRuleOr__Group_1__1 ;
     public final void rule__CSSRuleOr__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3700:1: ( rule__CSSRuleOr__Group_1__0__Impl rule__CSSRuleOr__Group_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3701:2: rule__CSSRuleOr__Group_1__0__Impl rule__CSSRuleOr__Group_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3726:1: ( rule__CSSRuleOr__Group_1__0__Impl rule__CSSRuleOr__Group_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3727:2: rule__CSSRuleOr__Group_1__0__Impl rule__CSSRuleOr__Group_1__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__0__Impl_in_rule__CSSRuleOr__Group_1__07406);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__0__Impl_in_rule__CSSRuleOr__Group_1__07461);
             rule__CSSRuleOr__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__1_in_rule__CSSRuleOr__Group_1__07409);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__1_in_rule__CSSRuleOr__Group_1__07464);
             rule__CSSRuleOr__Group_1__1();
 
             state._fsp--;
@@ -10699,23 +10781,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3708:1: rule__CSSRuleOr__Group_1__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3734:1: rule__CSSRuleOr__Group_1__0__Impl : ( () ) ;
     public final void rule__CSSRuleOr__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3712:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3713:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3738:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3739:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3713:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3714:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3739:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3740:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getCSSRuleOrOrsAction_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3715:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3717:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3741:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3743:1: 
             {
             }
 
@@ -10740,16 +10822,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3727:1: rule__CSSRuleOr__Group_1__1 : rule__CSSRuleOr__Group_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3753:1: rule__CSSRuleOr__Group_1__1 : rule__CSSRuleOr__Group_1__1__Impl ;
     public final void rule__CSSRuleOr__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3731:1: ( rule__CSSRuleOr__Group_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3732:2: rule__CSSRuleOr__Group_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3757:1: ( rule__CSSRuleOr__Group_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3758:2: rule__CSSRuleOr__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__1__Impl_in_rule__CSSRuleOr__Group_1__17467);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1__1__Impl_in_rule__CSSRuleOr__Group_1__17522);
             rule__CSSRuleOr__Group_1__1__Impl();
 
             state._fsp--;
@@ -10773,28 +10855,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3738:1: rule__CSSRuleOr__Group_1__1__Impl : ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3764:1: rule__CSSRuleOr__Group_1__1__Impl : ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) ) ;
     public final void rule__CSSRuleOr__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3742:1: ( ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3743:1: ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3768:1: ( ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3769:1: ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3743:1: ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3744:1: ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3769:1: ( ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3770:1: ( ( rule__CSSRuleOr__Group_1_1__0 ) ) ( ( rule__CSSRuleOr__Group_1_1__0 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3744:1: ( ( rule__CSSRuleOr__Group_1_1__0 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3745:1: ( rule__CSSRuleOr__Group_1_1__0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3770:1: ( ( rule__CSSRuleOr__Group_1_1__0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3771:1: ( rule__CSSRuleOr__Group_1_1__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getGroup_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3746:1: ( rule__CSSRuleOr__Group_1_1__0 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3746:2: rule__CSSRuleOr__Group_1_1__0
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3772:1: ( rule__CSSRuleOr__Group_1_1__0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3772:2: rule__CSSRuleOr__Group_1_1__0
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7496);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7551);
             rule__CSSRuleOr__Group_1_1__0();
 
             state._fsp--;
@@ -10808,28 +10890,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3749:1: ( ( rule__CSSRuleOr__Group_1_1__0 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3750:1: ( rule__CSSRuleOr__Group_1_1__0 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3775:1: ( ( rule__CSSRuleOr__Group_1_1__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3776:1: ( rule__CSSRuleOr__Group_1_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getGroup_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3751:1: ( rule__CSSRuleOr__Group_1_1__0 )*
-            loop33:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3777:1: ( rule__CSSRuleOr__Group_1_1__0 )*
+            loop34:
             do {
-                int alt33=2;
-                int LA33_0 = input.LA(1);
+                int alt34=2;
+                int LA34_0 = input.LA(1);
 
-                if ( (LA33_0==33) ) {
-                    alt33=1;
+                if ( (LA34_0==34) ) {
+                    alt34=1;
                 }
 
 
-                switch (alt33) {
+                switch (alt34) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3751:2: rule__CSSRuleOr__Group_1_1__0
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3777:2: rule__CSSRuleOr__Group_1_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7508);
+            	    pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7563);
             	    rule__CSSRuleOr__Group_1_1__0();
 
             	    state._fsp--;
@@ -10839,7 +10921,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop33;
+            	    break loop34;
                 }
             } while (true);
 
@@ -10871,21 +10953,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3766:1: rule__CSSRuleOr__Group_1_1__0 : rule__CSSRuleOr__Group_1_1__0__Impl rule__CSSRuleOr__Group_1_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3792:1: rule__CSSRuleOr__Group_1_1__0 : rule__CSSRuleOr__Group_1_1__0__Impl rule__CSSRuleOr__Group_1_1__1 ;
     public final void rule__CSSRuleOr__Group_1_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3770:1: ( rule__CSSRuleOr__Group_1_1__0__Impl rule__CSSRuleOr__Group_1_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3771:2: rule__CSSRuleOr__Group_1_1__0__Impl rule__CSSRuleOr__Group_1_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3796:1: ( rule__CSSRuleOr__Group_1_1__0__Impl rule__CSSRuleOr__Group_1_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3797:2: rule__CSSRuleOr__Group_1_1__0__Impl rule__CSSRuleOr__Group_1_1__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__0__Impl_in_rule__CSSRuleOr__Group_1_1__07545);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__0__Impl_in_rule__CSSRuleOr__Group_1_1__07600);
             rule__CSSRuleOr__Group_1_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__1_in_rule__CSSRuleOr__Group_1_1__07548);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__1_in_rule__CSSRuleOr__Group_1_1__07603);
             rule__CSSRuleOr__Group_1_1__1();
 
             state._fsp--;
@@ -10909,22 +10991,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3778:1: rule__CSSRuleOr__Group_1_1__0__Impl : ( '|' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3804:1: rule__CSSRuleOr__Group_1_1__0__Impl : ( '|' ) ;
     public final void rule__CSSRuleOr__Group_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3782:1: ( ( '|' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3783:1: ( '|' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3808:1: ( ( '|' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3809:1: ( '|' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3783:1: ( '|' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3784:1: '|'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3809:1: ( '|' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3810:1: '|'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getVerticalLineKeyword_1_1_0()); 
             }
-            match(input,33,FOLLOW_33_in_rule__CSSRuleOr__Group_1_1__0__Impl7576); if (state.failed) return ;
+            match(input,34,FOLLOW_34_in_rule__CSSRuleOr__Group_1_1__0__Impl7631); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleOrAccess().getVerticalLineKeyword_1_1_0()); 
             }
@@ -10950,16 +11032,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3797:1: rule__CSSRuleOr__Group_1_1__1 : rule__CSSRuleOr__Group_1_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3823:1: rule__CSSRuleOr__Group_1_1__1 : rule__CSSRuleOr__Group_1_1__1__Impl ;
     public final void rule__CSSRuleOr__Group_1_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3801:1: ( rule__CSSRuleOr__Group_1_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3802:2: rule__CSSRuleOr__Group_1_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3827:1: ( rule__CSSRuleOr__Group_1_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3828:2: rule__CSSRuleOr__Group_1_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__1__Impl_in_rule__CSSRuleOr__Group_1_1__17607);
+            pushFollow(FOLLOW_rule__CSSRuleOr__Group_1_1__1__Impl_in_rule__CSSRuleOr__Group_1_1__17662);
             rule__CSSRuleOr__Group_1_1__1__Impl();
 
             state._fsp--;
@@ -10983,25 +11065,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__Group_1_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3808:1: rule__CSSRuleOr__Group_1_1__1__Impl : ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3834:1: rule__CSSRuleOr__Group_1_1__1__Impl : ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) ) ;
     public final void rule__CSSRuleOr__Group_1_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3812:1: ( ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3813:1: ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3838:1: ( ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3839:1: ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3813:1: ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3814:1: ( rule__CSSRuleOr__OrsAssignment_1_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3839:1: ( ( rule__CSSRuleOr__OrsAssignment_1_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3840:1: ( rule__CSSRuleOr__OrsAssignment_1_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getOrsAssignment_1_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3815:1: ( rule__CSSRuleOr__OrsAssignment_1_1_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3815:2: rule__CSSRuleOr__OrsAssignment_1_1_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3841:1: ( rule__CSSRuleOr__OrsAssignment_1_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3841:2: rule__CSSRuleOr__OrsAssignment_1_1_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleOr__OrsAssignment_1_1_1_in_rule__CSSRuleOr__Group_1_1__1__Impl7634);
+            pushFollow(FOLLOW_rule__CSSRuleOr__OrsAssignment_1_1_1_in_rule__CSSRuleOr__Group_1_1__1__Impl7689);
             rule__CSSRuleOr__OrsAssignment_1_1_1();
 
             state._fsp--;
@@ -11034,21 +11116,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3829:1: rule__CSSRuleXor__Group__0 : rule__CSSRuleXor__Group__0__Impl rule__CSSRuleXor__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3855:1: rule__CSSRuleXor__Group__0 : rule__CSSRuleXor__Group__0__Impl rule__CSSRuleXor__Group__1 ;
     public final void rule__CSSRuleXor__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3833:1: ( rule__CSSRuleXor__Group__0__Impl rule__CSSRuleXor__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3834:2: rule__CSSRuleXor__Group__0__Impl rule__CSSRuleXor__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3859:1: ( rule__CSSRuleXor__Group__0__Impl rule__CSSRuleXor__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3860:2: rule__CSSRuleXor__Group__0__Impl rule__CSSRuleXor__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group__0__Impl_in_rule__CSSRuleXor__Group__07668);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group__0__Impl_in_rule__CSSRuleXor__Group__07723);
             rule__CSSRuleXor__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group__1_in_rule__CSSRuleXor__Group__07671);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group__1_in_rule__CSSRuleXor__Group__07726);
             rule__CSSRuleXor__Group__1();
 
             state._fsp--;
@@ -11072,22 +11154,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3841:1: rule__CSSRuleXor__Group__0__Impl : ( ruleCSSRuleConcat ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3867:1: rule__CSSRuleXor__Group__0__Impl : ( ruleCSSRuleConcat ) ;
     public final void rule__CSSRuleXor__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3845:1: ( ( ruleCSSRuleConcat ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3846:1: ( ruleCSSRuleConcat )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3871:1: ( ( ruleCSSRuleConcat ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3872:1: ( ruleCSSRuleConcat )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3846:1: ( ruleCSSRuleConcat )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3847:1: ruleCSSRuleConcat
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3872:1: ( ruleCSSRuleConcat )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3873:1: ruleCSSRuleConcat
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getCSSRuleConcatParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__Group__0__Impl7698);
+            pushFollow(FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__Group__0__Impl7753);
             ruleCSSRuleConcat();
 
             state._fsp--;
@@ -11117,16 +11199,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3858:1: rule__CSSRuleXor__Group__1 : rule__CSSRuleXor__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3884:1: rule__CSSRuleXor__Group__1 : rule__CSSRuleXor__Group__1__Impl ;
     public final void rule__CSSRuleXor__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3862:1: ( rule__CSSRuleXor__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3863:2: rule__CSSRuleXor__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3888:1: ( rule__CSSRuleXor__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3889:2: rule__CSSRuleXor__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group__1__Impl_in_rule__CSSRuleXor__Group__17727);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group__1__Impl_in_rule__CSSRuleXor__Group__17782);
             rule__CSSRuleXor__Group__1__Impl();
 
             state._fsp--;
@@ -11150,33 +11232,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3869:1: rule__CSSRuleXor__Group__1__Impl : ( ( rule__CSSRuleXor__Group_1__0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3895:1: rule__CSSRuleXor__Group__1__Impl : ( ( rule__CSSRuleXor__Group_1__0 )? ) ;
     public final void rule__CSSRuleXor__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3873:1: ( ( ( rule__CSSRuleXor__Group_1__0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3874:1: ( ( rule__CSSRuleXor__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3899:1: ( ( ( rule__CSSRuleXor__Group_1__0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3900:1: ( ( rule__CSSRuleXor__Group_1__0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3874:1: ( ( rule__CSSRuleXor__Group_1__0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3875:1: ( rule__CSSRuleXor__Group_1__0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3900:1: ( ( rule__CSSRuleXor__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3901:1: ( rule__CSSRuleXor__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getGroup_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3876:1: ( rule__CSSRuleXor__Group_1__0 )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3902:1: ( rule__CSSRuleXor__Group_1__0 )?
+            int alt35=2;
+            int LA35_0 = input.LA(1);
 
-            if ( (LA34_0==34) ) {
-                alt34=1;
+            if ( (LA35_0==35) ) {
+                alt35=1;
             }
-            switch (alt34) {
+            switch (alt35) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3876:2: rule__CSSRuleXor__Group_1__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3902:2: rule__CSSRuleXor__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__0_in_rule__CSSRuleXor__Group__1__Impl7754);
+                    pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__0_in_rule__CSSRuleXor__Group__1__Impl7809);
                     rule__CSSRuleXor__Group_1__0();
 
                     state._fsp--;
@@ -11212,21 +11294,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3890:1: rule__CSSRuleXor__Group_1__0 : rule__CSSRuleXor__Group_1__0__Impl rule__CSSRuleXor__Group_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3916:1: rule__CSSRuleXor__Group_1__0 : rule__CSSRuleXor__Group_1__0__Impl rule__CSSRuleXor__Group_1__1 ;
     public final void rule__CSSRuleXor__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3894:1: ( rule__CSSRuleXor__Group_1__0__Impl rule__CSSRuleXor__Group_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3895:2: rule__CSSRuleXor__Group_1__0__Impl rule__CSSRuleXor__Group_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3920:1: ( rule__CSSRuleXor__Group_1__0__Impl rule__CSSRuleXor__Group_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3921:2: rule__CSSRuleXor__Group_1__0__Impl rule__CSSRuleXor__Group_1__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__0__Impl_in_rule__CSSRuleXor__Group_1__07789);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__0__Impl_in_rule__CSSRuleXor__Group_1__07844);
             rule__CSSRuleXor__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__1_in_rule__CSSRuleXor__Group_1__07792);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__1_in_rule__CSSRuleXor__Group_1__07847);
             rule__CSSRuleXor__Group_1__1();
 
             state._fsp--;
@@ -11250,23 +11332,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3902:1: rule__CSSRuleXor__Group_1__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3928:1: rule__CSSRuleXor__Group_1__0__Impl : ( () ) ;
     public final void rule__CSSRuleXor__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3906:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3907:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3932:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3933:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3907:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3908:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3933:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3934:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3909:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3911:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3935:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3937:1: 
             {
             }
 
@@ -11291,16 +11373,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3921:1: rule__CSSRuleXor__Group_1__1 : rule__CSSRuleXor__Group_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3947:1: rule__CSSRuleXor__Group_1__1 : rule__CSSRuleXor__Group_1__1__Impl ;
     public final void rule__CSSRuleXor__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3925:1: ( rule__CSSRuleXor__Group_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3926:2: rule__CSSRuleXor__Group_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3951:1: ( rule__CSSRuleXor__Group_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3952:2: rule__CSSRuleXor__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__1__Impl_in_rule__CSSRuleXor__Group_1__17850);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1__1__Impl_in_rule__CSSRuleXor__Group_1__17905);
             rule__CSSRuleXor__Group_1__1__Impl();
 
             state._fsp--;
@@ -11324,28 +11406,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3932:1: rule__CSSRuleXor__Group_1__1__Impl : ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3958:1: rule__CSSRuleXor__Group_1__1__Impl : ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) ) ;
     public final void rule__CSSRuleXor__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3936:1: ( ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3937:1: ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3962:1: ( ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3963:1: ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3937:1: ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3938:1: ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3963:1: ( ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3964:1: ( ( rule__CSSRuleXor__Group_1_1__0 ) ) ( ( rule__CSSRuleXor__Group_1_1__0 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3938:1: ( ( rule__CSSRuleXor__Group_1_1__0 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3939:1: ( rule__CSSRuleXor__Group_1_1__0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3964:1: ( ( rule__CSSRuleXor__Group_1_1__0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3965:1: ( rule__CSSRuleXor__Group_1_1__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getGroup_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3940:1: ( rule__CSSRuleXor__Group_1_1__0 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3940:2: rule__CSSRuleXor__Group_1_1__0
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3966:1: ( rule__CSSRuleXor__Group_1_1__0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3966:2: rule__CSSRuleXor__Group_1_1__0
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7879);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7934);
             rule__CSSRuleXor__Group_1_1__0();
 
             state._fsp--;
@@ -11359,28 +11441,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3943:1: ( ( rule__CSSRuleXor__Group_1_1__0 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3944:1: ( rule__CSSRuleXor__Group_1_1__0 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3969:1: ( ( rule__CSSRuleXor__Group_1_1__0 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3970:1: ( rule__CSSRuleXor__Group_1_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getGroup_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3945:1: ( rule__CSSRuleXor__Group_1_1__0 )*
-            loop35:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3971:1: ( rule__CSSRuleXor__Group_1_1__0 )*
+            loop36:
             do {
-                int alt35=2;
-                int LA35_0 = input.LA(1);
+                int alt36=2;
+                int LA36_0 = input.LA(1);
 
-                if ( (LA35_0==34) ) {
-                    alt35=1;
+                if ( (LA36_0==35) ) {
+                    alt36=1;
                 }
 
 
-                switch (alt35) {
+                switch (alt36) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3945:2: rule__CSSRuleXor__Group_1_1__0
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3971:2: rule__CSSRuleXor__Group_1_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7891);
+            	    pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7946);
             	    rule__CSSRuleXor__Group_1_1__0();
 
             	    state._fsp--;
@@ -11390,7 +11472,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop35;
+            	    break loop36;
                 }
             } while (true);
 
@@ -11422,21 +11504,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3960:1: rule__CSSRuleXor__Group_1_1__0 : rule__CSSRuleXor__Group_1_1__0__Impl rule__CSSRuleXor__Group_1_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3986:1: rule__CSSRuleXor__Group_1_1__0 : rule__CSSRuleXor__Group_1_1__0__Impl rule__CSSRuleXor__Group_1_1__1 ;
     public final void rule__CSSRuleXor__Group_1_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3964:1: ( rule__CSSRuleXor__Group_1_1__0__Impl rule__CSSRuleXor__Group_1_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3965:2: rule__CSSRuleXor__Group_1_1__0__Impl rule__CSSRuleXor__Group_1_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3990:1: ( rule__CSSRuleXor__Group_1_1__0__Impl rule__CSSRuleXor__Group_1_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3991:2: rule__CSSRuleXor__Group_1_1__0__Impl rule__CSSRuleXor__Group_1_1__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__0__Impl_in_rule__CSSRuleXor__Group_1_1__07928);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__0__Impl_in_rule__CSSRuleXor__Group_1_1__07983);
             rule__CSSRuleXor__Group_1_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__1_in_rule__CSSRuleXor__Group_1_1__07931);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__1_in_rule__CSSRuleXor__Group_1_1__07986);
             rule__CSSRuleXor__Group_1_1__1();
 
             state._fsp--;
@@ -11460,22 +11542,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3972:1: rule__CSSRuleXor__Group_1_1__0__Impl : ( '||' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3998:1: rule__CSSRuleXor__Group_1_1__0__Impl : ( '||' ) ;
     public final void rule__CSSRuleXor__Group_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3976:1: ( ( '||' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3977:1: ( '||' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4002:1: ( ( '||' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4003:1: ( '||' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3977:1: ( '||' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3978:1: '||'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4003:1: ( '||' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4004:1: '||'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getVerticalLineVerticalLineKeyword_1_1_0()); 
             }
-            match(input,34,FOLLOW_34_in_rule__CSSRuleXor__Group_1_1__0__Impl7959); if (state.failed) return ;
+            match(input,35,FOLLOW_35_in_rule__CSSRuleXor__Group_1_1__0__Impl8014); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleXorAccess().getVerticalLineVerticalLineKeyword_1_1_0()); 
             }
@@ -11501,16 +11583,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3991:1: rule__CSSRuleXor__Group_1_1__1 : rule__CSSRuleXor__Group_1_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4017:1: rule__CSSRuleXor__Group_1_1__1 : rule__CSSRuleXor__Group_1_1__1__Impl ;
     public final void rule__CSSRuleXor__Group_1_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3995:1: ( rule__CSSRuleXor__Group_1_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:3996:2: rule__CSSRuleXor__Group_1_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4021:1: ( rule__CSSRuleXor__Group_1_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4022:2: rule__CSSRuleXor__Group_1_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__1__Impl_in_rule__CSSRuleXor__Group_1_1__17990);
+            pushFollow(FOLLOW_rule__CSSRuleXor__Group_1_1__1__Impl_in_rule__CSSRuleXor__Group_1_1__18045);
             rule__CSSRuleXor__Group_1_1__1__Impl();
 
             state._fsp--;
@@ -11534,25 +11616,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__Group_1_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4002:1: rule__CSSRuleXor__Group_1_1__1__Impl : ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4028:1: rule__CSSRuleXor__Group_1_1__1__Impl : ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) ) ;
     public final void rule__CSSRuleXor__Group_1_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4006:1: ( ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4007:1: ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4032:1: ( ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4033:1: ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4007:1: ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4008:1: ( rule__CSSRuleXor__XorsAssignment_1_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4033:1: ( ( rule__CSSRuleXor__XorsAssignment_1_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4034:1: ( rule__CSSRuleXor__XorsAssignment_1_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getXorsAssignment_1_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4009:1: ( rule__CSSRuleXor__XorsAssignment_1_1_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4009:2: rule__CSSRuleXor__XorsAssignment_1_1_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4035:1: ( rule__CSSRuleXor__XorsAssignment_1_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4035:2: rule__CSSRuleXor__XorsAssignment_1_1_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleXor__XorsAssignment_1_1_1_in_rule__CSSRuleXor__Group_1_1__1__Impl8017);
+            pushFollow(FOLLOW_rule__CSSRuleXor__XorsAssignment_1_1_1_in_rule__CSSRuleXor__Group_1_1__1__Impl8072);
             rule__CSSRuleXor__XorsAssignment_1_1_1();
 
             state._fsp--;
@@ -11585,21 +11667,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4023:1: rule__CSSRuleConcat__Group__0 : rule__CSSRuleConcat__Group__0__Impl rule__CSSRuleConcat__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4049:1: rule__CSSRuleConcat__Group__0 : rule__CSSRuleConcat__Group__0__Impl rule__CSSRuleConcat__Group__1 ;
     public final void rule__CSSRuleConcat__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4027:1: ( rule__CSSRuleConcat__Group__0__Impl rule__CSSRuleConcat__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4028:2: rule__CSSRuleConcat__Group__0__Impl rule__CSSRuleConcat__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4053:1: ( rule__CSSRuleConcat__Group__0__Impl rule__CSSRuleConcat__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4054:2: rule__CSSRuleConcat__Group__0__Impl rule__CSSRuleConcat__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleConcat__Group__0__Impl_in_rule__CSSRuleConcat__Group__08051);
+            pushFollow(FOLLOW_rule__CSSRuleConcat__Group__0__Impl_in_rule__CSSRuleConcat__Group__08106);
             rule__CSSRuleConcat__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleConcat__Group__1_in_rule__CSSRuleConcat__Group__08054);
+            pushFollow(FOLLOW_rule__CSSRuleConcat__Group__1_in_rule__CSSRuleConcat__Group__08109);
             rule__CSSRuleConcat__Group__1();
 
             state._fsp--;
@@ -11623,22 +11705,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4035:1: rule__CSSRuleConcat__Group__0__Impl : ( ruleCSSRulePostfix ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4061:1: rule__CSSRuleConcat__Group__0__Impl : ( ruleCSSRulePostfix ) ;
     public final void rule__CSSRuleConcat__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4039:1: ( ( ruleCSSRulePostfix ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4040:1: ( ruleCSSRulePostfix )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4065:1: ( ( ruleCSSRulePostfix ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4066:1: ( ruleCSSRulePostfix )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4040:1: ( ruleCSSRulePostfix )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4041:1: ruleCSSRulePostfix
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4066:1: ( ruleCSSRulePostfix )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4067:1: ruleCSSRulePostfix
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleConcatAccess().getCSSRulePostfixParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__Group__0__Impl8081);
+            pushFollow(FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__Group__0__Impl8136);
             ruleCSSRulePostfix();
 
             state._fsp--;
@@ -11668,16 +11750,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4052:1: rule__CSSRuleConcat__Group__1 : rule__CSSRuleConcat__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4078:1: rule__CSSRuleConcat__Group__1 : rule__CSSRuleConcat__Group__1__Impl ;
     public final void rule__CSSRuleConcat__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4056:1: ( rule__CSSRuleConcat__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4057:2: rule__CSSRuleConcat__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4082:1: ( rule__CSSRuleConcat__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4083:2: rule__CSSRuleConcat__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleConcat__Group__1__Impl_in_rule__CSSRuleConcat__Group__18110);
+            pushFollow(FOLLOW_rule__CSSRuleConcat__Group__1__Impl_in_rule__CSSRuleConcat__Group__18165);
             rule__CSSRuleConcat__Group__1__Impl();
 
             state._fsp--;
@@ -11701,33 +11783,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4063:1: rule__CSSRuleConcat__Group__1__Impl : ( ( rule__CSSRuleConcat__Group_1__0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4089:1: rule__CSSRuleConcat__Group__1__Impl : ( ( rule__CSSRuleConcat__Group_1__0 )? ) ;
     public final void rule__CSSRuleConcat__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4067:1: ( ( ( rule__CSSRuleConcat__Group_1__0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4068:1: ( ( rule__CSSRuleConcat__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4093:1: ( ( ( rule__CSSRuleConcat__Group_1__0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4094:1: ( ( rule__CSSRuleConcat__Group_1__0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4068:1: ( ( rule__CSSRuleConcat__Group_1__0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4069:1: ( rule__CSSRuleConcat__Group_1__0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4094:1: ( ( rule__CSSRuleConcat__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4095:1: ( rule__CSSRuleConcat__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleConcatAccess().getGroup_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4070:1: ( rule__CSSRuleConcat__Group_1__0 )?
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4096:1: ( rule__CSSRuleConcat__Group_1__0 )?
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            if ( (LA36_0==RULE_ID||LA36_0==RULE_INT||LA36_0==RULE_REGEX||LA36_0==27||LA36_0==30||LA36_0==35||(LA36_0>=37 && LA36_0<=38)) ) {
-                alt36=1;
+            if ( (LA37_0==RULE_ID||LA37_0==RULE_INT||LA37_0==RULE_REGEX||(LA37_0>=18 && LA37_0<=19)||LA37_0==31||LA37_0==36||(LA37_0>=38 && LA37_0<=39)) ) {
+                alt37=1;
             }
-            switch (alt36) {
+            switch (alt37) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4070:2: rule__CSSRuleConcat__Group_1__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4096:2: rule__CSSRuleConcat__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__0_in_rule__CSSRuleConcat__Group__1__Impl8137);
+                    pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__0_in_rule__CSSRuleConcat__Group__1__Impl8192);
                     rule__CSSRuleConcat__Group_1__0();
 
                     state._fsp--;
@@ -11763,21 +11845,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4084:1: rule__CSSRuleConcat__Group_1__0 : rule__CSSRuleConcat__Group_1__0__Impl rule__CSSRuleConcat__Group_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4110:1: rule__CSSRuleConcat__Group_1__0 : rule__CSSRuleConcat__Group_1__0__Impl rule__CSSRuleConcat__Group_1__1 ;
     public final void rule__CSSRuleConcat__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4088:1: ( rule__CSSRuleConcat__Group_1__0__Impl rule__CSSRuleConcat__Group_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4089:2: rule__CSSRuleConcat__Group_1__0__Impl rule__CSSRuleConcat__Group_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4114:1: ( rule__CSSRuleConcat__Group_1__0__Impl rule__CSSRuleConcat__Group_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4115:2: rule__CSSRuleConcat__Group_1__0__Impl rule__CSSRuleConcat__Group_1__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__0__Impl_in_rule__CSSRuleConcat__Group_1__08172);
+            pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__0__Impl_in_rule__CSSRuleConcat__Group_1__08227);
             rule__CSSRuleConcat__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__1_in_rule__CSSRuleConcat__Group_1__08175);
+            pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__1_in_rule__CSSRuleConcat__Group_1__08230);
             rule__CSSRuleConcat__Group_1__1();
 
             state._fsp--;
@@ -11801,23 +11883,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4096:1: rule__CSSRuleConcat__Group_1__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4122:1: rule__CSSRuleConcat__Group_1__0__Impl : ( () ) ;
     public final void rule__CSSRuleConcat__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4100:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4101:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4126:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4127:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4101:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4102:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4127:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4128:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4103:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4105:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4129:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4131:1: 
             {
             }
 
@@ -11842,16 +11924,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4115:1: rule__CSSRuleConcat__Group_1__1 : rule__CSSRuleConcat__Group_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4141:1: rule__CSSRuleConcat__Group_1__1 : rule__CSSRuleConcat__Group_1__1__Impl ;
     public final void rule__CSSRuleConcat__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4119:1: ( rule__CSSRuleConcat__Group_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4120:2: rule__CSSRuleConcat__Group_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4145:1: ( rule__CSSRuleConcat__Group_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4146:2: rule__CSSRuleConcat__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__1__Impl_in_rule__CSSRuleConcat__Group_1__18233);
+            pushFollow(FOLLOW_rule__CSSRuleConcat__Group_1__1__Impl_in_rule__CSSRuleConcat__Group_1__18288);
             rule__CSSRuleConcat__Group_1__1__Impl();
 
             state._fsp--;
@@ -11875,28 +11957,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__Group_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4126:1: rule__CSSRuleConcat__Group_1__1__Impl : ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4152:1: rule__CSSRuleConcat__Group_1__1__Impl : ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) ) ;
     public final void rule__CSSRuleConcat__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4130:1: ( ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4131:1: ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4156:1: ( ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4157:1: ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4131:1: ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4132:1: ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4157:1: ( ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4158:1: ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) ) ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4132:1: ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4133:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4158:1: ( ( rule__CSSRuleConcat__ConcAssignment_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4159:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleConcatAccess().getConcAssignment_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4134:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4134:2: rule__CSSRuleConcat__ConcAssignment_1_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4160:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4160:2: rule__CSSRuleConcat__ConcAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8262);
+            pushFollow(FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8317);
             rule__CSSRuleConcat__ConcAssignment_1_1();
 
             state._fsp--;
@@ -11910,28 +11992,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4137:1: ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4138:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )*
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4163:1: ( ( rule__CSSRuleConcat__ConcAssignment_1_1 )* )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4164:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleConcatAccess().getConcAssignment_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4139:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )*
-            loop37:
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4165:1: ( rule__CSSRuleConcat__ConcAssignment_1_1 )*
+            loop38:
             do {
-                int alt37=2;
-                int LA37_0 = input.LA(1);
+                int alt38=2;
+                int LA38_0 = input.LA(1);
 
-                if ( (LA37_0==RULE_ID||LA37_0==RULE_INT||LA37_0==RULE_REGEX||LA37_0==27||LA37_0==30||LA37_0==35||(LA37_0>=37 && LA37_0<=38)) ) {
-                    alt37=1;
+                if ( (LA38_0==RULE_ID||LA38_0==RULE_INT||LA38_0==RULE_REGEX||(LA38_0>=18 && LA38_0<=19)||LA38_0==31||LA38_0==36||(LA38_0>=38 && LA38_0<=39)) ) {
+                    alt38=1;
                 }
 
 
-                switch (alt37) {
+                switch (alt38) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4139:2: rule__CSSRuleConcat__ConcAssignment_1_1
+            	    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4165:2: rule__CSSRuleConcat__ConcAssignment_1_1
             	    {
-            	    pushFollow(FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8274);
+            	    pushFollow(FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8329);
             	    rule__CSSRuleConcat__ConcAssignment_1_1();
 
             	    state._fsp--;
@@ -11941,7 +12023,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop37;
+            	    break loop38;
                 }
             } while (true);
 
@@ -11973,21 +12055,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4154:1: rule__CSSRulePostfix__Group__0 : rule__CSSRulePostfix__Group__0__Impl rule__CSSRulePostfix__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4180:1: rule__CSSRulePostfix__Group__0 : rule__CSSRulePostfix__Group__0__Impl rule__CSSRulePostfix__Group__1 ;
     public final void rule__CSSRulePostfix__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4158:1: ( rule__CSSRulePostfix__Group__0__Impl rule__CSSRulePostfix__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4159:2: rule__CSSRulePostfix__Group__0__Impl rule__CSSRulePostfix__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4184:1: ( rule__CSSRulePostfix__Group__0__Impl rule__CSSRulePostfix__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4185:2: rule__CSSRulePostfix__Group__0__Impl rule__CSSRulePostfix__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRulePostfix__Group__0__Impl_in_rule__CSSRulePostfix__Group__08311);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__Group__0__Impl_in_rule__CSSRulePostfix__Group__08366);
             rule__CSSRulePostfix__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRulePostfix__Group__1_in_rule__CSSRulePostfix__Group__08314);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__Group__1_in_rule__CSSRulePostfix__Group__08369);
             rule__CSSRulePostfix__Group__1();
 
             state._fsp--;
@@ -12011,22 +12093,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4166:1: rule__CSSRulePostfix__Group__0__Impl : ( ruleCSSRulePrimary ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4192:1: rule__CSSRulePostfix__Group__0__Impl : ( ruleCSSRulePrimary ) ;
     public final void rule__CSSRulePostfix__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4170:1: ( ( ruleCSSRulePrimary ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4171:1: ( ruleCSSRulePrimary )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4196:1: ( ( ruleCSSRulePrimary ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4197:1: ( ruleCSSRulePrimary )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4171:1: ( ruleCSSRulePrimary )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4172:1: ruleCSSRulePrimary
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4197:1: ( ruleCSSRulePrimary )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4198:1: ruleCSSRulePrimary
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRulePostfixAccess().getCSSRulePrimaryParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRulePrimary_in_rule__CSSRulePostfix__Group__0__Impl8341);
+            pushFollow(FOLLOW_ruleCSSRulePrimary_in_rule__CSSRulePostfix__Group__0__Impl8396);
             ruleCSSRulePrimary();
 
             state._fsp--;
@@ -12056,16 +12138,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4183:1: rule__CSSRulePostfix__Group__1 : rule__CSSRulePostfix__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4209:1: rule__CSSRulePostfix__Group__1 : rule__CSSRulePostfix__Group__1__Impl ;
     public final void rule__CSSRulePostfix__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4187:1: ( rule__CSSRulePostfix__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4188:2: rule__CSSRulePostfix__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4213:1: ( rule__CSSRulePostfix__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4214:2: rule__CSSRulePostfix__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRulePostfix__Group__1__Impl_in_rule__CSSRulePostfix__Group__18370);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__Group__1__Impl_in_rule__CSSRulePostfix__Group__18425);
             rule__CSSRulePostfix__Group__1__Impl();
 
             state._fsp--;
@@ -12089,33 +12171,33 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4194:1: rule__CSSRulePostfix__Group__1__Impl : ( ( rule__CSSRulePostfix__Group_1__0 )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4220:1: rule__CSSRulePostfix__Group__1__Impl : ( ( rule__CSSRulePostfix__Group_1__0 )? ) ;
     public final void rule__CSSRulePostfix__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4198:1: ( ( ( rule__CSSRulePostfix__Group_1__0 )? ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4199:1: ( ( rule__CSSRulePostfix__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4224:1: ( ( ( rule__CSSRulePostfix__Group_1__0 )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4225:1: ( ( rule__CSSRulePostfix__Group_1__0 )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4199:1: ( ( rule__CSSRulePostfix__Group_1__0 )? )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4200:1: ( rule__CSSRulePostfix__Group_1__0 )?
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4225:1: ( ( rule__CSSRulePostfix__Group_1__0 )? )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4226:1: ( rule__CSSRulePostfix__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRulePostfixAccess().getGroup_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4201:1: ( rule__CSSRulePostfix__Group_1__0 )?
-            int alt38=2;
-            int LA38_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4227:1: ( rule__CSSRulePostfix__Group_1__0 )?
+            int alt39=2;
+            int LA39_0 = input.LA(1);
 
-            if ( ((LA38_0>=15 && LA38_0<=17)) ) {
-                alt38=1;
+            if ( ((LA39_0>=15 && LA39_0<=17)) ) {
+                alt39=1;
             }
-            switch (alt38) {
+            switch (alt39) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4201:2: rule__CSSRulePostfix__Group_1__0
+                    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4227:2: rule__CSSRulePostfix__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__0_in_rule__CSSRulePostfix__Group__1__Impl8397);
+                    pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__0_in_rule__CSSRulePostfix__Group__1__Impl8452);
                     rule__CSSRulePostfix__Group_1__0();
 
                     state._fsp--;
@@ -12151,21 +12233,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group_1__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4215:1: rule__CSSRulePostfix__Group_1__0 : rule__CSSRulePostfix__Group_1__0__Impl rule__CSSRulePostfix__Group_1__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4241:1: rule__CSSRulePostfix__Group_1__0 : rule__CSSRulePostfix__Group_1__0__Impl rule__CSSRulePostfix__Group_1__1 ;
     public final void rule__CSSRulePostfix__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4219:1: ( rule__CSSRulePostfix__Group_1__0__Impl rule__CSSRulePostfix__Group_1__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4220:2: rule__CSSRulePostfix__Group_1__0__Impl rule__CSSRulePostfix__Group_1__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4245:1: ( rule__CSSRulePostfix__Group_1__0__Impl rule__CSSRulePostfix__Group_1__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4246:2: rule__CSSRulePostfix__Group_1__0__Impl rule__CSSRulePostfix__Group_1__1
             {
-            pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__0__Impl_in_rule__CSSRulePostfix__Group_1__08432);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__0__Impl_in_rule__CSSRulePostfix__Group_1__08487);
             rule__CSSRulePostfix__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__1_in_rule__CSSRulePostfix__Group_1__08435);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__1_in_rule__CSSRulePostfix__Group_1__08490);
             rule__CSSRulePostfix__Group_1__1();
 
             state._fsp--;
@@ -12189,23 +12271,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group_1__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4227:1: rule__CSSRulePostfix__Group_1__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4253:1: rule__CSSRulePostfix__Group_1__0__Impl : ( () ) ;
     public final void rule__CSSRulePostfix__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4231:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4232:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4257:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4258:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4232:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4233:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4258:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4259:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4234:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4236:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4260:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4262:1: 
             {
             }
 
@@ -12230,16 +12312,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group_1__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4246:1: rule__CSSRulePostfix__Group_1__1 : rule__CSSRulePostfix__Group_1__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4272:1: rule__CSSRulePostfix__Group_1__1 : rule__CSSRulePostfix__Group_1__1__Impl ;
     public final void rule__CSSRulePostfix__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4250:1: ( rule__CSSRulePostfix__Group_1__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4251:2: rule__CSSRulePostfix__Group_1__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4276:1: ( rule__CSSRulePostfix__Group_1__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4277:2: rule__CSSRulePostfix__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__1__Impl_in_rule__CSSRulePostfix__Group_1__18493);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__Group_1__1__Impl_in_rule__CSSRulePostfix__Group_1__18548);
             rule__CSSRulePostfix__Group_1__1__Impl();
 
             state._fsp--;
@@ -12263,25 +12345,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__Group_1__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4257:1: rule__CSSRulePostfix__Group_1__1__Impl : ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4283:1: rule__CSSRulePostfix__Group_1__1__Impl : ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) ) ;
     public final void rule__CSSRulePostfix__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4261:1: ( ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4262:1: ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4287:1: ( ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4288:1: ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4262:1: ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4263:1: ( rule__CSSRulePostfix__CardinalityAssignment_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4288:1: ( ( rule__CSSRulePostfix__CardinalityAssignment_1_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4289:1: ( rule__CSSRulePostfix__CardinalityAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRulePostfixAccess().getCardinalityAssignment_1_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4264:1: ( rule__CSSRulePostfix__CardinalityAssignment_1_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4264:2: rule__CSSRulePostfix__CardinalityAssignment_1_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4290:1: ( rule__CSSRulePostfix__CardinalityAssignment_1_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4290:2: rule__CSSRulePostfix__CardinalityAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__CSSRulePostfix__CardinalityAssignment_1_1_in_rule__CSSRulePostfix__Group_1__1__Impl8520);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__CardinalityAssignment_1_1_in_rule__CSSRulePostfix__Group_1__1__Impl8575);
             rule__CSSRulePostfix__CardinalityAssignment_1_1();
 
             state._fsp--;
@@ -12314,21 +12396,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4278:1: rule__CSSRuleBracket__Group__0 : rule__CSSRuleBracket__Group__0__Impl rule__CSSRuleBracket__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4304:1: rule__CSSRuleBracket__Group__0 : rule__CSSRuleBracket__Group__0__Impl rule__CSSRuleBracket__Group__1 ;
     public final void rule__CSSRuleBracket__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4282:1: ( rule__CSSRuleBracket__Group__0__Impl rule__CSSRuleBracket__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4283:2: rule__CSSRuleBracket__Group__0__Impl rule__CSSRuleBracket__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4308:1: ( rule__CSSRuleBracket__Group__0__Impl rule__CSSRuleBracket__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4309:2: rule__CSSRuleBracket__Group__0__Impl rule__CSSRuleBracket__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__0__Impl_in_rule__CSSRuleBracket__Group__08554);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__0__Impl_in_rule__CSSRuleBracket__Group__08609);
             rule__CSSRuleBracket__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__1_in_rule__CSSRuleBracket__Group__08557);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__1_in_rule__CSSRuleBracket__Group__08612);
             rule__CSSRuleBracket__Group__1();
 
             state._fsp--;
@@ -12352,23 +12434,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4290:1: rule__CSSRuleBracket__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4316:1: rule__CSSRuleBracket__Group__0__Impl : ( () ) ;
     public final void rule__CSSRuleBracket__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4294:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4295:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4320:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4321:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4295:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4296:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4321:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4322:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4297:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4299:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4323:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4325:1: 
             {
             }
 
@@ -12393,21 +12475,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4309:1: rule__CSSRuleBracket__Group__1 : rule__CSSRuleBracket__Group__1__Impl rule__CSSRuleBracket__Group__2 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4335:1: rule__CSSRuleBracket__Group__1 : rule__CSSRuleBracket__Group__1__Impl rule__CSSRuleBracket__Group__2 ;
     public final void rule__CSSRuleBracket__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4313:1: ( rule__CSSRuleBracket__Group__1__Impl rule__CSSRuleBracket__Group__2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4314:2: rule__CSSRuleBracket__Group__1__Impl rule__CSSRuleBracket__Group__2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4339:1: ( rule__CSSRuleBracket__Group__1__Impl rule__CSSRuleBracket__Group__2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4340:2: rule__CSSRuleBracket__Group__1__Impl rule__CSSRuleBracket__Group__2
             {
-            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__1__Impl_in_rule__CSSRuleBracket__Group__18615);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__1__Impl_in_rule__CSSRuleBracket__Group__18670);
             rule__CSSRuleBracket__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__2_in_rule__CSSRuleBracket__Group__18618);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__2_in_rule__CSSRuleBracket__Group__18673);
             rule__CSSRuleBracket__Group__2();
 
             state._fsp--;
@@ -12431,22 +12513,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4321:1: rule__CSSRuleBracket__Group__1__Impl : ( '[' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4347:1: rule__CSSRuleBracket__Group__1__Impl : ( '[' ) ;
     public final void rule__CSSRuleBracket__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4325:1: ( ( '[' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4326:1: ( '[' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4351:1: ( ( '[' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4352:1: ( '[' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4326:1: ( '[' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4327:1: '['
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4352:1: ( '[' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4353:1: '['
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleBracketAccess().getLeftSquareBracketKeyword_1()); 
             }
-            match(input,35,FOLLOW_35_in_rule__CSSRuleBracket__Group__1__Impl8646); if (state.failed) return ;
+            match(input,36,FOLLOW_36_in_rule__CSSRuleBracket__Group__1__Impl8701); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleBracketAccess().getLeftSquareBracketKeyword_1()); 
             }
@@ -12472,21 +12554,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4340:1: rule__CSSRuleBracket__Group__2 : rule__CSSRuleBracket__Group__2__Impl rule__CSSRuleBracket__Group__3 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4366:1: rule__CSSRuleBracket__Group__2 : rule__CSSRuleBracket__Group__2__Impl rule__CSSRuleBracket__Group__3 ;
     public final void rule__CSSRuleBracket__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4344:1: ( rule__CSSRuleBracket__Group__2__Impl rule__CSSRuleBracket__Group__3 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4345:2: rule__CSSRuleBracket__Group__2__Impl rule__CSSRuleBracket__Group__3
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4370:1: ( rule__CSSRuleBracket__Group__2__Impl rule__CSSRuleBracket__Group__3 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4371:2: rule__CSSRuleBracket__Group__2__Impl rule__CSSRuleBracket__Group__3
             {
-            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__2__Impl_in_rule__CSSRuleBracket__Group__28677);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__2__Impl_in_rule__CSSRuleBracket__Group__28732);
             rule__CSSRuleBracket__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__3_in_rule__CSSRuleBracket__Group__28680);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__3_in_rule__CSSRuleBracket__Group__28735);
             rule__CSSRuleBracket__Group__3();
 
             state._fsp--;
@@ -12510,25 +12592,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__2__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4352:1: rule__CSSRuleBracket__Group__2__Impl : ( ( rule__CSSRuleBracket__InnerAssignment_2 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4378:1: rule__CSSRuleBracket__Group__2__Impl : ( ( rule__CSSRuleBracket__InnerAssignment_2 ) ) ;
     public final void rule__CSSRuleBracket__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4356:1: ( ( ( rule__CSSRuleBracket__InnerAssignment_2 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4357:1: ( ( rule__CSSRuleBracket__InnerAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4382:1: ( ( ( rule__CSSRuleBracket__InnerAssignment_2 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4383:1: ( ( rule__CSSRuleBracket__InnerAssignment_2 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4357:1: ( ( rule__CSSRuleBracket__InnerAssignment_2 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4358:1: ( rule__CSSRuleBracket__InnerAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4383:1: ( ( rule__CSSRuleBracket__InnerAssignment_2 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4384:1: ( rule__CSSRuleBracket__InnerAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleBracketAccess().getInnerAssignment_2()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4359:1: ( rule__CSSRuleBracket__InnerAssignment_2 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4359:2: rule__CSSRuleBracket__InnerAssignment_2
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4385:1: ( rule__CSSRuleBracket__InnerAssignment_2 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4385:2: rule__CSSRuleBracket__InnerAssignment_2
             {
-            pushFollow(FOLLOW_rule__CSSRuleBracket__InnerAssignment_2_in_rule__CSSRuleBracket__Group__2__Impl8707);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__InnerAssignment_2_in_rule__CSSRuleBracket__Group__2__Impl8762);
             rule__CSSRuleBracket__InnerAssignment_2();
 
             state._fsp--;
@@ -12561,16 +12643,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4369:1: rule__CSSRuleBracket__Group__3 : rule__CSSRuleBracket__Group__3__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4395:1: rule__CSSRuleBracket__Group__3 : rule__CSSRuleBracket__Group__3__Impl ;
     public final void rule__CSSRuleBracket__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4373:1: ( rule__CSSRuleBracket__Group__3__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4374:2: rule__CSSRuleBracket__Group__3__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4399:1: ( rule__CSSRuleBracket__Group__3__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4400:2: rule__CSSRuleBracket__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__3__Impl_in_rule__CSSRuleBracket__Group__38737);
+            pushFollow(FOLLOW_rule__CSSRuleBracket__Group__3__Impl_in_rule__CSSRuleBracket__Group__38792);
             rule__CSSRuleBracket__Group__3__Impl();
 
             state._fsp--;
@@ -12594,22 +12676,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__Group__3__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4380:1: rule__CSSRuleBracket__Group__3__Impl : ( ']' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4406:1: rule__CSSRuleBracket__Group__3__Impl : ( ']' ) ;
     public final void rule__CSSRuleBracket__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4384:1: ( ( ']' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4385:1: ( ']' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4410:1: ( ( ']' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4411:1: ( ']' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4385:1: ( ']' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4386:1: ']'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4411:1: ( ']' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4412:1: ']'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleBracketAccess().getRightSquareBracketKeyword_3()); 
             }
-            match(input,36,FOLLOW_36_in_rule__CSSRuleBracket__Group__3__Impl8765); if (state.failed) return ;
+            match(input,37,FOLLOW_37_in_rule__CSSRuleBracket__Group__3__Impl8820); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleBracketAccess().getRightSquareBracketKeyword_3()); 
             }
@@ -12635,21 +12717,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePrimary__Group_6__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4407:1: rule__CSSRulePrimary__Group_6__0 : rule__CSSRulePrimary__Group_6__0__Impl rule__CSSRulePrimary__Group_6__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4433:1: rule__CSSRulePrimary__Group_6__0 : rule__CSSRulePrimary__Group_6__0__Impl rule__CSSRulePrimary__Group_6__1 ;
     public final void rule__CSSRulePrimary__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4411:1: ( rule__CSSRulePrimary__Group_6__0__Impl rule__CSSRulePrimary__Group_6__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4412:2: rule__CSSRulePrimary__Group_6__0__Impl rule__CSSRulePrimary__Group_6__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4437:1: ( rule__CSSRulePrimary__Group_6__0__Impl rule__CSSRulePrimary__Group_6__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4438:2: rule__CSSRulePrimary__Group_6__0__Impl rule__CSSRulePrimary__Group_6__1
             {
-            pushFollow(FOLLOW_rule__CSSRulePrimary__Group_6__0__Impl_in_rule__CSSRulePrimary__Group_6__08804);
+            pushFollow(FOLLOW_rule__CSSRulePrimary__Group_6__0__Impl_in_rule__CSSRulePrimary__Group_6__08859);
             rule__CSSRulePrimary__Group_6__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRulePrimary__Group_6__1_in_rule__CSSRulePrimary__Group_6__08807);
+            pushFollow(FOLLOW_rule__CSSRulePrimary__Group_6__1_in_rule__CSSRulePrimary__Group_6__08862);
             rule__CSSRulePrimary__Group_6__1();
 
             state._fsp--;
@@ -12673,28 +12755,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePrimary__Group_6__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4419:1: rule__CSSRulePrimary__Group_6__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4445:1: rule__CSSRulePrimary__Group_6__0__Impl : ( () ) ;
     public final void rule__CSSRulePrimary__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4423:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4424:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4449:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4450:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4424:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4425:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4450:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4451:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0()); 
+               before(grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4426:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4428:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4452:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4454:1: 
             {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0()); 
+               after(grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0()); 
             }
 
             }
@@ -12714,16 +12796,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePrimary__Group_6__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4438:1: rule__CSSRulePrimary__Group_6__1 : rule__CSSRulePrimary__Group_6__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4464:1: rule__CSSRulePrimary__Group_6__1 : rule__CSSRulePrimary__Group_6__1__Impl ;
     public final void rule__CSSRulePrimary__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4442:1: ( rule__CSSRulePrimary__Group_6__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4443:2: rule__CSSRulePrimary__Group_6__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4468:1: ( rule__CSSRulePrimary__Group_6__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4469:2: rule__CSSRulePrimary__Group_6__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRulePrimary__Group_6__1__Impl_in_rule__CSSRulePrimary__Group_6__18865);
+            pushFollow(FOLLOW_rule__CSSRulePrimary__Group_6__1__Impl_in_rule__CSSRulePrimary__Group_6__18920);
             rule__CSSRulePrimary__Group_6__1__Impl();
 
             state._fsp--;
@@ -12747,25 +12829,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePrimary__Group_6__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4449:1: rule__CSSRulePrimary__Group_6__1__Impl : ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4475:1: rule__CSSRulePrimary__Group_6__1__Impl : ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) ) ;
     public final void rule__CSSRulePrimary__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4453:1: ( ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4454:1: ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4479:1: ( ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4480:1: ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4454:1: ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4455:1: ( rule__CSSRulePrimary__ValueAssignment_6_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4480:1: ( ( rule__CSSRulePrimary__ValueAssignment_6_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4481:1: ( rule__CSSRulePrimary__ValueAssignment_6_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRulePrimaryAccess().getValueAssignment_6_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4456:1: ( rule__CSSRulePrimary__ValueAssignment_6_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4456:2: rule__CSSRulePrimary__ValueAssignment_6_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4482:1: ( rule__CSSRulePrimary__ValueAssignment_6_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4482:2: rule__CSSRulePrimary__ValueAssignment_6_1
             {
-            pushFollow(FOLLOW_rule__CSSRulePrimary__ValueAssignment_6_1_in_rule__CSSRulePrimary__Group_6__1__Impl8892);
+            pushFollow(FOLLOW_rule__CSSRulePrimary__ValueAssignment_6_1_in_rule__CSSRulePrimary__Group_6__1__Impl8947);
             rule__CSSRulePrimary__ValueAssignment_6_1();
 
             state._fsp--;
@@ -12798,21 +12880,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRegex__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4470:1: rule__CSSRuleRegex__Group__0 : rule__CSSRuleRegex__Group__0__Impl rule__CSSRuleRegex__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4496:1: rule__CSSRuleRegex__Group__0 : rule__CSSRuleRegex__Group__0__Impl rule__CSSRuleRegex__Group__1 ;
     public final void rule__CSSRuleRegex__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4474:1: ( rule__CSSRuleRegex__Group__0__Impl rule__CSSRuleRegex__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4475:2: rule__CSSRuleRegex__Group__0__Impl rule__CSSRuleRegex__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4500:1: ( rule__CSSRuleRegex__Group__0__Impl rule__CSSRuleRegex__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4501:2: rule__CSSRuleRegex__Group__0__Impl rule__CSSRuleRegex__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleRegex__Group__0__Impl_in_rule__CSSRuleRegex__Group__08926);
+            pushFollow(FOLLOW_rule__CSSRuleRegex__Group__0__Impl_in_rule__CSSRuleRegex__Group__08981);
             rule__CSSRuleRegex__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleRegex__Group__1_in_rule__CSSRuleRegex__Group__08929);
+            pushFollow(FOLLOW_rule__CSSRuleRegex__Group__1_in_rule__CSSRuleRegex__Group__08984);
             rule__CSSRuleRegex__Group__1();
 
             state._fsp--;
@@ -12836,23 +12918,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRegex__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4482:1: rule__CSSRuleRegex__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4508:1: rule__CSSRuleRegex__Group__0__Impl : ( () ) ;
     public final void rule__CSSRuleRegex__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4486:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4487:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4512:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4513:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4487:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4488:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4513:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4514:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4489:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4491:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4515:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4517:1: 
             {
             }
 
@@ -12877,16 +12959,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRegex__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4501:1: rule__CSSRuleRegex__Group__1 : rule__CSSRuleRegex__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4527:1: rule__CSSRuleRegex__Group__1 : rule__CSSRuleRegex__Group__1__Impl ;
     public final void rule__CSSRuleRegex__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4505:1: ( rule__CSSRuleRegex__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4506:2: rule__CSSRuleRegex__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4531:1: ( rule__CSSRuleRegex__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4532:2: rule__CSSRuleRegex__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleRegex__Group__1__Impl_in_rule__CSSRuleRegex__Group__18987);
+            pushFollow(FOLLOW_rule__CSSRuleRegex__Group__1__Impl_in_rule__CSSRuleRegex__Group__19042);
             rule__CSSRuleRegex__Group__1__Impl();
 
             state._fsp--;
@@ -12910,25 +12992,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRegex__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4512:1: rule__CSSRuleRegex__Group__1__Impl : ( ( rule__CSSRuleRegex__RegexAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4538:1: rule__CSSRuleRegex__Group__1__Impl : ( ( rule__CSSRuleRegex__RegexAssignment_1 ) ) ;
     public final void rule__CSSRuleRegex__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4516:1: ( ( ( rule__CSSRuleRegex__RegexAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4517:1: ( ( rule__CSSRuleRegex__RegexAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4542:1: ( ( ( rule__CSSRuleRegex__RegexAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4543:1: ( ( rule__CSSRuleRegex__RegexAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4517:1: ( ( rule__CSSRuleRegex__RegexAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4518:1: ( rule__CSSRuleRegex__RegexAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4543:1: ( ( rule__CSSRuleRegex__RegexAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4544:1: ( rule__CSSRuleRegex__RegexAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRegexAccess().getRegexAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4519:1: ( rule__CSSRuleRegex__RegexAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4519:2: rule__CSSRuleRegex__RegexAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4545:1: ( rule__CSSRuleRegex__RegexAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4545:2: rule__CSSRuleRegex__RegexAssignment_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleRegex__RegexAssignment_1_in_rule__CSSRuleRegex__Group__1__Impl9014);
+            pushFollow(FOLLOW_rule__CSSRuleRegex__RegexAssignment_1_in_rule__CSSRuleRegex__Group__1__Impl9069);
             rule__CSSRuleRegex__RegexAssignment_1();
 
             state._fsp--;
@@ -12961,21 +13043,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleLiteral__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4533:1: rule__CSSRuleLiteral__Group__0 : rule__CSSRuleLiteral__Group__0__Impl rule__CSSRuleLiteral__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4559:1: rule__CSSRuleLiteral__Group__0 : rule__CSSRuleLiteral__Group__0__Impl rule__CSSRuleLiteral__Group__1 ;
     public final void rule__CSSRuleLiteral__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4537:1: ( rule__CSSRuleLiteral__Group__0__Impl rule__CSSRuleLiteral__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4538:2: rule__CSSRuleLiteral__Group__0__Impl rule__CSSRuleLiteral__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4563:1: ( rule__CSSRuleLiteral__Group__0__Impl rule__CSSRuleLiteral__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4564:2: rule__CSSRuleLiteral__Group__0__Impl rule__CSSRuleLiteral__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleLiteral__Group__0__Impl_in_rule__CSSRuleLiteral__Group__09048);
+            pushFollow(FOLLOW_rule__CSSRuleLiteral__Group__0__Impl_in_rule__CSSRuleLiteral__Group__09103);
             rule__CSSRuleLiteral__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleLiteral__Group__1_in_rule__CSSRuleLiteral__Group__09051);
+            pushFollow(FOLLOW_rule__CSSRuleLiteral__Group__1_in_rule__CSSRuleLiteral__Group__09106);
             rule__CSSRuleLiteral__Group__1();
 
             state._fsp--;
@@ -12999,23 +13081,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleLiteral__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4545:1: rule__CSSRuleLiteral__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4571:1: rule__CSSRuleLiteral__Group__0__Impl : ( () ) ;
     public final void rule__CSSRuleLiteral__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4549:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4550:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4575:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4576:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4550:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4551:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4576:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4577:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4552:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4554:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4578:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4580:1: 
             {
             }
 
@@ -13040,16 +13122,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleLiteral__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4564:1: rule__CSSRuleLiteral__Group__1 : rule__CSSRuleLiteral__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4590:1: rule__CSSRuleLiteral__Group__1 : rule__CSSRuleLiteral__Group__1__Impl ;
     public final void rule__CSSRuleLiteral__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4568:1: ( rule__CSSRuleLiteral__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4569:2: rule__CSSRuleLiteral__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4594:1: ( rule__CSSRuleLiteral__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4595:2: rule__CSSRuleLiteral__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleLiteral__Group__1__Impl_in_rule__CSSRuleLiteral__Group__19109);
+            pushFollow(FOLLOW_rule__CSSRuleLiteral__Group__1__Impl_in_rule__CSSRuleLiteral__Group__19164);
             rule__CSSRuleLiteral__Group__1__Impl();
 
             state._fsp--;
@@ -13073,25 +13155,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleLiteral__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4575:1: rule__CSSRuleLiteral__Group__1__Impl : ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4601:1: rule__CSSRuleLiteral__Group__1__Impl : ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) ) ;
     public final void rule__CSSRuleLiteral__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4579:1: ( ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4580:1: ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4605:1: ( ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4606:1: ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4580:1: ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4581:1: ( rule__CSSRuleLiteral__ValueAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4606:1: ( ( rule__CSSRuleLiteral__ValueAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4607:1: ( rule__CSSRuleLiteral__ValueAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleLiteralAccess().getValueAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4582:1: ( rule__CSSRuleLiteral__ValueAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4582:2: rule__CSSRuleLiteral__ValueAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4608:1: ( rule__CSSRuleLiteral__ValueAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4608:2: rule__CSSRuleLiteral__ValueAssignment_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleLiteral__ValueAssignment_1_in_rule__CSSRuleLiteral__Group__1__Impl9136);
+            pushFollow(FOLLOW_rule__CSSRuleLiteral__ValueAssignment_1_in_rule__CSSRuleLiteral__Group__1__Impl9191);
             rule__CSSRuleLiteral__ValueAssignment_1();
 
             state._fsp--;
@@ -13124,21 +13206,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleSymbol__Group__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4596:1: rule__CSSRuleSymbol__Group__0 : rule__CSSRuleSymbol__Group__0__Impl rule__CSSRuleSymbol__Group__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4622:1: rule__CSSRuleSymbol__Group__0 : rule__CSSRuleSymbol__Group__0__Impl rule__CSSRuleSymbol__Group__1 ;
     public final void rule__CSSRuleSymbol__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4600:1: ( rule__CSSRuleSymbol__Group__0__Impl rule__CSSRuleSymbol__Group__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4601:2: rule__CSSRuleSymbol__Group__0__Impl rule__CSSRuleSymbol__Group__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4626:1: ( rule__CSSRuleSymbol__Group__0__Impl rule__CSSRuleSymbol__Group__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4627:2: rule__CSSRuleSymbol__Group__0__Impl rule__CSSRuleSymbol__Group__1
             {
-            pushFollow(FOLLOW_rule__CSSRuleSymbol__Group__0__Impl_in_rule__CSSRuleSymbol__Group__09170);
+            pushFollow(FOLLOW_rule__CSSRuleSymbol__Group__0__Impl_in_rule__CSSRuleSymbol__Group__09225);
             rule__CSSRuleSymbol__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSRuleSymbol__Group__1_in_rule__CSSRuleSymbol__Group__09173);
+            pushFollow(FOLLOW_rule__CSSRuleSymbol__Group__1_in_rule__CSSRuleSymbol__Group__09228);
             rule__CSSRuleSymbol__Group__1();
 
             state._fsp--;
@@ -13162,23 +13244,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleSymbol__Group__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4608:1: rule__CSSRuleSymbol__Group__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4634:1: rule__CSSRuleSymbol__Group__0__Impl : ( () ) ;
     public final void rule__CSSRuleSymbol__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4612:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4613:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4638:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4639:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4613:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4614:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4639:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4640:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4615:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4617:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4641:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4643:1: 
             {
             }
 
@@ -13203,16 +13285,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleSymbol__Group__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4627:1: rule__CSSRuleSymbol__Group__1 : rule__CSSRuleSymbol__Group__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4653:1: rule__CSSRuleSymbol__Group__1 : rule__CSSRuleSymbol__Group__1__Impl ;
     public final void rule__CSSRuleSymbol__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4631:1: ( rule__CSSRuleSymbol__Group__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4632:2: rule__CSSRuleSymbol__Group__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4657:1: ( rule__CSSRuleSymbol__Group__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4658:2: rule__CSSRuleSymbol__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSRuleSymbol__Group__1__Impl_in_rule__CSSRuleSymbol__Group__19231);
+            pushFollow(FOLLOW_rule__CSSRuleSymbol__Group__1__Impl_in_rule__CSSRuleSymbol__Group__19286);
             rule__CSSRuleSymbol__Group__1__Impl();
 
             state._fsp--;
@@ -13236,25 +13318,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleSymbol__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4638:1: rule__CSSRuleSymbol__Group__1__Impl : ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4664:1: rule__CSSRuleSymbol__Group__1__Impl : ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) ) ;
     public final void rule__CSSRuleSymbol__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4642:1: ( ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4643:1: ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4668:1: ( ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4669:1: ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4643:1: ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4644:1: ( rule__CSSRuleSymbol__SymbolAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4669:1: ( ( rule__CSSRuleSymbol__SymbolAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4670:1: ( rule__CSSRuleSymbol__SymbolAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4645:1: ( rule__CSSRuleSymbol__SymbolAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4645:2: rule__CSSRuleSymbol__SymbolAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4671:1: ( rule__CSSRuleSymbol__SymbolAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4671:2: rule__CSSRuleSymbol__SymbolAssignment_1
             {
-            pushFollow(FOLLOW_rule__CSSRuleSymbol__SymbolAssignment_1_in_rule__CSSRuleSymbol__Group__1__Impl9258);
+            pushFollow(FOLLOW_rule__CSSRuleSymbol__SymbolAssignment_1_in_rule__CSSRuleSymbol__Group__1__Impl9313);
             rule__CSSRuleSymbol__SymbolAssignment_1();
 
             state._fsp--;
@@ -13287,21 +13369,21 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__Group_0__0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4659:1: rule__CSSDefaultValue__Group_0__0 : rule__CSSDefaultValue__Group_0__0__Impl rule__CSSDefaultValue__Group_0__1 ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4685:1: rule__CSSDefaultValue__Group_0__0 : rule__CSSDefaultValue__Group_0__0__Impl rule__CSSDefaultValue__Group_0__1 ;
     public final void rule__CSSDefaultValue__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4663:1: ( rule__CSSDefaultValue__Group_0__0__Impl rule__CSSDefaultValue__Group_0__1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4664:2: rule__CSSDefaultValue__Group_0__0__Impl rule__CSSDefaultValue__Group_0__1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4689:1: ( rule__CSSDefaultValue__Group_0__0__Impl rule__CSSDefaultValue__Group_0__1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4690:2: rule__CSSDefaultValue__Group_0__0__Impl rule__CSSDefaultValue__Group_0__1
             {
-            pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__0__Impl_in_rule__CSSDefaultValue__Group_0__09292);
+            pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__0__Impl_in_rule__CSSDefaultValue__Group_0__09347);
             rule__CSSDefaultValue__Group_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__1_in_rule__CSSDefaultValue__Group_0__09295);
+            pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__1_in_rule__CSSDefaultValue__Group_0__09350);
             rule__CSSDefaultValue__Group_0__1();
 
             state._fsp--;
@@ -13325,23 +13407,23 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__Group_0__0__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4671:1: rule__CSSDefaultValue__Group_0__0__Impl : ( () ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4697:1: rule__CSSDefaultValue__Group_0__0__Impl : ( () ) ;
     public final void rule__CSSDefaultValue__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4675:1: ( ( () ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4676:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4701:1: ( ( () ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4702:1: ( () )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4676:1: ( () )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4677:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4702:1: ( () )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4703:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSDefaultValueAccess().getCSSDefaultValueAction_0_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4678:1: ()
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4680:1: 
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4704:1: ()
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4706:1: 
             {
             }
 
@@ -13366,16 +13448,16 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__Group_0__1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4690:1: rule__CSSDefaultValue__Group_0__1 : rule__CSSDefaultValue__Group_0__1__Impl ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4716:1: rule__CSSDefaultValue__Group_0__1 : rule__CSSDefaultValue__Group_0__1__Impl ;
     public final void rule__CSSDefaultValue__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4694:1: ( rule__CSSDefaultValue__Group_0__1__Impl )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4695:2: rule__CSSDefaultValue__Group_0__1__Impl
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4720:1: ( rule__CSSDefaultValue__Group_0__1__Impl )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4721:2: rule__CSSDefaultValue__Group_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__1__Impl_in_rule__CSSDefaultValue__Group_0__19353);
+            pushFollow(FOLLOW_rule__CSSDefaultValue__Group_0__1__Impl_in_rule__CSSDefaultValue__Group_0__19408);
             rule__CSSDefaultValue__Group_0__1__Impl();
 
             state._fsp--;
@@ -13399,25 +13481,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__Group_0__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4701:1: rule__CSSDefaultValue__Group_0__1__Impl : ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4727:1: rule__CSSDefaultValue__Group_0__1__Impl : ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) ) ;
     public final void rule__CSSDefaultValue__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4705:1: ( ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4706:1: ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4731:1: ( ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4732:1: ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4706:1: ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4707:1: ( rule__CSSDefaultValue__ValAssignment_0_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4732:1: ( ( rule__CSSDefaultValue__ValAssignment_0_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4733:1: ( rule__CSSDefaultValue__ValAssignment_0_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSDefaultValueAccess().getValAssignment_0_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4708:1: ( rule__CSSDefaultValue__ValAssignment_0_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4708:2: rule__CSSDefaultValue__ValAssignment_0_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4734:1: ( rule__CSSDefaultValue__ValAssignment_0_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4734:2: rule__CSSDefaultValue__ValAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__CSSDefaultValue__ValAssignment_0_1_in_rule__CSSDefaultValue__Group_0__1__Impl9380);
+            pushFollow(FOLLOW_rule__CSSDefaultValue__ValAssignment_0_1_in_rule__CSSDefaultValue__Group_0__1__Impl9435);
             rule__CSSDefaultValue__ValAssignment_0_1();
 
             state._fsp--;
@@ -13450,22 +13532,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CssExtension__ImportsAssignment_0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4723:1: rule__CssExtension__ImportsAssignment_0 : ( ruleImport ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4749:1: rule__CssExtension__ImportsAssignment_0 : ( ruleImport ) ;
     public final void rule__CssExtension__ImportsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4727:1: ( ( ruleImport ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4728:1: ( ruleImport )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4753:1: ( ( ruleImport ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4754:1: ( ruleImport )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4728:1: ( ruleImport )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4729:1: ruleImport
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4754:1: ( ruleImport )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4755:1: ruleImport
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCssExtensionAccess().getImportsImportParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleImport_in_rule__CssExtension__ImportsAssignment_09419);
+            pushFollow(FOLLOW_ruleImport_in_rule__CssExtension__ImportsAssignment_09474);
             ruleImport();
 
             state._fsp--;
@@ -13495,22 +13577,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CssExtension__PackageDefAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4738:1: rule__CssExtension__PackageDefAssignment_1 : ( rulePackageDefinition ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4764:1: rule__CssExtension__PackageDefAssignment_1 : ( rulePackageDefinition ) ;
     public final void rule__CssExtension__PackageDefAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4742:1: ( ( rulePackageDefinition ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4743:1: ( rulePackageDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4768:1: ( ( rulePackageDefinition ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4769:1: ( rulePackageDefinition )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4743:1: ( rulePackageDefinition )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4744:1: rulePackageDefinition
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4769:1: ( rulePackageDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4770:1: rulePackageDefinition
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCssExtensionAccess().getPackageDefPackageDefinitionParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_rulePackageDefinition_in_rule__CssExtension__PackageDefAssignment_19450);
+            pushFollow(FOLLOW_rulePackageDefinition_in_rule__CssExtension__PackageDefAssignment_19505);
             rulePackageDefinition();
 
             state._fsp--;
@@ -13540,22 +13622,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Import__ImportedNamespaceAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4753:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildCard ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4779:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildCard ) ;
     public final void rule__Import__ImportedNamespaceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4757:1: ( ( ruleQualifiedNameWithWildCard ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4758:1: ( ruleQualifiedNameWithWildCard )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4783:1: ( ( ruleQualifiedNameWithWildCard ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4784:1: ( ruleQualifiedNameWithWildCard )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4758:1: ( ruleQualifiedNameWithWildCard )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4759:1: ruleQualifiedNameWithWildCard
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4784:1: ( ruleQualifiedNameWithWildCard )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4785:1: ruleQualifiedNameWithWildCard
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildCard_in_rule__Import__ImportedNamespaceAssignment_19481);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildCard_in_rule__Import__ImportedNamespaceAssignment_19536);
             ruleQualifiedNameWithWildCard();
 
             state._fsp--;
@@ -13585,22 +13667,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__NameAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4768:1: rule__PackageDefinition__NameAssignment_1 : ( ruleQualifiedName ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4794:1: rule__PackageDefinition__NameAssignment_1 : ( ruleQualifiedName ) ;
     public final void rule__PackageDefinition__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4772:1: ( ( ruleQualifiedName ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4773:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4798:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4799:1: ( ruleQualifiedName )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4773:1: ( ruleQualifiedName )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4774:1: ruleQualifiedName
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4799:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4800:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getNameQualifiedNameParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__PackageDefinition__NameAssignment_19512);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__PackageDefinition__NameAssignment_19567);
             ruleQualifiedName();
 
             state._fsp--;
@@ -13630,22 +13712,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__RulesAssignment_3_0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4783:1: rule__PackageDefinition__RulesAssignment_3_0 : ( ruleCSSRuleDefinition ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4809:1: rule__PackageDefinition__RulesAssignment_3_0 : ( ruleCSSRuleDefinition ) ;
     public final void rule__PackageDefinition__RulesAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4787:1: ( ( ruleCSSRuleDefinition ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4788:1: ( ruleCSSRuleDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4813:1: ( ( ruleCSSRuleDefinition ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4814:1: ( ruleCSSRuleDefinition )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4788:1: ( ruleCSSRuleDefinition )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4789:1: ruleCSSRuleDefinition
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4814:1: ( ruleCSSRuleDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4815:1: ruleCSSRuleDefinition
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getRulesCSSRuleDefinitionParserRuleCall_3_0_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleDefinition_in_rule__PackageDefinition__RulesAssignment_3_09543);
+            pushFollow(FOLLOW_ruleCSSRuleDefinition_in_rule__PackageDefinition__RulesAssignment_3_09598);
             ruleCSSRuleDefinition();
 
             state._fsp--;
@@ -13675,22 +13757,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__SubpackagesAssignment_3_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4798:1: rule__PackageDefinition__SubpackagesAssignment_3_1 : ( rulePackageDefinition ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4824:1: rule__PackageDefinition__SubpackagesAssignment_3_1 : ( rulePackageDefinition ) ;
     public final void rule__PackageDefinition__SubpackagesAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4802:1: ( ( rulePackageDefinition ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4803:1: ( rulePackageDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4828:1: ( ( rulePackageDefinition ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4829:1: ( rulePackageDefinition )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4803:1: ( rulePackageDefinition )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4804:1: rulePackageDefinition
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4829:1: ( rulePackageDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4830:1: rulePackageDefinition
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getSubpackagesPackageDefinitionParserRuleCall_3_1_0()); 
             }
-            pushFollow(FOLLOW_rulePackageDefinition_in_rule__PackageDefinition__SubpackagesAssignment_3_19574);
+            pushFollow(FOLLOW_rulePackageDefinition_in_rule__PackageDefinition__SubpackagesAssignment_3_19629);
             rulePackageDefinition();
 
             state._fsp--;
@@ -13720,22 +13802,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PackageDefinition__ElementsAssignment_3_2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4813:1: rule__PackageDefinition__ElementsAssignment_3_2 : ( ruleElementDefinition ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4839:1: rule__PackageDefinition__ElementsAssignment_3_2 : ( ruleElementDefinition ) ;
     public final void rule__PackageDefinition__ElementsAssignment_3_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4817:1: ( ( ruleElementDefinition ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4818:1: ( ruleElementDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4843:1: ( ( ruleElementDefinition ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4844:1: ( ruleElementDefinition )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4818:1: ( ruleElementDefinition )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4819:1: ruleElementDefinition
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4844:1: ( ruleElementDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4845:1: ruleElementDefinition
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageDefinitionAccess().getElementsElementDefinitionParserRuleCall_3_2_0()); 
             }
-            pushFollow(FOLLOW_ruleElementDefinition_in_rule__PackageDefinition__ElementsAssignment_3_29605);
+            pushFollow(FOLLOW_ruleElementDefinition_in_rule__PackageDefinition__ElementsAssignment_3_29660);
             ruleElementDefinition();
 
             state._fsp--;
@@ -13765,22 +13847,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Doku__ContentAssignment"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4828:1: rule__Doku__ContentAssignment : ( RULE_JDOC ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4854:1: rule__Doku__ContentAssignment : ( RULE_JDOC ) ;
     public final void rule__Doku__ContentAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4832:1: ( ( RULE_JDOC ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4833:1: ( RULE_JDOC )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4858:1: ( ( RULE_JDOC ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4859:1: ( RULE_JDOC )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4833:1: ( RULE_JDOC )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4834:1: RULE_JDOC
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4859:1: ( RULE_JDOC )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4860:1: RULE_JDOC
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDokuAccess().getContentJDOCTerminalRuleCall_0()); 
             }
-            match(input,RULE_JDOC,FOLLOW_RULE_JDOC_in_rule__Doku__ContentAssignment9636); if (state.failed) return ;
+            match(input,RULE_JDOC,FOLLOW_RULE_JDOC_in_rule__Doku__ContentAssignment9691); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getDokuAccess().getContentJDOCTerminalRuleCall_0()); 
             }
@@ -13806,28 +13888,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__TypeAssignment_0_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4843:1: rule__CSSType__TypeAssignment_0_1 : ( ( 'int' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4869:1: rule__CSSType__TypeAssignment_0_1 : ( ( 'int' ) ) ;
     public final void rule__CSSType__TypeAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4847:1: ( ( ( 'int' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4848:1: ( ( 'int' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4873:1: ( ( ( 'int' ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4874:1: ( ( 'int' ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4848:1: ( ( 'int' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4849:1: ( 'int' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_0_1_0()); 
-            }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4850:1: ( 'int' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4851:1: 'int'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4874:1: ( ( 'int' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4875:1: ( 'int' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_0_1_0()); 
             }
-            match(input,37,FOLLOW_37_in_rule__CSSType__TypeAssignment_0_19672); if (state.failed) return ;
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4876:1: ( 'int' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4877:1: 'int'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_0_1_0()); 
+            }
+            match(input,38,FOLLOW_38_in_rule__CSSType__TypeAssignment_0_19727); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_0_1_0()); 
             }
@@ -13859,22 +13941,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__FromAssignment_0_4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4866:1: rule__CSSType__FromAssignment_0_4 : ( RULE_INT ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4892:1: rule__CSSType__FromAssignment_0_4 : ( RULE_INT ) ;
     public final void rule__CSSType__FromAssignment_0_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4870:1: ( ( RULE_INT ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4871:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4896:1: ( ( RULE_INT ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4897:1: ( RULE_INT )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4871:1: ( RULE_INT )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4872:1: RULE_INT
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4897:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4898:1: RULE_INT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getFromINTTerminalRuleCall_0_4_0()); 
             }
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSType__FromAssignment_0_49711); if (state.failed) return ;
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSType__FromAssignment_0_49766); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getFromINTTerminalRuleCall_0_4_0()); 
             }
@@ -13900,22 +13982,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__ToAssignment_0_8"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4881:1: rule__CSSType__ToAssignment_0_8 : ( RULE_INT ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4907:1: rule__CSSType__ToAssignment_0_8 : ( RULE_INT ) ;
     public final void rule__CSSType__ToAssignment_0_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4885:1: ( ( RULE_INT ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4886:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4911:1: ( ( RULE_INT ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4912:1: ( RULE_INT )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4886:1: ( RULE_INT )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4887:1: RULE_INT
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4912:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4913:1: RULE_INT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getToINTTerminalRuleCall_0_8_0()); 
             }
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSType__ToAssignment_0_89742); if (state.failed) return ;
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSType__ToAssignment_0_89797); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getToINTTerminalRuleCall_0_8_0()); 
             }
@@ -13941,28 +14023,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__TypeAssignment_1_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4896:1: rule__CSSType__TypeAssignment_1_1 : ( ( 'double' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4922:1: rule__CSSType__TypeAssignment_1_1 : ( ( 'double' ) ) ;
     public final void rule__CSSType__TypeAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4900:1: ( ( ( 'double' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4901:1: ( ( 'double' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4926:1: ( ( ( 'double' ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4927:1: ( ( 'double' ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4901:1: ( ( 'double' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4902:1: ( 'double' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_1_1_0()); 
-            }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4903:1: ( 'double' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4904:1: 'double'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4927:1: ( ( 'double' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4928:1: ( 'double' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_1_1_0()); 
             }
-            match(input,38,FOLLOW_38_in_rule__CSSType__TypeAssignment_1_19778); if (state.failed) return ;
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4929:1: ( 'double' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4930:1: 'double'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_1_1_0()); 
+            }
+            match(input,39,FOLLOW_39_in_rule__CSSType__TypeAssignment_1_19833); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_1_1_0()); 
             }
@@ -13994,22 +14076,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__FromAssignment_1_4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4919:1: rule__CSSType__FromAssignment_1_4 : ( RULE_DOUBLE ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4945:1: rule__CSSType__FromAssignment_1_4 : ( RULE_DOUBLE ) ;
     public final void rule__CSSType__FromAssignment_1_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4923:1: ( ( RULE_DOUBLE ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4924:1: ( RULE_DOUBLE )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4949:1: ( ( RULE_DOUBLE ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4950:1: ( RULE_DOUBLE )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4924:1: ( RULE_DOUBLE )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4925:1: RULE_DOUBLE
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4950:1: ( RULE_DOUBLE )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4951:1: RULE_DOUBLE
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getFromDOUBLETerminalRuleCall_1_4_0()); 
             }
-            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__CSSType__FromAssignment_1_49817); if (state.failed) return ;
+            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__CSSType__FromAssignment_1_49872); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getFromDOUBLETerminalRuleCall_1_4_0()); 
             }
@@ -14035,22 +14117,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__ToAssignment_1_8"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4934:1: rule__CSSType__ToAssignment_1_8 : ( RULE_DOUBLE ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4960:1: rule__CSSType__ToAssignment_1_8 : ( RULE_DOUBLE ) ;
     public final void rule__CSSType__ToAssignment_1_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4938:1: ( ( RULE_DOUBLE ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4939:1: ( RULE_DOUBLE )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4964:1: ( ( RULE_DOUBLE ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4965:1: ( RULE_DOUBLE )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4939:1: ( RULE_DOUBLE )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4940:1: RULE_DOUBLE
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4965:1: ( RULE_DOUBLE )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4966:1: RULE_DOUBLE
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getToDOUBLETerminalRuleCall_1_8_0()); 
             }
-            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__CSSType__ToAssignment_1_89848); if (state.failed) return ;
+            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__CSSType__ToAssignment_1_89903); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getToDOUBLETerminalRuleCall_1_8_0()); 
             }
@@ -14076,28 +14158,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__TypeAssignment_2_0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4949:1: rule__CSSType__TypeAssignment_2_0 : ( ( 'int' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4975:1: rule__CSSType__TypeAssignment_2_0 : ( ( 'int' ) ) ;
     public final void rule__CSSType__TypeAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4953:1: ( ( ( 'int' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4954:1: ( ( 'int' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4979:1: ( ( ( 'int' ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4980:1: ( ( 'int' ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4954:1: ( ( 'int' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4955:1: ( 'int' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_2_0_0()); 
-            }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4956:1: ( 'int' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4957:1: 'int'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4980:1: ( ( 'int' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4981:1: ( 'int' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_2_0_0()); 
             }
-            match(input,37,FOLLOW_37_in_rule__CSSType__TypeAssignment_2_09884); if (state.failed) return ;
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4982:1: ( 'int' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4983:1: 'int'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_2_0_0()); 
+            }
+            match(input,38,FOLLOW_38_in_rule__CSSType__TypeAssignment_2_09939); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getTypeIntKeyword_2_0_0()); 
             }
@@ -14129,28 +14211,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSType__TypeAssignment_3_0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4972:1: rule__CSSType__TypeAssignment_3_0 : ( ( 'double' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4998:1: rule__CSSType__TypeAssignment_3_0 : ( ( 'double' ) ) ;
     public final void rule__CSSType__TypeAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4976:1: ( ( ( 'double' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4977:1: ( ( 'double' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5002:1: ( ( ( 'double' ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5003:1: ( ( 'double' ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4977:1: ( ( 'double' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4978:1: ( 'double' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_3_0_0()); 
-            }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4979:1: ( 'double' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4980:1: 'double'
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5003:1: ( ( 'double' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5004:1: ( 'double' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_3_0_0()); 
             }
-            match(input,38,FOLLOW_38_in_rule__CSSType__TypeAssignment_3_09928); if (state.failed) return ;
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5005:1: ( 'double' )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5006:1: 'double'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_3_0_0()); 
+            }
+            match(input,39,FOLLOW_39_in_rule__CSSType__TypeAssignment_3_09983); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSTypeAccess().getTypeDoubleKeyword_3_0_0()); 
             }
@@ -14182,22 +14264,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__DokuAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4995:1: rule__ElementDefinition__DokuAssignment_1 : ( ruleDoku ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5021:1: rule__ElementDefinition__DokuAssignment_1 : ( ruleDoku ) ;
     public final void rule__ElementDefinition__DokuAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:4999:1: ( ( ruleDoku ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5000:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5025:1: ( ( ruleDoku ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5026:1: ( ruleDoku )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5000:1: ( ruleDoku )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5001:1: ruleDoku
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5026:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5027:1: ruleDoku
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getDokuDokuParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleDoku_in_rule__ElementDefinition__DokuAssignment_19967);
+            pushFollow(FOLLOW_ruleDoku_in_rule__ElementDefinition__DokuAssignment_110022);
             ruleDoku();
 
             state._fsp--;
@@ -14227,22 +14309,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__NameAssignment_2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5010:1: rule__ElementDefinition__NameAssignment_2 : ( ruleQualifiedName ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5036:1: rule__ElementDefinition__NameAssignment_2 : ( ruleQualifiedName ) ;
     public final void rule__ElementDefinition__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5014:1: ( ( ruleQualifiedName ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5015:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5040:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5041:1: ( ruleQualifiedName )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5015:1: ( ruleQualifiedName )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5016:1: ruleQualifiedName
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5041:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5042:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getNameQualifiedNameParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__NameAssignment_29998);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__NameAssignment_210053);
             ruleQualifiedName();
 
             state._fsp--;
@@ -14272,28 +14354,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__SuperAssignment_3_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5025:1: rule__ElementDefinition__SuperAssignment_3_1 : ( ( ruleQualifiedName ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5051:1: rule__ElementDefinition__SuperAssignment_3_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__ElementDefinition__SuperAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5029:1: ( ( ( ruleQualifiedName ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5030:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5055:1: ( ( ( ruleQualifiedName ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5056:1: ( ( ruleQualifiedName ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5030:1: ( ( ruleQualifiedName ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5031:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5056:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5057:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getSuperElementDefinitionCrossReference_3_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5032:1: ( ruleQualifiedName )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5033:1: ruleQualifiedName
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5058:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5059:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getSuperElementDefinitionQualifiedNameParserRuleCall_3_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_110033);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_110088);
             ruleQualifiedName();
 
             state._fsp--;
@@ -14329,28 +14411,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__SuperAssignment_3_2_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5044:1: rule__ElementDefinition__SuperAssignment_3_2_1 : ( ( ruleQualifiedName ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5070:1: rule__ElementDefinition__SuperAssignment_3_2_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__ElementDefinition__SuperAssignment_3_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5048:1: ( ( ( ruleQualifiedName ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5049:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5074:1: ( ( ( ruleQualifiedName ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5075:1: ( ( ruleQualifiedName ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5049:1: ( ( ruleQualifiedName ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5050:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5075:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5076:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getSuperElementDefinitionCrossReference_3_2_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5051:1: ( ruleQualifiedName )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5052:1: ruleQualifiedName
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5077:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5078:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getSuperElementDefinitionQualifiedNameParserRuleCall_3_2_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_2_110072);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_2_110127);
             ruleQualifiedName();
 
             state._fsp--;
@@ -14386,22 +14468,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__PropertiesAssignment_5_0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5063:1: rule__ElementDefinition__PropertiesAssignment_5_0 : ( rulePropertyDefinition ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5089:1: rule__ElementDefinition__PropertiesAssignment_5_0 : ( rulePropertyDefinition ) ;
     public final void rule__ElementDefinition__PropertiesAssignment_5_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5067:1: ( ( rulePropertyDefinition ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5068:1: ( rulePropertyDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5093:1: ( ( rulePropertyDefinition ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5094:1: ( rulePropertyDefinition )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5068:1: ( rulePropertyDefinition )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5069:1: rulePropertyDefinition
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5094:1: ( rulePropertyDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5095:1: rulePropertyDefinition
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getPropertiesPropertyDefinitionParserRuleCall_5_0_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyDefinition_in_rule__ElementDefinition__PropertiesAssignment_5_010107);
+            pushFollow(FOLLOW_rulePropertyDefinition_in_rule__ElementDefinition__PropertiesAssignment_5_010162);
             rulePropertyDefinition();
 
             state._fsp--;
@@ -14431,22 +14513,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__ElementDefinition__PseudoClassesAssignment_5_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5078:1: rule__ElementDefinition__PseudoClassesAssignment_5_1 : ( rulePseudoClassDefinition ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5104:1: rule__ElementDefinition__PseudoClassesAssignment_5_1 : ( rulePseudoClassDefinition ) ;
     public final void rule__ElementDefinition__PseudoClassesAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5082:1: ( ( rulePseudoClassDefinition ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5083:1: ( rulePseudoClassDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5108:1: ( ( rulePseudoClassDefinition ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5109:1: ( rulePseudoClassDefinition )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5083:1: ( rulePseudoClassDefinition )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5084:1: rulePseudoClassDefinition
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5109:1: ( rulePseudoClassDefinition )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5110:1: rulePseudoClassDefinition
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getElementDefinitionAccess().getPseudoClassesPseudoClassDefinitionParserRuleCall_5_1_0()); 
             }
-            pushFollow(FOLLOW_rulePseudoClassDefinition_in_rule__ElementDefinition__PseudoClassesAssignment_5_110138);
+            pushFollow(FOLLOW_rulePseudoClassDefinition_in_rule__ElementDefinition__PseudoClassesAssignment_5_110193);
             rulePseudoClassDefinition();
 
             state._fsp--;
@@ -14476,22 +14558,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__DokuAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5093:1: rule__PropertyDefinition__DokuAssignment_1 : ( ruleDoku ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5119:1: rule__PropertyDefinition__DokuAssignment_1 : ( ruleDoku ) ;
     public final void rule__PropertyDefinition__DokuAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5097:1: ( ( ruleDoku ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5098:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5123:1: ( ( ruleDoku ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5124:1: ( ruleDoku )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5098:1: ( ruleDoku )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5099:1: ruleDoku
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5124:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5125:1: ruleDoku
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getDokuDokuParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleDoku_in_rule__PropertyDefinition__DokuAssignment_110169);
+            pushFollow(FOLLOW_ruleDoku_in_rule__PropertyDefinition__DokuAssignment_110224);
             ruleDoku();
 
             state._fsp--;
@@ -14521,22 +14603,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__NameAssignment_2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5108:1: rule__PropertyDefinition__NameAssignment_2 : ( RULE_ID ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5134:1: rule__PropertyDefinition__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__PropertyDefinition__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5112:1: ( ( RULE_ID ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5113:1: ( RULE_ID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5138:1: ( ( RULE_ID ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5139:1: ( RULE_ID )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5113:1: ( RULE_ID )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5114:1: RULE_ID
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5139:1: ( RULE_ID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5140:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getNameIDTerminalRuleCall_2_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PropertyDefinition__NameAssignment_210200); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PropertyDefinition__NameAssignment_210255); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyDefinitionAccess().getNameIDTerminalRuleCall_2_0()); 
             }
@@ -14562,22 +14644,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__RuleAssignment_3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5123:1: rule__PropertyDefinition__RuleAssignment_3 : ( ruleCSSRuleOr ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5149:1: rule__PropertyDefinition__RuleAssignment_3 : ( ruleCSSRuleOr ) ;
     public final void rule__PropertyDefinition__RuleAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5127:1: ( ( ruleCSSRuleOr ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5128:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5153:1: ( ( ruleCSSRuleOr ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5154:1: ( ruleCSSRuleOr )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5128:1: ( ruleCSSRuleOr )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5129:1: ruleCSSRuleOr
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5154:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5155:1: ruleCSSRuleOr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getRuleCSSRuleOrParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__PropertyDefinition__RuleAssignment_310231);
+            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__PropertyDefinition__RuleAssignment_310286);
             ruleCSSRuleOr();
 
             state._fsp--;
@@ -14607,22 +14689,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PropertyDefinition__DefaultAssignment_4_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5138:1: rule__PropertyDefinition__DefaultAssignment_4_1 : ( ruleCSSDefaultValue ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5164:1: rule__PropertyDefinition__DefaultAssignment_4_1 : ( ruleCSSDefaultValue ) ;
     public final void rule__PropertyDefinition__DefaultAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5142:1: ( ( ruleCSSDefaultValue ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5143:1: ( ruleCSSDefaultValue )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5168:1: ( ( ruleCSSDefaultValue ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5169:1: ( ruleCSSDefaultValue )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5143:1: ( ruleCSSDefaultValue )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5144:1: ruleCSSDefaultValue
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5169:1: ( ruleCSSDefaultValue )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5170:1: ruleCSSDefaultValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyDefinitionAccess().getDefaultCSSDefaultValueParserRuleCall_4_1_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSDefaultValue_in_rule__PropertyDefinition__DefaultAssignment_4_110262);
+            pushFollow(FOLLOW_ruleCSSDefaultValue_in_rule__PropertyDefinition__DefaultAssignment_4_110317);
             ruleCSSDefaultValue();
 
             state._fsp--;
@@ -14652,22 +14734,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__DokuAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5153:1: rule__PseudoClassDefinition__DokuAssignment_1 : ( ruleDoku ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5179:1: rule__PseudoClassDefinition__DokuAssignment_1 : ( ruleDoku ) ;
     public final void rule__PseudoClassDefinition__DokuAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5157:1: ( ( ruleDoku ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5158:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5183:1: ( ( ruleDoku ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5184:1: ( ruleDoku )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5158:1: ( ruleDoku )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5159:1: ruleDoku
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5184:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5185:1: ruleDoku
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPseudoClassDefinitionAccess().getDokuDokuParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleDoku_in_rule__PseudoClassDefinition__DokuAssignment_110293);
+            pushFollow(FOLLOW_ruleDoku_in_rule__PseudoClassDefinition__DokuAssignment_110348);
             ruleDoku();
 
             state._fsp--;
@@ -14697,22 +14779,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__PseudoClassDefinition__NameAssignment_2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5168:1: rule__PseudoClassDefinition__NameAssignment_2 : ( RULE_PSEUDO ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5194:1: rule__PseudoClassDefinition__NameAssignment_2 : ( RULE_PSEUDO ) ;
     public final void rule__PseudoClassDefinition__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5172:1: ( ( RULE_PSEUDO ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5173:1: ( RULE_PSEUDO )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5198:1: ( ( RULE_PSEUDO ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5199:1: ( RULE_PSEUDO )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5173:1: ( RULE_PSEUDO )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5174:1: RULE_PSEUDO
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5199:1: ( RULE_PSEUDO )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5200:1: RULE_PSEUDO
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPseudoClassDefinitionAccess().getNamePSEUDOTerminalRuleCall_2_0()); 
             }
-            match(input,RULE_PSEUDO,FOLLOW_RULE_PSEUDO_in_rule__PseudoClassDefinition__NameAssignment_210324); if (state.failed) return ;
+            match(input,RULE_PSEUDO,FOLLOW_RULE_PSEUDO_in_rule__PseudoClassDefinition__NameAssignment_210379); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPseudoClassDefinitionAccess().getNamePSEUDOTerminalRuleCall_2_0()); 
             }
@@ -14738,22 +14820,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleId__NameAssignment"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5183:1: rule__CSSRuleId__NameAssignment : ( ruleQualifiedName ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5209:1: rule__CSSRuleId__NameAssignment : ( ruleQualifiedName ) ;
     public final void rule__CSSRuleId__NameAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5187:1: ( ( ruleQualifiedName ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5188:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5213:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5214:1: ( ruleQualifiedName )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5188:1: ( ruleQualifiedName )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5189:1: ruleQualifiedName
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5214:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5215:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleIdAccess().getNameQualifiedNameParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__CSSRuleId__NameAssignment10355);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__CSSRuleId__NameAssignment10410);
             ruleQualifiedName();
 
             state._fsp--;
@@ -14783,28 +14865,28 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRef__RefAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5198:1: rule__CSSRuleRef__RefAssignment_1 : ( ( ruleQualifiedName ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5224:1: rule__CSSRuleRef__RefAssignment_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__CSSRuleRef__RefAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5202:1: ( ( ( ruleQualifiedName ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5203:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5228:1: ( ( ( ruleQualifiedName ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5229:1: ( ( ruleQualifiedName ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5203:1: ( ( ruleQualifiedName ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5204:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5229:1: ( ( ruleQualifiedName ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5230:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRefAccess().getRefCSSRuleIdCrossReference_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5205:1: ( ruleQualifiedName )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5206:1: ruleQualifiedName
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5231:1: ( ruleQualifiedName )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5232:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRefAccess().getRefCSSRuleIdQualifiedNameParserRuleCall_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__CSSRuleRef__RefAssignment_110390);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__CSSRuleRef__RefAssignment_110445);
             ruleQualifiedName();
 
             state._fsp--;
@@ -14840,22 +14922,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__DokuAssignment_0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5217:1: rule__CSSRuleDefinition__DokuAssignment_0 : ( ruleDoku ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5243:1: rule__CSSRuleDefinition__DokuAssignment_0 : ( ruleDoku ) ;
     public final void rule__CSSRuleDefinition__DokuAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5221:1: ( ( ruleDoku ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5222:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5247:1: ( ( ruleDoku ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5248:1: ( ruleDoku )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5222:1: ( ruleDoku )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5223:1: ruleDoku
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5248:1: ( ruleDoku )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5249:1: ruleDoku
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getDokuDokuParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleDoku_in_rule__CSSRuleDefinition__DokuAssignment_010425);
+            pushFollow(FOLLOW_ruleDoku_in_rule__CSSRuleDefinition__DokuAssignment_010480);
             ruleDoku();
 
             state._fsp--;
@@ -14885,22 +14967,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__NameAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5232:1: rule__CSSRuleDefinition__NameAssignment_1 : ( ruleCSSRuleId ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5258:1: rule__CSSRuleDefinition__NameAssignment_1 : ( ruleCSSRuleId ) ;
     public final void rule__CSSRuleDefinition__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5236:1: ( ( ruleCSSRuleId ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5237:1: ( ruleCSSRuleId )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5262:1: ( ( ruleCSSRuleId ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5263:1: ( ruleCSSRuleId )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5237:1: ( ruleCSSRuleId )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5238:1: ruleCSSRuleId
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5263:1: ( ruleCSSRuleId )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5264:1: ruleCSSRuleId
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getNameCSSRuleIdParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleId_in_rule__CSSRuleDefinition__NameAssignment_110456);
+            pushFollow(FOLLOW_ruleCSSRuleId_in_rule__CSSRuleDefinition__NameAssignment_110511);
             ruleCSSRuleId();
 
             state._fsp--;
@@ -14930,22 +15012,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__RuleAssignment_3_0"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5247:1: rule__CSSRuleDefinition__RuleAssignment_3_0 : ( ruleCSSRuleOr ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5273:1: rule__CSSRuleDefinition__RuleAssignment_3_0 : ( ruleCSSRuleOr ) ;
     public final void rule__CSSRuleDefinition__RuleAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5251:1: ( ( ruleCSSRuleOr ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5252:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5277:1: ( ( ruleCSSRuleOr ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5278:1: ( ruleCSSRuleOr )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5252:1: ( ruleCSSRuleOr )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5253:1: ruleCSSRuleOr
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5278:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5279:1: ruleCSSRuleOr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getRuleCSSRuleOrParserRuleCall_3_0_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleDefinition__RuleAssignment_3_010487);
+            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleDefinition__RuleAssignment_3_010542);
             ruleCSSRuleOr();
 
             state._fsp--;
@@ -14975,22 +15057,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleDefinition__FuncAssignment_3_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5262:1: rule__CSSRuleDefinition__FuncAssignment_3_1 : ( ruleCSSRuleFunc ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5288:1: rule__CSSRuleDefinition__FuncAssignment_3_1 : ( ruleCSSRuleFunc ) ;
     public final void rule__CSSRuleDefinition__FuncAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5266:1: ( ( ruleCSSRuleFunc ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5267:1: ( ruleCSSRuleFunc )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5292:1: ( ( ruleCSSRuleFunc ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5293:1: ( ruleCSSRuleFunc )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5267:1: ( ruleCSSRuleFunc )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5268:1: ruleCSSRuleFunc
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5293:1: ( ruleCSSRuleFunc )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5294:1: ruleCSSRuleFunc
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleDefinitionAccess().getFuncCSSRuleFuncParserRuleCall_3_1_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleFunc_in_rule__CSSRuleDefinition__FuncAssignment_3_110518);
+            pushFollow(FOLLOW_ruleCSSRuleFunc_in_rule__CSSRuleDefinition__FuncAssignment_3_110573);
             ruleCSSRuleFunc();
 
             state._fsp--;
@@ -15020,22 +15102,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__NameAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5277:1: rule__CSSRuleFunc__NameAssignment_1 : ( ruleValidID ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5303:1: rule__CSSRuleFunc__NameAssignment_1 : ( ruleValidID ) ;
     public final void rule__CSSRuleFunc__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5281:1: ( ( ruleValidID ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5282:1: ( ruleValidID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5307:1: ( ( ruleValidID ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5308:1: ( ruleValidID )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5282:1: ( ruleValidID )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5283:1: ruleValidID
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5308:1: ( ruleValidID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5309:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getNameValidIDParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__CSSRuleFunc__NameAssignment_110549);
+            pushFollow(FOLLOW_ruleValidID_in_rule__CSSRuleFunc__NameAssignment_110604);
             ruleValidID();
 
             state._fsp--;
@@ -15065,22 +15147,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleFunc__ParamsAssignment_4"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5292:1: rule__CSSRuleFunc__ParamsAssignment_4 : ( ruleCSSRuleOr ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5318:1: rule__CSSRuleFunc__ParamsAssignment_4 : ( ruleCSSRuleOr ) ;
     public final void rule__CSSRuleFunc__ParamsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5296:1: ( ( ruleCSSRuleOr ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5297:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5322:1: ( ( ruleCSSRuleOr ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5323:1: ( ruleCSSRuleOr )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5297:1: ( ruleCSSRuleOr )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5298:1: ruleCSSRuleOr
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5323:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5324:1: ruleCSSRuleOr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleFuncAccess().getParamsCSSRuleOrParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleFunc__ParamsAssignment_410580);
+            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleFunc__ParamsAssignment_410635);
             ruleCSSRuleOr();
 
             state._fsp--;
@@ -15110,22 +15192,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleOr__OrsAssignment_1_1_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5307:1: rule__CSSRuleOr__OrsAssignment_1_1_1 : ( ruleCSSRuleXor ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5333:1: rule__CSSRuleOr__OrsAssignment_1_1_1 : ( ruleCSSRuleXor ) ;
     public final void rule__CSSRuleOr__OrsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5311:1: ( ( ruleCSSRuleXor ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5312:1: ( ruleCSSRuleXor )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5337:1: ( ( ruleCSSRuleXor ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5338:1: ( ruleCSSRuleXor )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5312:1: ( ruleCSSRuleXor )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5313:1: ruleCSSRuleXor
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5338:1: ( ruleCSSRuleXor )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5339:1: ruleCSSRuleXor
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleOrAccess().getOrsCSSRuleXorParserRuleCall_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__OrsAssignment_1_1_110611);
+            pushFollow(FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__OrsAssignment_1_1_110666);
             ruleCSSRuleXor();
 
             state._fsp--;
@@ -15155,22 +15237,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleXor__XorsAssignment_1_1_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5322:1: rule__CSSRuleXor__XorsAssignment_1_1_1 : ( ruleCSSRuleConcat ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5348:1: rule__CSSRuleXor__XorsAssignment_1_1_1 : ( ruleCSSRuleConcat ) ;
     public final void rule__CSSRuleXor__XorsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5326:1: ( ( ruleCSSRuleConcat ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5327:1: ( ruleCSSRuleConcat )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5352:1: ( ( ruleCSSRuleConcat ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5353:1: ( ruleCSSRuleConcat )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5327:1: ( ruleCSSRuleConcat )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5328:1: ruleCSSRuleConcat
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5353:1: ( ruleCSSRuleConcat )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5354:1: ruleCSSRuleConcat
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleXorAccess().getXorsCSSRuleConcatParserRuleCall_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__XorsAssignment_1_1_110642);
+            pushFollow(FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__XorsAssignment_1_1_110697);
             ruleCSSRuleConcat();
 
             state._fsp--;
@@ -15200,22 +15282,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleConcat__ConcAssignment_1_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5337:1: rule__CSSRuleConcat__ConcAssignment_1_1 : ( ruleCSSRulePostfix ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5363:1: rule__CSSRuleConcat__ConcAssignment_1_1 : ( ruleCSSRulePostfix ) ;
     public final void rule__CSSRuleConcat__ConcAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5341:1: ( ( ruleCSSRulePostfix ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5342:1: ( ruleCSSRulePostfix )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5367:1: ( ( ruleCSSRulePostfix ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5368:1: ( ruleCSSRulePostfix )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5342:1: ( ruleCSSRulePostfix )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5343:1: ruleCSSRulePostfix
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5368:1: ( ruleCSSRulePostfix )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5369:1: ruleCSSRulePostfix
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleConcatAccess().getConcCSSRulePostfixParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__ConcAssignment_1_110673);
+            pushFollow(FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__ConcAssignment_1_110728);
             ruleCSSRulePostfix();
 
             state._fsp--;
@@ -15245,25 +15327,25 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePostfix__CardinalityAssignment_1_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5352:1: rule__CSSRulePostfix__CardinalityAssignment_1_1 : ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5378:1: rule__CSSRulePostfix__CardinalityAssignment_1_1 : ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) ) ;
     public final void rule__CSSRulePostfix__CardinalityAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5356:1: ( ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5357:1: ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5382:1: ( ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5383:1: ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5357:1: ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5358:1: ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5383:1: ( ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5384:1: ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRulePostfixAccess().getCardinalityAlternatives_1_1_0()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5359:1: ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5359:2: rule__CSSRulePostfix__CardinalityAlternatives_1_1_0
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5385:1: ( rule__CSSRulePostfix__CardinalityAlternatives_1_1_0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5385:2: rule__CSSRulePostfix__CardinalityAlternatives_1_1_0
             {
-            pushFollow(FOLLOW_rule__CSSRulePostfix__CardinalityAlternatives_1_1_0_in_rule__CSSRulePostfix__CardinalityAssignment_1_110704);
+            pushFollow(FOLLOW_rule__CSSRulePostfix__CardinalityAlternatives_1_1_0_in_rule__CSSRulePostfix__CardinalityAssignment_1_110759);
             rule__CSSRulePostfix__CardinalityAlternatives_1_1_0();
 
             state._fsp--;
@@ -15296,22 +15378,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleBracket__InnerAssignment_2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5368:1: rule__CSSRuleBracket__InnerAssignment_2 : ( ruleCSSRuleOr ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5394:1: rule__CSSRuleBracket__InnerAssignment_2 : ( ruleCSSRuleOr ) ;
     public final void rule__CSSRuleBracket__InnerAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5372:1: ( ( ruleCSSRuleOr ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5373:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5398:1: ( ( ruleCSSRuleOr ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5399:1: ( ruleCSSRuleOr )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5373:1: ( ruleCSSRuleOr )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5374:1: ruleCSSRuleOr
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5399:1: ( ruleCSSRuleOr )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5400:1: ruleCSSRuleOr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleBracketAccess().getInnerCSSRuleOrParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleBracket__InnerAssignment_210737);
+            pushFollow(FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleBracket__InnerAssignment_210792);
             ruleCSSRuleOr();
 
             state._fsp--;
@@ -15341,22 +15423,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRulePrimary__ValueAssignment_6_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5383:1: rule__CSSRulePrimary__ValueAssignment_6_1 : ( RULE_INT ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5409:1: rule__CSSRulePrimary__ValueAssignment_6_1 : ( RULE_INT ) ;
     public final void rule__CSSRulePrimary__ValueAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5387:1: ( ( RULE_INT ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5388:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5413:1: ( ( RULE_INT ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5414:1: ( RULE_INT )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5388:1: ( RULE_INT )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5389:1: RULE_INT
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5414:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5415:1: RULE_INT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRulePrimaryAccess().getValueINTTerminalRuleCall_6_1_0()); 
             }
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSRulePrimary__ValueAssignment_6_110768); if (state.failed) return ;
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSRulePrimary__ValueAssignment_6_110823); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRulePrimaryAccess().getValueINTTerminalRuleCall_6_1_0()); 
             }
@@ -15382,22 +15464,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleRegex__RegexAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5398:1: rule__CSSRuleRegex__RegexAssignment_1 : ( RULE_REGEX ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5424:1: rule__CSSRuleRegex__RegexAssignment_1 : ( RULE_REGEX ) ;
     public final void rule__CSSRuleRegex__RegexAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5402:1: ( ( RULE_REGEX ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5403:1: ( RULE_REGEX )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5428:1: ( ( RULE_REGEX ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5429:1: ( RULE_REGEX )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5403:1: ( RULE_REGEX )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5404:1: RULE_REGEX
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5429:1: ( RULE_REGEX )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5430:1: RULE_REGEX
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleRegexAccess().getRegexREGEXTerminalRuleCall_1_0()); 
             }
-            match(input,RULE_REGEX,FOLLOW_RULE_REGEX_in_rule__CSSRuleRegex__RegexAssignment_110799); if (state.failed) return ;
+            match(input,RULE_REGEX,FOLLOW_RULE_REGEX_in_rule__CSSRuleRegex__RegexAssignment_110854); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleRegexAccess().getRegexREGEXTerminalRuleCall_1_0()); 
             }
@@ -15423,22 +15505,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleLiteral__ValueAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5413:1: rule__CSSRuleLiteral__ValueAssignment_1 : ( RULE_ID ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5439:1: rule__CSSRuleLiteral__ValueAssignment_1 : ( RULE_ID ) ;
     public final void rule__CSSRuleLiteral__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5417:1: ( ( RULE_ID ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5418:1: ( RULE_ID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5443:1: ( ( RULE_ID ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5444:1: ( RULE_ID )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5418:1: ( RULE_ID )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5419:1: RULE_ID
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5444:1: ( RULE_ID )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5445:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSRuleLiteralAccess().getValueIDTerminalRuleCall_1_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__CSSRuleLiteral__ValueAssignment_110830); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__CSSRuleLiteral__ValueAssignment_110885); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSRuleLiteralAccess().getValueIDTerminalRuleCall_1_0()); 
             }
@@ -15464,36 +15546,34 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSRuleSymbol__SymbolAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5428:1: rule__CSSRuleSymbol__SymbolAssignment_1 : ( ( ',' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5454:1: rule__CSSRuleSymbol__SymbolAssignment_1 : ( ( rule__CSSRuleSymbol__SymbolAlternatives_1_0 ) ) ;
     public final void rule__CSSRuleSymbol__SymbolAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5432:1: ( ( ( ',' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5433:1: ( ( ',' ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5458:1: ( ( ( rule__CSSRuleSymbol__SymbolAlternatives_1_0 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5459:1: ( ( rule__CSSRuleSymbol__SymbolAlternatives_1_0 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5433:1: ( ( ',' ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5434:1: ( ',' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); 
-            }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5435:1: ( ',' )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5436:1: ','
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5459:1: ( ( rule__CSSRuleSymbol__SymbolAlternatives_1_0 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5460:1: ( rule__CSSRuleSymbol__SymbolAlternatives_1_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); 
+               before(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0()); 
             }
-            match(input,27,FOLLOW_27_in_rule__CSSRuleSymbol__SymbolAssignment_110866); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); 
-            }
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5461:1: ( rule__CSSRuleSymbol__SymbolAlternatives_1_0 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5461:2: rule__CSSRuleSymbol__SymbolAlternatives_1_0
+            {
+            pushFollow(FOLLOW_rule__CSSRuleSymbol__SymbolAlternatives_1_0_in_rule__CSSRuleSymbol__SymbolAssignment_110916);
+            rule__CSSRuleSymbol__SymbolAlternatives_1_0();
+
+            state._fsp--;
+            if (state.failed) return ;
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); 
+               after(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0()); 
             }
 
             }
@@ -15517,22 +15597,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__ValAssignment_0_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5451:1: rule__CSSDefaultValue__ValAssignment_0_1 : ( ruleCSSRuleLiteral ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5470:1: rule__CSSDefaultValue__ValAssignment_0_1 : ( ruleCSSRuleLiteral ) ;
     public final void rule__CSSDefaultValue__ValAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5455:1: ( ( ruleCSSRuleLiteral ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5456:1: ( ruleCSSRuleLiteral )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5474:1: ( ( ruleCSSRuleLiteral ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5475:1: ( ruleCSSRuleLiteral )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5456:1: ( ruleCSSRuleLiteral )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5457:1: ruleCSSRuleLiteral
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5475:1: ( ruleCSSRuleLiteral )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5476:1: ruleCSSRuleLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSDefaultValueAccess().getValCSSRuleLiteralParserRuleCall_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleCSSRuleLiteral_in_rule__CSSDefaultValue__ValAssignment_0_110905);
+            pushFollow(FOLLOW_ruleCSSRuleLiteral_in_rule__CSSDefaultValue__ValAssignment_0_110949);
             ruleCSSRuleLiteral();
 
             state._fsp--;
@@ -15562,22 +15642,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__IvalAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5466:1: rule__CSSDefaultValue__IvalAssignment_1 : ( RULE_INT ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5485:1: rule__CSSDefaultValue__IvalAssignment_1 : ( RULE_INT ) ;
     public final void rule__CSSDefaultValue__IvalAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5470:1: ( ( RULE_INT ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5471:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5489:1: ( ( RULE_INT ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5490:1: ( RULE_INT )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5471:1: ( RULE_INT )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5472:1: RULE_INT
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5490:1: ( RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5491:1: RULE_INT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSDefaultValueAccess().getIvalINTTerminalRuleCall_1_0()); 
             }
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSDefaultValue__IvalAssignment_110936); if (state.failed) return ;
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__CSSDefaultValue__IvalAssignment_110980); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSDefaultValueAccess().getIvalINTTerminalRuleCall_1_0()); 
             }
@@ -15603,22 +15683,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__DvalAssignment_2"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5481:1: rule__CSSDefaultValue__DvalAssignment_2 : ( RULE_DOUBLE ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5500:1: rule__CSSDefaultValue__DvalAssignment_2 : ( RULE_DOUBLE ) ;
     public final void rule__CSSDefaultValue__DvalAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5485:1: ( ( RULE_DOUBLE ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5486:1: ( RULE_DOUBLE )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5504:1: ( ( RULE_DOUBLE ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5505:1: ( RULE_DOUBLE )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5486:1: ( RULE_DOUBLE )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5487:1: RULE_DOUBLE
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5505:1: ( RULE_DOUBLE )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5506:1: RULE_DOUBLE
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSDefaultValueAccess().getDvalDOUBLETerminalRuleCall_2_0()); 
             }
-            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__CSSDefaultValue__DvalAssignment_210967); if (state.failed) return ;
+            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__CSSDefaultValue__DvalAssignment_211011); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSDefaultValueAccess().getDvalDOUBLETerminalRuleCall_2_0()); 
             }
@@ -15644,22 +15724,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__CSSDefaultValue__SvalAssignment_3"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5496:1: rule__CSSDefaultValue__SvalAssignment_3 : ( RULE_STRING ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5515:1: rule__CSSDefaultValue__SvalAssignment_3 : ( RULE_STRING ) ;
     public final void rule__CSSDefaultValue__SvalAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5500:1: ( ( RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5501:1: ( RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5519:1: ( ( RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5520:1: ( RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5501:1: ( RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5502:1: RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5520:1: ( RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:5521:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCSSDefaultValueAccess().getSvalSTRINGTerminalRuleCall_3_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__CSSDefaultValue__SvalAssignment_310998); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__CSSDefaultValue__SvalAssignment_311042); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCSSDefaultValueAccess().getSvalSTRINGTerminalRuleCall_3_0()); 
             }
@@ -15692,22 +15772,22 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     static final String DFA1_eofS =
         "\10\uffff";
     static final String DFA1_minS =
-        "\2\4\1\23\1\uffff\1\4\2\uffff\1\23";
+        "\2\4\1\25\1\uffff\1\4\2\uffff\1\25";
     static final String DFA1_maxS =
-        "\1\24\1\4\1\40\1\uffff\1\4\2\uffff\1\40";
+        "\1\26\1\4\1\41\1\uffff\1\4\2\uffff\1\41";
     static final String DFA1_acceptS =
-        "\3\uffff\1\2\1\uffff\1\1\1\3\1\uffff";
+        "\3\uffff\1\2\1\uffff\1\3\1\1\1\uffff";
     static final String DFA1_specialS =
         "\10\uffff}>";
     static final String[] DFA1_transitionS = {
-            "\1\2\1\uffff\1\1\15\uffff\1\3",
+            "\1\2\1\uffff\1\1\17\uffff\1\3",
             "\1\2",
-            "\1\4\1\uffff\1\6\4\uffff\1\6\5\uffff\1\5",
+            "\1\4\1\uffff\1\5\4\uffff\1\5\4\uffff\1\6",
             "",
             "\1\7",
             "",
             "",
-            "\1\4\1\uffff\1\6\4\uffff\1\6\5\uffff\1\5"
+            "\1\4\1\uffff\1\5\4\uffff\1\5\4\uffff\1\6"
     };
 
     static final short[] DFA1_eot = DFA.unpackEncodedString(DFA1_eotS);
@@ -15844,351 +15924,353 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     public static final BitSet FOLLOW_ruleCSSBaseType_in_rule__CSSRulePrimary__Alternatives2143 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleCSSRuleRegex_in_rule__CSSRulePrimary__Alternatives2160 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__CSSRulePrimary__Group_6__0_in_rule__CSSRulePrimary__Alternatives2177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__0_in_rule__CSSDefaultValue__Alternatives2210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__IvalAssignment_1_in_rule__CSSDefaultValue__Alternatives2228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__DvalAssignment_2_in_rule__CSSDefaultValue__Alternatives2246 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__SvalAssignment_3_in_rule__CSSDefaultValue__Alternatives2264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CssExtension__Group__0__Impl_in_rule__CssExtension__Group__02295 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_rule__CssExtension__Group__1_in_rule__CssExtension__Group__02298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CssExtension__ImportsAssignment_0_in_rule__CssExtension__Group__0__Impl2325 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_rule__CssExtension__Group__1__Impl_in_rule__CssExtension__Group__12356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CssExtension__PackageDefAssignment_1_in_rule__CssExtension__Group__1__Impl2383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__02418 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__02421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Import__Group__0__Impl2449 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__12480 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl2507 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__02541 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__02544 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl2571 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__12600 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl2627 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__02662 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__02665 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__QualifiedName__Group_1__0__Impl2694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__12726 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl2753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group__0__Impl_in_rule__QualifiedNameWithWildCard__Group__02786 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group__1_in_rule__QualifiedNameWithWildCard__Group__02789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildCard__Group__0__Impl2816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group__1__Impl_in_rule__QualifiedNameWithWildCard__Group__12845 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0_in_rule__QualifiedNameWithWildCard__Group__1__Impl2872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0__Impl_in_rule__QualifiedNameWithWildCard__Group_1__02907 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1_in_rule__QualifiedNameWithWildCard__Group_1__02910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__QualifiedNameWithWildCard__Group_1__0__Impl2938 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1__Impl_in_rule__QualifiedNameWithWildCard__Group_1__12969 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__QualifiedNameWithWildCard__Group_1__1__Impl2997 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__0__Impl_in_rule__PackageDefinition__Group__03032 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__1_in_rule__PackageDefinition__Group__03035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__PackageDefinition__Group__0__Impl3063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__1__Impl_in_rule__PackageDefinition__Group__13094 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__2_in_rule__PackageDefinition__Group__13097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__NameAssignment_1_in_rule__PackageDefinition__Group__1__Impl3124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__2__Impl_in_rule__PackageDefinition__Group__23154 = new BitSet(new long[]{0x0000000000500050L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__3_in_rule__PackageDefinition__Group__23157 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__PackageDefinition__Group__2__Impl3185 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__3__Impl_in_rule__PackageDefinition__Group__33216 = new BitSet(new long[]{0x0000000000500050L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__4_in_rule__PackageDefinition__Group__33219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Alternatives_3_in_rule__PackageDefinition__Group__3__Impl3246 = new BitSet(new long[]{0x0000000000100052L});
-    public static final BitSet FOLLOW_rule__PackageDefinition__Group__4__Impl_in_rule__PackageDefinition__Group__43277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__PackageDefinition__Group__4__Impl3305 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__0__Impl_in_rule__CSSType__Group_0__03346 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__1_in_rule__CSSType__Group_0__03349 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__1__Impl_in_rule__CSSType__Group_0__13407 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__2_in_rule__CSSType__Group_0__13410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_0_1_in_rule__CSSType__Group_0__1__Impl3437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__2__Impl_in_rule__CSSType__Group_0__23467 = new BitSet(new long[]{0x00000000000000A0L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__3_in_rule__CSSType__Group_0__23470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__CSSType__Group_0__2__Impl3498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__3__Impl_in_rule__CSSType__Group_0__33529 = new BitSet(new long[]{0x00000000000000A0L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__4_in_rule__CSSType__Group_0__33532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__3__Impl3560 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__4__Impl_in_rule__CSSType__Group_0__43591 = new BitSet(new long[]{0x0000000001000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__5_in_rule__CSSType__Group_0__43594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__FromAssignment_0_4_in_rule__CSSType__Group_0__4__Impl3621 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__5__Impl_in_rule__CSSType__Group_0__53651 = new BitSet(new long[]{0x0000000001000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__6_in_rule__CSSType__Group_0__53654 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__5__Impl3682 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__6__Impl_in_rule__CSSType__Group_0__63713 = new BitSet(new long[]{0x00000000000000A0L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__7_in_rule__CSSType__Group_0__63716 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__CSSType__Group_0__6__Impl3744 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__7__Impl_in_rule__CSSType__Group_0__73775 = new BitSet(new long[]{0x00000000000000A0L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__8_in_rule__CSSType__Group_0__73778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__7__Impl3806 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__8__Impl_in_rule__CSSType__Group_0__83837 = new BitSet(new long[]{0x0000000002000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__9_in_rule__CSSType__Group_0__83840 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__ToAssignment_0_8_in_rule__CSSType__Group_0__8__Impl3867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__9__Impl_in_rule__CSSType__Group_0__93897 = new BitSet(new long[]{0x0000000002000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__10_in_rule__CSSType__Group_0__93900 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__9__Impl3928 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_0__10__Impl_in_rule__CSSType__Group_0__103959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__CSSType__Group_0__10__Impl3987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__0__Impl_in_rule__CSSType__Group_1__04040 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__1_in_rule__CSSType__Group_1__04043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__1__Impl_in_rule__CSSType__Group_1__14101 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__2_in_rule__CSSType__Group_1__14104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_1_1_in_rule__CSSType__Group_1__1__Impl4131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__2__Impl_in_rule__CSSType__Group_1__24161 = new BitSet(new long[]{0x0000000000000120L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__3_in_rule__CSSType__Group_1__24164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__CSSType__Group_1__2__Impl4192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__3__Impl_in_rule__CSSType__Group_1__34223 = new BitSet(new long[]{0x0000000000000120L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__4_in_rule__CSSType__Group_1__34226 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__3__Impl4254 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__4__Impl_in_rule__CSSType__Group_1__44285 = new BitSet(new long[]{0x0000000001000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__5_in_rule__CSSType__Group_1__44288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__FromAssignment_1_4_in_rule__CSSType__Group_1__4__Impl4315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__5__Impl_in_rule__CSSType__Group_1__54345 = new BitSet(new long[]{0x0000000001000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__6_in_rule__CSSType__Group_1__54348 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__5__Impl4376 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__6__Impl_in_rule__CSSType__Group_1__64407 = new BitSet(new long[]{0x0000000000000120L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__7_in_rule__CSSType__Group_1__64410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__CSSType__Group_1__6__Impl4438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__7__Impl_in_rule__CSSType__Group_1__74469 = new BitSet(new long[]{0x0000000000000120L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__8_in_rule__CSSType__Group_1__74472 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__7__Impl4500 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__8__Impl_in_rule__CSSType__Group_1__84531 = new BitSet(new long[]{0x0000000002000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__9_in_rule__CSSType__Group_1__84534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__ToAssignment_1_8_in_rule__CSSType__Group_1__8__Impl4561 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__9__Impl_in_rule__CSSType__Group_1__94591 = new BitSet(new long[]{0x0000000002000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__10_in_rule__CSSType__Group_1__94594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__9__Impl4622 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_1__10__Impl_in_rule__CSSType__Group_1__104653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__CSSType__Group_1__10__Impl4681 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_2__0__Impl_in_rule__CSSType__Group_2__04734 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_2__1_in_rule__CSSType__Group_2__04737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_2_0_in_rule__CSSType__Group_2__0__Impl4764 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_2__1__Impl_in_rule__CSSType__Group_2__14794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_2__1__Impl4822 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_3__0__Impl_in_rule__CSSType__Group_3__04857 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_3__1_in_rule__CSSType__Group_3__04860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_3_0_in_rule__CSSType__Group_3__0__Impl4887 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSType__Group_3__1__Impl_in_rule__CSSType__Group_3__14917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_3__1__Impl4945 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__0__Impl_in_rule__ElementDefinition__Group__04980 = new BitSet(new long[]{0x0000000000100050L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__1_in_rule__ElementDefinition__Group__04983 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__1__Impl_in_rule__ElementDefinition__Group__15041 = new BitSet(new long[]{0x0000000000100050L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__2_in_rule__ElementDefinition__Group__15044 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__DokuAssignment_1_in_rule__ElementDefinition__Group__1__Impl5071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__2__Impl_in_rule__ElementDefinition__Group__25102 = new BitSet(new long[]{0x0000000004200000L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__3_in_rule__ElementDefinition__Group__25105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__NameAssignment_2_in_rule__ElementDefinition__Group__2__Impl5132 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__3__Impl_in_rule__ElementDefinition__Group__35162 = new BitSet(new long[]{0x0000000004200000L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__4_in_rule__ElementDefinition__Group__35165 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__0_in_rule__ElementDefinition__Group__3__Impl5192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__4__Impl_in_rule__ElementDefinition__Group__45223 = new BitSet(new long[]{0x0000000000400250L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__5_in_rule__ElementDefinition__Group__45226 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__ElementDefinition__Group__4__Impl5254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__5__Impl_in_rule__ElementDefinition__Group__55285 = new BitSet(new long[]{0x0000000000400250L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__6_in_rule__ElementDefinition__Group__55288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Alternatives_5_in_rule__ElementDefinition__Group__5__Impl5315 = new BitSet(new long[]{0x0000000000000252L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group__6__Impl_in_rule__ElementDefinition__Group__65346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__ElementDefinition__Group__6__Impl5374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__0__Impl_in_rule__ElementDefinition__Group_3__05419 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__1_in_rule__ElementDefinition__Group_3__05422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__ElementDefinition__Group_3__0__Impl5450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__1__Impl_in_rule__ElementDefinition__Group_3__15481 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__2_in_rule__ElementDefinition__Group_3__15484 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__SuperAssignment_3_1_in_rule__ElementDefinition__Group_3__1__Impl5511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__2__Impl_in_rule__ElementDefinition__Group_3__25541 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__0_in_rule__ElementDefinition__Group_3__2__Impl5568 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__0__Impl_in_rule__ElementDefinition__Group_3_2__05605 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__1_in_rule__ElementDefinition__Group_3_2__05608 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_rule__ElementDefinition__Group_3_2__0__Impl5636 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__1__Impl_in_rule__ElementDefinition__Group_3_2__15667 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ElementDefinition__SuperAssignment_3_2_1_in_rule__ElementDefinition__Group_3_2__1__Impl5694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__0__Impl_in_rule__PropertyDefinition__Group__05728 = new BitSet(new long[]{0x0000000000000050L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__1_in_rule__PropertyDefinition__Group__05731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__1__Impl_in_rule__PropertyDefinition__Group__15789 = new BitSet(new long[]{0x0000000000000050L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__2_in_rule__PropertyDefinition__Group__15792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__DokuAssignment_1_in_rule__PropertyDefinition__Group__1__Impl5819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__2__Impl_in_rule__PropertyDefinition__Group__25850 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__3_in_rule__PropertyDefinition__Group__25853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__NameAssignment_2_in_rule__PropertyDefinition__Group__2__Impl5880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__3__Impl_in_rule__PropertyDefinition__Group__35910 = new BitSet(new long[]{0x0000000030000000L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__4_in_rule__PropertyDefinition__Group__35913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__RuleAssignment_3_in_rule__PropertyDefinition__Group__3__Impl5940 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__4__Impl_in_rule__PropertyDefinition__Group__45970 = new BitSet(new long[]{0x0000000030000000L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__5_in_rule__PropertyDefinition__Group__45973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__0_in_rule__PropertyDefinition__Group__4__Impl6000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__5__Impl_in_rule__PropertyDefinition__Group__56031 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rule__PropertyDefinition__Group__5__Impl6059 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__0__Impl_in_rule__PropertyDefinition__Group_4__06102 = new BitSet(new long[]{0x0000000000000990L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__1_in_rule__PropertyDefinition__Group_4__06105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_rule__PropertyDefinition__Group_4__0__Impl6133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__1__Impl_in_rule__PropertyDefinition__Group_4__16164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDefinition__DefaultAssignment_4_1_in_rule__PropertyDefinition__Group_4__1__Impl6191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__0__Impl_in_rule__PseudoClassDefinition__Group__06225 = new BitSet(new long[]{0x0000000000000250L});
-    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__1_in_rule__PseudoClassDefinition__Group__06228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__1__Impl_in_rule__PseudoClassDefinition__Group__16286 = new BitSet(new long[]{0x0000000000000250L});
-    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__2_in_rule__PseudoClassDefinition__Group__16289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PseudoClassDefinition__DokuAssignment_1_in_rule__PseudoClassDefinition__Group__1__Impl6316 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__2__Impl_in_rule__PseudoClassDefinition__Group__26347 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PseudoClassDefinition__NameAssignment_2_in_rule__PseudoClassDefinition__Group__2__Impl6374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__0__Impl_in_rule__CSSRuleRef__Group__06410 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__1_in_rule__CSSRuleRef__Group__06413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_rule__CSSRuleRef__Group__0__Impl6441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__1__Impl_in_rule__CSSRuleRef__Group__16472 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__2_in_rule__CSSRuleRef__Group__16475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleRef__RefAssignment_1_in_rule__CSSRuleRef__Group__1__Impl6502 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__2__Impl_in_rule__CSSRuleRef__Group__26532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__CSSRuleRef__Group__2__Impl6560 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__0__Impl_in_rule__CSSRuleDefinition__Group__06597 = new BitSet(new long[]{0x0000000000000050L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__1_in_rule__CSSRuleDefinition__Group__06600 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__DokuAssignment_0_in_rule__CSSRuleDefinition__Group__0__Impl6627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__1__Impl_in_rule__CSSRuleDefinition__Group__16658 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__2_in_rule__CSSRuleDefinition__Group__16661 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__NameAssignment_1_in_rule__CSSRuleDefinition__Group__1__Impl6688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__2__Impl_in_rule__CSSRuleDefinition__Group__26718 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__3_in_rule__CSSRuleDefinition__Group__26721 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_rule__CSSRuleDefinition__Group__2__Impl6749 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__3__Impl_in_rule__CSSRuleDefinition__Group__36780 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__4_in_rule__CSSRuleDefinition__Group__36783 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Alternatives_3_in_rule__CSSRuleDefinition__Group__3__Impl6810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__4__Impl_in_rule__CSSRuleDefinition__Group__46840 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rule__CSSRuleDefinition__Group__4__Impl6868 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__0__Impl_in_rule__CSSRuleFunc__Group__06909 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__1_in_rule__CSSRuleFunc__Group__06912 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__1__Impl_in_rule__CSSRuleFunc__Group__16970 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__2_in_rule__CSSRuleFunc__Group__16973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__NameAssignment_1_in_rule__CSSRuleFunc__Group__1__Impl7000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__2__Impl_in_rule__CSSRuleFunc__Group__27030 = new BitSet(new long[]{0x00000068480004B0L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__3_in_rule__CSSRuleFunc__Group__27033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__CSSRuleFunc__Group__2__Impl7061 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__3__Impl_in_rule__CSSRuleFunc__Group__37092 = new BitSet(new long[]{0x00000068480004B0L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__4_in_rule__CSSRuleFunc__Group__37095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSRuleFunc__Group__3__Impl7123 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__4__Impl_in_rule__CSSRuleFunc__Group__47154 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__5_in_rule__CSSRuleFunc__Group__47157 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__ParamsAssignment_4_in_rule__CSSRuleFunc__Group__4__Impl7184 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__5__Impl_in_rule__CSSRuleFunc__Group__57214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__CSSRuleFunc__Group__5__Impl7242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group__0__Impl_in_rule__CSSRuleOr__Group__07285 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group__1_in_rule__CSSRuleOr__Group__07288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__Group__0__Impl7315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group__1__Impl_in_rule__CSSRuleOr__Group__17344 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__0_in_rule__CSSRuleOr__Group__1__Impl7371 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__0__Impl_in_rule__CSSRuleOr__Group_1__07406 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__1_in_rule__CSSRuleOr__Group_1__07409 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__1__Impl_in_rule__CSSRuleOr__Group_1__17467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7496 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7508 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__0__Impl_in_rule__CSSRuleOr__Group_1_1__07545 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__1_in_rule__CSSRuleOr__Group_1_1__07548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_rule__CSSRuleOr__Group_1_1__0__Impl7576 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__1__Impl_in_rule__CSSRuleOr__Group_1_1__17607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleOr__OrsAssignment_1_1_1_in_rule__CSSRuleOr__Group_1_1__1__Impl7634 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group__0__Impl_in_rule__CSSRuleXor__Group__07668 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group__1_in_rule__CSSRuleXor__Group__07671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__Group__0__Impl7698 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group__1__Impl_in_rule__CSSRuleXor__Group__17727 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__0_in_rule__CSSRuleXor__Group__1__Impl7754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__0__Impl_in_rule__CSSRuleXor__Group_1__07789 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__1_in_rule__CSSRuleXor__Group_1__07792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__1__Impl_in_rule__CSSRuleXor__Group_1__17850 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7879 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7891 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__0__Impl_in_rule__CSSRuleXor__Group_1_1__07928 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__1_in_rule__CSSRuleXor__Group_1_1__07931 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__CSSRuleXor__Group_1_1__0__Impl7959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__1__Impl_in_rule__CSSRuleXor__Group_1_1__17990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleXor__XorsAssignment_1_1_1_in_rule__CSSRuleXor__Group_1_1__1__Impl8017 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group__0__Impl_in_rule__CSSRuleConcat__Group__08051 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group__1_in_rule__CSSRuleConcat__Group__08054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__Group__0__Impl8081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group__1__Impl_in_rule__CSSRuleConcat__Group__18110 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__0_in_rule__CSSRuleConcat__Group__1__Impl8137 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__0__Impl_in_rule__CSSRuleConcat__Group_1__08172 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__1_in_rule__CSSRuleConcat__Group_1__08175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__1__Impl_in_rule__CSSRuleConcat__Group_1__18233 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8262 = new BitSet(new long[]{0x0000006848000492L});
-    public static final BitSet FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8274 = new BitSet(new long[]{0x0000006848000492L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group__0__Impl_in_rule__CSSRulePostfix__Group__08311 = new BitSet(new long[]{0x0000000000038000L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group__1_in_rule__CSSRulePostfix__Group__08314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRulePrimary_in_rule__CSSRulePostfix__Group__0__Impl8341 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group__1__Impl_in_rule__CSSRulePostfix__Group__18370 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__0_in_rule__CSSRulePostfix__Group__1__Impl8397 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__0__Impl_in_rule__CSSRulePostfix__Group_1__08432 = new BitSet(new long[]{0x0000000000038000L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__1_in_rule__CSSRulePostfix__Group_1__08435 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__1__Impl_in_rule__CSSRulePostfix__Group_1__18493 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__CardinalityAssignment_1_1_in_rule__CSSRulePostfix__Group_1__1__Impl8520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__0__Impl_in_rule__CSSRuleBracket__Group__08554 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__1_in_rule__CSSRuleBracket__Group__08557 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__1__Impl_in_rule__CSSRuleBracket__Group__18615 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__2_in_rule__CSSRuleBracket__Group__18618 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_rule__CSSRuleBracket__Group__1__Impl8646 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__2__Impl_in_rule__CSSRuleBracket__Group__28677 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__3_in_rule__CSSRuleBracket__Group__28680 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__InnerAssignment_2_in_rule__CSSRuleBracket__Group__2__Impl8707 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__3__Impl_in_rule__CSSRuleBracket__Group__38737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_rule__CSSRuleBracket__Group__3__Impl8765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePrimary__Group_6__0__Impl_in_rule__CSSRulePrimary__Group_6__08804 = new BitSet(new long[]{0x0000006848000490L});
-    public static final BitSet FOLLOW_rule__CSSRulePrimary__Group_6__1_in_rule__CSSRulePrimary__Group_6__08807 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePrimary__Group_6__1__Impl_in_rule__CSSRulePrimary__Group_6__18865 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePrimary__ValueAssignment_6_1_in_rule__CSSRulePrimary__Group_6__1__Impl8892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleRegex__Group__0__Impl_in_rule__CSSRuleRegex__Group__08926 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_rule__CSSRuleRegex__Group__1_in_rule__CSSRuleRegex__Group__08929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleRegex__Group__1__Impl_in_rule__CSSRuleRegex__Group__18987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleRegex__RegexAssignment_1_in_rule__CSSRuleRegex__Group__1__Impl9014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleLiteral__Group__0__Impl_in_rule__CSSRuleLiteral__Group__09048 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__CSSRuleLiteral__Group__1_in_rule__CSSRuleLiteral__Group__09051 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleLiteral__Group__1__Impl_in_rule__CSSRuleLiteral__Group__19109 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleLiteral__ValueAssignment_1_in_rule__CSSRuleLiteral__Group__1__Impl9136 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleSymbol__Group__0__Impl_in_rule__CSSRuleSymbol__Group__09170 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_rule__CSSRuleSymbol__Group__1_in_rule__CSSRuleSymbol__Group__09173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleSymbol__Group__1__Impl_in_rule__CSSRuleSymbol__Group__19231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRuleSymbol__SymbolAssignment_1_in_rule__CSSRuleSymbol__Group__1__Impl9258 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__0__Impl_in_rule__CSSDefaultValue__Group_0__09292 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__1_in_rule__CSSDefaultValue__Group_0__09295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__1__Impl_in_rule__CSSDefaultValue__Group_0__19353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSDefaultValue__ValAssignment_0_1_in_rule__CSSDefaultValue__Group_0__1__Impl9380 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_rule__CssExtension__ImportsAssignment_09419 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePackageDefinition_in_rule__CssExtension__PackageDefAssignment_19450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildCard_in_rule__Import__ImportedNamespaceAssignment_19481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PackageDefinition__NameAssignment_19512 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleDefinition_in_rule__PackageDefinition__RulesAssignment_3_09543 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePackageDefinition_in_rule__PackageDefinition__SubpackagesAssignment_3_19574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleElementDefinition_in_rule__PackageDefinition__ElementsAssignment_3_29605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_JDOC_in_rule__Doku__ContentAssignment9636 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_rule__CSSType__TypeAssignment_0_19672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSType__FromAssignment_0_49711 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSType__ToAssignment_0_89742 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_rule__CSSType__TypeAssignment_1_19778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__CSSType__FromAssignment_1_49817 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__CSSType__ToAssignment_1_89848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_rule__CSSType__TypeAssignment_2_09884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_rule__CSSType__TypeAssignment_3_09928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoku_in_rule__ElementDefinition__DokuAssignment_19967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__NameAssignment_29998 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_110033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_2_110072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDefinition_in_rule__ElementDefinition__PropertiesAssignment_5_010107 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePseudoClassDefinition_in_rule__ElementDefinition__PseudoClassesAssignment_5_110138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoku_in_rule__PropertyDefinition__DokuAssignment_110169 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PropertyDefinition__NameAssignment_210200 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__PropertyDefinition__RuleAssignment_310231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSDefaultValue_in_rule__PropertyDefinition__DefaultAssignment_4_110262 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoku_in_rule__PseudoClassDefinition__DokuAssignment_110293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_PSEUDO_in_rule__PseudoClassDefinition__NameAssignment_210324 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CSSRuleId__NameAssignment10355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CSSRuleRef__RefAssignment_110390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoku_in_rule__CSSRuleDefinition__DokuAssignment_010425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleId_in_rule__CSSRuleDefinition__NameAssignment_110456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleDefinition__RuleAssignment_3_010487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleFunc_in_rule__CSSRuleDefinition__FuncAssignment_3_110518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__CSSRuleFunc__NameAssignment_110549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleFunc__ParamsAssignment_410580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__OrsAssignment_1_1_110611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__XorsAssignment_1_1_110642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__ConcAssignment_1_110673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CSSRulePostfix__CardinalityAlternatives_1_1_0_in_rule__CSSRulePostfix__CardinalityAssignment_1_110704 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleBracket__InnerAssignment_210737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSRulePrimary__ValueAssignment_6_110768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_REGEX_in_rule__CSSRuleRegex__RegexAssignment_110799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__CSSRuleLiteral__ValueAssignment_110830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_rule__CSSRuleSymbol__SymbolAssignment_110866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCSSRuleLiteral_in_rule__CSSDefaultValue__ValAssignment_0_110905 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSDefaultValue__IvalAssignment_110936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__CSSDefaultValue__DvalAssignment_210967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__CSSDefaultValue__SvalAssignment_310998 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__CSSRuleSymbol__SymbolAlternatives_1_02211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__CSSRuleSymbol__SymbolAlternatives_1_02231 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__0_in_rule__CSSDefaultValue__Alternatives2265 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__IvalAssignment_1_in_rule__CSSDefaultValue__Alternatives2283 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__DvalAssignment_2_in_rule__CSSDefaultValue__Alternatives2301 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__SvalAssignment_3_in_rule__CSSDefaultValue__Alternatives2319 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CssExtension__Group__0__Impl_in_rule__CssExtension__Group__02350 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_rule__CssExtension__Group__1_in_rule__CssExtension__Group__02353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CssExtension__ImportsAssignment_0_in_rule__CssExtension__Group__0__Impl2380 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_rule__CssExtension__Group__1__Impl_in_rule__CssExtension__Group__12411 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CssExtension__PackageDefAssignment_1_in_rule__CssExtension__Group__1__Impl2438 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__02473 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__02476 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__Import__Group__0__Impl2504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__12535 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl2562 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__02596 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__02599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl2626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__12655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl2682 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__02717 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__02720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__QualifiedName__Group_1__0__Impl2749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__12781 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl2808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group__0__Impl_in_rule__QualifiedNameWithWildCard__Group__02841 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group__1_in_rule__QualifiedNameWithWildCard__Group__02844 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildCard__Group__0__Impl2871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group__1__Impl_in_rule__QualifiedNameWithWildCard__Group__12900 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0_in_rule__QualifiedNameWithWildCard__Group__1__Impl2927 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__0__Impl_in_rule__QualifiedNameWithWildCard__Group_1__02962 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1_in_rule__QualifiedNameWithWildCard__Group_1__02965 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__QualifiedNameWithWildCard__Group_1__0__Impl2993 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildCard__Group_1__1__Impl_in_rule__QualifiedNameWithWildCard__Group_1__13024 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__QualifiedNameWithWildCard__Group_1__1__Impl3052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__0__Impl_in_rule__PackageDefinition__Group__03087 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__1_in_rule__PackageDefinition__Group__03090 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rule__PackageDefinition__Group__0__Impl3118 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__1__Impl_in_rule__PackageDefinition__Group__13149 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__2_in_rule__PackageDefinition__Group__13152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__NameAssignment_1_in_rule__PackageDefinition__Group__1__Impl3179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__2__Impl_in_rule__PackageDefinition__Group__23209 = new BitSet(new long[]{0x0000000001400050L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__3_in_rule__PackageDefinition__Group__23212 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__PackageDefinition__Group__2__Impl3240 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__3__Impl_in_rule__PackageDefinition__Group__33271 = new BitSet(new long[]{0x0000000001400050L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__4_in_rule__PackageDefinition__Group__33274 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Alternatives_3_in_rule__PackageDefinition__Group__3__Impl3301 = new BitSet(new long[]{0x0000000000400052L});
+    public static final BitSet FOLLOW_rule__PackageDefinition__Group__4__Impl_in_rule__PackageDefinition__Group__43332 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__PackageDefinition__Group__4__Impl3360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__0__Impl_in_rule__CSSType__Group_0__03401 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__1_in_rule__CSSType__Group_0__03404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__1__Impl_in_rule__CSSType__Group_0__13462 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__2_in_rule__CSSType__Group_0__13465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_0_1_in_rule__CSSType__Group_0__1__Impl3492 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__2__Impl_in_rule__CSSType__Group_0__23522 = new BitSet(new long[]{0x00000000000000A0L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__3_in_rule__CSSType__Group_0__23525 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__CSSType__Group_0__2__Impl3553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__3__Impl_in_rule__CSSType__Group_0__33584 = new BitSet(new long[]{0x00000000000000A0L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__4_in_rule__CSSType__Group_0__33587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__3__Impl3615 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__4__Impl_in_rule__CSSType__Group_0__43646 = new BitSet(new long[]{0x0000000004000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__5_in_rule__CSSType__Group_0__43649 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__FromAssignment_0_4_in_rule__CSSType__Group_0__4__Impl3676 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__5__Impl_in_rule__CSSType__Group_0__53706 = new BitSet(new long[]{0x0000000004000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__6_in_rule__CSSType__Group_0__53709 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__5__Impl3737 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__6__Impl_in_rule__CSSType__Group_0__63768 = new BitSet(new long[]{0x00000000000000A0L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__7_in_rule__CSSType__Group_0__63771 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__CSSType__Group_0__6__Impl3799 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__7__Impl_in_rule__CSSType__Group_0__73830 = new BitSet(new long[]{0x00000000000000A0L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__8_in_rule__CSSType__Group_0__73833 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__7__Impl3861 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__8__Impl_in_rule__CSSType__Group_0__83892 = new BitSet(new long[]{0x0000000008000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__9_in_rule__CSSType__Group_0__83895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__ToAssignment_0_8_in_rule__CSSType__Group_0__8__Impl3922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__9__Impl_in_rule__CSSType__Group_0__93952 = new BitSet(new long[]{0x0000000008000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__10_in_rule__CSSType__Group_0__93955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_0__9__Impl3983 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_0__10__Impl_in_rule__CSSType__Group_0__104014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__CSSType__Group_0__10__Impl4042 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__0__Impl_in_rule__CSSType__Group_1__04095 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__1_in_rule__CSSType__Group_1__04098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__1__Impl_in_rule__CSSType__Group_1__14156 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__2_in_rule__CSSType__Group_1__14159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_1_1_in_rule__CSSType__Group_1__1__Impl4186 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__2__Impl_in_rule__CSSType__Group_1__24216 = new BitSet(new long[]{0x0000000000000120L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__3_in_rule__CSSType__Group_1__24219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__CSSType__Group_1__2__Impl4247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__3__Impl_in_rule__CSSType__Group_1__34278 = new BitSet(new long[]{0x0000000000000120L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__4_in_rule__CSSType__Group_1__34281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__3__Impl4309 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__4__Impl_in_rule__CSSType__Group_1__44340 = new BitSet(new long[]{0x0000000004000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__5_in_rule__CSSType__Group_1__44343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__FromAssignment_1_4_in_rule__CSSType__Group_1__4__Impl4370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__5__Impl_in_rule__CSSType__Group_1__54400 = new BitSet(new long[]{0x0000000004000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__6_in_rule__CSSType__Group_1__54403 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__5__Impl4431 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__6__Impl_in_rule__CSSType__Group_1__64462 = new BitSet(new long[]{0x0000000000000120L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__7_in_rule__CSSType__Group_1__64465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__CSSType__Group_1__6__Impl4493 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__7__Impl_in_rule__CSSType__Group_1__74524 = new BitSet(new long[]{0x0000000000000120L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__8_in_rule__CSSType__Group_1__74527 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__7__Impl4555 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__8__Impl_in_rule__CSSType__Group_1__84586 = new BitSet(new long[]{0x0000000008000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__9_in_rule__CSSType__Group_1__84589 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__ToAssignment_1_8_in_rule__CSSType__Group_1__8__Impl4616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__9__Impl_in_rule__CSSType__Group_1__94646 = new BitSet(new long[]{0x0000000008000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__10_in_rule__CSSType__Group_1__94649 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_1__9__Impl4677 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_1__10__Impl_in_rule__CSSType__Group_1__104708 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__CSSType__Group_1__10__Impl4736 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_2__0__Impl_in_rule__CSSType__Group_2__04789 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_2__1_in_rule__CSSType__Group_2__04792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_2_0_in_rule__CSSType__Group_2__0__Impl4819 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_2__1__Impl_in_rule__CSSType__Group_2__14849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_2__1__Impl4877 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_3__0__Impl_in_rule__CSSType__Group_3__04912 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_3__1_in_rule__CSSType__Group_3__04915 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__TypeAssignment_3_0_in_rule__CSSType__Group_3__0__Impl4942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSType__Group_3__1__Impl_in_rule__CSSType__Group_3__14972 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSType__Group_3__1__Impl5000 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__0__Impl_in_rule__ElementDefinition__Group__05035 = new BitSet(new long[]{0x0000000000400050L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__1_in_rule__ElementDefinition__Group__05038 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__1__Impl_in_rule__ElementDefinition__Group__15096 = new BitSet(new long[]{0x0000000000400050L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__2_in_rule__ElementDefinition__Group__15099 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__DokuAssignment_1_in_rule__ElementDefinition__Group__1__Impl5126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__2__Impl_in_rule__ElementDefinition__Group__25157 = new BitSet(new long[]{0x0000000010800000L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__3_in_rule__ElementDefinition__Group__25160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__NameAssignment_2_in_rule__ElementDefinition__Group__2__Impl5187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__3__Impl_in_rule__ElementDefinition__Group__35217 = new BitSet(new long[]{0x0000000010800000L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__4_in_rule__ElementDefinition__Group__35220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__0_in_rule__ElementDefinition__Group__3__Impl5247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__4__Impl_in_rule__ElementDefinition__Group__45278 = new BitSet(new long[]{0x0000000001000250L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__5_in_rule__ElementDefinition__Group__45281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__ElementDefinition__Group__4__Impl5309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__5__Impl_in_rule__ElementDefinition__Group__55340 = new BitSet(new long[]{0x0000000001000250L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__6_in_rule__ElementDefinition__Group__55343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Alternatives_5_in_rule__ElementDefinition__Group__5__Impl5370 = new BitSet(new long[]{0x0000000000000252L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group__6__Impl_in_rule__ElementDefinition__Group__65401 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__ElementDefinition__Group__6__Impl5429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__0__Impl_in_rule__ElementDefinition__Group_3__05474 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__1_in_rule__ElementDefinition__Group_3__05477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_rule__ElementDefinition__Group_3__0__Impl5505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__1__Impl_in_rule__ElementDefinition__Group_3__15536 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__2_in_rule__ElementDefinition__Group_3__15539 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__SuperAssignment_3_1_in_rule__ElementDefinition__Group_3__1__Impl5566 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3__2__Impl_in_rule__ElementDefinition__Group_3__25596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__0_in_rule__ElementDefinition__Group_3__2__Impl5623 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__0__Impl_in_rule__ElementDefinition__Group_3_2__05660 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__1_in_rule__ElementDefinition__Group_3_2__05663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__ElementDefinition__Group_3_2__0__Impl5691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__Group_3_2__1__Impl_in_rule__ElementDefinition__Group_3_2__15722 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ElementDefinition__SuperAssignment_3_2_1_in_rule__ElementDefinition__Group_3_2__1__Impl5749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__0__Impl_in_rule__PropertyDefinition__Group__05783 = new BitSet(new long[]{0x0000000000000050L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__1_in_rule__PropertyDefinition__Group__05786 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__1__Impl_in_rule__PropertyDefinition__Group__15844 = new BitSet(new long[]{0x0000000000000050L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__2_in_rule__PropertyDefinition__Group__15847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__DokuAssignment_1_in_rule__PropertyDefinition__Group__1__Impl5874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__2__Impl_in_rule__PropertyDefinition__Group__25905 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__3_in_rule__PropertyDefinition__Group__25908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__NameAssignment_2_in_rule__PropertyDefinition__Group__2__Impl5935 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__3__Impl_in_rule__PropertyDefinition__Group__35965 = new BitSet(new long[]{0x0000000060000000L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__4_in_rule__PropertyDefinition__Group__35968 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__RuleAssignment_3_in_rule__PropertyDefinition__Group__3__Impl5995 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__4__Impl_in_rule__PropertyDefinition__Group__46025 = new BitSet(new long[]{0x0000000060000000L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__5_in_rule__PropertyDefinition__Group__46028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__0_in_rule__PropertyDefinition__Group__4__Impl6055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group__5__Impl_in_rule__PropertyDefinition__Group__56086 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_rule__PropertyDefinition__Group__5__Impl6114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__0__Impl_in_rule__PropertyDefinition__Group_4__06157 = new BitSet(new long[]{0x0000000000000990L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__1_in_rule__PropertyDefinition__Group_4__06160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_rule__PropertyDefinition__Group_4__0__Impl6188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__Group_4__1__Impl_in_rule__PropertyDefinition__Group_4__16219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PropertyDefinition__DefaultAssignment_4_1_in_rule__PropertyDefinition__Group_4__1__Impl6246 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__0__Impl_in_rule__PseudoClassDefinition__Group__06280 = new BitSet(new long[]{0x0000000000000250L});
+    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__1_in_rule__PseudoClassDefinition__Group__06283 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__1__Impl_in_rule__PseudoClassDefinition__Group__16341 = new BitSet(new long[]{0x0000000000000250L});
+    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__2_in_rule__PseudoClassDefinition__Group__16344 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PseudoClassDefinition__DokuAssignment_1_in_rule__PseudoClassDefinition__Group__1__Impl6371 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PseudoClassDefinition__Group__2__Impl_in_rule__PseudoClassDefinition__Group__26402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PseudoClassDefinition__NameAssignment_2_in_rule__PseudoClassDefinition__Group__2__Impl6429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__0__Impl_in_rule__CSSRuleRef__Group__06465 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__1_in_rule__CSSRuleRef__Group__06468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_rule__CSSRuleRef__Group__0__Impl6496 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__1__Impl_in_rule__CSSRuleRef__Group__16527 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__2_in_rule__CSSRuleRef__Group__16530 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleRef__RefAssignment_1_in_rule__CSSRuleRef__Group__1__Impl6557 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleRef__Group__2__Impl_in_rule__CSSRuleRef__Group__26587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_rule__CSSRuleRef__Group__2__Impl6615 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__0__Impl_in_rule__CSSRuleDefinition__Group__06652 = new BitSet(new long[]{0x0000000000000050L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__1_in_rule__CSSRuleDefinition__Group__06655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__DokuAssignment_0_in_rule__CSSRuleDefinition__Group__0__Impl6682 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__1__Impl_in_rule__CSSRuleDefinition__Group__16713 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__2_in_rule__CSSRuleDefinition__Group__16716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__NameAssignment_1_in_rule__CSSRuleDefinition__Group__1__Impl6743 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__2__Impl_in_rule__CSSRuleDefinition__Group__26773 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__3_in_rule__CSSRuleDefinition__Group__26776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_rule__CSSRuleDefinition__Group__2__Impl6804 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__3__Impl_in_rule__CSSRuleDefinition__Group__36835 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__4_in_rule__CSSRuleDefinition__Group__36838 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Alternatives_3_in_rule__CSSRuleDefinition__Group__3__Impl6865 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleDefinition__Group__4__Impl_in_rule__CSSRuleDefinition__Group__46895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_rule__CSSRuleDefinition__Group__4__Impl6923 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__0__Impl_in_rule__CSSRuleFunc__Group__06964 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__1_in_rule__CSSRuleFunc__Group__06967 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__1__Impl_in_rule__CSSRuleFunc__Group__17025 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__2_in_rule__CSSRuleFunc__Group__17028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__NameAssignment_1_in_rule__CSSRuleFunc__Group__1__Impl7055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__2__Impl_in_rule__CSSRuleFunc__Group__27085 = new BitSet(new long[]{0x000000D0800C04B0L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__3_in_rule__CSSRuleFunc__Group__27088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__CSSRuleFunc__Group__2__Impl7116 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__3__Impl_in_rule__CSSRuleFunc__Group__37147 = new BitSet(new long[]{0x000000D0800C04B0L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__4_in_rule__CSSRuleFunc__Group__37150 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__CSSRuleFunc__Group__3__Impl7178 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__4__Impl_in_rule__CSSRuleFunc__Group__47209 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__5_in_rule__CSSRuleFunc__Group__47212 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__ParamsAssignment_4_in_rule__CSSRuleFunc__Group__4__Impl7239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleFunc__Group__5__Impl_in_rule__CSSRuleFunc__Group__57269 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__CSSRuleFunc__Group__5__Impl7297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group__0__Impl_in_rule__CSSRuleOr__Group__07340 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group__1_in_rule__CSSRuleOr__Group__07343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__Group__0__Impl7370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group__1__Impl_in_rule__CSSRuleOr__Group__17399 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__0_in_rule__CSSRuleOr__Group__1__Impl7426 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__0__Impl_in_rule__CSSRuleOr__Group_1__07461 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__1_in_rule__CSSRuleOr__Group_1__07464 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1__1__Impl_in_rule__CSSRuleOr__Group_1__17522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7551 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__0_in_rule__CSSRuleOr__Group_1__1__Impl7563 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__0__Impl_in_rule__CSSRuleOr__Group_1_1__07600 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__1_in_rule__CSSRuleOr__Group_1_1__07603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_rule__CSSRuleOr__Group_1_1__0__Impl7631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__Group_1_1__1__Impl_in_rule__CSSRuleOr__Group_1_1__17662 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleOr__OrsAssignment_1_1_1_in_rule__CSSRuleOr__Group_1_1__1__Impl7689 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group__0__Impl_in_rule__CSSRuleXor__Group__07723 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group__1_in_rule__CSSRuleXor__Group__07726 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__Group__0__Impl7753 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group__1__Impl_in_rule__CSSRuleXor__Group__17782 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__0_in_rule__CSSRuleXor__Group__1__Impl7809 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__0__Impl_in_rule__CSSRuleXor__Group_1__07844 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__1_in_rule__CSSRuleXor__Group_1__07847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1__1__Impl_in_rule__CSSRuleXor__Group_1__17905 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7934 = new BitSet(new long[]{0x0000000800000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__0_in_rule__CSSRuleXor__Group_1__1__Impl7946 = new BitSet(new long[]{0x0000000800000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__0__Impl_in_rule__CSSRuleXor__Group_1_1__07983 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__1_in_rule__CSSRuleXor__Group_1_1__07986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_rule__CSSRuleXor__Group_1_1__0__Impl8014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__Group_1_1__1__Impl_in_rule__CSSRuleXor__Group_1_1__18045 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleXor__XorsAssignment_1_1_1_in_rule__CSSRuleXor__Group_1_1__1__Impl8072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group__0__Impl_in_rule__CSSRuleConcat__Group__08106 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group__1_in_rule__CSSRuleConcat__Group__08109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__Group__0__Impl8136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group__1__Impl_in_rule__CSSRuleConcat__Group__18165 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__0_in_rule__CSSRuleConcat__Group__1__Impl8192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__0__Impl_in_rule__CSSRuleConcat__Group_1__08227 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__1_in_rule__CSSRuleConcat__Group_1__08230 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__Group_1__1__Impl_in_rule__CSSRuleConcat__Group_1__18288 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8317 = new BitSet(new long[]{0x000000D0800C0492L});
+    public static final BitSet FOLLOW_rule__CSSRuleConcat__ConcAssignment_1_1_in_rule__CSSRuleConcat__Group_1__1__Impl8329 = new BitSet(new long[]{0x000000D0800C0492L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group__0__Impl_in_rule__CSSRulePostfix__Group__08366 = new BitSet(new long[]{0x0000000000038000L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group__1_in_rule__CSSRulePostfix__Group__08369 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRulePrimary_in_rule__CSSRulePostfix__Group__0__Impl8396 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group__1__Impl_in_rule__CSSRulePostfix__Group__18425 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__0_in_rule__CSSRulePostfix__Group__1__Impl8452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__0__Impl_in_rule__CSSRulePostfix__Group_1__08487 = new BitSet(new long[]{0x0000000000038000L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__1_in_rule__CSSRulePostfix__Group_1__08490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__Group_1__1__Impl_in_rule__CSSRulePostfix__Group_1__18548 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__CardinalityAssignment_1_1_in_rule__CSSRulePostfix__Group_1__1__Impl8575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__0__Impl_in_rule__CSSRuleBracket__Group__08609 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__1_in_rule__CSSRuleBracket__Group__08612 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__1__Impl_in_rule__CSSRuleBracket__Group__18670 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__2_in_rule__CSSRuleBracket__Group__18673 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_rule__CSSRuleBracket__Group__1__Impl8701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__2__Impl_in_rule__CSSRuleBracket__Group__28732 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__3_in_rule__CSSRuleBracket__Group__28735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__InnerAssignment_2_in_rule__CSSRuleBracket__Group__2__Impl8762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleBracket__Group__3__Impl_in_rule__CSSRuleBracket__Group__38792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_rule__CSSRuleBracket__Group__3__Impl8820 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePrimary__Group_6__0__Impl_in_rule__CSSRulePrimary__Group_6__08859 = new BitSet(new long[]{0x000000D0800C0490L});
+    public static final BitSet FOLLOW_rule__CSSRulePrimary__Group_6__1_in_rule__CSSRulePrimary__Group_6__08862 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePrimary__Group_6__1__Impl_in_rule__CSSRulePrimary__Group_6__18920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePrimary__ValueAssignment_6_1_in_rule__CSSRulePrimary__Group_6__1__Impl8947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleRegex__Group__0__Impl_in_rule__CSSRuleRegex__Group__08981 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_rule__CSSRuleRegex__Group__1_in_rule__CSSRuleRegex__Group__08984 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleRegex__Group__1__Impl_in_rule__CSSRuleRegex__Group__19042 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleRegex__RegexAssignment_1_in_rule__CSSRuleRegex__Group__1__Impl9069 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleLiteral__Group__0__Impl_in_rule__CSSRuleLiteral__Group__09103 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__CSSRuleLiteral__Group__1_in_rule__CSSRuleLiteral__Group__09106 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleLiteral__Group__1__Impl_in_rule__CSSRuleLiteral__Group__19164 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleLiteral__ValueAssignment_1_in_rule__CSSRuleLiteral__Group__1__Impl9191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleSymbol__Group__0__Impl_in_rule__CSSRuleSymbol__Group__09225 = new BitSet(new long[]{0x00000000000C0000L});
+    public static final BitSet FOLLOW_rule__CSSRuleSymbol__Group__1_in_rule__CSSRuleSymbol__Group__09228 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleSymbol__Group__1__Impl_in_rule__CSSRuleSymbol__Group__19286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleSymbol__SymbolAssignment_1_in_rule__CSSRuleSymbol__Group__1__Impl9313 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__0__Impl_in_rule__CSSDefaultValue__Group_0__09347 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__1_in_rule__CSSDefaultValue__Group_0__09350 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__Group_0__1__Impl_in_rule__CSSDefaultValue__Group_0__19408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSDefaultValue__ValAssignment_0_1_in_rule__CSSDefaultValue__Group_0__1__Impl9435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_rule__CssExtension__ImportsAssignment_09474 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePackageDefinition_in_rule__CssExtension__PackageDefAssignment_19505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildCard_in_rule__Import__ImportedNamespaceAssignment_19536 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PackageDefinition__NameAssignment_19567 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleDefinition_in_rule__PackageDefinition__RulesAssignment_3_09598 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePackageDefinition_in_rule__PackageDefinition__SubpackagesAssignment_3_19629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleElementDefinition_in_rule__PackageDefinition__ElementsAssignment_3_29660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_JDOC_in_rule__Doku__ContentAssignment9691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_rule__CSSType__TypeAssignment_0_19727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSType__FromAssignment_0_49766 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSType__ToAssignment_0_89797 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_rule__CSSType__TypeAssignment_1_19833 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__CSSType__FromAssignment_1_49872 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__CSSType__ToAssignment_1_89903 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_rule__CSSType__TypeAssignment_2_09939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_rule__CSSType__TypeAssignment_3_09983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoku_in_rule__ElementDefinition__DokuAssignment_110022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__NameAssignment_210053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_110088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ElementDefinition__SuperAssignment_3_2_110127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePropertyDefinition_in_rule__ElementDefinition__PropertiesAssignment_5_010162 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePseudoClassDefinition_in_rule__ElementDefinition__PseudoClassesAssignment_5_110193 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoku_in_rule__PropertyDefinition__DokuAssignment_110224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__PropertyDefinition__NameAssignment_210255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__PropertyDefinition__RuleAssignment_310286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSDefaultValue_in_rule__PropertyDefinition__DefaultAssignment_4_110317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoku_in_rule__PseudoClassDefinition__DokuAssignment_110348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_PSEUDO_in_rule__PseudoClassDefinition__NameAssignment_210379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CSSRuleId__NameAssignment10410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CSSRuleRef__RefAssignment_110445 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoku_in_rule__CSSRuleDefinition__DokuAssignment_010480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleId_in_rule__CSSRuleDefinition__NameAssignment_110511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleDefinition__RuleAssignment_3_010542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleFunc_in_rule__CSSRuleDefinition__FuncAssignment_3_110573 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__CSSRuleFunc__NameAssignment_110604 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleFunc__ParamsAssignment_410635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleXor_in_rule__CSSRuleOr__OrsAssignment_1_1_110666 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleConcat_in_rule__CSSRuleXor__XorsAssignment_1_1_110697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRulePostfix_in_rule__CSSRuleConcat__ConcAssignment_1_110728 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRulePostfix__CardinalityAlternatives_1_1_0_in_rule__CSSRulePostfix__CardinalityAssignment_1_110759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleOr_in_rule__CSSRuleBracket__InnerAssignment_210792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSRulePrimary__ValueAssignment_6_110823 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_REGEX_in_rule__CSSRuleRegex__RegexAssignment_110854 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__CSSRuleLiteral__ValueAssignment_110885 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CSSRuleSymbol__SymbolAlternatives_1_0_in_rule__CSSRuleSymbol__SymbolAssignment_110916 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCSSRuleLiteral_in_rule__CSSDefaultValue__ValAssignment_0_110949 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__CSSDefaultValue__IvalAssignment_110980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__CSSDefaultValue__DvalAssignment_211011 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__CSSDefaultValue__SvalAssignment_311042 = new BitSet(new long[]{0x0000000000000002L});
 
 }

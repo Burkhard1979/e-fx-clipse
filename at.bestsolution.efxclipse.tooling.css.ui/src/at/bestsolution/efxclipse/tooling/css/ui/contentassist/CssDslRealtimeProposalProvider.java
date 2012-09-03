@@ -10,13 +10,22 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.jface.viewers.StyledString.Styler;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.TextStyle;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
@@ -25,8 +34,6 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.hover.AbstractEObjectHover;
-import org.eclipse.xtext.ui.editor.hover.AbstractHover;
-import org.eclipse.xtext.ui.editor.hover.DispatchingEObjectTextHover;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -36,6 +43,8 @@ import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiTermGroupP
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiValuesGroupProperty;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
+import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslFactory;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
@@ -43,11 +52,15 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
+
+import com.google.inject.Inject;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvider {
 	private CssDialectExtensionComponent extension;
+	
+	private @Inject ILabelProvider labelProvider;
 	
 	public CssDslRealtimeProposalProvider() {
 		BundleContext context = CssDslActivator.getInstance().getBundle().getBundleContext();
@@ -60,17 +73,98 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 		
 		URI uri = model.eResource().getURI();
 		
-		for( Property property : extension.getProperties(uri) ) {
+		List<CssProperty> properties = extension.getAllProperties(uri);
+		if (properties != null) {
 			
+			Map<Integer, String> alternateSource = new HashMap<Integer, String>();
+			Map<Integer, CssProperty> filterMap = new HashMap<Integer, CssProperty>();
 			
-			ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(property.getName(), property.getName(), null, context);
-			cp.setAdditionalProposalInfo(model);
-			//cp.setHover(new HoverImpl(extension.getDocForProperty(model.eResource().getURI(), property.getName())));
-		
-			cp.setHover(new PropertyHover(uri, property.getName()));
-			acceptor.accept(cp);
+			for (CssProperty property : properties) {
+				CssProperty old = filterMap.put(property.eqHash, property);
+				if (old != null) {
+					String x = alternateSource.get(property.eqHash);
+					if (x != null) {
+						alternateSource.put(property.eqHash, x + ", " + property.parent.fQName);
+					}
+					else {
+						alternateSource.put(property.eqHash, old.parent.fQName + ", " + property.parent.fQName);
+					}
+				}
+			}
+			
+			for (CssProperty property : filterMap.values()) {
+				
+				StyledString displayString = new StyledString();
+				String name = property.name + " ";
+				String nfo = "";
+				String alternate = alternateSource.get(property.eqHash);
+				if (alternate == null) {
+					nfo = "(" + property.parent.fQName + ")";
+				}
+				else {
+					nfo = "( " + alternate + " )";
+				}
+				
+				displayString.append(name);
+				displayString.append(nfo);
+				
+				displayString.setStyle(name.length(), nfo.length(), new Styler() {
+					@Override
+					public void applyStyles(TextStyle textStyle) {
+						textStyle.foreground = Display.getDefault().getSystemColor(SWT.COLOR_GRAY);
+					}
+				});
+				
+				Image img = labelProvider.getImage(CssDslFactory.eINSTANCE.createcss_property());
+				
+				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(property.name, displayString, img, context);
+				
+				
+				
+				if (cp != null) {
+					cp.setAdditionalProposalInfo(model);
+					cp.setHover(new PropertyHover(property));
+
+					acceptor.accept(cp);
+				}
+			}
 		}
 		
+//		List<Property> properties = extension.getProperties(uri);
+//		
+//		
+//		if (properties != null) {
+//		
+//			for (Property property : properties) {
+//				
+//				
+//				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(property.getName(), property.getName(), null, context);
+//				cp.setAdditionalProposalInfo(model);
+//				//cp.setHover(new HoverImpl(extension.getDocForProperty(model.eResource().getURI(), property.getName())));
+//			
+//				cp.setHover(new PropertyHover(uri, property.getName()));
+//				
+//				cp.setImage(labelProvider.getImage(CssDslFactory.eINSTANCE.createcss_property()));
+//				
+//				StyledString displayString = new StyledString();
+//				String name = property.getName() + " ";
+//				String nfo = "(" + "defined in package lala" + ")";
+//				
+//				displayString.append(name);
+//				displayString.append(nfo);
+//				
+//				displayString.setStyle(name.length(), nfo.length(), new Styler() {
+//					@Override
+//					public void applyStyles(TextStyle textStyle) {
+//						textStyle.foreground = Display.getDefault().getSystemColor(SWT.COLOR_GRAY);
+//					}
+//				});
+//				
+//				
+//				cp.setDisplayString(displayString);
+//				acceptor.accept(cp);
+//			}
+//		}
 	}
 	
 	
@@ -298,17 +392,15 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	
 	public class PropertyHover extends AbstractEObjectHover {
 
-		private URI uri;
-		private String propertyName;
+		private CssProperty property;
 		
-		public PropertyHover(URI uri, String propertyName) {
-			this.uri = uri;
-			this.propertyName = propertyName;
+		public PropertyHover(CssProperty property) {
+			this.property = property;
 		}
 			
 		@Override
 		public Object getHoverInfo(EObject eObject, ITextViewer textViewer, IRegion hoverRegion) {
-			return extension.getDocForProperty(uri, propertyName);
+			return property.getDoc();
 		}
 
 		

@@ -1074,6 +1074,32 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__CSSRuleSymbol__SymbolAlternatives_1_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0()); }
+
+	',' 
+
+{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1()); }
+
+	'%' 
+
+{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__CSSDefaultValue__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -4422,11 +4448,11 @@ rule__CSSRulePrimary__Group_6__0__Impl
     }
 :
 (
-{ before(grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0()); }
+{ before(grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0()); }
 (
 
 )
-{ after(grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0()); }
+{ after(grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0()); }
 )
 
 ;
@@ -5431,16 +5457,9 @@ rule__CSSRuleSymbol__SymbolAssignment_1
     }
 :
 (
-{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); }
-(
-{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); }
-
-	',' 
-
-{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); }
-)
-
-{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0()); }
+{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0()); }
+(rule__CSSRuleSymbol__SymbolAlternatives_1_0)
+{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0()); }
 )
 
 ;

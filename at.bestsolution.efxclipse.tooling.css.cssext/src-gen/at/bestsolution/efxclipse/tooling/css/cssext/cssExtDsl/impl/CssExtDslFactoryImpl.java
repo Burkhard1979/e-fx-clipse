@@ -87,7 +87,7 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
       case CssExtDslPackage.CSS_RULE_CONCAT: return createCSSRuleConcat();
       case CssExtDslPackage.CSS_RULE_POSTFIX: return createCSSRulePostfix();
       case CssExtDslPackage.CSS_RULE_BRACKET: return createCSSRuleBracket();
-      case CssExtDslPackage.NUM_LITERAL: return createNumLiteral();
+      case CssExtDslPackage.CSS_NUM_LITERAL: return createCSSNumLiteral();
       case CssExtDslPackage.CSS_RULE_REGEX: return createCSSRuleRegex();
       case CssExtDslPackage.CSS_RULE_LITERAL: return createCSSRuleLiteral();
       case CssExtDslPackage.CSS_RULE_SYMBOL: return createCSSRuleSymbol();
@@ -321,10 +321,10 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public NumLiteral createNumLiteral()
+  public CSSNumLiteral createCSSNumLiteral()
   {
-    NumLiteralImpl numLiteral = new NumLiteralImpl();
-    return numLiteral;
+    CSSNumLiteralImpl cssNumLiteral = new CSSNumLiteralImpl();
+    return cssNumLiteral;
   }
 
   /**

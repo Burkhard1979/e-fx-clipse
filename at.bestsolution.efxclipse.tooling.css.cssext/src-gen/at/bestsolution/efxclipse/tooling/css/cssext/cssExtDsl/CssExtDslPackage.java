@@ -899,14 +899,14 @@ public interface CssExtDslPackage extends EPackage
   int CSS_RULE_BRACKET_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.NumLiteralImpl <em>Num Literal</em>}' class.
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSNumLiteralImpl <em>CSS Num Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.NumLiteralImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getNumLiteral()
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSNumLiteralImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSNumLiteral()
    * @generated
    */
-  int NUM_LITERAL = 20;
+  int CSS_NUM_LITERAL = 20;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -915,7 +915,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NUM_LITERAL__TYPE = CSS_RULE__TYPE;
+  int CSS_NUM_LITERAL__TYPE = CSS_RULE__TYPE;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -924,16 +924,16 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NUM_LITERAL__VALUE = CSS_RULE_FEATURE_COUNT + 0;
+  int CSS_NUM_LITERAL__VALUE = CSS_RULE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Num Literal</em>' class.
+   * The number of structural features of the '<em>CSS Num Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NUM_LITERAL_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
+  int CSS_NUM_LITERAL_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleRegexImpl <em>CSS Rule Regex</em>}' class.
@@ -1710,25 +1710,25 @@ public interface CssExtDslPackage extends EPackage
   EReference getCSSRuleBracket_Inner();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral <em>Num Literal</em>}'.
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral <em>CSS Num Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Num Literal</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral
+   * @return the meta object for class '<em>CSS Num Literal</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral
    * @generated
    */
-  EClass getNumLiteral();
+  EClass getCSSNumLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral#getValue()
-   * @see #getNumLiteral()
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral#getValue()
+   * @see #getCSSNumLiteral()
    * @generated
    */
-  EAttribute getNumLiteral_Value();
+  EAttribute getCSSNumLiteral_Value();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRegex <em>CSS Rule Regex</em>}'.
@@ -2353,14 +2353,14 @@ public interface CssExtDslPackage extends EPackage
     EReference CSS_RULE_BRACKET__INNER = eINSTANCE.getCSSRuleBracket_Inner();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.NumLiteralImpl <em>Num Literal</em>}' class.
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSNumLiteralImpl <em>CSS Num Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.NumLiteralImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getNumLiteral()
+     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSNumLiteralImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSNumLiteral()
      * @generated
      */
-    EClass NUM_LITERAL = eINSTANCE.getNumLiteral();
+    EClass CSS_NUM_LITERAL = eINSTANCE.getCSSNumLiteral();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -2368,7 +2368,7 @@ public interface CssExtDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute NUM_LITERAL__VALUE = eINSTANCE.getNumLiteral_Value();
+    EAttribute CSS_NUM_LITERAL__VALUE = eINSTANCE.getCSSNumLiteral_Value();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleRegexImpl <em>CSS Rule Regex</em>}' class.

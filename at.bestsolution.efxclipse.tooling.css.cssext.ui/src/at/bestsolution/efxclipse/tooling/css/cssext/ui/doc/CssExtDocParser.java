@@ -22,6 +22,7 @@ import org.w3c.dom.Element;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleBracket;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcat;
@@ -57,8 +58,8 @@ public class CssExtDocParser {
 	private IImageHelper imageHelper;
 	
 	public CssExtDocParser() {
-		Injector i = CssExtDslActivator.getInstance().getInjector(CssExtDslActivator.AT_BESTSOLUTION_EFXCLIPSE_TOOLING_CSS_CSSEXT_CSSEXTDSL);
-		i.injectMembers(this);
+//		Injector i = CssExtDslActivator.getInstance().getInjector(CssExtDslActivator.AT_BESTSOLUTION_EFXCLIPSE_TOOLING_CSS_CSSEXT_CSSEXTDSL);
+//		i.injectMembers(this);
 	}
 	
 	public String translateRule(CSSRule r) {
@@ -96,6 +97,9 @@ public class CssExtDocParser {
 		else if (r instanceof CSSRuleLiteral) {
 			result += ((CSSRuleLiteral) r).getValue();
 		}
+		else if (r instanceof CSSNumLiteral) {
+			result += ((CSSNumLiteral)r).getValue();
+		}
 		else if (r instanceof CSSRuleRef) {
 			result += elementLinks.createLink(XtextElementLinks.XTEXTDOC_SCHEME, ((CSSRuleRef) r).getRef().eContainer(), "&lt;" + ((CSSRuleRef) r).getRef().getName() + "&gt;");
 		}
@@ -115,8 +119,7 @@ public class CssExtDocParser {
 		return result;
 	}
 	
-	public String getDocForProperty(String propertyName) {
-		PropertyDefinition property = findPropertyByName(propertyName);
+	public String getDocForProperty(PropertyDefinition property) {
 		if (property != null) {
 			String rule = "syntax = " +translateRule(property.getRule()) + "<br>";
 			String javadoc =  prepareDoku(property.getDoku());
@@ -126,12 +129,16 @@ public class CssExtDocParser {
 		}
 		return "no documentation found";
 	}
+	
+	public String getDocForProperty(String propertyName) {
+		return getDocForProperty(findPropertyByName(propertyName));
+	}
 
 	public String getDocumentation(EObject o) {
 		if (o instanceof CSSRuleDefinition) {
 			return getDocumentationForRule((CSSRuleDefinition) o);
 		}
-		return "no docs for " + o.eClass();
+		return "no documentation found";
 	}
 	
 	private String getDocumentationForRule(CSSRuleDefinition r) {

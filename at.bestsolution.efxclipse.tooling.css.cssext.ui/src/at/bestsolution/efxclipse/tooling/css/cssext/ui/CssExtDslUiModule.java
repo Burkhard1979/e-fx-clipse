@@ -7,6 +7,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemanticHighlightingCalculator;
 
@@ -27,6 +28,7 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 		binder.bind(IHighlightingConfiguration.class).to(CssExtHighlightingConfiguration.class);
 		
 		binder.bind(ICssExtManager.class).toInstance(new CssExtManager());
+		binder.bind(CssExtDocParser.class).toInstance(new CssExtDocParser());
 		
 		super.configure(binder);
 	}

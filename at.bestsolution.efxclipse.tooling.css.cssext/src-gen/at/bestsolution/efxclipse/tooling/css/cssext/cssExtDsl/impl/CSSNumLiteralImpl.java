@@ -5,8 +5,8 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -16,18 +16,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Num Literal</b></em>'.
+ * An implementation of the model object '<em><b>CSS Num Literal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.NumLiteralImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSNumLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
+public class CSSNumLiteralImpl extends CSSRuleImpl implements CSSNumLiteral
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -54,7 +54,7 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NumLiteralImpl()
+  protected CSSNumLiteralImpl()
   {
     super();
   }
@@ -67,7 +67,7 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
   @Override
   protected EClass eStaticClass()
   {
-    return CssExtDslPackage.Literals.NUM_LITERAL;
+    return CssExtDslPackage.Literals.CSS_NUM_LITERAL;
   }
 
   /**
@@ -90,7 +90,7 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
     int oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.NUM_LITERAL__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_NUM_LITERAL__VALUE, oldValue, value));
   }
 
   /**
@@ -103,7 +103,7 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
   {
     switch (featureID)
     {
-      case CssExtDslPackage.NUM_LITERAL__VALUE:
+      case CssExtDslPackage.CSS_NUM_LITERAL__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -119,7 +119,7 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
   {
     switch (featureID)
     {
-      case CssExtDslPackage.NUM_LITERAL__VALUE:
+      case CssExtDslPackage.CSS_NUM_LITERAL__VALUE:
         setValue((Integer)newValue);
         return;
     }
@@ -136,7 +136,7 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
   {
     switch (featureID)
     {
-      case CssExtDslPackage.NUM_LITERAL__VALUE:
+      case CssExtDslPackage.CSS_NUM_LITERAL__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -153,7 +153,7 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
   {
     switch (featureID)
     {
-      case CssExtDslPackage.NUM_LITERAL__VALUE:
+      case CssExtDslPackage.CSS_NUM_LITERAL__VALUE:
         return value != VALUE_EDEFAULT;
     }
     return super.eIsSet(featureID);
@@ -176,4 +176,4 @@ public class NumLiteralImpl extends CSSRuleImpl implements NumLiteral
     return result.toString();
   }
 
-} //NumLiteralImpl
+} //CSSNumLiteralImpl

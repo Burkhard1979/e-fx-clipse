@@ -91,8 +91,8 @@
     <genClasses ecoreClass="CssExtDsl.ecore#//CSSRuleBracket">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//CSSRuleBracket/inner"/>
     </genClasses>
-    <genClasses ecoreClass="CssExtDsl.ecore#//NumLiteral">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//NumLiteral/value"/>
+    <genClasses ecoreClass="CssExtDsl.ecore#//CSSNumLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSNumLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//CSSRuleRegex">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSRuleRegex/regex"/>

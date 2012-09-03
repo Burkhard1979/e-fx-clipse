@@ -43,6 +43,7 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCSSRuleDefinitionAccess().getAlternatives_3(), "rule__CSSRuleDefinition__Alternatives_3");
 					put(grammarAccess.getCSSRulePostfixAccess().getCardinalityAlternatives_1_1_0(), "rule__CSSRulePostfix__CardinalityAlternatives_1_1_0");
 					put(grammarAccess.getCSSRulePrimaryAccess().getAlternatives(), "rule__CSSRulePrimary__Alternatives");
+					put(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0(), "rule__CSSRuleSymbol__SymbolAlternatives_1_0");
 					put(grammarAccess.getCSSDefaultValueAccess().getAlternatives(), "rule__CSSDefaultValue__Alternatives");
 					put(grammarAccess.getCssExtensionAccess().getGroup(), "rule__CssExtension__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");

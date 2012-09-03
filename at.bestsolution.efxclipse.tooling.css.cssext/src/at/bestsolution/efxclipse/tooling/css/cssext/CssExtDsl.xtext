@@ -145,7 +145,7 @@ CSSRulePrimary returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
 	CSSRuleSymbol |
 	CSSBaseType |
 	CSSRuleRegex |
-	{NumLiteral} value=INT
+	{CSSNumLiteral} value=INT
 ;
 
 CSSRuleRegex returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
@@ -157,7 +157,7 @@ CSSRuleLiteral returns CSSRule:
 ;
 
 CSSRuleSymbol returns CSSRule:
-	{CSSRuleSymbol} symbol=(',')
+	{CSSRuleSymbol} symbol=(','|'%')
 ;
 
 CSSDefaultValue:

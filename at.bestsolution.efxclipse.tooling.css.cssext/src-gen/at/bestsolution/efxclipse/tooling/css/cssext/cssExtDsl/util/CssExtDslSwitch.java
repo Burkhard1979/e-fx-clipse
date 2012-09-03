@@ -224,11 +224,11 @@ public class CssExtDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssExtDslPackage.NUM_LITERAL:
+      case CssExtDslPackage.CSS_NUM_LITERAL:
       {
-        NumLiteral numLiteral = (NumLiteral)theEObject;
-        T result = caseNumLiteral(numLiteral);
-        if (result == null) result = caseCSSRule(numLiteral);
+        CSSNumLiteral cssNumLiteral = (CSSNumLiteral)theEObject;
+        T result = caseCSSNumLiteral(cssNumLiteral);
+        if (result == null) result = caseCSSRule(cssNumLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -581,17 +581,17 @@ public class CssExtDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Num Literal</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>CSS Num Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Num Literal</em>'.
+   * @return the result of interpreting the object as an instance of '<em>CSS Num Literal</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNumLiteral(NumLiteral object)
+  public T caseCSSNumLiteral(CSSNumLiteral object)
   {
     return null;
   }

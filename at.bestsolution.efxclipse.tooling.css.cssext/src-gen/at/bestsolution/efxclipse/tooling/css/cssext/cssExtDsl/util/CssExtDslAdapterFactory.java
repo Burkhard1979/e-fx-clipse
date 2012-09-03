@@ -178,9 +178,9 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
         return createCSSRuleBracketAdapter();
       }
       @Override
-      public Adapter caseNumLiteral(NumLiteral object)
+      public Adapter caseCSSNumLiteral(CSSNumLiteral object)
       {
-        return createNumLiteralAdapter();
+        return createCSSNumLiteralAdapter();
       }
       @Override
       public Adapter caseCSSRuleRegex(CSSRuleRegex object)
@@ -520,16 +520,16 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral <em>Num Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral <em>CSS Num Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral
    * @generated
    */
-  public Adapter createNumLiteralAdapter()
+  public Adapter createCSSNumLiteralAdapter()
   {
     return null;
   }

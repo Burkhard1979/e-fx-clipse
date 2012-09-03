@@ -206,13 +206,13 @@ public interface CssExtDslFactory extends EFactory
   CSSRuleBracket createCSSRuleBracket();
 
   /**
-   * Returns a new object of class '<em>Num Literal</em>'.
+   * Returns a new object of class '<em>CSS Num Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Num Literal</em>'.
+   * @return a new object of class '<em>CSS Num Literal</em>'.
    * @generated
    */
-  NumLiteral createNumLiteral();
+  CSSNumLiteral createCSSNumLiteral();
 
   /**
    * Returns a new object of class '<em>CSS Rule Regex</em>'.

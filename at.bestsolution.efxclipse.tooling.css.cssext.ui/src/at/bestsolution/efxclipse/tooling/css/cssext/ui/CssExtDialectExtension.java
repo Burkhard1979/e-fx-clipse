@@ -5,30 +5,87 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
+import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.CssExtDslActivator;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
-import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
-import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
-import at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.CssExtDslActivator;
-
 public class CssExtDialectExtension implements CssDialectExtension, CssExtendedDialectExtension {
 
-	
-	
-	CssExtDocParser docParser;
+	private @Inject ICssExtManager cssExtManager;
+	private @Inject CssExtDocParser docParser;
+	private @Inject IQualifiedNameProvider nameProvider;
+
 	
 	public CssExtDialectExtension() {
-		
-		docParser = new CssExtDocParser();
-		
+		Injector i = CssExtDslActivator.getInstance().getInjector(CssExtDslActivator.AT_BESTSOLUTION_EFXCLIPSE_TOOLING_CSS_CSSEXT_CSSEXTDSL);
+		i.injectMembers(this);
 	}
+	
+	private CssProperty wrap(final PropertyDefinition def) {
+		System.err.println("eqHash for " + def.getName());
+		int eqHash = def.getName().hashCode();
+		System.err.println(" - " + eqHash);
+		if (def.getDoku() != null && def.getDoku().getClass() != null) {
+			eqHash += def.getDoku().getContent().hashCode();
+		}
+		System.err.println(" - " + eqHash);
+		eqHash += docParser.translateRule(def.getRule()).hashCode();
+		System.err.println(" - " + eqHash);
+		return new CssProperty(def.getName(), nameProvider.getFullyQualifiedName(def).toString(), wrap((ElementDefinition)def.eContainer()), eqHash) {
+			@Override
+			protected String doGetDoc() {
+				return docParser.getDocForProperty(def);
+			}
+		};
+	}
+	
+	private CssElement wrap(ElementDefinition def) {
+		return new CssElement(def.getName(), nameProvider.getFullyQualifiedName(def).toString()) {
+			
+		};
+	}
+	 
+	@Override
+	public List<CssProperty> getAllProperties() {
+		ArrayList<CssProperty> result = new ArrayList<CssProperty>();
+		
+		List<PropertyDefinition> defs = cssExtManager.findAllProperties();
+		
+		for (PropertyDefinition def : defs) {
+			result.add(wrap(def));
+		}
+		
+		return result;
+	}
+	
 	
 	@Override
 	public List<Property> getProperties() {
-		return null;
+		
+		ArrayList<Property> result = new ArrayList<CssDialectExtension.Property>();
+		
+		List<PropertyDefinition> defs = cssExtManager.findAllProperties();
+		
+		for (PropertyDefinition def : defs) {
+			result.add(new Property(def.getName()) {
+
+				@Override
+				public List<Proposal> getInitialTermProposals() {
+					return null;
+				}
+				
+			});
+		}
+		
+		return result;
 //		List<Property> p = new ArrayList<CssDialectExtension.Property>();
 //		return Parser.getProperties();
 	}

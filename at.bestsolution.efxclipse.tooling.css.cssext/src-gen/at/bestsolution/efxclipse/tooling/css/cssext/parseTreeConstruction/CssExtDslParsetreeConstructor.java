@@ -2931,7 +2931,8 @@ protected class CSSRuleOr_Group extends GroupToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
@@ -2942,8 +2943,7 @@ protected class CSSRuleOr_Group extends GroupToken {
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -2972,7 +2972,8 @@ protected class CSSRuleOr_CSSRuleXorParserRuleCall_0 extends RuleCallToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
@@ -2982,8 +2983,7 @@ protected class CSSRuleOr_CSSRuleXorParserRuleCall_0 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRuleXor_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -3182,7 +3182,8 @@ protected class CSSRuleXor_Group extends GroupToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
@@ -3192,8 +3193,7 @@ protected class CSSRuleXor_Group extends GroupToken {
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -3222,7 +3222,8 @@ protected class CSSRuleXor_CSSRuleConcatParserRuleCall_0 extends RuleCallToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
@@ -3231,8 +3232,7 @@ protected class CSSRuleXor_CSSRuleConcatParserRuleCall_0 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRuleConcat_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -3431,7 +3431,8 @@ protected class CSSRuleConcat_Group extends GroupToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
@@ -3440,8 +3441,7 @@ protected class CSSRuleConcat_Group extends GroupToken {
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -3470,7 +3470,8 @@ protected class CSSRuleConcat_CSSRulePostfixParserRuleCall_0 extends RuleCallTok
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
@@ -3478,8 +3479,7 @@ protected class CSSRuleConcat_CSSRulePostfixParserRuleCall_0 extends RuleCallTok
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRulePostfix_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -3633,7 +3633,8 @@ protected class CSSRulePostfix_Group extends GroupToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
@@ -3641,8 +3642,7 @@ protected class CSSRulePostfix_Group extends GroupToken {
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -3671,15 +3671,15 @@ protected class CSSRulePostfix_CSSRulePrimaryParserRuleCall_0 extends RuleCallTo
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRulePrimary_Alternatives.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -3963,12 +3963,12 @@ protected class CSSRuleBracket_RightSquareBracketKeyword_3 extends KeywordToken 
  * //;
  * CSSRulePrimary returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
  * 	CSSRuleRef | CSSRuleBracket | //	CSSRuleParenthesis |
- * 	CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {NumLiteral} value=INT;
+ * 	CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {CSSNumLiteral} value=INT;
  *
  **/
 
 // CSSRuleRef | CSSRuleBracket | //	CSSRuleParenthesis |
-// CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {NumLiteral} value=INT
+// CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {CSSNumLiteral} value=INT
 protected class CSSRulePrimary_Alternatives extends AlternativesToken {
 
 	public CSSRulePrimary_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3996,15 +3996,15 @@ protected class CSSRulePrimary_Alternatives extends AlternativesToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -4230,7 +4230,7 @@ protected class CSSRulePrimary_CSSRuleRegexParserRuleCall_5 extends RuleCallToke
 	}	
 }
 
-// {NumLiteral} value=INT
+// {CSSNumLiteral} value=INT
 protected class CSSRulePrimary_Group_6 extends GroupToken {
 	
 	public CSSRulePrimary_Group_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4252,23 +4252,23 @@ protected class CSSRulePrimary_Group_6 extends GroupToken {
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0().getType().getClassifier())
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
 
 }
 
-// {NumLiteral}
-protected class CSSRulePrimary_NumLiteralAction_6_0 extends ActionToken  {
+// {CSSNumLiteral}
+protected class CSSRulePrimary_CSSNumLiteralAction_6_0 extends ActionToken  {
 
-	public CSSRulePrimary_NumLiteralAction_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public CSSRulePrimary_CSSNumLiteralAction_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Action getGrammarElement() {
-		return grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0();
+		return grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0();
 	}
 
     @Override
@@ -4300,7 +4300,7 @@ protected class CSSRulePrimary_ValueAssignment_6_1 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRulePrimary_NumLiteralAction_6_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new CSSRulePrimary_CSSNumLiteralAction_6_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4527,11 +4527,11 @@ protected class CSSRuleLiteral_ValueAssignment_1 extends AssignmentToken  {
 /************ begin Rule CSSRuleSymbol ****************
  *
  * CSSRuleSymbol returns CSSRule:
- * 	{CSSRuleSymbol} symbol=",";
+ * 	{CSSRuleSymbol} symbol=("," | "%");
  *
  **/
 
-// {CSSRuleSymbol} symbol=","
+// {CSSRuleSymbol} symbol=("," | "%")
 protected class CSSRuleSymbol_Group extends GroupToken {
 	
 	public CSSRuleSymbol_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4586,7 +4586,7 @@ protected class CSSRuleSymbol_CSSRuleSymbolAction_0 extends ActionToken  {
 	}
 }
 
-// symbol=","
+// symbol=("," | "%")
 protected class CSSRuleSymbol_SymbolAssignment_1 extends AssignmentToken  {
 	
 	public CSSRuleSymbol_SymbolAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4610,9 +4610,14 @@ protected class CSSRuleSymbol_SymbolAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("symbol",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("symbol");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0();
+			element = grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0();
+			return obj;
+		}
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1(), value, null)) {
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1();
 			return obj;
 		}
 		return null;

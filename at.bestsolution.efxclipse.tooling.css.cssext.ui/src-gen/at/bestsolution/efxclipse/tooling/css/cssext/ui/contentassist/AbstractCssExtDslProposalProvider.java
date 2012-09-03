@@ -135,6 +135,7 @@ public class AbstractCssExtDslProposalProvider extends TerminalsProposalProvider
 	}
 	public void completeCSSRuleSymbol_Symbol(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
+		// subclasses may override
 	}
 	public void completeCSSDefaultValue_Val(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

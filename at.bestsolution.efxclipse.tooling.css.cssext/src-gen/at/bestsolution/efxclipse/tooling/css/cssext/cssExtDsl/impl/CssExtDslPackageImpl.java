@@ -6,6 +6,7 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSDefaultValue;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRangedDoubleType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRangedIntType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
@@ -27,7 +28,6 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Import;
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.NumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PseudoClassDefinition;
@@ -192,7 +192,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass numLiteralEClass = null;
+  private EClass cssNumLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -903,9 +903,9 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getNumLiteral()
+  public EClass getCSSNumLiteral()
   {
-    return numLiteralEClass;
+    return cssNumLiteralEClass;
   }
 
   /**
@@ -913,9 +913,9 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNumLiteral_Value()
+  public EAttribute getCSSNumLiteral_Value()
   {
-    return (EAttribute)numLiteralEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)cssNumLiteralEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1090,8 +1090,8 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     cssRuleBracketEClass = createEClass(CSS_RULE_BRACKET);
     createEReference(cssRuleBracketEClass, CSS_RULE_BRACKET__INNER);
 
-    numLiteralEClass = createEClass(NUM_LITERAL);
-    createEAttribute(numLiteralEClass, NUM_LITERAL__VALUE);
+    cssNumLiteralEClass = createEClass(CSS_NUM_LITERAL);
+    createEAttribute(cssNumLiteralEClass, CSS_NUM_LITERAL__VALUE);
 
     cssRuleRegexEClass = createEClass(CSS_RULE_REGEX);
     createEAttribute(cssRuleRegexEClass, CSS_RULE_REGEX__REGEX);
@@ -1141,7 +1141,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     cssRuleConcatEClass.getESuperTypes().add(this.getCSSRule());
     cssRulePostfixEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleBracketEClass.getESuperTypes().add(this.getCSSRule());
-    numLiteralEClass.getESuperTypes().add(this.getCSSRule());
+    cssNumLiteralEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleRegexEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleLiteralEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleSymbolEClass.getESuperTypes().add(this.getCSSRule());
@@ -1229,8 +1229,8 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     initEClass(cssRuleBracketEClass, CSSRuleBracket.class, "CSSRuleBracket", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCSSRuleBracket_Inner(), this.getCSSRule(), null, "inner", null, 0, 1, CSSRuleBracket.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(numLiteralEClass, NumLiteral.class, "NumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNumLiteral_Value(), ecorePackage.getEInt(), "value", null, 0, 1, NumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(cssNumLiteralEClass, CSSNumLiteral.class, "CSSNumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCSSNumLiteral_Value(), ecorePackage.getEInt(), "value", null, 0, 1, CSSNumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cssRuleRegexEClass, CSSRuleRegex.class, "CSSRuleRegex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCSSRuleRegex_Regex(), ecorePackage.getEString(), "regex", null, 0, 1, CSSRuleRegex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

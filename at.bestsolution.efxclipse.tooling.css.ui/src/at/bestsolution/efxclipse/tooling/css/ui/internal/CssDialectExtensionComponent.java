@@ -35,6 +35,16 @@ public class CssDialectExtensionComponent {
 			extensions.remove(extension);
 		}
 	}
+	
+	public List<CssProperty> getAllProperties(URI uri) {
+		List<CssProperty> rv = new ArrayList<CssProperty>();
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				rv.addAll(((CssExtendedDialectExtension)ext).getAllProperties());
+			}
+		}
+		return rv;
+	}
 
 	public List<Property> getProperties(URI uri) {
 		List<Property> rv = new ArrayList<Property>();

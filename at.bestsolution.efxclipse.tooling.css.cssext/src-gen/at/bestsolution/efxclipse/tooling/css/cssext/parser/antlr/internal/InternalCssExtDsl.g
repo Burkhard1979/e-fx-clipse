@@ -1755,7 +1755,7 @@ ruleCSSRulePrimary returns [EObject current=null]
     |((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getCSSRulePrimaryAccess().getNumLiteralAction_6_0(),
+            grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0(),
             $current);
     }
 )(
@@ -1908,17 +1908,32 @@ ruleCSSRuleSymbol returns [EObject current=null]
     }
 )(
 (
-		lv_symbol_1_0=	',' 
+(
+		lv_symbol_1_1=	',' 
     {
-        newLeafNode(lv_symbol_1_0, grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0());
+        newLeafNode(lv_symbol_1_1, grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getCSSRuleSymbolRule());
 	        }
-       		setWithLastConsumed($current, "symbol", lv_symbol_1_0, ",");
+       		setWithLastConsumed($current, "symbol", lv_symbol_1_1, null);
 	    }
+
+    |		lv_symbol_1_2=	'%' 
+    {
+        newLeafNode(lv_symbol_1_2, grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCSSRuleSymbolRule());
+	        }
+       		setWithLastConsumed($current, "symbol", lv_symbol_1_2, null);
+	    }
+
+)
 
 )
 ))

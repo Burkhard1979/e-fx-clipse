@@ -152,44 +152,45 @@ public class Parser extends XtextSwitch<CssExtension> {
 	
 	
 	public static void doIt() {
-		System.err.println("DO IT!");
-		
-		Parser p = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
-		
-		p.nfo();
-		
-		List<PropertyDefinition> props = p.findProperties();
-		
-		for (PropertyDefinition pr : props) {
-			System.err.println(pr);
-		}
+//		System.err.println("DO IT!");
+//		
+//		Parser p = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
+//		
+//		p.nfo();
+//		
+//		List<PropertyDefinition> props = p.findProperties();
+//		
+//		for (PropertyDefinition pr : props) {
+//			System.err.println(pr);
+//		}
 		
 	}
 	
 	public static List<CssDialectExtension.Property> getProperties() {
-		System.err.println("DO IT!");
-		
-		final Parser p = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
-		
-		p.nfo();
-		
-		List<PropertyDefinition> props = p.findProperties();
-		
-		 List<CssDialectExtension.Property> result = new ArrayList<CssDialectExtension.Property>();
-		
-		for (final PropertyDefinition pr : props) {
-			result.add(new Property(pr.getName(), pr.getDoku().getContent()) {
-				
-				@Override
-				public List<Proposal> getInitialTermProposals() {
-					return p.findProposals(pr);
-				}
-				
-				
-			});
-//			System.err.println("adding " + pr.getName() + " with doku: " + pr.getDoku().getContent() );
-		}
-		return result;
+//		System.err.println("DO IT!");
+//		
+//		final Parser p = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
+//		
+//		p.nfo();
+//		
+//		List<PropertyDefinition> props = p.findProperties();
+//		
+//		 List<CssDialectExtension.Property> result = new ArrayList<CssDialectExtension.Property>();
+//		
+//		for (final PropertyDefinition pr : props) {
+//			result.add(new Property(pr.getName(), pr.getDoku().getContent()) {
+//				
+//				@Override
+//				public List<Proposal> getInitialTermProposals() {
+//					return p.findProposals(pr);
+//				}
+//				
+//				
+//			});
+////			System.err.println("adding " + pr.getName() + " with doku: " + pr.getDoku().getContent() );
+//		}
+//		return result;#
+		return null;
 	}
 	
 	private List<String> findElementsInSelector(String selector) {

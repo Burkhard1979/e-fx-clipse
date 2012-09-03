@@ -944,7 +944,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCSSBaseTypeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cCSSRuleRegexParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
-		private final Action cNumLiteralAction_6_0 = (Action)cGroup_6.eContents().get(0);
+		private final Action cCSSNumLiteralAction_6_0 = (Action)cGroup_6.eContents().get(0);
 		private final Assignment cValueAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final RuleCall cValueINTTerminalRuleCall_6_1_0 = (RuleCall)cValueAssignment_6_1.eContents().get(0);
 		
@@ -953,11 +953,11 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		////;
 		//CSSRulePrimary returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
 		//	CSSRuleRef | CSSRuleBracket | //	CSSRuleParenthesis |
-		//	CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {NumLiteral} value=INT;
+		//	CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {CSSNumLiteral} value=INT;
 		public ParserRule getRule() { return rule; }
 
 		//CSSRuleRef | CSSRuleBracket | //	CSSRuleParenthesis |
-		//CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {NumLiteral} value=INT
+		//CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {CSSNumLiteral} value=INT
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//CSSRuleRef
@@ -979,11 +979,11 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		//CSSRuleRegex
 		public RuleCall getCSSRuleRegexParserRuleCall_5() { return cCSSRuleRegexParserRuleCall_5; }
 
-		//{NumLiteral} value=INT
+		//{CSSNumLiteral} value=INT
 		public Group getGroup_6() { return cGroup_6; }
 
-		//{NumLiteral}
-		public Action getNumLiteralAction_6_0() { return cNumLiteralAction_6_0; }
+		//{CSSNumLiteral}
+		public Action getCSSNumLiteralAction_6_0() { return cCSSNumLiteralAction_6_0; }
 
 		//value=INT
 		public Assignment getValueAssignment_6_1() { return cValueAssignment_6_1; }
@@ -1045,23 +1045,31 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cCSSRuleSymbolAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cSymbolAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cSymbolCommaKeyword_1_0 = (Keyword)cSymbolAssignment_1.eContents().get(0);
+		private final Alternatives cSymbolAlternatives_1_0 = (Alternatives)cSymbolAssignment_1.eContents().get(0);
+		private final Keyword cSymbolCommaKeyword_1_0_0 = (Keyword)cSymbolAlternatives_1_0.eContents().get(0);
+		private final Keyword cSymbolPercentSignKeyword_1_0_1 = (Keyword)cSymbolAlternatives_1_0.eContents().get(1);
 		
 		//CSSRuleSymbol returns CSSRule:
-		//	{CSSRuleSymbol} symbol=",";
+		//	{CSSRuleSymbol} symbol=("," | "%");
 		public ParserRule getRule() { return rule; }
 
-		//{CSSRuleSymbol} symbol=","
+		//{CSSRuleSymbol} symbol=("," | "%")
 		public Group getGroup() { return cGroup; }
 
 		//{CSSRuleSymbol}
 		public Action getCSSRuleSymbolAction_0() { return cCSSRuleSymbolAction_0; }
 
-		//symbol=","
+		//symbol=("," | "%")
 		public Assignment getSymbolAssignment_1() { return cSymbolAssignment_1; }
 
+		//"," | "%"
+		public Alternatives getSymbolAlternatives_1_0() { return cSymbolAlternatives_1_0; }
+
 		//","
-		public Keyword getSymbolCommaKeyword_1_0() { return cSymbolCommaKeyword_1_0; }
+		public Keyword getSymbolCommaKeyword_1_0_0() { return cSymbolCommaKeyword_1_0_0; }
+
+		//"%"
+		public Keyword getSymbolPercentSignKeyword_1_0_1() { return cSymbolPercentSignKeyword_1_0_1; }
 	}
 
 	public class CSSDefaultValueElements extends AbstractParserRuleElementFinder {
@@ -1444,7 +1452,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	////;
 	//CSSRulePrimary returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
 	//	CSSRuleRef | CSSRuleBracket | //	CSSRuleParenthesis |
-	//	CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {NumLiteral} value=INT;
+	//	CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {CSSNumLiteral} value=INT;
 	public CSSRulePrimaryElements getCSSRulePrimaryAccess() {
 		return (pCSSRulePrimary != null) ? pCSSRulePrimary : (pCSSRulePrimary = new CSSRulePrimaryElements());
 	}
@@ -1474,7 +1482,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CSSRuleSymbol returns CSSRule:
-	//	{CSSRuleSymbol} symbol=",";
+	//	{CSSRuleSymbol} symbol=("," | "%");
 	public CSSRuleSymbolElements getCSSRuleSymbolAccess() {
 		return (pCSSRuleSymbol != null) ? pCSSRuleSymbol : (pCSSRuleSymbol = new CSSRuleSymbolElements());
 	}
