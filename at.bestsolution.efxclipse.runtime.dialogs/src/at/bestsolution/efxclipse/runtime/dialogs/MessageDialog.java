@@ -190,15 +190,15 @@ public class MessageDialog extends Dialog {
 	}
 	
 	public static void openErrorDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.ERROR, 0, -1, "Ok").open();
+		new MessageDialog(parent, title, message, Type.ERROR, 0, 0, "Ok").open();
 	}
 	
 	public static void openWarningDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.WARNING, 0, -1, "Ok").open();
+		new MessageDialog(parent, title, message, Type.WARNING, 0, 0, "Ok").open();
 	}
 	
 	public static void openInformationDialog(Window parent, String title, String message) {
-		new MessageDialog(parent, title, message, Type.INFORMATION, 0, -1, "Ok").open();
+		new MessageDialog(parent, title, message, Type.INFORMATION, 0, 0, "Ok").open();
 	}
 	
 	public static QuestionResult openQuestionDialog(Window parent, String title, String message) {
@@ -206,7 +206,7 @@ public class MessageDialog extends Dialog {
 	}
 	
 	public static QuestionResult openQuestionDialog(Window parent, String title, String message, QuestionResult defaultValue) {
-		return QuestionResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, defaultValue == QuestionResult.YES ? 0 : 1, -1, "Yes", "No").open());
+		return QuestionResult.fromIndex(new MessageDialog(parent, title, message, Type.QUESTION, defaultValue == QuestionResult.YES ? 0 : 1, defaultValue == QuestionResult.YES ? 1 : 0, "Yes", "No").open());
 	}
 	
 	public static QuestionCancelResult openQuestionCancelDialog(Window parent, String title, String message) {
