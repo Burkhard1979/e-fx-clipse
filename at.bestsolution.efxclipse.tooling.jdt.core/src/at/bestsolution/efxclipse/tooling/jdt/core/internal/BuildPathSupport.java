@@ -84,6 +84,13 @@ public class BuildPathSupport {
 				}
 			}
 			javadocLocation = new Path(installDir.getParentFile().getAbsolutePath()).append("docs").append("api"); //TODO Not shipped yet
+			if( ! javadocLocation.toFile().exists() ) {
+				IPath p = new Path(System.getProperty("user.home")).append("javafx-api-"+ i.getName()).append("docs").append("api");
+				if( p.toFile().exists() ) {
+					javadocLocation = p;
+				}
+			}
+			
 			antJarLocationPath = new Path(installDir.getParent()).append("lib").append("ant-javafx.jar");
 
 		return new IPath[] { jarLocationPath, javadocLocation, antJarLocationPath, sourceLocationPath };
