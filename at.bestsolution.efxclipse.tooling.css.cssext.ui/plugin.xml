@@ -50,9 +50,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="at.bestsolution.efxclipse.tooling.css.cssext.ui.CssExtDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="at.bestsolution.efxclipse.tooling.css.cssext.CssExtDsl"
-            name="CssExtDsl">
+              category="at.bestsolution.efxclipse.tooling.jdt.ui.javafx"
+              class="at.bestsolution.efxclipse.tooling.css.cssext.ui.CssExtDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="at.bestsolution.efxclipse.tooling.css.cssext.CssExtDsl"
+              name="CssExtDsl">
             <keywordReference id="at.bestsolution.efxclipse.tooling.css.cssext.ui.keyword_CssExtDsl"/>
         </page>
         <page
