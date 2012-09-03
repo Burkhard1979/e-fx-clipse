@@ -133,6 +133,10 @@ This Agreement is governed by the laws of the State of New York and the intellec
          id="at.bestsolution.efxclipse.tooling.convert.feature"
          version="0.0.0"/>
 
+   <includes
+         id="at.bestsolution.efxclipse.tooling.efxbean.feature"
+         version="0.0.0"/>
+
    <requires>
       <import feature="org.eclipse.xtext.sdk" version="2.3.0" match="greaterOrEqual"/>
       <import feature="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.0.14" match="greaterOrEqual"/>

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.model.internal;
 
 import org.eclipse.jdt.core.IJavaProject;
@@ -76,8 +86,10 @@ public class FXCollectionProperty extends FXProperty implements IFXCollectionPro
 				} else if( genericType.contains("super") ) {
 					eType = genericType.substring(genericType.indexOf("super")+"super".length(), genericType.indexOf('>'));
 				} else {
-					eType = genericType.substring(genericType.indexOf('<')+1, genericType.indexOf('>'));	
+					eType = genericType.substring(genericType.indexOf('<')+1, genericType.lastIndexOf('>'));
+					eType = Signature.getTypeErasure(eType);
 				}
+				
 				
 				eType = eType.trim();
 				

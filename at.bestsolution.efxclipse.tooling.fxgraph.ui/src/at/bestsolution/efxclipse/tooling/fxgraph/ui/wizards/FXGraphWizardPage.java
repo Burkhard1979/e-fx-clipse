@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.fxgraph.ui.wizards;
 
 import java.beans.PropertyChangeEvent;
@@ -17,6 +27,7 @@ import org.eclipse.jdt.core.search.IJavaSearchScope;
 import org.eclipse.jdt.core.search.SearchEngine;
 import org.eclipse.jdt.ui.IJavaElementSearchConstants;
 import org.eclipse.jdt.ui.JavaUI;
+import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -100,6 +111,14 @@ public class FXGraphWizardPage extends AbstractJDTElementPage<FXGraphElement> {
 			if( types.size() > 0 ) {
 				viewer.setSelection(new StructuredSelection(types.get(0)));
 			}
+		}
+		
+		{
+			Label l = new Label(parent, SWT.NONE);
+			l.setText("Dynamic Root (fx:root)");
+			
+			Button b = new Button(parent, SWT.CHECK);
+			dbc.bindValue(WidgetProperties.selection().observe(b), BeanProperties.value("dynamic").observe(getClazz()));
 		}
 	}
 	

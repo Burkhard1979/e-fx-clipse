@@ -58,5 +58,17 @@
             project="false">
       </wizard>
    </extension>
+   <extension
+         point="org.eclipse.wst.sse.ui.sourcevalidation">
+      <validator
+            class="at.bestsolution.efxclipse.tooling.fxml.editors.FXMLValidator"
+            scope="total">
+         <contentTypeIdentifier
+               id="at.bestsolution.efxclipse.tooling.fxml.file">
+            <partitionType
+                  id="org.eclipse.wst.xml.XML_DEFAULT">
+            </partitionType></contentTypeIdentifier>
+      </validator>
+   </extension>
 
 </plugin>

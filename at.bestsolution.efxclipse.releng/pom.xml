@@ -24,6 +24,7 @@
 	<modules>
 		<module>../at.bestsolution.efxclipse.runtime.osgi</module>
 		<module>../at.bestsolution.efxclipse.runtime.javafx</module>
+		<module>../at.bestsolution.efxclipse.runtime.model</module>
 		<module>../at.bestsolution.efxclipse.runtime.databinding</module>
 		<module>../at.bestsolution.efxclipse.runtime.application</module>
 		<module>../at.bestsolution.efxclipse.runtime.dialogs</module>
@@ -57,6 +58,8 @@
 		<module>../at.bestsolution.efxclipse.tooling.css.web</module>
 		<module>../at.bestsolution.efxclipse.tooling.jdt.core</module>
 		<module>../at.bestsolution.efxclipse.tooling.jdt.ui</module>
+		<module>../at.bestsolution.efxclipse.tooling.efxbean</module>
+		<module>../at.bestsolution.efxclipse.tooling.efxbean.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxml</module>
 		<module>../at.bestsolution.efxclipse.tooling.model</module>
@@ -74,6 +77,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.osgi.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.convert.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.css.feature</module>
+		<module>../at.bestsolution.efxclipse.tooling.efxbean.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxgraph.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxml.feature</module>

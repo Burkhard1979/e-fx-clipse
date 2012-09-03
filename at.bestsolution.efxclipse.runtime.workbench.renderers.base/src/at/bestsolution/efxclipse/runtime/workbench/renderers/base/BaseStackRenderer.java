@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
 import java.util.ArrayList;
@@ -10,7 +20,10 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.e4.ui.model.application.ui.MContext;
+import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
@@ -23,6 +36,7 @@ import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRender
 import at.bestsolution.efxclipse.runtime.workbench.base.rendering.RendererFactory;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPlaceholderWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.WStackItem;
 
@@ -83,24 +97,34 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
 				if( changedObj.isToBeRendered() ) {
 					MUIElement parent = changedObj.getParent();
-					if( BaseStackRenderer.this == parent.getRenderer() ) {
-						MPartStack stack = (MPartStack) parent;
-						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
-						if (UIEvents.EventTypes.SET.equals(eventType)) {
-							Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-							if( newValue.booleanValue() ) {
-								//TODO Is childRendered not dangerous to call here??
-								childRendered(stack, changedObj);
-							} else {
-								hideChild(stack, changedObj);
+					if( parent != null ) {
+						if( BaseStackRenderer.this == parent.getRenderer() ) {
+							MPartStack stack = (MPartStack) parent;
+							String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+							if (UIEvents.EventTypes.SET.equals(eventType)) {
+								Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+								if( newValue.booleanValue() ) {
+									//TODO Is childRendered not dangerous to call here??
+									childRendered(stack, changedObj);
+								} else {
+									hideChild(stack, changedObj);
+								}
 							}
-						}
+						}	
 					}
 				}
 			}
 		});
 	}
 
+	MPart getPart(MStackElement element) {
+		if( element instanceof MPlaceholder ) {
+			return (MPart) ((MPlaceholder) element).getRef();
+		} else {
+			return (MPart) element;
+		}
+	}
+	
 	@Override
 	protected void initWidget(final MPartStack element, final WStack<N, I, IC> widget) {
 		super.initWidget(element, widget);
@@ -109,7 +133,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob((MPart) param.getDomElement(),true);
+					activatationJob(getPart(param.getDomElement()),true);
 				}
 
 				return null;
@@ -120,7 +144,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob((MPart) param.getDomElement(),false);
+					activatationJob(getPart(param.getDomElement()),false);
 				}
 
 				return null;
@@ -132,7 +156,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			@Override
 			public Void call(Boolean param) {
 				if( param.booleanValue() && element.getSelectedElement() != null ) {
-					activatationJob((MPart) element.getSelectedElement(), true);
+					activatationJob(getPart(element.getSelectedElement()), true);
 				}
 				return null;
 			}
@@ -236,6 +260,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 		for( WStackItem<I, IC> i : stack.getItems() ) {
 			if( i.getDomElement() == newElement ) {
 				stack.selectItem(idx);
+				showElementRecursive(newElement);
 				break;
 			}
 			idx++;
@@ -243,7 +268,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 	}
 
 	boolean handleStackItemClose(MStackElement e, WStackItem<I, IC> item) {
-		MPart part = (MPart) e;
+		MPart part = getPart(e);
 		if( ! part.isCloseable() ) {
 			return false;
 		}
@@ -267,7 +292,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 	
 	@Override
 	public void childRendered(MPartStack parentElement, MUIElement element) {
-		if( inLazyInit || isInContentProcessing() || ! element.isVisible() ) {
+		if( inLazyInit || inContentProcessing(parentElement) || ! element.isVisible() ) {
 			return;
 		}
 
@@ -302,6 +327,47 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 		if( item != null ) {
 			List<WStackItem<I, IC>> l = Collections.singletonList(item);
 			stack.removeItems(l); 
+		}
+	}
+	
+	private void showElementRecursive(MUIElement element) {
+		if( ! element.isToBeRendered() ) {
+			return;
+		}
+		
+		if (element instanceof MPlaceholder && element.getWidget() != null) {
+			MPlaceholder ph = (MPlaceholder) element;
+			MUIElement ref = ph.getRef();
+			
+			if( ref.getCurSharedRef() != ph ) {
+				ref.setCurSharedRef(ph);
+				WPlaceholderWidget placeholder = (WPlaceholderWidget) ph.getWidget();
+				@SuppressWarnings("unchecked")
+				WLayoutedWidget<MUIElement> content = (WLayoutedWidget<MUIElement>) ref.getWidget();
+				placeholder.setContent(content);
+			}
+			
+			element = ref;
+		}
+		
+		if (element instanceof MContext) {
+			IEclipseContext context = ((MContext) element).getContext();
+			if (context != null) {
+				IEclipseContext newParentContext = modelService.getContainingContext(element);
+				if (context.getParent() != newParentContext) {
+					context.setParent(newParentContext);
+				}
+			}
+		}
+		
+		// Currently not supported in the model but will very likely be in future
+		if (element instanceof MElementContainer<?>) {
+			MElementContainer<?> container = (MElementContainer<?>) element;
+			List<MUIElement> kids = new ArrayList<MUIElement>(
+					container.getChildren());
+			for (MUIElement childElement : kids) {
+				showElementRecursive(childElement);
+			}
 		}
 	}
 }

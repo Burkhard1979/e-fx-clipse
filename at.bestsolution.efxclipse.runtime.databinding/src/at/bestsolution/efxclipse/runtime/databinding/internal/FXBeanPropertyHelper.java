@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2009 Matthew Hall and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Matthew Hall - initial API and implementation
+ ******************************************************************************/
 package at.bestsolution.efxclipse.runtime.databinding.internal;
 
 import java.beans.BeanInfo;
@@ -35,6 +45,7 @@ public class FXBeanPropertyHelper {
 			if (!writeMethod.isAccessible()) {
 				writeMethod.setAccessible(true);
 			}
+			
 			writeMethod.invoke(source, new Object[] { value });
 		} catch (InvocationTargetException e) {
 			/*
@@ -43,7 +54,9 @@ public class FXBeanPropertyHelper {
 			 */
 			throw new RuntimeException(e.getCause());
 		} catch (Exception e) {
-			e.printStackTrace();
+//TODO Problems with primitive values			
+//			System.err.println("Failed to set value: " + value + " on " + propertyDescriptor.getName());
+//			e.printStackTrace();
 			/*if (BeansObservables.DEBUG) {
 				Policy
 						.getLog()

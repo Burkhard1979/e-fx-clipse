@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
 import java.util.ArrayList;
@@ -72,17 +82,19 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
 				if (changedObj.isToBeRendered()) {
 					MUIElement parent = changedObj.getParent();
-					if (BaseSashRenderer.this == parent.getRenderer()) {
-						MPartSashContainer stack = (MPartSashContainer) parent;
-						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
-						if (UIEvents.EventTypes.SET.equals(eventType)) {
-							Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-							if (newValue.booleanValue()) {
-								// TODO Is childRendered not dangerous to call
-								// here??
-								childRendered(stack, changedObj);
-							} else {
-								hideChild(stack, changedObj);
+					if( parent != null ) {
+						if (BaseSashRenderer.this == parent.getRenderer()) {
+							MPartSashContainer stack = (MPartSashContainer) parent;
+							String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+							if (UIEvents.EventTypes.SET.equals(eventType)) {
+								Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+								if (newValue.booleanValue()) {
+									// TODO Is childRendered not dangerous to call
+									// here??
+									childRendered(stack, changedObj);
+								} else {
+									hideChild(stack, changedObj);
+								}
 							}
 						}
 					}
@@ -108,7 +120,7 @@ public abstract class BaseSashRenderer<N> extends BaseRenderer<MPartSashContaine
 
 	@Override
 	public void childRendered(MPartSashContainer parentElement, MUIElement element) {
-		if (isInContentProcessing()) {
+		if (inContentProcessing(parentElement)) {
 			return;
 		}
 

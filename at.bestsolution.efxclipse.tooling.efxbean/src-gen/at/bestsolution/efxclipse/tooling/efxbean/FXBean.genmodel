@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/at.bestsolution.efxclipse.tooling.efxbean/src-gen"
+    editDirectory="/at.bestsolution.efxclipse.tooling.efxbean.edit/src" editorDirectory="/at.bestsolution.efxclipse.tooling.efxbean.editor/src"
+    modelPluginID="at.bestsolution.efxclipse.tooling.efxbean" forceOverwrite="true"
+    modelName="FXBean" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="at.bestsolution.efxclipse.tooling.efxbean.edit"
+    editorPluginID="at.bestsolution.efxclipse.tooling.efxbean.editor" runtimeVersion="2.8"
+    usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
+  <genPackages prefix="FXBean" basePackage="at.bestsolution.efxclipse.tooling.efxbean"
+      disposableProviderFactory="true" ecorePackage="FXBean.ecore#/">
+    <genClasses ecoreClass="FXBean.ecore#//FXBeanUnit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//FXBeanUnit/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//FXBeanUnit/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//FXBeanUnit/bean"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//PackageDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//PackageDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//Bean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//Bean/reflective"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//Bean/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//Bean/superType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//Bean/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//Bean/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//BeanPropertyDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//BeanPropertyDecl/readonly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//BeanPropertyDecl/lazy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//BeanPropertyDecl/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//BeanPropertyDecl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//BeanPropertyDecl/name"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//BeanAttributeDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//BeanAttributeDecl/readonly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//BeanAttributeDecl/lazy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//BeanAttributeDecl/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//BeanAttributeDecl/type"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//TypeDef"/>
+    <genClasses ecoreClass="FXBean.ecore#//ValueListTypeDef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//ValueListTypeDef/singleType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//ValueListTypeDef/multi"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//MapTypeDef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//MapTypeDef/keyType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FXBean.ecore#//MapTypeDef/valueType"/>
+    </genClasses>
+    <genClasses ecoreClass="FXBean.ecore#//Multiplicity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//Multiplicity/totalUnbound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//Multiplicity/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//Multiplicity/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FXBean.ecore#//Multiplicity/noUpperBound"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

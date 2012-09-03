@@ -46,6 +46,8 @@ component DefaultTab controlledby DefaultTabController {
 							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_up.png"
 						}
 					},
+					contentDisplay : "LEFT",
+					alignment : "CENTER_LEFT",
 					static constraint : GridData {
 						horizontalAlignment : "FILL"
 					},
@@ -58,6 +60,7 @@ component DefaultTab controlledby DefaultTabController {
 							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/arrow_down.png" 
 						}
 					},
+					alignment : "CENTER_LEFT",
 					static constraint : GridData {
 						horizontalAlignment : "FILL"
 					},
@@ -70,6 +73,7 @@ component DefaultTab controlledby DefaultTabController {
 							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/table_add.png"
 						}
 					},
+					alignment : "CENTER_LEFT",
 					static constraint : GridData {
 						horizontalAlignment : "FILL"
 					},
@@ -82,6 +86,7 @@ component DefaultTab controlledby DefaultTabController {
 							url : location "/at/bestsolution/efxclipse/tooling/modeleditor/icons/table_delete.png"
 						}
 					},
+					alignment : "CENTER_LEFT",
 					static constraint : GridData {
 						horizontalAlignment : "FILL"
 					},

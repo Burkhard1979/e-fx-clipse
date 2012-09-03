@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.application;
 
 import java.net.URL;
@@ -102,13 +112,13 @@ public class DefaultTabController implements Initializable {
 		}
 		
 		{
-			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected");
+			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected", boolean.class);
 			IEMFValueProperty mProp = EMFProperties.value(UiPackageImpl.Literals.UI_ELEMENT__TO_BE_RENDERED);
 			dbc.bindValue(uiProp.observe(renderField), mProp.observeDetail(master));
 		}
 		
 		{
-			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected");
+			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected", boolean.class);
 			IEMFValueProperty mProp = EMFProperties.value(UiPackageImpl.Literals.UI_ELEMENT__VISIBLE);
 			dbc.bindValue(uiProp.observe(visibleField), mProp.observeDetail(master));
 		}

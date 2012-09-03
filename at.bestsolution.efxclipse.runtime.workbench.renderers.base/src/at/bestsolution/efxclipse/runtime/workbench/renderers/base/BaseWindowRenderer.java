@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
 import java.util.Collection;
@@ -6,6 +16,7 @@ import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
@@ -15,6 +26,8 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler.Save;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventHandler;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWindow;
@@ -30,6 +43,52 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 		registerEventListener(eventBroker, UIEvents.Window.TOPIC_HEIGHT);
 		registerEventListener(eventBroker, UIEvents.UILabel.TOPIC_LABEL);
 		registerEventListener(eventBroker, UIEvents.UILabel.TOPIC_TOOLTIP);
+		eventBroker.subscribe(UIEvents.Window.TOPIC_WINDOWS, new EventHandler() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+				if( changedObj instanceof MPerspective ) {
+					MPerspective perspective = (MPerspective) changedObj;
+					if( BaseWindowRenderer.this == perspective.getRenderer() ) {
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+						if( UIEvents.EventTypes.ADD.equals(eventType) ) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							if( element instanceof MWindow ) {
+								handleWindowAdd((MWindow) element);
+							} else if( element instanceof MWindowElement ) {
+								handleChildAdd((MWindowElement) element);
+							}
+						} else if( UIEvents.EventTypes.REMOVE.equals(eventType) ) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
+							if( element instanceof MWindow ) {
+								handleWindowRemove((MWindow) element);	
+							} else if( element instanceof MWindowElement ) {
+								handleChildRemove((MWindowElement) element);
+							}
+						}
+					}
+				}
+			}
+		});
+	}
+	
+	void handleWindowAdd(MWindow element) {
+		engineCreateWidget(element);
+	}
+	
+	void handleWindowRemove(MWindow element) {
+		// Nothing to do here
+	}
+	
+	void handleChildAdd(MWindowElement element) {
+		engineCreateWidget(element);
+	}
+	
+	void handleChildRemove(MWindowElement element) {
+		if (element.isToBeRendered() && element.isVisible() && element.getWidget() != null) {
+			hideChild((MWindow)(MUIElement)element.getParent(), element);	
+		}
 	}
 	
 	@Override
@@ -95,6 +154,10 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 				windowWidget.addChild(widget);
 			}
 		}
+		
+//		for( MWindow w : element.getWindows() ) {
+//			engineCreateWidget(w);
+//		}
 	}
 
 	@Override
@@ -110,9 +173,30 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 
 	@Override
 	public void childRendered(MWindow parentElement, MUIElement element) {
+		if( inContentProcessing(parentElement) ) {
+			return;
+		}
+		
+		if( element instanceof MWindowElement ) {
+			WWindow<N> window = getWidget(parentElement);
+			if( window != null ) {
+				int idx = getRenderedIndex(parentElement, element);
+				@SuppressWarnings("unchecked")
+				WLayoutedWidget<MWindowElement> widget = (WLayoutedWidget<MWindowElement>) element.getWidget();
+				window.addChild(idx, widget);
+			}			
+		}
 	}
 	
 	@Override
 	public void hideChild(MWindow container, MUIElement changedObj) {
+		if( changedObj instanceof MWindowElement ) {
+			WWindow<N> window = getWidget(container);
+			if( window != null ) {
+				@SuppressWarnings("unchecked")
+				WLayoutedWidget<MWindowElement> widget = (WLayoutedWidget<MWindowElement>) changedObj.getWidget();
+				window.removeChild(widget);
+			}	
+		}
 	}
 }

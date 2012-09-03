@@ -1,0 +1,13 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.trimmedwindow
+
+import javafx.scene.layout.HBox
+import javafx.scene.layout.VBox
+import javafx.scene.control.Label
+
+component EditorMain {
+	VBox {
+		Label {
+			text : "TrimmedWindow"
+		}
+	}
+}

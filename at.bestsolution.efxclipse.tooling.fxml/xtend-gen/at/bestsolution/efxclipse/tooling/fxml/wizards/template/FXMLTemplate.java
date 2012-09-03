@@ -19,20 +19,38 @@ public class FXMLTemplate implements IGenerator<FXMLElement> {
     _builder.append("?>");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("<");
-    IType _rootElement_1 = element.getRootElement();
-    String _elementName = _rootElement_1.getElementName();
-    _builder.append(_elementName, "");
-    _builder.append(" xmlns:fx=\"http://javafx.com/fxml\">");
+    {
+      boolean _isFxRoot = element.isFxRoot();
+      if (_isFxRoot) {
+        _builder.append("<fx:root xmlns:fx=\"http://javafx.com/fxml\" type=\"");
+        IType _rootElement_1 = element.getRootElement();
+        String _elementName = _rootElement_1.getElementName();
+        _builder.append(_elementName, "");
+        _builder.append("\">");
+      } else {
+        _builder.append("<");
+        IType _rootElement_2 = element.getRootElement();
+        String _elementName_1 = _rootElement_2.getElementName();
+        _builder.append(_elementName_1, "");
+        _builder.append(" xmlns:fx=\"http://javafx.com/fxml\">");
+      }
+    }
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("<!-- TODO Add Nodes -->");
     _builder.newLine();
-    _builder.append("</");
-    IType _rootElement_2 = element.getRootElement();
-    String _elementName_1 = _rootElement_2.getElementName();
-    _builder.append(_elementName_1, "");
-    _builder.append(">");
+    {
+      boolean _isFxRoot_1 = element.isFxRoot();
+      if (_isFxRoot_1) {
+        _builder.append("</fx:root>");
+      } else {
+        _builder.append("</");
+        IType _rootElement_3 = element.getRootElement();
+        String _elementName_2 = _rootElement_3.getElementName();
+        _builder.append(_elementName_2, "");
+        _builder.append(">");
+      }
+    }
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _builder;

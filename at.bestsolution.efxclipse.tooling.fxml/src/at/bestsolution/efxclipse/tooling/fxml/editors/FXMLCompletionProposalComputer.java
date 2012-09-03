@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.fxml.editors;
 
 import java.util.ArrayList;
@@ -14,6 +24,7 @@ import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jdt.core.search.IJavaSearchScope;
 import org.eclipse.jdt.core.search.SearchEngine;
@@ -29,6 +40,7 @@ import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextHoverExtension;
 import org.eclipse.jface.text.ITextViewer;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocumentRegion;
@@ -143,7 +155,12 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 			typeName = parent.getNodeName();
 		}
 
+		if( "fx:root".equals(typeName) ) {
+			typeName = parent.getAttributes().getNamedItem("type").getNodeValue();
+		}
+		
 		if (typeName != null) {
+			
 			if (Character.isLowerCase(typeName.charAt(0)) || typeName.contains(".")) {
 				// no proposal for static elements and attribute definitions
 				return;
@@ -159,8 +176,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				if (parent.getParentNode() != null) {
 					Node n = null;
 					
-					System.err.println(parent.getParentNode().getNodeName());
-					
 					if (Character.isUpperCase(parent.getParentNode().getNodeName().charAt(0)) || "fx:root".equals(parent.getParentNode().getNodeName())) {
 						n = parent.getParentNode();
 					} else if (parent.getParentNode().getParentNode() != null) {
@@ -168,8 +183,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							n = parent.getParentNode().getParentNode();
 						}
 					}
-					
-					System.err.println(n);
 					
 					if (n != null) {
 						IType containerType;
@@ -418,7 +431,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 					
 					if (parent.getParentNode() != null) {
 						Node n = null;
-						System.err.println(parent.getParentNode().getNodeName());
 						
 						if( "fx:root".equals(parent.getNodeName()) ) {
 							n = parent;
@@ -430,8 +442,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							}
 						}
 
-						System.err.println("NNN: " + n);
-						
 						if (n != null) {
 							IType type;
 							if( "fx:root".equals(n.getNodeName()) ) {
@@ -706,7 +716,35 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 
 			if (attribute != null) {
 				if ("http://javafx.com/fxml".equals(attribute.getNamespaceURI())) {
-					if ("controller".equals(attribute.getLocalName())) {
+					if("constant".equals(attribute.getLocalName())) {
+						IType type = findType(n.getNodeName(), contentAssistRequest, context);
+						if (type != null) {
+							try {
+								List<IField> fields = new ArrayList<IField>();
+								collectStaticFields(fields, type);
+								
+								for( IField f : fields ) {
+									StyledString s = new StyledString(f.getElementName() + " : " + Signature.getSimpleName(Signature.toString(f.getTypeSignature())));
+									String owner = ((IType)f.getAncestor(IJavaElement.TYPE)).getElementName();
+									s.append(" - " + Signature.getSimpleName(owner), StyledString.QUALIFIER_STYLER);
+									
+									FXMLCompletionProposal cp = createProposal(
+											contentAssistRequest, 
+											context, "\"" + f.getElementName(), 
+											s, 
+											IconKeys.getIcon(IconKeys.CLASS_KEY), CLASS_ATTRIBUTE_MATCHER);
+									
+									if( cp != null ) {
+										contentAssistRequest.addProposal(cp);
+									}									
+								}
+								
+							} catch (JavaModelException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					} else if ("controller".equals(attribute.getLocalName())) {
 						IJavaProject jproject = findProject(contentAssistRequest);
 
 						char[] typeName = null;
@@ -719,8 +757,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							}
 						}
 						
-						System.err.println("Type: " + new String(typeName));
-
 						IJavaSearchScope searchScope = SearchEngine.createJavaSearchScope(new IJavaElement[] { jproject });
 						SearchEngine searchEngine = new SearchEngine();
 						try {
@@ -789,15 +825,29 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 			}
 		}
 	}
+	
+	private void collectStaticFields(List<IField> fields, IType type) throws JavaModelException {
+		//FIXME Don't we have to check if the field is assignable???
+		for( IField f : type.getFields() ) {
+			if( Flags.isStatic(f.getFlags()) ) {
+				fields.add(f);
+			}
+		}
+		
+		String s = type.getSuperclassName();
+		
+		if( s != null) {
+			String fqn = at.bestsolution.efxclipse.tooling.model.internal.utils.Util.getFQNType(type, Signature.getTypeErasure(s));
+			collectStaticFields(fields, type.getJavaProject().findType(fqn));		
+		}
+	}
 
 	private void createAttributeValueEventHandlerProposals(ContentAssistRequest contentAssistRequest, CompletionProposalInvocationContext context, IFXEventHandlerProperty p) {
 		Document d = contentAssistRequest.getNode().getOwnerDocument();
 		Element e = d.getDocumentElement();
 		Attr a = e.getAttributeNodeNS("http://javafx.com/fxml", "controller");
-		System.err.println(a);
 		if (a != null) {
 			IType t = Util.findType(a.getValue(), d);
-			System.err.println(t);
 			if (t != null) {
 				IFXCtrlClass ctrlClass = FXPlugin.getClassmodel().findCtrlClass(t.getJavaProject(), t);
 				if (ctrlClass != null) {

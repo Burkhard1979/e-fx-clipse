@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.fxml.wizards.template
 
 import at.bestsolution.efxclipse.tooling.ui.wizards.template.IGenerator
@@ -6,11 +16,11 @@ class FXMLTemplate implements IGenerator<at.bestsolution.efxclipse.tooling.fxml.
 	override generateContent(at.bestsolution.efxclipse.tooling.fxml.wizards.template.FXMLElement element) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		
-		<?import «element.getRootElement.fullyQualifiedName»?>
+		<?import «element.rootElement.fullyQualifiedName»?>
 		
-		<«element.getRootElement.elementName» xmlns:fx="http://javafx.com/fxml">
+		«IF element.fxRoot»<fx:root xmlns:fx="http://javafx.com/fxml" type="«element.rootElement.elementName»">«ELSE»<«element.rootElement.elementName» xmlns:fx="http://javafx.com/fxml">«ENDIF»
 			<!-- TODO Add Nodes -->
-		</«element.getRootElement.elementName»>
+		«IF element.fxRoot»</fx:root>«ELSE»</«element.rootElement.elementName»>«ENDIF»
 		
 	'''
 }

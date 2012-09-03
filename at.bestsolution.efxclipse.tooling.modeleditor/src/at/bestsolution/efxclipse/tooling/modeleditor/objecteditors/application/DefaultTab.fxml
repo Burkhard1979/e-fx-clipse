@@ -24,7 +24,7 @@
 	<ListView fx:id="bindingContextsView" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.hgrow="ALWAYS"/> 
 	<AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="2"> 
 		<GridLayoutPane AnchorPane.bottomAnchor="1.0"> 
-			<Button text="Up" onAction="#onBindingUp"> 
+			<Button text="Up" contentDisplay="LEFT" alignment="CENTER_LEFT" onAction="#onBindingUp"> 
 				<graphic>
 					<ImageView> 
 						<image>
@@ -36,7 +36,7 @@
 					<GridData horizontalAlignment="FILL"/> 
 				</GridLayoutPane.constraint>
 			</Button>
-			<Button text="Down" onAction="#onBindingDown"> 
+			<Button text="Down" alignment="CENTER_LEFT" onAction="#onBindingDown"> 
 				<graphic>
 					<ImageView> 
 						<image>
@@ -48,7 +48,7 @@
 					<GridData horizontalAlignment="FILL"/> 
 				</GridLayoutPane.constraint>
 			</Button>
-			<Button text="Add ..." onAction="#onBindingAdd"> 
+			<Button text="Add ..." alignment="CENTER_LEFT" onAction="#onBindingAdd"> 
 				<graphic>
 					<ImageView> 
 						<image>
@@ -60,7 +60,7 @@
 					<GridData horizontalAlignment="FILL"/> 
 				</GridLayoutPane.constraint>
 			</Button>
-			<Button text="Remove" onAction="#onBindingRemove"> 
+			<Button text="Remove" alignment="CENTER_LEFT" onAction="#onBindingRemove"> 
 				<graphic>
 					<ImageView> 
 						<image>

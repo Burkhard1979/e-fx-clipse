@@ -39,6 +39,12 @@ public class FXGraphTemplate implements IGenerator<FXGraphElement> {
     _builder.append(_fullyQualifiedName, "");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
+    {
+      boolean _isDynamic = element.isDynamic();
+      if (_isDynamic) {
+        _builder.append("dynamic ");
+      }
+    }
     _builder.append("component ");
     String _name = element.getName();
     _builder.append(_name, "");
