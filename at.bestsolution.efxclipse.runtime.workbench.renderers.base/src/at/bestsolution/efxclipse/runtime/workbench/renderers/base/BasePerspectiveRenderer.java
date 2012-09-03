@@ -13,15 +13,74 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.e4.ui.workbench.UIEvents;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventHandler;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPerspective;
 
 @SuppressWarnings("restriction")
 public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspective, WPerspective<N>> {
+	
+	@PostConstruct
+	void init(IEventBroker eventBroker) {
+		eventBroker.subscribe(UIEvents.Perspective.TOPIC_WINDOWS, new EventHandler() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+				if( changedObj instanceof MPerspective ) {
+					MPerspective perspective = (MPerspective) changedObj;
+					if( BasePerspectiveRenderer.this == perspective.getRenderer() ) {
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+						if( UIEvents.EventTypes.ADD.equals(eventType) ) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+							if( element instanceof MWindow ) {
+								handleWindowAdd((MWindow) element);
+							} else if( element instanceof MPartSashContainerElement ) {
+								handleChildAdd((MPartSashContainerElement) element);
+							} else {
+								System.err.println("ERROR: Unhandled child addition: " + element);
+							}
+						} else if( UIEvents.EventTypes.REMOVE.equals(eventType) ) {
+							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
+							if( element instanceof MWindow ) {
+								handleWindowRemove((MWindow) element);
+							} else if( element instanceof MPartSashContainerElement ) {
+								handleChildRemove((MPartSashContainerElement) element);
+							} else {
+								System.err.println("ERROR: Unhandled child removal: " + element);
+							}
+						}
+					}
+				}
+			}
+		});
+	}
+	
+	void handleWindowAdd(MWindow window) {
+		engineCreateWidget(window);
+	}
+	
+	void handleWindowRemove(MWindow window) {
+		// Nothing to be done
+	}
+	
+	void handleChildAdd(MPartSashContainerElement element) {
+		engineCreateWidget(element);
+	}
+	
+	void handleChildRemove(MPartSashContainerElement element) {
+		// Nothing to be done
+	}
 	
 	@Override
 	protected void doProcessContent(MPerspective element) {
@@ -34,6 +93,10 @@ public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspecti
 			}
 		}
 		getWidget(element).addItems(list);
+		
+		for( MWindow w : element.getWindows() ) {
+			engineCreateWidget(w);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -43,7 +106,9 @@ public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspecti
 			return;
 		}
 		
-		getWidget(parentElement).addItem(getRenderedIndex(parentElement, element),(WLayoutedWidget<MPartSashContainerElement>)element.getWidget());
+		if( element instanceof MPartSashContainerElement ) {
+			getWidget(parentElement).addItem(getRenderedIndex(parentElement, element),(WLayoutedWidget<MPartSashContainerElement>)element.getWidget());
+		}
 	}
 
 	@Override
@@ -54,10 +119,12 @@ public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspecti
 			return;
 		}
 		
-		@SuppressWarnings("unchecked")
-		WLayoutedWidget<MUIElement> widget = (WLayoutedWidget<MUIElement>) changedObj.getWidget();
-		if( widget != null ) {
-			perspective.removeItem(widget);
+		if( changedObj instanceof MPartSashContainerElement ) {
+			@SuppressWarnings("unchecked")
+			WLayoutedWidget<MUIElement> widget = (WLayoutedWidget<MUIElement>) changedObj.getWidget();
+			if( widget != null ) {
+				perspective.removeItem(widget);
+			}
 		}
 	}
 }
