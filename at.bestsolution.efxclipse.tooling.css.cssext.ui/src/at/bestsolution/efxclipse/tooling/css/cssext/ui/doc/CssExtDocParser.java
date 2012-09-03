@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Christoph Caks<ccaks@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.cssext.ui.doc;
 
 import java.io.IOException;
@@ -7,20 +17,11 @@ import java.util.List;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.internal.text.html.HTMLPrinter;
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks;
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider;
-import org.eclipse.xtext.xtext.XtextLinker;
-import org.w3c.dom.Element;
-
-import com.google.inject.Inject;
-import com.google.inject.Injector;
 
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
@@ -41,26 +42,16 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.JavaDocParser;
-import at.bestsolution.efxclipse.tooling.css.cssext.ui.Parser;
-import at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.CssExtDslActivator;
+
+import com.google.inject.Inject;
 
 public class CssExtDocParser {
 
-	@Inject private ICssExtManager cssExtManager;
-	
-	@Inject private XtextElementLinks elementLinks;
-	
-	@Inject private IQualifiedNameProvider nameProvider;
-
-	@Inject private DeclarativeLabelProvider labelProvider;
-	
-	@Inject
-	private IImageHelper imageHelper;
-	
-	public CssExtDocParser() {
-//		Injector i = CssExtDslActivator.getInstance().getInjector(CssExtDslActivator.AT_BESTSOLUTION_EFXCLIPSE_TOOLING_CSS_CSSEXT_CSSEXTDSL);
-//		i.injectMembers(this);
-	}
+	private @Inject ICssExtManager cssExtManager;
+	private @Inject XtextElementLinks elementLinks;
+	private @Inject IQualifiedNameProvider nameProvider;
+	private @Inject DeclarativeLabelProvider labelProvider;
+	private @Inject IImageHelper imageHelper;
 	
 	public String translateRule(CSSRule r) {
 		String result = "";
@@ -280,14 +271,5 @@ public class CssExtDocParser {
 		
 		return null;
 	}
-	
-	
-//	public static String getDocForPropertyx(String propertyName) {
-//		
-//		final CssExtDocParser p = new CssExtDocParser(URI.createPlatformResourceURI("test-project/test.cssext", true));
-//		
-//		return p.getDocForProperty(propertyName);
-//		
-//	}
 	
 }

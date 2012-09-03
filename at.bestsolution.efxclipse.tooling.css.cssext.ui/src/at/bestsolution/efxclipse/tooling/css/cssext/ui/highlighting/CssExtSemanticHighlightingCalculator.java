@@ -1,9 +1,16 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Christoph Caks<ccaks@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting;
 
-import java.util.Iterator;
-
 import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.BidiTreeIterator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.impl.HiddenLeafNode;
@@ -11,7 +18,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;

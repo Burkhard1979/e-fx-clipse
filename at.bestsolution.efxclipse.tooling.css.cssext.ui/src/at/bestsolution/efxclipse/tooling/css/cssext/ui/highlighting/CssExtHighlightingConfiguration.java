@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Christoph Caks<ccaks@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting;
 
 import org.eclipse.swt.SWT;
@@ -23,11 +33,8 @@ public class CssExtHighlightingConfiguration extends DefaultHighlightingConfigur
 		
 		acceptor.acceptDefaultHighlighting(CSSDOC_ID, "Css Documentation", cssDocTextStyle());
 		acceptor.acceptDefaultHighlighting(REFERENCES_ID, "References", referencesTextStyle());
-		
 		acceptor.acceptDefaultHighlighting(PACKAGE_NAME, "PackageDefinition", packageTextStyle());
-		
 		acceptor.acceptDefaultHighlighting(RULE_ID, "Css Rule", ruleTextStyle());
-
 		acceptor.acceptDefaultHighlighting(PROPERTY_ID, "Property Definition", propertyTextStyle());
 		acceptor.acceptDefaultHighlighting(ELEMENT_ID, "Element Definition", elementTextStyle());
 	}
