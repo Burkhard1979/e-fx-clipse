@@ -407,6 +407,16 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		public void addChild(WLayoutedWidget<MWindowElement> widget) {
 			contentPane.getChildren().add((Node) widget.getStaticLayoutNode());
 		}
+		
+		@Override
+		public void removeChild(WLayoutedWidget<MWindowElement> widget) {
+			contentPane.getChildren().remove((Node) widget.getStaticLayoutNode());
+		}
+		
+		@Override
+		public void addChild(int idx, WLayoutedWidget<MWindowElement> widget) {
+			contentPane.getChildren().add(idx, (Node) widget.getStaticLayoutNode());
+		}
 	}
 
 	static class MultiMessageDialog extends Dialog {
