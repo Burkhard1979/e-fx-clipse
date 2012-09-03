@@ -20,15 +20,41 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CssExtendedDialectExtension extends CssDialectExtension {
 
-	public static class CssProperty {
+	public abstract static class CssProperty {
 		public final String name;
-		public final String doc;
+		public final String fQName;
+		public final CssElement parent;
+		public final int eqHash;
 		
-		public CssProperty(String name, String doc) {
+		private String doc;
+		
+		public CssProperty(String name, String fQName, CssElement parent, int eqHash) {
 			this.name = name;
-			this.doc = doc;
+			this.fQName = fQName;
+			this.parent = parent;
+			this.eqHash = eqHash;
+		}
+		
+		public String getDoc() {
+			if (doc == null) {
+				doc = doGetDoc();
+			}
+			return doc;
+		}
+		protected abstract String doGetDoc();
+	}
+	
+	public static class CssElement {
+		public final String name;
+		public final String fQName;
+		
+		public CssElement(String name, String fQName) {
+			this.name = name;
+			this.fQName = fQName;
 		}
 	}
+	
+	public List<CssProperty> getAllProperties();
 	
 	
 	public List<CssProperty> getPropertiesForSelector(String selector);
