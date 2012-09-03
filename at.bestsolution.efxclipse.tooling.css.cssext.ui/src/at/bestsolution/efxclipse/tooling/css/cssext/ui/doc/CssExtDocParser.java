@@ -38,13 +38,16 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.JavaDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.Parser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.CssExtDslActivator;
 
 public class CssExtDocParser {
 
-	@Inject private  XtextElementLinks elementLinks;
+	@Inject private ICssExtManager cssExtManager;
+	
+	@Inject private XtextElementLinks elementLinks;
 	
 	@Inject private IQualifiedNameProvider nameProvider;
 
@@ -59,7 +62,6 @@ public class CssExtDocParser {
 	}
 	
 	public String translateRule(CSSRule r) {
-		System.err.println("translateRule " + r);
 		String result = "";
 		if (r instanceof CSSRuleOr) {
 			Iterator<CSSRule> it =((CSSRuleOr) r).getOrs().iterator();
@@ -178,9 +180,9 @@ public class CssExtDocParser {
 		out.append("<nobr>");
 		printImage(out, "property_16x16.png");
 		printName(out, property.getName());
+		out.append("&nbsp;");
 		printDefiningElement(out, element);
 		out.append("</nobr>");
-		System.err.println(out.toString());
 		return out.toString();
 	}
 
@@ -243,7 +245,6 @@ public class CssExtDocParser {
 		out.append("<nobr>");
 		printSuperElements(out, element.getSuper());
 		out.append("</nobr>");
-		System.err.println(out.toString());
 		return out.toString();
 	}
 	
@@ -254,28 +255,11 @@ public class CssExtDocParser {
 	
 	
 	private PropertyDefinition findPropertyByName(String propertyName) {
-		// TODO use global parser
-		Parser parser = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
-		
-		for (final PropertyDefinition property : parser.findProperties()) {
-			if (property.getName().equals(propertyName)) {
-				return property;
-			}
-		}
-		
-		return null;
+		return cssExtManager.findPropertyByName(propertyName);
 	}
 	
 	private ElementDefinition findElementByName(String elName) {
-		// TODO use global parser
-		Parser parser = new Parser(URI.createPlatformResourceURI("test-project/test.cssext", true));
-		
-		for (final ElementDefinition el : parser.findElements()) {
-			if (el.getName().equals(elName)) {
-				return el;
-			}
-		}
-		return null;
+		return cssExtManager.findElementByName(elName);
 	}
 
 	public String getDocHead(EObject o) {

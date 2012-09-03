@@ -26,6 +26,7 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 		binder.bind(ISemanticHighlightingCalculator.class).to(CssExtSemanticHighlightingCalculator.class);
 		binder.bind(IHighlightingConfiguration.class).to(CssExtHighlightingConfiguration.class);
 		
+		binder.bind(ICssExtManager.class).toInstance(new CssExtManager());
 		
 		super.configure(binder);
 	}

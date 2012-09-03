@@ -16,6 +16,8 @@ import at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.CssExtDslActivat
 
 public class CssExtDialectExtension implements CssDialectExtension, CssExtendedDialectExtension {
 
+	
+	
 	CssExtDocParser docParser;
 	
 	public CssExtDialectExtension() {
@@ -26,9 +28,9 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 	
 	@Override
 	public List<Property> getProperties() {
-		Parser.doIt();
-		List<Property> p = new ArrayList<CssDialectExtension.Property>();
-		return Parser.getProperties();
+		return null;
+//		List<Property> p = new ArrayList<CssDialectExtension.Property>();
+//		return Parser.getProperties();
 	}
 
 	@Override

@@ -10,7 +10,6 @@ public class JavaDocParser {
 	
 	public String parse(String source) {
 		this.source = source;
-		System.err.println(source);
 		
 		StringBuffer result = new StringBuffer();
 		StringTokenizer linetokenizer = new StringTokenizer(this.source, "\r\n");
