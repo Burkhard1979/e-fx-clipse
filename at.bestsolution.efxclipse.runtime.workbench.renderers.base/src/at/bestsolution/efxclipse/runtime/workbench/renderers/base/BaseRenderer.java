@@ -152,7 +152,7 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 					context.set(ATTRIBUTE_localizedTooltip, l.getLocalizedTooltip());
 				}
 			} finally {
-				contentProcessing.remove(element);
+				contextModification.remove(element);
 			}
 		}
 		return context;

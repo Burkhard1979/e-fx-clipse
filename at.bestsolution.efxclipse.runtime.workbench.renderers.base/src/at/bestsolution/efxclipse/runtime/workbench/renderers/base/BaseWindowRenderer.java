@@ -43,6 +43,7 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 		registerEventListener(eventBroker, UIEvents.Window.TOPIC_HEIGHT);
 		registerEventListener(eventBroker, UIEvents.UILabel.TOPIC_LABEL);
 		registerEventListener(eventBroker, UIEvents.UILabel.TOPIC_TOOLTIP);
+		registerEventListener(eventBroker, UIEvents.UIElement.TOPIC_VISIBLE);
 		eventBroker.subscribe(UIEvents.Window.TOPIC_WINDOWS, new EventHandler() {
 			
 			@Override
