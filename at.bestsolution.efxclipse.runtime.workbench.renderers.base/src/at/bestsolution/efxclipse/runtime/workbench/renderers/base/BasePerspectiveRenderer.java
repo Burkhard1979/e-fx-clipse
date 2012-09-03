@@ -102,7 +102,7 @@ public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspecti
 	@SuppressWarnings("unchecked")
 	@Override
 	public void childRendered(MPerspective parentElement, MUIElement element) {
-		if( inContentProcessing ) {
+		if( inContentProcessing(parentElement) ) {
 			return;
 		}
 		

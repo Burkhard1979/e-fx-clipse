@@ -97,18 +97,20 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
 				if( changedObj.isToBeRendered() ) {
 					MUIElement parent = changedObj.getParent();
-					if( BaseStackRenderer.this == parent.getRenderer() ) {
-						MPartStack stack = (MPartStack) parent;
-						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
-						if (UIEvents.EventTypes.SET.equals(eventType)) {
-							Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-							if( newValue.booleanValue() ) {
-								//TODO Is childRendered not dangerous to call here??
-								childRendered(stack, changedObj);
-							} else {
-								hideChild(stack, changedObj);
+					if( parent != null ) {
+						if( BaseStackRenderer.this == parent.getRenderer() ) {
+							MPartStack stack = (MPartStack) parent;
+							String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+							if (UIEvents.EventTypes.SET.equals(eventType)) {
+								Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+								if( newValue.booleanValue() ) {
+									//TODO Is childRendered not dangerous to call here??
+									childRendered(stack, changedObj);
+								} else {
+									hideChild(stack, changedObj);
+								}
 							}
-						}
+						}	
 					}
 				}
 			}
@@ -290,7 +292,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 	
 	@Override
 	public void childRendered(MPartStack parentElement, MUIElement element) {
-		if( inLazyInit || isInContentProcessing() || ! element.isVisible() ) {
+		if( inLazyInit || inContentProcessing(parentElement) || ! element.isVisible() ) {
 			return;
 		}
 

@@ -54,13 +54,29 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 	@Inject
 	EModelService modelService;
 	
-	boolean inContentProcessing;
-	
-	boolean inContextModification;
-	
-	boolean inUIModification;
+//	boolean inContentProcessing;
+//	
+//	boolean inContextModification;
+//	
+//	boolean inUIModification;
 	
 	private Map<String,EAttribute> attributeMap = new HashMap<String, EAttribute>();
+	
+	private Map<MUIElement, Boolean> contentProcessing = new HashMap<MUIElement, Boolean>();
+	private Map<MUIElement, Boolean> contextModification = new HashMap<MUIElement, Boolean>();
+	private Map<MUIElement, Boolean> uiModification = new HashMap<MUIElement, Boolean>();
+	
+	protected boolean inContentProcessing(MUIElement element) {
+		return contentProcessing.get(element) == Boolean.TRUE;
+	}
+	
+	protected boolean inContextModification(MUIElement element) {
+		return contextModification.get(element) == Boolean.TRUE;
+	}
+	
+	protected boolean inUIModification(MUIElement element) {
+		return uiModification.get(element) == Boolean.TRUE;
+	}
 	
 	@Override
 	public final W createWidget(final M element) {
@@ -72,12 +88,12 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 			@Override
 			public void propertyObjectChanged(WPropertyChangeEvent<W> event) {
 				// There is already a modification in process
-				if( inUIModification || inContextModification ) {
+				if( inUIModification(element) || inContextModification(element) ) {
 					return;
 				}
 				
 				try {
-					inUIModification = true;
+					uiModification.put(element,Boolean.TRUE);
 					
 					EAttribute attribute = attributeMap.get(event.propertyname);
 					EObject eo = (EObject)element;
@@ -98,7 +114,7 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 						}
 					}
 				} finally {
-					inUIModification = false;
+					uiModification.remove(element);
 				}
 			}
 			
@@ -117,7 +133,7 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 			initRenderingContext(element, context);
 			
 			try {
-				inContextModification = true;
+				contextModification.put(element,Boolean.TRUE);
 				EObject eo;
 				if( element instanceof MPlaceholder ) {
 					eo = (EObject) ((MPlaceholder)element).getRef();
@@ -136,7 +152,7 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 					context.set(ATTRIBUTE_localizedTooltip, l.getLocalizedTooltip());
 				}
 			} finally {
-				inContextModification = false;
+				contentProcessing.remove(element);
 			}
 		}
 		return context;
@@ -147,16 +163,22 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 			
 			@Override
 			public void handleEvent(Event event) {
+				Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+				if( ! (changedObj instanceof MUIElement) ) {
+					return;
+				}
+				
+				MUIElement e = (MUIElement) changedObj;
 				// There is already a modification in process
-				if( inContextModification ) {
+				if( inContextModification(e) ) {
 					return;
 				}
 				
 				try {
-					inContextModification = true;
-					Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
+					contextModification.put(e,Boolean.TRUE);
+					
 					if( changedObj instanceof MUIElement ) {
-						MUIElement e = (MUIElement) changedObj;
+						
 						if( e.getRenderer() == BaseRenderer.this ) {
 							IEclipseContext ctx = (IEclipseContext) e.getTransientData().get(RENDERING_CONTEXT_KEY);
 							if( ctx != null ) {
@@ -173,7 +195,7 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 						}
 					}
 				} finally {
-					inContextModification = false;
+					contextModification.remove(e);
 				}
 			}
 		});
@@ -271,15 +293,11 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 	@Override
 	public final void processContent(M element) {
 		try {
-			inContentProcessing = true;
+			contentProcessing.put(element, Boolean.TRUE);
 			doProcessContent(element);
 		} finally {
-			inContentProcessing = false;
+			contentProcessing.remove(element);
 		}
-	}
-	
-	protected boolean isInContentProcessing() {
-		return inContentProcessing;
 	}
 	
 	protected int getRenderedIndex(MUIElement parent, MUIElement element) {

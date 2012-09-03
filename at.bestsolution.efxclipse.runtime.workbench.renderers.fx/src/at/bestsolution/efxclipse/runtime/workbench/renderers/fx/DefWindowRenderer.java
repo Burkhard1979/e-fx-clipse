@@ -405,6 +405,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Override
 		public void addChild(WLayoutedWidget<MWindowElement> widget) {
+			System.err.println("CALLED: " + contentPane + " => " + widget + " => " + widget.getStaticLayoutNode());
 			contentPane.getChildren().add((Node) widget.getStaticLayoutNode());
 		}
 		
@@ -415,6 +416,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		
 		@Override
 		public void addChild(int idx, WLayoutedWidget<MWindowElement> widget) {
+			System.err.println("Adding index child!!!!");
 			contentPane.getChildren().add(idx, (Node) widget.getStaticLayoutNode());
 		}
 	}

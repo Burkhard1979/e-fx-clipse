@@ -155,9 +155,9 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 			}
 		}
 		
-		for( MWindow w : element.getWindows() ) {
-			engineCreateWidget(w);
-		}
+//		for( MWindow w : element.getWindows() ) {
+//			engineCreateWidget(w);
+//		}
 	}
 
 	@Override
@@ -173,7 +173,7 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 
 	@Override
 	public void childRendered(MWindow parentElement, MUIElement element) {
-		if( inContentProcessing ) {
+		if( inContentProcessing(parentElement) ) {
 			return;
 		}
 		
