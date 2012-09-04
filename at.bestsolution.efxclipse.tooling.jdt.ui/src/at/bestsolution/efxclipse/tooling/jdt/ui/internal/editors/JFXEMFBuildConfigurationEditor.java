@@ -687,7 +687,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 		// Initialize the model, this is important for the class loader.
 		AntTasksPackage.eINSTANCE.eClass();
 		ParametersPackage.eINSTANCE.eClass();
-		
+
 		URI resourceURI = EditUIUtil.getURI( getEditorInput() );
 		Exception exception = null;
 		Resource resource = null;
@@ -957,7 +957,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 			}
 
 			{
-				toolkit.createLabel( sectionClient, "Manifest-Attributes:" )
+				toolkit.createLabel( sectionClient, "Manifest-Attribute:" )
 						.setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
 				Composite tableContainer = toolkit.createComposite( sectionClient );
 				tableContainer.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
@@ -966,7 +966,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				tableContainer.setLayout( gl );
 				// tableContainer.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
-				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
 				t.setHeaderVisible( true );
 				t.setLinesVisible( true );
 
@@ -1198,6 +1198,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 			{
 				Button b = toolkit.createButton( sectionClient, "Treat files as extensions", SWT.CHECK );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__EXTENSION ) );
 				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 			}
@@ -1247,7 +1248,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				container.setLayout( gl );
 				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
-				Table t = toolkit.createTable( container, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL );
+				Table t = toolkit.createTable( container, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
 				t.setHeaderVisible( true );
 				t.setLinesVisible( true );
 
@@ -1325,7 +1326,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				container.setLayout( gl );
 				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
-				Table t = toolkit.createTable( container, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL );
+				Table t = toolkit.createTable( container, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
 				t.setHeaderVisible( true );
 				t.setLinesVisible( true );
 
