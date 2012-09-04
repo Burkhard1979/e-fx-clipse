@@ -236,15 +236,15 @@ class EMFAntTemplate {
 				</manifest>
 			</fx:jar>
 			
-			«IF task.getSignjar().getKeystore() != null»
+			«IF task.getSignjar().getKeystore() != null && task.getSignjar().getKeystore().length() > 0»
 			<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
-			<fx:signjar"
-				" keystore="«task.getSignjar().getKeystore()»
-				" alias="«task.getSignjar().getAlias()» 
-				" keypass="«task.getSignjar().getKeypass()» 
-				" storepass="«task.getSignjar().getStorepass()» 
-				«IF task.getSignjar().getStoretype() != null»" storetype="«task.getSignjar().getStoretype()» «ENDIF»
-				" destDir="${basedir}/dist">
+			<fx:signjar 
+				keystore="«task.getSignjar().getKeystore()»" 
+				alias="«task.getSignjar().getAlias()»" 
+				keypass="«task.getSignjar().getKeypass()»" 
+				storepass="«task.getSignjar().getStorepass()»" 
+				«IF task.getSignjar().getStoretype() != null»storetype="«task.getSignjar().getStoretype()»" «ENDIF»
+				destDir="${basedir}/dist">
 				<fileset dir='dist'>
 					<include name='**/*.jar' />
 				</fileset>
