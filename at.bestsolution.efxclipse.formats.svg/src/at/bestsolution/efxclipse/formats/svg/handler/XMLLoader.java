@@ -70,7 +70,6 @@ public class XMLLoader {
 //			SvgSvgElement g = l.loadDocument(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/w3/images/filters/filters01.svg").toURL().openStream());
 			FXMLConverter c = new FXMLConverter(g);
 			String fxmlData = c.generate().toString();
-			System.err.println("data: " + fxmlData);
 			File outFile = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/test.fxml");
 			FileOutputStream out = new FileOutputStream(outFile);
 			out.write(fxmlData.getBytes());
@@ -89,16 +88,33 @@ public class XMLLoader {
 			SAXParser parser = factory.newSAXParser();
 			Handler handler = new Handler();
 			parser.parse(in, handler);
-			postProcess(outFile, handler.root);
+			postProcess(outFile, handler.cssString, handler.root);
 			return handler.root;
 		} catch (Throwable e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
-	private void postProcess(String outFile, SvgSvgElement root) {
+	private void postProcess(String outFile, StringBuilder cssString, SvgSvgElement root) {
 		int imageCount = 0;
 		TreeIterator<EObject> it = EcoreUtil.getAllContents(root, true);
+
+		if( cssString != null ) {
+			File outCssFile = new File(outFile+".css");
+			try {
+				FileOutputStream out = new FileOutputStream(outCssFile);
+				out.write(cssString.toString().getBytes());
+				out.close();
+				root.setStyleSheet("@"+outCssFile.getName());
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		while( it.hasNext() ) {
 			EObject o = it.next();
 			EStructuralFeature f = o.eClass().getEStructuralFeature("style");
@@ -181,6 +197,9 @@ public class XMLLoader {
 		
 		private Stack<SvgElement> elementStack = new Stack<SvgElement>();
 		
+		private boolean inCSS;
+		private StringBuilder cssString;
+		
 		private static final String SVG_NS = "http://www.w3.org/2000/svg";
 		private static final String XLINK_NS = "http://www.w3.org/1999/xlink";
 		
@@ -188,6 +207,12 @@ public class XMLLoader {
 		public void startElement(String uri, String localName, String qName,
 				Attributes attributes) throws SAXException {
 			if( SVG_NS.equals(uri) ) {
+				if( localName.equals("style") ) {
+					inCSS = true;
+					cssString = new StringBuilder();
+					return;
+				}
+				
 				EClass ec = (EClass) SvgPackage.eINSTANCE.getEClassifier("Svg"+Character.toUpperCase(localName.charAt(0))+ localName.substring(1) + "Element");
 				if( ec != null ) {
 					SvgElement e = (SvgElement) EcoreUtil.create(ec);
@@ -229,9 +254,18 @@ public class XMLLoader {
 		}
 		
 		@Override
+		public void characters(char[] ch, int start, int length) throws SAXException {
+			if( inCSS ) {
+				cssString.append(ch, start, length);
+			}
+		}
+		
+		@Override
 		public void endElement(String uri, String localName, String qName)
 				throws SAXException {
-			if( SVG_NS.equals(uri) && ! localName.equals("svg") ) {
+			if( localName.equals("style") ) {
+				inCSS = false;
+			} else if( SVG_NS.equals(uri) && ! localName.equals("svg") ) {
 				elementStack.pop();
 			}
 		}

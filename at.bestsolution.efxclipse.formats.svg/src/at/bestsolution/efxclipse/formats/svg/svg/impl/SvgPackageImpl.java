@@ -2752,6 +2752,15 @@ public class SvgPackageImpl extends EPackageImpl implements SvgPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSvgSvgElement_StyleSheet() {
+		return (EAttribute)svgSvgElementEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSvgGElement() {
 		return svgGElementEClass;
 	}
@@ -7034,6 +7043,7 @@ public class SvgPackageImpl extends EPackageImpl implements SvgPackage {
 		createEAttribute(svgSvgElementEClass, SVG_SVG_ELEMENT__BASE_PROFILE);
 		createEAttribute(svgSvgElementEClass, SVG_SVG_ELEMENT__CONTENT_SCRIPT_TYPE);
 		createEAttribute(svgSvgElementEClass, SVG_SVG_ELEMENT__CONTENT_STYLE_TYPE);
+		createEAttribute(svgSvgElementEClass, SVG_SVG_ELEMENT__STYLE_SHEET);
 
 		svgGElementEClass = createEClass(SVG_GELEMENT);
 		createEAttribute(svgGElementEClass, SVG_GELEMENT__CLASS);
@@ -8569,6 +8579,7 @@ public class SvgPackageImpl extends EPackageImpl implements SvgPackage {
 		initEAttribute(getSvgSvgElement_BaseProfile(), ecorePackage.getEString(), "baseProfile", null, 0, 1, SvgSvgElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSvgSvgElement_ContentScriptType(), ecorePackage.getEString(), "contentScriptType", null, 0, 1, SvgSvgElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSvgSvgElement_ContentStyleType(), ecorePackage.getEString(), "contentStyleType", null, 0, 1, SvgSvgElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSvgSvgElement_StyleSheet(), ecorePackage.getEString(), "styleSheet", null, 0, 1, SvgSvgElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(svgGElementEClass, SvgGElement.class, "SvgGElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSvgGElement_Class(), ecorePackage.getEString(), "class", null, 0, 1, SvgGElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

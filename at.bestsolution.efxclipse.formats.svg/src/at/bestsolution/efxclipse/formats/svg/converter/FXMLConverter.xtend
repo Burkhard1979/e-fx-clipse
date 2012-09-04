@@ -80,6 +80,12 @@ class FXMLConverter {
 	
 	def dispatch handle(SvgSvgElement element) '''
 	<Group fx:id='_root' xmlns:fx="http://javafx.com/fxml" xmlns:fxsvg="http://efxclipse.org/fxml-svg">
+		«handleStyleClassAttributes(element.class_)»
+«««		«IF element.styleSheet != null»
+«««			<stylesheets>
+«««				<String fx:value="«element.styleSheet»" />
+«««			</stylesheets>
+«««		«ENDIF»
 		<children>
 			«FOR o : element.children»
 				«handle(o)»
@@ -109,7 +115,7 @@ class FXMLConverter {
 		«IF element.x2 != null»endX="«t.transform( new Point2D$Double(x2,y2), null).x»"«ENDIF»
 		«IF element.y2 != null»endY="«t.transform( new Point2D$Double(x2,y2), null).y»"«ENDIF»
 		«IF element.spreadMethod != SpreadMethod::PAD»cycleMethod="«element.spreadMethod.toFx»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id»"«ENDIF»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		proportional="false">
 		«val owner = resolveGradientStopElement(element)»
 		«IF owner != null»
@@ -138,7 +144,7 @@ class FXMLConverter {
 ««« Is the Focus Radius calculation really correct???
 		«IF element.fx != null || element.fy != null»focusAngle="«calculateFocusAngle(t,cx,cy,fx,fy)»"«ENDIF»
 		«IF element.spreadMethod != SpreadMethod::PAD»cycleMethod="«element.spreadMethod.toFx»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id»"«ENDIF»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		proportional="false">
 		«val owner = resolveGradientStopElement(element)» 
 		«IF owner != null»
@@ -318,6 +324,7 @@ class FXMLConverter {
 «««		«IF element.width != null»width="«element.width.parseLength»"«ENDIF»
 «««		«IF element.height != null»height="«element.height.parseLength»"«ENDIF»
 		>
+		«handleStyleClassAttributes(element.class_)»
 		<Image 
 			url="«element.xlink__href»"
 		/>
@@ -372,6 +379,7 @@ class FXMLConverter {
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 		«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
+		«handleStyleClassAttributes(element.class_)»
 		
 		«IF element.transform != null»
 			<transforms>
@@ -417,6 +425,7 @@ class FXMLConverter {
 		«IF element.y != null»translateY="«element.y.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»
 		>
+		«handleStyleClassAttributes(element.class_)»
 		<children>
 			«FOR o : element.children»
 				«handle(o)»
@@ -465,6 +474,8 @@ class FXMLConverter {
 		«IF element.x != null»translateX="«element.x.parseCoordinate»"«ENDIF»
 		«IF element.y != null»translateY="«element.y.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»>
+		«handleStyleClassAttributes(element.class_)»
+		
 		«IF element.resolvedInstance != null»
 		<children>
 			«handle(element.resolvedInstance)»
@@ -531,16 +542,27 @@ class FXMLConverter {
 		«IF lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_WIDTH,element) != null»strokeWidth="«(lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_WIDTH,element) as String).parseLength»"«ENDIF»
 	'''
 	
+	def handleStyleClassAttributes(String styleClass) '''
+		«IF styleClass != null»
+			<styleClass>
+				«FOR c : styleClass.split(" ")»
+					<String fx:value="«c.trim»"/>
+				«ENDFOR»
+			</styleClass>
+		«ENDIF»
+	'''
+	
 	def dispatch handle(SvgPathElement element) '''
 	<SVGPath
 		«IF element.d != null»content="«element.d»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
 		«IF element.fill_rule != Fill_rule::NONZERO»fillRule="EVEN_ODD"«ENDIF»
 		«handleShapePresentationAttributes(element)»
-		«IF element.id != null»fx:id="«element.id»"«ENDIF»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 		«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
+		«handleStyleClassAttributes(element.class_)»
 		«IF element.transform != null»
 			<transforms>
 				«element.transform.handleTransform»
@@ -617,6 +639,8 @@ class FXMLConverter {
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 		«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
+		«handleStyleClassAttributes(element.class_)»
+		
 		«IF element.transform != null»
 			<transforms>
 				«element.transform.handleTransform»
@@ -665,6 +689,7 @@ class FXMLConverter {
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 		«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
+		«handleStyleClassAttributes(element.class_)»
 		
 		«IF element.transform != null»
 			<transforms>
@@ -712,6 +737,7 @@ class FXMLConverter {
 		>
 	«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 	«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
+	«handleStyleClassAttributes(element.class_)»
 	
 	«IF element.transform != null»
 		<transforms>
@@ -759,7 +785,8 @@ class FXMLConverter {
 	>
 	«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 	«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
-		
+	«handleStyleClassAttributes(element.class_)»
+	
 	«IF element.transform != null»
 		<transforms>
 			«element.transform.handleTransform»
@@ -1033,5 +1060,9 @@ class FXMLConverter {
 			return Double::parseDouble(value)
 		}
 		return 0.0;
+	}
+	
+	def validateId(String value) {
+		return value.replace(".","_dot").replace("-","_dash");
 	}
 }
