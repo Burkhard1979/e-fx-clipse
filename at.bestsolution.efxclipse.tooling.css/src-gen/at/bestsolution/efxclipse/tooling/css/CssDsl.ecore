@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cssDsl" nsURI="http://www.bestsolution.at/efxclipse/tooling/css/CssDsl"
-    nsPrefix="cssDsl">
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cssDsl"
+    nsURI="http://www.bestsolution.at/efxclipse/tooling/css/CssDsl" nsPrefix="cssDsl">
   <eClassifiers xsi:type="ecore:EClass" name="stylesheet">
     <eStructuralFeatures xsi:type="ecore:EReference" name="charset" eType="#//charset"
         containment="true"/>
@@ -23,7 +24,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="page">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pseudoPage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
-        eType="#//css_generic_declaration" containment="true"/>
+        eType="#//css_declaration" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="media">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="medialist" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -57,12 +58,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="negotation" eType="#//css_negation"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="css_declaration"/>
-  <eClassifiers xsi:type="ecore:EClass" name="css_generic_declaration" eSuperTypes="#//css_declaration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="css_declaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//css_property"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//expr"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="css_property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="css_negation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="#//css_not"/>

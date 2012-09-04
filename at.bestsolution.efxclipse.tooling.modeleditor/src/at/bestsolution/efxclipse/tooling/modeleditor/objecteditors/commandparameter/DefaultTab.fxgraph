@@ -1,0 +1,47 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.commandparameter
+
+import javafx.scene.layout.GridPane
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
+import javafx.scene.control.Button
+import javafx.scene.control.CheckBox
+
+component DefaultTab {
+	GridPane {
+		Label {
+			text : "Id",
+			static columnIndex : 0,
+			static rowIndex : 0
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 0,
+			static hgrow : "ALWAYS"
+		},
+		Label {
+			text : "Name",
+			static columnIndex : 0,
+			static rowIndex : 1
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 1,
+			static hgrow : "ALWAYS"
+		},
+		Label {
+			text : "TypeId",
+			static columnIndex : 0,
+			static rowIndex : 2
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 2,
+			static hgrow : "ALWAYS"
+		},
+		CheckBox {
+			text : "Optional",
+			static columnIndex : 1,
+			static rowIndex : 3
+		}
+	}
+}

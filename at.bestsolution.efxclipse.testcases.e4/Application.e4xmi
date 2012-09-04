@@ -11,6 +11,7 @@
             <children xsi:type="basic:Part" xmi:id="_cjVs4OL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C1"/>
             <children xsi:type="basic:Part" xmi:id="_f5-RgOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.2" toBeRendered="false" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C2" closeable="true"/>
             <children xsi:type="basic:Part" xmi:id="_jRKPwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.3" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C3" closeable="true"/>
+            <children xsi:type="advanced:Placeholder" xmi:id="_ddQGkPW5EeG7tr8qKhf17Q" elementId="at.bestsolution.efxclipse.testcases.e4.placeholder.0" ref="_T4J0kPW5EeG7tr8qKhf17Q"/>
           </children>
           <children xsi:type="basic:Part" xmi:id="_txxY4OMsEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.4" toBeRendered="false" containerData="10" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C4"/>
         </children>
@@ -19,6 +20,7 @@
         <children xsi:type="basic:PartSashContainer" xmi:id="_wbAKYO6wEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.partsashcontainer.0">
           <children xsi:type="basic:Part" xmi:id="_xEsAkO6wEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.part.5" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C5" tooltip=""/>
           <children xsi:type="basic:Part" xmi:id="_xntOEO6wEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.part.6" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C6"/>
+          <children xsi:type="advanced:Placeholder" xmi:id="_cRNfUPW7EeG7tr8qKhf17Q" elementId="at.bestsolution.efxclipse.testcases.e4.placeholder.0" ref="_T4J0kPW5EeG7tr8qKhf17Q"/>
         </children>
       </children>
     </children>
@@ -44,6 +46,7 @@
         </children>
       </children>
     </mainMenu>
+    <sharedElements xsi:type="basic:Part" xmi:id="_T4J0kPW5EeG7tr8qKhf17Q" elementId="at.bestsolution.efxclipse.testcases.e4.part.7" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C7"/>
     <trimBars xmi:id="_A7Q9o-L-EeGP-5z69KadAQ">
       <children xsi:type="menu:ToolBar" xmi:id="_A7Q9pOL-EeGP-5z69KadAQ" elementId="org.efxclipse.e4.maintoolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_fbkNAORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.0" label="Push - HI 0" command="_FEZr8OUcEeGP-5z69KadAQ"/>

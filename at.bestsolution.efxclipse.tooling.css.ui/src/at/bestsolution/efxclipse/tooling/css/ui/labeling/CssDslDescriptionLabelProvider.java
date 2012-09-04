@@ -12,6 +12,9 @@ package at.bestsolution.efxclipse.tooling.css.ui.labeling;
 
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
+
 /**
  * Provides labels for a IEObjectDescriptions and IResourceDescriptions.
  * 
@@ -19,6 +22,14 @@ import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
  */
 public class CssDslDescriptionLabelProvider extends DefaultDescriptionLabelProvider {
 
+	String image(ruleset ele) {
+		return "icons/selector_16x16.png";
+	}
+	
+	String image(css_property ele) {
+		return "icons/property_16x16.png";
+	}
+	
 /*
 	//Labels and icons can be computed like this:
 	

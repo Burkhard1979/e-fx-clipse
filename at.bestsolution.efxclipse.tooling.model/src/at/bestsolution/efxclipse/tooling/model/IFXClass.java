@@ -12,10 +12,13 @@ package at.bestsolution.efxclipse.tooling.model;
 
 import java.util.Map;
 
+import org.eclipse.jdt.core.IType;
+
 public interface IFXClass {
 	public IFXProperty getDefaultProperty();
 	public String getFQN();
 	public String getSimpleName();
+	public IType getType();
 	public Map<String,IFXProperty> getAllProperties();
 	public Map<String, IFXProperty> getLocalProperties();
 	public IFXProperty getProperty(String name);

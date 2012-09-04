@@ -13,12 +13,16 @@ package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.text.IRegion;
+import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
+import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
@@ -27,7 +31,7 @@ import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiTermGroupP
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiValuesGroupProperty;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
@@ -51,7 +55,13 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if( model instanceof ruleset ) {
 			for( Property property : extension.getProperties(model.eResource().getURI()) ) {
-				acceptor.accept(createCompletionProposal(property.getName(), property.getName(), null, context));
+				
+				
+				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(property.getName(), property.getName(), null, context);
+				cp.setAdditionalProposalInfo(model);
+				cp.setHover(new HoverImpl(property.getDescription()));
+				
+				acceptor.accept(cp);
 			}
 			
 		}
@@ -62,8 +72,8 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 	public void complete_expr(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 //		System.err.println("Expression Proposal: " + model);
-//		if( context.getCurrentModel() instanceof css_generic_declaration ) {
-//			css_generic_declaration o = (css_generic_declaration) model;
+//		if( context.getCurrentModel() instanceof css_declaration ) {
+//			css_declaration o = (css_declaration) model;
 //			Property p = getProperty(extension.getProperties(), o.getProperty());
 //			
 //			if( p != null ) {
@@ -80,8 +90,8 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 	public void complete_termGroup(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 //		System.err.println("TermGroup proposal: " + context.getCurrentModel());
-//		if( context.getCurrentModel() instanceof css_generic_declaration ) {
-//			css_generic_declaration dec = (css_generic_declaration) context.getCurrentModel();
+//		if( context.getCurrentModel() instanceof css_declaration ) {
+//			css_declaration dec = (css_declaration) context.getCurrentModel();
 //			
 //		}
 //		
@@ -96,13 +106,13 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 		
 ////		System.err.println(ruleCall.eContainer());
 		
-		if( context.getCurrentModel() instanceof css_generic_declaration ) {
+		if( context.getCurrentModel() instanceof css_declaration ) {
 			// We get in here on the 1st value of the first group
 			// We get in here on the 2nd ... value of the first group
-			css_generic_declaration dec = (css_generic_declaration) context.getCurrentModel();
+			css_declaration dec = (css_declaration) context.getCurrentModel();
 			if( dec.getExpression() == null || dec.getExpression().getTermGroups().size() == 0) {
 //				System.err.println("This is the initial");
-				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty());
+				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty().getName());
 				if( p != null ) {
 					addProposals(p.getInitialTermProposals(), acceptor, context);
 					return;
@@ -113,10 +123,10 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 			// We get in here on 2nd value of 2nd ... group
 			termGroup group = (termGroup) context.getCurrentModel();
 			expr expression = (expr) group.eContainer();
-			css_generic_declaration dec = (css_generic_declaration) expression.eContainer();
+			css_declaration dec = (css_declaration) expression.eContainer();
 			
 			if( expression.getTermGroups().indexOf(group) == 0 ) {
-				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty());
+				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty().getName());
 //				System.err.println("This is the first group");
 				if( p instanceof MultiValuesGroupProperty ) {
 					addProposals(((MultiValuesGroupProperty) p).getNextTermProposal(group.getTerms().size(), group, null), acceptor, context);
@@ -124,7 +134,7 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 				}
 			} else {
 //				System.err.println("This is 2nd ... in 2nd group");
-				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty());
+				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty().getName());
 				if( p instanceof MultiTermGroupProperty && p instanceof MultiValuesGroupProperty ) {
 //					System.err.println("Property with multi terms in a group");
 					addProposals(((MultiValuesGroupProperty) p).getNextTermProposal(group.getTerms().size(), group, null), acceptor, context);
@@ -135,8 +145,8 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 			// We get in here on 1st value if 2nd ... group 
 			// We get in here on 2nd value of 2nd ... group
 			expr expression = (expr) context.getCurrentModel();
-			css_generic_declaration dec = (css_generic_declaration) expression.eContainer();
-			Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty());
+			css_declaration dec = (css_declaration) expression.eContainer();
+			Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty().getName());
 			if( p instanceof MultiTermGroupProperty ) {
 				addProposals(((MultiTermGroupProperty) p).getInitialTermProposal(0, dec), acceptor, context);
 			}
@@ -148,10 +158,10 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 			term term = (term) context.getCurrentModel();
 			termGroup group = (termGroup) term.eContainer();
 			expr expression = (expr) group.eContainer();
-			if( expression.eContainer() instanceof css_generic_declaration ) {
-				css_generic_declaration dec = (css_generic_declaration) expression.eContainer();
+			if( expression.eContainer() instanceof css_declaration ) {
+				css_declaration dec = (css_declaration) expression.eContainer();
 				
-				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty());
+				Property p = getProperty(extension.getProperties(model.eResource().getURI()), dec.getProperty().getName());
 				if( p != null ) {
 					int groupIdx = expression.getTermGroups().indexOf(group);
 					if( groupIdx == 0 ) {
@@ -191,8 +201,8 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 //				termGroup tgr = (termGroup) t.eContainer();
 //				if( tgr.eContainer() instanceof expr ) {
 //					expr expression = (expr) tgr.eContainer();
-//					if( expression.eContainer() instanceof css_generic_declaration ) {
-//						css_generic_declaration dec = (css_generic_declaration) expression.eContainer();
+//					if( expression.eContainer() instanceof css_declaration ) {
+//						css_declaration dec = (css_declaration) expression.eContainer();
 //						if( createExpressionFurtherTermProposals(dec, expression, tgr, t) ) {
 //							return;
 //						}
@@ -225,10 +235,10 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 		}
 	}
 	
-	private boolean createExpressionFurtherTermProposals(css_generic_declaration dec, expr expression, termGroup tgr, term t) {
+	private boolean createExpressionFurtherTermProposals(css_declaration dec, expr expression, termGroup tgr, term t) {
 		// This is the >= 2nd group
 		if( expression.getTermGroups().indexOf(tgr) != 0 ) {
-			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty());
+			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty().getName());
 			if( p instanceof MultiTermGroupProperty ) {
 				if( tgr.getTerms().indexOf(t) == 0 ) {
 					// Show the initial proposals
@@ -240,7 +250,7 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 				return true;
 			}
 		} else {
-			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty());
+			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty().getName());
 			if( p instanceof MultiValuesGroupProperty ) {
 				if( tgr.getTerms().indexOf(t) > 0 ) {
 					// Show the extended proposals
@@ -274,4 +284,24 @@ public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 //		}
 //		return Collections.emptyList();
 //	}
+	
+	public static class HoverImpl implements IEObjectHover {
+		private JavadocHoverWrapper javadocHover = new JavadocHoverWrapper();
+		private String doc;
+
+		public HoverImpl(String doc) {
+			this.doc = doc;
+		}
+
+		@Override
+		public Object getHoverInfo(EObject eObject, ITextViewer textViewer, IRegion hoverRegion) {
+			//javadocHover.setJavaElement(javaElement);
+			return doc; //javadocHover.getHoverInfo2(textViewer, hoverRegion);
+		}
+
+//		@Override
+//		public IInformationControlCreator getHoverControlCreator() {
+//			return javadocHover.getHoverControlCreator();
+//		}
+	}
 }

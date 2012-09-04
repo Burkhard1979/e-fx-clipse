@@ -112,13 +112,13 @@ public class DefaultTabController implements Initializable {
 		}
 		
 		{
-			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected");
+			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected", boolean.class);
 			IEMFValueProperty mProp = EMFProperties.value(UiPackageImpl.Literals.UI_ELEMENT__TO_BE_RENDERED);
 			dbc.bindValue(uiProp.observe(renderField), mProp.observeDetail(master));
 		}
 		
 		{
-			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected");
+			IJFXBeanValueProperty uiProp = JFXBeanProperties.value("selected", boolean.class);
 			IEMFValueProperty mProp = EMFProperties.value(UiPackageImpl.Literals.UI_ELEMENT__VISIBLE);
 			dbc.bindValue(uiProp.observe(visibleField), mProp.observeDetail(master));
 		}

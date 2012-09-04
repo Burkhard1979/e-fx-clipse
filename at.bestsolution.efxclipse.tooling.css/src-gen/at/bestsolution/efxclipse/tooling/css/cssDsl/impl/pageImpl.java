@@ -1,9 +1,12 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.page;
 
 import java.util.Collection;
@@ -66,7 +69,7 @@ public class pageImpl extends MinimalEObjectImpl.Container implements page
    * @generated
    * @ordered
    */
-  protected EList<css_generic_declaration> declarations;
+  protected EList<css_declaration> declarations;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,11 +120,11 @@ public class pageImpl extends MinimalEObjectImpl.Container implements page
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<css_generic_declaration> getDeclarations()
+  public EList<css_declaration> getDeclarations()
   {
     if (declarations == null)
     {
-      declarations = new EObjectContainmentEList<css_generic_declaration>(css_generic_declaration.class, this, CssDslPackage.PAGE__DECLARATIONS);
+      declarations = new EObjectContainmentEList<css_declaration>(css_declaration.class, this, CssDslPackage.PAGE__DECLARATIONS);
     }
     return declarations;
   }
@@ -176,7 +179,7 @@ public class pageImpl extends MinimalEObjectImpl.Container implements page
         return;
       case CssDslPackage.PAGE__DECLARATIONS:
         getDeclarations().clear();
-        getDeclarations().addAll((Collection<? extends css_generic_declaration>)newValue);
+        getDeclarations().addAll((Collection<? extends css_declaration>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

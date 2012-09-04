@@ -1,0 +1,1016 @@
+package javafx {
+	
+	boolean = true | false;
+	string = $".*"$; // TODO Move to lang
+	
+	/**
+	 * No whitespace is allowed between the number and units if provided.
+	 *  TODO wie bau ma so was ein!?
+	 * Sizes can either be a percentage or a length with units. If units are not specified then specified the 'px' is assumed. Some units are relative and others absolute.
+	 * 
+	 * Relative
+	 * <ul>
+	 * <li>px: pixels, relative to the viewing device</li>
+	 * <li>em: the 'font-size' of the relevant font</li>
+	 * <li>ex: the 'x-height' of the relevant font</li>
+	 * </ul>
+	 * Absolute
+	 * <ul>
+	 * <li>in: inches - 1 inch is equal to 2.54 centimeters.</li>
+	 * <li>cm: centimeters</li>
+	 * <li>mm: millimeters</li>
+	 * <li>pt: points - the points used by CSS 2.1 are equal to 1/72nd of an inch.</li>
+	 * <li>pc: picas - 1 pica is equal to 12 points.</li>
+	 * </ul>
+	 * Percentages
+	 * These are a percentage of some length, they are context sensitive so what they are relative to depends on where they are specified. Each property that supports a percentage should specify if percentage is supported and if it is what it is relative to.
+	 */
+	length =double[ px | mm | cm | in | pt | pc | em | ex ]?;
+	
+	size = <length> | <percentage>;
+	
+	/**
+	 * These are a percentage of some length, typically to the width or height of a node.
+	 */
+	percentage = double $%$;
+	
+	/**
+	 * An angle is a <number> with one of the following units.
+	 * <ul>
+	 * <li>deg: angle in degrees - all other angle units are converted to degrees.</li>
+	 * <li>rad: angle in radians</li>
+	 * <li>grad: angle in gradians</li>
+	 * <li>turn: angle in turns</li>
+	 * </ul>
+	 */
+	angle = double[ deg | rad | grad | turn];
+	
+	/**
+	 * A point is an {x,y} coordinate.
+	 */
+	point = [ [ <length> <length> ] | [ <percentage> | <percentage> ] ];
+	
+	/**
+	 * Stops are per W3C color-stop syntax.
+	 * In a series of <color-stop>, stop distance values must all be <percentage> or <length>. Furthermore, if <length> values are used, then the distance value for first and last stop in the series must be specified. This restriction may be removed in a future release.
+	 * 
+	 * "red, white 70%, blue" is valid since the distance for red and blue is assumed to be 0% and 100%, respectively.
+	 * "red 10, white, blue 90" is valid. Because distance for red and blue is 10 and 90, respectively, the distance for white can be calculated.
+	 * "red, white 70, blue" is not valid since distance units do not agree.
+	 * "red, white, blue" is valid. The stops are distributed evenly between 0% and 100%.
+	 */
+	color-stop = [ <color> [ <percentage> | <length>]? ];
+	
+	/**
+	 * <address> can be an absolute URI, for example:
+	 * url(http://example.com)
+	 * url('http://example.com')
+	 * url("http://example.com")
+	 * or it can be relative to the location of the CSS file.
+	 */
+	uri = url( address ); // TODO
+	
+	/**
+	 * JavaFX CSS currently supports the DropShadow and InnerShadow effects from the JavaFX platform. See the class documentation in javafx.scene.effect for further details about the semantics of the various effect parameters.
+	 */
+	effect = <effect-dropshadow> | <effect-innershadow>;
+	blur-type = [ gaussian | one-pass-box | three-pass-box | two-pass-box ];
+	/** 
+	 * A high-level effect that renders a shadow of the given content behind the content.
+	 * TODO params
+	 */
+	effect-dropshadow = dropshadow( <blur-type>, <color>, double, double, double, double);
+	/**
+	 * A high-level effect that renders a shadow inside the edges of the given content.
+	 * TODO params
+	 */
+	effect-innershadow = innershadow( <blur-type>, <color>, double, double, double, double);
+	
+	/**
+	 * The string name of the font family. An actual font family name available on the system can be used, or one of the following generic family names can be used:
+	 */
+	font-family = string | serif | sans-serif | cursive | fantasy | monospace;
+	/**
+	 * The size of the font, using the <size> syntax.
+	 */
+	font-size = <size>;
+	/**
+	 * The font's style, using the following syntax:
+	 */
+	font-style = normal | italic | oblique;
+	/**
+	 * The font's weight, using the following syntax:
+	 */
+	font-weight = normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+	/**
+	 * This font shorthand property can be used in place of the above properties. It uses the following syntax:
+	 */
+	font = [ <font-style> || <font-weight> ]? <font-size> <font-family>;
+	
+	color = <named-color> | <looked-up-color> | <rgb-color> | <hsb-color> | <color-function>;
+	named-color = 	aliceblue | anitquewhite | aqua | aquamarine |
+					azure | beige | bisque | black |
+					blanchedalmond | blue | blueviolet | brown |
+					burlywood | cadetblue | chartreuse | chocolate |
+					coral | cornflowerblue | cornsilk | crimson |
+					cyan | darkblue | darkcyan | darkgoldenrod |
+					darkgray | darkgreen | darkgrey | darkkhaki; // TODO finish this!
+	looked-up-color = reference_to_other_color_property; // TODO howto implement?!
+	
+	hashcolor = $#[0123456789ABCDEFabcdef]{6}$ | $#[0123456789ABCDEFabcdef]{3}$;
+	rgb-color = <hashcolor> | <rgb> | rgbp | <rgba>;
+	rgb = rgb(int(0->255), int(0->255), int(0->255) | <percentage>, <percentage>, <percentage>);
+	rgba = rgba(int(0->255), int(0->255), int(0->255), double(.0->1.0) | <percentage>, <percentage>, <percentage>, double(.0->1.0));
+	paint = <color> | <linear-gradient> | <radial-gradient>;
+	side-or-corner = [left | right] || [top | bottom];
+	linear-gradient = linear-gradient( [ [from <point> to <point>] | [ to <side-or-corner>], ]? [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
+	radial-gradient = radial-gradient([ focus-angle <angle>, ]? [ focus-distance <percentage>, ]? [ center <point>, ]? radius [ <length> | <percentage> ] [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
+	// TODO hsb colors
+	hsb-color = <hsb> | <hsba>;
+	hsb = hsb(double(.0->360.0), <percentage>, <percentage>);
+	hsba = hsba(double(.0->360.0), <percentage>, <percentage>, double(.0->1.0));
+	
+	color-function = <ladder> | <derive>;
+	ladder = ladder(<color>, <color-stop> [, <color-stop>]+);
+	derive = derive(<color>, <percentage>);
+	
+	
+	package scene {
+		blend-mode = [ add | blue | color-burn | color-dodge | darken | difference | exclusion | green | hard-light | lighten | multiply | overlay | red | screen | soft-light | src-atop | src-in | src-out | src-over ];
+		cursor = [ null | crosshair | default | hand | move | e-resize | h-resize | ne-resize | nw-resize | n-resize | se-resize | sw-resize | s-resize | w-resize | v-resize | text | wait ] | <uri>;
+		visibility = [ visible | hidden | collapse | inherit ];
+		
+		
+		
+		Node {
+			-fx-blend-mode <blend-mode> default: null;
+			-fx-cursor <cursor> default: null;
+			-fx-effect <effect> default: null;
+			-fx-focus-traversable <boolean> default: null;
+			-fx-opacity double(.0->1.0) default: 1.0;
+			-fx-rotate double default: 0;
+			-fx-scale-x double default: 1;
+			-fx-scale-y double default: 1;
+			-fx-scale-z double default: 1;
+			-fx-translate-x double default: 0;
+			-fx-translate-y double default: 0;
+			-fx-translate-z double default: 0;
+			visibility <visibility> default: visible;
+			
+			:disabled
+			:focused
+			:hover
+			:pressed
+			:show-mnemonic
+		}
+		
+		Parent extends Node {
+		}
+		
+		Group extends Parent {
+		}
+		
+		package image {
+			ImageView extends Node {
+				-fx-image <uri> default: null;
+			}
+		}
+		package layout {
+			bg-position = [ [ [ <size> | left | center | right ] [ <size> | top | center | bottom ]? ] | [ [ center | [ left | right ] <size>? ] || [ center | [ top | bottom ] <size>? ] ] ];
+			repeat-style = repeat-x | repeat-y | [repeat | space | round | stretch | no-repeat] [repeat | space | round | stretch | no-repeat]?; // NOTE: rewritten from  <repeat-style> = repeat-x | repeat-y | [repeat | space | round | stretch | no-repeat]{1,2} since we do not support {} yet
+			bg-size = [ <size> | auto ] [ <size> | auto ]? | cover | contain | stretch; // Note: rewritten from = [ <size> | auto ]{1,2} | cover | contain | stretch since we do not support {} yet
+			
+			border-style = <dash-style> [phase double]? [centered | inside | outside]? [line-join [miter double | bevel | round]]? [line-cap [square | butt | round]]?;
+			dash-style = [ none | solid | dotted | dashed | <segments> ];
+			segments = segments( double, double [, double]*);
+			
+			alignment = [ top-left | top-center | top-right | center-left | center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right ];
+			
+			//TODO REMOVE if attribute references are available
+			helper-background-color = <paint> [, <paint>]*; 
+			helper-background-insets = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-background-radius = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-background-image = <uri> [ , <uri> ]*;
+			helper-background-position = <bg-position> [ , <bg-position> ]*;
+			helper-background-repeat =<repeat-style> [ , <repeat-style> ]*;
+			helper-background-size = <bg-size> [ , <bg-size> ]*;
+			helper-border-color = <paint> | <paint> <paint> <paint> <paint> [ , [<paint> | <paint> <paint> <paint> <paint>] ]*;
+			helper-border-insets = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-border-radius = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-border-style =<border-style> [ , <border-style> ]*;
+			helper-border-width = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-border-image-source = <uri> [ , <uri>]*;
+			helper-border-image-insets = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size> ] ]*;
+			helper-border-image-repeat = <repeat-style> [ , <repeat-style> ]*;
+			helper-border-image-slice = [<size> | <size> <size> <size> <size> ] fill? [ , [ <size> | <size><size> <size> <size> <size> ] fill? ]*;
+			helper-border-image-width = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			
+			/**
+			 * <p>
+			 * A Region is a Node (extending from Parent) with backgrounds and borders that are styleable via CSS. A Region is typically a rounded rectangle, though this can be modified through CSS to be an arbitrary shape. Regions can contain other Region objects (sub-regions) or they can contain sub-controls. All Regions have the same set of CSS properties as described below.
+			 * </p>
+			 * <p> 
+			 * Each Region consists of several layers, painted from bottom to top, in this order:
+			 * <ol>
+    		 * <li>background fills</li>
+    		 * <li>background images</li>
+    		 * <li>contents</li>
+    		 * <li>border strokes</li>
+    		 * <li>border images</li>
+    		 * </ol>
+    		 * </p>
+    		 * <p>
+    		 * The background and border mechanisms are patterned after the CSS 3 draft backgrounds and borders module. 
+    		 * See [4] for a detailed description.
+    		 * </p>
+    		 * <p>
+    		 * Background fills are specified with the properties -fx-background-color, -fx-background-radius 
+    		 * and -fx-background-insets. The -fx-background-color property is a series of one or more 
+    		 * comma-separated <paint> values. The number of values in the series determines the number of 
+    		 * background rectangles that are painted. Background rectangles are painted in the order specified 
+    		 * using the given <paint> value. Each background rectangle can have different radii and insets. 
+    		 * The -fx-background-radius and -fx-background-insets properties are series of comma-separated 
+    		 * values (or sets of values). The radius and insets values used for a particular background are 
+    		 * the found in the corresponding position in the -fx-background-radius and -fx-background-insets 
+    		 * series. For example, suppose a series of three values is given for the -fx-background-color property. 
+    		 * A series of three values should also be specified for the -fx-background-radius and -fx-background-insets 
+    		 * properties. The first background will be painted using the first radius value and first insets value, 
+    		 * the second background will be painted with the second radius value and second insets value, and so forth.
+    		 * </p>
+    		 * <p>
+    		 * Note also that properties such as -fx-background-radius and -fx-background-insets can contain a series 
+    		 * of values or sets of four values. A set of values is separated by whitespace, whereas the values or 
+    		 * sets-of-values in a series are separated by commas. For -fx-background-radius, a single value indicates 
+    		 * that the value should be used for the radius of all four corners of the background rectangle. A set of 
+    		 * four values indicates that different radius values are to be used for the top-left, top-right, 
+    		 * bottom-right, and bottom-left corners, in that order. Similarly, the -fx-background-insets property 
+    		 * can also contain a series of values or sets of values. A set of four values for -fx-background-insets 
+    		 * indicates that different insets are to be used for the top, right, bottom, and left edges of the rectangle, 
+    		 * in that order.
+    		 * </p>
+    		 * <p>
+    		 * Background images are specified with the properties -fx-background-image, -fx-background-repeat, 
+    		 * -fx-background-position and -fx-background-size. The number of images in the series of -fx-background-image 
+    		 * values determines the number of background images that are painted. The -fx-background-repeat, 
+    		 * -fx-background-position, and -fx-background-size properties each can contain a series of values. 
+    		 * For each item in the -fx-background-image series, the corresponding items in the -fx-background-repeat, 
+    		 * -fx-background-position, and -fx-background-size properties are applied to that background image.
+    		 * </p>
+    		 * <p>
+    		 * Stroked borders are specified with the properties -fx-border-color, -fx-border-style, -fx-border-width, 
+    		 * -fx-border-radius and -fx-border-insets. Each property contains a series of items. The number of items 
+    		 * in the-fx- border-color property determines the number of borders that are painted. Each border in 
+    		 * the series is painted using information from the corresponding series item of the -fx-border-style, 
+    		 * -fx-border-width, -fx-border-radius, and -fx-border-insets properties.
+    		 * </p>
+    		 * <p>
+    		 * Image borders are specified with the properties -fx-border-image-source, -fx-border-image-repeat, 
+    		 * -fx-border-image-slice, -fx-border-image-width and -fx-border-image-insets. Each property contains 
+    		 * a series of items. The number of items in the -fx-border-image-source property determines the number 
+    		 * of images that are painted. Each image in the series is painted using information from the corresponding 
+    		 * series items of the -fx-border-image-repeat, -fx-border-image-slice, -fx-border-image-width, and 
+    		 * -fx-border-image-insets properties.
+    		 * </p>
+    		 * <p>
+    		 * The region's contents are a sequence of nodes, like any other container. The contents are set 
+    		 * programmatically and cannot be set via CSS.
+    		 * </p>
+			 */
+			Region extends Parent {
+				
+				// BACKGROUND FILLS (see CSS Backgrounds and Borders Module Level 3: Backgrounds)
+				/** 
+				 * A series of paint values separated by commas.
+				 */
+				-fx-background-color <helper-background-color> default: null;
+				/**
+				 * A series of size values or sets of four size values, separated by commas. A single size 
+				 * value means all insets are the same. Otherwise, the four values for each inset are given in 
+				 * the order top, right, bottom, left. Each comma-separated value or set of values in the 
+				 * series applies to the corresponding background color.
+				 */
+				-fx-background-insets <helper-background-insets> default: null;
+				// BACKGROUND IMAGES (see CSS Backgrounds and Borders Module Level 3: Background Image)
+				/**
+				 * A series of image URIs separated by commas.
+				 */
+				-fx-background-image <helper-background-image> default: null;
+				/**
+				 * A series of <bg-position> values separated by commas. Each bg-position item in the series 
+				 * applies to the corresponding image in the background-image series.
+				 */
+				-fx-background-position <helper-background-position> default: null;
+				-fx-background-repeat <helper-background-repeat> default: null;
+				-fx-background-size <helper-background-size>;
+				// STROKED BORDERS (see CSS Backgrounds and Borders Module Level 3: Borders)
+				/**
+				 * A series of paint values or sets of four paint values, separated by commas. For each item in 
+				 * the series, if a single paint value is specified, then that paint is used as the border for 
+				 * all sides of the region; and if a set of four paints is specified, they are used for the top, 
+				 * right, bottom, and left borders of the region, in that order. If the border is not rectangular, 
+				 * only the first paint value in the set is used.
+				 */
+				-fx-border-color <helper-border-color>;
+				/**
+				 * A series of inset or sets of four inset values, separated by commas. For each item in the series, 
+				 * a single inset value means that all insets are the same; and if a set of four inset values is 
+				 * specified, they are used for the top, right, bottom, and left edges of the region, in that order. 
+				 * Each item in the series of insets applies to the corresponding item in the series of border colors.
+				 */
+				-fx-border-insets <helper-border-insets>;
+				/**
+				 * A series of radius or sets of four radius values, separated by commas. For each item in the series, 
+				 * a single radius value means that all corner radii are the same; and if a set of four radius values 
+				 * is specified, they are used as the radii of the top-left, top-right, bottom-right, and bottom-left 
+				 * corners, in that order. Each item in the series of radii applies to the corresponding item in the 
+				 * series of border colors.
+				 */
+				-fx-border-radius <helper-border-radius>;
+				/**
+				 * A series of border style values, separated by commas. Each item in the series applies to the 
+				 * corresponding item in the series of border colors.
+				 * The segments dash-style defines a sequence representing the lengths of the dash segments. 
+				 * Alternate entries in the sequence represent the lengths of the opaque and transparent segments of 
+				 * the dashes. This corresponds to the strokeDashArray variable of Shape.
+				 * The optional phase parameter defines the point in the dashing pattern that will correspond to the 
+				 * beginning of the stroke. This corresponds to the strokeDashOffset variable of Shape.
+				 */
+				-fx-border-style <helper-border-style>;
+				/**
+				 * A series of width or sets of four width values, separated by commas. For each item in the series, 
+				 * a single width value means that all border widths are the same; and if a set of four width values 
+				 * is specified, they are used for the top, right, bottom, and left border widths, in that order. 
+				 * If the border is not rectangular, only the first width value is used. Each item in the series 
+				 * of widths applies to the corresponding item in the series of border colors.
+				 */
+				-fx-border-width <helper-border-width>;
+				// BORDER IMAGES (see CSS Backgrounds and Borders Module Level 3: Border Images)
+				/** 
+				 * A series of image URIs, separated by commas.
+				 */
+				-fx-border-image-source <helper-border-image-source>;
+				/**
+				 * A series of inset or sets of four inset values, separated by commas. For each item in the series, 
+				 * a single inset value means that all insets are the same; and if a set of four inset values is specified, 
+				 * they are used for the top, right, bottom, and left edges of the region, in that order. Each item in the 
+				 * series of insets applies to the corresponding image in the series of border images. 
+				 */
+				-fx-border-image-insets <helper-border-image-insets>;
+				/**
+				 * A series of repeat-style values, separated by commas. Each item in the series applies to the corresponding image in the series 
+				 * of border images.
+				 */
+				-fx-border-image-repeat <helper-border-image-repeat>;
+				/**
+				 * A series of image slice values or sets of four values, separated by commas. Each item in the series applies to the corresponding 
+				 * image in the series of border images. For each item in the series, if four values are given, they specify the size of the top, right, 
+				 * bottom, and left slices. This effectively divides the image into nine regions: an upper left corner, a top edge, an upper right corner, 
+				 * a right edge, a lower right corner, a bottom edge, a lower left corner, a left edge and a middle. If one value is specified, this value 
+				 * is used for the slice values for all four edges. If 'fill' is present, the middle slice is preserved, otherwise it is discarded. 
+				 * Percentage values may be used here, in which case the values are considered proportional to the source image.
+				 */
+				-fx-border-image-slice <helper-border-image-slice>;
+				/**
+				 * A series of width or sets of four width values, separated by commas. For each item in the series, a single width 
+				 * value means that all border widths are the same; and if a set of four width values is specified, they are used 
+				 * for the top, right, bottom, and left border widths, in that order. If the border is not rectangular, only the 
+				 * first width value is used. Each item in the series of widths applies to the corresponding item in the series of border 
+				 * images. Percentage values may be used here, in which case the values are considered proportional to the border image area.
+				 */
+				-fx-border-image-width <helper-border-image-width>;
+				//Other
+				/**
+				 * A sets of four padding values, separated by commas. For each item in the series, a single padding value means that all 
+				 * padding are the same; and if a set of four padding values is specified, they are used for the top, right, bottom, and left 
+				 * edges of the region, in that order.
+				 */
+				-fx-padding <size> | <size> <size> <size> <size>;
+				/**
+				 * If true means the shape centered within the region's width and height, otherwise the shape is positioned at its source 
+				 * position. Has no effect if a shape string is not specified.
+				 */
+				-fx-position-shape <boolean> default: true;
+				/**
+				 * If true means the shape is scaled to fit the size of the region, otherwise the shape is at its source size, and its position 
+				 * depends on the value of the position-shape property. Has no effect if a shape string is not specified.
+				 */
+				-fx-scale-shape <boolean> default: true;
+				/**
+				 * An SVG path string. By specifying a shape here the region takes on that shape instead of a rectangle or rounded rectangle. 
+				 * The syntax of this path string is specified in
+				 */
+				-fx-shape <string>;
+				/**
+				 * Defines whether this region rounds position/spacing and ceils size values to pixel boundaries when laying out its children.
+				 */
+				-fx-snap-to-pixel <boolean> default: true;
+				/**
+				 * This property is set by specifying -fx-background-color, optionally -fx-background-insets, and optionally -fx-background-radius. 
+				 * In order to set the background fill to null, specify the style "-fx-background-color: null;". There is no shorthand notation for 
+				 * -fx-background-fills at this time.
+				 */
+				-fx-background-fills <helper-background-color> [ <helper-background-insets> || <helper-background-radius> ] default: null;
+				/**
+				 * This property is set by specifying -fx-background-image, optionally -fx-background-position, optionally -fx-background-repeat, 
+				 * and optionally -fx-background-size. There is no shorthand notation for -fx-background-images at this time.
+				 */
+				-fx-background-images <helper-background-image> [ <helper-background-position> || <helper-background-repeat> || <helper-background-size> ] default: null;
+				/**
+				 * This property is set by specifying -fx-border-color with the optional -fx-border-insets, -fx-border-radius, -fx-border-style and 
+				 * -fx-border-width. There is no shorthand notation for -fx-stroke-borders at this time.
+				 */
+				-fx-stroke-borders <helper-border-color> [ <helper-border-insets> || <helper-border-radius> || <helper-border-style> || <helper-border-width> ] default: null;
+				/**
+				 * This property set by specifying -fx-border-image-source with the optional -fx-border-image-insets, -fx-border-image-repeat, 
+				 * -fx-border-image-slice and -fx-border-image-width. There is no shorthand notation for -fx-image-borders at this time.
+				 */
+				-fx-image-borders <helper-border-image-source> [ <helper-border-image-insets> || <helper-border-image-repeat> || <helper-border-image-slice> || <helper-border-image-width> ] default: null;
+				
+			}
+			Pane extends Region {
+				
+			}
+			AnchorPane extends Pane {
+				
+			}
+			BorderPane extends Pane {
+				
+			}
+			FlowPane extends Pane {
+				-fx-hgap <size> default: 0;
+				-fx-vgap <size> default: 0;
+				-fx-alignment <alignment> default: top-left;
+				-fx-column-halignment [ left | center | right ] default: center;
+				-fx-row-valignment [ top | center | baseline | bottom ] default: center;
+				-fx-orientation [ horizontal | vertical ] default: horizontal;
+			}
+			GridPane extends Pane {
+				-fx-hgap <size> default: 0;
+				-fx-vgap <size> default: 0;
+				-fx-alignment <alignment> default: top-left;
+				-fx-grid-lines-visible <boolean> default: false;
+			}
+			HBox extends Pane {
+				-fx-spacing <size> default 0;
+				-fx-alignment <alignment> default: top-left;
+				-fx-fill-height <boolean> default: false;
+			}
+			StackPane extends Pane {
+				-fx-alignment <alignment> default: top-left;
+			}
+			TilePane extends Pane {
+				-fx-orientation [ horizontal | vertical ] default: horizontal;
+				-fx-pref-rows int default: 5;
+				-fx-pref-columns int default: 5;
+				-fx-pref-tile-width <size> default: -1;
+				-fx-pref-tile-height <size> default:-1;
+				-fx-hgap <size> default: 0;
+				-fx-vgap <size> default: 0;
+				-fx-alignment <alignment> default: top-left;
+				-fx-tile-alignment <alignment> default: center;
+			}
+			VBox extends Pane {
+				-fx-spacing <size> default: 0;
+				-fx-alignment <alignment> default: top-left;
+				-fx-fill-width <boolean> default: true;
+			}
+		}
+		package shape {
+			Shape extends Node {
+				-fx-fill <paint> default: BLACK;
+				-fx-smooth <boolean> default: true;
+				-fx-stroke <paint> default: null;
+				-fx-stroke-type [ inside | outside | centered ] default: centered;
+				-fx-stroke-dash-array <size> [<size>]+ default: null;
+				-fx-stroke-dash-offset double default: 0;
+				-fx-stroke-line-cap [ square | butt | round ] default: square;
+				-fx-stroke-line-join [ miter | bevel | round ]  default: miter;
+				-fx-stroke-miter-limit double default: 10;
+				-fx-stroke-width <size> default: 1;
+			}
+			Arc extends Shape {
+				
+			}
+			Circle extends Shape {
+				
+			}
+			CubicCurve extends Shape {
+				
+			}
+			Ellipse extends Shape {
+				
+			}
+			Line extends Shape {
+				
+			}
+			Path extends Shape {
+				
+			}
+			Polygon extends Shape {
+				
+			}
+			QuadCurve extends Shape {
+				
+			}
+			Rectangle extends Shape {
+				-fx-arc-height <size> default: 0;
+				-fx-arc-width <size> default: 0;
+			}
+			SVGPath extends Shape {
+				
+			}
+		}
+		package text {
+			Text {
+				-fx-font <font> default: DEFAULT;
+				-fx-font-smoothing-type [ gray | lcd ] default: gray;
+				-fx-strikethrough <boolean> default: false;
+				-fx-text-alignment [ left | center | right | justify ] default: left;
+				-fx-text-origin [ baseline | top | bottom ]  default: baseline;
+				-fx-underline <boolean> default: false;
+			}
+		}
+		package web {
+			WebView extends Parent {
+				-fx-context-menu-enabled <boolean> default: true;
+				-fx-font-smoothing-type [ gray | lcd ] default: lcd;
+				-fx-font-scale double default: 1;
+				-fx-min-width <size> default: 0;
+				-fx-min-height <size> default: 0;
+				-fx-pref-width <size> default: 800;
+				-fx-pref-height <size> default: 800;
+				-fx-max-width <size> default: DOUBLE_MAX;
+				-fx-max-height <size> default: DOUBLE_MAX;
+			}
+		}
+		package control {
+			Control extends Parent {
+        		-fx-skin <string> default: null;
+        	}
+        	Labeled {
+        		-fx-alignment [ top-left | top-center | top-right | center-left | center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right ] default: top-level;
+        		-fx-text-alignment [ left | center | right | justify ] default: left;
+        		-fx-text-overrun [ center-ellipsis | center-word-ellipsis | clip | ellipsis | leading-ellipsis | leading-word-ellipsis | word-ellipsis ] default: ellipsis;
+        		-fx-wrap-text <boolean> default: false;
+        		-fx-font <font> default: null;
+        		-fx-underline <boolean> default: false;
+        		-fx-graphic <uri> default: null;
+        		-fx-content-display [ top | right | bottom | left | center | right | graphic-only | text-only ] default: left;
+        		-fx-graphic-text-gap <size> default: 4;
+        		-fx-label-padding <size> | <size> <size> <size> <size> default: 0;
+        		-fx-text-fill <paint> default: BLACK;
+        		-fx-ellipsis-string <string> default: "...";
+        	}
+        	Accordion extends Control {
+				// TODO SUPPORT SUBSTRUCTURE
+				// TODO SUPPORT STYLE_CLASS
+			}
+        	ButtonBase extends Labeled {
+        		:armed
+        	}
+        	ComboBoxBase extends Control {
+        		/**
+        		 * applies when the editable variable is true
+        		 */
+        		:editable
+        		/**
+        		 * applies when the showing variable is true
+        		 */
+        		:showing
+        		/**
+        		 * applies when the armed variable is true
+        		 */
+        		:armed
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	Button extends ButtonBase {
+        		:cancel
+        		:default
+        	}
+        	Cell extends Labeled {
+        		/**
+        		 * The cell size. For vertical ListView or a TreeView or TableView this is the height, for a horizontal ListView this is the width.
+        		 */
+        		-fx-cell-size <size> default: 15;
+        		:empty
+        		:filled
+        		:selected
+        		// TODO SUPPORT SUBSTRUCTURE
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	CheckBox extends ButtonBase {
+        		:selected
+        		:determinated
+        		:indeterminated
+        		// TODO SUPPORT SUBSTRUCTURE
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	CheckMenuItem extends Control {
+        		:selected
+        	}
+        	ChoiceBox extends Control {
+        		// TODO SUPPORT SUBSTRUCTURE
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	ColorPicker extends ComboBoxBase {
+        		-fx-color-label-visible <boolean> default: true;
+        		// TODO SUPPORT SUBSTRUCTURE
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	ComboBox {
+        		// TODO SUPPORT SUBSTRUCTURE
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	Hyperlink extends ButtonBase {
+        		/**
+        		 * applies when the visited variable is true
+        		 */
+        		:visited
+        		// TODO SUPPORT SUBSTRUCTURE
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	IndexedCell extends Cell {
+        		/**
+        		 * applies if this cell's index is even
+        		 */
+        		:even
+        		/**
+        		 * applies if this cell's index is odd
+        		 */
+        		 :odd
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	Label extends Labeled {
+        		// TODO SUPPORT STYLE_CLASS
+        	}
+        	ListCell extends IndexedCell {
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	ListView extends Control {
+        		-fx-orientation [ horizontal | vertical ] default: horizontal;
+        		/**
+        		 * applies if this ListView is horizontal
+        		 */
+				:horizontal
+				/**
+				 * applies if this ListView is vertical
+				 */
+				:vertical
+				// TODO SUPPORT STYLE_CLASS
+        	}
+        	Menu extends Control {
+        		/**
+        		 * applies if this Menu is showing
+        		 */
+        		:showing
+				// TODO SUPPORT STYLE_CLASS        		
+        	}
+        	MenuBar extends Control {
+        		-fx-use-system-menu-bar <boolean> default: false;
+        		// TODO SUPPORT SUBSTRUCTURE
+        		// TODO SUPPORT STYLE_CLASS    
+        	}
+        	MenuButton extends ButtonBase {
+        		/**
+        		 * applies if the openVertically variable is true
+        		 */
+        		:openvertically
+        		/**
+        		 * applies if the showing variable is true
+        		 */
+        		:showing
+        		// TODO SUPPORT STYLE_CLASS    
+        	}
+        	MenuItem extends Control {
+        		// TODO SUPPORT STYLE_CLASS  
+        	}
+        	MenuItemBase extends Control {
+        		// ??? NO DESCRIPTION
+        	}
+        	Pagination extends Control {
+        		-fx-max-page-indicator-count double default: 10;
+        		-fx-arrows-visible <boolean> default: true;
+        		-fx-tooltip-visible <boolean> default: true;
+        		-fx-page-information-visible <boolean> default: true;
+        		-fx-page-information-alignment <boolean> default: true;
+        		// TODO SUPPORT SUBSTRUCTURE
+        		// TODO SUPPORT STYLE_CLASS  
+        	}
+        	PasswordField extends TextField {
+        		// TODO SUPPORT STYLE_CLASS  
+        	}
+        	PopupControl extends Control {
+        		// TODO SUPPORT STYLE_CLASS
+        	}
+        	ProgressBar extends ProgressIndicator {
+        		-fx-indeterminate-bar-length double default: 60;
+        		-fx-indeterminate-bar-escape <boolean> default: true;
+        		-fx-indeterminate-bar-flip <boolean> default: true;
+        		-fx-indeterminate-bar-animation-time double default: 2.0;
+        		// TODO SUPPORT SUBSTRUCTURE
+        		// TODO SUPPORT STYLE_CLASS
+        	}
+        	ProgressIndicator extends Control {
+        		// -fx-skin ????
+        		-fx-progress-color <paint> default: dodgerblue;
+        		/**
+        		 * applies if the indeterminate variable is false
+        		 */
+        		:determinate
+        		/**
+        		 * applies if the indeterminate variable is true
+        		 */
+        		:indetermindate
+        		// TODO SUPPORT SUBSTRUCTURE
+        		// TODO SUPPORT STYLE_CLASS
+        		
+        	}
+        	RadioButton extends ToggleButton {
+        		// TODO SUPPORT SUBSTRUCTURE
+        		// TODO SUPPORT STYLE_CLASS
+        	}
+        	RadioMenuItem extends Control {
+        		/**
+        		 * applies if this item is selected
+        		 */
+        		:selected
+        	}
+        	ScrollBar extends Control {
+        		-fx-orientation [ horizontal | vertical ] horizontal;
+        		-fx-block-increment double default: 10;
+        		-fx-unit-increment double default: 1;
+        		/**
+        		 * applies if this ScrollBar is vertical
+        		 */
+        		:vertical
+        		/**
+        		 * applies if this ScrollBar is horizontal
+        		 */
+        		:horizontal
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	ScrollPane extends Control {
+        		-fx-fit-to-width <boolean> default: false;
+        		-fx-fit-to-height <boolean> default: false;
+        		-fx-pannable <boolean> default: false;
+        		-fx-hbar-policy [ never | always | as-needed ] default: always;
+        		-fx-vbar-policy [ never | always | as-needed ] default: always;
+        		/**
+        		 * applies if this ScrollPane is pannable
+        		 */
+        		:pannable
+        		/**
+        		 * applies if this ScrollPane is fitToWidth
+        		 */
+        		:fitToWidth
+        		/**
+        		 * applies if this ScrollPane is fitToHeight
+        		 */
+        		:fitToHeight
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	Separator extends Control {
+        		-fx-orientation [ horizontal | vertical ] default:horizontal;
+        		-fx-halignment [ left | center | right ] default: center;
+        		-fx-valignment [ top | center | baseline | bottom ] default: center;
+        		/**
+        		 * applies if this Separator is horizontal
+        		 */
+        		:horizontal
+        		/**
+        		 * applies if this Separator is vertical
+        		 */
+        		:vertical 
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	Slider extends Control {
+        		-fx-orientation [ horizontal | vertical ] default: horizontal;
+        		-fx-show-tick-labels <boolean> default: false;
+        		-fx-show-tick-marks <boolean> default: false;
+        		-fx-major-tick-unit double default: 25;
+        		-fx-minor-tick-count double default: 3;
+//        		-fx-show-tick-labels <boolean> default: false;
+				-fx-snap-to-ticks <boolean> default: false;
+				-fx-block-increment int default: 10;
+				/**
+				 * applies if this Slider is horizontal
+				 */
+				:horizontal
+				/**
+				 * applies if this Slider is vertical
+				 */
+				:vertical
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	SplitMenuButton extends ButtonBase {
+        		// TODO SUPPORT STYLE_CLASS
+        	}
+        	SplitPane extends Control {
+        		-fx-orientation [ horizontal | vertical ] default: horizontal;
+        		/**
+        		 * applies if this Slider is horizontal
+        		 */
+        		:horizontal
+        		/**
+        		 * applies if this Slider is vertical
+        		 */
+        		:vertical
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	TabPane extends Control {
+        		-fx-tab-min-width int default: 0;
+        		-fx-tab-max-width int default: DOUBLE_MAX;
+        		-fx-tab-min-height int default: 0;
+        		-fx-tab-max-height int default: DOUBLE_MAX;
+        		/**
+        		 * applies if the side is top
+        		 */
+        		:top
+        		/**
+        		 * applies if the side is right
+        		 */
+        		:right
+        		/**
+        		 * applies if the side is bottom
+        		 */
+        		:bottom
+        		/**
+        		 * applies if the side is left
+        		 */
+        		:left
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	TableView extends Control {
+        		-fx-size <size> default: 20;
+        		/**
+        		 * applies if this TableView's selection model is cell selection
+        		 */
+        		:cell-selection
+        		/**
+        		 * applies if this TableView's selection model is row selection
+        		 */
+        		:row-selection
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	TextArea extends TextInputControl {
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	TextInputControl {
+        		-fx-font <font> default: null;
+        		-fx-text-fill <paint> default: black;
+        		-fx-prompt-text-fill <paint> default: gray;
+        		-fx-highlight-fill <paint> default: dodgerblue;
+        		-fx-highlight-text-fill <paint> default: white;
+        		-fx-display-caret <boolean> default: true;
+        		/**
+        		 * applies if this TextInputControl is not editable
+        		 */
+        		:readonly
+        	}
+        	TextField extends TextInputControl {
+        		-fx-alignment [ 
+        			top-left | top-center | top-right | center-left | 
+        			center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right
+        		] default: center-left;
+        	}
+        	TitledPane extends Labeled {
+        		-fx-animated <boolean> default:true;
+        		-fx-collapsible <boolean> default:true;
+        		/**
+        		 * applies if this TitledPane is expanded
+        		 */
+        		:expanded
+        		/**
+        		 * applies if this TitledPane is collapsed
+        		 */
+        		:collapsed
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	ToggleButton extends ButtonBase {
+        		/**
+        		 * applies if this ToggleButton is selected
+        		 */
+        		:selected
+        		// TODO SUPPORT STYLE_CLASS
+        	}
+        	ToolBar extends Control {
+        		-fx-orientation [ horizontal | vertical ] default: horizontal;
+        		/**
+        		 * applies if this ToolBar is horizontal
+        		 */
+        		:horizontal
+        		/**
+        		 * applies if this ToolBar is vertical
+        		 */
+        		:vertical
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	Tooltip extends Control {
+        		-fx-text-alignment [ left | center | right | justify ] default: left;
+        		-fx-text-overrun [ center-ellipsis | center-word-ellipsis | clip | ellipsis | leading-ellipsis | leading-word-ellipsis | word-ellipsis ] default: ellipsis;
+        		-fx-wrap-text <boolean> default: false;
+        		-fx-graphic <uri> default: null;
+        		-fx-content-display [ top | right | bottom | left | center | right | graphic-only | text-only ] default: left;
+        		-fx-graphic-text-gap <size> default: 4;
+        		-fx-font <font> default: null;
+        		// TODO SUPPORT STYLE_CLASS
+        		// TODO SUPPORT SUBSTRUCTURE
+        	}
+        	TreeCell extends IndexedCell {
+        		/**
+        		 * The amout of space to multiply by the treeItem.level to get the left margin
+        		 */
+        		-fx-indent <size> default: 10;
+        		:expanded
+        		:collapsed
+        		// TODO SUPPORT STYLE_CLASS
+        	}
+        	TreeView extends Control {
+        		
+        	}			
+		}
+		package charts {
+	    	AreaChart extends XYChart {
+	    		
+	    	}
+	    	BarChart extends XYChart {
+	    		-fx-bar-gap double default: 4;
+	    		-fx-category-gap double default: 10;
+	    	}
+	    	BubbleChart extends XYChart {
+	    		
+	    	}
+	    	Chart extends layout.Region {
+	    		-fx-legend-side [top|left|right|bottom] default: bottom;
+	    		-fx-legend-visible <boolean> default:true;
+	    		-fx-title-side [top|left|right|bottom] default: top;
+	    	}
+	    	LineChart extends XYChart {
+	    		-fx-create-symbols <boolean> default: true;
+	    	}
+	    	ScatterChart extends XYChart {
+	    		
+	    	}
+	    	PieChart extends Chart {
+	    		-fx-clockwise <boolean> default: true;
+	    		-fx-pie-label-visible <boolean> default: true;
+	    		-fx-label-line-length <size> default: 20;
+	    		-fx-start-angle double default: 0;
+	    	}
+	    	XYChart extends Chart {
+	    		-fx-alternative-column-fill-visible <boolean> default: true;
+	    		-fx-alternative-row-fill-visible <boolean> default: true;
+	    		-fx-horizontal-grid-lines-visible <boolean> default: true;
+	    		-fx-horizontal-zero-line-visible <boolean> default: true;
+	    		-fx-vertical-grid-lines-visible <boolean> default: true;
+	    		-fx-vertical-zero-line-visible <boolean> default: true;
+	    	}
+	    	Axis extends layout.Region {
+	    		-fx-side 	[top|left|right|bottom] default: null;	 
+				-fx-tick-length <size> default: 8; 	 
+				-fx-tick-label-font <font> default: 8;
+				-fx-tick-label-fill <paint> default: 8; 	 
+				-fx-tick-label-gap <size> default: 8; 	 
+				-fx-tick-mark-visible <boolean> default: true; 	 
+				-fx-tick-labels-visible <boolean> default: true; 	
+	    	}
+	    	ValueAxis extends Axis {
+	    		-fx-minor-tick-length <size> default: 5; 	 
+				-fx-minor-tick-count <size> default: 5; 	 
+				-fx-minor-tick-visible <boolean> default: true; 	 
+	    	}
+	    	NumberAxis extends ValueAxis {
+	    		/**
+	    		 * The value between each major tick mark in data units.
+	    		 */
+	    		-fx-tick-unit double default: 5;
+	    	}
+	    	CategoryAxis extends Axis {
+	    		/**
+	    		 * The margin between the axis start and the first tick-mark
+	    		 */
+	    		-fx-start-margin double default: 5;
+	    		/**
+	    		 * The margin between the axis start and the first tick-mark
+	    		 */
+				-fx-end-margin double default: 5;
+				/**
+				 * If this is true then half the space between ticks is left at the start and end
+				 */
+				-fx-gap-start-and-end <boolean> default: true;
+	    	}
+	    	Legend extends layout.Region {
+	    		
+	    	}
+		}
+	}
+}

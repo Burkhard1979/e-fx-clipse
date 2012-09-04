@@ -73,7 +73,7 @@ import org.osgi.framework.Bundle;
 import at.bestsolution.efxclipse.runtime.di.InjectingFXMLLoader;
 import at.bestsolution.efxclipse.runtime.dialogs.Dialog;
 import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog;
-import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog.QuestionCancel;
+import at.bestsolution.efxclipse.runtime.dialogs.MessageDialog.QuestionCancelResult;
 import at.bestsolution.efxclipse.runtime.panels.FillLayoutPane;
 import at.bestsolution.efxclipse.runtime.services.theme.Theme;
 import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
@@ -109,7 +109,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 	}
 
 	protected Save promptToSave(MWindow element, MPart dirtyPart, WWindow<Stage> widget) {
-		QuestionCancel r = MessageDialog.openQuestionCancelDialog((Stage) widget.getWidget(), "Unsaved changes", "'" + dirtyPart.getLocalizedLabel() + "' has been modified. Save changes?");
+		QuestionCancelResult r = MessageDialog.openQuestionCancelDialog((Stage) widget.getWidget(), "Unsaved changes", "'" + dirtyPart.getLocalizedLabel() + "' has been modified. Save changes?");
 
 		switch (r) {
 		case CANCEL:
@@ -360,6 +360,15 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		public void setHeight(@Named(UIEvents.Window.HEIGHT) int h) {
 			getWidget().setHeight(h);
 		}
+		
+		@Inject
+		public void setVisible(@Named(UIEvents.UIElement.VISIBLE) boolean visible) {
+			if( visible ) {
+				getWidget().show();
+			} else {
+				getWidget().hide();
+			}
+		}
 
 		@Override
 		public void addStyleClasses(List<String> classnames) {
@@ -405,7 +414,18 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Override
 		public void addChild(WLayoutedWidget<MWindowElement> widget) {
+			System.err.println("CALLED: " + contentPane + " => " + widget + " => " + widget.getStaticLayoutNode());
 			contentPane.getChildren().add((Node) widget.getStaticLayoutNode());
+		}
+		
+		@Override
+		public void removeChild(WLayoutedWidget<MWindowElement> widget) {
+			contentPane.getChildren().remove((Node) widget.getStaticLayoutNode());
+		}
+		
+		@Override
+		public void addChild(int idx, WLayoutedWidget<MWindowElement> widget) {
+			contentPane.getChildren().add(idx, (Node) widget.getStaticLayoutNode());
 		}
 	}
 

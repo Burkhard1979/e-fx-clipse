@@ -20,9 +20,14 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.e4.ui.model.application.ui.MContext;
+import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MGenericStack;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -33,14 +38,15 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallba
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPerspectiveStack;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPerspectiveStack.WStackItem;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPlaceholderWidget;
 
 @SuppressWarnings("restriction")
-public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<MPerspectiveStack, WPerspectiveStack<N,I,IC>> {
+public abstract class BasePerspectiveStackRenderer<N, I, IC> extends BaseRenderer<MPerspectiveStack, WPerspectiveStack<N, I, IC>> {
 	@Inject
 	RendererFactory factory;
-	
+
 	boolean inLazyInit;
-	
+
 	@PostConstruct
 	void init(IEventBroker eventBroker) {
 		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN, new EventHandler() {
@@ -51,8 +57,8 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 				if (changedObj instanceof MPerspectiveStack) {
 					MPerspectiveStack parent = (MPerspectiveStack) changedObj;
 					if (BasePerspectiveStackRenderer.this == parent.getRenderer()) {
-						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE); 
-						
+						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+
 						if (UIEvents.EventTypes.ADD.equals(eventType)) {
 							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.NEW_VALUE);
 							handleChildAddition(parent, (MPerspective) element);
@@ -83,22 +89,26 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			}
 		});
 		eventBroker.subscribe(UIEvents.UIElement.TOPIC_VISIBLE, new EventHandler() {
-			
+
 			@Override
 			public void handleEvent(Event event) {
 				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
-				if( changedObj.isToBeRendered() ) {
+				if (changedObj.isToBeRendered()) {
 					MUIElement parent = changedObj.getParent();
-					if( BasePerspectiveStackRenderer.this == parent.getRenderer() ) {
-						MPerspectiveStack stack = (MPerspectiveStack) parent;
-						String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
-						if (UIEvents.EventTypes.SET.equals(eventType)) {
-							Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-							if( newValue.booleanValue() ) {
-								//TODO Is childRendered not dangerous to call here??
-								childRendered(stack, changedObj);
-							} else {
-								hideChild(stack, changedObj);
+					// Can be null for e.g. detached windows!!!
+					if( parent != null ) {
+						if (BasePerspectiveStackRenderer.this == parent.getRenderer()) {
+							MPerspectiveStack stack = (MPerspectiveStack) parent;
+							String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+							if (UIEvents.EventTypes.SET.equals(eventType)) {
+								Boolean newValue = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+								if (newValue.booleanValue()) {
+									// TODO Is childRendered not dangerous to call
+									// here??
+									childRendered(stack, changedObj);
+								} else {
+									hideChild(stack, changedObj);
+								}
 							}
 						}
 					}
@@ -115,7 +125,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob((MPerspective) param.getDomElement(),true);
+					activatationJob((MPerspective) param.getDomElement(), true);
 				}
 
 				return null;
@@ -126,26 +136,27 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob((MPerspective) param.getDomElement(),false);
+					activatationJob((MPerspective) param.getDomElement(), false);
 				}
 
 				return null;
 			}
 		});
-		
+
 		widget.registerActivationCallback(new WCallback<Boolean, Void>() {
-			
+
 			@Override
 			public Void call(Boolean param) {
-				if( param.booleanValue() && element.getSelectedElement() != null ) {
+				if (param.booleanValue() && element.getSelectedElement() != null) {
 					activatationJob((MPerspective) element.getSelectedElement(), true);
 				}
 				return null;
 			}
 		});
 	}
-	
+
 	private void activatationJob(final MPerspective p, final boolean focus) {
+
 	}
 
 	@Override
@@ -157,7 +168,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 		for (MPerspective e : element.getChildren()) {
 			// Precreate the rendering context for the subitem
 			AbstractRenderer<MPerspective, ?> renderer = factory.getRenderer(e);
-			if (renderer != null && e.isToBeRendered() && e.isVisible() ) {
+			if (renderer != null && e.isToBeRendered() && e.isVisible()) {
 				WStackItem<I, IC> item = createStackItem(stack, e, renderer);
 				items.add(item);
 
@@ -183,10 +194,10 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 			}
 		}
 
-		if( element.getSelectedElement() != null ) {
+		if (element.getSelectedElement() != null) {
 			handleSelectedElement(element, null, element.getSelectedElement());
-		} else if( ! element.getChildren().isEmpty() ) {
-			//TODO Should this be done through the part service????
+		} else if (!element.getChildren().isEmpty()) {
+			// TODO Should this be done through the part service????
 			element.setSelectedElement(element.getChildren().get(0));
 		}
 	}
@@ -206,7 +217,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 					if (widget != null) {
 						return (IC) widget.getStaticLayoutNode();
 					}
-					return null;					
+					return null;
 				} finally {
 					inLazyInit = false;
 				}
@@ -216,7 +227,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 
 			@Override
 			public Boolean call(WStackItem<I, IC> param) {
-				return ! handleStackItemClose(e, param);
+				return !handleStackItemClose(e, param);
 			}
 		});
 
@@ -224,7 +235,7 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 	}
 
 	void handleChildAddition(MPerspectiveStack parent, MPerspective element) {
-		if( element.isToBeRendered() && element.isVisible() ) {
+		if (element.isToBeRendered() && element.isVisible()) {
 			int idx = getRenderedIndex(parent, element);
 
 			AbstractRenderer<MPerspective, ?> renderer = factory.getRenderer(element);
@@ -236,17 +247,20 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 	}
 
 	void handleChildRemove(MPerspectiveStack parent, MPerspective element) {
-		if( element.isToBeRendered() && element.isVisible() ) {
+		if (element.isToBeRendered() && element.isVisible()) {
 			hideChild(parent, element);
 		}
 	}
 
 	void handleSelectedElement(MPerspectiveStack parent, MPerspective oldElement, MPerspective newElement) {
+		hideElementRecursive(oldElement);
 		WPerspectiveStack<N, I, IC> stack = getWidget(parent);
 		int idx = 0;
-		for( WStackItem<I, IC> i : stack.getItems() ) {
-			if( i.getDomElement() == newElement ) {
+		for (WStackItem<I, IC> i : stack.getItems()) {
+			if (i.getDomElement() == newElement) {
 				stack.selectItem(idx);
+				// TODO Should we do the traversal before???
+				showElementRecursive(newElement);
 				break;
 			}
 			idx++;
@@ -254,46 +268,153 @@ public abstract class BasePerspectiveStackRenderer<N,I,IC> extends BaseRenderer<
 	}
 
 	boolean handleStackItemClose(MPerspective e, WStackItem<I, IC> item) {
-		return true;		
+		return true;
 	}
-	
+
 	@Override
 	public void childRendered(MPerspectiveStack parentElement, MUIElement element) {
-		if( inLazyInit || isInContentProcessing() || ! element.isVisible() ) {
+		if (inLazyInit || inContentProcessing(parentElement) || !element.isVisible()) {
 			return;
 		}
 
 		WPerspectiveStack<N, I, IC> stack = getWidget(parentElement);
-		for( WStackItem<I, IC> i : stack.getItems() ) {
-			if( i.getDomElement() == element ) {
+		for (WStackItem<I, IC> i : stack.getItems()) {
+			if (i.getDomElement() == element) {
 				return;
 			}
 		}
-		
+
 		int idx = getRenderedIndex(parentElement, element);
 		AbstractRenderer<MPerspective, ?> renderer = factory.getRenderer(element);
-		stack.addItems(idx, Collections.singletonList(createStackItem(stack, (MPerspective)element, renderer)));
+		stack.addItems(idx, Collections.singletonList(createStackItem(stack, (MPerspective) element, renderer)));
 	}
-	
+
 	@Override
 	public void hideChild(MPerspectiveStack container, MUIElement changedObj) {
 		WPerspectiveStack<N, I, IC> stack = getWidget(container);
-		if( stack == null ) {
+		if (stack == null) {
 			return;
 		}
-		
+
 		WStackItem<I, IC> item = null;
-		
-		for( WStackItem<I, IC> i : stack.getItems() ) {
-			if( i.getDomElement() == changedObj ) {
+
+		for (WStackItem<I, IC> i : stack.getItems()) {
+			if (i.getDomElement() == changedObj) {
 				item = i;
 				break;
 			}
 		}
-		
-		if( item != null ) {
+
+		if (item != null) {
 			List<WStackItem<I, IC>> l = Collections.singletonList(item);
-			stack.removeItems(l); 
+			stack.removeItems(l);
+		}
+	}
+	
+	private void hideElementRecursive(MUIElement element) {
+		if (element == null || element.getWidget() == null) {
+			return;
+		}
+		
+		if (element instanceof MPlaceholder) {
+			MPlaceholder ph = (MPlaceholder) element;
+			element = ph.getRef();
+		}
+
+		// Hide any floating windows
+		if (element instanceof MWindow && element.getWidget() != null) {
+			element.setVisible(false);
+		}
+		
+		if (element instanceof MGenericStack<?>) {
+			// For stacks only the currently selected elements are being hidden
+			MGenericStack<?> container = (MGenericStack<?>) element;
+			MUIElement curSel = container.getSelectedElement();
+			hideElementRecursive(curSel);
+		} else if (element instanceof MElementContainer<?>) {
+			MElementContainer<?> container = (MElementContainer<?>) element;
+			for (MUIElement childElement : container.getChildren()) {
+				hideElementRecursive(childElement);
+			}
+
+			// OK, now process detached windows
+			if (element instanceof MWindow) {
+				for (MWindow w : ((MWindow) element).getWindows()) {
+					hideElementRecursive(w);
+				}
+			} else if (element instanceof MPerspective) {
+				for (MWindow w : ((MPerspective) element).getWindows()) {
+					hideElementRecursive(w);
+				}
+			}
+		}
+	}
+
+	private void showElementRecursive(MUIElement element) {
+		if (!element.isToBeRendered()) {
+			return;
+		}
+
+		if (element instanceof MPlaceholder && element.getWidget() != null) {
+			MPlaceholder ph = (MPlaceholder) element;
+			MUIElement ref = ph.getRef();
+
+			if (ref.getCurSharedRef() != ph) {
+				ref.setCurSharedRef(ph);
+				WPlaceholderWidget placeholder = (WPlaceholderWidget) ph.getWidget();
+				@SuppressWarnings("unchecked")
+				WLayoutedWidget<MUIElement> content = (WLayoutedWidget<MUIElement>) ref.getWidget();
+				placeholder.setContent(content);
+			}
+
+			element = ref;
+		}
+
+		if (element instanceof MContext) {
+			IEclipseContext context = ((MContext) element).getContext();
+			if (context != null) {
+				IEclipseContext newParentContext = modelService.getContainingContext(element);
+				if (context.getParent() != newParentContext) {
+					context.setParent(newParentContext);
+				}
+			}
+		}
+
+		if (element instanceof MWindow && element.getWidget() != null) {
+			int visCount = 0;
+			for (MUIElement kid : ((MWindow) element).getChildren()) {
+				if (kid.isToBeRendered() && kid.isVisible())
+					visCount++;
+			}
+			if (visCount > 0)
+				element.setVisible(true);
+		}
+		
+		if (element instanceof MGenericStack) {
+			MGenericStack<?> container = (MGenericStack<?>) element;
+			MUIElement curSel = container.getSelectedElement();
+			if (curSel == null && container.getChildren().size() > 0) {
+				curSel = container.getChildren().get(0);
+			}
+			if (curSel != null) {
+				showElementRecursive(curSel);
+			}
+		} else if (element instanceof MElementContainer<?>) {
+			MElementContainer<?> container = (MElementContainer<?>) element;
+			for (MUIElement childElement : container.getChildren().toArray(new MUIElement[0])) {
+				showElementRecursive(childElement);
+			}
+			
+			// OK, now process detached windows
+			if (element instanceof MWindow) {
+				for (MWindow w : ((MWindow) element).getWindows()) {
+						showElementRecursive(w);
+				}
+			} else if (element instanceof MPerspective) {
+				for (MWindow w : ((MPerspective) element).getWindows()) {
+					showElementRecursive(w);
+				}
+			}
 		}
 	}
 }

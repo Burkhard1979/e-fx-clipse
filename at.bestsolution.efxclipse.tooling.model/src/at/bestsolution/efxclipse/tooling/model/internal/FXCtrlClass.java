@@ -54,6 +54,11 @@ public class FXCtrlClass implements IFXCtrlClass {
 		}
 	}
 	
+	@Override
+	public IType getType() {
+		return type;
+	}
+	
 	IJavaProject getJavaProject() {
 		return javaProject;
 	}

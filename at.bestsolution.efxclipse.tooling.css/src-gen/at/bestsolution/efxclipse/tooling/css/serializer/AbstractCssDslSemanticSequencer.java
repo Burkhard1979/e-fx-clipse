@@ -3,8 +3,9 @@ package at.bestsolution.efxclipse.tooling.css.serializer;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.importExpression;
@@ -56,16 +57,21 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 					return; 
 				}
 				else break;
-			case CssDslPackage.CSS_GENERIC_DECLARATION:
-				if(context == grammarAccess.getCss_declarationRule() ||
-				   context == grammarAccess.getCss_generic_declarationRule()) {
-					sequence_css_generic_declaration(context, (css_generic_declaration) semanticObject); 
+			case CssDslPackage.CSS_DECLARATION:
+				if(context == grammarAccess.getCss_declarationRule()) {
+					sequence_css_declaration(context, (css_declaration) semanticObject); 
 					return; 
 				}
 				else break;
 			case CssDslPackage.CSS_NEGATION:
 				if(context == grammarAccess.getCss_negationRule()) {
 					sequence_css_negation(context, (css_negation) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.CSS_PROPERTY:
+				if(context == grammarAccess.getCss_propertyRule()) {
+					sequence_css_property(context, (css_property) semanticObject); 
 					return; 
 				}
 				else break;
@@ -183,7 +189,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	 * Constraint:
 	 *     (property=css_property expression=expr prio=css_prio?)
 	 */
-	protected void sequence_css_generic_declaration(EObject context, css_generic_declaration semanticObject) {
+	protected void sequence_css_declaration(EObject context, css_declaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -203,6 +209,22 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getCss_negationAccess().getNotCss_notEnumRuleCall_1_0(), semanticObject.getNot());
 		feeder.accept(grammarAccess.getCss_negationAccess().getNegation_argCss_negation_argParserRuleCall_2_0(), semanticObject.getNegation_arg());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ValidPropertyIdent
+	 */
+	protected void sequence_css_property(EObject context, css_property semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.CSS_PROPERTY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.CSS_PROPERTY__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCss_propertyAccess().getNameValidPropertyIdentParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -262,7 +284,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (pseudoPage=pseudo_page? declarations+=css_generic_declaration? declarations+=css_generic_declaration*)
+	 *     (pseudoPage=pseudo_page? declarations+=css_declaration? declarations+=css_declaration*)
 	 */
 	protected void sequence_page(EObject context, page semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -328,7 +350,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	 *     (
 	 *         number=numberTerm | 
 	 *         stringValue=STRING | 
-	 *         identifier=css_property | 
+	 *         identifier=ValidPropertyIdent | 
 	 *         url=URLType | 
 	 *         function=function | 
 	 *         hexColor=HexColor

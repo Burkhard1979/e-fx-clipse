@@ -12,7 +12,10 @@ package at.bestsolution.efxclipse.tooling.model;
 
 import java.util.Map;
 
+import org.eclipse.jdt.core.IType;
+
 public interface IFXCtrlClass {
+	public IType getType();
 	public String getSimpleName();
 	public String getFQN();
 	public Map<String,IFXCtrlEventMethod> getAllEventMethods();

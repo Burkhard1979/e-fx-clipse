@@ -35,7 +35,7 @@ public class Application {
 	void init(Stage primaryStage, IEclipseContext context) {
 		ResourceSet resourceSet = new ResourceSetImpl();
 
-		File file = new File("/Users/tomschindl/Documents/e4_workspaces/efxclipse/examplee4/Application.e4xmi");
+		File file = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.testcases.e4/Application.e4xmi");
 		URI uri = URI.createFileURI(file.getAbsolutePath());
 		Resource resource = resourceSet.getResource(uri, true);
 
@@ -54,8 +54,8 @@ public class Application {
 		primaryStage.show();
 
 		primaryStage.setTitle("Hello JavaFX");
-		primaryStage.setWidth(300);
-		primaryStage.setHeight(300);
+		primaryStage.setWidth(800);
+		primaryStage.setHeight(600);
 		primaryStage.show();	
 	}
 }

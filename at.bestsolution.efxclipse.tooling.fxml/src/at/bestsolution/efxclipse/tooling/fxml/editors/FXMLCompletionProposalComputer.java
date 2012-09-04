@@ -176,8 +176,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				if (parent.getParentNode() != null) {
 					Node n = null;
 					
-					System.err.println(parent.getParentNode().getNodeName());
-					
 					if (Character.isUpperCase(parent.getParentNode().getNodeName().charAt(0)) || "fx:root".equals(parent.getParentNode().getNodeName())) {
 						n = parent.getParentNode();
 					} else if (parent.getParentNode().getParentNode() != null) {
@@ -185,8 +183,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							n = parent.getParentNode().getParentNode();
 						}
 					}
-					
-					System.err.println(n);
 					
 					if (n != null) {
 						IType containerType;
@@ -850,10 +846,8 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 		Document d = contentAssistRequest.getNode().getOwnerDocument();
 		Element e = d.getDocumentElement();
 		Attr a = e.getAttributeNodeNS("http://javafx.com/fxml", "controller");
-		System.err.println(a);
 		if (a != null) {
 			IType t = Util.findType(a.getValue(), d);
-			System.err.println(t);
 			if (t != null) {
 				IFXCtrlClass ctrlClass = FXPlugin.getClassmodel().findCtrlClass(t.getJavaProject(), t);
 				if (ctrlClass != null) {

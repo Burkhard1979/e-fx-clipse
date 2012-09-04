@@ -201,4 +201,12 @@
             </partition>
       </javaCompletionProposalComputer>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.JFXWorkbenchPreferencePage"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.javafx"
+            name="JavaFX">
+      </page>
+   </extension>
 </plugin>

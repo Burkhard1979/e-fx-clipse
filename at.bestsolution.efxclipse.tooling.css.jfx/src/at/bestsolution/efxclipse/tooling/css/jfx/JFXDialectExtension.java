@@ -24,7 +24,6 @@ import org.eclipse.ui.PlatformUI;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
@@ -359,10 +358,10 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION, -1) };
+					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION, -1) };
 				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
 					termGroup g = dec.getExpression().getTermGroups().get(0);
 					if( g.getTerms().size() == 1 ) {
@@ -394,7 +393,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 							return rv.toArray(new ValidationResult[0]);
 						}
 					} else if( g.getTerms().size() > 1 ) {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute only supports one size value", dec, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION, -1) };
+						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute only supports one size value", dec, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION, -1) };
 					}
 				}
 			}
@@ -422,10 +421,10 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION, -1) };
+					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION, -1) };
 				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
 					termGroup g = dec.getExpression().getTermGroups().get(0);
 					if( g.getTerms().size() == 1 || g.getTerms().size() == 4 ) {
@@ -503,7 +502,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				for( termGroup g : dec.getExpression().getTermGroups() ) {
 					if( g.getTerms().size() == 1 || g.getTerms().size() == 4 ) {
@@ -570,10 +569,10 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION, -1) };
+					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION, -1) };
 				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
 					List<ValidationResult> list = new ArrayList<ValidationResult>();
 					if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
@@ -626,7 +625,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			List<ValidationResult> rv = new ArrayList<CssDialectExtension.ValidationResult>();
 			if( dec.getExpression() != null ) {
 				for( termGroup g : dec.getExpression().getTermGroups() ) {
@@ -683,7 +682,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			List<ValidationResult> rv = new ArrayList<CssDialectExtension.ValidationResult>();
 			
 			if( dec.getExpression() != null ) {
@@ -728,10 +727,10 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION, -1) };
+					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple groups", dec, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION, -1) };
 				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
 					termGroup g = dec.getExpression().getTermGroups().get(0);
 					if( g.getTerms().size() == 1 ) {
@@ -752,7 +751,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 							return rList.toArray(new ValidationResult[0]);
 						}
 					} else {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute has to be 1 or 4 value", dec, CssDslPackage.Literals.CSS_GENERIC_DECLARATION__EXPRESSION, -1) };
+						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute has to be 1 or 4 value", dec, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION, -1) };
 					}
 				}
 			}
@@ -833,7 +832,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( isReference(dec) ) {
 				return new ValidationResult[0];
 			}
@@ -849,7 +848,7 @@ public class JFXDialectExtension implements CssDialectExtension {
 		return Arrays.asList("grad","deg","rad"); // order is important!!!
 	}
 	
-	public static boolean isReference(css_generic_declaration dec) {
+	public static boolean isReference(css_declaration dec) {
 		if( dec.getExpression().getTermGroups().size() == 1 ) {
 			termGroup g = dec.getExpression().getTermGroups().get(0);
 			if( g.getTerms().size() == 1 ) {

@@ -51,7 +51,7 @@ public class SupplementaryTabController implements Initializable {
 	@FXML TextField tagsField;
 
 	@FXML ListView<String> tagsList;
-
+ 
 	@FXML
 	void onVariableUp(ActionEvent event) {
 		
@@ -115,4 +115,8 @@ public class SupplementaryTabController implements Initializable {
 			tagsList.setItems(l);
 		}
 	}
+
+	@FXML public void onVariableAdd() {}
+
+	@FXML public void onTagAdd() {}
 }

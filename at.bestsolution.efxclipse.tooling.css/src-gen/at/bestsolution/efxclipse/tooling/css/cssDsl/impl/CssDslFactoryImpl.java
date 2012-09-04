@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
@@ -75,7 +78,7 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
       case CssDslPackage.SIMPLE_SELECTOR: return createsimple_selector();
       case CssDslPackage.SUB_SELECTOR: return createsub_selector();
       case CssDslPackage.CSS_DECLARATION: return createcss_declaration();
-      case CssDslPackage.CSS_GENERIC_DECLARATION: return createcss_generic_declaration();
+      case CssDslPackage.CSS_PROPERTY: return createcss_property();
       case CssDslPackage.CSS_NEGATION: return createcss_negation();
       case CssDslPackage.EXPR: return createexpr();
       case CssDslPackage.TERM_GROUP: return createtermGroup();
@@ -236,10 +239,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public css_generic_declaration createcss_generic_declaration()
+  public css_property createcss_property()
   {
-    css_generic_declarationImpl css_generic_declaration = new css_generic_declarationImpl();
-    return css_generic_declaration;
+    css_propertyImpl css_property = new css_propertyImpl();
+    return css_property;
   }
 
   /**

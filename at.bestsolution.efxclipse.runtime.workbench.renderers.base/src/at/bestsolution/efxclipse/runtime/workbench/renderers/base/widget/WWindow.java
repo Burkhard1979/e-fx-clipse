@@ -25,6 +25,8 @@ public interface WWindow<N> extends WWidget<MWindow> {
 	public void setBottomTrim(WLayoutedWidget<MTrimBar> trimBar);
 	
 	public void addChild(WLayoutedWidget<MWindowElement> widget);
+	public void addChild(int idx, WLayoutedWidget<MWindowElement> widget);
+	public void removeChild(WLayoutedWidget<MWindowElement> widget); 
 	
-	public void show(); 
+	public void show();
 }

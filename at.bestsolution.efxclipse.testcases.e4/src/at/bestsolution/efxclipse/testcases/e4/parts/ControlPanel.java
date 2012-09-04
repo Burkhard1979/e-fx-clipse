@@ -211,7 +211,40 @@ public class ControlPanel {
 						MElementContainer container = dd.getSelectionModel().getSelectedItem();
 						Object o = container.getChildren().remove(container.getChildren().size()-1);
 						container.getChildren().add(container.getChildren().size()-1, o);
-						System.err.println(container.getChildren());
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MPart> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MPart>, ListCell<MPart>>() {
+					
+					@Override
+					public ListCell<MPart> call(ListView<MPart> param) {
+						return new ListCell<MPart>() {
+							@Override
+							protected void updateItem(MPart item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getLocalizedLabel());
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(perspective == null ? application : perspective, null, MPart.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Detach");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MPart part = dd.getSelectionModel().getSelectedItem();
+						modelService.detach(part, 0, 0, 300, 300);
 					}
 				});
 				hbox.getChildren().add(b);

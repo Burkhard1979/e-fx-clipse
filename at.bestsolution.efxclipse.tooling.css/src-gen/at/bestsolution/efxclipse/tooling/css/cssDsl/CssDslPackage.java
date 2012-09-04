@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
@@ -455,32 +458,13 @@ public interface CssDslPackage extends EPackage
   int CSS_DECLARATION = 9;
 
   /**
-   * The number of structural features of the '<em>css declaration</em>' class.
+   * The feature id for the '<em><b>Property</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CSS_DECLARATION_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_generic_declarationImpl <em>css generic declaration</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_generic_declarationImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_generic_declaration()
-   * @generated
-   */
-  int CSS_GENERIC_DECLARATION = 10;
-
-  /**
-   * The feature id for the '<em><b>Property</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_GENERIC_DECLARATION__PROPERTY = CSS_DECLARATION_FEATURE_COUNT + 0;
+  int CSS_DECLARATION__PROPERTY = 0;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -489,7 +473,7 @@ public interface CssDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_GENERIC_DECLARATION__EXPRESSION = CSS_DECLARATION_FEATURE_COUNT + 1;
+  int CSS_DECLARATION__EXPRESSION = 1;
 
   /**
    * The feature id for the '<em><b>Prio</b></em>' attribute.
@@ -498,16 +482,44 @@ public interface CssDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_GENERIC_DECLARATION__PRIO = CSS_DECLARATION_FEATURE_COUNT + 2;
+  int CSS_DECLARATION__PRIO = 2;
 
   /**
-   * The number of structural features of the '<em>css generic declaration</em>' class.
+   * The number of structural features of the '<em>css declaration</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CSS_GENERIC_DECLARATION_FEATURE_COUNT = CSS_DECLARATION_FEATURE_COUNT + 3;
+  int CSS_DECLARATION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_propertyImpl <em>css property</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_propertyImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_property()
+   * @generated
+   */
+  int CSS_PROPERTY = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_PROPERTY__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>css property</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_PROPERTY_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_negationImpl <em>css negation</em>}' class.
@@ -1134,47 +1146,58 @@ public interface CssDslPackage extends EPackage
   EClass getcss_declaration();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration <em>css generic declaration</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>css generic declaration</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration
+   * @return the meta object for the containment reference '<em>Property</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getProperty()
+   * @see #getcss_declaration()
    * @generated
    */
-  EClass getcss_generic_declaration();
+  EReference getcss_declaration_Property();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration#getProperty <em>Property</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Property</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration#getProperty()
-   * @see #getcss_generic_declaration()
-   * @generated
-   */
-  EAttribute getcss_generic_declaration_Property();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration#getExpression <em>Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getExpression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration#getExpression()
-   * @see #getcss_generic_declaration()
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getExpression()
+   * @see #getcss_declaration()
    * @generated
    */
-  EReference getcss_generic_declaration_Expression();
+  EReference getcss_declaration_Expression();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration#getPrio <em>Prio</em>}'.
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getPrio <em>Prio</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Prio</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration#getPrio()
-   * @see #getcss_generic_declaration()
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getPrio()
+   * @see #getcss_declaration()
    * @generated
    */
-  EAttribute getcss_generic_declaration_Prio();
+  EAttribute getcss_declaration_Prio();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_property <em>css property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>css property</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_property
+   * @generated
+   */
+  EClass getcss_property();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_property#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_property#getName()
+   * @see #getcss_property()
+   * @generated
+   */
+  EAttribute getcss_property_Name();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation <em>css negation</em>}'.
@@ -1716,22 +1739,12 @@ public interface CssDslPackage extends EPackage
     EClass CSS_DECLARATION = eINSTANCE.getcss_declaration();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_generic_declarationImpl <em>css generic declaration</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_generic_declarationImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_generic_declaration()
-     * @generated
-     */
-    EClass CSS_GENERIC_DECLARATION = eINSTANCE.getcss_generic_declaration();
-
-    /**
-     * The meta object literal for the '<em><b>Property</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CSS_GENERIC_DECLARATION__PROPERTY = eINSTANCE.getcss_generic_declaration_Property();
+    EReference CSS_DECLARATION__PROPERTY = eINSTANCE.getcss_declaration_Property();
 
     /**
      * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
@@ -1739,7 +1752,7 @@ public interface CssDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CSS_GENERIC_DECLARATION__EXPRESSION = eINSTANCE.getcss_generic_declaration_Expression();
+    EReference CSS_DECLARATION__EXPRESSION = eINSTANCE.getcss_declaration_Expression();
 
     /**
      * The meta object literal for the '<em><b>Prio</b></em>' attribute feature.
@@ -1747,7 +1760,25 @@ public interface CssDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CSS_GENERIC_DECLARATION__PRIO = eINSTANCE.getcss_generic_declaration_Prio();
+    EAttribute CSS_DECLARATION__PRIO = eINSTANCE.getcss_declaration_Prio();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_propertyImpl <em>css property</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_propertyImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_property()
+     * @generated
+     */
+    EClass CSS_PROPERTY = eINSTANCE.getcss_property();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CSS_PROPERTY__NAME = eINSTANCE.getcss_property_Name();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_negationImpl <em>css negation</em>}' class.

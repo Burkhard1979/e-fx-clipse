@@ -27,6 +27,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
@@ -84,13 +85,23 @@ public abstract class Dialog {
 	
 	protected List<Button> createButtonsForBar() {
 		List<Button> rv = new ArrayList<Button>();
-		rv.add(createButtonForBar(CANCEL_BUTTON, "Cancel"));
-		rv.add(createButtonForBar(OK_BUTTON, "Ok"));
+		rv.add(createButtonForBar(CANCEL_BUTTON, "Cancel",isOkDefault(CANCEL_BUTTON),isCancelDefault(CANCEL_BUTTON)));
+		rv.add(createButtonForBar(OK_BUTTON, "Ok", isOkDefault(OK_BUTTON), isCancelDefault(OK_BUTTON)));
 		return rv;
 	}
 	
-	protected Button createButtonForBar(final int type, String label) {
+	protected boolean isOkDefault(int buttonId) {
+		return buttonId == OK_BUTTON;
+	}
+	
+	protected boolean isCancelDefault(int buttonId) {
+		return buttonId == CANCEL_BUTTON;
+	}
+	
+	protected Button createButtonForBar(final int type, String label, boolean defaultOkButton, boolean defaultCancel) {
 		Button b = new Button(label);
+		b.setDefaultButton(defaultOkButton);
+		b.setCancelButton(defaultCancel);
 		b.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -131,7 +142,7 @@ public abstract class Dialog {
 		Stage stage = new Stage(StageStyle.UTILITY);
 		stage.setTitle(title);
 // Causes problems when embedded in SWT		
-//		stage.initOwner(parent);
+		stage.initOwner(parent);
 		Parent content = createContents();
 		stage.setScene(new Scene(content));
 		return stage;
@@ -157,6 +168,10 @@ public abstract class Dialog {
 //		stage.sizeToScene();
 	}
 	
+	protected Modality getModality() {
+		return Modality.WINDOW_MODAL;
+	}
+	
 	public int open() {
 		if( stage == null ) {
 			stage = create();
@@ -173,6 +188,7 @@ public abstract class Dialog {
 			});
 		}
 		
+		stage.initModality(getModality());
 		if( blockOnOpen ) {
 			stage.showAndWait();			
 		} else {

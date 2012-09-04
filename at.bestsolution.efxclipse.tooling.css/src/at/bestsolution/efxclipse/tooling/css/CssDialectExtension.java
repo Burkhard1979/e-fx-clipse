@@ -27,7 +27,7 @@ import org.osgi.framework.Version;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 
@@ -96,7 +96,7 @@ public interface CssDialectExtension {
 		
 		public abstract List<Proposal> getInitialTermProposals();
 		
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			return new ValidationResult[0];
 		}
 	}
@@ -125,7 +125,7 @@ public interface CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
 					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
@@ -182,7 +182,7 @@ public interface CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
 					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
@@ -215,7 +215,7 @@ public interface CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
 					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
@@ -269,7 +269,7 @@ public interface CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
 					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
@@ -316,7 +316,7 @@ public interface CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
 					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
@@ -358,7 +358,7 @@ public interface CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				for( termGroup g : dec.getExpression().getTermGroups() ) {
 					if( g.getTerms().size() > 1 ) {
@@ -425,7 +425,7 @@ public interface CssDialectExtension {
 		}
 		
 		@Override
-		public ValidationResult[] validate(css_generic_declaration dec) {
+		public ValidationResult[] validate(css_declaration dec) {
 			if( dec.getExpression() != null ) {
 				if( dec.getExpression().getTermGroups().size() > 1 ) {
 					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };

@@ -1,0 +1,80 @@
+package at.bestsolution.efxclipse.tooling.modeleditor.objecteditors.bindingcontext
+
+import javafx.scene.layout.GridPane
+import javafx.scene.control.Label
+import javafx.scene.control.TextField
+import javafx.scene.control.ListView
+import javafx.scene.layout.AnchorPane
+import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane
+import javafx.scene.control.Button
+import at.bestsolution.efxclipse.runtime.panels.GridData
+
+component DefaultTab {
+	GridPane {
+		Label {
+			text : "Id",
+			static columnIndex : 0,
+			static rowIndex : 0			
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 0,
+			static hgrow : "ALWAYS",
+			static columnSpan : 2
+		},
+		Label {
+			text : "Name",
+			static columnIndex : 0,
+			static rowIndex : 1			
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 1,
+			static hgrow : "ALWAYS",
+			static columnSpan : 2
+		},
+		Label {
+			text : "Description",
+			static columnIndex : 0,
+			static rowIndex : 2			
+		},
+		TextField {
+			static columnIndex : 1,
+			static rowIndex : 2,
+			static hgrow : "ALWAYS",
+			static columnSpan : 2
+		},
+		Label {
+			text : "Child contexts",
+			static columnIndex : 0,
+			static rowIndex : 3,
+			static valignment : "TOP"
+		},
+		ListView {
+			static columnIndex : 1,
+			static rowIndex : 3,
+			static hgrow : "ALWAYS"
+		},
+		AnchorPane {
+			GridLayoutPane {
+				Button {
+					text : "Add...",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				Button {
+					text : "Remove...",
+					alignment : "CENTER_LEFT",
+					static constraint : GridData {
+						horizontalAlignment : "FILL"
+					}
+				},
+				static bottomAnchor : 1.0	
+			},
+			static columnIndex : 2,
+			static rowIndex : 3
+		}
+	}
+}

@@ -11,8 +11,6 @@
 package at.bestsolution.efxclipse.tooling.modeleditor;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,9 +34,12 @@ import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
+import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.impl.CommandsPackageImpl;
 import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
-import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
+import org.eclipse.e4.ui.model.application.ui.advanced.impl.AdvancedPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
@@ -46,7 +47,6 @@ import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.impl.UiPackageImpl;
-import org.eclipse.e4.ui.model.application.ui.menu.MDirectToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.ecore.EClass;
@@ -162,36 +162,6 @@ public class ModelEditor {
 		return treeView;
 	}
 	
-	private String getImage(MApplicationElement item) {
-		if( item instanceof MApplication ) {
-			return "Application.png";
-		} else if( item instanceof MTrimmedWindow ) {
-			return "WindowTrim.gif";
-		} else if( item instanceof MToolBar ) {
-			return "ToolBar.gif";
-		} else if( item instanceof MDirectToolItem ) {
-			return "DirectToolItem.gif";
-		} else if( item instanceof MPartSashContainer ) {
-			return ((MPartSashContainer) item).isHorizontal() ? "PartSashContainer.gif" : "PartSashContainer_vertical.gif";
-		} else if( item instanceof MPart ) {
-			return "Part.gif";
-		} else if( item instanceof MPartStack ) {
-			return "PartStack.gif";
-		} else if( item instanceof MTrimBar ) {
-			return "WindowTrim.gif";
-		}
-		return null;
-	}
-	
-//	private ObservableValue<String> createObservable(MApplicationElement item) {
-//		if( item instanceof MApplication ) {
-//			return AdapterFactory.adapt(EMFProperties.value(ApplicationPackageImpl.Literals.APPLICATION_ELEMENT__ELEMENT_ID).observe(item));
-//		} else if( item instanceof MWindow ) {
-//			return AdapterFactory.adapt(EMFProperties.value(UiPackageImpl.Literals.UI_LABEL__LABEL).observe(item));
-//		}
-//		return null;
-//	}
-	
 	static class ObservableFactoryImpl implements ObservableFactory<Object> {
 
 		@Override
@@ -220,12 +190,23 @@ public class ModelEditor {
 					l.add(new VirtualEntry("TrimBars", (MApplicationElement) parent,BasicPackageImpl.Literals.TRIMMED_WINDOW__TRIM_BARS));
 				}
 				return l;
+			} else if( parent instanceof MPerspective ) {
+				WritableList l = new WritableList();
+				l.add(new VirtualEntry("Windows", (MApplicationElement) parent, AdvancedPackageImpl.Literals.PERSPECTIVE__WINDOWS));
+				l.add(new VirtualEntry("Controls", (MApplicationElement) parent, UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN));
+				return l;
 			} else if( parent instanceof MPartSashContainer ) {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
 			} else if( parent instanceof MTrimBar ) {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
 			} else if( parent instanceof MToolBar ) {
 				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
+			} else if( parent instanceof MPerspectiveStack ) {
+				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
+			} else if( parent instanceof MPartStack ) {
+				return EMFProperties.list(UiPackageImpl.Literals.ELEMENT_CONTAINER__CHILDREN).observe(parent);
+			} else if( parent instanceof MCommand ) {
+				return EMFProperties.list(CommandsPackageImpl.Literals.COMMAND__PARAMETERS).observe(parent);
 			}
 			
 			return null;

@@ -1,0 +1,264 @@
+package javafx {
+	
+	boolean = true | false;
+	
+	/**
+	 * No whitespace is allowed between the number and units if provided.
+	 *  TODO wie bau ma so was ein!?
+	 * Sizes can either be a percentage or a length with units. If units are not specified then specified the 'px' is assumed. Some units are relative and others absolute.
+	 * 
+	 * Relative
+	 * <ul>
+	 * <li>px: pixels, relative to the viewing device</li>
+	 * <li>em: the 'font-size' of the relevant font</li>
+	 * <li>ex: the 'x-height' of the relevant font</li>
+	 * </ul>
+	 * Absolute
+	 * <ul>
+	 * <li>in: inches - 1 inch is equal to 2.54 centimeters.</li>
+	 * <li>cm: centimeters</li>
+	 * <li>mm: millimeters</li>
+	 * <li>pt: points - the points used by CSS 2.1 are equal to 1/72nd of an inch.</li>
+	 * <li>pc: picas - 1 pica is equal to 12 points.</li>
+	 * </ul>
+	 * Percentages
+	 * These are a percentage of some length, they are context sensitive so what they are relative to depends on where they are specified. Each property that supports a percentage should specify if percentage is supported and if it is what it is relative to.
+	 */
+	length =double[ px | mm | cm | in | pt | pc | em | ex ]?;
+	
+	size = <length> | <percentage>;
+	
+	/**
+	 * These are a percentage of some length, typically to the width or height of a node.
+	 */
+	percentage = double $%$;
+	
+	/**
+	 * An angle is a <number> with one of the following units.
+	 * <ul>
+	 * <li>deg: angle in degrees - all other angle units are converted to degrees.</li>
+	 * <li>rad: angle in radians</li>
+	 * <li>grad: angle in gradians</li>
+	 * <li>turn: angle in turns</li>
+	 * </ul>
+	 */
+	angle = double[ deg | rad | grad | turn];
+	
+	/**
+	 * A point is an {x,y} coordinate.
+	 */
+	point = [ [ <length> <length> ] | [ <percentage> | <percentage> ] ];
+	
+	/**
+	 * Stops are per W3C color-stop syntax.
+	 * In a series of <color-stop>, stop distance values must all be <percentage> or <length>. Furthermore, if <length> values are used, then the distance value for first and last stop in the series must be specified. This restriction may be removed in a future release.
+	 * 
+	 * "red, white 70%, blue" is valid since the distance for red and blue is assumed to be 0% and 100%, respectively.
+	 * "red 10, white, blue 90" is valid. Because distance for red and blue is 10 and 90, respectively, the distance for white can be calculated.
+	 * "red, white 70, blue" is not valid since distance units do not agree.
+	 * "red, white, blue" is valid. The stops are distributed evenly between 0% and 100%.
+	 */
+	color-stop = [ <color> [ <percentage> | <length>]? ];
+	
+	/**
+	 * <address> can be an absolute URI, for example:
+	 * url(http://example.com)
+	 * url('http://example.com')
+	 * url("http://example.com")
+	 * or it can be relative to the location of the CSS file.
+	 */
+	uri = url( address ); // TODO
+	
+	/**
+	 * JavaFX CSS currently supports the DropShadow and InnerShadow effects from the JavaFX platform. See the class documentation in javafx.scene.effect for further details about the semantics of the various effect parameters.
+	 */
+	effect = <effect-dropshadow> | <effect-innershadow>;
+	blur-type = [ gaussian | one-pass-box | three-pass-box | two-pass-box ];
+	/** 
+	 * A high-level effect that renders a shadow of the given content behind the content.
+	 * TODO params
+	 */
+	effect-dropshadow = dropshadow( <blur-type>, <color>, double, double, double, double);
+	/**
+	 * A high-level effect that renders a shadow inside the edges of the given content.
+	 * TODO params
+	 */
+	effect-innershadow = innershadow( <blur-type>, <color>, double, double, double, double);
+	
+	/**
+	 * The string name of the font family. An actual font family name available on the system can be used, or one of the following generic family names can be used:
+	 */
+	font-family = string | serif | sans-serif | cursive | fantasy | monospace;
+	/**
+	 * The size of the font, using the <size> syntax.
+	 */
+	font-size = <size>;
+	/**
+	 * The font's style, using the following syntax:
+	 */
+	font-style = normal | italic | oblique;
+	/**
+	 * The font's weight, using the following syntax:
+	 */
+	font-weight = normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+	/**
+	 * This font shorthand property can be used in place of the above properties. It uses the following syntax:
+	 */
+	font = [ <font-style> || <font-weight> ]? <font-size> <font-family>;
+	
+	color = <named-color> | <looked-up-color> | <rgb-color> | <hsb-color> | <color-function>;
+	named-color = 	aliceblue | anitquewhite | aqua | aquamarine |
+					azure | beige | bisque | black |
+					blanchedalmond | blue | blueviolet | brown |
+					burlywood | cadetblue | chartreuse | chocolate |
+					coral | cornflowerblue | cornsilk | crimson |
+					cyan | darkblue | darkcyan | darkgoldenrod |
+					darkgray | darkgreen | darkgrey | darkkhaki; // TODO finish this!
+	looked-up-color = reference_to_other_color_property; // TODO howto implement?!
+	
+	hashcolor = $#[0123456789ABCDEFabcdef]{6}$ | $#[0123456789ABCDEFabcdef]{3}$;
+	rgb-color = <hashcolor> | <rgb> | rgbp | <rgba>;
+	rgb = rgb(int(0->255), int(0->255), int(0->255) | <percentage>, <percentage>, <percentage>);
+	rgba = rgba(int(0->255), int(0->255), int(0->255), double(.0->1.0) | <percentage>, <percentage>, <percentage>, double(.0->1.0));
+	paint = <color> | <linear-gradient> | <radial-gradient>;
+	side-or-corner = [left | right] || [top | bottom];
+	linear-gradient = linear-gradient( [ [from <point> to <point>] | [ to <side-or-corner>], ]? [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
+	radial-gradient = radial-gradient([ focus-angle <angle>, ]? [ focus-distance <percentage>, ]? [ center <point>, ]? radius [ <length> | <percentage> ] [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
+	// TODO hsb colors
+	hsb-color = <hsb> | <hsba>;
+	hsb = hsb(double(.0->360.0), <percentage>, <percentage>);
+	hsba = hsba(double(.0->360.0), <percentage>, <percentage>, double(.0->1.0));
+	
+	color-function = <ladder> | <derive>;
+	ladder = ladder(<color>, <color-stop> [, <color-stop>]+);
+	derive = derive(<color>, <percentage>);
+	
+	
+	package scene {
+		blend-mode = [ add | blue | color-burn | color-dodge | darken | difference | exclusion | green | hard-light | lighten | multiply | overlay | red | screen | soft-light | src-atop | src-in | src-out | src-over ];
+		cursor = [ null | crosshair | default | hand | move | e-resize | h-resize | ne-resize | nw-resize | n-resize | se-resize | sw-resize | s-resize | w-resize | v-resize | text | wait ] | <uri>;
+		
+		
+		
+		
+		Node {
+			-fx-blend-mode <blend-mode> default: null;
+			-fx-cursor <cursor> default: null;
+			-fx-effect <effect> default: null;
+			-fx-focus-traversable <boolean> default: null;
+			-fx-opacity double(.0->1.0) default: 1.0;
+			-fx-rotate double default: 0;
+			-fx-scale-x double default: 1;
+			-fx-scale-y double default: 1;
+			-fx-scale-z double default: 1;
+			-fx-translate-x double default: 0;
+			-fx-translate-y double default: 0;
+			-fx-translate-z double default: 0;
+			
+			:disabled
+			:focused
+			:hover
+			:pressed
+			:show-mnemonic
+			
+		}
+		
+		Parent extends Node {
+		}
+		
+		Group extends Node {
+		}
+		
+		package image {
+			ImageView {
+				-fx-image <uri> default: null;
+			}
+		}
+		package layout {
+			bg-position = [ [ [ <size> | left | center | right ] [ <size> | top | center | bottom ]? ] | [ [ center | [ left | right ] <size>? ] || [ center | [ top | bottom ] <size>? ] ] ];
+			repeat-style = repeat-x | repeat-y | [repeat | space | round | stretch | no-repeat] [repeat | space | round | stretch | no-repeat]?; // NOTE: rewritten from  <repeat-style> = repeat-x | repeat-y | [repeat | space | round | stretch | no-repeat]{1,2} since we do not support {} yet
+			bg-size = [ <size> | auto ] [ <size> | auto ]? | cover | contain | stretch; // Note: rewritten from = [ <size> | auto ]{1,2} | cover | contain | stretch since we do not support {} yet
+			
+			border-style = <dash-style> [phase double]? [centered | inside | outside]? [line-join [miter double | bevel | round]]? [line-cap [square | butt | round]]?;
+			dash-style = [ none | solid | dotted | dashed | <segments> ];
+			segments = segments( double, double [, double]*);
+			
+			/**
+			 * A Region is an area of the screen that can contain other nodes and be styled
+			 * using CSS.
+			 * <p>
+			 * It can have multiple backgrounds under its contents and multiple borders
+			 * around its content. By default it's a rectangle with possible rounded corners,
+			 * depending on borders. It can be made into any shape by specifying the {@code shape}.
+			 * It is designed to support as much of the CSS3 specification for backgrounds
+			 * and borders as is relevant to JavaFX. The full specification is available at
+			 * <a href="http://www.w3.org/TR/css3-background/">css3-background</a>.
+			 * <p>
+			 * By default a Region inherits the layout behavior of its superclass, {@link Parent},
+			 * which means that it will resize any resizable child nodes to their preferred
+			 * size, but will not reposition them.  If an application needs more specific
+			 * layout behavior, then it should use one of the Region subclasses:
+			 * {@link StackPane}, {@link HBox}, {@link VBox}, {@link TilePane}, {@link FlowPane},
+			 * {@link BorderPane}, {@link GridPane}, or {@link AnchorPane}.
+			 * <p>
+			 * To implement more custom layout, a Region subclass must override
+			 * {@link #computePrefWidth(double) computePrefWidth}, {@link #computePrefHeight(double) computePrefHeight}, and {@link #layoutChildren() layoutChildren}.
+			 * Note that {@link #layoutChildren() layoutChildren} is called automatically by the scene graph while
+			 * executing a top-down layout pass and it should not be invoked directly by the
+			 * region subclass.
+			 * <p>
+			 * Region subclasses which layout their children will position nodes by setting
+			 * {@link setLayoutX(double) layoutX}/{@link setLayoutY(double) layoutY} and do not alter
+			 * {@link setTranslateX(double) translateX}/{@link setTranslateY(double) translateY}, which are reserved for
+			 * adjustments and animation.
+			 *
+			 */
+			Region extends Parent {
+				// BACKGROUND FILLS (see CSS Backgrounds and Borders Module Level 3: Backgrounds)
+				/** 
+				 * A series of paint values separated by commas.
+				 */
+				-fx-background-color <paint> [, <paint>]* default: null;
+				/**
+				 * A series of size values or sets of four size values, separated by commas. A single size value means all insets are the same. Otherwise, the four values for each inset are given in the order top, right, bottom, left. Each comma-separated value or set of values in the series applies to the corresponding background color.
+				 */
+				-fx-background-insets <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]* default: null;
+				// BACKGROUND IMAGES (see CSS Backgrounds and Borders Module Level 3: Background Image)
+				/**
+				 * A series of image URIs separated by commas.
+				 */
+				-fx-background-image <uri> [ , <uri> ]* default: null;
+				/**
+				 * A series of <bg-position> values separated by commas. Each bg-position item in the series applies to the corresponding image in the background-image series.
+				 */
+				-fx-background-position <bg-position> [ , <bg-position> ]* default: null;
+				-fx-background-repeat <repeat-style> [ , <repeat-style> ]* default: null;
+				-fx-background-size <bg-size> [ , <bg-size> ]*;
+				// STROKED BORDERS (see CSS Backgrounds and Borders Module Level 3: Borders)
+				/**
+				 * A series of paint values or sets of four paint values, separated by commas. For each item in the series, if a single paint value is specified, then that paint is used as the border for all sides of the region; and if a set of four paints is specified, they are used for the top, right, bottom, and left borders of the region, in that order. If the border is not rectangular, only the first paint value in the set is used.
+				 */
+				-fx-border-color <paint> | <paint> <paint> <paint> <paint> [ , [<paint> | <paint> <paint> <paint> <paint>] ]*;
+				/**
+				 * A series of inset or sets of four inset values, separated by commas. For each item in the series, a single inset value means that all insets are the same; and if a set of four inset values is specified, they are used for the top, right, bottom, and left edges of the region, in that order. Each item in the series of insets applies to the corresponding item in the series of border colors.
+				 */
+				-fx-border-insets <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+				/**
+				 * A series of radius or sets of four radius values, separated by commas. For each item in the series, a single radius value means that all corner radii are the same; and if a set of four radius values is specified, they are used as the radii of the top-left, top-right, bottom-right, and bottom-left corners, in that order. Each item in the series of radii applies to the corresponding item in the series of border colors.
+				 */
+				-fx-border-radius <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+				/**
+				 * A series of border style values, separated by commas. Each item in the series applies to the corresponding item in the series of border colors.
+				 * The segments dash-style defines a sequence representing the lengths of the dash segments. Alternate entries in the sequence represent the lengths of the opaque and transparent segments of the dashes. This corresponds to the strokeDashArray variable of Shape.
+				 * The optional phase parameter defines the point in the dashing pattern that will correspond to the beginning of the stroke. This corresponds to the strokeDashOffset variable of Shape.
+				 */
+				-fx-border-style <border-style> [ , <border-style> ]*;
+				/**
+				 * A series of width or sets of four width values, separated by commas. For each item in the series, a single width value means that all border widths are the same; and if a set of four width values is specified, they are used for the top, right, bottom, and left border widths, in that order. If the border is not rectangular, only the first width value is used. Each item in the series of widths applies to the corresponding item in the series of border colors.
+				 */
+				-fx-border-width <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+				// BORDER IMAGES (see CSS Backgrounds and Borders Module Level 3: Border Images)
+			}
+		}
+	}
+}

@@ -11,13 +11,21 @@
 package at.bestsolution.efxclipse.tooling.css.ui.outline;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
+import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
+import org.eclipse.xtext.ui.editor.outline.impl.EStructuralFeatureNode;
 
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_generic_declaration;
+import com.google.inject.Inject;
+
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 
@@ -26,6 +34,10 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
  * 
  */
 public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
+	
+	@Inject ILabelProvider lbl;
+	
+	
 //	protected void _createChildren(DocumentRootNode parentNode, EObject modelElement) {
 //		System.err.println("Create children for: " + modelElement);
 //		super._createChildren(parentNode, modelElement);
@@ -43,9 +55,39 @@ public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 //		super._createChildren(parent, element);
 //	}
 	
-	@Override
-	protected void _createChildren(IOutlineNode parentNode, EObject modelElement) {
-//		System.err.println("create children: " + parentNode + ", " + modelElement);
+	
+	protected void _createChildren(DocumentRootNode parentNode, stylesheet stylesheet) {
+		System.err.println("do parent");
+		for (ruleset ruleset : stylesheet.getRuleset())
+			createNode(parentNode, ruleset);
+	}
+	
+	protected void _createChildren(IOutlineNode parentNode, ruleset ruleset) {
+		System.err.println("do ruleset");
+		for (css_declaration d : ruleset.getDeclarations()) {
+			createNode(parentNode, d.getProperty());
+		}
+	}
+	
+	protected Image _image(ruleset ruleset) {
+		return lbl.getImage(ruleset);
+	}
+	
+	protected Image _image(css_property property) {
+		System.err.println("LBL is " + lbl);
+		return lbl.getImage(property);
+	}
+	
+	protected boolean _isLeaf(css_property property) {
+		return true;
+	}
+	
+	protected boolean _isLeaf(ruleset ruleset) {
+		return ruleset.getDeclarations().isEmpty();
+	}
+	
+	protected void xx_createChildren(IOutlineNode parentNode, EObject modelElement) {
+		System.err.println("create children: " + parentNode + ", " + modelElement);
 		if( modelElement instanceof ruleset ) {
 			ruleset s = (ruleset) modelElement;
 			
@@ -76,8 +118,8 @@ public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 				}
 				return;
 			}
-		} else if( modelElement instanceof css_generic_declaration ) {
-			css_generic_declaration dec = (css_generic_declaration) modelElement;
+		} else if( modelElement instanceof css_declaration ) {
+			css_declaration dec = (css_declaration) modelElement;
 			if( dec.getExpression().getTermGroups().size() == 1 ) {
 				for( term t : dec.getExpression().getTermGroups().get(0).getTerms() ) {
 					createNode(parentNode, t);

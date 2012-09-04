@@ -11,13 +11,34 @@
 package org.eclipse.pde.internal.core;
 
 import java.io.File;
-import java.util.*;
-import org.eclipse.core.resources.*;
-import org.eclipse.core.runtime.*;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.jdt.core.*;
-import org.eclipse.osgi.service.resolver.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+import java.util.TreeMap;
+import java.util.Vector;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.jdt.core.IClasspathAttribute;
+import org.eclipse.jdt.core.IClasspathContainer;
+import org.eclipse.jdt.core.IClasspathEntry;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.osgi.service.resolver.BaseDescription;
+import org.eclipse.osgi.service.resolver.BundleDescription;
+import org.eclipse.osgi.service.resolver.BundleSpecification;
+import org.eclipse.osgi.service.resolver.ExportPackageDescription;
+import org.eclipse.osgi.service.resolver.HostSpecification;
+import org.eclipse.osgi.service.resolver.ImportPackageSpecification;
+import org.eclipse.osgi.service.resolver.StateHelper;
 import org.eclipse.pde.core.build.IBuild;
 import org.eclipse.pde.core.build.IBuildEntry;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
@@ -25,11 +46,9 @@ import org.eclipse.pde.core.plugin.PluginRegistry;
 import org.eclipse.pde.internal.build.IBuildPropertiesConstants;
 import org.eclipse.pde.internal.core.ibundle.IBundlePluginModelBase;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
-import at.bestsolution.efxclipse.tooling.jdt.core.internal.JavaFXCorePlugin;
 import at.bestsolution.efxclipse.tooling.pde.adaptor.IClasspathContributor;
 import at.bestsolution.efxclipse.tooling.pde.adaptor.IClasspathContributor.Contribution;
 
@@ -136,8 +155,10 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 			
 			
 			for( IClasspathContributor cc: contributors ) {
-				System.err.println(cc);
 				for( Contribution c : cc.getDynamicContributions(desc) ) {
+					if( c.jarLocation == null ) {
+						continue;
+					}
 					Rule[] rs = new Rule[c.rules != null ? c.rules.length : 0];
 					for( int i = 0; i < rs.length; i++ ) {
 						Rule r = new Rule();
@@ -147,7 +168,21 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 						rs[i] = r;
 					}
 					
-					addLibraryEntry(c.jarLocation, c.sourceLocation, rs, c.attributes, entries);
+					IClasspathAttribute[] attr = null;
+					if( c.javaDocLocation != null ) {
+						if( c.attributes != null ) {
+							attr = new IClasspathAttribute[c.attributes.length+1];
+							System.arraycopy(c.attributes, 0, attr, 0, c.attributes.length);
+						} else {
+							attr = new IClasspathAttribute[1];
+						}
+						attr[attr.length-1] = JavaCore.newClasspathAttribute(IClasspathAttribute.JAVADOC_LOCATION_ATTRIBUTE_NAME, c.javaDocLocation);
+					} else {
+						attr = c.attributes;	
+					}
+					
+					
+					addLibraryEntry(c.jarLocation, c.sourceLocation, rs, attr, entries);
 				}
 			}
 			
@@ -297,6 +332,9 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 			if( cp.isActiveFor(desc) ) {
 				for( Contribution c : cp.getContributions(desc) ) {
 					IClasspathAttribute[] attributes = new IClasspathAttribute[0];
+					if( c.jarLocation == null ) {
+						continue;
+					}
 					
 					if( c.attributes == null ) {
 						if( c.javaDocLocation != null ) {

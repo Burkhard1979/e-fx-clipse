@@ -1,0 +1,187 @@
+/*******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Christoph Caks<ccaks@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
+grammar at.bestsolution.efxclipse.tooling.css.cssext.CssExtDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate cssExtDsl "http://www.bestsolution.at/efxclipse/tooling/css/cssext/CssExtDsl"
+
+
+CssExtension:
+	imports+=Import*
+	packageDef=PackageDefinition?
+//	packageDef=PackageDefinition?
+//	rule=CSSRuleSet
+;
+
+terminal PSEUDO: ':' (!' ') ID;
+
+terminal ID  : ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'-')*;
+
+terminal JDOC : '/**' -> '*/' ;
+terminal ML_COMMENT : '/*' (!'*') -> '*/' ;
+terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')? ;
+
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+	
+ValidID:
+	ID;
+
+QualifiedName:
+  ValidID (=>'.' ValidID)*;
+
+QualifiedNameWithWildCard :
+	QualifiedName  ('.' '*')?;
+	
+
+PackageDefinition:
+	'package' name=QualifiedName 
+	'{'
+		(
+		rules+=CSSRuleDefinition |
+		subpackages+=PackageDefinition |
+		elements+=ElementDefinition
+		)*
+	'}'
+;
+
+Doku:
+	content=JDOC
+;
+
+CSSBaseType returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	CSSType
+;
+
+CSSType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+	{CSSRangedIntType} type='int' '(' WS* from=INT WS* '->' WS* to=INT WS* ')' |
+	{CSSRangedDoubleType} type='double' '(' WS* from=DOUBLE WS* '->' WS* to=DOUBLE WS* ')' |
+	type='int' WS*|
+	type='double' WS*
+;
+
+//CSSRangedType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+//	
+//;
+
+ElementDefinition: 
+	{ElementDefinition}
+	doku=Doku?
+	name=QualifiedName ('extends' super+=[ElementDefinition|QualifiedName] (',' super+=[ElementDefinition|QualifiedName])*)?
+	'{'
+		(
+			properties+=PropertyDefinition |
+			pseudoClasses+=PseudoClassDefinition
+		)*
+	'}'
+;
+
+
+
+PropertyDefinition: 
+	{PropertyDefinition}
+	doku=Doku?
+	name=ID rule=CSSRuleOr ('default:' default=CSSDefaultValue)? ';'
+;
+
+PseudoClassDefinition:
+	{PseudoClassDefinition}
+	doku=Doku?
+	name=PSEUDO
+;
+
+CSSRuleId:
+	name=QualifiedName
+;
+
+CSSRuleRef hidden():
+	'<' ref=[CSSRuleId|QualifiedName] '>'
+;
+
+
+CSSRuleDefinition hidden(WS, SL_COMMENT, ML_COMMENT):
+	doku=Doku? 
+	name=CSSRuleId '='
+	(
+		rule=CSSRuleOr | 
+		func=CSSRuleFunc
+	)';'
+;
+
+CSSRuleFunc returns CSSRule hidden(ML_COMMENT, SL_COMMENT):
+	//{CSSRuleFunc} name=ValidID '(' WS* params+=CSSRuleOr ( ',' WS* params+=CSSRuleOr)* ')' // PARAMS disabled in favor of ',' as literal
+	{CSSRuleFunc} name=ValidID '(' WS* params=CSSRuleOr ')'
+;
+
+CSSRuleOr returns CSSRule hidden(WS, ML_COMMENT, SL_COMMENT):
+	 CSSRuleXor ({CSSRuleOr.ors+=current} ('|' ors+=CSSRuleXor)+)?
+;
+
+CSSRuleXor returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	 CSSRuleConcat ({CSSRuleXor.xors+=current} ('||' xors+=CSSRuleConcat)+)?
+;
+
+CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	 CSSRulePostfix ({CSSRuleConcat.conc+=current} (conc+=CSSRulePostfix)+)?
+;
+
+CSSRulePostfix returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	 CSSRulePrimary ({CSSRulePostfix.rule=current} cardinality=('*' |'+' | '?'))?
+;
+
+CSSRuleBracket returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	{CSSRuleBracket} '[' inner=CSSRuleOr ']'
+;
+
+//CSSRuleParenthesis returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+//	{CSSRuleParanthesis} '(' inner=CSSRuleOr ')'
+//;
+
+CSSRulePrimary returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+	CSSRuleRef |
+	CSSRuleBracket |
+//	CSSRuleParenthesis |
+	CSSRuleLiteral |
+	CSSRuleSymbol |
+	CSSBaseType |
+	CSSRuleRegex |
+	{CSSNumLiteral} value=INT
+;
+
+CSSRuleRegex returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	{CSSRuleRegex} regex=REGEX 
+;
+
+CSSRuleLiteral returns CSSRule:
+	{CSSRuleLiteral} value=ID
+;
+
+CSSRuleSymbol returns CSSRule:
+	{CSSRuleSymbol} symbol=(','|'%')
+;
+
+CSSDefaultValue:
+	{CSSDefaultValue} val=CSSRuleLiteral | ival=INT | dval=DOUBLE | sval=STRING
+;
+
+terminal INT returns ecore::EInt: '-'?('0'..'9')+;
+terminal DOUBLE returns ecore::EDouble: '-'?('0'..'9')*'.'('0'..'9')+;
+
+terminal REGEX: // TODO maybe directly return a Pattern
+			'$' (
+'a'..'z'|'A'..'Z'|'0'..'9'|'-'
+|','|'.'|'?'|'\''|':'|'\"'|'>'
+|'<'|'/'|'_'|'='|';'|'('|')'
+|'&'|'!'|'#'|'%'|'*'|'+'|'['|']'|'{'|'}')+ '$'
+;
+
