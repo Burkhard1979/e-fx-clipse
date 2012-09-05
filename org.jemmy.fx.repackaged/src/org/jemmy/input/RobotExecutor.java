@@ -283,13 +283,16 @@ class RobotExecutor {
     private void startServer() {
         try {
             prepareProperties();
+            
+            String classpath = findClasspath();
+            System.err.println("Running with classpath: " + classpath);
+            
             ProcessBuilder pb = new ProcessBuilder("java",
-                    "-cp", findClasspath(),
+                    "-cp", classpath,
                     "-D" + Environment.JEMMY_PROPERTIES_FILE_PROPERTY + 
                     "=" + props.getAbsolutePath(),
                     RobotExecutor.class.getName(),
                     Integer.toString(connectionPort));
-            System.err.println("HERE I AM: " + System.getProperty("java.class.path"));
             // TODO: Improve output
 //            System.out.println("Starting server");
 //            System.out.println("Command: " + pb.command());
