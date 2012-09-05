@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jemmy
+Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.jemmy
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: at.bestsolution.efxclipse.runtime.jemmy.internal.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.jemmy;bundle-version="3.0.0",
+ org.jemmy.awt;bundle-version="3.0.0",
+ org.jemmy.fx;bundle-version="3.0.0",
+ org.junit4;bundle-version="4.8.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: at.bestsolution.efxclipse.runtime.jemmy
