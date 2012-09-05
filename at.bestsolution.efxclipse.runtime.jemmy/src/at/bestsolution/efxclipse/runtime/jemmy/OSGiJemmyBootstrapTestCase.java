@@ -47,7 +47,7 @@ public class OSGiJemmyBootstrapTestCase {
 	public static void setUp() {
 		String tmp = System.getProperty("osgi.jemmyapp.id");
 
-		final List<String> brandingArgs = new ArrayList<>();
+		final List<String> brandingArgs = new ArrayList<String>();
 		if (System.getProperty("test.jemmy.product") != null) {
 			IConfigurationElement[] elements = RegistryFactory.getRegistry().getConfigurationElementsFor("org.eclipse.core.runtime", "products", System.getProperty("test.jemmy.product"));
 			if (elements != null && elements.length > 0) {
