@@ -140,8 +140,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
    <requires>
       <import feature="org.eclipse.xtext.sdk" version="2.3.0" match="greaterOrEqual"/>
       <import feature="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.1.0" match="greaterOrEqual"/>
-      <import feature="at.bestsolution.efxclipse.runtime.jemmy.feature" version="3.0.0.qualifier" match="greaterOrEqual"/>
-      <import feature="at.bestsolution.efxclipse.runtime.jemmy.junit.feature" version="0.1.0.qualifier" match="greaterOrEqual"/>
+      <import feature="at.bestsolution.efxclipse.runtime.jemmy.feature" version="3.0.0" match="greaterOrEqual"/>
+      <import feature="at.bestsolution.efxclipse.runtime.jemmy.junit.feature" version="0.1.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
