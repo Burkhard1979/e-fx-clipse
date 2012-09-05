@@ -6,7 +6,7 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: at.bestsolution.efxclipse.runtime.jemmy.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.junit4;bundle-version="4.8.1",
- org.eclipse.osgi.services;bundle-version="3.3.100"
+ org.eclipse.osgi.services;bundle-version="3.3.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: at.bestsolution.efxclipse.runtime.jemmy

@@ -101,7 +101,6 @@ public class OSGiJemmyBootstrapTestCase {
 
 				while (launched.get()) {
 					Thread.sleep(1000);
-					System.err.println("waiting");
 				}
 
 				Thread.sleep(1000);
