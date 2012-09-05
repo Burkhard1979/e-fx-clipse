@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.bestsolution.efxclipse.runtime.jemmy.feature"
-      label="Feature"
+      label="Jemmy Repackage for OSGi"
       version="3.0.0.qualifier">
 
    <description url="http://efxclipse.org">
