@@ -12,6 +12,7 @@ Bundle-ClassPath: JemmyAWTInput.jar,
  .,
  GlassImage.jar,
  GlassRobot.jar
+Eclipse-BundleShape: dir
 Import-Package: com.sun.glass.events;version="2.2.0",
  com.sun.glass.ui;version="2.2.0",
  com.sun.javafx.scene.control.skin;version="2.2.0",
