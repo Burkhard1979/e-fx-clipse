@@ -23,43 +23,42 @@ import at.bestsolution.efxclipse.runtime.jemmy.internal.Activator;
 public class OSGiJemmyBootstrapTestCase {
 
 	private static final String osName = System.getProperty("os.name").toLowerCase();;
-	
+
 	static {
-        if(osName.contains("mac os")) {
-            AWTRobotInputFactory.runInOtherJVM(true);
-        }
-    }
-	
+		if (osName.contains("mac os")) {
+			AWTRobotInputFactory.runInOtherJVM(true);
+		}
+	}
+
 	@BeforeClass
 	public static void setUp() {
-		String applicationId = System.getProperty("osgi.jemmyapp.id");
+		final String applicationId = System.getProperty("osgi.jemmyapp.id");
 		try {
-			Collection<ServiceReference<ApplicationDescriptor>> col = Activator.getContext().getServiceReferences(ApplicationDescriptor.class, "(service.pid="+applicationId+")");
-			
-			if( col.isEmpty() ) {
-				throw new IllegalStateException("There's no application with ID '"+applicationId+"' known.");
-			} else if(col.size() > 1) {
-				throw new IllegalStateException("There are more than 1 application with ID '"+applicationId+"' known.");
+			Collection<ServiceReference<ApplicationDescriptor>> col = Activator.getContext().getServiceReferences(ApplicationDescriptor.class, "(service.pid=" + applicationId + ")");
+
+			if (col.isEmpty()) {
+				System.err.println("There's no application with ID '" + applicationId + "' known.");
+				throw new IllegalStateException("There's no application with ID '" + applicationId + "' known.");
+			} else if (col.size() > 1) {
+				System.err.println("There are more than 1 application with ID '" + applicationId + "' known.");
+				throw new IllegalStateException("There are more than 1 application with ID '" + applicationId + "' known.");
 			} else {
-				for (ServiceReference<ApplicationDescriptor> ref : col) {
-					final ApplicationDescriptor desc = Activator.getContext().getService(ref);
-					new Thread() {
-						public void run() {
-							try {
-								desc.launch(null);
-							} catch (ApplicationException e) {
-								e.printStackTrace();
-							}		
+				ServiceReference<ApplicationDescriptor> ref = col.iterator().next();
+				final ApplicationDescriptor desc = Activator.getContext().getService(ref);
+				new Thread() {
+					public void run() {
+						try {
+							desc.launch(null);
+						} catch (ApplicationException e) {
+							System.err.println("Failed to launch application '" + applicationId + "'");
+							e.printStackTrace();
 						}
-					}.start();
-					
-					// FIXME Need to find a better way to wait
-					Thread.sleep(1000);
-					break;
-				}
+					}
+				}.start();
+
+				// FIXME Need to find a better way to wait
+				Thread.sleep(1000);
 			}
-			
-			
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
 		}
