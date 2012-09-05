@@ -36,5 +36,12 @@
    <feature url="features/at.bestsolution.efxclipse.tooling.pde4.feature_0.1.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.pde4.feature" version="0.1.0.qualifier">
       <category name="e(fx)clipse"/>
    </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.jemmy.feature_3.0.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.jemmy.feature" version="3.0.0.qualifier">
+      <category name="jemmy"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.jemmy.junit.feature_0.1.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.jemmy.junit.feature" version="0.1.0.qualifier">
+      <category name="e(fx)clipse"/>
+   </feature>
    <category-def name="e(fx)clipse" label="e(fx)clipse"/>
+   <category-def name="jemmy" label="Jemmy"/>
 </site>
