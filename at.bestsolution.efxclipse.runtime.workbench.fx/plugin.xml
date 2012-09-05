@@ -4,7 +4,10 @@
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
-      <application>
+      <application
+            cardinality="*"
+            thread="any"
+            visible="true">
          <run
                class="at.bestsolution.efxclipse.runtime.workbench.fx.E4Application">
          </run>
