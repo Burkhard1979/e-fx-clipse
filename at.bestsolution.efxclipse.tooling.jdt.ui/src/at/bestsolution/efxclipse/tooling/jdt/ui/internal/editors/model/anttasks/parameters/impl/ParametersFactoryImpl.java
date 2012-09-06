@@ -82,6 +82,7 @@ public class ParametersFactoryImpl extends EFactoryImpl implements ParametersFac
 			case ParametersPackage.INFO: return createInfo();
 			case ParametersPackage.ICON: return createIcon();
 			case ParametersPackage.SPLASH: return createSplash();
+			case ParametersPackage.KEY_VALUE_PAIR: return createKeyValuePair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -273,6 +274,16 @@ public class ParametersFactoryImpl extends EFactoryImpl implements ParametersFac
 	public Splash createSplash() {
 		SplashImpl splash = new SplashImpl();
 		return splash;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public KeyValuePair createKeyValuePair() {
+		KeyValuePairImpl keyValuePair = new KeyValuePairImpl();
+		return keyValuePair;
 	}
 
 	/**

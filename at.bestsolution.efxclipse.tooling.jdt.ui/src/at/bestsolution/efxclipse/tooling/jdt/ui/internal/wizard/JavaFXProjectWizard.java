@@ -118,6 +118,7 @@ public class JavaFXProjectWizard extends NewElementWizard implements IExecutable
 			IFile buildFile = fSecondPage.getJavaProject().getProject().getFile(new Path("build.fxbuild"));
 			try {
 				StringBuilder b = new StringBuilder();
+				// TODO write as xmi file
 				b.append("jfx.build.stagingdir = ${workspace}/"+fFirstPage.getProjectName()+"/build");
 				b.append(System.getProperty("line.separator")); 
 				b.append("jfx.build.apptitle = " + fFirstPage.getProjectName());

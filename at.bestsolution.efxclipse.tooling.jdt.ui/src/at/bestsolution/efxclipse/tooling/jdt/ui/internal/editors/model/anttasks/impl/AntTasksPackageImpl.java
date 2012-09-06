@@ -199,6 +199,24 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAntTask_Files() {
+		return (EReference)antTaskEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAntTask_Fonts() {
+		return (EReference)antTaskEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDeploy() {
 		return deployEClass;
 	}
@@ -499,6 +517,8 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 		createEAttribute(antTaskEClass, ANT_TASK__BUILD_DIRECTORY);
 		createEReference(antTaskEClass, ANT_TASK__MANIFEST_ENTRIES);
 		createEAttribute(antTaskEClass, ANT_TASK__CSS_TO_BIN);
+		createEReference(antTaskEClass, ANT_TASK__FILES);
+		createEReference(antTaskEClass, ANT_TASK__FONTS);
 
 		deployEClass = createEClass(DEPLOY);
 		createEAttribute(deployEClass, DEPLOY__EMBEDJNLP);
@@ -577,6 +597,8 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 		initEAttribute(getAntTask_BuildDirectory(), ecorePackage.getEString(), "buildDirectory", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAntTask_ManifestEntries(), theParametersPackage.getParam(), null, "manifestEntries", null, 0, -1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAntTask_CssToBin(), ecorePackage.getEBoolean(), "cssToBin", null, 0, 1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAntTask_Files(), theParametersPackage.getKeyValuePair(), null, "files", null, 0, -1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAntTask_Fonts(), theParametersPackage.getKeyValuePair(), null, "fonts", null, 0, -1, AntTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deployEClass, Deploy.class, "Deploy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDeploy_Embedjnlp(), ecorePackage.getEBoolean(), "embedjnlp", "false", 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

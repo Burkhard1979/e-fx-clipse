@@ -12,29 +12,25 @@
  */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
-
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,6 +45,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTaskImpl#getBuildDirectory <em>Build Directory</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTaskImpl#getManifestEntries <em>Manifest Entries</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTaskImpl#isCssToBin <em>Css To Bin</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTaskImpl#getFiles <em>Files</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTaskImpl#getFonts <em>Fonts</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,6 +132,26 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * @ordered
 	 */
 	protected boolean cssToBin = CSS_TO_BIN_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getFiles() <em>Files</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFiles()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<KeyValuePair> files;
+
+	/**
+	 * The cached value of the '{@link #getFonts() <em>Fonts</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFonts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<KeyValuePair> fonts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -342,6 +360,30 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<KeyValuePair> getFiles() {
+		if (files == null) {
+			files = new EObjectContainmentEList<KeyValuePair>(KeyValuePair.class, this, AntTasksPackage.ANT_TASK__FILES);
+		}
+		return files;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<KeyValuePair> getFonts() {
+		if (fonts == null) {
+			fonts = new EObjectContainmentEList<KeyValuePair>(KeyValuePair.class, this, AntTasksPackage.ANT_TASK__FONTS);
+		}
+		return fonts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -353,6 +395,10 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 				return basicSetSignjar(null, msgs);
 			case AntTasksPackage.ANT_TASK__MANIFEST_ENTRIES:
 				return ((InternalEList<?>)getManifestEntries()).basicRemove(otherEnd, msgs);
+			case AntTasksPackage.ANT_TASK__FILES:
+				return ((InternalEList<?>)getFiles()).basicRemove(otherEnd, msgs);
+			case AntTasksPackage.ANT_TASK__FONTS:
+				return ((InternalEList<?>)getFonts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -377,6 +423,10 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 				return getManifestEntries();
 			case AntTasksPackage.ANT_TASK__CSS_TO_BIN:
 				return isCssToBin();
+			case AntTasksPackage.ANT_TASK__FILES:
+				return getFiles();
+			case AntTasksPackage.ANT_TASK__FONTS:
+				return getFonts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -409,6 +459,14 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 			case AntTasksPackage.ANT_TASK__CSS_TO_BIN:
 				setCssToBin((Boolean)newValue);
 				return;
+			case AntTasksPackage.ANT_TASK__FILES:
+				getFiles().clear();
+				getFiles().addAll((Collection<? extends KeyValuePair>)newValue);
+				return;
+			case AntTasksPackage.ANT_TASK__FONTS:
+				getFonts().clear();
+				getFonts().addAll((Collection<? extends KeyValuePair>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -439,6 +497,12 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 			case AntTasksPackage.ANT_TASK__CSS_TO_BIN:
 				setCssToBin(CSS_TO_BIN_EDEFAULT);
 				return;
+			case AntTasksPackage.ANT_TASK__FILES:
+				getFiles().clear();
+				return;
+			case AntTasksPackage.ANT_TASK__FONTS:
+				getFonts().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -463,6 +527,10 @@ public class AntTaskImpl extends EObjectImpl implements AntTask {
 				return manifestEntries != null && !manifestEntries.isEmpty();
 			case AntTasksPackage.ANT_TASK__CSS_TO_BIN:
 				return cssToBin != CSS_TO_BIN_EDEFAULT;
+			case AntTasksPackage.ANT_TASK__FILES:
+				return files != null && !files.isEmpty();
+			case AntTasksPackage.ANT_TASK__FONTS:
+				return fonts != null && !fonts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

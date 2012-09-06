@@ -130,13 +130,31 @@ public interface AntTasksPackage extends EPackage {
 	int ANT_TASK__CSS_TO_BIN = 5;
 
 	/**
+	 * The feature id for the '<em><b>Files</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANT_TASK__FILES = 6;
+
+	/**
+	 * The feature id for the '<em><b>Fonts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANT_TASK__FONTS = 7;
+
+	/**
 	 * The number of structural features of the '<em>Ant Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANT_TASK_FEATURE_COUNT = 6;
+	int ANT_TASK_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl <em>Deploy</em>}' class.
@@ -514,6 +532,28 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAntTask_CssToBin();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getFiles <em>Files</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Files</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getFiles()
+	 * @see #getAntTask()
+	 * @generated
+	 */
+	EReference getAntTask_Files();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getFonts <em>Fonts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Fonts</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask#getFonts()
+	 * @see #getAntTask()
+	 * @generated
+	 */
+	EReference getAntTask_Fonts();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy <em>Deploy</em>}'.
@@ -921,6 +961,22 @@ public interface AntTasksPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANT_TASK__CSS_TO_BIN = eINSTANCE.getAntTask_CssToBin();
+
+		/**
+		 * The meta object literal for the '<em><b>Files</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANT_TASK__FILES = eINSTANCE.getAntTask_Files();
+
+		/**
+		 * The meta object literal for the '<em><b>Fonts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANT_TASK__FONTS = eINSTANCE.getAntTask_Fonts();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl <em>Deploy</em>}' class.

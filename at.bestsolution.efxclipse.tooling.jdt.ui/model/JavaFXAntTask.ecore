@@ -13,6 +13,10 @@
         eType="#//parameters/Param" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cssToBin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="files" upperBound="-1"
+        eType="#//parameters/KeyValuePair" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fonts" upperBound="-1"
+        eType="#//parameters/KeyValuePair" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deploy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="embedjnlp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -178,6 +182,10 @@
     <eClassifiers xsi:type="ecore:EEnum" name="SplashMode">
       <eLiterals name="any" literal="any"/>
       <eLiterals name="webstart" literal="webstart"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="KeyValuePair">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

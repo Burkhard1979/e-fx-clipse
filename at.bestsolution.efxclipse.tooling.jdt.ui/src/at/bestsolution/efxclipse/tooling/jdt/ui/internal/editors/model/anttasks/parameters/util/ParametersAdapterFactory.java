@@ -138,6 +138,10 @@ public class ParametersAdapterFactory extends AdapterFactoryImpl {
 				return createSplashAdapter();
 			}
 			@Override
+			public Adapter caseKeyValuePair(KeyValuePair object) {
+				return createKeyValuePairAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -364,6 +368,20 @@ public class ParametersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSplashAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair <em>Key Value Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair
+	 * @generated
+	 */
+	public Adapter createKeyValuePairAdapter() {
 		return null;
 	}
 

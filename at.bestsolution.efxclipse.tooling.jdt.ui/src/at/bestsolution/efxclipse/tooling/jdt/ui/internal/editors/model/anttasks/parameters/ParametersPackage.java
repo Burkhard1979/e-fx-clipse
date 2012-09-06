@@ -820,6 +820,43 @@ public interface ParametersPackage extends EPackage {
 	int SPLASH_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.KeyValuePairImpl
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getKeyValuePair()
+	 * @generated
+	 */
+	int KEY_VALUE_PAIR = 15;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_VALUE_PAIR__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_VALUE_PAIR__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Key Value Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_VALUE_PAIR_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSetType <em>File Set Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -827,7 +864,7 @@ public interface ParametersPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getFileSetType()
 	 * @generated
 	 */
-	int FILE_SET_TYPE = 15;
+	int FILE_SET_TYPE = 16;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.IconType <em>Icon Type</em>}' enum.
@@ -837,7 +874,7 @@ public interface ParametersPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getIconType()
 	 * @generated
 	 */
-	int ICON_TYPE = 16;
+	int ICON_TYPE = 17;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode <em>Splash Mode</em>}' enum.
@@ -847,7 +884,7 @@ public interface ParametersPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getSplashMode()
 	 * @generated
 	 */
-	int SPLASH_MODE = 17;
+	int SPLASH_MODE = 18;
 
 
 	/**
@@ -1573,6 +1610,38 @@ public interface ParametersPackage extends EPackage {
 	EAttribute getSplash_Mode();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair <em>Key Value Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Key Value Pair</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair
+	 * @generated
+	 */
+	EClass getKeyValuePair();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair#getKey()
+	 * @see #getKeyValuePair()
+	 * @generated
+	 */
+	EAttribute getKeyValuePair_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair#getValue()
+	 * @see #getKeyValuePair()
+	 * @generated
+	 */
+	EAttribute getKeyValuePair_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSetType <em>File Set Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2189,6 +2258,32 @@ public interface ParametersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SPLASH__MODE = eINSTANCE.getSplash_Mode();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.KeyValuePairImpl
+		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getKeyValuePair()
+		 * @generated
+		 */
+		EClass KEY_VALUE_PAIR = eINSTANCE.getKeyValuePair();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute KEY_VALUE_PAIR__KEY = eINSTANCE.getKeyValuePair_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute KEY_VALUE_PAIR__VALUE = eINSTANCE.getKeyValuePair_Value();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSetType <em>File Set Type</em>}' enum.

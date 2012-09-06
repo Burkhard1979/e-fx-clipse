@@ -7,6 +7,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.IconType;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Info;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
@@ -14,6 +15,12 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.AbstractAntHand
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.SetupDirectory;
 import com.google.common.base.Objects;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.apache.commons.lang.text.StrSubstitutor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
@@ -186,6 +193,9 @@ public class EMFAntTemplate {
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("<file name=\"${java.home}\\..\\lib\\ant-javafx.jar\"/>");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("<file name=\"${java.home}\\lib\\jfxrt.jar\"/>");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("</filelist>");
@@ -578,9 +588,123 @@ public class EMFAntTemplate {
           _builder.newLineIfNotEmpty();
         }
       }
-      _builder.append("\t\t");
+      _builder.append("\t");
       _builder.append("/>");
       _builder.newLine();
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<mkdir dir=\"build/classes/META-INF\" />");
+      _builder.newLine();
+      {
+        EList<KeyValuePair> _fonts = task.getFonts();
+        boolean _isEmpty = _fonts.isEmpty();
+        boolean _not = (!_isEmpty);
+        if (_not) {
+          _builder.append("\t");
+          _builder.append("<propertyfile file=\"build/classes/META-INF/fonts.mf\" comment=\"Fonts\">");
+          _builder.newLine();
+          {
+            EList<KeyValuePair> _fonts_1 = task.getFonts();
+            for(final KeyValuePair f : _fonts_1) {
+              _builder.append("\t");
+              _builder.append("<entry key=\"");
+              String _key = f.getKey();
+              _builder.append(_key, "	");
+              _builder.append("\" value=\"/");
+              String _value = f.getValue();
+              _builder.append(_value, "	");
+              _builder.append("\"/>");
+              _builder.newLineIfNotEmpty();
+            }
+          }
+          _builder.append("\t");
+          _builder.append("</propertyfile>");
+          _builder.newLine();
+        }
+      }
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      HashMap<String,List<String>> _hashMap = new HashMap<String,List<String>>();
+      final HashMap<String,List<String>> map = _hashMap;
+      _builder.newLineIfNotEmpty();
+      {
+        EList<KeyValuePair> _files = task.getFiles();
+        for(final KeyValuePair f_1 : _files) {
+          {
+            String _key_1 = f_1.getKey();
+            boolean _containsKey = map.containsKey(_key_1);
+            boolean _not_1 = (!_containsKey);
+            if (_not_1) {
+              _builder.append("\t");
+              String _key_2 = f_1.getKey();
+              ArrayList<String> _arrayList = new ArrayList<String>();
+              List<String> _put = map.put(_key_2, _arrayList);
+              _builder.append(_put, "	");
+              _builder.newLineIfNotEmpty();
+            }
+          }
+          _builder.append("\t");
+          _builder.newLine();
+          _builder.append("\t");
+          String _key_3 = f_1.getKey();
+          List<String> _get = map.get(_key_3);
+          String _value_1 = f_1.getValue();
+          final boolean nix = _get.add(_value_1);
+          _builder.newLineIfNotEmpty();
+        }
+      }
+      _builder.append("\t");
+      _builder.newLine();
+      {
+        Set<String> _keySet = map.keySet();
+        for(final String folderName : _keySet) {
+          _builder.append("\t");
+          _builder.append("<mkdir dir=\"build/classes/META-INF/");
+          _builder.append(folderName, "	");
+          _builder.append("\" />");
+          _builder.newLineIfNotEmpty();
+          {
+            List<String> _get_1 = map.get(folderName);
+            for(final String serviceFile : _get_1) {
+              _builder.append("\t");
+              _builder.append("<copy ");
+              _builder.newLine();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("todir=\"build/classes/META-INF/");
+              _builder.append(folderName, "		");
+              _builder.append("\"");
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("\t");
+              HashMap<String,String> _hashMap_1 = new HashMap<String,String>();
+              final Map<String,String> replacements = _hashMap_1;
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("\t");
+              String _put_1 = replacements.put("workspace", "build/classes");
+              _builder.append(_put_1, "		");
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("\t");
+              StrSubstitutor _strSubstitutor = new StrSubstitutor(replacements);
+              final StrSubstitutor sub = _strSubstitutor;
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("file=\"");
+              String _replace_1 = sub.replace(serviceFile);
+              _builder.append(_replace_1, "		");
+              _builder.append("\"");
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("/>");
+              _builder.newLine();
+            }
+          }
+        }
+      }
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
@@ -655,8 +779,8 @@ public class EMFAntTemplate {
           String _name = a.getName();
           _builder.append(_name, "			");
           _builder.append("\" value=\"");
-          String _value = a.getValue();
-          _builder.append(_value, "			");
+          String _value_2 = a.getValue();
+          _builder.append(_value_2, "			");
           _builder.append("\"/>");
           _builder.newLineIfNotEmpty();
         }
@@ -670,65 +794,76 @@ public class EMFAntTemplate {
       _builder.append("\t");
       _builder.newLine();
       {
+        boolean _and = false;
         SignJar _signjar = task.getSignjar();
         String _keystore = _signjar.getKeystore();
         boolean _notEquals_6 = (!Objects.equal(_keystore, null));
-        if (_notEquals_6) {
+        if (!_notEquals_6) {
+          _and = false;
+        } else {
+          SignJar _signjar_1 = task.getSignjar();
+          String _keystore_1 = _signjar_1.getKeystore();
+          int _length = _keystore_1.length();
+          boolean _greaterThan = (_length > 0);
+          _and = (_notEquals_6 && _greaterThan);
+        }
+        if (_and) {
           _builder.append("\t");
           _builder.append("<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->");
           _builder.newLine();
           _builder.append("\t");
-          _builder.append("<fx:signjar\"");
+          _builder.append("<fx:signjar ");
           _builder.newLine();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" keystore=\"");
-          SignJar _signjar_1 = task.getSignjar();
-          String _keystore_1 = _signjar_1.getKeystore();
-          _builder.append(_keystore_1, "		");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("\" alias=\"");
+          _builder.append("keystore=\"");
           SignJar _signjar_2 = task.getSignjar();
-          String _alias = _signjar_2.getAlias();
-          _builder.append(_alias, "		");
-          _builder.append(" ");
+          String _keystore_2 = _signjar_2.getKeystore();
+          _builder.append(_keystore_2, "		");
+          _builder.append("\" ");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" keypass=\"");
+          _builder.append("alias=\"");
           SignJar _signjar_3 = task.getSignjar();
-          String _keypass = _signjar_3.getKeypass();
-          _builder.append(_keypass, "		");
-          _builder.append(" ");
+          String _alias = _signjar_3.getAlias();
+          _builder.append(_alias, "		");
+          _builder.append("\" ");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" storepass=\"");
+          _builder.append("keypass=\"");
           SignJar _signjar_4 = task.getSignjar();
-          String _storepass = _signjar_4.getStorepass();
+          String _keypass = _signjar_4.getKeypass();
+          _builder.append(_keypass, "		");
+          _builder.append("\" ");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          _builder.append("\t");
+          _builder.append("storepass=\"");
+          SignJar _signjar_5 = task.getSignjar();
+          String _storepass = _signjar_5.getStorepass();
           _builder.append(_storepass, "		");
-          _builder.append(" ");
+          _builder.append("\" ");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
           {
-            SignJar _signjar_5 = task.getSignjar();
-            String _storetype = _signjar_5.getStoretype();
+            SignJar _signjar_6 = task.getSignjar();
+            String _storetype = _signjar_6.getStoretype();
             boolean _notEquals_7 = (!Objects.equal(_storetype, null));
             if (_notEquals_7) {
-              _builder.append("\" storetype=\"");
-              SignJar _signjar_6 = task.getSignjar();
-              String _storetype_1 = _signjar_6.getStoretype();
+              _builder.append("storetype=\"");
+              SignJar _signjar_7 = task.getSignjar();
+              String _storetype_1 = _signjar_7.getStoretype();
               _builder.append(_storetype_1, "		");
-              _builder.append(" ");
+              _builder.append("\" ");
             }
           }
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("\" destDir=\"${basedir}/dist\">");
+          _builder.append("destDir=\"${basedir}/dist\">");
           _builder.newLine();
           _builder.append("\t");
           _builder.append("\t");
@@ -750,18 +885,18 @@ public class EMFAntTemplate {
       _builder.newLine();
       {
         boolean _or = false;
-        boolean _and = false;
+        boolean _and_1 = false;
         boolean _notEquals_8 = (!Objects.equal(appletWidth, null));
         if (!_notEquals_8) {
-          _and = false;
+          _and_1 = false;
         } else {
           boolean _notEquals_9 = (!Objects.equal(appletHeight, null));
-          _and = (_notEquals_8 && _notEquals_9);
+          _and_1 = (_notEquals_8 && _notEquals_9);
         }
-        if (_and) {
+        if (_and_1) {
           _or = true;
         } else {
-          _or = (_and || nativePackage);
+          _or = (_and_1 || nativePackage);
         }
         if (_or) {
           _builder.append("\t");
@@ -792,31 +927,31 @@ public class EMFAntTemplate {
           _builder.append("\t");
           _builder.append("\t");
           {
-            boolean _and_1 = false;
             boolean _and_2 = false;
             boolean _and_3 = false;
+            boolean _and_4 = false;
             boolean _notEquals_10 = (!Objects.equal(appletWidth, null));
             if (!_notEquals_10) {
+              _and_4 = false;
+            } else {
+              int _length_1 = appletWidth.length();
+              boolean _greaterThan_1 = (_length_1 > 0);
+              _and_4 = (_notEquals_10 && _greaterThan_1);
+            }
+            if (!_and_4) {
               _and_3 = false;
             } else {
-              int _length = appletWidth.length();
-              boolean _greaterThan = (_length > 0);
-              _and_3 = (_notEquals_10 && _greaterThan);
+              boolean _notEquals_11 = (!Objects.equal(appletHeight, null));
+              _and_3 = (_and_4 && _notEquals_11);
             }
             if (!_and_3) {
               _and_2 = false;
             } else {
-              boolean _notEquals_11 = (!Objects.equal(appletHeight, null));
-              _and_2 = (_and_3 && _notEquals_11);
+              int _length_2 = appletHeight.length();
+              boolean _greaterThan_2 = (_length_2 > 0);
+              _and_2 = (_and_3 && _greaterThan_2);
             }
-            if (!_and_2) {
-              _and_1 = false;
-            } else {
-              int _length_1 = appletHeight.length();
-              boolean _greaterThan_1 = (_length_1 > 0);
-              _and_1 = (_and_2 && _greaterThan_1);
-            }
-            if (_and_1) {
+            if (_and_2) {
               _builder.append("width=\"");
               _builder.append(appletWidth, "		");
               _builder.append("\" height=\"");
@@ -862,12 +997,14 @@ public class EMFAntTemplate {
           {
             Deploy _deploy_16 = task.getDeploy();
             String _placeholderref = _deploy_16.getPlaceholderref();
-            boolean _notEquals_12 = (!Objects.equal(_placeholderref, null));
-            if (_notEquals_12) {
+            int _length_3 = _placeholderref==null?0:_placeholderref.length();
+            boolean _greaterThan_3 = (_length_3 > 0);
+            if (_greaterThan_3) {
               _builder.append("placeholderref=\"");
               Deploy _deploy_17 = task.getDeploy();
               String _placeholderref_1 = _deploy_17.getPlaceholderref();
               _builder.append(_placeholderref_1, "		");
+              _builder.append("\"");
             }
           }
           _builder.append(" ");
@@ -877,12 +1014,14 @@ public class EMFAntTemplate {
           {
             Deploy _deploy_18 = task.getDeploy();
             String _placeholderid = _deploy_18.getPlaceholderid();
-            boolean _notEquals_13 = (!Objects.equal(_placeholderid, null));
-            if (_notEquals_13) {
+            int _length_4 = _placeholderid==null?0:_placeholderid.length();
+            boolean _greaterThan_4 = (_length_4 > 0);
+            if (_greaterThan_4) {
               _builder.append("placeholderid=\"");
               Deploy _deploy_19 = task.getDeploy();
               String _placeholderid_1 = _deploy_19.getPlaceholderid();
               _builder.append(_placeholderid_1, "		");
+              _builder.append("\"");
             }
           }
           _builder.append(" ");
@@ -892,8 +1031,9 @@ public class EMFAntTemplate {
           {
             Deploy _deploy_20 = task.getDeploy();
             String _updatemode = _deploy_20.getUpdatemode();
-            boolean _notEquals_14 = (!Objects.equal(_updatemode, null));
-            if (_notEquals_14) {
+            int _length_5 = _updatemode==null?0:_updatemode.length();
+            boolean _greaterThan_5 = (_length_5 > 0);
+            if (_greaterThan_5) {
               _builder.append("updatemode=\"");
               Deploy _deploy_21 = task.getDeploy();
               String _updatemode_1 = _deploy_21.getUpdatemode();
@@ -905,21 +1045,21 @@ public class EMFAntTemplate {
           _builder.newLineIfNotEmpty();
           _builder.newLine();
           {
-            boolean _and_4 = false;
+            boolean _and_5 = false;
             Deploy _deploy_22 = task.getDeploy();
             Info _info_2 = _deploy_22.getInfo();
             EList<Splash> _splash = _info_2.getSplash();
-            boolean _isEmpty = _splash.isEmpty();
-            if (!_isEmpty) {
-              _and_4 = false;
+            boolean _isEmpty_1 = _splash.isEmpty();
+            if (!_isEmpty_1) {
+              _and_5 = false;
             } else {
               Deploy _deploy_23 = task.getDeploy();
               Info _info_3 = _deploy_23.getInfo();
               EList<Icon> _icon = _info_3.getIcon();
-              boolean _isEmpty_1 = _icon.isEmpty();
-              _and_4 = (_isEmpty && _isEmpty_1);
+              boolean _isEmpty_2 = _icon.isEmpty();
+              _and_5 = (_isEmpty_1 && _isEmpty_2);
             }
-            if (_and_4) {
+            if (_and_5) {
               _builder.append("\t");
               _builder.append("\t");
               _builder.append("<fx:info title=\"");
@@ -957,8 +1097,8 @@ public class EMFAntTemplate {
                   _builder.append("\" ");
                   {
                     SplashMode _mode = s.getMode();
-                    boolean _notEquals_15 = (!Objects.equal(_mode, null));
-                    if (_notEquals_15) {
+                    boolean _notEquals_12 = (!Objects.equal(_mode, null));
+                    if (_notEquals_12) {
                       _builder.append("mode=\"");
                       SplashMode _mode_1 = s.getMode();
                       _builder.append(_mode_1, "			");
@@ -983,8 +1123,8 @@ public class EMFAntTemplate {
                   _builder.append("\" ");
                   {
                     String _depth = i.getDepth();
-                    boolean _notEquals_16 = (!Objects.equal(_depth, null));
-                    if (_notEquals_16) {
+                    boolean _notEquals_13 = (!Objects.equal(_depth, null));
+                    if (_notEquals_13) {
                       _builder.append("depth=\"");
                       String _depth_1 = i.getDepth();
                       _builder.append(_depth_1, "			");
@@ -994,8 +1134,8 @@ public class EMFAntTemplate {
                   _builder.append(" ");
                   {
                     String _height = i.getHeight();
-                    boolean _notEquals_17 = (!Objects.equal(_height, null));
-                    if (_notEquals_17) {
+                    boolean _notEquals_14 = (!Objects.equal(_height, null));
+                    if (_notEquals_14) {
                       _builder.append("height=\"");
                       String _height_1 = i.getHeight();
                       _builder.append(_height_1, "			");
@@ -1005,8 +1145,8 @@ public class EMFAntTemplate {
                   _builder.append(" ");
                   {
                     IconType _kind = i.getKind();
-                    boolean _notEquals_18 = (!Objects.equal(_kind, null));
-                    if (_notEquals_18) {
+                    boolean _notEquals_15 = (!Objects.equal(_kind, null));
+                    if (_notEquals_15) {
                       _builder.append("kind=\"");
                       IconType _kind_1 = i.getKind();
                       _builder.append(_kind_1, "			");
@@ -1016,8 +1156,8 @@ public class EMFAntTemplate {
                   _builder.append(" ");
                   {
                     String _width = i.getWidth();
-                    boolean _notEquals_19 = (!Objects.equal(_width, null));
-                    if (_notEquals_19) {
+                    boolean _notEquals_16 = (!Objects.equal(_width, null));
+                    if (_notEquals_16) {
                       _builder.append("width=\"");
                       String _width_1 = i.getWidth();
                       _builder.append(_width_1, "			");
@@ -1042,15 +1182,42 @@ public class EMFAntTemplate {
           _builder.append("\t");
           _builder.append("<fx:resources refid=\"appRes\"/>");
           _builder.newLine();
-          _builder.append("\t");
-          _builder.append("\t");
-          _builder.append("<fx:permissions elevated=\"true\"/>");
-          _builder.newLine();
+          {
+            SignJar _signjar_8 = task.getSignjar();
+            String _keystore_3 = _signjar_8.getKeystore();
+            int _length_6 = _keystore_3==null?0:_keystore_3.length();
+            boolean _greaterThan_6 = (_length_6 > 0);
+            if (_greaterThan_6) {
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("<fx:permissions elevated=\"true\"/>");
+              _builder.newLine();
+            }
+          }
           _builder.append("\t");
           _builder.append("</fx:deploy>");
           _builder.newLine();
         }
       }
+      _builder.append("\t");
+      _builder.newLine();
+      {
+        boolean _isCssToBin = task.isCssToBin();
+        if (_isCssToBin) {
+          _builder.append("\t");
+          _builder.append("<fx:csstobin outdir=\"build/classes\">");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("\t");
+          _builder.append("<fileset dir=\"build/classes\" includes=\"**/*.css\"/>");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("</fx:csstobin>\t\t\t");
+          _builder.newLine();
+        }
+      }
+      _builder.append("\t");
+      _builder.newLine();
       _builder.append("</target>");
       _builder.newLine();
       _xblockexpression = (_builder);

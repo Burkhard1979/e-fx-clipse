@@ -63,8 +63,12 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 
 		// TODO uncomment
 //		config.builderName = properties.getProperty( "jfx.eclipse.buildername" );
-//		config.projectName = properties.getProperty( "jfx.build.projectname", f.getProject().getName() );
-
+		if ( task.getDeploy().getApplication().getName() != null ) {
+			config.projectName = task.getDeploy().getApplication().getName();
+		}
+		else {
+			config.projectName = f.getProject().getName();
+		}
 		config.keyStore = task.getSignjar().getKeystore() != null ? task.getSignjar().getKeystore().replace( "${workspace}", workbench ) : null;
 
 		try {
@@ -175,7 +179,7 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 		public String projectEncoding;
 		public String sourceCompliance;
 		public Object keyStore;
-		public Object projectName;
+		public String projectName;
 		public Object builderName;
 		public String buildDirectory;
 		public String jfxantjar;

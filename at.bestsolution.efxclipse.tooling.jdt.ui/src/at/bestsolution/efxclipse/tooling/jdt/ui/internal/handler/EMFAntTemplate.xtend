@@ -15,6 +15,11 @@ package at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler
 import java.io.File
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.AbstractAntHandler$BuildConfiguration
+import java.util.List
+import java.util.HashMap
+import java.util.ArrayList
+import org.apache.commons.lang.text.StrSubstitutor
+import java.util.Map
 
 class EMFAntTemplate {
 	def generateAnt(BuildConfiguration config) {
@@ -75,6 +80,7 @@ class EMFAntTemplate {
 			<path id="fxant">
 				<filelist>
 					<file name="${java.home}\..\lib\ant-javafx.jar"/>
+					<file name="${java.home}\lib\jfxrt.jar"/>
 				</filelist>
 			</path>
 		
@@ -207,12 +213,43 @@ class EMFAntTemplate {
 				name="«projectName»"
 				mainClass="«mainClass»"
 				«IF preloaderClass != null»
-				preloaderClass="«preloaderClass»"
+					preloaderClass="«preloaderClass»"
 				«ENDIF»
 				«IF fallBackClass != null»
-				fallbackClass="«fallBackClass»"
+					fallbackClass="«fallBackClass»"
 				«ENDIF»
-				/>
+			/>
+
+			<mkdir dir="build/classes/META-INF" />
+			«IF !task.getFonts().isEmpty()»
+				<propertyfile file="build/classes/META-INF/fonts.mf" comment="Fonts">
+				«FOR f : task.getFonts()»
+					<entry key="«f.getKey()»" value="/«f.getValue()»"/>
+				«ENDFOR»
+				</propertyfile>
+			«ENDIF»
+			
+			«val HashMap<String, List<String>> map = new HashMap<String, List<String>>()»
+			«FOR f : task.getFiles()»
+				«IF !map.containsKey(f.getKey())»
+					«map.put(f.getKey(), new ArrayList<String>())»
+				«ENDIF»
+				«/*val nix is necessary to suppress the return value of add(...)*/»
+				«val nix = map.get(f.getKey()).add(f.getValue())»
+			«ENDFOR»
+			
+			«FOR folderName : map.keySet()»
+				<mkdir dir="build/classes/META-INF/«folderName»" />
+				«FOR serviceFile : map.get(folderName)»
+					<copy 
+						todir="build/classes/META-INF/«folderName»"
+						«val Map<String, String> replacements = new HashMap<String, String>()»
+						«replacements.put("workspace", "build/classes")»
+						«val StrSubstitutor sub = new StrSubstitutor(replacements)»
+						file="«sub.replace(serviceFile)»"
+					/>
+				«ENDFOR»
+			«ENDFOR»
 			
 			<fx:jar destfile="dist/«projectName».jar">
 				<fx:application refid="fxApplication"/>
@@ -262,9 +299,9 @@ class EMFAntTemplate {
 				offlineAllowed="«task.getDeploy().isOfflineAllowed()»"
 				outdir="${basedir}/deploy"
 				outfile="«projectName»" «IF nativePackage»nativeBundles="all"«ENDIF»
-				«IF task.getDeploy().getPlaceholderref() != null »placeholderref="«task.getDeploy().getPlaceholderref()»«ENDIF» 
-				«IF task.getDeploy().getPlaceholderid() != null »placeholderid="«task.getDeploy().getPlaceholderid()»«ENDIF» 
-				«IF task.getDeploy().getUpdatemode() != null »updatemode="«task.getDeploy().getUpdatemode()»"«ENDIF» >
+				«IF task.getDeploy().getPlaceholderref()?.length() > 0 »placeholderref="«task.getDeploy().getPlaceholderref()»"«ENDIF» 
+				«IF task.getDeploy().getPlaceholderid()?.length() > 0 »placeholderid="«task.getDeploy().getPlaceholderid()»"«ENDIF» 
+				«IF task.getDeploy().getUpdatemode()?.length() > 0 »updatemode="«task.getDeploy().getUpdatemode()»"«ENDIF» >
 
 				«IF task.getDeploy().getInfo().getSplash().isEmpty() && task.getDeploy().getInfo().getIcon().isEmpty()»
 					<fx:info title="«projectName»" vendor="«task.getDeploy().getInfo().getVendor()»"/>
@@ -280,9 +317,18 @@ class EMFAntTemplate {
 				«ENDIF»
 				<fx:application refId="fxApplication"/>
 				<fx:resources refid="appRes"/>
-				<fx:permissions elevated="true"/>
+				«IF task.getSignjar().getKeystore()?.length > 0»
+					<fx:permissions elevated="true"/>
+				«ENDIF»
 			</fx:deploy>
 			«ENDIF»
+			
+			«IF (task.isCssToBin())»
+				<fx:csstobin outdir="build/classes">
+					<fileset dir="build/classes" includes="**/*.css"/>
+				</fx:csstobin>			
+			«ENDIF»
+			
 		</target>
 		'''
 	}

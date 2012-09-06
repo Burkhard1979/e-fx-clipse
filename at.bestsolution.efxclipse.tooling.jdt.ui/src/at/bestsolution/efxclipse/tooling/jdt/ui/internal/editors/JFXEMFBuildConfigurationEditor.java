@@ -35,17 +35,7 @@ import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.an
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__NAME;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__PRELOADERCLASS;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__VERSION;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__DEPTH;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__HEIGHT;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__HREF;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__KIND;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__WIDTH;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.INFO__SPLASH;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.INFO__VENDOR;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.PARAM__NAME;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.PARAM__VALUE;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.SPLASH__HREF;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.SPLASH__MODE;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -67,10 +57,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.NotEnabledException;
-import org.eclipse.core.commands.NotHandledException;
-import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.core.resources.IContainer;
@@ -85,6 +71,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -103,6 +90,7 @@ import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
@@ -131,24 +119,22 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.databinding.swt.IWidgetValueProperty;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
-import org.eclipse.jface.databinding.viewers.IViewerValueProperty;
-import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
-import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -165,11 +151,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
@@ -207,18 +191,19 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.JavaFXUIPlugin;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksFactory;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.IconType;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersFactory;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.outline.PropertyContentOutlinePage;
 
+@SuppressWarnings( "restriction" )
 public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implements IResourceChangeListener {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -269,7 +254,6 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 	private PropertyTextEditor editor;
 
 	private FormToolkit toolkit;
-	private Form form;
 
 	private static final int DELAY = 500;
 
@@ -787,46 +771,13 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 		toolkit = new FormToolkit( composite.getDisplay() );
 
-		form = toolkit.createForm( composite );
+		final Form form = toolkit.createForm( composite );
 		form.setText( "FX Build Configuration" );
 		form.setImage( getTitleImage() );
 		form.getBody().setLayout( new FillLayout() );
 		toolkit.decorateFormHeading( form );
 
-		IToolBarManager mgr = form.getToolBarManager();
-		mgr.add( new Action( "Build & Export FX Application", ImageDescriptor.createFromURL( getClass().getClassLoader().getResource(
-				"/icons/exportrunnablejar_wiz.gif" ) ) ) {
-			@Override
-			public void run() {
-				try {
-					IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
-					hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.export", null );
-				}
-				catch ( ExecutionException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotDefinedException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotEnabledException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotHandledException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} );
-		// mgr.add(new Action("Export Ant File",ImageDescriptor.createFromURL(getClass().getClassLoader().getResource("/icons/exportAnt_co.gif"))) {
-		// @Override
-		// public void run() {
-		//
-		// }
-		// });
-		form.updateToolBar();
+		initToolbar( form );
 
 		ScrolledForm scrolledForm = toolkit.createScrolledForm( form.getBody() );
 		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
@@ -957,22 +908,29 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 			}
 
 			{
-				toolkit.createLabel( sectionClient, "Manifest-Attribute:" )
+				toolkit.createLabel( sectionClient, "Manifest-Attributes:" )
 						.setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
-				Composite tableContainer = toolkit.createComposite( sectionClient );
-				tableContainer.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				Composite container = toolkit.createComposite( sectionClient );
 				GridLayout gl = new GridLayout( 2, false );
-				// gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
-				tableContainer.setLayout( gl );
-				// tableContainer.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				GridData gdContainer = new GridData( GridData.FILL_HORIZONTAL );
+				gdContainer.horizontalSpan = 2;
+				container.setLayoutData( gdContainer );
 
+				Composite tableContainer = toolkit.createComposite( container );
 				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
 				t.setHeaderVisible( true );
 				t.setLinesVisible( true );
 
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getHeaderHeight() + t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
 				final TableViewer v = new TableViewer( t );
 				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
-				gd.heightHint = t.getItemHeight() * 5;
+				gd.heightHint = t.getHeaderHeight() + t.getItemHeight() * 5;
 				v.getControl().setLayoutData( gd );
 				v.setContentProvider( ArrayContentProvider.getInstance() );
 
@@ -980,11 +938,11 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
 					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
-						public String getText( Object element ) {
+						public String getText( final Object element ) {
 							return ( (Param) element ).getName();
 						}
 					} );
-					c.getColumn().setWidth( 100 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 33 ) );
 					c.getColumn().setText( "Name" );
 				}
 
@@ -992,14 +950,14 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
 					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
-						public String getText( Object element ) {
+						public String getText( final Object element ) {
 							return ( (Param) element ).getValue();
 						}
 					} );
-					c.getColumn().setWidth( 300 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 67 ) );
 					c.getColumn().setText( "Value" );
 				}
-
+				tableContainer.setLayout( tablelayout );
 				v.setInput( task.getManifestEntries() );
 
 				Composite buttonComp = toolkit.createComposite( sectionClient );
@@ -1014,6 +972,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 						public void widgetSelected( final SelectionEvent e ) {
 							if ( handleAddManifestAttr( getSite().getShell() ) ) {
 								v.setInput( task.getManifestEntries() );
+								v.setSelection( new StructuredSelection( task.getManifestEntries().get( task.getManifestEntries().size() - 1 ) ) );
 							}
 						}
 					} );
@@ -1026,10 +985,13 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 						@Override
 						public void widgetSelected( final SelectionEvent e ) {
 							Param value = (Param) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
-							if ( v != null ) {
+							if ( value != null ) {
 								if ( handleRemoveManifestAttr( value ) ) {
 									v.setInput( task.getManifestEntries() );
 								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
 							}
 						}
 					} );
@@ -1072,26 +1034,17 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 					@Override
 					public void linkActivated( HyperlinkEvent e ) {
-						if ( isDirty() ) {
-							MessageDialog.openError( form.getShell(), "Error", "Unsaved changes in build configuration" );
+						try {
+							if ( "generateAndRun".equals( e.getHref() ) ) {
+								executeExport();
+							}
+							else {
+								executeGenerateAnt();
+							}
 						}
-						else {
-
-							IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
-							final String command;
-							try {
-								if ( "generateAndRun".equals( e.getHref() ) ) {
-									command = "at.bestsolution.efxclipse.tooling.jdt.ui.export";
-								}
-								else {
-									command = "at.bestsolution.efxclipse.tooling.jdt.ui.generateAnt";
-								}
-								hs.executeCommand( command, null );
-							}
-							catch ( Exception e1 ) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+						catch ( Exception e1 ) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
 						}
 					}
 				} );
@@ -1115,46 +1068,13 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 		toolkit = new FormToolkit( composite.getDisplay() );
 
-		form = toolkit.createForm( composite );
+		final Form form = toolkit.createForm( composite );
 		form.setText( "FX Build Configuration" );
 		form.setImage( getTitleImage() );
 		form.getBody().setLayout( new FillLayout() );
 		toolkit.decorateFormHeading( form );
 
-		IToolBarManager mgr = form.getToolBarManager();
-		mgr.add( new Action( "Build & Export FX Application", ImageDescriptor.createFromURL( getClass().getClassLoader().getResource(
-				"/icons/exportrunnablejar_wiz.gif" ) ) ) {
-			@Override
-			public void run() {
-				try {
-					IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
-					hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.export", null );
-				}
-				catch ( ExecutionException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotDefinedException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotEnabledException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotHandledException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} );
-		// mgr.add(new Action("Export Ant File",ImageDescriptor.createFromURL(getClass().getClassLoader().getResource("/icons/exportAnt_co.gif"))) {
-		// @Override
-		// public void run() {
-		//
-		// }
-		// });
-		form.updateToolBar();
+		initToolbar( form );
 
 		ScrolledForm scrolledForm = toolkit.createScrolledForm( form.getBody() );
 		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
@@ -1248,9 +1168,16 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				container.setLayout( gl );
 				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
-				Table t = toolkit.createTable( container, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
 				t.setHeaderVisible( true );
 				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
 
 				final TableViewer v = new TableViewer( t );
 				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
@@ -1262,11 +1189,11 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
 					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
-						public String getText( Object element ) {
+						public String getText( final Object element ) {
 							return ( (Splash) element ).getMode().getName();
 						}
 					} );
-					c.getColumn().setWidth( 100 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 100, false ) );
 					c.getColumn().setText( "Mode" );
 				}
 
@@ -1274,14 +1201,14 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
 					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
-						public String getText( Object element ) {
+						public String getText( final Object element ) {
 							return ( (Splash) element ).getHref();
 						}
 					} );
-					c.getColumn().setWidth( 300 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 90 ) );
 					c.getColumn().setText( "URL" );
 				}
-
+				tableContainer.setLayout( tablelayout );
 				v.setInput( task.getDeploy().getInfo().getSplash() );
 
 				Composite buttonComp = toolkit.createComposite( container );
@@ -1293,9 +1220,11 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
 					b.addSelectionListener( new SelectionAdapter() {
 						@Override
-						public void widgetSelected( SelectionEvent e ) {
+						public void widgetSelected( final SelectionEvent e ) {
 							if ( handleAddSplash() ) {
 								v.setInput( task.getDeploy().getInfo().getSplash() );
+								v.setSelection( new StructuredSelection( task.getDeploy().getInfo().getSplash()
+										.get( task.getDeploy().getInfo().getSplash().size() - 1 ) ) );
 							}
 						}
 					} );
@@ -1306,12 +1235,15 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
 					b.addSelectionListener( new SelectionAdapter() {
 						@Override
-						public void widgetSelected( SelectionEvent e ) {
+						public void widgetSelected( final SelectionEvent e ) {
 							Splash value = (Splash) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
-							if ( v != null ) {
+							if ( value != null ) {
 								if ( handleRemoveSplash( value ) ) {
-									v.setInput( task.getDeploy().getInfo().getSplash() );
+									v.setInput( getTask().getDeploy().getInfo().getSplash() );
 								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
 							}
 						}
 					} );
@@ -1326,9 +1258,16 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				container.setLayout( gl );
 				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
-				Table t = toolkit.createTable( container, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
 				t.setHeaderVisible( true );
 				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
 
 				final TableViewer v = new TableViewer( t );
 				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
@@ -1344,7 +1283,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 							return ( (Icon) element ).getDepth();
 						}
 					} );
-					c.getColumn().setWidth( 50 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 50, false ) );
 					c.getColumn().setText( "Depth" );
 				}
 
@@ -1356,7 +1295,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 							return ( (Icon) element ).getKind().getName();
 						}
 					} );
-					c.getColumn().setWidth( 50 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 100, false ) );
 					c.getColumn().setText( "Kind" );
 				}
 
@@ -1368,7 +1307,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 							return ( (Icon) element ).getWidth();
 						}
 					} );
-					c.getColumn().setWidth( 50 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 50, false ) );
 					c.getColumn().setText( "Width" );
 				}
 
@@ -1380,7 +1319,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 							return ( (Icon) element ).getHeight();
 						}
 					} );
-					c.getColumn().setWidth( 50 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 50, false ) );
 					c.getColumn().setText( "Height" );
 				}
 
@@ -1392,10 +1331,10 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 							return ( (Icon) element ).getHref();
 						}
 					} );
-					c.getColumn().setWidth( 50 );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 60 ) );
 					c.getColumn().setText( "Url" );
 				}
-
+				tableContainer.setLayout( tablelayout );
 				v.setInput( task.getDeploy().getInfo().getIcon() );
 
 				Composite buttonComp = toolkit.createComposite( container );
@@ -1410,6 +1349,8 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 						public void widgetSelected( final SelectionEvent e ) {
 							if ( handleAddIcon() ) {
 								v.setInput( task.getDeploy().getInfo().getIcon() );
+								v.setSelection( new StructuredSelection( task.getDeploy().getInfo().getIcon()
+										.get( task.getDeploy().getInfo().getIcon().size() - 1 ) ) );
 							}
 						}
 					} );
@@ -1422,21 +1363,289 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 						@Override
 						public void widgetSelected( final SelectionEvent e ) {
 							Icon value = (Icon) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
-							if ( v != null ) {
+							if ( value != null ) {
 								if ( handleRemoveIcon( value ) ) {
 									v.setInput( task.getDeploy().getInfo().getIcon() );
 								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
 							}
 						}
 					} );
 				}
 			}
 
+			{
+				toolkit.createLabel( sectionClient, "Additional META-INF files:" ).setLayoutData(
+						new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+				Composite container = toolkit.createComposite( sectionClient );
+				GridLayout gl = new GridLayout( 2, false );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				t.setHeaderVisible( true );
+				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
+
+				final TableViewer v = new TableViewer( t );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.heightHint = t.getItemHeight() * 5;
+				v.getControl().setLayoutData( gd );
+				v.setContentProvider( ArrayContentProvider.getInstance() );
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getKey();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 33 ) );
+					c.getColumn().setText( "Folder" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getValue();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 67 ) );
+					c.getColumn().setText( "File" );
+				}
+				tableContainer.setLayout( tablelayout );
+				v.setInput( task.getFiles() );
+
+				Composite buttonComp = toolkit.createComposite( container );
+				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
+				buttonComp.setLayout( new GridLayout() );
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Add ...", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							if ( handleAddMetaInfFile() ) {
+								v.setInput( task.getFiles() );
+								v.setSelection( new StructuredSelection( task.getFiles().get( task.getFiles().size() - 1 ) ) );
+							}
+						}
+					} );
+				}
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Remove", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							KeyValuePair value = (KeyValuePair) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
+							if ( value != null ) {
+								if ( handleRemoveMetaInfFile( value ) ) {
+									v.setInput( task.getFiles() );
+								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
+							}
+						}
+					} );
+				}
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Fonts:" ).setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+				Composite container = toolkit.createComposite( sectionClient );
+				GridLayout gl = new GridLayout( 2, false );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				t.setHeaderVisible( true );
+				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
+
+				final TableViewer v = new TableViewer( t );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.heightHint = t.getItemHeight() * 5;
+				v.getControl().setLayoutData( gd );
+				v.setContentProvider( ArrayContentProvider.getInstance() );
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getKey();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 33 ) );
+					c.getColumn().setText( "Font name" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getValue();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 67 ) );
+					c.getColumn().setText( "File" );
+				}
+				tableContainer.setLayout( tablelayout );
+				v.setInput( task.getFonts() );
+
+				Composite buttonComp = toolkit.createComposite( container );
+				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
+				buttonComp.setLayout( new GridLayout() );
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Add ...", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							if ( handleAddFont() ) {
+								v.setInput( task.getFonts() );
+								v.setSelection( new StructuredSelection( task.getFonts().get( task.getFonts().size() - 1 ) ) );
+							}
+						}
+					} );
+				}
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Remove", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							KeyValuePair value = (KeyValuePair) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
+							if ( value != null ) {
+								if ( handleRemoveFont( value ) ) {
+									v.setInput( task.getFonts() );
+								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
+							}
+						}
+					} );
+				}
+			}
 			section.setClient( sectionClient );
 		}
-
 		int index = addPage( composite );
 		setPageText( index, "Deploy" );
+	}
+
+	/**
+	 * 
+	 */
+	private void initToolbar( Form form ) {
+		IToolBarManager mgr = form.getToolBarManager();
+		mgr.add( new Action( "Build & Export FX Application", ImageDescriptor.createFromURL( getClass().getClassLoader().getResource(
+				"/icons/exportrunnablejar_wiz.gif" ) ) ) {
+			@Override
+			public void run() {
+				try {
+					executeExport();
+				}
+				catch ( Exception e ) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} );
+		// mgr.add(new Action("Export Ant File",ImageDescriptor.createFromURL(getClass().getClassLoader().getResource("/icons/exportAnt_co.gif"))) {
+		// @Override
+		// public void run() {
+		//
+		// }
+		// });
+		form.updateToolBar();
+	}
+
+	/**
+	 * handleRemoveMetaInfFile.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveMetaInfFile( final KeyValuePair value ) {
+		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected META-INF file" ) ) {
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getFiles(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * handleRemoveFont.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveFont( final KeyValuePair value ) {
+		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected font" ) ) {
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getFonts(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * handleAddService.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddMetaInfFile() {
+		AddMetaInfFileDialog d = new AddMetaInfFileDialog( getSite().getShell(), editingDomain, getTask(), ( (IFileEditorInput) getEditorInput() ).getFile()
+				.getProject() );
+		return d.open() == TitleAreaDialog.OK;
+	}
+
+	/**
+	 * handleAddFont.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddFont() {
+		AddFontDialog d = new AddFontDialog( getSite().getShell(), editingDomain, getTask(), ( (IFileEditorInput) getEditorInput() ).getFile().getProject() );
+		return d.open() == TitleAreaDialog.OK;
 	}
 
 	private void createPageSigning( AntTask task ) {
@@ -1450,40 +1659,13 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 		toolkit = new FormToolkit( composite.getDisplay() );
 
-		form = toolkit.createForm( composite );
+		final Form form = toolkit.createForm( composite );
 		form.setText( "FX Build Configuration" );
 		form.setImage( getTitleImage() );
 		form.getBody().setLayout( new FillLayout() );
 		toolkit.decorateFormHeading( form );
 
-		IToolBarManager mgr = form.getToolBarManager();
-		mgr.add( new Action( "Build & Export FX Application", ImageDescriptor.createFromURL( getClass().getClassLoader().getResource(
-				"/icons/exportrunnablejar_wiz.gif" ) ) ) {
-			@Override
-			public void run() {
-				try {
-					IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
-					hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.export", null );
-				}
-				catch ( ExecutionException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotDefinedException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotEnabledException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				catch ( NotHandledException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} );
-		form.updateToolBar();
+		initToolbar( form );
 
 		ScrolledForm scrolledForm = toolkit.createScrolledForm( form.getBody() );
 		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
@@ -1491,7 +1673,6 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 
 		dbc = new DataBindingContext();
 		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
-		// IWidgetValueProperty selChange = WidgetProperties.selection();
 
 		{
 			Section section = toolkit.createSection( sectionParent, Section.DESCRIPTION | Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED );
@@ -1569,66 +1750,33 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 		setPageText( index, "Signing" );
 	}
 
-	boolean handleRemoveManifestAttr( final Param value ) {
+	/**
+	 * handleRemoveManifestAttr.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveManifestAttr( final Param value ) {
 		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected attribute" ) ) {
-			getTask().getManifestEntries().remove( value );
-			return true;
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getManifestEntries(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
 		}
 		return false;
 	}
 
-	protected boolean handleAddManifestAttr( Shell shell ) {
-		TitleAreaDialog d = new TitleAreaDialog( shell ) {
-			private Param o = ParametersFactory.eINSTANCE.createParam();
-			private DataBindingContext dbc = new DataBindingContext();
-			private Text tName;
-
-			private Text tValue;
-
-			@Override
-			protected Control createDialogArea( Composite parent ) {
-				Composite area = (Composite) super.createDialogArea( parent );
-				Composite container = new Composite( area, SWT.NONE );
-				container.setLayoutData( new GridData( GridData.FILL_BOTH ) );
-				container.setLayout( new GridLayout( 2, false ) );
-
-				getShell().setText( "Add manifest attribute" );
-				setTitle( "Add manifest attribute" );
-				setMessage( "Enter informations about manifest header entry" );
-
-				IWidgetValueProperty tProp = WidgetProperties.text( SWT.Modify );
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "Name*:" );
-
-					Text t = new Text( container, SWT.BORDER );
-					t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, PARAM__NAME );
-					dbc.bindValue( tProp.observe( t ), prop.observe( o ) );
-				}
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "Value*:" );
-
-					Text t = new Text( container, SWT.BORDER );
-					t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, PARAM__VALUE );
-					dbc.bindValue( tProp.observe( t ), prop.observe( o ) );
-				}
-
-				return area;
-			}
-
-			@Override
-			protected void okPressed() {
-				getTask().getManifestEntries().add( o );
-				dbc.dispose();
-				super.okPressed();
-			}
-		};
-
+	/**
+	 * handleAddManifestAttr.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddManifestAttr( Shell shell ) {
+		AddManifestAttributeDialog d = new AddManifestAttributeDialog( getSite().getShell(), editingDomain, getTask() );
 		return d.open() == TitleAreaDialog.OK;
 	}
 
@@ -1639,7 +1787,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 			protected IStatus validateItem( Object item ) {
 				IFile f = (IFile) item;
 				if ( f.getParent() instanceof IProject ) {
-					return new Status( IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "The selected resource has to part of the source folder" );
+					return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "The selected resource has to part of the source folder" );
 				}
 				return super.validateItem( item );
 			}
@@ -1661,190 +1809,75 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				}
 			}
 		}
-
 		return null;
 	}
 
-	boolean handleRemoveIcon( Icon value ) {
+	/**
+	 * handleRemoveIcon.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveIcon( final Icon value ) {
 		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected icon" ) ) {
-			getTask().getDeploy().getInfo().getIcon().remove( value );
-			return true;
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getDeploy().getInfo().getIcon(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
 		}
 		return false;
 	}
 
-	boolean handleAddIcon() {
-		TitleAreaDialog d = new TitleAreaDialog( getSite().getShell() ) {
-			private Icon o = ParametersFactory.eINSTANCE.createIcon();
-			private DataBindingContext dbc = new DataBindingContext();
-
-			@Override
-			protected Control createDialogArea( Composite parent ) {
-				Composite area = (Composite) super.createDialogArea( parent );
-
-				getShell().setText( "Add icon" );
-				setTitle( "Add icon" );
-				setMessage( "Enter informations about the icon to add" );
-
-				Composite container = new Composite( area, SWT.NONE );
-				container.setLayout( new GridLayout( 2, false ) );
-				container.setLayoutData( new GridData( GridData.FILL_BOTH ) );
-
-				IViewerValueProperty selProp = ViewerProperties.singleSelection();
-				IWidgetValueProperty tProp = WidgetProperties.text( SWT.Modify );
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "Kind:" );
-
-					ComboViewer v = new ComboViewer( container, SWT.READ_ONLY );
-					v.setLabelProvider( new LabelProvider() );
-					v.setContentProvider( ArrayContentProvider.getInstance() );
-					v.setInput( IconType.VALUES );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__KIND );
-					dbc.bindValue( selProp.observe( v ), prop.observe( o ) );
-				}
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "URL*:" );
-
-					Text t = new Text( container, SWT.BORDER );
-					t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__HREF );
-					dbc.bindValue( tProp.observeDelayed( DELAY, t ), prop.observe( o ) );
-				}
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "Depth:" );
-
-					ComboViewer v = new ComboViewer( container, SWT.READ_ONLY );
-					v.setLabelProvider( new LabelProvider() );
-					v.setContentProvider( ArrayContentProvider.getInstance() );
-					// FIXME not hard coded here
-					v.setInput( new String[] { "8", "24", "32" } );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__DEPTH );
-					dbc.bindValue( selProp.observe( v ), prop.observe( o ) );
-				}
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "Width:" );
-
-					Text t = new Text( container, SWT.BORDER );
-					t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__WIDTH );
-					dbc.bindValue( tProp.observeDelayed( DELAY, t ), prop.observe( o ) );
-				}
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "Height:" );
-
-					Text t = new Text( container, SWT.BORDER );
-					t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__HEIGHT );
-					dbc.bindValue( tProp.observeDelayed( DELAY, t ), prop.observe( o ) );
-				}
-
-				return area;
-			}
-
-			@Override
-			protected void okPressed() {
-				getTask().getDeploy().getInfo().getIcon().add( o );
-				dbc.dispose();
-				super.okPressed();
-			}
-		};
+	/**
+	 * handleAddIcon.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddIcon() {
+		AddIconDialog d = new AddIconDialog( getSite().getShell(), editingDomain, getTask() );
 		return d.open() == TitleAreaDialog.OK;
 	}
 
-	boolean handleAddSplash() {
-		TitleAreaDialog d = new TitleAreaDialog( getSite().getShell() ) {
-			private Splash o = ParametersFactory.eINSTANCE.createSplash();
-			private DataBindingContext dbc = new DataBindingContext();
-
-			@Override
-			protected Control createDialogArea( Composite parent ) {
-				Composite area = (Composite) super.createDialogArea( parent );
-
-				getShell().setText( "Add splash icon" );
-				setTitle( "Add splash" );
-				setMessage( "Enter informations about the splash to add" );
-
-				Composite container = new Composite( area, SWT.NONE );
-				container.setLayout( new GridLayout( 2, false ) );
-				container.setLayoutData( new GridData( GridData.FILL_BOTH ) );
-
-				IViewerValueProperty selProp = ViewerProperties.singleSelection();
-				IWidgetValueProperty tProp = WidgetProperties.text( SWT.Modify );
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "Mode*:" );
-
-					ComboViewer v = new ComboViewer( container, SWT.READ_ONLY );
-					v.setLabelProvider( new LabelProvider() );
-					v.setContentProvider( ArrayContentProvider.getInstance() );
-					v.setInput( SplashMode.values() );
-					;
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain,
-							FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__INFO, INFO__SPLASH, SPLASH__MODE ) );
-					dbc.bindValue( selProp.observe( v ), prop.observe( o ) );
-				}
-
-				{
-					Label l = new Label( container, SWT.NONE );
-					l.setText( "URL*:" );
-
-					Text t = new Text( container, SWT.BORDER );
-					t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
-					IEMFValueProperty prop = EMFEditProperties.value( editingDomain,
-							FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__INFO, INFO__SPLASH, SPLASH__HREF ) );
-					dbc.bindValue( tProp.observeDelayed( DELAY, t ), prop.observe( o ) );
-				}
-				return area;
-			}
-
-			@Override
-			protected void okPressed() {
-				getTask().getDeploy().getInfo().getSplash().add( o );
-				dbc.dispose();
-				super.okPressed();
-			}
-		};
+	/**
+	 * handleAddSplash.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddSplash() {
+		AddSplashDialog d = new AddSplashDialog( getSite().getShell(), editingDomain, getTask() );
 		return d.open() == TitleAreaDialog.OK;
-
 	}
 
-	// String handleImageSelection() {
-	// FileDialog d = new FileDialog(getSite().getShell());
-	// }
-
-	boolean handleRemoveSplash( Splash value ) {
+	/**
+	 * handleRemoveSplash.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveSplash( final Splash value ) {
 		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected splash" ) ) {
-			getTask().getDeploy().getInfo().getSplash().remove( value );
-			return true;
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getDeploy().getInfo().getSplash(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
 		}
 		return false;
 	}
 
-	void handleCreateKeyStore( Shell parent ) {
-
-	}
-
-	IStatus validateKeystoreAlias( Shell parent, String alias ) {
-		return Status.OK_STATUS;
-	}
-
-	String handleBuildFilesystemDirectorySelection( Shell parent ) {
+	private String handleBuildFilesystemDirectorySelection( final Shell parent ) {
 		DirectoryDialog dialog = new DirectoryDialog( parent );
 		return dialog.open();
 	}
 
-	String handleBuildWorkbenchDirectorySelection( Shell parent ) {
+	private String handleBuildWorkbenchDirectorySelection( final Shell parent ) {
 		ILabelProvider lp = new WorkbenchLabelProvider();
 		ITreeContentProvider cp = new WorkbenchContentProvider();
 
@@ -1947,7 +1980,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 			@Override
 			public IStatus validate( Object[] selection ) {
 				if ( selection.length > 1 ) {
-					return new Status( IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "Only one file allowed." );
+					return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Only one file allowed." );
 				}
 				else if ( selection.length == 1 ) {
 					if ( selection[0] instanceof IFile ) {
@@ -1978,22 +2011,22 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 			ks.load( fis, null );
 		}
 		catch ( FileNotFoundException e ) {
-			return new Status( IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "The keystore file '" + f.getAbsolutePath() + "' is not found.", e );
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "The keystore file '" + f.getAbsolutePath() + "' is not found.", e );
 		}
 		catch ( KeyStoreException e ) {
-			return new Status( IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "Unable to initialize keystore", e );
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Unable to initialize keystore", e );
 		}
 		catch ( NoSuchAlgorithmException e ) {
-			return new Status( IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "Loading keystore failed. Is this a valid keystore?", e );
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Loading keystore failed. Is this a valid keystore?", e );
 		}
 		catch ( CertificateException e ) {
-			return new Status( IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "Loading keystore failed. Is this a valid keystore?", e );
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Loading keystore failed. Is this a valid keystore?", e );
 		}
 		catch ( IOException e ) {
 			if ( e.getCause() instanceof UnrecoverableKeyException ) {
 				return Status.OK_STATUS;
 			}
-			return new Status( IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "Loading keystore failed. Is this a valid keystore?", e );
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Loading keystore failed. Is this a valid keystore?", e );
 		}
 		finally {
 			if ( fis != null ) {
@@ -2014,7 +2047,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 		}
 	}
 
-	void syncForm() {
+	private void syncForm() {
 		// TODO maybe we need to load the stuff here.
 		dbc.updateTargets();
 	}
@@ -2203,7 +2236,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 	 * 
 	 * @generated
 	 */
-	protected boolean handleDirtyConflict() {
+	private boolean handleDirtyConflict() {
 		return MessageDialog.openQuestion( getSite().getShell(), "File Conflict",
 				"There are unsaved changes that conflict with changes made outside the editor.  Do you wish to discard this editor's changes?" );
 	}
@@ -2213,7 +2246,7 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 	 * 
 	 * @generated
 	 */
-	protected void showTabs() {
+	private void showTabs() {
 		if ( getPageCount() > 1 ) {
 			setPageText( 0, "Selection" );
 			if ( getContainer() instanceof CTabFolder ) {
@@ -2222,5 +2255,72 @@ public class JFXEMFBuildConfigurationEditor extends MultiPageEditorPart implemen
 				getContainer().setSize( point.x, point.y - 6 );
 			}
 		}
+	}
+
+	/**
+	 * @throws Exception
+	 *             exception
+	 */
+	private void executeExport() throws Exception {
+		if ( validateAndShowErrors() ) {
+			IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
+			hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.export", null );
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 *             exception
+	 */
+	private void executeGenerateAnt() throws Exception {
+		if ( validateAndShowErrors() ) {
+			IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
+			hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.generateAnt", null );
+		}
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean validateAndShowErrors() {
+		MultiStatus status = new MultiStatus( JavaFXUIPlugin.PLUGIN_ID, IStatus.OK, null, null );
+		// dirty
+		if ( isDirty() ) {
+			boolean option = MessageDialog.openQuestion( getSite().getShell(), "Save FX Build Configuration", getEditorInput().getName() +  " must be saved before generating ant build.xml file.\nSave changes now?" );
+			if (option) {
+				doSave( new NullProgressMonitor() );
+			}
+			else {
+				return false;
+			}
+		}
+		// height
+		if ( getTask().getDeploy().getHeight() != null && getTask().getDeploy().getHeight().length() > 0 ) {
+			try {
+				Integer.parseInt( getTask().getDeploy().getHeight() );
+			}
+			catch ( Exception e ) {
+				status.add( new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Height must be an integer value" ) );
+			}
+		}
+		// width
+		if ( getTask().getDeploy().getWidth() != null && getTask().getDeploy().getWidth().length() > 0 ) {
+			try {
+				Integer.parseInt( getTask().getDeploy().getWidth() );
+			}
+			catch ( Exception e ) {
+				status.add( new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Width must be an integer value" ) );
+			}
+		}
+
+		// Show the collected errors
+		if ( !status.isOK() ) {
+			StringBuffer errors = new StringBuffer();
+			for ( IStatus err : status.getChildren() ) {
+				errors.append( err.getMessage() ).append( "\n" );
+			}
+			MessageDialog.openWarning( getSite().getShell(), "Invalid FX Build configuration", errors.toString() );
+		}
+		return status.isOK();
 	}
 }
