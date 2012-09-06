@@ -45,6 +45,7 @@ public class JemmyJUnitTestProjectTemplate extends FXPDETemplateSection {
 
 	private static final String KEY_TEST_SUITE_CLASS = "testSuiteClass";
 	private static final String KEY_TEST_PRODUCT_BUNDLE_ID = "testProductBundleId";
+	private static final String KEY_TEST_E4_PRODUCT = "e4Product";
 	
 	public JemmyJUnitTestProjectTemplate() {
 		setPageCount(1);
@@ -55,6 +56,7 @@ public class JemmyJUnitTestProjectTemplate extends FXPDETemplateSection {
 		addOption(KEY_TEST_PRODUCT_BUNDLE_ID, "Product Bundle Id:", null, 0);
 		addOption(KEY_PACKAGE_NAME, "Pa&ckage name:", (String) null, 0);
 		addOption(KEY_TEST_SUITE_CLASS, "TestSuite Class:", null, 0);
+		addOption(KEY_TEST_E4_PRODUCT, "e4 product", false, 0);
 	}
 	
 	public void addPages(Wizard wizard) {
@@ -142,7 +144,12 @@ public class JemmyJUnitTestProjectTemplate extends FXPDETemplateSection {
 		d.setProjectName(p.getName());
 		d.setJunitClassName(getValue(KEY_PACKAGE_NAME)+"." + getValue(KEY_TEST_SUITE_CLASS));
 		d.setTestProductId(getValue(KEY_TEST_PRODUCT_BUNDLE_ID)+".product");
-		d.getTargetPlugins().addAll(JemmyLaunchDef.getTargetPluginsE4());
+		if( getBooleanOption(KEY_TEST_E4_PRODUCT) ) {
+			d.getTargetPlugins().addAll(JemmyLaunchDef.getTargetPluginsE4());	
+		} else {
+			d.getTargetPlugins().addAll(JemmyLaunchDef.getTargetPluginsOSGi());
+		}
+		
 		for( String t : target ) {
 			d.getTargetPlugins().add(new PluginLaunchDef(t));
 		}
