@@ -120,6 +120,7 @@ public abstract class AbstractBuildHandler extends AbstractAntHandler {
 			ILaunchConfigurationWorkingCopy cfg = type.newInstance( null, name );
 			cfg.setAttribute( IExternalToolConstants.ATTR_LOCATION, buildFile.getAbsolutePath() );
 			cfg.setAttribute( IExternalToolConstants.ATTR_WORKING_DIRECTORY, buildFile.getParentFile().getAbsolutePath() );
+			cfg.setAttribute( "org.eclipse.debug.core.ATTR_REFRESH_SCOPE", "${project}" );
 			cfg.setAttribute( IAntLaunchConstants.ATTR_DEFAULT_VM_INSTALL, false );
 
 			for ( IClasspathEntry e : project.getRawClasspath() ) {
