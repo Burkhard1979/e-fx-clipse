@@ -17,9 +17,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 
 public class CssDialectExtensionComponent {
 	private List<CssDialectExtension> extensions = new ArrayList<CssDialectExtension>();
@@ -156,4 +158,13 @@ public class CssDialectExtensionComponent {
 		return "no extension capable :/";
 	}
 
+	public List<Proposal> findProposals(URI uri, String element, String property, List<CssTok> prefixToks, String prefix) {
+		List<Proposal> result = new ArrayList<CssDialectExtension.Proposal>();
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				result.addAll(((CssExtendedDialectExtension)ext).findProposals(element, property, prefixToks, prefix));
+			}
+		}
+		return result;
+	}
 }

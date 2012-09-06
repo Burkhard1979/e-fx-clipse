@@ -16,7 +16,10 @@ import java.util.List;
 import org.eclipse.emf.common.util.URI;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
+import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 
 public class CssDialectExtensionComponent {
 	private List<CssDialectExtension> extensions = new ArrayList<CssDialectExtension>();
@@ -55,4 +58,16 @@ public class CssDialectExtensionComponent {
 		}
 		return exts.toArray(new CssDialectExtension[0]);
 	}
+	
+	public List<Proposal> getProposals(URI uri, String element, String attribute, List<CssTok> prefixToks, String prefix) {
+		List<Proposal> rv = new ArrayList<Proposal>();
+		
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				rv.addAll(((CssExtendedDialectExtension)ext).findProposals(element, attribute, prefixToks, prefix));
+			}
+		}
+		return rv;
+	}
+	
 }

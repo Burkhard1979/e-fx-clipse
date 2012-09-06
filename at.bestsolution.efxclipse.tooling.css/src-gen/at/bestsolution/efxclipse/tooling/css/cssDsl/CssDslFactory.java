@@ -134,6 +134,15 @@ public interface CssDslFactory extends EFactory
   css_negation createcss_negation();
 
   /**
+   * Returns a new object of class '<em>Css Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Css Tok</em>'.
+   * @generated
+   */
+  CssTok createCssTok();
+
+  /**
    * Returns a new object of class '<em>expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -177,6 +186,78 @@ public interface CssDslFactory extends EFactory
    * @generated
    */
   URLType createURLType();
+
+  /**
+   * Returns a new object of class '<em>Symbol Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Symbol Tok</em>'.
+   * @generated
+   */
+  SymbolTok createSymbolTok();
+
+  /**
+   * Returns a new object of class '<em>WS Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WS Tok</em>'.
+   * @generated
+   */
+  WSTok createWSTok();
+
+  /**
+   * Returns a new object of class '<em>String Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Tok</em>'.
+   * @generated
+   */
+  StringTok createStringTok();
+
+  /**
+   * Returns a new object of class '<em>Func Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func Tok</em>'.
+   * @generated
+   */
+  FuncTok createFuncTok();
+
+  /**
+   * Returns a new object of class '<em>Number Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Number Tok</em>'.
+   * @generated
+   */
+  NumberTok createNumberTok();
+
+  /**
+   * Returns a new object of class '<em>Identifier Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Identifier Tok</em>'.
+   * @generated
+   */
+  IdentifierTok createIdentifierTok();
+
+  /**
+   * Returns a new object of class '<em>Url Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Url Tok</em>'.
+   * @generated
+   */
+  UrlTok createUrlTok();
+
+  /**
+   * Returns a new object of class '<em>Color Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Color Tok</em>'.
+   * @generated
+   */
+  ColorTok createColorTok();
 
   /**
    * Returns the package supported by this factory.

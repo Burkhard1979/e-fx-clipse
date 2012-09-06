@@ -92,32 +92,32 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	}
 	
 	protected String getHoverInfoAsHtml(EObject o) {
-		System.err.println(o);
-		if( o instanceof function ) {
-			function f = (function) o;
-			if( "rgb".equals(f.getName()) ) {
-				EList<termGroup> g = f.getExpression().getTermGroups();
-				String red = g.get(0).getTerms().get(0).getNumber();
-				String green = g.get(1).getTerms().get(0).getNumber();
-				String blue = g.get(2).getTerms().get(0).getNumber();
-				String style = "rgb("+red+","+green+","+blue+")";
-				String hexRed = Integer.toHexString(Integer.parseInt(red));
-				String hexGreen = Integer.toHexString(Integer.parseInt(green));
-				String hexBlue = Integer.toHexString(Integer.parseInt(blue));
-				String hexVal = "#" + (hexRed.length() == 1 ? "0" : "") + hexRed;
-				hexVal += (hexGreen.length() == 1 ? "0" : "") + hexGreen;
-				hexVal += (hexBlue.length() == 1 ? "0" : "") + hexBlue;
-				
-				String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+style+"'></div></td><td>"+hexVal+"</td></tr></table>";
-				return rv;
-			}
-		} else if( o instanceof term ) {
-			term t = (term) o;
-			if( t.getHexColor() != null ) {
-				String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+t.getHexColor()+"'></div></td><td>"+t.getHexColor()+"</td></tr></table>";
-				return rv;
-			}
-		}
+//		System.err.println(o);
+//		if( o instanceof function ) {
+//			function f = (function) o;
+//			if( "rgb".equals(f.getName()) ) {
+//				EList<termGroup> g = f.getExpression().getTermGroups();
+//				String red = g.get(0).getTerms().get(0).getNumber();
+//				String green = g.get(1).getTerms().get(0).getNumber();
+//				String blue = g.get(2).getTerms().get(0).getNumber();
+//				String style = "rgb("+red+","+green+","+blue+")";
+//				String hexRed = Integer.toHexString(Integer.parseInt(red));
+//				String hexGreen = Integer.toHexString(Integer.parseInt(green));
+//				String hexBlue = Integer.toHexString(Integer.parseInt(blue));
+//				String hexVal = "#" + (hexRed.length() == 1 ? "0" : "") + hexRed;
+//				hexVal += (hexGreen.length() == 1 ? "0" : "") + hexGreen;
+//				hexVal += (hexBlue.length() == 1 ? "0" : "") + hexBlue;
+//				
+//				String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+style+"'></div></td><td>"+hexVal+"</td></tr></table>";
+//				return rv;
+//			}
+//		} else if( o instanceof term ) {
+//			term t = (term) o;
+//			if( t.getHexColor() != null ) {
+//				String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+t.getHexColor()+"'></div></td><td>"+t.getHexColor()+"</td></tr></table>";
+//				return rv;
+//			}
+//		}
 		return super.getHoverInfoAsHtml(o);
 	}
 

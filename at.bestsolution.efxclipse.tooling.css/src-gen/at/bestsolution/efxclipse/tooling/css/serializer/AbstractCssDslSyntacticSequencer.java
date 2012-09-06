@@ -19,9 +19,9 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 
 	protected CssDslGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0;
+	protected AbstractElementAlias match_css_declaration_WSTerminalRuleCall_0_a;
+	protected AbstractElementAlias match_css_declaration_WSTerminalRuleCall_2_a;
 	protected AbstractElementAlias match_function_HyphenMinusKeyword_0_q;
-	protected AbstractElementAlias match_function_WSTerminalRuleCall_3_a;
-	protected AbstractElementAlias match_function_WSTerminalRuleCall_5_a;
 	protected AbstractElementAlias match_importExpression_IMPORTKeyword_0_0_1_or_ImportKeyword_0_0_0;
 	protected AbstractElementAlias match_media_MEDIAKeyword_0_1_or_MediaKeyword_0_0;
 	protected AbstractElementAlias match_page_PAGEKeyword_1_1_or_PageKeyword_1_0;
@@ -34,9 +34,9 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (CssDslGrammarAccess) access;
 		match_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCharsetAccess().getCHARSETKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getCharsetAccess().getCharsetKeyword_0_0()));
+		match_css_declaration_WSTerminalRuleCall_0_a = new TokenAlias(true, true, grammarAccess.getCss_declarationAccess().getWSTerminalRuleCall_0());
+		match_css_declaration_WSTerminalRuleCall_2_a = new TokenAlias(true, true, grammarAccess.getCss_declarationAccess().getWSTerminalRuleCall_2());
 		match_function_HyphenMinusKeyword_0_q = new TokenAlias(false, true, grammarAccess.getFunctionAccess().getHyphenMinusKeyword_0());
-		match_function_WSTerminalRuleCall_3_a = new TokenAlias(true, true, grammarAccess.getFunctionAccess().getWSTerminalRuleCall_3());
-		match_function_WSTerminalRuleCall_5_a = new TokenAlias(true, true, grammarAccess.getFunctionAccess().getWSTerminalRuleCall_5());
 		match_importExpression_IMPORTKeyword_0_0_1_or_ImportKeyword_0_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getImportExpressionAccess().getIMPORTKeyword_0_0_1()), new TokenAlias(false, false, grammarAccess.getImportExpressionAccess().getImportKeyword_0_0_0()));
 		match_media_MEDIAKeyword_0_1_or_MediaKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMediaAccess().getMEDIAKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getMediaAccess().getMediaKeyword_0_0()));
 		match_page_PAGEKeyword_1_1_or_PageKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPageAccess().getPAGEKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getPageAccess().getPageKeyword_1_0()));
@@ -94,12 +94,12 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if(match_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0.equals(syntax))
 				emit_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_css_declaration_WSTerminalRuleCall_0_a.equals(syntax))
+				emit_css_declaration_WSTerminalRuleCall_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_css_declaration_WSTerminalRuleCall_2_a.equals(syntax))
+				emit_css_declaration_WSTerminalRuleCall_2_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_function_HyphenMinusKeyword_0_q.equals(syntax))
 				emit_function_HyphenMinusKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_function_WSTerminalRuleCall_3_a.equals(syntax))
-				emit_function_WSTerminalRuleCall_3_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_function_WSTerminalRuleCall_5_a.equals(syntax))
-				emit_function_WSTerminalRuleCall_5_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_importExpression_IMPORTKeyword_0_0_1_or_ImportKeyword_0_0_0.equals(syntax))
 				emit_importExpression_IMPORTKeyword_0_0_1_or_ImportKeyword_0_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_media_MEDIAKeyword_0_1_or_MediaKeyword_0_0.equals(syntax))
@@ -120,9 +120,25 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 
 	/**
 	 * Syntax:
-	 *     '@CHARSET' | '@charset'
+	 *     '@charset' | '@CHARSET'
 	 */
 	protected void emit_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     WS*
+	 */
+	protected void emit_css_declaration_WSTerminalRuleCall_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     WS*
+	 */
+	protected void emit_css_declaration_WSTerminalRuleCall_2_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -136,23 +152,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     WS*
-	 */
-	protected void emit_function_WSTerminalRuleCall_3_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     WS*
-	 */
-	protected void emit_function_WSTerminalRuleCall_5_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     '@import' | '@IMPORT'
+	 *     '@IMPORT' | '@import'
 	 */
 	protected void emit_importExpression_IMPORTKeyword_0_0_1_or_ImportKeyword_0_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

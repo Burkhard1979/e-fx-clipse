@@ -41,54 +41,54 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 //		}
 //	}
 
-	@Check
-	public void checkDeclaration(css_declaration dec) {
-		css_property property = dec.getProperty();
-		String propertyName = property.getName();
-		
-		if( propertyName == null || propertyName.trim().length() == 0 ) {
-			return;
-		}
-		
-		if( dec.getExpression().getTermGroups().size() == 1 && dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 && ("null".equals(dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier()) || "inherit".equals(dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier()) ) ) {
-			return;
-		}
-
-		ValidationResult[] results = new ValidationResult[0];
-		for( Property p : extension.getProperties(dec.eResource().getURI()) ) {
-			if( propertyName.equals(p.getName()) ) {
-				
-				ValidationResult[] r = p.validate(dec);
-				
-				// At least one validation succeed
-				if( r == null || r.length == 0 ) {
-					return;
-				} else if( r != null ) {
-					results = r;
-				}
-			}
-		}
-		
-		for( ValidationResult r : results ) {
-			if( r.status == ValidationStatus.ERROR ) {
-				if( r.object == null ) {
-					error( r.message, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION );
-				} else if( r.index == -1 ) {
-					error(r.message, r.object, r.feature, 0);
-				} else {
-					error(r.message, r.object, r.feature, r.index);
-				}
-			} else if( r.status == ValidationStatus.WARNING ) {
-				if( r.object == null ) {
-					warning( r.message, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION );
-				} else if( r.index == -1 ) {
-					warning(r.message, r.object, r.feature, 0);
-				} else {
-					warning(r.message, r.object, r.feature, r.index);
-				}
-			}
-		}
-		
-//		System.err.println("Checking: " + extension + " => " + dec);
-	}
+//	@Check
+//	public void checkDeclaration(css_declaration dec) {
+//		css_property property = dec.getProperty();
+//		String propertyName = property.getName();
+//		
+//		if( propertyName == null || propertyName.trim().length() == 0 ) {
+//			return;
+//		}
+//		
+//		if( dec.getExpression().getTermGroups().size() == 1 && dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 && ("null".equals(dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier()) || "inherit".equals(dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier()) ) ) {
+//			return;
+//		}
+//
+//		ValidationResult[] results = new ValidationResult[0];
+//		for( Property p : extension.getProperties(dec.eResource().getURI()) ) {
+//			if( propertyName.equals(p.getName()) ) {
+//				
+//				ValidationResult[] r = p.validate(dec);
+//				
+//				// At least one validation succeed
+//				if( r == null || r.length == 0 ) {
+//					return;
+//				} else if( r != null ) {
+//					results = r;
+//				}
+//			}
+//		}
+//		
+//		for( ValidationResult r : results ) {
+//			if( r.status == ValidationStatus.ERROR ) {
+//				if( r.object == null ) {
+//					error( r.message, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION );
+//				} else if( r.index == -1 ) {
+//					error(r.message, r.object, r.feature, 0);
+//				} else {
+//					error(r.message, r.object, r.feature, r.index);
+//				}
+//			} else if( r.status == ValidationStatus.WARNING ) {
+//				if( r.object == null ) {
+//					warning( r.message, CssDslPackage.Literals.CSS_DECLARATION__EXPRESSION );
+//				} else if( r.index == -1 ) {
+//					warning(r.message, r.object, r.feature, 0);
+//				} else {
+//					warning(r.message, r.object, r.feature, r.index);
+//				}
+//			}
+//		}
+//		
+////		System.err.println("Checking: " + extension + " => " + dec);
+//	}
 }

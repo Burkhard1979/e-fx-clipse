@@ -6,18 +6,25 @@
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#getValueTokens <em>Value Tokens</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#getPrio <em>Prio</em>}</li>
  * </ul>
  * </p>
@@ -47,14 +54,14 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
   protected css_property property;
 
   /**
-   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+   * The cached value of the '{@link #getValueTokens() <em>Value Tokens</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpression()
+   * @see #getValueTokens()
    * @generated
    * @ordered
    */
-  protected expr expression;
+  protected EList<CssTok> valueTokens;
 
   /**
    * The default value of the '{@link #getPrio() <em>Prio</em>}' attribute.
@@ -150,47 +157,13 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public expr getExpression()
+  public EList<CssTok> getValueTokens()
   {
-    return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExpression(expr newExpression, NotificationChain msgs)
-  {
-    expr oldExpression = expression;
-    expression = newExpression;
-    if (eNotificationRequired())
+    if (valueTokens == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.CSS_DECLARATION__EXPRESSION, oldExpression, newExpression);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      valueTokens = new EObjectContainmentEList<CssTok>(CssTok.class, this, CssDslPackage.CSS_DECLARATION__VALUE_TOKENS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExpression(expr newExpression)
-  {
-    if (newExpression != expression)
-    {
-      NotificationChain msgs = null;
-      if (expression != null)
-        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.CSS_DECLARATION__EXPRESSION, null, msgs);
-      if (newExpression != null)
-        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.CSS_DECLARATION__EXPRESSION, null, msgs);
-      msgs = basicSetExpression(newExpression, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.CSS_DECLARATION__EXPRESSION, newExpression, newExpression));
+    return valueTokens;
   }
 
   /**
@@ -228,8 +201,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
     {
       case CssDslPackage.CSS_DECLARATION__PROPERTY:
         return basicSetProperty(null, msgs);
-      case CssDslPackage.CSS_DECLARATION__EXPRESSION:
-        return basicSetExpression(null, msgs);
+      case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
+        return ((InternalEList<?>)getValueTokens()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -246,8 +219,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
     {
       case CssDslPackage.CSS_DECLARATION__PROPERTY:
         return getProperty();
-      case CssDslPackage.CSS_DECLARATION__EXPRESSION:
-        return getExpression();
+      case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
+        return getValueTokens();
       case CssDslPackage.CSS_DECLARATION__PRIO:
         return getPrio();
     }
@@ -259,6 +232,7 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -267,8 +241,9 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
       case CssDslPackage.CSS_DECLARATION__PROPERTY:
         setProperty((css_property)newValue);
         return;
-      case CssDslPackage.CSS_DECLARATION__EXPRESSION:
-        setExpression((expr)newValue);
+      case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
+        getValueTokens().clear();
+        getValueTokens().addAll((Collection<? extends CssTok>)newValue);
         return;
       case CssDslPackage.CSS_DECLARATION__PRIO:
         setPrio((String)newValue);
@@ -290,8 +265,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
       case CssDslPackage.CSS_DECLARATION__PROPERTY:
         setProperty((css_property)null);
         return;
-      case CssDslPackage.CSS_DECLARATION__EXPRESSION:
-        setExpression((expr)null);
+      case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
+        getValueTokens().clear();
         return;
       case CssDslPackage.CSS_DECLARATION__PRIO:
         setPrio(PRIO_EDEFAULT);
@@ -312,8 +287,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
     {
       case CssDslPackage.CSS_DECLARATION__PROPERTY:
         return property != null;
-      case CssDslPackage.CSS_DECLARATION__EXPRESSION:
-        return expression != null;
+      case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
+        return valueTokens != null && !valueTokens.isEmpty();
       case CssDslPackage.CSS_DECLARATION__PRIO:
         return PRIO_EDEFAULT == null ? prio != null : !PRIO_EDEFAULT.equals(prio);
     }

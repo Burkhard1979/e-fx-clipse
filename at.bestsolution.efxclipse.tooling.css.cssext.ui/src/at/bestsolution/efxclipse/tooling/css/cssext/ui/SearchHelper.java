@@ -18,6 +18,8 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
@@ -32,6 +34,17 @@ public class SearchHelper {
 	
 	public static interface ElementDefinitionFilter {
 		public boolean filter(ElementDefinition def);
+		public boolean returnOnFirstHit();
+	}
+	
+	public static interface RuleFilter {
+		public boolean filter(CSSRule def);
+		public boolean returnOnFirstHit();
+	}
+	
+	public static interface SearchFilter<T extends EObject> {
+		public Class<T> getSearchClass();
+		public boolean filter(T obj);
 		public boolean returnOnFirstHit();
 	}
 	
@@ -82,30 +95,37 @@ public class SearchHelper {
 		}
 	}
 	
-	public List<ElementDefinition> findElementByFilter(ElementDefinitionFilter filter) {
-		List<ElementDefinition> result = new ArrayList<ElementDefinition>();
+	
+	public <T extends EObject> List<T> findObjects(SearchFilter<T> filter) {
+		List<T> result = new ArrayList<T>();
 		for (CssExtension e : model) {
-			recFindElements(e, result, filter);
+			recFindObjects(e, result, filter);
 		}
 		return result;
 	}
 	
-	private void recFindElements(EObject obj, List<ElementDefinition> result, ElementDefinitionFilter filter) {
+	public <T extends EObject> void recFindObjects(EObject curr, List<T> result, SearchFilter<T> filter) {
 		if (filter.returnOnFirstHit() && !result.isEmpty()) return;
-		else if (obj instanceof CssExtension) {
-			CssExtension e = (CssExtension) obj;
-			recFindElements(e.getPackageDef(), result, filter);
+		if (filter.getSearchClass().isAssignableFrom(curr.getClass())) {
+			if (filter.filter((T)curr)) {
+				result.add((T)curr);
+			}
 		}
-		else if (obj instanceof PackageDefinition) {
-			PackageDefinition pkg = (PackageDefinition) obj;
+		
+		if (curr instanceof CssExtension) {
+			CssExtension e = (CssExtension) curr;
+			recFindObjects(e.getPackageDef(), result, filter);
+		}
+		else if (curr instanceof PackageDefinition) {
+			PackageDefinition pkg = (PackageDefinition) curr;
+			for (CSSRuleDefinition def : pkg.getRules()) {
+				recFindObjects(def, result, filter);
+			}
 			for (ElementDefinition el : pkg.getElements()) {
-				if (filter.filter(el)) {
-					result.add(el);
-					if (filter.returnOnFirstHit()) return;
-				}
+				recFindObjects(el, result, filter);
 			}
 			for (PackageDefinition subPkg : pkg.getSubpackages()) {
-				recFindElements(subPkg, result, filter);
+				recFindObjects(subPkg, result, filter);
 			}
 		}
 	}

@@ -138,6 +138,11 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
         return createcss_negationAdapter();
       }
       @Override
+      public Adapter caseCssTok(CssTok object)
+      {
+        return createCssTokAdapter();
+      }
+      @Override
       public Adapter caseexpr(expr object)
       {
         return createexprAdapter();
@@ -161,6 +166,46 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseURLType(URLType object)
       {
         return createURLTypeAdapter();
+      }
+      @Override
+      public Adapter caseSymbolTok(SymbolTok object)
+      {
+        return createSymbolTokAdapter();
+      }
+      @Override
+      public Adapter caseWSTok(WSTok object)
+      {
+        return createWSTokAdapter();
+      }
+      @Override
+      public Adapter caseStringTok(StringTok object)
+      {
+        return createStringTokAdapter();
+      }
+      @Override
+      public Adapter caseFuncTok(FuncTok object)
+      {
+        return createFuncTokAdapter();
+      }
+      @Override
+      public Adapter caseNumberTok(NumberTok object)
+      {
+        return createNumberTokAdapter();
+      }
+      @Override
+      public Adapter caseIdentifierTok(IdentifierTok object)
+      {
+        return createIdentifierTokAdapter();
+      }
+      @Override
+      public Adapter caseUrlTok(UrlTok object)
+      {
+        return createUrlTokAdapter();
+      }
+      @Override
+      public Adapter caseColorTok(ColorTok object)
+      {
+        return createColorTokAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -365,6 +410,21 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok <em>Css Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok
+   * @generated
+   */
+  public Adapter createCssTokAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.expr <em>expr</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -435,6 +495,126 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createURLTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok <em>Symbol Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok
+   * @generated
+   */
+  public Adapter createSymbolTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok <em>WS Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok
+   * @generated
+   */
+  public Adapter createWSTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok <em>String Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok
+   * @generated
+   */
+  public Adapter createStringTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok <em>Func Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok
+   * @generated
+   */
+  public Adapter createFuncTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok <em>Number Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok
+   * @generated
+   */
+  public Adapter createNumberTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok <em>Identifier Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok
+   * @generated
+   */
+  public Adapter createIdentifierTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok <em>Url Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok
+   * @generated
+   */
+  public Adapter createUrlTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok <em>Color Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok
+   * @generated
+   */
+  public Adapter createColorTokAdapter()
   {
     return null;
   }

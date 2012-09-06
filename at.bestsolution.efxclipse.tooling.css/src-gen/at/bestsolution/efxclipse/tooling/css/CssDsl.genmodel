@@ -56,7 +56,7 @@
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//css_declaration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_declaration/property"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_declaration/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_declaration/valueTokens"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_declaration/prio"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//css_property">
@@ -66,6 +66,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_negation/not"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_negation/negation_arg"/>
     </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//CssTok"/>
     <genClasses ecoreClass="CssDsl.ecore#//expr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//expr/termGroups"/>
     </genClasses>
@@ -82,11 +83,33 @@
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//function/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//function/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//function/params"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//URLType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//URLType/mediaList"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//URLType/url"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//SymbolTok">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//SymbolTok/symbol"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//WSTok"/>
+    <genClasses ecoreClass="CssDsl.ecore#//StringTok">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//StringTok/value"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//FuncTok">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//FuncTok/func"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//NumberTok">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//NumberTok/num"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//IdentifierTok">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//IdentifierTok/id"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//UrlTok">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//UrlTok/url"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//ColorTok">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//ColorTok/color"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
