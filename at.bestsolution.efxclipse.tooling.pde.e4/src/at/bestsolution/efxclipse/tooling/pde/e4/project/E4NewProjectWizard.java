@@ -473,12 +473,6 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			MCommand openCommand = createCommand("media.open", "openMedia", "OpenHandler", "M1+O", pluginName, fragment, application);
 			MCommand refreshCommand = createCommand("media.refresh", "refreshMedia", "RefreshHandler", "M1+R", pluginName, fragment, application);
 
-////			MCommand openCommand = createCommand(pluginName + ".open", "openCommand", "OpenHandler", "M1+O", pluginName, fragment, application);
-////
-////			MCommand saveCommand = createCommand("org.eclipse.ui.file.save", "saveCommand", "SaveHandler", "M1+S", pluginName, fragment, application);
-////
-//			MCommand aboutCommand = createCommand("org.eclipse.ui.help.aboutAction", "aboutCommand", "AboutHandler", "M1+A", pluginName, fragment, application);
-
 			MTrimmedWindow mainWindow = MBasicFactory.INSTANCE.createTrimmedWindow();
 			mainWindow.getPersistedState().put("fx.stage.decoration", "platform:/plugin/"+pluginName+"/"+fragment.getElementName().replace('.', '/')+"/decoration/TopArea.fxml");
 			application.getChildren().add(mainWindow);
@@ -486,46 +480,8 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 				mainWindow.setLabel(pluginName);
 				mainWindow.setX(0);
 				mainWindow.setY(0);
-				mainWindow.setWidth(500);
-				mainWindow.setHeight(400);
-
-//				// Menu
-//				{
-//					MMenu menu = MMenuFactory.INSTANCE.createMenu();
-//					mainWindow.setMainMenu(menu);
-//					menu.setElementId("org.efxclipse.e4.mainmenu");
-//
-//					MMenu fileMenuItem = MMenuFactory.INSTANCE.createMenu();
-//					menu.getChildren().add(fileMenuItem);
-//					fileMenuItem.setLabel("File");
-//					{
-////						MHandledMenuItem menuItemOpen = MMenuFactory.INSTANCE.createHandledMenuItem();
-////						fileMenuItem.getChildren().add(menuItemOpen);
-////						menuItemOpen.setLabel("Open");
-////						menuItemOpen.setIconURI("platform:/plugin/" + pluginName + "/icons/sample.gif");
-////						menuItemOpen.setCommand(openCommand);
-////
-////						MHandledMenuItem menuItemSave = MMenuFactory.INSTANCE.createHandledMenuItem();
-////						fileMenuItem.getChildren().add(menuItemSave);
-////						menuItemSave.setLabel("Save");
-////						menuItemSave.setIconURI("platform:/plugin/" + pluginName + "/icons/save_edit.gif");
-////						menuItemSave.setCommand(saveCommand);
-//
-//						MHandledMenuItem menuItemQuit = MMenuFactory.INSTANCE.createHandledMenuItem();
-//						fileMenuItem.getChildren().add(menuItemQuit);
-//						menuItemQuit.setLabel("Quit");
-//						menuItemQuit.setCommand(quitCommand);
-//					}
-//					MMenu helpMenuItem = MMenuFactory.INSTANCE.createMenu();
-//					menu.getChildren().add(helpMenuItem);
-//					helpMenuItem.setLabel("Help");
-//					{
-//						MHandledMenuItem menuItemAbout = MMenuFactory.INSTANCE.createHandledMenuItem();
-//						helpMenuItem.getChildren().add(menuItemAbout);
-//						menuItemAbout.setLabel("About");
-//						menuItemAbout.setCommand(aboutCommand);
-//					}
-//				}
+				mainWindow.setWidth(1024);
+				mainWindow.setHeight(768);
 
 				// Top-Sash
 				{
@@ -536,12 +492,14 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 					{
 						MPart part = MBasicFactory.INSTANCE.createPart();
 						part.setContributionURI("bundleclass://" + pluginName + "/" + fragment.getElementName() + ".parts.MediaListPart");
+						part.setContainerData("0.3");
 						sash.getChildren().add(part);
 					}
 
 					// Create a right a stack
 					{
 						MPartStack stack = MBasicFactory.INSTANCE.createPartStack();
+						stack.setContainerData("0.7");
 						stack.setElementId("content.stack");
 						sash.getChildren().add(stack);
 					}
