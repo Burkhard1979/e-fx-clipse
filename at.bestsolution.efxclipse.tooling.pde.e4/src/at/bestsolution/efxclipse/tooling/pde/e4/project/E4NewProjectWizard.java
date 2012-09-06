@@ -474,6 +474,7 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			MCommand refreshCommand = createCommand("media.refresh", "refreshMedia", "RefreshHandler", "M1+R", pluginName, fragment, application);
 
 			MTrimmedWindow mainWindow = MBasicFactory.INSTANCE.createTrimmedWindow();
+			mainWindow.setElementId("org.efxclipse.e4.mainWindow");
 			mainWindow.getPersistedState().put("fx.stage.decoration", "platform:/plugin/"+pluginName+"/"+fragment.getElementName().replace('.', '/')+"/decoration/TopArea.fxml");
 			application.getChildren().add(mainWindow);
 			{
@@ -518,11 +519,13 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 
 					MHandledToolItem toolItemOpen = MMenuFactory.INSTANCE.createHandledToolItem();
 					toolBar.getChildren().add(toolItemOpen);
+					toolItemOpen.setElementId("org.efxclipse.e4.toolitem.open");
 					toolItemOpen.setIconURI("platform:/plugin/" + pluginName + "/icons/edit-image-face-show.png");
 					toolItemOpen.setCommand(openCommand);
 
 					MHandledToolItem toolItemSave = MMenuFactory.INSTANCE.createHandledToolItem();
 					toolBar.getChildren().add(toolItemSave);
+					toolItemSave.setElementId("org.efxclipse.e4.toolitem.save");
 					toolItemSave.setIconURI("platform:/plugin/" + pluginName + "/icons/system-reboot.png");
 					toolItemSave.setCommand(refreshCommand);
 				}
