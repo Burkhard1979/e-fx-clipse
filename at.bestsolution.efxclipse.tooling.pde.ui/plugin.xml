@@ -43,6 +43,17 @@
             name="JavaFX Eclipse 3.x RCP"
             rcp="true">
       </wizard>
+      <wizard
+            class="at.bestsolution.efxclipse.tooling.pde.ui.JemmyJUnitTestProjectWizard"
+            icon="icons/application_lightning.png"
+            id="at.bestsolution.efxclipse.tooling.pde.ui.newjemmy"
+            java="true"
+            name="JemmyFX Testproject"
+            pureOSGi="false"
+            rcp="false"
+            requiresActivator="false"
+            ui-content="false">
+      </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.newWizards">
