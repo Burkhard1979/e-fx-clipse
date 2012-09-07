@@ -91,6 +91,30 @@ public class Activator extends AbstractUIPlugin {
 			};
 	}
 	
+	public static String[] getJemmyImports() {
+		return new String[] {
+				"org.jemmy.action;version=\"3.0.0\"",
+				"org.jemmy.browser;version=\"3.0.0\"",
+				"org.jemmy.control;version=\"3.0.0\"",
+				"org.jemmy.dock;version=\"3.0.0\"",
+				"org.jemmy.env;version=\"3.0.0\"",
+				"org.jemmy.fx;version=\"3.0.0\"",
+				"org.jemmy.fx.control;version=\"3.0.0\"",
+				"org.jemmy.fx.control.caspian;version=\"3.0.0\"",
+				"org.jemmy.image;version=\"3.0.0\"",
+				"org.jemmy.image.pixel;version=\"3.0.0\"",
+				"org.jemmy.input;version=\"3.0.0\"",
+				"org.jemmy.input.glass;version=\"3.0.0\"",
+				"org.jemmy.interfaces;version=\"3.0.0\"",
+				"org.jemmy.lookup;version=\"3.0.0\"",
+				"org.jemmy.operators;version=\"3.0.0\"",
+				"org.jemmy.resources;version=\"3.0.0\"",
+				"org.jemmy.support;version=\"3.0.0\"",
+				"org.jemmy.timing;version=\"3.0.0\""
+
+		};
+	}
+	
 	public static String getCommaValuesFromPackagesArray(String[] values, String version) {
 		StringBuffer buffer = new StringBuffer();
 		for (String value : values) {

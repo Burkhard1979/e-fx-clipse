@@ -51,7 +51,27 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 				for( ImportPackageSpecification i : desc.getImportPackages() ) {
 					if( i.getName().startsWith("javafx") ) {
 						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),false));
-					} else if( i.getName().contains("javafx") ) {
+					} else if( i.getName().startsWith("com.sun.browser") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.deploy") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.glass") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.javafx") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.media") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.openpisces") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.prism") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.scenario") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.t2k") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("com.sun.webpane") ) {
+						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
+					} else if( i.getName().startsWith("netscape.javascript") ) {
 						l.add(new Rule(new Path(i.getName().replace('.', '/')+"/*"),true));
 					}
 				}

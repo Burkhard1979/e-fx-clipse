@@ -66,6 +66,7 @@ public class MediaListPart {
 	@PostConstruct
 	void init(BorderPane pane) {
 		list = new ListView<Media>(createList());
+		list.setId("mediaList");
 		list.setCellFactory(new Callback<ListView<Media>, ListCell<Media>>() {
 			
 			@Override
