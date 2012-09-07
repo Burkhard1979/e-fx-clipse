@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.ObservablesManager;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -62,7 +63,16 @@ public abstract class AddDialog<T extends EObject> extends TitleAreaDialog {
 			}
 		}
 		else {
-			setErrorMessage( status.getMessage() );
+			if ( status.isMultiStatus() ) {
+				StringBuffer errors = new StringBuffer();
+				for ( IStatus s : ( (MultiStatus) status ).getChildren() ) {
+					errors.append( s.getMessage() ).append( "\n" );
+				}
+				setErrorMessage( errors.toString() );
+			}
+			else {
+				setErrorMessage( status.getMessage() );
+			}
 		}
 	}
 

@@ -15,10 +15,12 @@ import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.an
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__HREF;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__KIND;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.ICON__WIDTH;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.SPLASH__HREF;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.SPLASH__MODE;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.databinding.EMFUpdateValueStrategy;
@@ -47,8 +49,6 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.IconType;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersFactory;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
 
 /**
  * @author martin
@@ -57,6 +57,8 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 public class AddIconDialog extends AddDialog<Icon> {
 	private Icon o;
 	private Text tUrl;
+	private Text tWidth;
+	private Text tHeight;
 	private final EditingDomain editingDomain;
 	private final AntTask task;
 
@@ -101,8 +103,8 @@ public class AddIconDialog extends AddDialog<Icon> {
 			v.setContentProvider( ArrayContentProvider.getInstance() );
 			v.setInput( IconType.VALUES );
 			IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__KIND );
-			dbContext.bindValue( selProp.observe( v ), prop.observe( o ), new EMFUpdateValueStrategy(
-					EMFUpdateValueStrategy.POLICY_ON_REQUEST ), new EMFUpdateValueStrategy() );
+			dbContext.bindValue( selProp.observe( v ), prop.observe( o ), new EMFUpdateValueStrategy( EMFUpdateValueStrategy.POLICY_ON_REQUEST ),
+					new EMFUpdateValueStrategy() );
 		}
 
 		{
@@ -112,8 +114,8 @@ public class AddIconDialog extends AddDialog<Icon> {
 			tUrl = new Text( container, SWT.BORDER );
 			tUrl.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 			IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__HREF );
-			dbContext.bindValue( tProp.observeDelayed( DELAY, tUrl ), prop.observe( o ), new EMFUpdateValueStrategy(
-					EMFUpdateValueStrategy.POLICY_ON_REQUEST ), new EMFUpdateValueStrategy() );
+			dbContext.bindValue( tProp.observeDelayed( DELAY, tUrl ), prop.observe( o ),
+					new EMFUpdateValueStrategy( EMFUpdateValueStrategy.POLICY_ON_REQUEST ), new EMFUpdateValueStrategy() );
 		}
 
 		{
@@ -126,29 +128,29 @@ public class AddIconDialog extends AddDialog<Icon> {
 			// TODO not hard coded here
 			v.setInput( new String[] { "8", "24", "32" } );
 			IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__DEPTH );
-			dbContext.bindValue( selProp.observe( v ), prop.observe( o ), new EMFUpdateValueStrategy(
-					EMFUpdateValueStrategy.POLICY_ON_REQUEST ), new EMFUpdateValueStrategy() );
+			dbContext.bindValue( selProp.observe( v ), prop.observe( o ), new EMFUpdateValueStrategy( EMFUpdateValueStrategy.POLICY_ON_REQUEST ),
+					new EMFUpdateValueStrategy() );
 		}
 
 		{
 			Label l = new Label( container, SWT.NONE );
 			l.setText( "Width:" );
 
-			Text t = new Text( container, SWT.BORDER );
-			t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+			tWidth = new Text( container, SWT.BORDER );
+			tWidth.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 			IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__WIDTH );
-			dbContext.bindValue( tProp.observeDelayed( DELAY, t ), prop.observe( o ), new EMFUpdateValueStrategy(
-					EMFUpdateValueStrategy.POLICY_ON_REQUEST ), new EMFUpdateValueStrategy() );
+			dbContext.bindValue( tProp.observeDelayed( DELAY, tWidth ), prop.observe( o ),
+					new EMFUpdateValueStrategy( EMFUpdateValueStrategy.POLICY_ON_REQUEST ), new EMFUpdateValueStrategy() );
 		}
 
 		{
 			Label l = new Label( container, SWT.NONE );
 			l.setText( "Height:" );
 
-			Text t = new Text( container, SWT.BORDER );
-			t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+			tHeight = new Text( container, SWT.BORDER );
+			tHeight.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 			IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ICON__HEIGHT );
-			dbContext.bindValue( tProp.observeDelayed( DELAY, t ), prop.observe( o ), new EMFUpdateValueStrategy(
+			dbContext.bindValue( tProp.observeDelayed( DELAY, tHeight ), prop.observe( o ), new EMFUpdateValueStrategy(
 					EMFUpdateValueStrategy.POLICY_ON_REQUEST ), new EMFUpdateValueStrategy() );
 		}
 
@@ -162,12 +164,33 @@ public class AddIconDialog extends AddDialog<Icon> {
 
 	@Override
 	protected IStatus validate() {
-		IStatus status;
+		MultiStatus status = new MultiStatus( JavaFXUIPlugin.PLUGIN_ID, Status.OK, "OK", null );
 		if ( tUrl.getText() == null || tUrl.getText().trim().equals( "" ) ) {
-			status = new Status( Status.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Please enter a URL" );
+			status.add( new Status( Status.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Please enter a URL" ) );
 		}
 		else {
-			status = new Status( Status.OK, JavaFXUIPlugin.PLUGIN_ID, "OK" );
+			try {
+				new URL( tUrl.getText() );
+			}
+			catch ( MalformedURLException e ) {
+				status.add( new Status( Status.ERROR, JavaFXUIPlugin.PLUGIN_ID, "URL seems to be invalid" ) );
+			}
+		}
+		if ( tWidth.getText() != null && tWidth.getText().trim().length() > 0 ) {
+			try {
+				Integer.parseInt( tWidth.getText().trim() );
+			}
+			catch ( NumberFormatException e ) {
+				status.add( new Status( Status.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Width must be an integer value" ) );
+			}
+		}
+		if ( tHeight.getText() != null && tHeight.getText().trim().length() > 0 ) {
+			try {
+				Integer.parseInt( tHeight.getText().trim() );
+			}
+			catch ( NumberFormatException e ) {
+				status.add( new Status( Status.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Height must be an integer value" ) );
+			}
 		}
 		return status;
 	}
