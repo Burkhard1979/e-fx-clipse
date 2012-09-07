@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 BestSolution.at and others.
+ * Copyright (c) 2012 BestSolution.at and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,36 +7,57 @@
  *
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - rewritten, the build configuration is represented by an EMF model now
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.io.BufferedReader;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__BUILD_DIRECTORY;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__CSS_TO_BIN;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__DEPLOY;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__SIGNJAR;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__APPLICATION;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__EMBEDJNLP;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__EXTENSION;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__HEIGHT;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__INCLUDE_DT;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__INFO;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__NATIVE_PACKAGE;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__OFFLINE_ALLOWED;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__PLACEHOLDERID;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__PLACEHOLDERREF;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__SPLASH_IMAGE;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__WIDTH;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.SIGN_JAR__ALIAS;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.SIGN_JAR__KEYPASS;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.SIGN_JAR__KEYSTORE;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.SIGN_JAR__STOREPASS;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.SIGN_JAR__STORETYPE;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__MAINCLASS;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__NAME;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__PRELOADERCLASS;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__VERSION;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.INFO__VENDOR;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.StringReader;
+import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
+import java.util.EventObject;
 import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.NotEnabledException;
-import org.eclipse.core.commands.NotHandledException;
-import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.beans.BeanProperties;
+import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -46,9 +67,36 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.ui.MarkerHelper;
+import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.databinding.FeaturePath;
+import org.eclipse.emf.databinding.IEMFValueProperty;
+import org.eclipse.emf.databinding.edit.EMFEditProperties;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
+import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -68,41 +116,42 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.databinding.swt.IWidgetValueProperty;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
-import org.eclipse.jface.databinding.viewers.IViewerValueProperty;
-import org.eclipse.jface.databinding.viewers.ViewerProperties;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.text.DocumentEvent;
-import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
-import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -110,10 +159,12 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
 import org.eclipse.ui.dialogs.ResourceSelectionDialog;
+import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.dialogs.SelectionDialog;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.events.IHyperlinkListener;
@@ -127,1827 +178,1870 @@ import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
-import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.outline.PropertyContentOutlinePage;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.JavaFXUIPlugin;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
 
-
-@SuppressWarnings("restriction")
-public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements
-		IResourceChangeListener {
-	private PropertyTextEditor editor;
-	
-	private FormToolkit toolkit;
-	private Form form;
+/**
+ * 
+ * @author martin
+ */
+@SuppressWarnings( "restriction" )
+public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements IResourceChangeListener {
+	/**
+	 * This keeps track of the editing domain that is used to track all changes to the model.
+	 */
+	private AdapterFactoryEditingDomain editingDomain;
+	/**
+	 * This is the one adapter factory used for providing views of the model.
+	 */
+	private ComposedAdapterFactory adapterFactory;
+	/**
+	 * This keeps track of the active content viewer, which may be either one of the viewers in the pages or the content outline viewer.
+	 */
+	private Viewer currentViewer;
+	/**
+	 * Controls whether the problem indication should be updated.
+	 */
+	private boolean updateProblemIndication = true;
+	/**
+	 * Resources that have been saved.
+	 */
+	private Collection<Resource> savedResources = new ArrayList<Resource>();
+	/**
+	 * Properties from old build file.
+	 */
 	private Properties properties = new Properties();
-	private BuildPropertyBean bean = new BuildPropertyBean(properties);
-	private boolean syncForm = true;
-	
-//	public static final String BUILD_JFXSDK = "buildJfxSDK";
-	public static final String BUILD_DIRECTORY = "buildDirectory";
-	public static final String BUILD_VENDOR_NAME = "buildVendorName";
-	public static final String BUILD_APP_TITLE = "buildAppTitle";
-	public static final String BUILD_APP_VERSION = "buildAppVersion";
-	public static final String BUILD_APPLICATION_CLASS = "buildApplicationClass";
-	public static final String BUILD_PRELOADER_CLASS = "buildPreloaderClass";
-	public static final String BUILD_SPLASH_IMAGE = "buildSplashImage";
-	public static final String BUILD_MANIFEST_ATTR_LIST = "buildManifestAttrList";
-	
-	// Sub-Elements ManifestAttr
-	public static final String BUILD_MANIFEST_ATTR_NAME = "buildManifestAttrName";
-	public static final String BUILD_MANIFEST_ATTR_VALUE = "buildManifestAttrValue";
-	
-	
-	public static final String DEPLOY_APPLET_WIDTH = "deployAppletWith";
-	public static final String DEPLOY_APPLET_HEIGHT = "deployAppletHeight";
-	public static final String DEPLOY_NATIVE_PACKAGE = "deployNativePackage";
-//	public static final String DEPLOY_DESCRIPTION = "deployDescription"; //fx:info description
-	public static final String DEPLOY_SPLASH_LIST = "deploySplashList";
-	public static final String DEPLOY_ICON_LIST = "deployIconList";
-	
-	// Sub-Elements Splash
-	public static final String DEPLOY_SPLASH_HREF = "deploySplashHref";
-	public static final String DEPLOY_SPLASH_MODE = "deploySplashMode";
-	
-	// Sub-Element Icon
-	public static final String DEPLOY_ICON_DEPTH = "deployIconDepth";
-	public static final String DEPLOY_ICON_HREF = "deployIconHref";
-	public static final String DEPLOY_ICON_HEIGHT = "deployIconHeight";
-	public static final String DEPLOY_ICON_KIND = "deployIconKind";
-	public static final String DEPLOY_ICON_WIDTH = "deployIconWidth";
-	
-	public static final String SIGN_KEYSTORE = "signKeystore";
-	public static final String SIGN_ALIAS    = "signAlias";
-	public static final String SIGN_PASSWORD = "signPassword";
-	public static final String SIGN_KEYPASSWOARD = "signKeyPassword";
-	
-	
-	private static final int DELAY = 500;
-	
-	public static final Map<String,String> MAPPING = new HashMap<String, String>() { 
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+	/**
+	 * The MarkerHelper is responsible for creating workspace resource markers presented.
+	 */
+	private MarkerHelper markerHelper = new EditUIMarkerHelper();
 
-		{
-//			put(BUILD_JFXSDK,"jfx.build.jfxsdkdir");
-			put(BUILD_DIRECTORY,"jfx.build.stagingdir");
-			put(BUILD_VENDOR_NAME, "jfx.build.vendorname");
-			put(BUILD_APP_TITLE,"jfx.build.apptitle");
-			put(BUILD_APP_VERSION,"jfx.build.appversion");
-			put(BUILD_APPLICATION_CLASS,"jfx.build.applicationClass");
-			put(BUILD_PRELOADER_CLASS,"jfx.build.preloaderClass");
-			put(BUILD_SPLASH_IMAGE,"jfx.build.splashImage");
-			put(BUILD_MANIFEST_ATTR_LIST,"jfx.build.manifestAttrList");
-			
-			put(DEPLOY_APPLET_WIDTH,"jfx.deploy.appletWith");
-			put(DEPLOY_APPLET_HEIGHT,"jfx.deploy.appletHeight");
-			put(DEPLOY_NATIVE_PACKAGE,"jfx.deploy.nativePackage");
-			put(DEPLOY_SPLASH_LIST,"jfx.deploy.splashlist");
-			put(DEPLOY_ICON_LIST,"jfx.deploy.iconlist");
-			
-			put(SIGN_KEYSTORE,"jfx.sign.keystore");
-			put(SIGN_ALIAS,"jfx.sign.alias");
-			put(SIGN_PASSWORD,"jfx.sign.password");
-			put(SIGN_KEYPASSWOARD,"jfx.sign.keypassword");
-		}
-	};
+	/**
+	 * Map to store the diagnostic associated with a resource.
+	 */
+	private Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
+
+	private FormToolkit toolkit;
+
+	private static final int DELAY = 500;
 
 	private DataBindingContext dbc;
-	
+
+	/**
+	 * This listens to which ever viewer is active. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected ISelectionChangedListener selectionChangedListener;
+
+	/**
+	 * This keeps track of the selection of the editor as a whole. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected ISelection editorSelection = StructuredSelection.EMPTY;
+
 	public JFXBuildConfigurationEditor() {
 		super();
-		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
+		initializeEditingDomain();
+
+		ResourcesPlugin.getWorkspace().addResourceChangeListener( this );
 	}
 
+	/**
+	 * This sets up the editing domain for the model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected void initializeEditingDomain() {
+		// Create an adapter factory that yields item providers.
+		//
+		adapterFactory = new ComposedAdapterFactory( ComposedAdapterFactory.Descriptor.Registry.INSTANCE );
+
+		adapterFactory.addAdapterFactory( new ResourceItemProviderAdapterFactory() );
+		// adapterFactory.addAdapterFactory( new AntTasksItemProviderAdapterFactory() );
+		// adapterFactory.addAdapterFactory( new ParametersItemProviderAdapterFactory() );
+		adapterFactory.addAdapterFactory( new ReflectiveItemProviderAdapterFactory() );
+
+		// Create the command stack that will notify this editor as commands are executed.
+		//
+		BasicCommandStack commandStack = new BasicCommandStack();
+
+		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
+		//
+		commandStack.addCommandStackListener( new CommandStackListener() {
+			public void commandStackChanged( final EventObject event ) {
+				getContainer().getDisplay().asyncExec( new Runnable() {
+					public void run() {
+						firePropertyChange( IEditorPart.PROP_DIRTY );
+
+						// Try to select the affected objects.
+						//
+						Command mostRecentCommand = ( (CommandStack) event.getSource() ).getMostRecentCommand();
+						if ( mostRecentCommand != null ) {
+							setSelectionToViewer( mostRecentCommand.getAffectedObjects() );
+						}
+					}
+				} );
+			}
+		} );
+
+		// Create the editing domain with a special command stack.
+		//
+		editingDomain = new AdapterFactoryEditingDomain( adapterFactory, commandStack, new HashMap<Resource, Boolean>() );
+	}
+
+	/**
+	 * This sets the selection into whichever viewer is active. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setSelectionToViewer( Collection<?> collection ) {
+		final Collection<?> theSelection = collection;
+		// Make sure it's okay.
+		//
+		if ( theSelection != null && !theSelection.isEmpty() ) {
+			Runnable runnable = new Runnable() {
+				public void run() {
+					// Try to select the items in the current content viewer of the editor.
+					//
+					if ( currentViewer != null ) {
+						currentViewer.setSelection( new StructuredSelection( theSelection.toArray() ), true );
+					}
+				}
+			};
+			getSite().getShell().getDisplay().asyncExec( runnable );
+		}
+	}
+
+	/**
+	 * This is for implementing {@link IEditorPart} and simply tests the command stack. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
-	public void dispose() {
-		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
-		dbc.dispose();
-		super.dispose();
+	public boolean isDirty() {
+		return ( (BasicCommandStack) editingDomain.getCommandStack() ).isSaveNeeded();
 	}
 
+	/**
+	 * This is for implementing {@link IEditorPart} and simply saves the model file. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
-	public void doSave(IProgressMonitor monitor) {
-		getEditor(1).doSave(monitor);
+	public void doSave( IProgressMonitor progressMonitor ) {
+		// Save only resources that have actually changed.
+		//
+		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		saveOptions.put( Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER );
+
+		// Do the work within an operation because this is a long running activity that modifies the workbench.
+		//
+		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+			// This is the method that gets invoked when the operation runs.
+			//
+			@Override
+			public void execute( IProgressMonitor monitor ) {
+				// Save the resources to the file system.
+				//
+				boolean first = true;
+				for ( Resource resource : editingDomain.getResourceSet().getResources() ) {
+					if ( ( first || !resource.getContents().isEmpty() || isPersisted( resource ) ) && !editingDomain.isReadOnly( resource ) ) {
+						try {
+							long timeStamp = resource.getTimeStamp();
+							resource.save( saveOptions );
+							if ( resource.getTimeStamp() != timeStamp ) {
+								savedResources.add( resource );
+							}
+						}
+						catch ( Exception exception ) {
+							resourceToDiagnosticMap.put( resource, analyzeResourceProblems( resource, exception ) );
+						}
+						first = false;
+					}
+				}
+			}
+		};
+
+		updateProblemIndication = false;
+		try {
+			// This runs the options, and shows progress.
+			//
+			new ProgressMonitorDialog( getSite().getShell() ).run( true, false, operation );
+
+			// Refresh the necessary state.
+			//
+			( (BasicCommandStack) editingDomain.getCommandStack() ).saveIsDone();
+			firePropertyChange( IEditorPart.PROP_DIRTY );
+		}
+		catch ( Exception e ) {
+			// TODO
+			e.printStackTrace();
+		}
+		updateProblemIndication = true;
+		updateProblemIndication();
 	}
 
-	@Override
-	public void doSaveAs() {
-		IEditorPart editor = getEditor(1);
-		editor.doSaveAs();
-		setPageText(0, editor.getTitle());
-		setInput(editor.getEditorInput());
+	/**
+	 * Updates the problems indication with the information described in the specified diagnostic. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 */
+	private void updateProblemIndication() {
+		if ( updateProblemIndication ) {
+			BasicDiagnostic diagnostic = new BasicDiagnostic( Diagnostic.OK, JavaFXUIPlugin.PLUGIN_ID, 0, null, new Object[] { editingDomain.getResourceSet() } );
+			for ( Diagnostic childDiagnostic : resourceToDiagnosticMap.values() ) {
+				if ( childDiagnostic.getSeverity() != Diagnostic.OK ) {
+					diagnostic.add( childDiagnostic );
+				}
+			}
+
+			int lastEditorPage = getPageCount() - 1;
+			if ( lastEditorPage >= 0 && getEditor( lastEditorPage ) instanceof ProblemEditorPart ) {
+				( (ProblemEditorPart) getEditor( lastEditorPage ) ).setDiagnostic( diagnostic );
+				if ( diagnostic.getSeverity() != Diagnostic.OK ) {
+					setActivePage( lastEditorPage );
+				}
+			}
+			else if ( diagnostic.getSeverity() != Diagnostic.OK ) {
+				ProblemEditorPart problemEditorPart = new ProblemEditorPart();
+				problemEditorPart.setDiagnostic( diagnostic );
+				problemEditorPart.setMarkerHelper( markerHelper );
+				try {
+					addPage( ++lastEditorPage, problemEditorPart, getEditorInput() );
+					setPageText( lastEditorPage, problemEditorPart.getPartName() );
+					setActivePage( lastEditorPage );
+					showTabs();
+				}
+				catch ( PartInitException e ) {
+					// TODO
+					e.printStackTrace();
+				}
+			}
+
+			if ( markerHelper.hasMarkers( editingDomain.getResourceSet() ) ) {
+				markerHelper.deleteMarkers( editingDomain.getResourceSet() );
+				if ( diagnostic.getSeverity() != Diagnostic.OK ) {
+					try {
+						markerHelper.createMarkers( diagnostic );
+					}
+					catch ( CoreException e ) {
+						// TODO
+						e.printStackTrace();
+					}
+				}
+			}
+		}
 	}
 
+	/**
+	 * Returns a diagnostic describing the errors and warnings listed in the resource and the specified exception (if any). <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private Diagnostic analyzeResourceProblems( Resource resource, Exception exception ) {
+		if ( !resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty() ) {
+			BasicDiagnostic basicDiagnostic = new BasicDiagnostic( Diagnostic.ERROR, JavaFXUIPlugin.PLUGIN_ID, 0, "_UI_CreateModelError_message",
+					new Object[] { exception == null ? (Object) resource : exception } );
+			basicDiagnostic.merge( EcoreUtil.computeDiagnostic( resource, true ) );
+			return basicDiagnostic;
+		}
+		else if ( exception != null ) {
+			return new BasicDiagnostic( Diagnostic.ERROR, JavaFXUIPlugin.PLUGIN_ID, 0, "_UI_CreateModelError_message", new Object[] { exception } );
+		}
+		else {
+			return Diagnostic.OK_INSTANCE;
+		}
+	}
+
+	private boolean isPersisted( Resource resource ) {
+		boolean result = false;
+		try {
+			InputStream stream = editingDomain.getResourceSet().getURIConverter().createInputStream( resource.getURI() );
+			if ( stream != null ) {
+				result = true;
+				stream.close();
+			}
+		}
+		catch ( IOException e ) {
+			// Ignore
+		}
+		return result;
+	}
+
+	/**
+	 * This always returns true because it is not currently supported. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
 
+	/**
+	 * This also changes the editor's input. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public void doSaveAs() {
+		SaveAsDialog saveAsDialog = new SaveAsDialog( getSite().getShell() );
+		saveAsDialog.open();
+		IPath path = saveAsDialog.getResult();
+		if ( path != null ) {
+			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile( path );
+			if ( file != null ) {
+				doSaveAs( URI.createPlatformResourceURI( file.getFullPath().toString(), true ), new FileEditorInput( file ) );
+			}
+		}
+	}
+
+	private void doSaveAs( URI uri, IEditorInput editorInput ) {
+		( editingDomain.getResourceSet().getResources().get( 0 ) ).setURI( uri );
+		setInputWithNotify( editorInput );
+		setPartName( editorInput.getName() );
+		IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null ? getActionBars().getStatusLineManager().getProgressMonitor()
+				: new NullProgressMonitor();
+		doSave( progressMonitor );
+	}
+
+	private EditingDomainActionBarContributor getActionBarContributor() {
+		return (EditingDomainActionBarContributor) getEditorSite().getActionBarContributor();
+	}
+
+	private IActionBars getActionBars() {
+		return getActionBarContributor().getActionBars();
+	}
+
+	@Override
+	public void dispose() {
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener( this );
+		dbc.dispose();
+		super.dispose();
+	}
+
 	@Override
 	protected void createPages() {
-		createPage0();
-		createPage1();
+		createModel();
+
+		// Only creates the other pages if there is something that can be edited
+		if ( !editingDomain.getResourceSet().getResources().isEmpty() ) {
+			AntTask task = getTask();
+			createPageOverview( task );
+			createPageDeploy( task );
+			createPageSigning( task );
+		}
+
+		getSite().getShell().getDisplay().asyncExec( new Runnable() {
+			public void run() {
+				setActivePage( 0 );
+			}
+		} );
 	}
+
+	private AntTask getTask() {
+		AntTask task;
+		try {
+			task = (AntTask) editingDomain.getResourceSet().getResources().get( 0 ).getContents().get( 0 );
+		}
+		catch ( Exception e ) {
+			if ( !properties.isEmpty() ) {
+				task = PropertiesToModelTransformer.transform( properties );
+				editingDomain.getResourceSet().getResources().get( 0 ).getContents().add( 0, task );
+				doSave( new NullProgressMonitor() );
+			}
+			else {
+				throw new UnsupportedOperationException( "Could not read file" );
+			}
+		}
+		return task;
+	}
+
+	/**
+	 * This is the method called to load a resource into the editing domain's resource set based on the editor's input. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private void createModel() {
+		// Initialize the model, this is important for the class loader.
+		AntTasksPackage.eINSTANCE.eClass();
+		ParametersPackage.eINSTANCE.eClass();
+
+		URI resourceURI = EditUIUtil.getURI( getEditorInput() );
+		Exception exception = null;
+		Resource resource = null;
+		try {
+			// Load the resource through the editing domain.
+			//
+			resource = editingDomain.getResourceSet().getResource( resourceURI, true );
+		}
+		catch ( Exception e ) {
+			exception = e;
+			resource = editingDomain.getResourceSet().getResource( resourceURI, false );
+		}
+
+		Diagnostic diagnostic = analyzeResourceProblems( resource, exception );
+		if ( diagnostic.getSeverity() != Diagnostic.OK ) {
+			resourceToDiagnosticMap.put( resource, diagnostic );
+		}
+		editingDomain.getResourceSet().eAdapters().add( problemIndicationAdapter );
+	}
+
+	private EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+		@Override
+		public void notifyChanged( Notification notification ) {
+			if ( notification.getNotifier() instanceof Resource ) {
+				switch ( notification.getFeatureID( Resource.class ) ) {
+				case Resource.RESOURCE__IS_LOADED:
+				case Resource.RESOURCE__ERRORS:
+				case Resource.RESOURCE__WARNINGS: {
+					Resource resource = (Resource) notification.getNotifier();
+					Diagnostic diagnostic = analyzeResourceProblems( resource, null );
+					if ( diagnostic.getSeverity() != Diagnostic.OK ) {
+						resourceToDiagnosticMap.put( resource, diagnostic );
+					}
+					else {
+						resourceToDiagnosticMap.remove( resource );
+					}
+
+					if ( updateProblemIndication ) {
+						getSite().getShell().getDisplay().asyncExec( new Runnable() {
+							public void run() {
+								updateProblemIndication();
+							}
+						} );
+					}
+					break;
+				}
+				}
+			}
+			else {
+				super.notifyChanged( notification );
+			}
+		}
+
+		@Override
+		protected void setTarget( Resource target ) {
+			basicSetTarget( target );
+		}
+
+		@Override
+		protected void unsetTarget( Resource target ) {
+			basicUnsetTarget( target );
+		}
+	};
 
 	@Override
-	public void init(IEditorSite site, IEditorInput editorInput)
-			throws PartInitException {
-		if (!(editorInput instanceof IFileEditorInput))
-			throw new PartInitException(
-					"Invalid Input: Must be IFileEditorInput");
-		super.init(site, editorInput);
+	public void init( IEditorSite site, IEditorInput editorInput ) throws PartInitException {
+		if ( !( editorInput instanceof IFileEditorInput ) )
+			throw new PartInitException( "Invalid Input: Must be IFileEditorInput" );
+		super.init( site, editorInput );
 		try {
 			IFileEditorInput i = (IFileEditorInput) editorInput;
-			properties.load(i.getFile().getContents());
-		} catch (IOException e) {
+			properties.load( i.getFile().getContents() );
+		}
+		catch ( IOException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (CoreException e) {
+		}
+		catch ( CoreException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	void createPage0() {
-		Composite composite = new Composite(getContainer(), SWT.NONE);
+	private void createPageOverview( final AntTask task ) {
+		Composite composite = new Composite( getContainer(), SWT.NONE );
 		FillLayout layout = new FillLayout();
-		composite.setLayout(layout);
-		
-		toolkit = new FormToolkit(composite.getDisplay());
-		
-		form = toolkit.createForm(composite);
-		form.setText("FX Build Configuration");
-		form.setImage(getTitleImage());
-		form.getBody().setLayout(new FillLayout());
-		toolkit.decorateFormHeading(form);
-		
-		IToolBarManager mgr = form.getToolBarManager();
-		mgr.add(new Action("Build & Export FX Application",ImageDescriptor.createFromURL(getClass().getClassLoader().getResource("/icons/exportrunnablejar_wiz.gif"))) {
-			@Override
-			public void run() {
-				try {
-					IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
-					hs.executeCommand("at.bestsolution.efxclipse.tooling.jdt.ui.export", null);
-				} catch (ExecutionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (NotDefinedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (NotEnabledException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (NotHandledException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}				
-			}
-		});
-//		mgr.add(new Action("Export Ant File",ImageDescriptor.createFromURL(getClass().getClassLoader().getResource("/icons/exportAnt_co.gif"))) {
-//			@Override
-//			public void run() {
-//				
-//			}
-//		});
-		form.updateToolBar();
-		
-		ScrolledForm scrolledForm = toolkit.createScrolledForm(form.getBody());
-		scrolledForm.getBody().setLayout(new GridLayout(2,false));
+		composite.setLayout( layout );
+
+		// TODO
+		final WritableValue bean = new WritableValue();
+		bean.setValue( task );
+
+		toolkit = new FormToolkit( composite.getDisplay() );
+
+		final Form form = toolkit.createForm( composite );
+		form.setText( "FX Build Configuration" );
+		form.setImage( getTitleImage() );
+		form.getBody().setLayout( new FillLayout() );
+		toolkit.decorateFormHeading( form );
+
+		initToolbar( form );
+
+		ScrolledForm scrolledForm = toolkit.createScrolledForm( form.getBody() );
+		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
 		Composite sectionParent = scrolledForm.getBody();
-		
+
 		dbc = new DataBindingContext();
-		IWidgetValueProperty textModify = WidgetProperties.text(SWT.Modify);
+		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
 		IWidgetValueProperty selChange = WidgetProperties.selection();
-		
+
 		{
-			Section section = toolkit.createSection(sectionParent, 
-					  Section.DESCRIPTION|Section.TITLE_BAR|
-					  Section.TWISTIE|Section.EXPANDED);
-			section.setText("Build && Package Properties");
-			section.setDescription("The following properties are needed to build the JavaFX-Application");
-			section.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-			
-			Composite sectionClient = toolkit.createComposite(section);
-			sectionClient.setLayout(new GridLayout(4, false));
-			
+			Section section = toolkit.createSection( sectionParent, Section.DESCRIPTION | Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED );
+			section.setText( "Build && Package Properties" );
+			section.setDescription( "The following properties are needed to build the JavaFX-Application" );
+			section.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+			Composite sectionClient = toolkit.createComposite( section );
+			sectionClient.setLayout( new GridLayout( 4, false ) );
+
 			{
-				toolkit.createLabel(sectionClient, "Build Directory*:");
-				final Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				toolkit.createButton(sectionClient, "Filesystem ...", SWT.PUSH).addSelectionListener(new SelectionAdapter() {
+				toolkit.createLabel( sectionClient, "Build Directory*:" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				toolkit.createButton( sectionClient, "Filesystem ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
 					@Override
-					public void widgetSelected(SelectionEvent e) {
-						String dir = handleBuildFilesystemDirectorySelection(t.getShell());
-						if( dir != null ) {
-							t.setText(dir);	
+					public void widgetSelected( SelectionEvent e ) {
+						String dir = handleBuildFilesystemDirectorySelection( t.getShell() );
+						if ( dir != null ) {
+							t.setText( dir );
 						}
 					}
-				});
-				toolkit.createButton(sectionClient, "Workspace ...", SWT.PUSH).addSelectionListener(new SelectionAdapter() {
+				} );
+				toolkit.createButton( sectionClient, "Workspace ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
 					@Override
-					public void widgetSelected(SelectionEvent e) {
-						String dir = handleBuildWorkbencDirectorySelection(t.getShell());
-						if( dir != null ) {
-							t.setText(dir);	
+					public void widgetSelected( SelectionEvent e ) {
+						String dir = handleBuildWorkbenchDirectorySelection( t.getShell() );
+						if ( dir != null ) {
+							t.setText( dir );
 						}
 					}
-				});
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_DIRECTORY).observe(bean));
+				} );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ANT_TASK__BUILD_DIRECTORY );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
-			
-//			{
-//				IEclipsePreferences pref = InstanceScope.INSTANCE.getNode(JavaFXCorePlugin.PLUGIN_ID);
-//				final String prefDir = pref.get(JavaFXPreferencesConstants.JAVAFX_DIR,"");
-//				
-//				toolkit.createLabel(sectionClient, "JFX-SDK Directory:");
-//				final Text t = toolkit.createText(sectionClient, "");
-//				t.setMessage(prefDir);
-//				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,2,1));
-//				Button b = toolkit.createButton(sectionClient, "Browse ...", SWT.PUSH);
-//				b.addSelectionListener(new SelectionAdapter() {
-//					@Override
-//					public void widgetSelected(SelectionEvent e) {
-//						String dir = handleJFxSDKDirectorySelection(t.getShell(),prefDir);
-//						if( dir != null ) {
-//							t.setText(dir);	
-//						}
-//					}
-//				});
-//				b.setLayoutData(new GridData(GridData.FILL, GridData.CENTER, false, false));
-//				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_JFXSDK).observe(bean));
-//			}
-			
+
 			{
-				toolkit.createLabel(sectionClient, "Vendor name*:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,3,1));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_VENDOR_NAME).observe(bean));
+				toolkit.createLabel( sectionClient, "Vendor name*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__INFO, INFO__VENDOR ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
-			
+
 			{
-				toolkit.createLabel(sectionClient, "Application title*:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,3,1));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_APP_TITLE).observe(bean));
+				toolkit.createLabel( sectionClient, "Application title*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain,
+						FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__APPLICATION, APPLICATION__NAME ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
-			
+
 			{
-				toolkit.createLabel(sectionClient, "Application version*:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,3,1));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_APP_VERSION).observe(bean));
+				toolkit.createLabel( sectionClient, "Application version*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain,
+						FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__APPLICATION, APPLICATION__VERSION ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
-			
+
 			{
-				toolkit.createLabel(sectionClient, "Application class*:");
-				final Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,2,1));
-				Button b = toolkit.createButton(sectionClient, "Browse ...", SWT.PUSH);
-				b.addSelectionListener(new SelectionAdapter() {
+				toolkit.createLabel( sectionClient, "Application class*:" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				Button b = toolkit.createButton( sectionClient, "Browse ...", SWT.PUSH );
+				b.addSelectionListener( new SelectionAdapter() {
 					@Override
-					public void widgetSelected(SelectionEvent e) {
-						String name = handleRootclassSelection(t.getShell());
-						if( name != null ) {
-							t.setText(name);
+					public void widgetSelected( SelectionEvent e ) {
+						String name = handleRootclassSelection( t.getShell() );
+						if ( name != null ) {
+							t.setText( name );
 						}
 					}
-				});
-				b.setLayoutData(new GridData(GridData.FILL, GridData.CENTER, false, false));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_APPLICATION_CLASS).observe(bean));
+				} );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, false, false ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain,
+						FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__APPLICATION, APPLICATION__MAINCLASS ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
-			
+
 			{
-				toolkit.createLabel(sectionClient, "Preloader class:");
-				final Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,2,1));
-				Button b = toolkit.createButton(sectionClient, "Browse ...", SWT.PUSH);
-				b.addSelectionListener(new SelectionAdapter() {
+				toolkit.createLabel( sectionClient, "Preloader class:" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				Button b = toolkit.createButton( sectionClient, "Browse ...", SWT.PUSH );
+				b.addSelectionListener( new SelectionAdapter() {
 					@Override
-					public void widgetSelected(SelectionEvent e) {
-						String name = handlePreloaderclassSelection(t.getShell());
-						if( name != null ) {
-							t.setText(name);
+					public void widgetSelected( SelectionEvent e ) {
+						String name = handlePreloaderclassSelection( t.getShell() );
+						if ( name != null ) {
+							t.setText( name );
 						}
 					}
-				});
-				b.setLayoutData(new GridData(GridData.FILL, GridData.CENTER, false, false));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_PRELOADER_CLASS).observe(bean));
+				} );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, false, false ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain,
+						FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__APPLICATION, APPLICATION__PRELOADERCLASS ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
-			
+
 			{
-				toolkit.createLabel(sectionClient, "Splash:");
-				final Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,2,1));
-				Button b = toolkit.createButton(sectionClient, "Browse ...", SWT.PUSH);
-				b.addSelectionListener(new SelectionAdapter() {
+				toolkit.createLabel( sectionClient, "Splash:" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				Button b = toolkit.createButton( sectionClient, "Browse ...", SWT.PUSH );
+				b.addSelectionListener( new SelectionAdapter() {
 					@Override
-					public void widgetSelected(SelectionEvent e) {
-						String name = handleSplashImage(t.getShell());
-						if( name != null ) {
-							t.setText(name);
+					public void widgetSelected( SelectionEvent e ) {
+						String name = handleSplashImage( t.getShell() );
+						if ( name != null ) {
+							t.setText( name );
 						}
 					}
-				});
-				b.setLayoutData(new GridData(GridData.FILL, GridData.CENTER, false, false));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(BUILD_SPLASH_IMAGE).observe(bean));
+				} );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, false, false ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__SPLASH_IMAGE ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
-			
+
 			{
-				toolkit.createLabel(sectionClient, "Manifest-Attributes:").setLayoutData(new GridData(GridData.BEGINNING,GridData.BEGINNING,false,false));
-				Composite container = toolkit.createComposite(sectionClient);
-				GridLayout gl = new GridLayout(2, false);
-				gl.marginBottom=gl.marginHeight=gl.marginLeft=gl.marginRight=gl.marginTop=gl.marginWidth=0;
-				container.setLayout(gl);
-				container.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				
-				Table t = toolkit.createTable(container, SWT.FULL_SELECTION|SWT.H_SCROLL|SWT.V_SCROLL);
-				t.setHeaderVisible(true);
-				t.setLinesVisible(true);
-				
-				final TableViewer v = new TableViewer(t);
-				GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-				gd.heightHint = t.getItemHeight() * 5;
-				v.getControl().setLayoutData(gd);
-				v.setContentProvider(ArrayContentProvider.getInstance());
-				
+				toolkit.createLabel( sectionClient, "Manifest-Attributes:" )
+						.setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+				Composite container = toolkit.createComposite( sectionClient );
+				GridLayout gl = new GridLayout( 2, false );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				GridData gdContainer = new GridData( GridData.FILL_HORIZONTAL );
+				gdContainer.horizontalSpan = 2;
+				container.setLayoutData( gdContainer );
+
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				t.setHeaderVisible( true );
+				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getHeaderHeight() + t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
+				final TableViewer v = new TableViewer( t );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.heightHint = t.getHeaderHeight() + t.getItemHeight() * 5;
+				v.getControl().setLayoutData( gd );
+				v.setContentProvider( ArrayContentProvider.getInstance() );
+
 				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
-						public String getText(Object element) {
-							return ((BuildPropertyManifestAttr)element).getBuildManifestAttrName();
+						public String getText( final Object element ) {
+							return ( (Param) element ).getName();
 						}
-					});
-					c.getColumn().setWidth(100);
-					c.getColumn().setText("Name");
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 33 ) );
+					c.getColumn().setText( "Name" );
 				}
-				
+
 				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
-						public String getText(Object element) {
-							return ((BuildPropertyManifestAttr)element).getBuildManifestAttrValue();
+						public String getText( final Object element ) {
+							return ( (Param) element ).getValue();
 						}
-					});
-					c.getColumn().setWidth(300);
-					c.getColumn().setText("Value");
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 67 ) );
+					c.getColumn().setText( "Value" );
 				}
-				
-				v.setInput(bean.getBuildManifestAttrList());
-				
-				Composite buttonComp = toolkit.createComposite(container);
-				buttonComp.setLayoutData(new GridData(GridData.BEGINNING,GridData.END,false,false));
-				buttonComp.setLayout(new GridLayout());
-				
+				tableContainer.setLayout( tablelayout );
+				v.setInput( task.getManifestEntries() );
+
+				Composite buttonComp = toolkit.createComposite( sectionClient );
+				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
+				buttonComp.setLayout( new GridLayout() );
+
 				{
-					Button b = toolkit.createButton(buttonComp, "Add ...", SWT.PUSH);
-					b.setLayoutData(new GridData(GridData.FILL,GridData.BEGINNING,false,false));
-					b.addSelectionListener(new SelectionAdapter() {
+					Button b = toolkit.createButton( buttonComp, "Add ...", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
 						@Override
-						public void widgetSelected(SelectionEvent e) {
-							if( handleAddManifestAttr(getSite().getShell()) ) {
-								v.setInput(bean.getBuildManifestAttrList());
+						public void widgetSelected( final SelectionEvent e ) {
+							if ( handleAddManifestAttr( getSite().getShell() ) ) {
+								v.setInput( task.getManifestEntries() );
+								v.setSelection( new StructuredSelection( task.getManifestEntries().get( task.getManifestEntries().size() - 1 ) ) );
 							}
 						}
-					});
+					} );
 				}
-				
+
 				{
-					Button b = toolkit.createButton(buttonComp, "Remove", SWT.PUSH);
-					b.setLayoutData(new GridData(GridData.FILL,GridData.BEGINNING,false,false));
-					b.addSelectionListener(new SelectionAdapter() {
+					Button b = toolkit.createButton( buttonComp, "Remove", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
 						@Override
-						public void widgetSelected(SelectionEvent e) {
-							BuildPropertyManifestAttr value = (BuildPropertyManifestAttr) ((IStructuredSelection)v.getSelection()).getFirstElement();
-							if( v != null ) {
-								if( handleRemoveManifestAttr(value) ) {
-									v.setInput(bean.getBuildManifestAttrList());
+						public void widgetSelected( final SelectionEvent e ) {
+							Param value = (Param) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
+							if ( value != null ) {
+								if ( handleRemoveManifestAttr( value ) ) {
+									v.setInput( task.getManifestEntries() );
 								}
 							}
-						}
-					});
-				}
-			}
-			
-			section.setClient(sectionClient);
-		}
-		
-		{
-			Section section = toolkit.createSection(sectionParent, 
-					  Section.DESCRIPTION|Section.TITLE_BAR|
-					  Section.TWISTIE|Section.EXPANDED);
-			section.setText("Building & Exporting");
-			section.setLayoutData(new GridData(GridData.FILL,GridData.FILL,false,true,1,2));
-			
-			Composite sectionClient = toolkit.createComposite(section);
-			sectionClient.setLayout(new GridLayout(1, false));
-			
-			{
-				FormText text = toolkit.createFormText(sectionClient, false);
-				text.setText("<p>To generate build instructions and export the project: <li style=\"bullet\" bindent=\"1\">Generate <a href=\"generateAnt\">ant build.xml</a> only</li><li style=\"bullet\" bindent=\"2\">Generate <a href=\"generateAndRun\">ant build.xml and run</a></li>&#160;</p>", true, false);
-				text.addHyperlinkListener(new IHyperlinkListener() {
-					
-					@Override
-					public void linkExited(HyperlinkEvent e) {
-						
-					}
-					
-					@Override
-					public void linkEntered(HyperlinkEvent e) {
-					}
-					
-					@Override
-					public void linkActivated(HyperlinkEvent e) {
-						try {
-							if( "generateAndRun".equals(e.getHref()) ) {
-								IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
-								hs.executeCommand("at.bestsolution.efxclipse.tooling.jdt.ui.export", null);
-							} else {
-								IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
-								hs.executeCommand("at.bestsolution.efxclipse.tooling.jdt.ui.generateAnt", null);
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
 							}
-						} catch (Exception e1) {
+						}
+					} );
+				}
+				{
+					Button b = toolkit.createButton( sectionClient, "Convert CSS into binary form", SWT.CHECK );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__CSS_TO_BIN ) );
+					dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
+				}
+
+			}
+
+			section.setClient( sectionClient );
+		}
+
+		{
+			Section section = toolkit.createSection( sectionParent, Section.DESCRIPTION | Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED );
+			section.setText( "Building & Exporting" );
+			section.setLayoutData( new GridData( GridData.FILL, GridData.FILL, false, true, 1, 2 ) );
+
+			Composite sectionClient = toolkit.createComposite( section );
+			sectionClient.setLayout( new GridLayout( 1, false ) );
+
+			{
+				FormText text = toolkit.createFormText( sectionClient, false );
+				text.setText(
+						"<p>To generate build instructions and export the project: <li style=\"bullet\" bindent=\"1\">Generate <a href=\"generateAnt\">ant build.xml</a> only</li><li style=\"bullet\" bindent=\"2\">Generate <a href=\"generateAndRun\">ant build.xml and run</a></li>&#160;</p>",
+						true, false );
+				text.addHyperlinkListener( new IHyperlinkListener() {
+
+					@Override
+					public void linkExited( final HyperlinkEvent e ) {
+
+					}
+
+					@Override
+					public void linkEntered( HyperlinkEvent e ) {
+					}
+
+					@Override
+					public void linkActivated( HyperlinkEvent e ) {
+						try {
+							if ( "generateAndRun".equals( e.getHref() ) ) {
+								executeExport();
+							}
+							else {
+								executeGenerateAnt();
+							}
+						}
+						catch ( Exception e1 ) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					}
-				});
-			}
-			
-			section.setClient(sectionClient);
-		}
-		
-		{
-			Section section = toolkit.createSection(sectionParent, 
-					  Section.DESCRIPTION|Section.TITLE_BAR|
-					  Section.TWISTIE|Section.EXPANDED);
-			section.setText("Deploy Properties");
-			section.setDescription("The following properties are needed to create a Java Webstart Deployment");
-			section.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-			
-			Composite sectionClient = toolkit.createComposite(section);
-			sectionClient.setLayout(new GridLayout(2, false));
-			
-			{
-				toolkit.createLabel(sectionClient, "Native Package:");
-				Button b = toolkit.createButton(sectionClient, "", SWT.CHECK);
-				dbc.bindValue(selChange.observe(b), BeanProperties.value(DEPLOY_NATIVE_PACKAGE).observe(bean));
-			}
-			
-			{
-				toolkit.createLabel(sectionClient, "Applet Width:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(DEPLOY_APPLET_WIDTH).observe(bean));
-			}
-			
-			{
-				toolkit.createLabel(sectionClient, "Applet Height:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(DEPLOY_APPLET_HEIGHT).observe(bean));
-			}
-			
-			{
-				toolkit.createLabel(sectionClient, "Webstart Splash:").setLayoutData(new GridData(GridData.BEGINNING,GridData.BEGINNING,false,false));
-				Composite container = toolkit.createComposite(sectionClient);
-				GridLayout gl = new GridLayout(2, false);
-				gl.marginBottom=gl.marginHeight=gl.marginLeft=gl.marginRight=gl.marginTop=gl.marginWidth=0;
-				container.setLayout(gl);
-				container.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				
-				Table t = toolkit.createTable(container, SWT.FULL_SELECTION|SWT.H_SCROLL|SWT.V_SCROLL);
-				t.setHeaderVisible(true);
-				t.setLinesVisible(true);
-				
-				final TableViewer v = new TableViewer(t);
-				GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-				gd.heightHint = t.getItemHeight() * 5;
-				v.getControl().setLayoutData(gd);
-				v.setContentProvider(ArrayContentProvider.getInstance());
-				
-				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
-						@Override
-						public String getText(Object element) {
-							return ((BuildPropertySplash)element).getDeploySplashMode();
-						}
-					});
-					c.getColumn().setWidth(100);
-					c.getColumn().setText("Mode");
-				}
-				
-				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
-						@Override
-						public String getText(Object element) {
-							return ((BuildPropertySplash)element).getDeploySplashHref();
-						}
-					});
-					c.getColumn().setWidth(300);
-					c.getColumn().setText("URL");
-				}
-				
-				v.setInput(bean.getDeploySplashList());
-				
-				Composite buttonComp = toolkit.createComposite(container);
-				buttonComp.setLayoutData(new GridData(GridData.BEGINNING,GridData.END,false,false));
-				buttonComp.setLayout(new GridLayout());
-				
-				{
-					Button b = toolkit.createButton(buttonComp, "Add ...", SWT.PUSH);
-					b.setLayoutData(new GridData(GridData.FILL,GridData.BEGINNING,false,false));
-					b.addSelectionListener(new SelectionAdapter() {
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							if( handleAddSplash() ) {
-								v.setInput(bean.getDeploySplashList());
-							}
-						}
-					});
-				}
-				
-				{
-					Button b = toolkit.createButton(buttonComp, "Remove", SWT.PUSH);
-					b.setLayoutData(new GridData(GridData.FILL,GridData.BEGINNING,false,false));
-					b.addSelectionListener(new SelectionAdapter() {
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							BuildPropertySplash value = (BuildPropertySplash) ((IStructuredSelection)v.getSelection()).getFirstElement();
-							if( v != null ) {
-								if( handleRemoveSplash(value) ) {
-									v.setInput(bean.getDeploySplashList());
-								}
-							}
-						}
-					});
-				}
-			}
-			
-			{
-				toolkit.createLabel(sectionClient, "Webstart Icons:").setLayoutData(new GridData(GridData.BEGINNING,GridData.BEGINNING,false,false));
-				Composite container = toolkit.createComposite(sectionClient);
-				GridLayout gl = new GridLayout(2, false);
-				gl.marginBottom=gl.marginHeight=gl.marginLeft=gl.marginRight=gl.marginTop=gl.marginWidth=0;
-				container.setLayout(gl);
-				container.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				
-				Table t = toolkit.createTable(container, SWT.FULL_SELECTION|SWT.H_SCROLL|SWT.V_SCROLL);
-				t.setHeaderVisible(true);
-				t.setLinesVisible(true);
-				
-				final TableViewer v = new TableViewer(t);
-				GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-				gd.heightHint = t.getItemHeight() * 5;
-				v.getControl().setLayoutData(gd);
-				v.setContentProvider(ArrayContentProvider.getInstance());
-				
-				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
-						@Override
-						public String getText(Object element) {
-							return ((BuildPropertyIcon)element).getDeployIconDepth();
-						}
-					});
-					c.getColumn().setWidth(50);
-					c.getColumn().setText("Depth");
-				}
-				
-				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
-						@Override
-						public String getText(Object element) {
-							return ((BuildPropertyIcon)element).getDeployIconKind();
-						}
-					});
-					c.getColumn().setWidth(50);
-					c.getColumn().setText("Kind");
-				}
-				
-				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
-						@Override
-						public String getText(Object element) {
-							return ((BuildPropertyIcon)element).getDeployIconWidth();
-						}
-					});
-					c.getColumn().setWidth(50);
-					c.getColumn().setText("Width");
-				}
-				
-				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
-						@Override
-						public String getText(Object element) {
-							return ((BuildPropertyIcon)element).getDeployIconHeight();
-						}
-					});
-					c.getColumn().setWidth(50);
-					c.getColumn().setText("Height");
-				}
-				
-				{
-					TableViewerColumn c = new TableViewerColumn(v, SWT.NONE);
-					c.setLabelProvider(new ColumnLabelProvider() {
-						@Override
-						public String getText(Object element) {
-							return ((BuildPropertyIcon)element).getDeployIconHref();
-						}
-					});
-					c.getColumn().setWidth(50);
-					c.getColumn().setText("Url");
-				}
-				
-				v.setInput(bean.getDeployIconList());
-				
-				Composite buttonComp = toolkit.createComposite(container);
-				buttonComp.setLayoutData(new GridData(GridData.BEGINNING,GridData.END,false,false));
-				buttonComp.setLayout(new GridLayout());
-				
-				{
-					Button b = toolkit.createButton(buttonComp, "Add ...", SWT.PUSH);
-					b.setLayoutData(new GridData(GridData.FILL,GridData.BEGINNING,false,false));
-					b.addSelectionListener(new SelectionAdapter() {
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							if( handleAddIcon() ) {
-								v.setInput(bean.getDeployIconList());
-							}
-						}
-					});
-				}
-				
-				{
-					Button b = toolkit.createButton(buttonComp, "Remove", SWT.PUSH);
-					b.setLayoutData(new GridData(GridData.FILL,GridData.BEGINNING,false,false));
-					b.addSelectionListener(new SelectionAdapter() {
-						@Override
-						public void widgetSelected(SelectionEvent e) {
-							BuildPropertyIcon value = (BuildPropertyIcon) ((IStructuredSelection)v.getSelection()).getFirstElement();
-							if( v != null ) {
-								if( handleRemoveIcon(value) ) {
-									v.setInput(bean.getDeployIconList());
-								}
-							}
-						}
-					});
-				}
-			}
-			
-			section.setClient(sectionClient);
-		}
-		
-		{
-			Section section = toolkit.createSection(sectionParent, 
-					  Section.DESCRIPTION|Section.TITLE_BAR|
-					  Section.TWISTIE|Section.EXPANDED);
-			section.setText("Signing Properties");
-			section.setDescription("Information for signing result jar");
-			section.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-			
-			Composite sectionClient = toolkit.createComposite(section);
-			sectionClient.setLayout(new GridLayout(4, false));
-			
-			{
-				toolkit.createLabel(sectionClient, "Keystore:");
-//				toolkit.createHyperlink(sectionClient, "Keystore:",SWT.NONE).addHyperlinkListener(new HyperlinkAdapter() {
-//					@Override
-//					public void linkActivated(HyperlinkEvent e) {
-//						
-//					}
-//				});
-				final Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				toolkit.createButton(sectionClient, "Filesystem ...", SWT.PUSH).addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						String v = handleKeyStoreFilesystemSelection(t.getShell());
-						if( v != null ) {
-							t.setText(v);
-						}
-					}
-				});
-				toolkit.createButton(sectionClient, "Workspace ...", SWT.PUSH).addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						String v = handleKeyStoreWorkspaceSelection(t.getShell());
-						if( v != null ) {
-							t.setText(v);
-						}
-					}
-				});
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(SIGN_KEYSTORE).observe(bean));
+				} );
 			}
 
-			{
-				toolkit.createLabel(sectionClient, "Store-Password:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,3,1));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(SIGN_PASSWORD).observe(bean));
-			}
-			
-			{
-				toolkit.createLabel(sectionClient, "Alias:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,3,1));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(SIGN_ALIAS).observe(bean));
-			}
-
-			{
-				toolkit.createLabel(sectionClient, "Key-Password:");
-				Text t = toolkit.createText(sectionClient, "");
-				t.setLayoutData(new GridData(GridData.FILL,GridData.CENTER,true,false,3,1));
-				dbc.bindValue(textModify.observeDelayed(DELAY, t), BeanProperties.value(SIGN_KEYPASSWOARD).observe(bean));
-			}
-			
-			section.setClient(sectionClient);
+			section.setClient( sectionClient );
 		}
-		
-		int index = addPage(composite);
-		setPageText(index, "Build Properties");
+
+		int index = addPage( composite );
+		setPageText( index, "Overview" );
 	}
-	
-	boolean handleRemoveManifestAttr(BuildPropertyManifestAttr value) {
-		if( MessageDialog.openConfirm(getSite().getShell(), "Confirm delete", "Would really like to remove the selected attribute") ) {
-			bean.removeBuildManifestAttr(value);
-			return true;
+
+	private void createPageDeploy( final AntTask task ) {
+		Composite composite = new Composite( getContainer(), SWT.NONE );
+		FillLayout layout = new FillLayout();
+		composite.setLayout( layout );
+
+		// TODO
+		final WritableValue bean = new WritableValue();
+		bean.setValue( task );
+
+		toolkit = new FormToolkit( composite.getDisplay() );
+
+		final Form form = toolkit.createForm( composite );
+		form.setText( "FX Build Configuration" );
+		form.setImage( getTitleImage() );
+		form.getBody().setLayout( new FillLayout() );
+		toolkit.decorateFormHeading( form );
+
+		initToolbar( form );
+
+		ScrolledForm scrolledForm = toolkit.createScrolledForm( form.getBody() );
+		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
+		Composite sectionParent = scrolledForm.getBody();
+
+		dbc = new DataBindingContext();
+		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
+		IWidgetValueProperty selChange = WidgetProperties.selection();
+
+		{
+			Section section = toolkit.createSection( sectionParent, Section.DESCRIPTION | Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED );
+			section.setText( "Deploy Properties" );
+			section.setDescription( "The following properties are needed to create a Java Webstart Deployment" );
+			section.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+			Composite sectionClient = toolkit.createComposite( section );
+			sectionClient.setLayout( new GridLayout( 2, false ) );
+
+			{
+				toolkit.createLabel( sectionClient, "Applet Width*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__WIDTH ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Applet Height*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__HEIGHT ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				Button b = toolkit.createButton( sectionClient, "Embed JNLP", SWT.CHECK );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__EMBEDJNLP ) );
+				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
+			}
+
+			{
+				Button b = toolkit.createButton( sectionClient, "Treat files as extensions", SWT.CHECK );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__EXTENSION ) );
+				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
+			}
+
+			{
+				Button b = toolkit.createButton( sectionClient, "Include deployment toolkit", SWT.CHECK );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__INCLUDE_DT ) );
+				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
+			}
+
+			{
+				Button b = toolkit.createButton( sectionClient, "Native Package", SWT.CHECK );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__NATIVE_PACKAGE ) );
+				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
+			}
+
+			{
+				Button b = toolkit.createButton( sectionClient, "Offline allowed", SWT.CHECK );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__OFFLINE_ALLOWED ) );
+				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Placeholder Ref.*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__PLACEHOLDERREF ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Placeholder ID*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__PLACEHOLDERID ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Webstart Splash:" ).setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+				Composite container = toolkit.createComposite( sectionClient );
+				GridLayout gl = new GridLayout( 2, false );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				t.setHeaderVisible( true );
+				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
+
+				final TableViewer v = new TableViewer( t );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.heightHint = t.getItemHeight() * 5;
+				v.getControl().setLayoutData( gd );
+				v.setContentProvider( ArrayContentProvider.getInstance() );
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( final Object element ) {
+							return ( (Splash) element ).getMode().getName();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 100, false ) );
+					c.getColumn().setText( "Mode" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( final Object element ) {
+							return ( (Splash) element ).getHref();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 90 ) );
+					c.getColumn().setText( "URL" );
+				}
+				tableContainer.setLayout( tablelayout );
+				v.setInput( task.getDeploy().getInfo().getSplash() );
+
+				Composite buttonComp = toolkit.createComposite( container );
+				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
+				buttonComp.setLayout( new GridLayout() );
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Add ...", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							if ( handleAddSplash() ) {
+								v.setInput( task.getDeploy().getInfo().getSplash() );
+								v.setSelection( new StructuredSelection( task.getDeploy().getInfo().getSplash()
+										.get( task.getDeploy().getInfo().getSplash().size() - 1 ) ) );
+							}
+						}
+					} );
+				}
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Remove", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							Splash value = (Splash) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
+							if ( value != null ) {
+								if ( handleRemoveSplash( value ) ) {
+									v.setInput( getTask().getDeploy().getInfo().getSplash() );
+								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
+							}
+						}
+					} );
+				}
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Webstart Icons:" ).setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+				Composite container = toolkit.createComposite( sectionClient );
+				GridLayout gl = new GridLayout( 2, false );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				t.setHeaderVisible( true );
+				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
+
+				final TableViewer v = new TableViewer( t );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.heightHint = t.getItemHeight() * 5;
+				v.getControl().setLayoutData( gd );
+				v.setContentProvider( ArrayContentProvider.getInstance() );
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (Icon) element ).getDepth();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 50, false ) );
+					c.getColumn().setText( "Depth" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (Icon) element ).getKind().getName();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 100, false ) );
+					c.getColumn().setText( "Kind" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (Icon) element ).getWidth();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 50, false ) );
+					c.getColumn().setText( "Width" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (Icon) element ).getHeight();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 10, 50, false ) );
+					c.getColumn().setText( "Height" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (Icon) element ).getHref();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 60 ) );
+					c.getColumn().setText( "Url" );
+				}
+				tableContainer.setLayout( tablelayout );
+				v.setInput( task.getDeploy().getInfo().getIcon() );
+
+				Composite buttonComp = toolkit.createComposite( container );
+				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
+				buttonComp.setLayout( new GridLayout() );
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Add ...", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							if ( handleAddIcon() ) {
+								v.setInput( task.getDeploy().getInfo().getIcon() );
+								v.setSelection( new StructuredSelection( task.getDeploy().getInfo().getIcon()
+										.get( task.getDeploy().getInfo().getIcon().size() - 1 ) ) );
+							}
+						}
+					} );
+				}
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Remove", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							Icon value = (Icon) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
+							if ( value != null ) {
+								if ( handleRemoveIcon( value ) ) {
+									v.setInput( task.getDeploy().getInfo().getIcon() );
+								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
+							}
+						}
+					} );
+				}
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Additional META-INF files:" ).setLayoutData(
+						new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+				Composite container = toolkit.createComposite( sectionClient );
+				GridLayout gl = new GridLayout( 2, false );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				t.setHeaderVisible( true );
+				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
+
+				final TableViewer v = new TableViewer( t );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.heightHint = t.getItemHeight() * 5;
+				v.getControl().setLayoutData( gd );
+				v.setContentProvider( ArrayContentProvider.getInstance() );
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getKey();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 33 ) );
+					c.getColumn().setText( "Folder" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getValue();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 67 ) );
+					c.getColumn().setText( "File" );
+				}
+				tableContainer.setLayout( tablelayout );
+				v.setInput( task.getFiles() );
+
+				Composite buttonComp = toolkit.createComposite( container );
+				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
+				buttonComp.setLayout( new GridLayout() );
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Add ...", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							if ( handleAddMetaInfFile() ) {
+								v.setInput( task.getFiles() );
+								v.setSelection( new StructuredSelection( task.getFiles().get( task.getFiles().size() - 1 ) ) );
+							}
+						}
+					} );
+				}
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Remove", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							KeyValuePair value = (KeyValuePair) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
+							if ( value != null ) {
+								if ( handleRemoveMetaInfFile( value ) ) {
+									v.setInput( task.getFiles() );
+								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
+							}
+						}
+					} );
+				}
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Fonts:" ).setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+				Composite container = toolkit.createComposite( sectionClient );
+				GridLayout gl = new GridLayout( 2, false );
+				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
+				container.setLayout( gl );
+				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+				Composite tableContainer = toolkit.createComposite( container );
+				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
+				t.setHeaderVisible( true );
+				t.setLinesVisible( true );
+
+				GridData gdTable = new GridData( GridData.FILL_HORIZONTAL );
+				gdTable.heightHint = t.getItemHeight() * 5;
+				tableContainer.setLayoutData( gdTable );
+
+				TableColumnLayout tablelayout = new TableColumnLayout();
+
+				final TableViewer v = new TableViewer( t );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.heightHint = t.getItemHeight() * 5;
+				v.getControl().setLayoutData( gd );
+				v.setContentProvider( ArrayContentProvider.getInstance() );
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getKey();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 33 ) );
+					c.getColumn().setText( "Font name" );
+				}
+
+				{
+					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					c.setLabelProvider( new ColumnLabelProvider() {
+						@Override
+						public String getText( Object element ) {
+							return ( (KeyValuePair) element ).getValue();
+						}
+					} );
+					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 67 ) );
+					c.getColumn().setText( "File" );
+				}
+				tableContainer.setLayout( tablelayout );
+				v.setInput( task.getFonts() );
+
+				Composite buttonComp = toolkit.createComposite( container );
+				buttonComp.setLayoutData( new GridData( GridData.BEGINNING, GridData.END, false, false ) );
+				buttonComp.setLayout( new GridLayout() );
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Add ...", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							if ( handleAddFont() ) {
+								v.setInput( task.getFonts() );
+								v.setSelection( new StructuredSelection( task.getFonts().get( task.getFonts().size() - 1 ) ) );
+							}
+						}
+					} );
+				}
+
+				{
+					Button b = toolkit.createButton( buttonComp, "Remove", SWT.PUSH );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.BEGINNING, false, false ) );
+					b.addSelectionListener( new SelectionAdapter() {
+						@Override
+						public void widgetSelected( final SelectionEvent e ) {
+							KeyValuePair value = (KeyValuePair) ( (IStructuredSelection) v.getSelection() ).getFirstElement();
+							if ( value != null ) {
+								if ( handleRemoveFont( value ) ) {
+									v.setInput( task.getFonts() );
+								}
+							}
+							else {
+								MessageDialog.openWarning( getSite().getShell(), "Warning", "Please select an entry" );
+							}
+						}
+					} );
+				}
+			}
+			section.setClient( sectionClient );
+		}
+		int index = addPage( composite );
+		setPageText( index, "Deploy" );
+	}
+
+	/**
+	 * initialize tool bar for a form.
+	 */
+	private void initToolbar( final Form form ) {
+		IToolBarManager mgr = form.getToolBarManager();
+		// TODO do not use the hard coded image name here
+		mgr.add( new Action( "Build & Export FX Application", ImageDescriptor.createFromURL( getClass().getClassLoader().getResource(
+				"/icons/exportrunnablejar_wiz.gif" ) ) ) {
+			@Override
+			public void run() {
+				try {
+					executeExport();
+				}
+				catch ( Exception e ) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} );
+		// mgr.add(new Action("Export Ant File",ImageDescriptor.createFromURL(getClass().getClassLoader().getResource("/icons/exportAnt_co.gif"))) {
+		// @Override
+		// public void run() {
+		//
+		// }
+		// });
+		form.updateToolBar();
+	}
+
+	/**
+	 * handleRemoveMetaInfFile.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveMetaInfFile( final KeyValuePair value ) {
+		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected META-INF file" ) ) {
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getFiles(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
 		}
 		return false;
 	}
 
-	protected boolean handleAddManifestAttr(Shell shell) {
-		TitleAreaDialog d = new TitleAreaDialog(shell) {
-			private BuildPropertyManifestAttr o = new BuildPropertyManifestAttr();
-			private DataBindingContext dbc = new DataBindingContext();
-			
-			@Override
-			protected Control createDialogArea(Composite parent) {
-				Composite area = (Composite) super.createDialogArea(parent);
-				Composite container = new Composite(area, SWT.NONE);
-				container.setLayoutData(new GridData(GridData.FILL_BOTH));
-				container.setLayout(new GridLayout(2, false));
-				
-				getShell().setText("Add manifest attribute");
-				setTitle("Add manifest attribute");
-				setMessage("Enter informations about manifest header entry");
-				
-				IWidgetValueProperty tProp = WidgetProperties.text(SWT.Modify);
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("Name*:");
-					
-					Text t = new Text(container, SWT.BORDER);
-					t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-					dbc.bindValue(tProp.observe(t), BeanProperties.value(BUILD_MANIFEST_ATTR_NAME).observe(o));
-				}
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("Value*:");
-					
-					Text t = new Text(container, SWT.BORDER);
-					t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-					dbc.bindValue(tProp.observe(t), BeanProperties.value(BUILD_MANIFEST_ATTR_VALUE).observe(o));
-				}
-				
-				return area;
+	/**
+	 * handleRemoveFont.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveFont( final KeyValuePair value ) {
+		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected font" ) ) {
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getFonts(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
 			}
-			
-			@Override
-			protected void okPressed() {
-				bean.addBuildManifestAttr(o);
-				dbc.dispose();
-				super.okPressed();
-			}
-		};
-		
+		}
+		return false;
+	}
+
+	/**
+	 * handleAddService.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddMetaInfFile() {
+		AddMetaInfFileDialog d = new AddMetaInfFileDialog( getSite().getShell(), editingDomain, getTask(), ( (IFileEditorInput) getEditorInput() ).getFile()
+				.getProject() );
 		return d.open() == TitleAreaDialog.OK;
 	}
 
-	String handleSplashImage(Shell shell) {
-		FilteredResourcesSelectionDialog d = new FilteredResourcesSelectionDialog(shell, false, ((IFileEditorInput)getEditorInput()).getFile().getProject(), IResource.FILE) {
+	/**
+	 * handleAddFont.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddFont() {
+		AddFontDialog d = new AddFontDialog( getSite().getShell(), editingDomain, getTask(), ( (IFileEditorInput) getEditorInput() ).getFile().getProject() );
+		return d.open() == TitleAreaDialog.OK;
+	}
+
+	private void createPageSigning( AntTask task ) {
+		Composite composite = new Composite( getContainer(), SWT.NONE );
+		FillLayout layout = new FillLayout();
+		composite.setLayout( layout );
+
+		final WritableValue bean = new WritableValue();
+		bean.setValue( task );
+
+		toolkit = new FormToolkit( composite.getDisplay() );
+
+		final Form form = toolkit.createForm( composite );
+		form.setText( "FX Build Configuration" );
+		form.setImage( getTitleImage() );
+		form.getBody().setLayout( new FillLayout() );
+		toolkit.decorateFormHeading( form );
+
+		initToolbar( form );
+
+		ScrolledForm scrolledForm = toolkit.createScrolledForm( form.getBody() );
+		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
+		Composite sectionParent = scrolledForm.getBody();
+
+		dbc = new DataBindingContext();
+		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
+
+		{
+			Section section = toolkit.createSection( sectionParent, Section.DESCRIPTION | Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED );
+			section.setText( "Signing Properties" );
+			section.setDescription( "Information for signing result jar" );
+			section.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+
+			Composite sectionClient = toolkit.createComposite( section );
+			sectionClient.setLayout( new GridLayout( 4, false ) );
+
+			{
+				toolkit.createLabel( sectionClient, "Alias*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__ALIAS ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Key-Password*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__KEYPASS ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Keystore*:" );
+				final Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				toolkit.createButton( sectionClient, "Filesystem ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
+					@Override
+					public void widgetSelected( final SelectionEvent e ) {
+						String v = handleKeyStoreFilesystemSelection( t.getShell() );
+						if ( v != null ) {
+							t.setText( v );
+						}
+					}
+				} );
+				toolkit.createButton( sectionClient, "Workspace ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
+					@Override
+					public void widgetSelected( final SelectionEvent e ) {
+						String v = handleKeyStoreWorkspaceSelection( t.getShell() );
+						if ( v != null ) {
+							t.setText( v );
+						}
+					}
+				} );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__KEYSTORE ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Store-Password*:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__STOREPASS ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Storetype:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__SIGNJAR, SIGN_JAR__STORETYPE ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			section.setClient( sectionClient );
+		}
+
+		int index = addPage( composite );
+		setPageText( index, "Signing" );
+	}
+
+	/**
+	 * handleRemoveManifestAttr.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveManifestAttr( final Param value ) {
+		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected attribute" ) ) {
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getManifestEntries(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * handleAddManifestAttr.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddManifestAttr( Shell shell ) {
+		AddManifestAttributeDialog d = new AddManifestAttributeDialog( getSite().getShell(), editingDomain, getTask() );
+		return d.open() == TitleAreaDialog.OK;
+	}
+
+	private String handleSplashImage( Shell shell ) {
+		FilteredResourcesSelectionDialog d = new FilteredResourcesSelectionDialog( shell, false,
+				( (IFileEditorInput) getEditorInput() ).getFile().getProject(), IResource.FILE ) {
 			@Override
-			protected IStatus validateItem(Object item) {
-				IFile f = (IFile)item;
-				if( f.getParent() instanceof IProject ) {
-					return new Status(IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "The selected resource has to part of the source folder");
+			protected IStatus validateItem( Object item ) {
+				IFile f = (IFile) item;
+				if ( f.getParent() instanceof IProject ) {
+					return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "The selected resource has to part of the source folder" );
 				}
-				return super.validateItem(item);
+				return super.validateItem( item );
 			}
 		};
-		if( d.open() == ResourceSelectionDialog.OK ) {
+		if ( d.open() == ResourceSelectionDialog.OK ) {
 			Object[] rv = d.getResult();
-			if( rv.length == 1 ) {
-				IFile f = (IFile)rv[0];
-				IJavaElement j = JavaCore.create(f.getParent());
-				if( j instanceof IPackageFragment ) {
+			if ( rv.length == 1 ) {
+				IFile f = (IFile) rv[0];
+				IJavaElement j = JavaCore.create( f.getParent() );
+				if ( j instanceof IPackageFragment ) {
 					IPackageFragment p = (IPackageFragment) j;
-					return p.getElementName().replace('.', '/') + "/" + f.getName();
-				} else if( j instanceof IPackageFragmentRoot ) {
+					return p.getElementName().replace( '.', '/' ) + "/" + f.getName();
+				}
+				else if ( j instanceof IPackageFragmentRoot ) {
 					return f.getName();
-				} else {
-					MessageDialog.openInformation(shell, "Not valid", "The selected resource has to part of the source folder");
+				}
+				else {
+					MessageDialog.openInformation( shell, "Not valid", "The selected resource has to part of the source folder" );
 				}
 			}
 		}
-		
 		return null;
 	}
 
-	boolean handleRemoveIcon(BuildPropertyIcon value) {
-		if( MessageDialog.openConfirm(getSite().getShell(), "Confirm delete", "Would really like to remove the selected icon") ) {
-			bean.removeDeployIcon(value);
-			return true;
+	/**
+	 * handleRemoveIcon.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveIcon( final Icon value ) {
+		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected icon" ) ) {
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getDeploy().getInfo().getIcon(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
 		}
 		return false;
 	}
 
-	boolean handleAddIcon() {
-		TitleAreaDialog d = new TitleAreaDialog(getSite().getShell()) {
-			private BuildPropertyIcon o = new BuildPropertyIcon();
-			private DataBindingContext dbc = new DataBindingContext();
-			
-			@Override
-			protected Control createDialogArea(Composite parent) {
-				Composite area = (Composite) super.createDialogArea(parent);
-				
-				getShell().setText("Add icon");
-				setTitle("Add icon");
-				setMessage("Enter informations about the icon to add");
-				
-				Composite container = new Composite(area, SWT.NONE);
-				container.setLayout(new GridLayout(2, false));
-				container.setLayoutData(new GridData(GridData.FILL_BOTH));
-				
-				IViewerValueProperty selProp = ViewerProperties.singleSelection();
-				IWidgetValueProperty tProp = WidgetProperties.text(SWT.Modify);
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("Kind:");
-					
-					ComboViewer v = new ComboViewer(container,SWT.READ_ONLY);
-					v.setLabelProvider(new LabelProvider());
-					v.setContentProvider(ArrayContentProvider.getInstance());
-					v.setInput(new String[] {"default","disabled","rollover","selected","shortcut"});
-					dbc.bindValue(selProp.observe(v), BeanProperties.value(DEPLOY_ICON_KIND).observe(o));
-				}
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("URL*:");
-					
-					Text t = new Text(container, SWT.BORDER);
-					t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-					dbc.bindValue(tProp.observeDelayed(DELAY, t), BeanProperties.value(DEPLOY_ICON_HREF).observe(o));					
-				}
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("Depth:");
-					
-					ComboViewer v = new ComboViewer(container,SWT.READ_ONLY);
-					v.setLabelProvider(new LabelProvider());
-					v.setContentProvider(ArrayContentProvider.getInstance());
-					v.setInput(new String[] {"8","24","32"});
-					dbc.bindValue(selProp.observe(v), BeanProperties.value(DEPLOY_ICON_DEPTH).observe(o));
-				}
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("Width:");
-					
-					Text t = new Text(container, SWT.BORDER);
-					t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-					dbc.bindValue(tProp.observeDelayed(DELAY, t), BeanProperties.value(DEPLOY_ICON_WIDTH).observe(o));					
-				}
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("Height:");
-					
-					Text t = new Text(container, SWT.BORDER);
-					t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-					dbc.bindValue(tProp.observeDelayed(DELAY, t), BeanProperties.value(DEPLOY_ICON_HEIGHT).observe(o));					
-				}
-
-				return area;
-			}
-			
-			
-			@Override
-			protected void okPressed() {
-				bean.addDeployIcon(o);
-				dbc.dispose();
-				super.okPressed();
-			}
-		};
+	/**
+	 * handleAddIcon.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddIcon() {
+		AddIconDialog d = new AddIconDialog( getSite().getShell(), editingDomain, getTask() );
 		return d.open() == TitleAreaDialog.OK;
 	}
 
-	boolean handleAddSplash() {
-		TitleAreaDialog d = new TitleAreaDialog(getSite().getShell()) {
-			private BuildPropertySplash o = new BuildPropertySplash();
-			private DataBindingContext dbc = new DataBindingContext();
-			
-			@Override
-			protected Control createDialogArea(Composite parent) {
-				Composite area = (Composite) super.createDialogArea(parent);
-				
-				getShell().setText("Add splash icon");
-				setTitle("Add splash");
-				setMessage("Enter informations about the splash to add");
-				
-				Composite container = new Composite(area, SWT.NONE);
-				container.setLayout(new GridLayout(2, false));
-				container.setLayoutData(new GridData(GridData.FILL_BOTH));
-				
-				IViewerValueProperty selProp = ViewerProperties.singleSelection();
-				IWidgetValueProperty tProp = WidgetProperties.text(SWT.Modify);
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("Mode*:");
-					
-					ComboViewer v = new ComboViewer(container,SWT.READ_ONLY);
-					v.setLabelProvider(new LabelProvider());
-					v.setContentProvider(ArrayContentProvider.getInstance());
-					v.setInput(new String[] {"any","webstart"});
-					dbc.bindValue(selProp.observe(v), BeanProperties.value(DEPLOY_SPLASH_MODE).observe(o));
-				}
-				
-				{
-					Label l = new Label(container, SWT.NONE);
-					l.setText("URL*:");
-					
-					Text t = new Text(container, SWT.BORDER);
-					t.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-					dbc.bindValue(tProp.observeDelayed(DELAY, t), BeanProperties.value(DEPLOY_SPLASH_HREF).observe(o));					
-				}
-				
-				return area;
-			}
-			
-			@Override
-			protected void okPressed() {
-				bean.addDeploySplash(o);
-				dbc.dispose();
-				super.okPressed();
-			}
-		};
+	/**
+	 * handleAddSplash.
+	 * 
+	 * @return the return code
+	 * 
+	 * @see TitleAreaDialog#open()
+	 */
+	private boolean handleAddSplash() {
+		AddSplashDialog d = new AddSplashDialog( getSite().getShell(), editingDomain, getTask() );
 		return d.open() == TitleAreaDialog.OK;
-		
 	}
-	
-//	String handleImageSelection() {
-//		FileDialog d = new FileDialog(getSite().getShell());
-//	}
-	
-	boolean handleRemoveSplash(BuildPropertySplash value) {
-		if( MessageDialog.openConfirm(getSite().getShell(), "Confirm delete", "Would really like to remove the selected splash") ) {
-			bean.removeDeploySplash(value);
-			return true;
+
+	/**
+	 * handleRemoveSplash.
+	 * 
+	 * @param value
+	 *            the value to delete
+	 * @return true if value was deleted, and false otherwise.
+	 */
+	private boolean handleRemoveSplash( final Splash value ) {
+		if ( MessageDialog.openConfirm( getSite().getShell(), "Confirm delete", "Would really like to remove the selected splash" ) ) {
+			RemoveCommand cmd = new RemoveCommand( editingDomain, getTask().getDeploy().getInfo().getSplash(), value );
+			if ( cmd.canExecute() ) {
+				cmd.execute();
+				return true;
+			}
 		}
 		return false;
 	}
-	
-	void handleCreateKeyStore(Shell parent) {
-		
-	}
-	
-	IStatus validateKeystoreAlias(Shell parent, String alias) {
-		return Status.OK_STATUS;
-	}
-	
-	String handleBuildFilesystemDirectorySelection(Shell parent) {
-		DirectoryDialog dialog = new DirectoryDialog(parent);
+
+	private String handleBuildFilesystemDirectorySelection( final Shell parent ) {
+		DirectoryDialog dialog = new DirectoryDialog( parent );
 		return dialog.open();
 	}
-	
-	String handleBuildWorkbencDirectorySelection(Shell parent) {
-		ILabelProvider lp= new WorkbenchLabelProvider();
-		ITreeContentProvider cp= new WorkbenchContentProvider();
 
-		Class<?>[] acceptedClasses= new Class[] { IProject.class, IFolder.class };
-		ViewerFilter filter= new TypedViewerFilter(acceptedClasses);
+	private String handleBuildWorkbenchDirectorySelection( final Shell parent ) {
+		ILabelProvider lp = new WorkbenchLabelProvider();
+		ITreeContentProvider cp = new WorkbenchContentProvider();
 
-		FolderSelectionDialog dialog= new FolderSelectionDialog(parent, lp, cp);
-		dialog.setTitle("Output directory");
-		dialog.setMessage("Select output directory");
-		dialog.addFilter(filter);
-		dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
-		if (dialog.open() == Window.OK) {
-			IContainer c = (IContainer)dialog.getFirstResult();
+		Class<?>[] acceptedClasses = new Class[] { IProject.class, IFolder.class };
+		ViewerFilter filter = new TypedViewerFilter( acceptedClasses );
+
+		FolderSelectionDialog dialog = new FolderSelectionDialog( parent, lp, cp );
+		dialog.setTitle( "Output directory" );
+		dialog.setMessage( "Select output directory" );
+		dialog.addFilter( filter );
+		dialog.setInput( ResourcesPlugin.getWorkspace().getRoot() );
+		if ( dialog.open() == Window.OK ) {
+			IContainer c = (IContainer) dialog.getFirstResult();
 			return "${workspace}/" + c.getProject().getName() + "/" + c.getProjectRelativePath().toString();
 		}
 		return null;
 	}
-	
-	String handleRootclassSelection(Shell parent) {
+
+	private String handleRootclassSelection( Shell parent ) {
 		IFileEditorInput i = (IFileEditorInput) getEditorInput();
-		IJavaProject project= JavaCore.create(i.getFile().getProject());
-		if (project == null) {
+		IJavaProject project = JavaCore.create( i.getFile().getProject() );
+		if ( project == null ) {
 			return null;
 		}
-		
-		IJavaElement[] elements= new IJavaElement[] { project };
+
+		IJavaElement[] elements = new IJavaElement[] { project };
 
 		int constraints = IJavaSearchScope.SOURCES;
 		constraints |= IJavaSearchScope.APPLICATION_LIBRARIES;
-		
-		IJavaSearchScope searchScope = SearchEngine.createJavaSearchScope(elements, constraints);		
+
+		IJavaSearchScope searchScope = SearchEngine.createJavaSearchScope( elements, constraints );
 		BusyIndicatorRunnableContext context = new BusyIndicatorRunnableContext();
-		
-		MainTypeSelectionDialog dialog = new MainTypeSelectionDialog(parent, context, searchScope, 0);
-		dialog.setTitle("Find class");
-		dialog.setMessage("Find the class used to launch the application");
-		if (dialog.open() == Window.CANCEL) {
+
+		MainTypeSelectionDialog dialog = new MainTypeSelectionDialog( parent, context, searchScope, 0 );
+		dialog.setTitle( "Find class" );
+		dialog.setMessage( "Find the class used to launch the application" );
+		if ( dialog.open() == Window.CANCEL ) {
 			return null;
 		}
-		Object[] results = dialog.getResult();	
-		IType type = (IType)results[0];
-		if (type != null) {
+		Object[] results = dialog.getResult();
+		IType type = (IType) results[0];
+		if ( type != null ) {
 			return type.getFullyQualifiedName();
 		}
-		
+
 		return null;
 	}
-	
-	String handlePreloaderclassSelection(Shell parent) {
+
+	private String handlePreloaderclassSelection( Shell parent ) {
 		IFileEditorInput i = (IFileEditorInput) getEditorInput();
-		IJavaProject project= JavaCore.create(i.getFile().getProject());
-		if (project == null) {
+		IJavaProject project = JavaCore.create( i.getFile().getProject() );
+		if ( project == null ) {
 			return null;
 		}
-		
+
 		try {
-			IType superType = project.findType("javafx.application.Preloader");
-			
-			IJavaSearchScope searchScope = SearchEngine.createStrictHierarchyScope(project, superType, true, false, null);		
-			
-			SelectionDialog dialog = JavaUI.createTypeDialog(parent, PlatformUI.getWorkbench().getProgressService(), searchScope, IJavaElementSearchConstants.CONSIDER_CLASSES, false, "");
-			dialog.setTitle("Find Preloader");
-			if (dialog.open() == Window.OK) {
+			IType superType = project.findType( "javafx.application.Preloader" );
+
+			IJavaSearchScope searchScope = SearchEngine.createStrictHierarchyScope( project, superType, true, false, null );
+
+			SelectionDialog dialog = JavaUI.createTypeDialog( parent, PlatformUI.getWorkbench().getProgressService(), searchScope,
+					IJavaElementSearchConstants.CONSIDER_CLASSES, false, "" );
+			dialog.setTitle( "Find Preloader" );
+			if ( dialog.open() == Window.OK ) {
 				IType type = (IType) dialog.getResult()[0];
-				return type.getFullyQualifiedName('$');
-			}	
-		} catch (JavaModelException e) {
+				return type.getFullyQualifiedName( '$' );
+			}
+		}
+		catch ( JavaModelException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
-	String handleKeyStoreFilesystemSelection(Shell parent) {
-		FileDialog dialog = new FileDialog(parent,SWT.OPEN);
+
+	private String handleKeyStoreFilesystemSelection( Shell parent ) {
+		FileDialog dialog = new FileDialog( parent, SWT.OPEN );
 		String keystore = dialog.open();
-		if( keystore != null ) {
-			IStatus s = validateKeyStore(new File(keystore));
-			if( s.isOK() ) {
+		if ( keystore != null ) {
+			IStatus s = validateKeyStore( new File( keystore ) );
+			if ( s.isOK() ) {
 				return keystore;
-			} else {
-				MessageDialog.openError(parent, "Not a keystore", "Looks like the selected file is not a keystore");
-				return handleKeyStoreFilesystemSelection(parent);
+			}
+			else {
+				MessageDialog.openError( parent, "Not a keystore", "Looks like the selected file is not a keystore" );
+				return handleKeyStoreFilesystemSelection( parent );
 			}
 		}
 		return null;
 	}
-	
-	String handleKeyStoreWorkspaceSelection(Shell parent) {
+
+	private String handleKeyStoreWorkspaceSelection( Shell parent ) {
 		ILabelProvider lp = new WorkbenchLabelProvider();
 		ITreeContentProvider cp = new WorkbenchContentProvider();
 
-		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(parent, lp, cp);
-		dialog.setValidator(new ISelectionStatusValidator() {
-			
+		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog( parent, lp, cp );
+		dialog.setValidator( new ISelectionStatusValidator() {
+
 			@Override
-			public IStatus validate(Object[] selection) {
-				if( selection.length > 1 ) {
-					return new Status(IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "Only one file allowed.");
-				} else if( selection.length == 1 ) {
-					if( selection[0] instanceof IFile ) {
+			public IStatus validate( Object[] selection ) {
+				if ( selection.length > 1 ) {
+					return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Only one file allowed." );
+				}
+				else if ( selection.length == 1 ) {
+					if ( selection[0] instanceof IFile ) {
 						IFile f = (IFile) selection[0];
-						return validateKeyStore(f.getLocation().toFile());
+						return validateKeyStore( f.getLocation().toFile() );
 					}
 				}
 				return Status.OK_STATUS;
 			}
-		});
-		dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
-		
-			
-		if (dialog.open() == Window.OK) {
+		} );
+		dialog.setInput( ResourcesPlugin.getWorkspace().getRoot() );
+
+		if ( dialog.open() == Window.OK ) {
 			IFile f = (IFile) dialog.getFirstResult();
-			if( f != null ) {
+			if ( f != null ) {
 				return "${workspace}/" + f.getProject().getName() + "/" + f.getProjectRelativePath().toString();
 			}
 		}
-		
+
 		return null;
 	}
-	
-	IStatus validateKeyStore(File f) {
+
+	private IStatus validateKeyStore( final File f ) {
 		FileInputStream fis = null;
 		try {
-			fis = new FileInputStream(f);
-			KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
-			ks.load(fis, null);
-		} catch (FileNotFoundException e) {
-			return new Status(IStatus.ERROR, "at.bestsolution.efxclipse.tooling.jdt.ui", "The keystore file '"+f.getAbsolutePath()+"' is not found.",e);
-		} catch (KeyStoreException e) {
-			return new Status(IStatus.ERROR,"at.bestsolution.efxclipse.tooling.jdt.ui", "Unable to initialize keystore",e);
-		} catch (NoSuchAlgorithmException e) {
-			return new Status(IStatus.ERROR,"at.bestsolution.efxclipse.tooling.jdt.ui", "Loading keystore failed. Is this a valid keystore?",e);
-		} catch (CertificateException e) {
-			return new Status(IStatus.ERROR,"at.bestsolution.efxclipse.tooling.jdt.ui", "Loading keystore failed. Is this a valid keystore?",e);
-		} catch (IOException e) {
-			if( e.getCause() instanceof UnrecoverableKeyException ) {
+			fis = new FileInputStream( f );
+			KeyStore ks = KeyStore.getInstance( KeyStore.getDefaultType() );
+			ks.load( fis, null );
+		}
+		catch ( FileNotFoundException e ) {
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "The keystore file '" + f.getAbsolutePath() + "' is not found.", e );
+		}
+		catch ( KeyStoreException e ) {
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Unable to initialize keystore", e );
+		}
+		catch ( NoSuchAlgorithmException e ) {
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Loading keystore failed. Is this a valid keystore?", e );
+		}
+		catch ( CertificateException e ) {
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Loading keystore failed. Is this a valid keystore?", e );
+		}
+		catch ( IOException e ) {
+			if ( e.getCause() instanceof UnrecoverableKeyException ) {
 				return Status.OK_STATUS;
 			}
-			return new Status(IStatus.ERROR,"at.bestsolution.efxclipse.tooling.jdt.ui", "Loading keystore failed. Is this a valid keystore?",e);
-		} finally {
-			if( fis != null ) {
+			return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Loading keystore failed. Is this a valid keystore?", e );
+		}
+		finally {
+			if ( fis != null ) {
 				try {
 					fis.close();
-				} catch (IOException e) {
+				}
+				catch ( IOException e ) {
 				}
 			}
 		}
-		
 		return Status.OK_STATUS;
 	}
-	
-	protected void pageChange(int newPageIndex) {
-		if( newPageIndex == 0 ) {
-			syncForm();
-		}
-	}
-	
-	void syncForm() {
-		properties.clear();
-		try { 
-			properties.load(new StringReader(editor.getDocumentProvider().getDocument(editor.getEditorInput()).get()));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+	@Override
+	protected void pageChange( int newPageIndex ) {
 		dbc.updateTargets();
 	}
-	
-	void createPage1() {
-		try {
-			editor = new PropertyTextEditor();
-			int index = addPage(editor, getEditorInput());
-			setPageText(index, editor.getTitle());
-			setPartName(editor.getTitle());
-			editor.getDocumentProvider().getDocument(editor.getEditorInput()).addDocumentListener(new IDocumentListener() {
-				
-				@Override
-				public void documentChanged(DocumentEvent event) {
-					if( syncForm && getActivePage() == 0 ) {
-						syncForm();
+
+	@Override
+	public void resourceChanged( final IResourceChangeEvent event ) {
+		if ( event.getType() == IResourceChangeEvent.PRE_CLOSE ) {
+			Display.getDefault().asyncExec( new Runnable() {
+				public void run() {
+					IWorkbenchPage[] pages = getSite().getWorkbenchWindow().getPages();
+					for ( int i = 0; i < pages.length; i++ ) {
+						// update possible other pages here
 					}
 				}
-				
-				@Override
-				public void documentAboutToBeChanged(DocumentEvent event) {
-					
-				}
-			});
-			bean.addPropertyChangeListener(new PropertyChangeListener() {
-				
-				@Override
-				public void propertyChange(PropertyChangeEvent evt) {
-					try {
-						syncForm = false;
-						
-						String key = MAPPING.get(evt.getPropertyName());
-						
-						String editorText = editor.getDocumentProvider().getDocument(editor.getEditorInput()).get();
-						BufferedReader r = new BufferedReader(new StringReader(editorText));
-						String line;
-						StringBuilder b = new StringBuilder();
-						try {
-							boolean found = false;
-							while( (line = r.readLine()) != null ) {
-								if( line.startsWith(key) ) {
-									if( line.endsWith("\\") ) {
-										while( (line = r.readLine()) != null && line.endsWith("\\") ) {
-											// remove all of them
-										}
-									}
-									
-									if( evt.getNewValue() == null ) {
-										line = null;
-									} else {
-										line = key + " = " + evt.getNewValue();
-									}
-									
-									found = true;
-								}
-								
-								if( line != null ) {
-									b.append(line + "\n");
-								}
-							}
-							
-							if( ! found && evt.getNewValue() != null ) {
-								b.append(line = key + " = " + evt.getNewValue());
-							}
-							
-							editor.getDocumentProvider().getDocument(editor.getEditorInput()).set(b.toString());
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-					} finally {
-						syncForm = true;
-					}
-					
-				}
-			});
-		} catch (PartInitException e) {
-			ErrorDialog.openError(getSite().getShell(),
-					"Error creating nested text editor", null, e.getStatus());
+			} );
 		}
 	}
 
 	@Override
-	public void resourceChanged(final IResourceChangeEvent event) {
-		if (event.getType() == IResourceChangeEvent.PRE_CLOSE) {
-			Display.getDefault().asyncExec(new Runnable() {
-				public void run() {
-					IWorkbenchPage[] pages = getSite().getWorkbenchWindow()
-							.getPages();
-					for (int i = 0; i < pages.length; i++) {
-						if (((FileEditorInput) editor.getEditorInput())
-								.getFile().getProject()
-								.equals(event.getResource())) {
-							IEditorPart editorPart = pages[i].findEditor(editor
-									.getEditorInput());
-							pages[i].closeEditor(editorPart, true);
-						}
-					}
-				}
-			});
+	public Object getAdapter( @SuppressWarnings( "rawtypes" ) final Class adapter ) {
+		// TODO we could show an outline page here
+		return super.getAdapter( adapter );
+	}
+
+	/**
+	 * If there is more than one page in the multi-page editor part, this shows the tabs at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private void showTabs() {
+		if ( getPageCount() > 1 ) {
+			setPageText( 0, "Selection" );
+			if ( getContainer() instanceof CTabFolder ) {
+				( (CTabFolder) getContainer() ).setTabHeight( SWT.DEFAULT );
+				Point point = getContainer().getSize();
+				getContainer().setSize( point.x, point.y - 6 );
+			}
 		}
 	}
-	
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
-		if (adapter == IContentOutlinePage.class) {
-			final PropertyContentOutlinePage contentOutline = new PropertyContentOutlinePage(editor);
-			return contentOutline;
-		}
-		//
-		return super.getAdapter(adapter);
-	}
-	
-	public static class BuildPropertyBean {
-		private PropertyChangeSupport support = new PropertyChangeSupport(this);
-		private Properties properties;
-		
-		public BuildPropertyBean(Properties properties) {
-			this.properties = properties;
-		}
-		
-		public void addPropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		public void removePropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		
-		private String get(String key) {
-			return properties.getProperty(MAPPING.get(key));
-		}
-		
-		private void set(String key, String value) {
-			if( value == null || value.trim().isEmpty() ) {
-				support.firePropertyChange(key, properties.remove(MAPPING.get(key)), null);
-			} else {
-				support.firePropertyChange(key, properties.setProperty(MAPPING.get(key), value), value);
-			}
-		}
-		
-		public void setBuildDirectory(String value) {
-			set(BUILD_DIRECTORY,value);
-		}
-		
-		public String getBuildDirectory() {
-			return get(BUILD_DIRECTORY);
-		}
-		
-		public void setBuildVendorName(String value) {
-			set(BUILD_VENDOR_NAME,value);
-		}
-		
-		public String getBuildVendorName() {
-			return get(BUILD_VENDOR_NAME);
-		}
-		
-		public void setBuildAppTitle(String value) {
-			set(BUILD_APP_TITLE,value);
-		}
-		
-		public String getBuildAppTitle() {
-			return get(BUILD_APP_TITLE);
-		}
-		
-		public void setBuildAppVersion(String value) {
-			set(BUILD_APP_VERSION,value);
-		}
-		
-		public String getBuildAppVersion() {
-			return get(BUILD_APP_VERSION);
-		}
-		
-		public void setBuildApplicationClass(String value) {
-			set(BUILD_APPLICATION_CLASS,value);
-		}
-		
-		public String getBuildApplicationClass() {
-			return get(BUILD_APPLICATION_CLASS);
-		}
-		
-		public void setBuildPreloaderClass(String value) {
-			set(BUILD_PRELOADER_CLASS,value);
-		}
-		
-		public String getBuildPreloaderClass() {
-			return get(BUILD_PRELOADER_CLASS);
-		}
-		
-		public void setDeployAppletWith(String value) {
-			set(DEPLOY_APPLET_WIDTH,value);
-		}
-		
-		public String getDeployAppletWith() {
-			return get(DEPLOY_APPLET_WIDTH);
-		}
-		
-		public void setDeployAppletHeight(String value) {
-			set(DEPLOY_APPLET_HEIGHT,value);
-		}
-		
-		public String getDeployAppletHeight() {
-			return get(DEPLOY_APPLET_HEIGHT);
-		}
-		
-//		public void setBuildJfxSDK(String value) {
-//			set(BUILD_JFXSDK,value);
-//		}
-//		
-//		public String getBuildJfxSDK() {
-//			return get(BUILD_JFXSDK);
-//		}
-		
-		public void setSignKeystore(String value) {
-			set(SIGN_KEYSTORE,value);
-		}
-		
-		public String getSignKeystore() {
-			return get(SIGN_KEYSTORE);
-		}
-		
-		public void setSignAlias(String value) {
-			set(SIGN_ALIAS,value);
-		}
-		
-		public String getSignAlias() {
-			return get(SIGN_ALIAS);
-		}
-		
-		public void setSignPassword(String value) {
-			set(SIGN_PASSWORD,value);
-		}
-		
-		public String getSignPassword() {
-			return get(SIGN_PASSWORD);
-		}
-		
-		public void setSignKeyPassword(String value) {
-			set(SIGN_KEYPASSWOARD,value);
-		}
-		
-		public String getSignKeyPassword() {
-			return get(SIGN_KEYPASSWOARD);
-		}
-		
-		public void setDeployNativePackage(String value) {
-			set(DEPLOY_NATIVE_PACKAGE, value);
-		}
-		
-		public String getDeployNativePackage() {
-			return get(DEPLOY_NATIVE_PACKAGE);
-		}
 
-		public void setBuildSplashImage(String value) {
-			set(BUILD_SPLASH_IMAGE, value);
-		}
-		
-		public String getBuildSplashImage() {
-			return get(BUILD_SPLASH_IMAGE);
-		}
-		
-		public List<BuildPropertySplash> getDeploySplashList() {
-			return Collections.unmodifiableList(internalGetDeploySplashList());
-		}
-		
-		private List<BuildPropertySplash> internalGetDeploySplashList() {
-			String s = get(DEPLOY_SPLASH_LIST);
-			List<BuildPropertySplash> l = new ArrayList<BuildPropertySplash>();
-			if( s != null && s.trim().length() > 0 ) {
-				for( String i : s.split("##") ) {
-					String[] parts = i.split(";");
-					if( parts.length == 2 ) {
-						BuildPropertySplash splash = new BuildPropertySplash();
-						splash.setDeploySplashMode(nullHandler(parts[0]));
-						splash.setDeploySplashHref(nullHandler(parts[1]));
-						l.add(splash);
-					}
-				}
-			}
-			
-			return l;
-		}
-		
-		private void internalSetDeploySplashList(List<BuildPropertySplash> l) {
-			StringBuilder b = new StringBuilder();
-			for( BuildPropertySplash i : l ) {
-				if( b.length() > 0 ) {
-					b.append("##");
-				}
-				b.append(i.getDeploySplashMode());
-				b.append(";");
-				b.append(i.getDeploySplashHref());
-			}
-			set(DEPLOY_SPLASH_LIST, b.toString());
-		}
-		
-		public void addDeploySplash(BuildPropertySplash value) {
-			List<BuildPropertySplash> l = internalGetDeploySplashList();
-			l.add(value);
-			internalSetDeploySplashList(l);
-		}
-		
-		public void removeDeploySplash(BuildPropertySplash value) {
-			List<BuildPropertySplash> l = internalGetDeploySplashList();
-			l.remove(value);
-			internalSetDeploySplashList(l);
-		}
-		
-		
-		
-		public List<BuildPropertyIcon> getDeployIconList() {
-			return Collections.unmodifiableList(internalGetDeployIconList());
-		}
-		
-		private List<BuildPropertyIcon> internalGetDeployIconList() {
-			String s = get(DEPLOY_ICON_LIST);
-			List<BuildPropertyIcon> l = new ArrayList<BuildPropertyIcon>();
-			if( s != null && s.trim().length() > 0 ) {
-				for( String i : s.split("##") ) {
-					String[] parts = i.split(";");
-					if( parts.length == 5 ) {
-						BuildPropertyIcon splash = new BuildPropertyIcon();
-						splash.setDeployIconDepth(nullHandler(parts[0]));
-						splash.setDeployIconHeight(nullHandler(parts[1]));
-						splash.setDeployIconHref(nullHandler(parts[2]));
-						splash.setDeployIconKind(nullHandler(parts[3]));
-						splash.setDeployIconWidth(nullHandler(parts[4]));
-						l.add(splash);
-					}
-				}
-			}
-			
-			return l;
-		}
-		
-		private void internalSetDeployIconList(List<BuildPropertyIcon> l) {
-			StringBuilder b = new StringBuilder();
-			for( BuildPropertyIcon i : l ) {
-				if( b.length() > 0 ) {
-					b.append("##");
-				}
-				b.append(i.getDeployIconDepth());
-				b.append(";");
-				b.append(i.getDeployIconHeight());
-				b.append(";");
-				b.append(i.getDeployIconHref());
-				b.append(";");
-				b.append(i.getDeployIconKind());
-				b.append(";");
-				b.append(i.getDeployIconWidth());
-			}
-			set(DEPLOY_ICON_LIST, b.toString());
-		}
-		
-		public void addDeployIcon(BuildPropertyIcon value) {
-			List<BuildPropertyIcon> l = internalGetDeployIconList();
-			l.add(value);
-			internalSetDeployIconList(l);
-		}
-		
-		public void removeDeployIcon(BuildPropertyIcon value) {
-			List<BuildPropertyIcon> l = internalGetDeployIconList();
-			l.remove(value);
-			internalSetDeployIconList(l);
-		}
-		
-		// =============================================
-		
-		
-		public List<BuildPropertyManifestAttr> getBuildManifestAttrList() {
-			return Collections.unmodifiableList(internalGetBuildManifestAttrList());
-		}
-		
-		private List<BuildPropertyManifestAttr> internalGetBuildManifestAttrList() {
-			String s = get(BUILD_MANIFEST_ATTR_LIST);
-			List<BuildPropertyManifestAttr> l = new ArrayList<BuildPropertyManifestAttr>();
-			if( s != null && s.trim().length() > 0 ) {
-				for( String i : s.split("##") ) {
-					String[] parts = i.split("_;_");
-					if( parts.length == 2 ) {
-						BuildPropertyManifestAttr splash = new BuildPropertyManifestAttr();
-						splash.setBuildManifestAttrName(nullHandler(parts[0]));
-						splash.setBuildManifestAttrValue(nullHandler(parts[1]));
-						l.add(splash);
-					}
-				}
-			}
-			
-			return l;
-		}
-		
-		private void internalSetBuildManifestAttrList(List<BuildPropertyManifestAttr> l) {
-			StringBuilder b = new StringBuilder();
-			for( BuildPropertyManifestAttr i : l ) {
-				if( b.length() > 0 ) {
-					b.append("##");
-				}
-				b.append(i.getBuildManifestAttrName());
-				b.append("_;_");
-				b.append(i.getBuildManifestAttrValue());
-			}
-			set(BUILD_MANIFEST_ATTR_LIST, b.toString());
-		}
-		
-		public void addBuildManifestAttr(BuildPropertyManifestAttr value) {
-			List<BuildPropertyManifestAttr> l = internalGetBuildManifestAttrList();
-			l.add(value);
-			internalSetBuildManifestAttrList(l);
-		}
-		
-		public void removeBuildManifestAttr(BuildPropertyManifestAttr value) {
-			List<BuildPropertyManifestAttr> l = internalGetBuildManifestAttrList();
-			l.remove(value);
-			internalSetBuildManifestAttrList(l);
-		}
-		
-		
-	}
-	
-	public static class BuildPropertyManifestAttr {
-		private PropertyChangeSupport support = new PropertyChangeSupport(this);
-		private Map<String, String> properties = new HashMap<String, String>();
-		
-		public void addPropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		public void removePropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		
-		private String get(String key) {
-			return properties.get(key);
-		}
-		
-		private void set(String key, String value) {
-			if( value == null || value.trim().isEmpty() ) {
-				support.firePropertyChange(key, properties.remove(key), null);
-			} else {
-				support.firePropertyChange(key, properties.put(key, value), value);
-			}
-		}
-		
-		public void setBuildManifestAttrValue(String value) {
-			set(BUILD_MANIFEST_ATTR_VALUE, value);
-		}
-		
-		public String getBuildManifestAttrValue() {
-			return get(BUILD_MANIFEST_ATTR_VALUE);
-		}
-		
-		public void setBuildManifestAttrName(String value) {
-			set(BUILD_MANIFEST_ATTR_NAME, value);
-		}
-		
-		public String getBuildManifestAttrName() {
-			return get(BUILD_MANIFEST_ATTR_NAME);
-		}
-		
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((properties == null) ? 0 : properties.hashCode());
-			return result;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			BuildPropertyManifestAttr other = (BuildPropertyManifestAttr) obj;
-			if (properties == null) {
-				if (other.properties != null)
-					return false;
-			} else if (!properties.equals(other.properties))
-				return false;
-			return true;
+	/**
+	 * @throws Exception
+	 *             exception
+	 */
+	private void executeExport() throws Exception {
+		if ( validateAndShowErrors() ) {
+			IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
+			hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.export", null );
 		}
 	}
-	
-	public static class BuildPropertyIcon {
-		private PropertyChangeSupport support = new PropertyChangeSupport(this);
-		private Map<String, String> properties = new HashMap<String, String>();
-		
-		public void addPropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		public void removePropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		
-		private String get(String key) {
-			return properties.get(key);
-		}
-		
-		private void set(String key, String value) {
-			if( value == null || value.trim().isEmpty() ) {
-				support.firePropertyChange(key, properties.remove(key), null);
-			} else {
-				support.firePropertyChange(key, properties.put(key, value), value);
-			}
-		}
-		
-		public void setDeployIconDepth(String value) {
-			set(DEPLOY_ICON_DEPTH, value);
-		}
-		
-		public String getDeployIconDepth() {
-			return get(DEPLOY_ICON_DEPTH);
-		}
-		
-		public void setDeployIconHref(String value) {
-			set(DEPLOY_ICON_HREF,value);
-		}
-		
-		public String getDeployIconHref() {
-			return get(DEPLOY_ICON_HREF);
-		}
-		
-		public void setDeployIconHeight(String value) {
-			set(DEPLOY_ICON_HEIGHT,value);
-		}
-		
-		public String getDeployIconHeight() {
-			return get(DEPLOY_ICON_HEIGHT);
-		}
-		
-		public void setDeployIconKind(String value) {
-			set(DEPLOY_ICON_KIND,value);
-		}
-		
-		public String getDeployIconKind() {
-			return get(DEPLOY_ICON_KIND);
-		}
-		
-		public void setDeployIconWidth(String value) {
-			set(DEPLOY_ICON_WIDTH,value);
-		}
-		
-		public String getDeployIconWidth() {
-			return get(DEPLOY_ICON_WIDTH);
-		}
 
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((properties == null) ? 0 : properties.hashCode());
-			return result;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			BuildPropertyIcon other = (BuildPropertyIcon) obj;
-			if (properties == null) {
-				if (other.properties != null)
-					return false;
-			} else if (!properties.equals(other.properties))
-				return false;
-			return true;
+	/**
+	 * @throws Exception
+	 *             exception
+	 */
+	private void executeGenerateAnt() throws Exception {
+		if ( validateAndShowErrors() ) {
+			IHandlerService hs = (IHandlerService) PlatformUI.getWorkbench().getService( IHandlerService.class );
+			hs.executeCommand( "at.bestsolution.efxclipse.tooling.jdt.ui.generateAnt", null );
 		}
 	}
-	
-	public static class BuildPropertySplash {
-		private PropertyChangeSupport support = new PropertyChangeSupport(this);
-		private Map<String, String> properties = new HashMap<String, String>();
-		
-		public void addPropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		public void removePropertyChangeListener(PropertyChangeListener listener) {
-			support.addPropertyChangeListener(listener);
-		}
-		
-		
-		private String get(String key) {
-			return properties.get(key);
-		}
-		
-		private void set(String key, String value) {
-			if( value == null || value.trim().isEmpty() ) {
-				support.firePropertyChange(key, properties.remove(key), null);
-			} else {
-				support.firePropertyChange(key, properties.put(key, value), value);
+
+	/**
+	 * @return <true> if build configuration is valid, <false> otherwise
+	 */
+	private boolean validateAndShowErrors() {
+		MultiStatus status = new MultiStatus( JavaFXUIPlugin.PLUGIN_ID, IStatus.OK, null, null );
+		// dirty
+		if ( isDirty() ) {
+			boolean option = MessageDialog.openQuestion( getSite().getShell(), "Save FX Build Configuration", getEditorInput().getName()
+					+ " must be saved before generating ant build.xml file.\nSave changes now?" );
+			if ( option ) {
+				doSave( new NullProgressMonitor() );
+			}
+			else {
+				return false;
 			}
 		}
-		
-		public void setDeploySplashHref(String value) {
-			set(DEPLOY_SPLASH_HREF,value);
+		// height
+		if ( getTask().getDeploy().getHeight() != null && getTask().getDeploy().getHeight().length() > 0 ) {
+			try {
+				Integer.parseInt( getTask().getDeploy().getHeight() );
+			}
+			catch ( Exception e ) {
+				status.add( new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Height must be an integer value" ) );
+			}
 		}
-
-		public String getDeploySplashHref() {
-			return get(DEPLOY_SPLASH_HREF);
+		// width
+		if ( getTask().getDeploy().getWidth() != null && getTask().getDeploy().getWidth().length() > 0 ) {
+			try {
+				Integer.parseInt( getTask().getDeploy().getWidth() );
+			}
+			catch ( Exception e ) {
+				status.add( new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Width must be an integer value" ) );
+			}
 		}
-
-		public void setDeploySplashMode(String value) {
-			set(DEPLOY_SPLASH_MODE,value);
+		// Show the collected errors
+		if ( !status.isOK() ) {
+			StringBuffer errors = new StringBuffer();
+			for ( IStatus err : status.getChildren() ) {
+				errors.append( err.getMessage() ).append( "\n" );
+			}
+			MessageDialog.openWarning( getSite().getShell(), "Invalid FX Build configuration", errors.toString() );
 		}
-
-		public String getDeploySplashMode() {
-			return get(DEPLOY_SPLASH_MODE);
-		}
-
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((properties == null) ? 0 : properties.hashCode());
-			return result;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			BuildPropertySplash other = (BuildPropertySplash) obj;
-			if (properties == null) {
-				if (other.properties != null)
-					return false;
-			} else if (!properties.equals(other.properties))
-				return false;
-			return true;
-		}
-	}
-	
-	private static String nullHandler(String value) {
-		return "null".equals(value) ? null : value;
+		return status.isOK();
 	}
 }

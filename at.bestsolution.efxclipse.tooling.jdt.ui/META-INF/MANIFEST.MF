@@ -31,7 +31,14 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.pde.core;bundle-version="3.7.0",
  at.bestsolution.efxclipse.tooling.ui;bundle-version="0.1.0",
  org.eclipse.ant.launching;bundle-version="1.0.100",
- org.eclipse.jdt.launching;bundle-version="3.6.0"
+ org.eclipse.jdt.launching;bundle-version="3.6.0",
+ org.eclipse.emf.common;bundle-version="2.7.0",
+ org.eclipse.emf.ecore;bundle-version="2.7.0",
+ org.eclipse.emf.databinding;bundle-version="1.2.0",
+ org.eclipse.emf.databinding.edit;bundle-version="1.2.0",
+ org.eclipse.emf.edit;bundle-version="2.7.2",
+ org.eclipse.emf.edit.ui;bundle-version="2.7.0",
+ org.apache.commons.lang;bundle-version="2.6.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %Bundle-Vendor
@@ -39,7 +46,12 @@ Bundle-ClassPath: .
 Export-Package: at.bestsolution.efxclipse.tooling.jdt.ui.internal;x-internal:=true,
  at.bestsolution.efxclipse.tooling.jdt.ui.internal.buildpath;x-internal:=true,
  at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors;x-internal:=true,
+ at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks,
+ at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters,
+ at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.util,
+ at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.util,
  at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.outline;x-internal:=true,
  at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler;x-internal:=true,
  at.bestsolution.efxclipse.tooling.jdt.ui.internal.wizard;x-internal:=true,
  at.bestsolution.efxclipse.tooling.jdt.ui.internal.wizard.clazz;x-internal:=true
+Import-Package: org.eclipse.emf.ecore
