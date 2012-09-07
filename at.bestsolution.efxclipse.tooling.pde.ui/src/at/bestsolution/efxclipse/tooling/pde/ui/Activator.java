@@ -93,6 +93,7 @@ public class Activator extends AbstractUIPlugin {
 	
 	public static String[] getJemmyImports() {
 		return new String[] {
+				"org.jemmy;version=\"3.0.0\"",
 				"org.jemmy.action;version=\"3.0.0\"",
 				"org.jemmy.browser;version=\"3.0.0\"",
 				"org.jemmy.control;version=\"3.0.0\"",
