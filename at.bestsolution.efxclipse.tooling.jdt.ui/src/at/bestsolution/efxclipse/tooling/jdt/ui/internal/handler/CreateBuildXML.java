@@ -19,7 +19,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.AbstractAntHand
 
 public class CreateBuildXML {
 	public File run( BuildConfiguration config ) {
-		EMFAntTemplate template = new EMFAntTemplate();
+		AntTemplate template = new AntTemplate();
 		String out = template.generateAnt( config );
 
 		File f = new File( config.buildDirectory );
