@@ -371,19 +371,8 @@ public class NewApplicationWizardPage extends WizardPage {
 					new PropertyData(APPLICATION_XMI_PROPERTY, "Application UI:",
 							"Application.e4xmi", String.class, true),
 					new PropertyData(APPLICATION_CSS_PROPERTY, "CSS Style:",
-							"css/default.css", String.class, true),
-					new PropertyData(IProductConstants.ABOUT_TEXT, "About Message:", "",
-							String.class, true),
-					new PropertyData(
-							IProductConstants.STARTUP_FOREGROUND_COLOR, "Startup Foreground:", "",
-							Color.class, false),
-					new PropertyData(IProductConstants.STARTUP_MESSAGE_RECT, "Startup Message Region:",
-							"", Rectangle.class, false),
-					new PropertyData(IProductConstants.STARTUP_PROGRESS_RECT, "Startup Progress Region:",
-							"", Rectangle.class, false),
-					new PropertyData(
-							IProductConstants.PREFERENCE_CUSTOMIZATION, "Preference Customization:", "",
-							String.class, true) }; // plugin_customization.ini
+							"css/default.css", String.class, true)
+			};
 		}
 		return PROPERTIES;
 	}
