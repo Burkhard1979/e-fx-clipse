@@ -36,8 +36,8 @@ class JemmyLaunch {
 			<stringAttribute key="pde.version" value="3.3"/>
 			<stringAttribute key="product" value="org.eclipse.sdk.ide"/>
 			<booleanAttribute key="run_in_ui_thread" value="false"/>
-			<stringAttribute key="selected_target_plugins" value="«var b1 = false»«FOR p : launch.targetPlugins»«IF b1»,«ENDIF»«p.name»@«p.startLevel»:«p.autoStart»«var tmp1 = b1=true»«ENDFOR»"/>
-			<stringAttribute key="selected_workspace_plugins" value="«var b2 = false»«FOR p : launch.workbenchPlugins»«IF b2»,«ENDIF»«p.name»@«p.startLevel»:«p.autoStart»«var tmp2 = b2=true»«ENDFOR»"/>
+			<stringAttribute key="selected_target_plugins" value="«launch.targetPlugins.map([p|p.name+"@"+p.startLevel+":"+p.autoStart]).join(",")»" />
+			<stringAttribute key="selected_workspace_plugins" value="«launch.workbenchPlugins.map([p|p.name+"@"+p.startLevel+":"+p.autoStart]).join(",")»"/>
 			<booleanAttribute key="show_selected_only" value="false"/>
 			<booleanAttribute key="tracing" value="false"/>
 			<booleanAttribute key="useCustomFeatures" value="false"/>

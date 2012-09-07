@@ -4,6 +4,8 @@ import at.bestsolution.efxclipse.tooling.pde.ui.templates.JemmyLaunchDef;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef;
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class JemmyLaunch {
@@ -127,50 +129,42 @@ public class JemmyLaunch {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("<stringAttribute key=\"selected_target_plugins\" value=\"");
-    boolean b1 = false;
-    {
-      Set<PluginLaunchDef> _targetPlugins = launch.getTargetPlugins();
-      for(final PluginLaunchDef p : _targetPlugins) {
-        {
-          if (b1) {
-            _builder.append(",");
-          }
+    Set<PluginLaunchDef> _targetPlugins = launch.getTargetPlugins();
+    final Function1<PluginLaunchDef,String> _function = new Function1<PluginLaunchDef,String>() {
+        public String apply(final PluginLaunchDef p) {
+          String _name = p.getName();
+          String _plus = (_name + "@");
+          String _startLevel = p.getStartLevel();
+          String _plus_1 = (_plus + _startLevel);
+          String _plus_2 = (_plus_1 + ":");
+          String _autoStart = p.getAutoStart();
+          String _plus_3 = (_plus_2 + _autoStart);
+          return _plus_3;
         }
-        String _name = p.getName();
-        _builder.append(_name, "	");
-        _builder.append("@");
-        String _startLevel = p.getStartLevel();
-        _builder.append(_startLevel, "	");
-        _builder.append(":");
-        String _autoStart = p.getAutoStart();
-        _builder.append(_autoStart, "	");
-        boolean tmp1 = b1 = true;
-      }
-    }
-    _builder.append("\"/>");
+      };
+    Iterable<String> _map = IterableExtensions.<PluginLaunchDef, String>map(_targetPlugins, _function);
+    String _join = IterableExtensions.join(_map, ",");
+    _builder.append(_join, "	");
+    _builder.append("\" />");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("<stringAttribute key=\"selected_workspace_plugins\" value=\"");
-    boolean b2 = false;
-    {
-      Set<PluginLaunchDef> _workbenchPlugins = launch.getWorkbenchPlugins();
-      for(final PluginLaunchDef p_1 : _workbenchPlugins) {
-        {
-          if (b2) {
-            _builder.append(",");
-          }
+    Set<PluginLaunchDef> _workbenchPlugins = launch.getWorkbenchPlugins();
+    final Function1<PluginLaunchDef,String> _function_1 = new Function1<PluginLaunchDef,String>() {
+        public String apply(final PluginLaunchDef p) {
+          String _name = p.getName();
+          String _plus = (_name + "@");
+          String _startLevel = p.getStartLevel();
+          String _plus_1 = (_plus + _startLevel);
+          String _plus_2 = (_plus_1 + ":");
+          String _autoStart = p.getAutoStart();
+          String _plus_3 = (_plus_2 + _autoStart);
+          return _plus_3;
         }
-        String _name_1 = p_1.getName();
-        _builder.append(_name_1, "	");
-        _builder.append("@");
-        String _startLevel_1 = p_1.getStartLevel();
-        _builder.append(_startLevel_1, "	");
-        _builder.append(":");
-        String _autoStart_1 = p_1.getAutoStart();
-        _builder.append(_autoStart_1, "	");
-        boolean tmp2 = b2 = true;
-      }
-    }
+      };
+    Iterable<String> _map_1 = IterableExtensions.<PluginLaunchDef, String>map(_workbenchPlugins, _function_1);
+    String _join_1 = IterableExtensions.join(_map_1, ",");
+    _builder.append(_join_1, "	");
     _builder.append("\"/>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
