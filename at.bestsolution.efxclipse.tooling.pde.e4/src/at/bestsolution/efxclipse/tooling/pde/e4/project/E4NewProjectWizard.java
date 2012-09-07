@@ -484,8 +484,8 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			application.getChildren().add(mainWindow);
 			{
 				mainWindow.setLabel(pluginName);
-				mainWindow.setX(0);
-				mainWindow.setY(0);
+				mainWindow.setX(30);
+				mainWindow.setY(30);
 				mainWindow.setWidth(1024);
 				mainWindow.setHeight(768);
 
