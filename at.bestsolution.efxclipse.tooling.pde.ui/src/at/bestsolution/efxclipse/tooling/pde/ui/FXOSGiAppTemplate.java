@@ -10,6 +10,8 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.pde.ui;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,16 +21,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.pde.core.plugin.IPluginBase;
 import org.eclipse.pde.core.plugin.IPluginElement;
 import org.eclipse.pde.core.plugin.IPluginExtension;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
 import org.eclipse.pde.core.plugin.IPluginReference;
-import org.eclipse.pde.core.plugin.PluginRegistry;
 import org.eclipse.pde.internal.core.bundle.BundlePluginBase;
 import org.eclipse.pde.internal.core.ibundle.IBundle;
 import org.eclipse.pde.internal.core.iproduct.IArgumentsInfo;
@@ -38,6 +38,10 @@ import org.eclipse.pde.internal.ui.wizards.product.BaseProductCreationOperation;
 import org.eclipse.pde.ui.IFieldData;
 import org.eclipse.pde.ui.templates.PluginReference;
 import org.osgi.framework.Constants;
+
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.OSGiAppLaunchGenerator;
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.OSGiLaunchDef;
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef;
 
 @SuppressWarnings("restriction")
 public class FXOSGiAppTemplate extends FXPDETemplateSection {
@@ -158,6 +162,23 @@ public class FXOSGiAppTemplate extends FXPDETemplateSection {
 		
 		super.execute(project, model, monitor);
 		
+		IFile f = project.getFile(new Path(project.getName() + ".product.launch"));
+		OSGiLaunchDef def = new OSGiLaunchDef();
+		def.setProjectName(project.getName());
+		def.getTargetPlugins().addAll(OSGiLaunchDef.getTargetDefinitions());
+		def.getWorkbenchPlugins().add(new PluginLaunchDef(project.getName()));
+		try {
+			ByteArrayInputStream in = new ByteArrayInputStream(new OSGiAppLaunchGenerator().generate(def).toString().getBytes());
+			f.create(in, true, monitor);
+			in.close();
+		} catch (CoreException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if (getBooleanOption(KEY_PRODUCT_BRANDING)) {
 			IFile file = project.getFile(new org.eclipse.core.runtime.Path(model.getPluginBase().getId() + ".product"));
 			
@@ -208,12 +229,17 @@ public class FXOSGiAppTemplate extends FXPDETemplateSection {
 								"org.eclipse.osgi",
 								"org.eclipse.equinox.common",
 								"org.eclipse.equinox.registry",
+								"org.eclipse.equinox.ds",
+								"org.eclipse.equinox.event",
+								"org.eclipse.equinox.util",
+								"org.eclipse.osgi.services",
 								"com.ibm.icu", //TODO Can we replace this please???
 								
 								"org.eclipse.core.runtime", //TODO Should be removed!
 								"org.eclipse.core.jobs",
 								"org.eclipse.equinox.preferences",
-								"org.eclipse.core.contenttype"));
+								"org.eclipse.core.contenttype"
+						));
 						
 						addPlugins(factory, product, l.toArray(new String[0]));
 					}

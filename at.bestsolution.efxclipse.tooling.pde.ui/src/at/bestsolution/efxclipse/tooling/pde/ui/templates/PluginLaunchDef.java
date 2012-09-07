@@ -44,5 +44,7 @@ public class PluginLaunchDef {
 		this.autoStart = autoStart;
 	}
 	
-	
+	public static PluginLaunchDef parse(String definition) {
+		return new PluginLaunchDef(definition.substring(0,definition.indexOf('@')), definition.substring(definition.indexOf('@')+1, definition.lastIndexOf(':')), definition.substring(definition.lastIndexOf(':')+1));
+	}
 }

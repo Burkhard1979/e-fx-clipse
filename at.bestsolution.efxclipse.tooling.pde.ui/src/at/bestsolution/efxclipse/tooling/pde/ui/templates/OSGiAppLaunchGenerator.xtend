@@ -1,11 +1,11 @@
-package at.bestsolution.efxclipse.tooling.pde.e4.project.template
+package at.bestsolution.efxclipse.tooling.pde.ui.templates
 
-class LaunchGenerator {
-	def generate(E4LaunchDef launch) '''
+class OSGiAppLaunchGenerator {
+	def generate(OSGiLaunchDef launch) '''
 	<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 	<launchConfiguration type="org.eclipse.pde.ui.RuntimeWorkbench">
 		<booleanAttribute key="append.args" value="true"/>
-		<stringAttribute key="application" value="at.bestsolution.efxclipse.runtime.workbench.fx.application"/>
+		<stringAttribute key="application" value="test.osgi.app.application"/>
 		<booleanAttribute key="askclear" value="true"/>
 		<booleanAttribute key="automaticAdd" value="false"/>
 		<booleanAttribute key="automaticValidate" value="false"/>
@@ -33,5 +33,7 @@ class LaunchGenerator {
 		<booleanAttribute key="useDefaultConfigArea" value="true"/>
 		<booleanAttribute key="useProduct" value="true"/>
 		<booleanAttribute key="usefeatures" value="false"/>
-</launchConfiguration>'''
+</launchConfiguration>
+	
+	'''
 }

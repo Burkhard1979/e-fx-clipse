@@ -1,6 +1,6 @@
-package at.bestsolution.efxclipse.tooling.pde.e4.project.template;
+package at.bestsolution.efxclipse.tooling.pde.ui.templates;
 
-import at.bestsolution.efxclipse.tooling.pde.e4.project.template.E4LaunchDef;
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.OSGiLaunchDef;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef;
 import java.util.Set;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -8,8 +8,8 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public class LaunchGenerator {
-  public CharSequence generate(final E4LaunchDef launch) {
+public class OSGiAppLaunchGenerator {
+  public CharSequence generate(final OSGiLaunchDef launch) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
     _builder.newLine();
@@ -19,7 +19,7 @@ public class LaunchGenerator {
     _builder.append("<booleanAttribute key=\"append.args\" value=\"true\"/>");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("<stringAttribute key=\"application\" value=\"at.bestsolution.efxclipse.runtime.workbench.fx.application\"/>");
+    _builder.append("<stringAttribute key=\"application\" value=\"test.osgi.app.application\"/>");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("<booleanAttribute key=\"askclear\" value=\"true\"/>");
@@ -152,6 +152,8 @@ public class LaunchGenerator {
     _builder.append("<booleanAttribute key=\"usefeatures\" value=\"false\"/>");
     _builder.newLine();
     _builder.append("</launchConfiguration>");
+    _builder.newLine();
+    _builder.newLine();
     return _builder;
   }
 }

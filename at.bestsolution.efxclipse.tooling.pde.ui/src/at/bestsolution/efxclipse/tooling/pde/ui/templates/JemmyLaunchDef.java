@@ -18,36 +18,10 @@ import java.util.Set;
  * @author tomschindl
  *
  */
-public class JemmyLaunchDef {
-	private String projectName;
+public class JemmyLaunchDef extends BasicLaunchDef {
 	private String junitClassName;
 	private String testProductId;
 	
-	private Set<PluginLaunchDef> workbenchPlugins = new HashSet<PluginLaunchDef>();
-	private Set<PluginLaunchDef> targetPlugins = new HashSet<PluginLaunchDef>();
-	
-	/**
-	 * @return the workbenchPlugins
-	 */
-	public Set<PluginLaunchDef> getWorkbenchPlugins() {
-		return workbenchPlugins;
-	}
-	
-	/**
-	 * @return the targetPlugins
-	 */
-	public Set<PluginLaunchDef> getTargetPlugins() {
-		return targetPlugins;
-	}
-
-	public String getProjectName() {
-		return projectName;
-	}
-
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
-
 	public String getJunitClassName() {
 		return junitClassName;
 	}

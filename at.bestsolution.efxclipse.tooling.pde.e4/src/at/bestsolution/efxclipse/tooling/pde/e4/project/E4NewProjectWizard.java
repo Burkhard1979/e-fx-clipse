@@ -92,7 +92,7 @@ import org.osgi.framework.Version;
 
 import at.bestsolution.efxclipse.tooling.pde.e4.project.template.E4LaunchDef;
 import at.bestsolution.efxclipse.tooling.pde.e4.project.template.LaunchGenerator;
-import at.bestsolution.efxclipse.tooling.pde.e4.project.template.PluginLaunchDef;
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef;
 
 /**
  * @author jin.liu (jin.liu@soyatec.com)
@@ -548,7 +548,7 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 		IFile f = project.getFile(new Path(project.getName() + ".product.launch"));
 		E4LaunchDef def = new E4LaunchDef();
 		def.setProjectName(project.getName());
-		def.getTargetPlugins().addAll(PluginLaunchDef.getTargetPlugins());
+		def.getTargetPlugins().addAll(E4LaunchDef.getE4TargetPlugins());
 		def.getWorkbenchPlugins().add(new PluginLaunchDef(project.getName()));
 		try {
 			ByteArrayInputStream in = new ByteArrayInputStream(new LaunchGenerator().generate(def).toString().getBytes());
@@ -575,24 +575,6 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 				PDEPlugin.logException(e);
 			}
 		}
-
-		// IFolder folder = project.getFolder("icons");
-		// try {
-		// folder.create(true, true, monitor);
-		// Bundle bundle = Platform
-		// .getBundle("org.eclipse.e4.tools.ui.designer");
-		//
-		// for (String fileName : new String[] { "sample.gif", "save_edit.gif"
-		// }) {
-		// URL sampleUrl = bundle.getEntry("resources/icons/" + fileName);
-		// sampleUrl = FileLocator.resolve(sampleUrl);
-		// InputStream inputStream = sampleUrl.openStream();
-		// IFile file = folder.getFile(fileName);
-		// file.create(inputStream, true, monitor);
-		// }
-		// } catch (Exception e) {
-		// PDEPlugin.logException(e);
-		// }
 
 		String template_id = "common";
 		Set<String> binaryExtentions = new HashSet<String>();
