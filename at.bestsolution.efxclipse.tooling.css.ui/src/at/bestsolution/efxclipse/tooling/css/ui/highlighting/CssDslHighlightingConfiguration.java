@@ -26,14 +26,6 @@ public class CssDslHighlightingConfiguration extends DefaultHighlightingConfigur
 		acceptor.acceptDefaultHighlighting(SELECTOR, "Selector", crossSelectorTextStyle());
 	}
 
-	@Override
-	public TextStyle defaultTextStyle() {
-		TextStyle textStyle = new TextStyle();
-		textStyle.setBackgroundColor(new RGB(255, 255, 255));
-		textStyle.setColor(new RGB(0, 0, 0));
-		return textStyle;
-	}
-	
 	public TextStyle crossDeclarationTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setColor(new RGB(0,153,0));
