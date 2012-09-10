@@ -888,6 +888,17 @@ public interface ParametersPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType <em>Application Toolkit Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getApplicationToolkitType()
+	 * @generated
+	 */
+	int APPLICATION_TOOLKIT_TYPE = 19;
+
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSet <em>File Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1672,6 +1683,16 @@ public interface ParametersPackage extends EPackage {
 	EEnum getSplashMode();
 
 	/**
+	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType <em>Application Toolkit Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Application Toolkit Type</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType
+	 * @generated
+	 */
+	EEnum getApplicationToolkitType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2314,6 +2335,16 @@ public interface ParametersPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SPLASH_MODE = eINSTANCE.getSplashMode();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType <em>Application Toolkit Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType
+		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl#getApplicationToolkitType()
+		 * @generated
+		 */
+		EEnum APPLICATION_TOOLKIT_TYPE = eINSTANCE.getApplicationToolkitType();
 
 	}
 

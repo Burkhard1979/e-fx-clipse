@@ -219,6 +219,9 @@ class AntTemplate {
 				«IF fallBackClass != null»
 					fallbackClass="«fallBackClass»"
 				«ENDIF»
+				«IF task.getDeploy().getApplication().getToolkit() != null»
+					toolkit="«task.getDeploy().getApplication().getToolkit()»"
+				«ENDIF»
 			/>
 
 			<mkdir dir="build/classes/META-INF" />
