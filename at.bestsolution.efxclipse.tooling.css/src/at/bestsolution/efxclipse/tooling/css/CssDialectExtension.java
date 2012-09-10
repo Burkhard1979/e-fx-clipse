@@ -529,6 +529,14 @@ public interface CssDialectExtension {
 		public int getPriority() {
 			return priority;
 		}
+		
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
+		@Override
+		public String toString() {
+			return "'" + proposal + "'";
+		}
 	}
 	
 	public static abstract class DialogProposal extends Proposal {

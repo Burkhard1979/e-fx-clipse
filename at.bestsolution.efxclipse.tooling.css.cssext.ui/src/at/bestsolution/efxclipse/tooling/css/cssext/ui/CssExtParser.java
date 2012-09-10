@@ -1,20 +1,18 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.omg.PortableInterceptor.INACTIVE;
+import org.eclipse.core.runtime.Assert;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleBracket;
@@ -23,11 +21,11 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleOr;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRulePostfix;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 
-import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
 public class CssExtParser {
@@ -37,7 +35,8 @@ public class CssExtParser {
 	enum Status {
 		MATCH,
 		INVALID,
-		SKIP
+		SKIP,
+		PROPOSE
 		
 	}
 	
@@ -45,11 +44,21 @@ public class CssExtParser {
 		Input remainingInput;
 //		Set<Input> remainingInput = new HashSet<CssExtParser.Input>();;
 		Status status;
+		
+		Proposal proposal;
+		
+		boolean partial = false;
+		
+		@Override
+		public String toString() {
+			return status+"|"+remainingInput+"|"+proposal + "|" + partial;
+		}
 	}
 	
 	private class GlobalData {
 		List<Proposal> proposals = new ArrayList<Proposal>();
 		int depth = 0;
+		int node = 0;
 	}
 	
 	private class Input {
@@ -73,6 +82,10 @@ public class CssExtParser {
 		public CssTok getNextTok() {
 			return input.poll();
 		}
+		
+		public CssTok peekNextTok() {
+			return input.peek();
+		}
 
 
 		public Input copy() {
@@ -80,84 +93,148 @@ public class CssExtParser {
 			return clonedData;
 		}
 		
+		
+		
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((input == null) ? 0 : input.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Input other = (Input) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (input == null) {
+				if (other.input != null)
+					return false;
+			} else if (!input.equals(other.input))
+				return false;
+			return true;
+		}
+
 		@Override
 		public String toString() {
 			if (input.isEmpty()) {
 				return "EMPTY";
 			}
-			String out = "";
-			for (CssTok tok: input) {
+			StringBuffer out = new StringBuffer();
+			Iterator<CssTok> it = input.iterator();
+			while (it.hasNext()) {
+				CssTok tok = it.next();
 				if (tok instanceof WSTok) {
-					out += "WS, ";
+					out.append("WS");
 				}
 				else if (tok instanceof IdentifierTok) {
-					out += "Id("+((IdentifierTok) tok).getId()+"), ";
+					out.append("'");
+					out.append(((IdentifierTok) tok).getId());
+					out.append("'");
 				}
 				else {
-					out += tok.getClass().getSimpleName();
+					out.append(tok.getClass().getSimpleName());
+				}
+				
+				if (it.hasNext()) {
+					out.append(" / ");
 				}
 			}
-			return out;
+			return out.toString();
 		}
+
+		private CssExtParser getOuterType() {
+			return CssExtParser.this;
+		}
+	}
+	
+	private List<ParseResult> createSingletonList(ParseResult r) {
+		List<ParseResult> result = new ArrayList<ParseResult>();
+		result.add(r);
+		return result;
+	}
+	
+	private boolean relevant(CSSRule r) {
+		return r instanceof CSSRuleConcat ||
+				r instanceof CSSRuleOr ||
+				r instanceof CSSRuleLiteral ||
+				r instanceof CSSRuleSymbol ||
+				r instanceof CSSRulePostfix || 
+				"double".equals(r.getType());
 	}
 	
 	private List<ParseResult> parse(GlobalData g, Input l, CSSRule rule) {
-		if (rule == null) {
-			ParseResult dummy = new ParseResult();
-			dummy.status = Status.CANCEL_STATUS;
-			return dummy;
-		}
-		print(g.depth, "paring rule " + rule);
-		
-		if ("double".equals(rule.getType())) return parseDouble(g, l, rule);
+		Assert.isNotNull(rule, "rule must not be null");
+		Assert.isNotNull(l, "input must not be null");
+		if (relevant(rule)) {
+			g.depth++;
+			g.node++;
+			print(g.depth, g.node, "-> " + l + " (rule = " + rule + ")");
+		}	
+		List<ParseResult> result = null;
 		
 		switch(rule.eClass().getClassifierID()) {
-		case CssExtDslPackage.CSS_RULE_BRACKET: return parse(g, l, (CSSRuleBracket)rule);
-		case CssExtDslPackage.CSS_RULE_REF: return parse(g, l, (CSSRuleRef)rule);
-		case CssExtDslPackage.CSS_RULE_OR: return parse(g, l, (CSSRuleOr) rule);
-		case CssExtDslPackage.CSS_RULE_XOR: return parse(g, l, (CSSRuleXor) rule);
-		case CssExtDslPackage.CSS_RULE_CONCAT: return parse(g, l, (CSSRuleConcat) rule);
-		case CssExtDslPackage.CSS_RULE_LITERAL: return parse(g, l, (CSSRuleLiteral) rule);
-		case CssExtDslPackage.CSS_RULE_POSTFIX: return parse(g, l, (CSSRulePostfix) rule);
+		case CssExtDslPackage.CSS_RULE_BRACKET: result = parseBracket(g, l, (CSSRuleBracket)rule); 
+			break;
+		case CssExtDslPackage.CSS_RULE_REF: result = parseRef(g, l, (CSSRuleRef)rule); 
+			break;
+		case CssExtDslPackage.CSS_RULE_OR: result = parseOr(g, l, (CSSRuleOr) rule); 
+			break;
+		case CssExtDslPackage.CSS_RULE_XOR: result = parseConcatOr(g, l, (CSSRuleXor) rule); 
+			break;
+		case CssExtDslPackage.CSS_RULE_CONCAT: result = parseConcat(g, l, (CSSRuleConcat) rule); 
+			break;
+		case CssExtDslPackage.CSS_RULE_LITERAL: result = parseLiteral(g, l, (CSSRuleLiteral) rule); 
+			break;
+		case CssExtDslPackage.CSS_RULE_SYMBOL: result = parseSymbol(g, l, (CSSRuleSymbol) rule);
+			break;
+		case CssExtDslPackage.CSS_RULE_POSTFIX: result = parsePostfix(g, l, (CSSRulePostfix) rule);
+			break;
 		default:
-			System.err.println("WARINING " + rule + " not implemented!");
-			return null;
+			if ("double".equals(rule.getType())) result = parseDouble(g, l, rule);
+			else System.err.println("WARINING " + rule + " not implemented! (classifierID="+rule.eClass().getClassifierID()+")");
 		}
-	}
-	
-	private List<ParseResult> parseDouble(GlobalData g, Input l, CSSRule rule) {
-		ParseResult result = new ParseResult();
-		Input local = l.copy();
-		
-		CssTok tok = local.getNextTok();
-		
-		System.err.println(" tok = " + tok);
-			
-		result.remainingInput.add(local);
-		result.status = Status.OK_STATUS;
+		if (relevant(rule)) {
+			print(g.depth, g.node, "<- " + result);
+			g.depth--;
+		}
 		return result;
 	}
-
-	private void print(int depth, String string) {
+	
+	private void print(int depth, int node, String string) {
 		String d = "";
 		for (int i = 0; i < depth; i++) {
 			d += " ";
 		}
 		
-		System.err.println(d+"# "+string);
+		System.err.println(d+ depth+" "+string);
 	}
 	
-	private List<ParseResult> parse(GlobalData g, Input l, CSSRuleBracket r) {
+	private List<ParseResult> parseBracket(GlobalData g, Input l, CSSRuleBracket r) {
 		return parse(g, l, r.getInner());
 	}
 	
-	private List<ParseResult> parse(GlobalData g, Input l, CSSRuleRef r) {
-		return parse(g, l, manager.resolveReference(r));
+	private List<ParseResult> parseRef(GlobalData g, Input l, CSSRuleRef r) {
+		CSSRule rule =  manager.resolveReference(r);
+		if (rule == null) {
+			System.err.println("resolving rule ref " + r.getRef().getName() + " returned null (maybe a function?) !!!!!");
+			ParseResult inv = new ParseResult();
+			inv.status = Status.INVALID;
+			return createSingletonList(inv);
+		}
+		return parse(g, l, rule);
 	}
 	
 	// Or
-	private List<ParseResult> parse(GlobalData g, Input l, CSSRuleOr r) {
-		print(g.depth++, "or");
+	private List<ParseResult> parseOr(GlobalData g, Input l, CSSRuleOr r) {
 		
 		List<ParseResult> result = new ArrayList<ParseResult>();
 		
@@ -165,13 +242,11 @@ public class CssExtParser {
 			result.addAll(parse(g, l, orRule));
 		}
 		
-		g.depth--;
 		return result;
 	}
 	
 	// Xor
-	private ParseResult parse(GlobalData g, Input l, CSSRuleXor r) {
-		print(g.depth++, "xor");
+	private List<ParseResult> parseConcatOr(GlobalData g, Input l, CSSRuleXor r) {
 		
 		ParseResult result = new ParseResult();
 		// TODO impl this
@@ -179,161 +254,250 @@ public class CssExtParser {
 			parse(g, l, rule);
 		}
 				
-		g.depth--;
-		return result;
-	}
-	
-//	private void recParseConcat(GlobalData g, Set<Input> input, Queue<CSSRule> rules, Set<ParseResult> result) {
-//		if (rules.isEmpty()) {
-//			return;
-//		}
-//		else {
-//			CSSRule r = rules.poll();
-//			print(g.depth, "recConc for " + input);
-//			for (Input in : input) {
-//				print(g.depth, "recConc " + in + " / " + r);
-//				List<ParseResult> localResult = parse(g, in, r);
-//				
-//				if (rules.isEmpty()) {
-//					// only add the last result
-//					result.addAll(localResult);
-//				}
-//				
-//				if (!rules.isEmpty() &&  !in.isConsumed()) {
-//					// consume ws
-//					print(g.depth, "consuming ws");
-//					CssTok ws = in.getNextTok();
-//					if (!(ws instanceof WSTok)) {
-//						for (ParseResult concResult : localResult) {
-//							concResult.status = Status.INVALID;
-//						}
-//					}
-//				}
-//				
-//				recParseConcat(g, localResult.remainingInput, new LinkedList<CSSRule>(rules), result);
-//			}
-//		}
-//	}
-	
-	
-	private void rPConcat(GlobalData g, List<Input> input, Queue<CSSRule> rules, List<ParseResult> finalResult) {
-		if (rules.isEmpty()) {
-			return;
-		}
-		else {
-			CSSRule rule = rules.poll();
-			for (Input in : input) {
-				List<ParseResult> curResults = parse(g, in, rule); 
-				
-				List<Input> nextInput = new ArrayList<CssExtParser.Input>();
-				
-				for (ParseResult curResult : curResults) {
-					
-					if (rules.isEmpty()) {
-						// only add the last results
-						finalResult.add(curResult);
-					}
-					if (curResult.status != Status.INVALID) {
-						
-						if (!rules.isEmpty() &&  !in.isConsumed()) {
-							// consume ws
-							print(g.depth, "consuming ws");
-							CssTok ws = in.getNextTok();
-							if (!(ws instanceof WSTok)) {
-								curResult.status = Status.INVALID;
-							}
-						}
-						nextInput.add(curResult.remainingInput);
-					}
-				}
-				
-				rPConcat(g, nextInput, rules, finalResult);
-			}
-		}
-		
+		return createSingletonList(result);
 	}
 	
 	// Concat
-	private List<ParseResult> parse(GlobalData g, Input l, CSSRuleConcat r) {
-		print(g.depth++, "concat");
-
-		List<Input> in = new ArrayList<CssExtParser.Input>();
-		in.add(l);
+	private List<ParseResult> parseConcat(GlobalData g, Input l, CSSRuleConcat r) {
+		List<ParseResult> finalResult = new ArrayList<ParseResult>();
 		
-		List<ParseResult> childResults = new ArrayList<CssExtParser.ParseResult>();
+		List<Input> currentInput = new ArrayList<Input>();
+		currentInput.add(l);
 		
-		rPConcat(g, in, new LinkedList<CSSRule>(r.getConc()), childResults);
+		Iterator<CSSRule> ruleIt = r.getConc().iterator();
+		while (ruleIt.hasNext()) {
+			CSSRule rule = ruleIt.next();
+			System.err.println("rule " + rule);
+			List<ParseResult> perRuleResult = new ArrayList<ParseResult>();
+			
+			for (Input in : currentInput) {
+				System.err.println(" in " + in);
+				perRuleResult.addAll(parse(g, in, rule));
+				
+			}
+			
+			currentInput.clear();
+			for (ParseResult res : perRuleResult) {
+				if (res.status == Status.MATCH || res.status == Status.SKIP) {
+					currentInput.add(res.remainingInput);
+				}
+				
+				if (res.status == Status.PROPOSE) {
+					finalResult.add(res);
+				}
+			}
+			
+			if (!ruleIt.hasNext()) {
+				finalResult.addAll(perRuleResult);
+			}
+		}
 		
-		
-		g.depth--;
-		return childResults;
+		return finalResult;
 	}
 	
 	private final int n = Integer.MAX_VALUE;
 	
-	private boolean recParsePostfix(GlobalData g, Set<Input> input, CSSRule rule, int min, int cur,  int max, Set<ParseResult> result) {
-		if (cur > max) return true;
+//	private boolean recParsePostfix(GlobalData g, Set<Input> input, CSSRule rule, int min, int cur,  int max, Set<ParseResult> result) {
+//		if (cur > max) return true;
+//		
+//		print(g.depth, "recPostfix for " + input);
+//			for (Input in : input) {
+//				print(g.depth, "recPostfix " + in);
+//				ParseResult localResult = parse(g, in, rule);
+//				
+//				if (localResult.status.getCode() == IStatus.CANCEL) {
+//					result.add(localResult);
+//				}
+//				
+//				if (!in.isConsumed()) {
+//					// consume ws
+//					print(g.depth, "consuming ws");
+//					CssTok ws = in.getNextTok();
+//					if (!(ws instanceof WSTok)) {
+//						localResult.status = Status.CANCEL_STATUS;
+////						continue;
+//					}
+//				}
+//				
+//				boolean done = recParsePostfix(g, localResult.remainingInput, rule, min, cur + 1, max, result);
+//				
+//				if (done) {
+//					
+//				}
+//		}
+//			
+//		return false;
+//	}
+	
+	private void parseOptional(GlobalData g, Input in, CSSRule rule, List<ParseResult> result) {
 		
-		print(g.depth, "recPostfix for " + input);
-			for (Input in : input) {
-				print(g.depth, "recPostfix " + in);
-				ParseResult localResult = parse(g, in, rule);
-				
-				if (localResult.status.getCode() == IStatus.CANCEL) {
-					result.add(localResult);
-				}
-				
-				if (!in.isConsumed()) {
-					// consume ws
-					print(g.depth, "consuming ws");
-					CssTok ws = in.getNextTok();
-					if (!(ws instanceof WSTok)) {
-						localResult.status = Status.CANCEL_STATUS;
-//						continue;
-					}
-				}
-				
-				boolean done = recParsePostfix(g, localResult.remainingInput, rule, min, cur + 1, max, result);
-				
-				if (done) {
-					
-				}
+		boolean maySkip = true;
+		List<ParseResult> ruleResult = parse(g, in.copy(), rule);
+		
+		if (!in.isConsumed()) {
+			for (ParseResult r : ruleResult) {
+				if (r.status == Status.PROPOSE && r.partial) {
+					maySkip = false;
+				} 
+			}
 		}
-			
-		return false;
+		
+		if (maySkip) {
+			ParseResult skip = new ParseResult();
+			skip.status = Status.SKIP;
+			skip.remainingInput = in.copy();
+			result.add(skip);
+		}
+		
+		result.addAll(ruleResult);
 	}
 	
-	private ParseResult parse(GlobalData g, Input in, CSSRulePostfix r) {
+	private boolean checkAllInvalid(List<ParseResult> results) {
+		boolean  invalid = true;
 		
-		ParseResult result = new ParseResult();
+		for (ParseResult r : results) {
+			if (r.status != Status.INVALID) {
+				invalid = false;
+				break;
+			}
+		}
+		
+		return invalid;
+	}
+	
+	private void parseStar(GlobalData g, Input in, CSSRule rule, List<ParseResult> result, int count) {
+		
+		// first iteraton
+		if (count == 0) {
+			System.err.println("1st");
+			ParseResult skip = new ParseResult();
+			skip.status = Status.SKIP;
+			skip.remainingInput = in.copy();
+			result.add(skip);
+			
+			List<ParseResult> firstResult = new ArrayList<ParseResult>();
+			
+			firstResult.addAll(parse(g, in, rule));
+			
+			result.addAll(firstResult);
+			
+			for (ParseResult r : firstResult) {
+				if (r.status == Status.MATCH || r.status == Status.SKIP) {
+					parseStar(g, r.remainingInput, rule, result, count+1);
+				}
+			}
+			
+		}
+		// nth iteration
+		else {
+			System.err.println("nth");
+			List<ParseResult> nResult = new ArrayList<ParseResult>();
+			nResult = parse(g, in, rule);
+			
+			for (ParseResult r : nResult){
+				result.add(r);
+				if (r.status == Status.MATCH || r.status == Status.SKIP) {
+					parseStar(g, r.remainingInput, rule, result, count+1);
+				}
+			}
+			
+		}
+		
+		
+	}
+	private void parsePlus(GlobalData g, Input in, CSSRule rule, List<ParseResult> result, int count) {
+	
+		// first iteraton
+		if (count == 0) {
+			List<ParseResult> firstResult = new ArrayList<ParseResult>();
+			
+			firstResult.addAll(parse(g, in, rule));
+			
+			result.addAll(firstResult);
+			
+			for (ParseResult r : firstResult) {
+				if (r.status != Status.INVALID) {
+					parsePlus(g, r.remainingInput, rule, result, count+1);
+				}
+			}
+			
+		}
+		// nth iteration
+		else {
+			List<ParseResult> nResult = new ArrayList<ParseResult>();
+			nResult = parse(g, in, rule);
+			
+			for (ParseResult r : nResult){
+				result.add(r);
+				if (r.status != Status.INVALID) {
+					parsePlus(g, r.remainingInput, rule, result, count+1);
+				}
+			}
+			
+		}
+		
+		
+	}
+	
+	
+	private List<ParseResult> parsePostfix(GlobalData g, Input in, CSSRulePostfix r) {
+		
+		List<ParseResult> result = new ArrayList<ParseResult>();
 		
 		switch (r.getCardinality()) {
 		case "?":
-			// TODO execute 0-1
-			parse(g, in, r.getRule());
+			//execute 0-1
+			parseOptional(g, in, r.getRule(), result);
 			break;
 		case "*":
 			// TODO execute 0-n
-			parse(g, in, r.getRule());
+			parseStar(g, in, r.getRule(), result, 0);
 			break;
 		case "+":
 			// TODO execute 1-n
-			parse(g, in, r.getRule());
+			parsePlus(g, in, r.getRule(), result, 0);
 			break;
 		}
 		
 		return result;
 	}
 	
+	private List<ParseResult> parseDouble(GlobalData g, Input l, CSSRule rule) {
+		ParseResult result = new ParseResult();
+		Input local = l.copy();
+		
+		if (local.isConsumed()) {
+			result.status = Status.PROPOSE;
+			result.proposal = new Proposal("0.0");
+		}
+		else {
+		
+			CssTok tok = local.getNextTok();
+			while (tok instanceof WSTok) {
+				tok = local.getNextTok();
+			}
+			
+			if (tok instanceof NumberTok) {
+				// ok
+				result.remainingInput = local;
+				result.status = Status.MATCH;
+			}
+			else {
+				// invalid
+				result.status = Status.INVALID;
+			}
+		}
+	
+		return createSingletonList(result);
+	}
+
 	// Literal
-	private ParseResult parse(GlobalData g, Input l, CSSRuleLiteral r) {
-		print(g.depth++, "literal (input is '" + l + "')");
+	private List<ParseResult> parseLiteral(GlobalData g, Input l, CSSRuleLiteral r) {
 		ParseResult result = new ParseResult();
 		
 		Input local = l.copy();
 		
 		if (!local.isConsumed()) {
-			print(g.depth, "-> matching input token");
 			CssTok cur = local.getNextTok();
 			
 			while (cur instanceof WSTok) {
@@ -342,36 +506,67 @@ public class CssExtParser {
 			
 			String literal = r.getValue();
 			
-			System.err.println(" - tok: " + cur);
-			System.err.println(" - literal: " + literal);
+//			System.err.println(" - tok: " + cur);
+//			System.err.println(" - literal: " + literal);
 			
 			if (matchCssTok(cur, literal)) {
 				// valid yay!
-				System.err.println("  -> valid");
-				result.status = Status.OK_STATUS;
-				result.remainingInput.add(local.copy());
+//				System.err.println("  -> valid");
+				result.status = Status.MATCH;
+				result.remainingInput = local.copy();
 			}
 			else {
-				System.err.println("  -> invalid");
-				result.status = Status.CANCEL_STATUS;
+//				System.err.println("  -> invalid");
+				result.status = Status.INVALID;
 			}
 		}
 		else {
-			print(g.depth, "-> only proposal");
-			result.status = Status.OK_STATUS;
-			g.proposals.add(new Proposal(r.getValue()));
+			result.status = Status.PROPOSE;
+			result.proposal = new Proposal(r.getValue());
 		}
 		
-		print(g.depth, "literal returns input " + result.remainingInput);
+		return createSingletonList(result);
 		
-		g.depth--;
-		return result;
+	}
+	
+	private List<ParseResult> parseSymbol(GlobalData g, Input l, CSSRuleSymbol r) {
+		ParseResult result = new ParseResult();
+		
+		Input local = l.copy();
+		
+		if (!local.isConsumed()) {
+			CssTok cur = local.getNextTok();
+			
+			while (cur instanceof WSTok) {
+				cur = local.getNextTok();
+			}
+			
+			String symbol = r.getSymbol();
+			
+			if (matchCssTok(cur, symbol)) {
+				// valid yay!
+				result.status = Status.MATCH;
+				result.remainingInput = local.copy();
+			}
+			else {
+				result.status = Status.INVALID;
+			}
+		}
+		else {
+			result.status = Status.PROPOSE;
+			result.proposal = new Proposal(r.getSymbol());
+		}
+		
+		return createSingletonList(result);
 		
 	}
 	
 	private boolean matchCssTok(CssTok tok, String literal) {
 		if (tok instanceof IdentifierTok) {
 			return literal.equals(((IdentifierTok)tok).getId());
+		}
+		else if (tok instanceof SymbolTok) {
+			return literal.equals(((SymbolTok)tok).getSymbol());
 		}
 		System.err.println("problem matching " + tok);
 		return false;
@@ -386,8 +581,10 @@ public class CssExtParser {
 		PropertyDefinition def = manager.findPropertyByName(propertyName);
 		if (def != null) {
 			GlobalData g = new GlobalData();
-			ParseResult res = parse(g, new Input(prefixToks), def.getRule());
-			result.addAll(g.proposals);
+			List<ParseResult> res = parse(g, new Input(prefixToks), def.getRule());
+			System.err.println("parse returned with " + res);
+			
+			result.addAll(mapProposals(res));
 //			result.addAll(findProposals(new LinkedList<CssTok>(prefixToks), prefix, def.getRule()));
 		}
 		else {
@@ -395,5 +592,15 @@ public class CssExtParser {
 		}
 		
 		return result;
+	}
+	
+	private List<Proposal> mapProposals(List<ParseResult> result) {
+		List<Proposal> proposals = new ArrayList<Proposal>();
+		for (ParseResult r : result) {
+			if (r.status == Status.PROPOSE) {
+				proposals.add(r.proposal);
+			}
+		}
+		return proposals;
 	}
 }

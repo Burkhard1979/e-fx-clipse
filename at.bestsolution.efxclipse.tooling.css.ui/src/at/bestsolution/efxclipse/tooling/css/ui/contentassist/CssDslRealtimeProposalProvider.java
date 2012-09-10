@@ -26,10 +26,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.TextStyle;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -246,6 +244,11 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 		System.err.println("elementName: '" + ((ruleset)model.eContainer()).getSelectors()+"'");
 		System.err.println("prefix: '" + context.getPrefix() + "'");
 
+		URI uri = model.eResource().getURI();
+		String elementName = null; // TODO find element from selector
+		String propertyName = model.getProperty().getName();
+		String prefixString = context.getPrefix();
+		
 		if (context.getLastCompleteNode().getSemanticElement() instanceof CssTok) {
 			CssTok currentTok = (CssTok) context.getLastCompleteNode().getSemanticElement();
 			List<CssTok> prefixToks = new ArrayList<CssTok>();
@@ -254,19 +257,19 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 				prefixToks.add(tok);
 			}
 			
+			// TEST 
+//			prefixToks.add(currentTok);
+			
 			System.err.println("currentTok = " + currentTok);
 			System.err.println("prefixToks");
 			for (CssTok tok : prefixToks) {
 				System.err.println(" * " + tok);
 			}
 			
-			
-			URI uri = model.eResource().getURI();
-			String elementName = null; // TODO find element from selector
-			String propertyName = model.getProperty().getName();
-			String prefixString = context.getPrefix();
-			
 			handlePropertyCompletion(uri, model, prefixToks, prefixString, elementName, propertyName, context, acceptor);
+		}
+		else {
+			handlePropertyCompletion(uri, model, new ArrayList<CssTok>(), prefixString, elementName, propertyName, context, acceptor);
 		}
 	}
 	

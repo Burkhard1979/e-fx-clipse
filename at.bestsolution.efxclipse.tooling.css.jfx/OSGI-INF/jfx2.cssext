@@ -5,6 +5,7 @@ package javafx {
 			p0 x | x x x;
 			p1 x | a b c;
 			p2 [ x | x a ] y;
+			p3 [ A | B | C ] [ D double ]? [ x [ y | z ] ]? p;
 		}
 	}
 	
