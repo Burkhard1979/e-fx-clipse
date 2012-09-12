@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.osgi;bundle-version="3.7.2"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: at.bestsolution.efxclipse.tooling.css.cssext,
  at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl,
  at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl,

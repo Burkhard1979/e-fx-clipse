@@ -17,5 +17,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtext.xbase.lib;bundle-version="2.3.0",
  at.bestsolution.efxclipse.tooling.pde.ui;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: BestSolution.at

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Jemmy
 Bundle-SymbolicName: at.bestsolution.efxclipse.testcases.e4.jemmy
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: at.bestsolution.efxclipse.runtime.jemmy;bundle-version="0.1.0",
  org.junit4;bundle-version="4.8.1"
 Import-Package: javafx.animation;version="2.2.0",
