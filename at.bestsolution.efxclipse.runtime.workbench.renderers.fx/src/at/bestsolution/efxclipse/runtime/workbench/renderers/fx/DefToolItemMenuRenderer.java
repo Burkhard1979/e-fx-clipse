@@ -96,6 +96,16 @@ public class DefToolItemMenuRenderer extends BaseMenuRenderer<ToolItemMenu> {
 		public void addElement(WMenuElement<MMenuElement> widget) {
 			getWidget().getItems().add((MenuItem) widget.getWidget());
 		}
+		
+		@Override
+		public void addElement(int idx, WMenuElement<MMenuElement> widget) {
+			getWidget().getItems().add(idx, (MenuItem) widget.getWidget());			
+		}
+		
+		@Override
+		public void removeElement(WMenuElement<MMenuElement> widget) {
+			getWidget().getItems().remove(widget.getWidget());
+		}
 
 		@Override
 		public void setShowingCallback(Runnable showingCallback) {

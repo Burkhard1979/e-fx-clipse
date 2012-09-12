@@ -10,17 +10,27 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
+import javax.annotation.PostConstruct;
+
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.EventProcessor.ChildrenHandler;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuElement;
 
 
 @SuppressWarnings("restriction")
-public abstract class BaseMenuRenderer<N> extends BaseRenderer<MMenu, WMenu<N>> {
+public abstract class BaseMenuRenderer<N> extends BaseRenderer<MMenu, WMenu<N>> implements ChildrenHandler<MMenu, MMenuElement> {
 
+	@PostConstruct
+	void init(IEventBroker eventBroker) {
+		EventProcessor.attachChildProcessor(eventBroker, this);
+		EventProcessor.attachVisibleProcessor(eventBroker, this);
+	}
+	
 	@Override
 	protected void initWidget(final MMenu element, WMenu<N> widget) {
 		super.initWidget(element, widget);
@@ -54,14 +64,48 @@ public abstract class BaseMenuRenderer<N> extends BaseRenderer<MMenu, WMenu<N>> 
 			}
 		}
 	}
+	
+	public void handleChildRemove(MMenu parent, MMenuElement element) {
+		if (element.isToBeRendered() && element.isVisible() && element.getWidget() != null) {
+			hideChild(parent, element);
+		}
+	}
+	
+	public void handleChildAddition(MMenu parent, MMenuElement element) {
+		if (element.isToBeRendered() && element.isVisible()) {
+			if( element.getWidget() == null ) {
+				engineCreateWidget(element);	
+			} else {
+				childRendered(parent, element);
+			}
+		}
+	}
 
 	@Override
 	public void childRendered(MMenu parentElement, MUIElement element) {
+		if( inContentProcessing(parentElement) ) {
+			return;
+		}
 		
+		int idx = getRenderedIndex(parentElement, element);
+		WMenu<N> menu = getWidget(parentElement);
+		@SuppressWarnings("unchecked")
+		WMenuElement<MMenuElement> menuElement = (WMenuElement<MMenuElement>) element.getWidget(); 
+		menu.addElement(idx, menuElement);
 	}
 
 	@Override
 	public void hideChild(MMenu container, MUIElement changedObj) {
+		WMenu<N> menu = getWidget(container);
 		
+		if( menu == null ) {
+			return;
+		}
+		
+		@SuppressWarnings("unchecked")
+		WMenuElement<MMenuElement> widget = (WMenuElement<MMenuElement>) changedObj.getWidget();
+		if( widget != null ) {
+			menu.removeElement(widget);
+		}
 	}
 }
