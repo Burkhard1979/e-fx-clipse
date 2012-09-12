@@ -2,13 +2,12 @@ package at.bestsolution.efxclipse.tutorial.fxgraph
 
 import javafx.scene.layout.*
 import javafx.scene.control.*
+import javafx.scene.control.Label
 
 component Header {
 	BorderPane {
-		center : [
-			Label {
-				text : "Hello World Example"
-			}
-		]
+		center : Label {
+			text : "Hello World Example"
+		}
 	}
 }
