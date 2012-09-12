@@ -187,5 +187,9 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ApplicationToolkitType">
+      <eLiterals name="fx" literal="fx"/>
+      <eLiterals name="swing" value="1" literal="swing"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

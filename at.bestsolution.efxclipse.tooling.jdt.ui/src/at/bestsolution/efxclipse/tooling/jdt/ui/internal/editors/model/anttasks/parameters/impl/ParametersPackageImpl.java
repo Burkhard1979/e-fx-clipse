@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Application;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Argument;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Callback;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.FileSet;
@@ -182,6 +183,13 @@ public class ParametersPackageImpl extends EPackageImpl implements ParametersPac
 	 * @generated
 	 */
 	private EEnum splashModeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum applicationToolkitTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -911,6 +919,15 @@ public class ParametersPackageImpl extends EPackageImpl implements ParametersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getApplicationToolkitType() {
+		return applicationToolkitTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ParametersFactory getParametersFactory() {
 		return (ParametersFactory)getEFactoryInstance();
 	}
@@ -1024,6 +1041,7 @@ public class ParametersPackageImpl extends EPackageImpl implements ParametersPac
 		fileSetTypeEEnum = createEEnum(FILE_SET_TYPE);
 		iconTypeEEnum = createEEnum(ICON_TYPE);
 		splashModeEEnum = createEEnum(SPLASH_MODE);
+		applicationToolkitTypeEEnum = createEEnum(APPLICATION_TOOLKIT_TYPE);
 	}
 
 	/**
@@ -1160,6 +1178,10 @@ public class ParametersPackageImpl extends EPackageImpl implements ParametersPac
 		initEEnum(splashModeEEnum, SplashMode.class, "SplashMode");
 		addEEnumLiteral(splashModeEEnum, SplashMode.ANY);
 		addEEnumLiteral(splashModeEEnum, SplashMode.WEBSTART);
+
+		initEEnum(applicationToolkitTypeEEnum, ApplicationToolkitType.class, "ApplicationToolkitType");
+		addEEnumLiteral(applicationToolkitTypeEEnum, ApplicationToolkitType.FX);
+		addEEnumLiteral(applicationToolkitTypeEEnum, ApplicationToolkitType.SWING);
 	}
 
 } //ParametersPackageImpl

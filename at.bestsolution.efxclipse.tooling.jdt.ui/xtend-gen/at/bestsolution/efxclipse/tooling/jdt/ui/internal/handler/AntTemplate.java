@@ -588,6 +588,22 @@ public class AntTemplate {
           _builder.newLineIfNotEmpty();
         }
       }
+      {
+        Deploy _deploy_9 = task.getDeploy();
+        Application _application_5 = _deploy_9.getApplication();
+        String _toolkit = _application_5.getToolkit();
+        boolean _notEquals_4 = (!Objects.equal(_toolkit, null));
+        if (_notEquals_4) {
+          _builder.append("\t\t");
+          _builder.append("toolkit=\"");
+          Deploy _deploy_10 = task.getDeploy();
+          Application _application_6 = _deploy_10.getApplication();
+          String _toolkit_1 = _application_6.getToolkit();
+          _builder.append(_toolkit_1, "		");
+          _builder.append("\"");
+          _builder.newLineIfNotEmpty();
+        }
+      }
       _builder.append("\t");
       _builder.append("/>");
       _builder.newLine();
@@ -719,8 +735,8 @@ public class AntTemplate {
       _builder.append("<fileset dir=\"build/classes\">");
       _builder.newLine();
       {
-        boolean _notEquals_4 = (!Objects.equal(preloaderClass, null));
-        if (_notEquals_4) {
+        boolean _notEquals_5 = (!Objects.equal(preloaderClass, null));
+        if (_notEquals_5) {
           _builder.append("\t\t");
           _builder.append("<exclude name=\"");
           _builder.append(preloaderPath, "		");
@@ -741,8 +757,8 @@ public class AntTemplate {
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("<attribute name=\"Implementation-Vendor\" value=\"");
-      Deploy _deploy_9 = task.getDeploy();
-      Info _info_1 = _deploy_9.getInfo();
+      Deploy _deploy_11 = task.getDeploy();
+      Info _info_1 = _deploy_11.getInfo();
       String _vendor = _info_1.getVendor();
       _builder.append(_vendor, "			");
       _builder.append("\"/>");
@@ -758,14 +774,14 @@ public class AntTemplate {
       _builder.append("\"/>");
       _builder.newLineIfNotEmpty();
       {
-        Deploy _deploy_10 = task.getDeploy();
-        String _splashImage = _deploy_10.getSplashImage();
-        boolean _notEquals_5 = (!Objects.equal(_splashImage, null));
-        if (_notEquals_5) {
+        Deploy _deploy_12 = task.getDeploy();
+        String _splashImage = _deploy_12.getSplashImage();
+        boolean _notEquals_6 = (!Objects.equal(_splashImage, null));
+        if (_notEquals_6) {
           _builder.append("\t\t\t");
           _builder.append("<attribute name=\"SplashScreen-Image\" value=\"");
-          Deploy _deploy_11 = task.getDeploy();
-          String _splashImage_1 = _deploy_11.getSplashImage();
+          Deploy _deploy_13 = task.getDeploy();
+          String _splashImage_1 = _deploy_13.getSplashImage();
           _builder.append(_splashImage_1, "			");
           _builder.append("\"/>");
           _builder.newLineIfNotEmpty();
@@ -797,15 +813,15 @@ public class AntTemplate {
         boolean _and = false;
         SignJar _signjar = task.getSignjar();
         String _keystore = _signjar.getKeystore();
-        boolean _notEquals_6 = (!Objects.equal(_keystore, null));
-        if (!_notEquals_6) {
+        boolean _notEquals_7 = (!Objects.equal(_keystore, null));
+        if (!_notEquals_7) {
           _and = false;
         } else {
           SignJar _signjar_1 = task.getSignjar();
           String _keystore_1 = _signjar_1.getKeystore();
           int _length = _keystore_1.length();
           boolean _greaterThan = (_length > 0);
-          _and = (_notEquals_6 && _greaterThan);
+          _and = (_notEquals_7 && _greaterThan);
         }
         if (_and) {
           _builder.append("\t");
@@ -851,8 +867,8 @@ public class AntTemplate {
           {
             SignJar _signjar_6 = task.getSignjar();
             String _storetype = _signjar_6.getStoretype();
-            boolean _notEquals_7 = (!Objects.equal(_storetype, null));
-            if (_notEquals_7) {
+            boolean _notEquals_8 = (!Objects.equal(_storetype, null));
+            if (_notEquals_8) {
               _builder.append("storetype=\"");
               SignJar _signjar_7 = task.getSignjar();
               String _storetype_1 = _signjar_7.getStoretype();
@@ -886,12 +902,12 @@ public class AntTemplate {
       {
         boolean _or = false;
         boolean _and_1 = false;
-        boolean _notEquals_8 = (!Objects.equal(appletWidth, null));
-        if (!_notEquals_8) {
+        boolean _notEquals_9 = (!Objects.equal(appletWidth, null));
+        if (!_notEquals_9) {
           _and_1 = false;
         } else {
-          boolean _notEquals_9 = (!Objects.equal(appletHeight, null));
-          _and_1 = (_notEquals_8 && _notEquals_9);
+          boolean _notEquals_10 = (!Objects.equal(appletHeight, null));
+          _and_1 = (_notEquals_9 && _notEquals_10);
         }
         if (_and_1) {
           _or = true;
@@ -911,16 +927,16 @@ public class AntTemplate {
           _builder.append("\t");
           _builder.append("\t");
           _builder.append("embedJNLP=\"");
-          Deploy _deploy_12 = task.getDeploy();
-          boolean _isEmbedjnlp = _deploy_12.isEmbedjnlp();
+          Deploy _deploy_14 = task.getDeploy();
+          boolean _isEmbedjnlp = _deploy_14.isEmbedjnlp();
           _builder.append(_isEmbedjnlp, "		");
           _builder.append("\"");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
           _builder.append("extension=\"");
-          Deploy _deploy_13 = task.getDeploy();
-          boolean _isExtension = _deploy_13.isExtension();
+          Deploy _deploy_15 = task.getDeploy();
+          boolean _isExtension = _deploy_15.isExtension();
           _builder.append(_isExtension, "		");
           _builder.append("\"");
           _builder.newLineIfNotEmpty();
@@ -930,19 +946,19 @@ public class AntTemplate {
             boolean _and_2 = false;
             boolean _and_3 = false;
             boolean _and_4 = false;
-            boolean _notEquals_10 = (!Objects.equal(appletWidth, null));
-            if (!_notEquals_10) {
+            boolean _notEquals_11 = (!Objects.equal(appletWidth, null));
+            if (!_notEquals_11) {
               _and_4 = false;
             } else {
               int _length_1 = appletWidth.length();
               boolean _greaterThan_1 = (_length_1 > 0);
-              _and_4 = (_notEquals_10 && _greaterThan_1);
+              _and_4 = (_notEquals_11 && _greaterThan_1);
             }
             if (!_and_4) {
               _and_3 = false;
             } else {
-              boolean _notEquals_11 = (!Objects.equal(appletHeight, null));
-              _and_3 = (_and_4 && _notEquals_11);
+              boolean _notEquals_12 = (!Objects.equal(appletHeight, null));
+              _and_3 = (_and_4 && _notEquals_12);
             }
             if (!_and_3) {
               _and_2 = false;
@@ -964,16 +980,16 @@ public class AntTemplate {
           _builder.append("\t");
           _builder.append("\t");
           _builder.append("includeDT=\"");
-          Deploy _deploy_14 = task.getDeploy();
-          boolean _isIncludeDT = _deploy_14.isIncludeDT();
+          Deploy _deploy_16 = task.getDeploy();
+          boolean _isIncludeDT = _deploy_16.isIncludeDT();
           _builder.append(_isIncludeDT, "		");
           _builder.append("\"");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
           _builder.append("offlineAllowed=\"");
-          Deploy _deploy_15 = task.getDeploy();
-          boolean _isOfflineAllowed = _deploy_15.isOfflineAllowed();
+          Deploy _deploy_17 = task.getDeploy();
+          boolean _isOfflineAllowed = _deploy_17.isOfflineAllowed();
           _builder.append(_isOfflineAllowed, "		");
           _builder.append("\"");
           _builder.newLineIfNotEmpty();
@@ -995,14 +1011,14 @@ public class AntTemplate {
           _builder.append("\t");
           _builder.append("\t");
           {
-            Deploy _deploy_16 = task.getDeploy();
-            String _placeholderref = _deploy_16.getPlaceholderref();
+            Deploy _deploy_18 = task.getDeploy();
+            String _placeholderref = _deploy_18.getPlaceholderref();
             int _length_3 = _placeholderref==null?0:_placeholderref.length();
             boolean _greaterThan_3 = (_length_3 > 0);
             if (_greaterThan_3) {
               _builder.append("placeholderref=\"");
-              Deploy _deploy_17 = task.getDeploy();
-              String _placeholderref_1 = _deploy_17.getPlaceholderref();
+              Deploy _deploy_19 = task.getDeploy();
+              String _placeholderref_1 = _deploy_19.getPlaceholderref();
               _builder.append(_placeholderref_1, "		");
               _builder.append("\"");
             }
@@ -1012,14 +1028,14 @@ public class AntTemplate {
           _builder.append("\t");
           _builder.append("\t");
           {
-            Deploy _deploy_18 = task.getDeploy();
-            String _placeholderid = _deploy_18.getPlaceholderid();
+            Deploy _deploy_20 = task.getDeploy();
+            String _placeholderid = _deploy_20.getPlaceholderid();
             int _length_4 = _placeholderid==null?0:_placeholderid.length();
             boolean _greaterThan_4 = (_length_4 > 0);
             if (_greaterThan_4) {
               _builder.append("placeholderid=\"");
-              Deploy _deploy_19 = task.getDeploy();
-              String _placeholderid_1 = _deploy_19.getPlaceholderid();
+              Deploy _deploy_21 = task.getDeploy();
+              String _placeholderid_1 = _deploy_21.getPlaceholderid();
               _builder.append(_placeholderid_1, "		");
               _builder.append("\"");
             }
@@ -1029,14 +1045,14 @@ public class AntTemplate {
           _builder.append("\t");
           _builder.append("\t");
           {
-            Deploy _deploy_20 = task.getDeploy();
-            String _updatemode = _deploy_20.getUpdatemode();
+            Deploy _deploy_22 = task.getDeploy();
+            String _updatemode = _deploy_22.getUpdatemode();
             int _length_5 = _updatemode==null?0:_updatemode.length();
             boolean _greaterThan_5 = (_length_5 > 0);
             if (_greaterThan_5) {
               _builder.append("updatemode=\"");
-              Deploy _deploy_21 = task.getDeploy();
-              String _updatemode_1 = _deploy_21.getUpdatemode();
+              Deploy _deploy_23 = task.getDeploy();
+              String _updatemode_1 = _deploy_23.getUpdatemode();
               _builder.append(_updatemode_1, "		");
               _builder.append("\"");
             }
@@ -1046,15 +1062,15 @@ public class AntTemplate {
           _builder.newLine();
           {
             boolean _and_5 = false;
-            Deploy _deploy_22 = task.getDeploy();
-            Info _info_2 = _deploy_22.getInfo();
+            Deploy _deploy_24 = task.getDeploy();
+            Info _info_2 = _deploy_24.getInfo();
             EList<Splash> _splash = _info_2.getSplash();
             boolean _isEmpty_1 = _splash.isEmpty();
             if (!_isEmpty_1) {
               _and_5 = false;
             } else {
-              Deploy _deploy_23 = task.getDeploy();
-              Info _info_3 = _deploy_23.getInfo();
+              Deploy _deploy_25 = task.getDeploy();
+              Info _info_3 = _deploy_25.getInfo();
               EList<Icon> _icon = _info_3.getIcon();
               boolean _isEmpty_2 = _icon.isEmpty();
               _and_5 = (_isEmpty_1 && _isEmpty_2);
@@ -1065,8 +1081,8 @@ public class AntTemplate {
               _builder.append("<fx:info title=\"");
               _builder.append(projectName, "		");
               _builder.append("\" vendor=\"");
-              Deploy _deploy_24 = task.getDeploy();
-              Info _info_4 = _deploy_24.getInfo();
+              Deploy _deploy_26 = task.getDeploy();
+              Info _info_4 = _deploy_26.getInfo();
               String _vendor_1 = _info_4.getVendor();
               _builder.append(_vendor_1, "		");
               _builder.append("\"/>");
@@ -1077,15 +1093,15 @@ public class AntTemplate {
               _builder.append("<fx:info title=\"");
               _builder.append(projectName, "		");
               _builder.append("\" vendor=\"");
-              Deploy _deploy_25 = task.getDeploy();
-              Info _info_5 = _deploy_25.getInfo();
+              Deploy _deploy_27 = task.getDeploy();
+              Info _info_5 = _deploy_27.getInfo();
               String _vendor_2 = _info_5.getVendor();
               _builder.append(_vendor_2, "		");
               _builder.append("\">");
               _builder.newLineIfNotEmpty();
               {
-                Deploy _deploy_26 = task.getDeploy();
-                Info _info_6 = _deploy_26.getInfo();
+                Deploy _deploy_28 = task.getDeploy();
+                Info _info_6 = _deploy_28.getInfo();
                 EList<Splash> _splash_1 = _info_6.getSplash();
                 for(final Splash s : _splash_1) {
                   _builder.append("\t");
@@ -1097,8 +1113,8 @@ public class AntTemplate {
                   _builder.append("\" ");
                   {
                     SplashMode _mode = s.getMode();
-                    boolean _notEquals_12 = (!Objects.equal(_mode, null));
-                    if (_notEquals_12) {
+                    boolean _notEquals_13 = (!Objects.equal(_mode, null));
+                    if (_notEquals_13) {
                       _builder.append("mode=\"");
                       SplashMode _mode_1 = s.getMode();
                       _builder.append(_mode_1, "			");
@@ -1110,8 +1126,8 @@ public class AntTemplate {
                 }
               }
               {
-                Deploy _deploy_27 = task.getDeploy();
-                Info _info_7 = _deploy_27.getInfo();
+                Deploy _deploy_29 = task.getDeploy();
+                Info _info_7 = _deploy_29.getInfo();
                 EList<Icon> _icon_1 = _info_7.getIcon();
                 for(final Icon i : _icon_1) {
                   _builder.append("\t");
@@ -1123,8 +1139,8 @@ public class AntTemplate {
                   _builder.append("\" ");
                   {
                     String _depth = i.getDepth();
-                    boolean _notEquals_13 = (!Objects.equal(_depth, null));
-                    if (_notEquals_13) {
+                    boolean _notEquals_14 = (!Objects.equal(_depth, null));
+                    if (_notEquals_14) {
                       _builder.append("depth=\"");
                       String _depth_1 = i.getDepth();
                       _builder.append(_depth_1, "			");
@@ -1134,8 +1150,8 @@ public class AntTemplate {
                   _builder.append(" ");
                   {
                     String _height = i.getHeight();
-                    boolean _notEquals_14 = (!Objects.equal(_height, null));
-                    if (_notEquals_14) {
+                    boolean _notEquals_15 = (!Objects.equal(_height, null));
+                    if (_notEquals_15) {
                       _builder.append("height=\"");
                       String _height_1 = i.getHeight();
                       _builder.append(_height_1, "			");
@@ -1145,8 +1161,8 @@ public class AntTemplate {
                   _builder.append(" ");
                   {
                     IconType _kind = i.getKind();
-                    boolean _notEquals_15 = (!Objects.equal(_kind, null));
-                    if (_notEquals_15) {
+                    boolean _notEquals_16 = (!Objects.equal(_kind, null));
+                    if (_notEquals_16) {
                       _builder.append("kind=\"");
                       IconType _kind_1 = i.getKind();
                       _builder.append(_kind_1, "			");
@@ -1156,8 +1172,8 @@ public class AntTemplate {
                   _builder.append(" ");
                   {
                     String _width = i.getWidth();
-                    boolean _notEquals_16 = (!Objects.equal(_width, null));
-                    if (_notEquals_16) {
+                    boolean _notEquals_17 = (!Objects.equal(_width, null));
+                    if (_notEquals_17) {
                       _builder.append("width=\"");
                       String _width_1 = i.getWidth();
                       _builder.append(_width_1, "			");
