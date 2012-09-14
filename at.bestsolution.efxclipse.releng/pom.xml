@@ -90,6 +90,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.e3.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature</module>
+		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		
 	</modules>
