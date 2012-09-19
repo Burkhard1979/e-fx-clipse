@@ -13,16 +13,21 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.SplitPane.Divider;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
+import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseSashRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
@@ -96,6 +101,11 @@ public class DefSashRenderer extends BaseSashRenderer<SplitPane> {
 		protected SplitPane createWidget() {
 			SplitPane p = new SplitPane();
 			return p;
+		}
+		
+		@Inject
+		void setOrientation(@Named(UIEvents.GenericTile.HORIZONTAL) boolean horizontal) {
+			getWidget().setOrientation(horizontal ? Orientation.HORIZONTAL : Orientation.VERTICAL);
 		}
 
 		@Override
