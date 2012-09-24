@@ -11,6 +11,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Template;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.AbstractAntHandler.BuildConfiguration;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.SetupDirectory;
 import com.google.common.base.Objects;
@@ -1194,6 +1195,53 @@ public class AntTemplate {
           _builder.append("\t");
           _builder.append("<fx:application refId=\"fxApplication\"/>");
           _builder.newLine();
+          {
+            Deploy _deploy_30 = task.getDeploy();
+            Template _template = _deploy_30.getTemplate();
+            String _file = _template==null?(String)null:_template.getFile();
+            String _trim = _file==null?(String)null:_file.trim();
+            int _length_6 = _trim.length();
+            boolean _greaterThan_6 = (_length_6 > 0);
+            if (_greaterThan_6) {
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("<fx:template ");
+              _builder.newLine();
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("file=\"build/src/");
+              Deploy _deploy_31 = task.getDeploy();
+              Template _template_1 = _deploy_31.getTemplate();
+              String _file_1 = _template_1.getFile();
+              _builder.append(_file_1, "			");
+              _builder.append("\"");
+              _builder.newLineIfNotEmpty();
+              {
+                Deploy _deploy_32 = task.getDeploy();
+                Template _template_2 = _deploy_32.getTemplate();
+                String _toFile = _template_2.getToFile();
+                String _trim_1 = _toFile==null?(String)null:_toFile.trim();
+                int _length_7 = _trim_1.length();
+                boolean _greaterThan_7 = (_length_7 > 0);
+                if (_greaterThan_7) {
+                  _builder.append("\t");
+                  _builder.append("\t");
+                  _builder.append("tofile=\"dist/");
+                  Deploy _deploy_33 = task.getDeploy();
+                  Template _template_3 = _deploy_33.getTemplate();
+                  String _toFile_1 = _template_3.getToFile();
+                  _builder.append(_toFile_1, "		");
+                  _builder.append("\"");
+                  _builder.newLineIfNotEmpty();
+                }
+              }
+              _builder.append("\t");
+              _builder.append("\t");
+              _builder.append("/>");
+              _builder.newLine();
+            }
+          }
           _builder.append("\t");
           _builder.append("\t");
           _builder.append("<fx:resources refid=\"appRes\"/>");
@@ -1201,9 +1249,9 @@ public class AntTemplate {
           {
             SignJar _signjar_8 = task.getSignjar();
             String _keystore_3 = _signjar_8.getKeystore();
-            int _length_6 = _keystore_3==null?0:_keystore_3.length();
-            boolean _greaterThan_6 = (_length_6 > 0);
-            if (_greaterThan_6) {
+            int _length_8 = _keystore_3==null?0:_keystore_3.length();
+            boolean _greaterThan_8 = (_length_8 > 0);
+            if (_greaterThan_8) {
               _builder.append("\t");
               _builder.append("\t");
               _builder.append("<fx:permissions elevated=\"true\"/>");

@@ -33,6 +33,8 @@ public class JavaFXUIPlugin extends AbstractUIPlugin {
 	public static String COLLAPSE_ICON = "COLLAPSE_ICON";
 	public static String HIERACHICAL_ICON = "HIERACHICAL_ICON";
 	
+	public static final String FILEEXTENSION_HTML_TEMPLATE = ".fxtemplate";
+	
 	/**
 	 * The constructor
 	 */

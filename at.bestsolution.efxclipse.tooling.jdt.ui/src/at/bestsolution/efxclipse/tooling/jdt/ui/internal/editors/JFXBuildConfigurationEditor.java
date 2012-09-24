@@ -26,6 +26,7 @@ import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.an
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__PLACEHOLDERID;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__PLACEHOLDERREF;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__SPLASH_IMAGE;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__TEMPLATE;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__WIDTH;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.SIGN_JAR__ALIAS;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.SIGN_JAR__KEYPASS;
@@ -38,6 +39,8 @@ import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.an
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__TOOLKIT;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.APPLICATION__VERSION;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.INFO__VENDOR;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.TEMPLATE__FILE;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage.Literals.TEMPLATE__TO_FILE;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -97,6 +100,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
@@ -194,6 +198,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Param;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersFactory;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Splash;
 
@@ -1139,12 +1144,15 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 			section.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 
 			Composite sectionClient = toolkit.createComposite( section );
-			sectionClient.setLayout( new GridLayout( 2, false ) );
+			final int COLUMN_COUNT = 3;
+			sectionClient.setLayout( new GridLayout( COLUMN_COUNT, false ) );
 
 			{
 				toolkit.createLabel( sectionClient, "Applet Width*:" );
 				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
-				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.horizontalSpan = COLUMN_COUNT - 1;
+				t.setLayoutData( gd );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__WIDTH ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
@@ -1152,42 +1160,44 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 			{
 				toolkit.createLabel( sectionClient, "Applet Height*:" );
 				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
-				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.horizontalSpan = COLUMN_COUNT - 1;
+				t.setLayoutData( gd );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__HEIGHT ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
 
 			{
 				Button b = toolkit.createButton( sectionClient, "Embed JNLP", SWT.CHECK );
-				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, COLUMN_COUNT, 1 ) );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__EMBEDJNLP ) );
 				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 			}
 
 			{
 				Button b = toolkit.createButton( sectionClient, "Treat files as extensions", SWT.CHECK );
-				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, COLUMN_COUNT, 1 ) );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__EXTENSION ) );
 				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 			}
 
 			{
 				Button b = toolkit.createButton( sectionClient, "Include deployment toolkit", SWT.CHECK );
-				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, COLUMN_COUNT, 1 ) );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__INCLUDE_DT ) );
 				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 			}
 
 			{
 				Button b = toolkit.createButton( sectionClient, "Native Package", SWT.CHECK );
-				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, COLUMN_COUNT, 1 ) );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__NATIVE_PACKAGE ) );
 				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 			}
 
 			{
 				Button b = toolkit.createButton( sectionClient, "Offline allowed", SWT.CHECK );
-				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 2, 1 ) );
+				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, COLUMN_COUNT, 1 ) );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__OFFLINE_ALLOWED ) );
 				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 			}
@@ -1195,7 +1205,9 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 			{
 				toolkit.createLabel( sectionClient, "Placeholder Ref.*:" );
 				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
-				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.horizontalSpan = COLUMN_COUNT - 1;
+				t.setLayoutData( gd );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__PLACEHOLDERREF ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
@@ -1203,8 +1215,82 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 			{
 				toolkit.createLabel( sectionClient, "Placeholder ID*:" );
 				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
-				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.horizontalSpan = COLUMN_COUNT - 1;
+				t.setLayoutData( gd );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__PLACEHOLDERID ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "HTML Template:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__TEMPLATE, TEMPLATE__FILE ) );
+				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
+				Button b = toolkit.createButton( sectionClient, "Workspace ...", SWT.NONE );
+				b.addSelectionListener( new SelectionAdapter() {
+					@Override
+					public void widgetSelected( final SelectionEvent e ) {
+						FilteredResourcesSelectionDialog d = new FilteredResourcesSelectionDialog( getSite().getShell(), false,
+								( (IFileEditorInput) getEditorInput() ).getFile().getProject(), IResource.FILE ) {
+							@Override
+							protected IStatus validateItem( final Object item ) {
+								IFile f = (IFile) item;
+								if ( f.getParent() instanceof IProject ) {
+									return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "The selected resource has to be part of the source folder" );
+								}
+								if ( !f.getName().endsWith( JavaFXUIPlugin.FILEEXTENSION_HTML_TEMPLATE ) ) {
+									return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "The selected resource does not seem to be a html file" );
+								}
+								return super.validateItem( item );
+							}
+						};
+
+						if ( d.open() == ResourceSelectionDialog.OK ) {
+							Object[] rv = d.getResult();
+							if ( rv.length == 1 ) {
+								IFile f = (IFile) rv[0];
+								IJavaElement j = JavaCore.create( f.getParent() );
+								String template = null;
+								if ( j instanceof IPackageFragment ) {
+									IPackageFragment p = (IPackageFragment) j;
+									template = p.getElementName().replace( '.', '/' ) + "/" + f.getName();
+								}
+								else if ( j instanceof IPackageFragmentRoot ) {
+									IPackageFragmentRoot p = (IPackageFragmentRoot) j;
+									template = f.getName();
+								}
+								else {
+									MessageDialog.openInformation( getSite().getShell(), "Not valid",
+											"The selected resource has to be part of the source folder" );
+								}
+								if ( template != null ) {
+									if ( getTask().getDeploy().getTemplate() == null ) {
+										Command cmd = new SetCommand( editingDomain, getTask().getDeploy(), DEPLOY__TEMPLATE, ParametersFactory.eINSTANCE
+												.createTemplate() );
+										if ( cmd.canExecute() ) {
+											cmd.execute();
+										}
+									}
+									Command cmd = new SetCommand( editingDomain, getTask().getDeploy().getTemplate(), TEMPLATE__FILE, template );
+									if ( cmd.canExecute() ) {
+										cmd.execute();
+									}
+								}
+							}
+						}
+					}
+				} );
+			}
+
+			{
+				toolkit.createLabel( sectionClient, "Template Output File:" );
+				Text t = toolkit.createText( sectionClient, "", SWT.BORDER );
+				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
+				gd.horizontalSpan = COLUMN_COUNT - 1;
+				t.setLayoutData( gd );
+				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__TEMPLATE, TEMPLATE__TO_FILE ) );
 				dbc.bindValue( textModify.observeDelayed( DELAY, t ), prop.observeDetail( bean ) );
 			}
 
@@ -1214,7 +1300,9 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 				GridLayout gl = new GridLayout( 2, false );
 				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
 				container.setLayout( gl );
-				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gdContainer = new GridData( GridData.FILL_HORIZONTAL );
+				gdContainer.horizontalSpan = COLUMN_COUNT - 1;
+				container.setLayoutData( gdContainer );
 
 				Composite tableContainer = toolkit.createComposite( container );
 				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
@@ -1304,7 +1392,9 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 				GridLayout gl = new GridLayout( 2, false );
 				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
 				container.setLayout( gl );
-				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gdContainer = new GridData( GridData.FILL_HORIZONTAL );
+				gdContainer.horizontalSpan = COLUMN_COUNT - 1;
+				container.setLayoutData( gdContainer );
 
 				Composite tableContainer = toolkit.createComposite( container );
 				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
@@ -1431,7 +1521,9 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 				GridLayout gl = new GridLayout( 2, false );
 				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
 				container.setLayout( gl );
-				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gdContainer = new GridData( GridData.FILL_HORIZONTAL );
+				gdContainer.horizontalSpan = COLUMN_COUNT - 1;
+				container.setLayoutData( gdContainer );
 
 				Composite tableContainer = toolkit.createComposite( container );
 				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
@@ -1520,7 +1612,9 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 				GridLayout gl = new GridLayout( 2, false );
 				gl.marginBottom = gl.marginHeight = gl.marginLeft = gl.marginRight = gl.marginTop = gl.marginWidth = 0;
 				container.setLayout( gl );
-				container.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
+				GridData gdContainer = new GridData( GridData.FILL_HORIZONTAL );
+				gdContainer.horizontalSpan = COLUMN_COUNT - 1;
+				container.setLayoutData( gdContainer );
 
 				Composite tableContainer = toolkit.createComposite( container );
 				Table t = toolkit.createTable( tableContainer, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER );
