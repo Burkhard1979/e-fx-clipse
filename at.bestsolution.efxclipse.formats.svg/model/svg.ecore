@@ -582,6 +582,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseProfile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentScriptType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentStyleType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="styleSheet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eGenericSuperTypes eClassifier="#//SvgElement"/>
     <eGenericSuperTypes eClassifier="#//ContainerElement">
       <eTypeArguments eClassifier="#//SvgElement"/>

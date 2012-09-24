@@ -11,6 +11,7 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.pde.e4.project;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
@@ -88,6 +89,10 @@ import org.eclipse.ui.IWorkingSet;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 import org.osgi.framework.Version;
+
+import at.bestsolution.efxclipse.tooling.pde.e4.project.template.E4LaunchDef;
+import at.bestsolution.efxclipse.tooling.pde.e4.project.template.LaunchGenerator;
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef;
 
 /**
  * @author jin.liu (jin.liu@soyatec.com)
@@ -473,59 +478,16 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			MCommand openCommand = createCommand("media.open", "openMedia", "OpenHandler", "M1+O", pluginName, fragment, application);
 			MCommand refreshCommand = createCommand("media.refresh", "refreshMedia", "RefreshHandler", "M1+R", pluginName, fragment, application);
 
-////			MCommand openCommand = createCommand(pluginName + ".open", "openCommand", "OpenHandler", "M1+O", pluginName, fragment, application);
-////
-////			MCommand saveCommand = createCommand("org.eclipse.ui.file.save", "saveCommand", "SaveHandler", "M1+S", pluginName, fragment, application);
-////
-//			MCommand aboutCommand = createCommand("org.eclipse.ui.help.aboutAction", "aboutCommand", "AboutHandler", "M1+A", pluginName, fragment, application);
-
 			MTrimmedWindow mainWindow = MBasicFactory.INSTANCE.createTrimmedWindow();
+			mainWindow.setElementId("org.efxclipse.e4.mainWindow");
 			mainWindow.getPersistedState().put("fx.stage.decoration", "platform:/plugin/"+pluginName+"/"+fragment.getElementName().replace('.', '/')+"/decoration/TopArea.fxml");
 			application.getChildren().add(mainWindow);
 			{
 				mainWindow.setLabel(pluginName);
-				mainWindow.setX(0);
-				mainWindow.setY(0);
-				mainWindow.setWidth(500);
-				mainWindow.setHeight(400);
-
-//				// Menu
-//				{
-//					MMenu menu = MMenuFactory.INSTANCE.createMenu();
-//					mainWindow.setMainMenu(menu);
-//					menu.setElementId("org.efxclipse.e4.mainmenu");
-//
-//					MMenu fileMenuItem = MMenuFactory.INSTANCE.createMenu();
-//					menu.getChildren().add(fileMenuItem);
-//					fileMenuItem.setLabel("File");
-//					{
-////						MHandledMenuItem menuItemOpen = MMenuFactory.INSTANCE.createHandledMenuItem();
-////						fileMenuItem.getChildren().add(menuItemOpen);
-////						menuItemOpen.setLabel("Open");
-////						menuItemOpen.setIconURI("platform:/plugin/" + pluginName + "/icons/sample.gif");
-////						menuItemOpen.setCommand(openCommand);
-////
-////						MHandledMenuItem menuItemSave = MMenuFactory.INSTANCE.createHandledMenuItem();
-////						fileMenuItem.getChildren().add(menuItemSave);
-////						menuItemSave.setLabel("Save");
-////						menuItemSave.setIconURI("platform:/plugin/" + pluginName + "/icons/save_edit.gif");
-////						menuItemSave.setCommand(saveCommand);
-//
-//						MHandledMenuItem menuItemQuit = MMenuFactory.INSTANCE.createHandledMenuItem();
-//						fileMenuItem.getChildren().add(menuItemQuit);
-//						menuItemQuit.setLabel("Quit");
-//						menuItemQuit.setCommand(quitCommand);
-//					}
-//					MMenu helpMenuItem = MMenuFactory.INSTANCE.createMenu();
-//					menu.getChildren().add(helpMenuItem);
-//					helpMenuItem.setLabel("Help");
-//					{
-//						MHandledMenuItem menuItemAbout = MMenuFactory.INSTANCE.createHandledMenuItem();
-//						helpMenuItem.getChildren().add(menuItemAbout);
-//						menuItemAbout.setLabel("About");
-//						menuItemAbout.setCommand(aboutCommand);
-//					}
-//				}
+				mainWindow.setX(30);
+				mainWindow.setY(30);
+				mainWindow.setWidth(1024);
+				mainWindow.setHeight(768);
 
 				// Top-Sash
 				{
@@ -536,12 +498,14 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 					{
 						MPart part = MBasicFactory.INSTANCE.createPart();
 						part.setContributionURI("bundleclass://" + pluginName + "/" + fragment.getElementName() + ".parts.MediaListPart");
+						part.setContainerData("0.3");
 						sash.getChildren().add(part);
 					}
 
 					// Create a right a stack
 					{
 						MPartStack stack = MBasicFactory.INSTANCE.createPartStack();
+						stack.setContainerData("0.7");
 						stack.setElementId("content.stack");
 						sash.getChildren().add(stack);
 					}
@@ -560,11 +524,13 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 
 					MHandledToolItem toolItemOpen = MMenuFactory.INSTANCE.createHandledToolItem();
 					toolBar.getChildren().add(toolItemOpen);
+					toolItemOpen.setElementId("org.efxclipse.e4.toolitem.open");
 					toolItemOpen.setIconURI("platform:/plugin/" + pluginName + "/icons/edit-image-face-show.png");
 					toolItemOpen.setCommand(openCommand);
 
 					MHandledToolItem toolItemSave = MMenuFactory.INSTANCE.createHandledToolItem();
 					toolBar.getChildren().add(toolItemSave);
+					toolItemSave.setElementId("org.efxclipse.e4.toolitem.save");
 					toolItemSave.setIconURI("platform:/plugin/" + pluginName + "/icons/system-reboot.png");
 					toolItemSave.setCommand(refreshCommand);
 				}
@@ -577,6 +543,23 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 			} catch (IOException e) {
 				PDEPlugin.logException(e);
 			}
+		}
+		
+		IFile f = project.getFile(new Path(project.getName() + ".product.launch"));
+		E4LaunchDef def = new E4LaunchDef();
+		def.setProjectName(project.getName());
+		def.getTargetPlugins().addAll(E4LaunchDef.getE4TargetPlugins());
+		def.getWorkbenchPlugins().add(new PluginLaunchDef(project.getName()));
+		try {
+			ByteArrayInputStream in = new ByteArrayInputStream(new LaunchGenerator().generate(def).toString().getBytes());
+			f.create(in, true, monitor);
+			in.close();
+		} catch (CoreException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		String cssPath = map.get(NewApplicationWizardPage.APPLICATION_CSS_PROPERTY);
@@ -592,24 +575,6 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 				PDEPlugin.logException(e);
 			}
 		}
-
-		// IFolder folder = project.getFolder("icons");
-		// try {
-		// folder.create(true, true, monitor);
-		// Bundle bundle = Platform
-		// .getBundle("org.eclipse.e4.tools.ui.designer");
-		//
-		// for (String fileName : new String[] { "sample.gif", "save_edit.gif"
-		// }) {
-		// URL sampleUrl = bundle.getEntry("resources/icons/" + fileName);
-		// sampleUrl = FileLocator.resolve(sampleUrl);
-		// InputStream inputStream = sampleUrl.openStream();
-		// IFile file = folder.getFile(fileName);
-		// file.create(inputStream, true, monitor);
-		// }
-		// } catch (Exception e) {
-		// PDEPlugin.logException(e);
-		// }
 
 		String template_id = "common";
 		Set<String> binaryExtentions = new HashSet<String>();

@@ -19,7 +19,7 @@ Require-Bundle: at.bestsolution.efxclipse.tooling.css;bundle-version="0.1.0";vis
  at.bestsolution.efxclipse.tooling.ui;bundle-version="0.1.0"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: at.bestsolution.efxclipse.tooling.css.ui,
  at.bestsolution.efxclipse.tooling.css.ui.contentassist.antlr,
  at.bestsolution.efxclipse.tooling.css.ui.internal,

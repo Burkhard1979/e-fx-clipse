@@ -18,6 +18,10 @@ public interface WMenu<N> extends WMenuElement<MMenu> {
 
 	void addElement(WMenuElement<MMenuElement> widget);
 	
+	void addElement(int idx, WMenuElement<MMenuElement> widget);
+	
 	void setShowingCallback(Runnable showingCallback);
+
+	void removeElement(WMenuElement<MMenuElement> widget);
 
 }

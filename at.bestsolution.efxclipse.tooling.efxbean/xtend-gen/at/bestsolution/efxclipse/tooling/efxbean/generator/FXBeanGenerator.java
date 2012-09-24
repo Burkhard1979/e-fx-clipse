@@ -20,6 +20,9 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class FXBeanGenerator implements IGenerator {
@@ -300,9 +303,210 @@ public class FXBeanGenerator implements IGenerator {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static void set(");
+    Bean _bean_11 = u.getBean();
+    String _name_16 = _bean_11.getName();
+    _builder.append(_name_16, "	");
+    _builder.append(" bean, EFXProperty<");
+    Bean _bean_12 = u.getBean();
+    String _name_17 = _bean_12.getName();
+    _builder.append(_name_17, "	");
+    _builder.append(",?> feature, Object value) {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("switch( feature.name ) {");
+    _builder.newLine();
+    {
+      Bean _bean_13 = u.getBean();
+      EList<BeanPropertyDecl> _properties_2 = _bean_13.getProperties();
+      final Function1<BeanPropertyDecl,Boolean> _function = new Function1<BeanPropertyDecl,Boolean>() {
+          public Boolean apply(final BeanPropertyDecl p) {
+            boolean _isReadonly = p.isReadonly();
+            boolean _not = (!_isReadonly);
+            return Boolean.valueOf(_not);
+          }
+        };
+      Iterable<BeanPropertyDecl> _filter = IterableExtensions.<BeanPropertyDecl>filter(_properties_2, _function);
+      for(final BeanPropertyDecl p_2 : _filter) {
+        {
+          TypeDef _type_1 = p_2.getType();
+          if ((_type_1 instanceof ValueListTypeDef)) {
+            {
+              TypeDef _type_2 = p_2.getType();
+              JvmTypeReference _singleType_8 = ((ValueListTypeDef) _type_2).getSingleType();
+              boolean _isPrimitiveType = this.isPrimitiveType(_singleType_8);
+              if (_isPrimitiveType) {
+                {
+                  TypeDef _type_3 = p_2.getType();
+                  JvmTypeReference _singleType_9 = ((ValueListTypeDef) _type_3).getSingleType();
+                  String _qualifiedName = _singleType_9.getQualifiedName();
+                  boolean _equals = _qualifiedName.equals("int");
+                  if (_equals) {
+                    _builder.append("\t\t\t");
+                    _builder.append("case \"");
+                    String _name_18 = p_2.getName();
+                    _builder.append(_name_18, "			");
+                    _builder.append("\" : bean.set");
+                    String _name_19 = p_2.getName();
+                    String _firstUpper = StringExtensions.toFirstUpper(_name_19);
+                    _builder.append(_firstUpper, "			");
+                    _builder.append("(((Number)value).intValue()); return;");
+                    _builder.newLineIfNotEmpty();
+                  } else {
+                    _builder.append("\t\t\t");
+                    _builder.append("case \"");
+                    String _name_20 = p_2.getName();
+                    _builder.append(_name_20, "			");
+                    _builder.append("\" : bean.set");
+                    String _name_21 = p_2.getName();
+                    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_21);
+                    _builder.append(_firstUpper_1, "			");
+                    _builder.append("(((Number)value).doubleValue()); return;");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              } else {
+                _builder.append("\t\t\t");
+                _builder.append("case \"");
+                String _name_22 = p_2.getName();
+                _builder.append(_name_22, "			");
+                _builder.append("\" : bean.set");
+                String _name_23 = p_2.getName();
+                String _firstUpper_2 = StringExtensions.toFirstUpper(_name_23);
+                _builder.append(_firstUpper_2, "			");
+                _builder.append("((");
+                TypeDef _type_4 = p_2.getType();
+                JvmTypeReference _singleType_10 = ((ValueListTypeDef) _type_4).getSingleType();
+                String _shortName_10 = this.shortName(_singleType_10);
+                _builder.append(_shortName_10, "			");
+                _builder.append(")value); return;");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+      }
+    }
+    _builder.append("\t\t\t");
+    _builder.append("default: throw new IllegalArgumentException(\"Unknown feature \'\"+feature.name+\"\'\");");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public static <R> R get(");
+    Bean _bean_14 = u.getBean();
+    String _name_24 = _bean_14.getName();
+    _builder.append(_name_24, "	");
+    _builder.append(" bean, EFXProperty<");
+    Bean _bean_15 = u.getBean();
+    String _name_25 = _bean_15.getName();
+    _builder.append(_name_25, "	");
+    _builder.append(",?> feature) {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("switch( feature.name ) {");
+    _builder.newLine();
+    {
+      Bean _bean_16 = u.getBean();
+      EList<BeanPropertyDecl> _properties_3 = _bean_16.getProperties();
+      final Function1<BeanPropertyDecl,Boolean> _function_1 = new Function1<BeanPropertyDecl,Boolean>() {
+          public Boolean apply(final BeanPropertyDecl p) {
+            boolean _isReadonly = p.isReadonly();
+            boolean _not = (!_isReadonly);
+            return Boolean.valueOf(_not);
+          }
+        };
+      Iterable<BeanPropertyDecl> _filter_1 = IterableExtensions.<BeanPropertyDecl>filter(_properties_3, _function_1);
+      for(final BeanPropertyDecl p_3 : _filter_1) {
+        {
+          TypeDef _type_5 = p_3.getType();
+          JvmTypeReference _singleType_11 = ((ValueListTypeDef) _type_5).getSingleType();
+          boolean _isPrimitiveType_1 = this.isPrimitiveType(_singleType_11);
+          if (_isPrimitiveType_1) {
+            {
+              TypeDef _type_6 = p_3.getType();
+              JvmTypeReference _singleType_12 = ((ValueListTypeDef) _type_6).getSingleType();
+              String _qualifiedName_1 = _singleType_12.getQualifiedName();
+              boolean _equals_1 = _qualifiedName_1.equals("int");
+              if (_equals_1) {
+                _builder.append("\t\t\t");
+                _builder.append("case \"");
+                String _name_26 = p_3.getName();
+                _builder.append(_name_26, "			");
+                _builder.append("\" : return (R)Integer.valueOf(bean.get");
+                String _name_27 = p_3.getName();
+                String _firstUpper_3 = StringExtensions.toFirstUpper(_name_27);
+                _builder.append(_firstUpper_3, "			");
+                _builder.append("());");
+                _builder.newLineIfNotEmpty();
+              } else {
+                _builder.append("\t\t\t");
+                _builder.append("case \"");
+                String _name_28 = p_3.getName();
+                _builder.append(_name_28, "			");
+                _builder.append("\" : return (R)Double.valueOf(bean.set");
+                String _name_29 = p_3.getName();
+                String _firstUpper_4 = StringExtensions.toFirstUpper(_name_29);
+                _builder.append(_firstUpper_4, "			");
+                _builder.append("());");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          } else {
+            _builder.append("\t\t\t");
+            _builder.append("case \"");
+            String _name_30 = p_3.getName();
+            _builder.append(_name_30, "			");
+            _builder.append("\" : return (R)bean.get");
+            String _name_31 = p_3.getName();
+            String _firstUpper_5 = StringExtensions.toFirstUpper(_name_31);
+            _builder.append(_firstUpper_5, "			");
+            _builder.append("();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("\t\t\t");
+    _builder.append("default: throw new IllegalArgumentException(\"Unknown feature \'\"+feature.name+\"\'\");");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;
+  }
+  
+  public boolean isPrimitiveType(final JvmTypeReference ref) {
+    String _qualifiedName = ref.getQualifiedName();
+    final String _switchValue = _qualifiedName;
+    boolean _matched = false;
+    if (!_matched) {
+      if (Objects.equal(_switchValue,"int")) {
+        _matched=true;
+        return true;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_switchValue,"double")) {
+        _matched=true;
+        return true;
+      }
+    }
+    return false;
   }
   
   public CharSequence generateBeanFile(final FXBeanUnit u) {

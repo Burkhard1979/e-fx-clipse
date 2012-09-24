@@ -29,6 +29,7 @@ package at.bestsolution.efxclipse.formats.svg.svg;
  *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement#getBaseProfile <em>Base Profile</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement#getContentScriptType <em>Content Script Type</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement#getContentStyleType <em>Content Style Type</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement#getStyleSheet <em>Style Sheet</em>}</li>
  * </ul>
  * </p>
  *
@@ -404,5 +405,31 @@ public interface SvgSvgElement extends SvgElement, ContainerElement<SvgElement>,
 	 * @generated
 	 */
 	void setContentStyleType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Style Sheet</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Style Sheet</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Style Sheet</em>' attribute.
+	 * @see #setStyleSheet(String)
+	 * @see at.bestsolution.efxclipse.formats.svg.svg.SvgPackage#getSvgSvgElement_StyleSheet()
+	 * @model
+	 * @generated
+	 */
+	String getStyleSheet();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement#getStyleSheet <em>Style Sheet</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Style Sheet</em>' attribute.
+	 * @see #getStyleSheet()
+	 * @generated
+	 */
+	void setStyleSheet(String value);
 
 } // SvgSvgElement

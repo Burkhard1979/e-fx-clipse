@@ -18,7 +18,7 @@ Require-Bundle: at.bestsolution.efxclipse.tooling.efxbean;visibility:=reexport,
  org.eclipse.compare,
  org.eclipse.xtext.xbase.ui
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: at.bestsolution.efxclipse.tooling.efxbean.ui.contentassist,
  at.bestsolution.efxclipse.tooling.efxbean.ui.contentassist.antlr,
  at.bestsolution.efxclipse.tooling.efxbean.ui.internal

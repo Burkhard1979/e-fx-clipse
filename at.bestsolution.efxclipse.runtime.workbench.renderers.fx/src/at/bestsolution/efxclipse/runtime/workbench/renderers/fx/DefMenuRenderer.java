@@ -99,6 +99,27 @@ public class DefMenuRenderer extends BaseMenuRenderer<Menu> {
 		}
 		
 		@Override
+		public void addElement(int idx, WMenuElement<MMenuElement> widget) {
+			if( widget.getWidget() instanceof Toggle ) {
+				if( group == null ) {
+					group = new ToggleGroup();
+				}
+				// see http://javafx-jira.kenai.com/browse/RT-24256
+//				group.getToggles().add((Toggle) widget.getWidget());
+				((Toggle)widget.getWidget()).setToggleGroup(group);
+			}
+			getWidget().getItems().add(idx, (MenuItem) widget.getWidget());
+		}
+		
+		@Override
+		public void removeElement(WMenuElement<MMenuElement> widget) {
+			if( widget.getWidget() instanceof Toggle ) {
+				((Toggle)widget.getWidget()).setToggleGroup(null);
+			}
+			getWidget().getItems().remove(widget.getWidget());
+		}
+		
+		@Override
 		protected void setUserData(WWidgetImpl<Menu, MMenu> widget) {
 			getWidget().setUserData(widget);
 		}

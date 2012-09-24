@@ -201,4 +201,45 @@
             </partition>
       </javaCompletionProposalComputer>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.JFXWorkbenchPreferencePage"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.javafx"
+            name="JavaFX">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.renameParticipants">
+      <renameParticipant
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.JFXRenameParticipant"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.renameParticipant"
+            name="rename">
+            <enablement>
+              <with variable="affectedNatures">
+                <iterate operator="or">
+                  <equals value="org.eclipse.jdt.core.javanature"/>
+                </iterate>
+              </with>
+            </enablement>
+     </renameParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.moveParticipants">
+      <moveParticipant
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.JFXMoveParticipant"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.moveParticipant"
+            name="move">
+         <enablement></enablement>
+      </moveParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+      <deleteParticipant
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.JFXDeleteParticipant"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.deleteParticipant"
+            name="delete">
+         <enablement></enablement>
+      </deleteParticipant>
+   </extension>
 </plugin>

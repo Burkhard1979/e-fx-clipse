@@ -106,6 +106,11 @@ public class FXMLConverter {
     _builder.append("<Group fx:id=\'_root\' xmlns:fx=\"http://javafx.com/fxml\" xmlns:fxsvg=\"http://efxclipse.org/fxml-svg\">");
     _builder.newLine();
     _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     _builder.append("<children>");
     _builder.newLine();
     {
@@ -246,7 +251,8 @@ public class FXMLConverter {
       if (_notEquals_5) {
         _builder.append("fx:id=\"");
         String _id_1 = element.getId();
-        _builder.append(_id_1, "	");
+        String _validateId = this.validateId(_id_1);
+        _builder.append(_validateId, "	");
         _builder.append("\"");
       }
     }
@@ -413,7 +419,8 @@ public class FXMLConverter {
       if (_notEquals_8) {
         _builder.append("fx:id=\"");
         String _id_1 = element.getId();
-        _builder.append(_id_1, "	");
+        String _validateId = this.validateId(_id_1);
+        _builder.append(_validateId, "	");
         _builder.append("\"");
       }
     }
@@ -798,6 +805,11 @@ public class FXMLConverter {
     _builder.append(">");
     _builder.newLine();
     _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     _builder.append("<Image ");
     _builder.newLine();
     _builder.append("\t\t");
@@ -1108,6 +1120,11 @@ public class FXMLConverter {
     _builder.append(_handlePaint_1, "	");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     _builder.newLine();
     {
       String _transform = element.getTransform();
@@ -1339,6 +1356,11 @@ public class FXMLConverter {
     _builder.append("\t");
     _builder.append(">");
     _builder.newLine();
+    _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("<children>");
     _builder.newLine();
@@ -1582,6 +1604,13 @@ public class FXMLConverter {
     }
     _builder.append(">");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
     {
       SvgElement _resolvedInstance = element.getResolvedInstance();
       boolean _notEquals_3 = (!Objects.equal(_resolvedInstance, null));
@@ -1869,6 +1898,31 @@ public class FXMLConverter {
     return _builder;
   }
   
+  public CharSequence handleStyleClassAttributes(final String styleClass) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _notEquals = (!Objects.equal(styleClass, null));
+      if (_notEquals) {
+        _builder.append("<styleClass>");
+        _builder.newLine();
+        {
+          String[] _split = styleClass.split(" ");
+          for(final String c : _split) {
+            _builder.append("\t");
+            _builder.append("<String fx:value=\"");
+            String _trim = c.trim();
+            _builder.append(_trim, "	");
+            _builder.append("\"/>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("</styleClass>");
+        _builder.newLine();
+      }
+    }
+    return _builder;
+  }
+  
   protected CharSequence _handle(final SvgPathElement element) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<SVGPath");
@@ -1917,7 +1971,8 @@ public class FXMLConverter {
       if (_notEquals_3) {
         _builder.append("fx:id=\"");
         String _id_1 = element.getId();
-        _builder.append(_id_1, "	");
+        String _validateId = this.validateId(_id_1);
+        _builder.append(_validateId, "	");
         _builder.append("\"");
       }
     }
@@ -1936,6 +1991,11 @@ public class FXMLConverter {
     Object _lookupFeature_3 = this.lookupFeature(Literals.PRESENTATION_ATTRIBUTES__STROKE_OPACITY, element);
     CharSequence _handlePaint_1 = this.handlePaint("stroke", ((String) _lookupFeature_2), ((String) _lookupFeature_3));
     _builder.append(_handlePaint_1, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
     _builder.newLineIfNotEmpty();
     {
       String _transform = element.getTransform();
@@ -2288,6 +2348,13 @@ public class FXMLConverter {
     CharSequence _handlePaint_1 = this.handlePaint("stroke", ((String) _lookupFeature_2), ((String) _lookupFeature_3));
     _builder.append(_handlePaint_1, "	");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
     {
       String _transform = element.getTransform();
       boolean _notEquals_5 = (!Objects.equal(_transform, null));
@@ -2544,6 +2611,11 @@ public class FXMLConverter {
     _builder.append(_handlePaint_1, "	");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "	");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     _builder.newLine();
     {
       String _transform = element.getTransform();
@@ -2772,6 +2844,10 @@ public class FXMLConverter {
     CharSequence _handlePaint_1 = this.handlePaint("stroke", ((String) _lookupFeature_2), ((String) _lookupFeature_3));
     _builder.append(_handlePaint_1, "");
     _builder.newLineIfNotEmpty();
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     {
       String _transform = element.getTransform();
@@ -2985,7 +3061,10 @@ public class FXMLConverter {
     CharSequence _handlePaint_1 = this.handlePaint("stroke", ((String) _lookupFeature_2), ((String) _lookupFeature_3));
     _builder.append(_handlePaint_1, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t");
+    String _class_ = element.getClass_();
+    CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
+    _builder.append(_handleStyleClassAttributes, "");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     {
       String _transform = element.getTransform();
@@ -3737,6 +3816,11 @@ public class FXMLConverter {
       return Double.parseDouble(value);
     }
     return 0.0;
+  }
+  
+  public String validateId(final String value) {
+    String _replace = value.replace(".", "_dot");
+    return _replace.replace("-", "_dash");
   }
   
   public CharSequence handle(final EObject element) {

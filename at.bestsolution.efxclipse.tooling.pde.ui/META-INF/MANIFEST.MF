@@ -25,3 +25,4 @@ Bundle-Activator: at.bestsolution.efxclipse.tooling.pde.ui.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %Bundle-Vendor
 Service-Component: OSGI-INF/classpathextender.xml
+Export-Package: at.bestsolution.efxclipse.tooling.pde.ui.templates;x-friends:="at.bestsolution.efxclipse.tooling.pde.e4"

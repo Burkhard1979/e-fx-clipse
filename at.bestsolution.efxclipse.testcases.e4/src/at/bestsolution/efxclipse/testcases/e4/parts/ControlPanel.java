@@ -265,9 +265,11 @@ public class ControlPanel {
 				HBox hbox = new HBox(10);
 				hbox.getChildren().add(new Label("X"));
 				final TextField f = new TextField(window.getX()+"");
+				f.setId("text_windowX");
 				hbox.getChildren().add(f);
 				
 				Button b = new Button("Set");
+				b.setId("button_windowX");
 				b.setOnAction(new EventHandler<ActionEvent>() {
 
 					@Override

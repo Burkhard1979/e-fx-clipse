@@ -13,9 +13,7 @@
 <ToolBar xmlns:fx="http://javafx.com/fxml" fx:id="decorationArea" fx:controller="at.bestsolution.efxclipse.runtime.example.photoedit.app.DecorationController" prefHeight="66" minHeight="66" maxHeight="66">
 
 	<items>
-		<Region> 
-			<HBox.hgrow>ALWAYS</HBox.hgrow>
-		</Region>
+		<Region HBox.hgrow="ALWAYS"/> 
 		<VBox spacing="3"> 
 			<children>
 				<Button fx:id="window_close" onAction="#handleClose"/> 
@@ -24,5 +22,4 @@
 			</children>
 		</VBox>
 	</items>
-
 </ToolBar>

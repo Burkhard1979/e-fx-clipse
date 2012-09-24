@@ -72,8 +72,52 @@ class FXBeanGenerator implements IGenerator {
 			«ENDFOR»
 			CLAZZ = new EFXBeanClass<«u.bean.name»>(features);
 		}
+		
+		public static void set(«u.bean.name» bean, EFXProperty<«u.bean.name»,?> feature, Object value) {
+			switch( feature.name ) {
+				«FOR p: u.bean.properties.filter([p|!p.readonly])»
+					«IF p.type instanceof ValueListTypeDef»
+						«IF (p.type as ValueListTypeDef).singleType.primitiveType»
+							«IF (p.type as ValueListTypeDef).singleType.qualifiedName.equals("int")»
+								case "«p.name»" : bean.set«p.name.toFirstUpper»(((Number)value).intValue()); return;
+							«ELSE»
+								case "«p.name»" : bean.set«p.name.toFirstUpper»(((Number)value).doubleValue()); return;
+							«ENDIF»
+						«ELSE»
+							case "«p.name»" : bean.set«p.name.toFirstUpper»((«(p.type as ValueListTypeDef).singleType.shortName»)value); return;
+						«ENDIF»
+					«ENDIF»
+				«ENDFOR»
+				default: throw new IllegalArgumentException("Unknown feature '"+feature.name+"'");
+			}
+		}
+		
+		public static <R> R get(«u.bean.name» bean, EFXProperty<«u.bean.name»,?> feature) {
+			switch( feature.name ) {
+				«FOR p: u.bean.properties.filter([p|!p.readonly])»
+					«IF (p.type as ValueListTypeDef).singleType.primitiveType»
+						«IF (p.type as ValueListTypeDef).singleType.qualifiedName.equals("int")»
+							case "«p.name»" : return (R)Integer.valueOf(bean.get«p.name.toFirstUpper»());
+						«ELSE»
+							case "«p.name»" : return (R)Double.valueOf(bean.set«p.name.toFirstUpper»());
+						«ENDIF»
+					«ELSE»
+						case "«p.name»" : return (R)bean.get«p.name.toFirstUpper»();
+					«ENDIF»
+				«ENDFOR»
+				default: throw new IllegalArgumentException("Unknown feature '"+feature.name+"'");
+			}
+		}
 	}
 	'''
+	
+	def isPrimitiveType(JvmTypeReference ref) {
+		switch(ref.qualifiedName) {
+			case "int":return true
+			case "double":return true
+		}
+		return false
+	}
 	
 	def generateBeanFile(FXBeanUnit u) '''
 	package «u.getPackage().name»;

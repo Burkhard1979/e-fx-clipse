@@ -1,29 +1,43 @@
+/**
+ * ******************************************************************************
+ * Copyright (c) 2012 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - modified to use EMF build configuration
+ * ******************************************************************************
+ */
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler
 
 import java.io.File
-import java.util.Collection
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.AbstractAntHandler$BuildConfiguration
+import java.util.List
+import java.util.HashMap
+import java.util.ArrayList
+import org.apache.commons.lang.text.StrSubstitutor
 import java.util.Map
-import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.JFXBuildConfigurationEditor$BuildPropertyBean
 
 class AntTemplate {
-	def generateAnt(Map<String,Object> properties) {
-		val projectName = properties.get("projectName") as String;
+	def generateAnt(BuildConfiguration config) {
+		val projectName = config.projectName as String;
 		
 		'''
 		<?xml version="1.0" encoding="UTF-8"?>
 			<project name="«projectName»" default="do-deploy" basedir="."  xmlns:fx="javafx:com.sun.javafx.tools.ant">
-			«createInitTaskTarget(properties)»
-			«createLocalSetup(properties)»
-			«compileTarget(properties)»
-			«createDoDeployTarget(properties)»
+			«createInitTaskTarget(config)»
+			«createLocalSetup(config)»
+			«compileTarget(config)»
+			«createDoDeployTarget(config.task)»
 		</project>
 		'''.toString
 	}
 	
-	def createLocalSetup(Map<String,Object> properties) {
-		val externalLibs = properties.get("orig.externalLibs") as Collection<File>;
-		val projectSrcDirs = properties.get("orig.projectSourceDirs") as Collection<SetupDirectory>;
-		var projectRefs = properties.get("orig.projectRefSourceDirs") as Collection<SetupDirectory>;
+	def createLocalSetup(BuildConfiguration config) {
 		'''
 		<target name="setup-staging-area">
 			<delete dir="externalLibs" />
@@ -32,7 +46,7 @@ class AntTemplate {
 			
 			<mkdir dir="externalLibs" />
 			
-			«FOR File l : externalLibs»
+			«FOR File l : config.origExternalLibs»
 			<copy todir="externalLibs">
 				<fileset dir="«l.parent»">
 					<filename name="«l.name»"/>	
@@ -41,7 +55,7 @@ class AntTemplate {
 			«ENDFOR»
 			
 			<mkdir dir="project" />
-			«FOR SetupDirectory d : projectSrcDirs»
+			«FOR SetupDirectory d : config.origProjectSourceDirs»
 			<copy todir="project">
 				<fileset dir="«d.originalPath.absolutePath»">
 					<include name="«d.relativePath.name»/**" />
@@ -50,7 +64,7 @@ class AntTemplate {
 			«ENDFOR»
 			
 			<mkdir dir="projectRefs" />
-			«FOR SetupDirectory d : projectRefs»
+			«FOR SetupDirectory d : config.origProjectRefSourceDirs»
 			<copy todir="projectRefs">
 				<fileset dir="«d.originalPath.absolutePath»">
 					<include name="«d.relativePath.path»/**" />
@@ -61,14 +75,13 @@ class AntTemplate {
 		'''
 	}
 	
-	def createInitTaskTarget(Map<String,Object> properties) {
-		val sdkAntPath = properties.get("jfxantjar") as String;
+	def createInitTaskTarget(BuildConfiguration config) {
 		'''
 		<target name="init-fx-tasks">
 			<path id="fxant">
 				<filelist>
-					<file name="«sdkAntPath»"/>
 					<file name="${java.home}\..\lib\ant-javafx.jar"/>
+					<file name="${java.home}\lib\jfxrt.jar"/>
 				</filelist>
 			</path>
 		
@@ -79,15 +92,7 @@ class AntTemplate {
 		'''
 	}
 	
-	def compileTarget(Map<String,Object> properties) {
-		val projectRefs = properties.get("projectRefSourceDirs") as Collection<String>;
-		val externalLibs = properties.get("externalLibs") as Collection<String>;
-		val projectSourceDirs = properties.get("projectSourceDirs") as Collection<String>;
-		val fxJarPath = properties.get("jfxjar") as String;
-		var encoding = properties.get("projectEncoding") as String;
-		var sourceCompliance = properties.get("sourceCompliance") as String;
-		var targetCompliance = properties.get("targetCompliance") as String;
-		
+	def compileTarget(BuildConfiguration config) {
 		'''
 		<target name='do-compile'>
 			<delete dir="build" />
@@ -98,14 +103,14 @@ class AntTemplate {
 			<!-- Copy project-libs references -->
 			<copy todir="build/libs">
 				<fileset dir="externalLibs">
-					«FOR String s : externalLibs»
+					«FOR String s : config.externalLibs»
 					<include name="«s»"/>
 					«ENDFOR»
 				</fileset>
 			</copy>
 		
 			<!-- Copy project references -->
-			«FOR String s : projectRefs»
+			«FOR String s : config.projectRefSourceDirs»
 			<copy todir="build/src">
 				<fileset dir="projectRefs/«s»">
 					<include name="**/*"/>
@@ -114,7 +119,7 @@ class AntTemplate {
 			«ENDFOR»
 		
 			<!-- Copy project sources itself -->
-			«FOR String s : projectSourceDirs»
+			«FOR String s : config.projectSourceDirs»
 			<copy todir="build/src">
 				<fileset dir="project/«s»">
 					<include name="**/*"/>
@@ -122,14 +127,14 @@ class AntTemplate {
 			</copy>
 			«ENDFOR»
 		
-			<javac includeantruntime="false" source="«sourceCompliance»" target="«targetCompliance»" srcdir="build/src" destdir="build/classes"«IF encoding != null» encoding="«encoding»"«ENDIF»>
+			<javac includeantruntime="false" source="«config.sourceCompliance»" target="«config.targetCompliance»" srcdir="build/src" destdir="build/classes"«IF config.projectEncoding != null» encoding="«config.projectEncoding»"«ENDIF»>
 				<classpath>
 					<fileset dir="build/libs">
 						<include name="*"/>
 					</fileset>
-					«IF fxJarPath != null»
+					«IF config.jfxjar != null»
 					<filelist>
-						<file name="«fxJarPath»"/>
+						<file name="«config.jfxjar»"/>
 					</filelist>
 					«ENDIF»
 				</classpath>
@@ -137,14 +142,14 @@ class AntTemplate {
 			
 			<!-- Copy over none Java-Files -->
 			<copy todir="build/classes">
-			«FOR String s : projectSourceDirs»
+			«FOR String s : config.projectSourceDirs»
 				<fileset dir="project/«s»">
 					<exclude name="**/*.java"/>
 				</fileset>
 			«ENDFOR»
 			</copy>
 		
-			«FOR String s : projectRefs»
+			«FOR String s : config.projectRefSourceDirs»
 			<copy todir="build/classes">
 				<fileset dir="projectRefs/«s»">
 					<exclude name="**/*.java"/>
@@ -156,17 +161,15 @@ class AntTemplate {
 		'''	
 	}
 	
-	def createDoDeployTarget(Map<String,Object> properties) {
-		val projectName = properties.get("projectName") as String;
-		val mainClass = properties.get("applicationClass") as String;
-		val appletWidth = properties.get("appletWith") as String;
-		val appletHeight = properties.get("appletHeight") as String;
-		val appVendor = properties.get("appVendor") as String;
-		val appTitle = properties.get("appTitle") as String;
-		val appVersion = properties.get("appVersion") as String;
-		val preloaderClass = properties.get("preloaderClass") as String;
-		val nativePackage = Boolean::valueOf(properties.get("nativePackage") as String);
-		val bean = properties.get("propertyBean") as BuildPropertyBean;
+	def createDoDeployTarget(AntTask task) {
+		val projectName = task.getDeploy().getApplication().getName();
+		val mainClass = task.getDeploy().getApplication().getMainclass();
+		val appletWidth = task.getDeploy().getWidth();
+		val appletHeight = task.getDeploy().getHeight();
+		val appTitle = task.getDeploy().getInfo().getTitle();
+		val appVersion = task.getDeploy().getApplication().getVersion();
+		val preloaderClass = task.getDeploy().getApplication().getPreloaderclass();
+		val nativePackage = task.getDeploy().isNativePackage();
 		
 		var preloaderPath = "";
 		if( preloaderClass == null ) {
@@ -174,12 +177,7 @@ class AntTemplate {
 		} else {
 			preloaderPath = preloaderClass.replace('.','/');
 		}
-		val fallBackClass = properties.get("fallbackClass") as String;
-		
-		var keyStore = properties.get("keyStore") as String;
-		var keyStoreAlias = properties.get("keyStoreAlias") as String;
-		var keyStorePass = properties.get("keyStorePass") as String;
-		var keyPass = properties.get("keyPass") as String;
+		val fallBackClass = task.getDeploy().getApplication().getFallbackclass();
 		
 		'''
 		<target name="do-deploy" depends="setup-staging-area, do-compile, init-fx-tasks">
@@ -216,12 +214,46 @@ class AntTemplate {
 				name="«projectName»"
 				mainClass="«mainClass»"
 				«IF preloaderClass != null»
-				preloaderClass="«preloaderClass»"
+					preloaderClass="«preloaderClass»"
 				«ENDIF»
 				«IF fallBackClass != null»
-				fallbackClass="«fallBackClass»"
+					fallbackClass="«fallBackClass»"
 				«ENDIF»
-				/>
+				«IF task.getDeploy().getApplication().getToolkit() != null»
+					toolkit="«task.getDeploy().getApplication().getToolkit()»"
+				«ENDIF»
+			/>
+
+			<mkdir dir="build/classes/META-INF" />
+			«IF !task.getFonts().isEmpty()»
+				<propertyfile file="build/classes/META-INF/fonts.mf" comment="Fonts">
+				«FOR f : task.getFonts()»
+					<entry key="«f.getKey()»" value="/«f.getValue()»"/>
+				«ENDFOR»
+				</propertyfile>
+			«ENDIF»
+			
+			«val HashMap<String, List<String>> map = new HashMap<String, List<String>>()»
+			«FOR f : task.getFiles()»
+				«IF !map.containsKey(f.getKey())»
+					«map.put(f.getKey(), new ArrayList<String>())»
+				«ENDIF»
+				«/*val nix is necessary to suppress the return value of add(...)*/»
+				«val nix = map.get(f.getKey()).add(f.getValue())»
+			«ENDFOR»
+			
+			«FOR folderName : map.keySet()»
+				<mkdir dir="build/classes/META-INF/«folderName»" />
+				«FOR serviceFile : map.get(folderName)»
+					<copy 
+						todir="build/classes/META-INF/«folderName»"
+						«val Map<String, String> replacements = new HashMap<String, String>()»
+						«replacements.put("workspace", "build/classes")»
+						«val StrSubstitutor sub = new StrSubstitutor(replacements)»
+						file="«sub.replace(serviceFile)»"
+					/>
+				«ENDFOR»
+			«ENDFOR»
 			
 			<fx:jar destfile="dist/«projectName».jar">
 				<fx:application refid="fxApplication"/>
@@ -233,21 +265,27 @@ class AntTemplate {
 				<fx:resources refid="appRes"/>
 				
 				<manifest>
-					<attribute name="Implementation-Vendor" value="«appVendor»"/>
+					<attribute name="Implementation-Vendor" value="«task.getDeploy().getInfo().getVendor()»"/>
 					<attribute name="Implementation-Title" value="«appTitle»"/>
 					<attribute name="Implementation-Version" value="«appVersion»"/>
-					«IF bean.buildSplashImage != null»
-						<attribute name="SplashScreen-Image" value="«bean.buildSplashImage»"/>
+					«IF task.getDeploy().getSplashImage() != null»
+						<attribute name="SplashScreen-Image" value="«task.getDeploy().getSplashImage()»"/>
 					«ENDIF»
-					«FOR a : bean.buildManifestAttrList»
-						<attribute name="«a.buildManifestAttrName»" value="«a.buildManifestAttrValue»"/>
+					«FOR a : task.getManifestEntries()»
+						<attribute name="«a.getName()»" value="«a.getValue()»"/>
 					«ENDFOR»
 				</manifest>
 			</fx:jar>
 			
-			«IF keyStore != null»
+			«IF task.getSignjar().getKeystore() != null && task.getSignjar().getKeystore().length() > 0»
 			<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
-			<fx:signjar keystore="«keyStore»" alias="«keyStoreAlias»" «IF keyPass != null»keypass="«keyPass»" «ENDIF»«IF keyStorePass != null»storepass="«keyStorePass»" «ENDIF»destDir="${basedir}/dist">
+			<fx:signjar 
+				keystore="«task.getSignjar().getKeystore()»" 
+				alias="«task.getSignjar().getAlias()»" 
+				keypass="«task.getSignjar().getKeypass()»" 
+				storepass="«task.getSignjar().getStorepass()»" 
+				«IF task.getSignjar().getStoretype() != null»storetype="«task.getSignjar().getStoretype()»" «ENDIF»
+				destDir="${basedir}/dist">
 				<fileset dir='dist'>
 					<include name='**/*.jar' />
 				</fileset>
@@ -257,26 +295,44 @@ class AntTemplate {
 			«IF (appletWidth != null && appletHeight != null) || nativePackage»
 			<mkdir dir="deploy" />
 			<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
-			<fx:deploy «IF appletWidth != null && appletHeight != null»width="«appletWidth»" height="«appletHeight»" embedJNLP="true"«ENDIF» outdir="${basedir}/deploy" outfile="«projectName»" «IF nativePackage»nativeBundles="all"«ENDIF»>
-				«IF bean.deploySplashList.empty && bean.deployIconList.empty»
-					<fx:info title="«projectName»" vendor="«appVendor»"/>
+			<fx:deploy
+				embedJNLP="«task.getDeploy().isEmbedjnlp()»"
+				extension="«task.getDeploy().isExtension()»"
+				«IF appletWidth != null && appletWidth.length > 0 && appletHeight != null && appletHeight.length > 0 »width="«appletWidth»" height="«appletHeight»"«ENDIF» 
+				includeDT="«task.getDeploy().isIncludeDT()»"
+				offlineAllowed="«task.getDeploy().isOfflineAllowed()»"
+				outdir="${basedir}/deploy"
+				outfile="«projectName»" «IF nativePackage»nativeBundles="all"«ENDIF»
+				«IF task.getDeploy().getPlaceholderref()?.length() > 0 »placeholderref="«task.getDeploy().getPlaceholderref()»"«ENDIF» 
+				«IF task.getDeploy().getPlaceholderid()?.length() > 0 »placeholderid="«task.getDeploy().getPlaceholderid()»"«ENDIF» 
+				«IF task.getDeploy().getUpdatemode()?.length() > 0 »updatemode="«task.getDeploy().getUpdatemode()»"«ENDIF» >
+
+				«IF task.getDeploy().getInfo().getSplash().isEmpty() && task.getDeploy().getInfo().getIcon().isEmpty()»
+					<fx:info title="«projectName»" vendor="«task.getDeploy().getInfo().getVendor()»"/>
 				«ELSE»
-					<fx:info title="«projectName»" vendor="«appVendor»">
-						«FOR s : bean.deploySplashList»
-							<fx:splash href="«s.deploySplashHref»" «IF s.deploySplashMode != null»mode="«s.deploySplashMode»"«ENDIF» />
+					<fx:info title="«projectName»" vendor="«task.getDeploy().getInfo().getVendor()»">
+						«FOR s : task.getDeploy().getInfo().getSplash()»
+							<fx:splash href="«s.getHref()»" «IF s.getMode() != null»mode="«s.getMode()»"«ENDIF» />
 						«ENDFOR»
-						«FOR i : bean.deployIconList»
-							<fx:icon href="«i.deployIconHref»" «IF i.deployIconDepth != null»depth="«i.deployIconDepth»"«ENDIF» «IF i.deployIconHeight != null»height="«i.deployIconHeight»"«ENDIF» «IF i.deployIconKind != null»kind="«i.deployIconKind»"«ENDIF» «IF i.deployIconWidth != null»width="«i.deployIconWidth»"«ENDIF» />
+						«FOR i : task.getDeploy().getInfo().getIcon()»
+							<fx:icon href="«i.getHref()»" «IF i.getDepth() != null»depth="«i.getDepth()»"«ENDIF» «IF i.getHeight() != null»height="«i.getHeight()»"«ENDIF» «IF i.getKind() != null»kind="«i.getKind()»"«ENDIF» «IF i.getWidth() != null»width="«i.getWidth()»"«ENDIF» />
 						«ENDFOR»
 					</fx:info>
 				«ENDIF»
 				<fx:application refId="fxApplication"/>
 				<fx:resources refid="appRes"/>
-				«IF keyStore != null»
-				<fx:permissions elevated="true"/>
+				«IF task.getSignjar().getKeystore()?.length > 0»
+					<fx:permissions elevated="true"/>
 				«ENDIF»
 			</fx:deploy>
 			«ENDIF»
+			
+			«IF (task.isCssToBin())»
+				<fx:csstobin outdir="build/classes">
+					<fileset dir="build/classes" includes="**/*.css"/>
+				</fx:csstobin>			
+			«ENDIF»
+			
 		</target>
 		'''
 	}

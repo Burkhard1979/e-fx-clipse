@@ -163,6 +163,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.impl.SvgSvgElementImpl#getBaseProfile <em>Base Profile</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.impl.SvgSvgElementImpl#getContentScriptType <em>Content Script Type</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.impl.SvgSvgElementImpl#getContentStyleType <em>Content Style Type</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.formats.svg.svg.impl.SvgSvgElementImpl#getStyleSheet <em>Style Sheet</em>}</li>
  * </ul>
  * </p>
  *
@@ -2098,6 +2099,26 @@ public class SvgSvgElementImpl extends EObjectImpl implements SvgSvgElement {
 	 * @ordered
 	 */
 	protected String contentStyleType = CONTENT_STYLE_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStyleSheet() <em>Style Sheet</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStyleSheet()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STYLE_SHEET_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStyleSheet() <em>Style Sheet</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStyleSheet()
+	 * @generated
+	 * @ordered
+	 */
+	protected String styleSheet = STYLE_SHEET_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4151,6 +4172,27 @@ public class SvgSvgElementImpl extends EObjectImpl implements SvgSvgElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getStyleSheet() {
+		return styleSheet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStyleSheet(String newStyleSheet) {
+		String oldStyleSheet = styleSheet;
+		styleSheet = newStyleSheet;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SvgPackage.SVG_SVG_ELEMENT__STYLE_SHEET, oldStyleSheet, styleSheet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -4362,6 +4404,8 @@ public class SvgSvgElementImpl extends EObjectImpl implements SvgSvgElement {
 				return getContentScriptType();
 			case SvgPackage.SVG_SVG_ELEMENT__CONTENT_STYLE_TYPE:
 				return getContentStyleType();
+			case SvgPackage.SVG_SVG_ELEMENT__STYLE_SHEET:
+				return getStyleSheet();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -4667,6 +4711,9 @@ public class SvgSvgElementImpl extends EObjectImpl implements SvgSvgElement {
 			case SvgPackage.SVG_SVG_ELEMENT__CONTENT_STYLE_TYPE:
 				setContentStyleType((String)newValue);
 				return;
+			case SvgPackage.SVG_SVG_ELEMENT__STYLE_SHEET:
+				setStyleSheet((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -4970,6 +5017,9 @@ public class SvgSvgElementImpl extends EObjectImpl implements SvgSvgElement {
 			case SvgPackage.SVG_SVG_ELEMENT__CONTENT_STYLE_TYPE:
 				setContentStyleType(CONTENT_STYLE_TYPE_EDEFAULT);
 				return;
+			case SvgPackage.SVG_SVG_ELEMENT__STYLE_SHEET:
+				setStyleSheet(STYLE_SHEET_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -5176,6 +5226,8 @@ public class SvgSvgElementImpl extends EObjectImpl implements SvgSvgElement {
 				return CONTENT_SCRIPT_TYPE_EDEFAULT == null ? contentScriptType != null : !CONTENT_SCRIPT_TYPE_EDEFAULT.equals(contentScriptType);
 			case SvgPackage.SVG_SVG_ELEMENT__CONTENT_STYLE_TYPE:
 				return CONTENT_STYLE_TYPE_EDEFAULT == null ? contentStyleType != null : !CONTENT_STYLE_TYPE_EDEFAULT.equals(contentStyleType);
+			case SvgPackage.SVG_SVG_ELEMENT__STYLE_SHEET:
+				return STYLE_SHEET_EDEFAULT == null ? styleSheet != null : !STYLE_SHEET_EDEFAULT.equals(styleSheet);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -5648,6 +5700,8 @@ public class SvgSvgElementImpl extends EObjectImpl implements SvgSvgElement {
 		result.append(contentScriptType);
 		result.append(", contentStyleType: ");
 		result.append(contentStyleType);
+		result.append(", styleSheet: ");
+		result.append(styleSheet);
 		result.append(')');
 		return result.toString();
 	}

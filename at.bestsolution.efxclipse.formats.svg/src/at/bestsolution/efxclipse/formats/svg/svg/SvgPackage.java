@@ -2321,13 +2321,22 @@ public interface SvgPackage extends EPackage {
 	int SVG_SVG_ELEMENT__CONTENT_STYLE_TYPE = SVG_ELEMENT_FEATURE_COUNT + 96;
 
 	/**
+	 * The feature id for the '<em><b>Style Sheet</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SVG_SVG_ELEMENT__STYLE_SHEET = SVG_ELEMENT_FEATURE_COUNT + 97;
+
+	/**
 	 * The number of structural features of the '<em>Svg Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SVG_SVG_ELEMENT_FEATURE_COUNT = SVG_ELEMENT_FEATURE_COUNT + 97;
+	int SVG_SVG_ELEMENT_FEATURE_COUNT = SVG_ELEMENT_FEATURE_COUNT + 98;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.formats.svg.svg.impl.SvgGElementImpl <em>GElement</em>}' class.
@@ -40529,6 +40538,17 @@ public interface SvgPackage extends EPackage {
 	EAttribute getSvgSvgElement_ContentStyleType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement#getStyleSheet <em>Style Sheet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Style Sheet</em>'.
+	 * @see at.bestsolution.efxclipse.formats.svg.svg.SvgSvgElement#getStyleSheet()
+	 * @see #getSvgSvgElement()
+	 * @generated
+	 */
+	EAttribute getSvgSvgElement_StyleSheet();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.formats.svg.svg.SvgGElement <em>GElement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -46610,6 +46630,14 @@ public interface SvgPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SVG_SVG_ELEMENT__CONTENT_STYLE_TYPE = eINSTANCE.getSvgSvgElement_ContentStyleType();
+
+		/**
+		 * The meta object literal for the '<em><b>Style Sheet</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SVG_SVG_ELEMENT__STYLE_SHEET = eINSTANCE.getSvgSvgElement_StyleSheet();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.formats.svg.svg.impl.SvgGElementImpl <em>GElement</em>}' class.

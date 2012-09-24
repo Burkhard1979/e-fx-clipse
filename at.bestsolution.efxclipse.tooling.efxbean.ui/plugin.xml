@@ -50,9 +50,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
-            name="%page.name">
+              category="at.bestsolution.efxclipse.tooling.jdt.ui.javafx"
+              class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
+              name="%page.name">
             <keywordReference id="at.bestsolution.efxclipse.tooling.efxbean.ui.keyword_FXBean"/>
         </page>
         <page
