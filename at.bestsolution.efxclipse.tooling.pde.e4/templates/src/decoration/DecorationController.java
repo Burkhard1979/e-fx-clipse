@@ -45,14 +45,17 @@ public class DecorationController implements Initializable {
 		});
 	}
 	
+	@FXML
 	public void handleClose(ActionEvent event) {
 		Platform.exit();
 	}
 	
+	@FXML
 	public void handleMin(ActionEvent event) {
 		getStage().setIconified(true);
 	}
 	
+	@FXML
 	public void handleMax(ActionEvent event) {
 		Stage stage = getStage();
 		final double stageY = stage.getY();
