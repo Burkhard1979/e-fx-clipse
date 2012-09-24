@@ -26,8 +26,11 @@ import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.TextStyle;
+import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
@@ -69,6 +72,28 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 		BundleContext context = CssDslActivator.getInstance().getBundle().getBundleContext();
 		ServiceReference<CssDialectExtensionComponent> ref = context.getServiceReference(CssDialectExtensionComponent.class);
 		extension = context.getService(ref);
+	}
+	
+	
+	public void complete_ColorTok(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//		ConfigurableCompletionProposal dialogProposal = (ConfigurableCompletionProposal) createCompletionProposal("Pick color ...",context);
+//		if( dialogProposal != null ) {
+//			dialogProposal.setTextApplier(new ReplacementTextApplier() {
+//				
+//				@Override
+//				public String getActualReplacementString(
+//						ConfigurableCompletionProposal proposal) {
+//					ColorDialog dialog = new ColorDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+//					RGB rgb = dialog.open();
+//					if( rgb != null ) {
+//						return "rgb("+rgb.red+","+rgb.green+","+rgb.blue+")";
+//					}
+//					return null;
+//				}
+//			});
+//		}
+//		acceptor.accept(dialogProposal); 
+		super.complete_ColorTok(model, ruleCall, context, acceptor);
 	}
 	
 	// TODO implement support for filtering by element name
@@ -243,29 +268,41 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 				//cp.setHover(new PropertyHover(property));
 				cp.setAutoInsertable(true);
 				cp.setTriggerCharacters(new char[] { ' ' });
-				cp.setTextApplier(new IReplacementTextApplier() {
-					
-					@Override
-					public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
-//						proposal.setReplaceContextLength((proposal.getReplacementString() + " ").length());
-						
-						System.err.println("apply " + proposal.getReplacementString());
-						
-						if (",".equals(proposal.getReplacementString())) {
-							document.replace(proposal.getReplacementOffset()-1, proposal.getReplacementLength() + 1, proposal.getReplacementString() + " ");
-//							proposal.setCursorPosition(proposal.getCursorPosition() + 1);
+				if( p instanceof DialogProposal ) {
+					final DialogProposal dProp = (DialogProposal) p;
+					cp.setTextApplier(new ReplacementTextApplier() {
+//						
+						@Override
+						public String getActualReplacementString(
+								ConfigurableCompletionProposal proposal) {
+							return dProp.openProposal();
 						}
-						else if (",".equals(proposal.getReplacementString())) {
-							document.replace(proposal.getReplacementOffset()-1, proposal.getReplacementLength() + 1, proposal.getReplacementString() + "\n");
-						}
-						else {
-							document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + " ");
-							proposal.setCursorPosition(proposal.getCursorPosition() + 1);
+					});
+				} else {
+					cp.setTextApplier(new IReplacementTextApplier() {
+						
+						@Override
+						public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
+//							proposal.setReplaceContextLength((proposal.getReplacementString() + " ").length());
+							
+							System.err.println("apply " + proposal.getReplacementString());
+							
+							if (",".equals(proposal.getReplacementString())) {
+								document.replace(proposal.getReplacementOffset()-1, proposal.getReplacementLength() + 1, proposal.getReplacementString() + " ");
+//								proposal.setCursorPosition(proposal.getCursorPosition() + 1);
+							}
+							else if (",".equals(proposal.getReplacementString())) {
+								document.replace(proposal.getReplacementOffset()-1, proposal.getReplacementLength() + 1, proposal.getReplacementString() + "\n");
+							}
+							else {
+								document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + " ");
+								proposal.setCursorPosition(proposal.getCursorPosition() + 1);
+								
+							}
 							
 						}
-						
-					}
-				});
+					});
+				}
 				
 				acceptor.accept(cp);
 			}

@@ -4061,11 +4061,9 @@ rule__Ruleset__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getLeftCurlyBracketKeyword_2()); }
-
-	'{' 
-
-{ after(grammarAccess.getRulesetAccess().getLeftCurlyBracketKeyword_2()); }
+{ before(grammarAccess.getRulesetAccess().getWSTerminalRuleCall_2()); }
+(	RULE_WS)*
+{ after(grammarAccess.getRulesetAccess().getWSTerminalRuleCall_2()); }
 )
 
 ;
@@ -4092,9 +4090,11 @@ rule__Ruleset__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getGroup_3()); }
-(rule__Ruleset__Group_3__0)*
-{ after(grammarAccess.getRulesetAccess().getGroup_3()); }
+{ before(grammarAccess.getRulesetAccess().getLeftCurlyBracketKeyword_3()); }
+
+	'{' 
+
+{ after(grammarAccess.getRulesetAccess().getLeftCurlyBracketKeyword_3()); }
 )
 
 ;
@@ -4109,6 +4109,7 @@ rule__Ruleset__Group__4
     }
 :
 	rule__Ruleset__Group__4__Impl
+	rule__Ruleset__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4120,17 +4121,47 @@ rule__Ruleset__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getRightCurlyBracketKeyword_4()); }
-
-	'}' 
-
-{ after(grammarAccess.getRulesetAccess().getRightCurlyBracketKeyword_4()); }
+{ before(grammarAccess.getRulesetAccess().getGroup_4()); }
+(rule__Ruleset__Group_4__0)*
+{ after(grammarAccess.getRulesetAccess().getGroup_4()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Ruleset__Group__5
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Ruleset__Group__5__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Ruleset__Group__5__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRulesetAccess().getRightCurlyBracketKeyword_5()); }
+
+	'}' 
+
+{ after(grammarAccess.getRulesetAccess().getRightCurlyBracketKeyword_5()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -4204,27 +4235,27 @@ finally {
 
 
 
-rule__Ruleset__Group_3__0
+rule__Ruleset__Group_4__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Ruleset__Group_3__0__Impl
-	rule__Ruleset__Group_3__1
+	rule__Ruleset__Group_4__0__Impl
+	rule__Ruleset__Group_4__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Ruleset__Group_3__0__Impl
+rule__Ruleset__Group_4__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getDeclarationsAssignment_3_0()); }
-(rule__Ruleset__DeclarationsAssignment_3_0)
-{ after(grammarAccess.getRulesetAccess().getDeclarationsAssignment_3_0()); }
+{ before(grammarAccess.getRulesetAccess().getDeclarationsAssignment_4_0()); }
+(rule__Ruleset__DeclarationsAssignment_4_0)
+{ after(grammarAccess.getRulesetAccess().getDeclarationsAssignment_4_0()); }
 )
 
 ;
@@ -4233,28 +4264,28 @@ finally {
 }
 
 
-rule__Ruleset__Group_3__1
+rule__Ruleset__Group_4__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Ruleset__Group_3__1__Impl
+	rule__Ruleset__Group_4__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Ruleset__Group_3__1__Impl
+rule__Ruleset__Group_4__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getSemicolonKeyword_3_1()); }
+{ before(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_1()); }
 
 	';' 
 
-{ after(grammarAccess.getRulesetAccess().getSemicolonKeyword_3_1()); }
+{ after(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_1()); }
 )
 
 ;
@@ -7240,14 +7271,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Ruleset__DeclarationsAssignment_3_0
+rule__Ruleset__DeclarationsAssignment_4_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_3_0_0()); }
-	rulecss_declaration{ after(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_3_0_0()); }
+{ before(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_4_0_0()); }
+	rulecss_declaration{ after(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_4_0_0()); }
 )
 
 ;

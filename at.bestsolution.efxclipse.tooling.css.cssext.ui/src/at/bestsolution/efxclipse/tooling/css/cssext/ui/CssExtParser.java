@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Queue;
 
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.widgets.ColorDialog;
+import org.eclipse.ui.PlatformUI;
 
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.DialogProposal;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
@@ -270,7 +274,31 @@ public class CssExtParser {
 			inv.status = Status.INVALID;
 			return createSingletonList(inv);
 		}
-		return parse(g, l, rule);
+		
+		List<ParseResult> rv = parse(g, l, rule);
+		
+		//FIXME QnD for getting colors in
+		if( r.getRef() != null && "color".equals(r.getRef().getName())) {
+			ParseResult c = new ParseResult();
+			c.status = Status.PROPOSE;
+			c.remainingInput = l.copy();
+			DialogProposal p = new DialogProposal("Pick color ...") {
+				
+				@Override
+				public String openProposal() {
+					ColorDialog dialog = new ColorDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+					RGB rgb = dialog.open();
+					if( rgb != null ) {
+						return "rgb("+rgb.red+","+rgb.green+","+rgb.blue+")";
+					}
+					return null;
+				}
+			};
+			c.proposal = p;
+			rv.add(c);
+		}
+		
+		return rv;
 	}
 	
 	// Or
