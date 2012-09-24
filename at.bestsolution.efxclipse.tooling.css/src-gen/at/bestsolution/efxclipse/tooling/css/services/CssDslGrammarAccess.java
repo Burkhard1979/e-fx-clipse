@@ -417,19 +417,18 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSelectorSelectorParserRuleCall_1_0_1_0 = (RuleCall)cSelectorAssignment_1_0_1.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
 		private final RuleCall cWSTerminalRuleCall_1_1_0 = (RuleCall)cGroup_1_1.eContents().get(0);
-		private final Group cGroup_1_1_1 = (Group)cGroup_1_1.eContents().get(1);
-		private final Assignment cCombinatorAssignment_1_1_1_0 = (Assignment)cGroup_1_1_1.eContents().get(0);
-		private final RuleCall cCombinatorCombinatorParserRuleCall_1_1_1_0_0 = (RuleCall)cCombinatorAssignment_1_1_1_0.eContents().get(0);
-		private final Assignment cSelectorAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
-		private final RuleCall cSelectorSelectorParserRuleCall_1_1_1_1_0 = (RuleCall)cSelectorAssignment_1_1_1_1.eContents().get(0);
+		private final Assignment cCombinatorAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cCombinatorCombinatorParserRuleCall_1_1_1_0 = (RuleCall)cCombinatorAssignment_1_1_1.eContents().get(0);
+		private final Assignment cSelectorAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cSelectorSelectorParserRuleCall_1_1_2_0 = (RuleCall)cSelectorAssignment_1_1_2.eContents().get(0);
 		
 		//selector hidden():
-		//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ (combinator=combinator?
-		//	selector=selector)?)?;
+		//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ combinator=combinator?
+		//	selector=selector)?;
 		public ParserRule getRule() { return rule; }
 
-		//simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ (combinator=combinator?
-		//selector=selector)?)?
+		//simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ combinator=combinator?
+		//selector=selector)?
 		public Group getGroup() { return cGroup; }
 
 		//simpleselectors+=simple_selector
@@ -438,7 +437,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//simple_selector
 		public RuleCall getSimpleselectorsSimple_selectorParserRuleCall_0_0() { return cSimpleselectorsSimple_selectorParserRuleCall_0_0; }
 
-		//(combinator=combinator selector=selector | WS+ (combinator=combinator? selector=selector)?)?
+		//(combinator=combinator selector=selector | WS+ combinator=combinator? selector=selector)?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//combinator=combinator selector=selector
@@ -456,26 +455,23 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//selector
 		public RuleCall getSelectorSelectorParserRuleCall_1_0_1_0() { return cSelectorSelectorParserRuleCall_1_0_1_0; }
 
-		//WS+ (combinator=combinator? selector=selector)?
+		//WS+ combinator=combinator? selector=selector
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
 		//WS+
 		public RuleCall getWSTerminalRuleCall_1_1_0() { return cWSTerminalRuleCall_1_1_0; }
 
-		//(combinator=combinator? selector=selector)?
-		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
-
 		//combinator=combinator?
-		public Assignment getCombinatorAssignment_1_1_1_0() { return cCombinatorAssignment_1_1_1_0; }
+		public Assignment getCombinatorAssignment_1_1_1() { return cCombinatorAssignment_1_1_1; }
 
 		//combinator
-		public RuleCall getCombinatorCombinatorParserRuleCall_1_1_1_0_0() { return cCombinatorCombinatorParserRuleCall_1_1_1_0_0; }
+		public RuleCall getCombinatorCombinatorParserRuleCall_1_1_1_0() { return cCombinatorCombinatorParserRuleCall_1_1_1_0; }
 
 		//selector=selector
-		public Assignment getSelectorAssignment_1_1_1_1() { return cSelectorAssignment_1_1_1_1; }
+		public Assignment getSelectorAssignment_1_1_2() { return cSelectorAssignment_1_1_2; }
 
 		//selector
-		public RuleCall getSelectorSelectorParserRuleCall_1_1_1_1_0() { return cSelectorSelectorParserRuleCall_1_1_1_1_0; }
+		public RuleCall getSelectorSelectorParserRuleCall_1_1_2_0() { return cSelectorSelectorParserRuleCall_1_1_2_0; }
 	}
 
 	public class Simple_selectorElements extends AbstractParserRuleElementFinder {
@@ -798,41 +794,49 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class Css_declarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "css_declaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cPropertyAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cPropertyCss_propertyParserRuleCall_0_0 = (RuleCall)cPropertyAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpressionExprParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
-		private final Assignment cPrioAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPrioCss_prioParserRuleCall_3_0 = (RuleCall)cPrioAssignment_3.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cPropertyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cPropertyCss_propertyParserRuleCall_1_0 = (RuleCall)cPropertyAssignment_1.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cValueTokensAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cValueTokensCssTokParserRuleCall_4_0 = (RuleCall)cValueTokensAssignment_4.eContents().get(0);
+		private final Assignment cPrioAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cPrioCss_prioParserRuleCall_5_0 = (RuleCall)cPrioAssignment_5.eContents().get(0);
 		
-		//css_declaration:
-		//	property=css_property ":" expression=expr prio=css_prio?;
+		//css_declaration hidden(ML_COMMENT):
+		//	WS* property=css_property WS* ":" valueTokens+=CssTok+ prio=css_prio?;
 		public ParserRule getRule() { return rule; }
 
-		//property=css_property ":" expression=expr prio=css_prio?
+		//WS* property=css_property WS* ":" valueTokens+=CssTok+ prio=css_prio?
 		public Group getGroup() { return cGroup; }
 
+		//WS*
+		public RuleCall getWSTerminalRuleCall_0() { return cWSTerminalRuleCall_0; }
+
 		//property=css_property
-		public Assignment getPropertyAssignment_0() { return cPropertyAssignment_0; }
+		public Assignment getPropertyAssignment_1() { return cPropertyAssignment_1; }
 
 		//css_property
-		public RuleCall getPropertyCss_propertyParserRuleCall_0_0() { return cPropertyCss_propertyParserRuleCall_0_0; }
+		public RuleCall getPropertyCss_propertyParserRuleCall_1_0() { return cPropertyCss_propertyParserRuleCall_1_0; }
+
+		//WS*
+		public RuleCall getWSTerminalRuleCall_2() { return cWSTerminalRuleCall_2; }
 
 		//":"
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
 
-		//expression=expr
-		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
+		//valueTokens+=CssTok+
+		public Assignment getValueTokensAssignment_4() { return cValueTokensAssignment_4; }
 
-		//expr
-		public RuleCall getExpressionExprParserRuleCall_2_0() { return cExpressionExprParserRuleCall_2_0; }
+		//CssTok
+		public RuleCall getValueTokensCssTokParserRuleCall_4_0() { return cValueTokensCssTokParserRuleCall_4_0; }
 
 		//prio=css_prio?
-		public Assignment getPrioAssignment_3() { return cPrioAssignment_3; }
+		public Assignment getPrioAssignment_5() { return cPrioAssignment_5; }
 
 		//css_prio
-		public RuleCall getPrioCss_prioParserRuleCall_3_0() { return cPrioCss_prioParserRuleCall_3_0; }
+		public RuleCall getPrioCss_prioParserRuleCall_5_0() { return cPrioCss_prioParserRuleCall_5_0; }
 	}
 
 	public class Css_prioElements extends AbstractParserRuleElementFinder {
@@ -1171,6 +1175,238 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getPlusSignKeyword_1() { return cPlusSignKeyword_1; }
 	}
 
+	public class SymbolTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SymbolTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSymbolTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cSymbolAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cSymbolCOMMATerminalRuleCall_1_0 = (RuleCall)cSymbolAssignment_1.eContents().get(0);
+		
+		//SymbolTok returns CssTok hidden(ML_COMMENT):
+		//	{SymbolTok} symbol=COMMA;
+		public ParserRule getRule() { return rule; }
+
+		//{SymbolTok} symbol=COMMA
+		public Group getGroup() { return cGroup; }
+
+		//{SymbolTok}
+		public Action getSymbolTokAction_0() { return cSymbolTokAction_0; }
+
+		//symbol=COMMA
+		public Assignment getSymbolAssignment_1() { return cSymbolAssignment_1; }
+
+		//COMMA
+		public RuleCall getSymbolCOMMATerminalRuleCall_1_0() { return cSymbolCOMMATerminalRuleCall_1_0; }
+	}
+
+	public class WSTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WSTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cWSTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//WSTok returns CssTok hidden(ML_COMMENT):
+		//	{WSTok} WS;
+		public ParserRule getRule() { return rule; }
+
+		//{WSTok} WS
+		public Group getGroup() { return cGroup; }
+
+		//{WSTok}
+		public Action getWSTokAction_0() { return cWSTokAction_0; }
+
+		//WS
+		public RuleCall getWSTerminalRuleCall_1() { return cWSTerminalRuleCall_1; }
+	}
+
+	public class StringTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cStringTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//StringTok returns CssTok hidden(ML_COMMENT):
+		//	{StringTok} value=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//{StringTok} value=STRING
+		public Group getGroup() { return cGroup; }
+
+		//{StringTok}
+		public Action getStringTokAction_0() { return cStringTokAction_0; }
+
+		//value=STRING
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+	}
+
+	public class FuncTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FuncTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cFuncTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cFuncAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFuncFunctionParserRuleCall_1_0 = (RuleCall)cFuncAssignment_1.eContents().get(0);
+		
+		//FuncTok returns CssTok hidden(ML_COMMENT):
+		//	{FuncTok} func=function;
+		public ParserRule getRule() { return rule; }
+
+		//{FuncTok} func=function
+		public Group getGroup() { return cGroup; }
+
+		//{FuncTok}
+		public Action getFuncTokAction_0() { return cFuncTokAction_0; }
+
+		//func=function
+		public Assignment getFuncAssignment_1() { return cFuncAssignment_1; }
+
+		//function
+		public RuleCall getFuncFunctionParserRuleCall_1_0() { return cFuncFunctionParserRuleCall_1_0; }
+	}
+
+	public class NumberTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NumberTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cNumberTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNumAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNumNumberTermParserRuleCall_1_0 = (RuleCall)cNumAssignment_1.eContents().get(0);
+		
+		//NumberTok returns CssTok hidden(ML_COMMENT):
+		//	{NumberTok} num=numberTerm;
+		public ParserRule getRule() { return rule; }
+
+		//{NumberTok} num=numberTerm
+		public Group getGroup() { return cGroup; }
+
+		//{NumberTok}
+		public Action getNumberTokAction_0() { return cNumberTokAction_0; }
+
+		//num=numberTerm
+		public Assignment getNumAssignment_1() { return cNumAssignment_1; }
+
+		//numberTerm
+		public RuleCall getNumNumberTermParserRuleCall_1_0() { return cNumNumberTermParserRuleCall_1_0; }
+	}
+
+	public class IdentifierTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IdentifierTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cIdentifierTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cIdValidPropertyIdentParserRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
+		
+		//IdentifierTok returns CssTok hidden(ML_COMMENT):
+		//	{IdentifierTok} id=ValidPropertyIdent;
+		public ParserRule getRule() { return rule; }
+
+		//{IdentifierTok} id=ValidPropertyIdent
+		public Group getGroup() { return cGroup; }
+
+		//{IdentifierTok}
+		public Action getIdentifierTokAction_0() { return cIdentifierTokAction_0; }
+
+		//id=ValidPropertyIdent
+		public Assignment getIdAssignment_1() { return cIdAssignment_1; }
+
+		//ValidPropertyIdent
+		public RuleCall getIdValidPropertyIdentParserRuleCall_1_0() { return cIdValidPropertyIdentParserRuleCall_1_0; }
+	}
+
+	public class UrlTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UrlTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cUrlTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cUrlAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cUrlURLTypeParserRuleCall_1_0 = (RuleCall)cUrlAssignment_1.eContents().get(0);
+		
+		//UrlTok returns CssTok hidden(ML_COMMENT):
+		//	{UrlTok} url=URLType;
+		public ParserRule getRule() { return rule; }
+
+		//{UrlTok} url=URLType
+		public Group getGroup() { return cGroup; }
+
+		//{UrlTok}
+		public Action getUrlTokAction_0() { return cUrlTokAction_0; }
+
+		//url=URLType
+		public Assignment getUrlAssignment_1() { return cUrlAssignment_1; }
+
+		//URLType
+		public RuleCall getUrlURLTypeParserRuleCall_1_0() { return cUrlURLTypeParserRuleCall_1_0; }
+	}
+
+	public class ColorTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ColorTok");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cColorTokAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cColorAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cColorHASHTerminalRuleCall_1_0 = (RuleCall)cColorAssignment_1.eContents().get(0);
+		
+		//ColorTok returns CssTok hidden(ML_COMMENT):
+		//	{ColorTok} color=HASH;
+		public ParserRule getRule() { return rule; }
+
+		//{ColorTok} color=HASH
+		public Group getGroup() { return cGroup; }
+
+		//{ColorTok}
+		public Action getColorTokAction_0() { return cColorTokAction_0; }
+
+		//color=HASH
+		public Assignment getColorAssignment_1() { return cColorAssignment_1; }
+
+		//HASH
+		public RuleCall getColorHASHTerminalRuleCall_1_0() { return cColorHASHTerminalRuleCall_1_0; }
+	}
+
+	public class CssTokElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CssTok");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSymbolTokParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cWSTokParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cStringTokParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cFuncTokParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cNumberTokParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cIdentifierTokParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cUrlTokParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cColorTokParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		
+		//CssTok hidden(ML_COMMENT):
+		//	SymbolTok | WSTok | StringTok | FuncTok | NumberTok | IdentifierTok | UrlTok | ColorTok;
+		public ParserRule getRule() { return rule; }
+
+		//SymbolTok | WSTok | StringTok | FuncTok | NumberTok | IdentifierTok | UrlTok | ColorTok
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//SymbolTok
+		public RuleCall getSymbolTokParserRuleCall_0() { return cSymbolTokParserRuleCall_0; }
+
+		//WSTok
+		public RuleCall getWSTokParserRuleCall_1() { return cWSTokParserRuleCall_1; }
+
+		//StringTok
+		public RuleCall getStringTokParserRuleCall_2() { return cStringTokParserRuleCall_2; }
+
+		//FuncTok
+		public RuleCall getFuncTokParserRuleCall_3() { return cFuncTokParserRuleCall_3; }
+
+		//NumberTok
+		public RuleCall getNumberTokParserRuleCall_4() { return cNumberTokParserRuleCall_4; }
+
+		//IdentifierTok
+		public RuleCall getIdentifierTokParserRuleCall_5() { return cIdentifierTokParserRuleCall_5; }
+
+		//UrlTok
+		public RuleCall getUrlTokParserRuleCall_6() { return cUrlTokParserRuleCall_6; }
+
+		//ColorTok
+		public RuleCall getColorTokParserRuleCall_7() { return cColorTokParserRuleCall_7; }
+	}
+
 	public class ExprElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "expr");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1390,17 +1626,15 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDENTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final RuleCall cWSTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
-		private final Assignment cExpressionAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cExpressionExprParserRuleCall_4_0 = (RuleCall)cExpressionAssignment_4.eContents().get(0);
-		private final RuleCall cWSTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
-		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cParamsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cParamsCssTokParserRuleCall_3_0 = (RuleCall)cParamsAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//function hidden():
-		//	"-"? name=IDENT "(" WS* expression=expr WS* ")";
+		//	"-"? name=IDENT "(" params+=CssTok+ / *expression=expr* / ")";
 		public ParserRule getRule() { return rule; }
 
-		//"-"? name=IDENT "(" WS* expression=expr WS* ")"
+		//"-"? name=IDENT "(" params+=CssTok+ / *expression=expr* / ")"
 		public Group getGroup() { return cGroup; }
 
 		//"-"?
@@ -1415,20 +1649,14 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
-		//WS*
-		public RuleCall getWSTerminalRuleCall_3() { return cWSTerminalRuleCall_3; }
+		//params+=CssTok+
+		public Assignment getParamsAssignment_3() { return cParamsAssignment_3; }
 
-		//expression=expr
-		public Assignment getExpressionAssignment_4() { return cExpressionAssignment_4; }
+		//CssTok
+		public RuleCall getParamsCssTokParserRuleCall_3_0() { return cParamsCssTokParserRuleCall_3_0; }
 
-		//expr
-		public RuleCall getExpressionExprParserRuleCall_4_0() { return cExpressionExprParserRuleCall_4_0; }
-
-		//WS*
-		public RuleCall getWSTerminalRuleCall_5() { return cWSTerminalRuleCall_5; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+		/// *expression=expr* / ")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 
 	public class HexColorElements extends AbstractParserRuleElementFinder {
@@ -1813,6 +2041,15 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	private CombinatorElements pCombinator;
 	private OperatorElements pOperator;
 	private Unary_operatorElements pUnary_operator;
+	private SymbolTokElements pSymbolTok;
+	private WSTokElements pWSTok;
+	private StringTokElements pStringTok;
+	private FuncTokElements pFuncTok;
+	private NumberTokElements pNumberTok;
+	private IdentifierTokElements pIdentifierTok;
+	private UrlTokElements pUrlTok;
+	private ColorTokElements pColorTok;
+	private CssTokElements pCssTok;
 	private ExprElements pExpr;
 	private TermGroupElements pTermGroup;
 	private TermElements pTerm;
@@ -1964,8 +2201,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//selector hidden():
-	//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ (combinator=combinator?
-	//	selector=selector)?)?;
+	//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ combinator=combinator?
+	//	selector=selector)?;
 	public SelectorElements getSelectorAccess() {
 		return (pSelector != null) ? pSelector : (pSelector = new SelectorElements());
 	}
@@ -2065,8 +2302,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getCss_attribAccess().getRule();
 	}
 
-	//css_declaration:
-	//	property=css_property ":" expression=expr prio=css_prio?;
+	//css_declaration hidden(ML_COMMENT):
+	//	WS* property=css_property WS* ":" valueTokens+=CssTok+ prio=css_prio?;
 	public Css_declarationElements getCss_declarationAccess() {
 		return (pCss_declaration != null) ? pCss_declaration : (pCss_declaration = new Css_declarationElements());
 	}
@@ -2205,6 +2442,96 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getUnary_operatorAccess().getRule();
 	}
 
+	//SymbolTok returns CssTok hidden(ML_COMMENT):
+	//	{SymbolTok} symbol=COMMA;
+	public SymbolTokElements getSymbolTokAccess() {
+		return (pSymbolTok != null) ? pSymbolTok : (pSymbolTok = new SymbolTokElements());
+	}
+	
+	public ParserRule getSymbolTokRule() {
+		return getSymbolTokAccess().getRule();
+	}
+
+	//WSTok returns CssTok hidden(ML_COMMENT):
+	//	{WSTok} WS;
+	public WSTokElements getWSTokAccess() {
+		return (pWSTok != null) ? pWSTok : (pWSTok = new WSTokElements());
+	}
+	
+	public ParserRule getWSTokRule() {
+		return getWSTokAccess().getRule();
+	}
+
+	//StringTok returns CssTok hidden(ML_COMMENT):
+	//	{StringTok} value=STRING;
+	public StringTokElements getStringTokAccess() {
+		return (pStringTok != null) ? pStringTok : (pStringTok = new StringTokElements());
+	}
+	
+	public ParserRule getStringTokRule() {
+		return getStringTokAccess().getRule();
+	}
+
+	//FuncTok returns CssTok hidden(ML_COMMENT):
+	//	{FuncTok} func=function;
+	public FuncTokElements getFuncTokAccess() {
+		return (pFuncTok != null) ? pFuncTok : (pFuncTok = new FuncTokElements());
+	}
+	
+	public ParserRule getFuncTokRule() {
+		return getFuncTokAccess().getRule();
+	}
+
+	//NumberTok returns CssTok hidden(ML_COMMENT):
+	//	{NumberTok} num=numberTerm;
+	public NumberTokElements getNumberTokAccess() {
+		return (pNumberTok != null) ? pNumberTok : (pNumberTok = new NumberTokElements());
+	}
+	
+	public ParserRule getNumberTokRule() {
+		return getNumberTokAccess().getRule();
+	}
+
+	//IdentifierTok returns CssTok hidden(ML_COMMENT):
+	//	{IdentifierTok} id=ValidPropertyIdent;
+	public IdentifierTokElements getIdentifierTokAccess() {
+		return (pIdentifierTok != null) ? pIdentifierTok : (pIdentifierTok = new IdentifierTokElements());
+	}
+	
+	public ParserRule getIdentifierTokRule() {
+		return getIdentifierTokAccess().getRule();
+	}
+
+	//UrlTok returns CssTok hidden(ML_COMMENT):
+	//	{UrlTok} url=URLType;
+	public UrlTokElements getUrlTokAccess() {
+		return (pUrlTok != null) ? pUrlTok : (pUrlTok = new UrlTokElements());
+	}
+	
+	public ParserRule getUrlTokRule() {
+		return getUrlTokAccess().getRule();
+	}
+
+	//ColorTok returns CssTok hidden(ML_COMMENT):
+	//	{ColorTok} color=HASH;
+	public ColorTokElements getColorTokAccess() {
+		return (pColorTok != null) ? pColorTok : (pColorTok = new ColorTokElements());
+	}
+	
+	public ParserRule getColorTokRule() {
+		return getColorTokAccess().getRule();
+	}
+
+	//CssTok hidden(ML_COMMENT):
+	//	SymbolTok | WSTok | StringTok | FuncTok | NumberTok | IdentifierTok | UrlTok | ColorTok;
+	public CssTokElements getCssTokAccess() {
+		return (pCssTok != null) ? pCssTok : (pCssTok = new CssTokElements());
+	}
+	
+	public ParserRule getCssTokRule() {
+		return getCssTokAccess().getRule();
+	}
+
 	//expr hidden(WS, ML_COMMENT):
 	//	termGroups+=termGroup (operator termGroups+=termGroup)*;
 	public ExprElements getExprAccess() {
@@ -2281,7 +2608,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//function hidden():
-	//	"-"? name=IDENT "(" WS* expression=expr WS* ")";
+	//	"-"? name=IDENT "(" params+=CssTok+ / *expression=expr* / ")";
 	public FunctionElements getFunctionAccess() {
 		return (pFunction != null) ? pFunction : (pFunction = new FunctionElements());
 	}

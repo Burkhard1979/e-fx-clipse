@@ -126,31 +126,31 @@ public interface CssDialectExtension {
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
-			if( dec.getExpression() != null ) {
-				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
-				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
-					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
-					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
-						String number = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getNumber();
-						
-						if( number == null ) {
-							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a integer value", null, null, -1) };	
-						} else {
-							try {
-								double d = Double.parseDouble(number);	
-								if( d != (int)d ) {
-									return new ValidationResult[] { new ValidationResult(ValidationStatus.WARNING, "The value is floating point number but should be an integer", null, null, -1) };	
-								}
-							} catch( NumberFormatException e ) {
-								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a integer value", null, null, -1) };	
-							}
-							
-						}
-					}
-				}
-			}
+//			if( dec.getExpression() != null ) {
+//				if( dec.getExpression().getTermGroups().size() > 1 ) {
+//					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
+//				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
+//					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
+//						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
+//					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
+//						String number = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getNumber();
+//						
+//						if( number == null ) {
+//							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a integer value", null, null, -1) };	
+//						} else {
+//							try {
+//								double d = Double.parseDouble(number);	
+//								if( d != (int)d ) {
+//									return new ValidationResult[] { new ValidationResult(ValidationStatus.WARNING, "The value is floating point number but should be an integer", null, null, -1) };	
+//								}
+//							} catch( NumberFormatException e ) {
+//								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a integer value", null, null, -1) };	
+//							}
+//							
+//						}
+//					}
+//				}
+//			}
 			return super.validate(dec);
 		}
 	}
@@ -183,21 +183,21 @@ public interface CssDialectExtension {
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
-			if( dec.getExpression() != null ) {
-				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
-				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
-					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
-					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
-						String value = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier();
-						
-						if( value == null || ! ( value.equals("true") || value.equals("false") ) ) {
-							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is true or false", null, null, -1) };	
-						}
-					}
-				}
-			}
+//			if( dec.getExpression() != null ) {
+//				if( dec.getExpression().getTermGroups().size() > 1 ) {
+//					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
+//				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
+//					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
+//						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
+//					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
+//						String value = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier();
+//						
+//						if( value == null || ! ( value.equals("true") || value.equals("false") ) ) {
+//							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is true or false", null, null, -1) };	
+//						}
+//					}
+//				}
+//			}
 			return super.validate(dec);
 		}
 	}
@@ -216,28 +216,28 @@ public interface CssDialectExtension {
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
-			if( dec.getExpression() != null ) {
-				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
-				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
-					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
-					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
-						String number = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getNumber();
-						
-						if( number == null ) {
-							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a floating point number", null, null, -1) };	
-						} else {
-							try {
-								Double.parseDouble(number);	
-							} catch( NumberFormatException e ) {
-								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a floating point number", null, null, -1) };	
-							}
-							
-						}
-					}
-				}
-			}
+//			if( dec.getExpression() != null ) {
+//				if( dec.getExpression().getTermGroups().size() > 1 ) {
+//					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
+//				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
+//					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
+//						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
+//					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
+//						String number = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getNumber();
+//						
+//						if( number == null ) {
+//							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a floating point number", null, null, -1) };	
+//						} else {
+//							try {
+//								Double.parseDouble(number);	
+//							} catch( NumberFormatException e ) {
+//								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not a floating point number", null, null, -1) };	
+//							}
+//							
+//						}
+//					}
+//				}
+//			}
 			return super.validate(dec);
 		}
 	}
@@ -270,33 +270,33 @@ public interface CssDialectExtension {
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
-			if( dec.getExpression() != null ) {
-				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
-				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
-					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
-					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
-						String id = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier();
-						for( Proposal p : proposals ) {
-							if( p.getProposal().equalsIgnoreCase(id) ) {
-								return new ValidationResult[0];
-							}
-						}
-						
-						StringBuilder b = new StringBuilder();
-						for( Proposal p: proposals ) {
-							b.append("- " + p.getProposal());
-							if( p.getLabel() != null && ! p.getLabel().equals(p.getProposal()) ) {
-								b.append(": " +p.getLabel());
-							}
-							b.append("\n");
-						}
-						
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, null, null, -1) };
-					}
-				}
-			}
+//			if( dec.getExpression() != null ) {
+//				if( dec.getExpression().getTermGroups().size() > 1 ) {
+//					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
+//				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
+//					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
+//						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
+//					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
+//						String id = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier();
+//						for( Proposal p : proposals ) {
+//							if( p.getProposal().equalsIgnoreCase(id) ) {
+//								return new ValidationResult[0];
+//							}
+//						}
+//						
+//						StringBuilder b = new StringBuilder();
+//						for( Proposal p: proposals ) {
+//							b.append("- " + p.getProposal());
+//							if( p.getLabel() != null && ! p.getLabel().equals(p.getProposal()) ) {
+//								b.append(": " +p.getLabel());
+//							}
+//							b.append("\n");
+//						}
+//						
+//						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, null, null, -1) };
+//					}
+//				}
+//			}
 			return super.validate(dec);
 		}
 	}
@@ -317,28 +317,28 @@ public interface CssDialectExtension {
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
-			if( dec.getExpression() != null ) {
-				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
-				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
-					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
-					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
-						URLType url = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getUrl();
-						
-						if( url == null || url.getUrl().trim().length() == 0 ) {
-							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", null, null, -1) };
-						} else {
-							try {
-								new java.net.URI(url.getUrl());
-							} catch (URISyntaxException e) {
-								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", null, null, -1) };
-							}
-							
-						}
-					}
-				}
-			}
+//			if( dec.getExpression() != null ) {
+//				if( dec.getExpression().getTermGroups().size() > 1 ) {
+//					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
+//				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
+//					if( dec.getExpression().getTermGroups().get(0).getTerms().size() > 1 ) {
+//						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
+//					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
+//						URLType url = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getUrl();
+//						
+//						if( url == null || url.getUrl().trim().length() == 0 ) {
+//							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", null, null, -1) };
+//						} else {
+//							try {
+//								new java.net.URI(url.getUrl());
+//							} catch (URISyntaxException e) {
+//								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", null, null, -1) };
+//							}
+//							
+//						}
+//					}
+//				}
+//			}
 			return super.validate(dec);
 		}
 	}
@@ -359,26 +359,26 @@ public interface CssDialectExtension {
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
-			if( dec.getExpression() != null ) {
-				for( termGroup g : dec.getExpression().getTermGroups() ) {
-					if( g.getTerms().size() > 1 ) {
-						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
-					} else if( g.getTerms().size() == 1 ) {
-						URLType url = g.getTerms().get(0).getUrl();
-						
-						if( url == null || url.getUrl().trim().length() == 0 ) {
-							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", g.getTerms().get(0), CssDslPackage.Literals.TERM__URL, -1) };
-						} else {
-							try {
-								new java.net.URI(url.getUrl());
-							} catch (URISyntaxException e) {
-								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", null, null, -1) };
-							}
-							
-						}
-					}
-				}
-			}
+//			if( dec.getExpression() != null ) {
+//				for( termGroup g : dec.getExpression().getTermGroups() ) {
+//					if( g.getTerms().size() > 1 ) {
+//						return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple terms", null, null, -1) };
+//					} else if( g.getTerms().size() == 1 ) {
+//						URLType url = g.getTerms().get(0).getUrl();
+//						
+//						if( url == null || url.getUrl().trim().length() == 0 ) {
+//							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", g.getTerms().get(0), CssDslPackage.Literals.TERM__URL, -1) };
+//						} else {
+//							try {
+//								new java.net.URI(url.getUrl());
+//							} catch (URISyntaxException e) {
+//								return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value is not an url", null, null, -1) };
+//							}
+//							
+//						}
+//					}
+//				}
+//			}
 			return super.validate(dec);
 		}
 	}
@@ -426,73 +426,73 @@ public interface CssDialectExtension {
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
-			if( dec.getExpression() != null ) {
-				if( dec.getExpression().getTermGroups().size() > 1 ) {
-					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
-				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
-					if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
-						String value = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier();
-						
-						StringBuilder b = new StringBuilder();
-						for( Proposal p: singleTerms ) {
-							b.append("- " + p.getProposal());
-							if( p.getLabel() != null && ! p.getLabel().equals(p.getProposal()) ) {
-								b.append(": " +p.getLabel());
-							}
-							b.append("\n");
-						}
-						
-						if( value == null ) {
-							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, null, null, -1) };	
-						} else if( ! "inherit".equals(value) ) {
-							for( Proposal p : singleTerms ) {
-								if( value.equals(p.getProposal()) ) {
-									return super.validate(dec);
-								}
-							}
-							
-							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, dec.getExpression().getTermGroups().get(0).getTerms().get(0), CssDslPackage.Literals.TERM__IDENTIFIER, -1) };
-						}
-						
-					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == partCount ) {
-						StringBuilder b = new StringBuilder();
-						for( Proposal p: singleTerms ) {
-							b.append("- " + p.getProposal());
-							if( p.getLabel() != null && ! p.getLabel().equals(p.getProposal()) ) {
-								b.append(": " +p.getLabel());
-							}
-							b.append("\n");
-						}
-						
-						List<ValidationResult> rv = new ArrayList<ValidationResult>();
-						
-						for( term t : dec.getExpression().getTermGroups().get(0).getTerms() ) {
-							String value = t.getIdentifier();
-							
-							if( value == null ) {
-								rv.add(new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, null, null, -1));
-							} else {
-								boolean v = false;
-								for( Proposal p : singleTerms ) {
-									if( value.equals(p.getProposal()) ) {
-										v = true;
-									}
-								}
-								if( ! v ) {
-									rv.add(new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, t, CssDslPackage.Literals.TERM__IDENTIFIER, -1) );
-								}
-							}
-						}
-						
-						if( rv.isEmpty() ) {
-							return super.validate(dec);
-						} else {
-							return rv.toArray(new ValidationResult[0]);
-						}
-					}
-				}
-			}
-			
+//			if( dec.getExpression() != null ) {
+//				if( dec.getExpression().getTermGroups().size() > 1 ) {
+//					return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The attribute does not support multiple term groups", null, null, -1) };
+//				} else if( dec.getExpression().getTermGroups().size() == 1 ) {
+//					if( dec.getExpression().getTermGroups().get(0).getTerms().size() == 1 ) {
+//						String value = dec.getExpression().getTermGroups().get(0).getTerms().get(0).getIdentifier();
+//						
+//						StringBuilder b = new StringBuilder();
+//						for( Proposal p: singleTerms ) {
+//							b.append("- " + p.getProposal());
+//							if( p.getLabel() != null && ! p.getLabel().equals(p.getProposal()) ) {
+//								b.append(": " +p.getLabel());
+//							}
+//							b.append("\n");
+//						}
+//						
+//						if( value == null ) {
+//							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, null, null, -1) };	
+//						} else if( ! "inherit".equals(value) ) {
+//							for( Proposal p : singleTerms ) {
+//								if( value.equals(p.getProposal()) ) {
+//									return super.validate(dec);
+//								}
+//							}
+//							
+//							return new ValidationResult[] { new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, dec.getExpression().getTermGroups().get(0).getTerms().get(0), CssDslPackage.Literals.TERM__IDENTIFIER, -1) };
+//						}
+//						
+//					} else if( dec.getExpression().getTermGroups().get(0).getTerms().size() == partCount ) {
+//						StringBuilder b = new StringBuilder();
+//						for( Proposal p: singleTerms ) {
+//							b.append("- " + p.getProposal());
+//							if( p.getLabel() != null && ! p.getLabel().equals(p.getProposal()) ) {
+//								b.append(": " +p.getLabel());
+//							}
+//							b.append("\n");
+//						}
+//						
+//						List<ValidationResult> rv = new ArrayList<ValidationResult>();
+//						
+//						for( term t : dec.getExpression().getTermGroups().get(0).getTerms() ) {
+//							String value = t.getIdentifier();
+//							
+//							if( value == null ) {
+//								rv.add(new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, null, null, -1));
+//							} else {
+//								boolean v = false;
+//								for( Proposal p : singleTerms ) {
+//									if( value.equals(p.getProposal()) ) {
+//										v = true;
+//									}
+//								}
+//								if( ! v ) {
+//									rv.add(new ValidationResult(ValidationStatus.ERROR, "The value has to be:\n" + b, t, CssDslPackage.Literals.TERM__IDENTIFIER, -1) );
+//								}
+//							}
+//						}
+//						
+//						if( rv.isEmpty() ) {
+//							return super.validate(dec);
+//						} else {
+//							return rv.toArray(new ValidationResult[0]);
+//						}
+//					}
+//				}
+//			}
+//			
 			return super.validate(dec);
 		}
 	}
@@ -528,6 +528,14 @@ public interface CssDialectExtension {
 		
 		public int getPriority() {
 			return priority;
+		}
+		
+		/* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
+		@Override
+		public String toString() {
+			return "'" + proposal + "'";
 		}
 	}
 	

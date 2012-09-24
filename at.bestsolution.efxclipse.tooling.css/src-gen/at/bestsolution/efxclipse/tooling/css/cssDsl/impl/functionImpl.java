@@ -6,17 +6,24 @@
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +33,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.functionImpl#getName <em>Name</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.functionImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.functionImpl#getParams <em>Params</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,14 +62,14 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExpression()
+   * @see #getParams()
    * @generated
    * @ordered
    */
-  protected expr expression;
+  protected EList<CssTok> params;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,47 +120,13 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public expr getExpression()
+  public EList<CssTok> getParams()
   {
-    return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExpression(expr newExpression, NotificationChain msgs)
-  {
-    expr oldExpression = expression;
-    expression = newExpression;
-    if (eNotificationRequired())
+    if (params == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.FUNCTION__EXPRESSION, oldExpression, newExpression);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      params = new EObjectContainmentEList<CssTok>(CssTok.class, this, CssDslPackage.FUNCTION__PARAMS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExpression(expr newExpression)
-  {
-    if (newExpression != expression)
-    {
-      NotificationChain msgs = null;
-      if (expression != null)
-        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.FUNCTION__EXPRESSION, null, msgs);
-      if (newExpression != null)
-        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.FUNCTION__EXPRESSION, null, msgs);
-      msgs = basicSetExpression(newExpression, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.FUNCTION__EXPRESSION, newExpression, newExpression));
+    return params;
   }
 
   /**
@@ -166,8 +139,8 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
   {
     switch (featureID)
     {
-      case CssDslPackage.FUNCTION__EXPRESSION:
-        return basicSetExpression(null, msgs);
+      case CssDslPackage.FUNCTION__PARAMS:
+        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -184,8 +157,8 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
     {
       case CssDslPackage.FUNCTION__NAME:
         return getName();
-      case CssDslPackage.FUNCTION__EXPRESSION:
-        return getExpression();
+      case CssDslPackage.FUNCTION__PARAMS:
+        return getParams();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -195,6 +168,7 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -203,8 +177,9 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
       case CssDslPackage.FUNCTION__NAME:
         setName((String)newValue);
         return;
-      case CssDslPackage.FUNCTION__EXPRESSION:
-        setExpression((expr)newValue);
+      case CssDslPackage.FUNCTION__PARAMS:
+        getParams().clear();
+        getParams().addAll((Collection<? extends CssTok>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -223,8 +198,8 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
       case CssDslPackage.FUNCTION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case CssDslPackage.FUNCTION__EXPRESSION:
-        setExpression((expr)null);
+      case CssDslPackage.FUNCTION__PARAMS:
+        getParams().clear();
         return;
     }
     super.eUnset(featureID);
@@ -242,8 +217,8 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
     {
       case CssDslPackage.FUNCTION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case CssDslPackage.FUNCTION__EXPRESSION:
-        return expression != null;
+      case CssDslPackage.FUNCTION__PARAMS:
+        return params != null && !params.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -12,6 +12,7 @@ package at.bestsolution.efxclipse.tooling.css.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
@@ -27,6 +28,7 @@ import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
+import com.google.inject.name.Names;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -64,6 +66,11 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		
 		binder.bind(CssDialectExtensionComponent.class).toProvider(OsgiCssDialectExtensionComponentProvider.class);
 		
+//		binder.bind(IFormatter.class).to(DefaultFormatter.class);
+		
+//		binder.bind(IHiddenTokenHelper.class).to(HiddenTokenHelper.class);
+		
+		binder.bind(String.class).annotatedWith(Names.named(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)).toInstance(": ");
 	}
 	
 	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {

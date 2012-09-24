@@ -1,7 +1,15 @@
 package at.bestsolution.efxclipse.tooling.css.serializer;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation;
@@ -41,6 +49,48 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == CssDslPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case CssDslPackage.COLOR_TOK:
+				if(context == grammarAccess.getColorTokRule() ||
+				   context == grammarAccess.getCssTokRule()) {
+					sequence_ColorTok(context, (ColorTok) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.FUNC_TOK:
+				if(context == grammarAccess.getCssTokRule() ||
+				   context == grammarAccess.getFuncTokRule()) {
+					sequence_FuncTok(context, (FuncTok) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.IDENTIFIER_TOK:
+				if(context == grammarAccess.getCssTokRule() ||
+				   context == grammarAccess.getIdentifierTokRule()) {
+					sequence_IdentifierTok(context, (IdentifierTok) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.NUMBER_TOK:
+				if(context == grammarAccess.getCssTokRule() ||
+				   context == grammarAccess.getNumberTokRule()) {
+					sequence_NumberTok(context, (NumberTok) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.STRING_TOK:
+				if(context == grammarAccess.getCssTokRule() ||
+				   context == grammarAccess.getStringTokRule()) {
+					sequence_StringTok(context, (StringTok) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.SYMBOL_TOK:
+				if(context == grammarAccess.getCssTokRule() ||
+				   context == grammarAccess.getSymbolTokRule()) {
+					sequence_SymbolTok(context, (SymbolTok) semanticObject); 
+					return; 
+				}
+				else break;
 			case CssDslPackage.URL_TYPE:
 				if(context == grammarAccess.getURLTypeRule()) {
 					sequence_URLType(context, (URLType) semanticObject); 
@@ -48,6 +98,20 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 				}
 				else if(context == grammarAccess.getImportExpressionRule()) {
 					sequence_URLType_importExpression(context, (URLType) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.URL_TOK:
+				if(context == grammarAccess.getCssTokRule() ||
+				   context == grammarAccess.getUrlTokRule()) {
+					sequence_UrlTok(context, (UrlTok) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.WS_TOK:
+				if(context == grammarAccess.getCssTokRule() ||
+				   context == grammarAccess.getWSTokRule()) {
+					sequence_WSTok(context, (WSTok) semanticObject); 
 					return; 
 				}
 				else break;
@@ -153,6 +217,102 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
+	 *     color=HASH
+	 */
+	protected void sequence_ColorTok(EObject context, ColorTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.COLOR_TOK__COLOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.COLOR_TOK__COLOR));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getColorTokAccess().getColorHASHTerminalRuleCall_1_0(), semanticObject.getColor());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     func=function
+	 */
+	protected void sequence_FuncTok(EObject context, FuncTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.FUNC_TOK__FUNC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.FUNC_TOK__FUNC));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFuncTokAccess().getFuncFunctionParserRuleCall_1_0(), semanticObject.getFunc());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     id=ValidPropertyIdent
+	 */
+	protected void sequence_IdentifierTok(EObject context, IdentifierTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.IDENTIFIER_TOK__ID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.IDENTIFIER_TOK__ID));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getIdentifierTokAccess().getIdValidPropertyIdentParserRuleCall_1_0(), semanticObject.getId());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     num=numberTerm
+	 */
+	protected void sequence_NumberTok(EObject context, NumberTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.NUMBER_TOK__NUM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.NUMBER_TOK__NUM));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getNumberTokAccess().getNumNumberTermParserRuleCall_1_0(), semanticObject.getNum());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=STRING
+	 */
+	protected void sequence_StringTok(EObject context, StringTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.STRING_TOK__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.STRING_TOK__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getStringTokAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     symbol=COMMA
+	 */
+	protected void sequence_SymbolTok(EObject context, SymbolTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.SYMBOL_TOK__SYMBOL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.SYMBOL_TOK__SYMBOL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSymbolTokAccess().getSymbolCOMMATerminalRuleCall_1_0(), semanticObject.getSymbol());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     url=STRING
 	 */
 	protected void sequence_URLType(EObject context, URLType semanticObject) {
@@ -165,6 +325,31 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	 *     (url=STRING mediaList=media_list?)
 	 */
 	protected void sequence_URLType_importExpression(EObject context, URLType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     url=URLType
+	 */
+	protected void sequence_UrlTok(EObject context, UrlTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.URL_TOK__URL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.URL_TOK__URL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getUrlTokAccess().getUrlURLTypeParserRuleCall_1_0(), semanticObject.getUrl());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {WSTok}
+	 */
+	protected void sequence_WSTok(EObject context, WSTok semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -187,7 +372,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (property=css_property expression=expr prio=css_prio?)
+	 *     (property=css_property valueTokens+=CssTok+ prio=css_prio?)
 	 */
 	protected void sequence_css_declaration(EObject context, css_declaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -240,20 +425,10 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (name=IDENT expression=expr)
+	 *     (name=IDENT params+=CssTok+)
 	 */
 	protected void sequence_function(EObject context, function semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.FUNCTION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.FUNCTION__NAME));
-			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.FUNCTION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.FUNCTION__EXPRESSION));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFunctionAccess().getNameIDENTTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getFunctionAccess().getExpressionExprParserRuleCall_4_0(), semanticObject.getExpression());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -302,7 +477,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (simpleselectors+=simple_selector ((combinator=combinator selector=selector) | (combinator=combinator? selector=selector)?)?)
+	 *     (simpleselectors+=simple_selector ((combinator=combinator selector=selector) | (combinator=combinator? selector=selector))?)
 	 */
 	protected void sequence_selector(EObject context, selector semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -159,6 +159,13 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CssDslPackage.CSS_TOK:
+      {
+        CssTok cssTok = (CssTok)theEObject;
+        T result = caseCssTok(cssTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CssDslPackage.EXPR:
       {
         expr expr = (expr)theEObject;
@@ -192,6 +199,70 @@ public class CssDslSwitch<T> extends Switch<T>
         URLType urlType = (URLType)theEObject;
         T result = caseURLType(urlType);
         if (result == null) result = caseimportExpression(urlType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.SYMBOL_TOK:
+      {
+        SymbolTok symbolTok = (SymbolTok)theEObject;
+        T result = caseSymbolTok(symbolTok);
+        if (result == null) result = caseCssTok(symbolTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.WS_TOK:
+      {
+        WSTok wsTok = (WSTok)theEObject;
+        T result = caseWSTok(wsTok);
+        if (result == null) result = caseCssTok(wsTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.STRING_TOK:
+      {
+        StringTok stringTok = (StringTok)theEObject;
+        T result = caseStringTok(stringTok);
+        if (result == null) result = caseCssTok(stringTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.FUNC_TOK:
+      {
+        FuncTok funcTok = (FuncTok)theEObject;
+        T result = caseFuncTok(funcTok);
+        if (result == null) result = caseCssTok(funcTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.NUMBER_TOK:
+      {
+        NumberTok numberTok = (NumberTok)theEObject;
+        T result = caseNumberTok(numberTok);
+        if (result == null) result = caseCssTok(numberTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.IDENTIFIER_TOK:
+      {
+        IdentifierTok identifierTok = (IdentifierTok)theEObject;
+        T result = caseIdentifierTok(identifierTok);
+        if (result == null) result = caseCssTok(identifierTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.URL_TOK:
+      {
+        UrlTok urlTok = (UrlTok)theEObject;
+        T result = caseUrlTok(urlTok);
+        if (result == null) result = caseCssTok(urlTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.COLOR_TOK:
+      {
+        ColorTok colorTok = (ColorTok)theEObject;
+        T result = caseColorTok(colorTok);
+        if (result == null) result = caseCssTok(colorTok);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -392,6 +463,22 @@ public class CssDslSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Css Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Css Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCssTok(CssTok object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>expr</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -467,6 +554,134 @@ public class CssDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseURLType(URLType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Symbol Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Symbol Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSymbolTok(SymbolTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>WS Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WS Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWSTok(WSTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringTok(StringTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncTok(FuncTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Number Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Number Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumberTok(NumberTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Identifier Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Identifier Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIdentifierTok(IdentifierTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Url Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Url Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUrlTok(UrlTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Color Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Color Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColorTok(ColorTok object)
   {
     return null;
   }

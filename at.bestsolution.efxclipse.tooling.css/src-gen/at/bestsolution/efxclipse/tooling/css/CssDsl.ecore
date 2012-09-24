@@ -61,8 +61,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="css_declaration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//css_property"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//expr"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueTokens" upperBound="-1"
+        eType="#//CssTok" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="css_property">
@@ -75,6 +75,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="css_not">
     <eLiterals name="not" literal="not("/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CssTok"/>
   <eClassifiers xsi:type="ecore:EClass" name="expr">
     <eStructuralFeatures xsi:type="ecore:EReference" name="termGroups" upperBound="-1"
         eType="#//termGroup" containment="true"/>
@@ -95,11 +96,35 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="function">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//expr"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//CssTok" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="URLType" eSuperTypes="#//importExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediaList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SymbolTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WSTok" eSuperTypes="#//CssTok"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="func" eType="#//function"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NumberTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="num" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifierTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UrlTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="url" eType="#//URLType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ColorTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

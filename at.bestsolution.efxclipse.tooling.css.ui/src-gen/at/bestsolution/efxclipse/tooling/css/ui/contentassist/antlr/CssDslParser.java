@@ -61,6 +61,7 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCombinatorAccess().getAlternatives_0(), "rule__Combinator__Alternatives_0");
 					put(grammarAccess.getOperatorAccess().getAlternatives(), "rule__Operator__Alternatives");
 					put(grammarAccess.getUnary_operatorAccess().getAlternatives(), "rule__Unary_operator__Alternatives");
+					put(grammarAccess.getCssTokAccess().getAlternatives(), "rule__CssTok__Alternatives");
 					put(grammarAccess.getTermAccess().getAlternatives(), "rule__Term__Alternatives");
 					put(grammarAccess.getNumberTermAccess().getAlternatives_1(), "rule__NumberTerm__Alternatives_1");
 					put(grammarAccess.getNumAccess().getAlternatives(), "rule__Num__Alternatives");
@@ -85,7 +86,6 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSelectorAccess().getGroup(), "rule__Selector__Group__0");
 					put(grammarAccess.getSelectorAccess().getGroup_1_0(), "rule__Selector__Group_1_0__0");
 					put(grammarAccess.getSelectorAccess().getGroup_1_1(), "rule__Selector__Group_1_1__0");
-					put(grammarAccess.getSelectorAccess().getGroup_1_1_1(), "rule__Selector__Group_1_1_1__0");
 					put(grammarAccess.getSimple_selectorAccess().getGroup_0(), "rule__Simple_selector__Group_0__0");
 					put(grammarAccess.getCss_type_selectorAccess().getGroup(), "rule__Css_type_selector__Group__0");
 					put(grammarAccess.getCss_namespace_prefixAccess().getGroup(), "rule__Css_namespace_prefix__Group__0");
@@ -100,6 +100,14 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCss_negationAccess().getGroup(), "rule__Css_negation__Group__0");
 					put(grammarAccess.getFunctional_pseudoAccess().getGroup(), "rule__Functional_pseudo__Group__0");
 					put(grammarAccess.getCombinatorAccess().getGroup(), "rule__Combinator__Group__0");
+					put(grammarAccess.getSymbolTokAccess().getGroup(), "rule__SymbolTok__Group__0");
+					put(grammarAccess.getWSTokAccess().getGroup(), "rule__WSTok__Group__0");
+					put(grammarAccess.getStringTokAccess().getGroup(), "rule__StringTok__Group__0");
+					put(grammarAccess.getFuncTokAccess().getGroup(), "rule__FuncTok__Group__0");
+					put(grammarAccess.getNumberTokAccess().getGroup(), "rule__NumberTok__Group__0");
+					put(grammarAccess.getIdentifierTokAccess().getGroup(), "rule__IdentifierTok__Group__0");
+					put(grammarAccess.getUrlTokAccess().getGroup(), "rule__UrlTok__Group__0");
+					put(grammarAccess.getColorTokAccess().getGroup(), "rule__ColorTok__Group__0");
 					put(grammarAccess.getExprAccess().getGroup(), "rule__Expr__Group__0");
 					put(grammarAccess.getExprAccess().getGroup_1(), "rule__Expr__Group_1__0");
 					put(grammarAccess.getNumberTermAccess().getGroup(), "rule__NumberTerm__Group__0");
@@ -131,8 +139,8 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSelectorAccess().getSimpleselectorsAssignment_0(), "rule__Selector__SimpleselectorsAssignment_0");
 					put(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_0_0(), "rule__Selector__CombinatorAssignment_1_0_0");
 					put(grammarAccess.getSelectorAccess().getSelectorAssignment_1_0_1(), "rule__Selector__SelectorAssignment_1_0_1");
-					put(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1_0(), "rule__Selector__CombinatorAssignment_1_1_1_0");
-					put(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_1_1(), "rule__Selector__SelectorAssignment_1_1_1_1");
+					put(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1(), "rule__Selector__CombinatorAssignment_1_1_1");
+					put(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_2(), "rule__Selector__SelectorAssignment_1_1_2");
 					put(grammarAccess.getSimple_selectorAccess().getElementAssignment_0_0_0(), "rule__Simple_selector__ElementAssignment_0_0_0");
 					put(grammarAccess.getSimple_selectorAccess().getUniversalAssignment_0_0_1(), "rule__Simple_selector__UniversalAssignment_0_0_1");
 					put(grammarAccess.getSimple_selectorAccess().getSubSelectorsAssignment_0_1(), "rule__Simple_selector__SubSelectorsAssignment_0_1");
@@ -142,12 +150,19 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSub_selectorAccess().getAttribAssignment_2(), "rule__Sub_selector__AttribAssignment_2");
 					put(grammarAccess.getSub_selectorAccess().getPseudoclassAssignment_3(), "rule__Sub_selector__PseudoclassAssignment_3");
 					put(grammarAccess.getSub_selectorAccess().getNegotationAssignment_4(), "rule__Sub_selector__NegotationAssignment_4");
-					put(grammarAccess.getCss_declarationAccess().getPropertyAssignment_0(), "rule__Css_declaration__PropertyAssignment_0");
-					put(grammarAccess.getCss_declarationAccess().getExpressionAssignment_2(), "rule__Css_declaration__ExpressionAssignment_2");
-					put(grammarAccess.getCss_declarationAccess().getPrioAssignment_3(), "rule__Css_declaration__PrioAssignment_3");
+					put(grammarAccess.getCss_declarationAccess().getPropertyAssignment_1(), "rule__Css_declaration__PropertyAssignment_1");
+					put(grammarAccess.getCss_declarationAccess().getValueTokensAssignment_4(), "rule__Css_declaration__ValueTokensAssignment_4");
+					put(grammarAccess.getCss_declarationAccess().getPrioAssignment_5(), "rule__Css_declaration__PrioAssignment_5");
 					put(grammarAccess.getCss_propertyAccess().getNameAssignment_1(), "rule__Css_property__NameAssignment_1");
 					put(grammarAccess.getCss_negationAccess().getNotAssignment_1(), "rule__Css_negation__NotAssignment_1");
 					put(grammarAccess.getCss_negationAccess().getNegation_argAssignment_2(), "rule__Css_negation__Negation_argAssignment_2");
+					put(grammarAccess.getSymbolTokAccess().getSymbolAssignment_1(), "rule__SymbolTok__SymbolAssignment_1");
+					put(grammarAccess.getStringTokAccess().getValueAssignment_1(), "rule__StringTok__ValueAssignment_1");
+					put(grammarAccess.getFuncTokAccess().getFuncAssignment_1(), "rule__FuncTok__FuncAssignment_1");
+					put(grammarAccess.getNumberTokAccess().getNumAssignment_1(), "rule__NumberTok__NumAssignment_1");
+					put(grammarAccess.getIdentifierTokAccess().getIdAssignment_1(), "rule__IdentifierTok__IdAssignment_1");
+					put(grammarAccess.getUrlTokAccess().getUrlAssignment_1(), "rule__UrlTok__UrlAssignment_1");
+					put(grammarAccess.getColorTokAccess().getColorAssignment_1(), "rule__ColorTok__ColorAssignment_1");
 					put(grammarAccess.getExprAccess().getTermGroupsAssignment_0(), "rule__Expr__TermGroupsAssignment_0");
 					put(grammarAccess.getExprAccess().getTermGroupsAssignment_1_1(), "rule__Expr__TermGroupsAssignment_1_1");
 					put(grammarAccess.getTermGroupAccess().getTermsAssignment(), "rule__TermGroup__TermsAssignment");
@@ -158,7 +173,7 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTermAccess().getFunctionAssignment_4(), "rule__Term__FunctionAssignment_4");
 					put(grammarAccess.getTermAccess().getHexColorAssignment_5(), "rule__Term__HexColorAssignment_5");
 					put(grammarAccess.getFunctionAccess().getNameAssignment_1(), "rule__Function__NameAssignment_1");
-					put(grammarAccess.getFunctionAccess().getExpressionAssignment_4(), "rule__Function__ExpressionAssignment_4");
+					put(grammarAccess.getFunctionAccess().getParamsAssignment_3(), "rule__Function__ParamsAssignment_3");
 					put(grammarAccess.getURLTypeAccess().getUrlAssignment_2(), "rule__URLType__UrlAssignment_2");
 				}
 			};

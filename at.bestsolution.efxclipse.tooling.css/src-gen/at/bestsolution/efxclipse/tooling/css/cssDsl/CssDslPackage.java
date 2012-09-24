@@ -467,13 +467,13 @@ public interface CssDslPackage extends EPackage
   int CSS_DECLARATION__PROPERTY = 0;
 
   /**
-   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * The feature id for the '<em><b>Value Tokens</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CSS_DECLARATION__EXPRESSION = 1;
+  int CSS_DECLARATION__VALUE_TOKENS = 1;
 
   /**
    * The feature id for the '<em><b>Prio</b></em>' attribute.
@@ -559,6 +559,25 @@ public interface CssDslPackage extends EPackage
   int CSS_NEGATION_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssTokImpl <em>Css Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getCssTok()
+   * @generated
+   */
+  int CSS_TOK = 12;
+
+  /**
+   * The number of structural features of the '<em>Css Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_TOK_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.exprImpl <em>expr</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -566,7 +585,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getexpr()
    * @generated
    */
-  int EXPR = 12;
+  int EXPR = 13;
 
   /**
    * The feature id for the '<em><b>Term Groups</b></em>' containment reference list.
@@ -594,7 +613,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#gettermGroup()
    * @generated
    */
-  int TERM_GROUP = 13;
+  int TERM_GROUP = 14;
 
   /**
    * The feature id for the '<em><b>Terms</b></em>' containment reference list.
@@ -622,7 +641,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getterm()
    * @generated
    */
-  int TERM = 14;
+  int TERM = 15;
 
   /**
    * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -695,7 +714,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getfunction()
    * @generated
    */
-  int FUNCTION = 15;
+  int FUNCTION = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -707,13 +726,13 @@ public interface CssDslPackage extends EPackage
   int FUNCTION__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION__EXPRESSION = 1;
+  int FUNCTION__PARAMS = 1;
 
   /**
    * The number of structural features of the '<em>function</em>' class.
@@ -732,7 +751,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getURLType()
    * @generated
    */
-  int URL_TYPE = 16;
+  int URL_TYPE = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -771,6 +790,221 @@ public interface CssDslPackage extends EPackage
   int URL_TYPE_FEATURE_COUNT = IMPORT_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SymbolTokImpl <em>Symbol Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SymbolTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getSymbolTok()
+   * @generated
+   */
+  int SYMBOL_TOK = 18;
+
+  /**
+   * The feature id for the '<em><b>Symbol</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_TOK__SYMBOL = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Symbol Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.WSTokImpl <em>WS Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.WSTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getWSTok()
+   * @generated
+   */
+  int WS_TOK = 19;
+
+  /**
+   * The number of structural features of the '<em>WS Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WS_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.StringTokImpl <em>String Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.StringTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getStringTok()
+   * @generated
+   */
+  int STRING_TOK = 20;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_TOK__VALUE = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl <em>Func Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getFuncTok()
+   * @generated
+   */
+  int FUNC_TOK = 21;
+
+  /**
+   * The feature id for the '<em><b>Func</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_TOK__FUNC = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Func Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl <em>Number Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getNumberTok()
+   * @generated
+   */
+  int NUMBER_TOK = 22;
+
+  /**
+   * The feature id for the '<em><b>Num</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER_TOK__NUM = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Number Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl <em>Identifier Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdentifierTok()
+   * @generated
+   */
+  int IDENTIFIER_TOK = 23;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDENTIFIER_TOK__ID = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Identifier Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDENTIFIER_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UrlTokImpl <em>Url Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UrlTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getUrlTok()
+   * @generated
+   */
+  int URL_TOK = 24;
+
+  /**
+   * The feature id for the '<em><b>Url</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int URL_TOK__URL = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Url Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int URL_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ColorTokImpl <em>Color Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ColorTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getColorTok()
+   * @generated
+   */
+  int COLOR_TOK = 25;
+
+  /**
+   * The feature id for the '<em><b>Color</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLOR_TOK__COLOR = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Color Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLOR_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -778,7 +1012,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_not()
    * @generated
    */
-  int CSS_NOT = 17;
+  int CSS_NOT = 26;
 
 
   /**
@@ -1157,15 +1391,15 @@ public interface CssDslPackage extends EPackage
   EReference getcss_declaration_Property();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getExpression <em>Expression</em>}'.
+   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getValueTokens <em>Value Tokens</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getExpression()
+   * @return the meta object for the containment reference list '<em>Value Tokens</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getValueTokens()
    * @see #getcss_declaration()
    * @generated
    */
-  EReference getcss_declaration_Expression();
+  EReference getcss_declaration_ValueTokens();
 
   /**
    * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getPrio <em>Prio</em>}'.
@@ -1230,6 +1464,16 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EAttribute getcss_negation_Negation_arg();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok <em>Css Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Css Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok
+   * @generated
+   */
+  EClass getCssTok();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.expr <em>expr</em>}'.
@@ -1371,15 +1615,15 @@ public interface CssDslPackage extends EPackage
   EAttribute getfunction_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.function#getExpression <em>Expression</em>}'.
+   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.function#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.function#getExpression()
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.function#getParams()
    * @see #getfunction()
    * @generated
    */
-  EReference getfunction_Expression();
+  EReference getfunction_Params();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.URLType <em>URL Type</em>}'.
@@ -1412,6 +1656,163 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EAttribute getURLType_Url();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok <em>Symbol Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Symbol Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok
+   * @generated
+   */
+  EClass getSymbolTok();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok#getSymbol <em>Symbol</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Symbol</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok#getSymbol()
+   * @see #getSymbolTok()
+   * @generated
+   */
+  EAttribute getSymbolTok_Symbol();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok <em>WS Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>WS Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok
+   * @generated
+   */
+  EClass getWSTok();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok <em>String Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok
+   * @generated
+   */
+  EClass getStringTok();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok#getValue()
+   * @see #getStringTok()
+   * @generated
+   */
+  EAttribute getStringTok_Value();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok <em>Func Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Func Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok
+   * @generated
+   */
+  EClass getFuncTok();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getFunc <em>Func</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Func</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getFunc()
+   * @see #getFuncTok()
+   * @generated
+   */
+  EReference getFuncTok_Func();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok <em>Number Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Number Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok
+   * @generated
+   */
+  EClass getNumberTok();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getNum <em>Num</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Num</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getNum()
+   * @see #getNumberTok()
+   * @generated
+   */
+  EAttribute getNumberTok_Num();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok <em>Identifier Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Identifier Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok
+   * @generated
+   */
+  EClass getIdentifierTok();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok#getId()
+   * @see #getIdentifierTok()
+   * @generated
+   */
+  EAttribute getIdentifierTok_Id();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok <em>Url Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Url Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok
+   * @generated
+   */
+  EClass getUrlTok();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok#getUrl <em>Url</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Url</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok#getUrl()
+   * @see #getUrlTok()
+   * @generated
+   */
+  EReference getUrlTok_Url();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok <em>Color Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Color Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok
+   * @generated
+   */
+  EClass getColorTok();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getColor <em>Color</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Color</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getColor()
+   * @see #getColorTok()
+   * @generated
+   */
+  EAttribute getColorTok_Color();
 
   /**
    * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}'.
@@ -1747,12 +2148,12 @@ public interface CssDslPackage extends EPackage
     EReference CSS_DECLARATION__PROPERTY = eINSTANCE.getcss_declaration_Property();
 
     /**
-     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value Tokens</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CSS_DECLARATION__EXPRESSION = eINSTANCE.getcss_declaration_Expression();
+    EReference CSS_DECLARATION__VALUE_TOKENS = eINSTANCE.getcss_declaration_ValueTokens();
 
     /**
      * The meta object literal for the '<em><b>Prio</b></em>' attribute feature.
@@ -1805,6 +2206,16 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EAttribute CSS_NEGATION__NEGATION_ARG = eINSTANCE.getcss_negation_Negation_arg();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssTokImpl <em>Css Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getCssTok()
+     * @generated
+     */
+    EClass CSS_TOK = eINSTANCE.getCssTok();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.exprImpl <em>expr</em>}' class.
@@ -1919,12 +2330,12 @@ public interface CssDslPackage extends EPackage
     EAttribute FUNCTION__NAME = eINSTANCE.getfunction_Name();
 
     /**
-     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION__EXPRESSION = eINSTANCE.getfunction_Expression();
+    EReference FUNCTION__PARAMS = eINSTANCE.getfunction_Params();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.URLTypeImpl <em>URL Type</em>}' class.
@@ -1951,6 +2362,142 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EAttribute URL_TYPE__URL = eINSTANCE.getURLType_Url();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SymbolTokImpl <em>Symbol Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SymbolTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getSymbolTok()
+     * @generated
+     */
+    EClass SYMBOL_TOK = eINSTANCE.getSymbolTok();
+
+    /**
+     * The meta object literal for the '<em><b>Symbol</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYMBOL_TOK__SYMBOL = eINSTANCE.getSymbolTok_Symbol();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.WSTokImpl <em>WS Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.WSTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getWSTok()
+     * @generated
+     */
+    EClass WS_TOK = eINSTANCE.getWSTok();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.StringTokImpl <em>String Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.StringTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getStringTok()
+     * @generated
+     */
+    EClass STRING_TOK = eINSTANCE.getStringTok();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_TOK__VALUE = eINSTANCE.getStringTok_Value();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl <em>Func Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getFuncTok()
+     * @generated
+     */
+    EClass FUNC_TOK = eINSTANCE.getFuncTok();
+
+    /**
+     * The meta object literal for the '<em><b>Func</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_TOK__FUNC = eINSTANCE.getFuncTok_Func();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl <em>Number Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getNumberTok()
+     * @generated
+     */
+    EClass NUMBER_TOK = eINSTANCE.getNumberTok();
+
+    /**
+     * The meta object literal for the '<em><b>Num</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NUMBER_TOK__NUM = eINSTANCE.getNumberTok_Num();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl <em>Identifier Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdentifierTok()
+     * @generated
+     */
+    EClass IDENTIFIER_TOK = eINSTANCE.getIdentifierTok();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IDENTIFIER_TOK__ID = eINSTANCE.getIdentifierTok_Id();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UrlTokImpl <em>Url Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UrlTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getUrlTok()
+     * @generated
+     */
+    EClass URL_TOK = eINSTANCE.getUrlTok();
+
+    /**
+     * The meta object literal for the '<em><b>Url</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference URL_TOK__URL = eINSTANCE.getUrlTok_Url();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ColorTokImpl <em>Color Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ColorTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getColorTok()
+     * @generated
+     */
+    EClass COLOR_TOK = eINSTANCE.getColorTok();
+
+    /**
+     * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLOR_TOK__COLOR = eINSTANCE.getColorTok_Color();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.

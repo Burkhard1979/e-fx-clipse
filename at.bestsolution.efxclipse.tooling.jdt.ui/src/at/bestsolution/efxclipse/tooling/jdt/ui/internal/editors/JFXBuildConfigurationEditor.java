@@ -49,8 +49,10 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -58,6 +60,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.observable.map.IObservableMap;
 import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -66,6 +69,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -88,6 +93,7 @@ import org.eclipse.emf.databinding.FeaturePath;
 import org.eclipse.emf.databinding.IEMFValueProperty;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -117,6 +123,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.databinding.swt.IWidgetValueProperty;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.databinding.viewers.ObservableMapCellLabelProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -127,7 +134,6 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -135,10 +141,10 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -149,18 +155,16 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -198,7 +202,8 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
  * @author martin
  */
 @SuppressWarnings( "restriction" )
-public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements IResourceChangeListener {
+public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
+	final WritableValue bean = new WritableValue();
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 */
@@ -215,6 +220,14 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 	 * Controls whether the problem indication should be updated.
 	 */
 	private boolean updateProblemIndication = true;
+	/**
+	 * Resources that have been removed since last activation.
+	 */
+	protected Collection<Resource> removedResources = new ArrayList<Resource>();
+	/**
+	 * Resources that have been changed since last activation.
+	 */
+	protected Collection<Resource> changedResources = new ArrayList<Resource>();
 	/**
 	 * Resources that have been saved.
 	 */
@@ -246,26 +259,155 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 	 */
 	protected ISelectionChangedListener selectionChangedListener;
 
-	/**
-	 * This keeps track of the selection of the editor as a whole. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected ISelection editorSelection = StructuredSelection.EMPTY;
-
 	public JFXBuildConfigurationEditor() {
 		super();
 		initializeEditingDomain();
-
-		ResourcesPlugin.getWorkspace().addResourceChangeListener( this );
+		ResourcesPlugin.getWorkspace().addResourceChangeListener( resourceChangeListener );
 	}
 
 	/**
-	 * This sets up the editing domain for the model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This listens for workspace changes. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	protected void initializeEditingDomain() {
+	protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
+		public void resourceChanged( IResourceChangeEvent event ) {
+			IResourceDelta delta = event.getDelta();
+			try {
+				class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+					protected ResourceSet resourceSet = editingDomain.getResourceSet();
+					protected Collection<Resource> changedResources = new ArrayList<Resource>();
+					protected Collection<Resource> removedResources = new ArrayList<Resource>();
+
+					public boolean visit( IResourceDelta delta ) {
+						if ( delta.getResource().getType() == IResource.FILE ) {
+							if ( delta.getKind() == IResourceDelta.REMOVED || delta.getKind() == IResourceDelta.CHANGED
+									&& delta.getFlags() != IResourceDelta.MARKERS ) {
+								Resource resource = resourceSet.getResource( URI.createPlatformResourceURI( delta.getFullPath().toString(), true ), false );
+								if ( resource != null ) {
+									if ( delta.getKind() == IResourceDelta.REMOVED ) {
+										removedResources.add( resource );
+									}
+									else if ( !savedResources.remove( resource ) ) {
+										changedResources.add( resource );
+									}
+								}
+							}
+						}
+
+						return true;
+					}
+
+					public Collection<Resource> getChangedResources() {
+						return changedResources;
+					}
+
+					public Collection<Resource> getRemovedResources() {
+						return removedResources;
+					}
+				}
+
+				final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+				delta.accept( visitor );
+
+				if ( !visitor.getRemovedResources().isEmpty() ) {
+					getSite().getShell().getDisplay().asyncExec( new Runnable() {
+						public void run() {
+							removedResources.addAll( visitor.getRemovedResources() );
+							if ( !isDirty() ) {
+								getSite().getPage().closeEditor( JFXBuildConfigurationEditor.this, false );
+							}
+						}
+					} );
+				}
+
+				if ( !visitor.getChangedResources().isEmpty() ) {
+					getSite().getShell().getDisplay().asyncExec( new Runnable() {
+						@Override
+						public void run() {
+							changedResources.addAll( visitor.getChangedResources() );
+							if ( getSite().getPage().getActiveEditor() == JFXBuildConfigurationEditor.this ) {
+								handleActivate();
+							}
+						}
+					} );
+				}
+			}
+			catch ( CoreException e ) {
+				e.printStackTrace();
+			}
+		}
+	};
+
+	/**
+	 * Handles activation of the editor or it's associated views.
+	 */
+	private void handleActivate() {
+		if ( editingDomain.getResourceToReadOnlyMap() != null ) {
+			editingDomain.getResourceToReadOnlyMap().clear();
+		}
+
+		if ( !removedResources.isEmpty() ) {
+			if ( handleDirtyConflict() ) {
+				getSite().getPage().closeEditor( JFXBuildConfigurationEditor.this, false );
+			}
+			else {
+				removedResources.clear();
+				changedResources.clear();
+				savedResources.clear();
+			}
+		}
+		else if ( !changedResources.isEmpty() ) {
+			changedResources.removeAll( savedResources );
+			handleChangedResources();
+			changedResources.clear();
+			savedResources.clear();
+		}
+	}
+
+	/**
+	 * Shows a dialog that asks if conflicting changes should be discarded.
+	 */
+	private boolean handleDirtyConflict() {
+		return MessageDialog.openQuestion( getSite().getShell(), "File Conflict",
+				"There are unsaved changes that conflict with changes made outside the editor.  Do you wish to discard this editor's changes?" );
+	}
+
+	/**
+	 * Handles what to do with changed resources on activation.
+	 */
+	private void handleChangedResources() {
+		if ( !changedResources.isEmpty() && ( !isDirty() || handleDirtyConflict() ) ) {
+			if ( isDirty() ) {
+				changedResources.addAll( editingDomain.getResourceSet().getResources() );
+			}
+			editingDomain.getCommandStack().flush();
+
+			updateProblemIndication = false;
+			for ( Resource resource : changedResources ) {
+				if ( resource.isLoaded() ) {
+					resource.unload();
+					try {
+						resource.load( Collections.EMPTY_MAP );
+						bean.setValue( getTask() );
+						dbc.updateTargets();
+					}
+					catch ( IOException exception ) {
+						if ( !resourceToDiagnosticMap.containsKey( resource ) ) {
+							resourceToDiagnosticMap.put( resource, analyzeResourceProblems( resource, exception ) );
+						}
+					}
+				}
+			}
+			updateProblemIndication = true;
+			updateProblemIndication();
+		}
+	}
+
+	/**
+	 * This sets up the editing domain for the model editor.
+	 */
+	private void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
 		//
 		adapterFactory = new ComposedAdapterFactory( ComposedAdapterFactory.Descriptor.Registry.INSTANCE );
@@ -304,9 +446,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 	}
 
 	/**
-	 * This sets the selection into whichever viewer is active. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 * This sets the selection into whichever viewer is active.
 	 */
 	public void setSelectionToViewer( Collection<?> collection ) {
 		final Collection<?> theSelection = collection;
@@ -327,9 +467,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 	}
 
 	/**
-	 * This is for implementing {@link IEditorPart} and simply tests the command stack. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 * This is for implementing {@link IEditorPart} and simply tests the command stack.
 	 */
 	@Override
 	public boolean isDirty() {
@@ -337,9 +475,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 	}
 
 	/**
-	 * This is for implementing {@link IEditorPart} and simply saves the model file. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
+	 * This is for implementing {@link IEditorPart} and simply saves the model file.
 	 */
 	@Override
 	public void doSave( IProgressMonitor progressMonitor ) {
@@ -528,7 +664,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 
 	@Override
 	public void dispose() {
-		ResourcesPlugin.getWorkspace().removeResourceChangeListener( this );
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener( resourceChangeListener );
 		dbc.dispose();
 		super.dispose();
 	}
@@ -653,6 +789,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 		try {
 			IFileEditorInput i = (IFileEditorInput) editorInput;
 			properties.load( i.getFile().getContents() );
+			setPartName( editorInput.getName() );
 		}
 		catch ( IOException e ) {
 			// TODO Auto-generated catch block
@@ -669,8 +806,6 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 		FillLayout layout = new FillLayout();
 		composite.setLayout( layout );
 
-		// TODO
-		final WritableValue bean = new WritableValue();
 		bean.setValue( task );
 
 		toolkit = new FormToolkit( composite.getDisplay() );
@@ -902,7 +1037,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 				}
 				{
 					toolkit.createLabel( sectionClient, "Toolkit Type:" ).setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
-					ComboViewer c = new ComboViewer(sectionClient);
+					ComboViewer c = new ComboViewer( sectionClient );
 					c.getCombo().setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
 					c.setContentProvider( new ArrayContentProvider() );
 					c.setInput( ApplicationToolkitType.VALUES );
@@ -1402,10 +1537,14 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 				GridData gd = new GridData( GridData.FILL_HORIZONTAL );
 				gd.heightHint = t.getItemHeight() * 5;
 				v.getControl().setLayoutData( gd );
-				v.setContentProvider( ArrayContentProvider.getInstance() );
+				final ArrayContentProvider cp = new ArrayContentProvider();
+				v.setContentProvider( cp );
 
 				{
+					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ParametersPackage.Literals.KEY_VALUE_PAIR__KEY );
 					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					TableColumn tc = c.getColumn();
+					tc.setText( "Font name" );
 					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
 						public String getText( Object element ) {
@@ -1413,11 +1552,13 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 						}
 					} );
 					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 33 ) );
-					c.getColumn().setText( "Font name" );
 				}
 
 				{
+					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, ParametersPackage.Literals.KEY_VALUE_PAIR__VALUE );
 					TableViewerColumn c = new TableViewerColumn( v, SWT.NONE );
+					TableColumn tc = c.getColumn();
+					tc.setText( "File" );
 					c.setLabelProvider( new ColumnLabelProvider() {
 						@Override
 						public String getText( Object element ) {
@@ -1425,7 +1566,6 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 						}
 					} );
 					tablelayout.setColumnData( c.getColumn(), new ColumnWeightData( 67 ) );
-					c.getColumn().setText( "File" );
 				}
 				tableContainer.setLayout( tablelayout );
 				v.setInput( task.getFonts() );
@@ -1441,8 +1581,9 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 						@Override
 						public void widgetSelected( final SelectionEvent e ) {
 							if ( handleAddFont() ) {
-								v.setInput( task.getFonts() );
-								v.setSelection( new StructuredSelection( task.getFonts().get( task.getFonts().size() - 1 ) ) );
+								final KeyValuePair newFont = task.getFonts().get( task.getFonts().size() - 1 );
+								v.refresh();
+								v.setSelection( new StructuredSelection( newFont ) );
 							}
 						}
 					} );
@@ -1957,20 +2098,6 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 	}
 
 	@Override
-	public void resourceChanged( final IResourceChangeEvent event ) {
-		if ( event.getType() == IResourceChangeEvent.PRE_CLOSE ) {
-			Display.getDefault().asyncExec( new Runnable() {
-				public void run() {
-					IWorkbenchPage[] pages = getSite().getWorkbenchWindow().getPages();
-					for ( int i = 0; i < pages.length; i++ ) {
-						// update possible other pages here
-					}
-				}
-			} );
-		}
-	}
-
-	@Override
 	public Object getAdapter( @SuppressWarnings( "rawtypes" ) final Class adapter ) {
 		// TODO we could show an outline page here
 		return super.getAdapter( adapter );
@@ -2057,5 +2184,42 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart implements 
 			MessageDialog.openWarning( getSite().getShell(), "Invalid FX Build configuration", errors.toString() );
 		}
 		return status.isOK();
+	}
+}
+
+/**
+ * Implementation of a cell label provider which provides support for formatting using {@link MessageFormat#format(String, Object...)}
+ */
+class GenericMapCellLabelProvider extends ObservableMapCellLabelProvider {
+	private IObservableMap[] attributeMaps;
+	private String messagePattern;
+
+	/**
+	 * Create a new label provider
+	 * 
+	 * @param messagePattern
+	 *            the message pattern
+	 * @param attributeMaps
+	 *            the values to observe
+	 */
+	public GenericMapCellLabelProvider( String messagePattern, IObservableMap... attributeMaps ) {
+		super( attributeMaps );
+		this.messagePattern = messagePattern;
+		this.attributeMaps = attributeMaps;
+	}
+
+	@Override
+	public void update( ViewerCell cell ) {
+		Object element = cell.getElement();
+		Object[] values = new Object[attributeMaps.length];
+		int i = 0;
+		for ( IObservableMap m : attributeMaps ) {
+			values[i++] = m.get( element );
+			if ( values[i - 1] == null ) {
+				cell.setText( "" ); //$NON-NLS-1$
+				return;
+			}
+		}
+		cell.setText( MessageFormat.format( messagePattern, values ) );
 	}
 }

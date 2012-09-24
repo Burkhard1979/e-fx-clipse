@@ -19,6 +19,8 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
@@ -31,8 +33,8 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 
 	private @Inject ICssExtManager cssExtManager;
 	private @Inject CssExtDocParser docParser;
+	private @Inject CssExtParser parser;
 	private @Inject IQualifiedNameProvider nameProvider;
-
 	
 	public CssExtDialectExtension() {
 		Injector i = CssExtDslActivator.getInstance().getInjector(CssExtDslActivator.AT_BESTSOLUTION_EFXCLIPSE_TOOLING_CSS_CSSEXT_CSSEXTDSL);
@@ -154,6 +156,11 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 	@Override
 	public String getDocHead(EObject o) {
 		return docParser.getDocHead(o);
+	}
+	
+	@Override
+	public List<Proposal> findProposals(String element, String attribute, List<CssTok> prefixToks, String prefix) {
+		return parser.findProposals(element, attribute, prefixToks, prefix);
 	}
 
 }

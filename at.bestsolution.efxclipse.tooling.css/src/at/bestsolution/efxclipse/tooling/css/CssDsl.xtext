@@ -55,8 +55,9 @@ ruleset:
 ;
 
 selector hidden():
-	simpleselectors+=simple_selector ( combinator=combinator selector=selector | WS+ ( combinator=combinator? selector=selector )? )?
+	simpleselectors+=simple_selector ( combinator=combinator selector=selector | WS+ combinator=combinator? selector=selector )?
 ;
+
 
 simple_selector:
 	((element = element_name | universal=css_universal) subSelectors+=sub_selector*)
@@ -96,8 +97,8 @@ css_attrib:
 	'[' (IDENT | ReservedWords) ( ( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) (( IDENT | ReservedWords ) | STRING ) )? ']'
 ;
 
-css_declaration:
-	property=css_property ':' expression=expr prio=css_prio?
+css_declaration hidden(ML_COMMENT):
+	WS* property=css_property WS* ':' valueTokens+=CssTok+ prio=css_prio?
 ;
 
 css_prio:
@@ -157,6 +158,49 @@ unary_operator
   : '-' | '+'
   ;
 
+SymbolTok returns CssTok hidden(ML_COMMENT):
+	{SymbolTok} symbol=COMMA
+;
+
+WSTok returns CssTok hidden(ML_COMMENT):
+	{WSTok} WS
+;
+
+StringTok returns CssTok hidden(ML_COMMENT): 
+	{StringTok} value=STRING
+;
+
+FuncTok returns CssTok hidden(ML_COMMENT):
+	{FuncTok} func=function
+;
+
+NumberTok returns CssTok hidden(ML_COMMENT):
+	{NumberTok} num=numberTerm
+;
+
+IdentifierTok returns CssTok hidden(ML_COMMENT):
+	{IdentifierTok} id=ValidPropertyIdent
+;
+
+UrlTok returns CssTok hidden(ML_COMMENT):
+	{UrlTok} url=URLType
+;
+
+ColorTok returns CssTok hidden(ML_COMMENT):
+	{ColorTok} color=HASH
+;
+
+CssTok hidden(ML_COMMENT):
+	SymbolTok |
+	WSTok |
+	StringTok |
+	FuncTok |
+	NumberTok |
+	IdentifierTok |
+	UrlTok |
+	ColorTok
+;
+
 expr hidden(WS,ML_COMMENT): termGroups+=termGroup ( operator termGroups+=termGroup )*
   ;
 
@@ -209,7 +253,7 @@ num:
 ;
 
 function hidden():
-	('-')?name=IDENT '(' WS* expression=expr WS* ')'
+	('-')?name=IDENT '(' params+=CssTok+/*expression=expr*/ ')'
 ;
 
 HexColor hidden():

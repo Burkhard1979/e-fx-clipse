@@ -25,11 +25,15 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.SearchHelper.ElementDefinitionFilter;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.SearchHelper.PropertyDefinitionFilter;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.SearchHelper.SearchFilter;
 
 public class CssExtManager implements ICssExtManager {
 
@@ -111,7 +115,12 @@ public class CssExtManager implements ICssExtManager {
 	public ElementDefinition findElementByName(final String elName) {
 		load();
 		
-		List<ElementDefinition> search = new SearchHelper(model).findElementByFilter(new ElementDefinitionFilter() {
+		List<ElementDefinition> search = new SearchHelper(model).findObjects(new SearchFilter<ElementDefinition>() {
+			
+			@Override
+			public Class<ElementDefinition> getSearchClass() {
+				return ElementDefinition.class;
+			}
 			
 			@Override
 			public boolean returnOnFirstHit() {
@@ -155,6 +164,36 @@ public class CssExtManager implements ICssExtManager {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public CSSRule resolveReference(final CSSRuleRef ref) {
+		
+		List<CSSRuleDefinition> found = new SearchHelper(model).findObjects(new SearchFilter<CSSRuleDefinition>() {
+			@Override
+			public Class<CSSRuleDefinition> getSearchClass() {
+				return CSSRuleDefinition.class;
+			}
+			
+			@Override
+			public boolean returnOnFirstHit() {
+				return true;
+			}
+			
+			@Override
+			public boolean filter(CSSRuleDefinition obj) {
+				if (obj.getName().equals(ref.getRef())) {
+					return true;
+				}
+				return false;
+			}
+			
+		});
+		if (found.isEmpty()) {
+			return null;
+		}
+		else {
+			return found.get(0).getRule();
+		}
 	}
 	
 }

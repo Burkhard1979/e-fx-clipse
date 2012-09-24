@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+
 /**
  * @author ccaks
  *
@@ -102,5 +104,7 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 	 * @return
 	 */
 	public String getDocHead(EObject o);
+	
+	public List<Proposal> findProposals(String element, String attribute, List<CssTok> prefixToks, String prefix);
 	
 }

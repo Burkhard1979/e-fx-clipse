@@ -80,11 +80,20 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
       case CssDslPackage.CSS_DECLARATION: return createcss_declaration();
       case CssDslPackage.CSS_PROPERTY: return createcss_property();
       case CssDslPackage.CSS_NEGATION: return createcss_negation();
+      case CssDslPackage.CSS_TOK: return createCssTok();
       case CssDslPackage.EXPR: return createexpr();
       case CssDslPackage.TERM_GROUP: return createtermGroup();
       case CssDslPackage.TERM: return createterm();
       case CssDslPackage.FUNCTION: return createfunction();
       case CssDslPackage.URL_TYPE: return createURLType();
+      case CssDslPackage.SYMBOL_TOK: return createSymbolTok();
+      case CssDslPackage.WS_TOK: return createWSTok();
+      case CssDslPackage.STRING_TOK: return createStringTok();
+      case CssDslPackage.FUNC_TOK: return createFuncTok();
+      case CssDslPackage.NUMBER_TOK: return createNumberTok();
+      case CssDslPackage.IDENTIFIER_TOK: return createIdentifierTok();
+      case CssDslPackage.URL_TOK: return createUrlTok();
+      case CssDslPackage.COLOR_TOK: return createColorTok();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -261,6 +270,17 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public CssTok createCssTok()
+  {
+    CssTokImpl cssTok = new CssTokImpl();
+    return cssTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public expr createexpr()
   {
     exprImpl expr = new exprImpl();
@@ -309,6 +329,94 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
   {
     URLTypeImpl urlType = new URLTypeImpl();
     return urlType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SymbolTok createSymbolTok()
+  {
+    SymbolTokImpl symbolTok = new SymbolTokImpl();
+    return symbolTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WSTok createWSTok()
+  {
+    WSTokImpl wsTok = new WSTokImpl();
+    return wsTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringTok createStringTok()
+  {
+    StringTokImpl stringTok = new StringTokImpl();
+    return stringTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FuncTok createFuncTok()
+  {
+    FuncTokImpl funcTok = new FuncTokImpl();
+    return funcTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NumberTok createNumberTok()
+  {
+    NumberTokImpl numberTok = new NumberTokImpl();
+    return numberTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IdentifierTok createIdentifierTok()
+  {
+    IdentifierTokImpl identifierTok = new IdentifierTokImpl();
+    return identifierTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UrlTok createUrlTok()
+  {
+    UrlTokImpl urlTok = new UrlTokImpl();
+    return urlTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ColorTok createColorTok()
+  {
+    ColorTokImpl colorTok = new ColorTokImpl();
+    return colorTok;
   }
 
   /**

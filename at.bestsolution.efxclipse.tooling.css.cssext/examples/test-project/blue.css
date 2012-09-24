@@ -1,7 +1,32 @@
+a .b_ {
+	a:x(1p,p2,p3);
+	b:y,y ;
+}
+
+Debug .p0 {
+	p0:           x   x x;
+	p0:x ;
+	p1: a b c;
+	p2: x a y;
+	p2: w;
+	/* p3 [ A | B | C ] [ D double ]? [ x [ y | z ] ]? p; */
+	p3: B x z  p ;
+	
+	/*  <border-style> [ , <border-style> ]*
+	 * <dash-style> [ phase double ]? [ centered | inside | outside ]? [ line-join [ miter double | bevel | round ] ]? [ line-cap [ square | butt | round ] ]?
+	 */
+	-fx-border-style: dotted phase 0.0 centered line-join miter 0.0 line-cap round , dotted inside line-join miter 0.0 line-cap round , dashed , dotted inside ,;
+	-fx-border-style:dashed, dashed, none ;
+	
+	
+}
+
+
 .root {
     -fx-base: #7eaacc;
     -fx-background: #7eaacc;
     -fx-control-inner-background: white;
+    asdf: s, d;
 }
 
 .tab {
@@ -10,9 +35,14 @@
 
 .button {
     -fx-background-color: transparent;
-    -fx-padding: 4;
+    -fx-padding: .0px .0px .0px,  .0px .0px .0px .0px 1%;
+   /* [ top-left | top-center | top-right | center-left | center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right ] */
+    -fx-alignment: top-right ;  
+    asdf: nixda blabla #ffffff;
+    -fx-alternative-row-fill-visible: true;
+    -some-color: #ffffff;
+    
 }
-
 .button:hover {
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
     -fx-color: -fx-hover-base;
