@@ -8,18 +8,11 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.tooling.css.jfx.scene.control;
 
-import java.util.ArrayList;
-import java.util.List;
+/**
+ * @author tomschindl
+ *
+ */
+public class dummy {
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.BooleanProperty;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
-
-public class MenuBar {
-	public static List<Property> init() {
-		List<Property> properties = new ArrayList<Property>();
-		properties.add(new BooleanProperty("-fx-use-system-menu-bar"));
-		return properties;
-	}
 }
