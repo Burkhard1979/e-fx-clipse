@@ -651,35 +651,39 @@ ruleruleset returns [EObject current=null]
 	    }
 
 )
-))*	otherlv_3='{' 
+))*(this_WS_3=RULE_WS
+    { 
+    newLeafNode(this_WS_3, grammarAccess.getRulesetAccess().getWSTerminalRuleCall_2()); 
+    }
+)*	otherlv_4='{' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getRulesetAccess().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_4, grammarAccess.getRulesetAccess().getLeftCurlyBracketKeyword_3());
     }
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_3_0_0()); 
+	        newCompositeNode(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_4_0_0()); 
 	    }
-		lv_declarations_4_0=rulecss_declaration		{
+		lv_declarations_5_0=rulecss_declaration		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRulesetRule());
 	        }
        		add(
        			$current, 
        			"declarations",
-        		lv_declarations_4_0, 
+        		lv_declarations_5_0, 
         		"css_declaration");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_5=';' 
+)	otherlv_6=';' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getRulesetAccess().getSemicolonKeyword_3_1());
+    	newLeafNode(otherlv_6, grammarAccess.getRulesetAccess().getSemicolonKeyword_4_1());
     }
-)*	otherlv_6='}' 
+)*	otherlv_7='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getRulesetAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_7, grammarAccess.getRulesetAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;

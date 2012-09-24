@@ -49,7 +49,7 @@ medium:
 ;
 
 ruleset:
-	selectors+=selector ( COMMA selectors+=selector )* '{'
+	selectors+=selector ( COMMA selectors+=selector )* WS* '{'
 		(declarations+=css_declaration ';' )*
 	'}'
 ;

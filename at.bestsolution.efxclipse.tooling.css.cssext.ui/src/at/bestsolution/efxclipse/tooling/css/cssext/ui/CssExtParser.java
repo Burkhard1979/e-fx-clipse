@@ -484,20 +484,23 @@ public class CssExtParser {
 		
 		List<ParseResult> result = new ArrayList<ParseResult>();
 		
-		switch (r.getCardinality()) {
-		case "?":
-			//execute 0-1
-			parseOptional(g, in, r.getRule(), result);
-			break;
-		case "*":
-			// TODO execute 0-n
-			parseStar(g, in, r.getRule(), result, 0);
-			break;
-		case "+":
-			// TODO execute 1-n
-			parsePlus(g, in, r.getRule(), result, 0);
-			break;
+		if( r.getCardinality() != null && ! r.getCardinality().isEmpty() ) {
+			switch (r.getCardinality().charAt(0)) {
+			case '?':
+				//execute 0-1
+				parseOptional(g, in, r.getRule(), result);
+				break;
+			case '*':
+				// TODO execute 0-n
+				parseStar(g, in, r.getRule(), result, 0);
+				break;
+			case '+':
+				// TODO execute 1-n
+				parsePlus(g, in, r.getRule(), result, 0);
+				break;
+			}	
 		}
+		
 		
 		return result;
 	}

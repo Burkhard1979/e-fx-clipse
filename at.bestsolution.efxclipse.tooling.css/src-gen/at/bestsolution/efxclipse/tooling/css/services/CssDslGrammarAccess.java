@@ -353,18 +353,19 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCOMMATerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Assignment cSelectorsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cSelectorsSelectorParserRuleCall_1_1_0 = (RuleCall)cSelectorsAssignment_1_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cDeclarationsAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final RuleCall cDeclarationsCss_declarationParserRuleCall_3_0_0 = (RuleCall)cDeclarationsAssignment_3_0.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final RuleCall cWSTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cDeclarationsAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cDeclarationsCss_declarationParserRuleCall_4_0_0 = (RuleCall)cDeclarationsAssignment_4_0.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//ruleset:
-		//	selectors+=selector (COMMA selectors+=selector)* "{" (declarations+=css_declaration ";")* "}";
+		//	selectors+=selector (COMMA selectors+=selector)* WS* "{" (declarations+=css_declaration ";")* "}";
 		public ParserRule getRule() { return rule; }
 
-		//selectors+=selector (COMMA selectors+=selector)* "{" (declarations+=css_declaration ";")* "}"
+		//selectors+=selector (COMMA selectors+=selector)* WS* "{" (declarations+=css_declaration ";")* "}"
 		public Group getGroup() { return cGroup; }
 
 		//selectors+=selector
@@ -385,23 +386,26 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//selector
 		public RuleCall getSelectorsSelectorParserRuleCall_1_1_0() { return cSelectorsSelectorParserRuleCall_1_1_0; }
 
+		//WS*
+		public RuleCall getWSTerminalRuleCall_2() { return cWSTerminalRuleCall_2; }
+
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//(declarations+=css_declaration ";")*
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//declarations+=css_declaration
-		public Assignment getDeclarationsAssignment_3_0() { return cDeclarationsAssignment_3_0; }
+		public Assignment getDeclarationsAssignment_4_0() { return cDeclarationsAssignment_4_0; }
 
 		//css_declaration
-		public RuleCall getDeclarationsCss_declarationParserRuleCall_3_0_0() { return cDeclarationsCss_declarationParserRuleCall_3_0_0; }
+		public RuleCall getDeclarationsCss_declarationParserRuleCall_4_0_0() { return cDeclarationsCss_declarationParserRuleCall_4_0_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_3_1() { return cSemicolonKeyword_3_1; }
+		public Keyword getSemicolonKeyword_4_1() { return cSemicolonKeyword_4_1; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class SelectorElements extends AbstractParserRuleElementFinder {
@@ -2191,7 +2195,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ruleset:
-	//	selectors+=selector (COMMA selectors+=selector)* "{" (declarations+=css_declaration ";")* "}";
+	//	selectors+=selector (COMMA selectors+=selector)* WS* "{" (declarations+=css_declaration ";")* "}";
 	public RulesetElements getRulesetAccess() {
 		return (pRuleset != null) ? pRuleset : (pRuleset = new RulesetElements());
 	}
