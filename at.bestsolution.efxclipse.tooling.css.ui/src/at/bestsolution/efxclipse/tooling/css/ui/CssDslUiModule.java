@@ -12,8 +12,6 @@ package at.bestsolution.efxclipse.tooling.css.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
-import org.eclipse.xtext.formatting.IFormatter;
-import org.eclipse.xtext.parsetree.reconstr.IHiddenTokenHelper;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -21,8 +19,6 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import at.bestsolution.efxclipse.tooling.css.ui.format.DefaultFormatter;
-import at.bestsolution.efxclipse.tooling.css.ui.format.HiddenTokenHelper;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingCalculator;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
