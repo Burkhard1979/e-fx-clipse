@@ -86,7 +86,6 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSelectorAccess().getGroup(), "rule__Selector__Group__0");
 					put(grammarAccess.getSelectorAccess().getGroup_1_0(), "rule__Selector__Group_1_0__0");
 					put(grammarAccess.getSelectorAccess().getGroup_1_1(), "rule__Selector__Group_1_1__0");
-					put(grammarAccess.getSelectorAccess().getGroup_1_1_1(), "rule__Selector__Group_1_1_1__0");
 					put(grammarAccess.getSimple_selectorAccess().getGroup_0(), "rule__Simple_selector__Group_0__0");
 					put(grammarAccess.getCss_type_selectorAccess().getGroup(), "rule__Css_type_selector__Group__0");
 					put(grammarAccess.getCss_namespace_prefixAccess().getGroup(), "rule__Css_namespace_prefix__Group__0");
@@ -140,8 +139,8 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSelectorAccess().getSimpleselectorsAssignment_0(), "rule__Selector__SimpleselectorsAssignment_0");
 					put(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_0_0(), "rule__Selector__CombinatorAssignment_1_0_0");
 					put(grammarAccess.getSelectorAccess().getSelectorAssignment_1_0_1(), "rule__Selector__SelectorAssignment_1_0_1");
-					put(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1_0(), "rule__Selector__CombinatorAssignment_1_1_1_0");
-					put(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_1_1(), "rule__Selector__SelectorAssignment_1_1_1_1");
+					put(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1(), "rule__Selector__CombinatorAssignment_1_1_1");
+					put(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_2(), "rule__Selector__SelectorAssignment_1_1_2");
 					put(grammarAccess.getSimple_selectorAccess().getElementAssignment_0_0_0(), "rule__Simple_selector__ElementAssignment_0_0_0");
 					put(grammarAccess.getSimple_selectorAccess().getUniversalAssignment_0_0_1(), "rule__Simple_selector__UniversalAssignment_0_0_1");
 					put(grammarAccess.getSimple_selectorAccess().getSubSelectorsAssignment_0_1(), "rule__Simple_selector__SubSelectorsAssignment_0_1");

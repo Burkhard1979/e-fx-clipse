@@ -17,6 +17,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -29,6 +31,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
+import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
@@ -68,6 +71,7 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 		extension = context.getService(ref);
 	}
 	
+	// TODO implement support for filtering by element name
 	public void complete_css_property(ruleset model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		URI uri = model.eResource().getURI();
 		
@@ -117,12 +121,19 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 				
 				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(property.name, displayString, img, context);
 				
-				
-				
 				if (cp != null) {
 					cp.setAdditionalProposalInfo(model);
 					cp.setHover(new PropertyHover(property));
-
+					cp.setTriggerCharacters(new char[] { ' ' });
+					cp.setTextApplier(new IReplacementTextApplier() {
+						
+						@Override
+						public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
+							document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + ": ");
+							proposal.setCursorPosition(proposal.getCursorPosition()+2);
+						}
+					});
+					
 					acceptor.accept(cp);
 				}
 			}
@@ -230,7 +241,32 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 			if (cp != null) {
 				cp.setAdditionalProposalInfo(model);
 				//cp.setHover(new PropertyHover(property));
-
+				cp.setAutoInsertable(true);
+				cp.setTriggerCharacters(new char[] { ' ' });
+				cp.setTextApplier(new IReplacementTextApplier() {
+					
+					@Override
+					public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
+//						proposal.setReplaceContextLength((proposal.getReplacementString() + " ").length());
+						
+						System.err.println("apply " + proposal.getReplacementString());
+						
+						if (",".equals(proposal.getReplacementString())) {
+							document.replace(proposal.getReplacementOffset()-1, proposal.getReplacementLength() + 1, proposal.getReplacementString() + " ");
+//							proposal.setCursorPosition(proposal.getCursorPosition() + 1);
+						}
+						else if (",".equals(proposal.getReplacementString())) {
+							document.replace(proposal.getReplacementOffset()-1, proposal.getReplacementLength() + 1, proposal.getReplacementString() + "\n");
+						}
+						else {
+							document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + " ");
+							proposal.setCursorPosition(proposal.getCursorPosition() + 1);
+							
+						}
+						
+					}
+				});
+				
 				acceptor.accept(cp);
 			}
 		}

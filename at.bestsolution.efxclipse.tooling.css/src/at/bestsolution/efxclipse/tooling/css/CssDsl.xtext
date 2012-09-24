@@ -55,8 +55,9 @@ ruleset:
 ;
 
 selector hidden():
-	simpleselectors+=simple_selector ( combinator=combinator selector=selector | WS+ ( combinator=combinator? selector=selector )? )?
+	simpleselectors+=simple_selector ( combinator=combinator selector=selector | WS+ combinator=combinator? selector=selector )?
 ;
+
 
 simple_selector:
 	((element = element_name | universal=css_universal) subSelectors+=sub_selector*)

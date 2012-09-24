@@ -4431,6 +4431,7 @@ rule__Selector__Group_1_1__1
     }
 :
 	rule__Selector__Group_1_1__1__Impl
+	rule__Selector__Group_1_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4442,9 +4443,9 @@ rule__Selector__Group_1_1__1__Impl
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getGroup_1_1_1()); }
-(rule__Selector__Group_1_1_1__0)?
-{ after(grammarAccess.getSelectorAccess().getGroup_1_1_1()); }
+{ before(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1()); }
+(rule__Selector__CombinatorAssignment_1_1_1)?
+{ after(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1()); }
 )
 
 ;
@@ -4453,31 +4454,26 @@ finally {
 }
 
 
-
-
-
-
-rule__Selector__Group_1_1_1__0
+rule__Selector__Group_1_1__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Selector__Group_1_1_1__0__Impl
-	rule__Selector__Group_1_1_1__1
+	rule__Selector__Group_1_1__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Selector__Group_1_1_1__0__Impl
+rule__Selector__Group_1_1__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1_0()); }
-(rule__Selector__CombinatorAssignment_1_1_1_0)?
-{ after(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1_0()); }
+{ before(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_2()); }
+(rule__Selector__SelectorAssignment_1_1_2)
+{ after(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_2()); }
 )
 
 ;
@@ -4486,32 +4482,6 @@ finally {
 }
 
 
-rule__Selector__Group_1_1_1__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Selector__Group_1_1_1__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Selector__Group_1_1_1__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_1_1()); }
-(rule__Selector__SelectorAssignment_1_1_1_1)
-{ after(grammarAccess.getSelectorAccess().getSelectorAssignment_1_1_1_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
 
 
 
@@ -7330,14 +7300,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Selector__CombinatorAssignment_1_1_1_0
+rule__Selector__CombinatorAssignment_1_1_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0_0()); }
-	rulecombinator{ after(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0_0()); }
+{ before(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0()); }
+	rulecombinator{ after(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0()); }
 )
 
 ;
@@ -7345,14 +7315,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Selector__SelectorAssignment_1_1_1_1
+rule__Selector__SelectorAssignment_1_1_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_1_1_1_0()); }
-	ruleselector{ after(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_1_1_1_0()); }
+{ before(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_1_2_0()); }
+	ruleselector{ after(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_1_2_0()); }
 )
 
 ;

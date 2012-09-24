@@ -1,17 +1,24 @@
-Debug.p0 {
-	p0: x x  x;
-	p0: x;
+a .b_ {
+	a:x(1p,p2,p3);
+	b:y,y ;
+}
+
+Debug .p0 {
+	p0:           x   x x;
+	p0:x ;
 	p1: a b c;
 	p2: x a y;
 	p2: w;
 	/* p3 [ A | B | C ] [ D double ]? [ x [ y | z ] ]? p; */
-	p3: B x z p;
+	p3: B x z  p ;
 	
 	/*  <border-style> [ , <border-style> ]*
 	 * <dash-style> [ phase double ]? [ centered | inside | outside ]? [ line-join [ miter double | bevel | round ] ]? [ line-cap [ square | butt | round ] ]?
 	 */
 	-fx-border-style: dotted phase 0.0 centered line-join miter 0.0 line-cap round , dotted inside line-join miter 0.0 line-cap round , dashed , dotted inside ,;
-	-fx-border-style: 
+	-fx-border-style:dashed, dashed, none ;
+	
+	
 }
 
 

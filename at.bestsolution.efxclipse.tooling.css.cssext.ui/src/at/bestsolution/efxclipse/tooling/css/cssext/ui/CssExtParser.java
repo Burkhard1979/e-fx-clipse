@@ -9,6 +9,7 @@ import java.util.Queue;
 import org.eclipse.core.runtime.Assert;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
@@ -21,6 +22,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleOr;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRulePostfix;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRegex;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
@@ -198,6 +200,8 @@ public class CssExtParser {
 			break;
 		case CssExtDslPackage.CSS_RULE_POSTFIX: result = parsePostfix(g, l, (CSSRulePostfix) rule);
 			break;
+		case CssExtDslPackage.CSS_RULE_REGEX: result = parseRegex(g, l, (CSSRuleRegex)rule);
+			break;
 		default:
 			if ("double".equals(rule.getType())) result = parseDouble(g, l, rule);
 			else System.err.println("WARINING " + rule + " not implemented! (classifierID="+rule.eClass().getClassifierID()+")");
@@ -216,6 +220,42 @@ public class CssExtParser {
 		}
 		
 		System.err.println(d+ depth+" "+string);
+	}
+	
+	private List<ParseResult> parseRegex(GlobalData g, Input l, CSSRuleRegex r) {
+		List<ParseResult> result = new ArrayList<ParseResult>();
+		
+		String regex = r.getRegex().replaceAll("\\$", "");
+		
+		
+		Input localInput = l.copy();
+		
+		
+		CssTok tok = localInput.getNextTok();
+		
+		while (tok instanceof WSTok) {
+			tok = localInput.getNextTok();
+		}
+		System.err.println("REGEX1 -> " + regex + " / / " + tok);
+		
+		if (tok instanceof ColorTok) {
+			String s = ((ColorTok)tok).getColor();
+			System.err.println("REGEX2 -> " + regex + " / / " + s);
+			if (s.matches(regex)) {
+				ParseResult r1 = new ParseResult();
+				r1.status = Status.MATCH;
+				r1.remainingInput = localInput;
+				result.add(r1);
+			}
+			else {
+				ParseResult r1 = new ParseResult();
+				r1.status = Status.INVALID;
+				r1.remainingInput = localInput;
+				result.add(r1);
+			}
+		}
+		
+		return result;
 	}
 	
 	private List<ParseResult> parseBracket(GlobalData g, Input l, CSSRuleBracket r) {

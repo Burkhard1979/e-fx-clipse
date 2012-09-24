@@ -768,10 +768,10 @@ ruleselector returns [EObject current=null]
     { 
     newLeafNode(this_WS_3, grammarAccess.getSelectorAccess().getWSTerminalRuleCall_1_1_0()); 
     }
-)+((
+)+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0_0()); 
+	        newCompositeNode(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0()); 
 	    }
 		lv_combinator_4_0=rulecombinator		{
 	        if ($current==null) {
@@ -789,7 +789,7 @@ ruleselector returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_1_1_1_0()); 
+	        newCompositeNode(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_1_2_0()); 
 	    }
 		lv_selector_5_0=ruleselector		{
 	        if ($current==null) {
@@ -804,7 +804,7 @@ ruleselector returns [EObject current=null]
 	    }
 
 )
-))?))?)
+)))?)
 ;
 finally {
 	myHiddenTokenState.restore();

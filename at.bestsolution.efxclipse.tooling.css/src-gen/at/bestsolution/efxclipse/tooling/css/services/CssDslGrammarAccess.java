@@ -417,19 +417,18 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSelectorSelectorParserRuleCall_1_0_1_0 = (RuleCall)cSelectorAssignment_1_0_1.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
 		private final RuleCall cWSTerminalRuleCall_1_1_0 = (RuleCall)cGroup_1_1.eContents().get(0);
-		private final Group cGroup_1_1_1 = (Group)cGroup_1_1.eContents().get(1);
-		private final Assignment cCombinatorAssignment_1_1_1_0 = (Assignment)cGroup_1_1_1.eContents().get(0);
-		private final RuleCall cCombinatorCombinatorParserRuleCall_1_1_1_0_0 = (RuleCall)cCombinatorAssignment_1_1_1_0.eContents().get(0);
-		private final Assignment cSelectorAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
-		private final RuleCall cSelectorSelectorParserRuleCall_1_1_1_1_0 = (RuleCall)cSelectorAssignment_1_1_1_1.eContents().get(0);
+		private final Assignment cCombinatorAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cCombinatorCombinatorParserRuleCall_1_1_1_0 = (RuleCall)cCombinatorAssignment_1_1_1.eContents().get(0);
+		private final Assignment cSelectorAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cSelectorSelectorParserRuleCall_1_1_2_0 = (RuleCall)cSelectorAssignment_1_1_2.eContents().get(0);
 		
 		//selector hidden():
-		//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ (combinator=combinator?
-		//	selector=selector)?)?;
+		//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ combinator=combinator?
+		//	selector=selector)?;
 		public ParserRule getRule() { return rule; }
 
-		//simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ (combinator=combinator?
-		//selector=selector)?)?
+		//simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ combinator=combinator?
+		//selector=selector)?
 		public Group getGroup() { return cGroup; }
 
 		//simpleselectors+=simple_selector
@@ -438,7 +437,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//simple_selector
 		public RuleCall getSimpleselectorsSimple_selectorParserRuleCall_0_0() { return cSimpleselectorsSimple_selectorParserRuleCall_0_0; }
 
-		//(combinator=combinator selector=selector | WS+ (combinator=combinator? selector=selector)?)?
+		//(combinator=combinator selector=selector | WS+ combinator=combinator? selector=selector)?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//combinator=combinator selector=selector
@@ -456,26 +455,23 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//selector
 		public RuleCall getSelectorSelectorParserRuleCall_1_0_1_0() { return cSelectorSelectorParserRuleCall_1_0_1_0; }
 
-		//WS+ (combinator=combinator? selector=selector)?
+		//WS+ combinator=combinator? selector=selector
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
 		//WS+
 		public RuleCall getWSTerminalRuleCall_1_1_0() { return cWSTerminalRuleCall_1_1_0; }
 
-		//(combinator=combinator? selector=selector)?
-		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
-
 		//combinator=combinator?
-		public Assignment getCombinatorAssignment_1_1_1_0() { return cCombinatorAssignment_1_1_1_0; }
+		public Assignment getCombinatorAssignment_1_1_1() { return cCombinatorAssignment_1_1_1; }
 
 		//combinator
-		public RuleCall getCombinatorCombinatorParserRuleCall_1_1_1_0_0() { return cCombinatorCombinatorParserRuleCall_1_1_1_0_0; }
+		public RuleCall getCombinatorCombinatorParserRuleCall_1_1_1_0() { return cCombinatorCombinatorParserRuleCall_1_1_1_0; }
 
 		//selector=selector
-		public Assignment getSelectorAssignment_1_1_1_1() { return cSelectorAssignment_1_1_1_1; }
+		public Assignment getSelectorAssignment_1_1_2() { return cSelectorAssignment_1_1_2; }
 
 		//selector
-		public RuleCall getSelectorSelectorParserRuleCall_1_1_1_1_0() { return cSelectorSelectorParserRuleCall_1_1_1_1_0; }
+		public RuleCall getSelectorSelectorParserRuleCall_1_1_2_0() { return cSelectorSelectorParserRuleCall_1_1_2_0; }
 	}
 
 	public class Simple_selectorElements extends AbstractParserRuleElementFinder {
@@ -2205,8 +2201,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//selector hidden():
-	//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ (combinator=combinator?
-	//	selector=selector)?)?;
+	//	simpleselectors+=simple_selector (combinator=combinator selector=selector | WS+ combinator=combinator?
+	//	selector=selector)?;
 	public SelectorElements getSelectorAccess() {
 		return (pSelector != null) ? pSelector : (pSelector = new SelectorElements());
 	}
