@@ -19,6 +19,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuBar;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuElement;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
@@ -45,6 +46,16 @@ public class DefMenuBarRenderer extends BaseMenuBarRenderer<MenuBar> {
 		@Override
 		public void addElement(WMenu<MMenuElement> widget) {
 			getWidget().getMenus().add((Menu) widget.getWidget());
+		}
+
+		@Override
+		public void addElement(int idx, WMenu<MMenuElement> widget) {
+			getWidget().getMenus().add(idx, (Menu) widget.getWidget());
+		}
+
+		@Override
+		public void removeElement(WMenuElement<MMenuElement> widget) {
+			getWidget().getMenus().remove(widget.getWidget());
 		}
 	}
 }
