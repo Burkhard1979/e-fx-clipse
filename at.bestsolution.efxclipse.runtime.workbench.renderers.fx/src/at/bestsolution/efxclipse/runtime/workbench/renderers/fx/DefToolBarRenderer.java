@@ -55,5 +55,25 @@ public class DefToolBarRenderer extends BaseToolBarRenderer<ToolBar> {
 			}
 			getWidget().getItems().add((Node) itemWidget.getStaticLayoutNode());
 		}
+
+		@Override
+		public void addChild(int idx, WLayoutedWidget<MToolBarElement> widget) {
+			if( widget.getWidget() instanceof Toggle ) {
+				if( group == null ) {
+					group = new ToggleGroup();
+				}
+				group.getToggles().add((Toggle) widget.getWidget());
+			}
+			
+			getWidget().getItems().add(idx, (Node) widget.getStaticLayoutNode());
+		}
+
+		@Override
+		public void removeChild(WLayoutedWidget<MToolBarElement> widget) {
+			if( widget.getWidget() instanceof Toggle ) {
+				((Toggle)widget.getWidget()).setToggleGroup(null);
+			}
+			getWidget().getItems().add((Node) widget.getStaticLayoutNode());
+		}
 	}
 }

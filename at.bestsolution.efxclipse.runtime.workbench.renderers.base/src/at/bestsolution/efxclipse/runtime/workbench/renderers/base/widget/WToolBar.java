@@ -18,4 +18,8 @@ public interface WToolBar<N> extends WLayoutedWidget<MToolBar> {
 
 	void addChild(WLayoutedWidget<MToolBarElement> itemWidget);
 
+	void addChild(int idx, WLayoutedWidget<MToolBarElement> widget);
+
+	void removeChild(WLayoutedWidget<MToolBarElement> widget);
+
 }
