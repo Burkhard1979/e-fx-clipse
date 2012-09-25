@@ -320,6 +320,14 @@ class AntTemplate {
 					</fx:info>
 				«ENDIF»
 				<fx:application refId="fxApplication"/>
+				«IF task.getDeploy().getTemplate()?.getFile()?.trim().length() > 0»
+					<fx:template 
+						file="build/src/«task.getDeploy().getTemplate().getFile()»"
+					«IF task.getDeploy().getTemplate().getToFile()?.trim().length() > 0»
+						tofile="dist/«task.getDeploy().getTemplate().getToFile()»"
+					«ENDIF»
+					/>
+				«ENDIF»
 				<fx:resources refid="appRes"/>
 				«IF task.getSignjar().getKeystore()?.length > 0»
 					<fx:permissions elevated="true"/>

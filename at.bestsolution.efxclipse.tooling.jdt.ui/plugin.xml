@@ -55,6 +55,16 @@
             preferredPerspectives="org.eclipse.jdt.ui.JavaPerspective,org.eclipse.jdt.ui.JavaBrowsingPerspective,org.eclipse.jdt.ui.JavaHierarchyPerspective"
             project="false">
       </wizard>
+      <wizard
+            category="at.bestsolution.efxclipse.tooling"
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.wizard.clazz.NewHtmlTemplateWizard"
+            finalPerspective="org.eclipse.jdt.ui.JavaPerspective"
+            icon="icons/discovery.gif"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.newhtmltemplate"
+            name="%wizard.name.2"
+            preferredPerspectives="org.eclipse.jdt.ui.JavaPerspective,org.eclipse.jdt.ui.JavaBrowsingPerspective,org.eclipse.jdt.ui.JavaHierarchyPerspective"
+            project="false">
+      </wizard>
       <category
             id="at.bestsolution.efxclipse.tooling.clazz"
             name="%category.name.1"
