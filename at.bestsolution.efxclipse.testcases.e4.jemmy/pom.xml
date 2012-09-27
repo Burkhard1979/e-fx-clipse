@@ -39,7 +39,7 @@
 						<!--  dependency>
 							<type>p2-installable-unit</type>
 							<artifactId>at.bestsolution.efxclipse.runtime.e4.feature</artifactId>
-							<version>0.1.0</version>
+							<version>0.1.1</version>
 						</dependency-->
 					</dependencies>
 				</configuration>
