@@ -475,8 +475,9 @@ class FXMLConverter {
 	<Group
 		«IF element.x != null»translateX="«element.x.parseCoordinate»"«ENDIF»
 		«IF element.y != null»translateY="«element.y.parseCoordinate»"«ENDIF»
-		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»>
+		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»
 		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		>
 		«handleStyleClassAttributes(element.class_)»
 		
 		«IF element.resolvedInstance != null»

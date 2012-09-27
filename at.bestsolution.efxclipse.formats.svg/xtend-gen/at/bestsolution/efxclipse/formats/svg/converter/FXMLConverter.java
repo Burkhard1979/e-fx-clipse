@@ -1628,7 +1628,6 @@ public class FXMLConverter {
         _builder.append("\"");
       }
     }
-    _builder.append(">");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     {
@@ -1643,6 +1642,9 @@ public class FXMLConverter {
       }
     }
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append(">");
+    _builder.newLine();
     _builder.append("\t");
     String _class_ = element.getClass_();
     CharSequence _handleStyleClassAttributes = this.handleStyleClassAttributes(_class_);
