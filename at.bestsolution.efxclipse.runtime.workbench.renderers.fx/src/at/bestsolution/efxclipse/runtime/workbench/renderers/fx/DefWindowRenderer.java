@@ -136,6 +136,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		private KeyBindingDispatcher dispatcher;
 		private BorderPane decoratorPane;
 		private WindowResizeButton windowResizeButton;
+		private Stage stage;
 
 		@Inject
 		@Optional
@@ -144,18 +145,23 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		private Registration sceneRegistration;
 
 		private String decorationFXML;
+		
+		private boolean fullscreen;
 
 		@Inject
 		IEclipseContext context;
 		
 		IEclipseContext modelContext;
+		
+		MWindow mWindow;
 
 		@Inject
-		public WWindowImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MWindow window, KeyBindingDispatcher dispatcher) {
-			this.support3d = window.getPersistedState().get("fx.scene.3d") != null && Boolean.parseBoolean(window.getPersistedState().get("fx.scene.3d"));
+		public WWindowImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MWindow mWindow, KeyBindingDispatcher dispatcher) {
+			this.mWindow = mWindow;
+			this.support3d = mWindow.getPersistedState().get("fx.scene.3d") != null && Boolean.parseBoolean(mWindow.getPersistedState().get("fx.scene.3d"));
 			this.dispatcher = dispatcher;
-			this.modelContext = window.getContext();
-			this.decorationFXML = window.getPersistedState().get("fx.stage.decoration");
+			this.modelContext = mWindow.getContext();
+			this.decorationFXML = mWindow.getPersistedState().get("fx.stage.decoration");
 		}
 
 		@Override
@@ -166,7 +172,15 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Override
 		protected Stage createWidget() {
-			Stage stage = new Stage();
+			stage = new Stage();
+			stage.setFullScreen(fullscreen);
+			stage.fullScreenProperty().addListener(new ChangeListener<Boolean>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+					mWindow.getPersistedState().put(BaseWindowRenderer.KEY_FULL_SCREEN, newValue.toString());
+				}
+			});
 			stage.addEventFilter(KeyEvent.KEY_PRESSED, dispatcher.getKeyHandler());
 			this.rootPane = new BorderPane() {
 				@Override
@@ -370,6 +384,18 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 			}
 		}
 
+		@Inject
+		public void setPersistedDate(@Named(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + BaseWindowRenderer.KEY_FULL_SCREEN) @Optional String fullScreen) {
+			if( fullScreen != null ) {
+				this.fullscreen = Boolean.parseBoolean(fullScreen);
+				if( stage != null ) {
+					stage.setFullScreen(fullscreen);
+				}
+			} else {
+				this.fullscreen = false;
+			}
+		}
+		
 		@Override
 		public void addStyleClasses(List<String> classnames) {
 			rootPane.getStyleClass().addAll(classnames);

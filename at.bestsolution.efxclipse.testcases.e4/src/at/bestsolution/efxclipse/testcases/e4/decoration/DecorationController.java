@@ -14,8 +14,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
 
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+
+@SuppressWarnings("restriction")
 public class DecorationController implements Initializable {
 	private double mouseDragOffsetX = 0;
 	private double mouseDragOffsetY = 0;
@@ -24,6 +29,11 @@ public class DecorationController implements Initializable {
 	private ToolBar decorationArea;
 	
 	private Rectangle2D backupWindowBounds;
+	
+	@Inject
+	@Named("fx.rendering.domElement")
+	@Optional
+	MWindow window;
 	
 	public DecorationController() {
 		System.err.println("Creating controller ....");
@@ -45,14 +55,27 @@ public class DecorationController implements Initializable {
 		});
 	}
 	
+	@FXML
+	public void handleFullScreen(MouseEvent event) {
+		if( event.getClickCount() > 1 ) {
+			String fullscreen = window.getPersistedState().get("efx.window.fullscreen");
+			boolean current = fullscreen != null && Boolean.parseBoolean(fullscreen);
+			System.err.println("New value: " + Boolean.valueOf(!current).toString());
+			window.getPersistedState().put("efx.window.fullscreen", Boolean.valueOf(!current).toString());
+		}
+	}
+	
+	@FXML
 	public void handleClose(ActionEvent event) {
 		Platform.exit();
 	}
 	
+	@FXML
 	public void handleMin(ActionEvent event) {
 		getStage().setIconified(true);
 	}
 	
+	@FXML
 	public void handleMax(ActionEvent event) {
 		Stage stage = getStage();
 		final double stageY = stage.getY();

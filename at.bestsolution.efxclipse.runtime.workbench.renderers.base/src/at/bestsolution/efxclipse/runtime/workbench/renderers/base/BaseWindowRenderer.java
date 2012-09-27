@@ -35,6 +35,8 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWindow
 
 @SuppressWarnings("restriction")
 public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow<N>> {
+	public static final String KEY_FULL_SCREEN = "efx.window.fullscreen";
+	
 	@PostConstruct
 	void init(IEventBroker eventBroker) {
 		registerEventListener(eventBroker, UIEvents.Window.TOPIC_X);

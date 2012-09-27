@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.inject.Inject;
 
@@ -120,8 +121,13 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 			
 		});
 		initWidget(element, widget);
+		initDefaultEventListeners(_context.get(IEventBroker.class));
 		
 		return widget;
+	}
+	
+	private void initDefaultEventListeners(IEventBroker broker) {
+		registerEventListener(broker, UIEvents.ApplicationElement.TOPIC_PERSISTEDSTATE);
 	}
 	
 	public final IEclipseContext setupRenderingContext(M element) {
@@ -143,6 +149,10 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 				
 				for( EAttribute e : eo.eClass().getEAllAttributes() ) {
 					context.set(e.getName(), eo.eGet(e));
+				}
+				
+				for( Entry<String,String> e : element.getPersistedState().entrySet() ) {
+					context.set(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + e.getKey(), e.getValue());
 				}
 				
 				// Localized Label/Tooltip treatment
@@ -168,6 +178,15 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 					return;
 				}
 				
+				Object newValue = event.getProperty(UIEvents.EventTags.NEW_VALUE);
+				String attributeName = event.getProperty(UIEvents.EventTags.ATTNAME).toString();
+				
+				// for now only process set events
+				//TODO Should we skip none attribute changes???
+				if( ! UIEvents.isSET(event) ) {
+					return;
+				}
+				
 				MUIElement e = (MUIElement) changedObj;
 				// There is already a modification in process
 				if( inContextModification(e) ) {
@@ -178,18 +197,23 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 					contextModification.put(e,Boolean.TRUE);
 					
 					if( changedObj instanceof MUIElement ) {
-						
 						if( e.getRenderer() == BaseRenderer.this ) {
 							IEclipseContext ctx = (IEclipseContext) e.getTransientData().get(RENDERING_CONTEXT_KEY);
 							if( ctx != null ) {
-								ctx.set(event.getProperty(UIEvents.EventTags.ATTNAME).toString(), event.getProperty(UIEvents.EventTags.NEW_VALUE));
-								if( e instanceof MUILabel ) {
-									MUILabel l = (MUILabel) e;
-									if( event.getProperty(UIEvents.EventTags.ATTNAME).equals(UIEvents.UILabel.LABEL) ) {
-										ctx.set(ATTRIBUTE_localizedLabel, l.getLocalizedLabel());	
-									} else if( event.getProperty(UIEvents.EventTags.ATTNAME).equals(UIEvents.UILabel.TOOLTIP) ) {
-										ctx.set(ATTRIBUTE_localizedTooltip, l.getLocalizedTooltip());	
-									}									
+								if( attributeName.equals(UIEvents.ApplicationElement.PERSISTEDSTATE) && newValue instanceof Entry  ) {
+									@SuppressWarnings("unchecked")
+									Entry<String,String> entry = (Entry<String, String>) newValue;
+									ctx.set(attributeName+"_"+entry.getKey(), entry.getValue());
+								} else {
+									ctx.set(attributeName, newValue);
+									if( e instanceof MUILabel ) {
+										MUILabel l = (MUILabel) e;
+										if( event.getProperty(UIEvents.EventTags.ATTNAME).equals(UIEvents.UILabel.LABEL) ) {
+											ctx.set(ATTRIBUTE_localizedLabel, l.getLocalizedLabel());	
+										} else if( event.getProperty(UIEvents.EventTags.ATTNAME).equals(UIEvents.UILabel.TOOLTIP) ) {
+											ctx.set(ATTRIBUTE_localizedTooltip, l.getLocalizedTooltip());	
+										}									
+									}	
 								}
 							}
 						}

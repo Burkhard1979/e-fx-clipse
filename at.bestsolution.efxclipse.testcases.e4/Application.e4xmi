@@ -2,6 +2,7 @@
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_A7QWkOL-EeGP-5z69KadAQ" elementId="org.eclipse.e4.ide.application" bindingContexts="_A7QWkeL-EeGP-5z69KadAQ">
   <children xsi:type="basic:TrimmedWindow" xmi:id="_A7QWoOL-EeGP-5z69KadAQ" label="at.bestsolution.efxclipse.testcases.e4" x="0" y="0" width="1024" height="800">
     <persistedState key="fx.stage.decoration" value="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/at/bestsolution/efxclipse/testcases/e4/decoration/TopArea.fxml"/>
+    <persistedState key="efx.window.fullscreen" value="false"/>
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_mK1iIO6wEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.perspectivestack.0">
       <children xsi:type="advanced:Perspective" xmi:id="_m-PVAO6wEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.perspective.0" label="P 0">
         <children xsi:type="basic:PartSashContainer" xmi:id="_A7Q9oOL-EeGP-5z69KadAQ" horizontal="true">

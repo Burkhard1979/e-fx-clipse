@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<ToolBar xmlns:fx="http://javafx.com/fxml" fx:id="decorationArea" fx:controller="at.bestsolution.efxclipse.testcases.e4.decoration.DecorationController" prefHeight="66" minHeight="66" maxHeight="66">
+<ToolBar xmlns:fx="http://javafx.com/fxml" fx:id="decorationArea" fx:controller="at.bestsolution.efxclipse.testcases.e4.decoration.DecorationController" prefHeight="66" minHeight="66" maxHeight="66" onMouseClicked="#handleFullScreen">
 
 	<items>
 		<Region> 
