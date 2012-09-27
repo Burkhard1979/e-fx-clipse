@@ -375,6 +375,7 @@ class FXMLConverter {
 		«IF element.rx != null»arcWidth="«element.rx.parseLength * Double::valueOf("2.0")»"«ENDIF»
 		«IF element.ry != null»arcHeight="«element.ry.parseLength * Double::valueOf("2.0")»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
@@ -424,6 +425,7 @@ class FXMLConverter {
 		«IF element.x != null»translateX="«element.x.parseCoordinate»"«ENDIF»
 		«IF element.y != null»translateY="«element.y.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		>
 		«handleStyleClassAttributes(element.class_)»
 		<children>
@@ -474,6 +476,7 @@ class FXMLConverter {
 		«IF element.x != null»translateX="«element.x.parseCoordinate»"«ENDIF»
 		«IF element.y != null»translateY="«element.y.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»>
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		«handleStyleClassAttributes(element.class_)»
 		
 		«IF element.resolvedInstance != null»
@@ -635,6 +638,7 @@ class FXMLConverter {
 		«IF element.cx != null»centerX="«element.cx.parseCoordinate»"«ENDIF»
 		«IF element.cy != null»centerY="«element.cy.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
@@ -685,6 +689,7 @@ class FXMLConverter {
 		«IF element.cx != null»centerX="«element.cx.parseCoordinate»"«ENDIF»
 		«IF element.cy != null»centerY="«element.cy.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
@@ -734,6 +739,7 @@ class FXMLConverter {
 		«IF element.points != null»points="«element.points.replaceAll("\\s+",",")»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 		>
 	«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 	«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
@@ -782,6 +788,7 @@ class FXMLConverter {
 		«IF element.points != null»points="«element.points.replaceAll("\\s+",",")»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
+		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
 	>
 	«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 	«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
