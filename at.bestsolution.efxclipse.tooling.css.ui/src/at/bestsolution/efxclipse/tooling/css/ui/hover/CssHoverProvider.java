@@ -24,6 +24,9 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
@@ -92,6 +95,31 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	}
 	
 	protected String getHoverInfoAsHtml(EObject o) {
+		// QnD hack to get tooltips back
+		if( o instanceof ColorTok ) {
+			ColorTok t = (ColorTok) o;
+			String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+t.getColor()+"'></div></td><td>"+t.getColor()+"</td></tr></table>";
+			return rv;
+		} else if( o instanceof function ) {
+			function f = (function) o;
+			if( "rgb".equals(f.getName()) ) {
+				String rgbHex = "#";
+				int idx = 0;
+				for( CssTok p : f.getParams() ) {
+					if( p instanceof NumberTok ) {
+						String hex = Integer.toHexString(Integer.valueOf(((NumberTok) p).getNum()));
+						rgbHex += hex.length() < 2 ? "0"+hex : hex;
+					}
+					
+					if( idx == 3 ) {
+						break;
+					}
+				}
+				String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+rgbHex+"'></div></td><td>"+rgbHex+"</td></tr></table>";
+				return rv;
+			}
+		}
+		
 //		System.err.println(o);
 //		if( o instanceof function ) {
 //			function f = (function) o;
