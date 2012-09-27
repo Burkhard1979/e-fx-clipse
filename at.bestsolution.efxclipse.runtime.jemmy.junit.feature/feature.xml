@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.runtime.jemmy.junit.feature"
       label="e(fx)clipse - Jemmy FX to Junit Test OSGi-Apps"
-      version="0.1.0.qualifier"
+      version="0.1.1.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
