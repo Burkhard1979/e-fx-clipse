@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>e4 test case build - app</name>
+	<groupId>at.bestsolution.efxclipse.testcases</groupId>
+	<artifactId>at.bestsolution.efxclipse.testcases.e4.jemmy</artifactId>
+	<packaging>eclipse-test-plugin</packaging>
+
+	<parent>
+		<groupId>at.bestsolution.efxclipse</groupId>
+		<artifactId>testcases</artifactId>
+		<relativePath>../at.bestsolution.efxclipse.testcases.e4.releng/pom.xml</relativePath>
+		<version>1.0.0</version>
+	</parent>
+
+	<build>
+		<plugins>
+
+			<!-- used for swt junit tests -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<testSuite>at.bestsolution.efxclipse.testcases.e4.jemmy</testSuite>
+					<testClass>at.bestsolution.efxclipse.testcases.e4.jemmy.TestSuite</testClass>
+					<useUIHarness>false</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<!--  product>org.eclipse.sdk.ide</product-->
+					<argLine>-Xms40m -Xmx512m -Defxclipse.osgi.hook.debug=true -Dosgi.framework.extensions=at.bestsolution.efxclipse.runtime.osgi -Dtest.jemmy.product=at.bestsolution.efxclipse.testcases.e4.product</argLine>
+					<appArgLine>-consoleLog -nosplash -console -noexit</appArgLine>
+					<application>org.eclipse.pde.junit.runtime.coretestapplication</application>
+					<dependencies>
+						<dependency>
+							<type>eclipse-feature</type>
+							<artifactId>at.bestsolution.efxclipse.testcases.e4.feature</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+						<!--  dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>at.bestsolution.efxclipse.runtime.e4.feature</artifactId>
+							<version>0.1.0</version>
+						</dependency-->
+					</dependencies>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- used for normal junit tests -->
+			<!-- plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
+				<version>2.7.2</version> <executions> <execution> <phase>test</phase> <configuration> 
+				<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory> 
+				<includes> <include>**/AllTests.java</include> </includes> </configuration> 
+				<goals> <goal>test</goal> </goals> </execution> </executions> </plugin -->
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>
