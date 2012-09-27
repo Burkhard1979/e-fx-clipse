@@ -390,6 +390,7 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 
 	@Override
 	protected void addTagNameProposals(ContentAssistRequest contentAssistRequest, int childPosition, CompletionProposalInvocationContext context) {
+		System.err.println("==============> HERE I AM");
 		Node parent = contentAssistRequest.getParent();
 
 		if (parent.getNodeType() == Node.ELEMENT_NODE) {
@@ -688,6 +689,15 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 
 	@Override
 	protected void addStartDocumentProposals(ContentAssistRequest contentAssistRequest, CompletionProposalInvocationContext context) {
+		FXMLCompletionProposal proposal = new FXMLCompletionProposal("<?scenebuilder-stylesheet ?>", context.getInvocationOffset() - contentAssistRequest.getMatchString().length(), "<?scenebuilder-stylesheet ?>".length(), "<?scenebuilder-stylesheet ?>".length()-2);
+		proposal.setMatcher(MATCHER);
+		contentAssistRequest.addProposal(proposal);
+
+		proposal = new FXMLCompletionProposal("<?scenebuilder-preview-i18n-resource ?>", context.getInvocationOffset() - contentAssistRequest.getMatchString().length(), "<?scenebuilder-preview-i18n-resource ?>".length(), "<?scenebuilder-preview-i18n-resource ?>".length()-2);
+		proposal.setMatcher(MATCHER);
+		contentAssistRequest.addProposal(proposal);
+
+		
 		IJavaProject jproject = findProject(contentAssistRequest);
 		try {
 			IType superType = jproject.findType("javafx.scene.Parent");
