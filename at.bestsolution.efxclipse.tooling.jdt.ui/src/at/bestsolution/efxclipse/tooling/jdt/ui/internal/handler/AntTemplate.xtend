@@ -320,7 +320,7 @@ class AntTemplate {
 					</fx:info>
 				«ENDIF»
 				<fx:application refId="fxApplication"/>
-				«IF task.getDeploy().getTemplate()?.getFile()?.trim().length() > 0»
+				«IF task.getDeploy().getTemplate()?.getFile()?.trim()?.length() > 0»
 					<fx:template 
 						file="build/src/«task.getDeploy().getTemplate().getFile()»"
 					«IF task.getDeploy().getTemplate().getToFile()?.trim().length() > 0»

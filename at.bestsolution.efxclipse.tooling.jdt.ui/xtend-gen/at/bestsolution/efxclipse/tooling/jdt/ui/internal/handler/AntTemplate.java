@@ -1200,7 +1200,7 @@ public class AntTemplate {
             Template _template = _deploy_30.getTemplate();
             String _file = _template==null?(String)null:_template.getFile();
             String _trim = _file==null?(String)null:_file.trim();
-            int _length_6 = _trim.length();
+            int _length_6 = _trim==null?0:_trim.length();
             boolean _greaterThan_6 = (_length_6 > 0);
             if (_greaterThan_6) {
               _builder.append("\t");
