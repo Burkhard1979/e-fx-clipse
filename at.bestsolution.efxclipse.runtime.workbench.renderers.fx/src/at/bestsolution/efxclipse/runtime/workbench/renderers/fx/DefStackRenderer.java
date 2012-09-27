@@ -19,6 +19,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 
@@ -26,9 +28,12 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
+import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
+import org.eclipse.emf.common.util.URI;
 
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTab;
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane;
@@ -258,6 +263,9 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		private WCallback<WStackItem<FXTab, Node>, Boolean> closeCallback;
 		private MStackElement domElement;
 		
+		@Inject
+		private IResourceUtilities<Image> resourceUtilities;
+		
 		@PostConstruct
 		void init() {
 			getWidget();
@@ -320,6 +328,15 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		@Inject
 		public void setCloseable(@Named(UIEvents.Part.CLOSEABLE) boolean closeable) {
 			getWidget().setClosable(closeable);
+		}
+		
+		@Inject
+		public void setIcon(@Named(UIEvents.UILabel.ICONURI) @Optional String iconUri) {
+			if( iconUri != null ) {
+				getWidget().setGraphic(new ImageView(resourceUtilities.imageDescriptorFromURI(URI.createURI(iconUri))));
+			} else {
+				getWidget().setGraphic(null);
+			}
 		}
 		
 		@Override

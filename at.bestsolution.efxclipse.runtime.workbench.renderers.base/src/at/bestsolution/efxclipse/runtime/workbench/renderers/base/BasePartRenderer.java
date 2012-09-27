@@ -10,9 +10,13 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
+import javax.annotation.PostConstruct;
+
 import org.eclipse.e4.core.services.contributions.IContributionFactory;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPart;
@@ -20,6 +24,13 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPart;
 
 @SuppressWarnings("restriction")
 public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> {
+	
+	@PostConstruct
+	void init(IEventBroker broker) {
+		registerEventListener(broker, UIEvents.UILabel.ICONURI);
+		registerEventListener(broker, UIEvents.UILabel.LABEL);
+		registerEventListener(broker, UIEvents.UILabel.TOOLTIP);
+	}
 	
 	@Override
 	protected void initWidget(final MPart element, final WPart<N> widget) {
