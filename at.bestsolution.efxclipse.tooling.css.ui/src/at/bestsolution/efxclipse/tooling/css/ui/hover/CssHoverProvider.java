@@ -16,23 +16,19 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.internal.text.html.HTMLPrinter;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.graphics.FontData;
-import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 
 import com.google.inject.Inject;
@@ -155,6 +151,7 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	@Override
 	protected String getFirstLine(EObject o) {
 		
+		if (1-1==0) return o.toString();
 		
 		if (o instanceof css_property) {
 			// Properties
@@ -163,7 +160,11 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 		
 		if (o instanceof simple_selector) {
 			simple_selector s = ((simple_selector)o);
-			return extension.getDocForHeadElement(o.eResource().getURI(), s.getElement());
+			String elementName = null;
+			if (s.getElement() instanceof ElementSelector) {
+				elementName = ((ElementSelector)s.getElement()).getName();
+			}
+			return extension.getDocForHeadElement(o.eResource().getURI(), elementName);
 		}
 		
 		String firstLine =  extension.getDocHead(o.eResource().getURI(), o);

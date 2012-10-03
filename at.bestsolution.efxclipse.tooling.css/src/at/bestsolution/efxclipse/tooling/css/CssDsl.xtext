@@ -60,49 +60,72 @@ selector hidden():
 
 
 simple_selector:
-	((element = element_name | universal=css_universal) subSelectors+=sub_selector*)
-	|
-	subSelectors+=sub_selector+
+//	((element = element_name | universal=css_universal) subSelectors+=sub_selector*)
+//	|
+//	subSelectors+=sub_selector+
+	((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector*) |
+	subSelectors+=SubSelector+
 ;
 
-element_name:
-	(IDENT | ReservedWords)
+SubSelector returns CssSelector:
+	IdSelector |
+	ClassSelector |
+	AttributeSelector |
+	PseudoClass
 ;
 
-sub_selector:
-	id=css_id | class=css_class | attrib=css_attrib | pseudoclass=css_pseudo | negotation=css_negation
+AttributeSelector returns CssSelector:
+	{AttributeSelector} '[' name=IDENT ( op=( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) value=( IDENT | STRING ) )? ']'
 ;
 
-css_type_selector:
-	( css_namespace_prefix )? element_name
+ClassSelector returns CssSelector:
+	{ClassSelector} '.' name=IDENT
 ;
+
+ElementSelector returns CssSelector:
+	{ElementSelector} name=IDENT
+;
+
+UniversalSelector returns CssSelector:
+	{UniversalSelector} ( namespece=css_namespace_prefix )? '*'
+;
+
+IdSelector returns CssSelector:
+	{IdSelector} HASHMARK name=IDENT
+;
+
+
+//element_name:
+//	IDENT
+//;
+//
+//
+//css_type_selector:
+//	( css_namespace_prefix )? element_name
+//;
 
 css_namespace_prefix
   : ( IDENT | '*' )? '|'
   ;
 
-css_universal: 
-	( css_namespace_prefix )? '*'
-;
-  
-css_class
-  : '.' ( IDENT | ReservedWords )
-  ;
+//css_universal: 
+//	( css_namespace_prefix )? '*'
+//;
+//  
+//css_class
+//  : '.' IDENT
+//  ;
 
-css_id:
-	HASH
-;
+//css_id:
+//	HASH
+//;
 
-css_attrib:
-	'[' (IDENT | ReservedWords) ( ( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) (( IDENT | ReservedWords ) | STRING ) )? ']'
-;
+//css_attrib:
+//	'[' IDENT ( ( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) ( IDENT | STRING ) )? ']'
+//;
 
 css_declaration hidden(ML_COMMENT):
-	WS* property=css_property WS* ':' valueTokens+=CssTok+ prio=css_prio?
-;
-
-css_prio:
-	IMPORTANT_SYM
+	WS* property=css_property WS* ':' valueTokens+=CssTok+ important?=IMPORTANT_SYM?
 ;
 
 css_property:
@@ -113,33 +136,60 @@ ValidPropertyIdent:
 	('-')?(IDENT)
 ;
 
-css_pseudo
-  : ':' ':'? (IDENT | functional_pseudo)
+//css_pseudo
+//  : ':' ':'? (IDENT | functional_pseudo)
+//;
+
+PseudoNegation:
+	':not(' ')'
 ;
 
-css_negation:
-	':' not=css_not negation_arg=css_negation_arg ')'
+PseudoClass:
+	':' ':'? PseudoClassName | PseudoClassFunction
 ;
+
+
+//PseudoNegationArgs:
+//	((element = element_name | universal=css_universal) subSelectors+=PseudoNegationArgsSubSelector*)
+//	|
+//	subSelectors+=sub_selector+
+//;
+//
+//PseudoNegationArgsSubSelector:
+//	id=css_id | class=css_class | attrib=css_attrib | pseudoclass=PseudoClass
+//;
+
+PseudoClassName:
+	name=IDENT
+;
+
+PseudoClassFunction:
+	name=IDENT '(' params+=CssTok* ')'
+;
+
+//css_negation:
+//	':' not=css_not negation_arg=css_negation_arg ')'
+//;
 
 enum css_not:
 	not='not('
 ;
 
-css_negation_arg
-  : css_type_selector | css_universal | HASH | css_class | css_attrib | css_pseudo
-;
+//css_negation_arg
+//  : css_type_selector | css_universal | HASH | css_class | css_attrib | css_pseudo
+//;
+//
+//functional_pseudo:
+//	IDENT '(' params+=CssTok* ')'	
+//;
 
-functional_pseudo:
-	IDENT '(' function_expr ')'	
-;
+//function_expr:
+//	( ( '+' | '-' | DIMENSION | NUMBER | STRING | IDENT ) )+	
+//;
 
-function_expr:
-	( ( '+' | '-' | DIMENSION | NUMBER | STRING | IDENT ) )+	
-;
-
-DIMENSION:
- 	PERCENTAGE | LENGTH | EMS | EXS | ANGLE | TIME | FREQ
-;
+//DIMENSION:
+// 	PERCENTAGE | LENGTH | EMS | EXS | ANGLE | TIME | FREQ
+//;
 
 combinator
   : 
@@ -158,66 +208,71 @@ unary_operator
   : '-' | '+'
   ;
 
-SymbolTok returns CssTok hidden(ML_COMMENT):
-	{SymbolTok} symbol=COMMA
+SymbolTok returns CssTok:
+	{SymbolTok} symbol=(COMMA|PERCENT)
 ;
 
-WSTok returns CssTok hidden(ML_COMMENT):
+WSTok returns CssTok:
 	{WSTok} WS
 ;
 
-StringTok returns CssTok hidden(ML_COMMENT): 
+StringTok returns CssTok: 
 	{StringTok} value=STRING
 ;
 
-FuncTok returns CssTok hidden(ML_COMMENT):
+FuncTok returns CssTok:
 	{FuncTok} func=function
 ;
 
-NumberTok returns CssTok hidden(ML_COMMENT):
-	{NumberTok} num=numberTerm
+NumberTok returns CssTok hidden():
+	{NumberTok} num=INTEGER => unit=IDENT?
 ;
 
-IdentifierTok returns CssTok hidden(ML_COMMENT):
+IdentifierTok returns CssTok:
 	{IdentifierTok} id=ValidPropertyIdent
 ;
 
-UrlTok returns CssTok hidden(ML_COMMENT):
+UrlTok returns CssTok:
 	{UrlTok} url=URLType
 ;
 
-ColorTok returns CssTok hidden(ML_COMMENT):
-	{ColorTok} color=HASH
+ColorTok returns CssTok:
+	{ColorTok} HASHMARK color=(HEX|IDENT)
 ;
 
-CssTok hidden(ML_COMMENT):
+CssTok hidden(ML_COMMENT, WS):
 	SymbolTok |
 	WSTok |
 	StringTok |
 	FuncTok |
 	NumberTok |
+	//{NumberTok} num=INTEGER =>unit=IDENT? |
 	IdentifierTok |
 	UrlTok |
 	ColorTok
 ;
 
-expr hidden(WS,ML_COMMENT): termGroups+=termGroup ( operator termGroups+=termGroup )*
-  ;
-
-termGroup:
-	terms+=term+
+SignedNum hidden():
+	unary_operator? (INTEGER | INTEGER? '.' INTEGER) 
 ;
 
-term
-  :   number=numberTerm
-  	| stringValue=STRING 
-  	| identifier=ValidPropertyIdent // this is only a string and not a ref to css_property, becaus it also matches enums :/
-  	| url=URLType 
-  	| function=function
-  	| hexColor=HexColor
-//  	| gradient=Gradient
-//  	| pair=pair
-;
+//expr hidden(WS,ML_COMMENT): termGroups+=termGroup ( operator termGroups+=termGroup )*
+//  ;
+
+//termGroup:
+//	terms+=term+
+//;
+
+//term
+//  :   number=numberTerm
+//  	| stringValue=STRING 
+//  	| identifier=ValidPropertyIdent // this is only a string and not a ref to css_property, becaus it also matches enums :/
+//  	| url=URLType 
+//  	| function=function
+//  	| hexColor=HexColor
+////  	| gradient=Gradient
+////  	| pair=pair
+//;
   
 //Gradient:
 //	LinearGradient | RadialGradient 
@@ -242,58 +297,67 @@ term
 //	'(' expr1=expr COMMA expr2=expr ')'
 //;
 
-numberTerm hidden():
-	(unary_operator? 
-    ( NUMBER | PERCENTAGE | LENGTH | EMS | EXS | ANGLE |
-      TIME | FREQ ))
-;
+//numberTerm hidden():
+//	(unary_operator? 
+//    ( NUMBER | PERCENTAGE | LENGTH | EMS | EXS | ANGLE |
+//      TIME | FREQ ))
+//;
   
-num:
-	INTEGER | REAL
-;
+//num:
+//	INTEGER | REAL
+//;
 
 function hidden():
 	('-')?name=IDENT '(' params+=CssTok+/*expression=expr*/ ')'
 ;
 
-HexColor hidden():
-	HASH
-;
+//HexColor hidden():
+//	HASH
+//;
 
 
 URLType hidden():
 	'url' '(' url=STRING ')'
 ;
 
-NUMBER: num;
-PERCENTAGE: num'%';
-EMS: num 'em';
-EXS: num 'ex';
-LENGTH hidden(): num ('px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc' ) ;
+//NUMBER: num;
+//PERCENTAGE: num'%';
+//EMS: num 'em';
+//EXS: num 'ex';
+//LENGTH hidden(): num ('px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc' ) ;
 
-ANGLE: num ('deg' | 'rad' | 'grad' );
-TIME: num ('ms'| 's' );
-FREQ: num ('hz' | 'khz');
+//ANGLE: num ('deg' | 'rad' | 'grad' );
+//TIME: num ('ms'| 's' );
+//FREQ: num ('hz' | 'khz');
 
-IMPORTANT_SYM:
+terminal IMPORTANT_SYM:
 	'!important'
 ;
 
-ReservedWords:
-	  'em' 
-	| 'ex'
-	| 'px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc'
-	| 'deg' | 'rad' | 'grad'
-	| 'ms'| 's'
-	| 'hz' | 'khz'
-;
+//ReservedWords:
+//	  'em' 
+//	| 'ex'
+//	| 'px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc'
+//	| 'deg' | 'rad' | 'grad'
+//	| 'ms'| 's'
+//	| 'hz' | 'khz'
+//;
 
 terminal INTEGER:('0'..'9')+;
 terminal REAL: (('0'..'9')*"."('0'..'9')+);
-terminal HASH: '#' ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )+;
+//terminal HASH: '#' ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )+;
+
+terminal HASHMARK: '#';
+
+//terminal COLORHASH: '#' ('a'..'z' | 'A'..'Z' | '0'..'9' )+;
 
 terminal IDENT: ('_' | 'a'..'z' | 'A'..'Z' ) ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )*;
+
+terminal HEX: ('a'..'z' | 'A'..'Z' | '0'..'9' )+;
+
 terminal COMMA: ',';
+terminal PERCENT: '%';
+
 terminal ML_COMMENT	: '/*' -> '*/';
 terminal WS			: (' '|'\t'|'\r'|'\n')+;
 terminal STRING	: 

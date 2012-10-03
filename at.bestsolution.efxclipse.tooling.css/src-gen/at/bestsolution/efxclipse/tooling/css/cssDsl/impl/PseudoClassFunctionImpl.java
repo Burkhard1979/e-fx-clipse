@@ -1,10 +1,13 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
 
 import java.util.Collection;
 
@@ -15,42 +18,40 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>term Group</b></em>'.
+ * An implementation of the model object '<em><b>Pseudo Class Function</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.termGroupImpl#getTerms <em>Terms</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl#getParams <em>Params</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class termGroupImpl extends MinimalEObjectImpl.Container implements termGroup
+public class PseudoClassFunctionImpl extends PseudoClassImpl implements PseudoClassFunction
 {
   /**
-   * The cached value of the '{@link #getTerms() <em>Terms</em>}' containment reference list.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTerms()
+   * @see #getParams()
    * @generated
    * @ordered
    */
-  protected EList<term> terms;
+  protected EList<CssTok> params;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected termGroupImpl()
+  protected PseudoClassFunctionImpl()
   {
     super();
   }
@@ -63,7 +64,7 @@ public class termGroupImpl extends MinimalEObjectImpl.Container implements termG
   @Override
   protected EClass eStaticClass()
   {
-    return CssDslPackage.Literals.TERM_GROUP;
+    return CssDslPackage.Literals.PSEUDO_CLASS_FUNCTION;
   }
 
   /**
@@ -71,13 +72,13 @@ public class termGroupImpl extends MinimalEObjectImpl.Container implements termG
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<term> getTerms()
+  public EList<CssTok> getParams()
   {
-    if (terms == null)
+    if (params == null)
     {
-      terms = new EObjectContainmentEList<term>(term.class, this, CssDslPackage.TERM_GROUP__TERMS);
+      params = new EObjectContainmentEList<CssTok>(CssTok.class, this, CssDslPackage.PSEUDO_CLASS_FUNCTION__PARAMS);
     }
-    return terms;
+    return params;
   }
 
   /**
@@ -90,8 +91,8 @@ public class termGroupImpl extends MinimalEObjectImpl.Container implements termG
   {
     switch (featureID)
     {
-      case CssDslPackage.TERM_GROUP__TERMS:
-        return ((InternalEList<?>)getTerms()).basicRemove(otherEnd, msgs);
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION__PARAMS:
+        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -106,8 +107,8 @@ public class termGroupImpl extends MinimalEObjectImpl.Container implements termG
   {
     switch (featureID)
     {
-      case CssDslPackage.TERM_GROUP__TERMS:
-        return getTerms();
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION__PARAMS:
+        return getParams();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -123,9 +124,9 @@ public class termGroupImpl extends MinimalEObjectImpl.Container implements termG
   {
     switch (featureID)
     {
-      case CssDslPackage.TERM_GROUP__TERMS:
-        getTerms().clear();
-        getTerms().addAll((Collection<? extends term>)newValue);
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION__PARAMS:
+        getParams().clear();
+        getParams().addAll((Collection<? extends CssTok>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,8 +142,8 @@ public class termGroupImpl extends MinimalEObjectImpl.Container implements termG
   {
     switch (featureID)
     {
-      case CssDslPackage.TERM_GROUP__TERMS:
-        getTerms().clear();
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION__PARAMS:
+        getParams().clear();
         return;
     }
     super.eUnset(featureID);
@@ -158,10 +159,10 @@ public class termGroupImpl extends MinimalEObjectImpl.Container implements termG
   {
     switch (featureID)
     {
-      case CssDslPackage.TERM_GROUP__TERMS:
-        return terms != null && !terms.isEmpty();
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION__PARAMS:
+        return params != null && !params.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //termGroupImpl
+} //PseudoClassFunctionImpl

@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
@@ -73,16 +76,20 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
       case CssDslPackage.RULESET: return createruleset();
       case CssDslPackage.SELECTOR: return createselector();
       case CssDslPackage.SIMPLE_SELECTOR: return createsimple_selector();
-      case CssDslPackage.SUB_SELECTOR: return createsub_selector();
+      case CssDslPackage.CSS_SELECTOR: return createCssSelector();
       case CssDslPackage.CSS_DECLARATION: return createcss_declaration();
       case CssDslPackage.CSS_PROPERTY: return createcss_property();
-      case CssDslPackage.CSS_NEGATION: return createcss_negation();
+      case CssDslPackage.PSEUDO_CLASS: return createPseudoClass();
+      case CssDslPackage.PSEUDO_CLASS_NAME: return createPseudoClassName();
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION: return createPseudoClassFunction();
       case CssDslPackage.CSS_TOK: return createCssTok();
-      case CssDslPackage.EXPR: return createexpr();
-      case CssDslPackage.TERM_GROUP: return createtermGroup();
-      case CssDslPackage.TERM: return createterm();
       case CssDslPackage.FUNCTION: return createfunction();
       case CssDslPackage.URL_TYPE: return createURLType();
+      case CssDslPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
+      case CssDslPackage.CLASS_SELECTOR: return createClassSelector();
+      case CssDslPackage.ELEMENT_SELECTOR: return createElementSelector();
+      case CssDslPackage.UNIVERSAL_SELECTOR: return createUniversalSelector();
+      case CssDslPackage.ID_SELECTOR: return createIdSelector();
       case CssDslPackage.SYMBOL_TOK: return createSymbolTok();
       case CssDslPackage.WS_TOK: return createWSTok();
       case CssDslPackage.STRING_TOK: return createStringTok();
@@ -223,10 +230,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public sub_selector createsub_selector()
+  public CssSelector createCssSelector()
   {
-    sub_selectorImpl sub_selector = new sub_selectorImpl();
-    return sub_selector;
+    CssSelectorImpl cssSelector = new CssSelectorImpl();
+    return cssSelector;
   }
 
   /**
@@ -256,10 +263,32 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public css_negation createcss_negation()
+  public PseudoClass createPseudoClass()
   {
-    css_negationImpl css_negation = new css_negationImpl();
-    return css_negation;
+    PseudoClassImpl pseudoClass = new PseudoClassImpl();
+    return pseudoClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClassName createPseudoClassName()
+  {
+    PseudoClassNameImpl pseudoClassName = new PseudoClassNameImpl();
+    return pseudoClassName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClassFunction createPseudoClassFunction()
+  {
+    PseudoClassFunctionImpl pseudoClassFunction = new PseudoClassFunctionImpl();
+    return pseudoClassFunction;
   }
 
   /**
@@ -271,39 +300,6 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
   {
     CssTokImpl cssTok = new CssTokImpl();
     return cssTok;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public expr createexpr()
-  {
-    exprImpl expr = new exprImpl();
-    return expr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public termGroup createtermGroup()
-  {
-    termGroupImpl termGroup = new termGroupImpl();
-    return termGroup;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public term createterm()
-  {
-    termImpl term = new termImpl();
-    return term;
   }
 
   /**
@@ -326,6 +322,61 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
   {
     URLTypeImpl urlType = new URLTypeImpl();
     return urlType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AttributeSelector createAttributeSelector()
+  {
+    AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
+    return attributeSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ClassSelector createClassSelector()
+  {
+    ClassSelectorImpl classSelector = new ClassSelectorImpl();
+    return classSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ElementSelector createElementSelector()
+  {
+    ElementSelectorImpl elementSelector = new ElementSelectorImpl();
+    return elementSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UniversalSelector createUniversalSelector()
+  {
+    UniversalSelectorImpl universalSelector = new UniversalSelectorImpl();
+    return universalSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IdSelector createIdSelector()
+  {
+    IdSelectorImpl idSelector = new IdSelectorImpl();
+    return idSelector;
   }
 
   /**

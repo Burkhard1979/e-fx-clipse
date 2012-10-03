@@ -26,11 +26,8 @@ import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.TextStyle;
-import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
@@ -44,18 +41,13 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.DialogProposal;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiTermGroupProperty;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiValuesGroupProperty;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslFactory;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 
@@ -487,31 +479,31 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 		}
 	}
 	
-	private boolean createExpressionFurtherTermProposals(css_declaration dec, expr expression, termGroup tgr, term t) {
-		// This is the >= 2nd group
-		if( expression.getTermGroups().indexOf(tgr) != 0 ) {
-			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty().getName());
-			if( p instanceof MultiTermGroupProperty ) {
-				if( tgr.getTerms().indexOf(t) == 0 ) {
-					// Show the initial proposals
-					return true;
-				} else if( p instanceof MultiValuesGroupProperty ) {
-					// Show the extended proposals
-				}
-				
-				return true;
-			}
-		} else {
-			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty().getName());
-			if( p instanceof MultiValuesGroupProperty ) {
-				if( tgr.getTerms().indexOf(t) > 0 ) {
-					// Show the extended proposals
-				}
-			}
-		}
-		
-		return false;
-	}
+//	private boolean createExpressionFurtherTermProposals(css_declaration dec, expr expression, termGroup tgr, term t) {
+//		// This is the >= 2nd group
+//		if( expression.getTermGroups().indexOf(tgr) != 0 ) {
+//			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty().getName());
+//			if( p instanceof MultiTermGroupProperty ) {
+//				if( tgr.getTerms().indexOf(t) == 0 ) {
+//					// Show the initial proposals
+//					return true;
+//				} else if( p instanceof MultiValuesGroupProperty ) {
+//					// Show the extended proposals
+//				}
+//				
+//				return true;
+//			}
+//		} else {
+//			Property p = getProperty(extension.getProperties(dec.eResource().getURI()), dec.getProperty().getName());
+//			if( p instanceof MultiValuesGroupProperty ) {
+//				if( tgr.getTerms().indexOf(t) > 0 ) {
+//					// Show the extended proposals
+//				}
+//			}
+//		}
+//		
+//		return false;
+//	}
 	
 	private static Property getProperty(List<Property> properties, String property) {
 		if( property == null || property.trim().length() == 0 ) {

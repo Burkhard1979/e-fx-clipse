@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/at.bestsolution.efxclipse.tooling.css/src-gen"
     editDirectory="/at.bestsolution.efxclipse.tooling.css.edit/src" editorDirectory="/at.bestsolution.efxclipse.tooling.css.editor/src"
     modelPluginID="at.bestsolution.efxclipse.tooling.css" forceOverwrite="true" modelName="CssDsl"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="at.bestsolution.efxclipse.tooling.css.edit"
-    editorPluginID="at.bestsolution.efxclipse.tooling.css.editor" runtimeVersion="2.8">
+    editorPluginID="at.bestsolution.efxclipse.tooling.css.editor" runtimeVersion="2.7">
   <genPackages prefix="CssDsl" basePackage="at.bestsolution.efxclipse.tooling.css"
       disposableProviderFactory="true" ecorePackage="CssDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CssDsl.ecore#//css_not">
@@ -42,44 +43,27 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//selector/selector"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//simple_selector">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//simple_selector/element"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//simple_selector/universal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//simple_selector/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//simple_selector/universal"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//simple_selector/subSelectors"/>
     </genClasses>
-    <genClasses ecoreClass="CssDsl.ecore#//sub_selector">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/class"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/attrib"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//sub_selector/pseudoclass"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//sub_selector/negotation"/>
-    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//CssSelector"/>
     <genClasses ecoreClass="CssDsl.ecore#//css_declaration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_declaration/property"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//css_declaration/valueTokens"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_declaration/prio"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_declaration/important"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//css_property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_property/name"/>
     </genClasses>
-    <genClasses ecoreClass="CssDsl.ecore#//css_negation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_negation/not"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//css_negation/negation_arg"/>
+    <genClasses ecoreClass="CssDsl.ecore#//PseudoClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//PseudoClass/name"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//PseudoClassName"/>
+    <genClasses ecoreClass="CssDsl.ecore#//PseudoClassFunction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//PseudoClassFunction/params"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//CssTok"/>
-    <genClasses ecoreClass="CssDsl.ecore#//expr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//expr/termGroups"/>
-    </genClasses>
-    <genClasses ecoreClass="CssDsl.ecore#//termGroup">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//termGroup/terms"/>
-    </genClasses>
-    <genClasses ecoreClass="CssDsl.ecore#//term">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//term/number"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//term/stringValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//term/identifier"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//term/url"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//term/function"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//term/hexColor"/>
-    </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//function/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//function/params"/>
@@ -87,6 +71,23 @@
     <genClasses ecoreClass="CssDsl.ecore#//URLType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//URLType/mediaList"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//URLType/url"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//AttributeSelector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//AttributeSelector/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//AttributeSelector/op"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//AttributeSelector/value"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//ClassSelector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//ClassSelector/name"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//ElementSelector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//ElementSelector/name"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//UniversalSelector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//UniversalSelector/namespece"/>
+    </genClasses>
+    <genClasses ecoreClass="CssDsl.ecore#//IdSelector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//IdSelector/name"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//SymbolTok">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//SymbolTok/symbol"/>
@@ -100,6 +101,7 @@
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//NumberTok">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//NumberTok/num"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//NumberTok/unit"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//IdentifierTok">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//IdentifierTok/id"/>

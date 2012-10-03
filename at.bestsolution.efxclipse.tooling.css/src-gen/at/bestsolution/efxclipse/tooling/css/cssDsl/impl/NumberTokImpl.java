@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
@@ -19,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl#getNum <em>Num</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl#getUnit <em>Unit</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +49,26 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
    * @ordered
    */
   protected String num = NUM_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUnit()
+   * @generated
+   * @ordered
+   */
+  protected static final String UNIT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUnit()
+   * @generated
+   * @ordered
+   */
+  protected String unit = UNIT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +119,29 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getUnit()
+  {
+    return unit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUnit(String newUnit)
+  {
+    String oldUnit = unit;
+    unit = newUnit;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.NUMBER_TOK__UNIT, oldUnit, unit));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +149,8 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
     {
       case CssDslPackage.NUMBER_TOK__NUM:
         return getNum();
+      case CssDslPackage.NUMBER_TOK__UNIT:
+        return getUnit();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,6 +167,9 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
     {
       case CssDslPackage.NUMBER_TOK__NUM:
         setNum((String)newValue);
+        return;
+      case CssDslPackage.NUMBER_TOK__UNIT:
+        setUnit((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +188,9 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
       case CssDslPackage.NUMBER_TOK__NUM:
         setNum(NUM_EDEFAULT);
         return;
+      case CssDslPackage.NUMBER_TOK__UNIT:
+        setUnit(UNIT_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +207,8 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
     {
       case CssDslPackage.NUMBER_TOK__NUM:
         return NUM_EDEFAULT == null ? num != null : !NUM_EDEFAULT.equals(num);
+      case CssDslPackage.NUMBER_TOK__UNIT:
+        return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
     }
     return super.eIsSet(featureID);
   }
@@ -169,6 +226,8 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (num: ");
     result.append(num);
+    result.append(", unit: ");
+    result.append(unit);
     result.append(')');
     return result.toString();
   }

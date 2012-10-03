@@ -13,14 +13,15 @@ package at.bestsolution.efxclipse.tooling.css.ui.labeling;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 
 import com.google.inject.Inject;
 
@@ -82,41 +83,20 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 			b.append(value.getElement());
 		}
 		
-		for( sub_selector sub : value.getSubSelectors() ) {
-			if( sub.getId() != null ) {
-				b.append(sub.getId());
-			}
+		for( CssSelector sub : value.getSubSelectors() ) {
 			
-			if( sub.getClass_() != null ) {
-				b.append(sub.getClass_());
+			if (sub instanceof IdSelector) {
+				b.append(((IdSelector) sub).getName());
 			}
-			
-			if( sub.getPseudoclass() != null ) {
-				b.append(sub.getPseudoclass());
+			else if (sub instanceof ClassSelector) {
+				b.append(((ClassSelector) sub).getName());
+			}
+			else if (sub instanceof PseudoClass) {
+				b.append(((PseudoClass) sub).getName());
 			}
 		}
 		
 		return b.toString();
-	}
-	
-	String text(term value) {
-		if( value.getHexColor() != null ) {
-			return value.getHexColor();
-		} else if( value.getIdentifier() != null) {
-			return value.getIdentifier();
-		} else if( value.getNumber() != null ) {
-			return value.getNumber();
-		} else if( value.getStringValue() != null ) {
-			return value.getStringValue();
-		} else if( value.getFunction() != null ) {
-			return "<function>";
-		}
-		
-		return null;
-	}
-	
-	String text(termGroup value) {
-		return "<group>";
 	}
 	
 //	public String text(Object t) {

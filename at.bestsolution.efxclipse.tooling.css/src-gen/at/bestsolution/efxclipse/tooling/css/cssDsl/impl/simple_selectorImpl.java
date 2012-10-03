@@ -1,10 +1,13 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector;
 
 import java.util.Collection;
 
@@ -40,44 +43,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class simple_selectorImpl extends MinimalEObjectImpl.Container implements simple_selector
 {
   /**
-   * The default value of the '{@link #getElement() <em>Element</em>}' attribute.
+   * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getElement()
    * @generated
    * @ordered
    */
-  protected static final String ELEMENT_EDEFAULT = null;
+  protected CssSelector element;
 
   /**
-   * The cached value of the '{@link #getElement() <em>Element</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElement()
-   * @generated
-   * @ordered
-   */
-  protected String element = ELEMENT_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getUniversal() <em>Universal</em>}' attribute.
+   * The cached value of the '{@link #getUniversal() <em>Universal</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getUniversal()
    * @generated
    * @ordered
    */
-  protected static final String UNIVERSAL_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getUniversal() <em>Universal</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getUniversal()
-   * @generated
-   * @ordered
-   */
-  protected String universal = UNIVERSAL_EDEFAULT;
+  protected CssSelector universal;
 
   /**
    * The cached value of the '{@link #getSubSelectors() <em>Sub Selectors</em>}' containment reference list.
@@ -87,7 +70,7 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected EList<sub_selector> subSelectors;
+  protected EList<CssSelector> subSelectors;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,7 +98,7 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getElement()
+  public CssSelector getElement()
   {
     return element;
   }
@@ -125,12 +108,16 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElement(String newElement)
+  public NotificationChain basicSetElement(CssSelector newElement, NotificationChain msgs)
   {
-    String oldElement = element;
+    CssSelector oldElement = element;
     element = newElement;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__ELEMENT, oldElement, element));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__ELEMENT, oldElement, newElement);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -138,7 +125,28 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getUniversal()
+  public void setElement(CssSelector newElement)
+  {
+    if (newElement != element)
+    {
+      NotificationChain msgs = null;
+      if (element != null)
+        msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__ELEMENT, null, msgs);
+      if (newElement != null)
+        msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__ELEMENT, null, msgs);
+      msgs = basicSetElement(newElement, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__ELEMENT, newElement, newElement));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CssSelector getUniversal()
   {
     return universal;
   }
@@ -148,12 +156,16 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setUniversal(String newUniversal)
+  public NotificationChain basicSetUniversal(CssSelector newUniversal, NotificationChain msgs)
   {
-    String oldUniversal = universal;
+    CssSelector oldUniversal = universal;
     universal = newUniversal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, oldUniversal, universal));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, oldUniversal, newUniversal);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -161,11 +173,32 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<sub_selector> getSubSelectors()
+  public void setUniversal(CssSelector newUniversal)
+  {
+    if (newUniversal != universal)
+    {
+      NotificationChain msgs = null;
+      if (universal != null)
+        msgs = ((InternalEObject)universal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, null, msgs);
+      if (newUniversal != null)
+        msgs = ((InternalEObject)newUniversal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, null, msgs);
+      msgs = basicSetUniversal(newUniversal, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, newUniversal, newUniversal));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<CssSelector> getSubSelectors()
   {
     if (subSelectors == null)
     {
-      subSelectors = new EObjectContainmentEList<sub_selector>(sub_selector.class, this, CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS);
+      subSelectors = new EObjectContainmentEList<CssSelector>(CssSelector.class, this, CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS);
     }
     return subSelectors;
   }
@@ -180,6 +213,10 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
+        return basicSetElement(null, msgs);
+      case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
+        return basicSetUniversal(null, msgs);
       case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
         return ((InternalEList<?>)getSubSelectors()).basicRemove(otherEnd, msgs);
     }
@@ -218,14 +255,14 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
     switch (featureID)
     {
       case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
-        setElement((String)newValue);
+        setElement((CssSelector)newValue);
         return;
       case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
-        setUniversal((String)newValue);
+        setUniversal((CssSelector)newValue);
         return;
       case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
         getSubSelectors().clear();
-        getSubSelectors().addAll((Collection<? extends sub_selector>)newValue);
+        getSubSelectors().addAll((Collection<? extends CssSelector>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -242,10 +279,10 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
     switch (featureID)
     {
       case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
-        setElement(ELEMENT_EDEFAULT);
+        setElement((CssSelector)null);
         return;
       case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
-        setUniversal(UNIVERSAL_EDEFAULT);
+        setUniversal((CssSelector)null);
         return;
       case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
         getSubSelectors().clear();
@@ -265,32 +302,13 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
     switch (featureID)
     {
       case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
-        return ELEMENT_EDEFAULT == null ? element != null : !ELEMENT_EDEFAULT.equals(element);
+        return element != null;
       case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
-        return UNIVERSAL_EDEFAULT == null ? universal != null : !UNIVERSAL_EDEFAULT.equals(universal);
+        return universal != null;
       case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
         return subSelectors != null && !subSelectors.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (element: ");
-    result.append(element);
-    result.append(", universal: ");
-    result.append(universal);
-    result.append(')');
-    return result.toString();
   }
 
 } //simple_selectorImpl
