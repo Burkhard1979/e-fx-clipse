@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Copyright (c) 2012 TESIS DYNAware GmbH and others. 
+  All rights reserved. This program and the accompanying materials 
+  are made available under the terms of the Eclipse Public License v1.0 
+  which accompanies this distribution, and is available at 
+  http://www.eclipse.org/legal/epl-v10.html 
+  
+  Contributors: 
+      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
+-->
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_oTXC4METEeG9dqDw4IevpQ" type="EcoreTools" name="Contacts" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_o3JscMETEeG9dqDw4IevpQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_o3K6kMETEeG9dqDw4IevpQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_o3K6kcETEeG9dqDw4IevpQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_sdgvIMETEeG9dqDw4IevpQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Contacts.ecore#//Group/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_sdgvIcETEeG9dqDw4IevpQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_o3K6ksETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_o3K6k8ETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_o3K6lMETEeG9dqDw4IevpQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_o3LhoMETEeG9dqDw4IevpQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_o3LhocETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_o3LhosETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_o3Lho8ETEeG9dqDw4IevpQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_o3JsccETEeG9dqDw4IevpQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="Contacts.ecore#//Group"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o3JscsETEeG9dqDw4IevpQ" x="195" y="125"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_qEUqMMETEeG9dqDw4IevpQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_qEVRQMETEeG9dqDw4IevpQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_qEV4UMETEeG9dqDw4IevpQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_rrifoMETEeG9dqDw4IevpQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Contacts.ecore#//Contact/firstName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_rrjGsMETEeG9dqDw4IevpQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_uKToIMETEeG9dqDw4IevpQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Contacts.ecore#//Contact/lastName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_uKToIcETEeG9dqDw4IevpQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_qEV4UcETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_qEV4UsETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_qEV4U8ETEeG9dqDw4IevpQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_qEV4VMETEeG9dqDw4IevpQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_qEWfYMETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_qEWfYcETEeG9dqDw4IevpQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_qEWfYsETEeG9dqDw4IevpQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_qEUqMcETEeG9dqDw4IevpQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="Contacts.ecore#//Contact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qEUqMsETEeG9dqDw4IevpQ" x="185" y="260"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_oTXC4cETEeG9dqDw4IevpQ"/>
+  <element xmi:type="ecore:EPackage" href="Contacts.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_zIlgAMETEeG9dqDw4IevpQ" type="3002" source="_o3JscMETEeG9dqDw4IevpQ" target="_qEUqMMETEeG9dqDw4IevpQ">
+    <children xmi:type="notation:Node" xmi:id="_zImHEMETEeG9dqDw4IevpQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_zImHEcETEeG9dqDw4IevpQ" y="-27"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_zImuIMETEeG9dqDw4IevpQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_zImuIcETEeG9dqDw4IevpQ" y="13"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_zIlgAcETEeG9dqDw4IevpQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_zIlgAsETEeG9dqDw4IevpQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="Contacts.ecore#//Group/contacts"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zIlgA8ETEeG9dqDw4IevpQ" points="[3, 25, -38, -129]$[-28, 153, -69, -1]"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_17aM8METEeG9dqDw4IevpQ" type="3002" source="_o3JscMETEeG9dqDw4IevpQ" target="_o3JscMETEeG9dqDw4IevpQ">
+    <children xmi:type="notation:Node" xmi:id="_17bbEMETEeG9dqDw4IevpQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_17bbEcETEeG9dqDw4IevpQ" x="15" y="126"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_17bbEsETEeG9dqDw4IevpQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_17bbE8ETEeG9dqDw4IevpQ" x="15" y="74"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_17a0AMETEeG9dqDw4IevpQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_17a0AcETEeG9dqDw4IevpQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="Contacts.ecore#//Group/groups"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_17a0AsETEeG9dqDw4IevpQ" points="[28, 9, 23, 5]$[90, 9, 85, 5]$[90, 90, 85, 86]$[0, 90, -5, 86]$[0, 28, -5, 24]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_17fsgMETEeG9dqDw4IevpQ" id="(0.7565217391304347,0.43137254901960786)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_17fsgcETEeG9dqDw4IevpQ" id="(0.8,0.5294117647058824)"/>
+  </edges>
+</notation:Diagram>
