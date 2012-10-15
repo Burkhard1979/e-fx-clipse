@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,33 +22,33 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl#getNamespece <em>Namespece</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl#getNamespace <em>Namespace</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalSelector
+public class UniversalSelectorImpl extends MinimalEObjectImpl.Container implements UniversalSelector
 {
   /**
-   * The default value of the '{@link #getNamespece() <em>Namespece</em>}' attribute.
+   * The default value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNamespece()
+   * @see #getNamespace()
    * @generated
    * @ordered
    */
-  protected static final String NAMESPECE_EDEFAULT = null;
+  protected static final String NAMESPACE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getNamespece() <em>Namespece</em>}' attribute.
+   * The cached value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNamespece()
+   * @see #getNamespace()
    * @generated
    * @ordered
    */
-  protected String namespece = NAMESPECE_EDEFAULT;
+  protected String namespace = NAMESPACE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +76,9 @@ public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalS
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getNamespece()
+  public String getNamespace()
   {
-    return namespece;
+    return namespace;
   }
 
   /**
@@ -85,12 +86,12 @@ public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalS
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNamespece(String newNamespece)
+  public void setNamespace(String newNamespace)
   {
-    String oldNamespece = namespece;
-    namespece = newNamespece;
+    String oldNamespace = namespace;
+    namespace = newNamespace;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.UNIVERSAL_SELECTOR__NAMESPECE, oldNamespece, namespece));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.UNIVERSAL_SELECTOR__NAMESPACE, oldNamespace, namespace));
   }
 
   /**
@@ -103,8 +104,8 @@ public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalS
   {
     switch (featureID)
     {
-      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPECE:
-        return getNamespece();
+      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPACE:
+        return getNamespace();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +120,8 @@ public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalS
   {
     switch (featureID)
     {
-      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPECE:
-        setNamespece((String)newValue);
+      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPACE:
+        setNamespace((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +137,8 @@ public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalS
   {
     switch (featureID)
     {
-      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPECE:
-        setNamespece(NAMESPECE_EDEFAULT);
+      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPACE:
+        setNamespace(NAMESPACE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +154,8 @@ public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalS
   {
     switch (featureID)
     {
-      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPECE:
-        return NAMESPECE_EDEFAULT == null ? namespece != null : !NAMESPECE_EDEFAULT.equals(namespece);
+      case CssDslPackage.UNIVERSAL_SELECTOR__NAMESPACE:
+        return NAMESPACE_EDEFAULT == null ? namespace != null : !NAMESPACE_EDEFAULT.equals(namespace);
     }
     return super.eIsSet(featureID);
   }
@@ -170,8 +171,8 @@ public class UniversalSelectorImpl extends CssSelectorImpl implements UniversalS
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (namespece: ");
-    result.append(namespece);
+    result.append(" (namespace: ");
+    result.append(namespace);
     result.append(')');
     return result.toString();
   }

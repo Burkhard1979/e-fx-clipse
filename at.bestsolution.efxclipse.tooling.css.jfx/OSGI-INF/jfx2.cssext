@@ -124,6 +124,20 @@ package javafx {
 					coral | cornflowerblue | cornsilk | crimson |
 					cyan | darkblue | darkcyan | darkgoldenrod |
 					darkgray | darkgreen | darkgrey | darkkhaki; // TODO finish this!
+					
+//	annotated-named-color-1 = 	/** @color #123456 */ aliceblue |
+//								/** @color #123456 */ antiquewhite;
+//								
+//	annotated-named-color-2 =	@Color(#123456) aliceblue |
+//								@Color(#123456) antiquewhite;
+//								
+//	annotated-named-color-3 =	@Alias(#123456) aliceblue |
+//								@Alias(#123456) antiquewhite;
+//								
+//	annotated-named-color-4 =	@Color @Alias(#123456) aliceblue |
+//								@Color @Alias(#123456) antiquewhite
+												
+					
 	looked-up-color = reference_to_other_color_property; // TODO howto implement?!
 	
 	hashcolor = $#[0123456789ABCDEFabcdef]{6}$ | $#[0123456789ABCDEFabcdef]{3}$;

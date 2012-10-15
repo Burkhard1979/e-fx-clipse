@@ -5,6 +5,7 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +23,7 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
  * @model
  * @generated
  */
-public interface ElementSelector extends CssSelector
+public interface ElementSelector extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

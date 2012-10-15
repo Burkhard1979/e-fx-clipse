@@ -14,8 +14,7 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getNum <em>Num</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getUnit <em>Unit</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getVal <em>Val</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,55 +25,29 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
 public interface NumberTok extends CssTok
 {
   /**
-   * Returns the value of the '<em><b>Num</b></em>' attribute.
+   * Returns the value of the '<em><b>Val</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Num</em>' attribute isn't clear,
+   * If the meaning of the '<em>Val</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Num</em>' attribute.
-   * @see #setNum(String)
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getNumberTok_Num()
+   * @return the value of the '<em>Val</em>' attribute.
+   * @see #setVal(double)
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getNumberTok_Val()
    * @model
    * @generated
    */
-  String getNum();
+  double getVal();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getNum <em>Num</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getVal <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Num</em>' attribute.
-   * @see #getNum()
+   * @param value the new value of the '<em>Val</em>' attribute.
+   * @see #getVal()
    * @generated
    */
-  void setNum(String value);
-
-  /**
-   * Returns the value of the '<em><b>Unit</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Unit</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Unit</em>' attribute.
-   * @see #setUnit(String)
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getNumberTok_Unit()
-   * @model
-   * @generated
-   */
-  String getUnit();
-
-  /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getUnit <em>Unit</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Unit</em>' attribute.
-   * @see #getUnit()
-   * @generated
-   */
-  void setUnit(String value);
+  void setVal(double value);
 
 } // NumberTok

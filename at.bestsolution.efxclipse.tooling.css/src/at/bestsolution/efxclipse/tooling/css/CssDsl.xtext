@@ -33,7 +33,7 @@ page:
 ;
 
 pseudo_page: 
-	':' IDENT
+	':' Identifier
 ;
 
 media: 
@@ -45,7 +45,7 @@ media_list:
 ;
 
 medium: 
-	IDENT
+	Identifier
 ;
 
 ruleset:
@@ -58,71 +58,53 @@ selector hidden():
 	simpleselectors+=simple_selector ( combinator=combinator selector=selector | WS+ combinator=combinator? selector=selector )?
 ;
 
-
-simple_selector:
-//	((element = element_name | universal=css_universal) subSelectors+=sub_selector*)
-//	|
-//	subSelectors+=sub_selector+
-	((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector*) |
-	subSelectors+=SubSelector+
+SimpleSelectorForNegation:
+	((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelectorForNegation*) |
+	=> subSelectors+=SubSelectorForNegation+
 ;
 
-SubSelector returns CssSelector:
+SubSelectorForNegation returns CssSelector:
 	IdSelector |
 	ClassSelector |
 	AttributeSelector |
 	PseudoClass
 ;
 
+simple_selector:
+	((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector*) |
+	=> subSelectors+=SubSelector+
+;
+
+SubSelector returns CssSelector:
+	IdSelector |
+	ClassSelector |
+	AttributeSelector |
+	PseudoClassOrFunc
+;
+
 AttributeSelector returns CssSelector:
-	{AttributeSelector} '[' name=IDENT ( op=( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) value=( IDENT | STRING ) )? ']'
+	{AttributeSelector} '[' name=Identifier ( op=( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) value=( Identifier | STRING ) )? ']'
 ;
 
-ClassSelector returns CssSelector:
-	{ClassSelector} '.' name=IDENT
+ClassSelector:
+	{ClassSelector} '.' name=Identifier
 ;
 
-ElementSelector returns CssSelector:
-	{ElementSelector} name=IDENT
+ElementSelector:
+	{ElementSelector} name=Identifier
 ;
 
-UniversalSelector returns CssSelector:
-	{UniversalSelector} ( namespece=css_namespace_prefix )? '*'
+UniversalSelector:
+	{UniversalSelector} ( namespace=css_namespace_prefix )? '*'
 ;
 
-IdSelector returns CssSelector:
-	{IdSelector} HASHMARK name=IDENT
+IdSelector:
+	{IdSelector} HASHMARK name=Identifier
 ;
-
-
-//element_name:
-//	IDENT
-//;
-//
-//
-//css_type_selector:
-//	( css_namespace_prefix )? element_name
-//;
 
 css_namespace_prefix
-  : ( IDENT | '*' )? '|'
+  : ( Identifier | '*' )? '|'
   ;
-
-//css_universal: 
-//	( css_namespace_prefix )? '*'
-//;
-//  
-//css_class
-//  : '.' IDENT
-//  ;
-
-//css_id:
-//	HASH
-//;
-
-//css_attrib:
-//	'[' IDENT ( ( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) ( IDENT | STRING ) )? ']'
-//;
 
 css_declaration hidden(ML_COMMENT):
 	WS* property=css_property WS* ':' valueTokens+=CssTok+ important?=IMPORTANT_SYM?
@@ -133,7 +115,7 @@ css_property:
 ;
 
 ValidPropertyIdent:
-	('-')?(IDENT)
+	Identifier
 ;
 
 //css_pseudo
@@ -144,8 +126,12 @@ PseudoNegation:
 	':not(' ')'
 ;
 
+PseudoClassOrFunc:
+	PseudoClass | PseudoClassFunction
+;
+
 PseudoClass:
-	':' ':'? PseudoClassName | PseudoClassFunction
+	':' ':'? PseudoClassName
 ;
 
 
@@ -160,11 +146,12 @@ PseudoClass:
 //;
 
 PseudoClassName:
-	name=IDENT
+	name=Identifier
 ;
 
 PseudoClassFunction:
-	name=IDENT '(' params+=CssTok* ')'
+	':not(' SimpleSelectorForNegation ')' |
+	':' name=Identifier '(' params+=CssTok* ')'
 ;
 
 //css_negation:
@@ -179,22 +166,11 @@ enum css_not:
 //  : css_type_selector | css_universal | HASH | css_class | css_attrib | css_pseudo
 //;
 //
-//functional_pseudo:
-//	IDENT '(' params+=CssTok* ')'	
-//;
-
-//function_expr:
-//	( ( '+' | '-' | DIMENSION | NUMBER | STRING | IDENT ) )+	
-//;
-
-//DIMENSION:
-// 	PERCENTAGE | LENGTH | EMS | EXS | ANGLE | TIME | FREQ
-//;
 
 combinator
   : 
   (
-  	  '+'
+  	  PLUS
   	| '>'
   	| '~'
   ) WS*
@@ -205,7 +181,7 @@ operator
   ;
   
 unary_operator
-  : '-' | '+'
+  : DASH | PLUS
   ;
 
 SymbolTok returns CssTok:
@@ -220,140 +196,95 @@ StringTok returns CssTok:
 	{StringTok} value=STRING
 ;
 
-FuncTok returns CssTok:
-	{FuncTok} func=function
-;
+
 
 NumberTok returns CssTok hidden():
-	{NumberTok} num=INTEGER => unit=IDENT?
+	{NumberTok} val=Num
+	
+//	{NumberTok} DASH? ( ONE_INT+ | ONE_INT* '.' => ONE_INT+)
+	
+//	{NumberTok} val=Integer | Real
+	//sign=DASH? ( ival=Integer | dval=Real)
 ;
 
-IdentifierTok returns CssTok:
-	{IdentifierTok} id=ValidPropertyIdent
-;
 
 UrlTok returns CssTok:
 	{UrlTok} url=URLType
 ;
 
-ColorTok returns CssTok:
-	{ColorTok} HASHMARK color=(HEX|IDENT)
+ColorTok returns CssTok hidden():
+	{ColorTok} value=Hex
 ;
 
-CssTok hidden(ML_COMMENT, WS):
+IdentifierOrFuncTok returns CssTok hidden(ML_COMMENT):
+	{IdentifierTok} name=Identifier ( {FuncTok.name=current} '(' params+=CssTok+ ')')?
+;
+
+CssTok hidden(ML_COMMENT):
+	IdentifierOrFuncTok |
 	SymbolTok |
 	WSTok |
 	StringTok |
-	FuncTok |
 	NumberTok |
-	//{NumberTok} num=INTEGER =>unit=IDENT? |
-	IdentifierTok |
 	UrlTok |
 	ColorTok
 ;
-
-SignedNum hidden():
-	unary_operator? (INTEGER | INTEGER? '.' INTEGER) 
-;
-
-//expr hidden(WS,ML_COMMENT): termGroups+=termGroup ( operator termGroups+=termGroup )*
-//  ;
-
-//termGroup:
-//	terms+=term+
-//;
-
-//term
-//  :   number=numberTerm
-//  	| stringValue=STRING 
-//  	| identifier=ValidPropertyIdent // this is only a string and not a ref to css_property, becaus it also matches enums :/
-//  	| url=URLType 
-//  	| function=function
-//  	| hexColor=HexColor
-////  	| gradient=Gradient
-////  	| pair=pair
-//;
-  
-//Gradient:
-//	LinearGradient | RadialGradient 
-//;
-//
-//LinearGradient:
-//	IDENT '(' start=PointValue ')' IDENT '(' end=PointValue ')' IDENT ( '(' stops+=StopValue ')' )+ // ( ('repeat' | 'reflect') )?
-//;
-//
-//RadialGradient:
-//	IDENT ( '(' center=PointValue ')' COMMA )? radius=SizeType ( IDENT '(' focus=PointValue ')' ) IDENT ( '(' stops+=StopValue ')' )+ //( ( 'repeat' | 'reflect' ))?
-//;
-//
-//StopValue:
-//	pos=SizeType COMMA color=HexColor
-//;
-//
-//PointValue:
-//	x=SizeType COMMA y=SizeType
-//;
-//pair:
-//	'(' expr1=expr COMMA expr2=expr ')'
-//;
-
-//numberTerm hidden():
-//	(unary_operator? 
-//    ( NUMBER | PERCENTAGE | LENGTH | EMS | EXS | ANGLE |
-//      TIME | FREQ ))
-//;
-  
-//num:
-//	INTEGER | REAL
-//;
-
-function hidden():
-	('-')?name=IDENT '(' params+=CssTok+/*expression=expr*/ ')'
-;
-
-//HexColor hidden():
-//	HASH
-//;
 
 
 URLType hidden():
 	'url' '(' url=STRING ')'
 ;
 
-//NUMBER: num;
-//PERCENTAGE: num'%';
-//EMS: num 'em';
-//EXS: num 'ex';
-//LENGTH hidden(): num ('px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc' ) ;
-
-//ANGLE: num ('deg' | 'rad' | 'grad' );
-//TIME: num ('ms'| 's' );
-//FREQ: num ('hz' | 'khz');
-
 terminal IMPORTANT_SYM:
 	'!important'
 ;
 
-//ReservedWords:
-//	  'em' 
-//	| 'ex'
-//	| 'px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc'
-//	| 'deg' | 'rad' | 'grad'
-//	| 'ms'| 's'
-//	| 'hz' | 'khz'
+Identifier returns ecore::EString hidden():
+	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER) => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT)*
+;
+
+Num returns ecore::EDouble hidden():
+	(PLUS|DASH)? (
+		'.' => ONE_INT+ |
+		=> ONE_INT+ (=> '.' => ONE_INT+)?
+	)
+;
+//Integer returns ecore::EInt:
+//	DASH? => ONE_INT+
+//;
+//
+//Real returns ecore::EDouble:
+//	DASH? ONE_INT* '.' => ONE_INT+
 //;
 
-terminal INTEGER:('0'..'9')+;
-terminal REAL: (('0'..'9')*"."('0'..'9')+);
+Hex returns ecore::EString:
+	HASHMARK => (ONE_INT|ONE_HEX_LETTER)+
+;
+
+
+
+terminal ONE_INT: '0'..'9';
+terminal ONE_HEX_LETTER: ('a'..'f'|'A'..'F');
+terminal ONE_NON_HEX_LETTER: ('g'..'z'|'G'..'Z');
+
+
+terminal UNDERSCORE: '_';
+terminal DASH: '-';
+terminal PLUS: '+';
+
+//terminal INTEGER returns ecore::EInt: ('0'..'9')+;
+//terminal INTEGER:('0'..'9')+;
+
+//terminal REAL: (('0'..'9')*"."('0'..'9')+);
 //terminal HASH: '#' ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )+;
 
 terminal HASHMARK: '#';
 
 //terminal COLORHASH: '#' ('a'..'z' | 'A'..'Z' | '0'..'9' )+;
 
-terminal IDENT: ('_' | 'a'..'z' | 'A'..'Z' ) ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )*;
+//terminal IDENT: ('_' | 'a'..'z' | 'A'..'Z' ) ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )*;
 
-terminal HEX: ('a'..'z' | 'A'..'Z' | '0'..'9' )+;
+//terminal HEX: '###' ('a'..'z' | 'A'..'Z' | '0'..'9' )+;
 
 terminal COMMA: ',';
 terminal PERCENT: '%';

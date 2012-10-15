@@ -143,7 +143,7 @@ public class CssExtParser {
 				}
 				else if (tok instanceof IdentifierTok) {
 					out.append("'");
-					out.append(((IdentifierTok) tok).getId());
+					out.append(((IdentifierTok) tok).getName());
 					out.append("'");
 				}
 				else {
@@ -243,7 +243,7 @@ public class CssExtParser {
 		System.err.println("REGEX1 -> " + regex + " / / " + tok);
 		
 		if (tok instanceof ColorTok) {
-			String s = ((ColorTok)tok).getColor();
+			String s = ((ColorTok)tok).getValue();
 			System.err.println("REGEX2 -> " + regex + " / / " + s);
 			if (s.matches(regex)) {
 				ParseResult r1 = new ParseResult();
@@ -634,7 +634,7 @@ public class CssExtParser {
 	
 	private boolean matchCssTok(CssTok tok, String literal) {
 		if (tok instanceof IdentifierTok) {
-			return literal.equals(((IdentifierTok)tok).getId());
+			return literal.equals(((IdentifierTok)tok).getName());
 		}
 		else if (tok instanceof SymbolTok) {
 			return literal.equals(((SymbolTok)tok).getSymbol());

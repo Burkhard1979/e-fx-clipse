@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ColorTokImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ColorTokImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +30,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ColorTokImpl extends CssTokImpl implements ColorTok
 {
   /**
-   * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getColor()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String COLOR_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getColor()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected String color = COLOR_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +75,9 @@ public class ColorTokImpl extends CssTokImpl implements ColorTok
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getColor()
+  public String getValue()
   {
-    return color;
+    return value;
   }
 
   /**
@@ -85,12 +85,12 @@ public class ColorTokImpl extends CssTokImpl implements ColorTok
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setColor(String newColor)
+  public void setValue(String newValue)
   {
-    String oldColor = color;
-    color = newColor;
+    String oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.COLOR_TOK__COLOR, oldColor, color));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.COLOR_TOK__VALUE, oldValue, value));
   }
 
   /**
@@ -103,8 +103,8 @@ public class ColorTokImpl extends CssTokImpl implements ColorTok
   {
     switch (featureID)
     {
-      case CssDslPackage.COLOR_TOK__COLOR:
-        return getColor();
+      case CssDslPackage.COLOR_TOK__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +119,8 @@ public class ColorTokImpl extends CssTokImpl implements ColorTok
   {
     switch (featureID)
     {
-      case CssDslPackage.COLOR_TOK__COLOR:
-        setColor((String)newValue);
+      case CssDslPackage.COLOR_TOK__VALUE:
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +136,8 @@ public class ColorTokImpl extends CssTokImpl implements ColorTok
   {
     switch (featureID)
     {
-      case CssDslPackage.COLOR_TOK__COLOR:
-        setColor(COLOR_EDEFAULT);
+      case CssDslPackage.COLOR_TOK__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +153,8 @@ public class ColorTokImpl extends CssTokImpl implements ColorTok
   {
     switch (featureID)
     {
-      case CssDslPackage.COLOR_TOK__COLOR:
-        return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
+      case CssDslPackage.COLOR_TOK__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -170,8 +170,8 @@ public class ColorTokImpl extends CssTokImpl implements ColorTok
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (color: ");
-    result.append(color);
+    result.append(" (value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }

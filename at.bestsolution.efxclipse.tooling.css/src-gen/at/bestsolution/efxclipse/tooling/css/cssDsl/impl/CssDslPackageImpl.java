@@ -20,6 +20,8 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassOrFunc;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
@@ -30,7 +32,6 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_not;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.importExpression;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.media;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.page;
@@ -109,7 +110,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass simple_selectorEClass = null;
+  private EClass simpleSelectorForNegationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -123,63 +124,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass css_declarationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass css_propertyEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass pseudoClassEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass pseudoClassNameEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass pseudoClassFunctionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass cssTokEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass functionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass urlTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass attributeSelectorEClass = null;
+  private EClass simple_selectorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -214,6 +159,69 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass css_declarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass css_propertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pseudoClassOrFuncEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pseudoClassEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pseudoClassNameEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pseudoClassFunctionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cssTokEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass urlTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass attributeSelectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass symbolTokEClass = null;
 
   /**
@@ -235,21 +243,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass funcTokEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass numberTokEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass identifierTokEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -264,6 +258,20 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * @generated
    */
   private EClass colorTokEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass identifierTokEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcTokEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -570,6 +578,56 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getSimpleSelectorForNegation()
+  {
+    return simpleSelectorForNegationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSimpleSelectorForNegation_Element()
+  {
+    return (EReference)simpleSelectorForNegationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSimpleSelectorForNegation_Universal()
+  {
+    return (EReference)simpleSelectorForNegationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSimpleSelectorForNegation_SubSelectors()
+  {
+    return (EReference)simpleSelectorForNegationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCssSelector()
+  {
+    return cssSelectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getsimple_selector()
   {
     return simple_selectorEClass;
@@ -610,9 +668,79 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCssSelector()
+  public EClass getClassSelector()
   {
-    return cssSelectorEClass;
+    return classSelectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getClassSelector_Name()
+  {
+    return (EAttribute)classSelectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getElementSelector()
+  {
+    return elementSelectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getElementSelector_Name()
+  {
+    return (EAttribute)elementSelectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUniversalSelector()
+  {
+    return universalSelectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUniversalSelector_Namespace()
+  {
+    return (EAttribute)universalSelectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIdSelector()
+  {
+    return idSelectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIdSelector_Name()
+  {
+    return (EAttribute)idSelectorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -680,9 +808,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPseudoClass()
+  public EClass getPseudoClassOrFunc()
   {
-    return pseudoClassEClass;
+    return pseudoClassOrFuncEClass;
   }
 
   /**
@@ -690,9 +818,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPseudoClass_Name()
+  public EClass getPseudoClass()
   {
-    return (EAttribute)pseudoClassEClass.getEStructuralFeatures().get(0);
+    return pseudoClassEClass;
   }
 
   /**
@@ -710,6 +838,16 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPseudoClassName_Name()
+  {
+    return (EAttribute)pseudoClassNameEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getPseudoClassFunction()
   {
     return pseudoClassFunctionEClass;
@@ -720,9 +858,19 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPseudoClassFunction_Name()
+  {
+    return (EAttribute)pseudoClassFunctionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getPseudoClassFunction_Params()
   {
-    return (EReference)pseudoClassFunctionEClass.getEStructuralFeatures().get(0);
+    return (EReference)pseudoClassFunctionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -733,36 +881,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
   public EClass getCssTok()
   {
     return cssTokEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getfunction()
-  {
-    return functionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getfunction_Name()
-  {
-    return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getfunction_Params()
-  {
-    return (EReference)functionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -840,86 +958,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getClassSelector()
-  {
-    return classSelectorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getClassSelector_Name()
-  {
-    return (EAttribute)classSelectorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getElementSelector()
-  {
-    return elementSelectorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getElementSelector_Name()
-  {
-    return (EAttribute)elementSelectorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getUniversalSelector()
-  {
-    return universalSelectorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getUniversalSelector_Namespece()
-  {
-    return (EAttribute)universalSelectorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIdSelector()
-  {
-    return idSelectorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIdSelector_Name()
-  {
-    return (EAttribute)idSelectorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSymbolTok()
   {
     return symbolTokEClass;
@@ -970,26 +1008,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFuncTok()
-  {
-    return funcTokEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFuncTok_Func()
-  {
-    return (EReference)funcTokEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getNumberTok()
   {
     return numberTokEClass;
@@ -1000,39 +1018,9 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNumberTok_Num()
+  public EAttribute getNumberTok_Val()
   {
     return (EAttribute)numberTokEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getNumberTok_Unit()
-  {
-    return (EAttribute)numberTokEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIdentifierTok()
-  {
-    return identifierTokEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIdentifierTok_Id()
-  {
-    return (EAttribute)identifierTokEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1070,9 +1058,59 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getColorTok_Color()
+  public EAttribute getColorTok_Value()
   {
     return (EAttribute)colorTokEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIdentifierTok()
+  {
+    return identifierTokEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIdentifierTok_Name()
+  {
+    return (EAttribute)identifierTokEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFuncTok()
+  {
+    return funcTokEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncTok_Name()
+  {
+    return (EReference)funcTokEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncTok_Params()
+  {
+    return (EReference)funcTokEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1145,12 +1183,29 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     createEAttribute(selectorEClass, SELECTOR__COMBINATOR);
     createEReference(selectorEClass, SELECTOR__SELECTOR);
 
+    simpleSelectorForNegationEClass = createEClass(SIMPLE_SELECTOR_FOR_NEGATION);
+    createEReference(simpleSelectorForNegationEClass, SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT);
+    createEReference(simpleSelectorForNegationEClass, SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL);
+    createEReference(simpleSelectorForNegationEClass, SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS);
+
+    cssSelectorEClass = createEClass(CSS_SELECTOR);
+
     simple_selectorEClass = createEClass(SIMPLE_SELECTOR);
     createEReference(simple_selectorEClass, SIMPLE_SELECTOR__ELEMENT);
     createEReference(simple_selectorEClass, SIMPLE_SELECTOR__UNIVERSAL);
     createEReference(simple_selectorEClass, SIMPLE_SELECTOR__SUB_SELECTORS);
 
-    cssSelectorEClass = createEClass(CSS_SELECTOR);
+    classSelectorEClass = createEClass(CLASS_SELECTOR);
+    createEAttribute(classSelectorEClass, CLASS_SELECTOR__NAME);
+
+    elementSelectorEClass = createEClass(ELEMENT_SELECTOR);
+    createEAttribute(elementSelectorEClass, ELEMENT_SELECTOR__NAME);
+
+    universalSelectorEClass = createEClass(UNIVERSAL_SELECTOR);
+    createEAttribute(universalSelectorEClass, UNIVERSAL_SELECTOR__NAMESPACE);
+
+    idSelectorEClass = createEClass(ID_SELECTOR);
+    createEAttribute(idSelectorEClass, ID_SELECTOR__NAME);
 
     css_declarationEClass = createEClass(CSS_DECLARATION);
     createEReference(css_declarationEClass, CSS_DECLARATION__PROPERTY);
@@ -1160,19 +1215,18 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     css_propertyEClass = createEClass(CSS_PROPERTY);
     createEAttribute(css_propertyEClass, CSS_PROPERTY__NAME);
 
+    pseudoClassOrFuncEClass = createEClass(PSEUDO_CLASS_OR_FUNC);
+
     pseudoClassEClass = createEClass(PSEUDO_CLASS);
-    createEAttribute(pseudoClassEClass, PSEUDO_CLASS__NAME);
 
     pseudoClassNameEClass = createEClass(PSEUDO_CLASS_NAME);
+    createEAttribute(pseudoClassNameEClass, PSEUDO_CLASS_NAME__NAME);
 
     pseudoClassFunctionEClass = createEClass(PSEUDO_CLASS_FUNCTION);
+    createEAttribute(pseudoClassFunctionEClass, PSEUDO_CLASS_FUNCTION__NAME);
     createEReference(pseudoClassFunctionEClass, PSEUDO_CLASS_FUNCTION__PARAMS);
 
     cssTokEClass = createEClass(CSS_TOK);
-
-    functionEClass = createEClass(FUNCTION);
-    createEAttribute(functionEClass, FUNCTION__NAME);
-    createEReference(functionEClass, FUNCTION__PARAMS);
 
     urlTypeEClass = createEClass(URL_TYPE);
     createEAttribute(urlTypeEClass, URL_TYPE__MEDIA_LIST);
@@ -1183,18 +1237,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     createEAttribute(attributeSelectorEClass, ATTRIBUTE_SELECTOR__OP);
     createEAttribute(attributeSelectorEClass, ATTRIBUTE_SELECTOR__VALUE);
 
-    classSelectorEClass = createEClass(CLASS_SELECTOR);
-    createEAttribute(classSelectorEClass, CLASS_SELECTOR__NAME);
-
-    elementSelectorEClass = createEClass(ELEMENT_SELECTOR);
-    createEAttribute(elementSelectorEClass, ELEMENT_SELECTOR__NAME);
-
-    universalSelectorEClass = createEClass(UNIVERSAL_SELECTOR);
-    createEAttribute(universalSelectorEClass, UNIVERSAL_SELECTOR__NAMESPECE);
-
-    idSelectorEClass = createEClass(ID_SELECTOR);
-    createEAttribute(idSelectorEClass, ID_SELECTOR__NAME);
-
     symbolTokEClass = createEClass(SYMBOL_TOK);
     createEAttribute(symbolTokEClass, SYMBOL_TOK__SYMBOL);
 
@@ -1203,21 +1245,21 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     stringTokEClass = createEClass(STRING_TOK);
     createEAttribute(stringTokEClass, STRING_TOK__VALUE);
 
-    funcTokEClass = createEClass(FUNC_TOK);
-    createEReference(funcTokEClass, FUNC_TOK__FUNC);
-
     numberTokEClass = createEClass(NUMBER_TOK);
-    createEAttribute(numberTokEClass, NUMBER_TOK__NUM);
-    createEAttribute(numberTokEClass, NUMBER_TOK__UNIT);
-
-    identifierTokEClass = createEClass(IDENTIFIER_TOK);
-    createEAttribute(identifierTokEClass, IDENTIFIER_TOK__ID);
+    createEAttribute(numberTokEClass, NUMBER_TOK__VAL);
 
     urlTokEClass = createEClass(URL_TOK);
     createEReference(urlTokEClass, URL_TOK__URL);
 
     colorTokEClass = createEClass(COLOR_TOK);
-    createEAttribute(colorTokEClass, COLOR_TOK__COLOR);
+    createEAttribute(colorTokEClass, COLOR_TOK__VALUE);
+
+    identifierTokEClass = createEClass(IDENTIFIER_TOK);
+    createEAttribute(identifierTokEClass, IDENTIFIER_TOK__NAME);
+
+    funcTokEClass = createEClass(FUNC_TOK);
+    createEReference(funcTokEClass, FUNC_TOK__NAME);
+    createEReference(funcTokEClass, FUNC_TOK__PARAMS);
 
     // Create enums
     css_notEEnum = createEEnum(CSS_NOT);
@@ -1252,23 +1294,24 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    simpleSelectorForNegationEClass.getESuperTypes().add(this.getPseudoClassFunction());
+    classSelectorEClass.getESuperTypes().add(this.getCssSelector());
+    idSelectorEClass.getESuperTypes().add(this.getCssSelector());
+    pseudoClassOrFuncEClass.getESuperTypes().add(this.getCssSelector());
     pseudoClassEClass.getESuperTypes().add(this.getCssSelector());
+    pseudoClassEClass.getESuperTypes().add(this.getPseudoClassOrFunc());
     pseudoClassNameEClass.getESuperTypes().add(this.getPseudoClass());
-    pseudoClassFunctionEClass.getESuperTypes().add(this.getPseudoClass());
+    pseudoClassFunctionEClass.getESuperTypes().add(this.getPseudoClassOrFunc());
     urlTypeEClass.getESuperTypes().add(this.getimportExpression());
     attributeSelectorEClass.getESuperTypes().add(this.getCssSelector());
-    classSelectorEClass.getESuperTypes().add(this.getCssSelector());
-    elementSelectorEClass.getESuperTypes().add(this.getCssSelector());
-    universalSelectorEClass.getESuperTypes().add(this.getCssSelector());
-    idSelectorEClass.getESuperTypes().add(this.getCssSelector());
     symbolTokEClass.getESuperTypes().add(this.getCssTok());
     wsTokEClass.getESuperTypes().add(this.getCssTok());
     stringTokEClass.getESuperTypes().add(this.getCssTok());
-    funcTokEClass.getESuperTypes().add(this.getCssTok());
     numberTokEClass.getESuperTypes().add(this.getCssTok());
-    identifierTokEClass.getESuperTypes().add(this.getCssTok());
     urlTokEClass.getESuperTypes().add(this.getCssTok());
     colorTokEClass.getESuperTypes().add(this.getCssTok());
+    identifierTokEClass.getESuperTypes().add(this.getCssTok());
+    funcTokEClass.getESuperTypes().add(this.getCssTok());
 
     // Initialize classes and features; add operations and parameters
     initEClass(stylesheetEClass, stylesheet.class, "stylesheet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1301,12 +1344,29 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEAttribute(getselector_Combinator(), ecorePackage.getEString(), "combinator", null, 0, 1, selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getselector_Selector(), this.getselector(), null, "selector", null, 0, 1, selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(simple_selectorEClass, simple_selector.class, "simple_selector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getsimple_selector_Element(), this.getCssSelector(), null, "element", null, 0, 1, simple_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getsimple_selector_Universal(), this.getCssSelector(), null, "universal", null, 0, 1, simple_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getsimple_selector_SubSelectors(), this.getCssSelector(), null, "subSelectors", null, 0, -1, simple_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(simpleSelectorForNegationEClass, SimpleSelectorForNegation.class, "SimpleSelectorForNegation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSimpleSelectorForNegation_Element(), this.getElementSelector(), null, "element", null, 0, 1, SimpleSelectorForNegation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSimpleSelectorForNegation_Universal(), this.getUniversalSelector(), null, "universal", null, 0, 1, SimpleSelectorForNegation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSimpleSelectorForNegation_SubSelectors(), this.getCssSelector(), null, "subSelectors", null, 0, -1, SimpleSelectorForNegation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cssSelectorEClass, CssSelector.class, "CssSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(simple_selectorEClass, simple_selector.class, "simple_selector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getsimple_selector_Element(), this.getElementSelector(), null, "element", null, 0, 1, simple_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getsimple_selector_Universal(), this.getUniversalSelector(), null, "universal", null, 0, 1, simple_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getsimple_selector_SubSelectors(), this.getCssSelector(), null, "subSelectors", null, 0, -1, simple_selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(classSelectorEClass, ClassSelector.class, "ClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getClassSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elementSelectorEClass, ElementSelector.class, "ElementSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getElementSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, ElementSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(universalSelectorEClass, UniversalSelector.class, "UniversalSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUniversalSelector_Namespace(), ecorePackage.getEString(), "namespace", null, 0, 1, UniversalSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(idSelectorEClass, IdSelector.class, "IdSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIdSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, IdSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(css_declarationEClass, css_declaration.class, "css_declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getcss_declaration_Property(), this.getcss_property(), null, "property", null, 0, 1, css_declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1316,19 +1376,18 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEClass(css_propertyEClass, css_property.class, "css_property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getcss_property_Name(), ecorePackage.getEString(), "name", null, 0, 1, css_property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(pseudoClassOrFuncEClass, PseudoClassOrFunc.class, "PseudoClassOrFunc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(pseudoClassEClass, PseudoClass.class, "PseudoClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPseudoClass_Name(), ecorePackage.getEString(), "name", null, 0, 1, PseudoClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(pseudoClassNameEClass, PseudoClassName.class, "PseudoClassName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPseudoClassName_Name(), ecorePackage.getEString(), "name", null, 0, 1, PseudoClassName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(pseudoClassFunctionEClass, PseudoClassFunction.class, "PseudoClassFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPseudoClassFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, PseudoClassFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPseudoClassFunction_Params(), this.getCssTok(), null, "params", null, 0, -1, PseudoClassFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cssTokEClass, CssTok.class, "CssTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(functionEClass, function.class, "function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getfunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getfunction_Params(), this.getCssTok(), null, "params", null, 0, -1, function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(urlTypeEClass, URLType.class, "URLType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getURLType_MediaList(), ecorePackage.getEString(), "mediaList", null, 0, 1, URLType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1339,18 +1398,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEAttribute(getAttributeSelector_Op(), ecorePackage.getEString(), "op", null, 0, 1, AttributeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttributeSelector_Value(), ecorePackage.getEString(), "value", null, 0, 1, AttributeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(classSelectorEClass, ClassSelector.class, "ClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getClassSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(elementSelectorEClass, ElementSelector.class, "ElementSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getElementSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, ElementSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(universalSelectorEClass, UniversalSelector.class, "UniversalSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getUniversalSelector_Namespece(), ecorePackage.getEString(), "namespece", null, 0, 1, UniversalSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(idSelectorEClass, IdSelector.class, "IdSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIdSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, IdSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(symbolTokEClass, SymbolTok.class, "SymbolTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSymbolTok_Symbol(), ecorePackage.getEString(), "symbol", null, 0, 1, SymbolTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1359,21 +1406,21 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEClass(stringTokEClass, StringTok.class, "StringTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringTok_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(funcTokEClass, FuncTok.class, "FuncTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncTok_Func(), this.getfunction(), null, "func", null, 0, 1, FuncTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(numberTokEClass, NumberTok.class, "NumberTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNumberTok_Num(), ecorePackage.getEString(), "num", null, 0, 1, NumberTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getNumberTok_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, NumberTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(identifierTokEClass, IdentifierTok.class, "IdentifierTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIdentifierTok_Id(), ecorePackage.getEString(), "id", null, 0, 1, IdentifierTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNumberTok_Val(), ecorePackage.getEDouble(), "val", null, 0, 1, NumberTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(urlTokEClass, UrlTok.class, "UrlTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getUrlTok_Url(), this.getURLType(), null, "url", null, 0, 1, UrlTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(colorTokEClass, ColorTok.class, "ColorTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getColorTok_Color(), ecorePackage.getEString(), "color", null, 0, 1, ColorTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getColorTok_Value(), ecorePackage.getEString(), "value", null, 0, 1, ColorTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(identifierTokEClass, IdentifierTok.class, "IdentifierTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIdentifierTok_Name(), ecorePackage.getEString(), "name", null, 0, 1, IdentifierTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(funcTokEClass, FuncTok.class, "FuncTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFuncTok_Name(), this.getIdentifierTok(), null, "name", null, 0, 1, FuncTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncTok_Params(), this.getCssTok(), null, "params", null, 0, -1, FuncTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(css_notEEnum, css_not.class, "css_not");

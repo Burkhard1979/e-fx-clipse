@@ -2,6 +2,21 @@ ElementSelector0 {}
 .ClassSelector0 {}
 #IdSelector0 {}
 
+ElementSelector   #IdSelector {}
+ElementSelector.ClassSelector {}
+
+ElementSelector > .ClassSelector {} 
+
+.class:not(div.test#El) {
+
+}
+
+*:not(:link):not(:visited) {
+	
+}
+
+a .b_ {}
+
 a .b_ {
 	a:x(1p,p2,p3);
 	b:y,y ;
@@ -18,11 +33,13 @@ Debug .p0 {
 	
 	/*  <border-style> [ , <border-style> ]*
 	 * <dash-style> [ phase double ]? [ centered | inside | outside ]? [ line-join [ miter double | bevel | round ] ]? [ line-cap [ square | butt | round ] ]?
-	 */
+	 */ 
 	-fx-border-style: dotted phase 0.0 centered line-join miter 0.0 line-cap round , dotted inside line-join miter 0.0 line-cap round , dashed , dotted inside ,;
 	-fx-border-style:dashed, dashed, none ;
 	-fx-border-style: dashed, dotted, solid inside line-join miter 1.2;
 	-fx-border-color: aliceblue, rgb(208,63,63), rgb(228,55,55);
+	
+	-fx-border-color: rgb(245,22,22), rgb(196,41,231);
 }
 
 

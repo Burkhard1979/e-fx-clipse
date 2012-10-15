@@ -10,13 +10,19 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.labeling;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
@@ -37,7 +43,7 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 
-	String text(ruleset value) {
+	String text(ruleset value) { 
 		StringBuilder b = new StringBuilder();
 		
 		for( selector s : value.getSelectors() ) {
@@ -75,25 +81,83 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		return "property_16x16.png";
 	}
 	
+	String image(CssSelector cssSelector) {
+		return "selector_16x16.png";
+	}
+	
+	String text(IdentifierTok idTok) {
+		return idTok.getName();
+	}
+	
+	String text(PseudoClassFunction pseudoFunc) {
+		StringBuilder b = new StringBuilder();
+		b.append(pseudoFunc.getName());
+		b.append("(");
+		Iterator<CssTok> iterator = pseudoFunc.getParams().iterator();
+		while (iterator.hasNext()) {
+			CssTok next = iterator.next();
+			b.append(getText(next));
+			if (iterator.hasNext()) {
+				b.append(",");
+			}
+		}
+		b.append(")");
+		return b.toString();
+	}
+	
+	String text(CssSelector cssSelector) {
+		if (cssSelector instanceof ElementSelector) {
+			return ((ElementSelector) cssSelector).getName();
+		}
+		else if (cssSelector instanceof ClassSelector) {
+			return "." + ((ClassSelector) cssSelector).getName();
+		}
+		else if (cssSelector instanceof IdSelector) {
+			return "#" + ((IdSelector) cssSelector).getName();
+		}
+		else if (cssSelector instanceof PseudoClassName) {
+			return ":" + ((PseudoClassName) cssSelector).getName();
+		}
+		else if (cssSelector instanceof PseudoClassFunction) {
+			return ":" + text((PseudoClassFunction)cssSelector);
+		}
+		
+		return cssSelector.toString();
+	}
+	
+	String text(ElementSelector elementSelector) {
+		return elementSelector.getName();
+	}
+	
+	String text(ClassSelector classSelector) {
+		return "." + classSelector.getName();
+	}
+	
+	String text(IdSelector idSelector) {
+		return "#" + idSelector.getName();
+	}
 	
 	String text(simple_selector value) {
 		StringBuilder b = new StringBuilder(/*"si-"*/);
 		
 		if( value.getElement() != null ) {
-			b.append(value.getElement());
+			b.append(text(value.getElement()));
+		}
+		else if (value.getUniversal() != null) {
+			b.append("*");
 		}
 		
 		for( CssSelector sub : value.getSubSelectors() ) {
-			
-			if (sub instanceof IdSelector) {
-				b.append(((IdSelector) sub).getName());
-			}
-			else if (sub instanceof ClassSelector) {
-				b.append(((ClassSelector) sub).getName());
-			}
-			else if (sub instanceof PseudoClass) {
-				b.append(((PseudoClass) sub).getName());
-			}
+			b.append(text(sub));
+//			if (sub instanceof IdSelector) {
+//				b.append(((IdSelector) sub).getName());
+//			}
+//			else if (sub instanceof ClassSelector) {
+//				b.append(((ClassSelector) sub).getName());
+//			}
+//			else if (sub instanceof PseudoClass) {
+//				b.append(((PseudoClass) sub).getName());
+//			}
 		}
 		
 		return b.toString();

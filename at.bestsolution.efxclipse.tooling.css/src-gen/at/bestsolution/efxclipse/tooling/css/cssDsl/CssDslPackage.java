@@ -338,6 +338,145 @@ public interface CssDslPackage extends EPackage
   int SELECTOR_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl <em>Css Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getCssSelector()
+   * @generated
+   */
+  int CSS_SELECTOR = 8;
+
+  /**
+   * The number of structural features of the '<em>Css Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_SELECTOR_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl <em>Pseudo Class Or Func</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassOrFunc()
+   * @generated
+   */
+  int PSEUDO_CLASS_OR_FUNC = 16;
+
+  /**
+   * The number of structural features of the '<em>Pseudo Class Or Func</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl <em>Pseudo Class Function</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassFunction()
+   * @generated
+   */
+  int PSEUDO_CLASS_FUNCTION = 19;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION__NAME = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION__PARAMS = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Pseudo Class Function</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION_FEATURE_COUNT = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl <em>Simple Selector For Negation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getSimpleSelectorForNegation()
+   * @generated
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__NAME = PSEUDO_CLASS_FUNCTION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__PARAMS = PSEUDO_CLASS_FUNCTION__PARAMS;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Universal</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Sub Selectors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Simple Selector For Negation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION_FEATURE_COUNT = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.simple_selectorImpl <em>simple selector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -345,7 +484,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getsimple_selector()
    * @generated
    */
-  int SIMPLE_SELECTOR = 7;
+  int SIMPLE_SELECTOR = 9;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -384,23 +523,116 @@ public interface CssDslPackage extends EPackage
   int SIMPLE_SELECTOR_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl <em>Css Selector</em>}' class.
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl <em>Class Selector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getCssSelector()
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getClassSelector()
    * @generated
    */
-  int CSS_SELECTOR = 8;
+  int CLASS_SELECTOR = 10;
 
   /**
-   * The number of structural features of the '<em>Css Selector</em>' class.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CSS_SELECTOR_FEATURE_COUNT = 0;
+  int CLASS_SELECTOR__NAME = CSS_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Class Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_SELECTOR_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl <em>Element Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getElementSelector()
+   * @generated
+   */
+  int ELEMENT_SELECTOR = 11;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT_SELECTOR__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Element Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT_SELECTOR_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl <em>Universal Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getUniversalSelector()
+   * @generated
+   */
+  int UNIVERSAL_SELECTOR = 12;
+
+  /**
+   * The feature id for the '<em><b>Namespace</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIVERSAL_SELECTOR__NAMESPACE = 0;
+
+  /**
+   * The number of structural features of the '<em>Universal Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIVERSAL_SELECTOR_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl <em>Id Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdSelector()
+   * @generated
+   */
+  int ID_SELECTOR = 13;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ID_SELECTOR__NAME = CSS_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Id Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ID_SELECTOR_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl <em>css declaration</em>}' class.
@@ -410,7 +642,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_declaration()
    * @generated
    */
-  int CSS_DECLARATION = 9;
+  int CSS_DECLARATION = 14;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
@@ -456,7 +688,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_property()
    * @generated
    */
-  int CSS_PROPERTY = 10;
+  int CSS_PROPERTY = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -484,16 +716,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClass()
    * @generated
    */
-  int PSEUDO_CLASS = 11;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS__NAME = CSS_SELECTOR_FEATURE_COUNT + 0;
+  int PSEUDO_CLASS = 17;
 
   /**
    * The number of structural features of the '<em>Pseudo Class</em>' class.
@@ -502,7 +725,7 @@ public interface CssDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PSEUDO_CLASS_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 1;
+  int PSEUDO_CLASS_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassNameImpl <em>Pseudo Class Name</em>}' class.
@@ -512,7 +735,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassName()
    * @generated
    */
-  int PSEUDO_CLASS_NAME = 12;
+  int PSEUDO_CLASS_NAME = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -521,7 +744,7 @@ public interface CssDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PSEUDO_CLASS_NAME__NAME = PSEUDO_CLASS__NAME;
+  int PSEUDO_CLASS_NAME__NAME = PSEUDO_CLASS_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Pseudo Class Name</em>' class.
@@ -530,44 +753,7 @@ public interface CssDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PSEUDO_CLASS_NAME_FEATURE_COUNT = PSEUDO_CLASS_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl <em>Pseudo Class Function</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassFunction()
-   * @generated
-   */
-  int PSEUDO_CLASS_FUNCTION = 13;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS_FUNCTION__NAME = PSEUDO_CLASS__NAME;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS_FUNCTION__PARAMS = PSEUDO_CLASS_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Pseudo Class Function</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS_FUNCTION_FEATURE_COUNT = PSEUDO_CLASS_FEATURE_COUNT + 1;
+  int PSEUDO_CLASS_NAME_FEATURE_COUNT = PSEUDO_CLASS_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssTokImpl <em>Css Tok</em>}' class.
@@ -577,7 +763,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getCssTok()
    * @generated
    */
-  int CSS_TOK = 14;
+  int CSS_TOK = 20;
 
   /**
    * The number of structural features of the '<em>Css Tok</em>' class.
@@ -589,43 +775,6 @@ public interface CssDslPackage extends EPackage
   int CSS_TOK_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.functionImpl <em>function</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.functionImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getfunction()
-   * @generated
-   */
-  int FUNCTION = 15;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION__PARAMS = 1;
-
-  /**
-   * The number of structural features of the '<em>function</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.URLTypeImpl <em>URL Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -633,7 +782,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getURLType()
    * @generated
    */
-  int URL_TYPE = 16;
+  int URL_TYPE = 21;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -679,7 +828,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getAttributeSelector()
    * @generated
    */
-  int ATTRIBUTE_SELECTOR = 17;
+  int ATTRIBUTE_SELECTOR = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -718,118 +867,6 @@ public interface CssDslPackage extends EPackage
   int ATTRIBUTE_SELECTOR_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl <em>Class Selector</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getClassSelector()
-   * @generated
-   */
-  int CLASS_SELECTOR = 18;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASS_SELECTOR__NAME = CSS_SELECTOR_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Class Selector</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASS_SELECTOR_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl <em>Element Selector</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getElementSelector()
-   * @generated
-   */
-  int ELEMENT_SELECTOR = 19;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ELEMENT_SELECTOR__NAME = CSS_SELECTOR_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Element Selector</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ELEMENT_SELECTOR_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl <em>Universal Selector</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getUniversalSelector()
-   * @generated
-   */
-  int UNIVERSAL_SELECTOR = 20;
-
-  /**
-   * The feature id for the '<em><b>Namespece</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int UNIVERSAL_SELECTOR__NAMESPECE = CSS_SELECTOR_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Universal Selector</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int UNIVERSAL_SELECTOR_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl <em>Id Selector</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdSelector()
-   * @generated
-   */
-  int ID_SELECTOR = 21;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_SELECTOR__NAME = CSS_SELECTOR_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Id Selector</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ID_SELECTOR_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SymbolTokImpl <em>Symbol Tok</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -837,7 +874,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getSymbolTok()
    * @generated
    */
-  int SYMBOL_TOK = 22;
+  int SYMBOL_TOK = 23;
 
   /**
    * The feature id for the '<em><b>Symbol</b></em>' attribute.
@@ -865,7 +902,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getWSTok()
    * @generated
    */
-  int WS_TOK = 23;
+  int WS_TOK = 24;
 
   /**
    * The number of structural features of the '<em>WS Tok</em>' class.
@@ -884,7 +921,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getStringTok()
    * @generated
    */
-  int STRING_TOK = 24;
+  int STRING_TOK = 25;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -905,34 +942,6 @@ public interface CssDslPackage extends EPackage
   int STRING_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl <em>Func Tok</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getFuncTok()
-   * @generated
-   */
-  int FUNC_TOK = 25;
-
-  /**
-   * The feature id for the '<em><b>Func</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNC_TOK__FUNC = CSS_TOK_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Func Tok</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNC_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl <em>Number Tok</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -943,22 +952,13 @@ public interface CssDslPackage extends EPackage
   int NUMBER_TOK = 26;
 
   /**
-   * The feature id for the '<em><b>Num</b></em>' attribute.
+   * The feature id for the '<em><b>Val</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NUMBER_TOK__NUM = CSS_TOK_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Unit</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER_TOK__UNIT = CSS_TOK_FEATURE_COUNT + 1;
+  int NUMBER_TOK__VAL = CSS_TOK_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Number Tok</em>' class.
@@ -967,35 +967,7 @@ public interface CssDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NUMBER_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl <em>Identifier Tok</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdentifierTok()
-   * @generated
-   */
-  int IDENTIFIER_TOK = 27;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IDENTIFIER_TOK__ID = CSS_TOK_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Identifier Tok</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IDENTIFIER_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+  int NUMBER_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UrlTokImpl <em>Url Tok</em>}' class.
@@ -1005,7 +977,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getUrlTok()
    * @generated
    */
-  int URL_TOK = 28;
+  int URL_TOK = 27;
 
   /**
    * The feature id for the '<em><b>Url</b></em>' containment reference.
@@ -1033,16 +1005,16 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getColorTok()
    * @generated
    */
-  int COLOR_TOK = 29;
+  int COLOR_TOK = 28;
 
   /**
-   * The feature id for the '<em><b>Color</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COLOR_TOK__COLOR = CSS_TOK_FEATURE_COUNT + 0;
+  int COLOR_TOK__VALUE = CSS_TOK_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Color Tok</em>' class.
@@ -1054,6 +1026,71 @@ public interface CssDslPackage extends EPackage
   int COLOR_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl <em>Identifier Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdentifierTok()
+   * @generated
+   */
+  int IDENTIFIER_TOK = 29;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDENTIFIER_TOK__NAME = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Identifier Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDENTIFIER_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl <em>Func Tok</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getFuncTok()
+   * @generated
+   */
+  int FUNC_TOK = 30;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_TOK__NAME = CSS_TOK_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_TOK__PARAMS = CSS_TOK_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Func Tok</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1061,7 +1098,7 @@ public interface CssDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_not()
    * @generated
    */
-  int CSS_NOT = 30;
+  int CSS_NOT = 31;
 
 
   /**
@@ -1311,6 +1348,59 @@ public interface CssDslPackage extends EPackage
   EReference getselector_Selector();
 
   /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation <em>Simple Selector For Negation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Simple Selector For Negation</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation
+   * @generated
+   */
+  EClass getSimpleSelectorForNegation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation#getElement <em>Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Element</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation#getElement()
+   * @see #getSimpleSelectorForNegation()
+   * @generated
+   */
+  EReference getSimpleSelectorForNegation_Element();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation#getUniversal <em>Universal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Universal</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation#getUniversal()
+   * @see #getSimpleSelectorForNegation()
+   * @generated
+   */
+  EReference getSimpleSelectorForNegation_Universal();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation#getSubSelectors <em>Sub Selectors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Sub Selectors</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation#getSubSelectors()
+   * @see #getSimpleSelectorForNegation()
+   * @generated
+   */
+  EReference getSimpleSelectorForNegation_SubSelectors();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector <em>Css Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Css Selector</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector
+   * @generated
+   */
+  EClass getCssSelector();
+
+  /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector <em>simple selector</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1354,14 +1444,88 @@ public interface CssDslPackage extends EPackage
   EReference getsimple_selector_SubSelectors();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector <em>Css Selector</em>}'.
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector <em>Class Selector</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Css Selector</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector
+   * @return the meta object for class '<em>Class Selector</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector
    * @generated
    */
-  EClass getCssSelector();
+  EClass getClassSelector();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector#getName()
+   * @see #getClassSelector()
+   * @generated
+   */
+  EAttribute getClassSelector_Name();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector <em>Element Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Element Selector</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector
+   * @generated
+   */
+  EClass getElementSelector();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector#getName()
+   * @see #getElementSelector()
+   * @generated
+   */
+  EAttribute getElementSelector_Name();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector <em>Universal Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Universal Selector</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector
+   * @generated
+   */
+  EClass getUniversalSelector();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespace <em>Namespace</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Namespace</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespace()
+   * @see #getUniversalSelector()
+   * @generated
+   */
+  EAttribute getUniversalSelector_Namespace();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector <em>Id Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Id Selector</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector
+   * @generated
+   */
+  EClass getIdSelector();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector#getName()
+   * @see #getIdSelector()
+   * @generated
+   */
+  EAttribute getIdSelector_Name();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration <em>css declaration</em>}'.
@@ -1428,6 +1592,16 @@ public interface CssDslPackage extends EPackage
   EAttribute getcss_property_Name();
 
   /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassOrFunc <em>Pseudo Class Or Func</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Pseudo Class Or Func</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassOrFunc
+   * @generated
+   */
+  EClass getPseudoClassOrFunc();
+
+  /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass <em>Pseudo Class</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1436,17 +1610,6 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EClass getPseudoClass();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass#getName()
-   * @see #getPseudoClass()
-   * @generated
-   */
-  EAttribute getPseudoClass_Name();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName <em>Pseudo Class Name</em>}'.
@@ -1459,6 +1622,17 @@ public interface CssDslPackage extends EPackage
   EClass getPseudoClassName();
 
   /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName#getName()
+   * @see #getPseudoClassName()
+   * @generated
+   */
+  EAttribute getPseudoClassName_Name();
+
+  /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction <em>Pseudo Class Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1467,6 +1641,17 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EClass getPseudoClassFunction();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getName()
+   * @see #getPseudoClassFunction()
+   * @generated
+   */
+  EAttribute getPseudoClassFunction_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getParams <em>Params</em>}'.
@@ -1488,38 +1673,6 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EClass getCssTok();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.function <em>function</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>function</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.function
-   * @generated
-   */
-  EClass getfunction();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.function#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.function#getName()
-   * @see #getfunction()
-   * @generated
-   */
-  EAttribute getfunction_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.function#getParams <em>Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.function#getParams()
-   * @see #getfunction()
-   * @generated
-   */
-  EReference getfunction_Params();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.URLType <em>URL Type</em>}'.
@@ -1597,90 +1750,6 @@ public interface CssDslPackage extends EPackage
   EAttribute getAttributeSelector_Value();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector <em>Class Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Class Selector</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector
-   * @generated
-   */
-  EClass getClassSelector();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector#getName()
-   * @see #getClassSelector()
-   * @generated
-   */
-  EAttribute getClassSelector_Name();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector <em>Element Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Element Selector</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector
-   * @generated
-   */
-  EClass getElementSelector();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector#getName()
-   * @see #getElementSelector()
-   * @generated
-   */
-  EAttribute getElementSelector_Name();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector <em>Universal Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Universal Selector</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector
-   * @generated
-   */
-  EClass getUniversalSelector();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespece <em>Namespece</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Namespece</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespece()
-   * @see #getUniversalSelector()
-   * @generated
-   */
-  EAttribute getUniversalSelector_Namespece();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector <em>Id Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Id Selector</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector
-   * @generated
-   */
-  EClass getIdSelector();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector#getName()
-   * @see #getIdSelector()
-   * @generated
-   */
-  EAttribute getIdSelector_Name();
-
-  /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok <em>Symbol Tok</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1733,27 +1802,6 @@ public interface CssDslPackage extends EPackage
   EAttribute getStringTok_Value();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok <em>Func Tok</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Tok</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok
-   * @generated
-   */
-  EClass getFuncTok();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getFunc <em>Func</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Func</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getFunc()
-   * @see #getFuncTok()
-   * @generated
-   */
-  EReference getFuncTok_Func();
-
-  /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok <em>Number Tok</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1764,47 +1812,15 @@ public interface CssDslPackage extends EPackage
   EClass getNumberTok();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getNum <em>Num</em>}'.
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Num</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getNum()
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getVal()
    * @see #getNumberTok()
    * @generated
    */
-  EAttribute getNumberTok_Num();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getUnit <em>Unit</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Unit</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok#getUnit()
-   * @see #getNumberTok()
-   * @generated
-   */
-  EAttribute getNumberTok_Unit();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok <em>Identifier Tok</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Identifier Tok</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok
-   * @generated
-   */
-  EClass getIdentifierTok();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok#getId <em>Id</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok#getId()
-   * @see #getIdentifierTok()
-   * @generated
-   */
-  EAttribute getIdentifierTok_Id();
+  EAttribute getNumberTok_Val();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok <em>Url Tok</em>}'.
@@ -1838,15 +1854,68 @@ public interface CssDslPackage extends EPackage
   EClass getColorTok();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getColor <em>Color</em>}'.
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Color</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getColor()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getValue()
    * @see #getColorTok()
    * @generated
    */
-  EAttribute getColorTok_Color();
+  EAttribute getColorTok_Value();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok <em>Identifier Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Identifier Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok
+   * @generated
+   */
+  EClass getIdentifierTok();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok#getName()
+   * @see #getIdentifierTok()
+   * @generated
+   */
+  EAttribute getIdentifierTok_Name();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok <em>Func Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Func Tok</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok
+   * @generated
+   */
+  EClass getFuncTok();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getName()
+   * @see #getFuncTok()
+   * @generated
+   */
+  EReference getFuncTok_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getParams <em>Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getParams()
+   * @see #getFuncTok()
+   * @generated
+   */
+  EReference getFuncTok_Params();
 
   /**
    * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}'.
@@ -2080,6 +2149,50 @@ public interface CssDslPackage extends EPackage
     EReference SELECTOR__SELECTOR = eINSTANCE.getselector_Selector();
 
     /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl <em>Simple Selector For Negation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getSimpleSelectorForNegation()
+     * @generated
+     */
+    EClass SIMPLE_SELECTOR_FOR_NEGATION = eINSTANCE.getSimpleSelectorForNegation();
+
+    /**
+     * The meta object literal for the '<em><b>Element</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT = eINSTANCE.getSimpleSelectorForNegation_Element();
+
+    /**
+     * The meta object literal for the '<em><b>Universal</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL = eINSTANCE.getSimpleSelectorForNegation_Universal();
+
+    /**
+     * The meta object literal for the '<em><b>Sub Selectors</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS = eINSTANCE.getSimpleSelectorForNegation_SubSelectors();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl <em>Css Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getCssSelector()
+     * @generated
+     */
+    EClass CSS_SELECTOR = eINSTANCE.getCssSelector();
+
+    /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.simple_selectorImpl <em>simple selector</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2114,14 +2227,76 @@ public interface CssDslPackage extends EPackage
     EReference SIMPLE_SELECTOR__SUB_SELECTORS = eINSTANCE.getsimple_selector_SubSelectors();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl <em>Css Selector</em>}' class.
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl <em>Class Selector</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getCssSelector()
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getClassSelector()
      * @generated
      */
-    EClass CSS_SELECTOR = eINSTANCE.getCssSelector();
+    EClass CLASS_SELECTOR = eINSTANCE.getClassSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_SELECTOR__NAME = eINSTANCE.getClassSelector_Name();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl <em>Element Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getElementSelector()
+     * @generated
+     */
+    EClass ELEMENT_SELECTOR = eINSTANCE.getElementSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ELEMENT_SELECTOR__NAME = eINSTANCE.getElementSelector_Name();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl <em>Universal Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getUniversalSelector()
+     * @generated
+     */
+    EClass UNIVERSAL_SELECTOR = eINSTANCE.getUniversalSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Namespace</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UNIVERSAL_SELECTOR__NAMESPACE = eINSTANCE.getUniversalSelector_Namespace();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl <em>Id Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdSelector()
+     * @generated
+     */
+    EClass ID_SELECTOR = eINSTANCE.getIdSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ID_SELECTOR__NAME = eINSTANCE.getIdSelector_Name();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl <em>css declaration</em>}' class.
@@ -2176,6 +2351,16 @@ public interface CssDslPackage extends EPackage
     EAttribute CSS_PROPERTY__NAME = eINSTANCE.getcss_property_Name();
 
     /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl <em>Pseudo Class Or Func</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassOrFunc()
+     * @generated
+     */
+    EClass PSEUDO_CLASS_OR_FUNC = eINSTANCE.getPseudoClassOrFunc();
+
+    /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassImpl <em>Pseudo Class</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2184,14 +2369,6 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EClass PSEUDO_CLASS = eINSTANCE.getPseudoClass();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PSEUDO_CLASS__NAME = eINSTANCE.getPseudoClass_Name();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassNameImpl <em>Pseudo Class Name</em>}' class.
@@ -2204,6 +2381,14 @@ public interface CssDslPackage extends EPackage
     EClass PSEUDO_CLASS_NAME = eINSTANCE.getPseudoClassName();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PSEUDO_CLASS_NAME__NAME = eINSTANCE.getPseudoClassName_Name();
+
+    /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl <em>Pseudo Class Function</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2212,6 +2397,14 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EClass PSEUDO_CLASS_FUNCTION = eINSTANCE.getPseudoClassFunction();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PSEUDO_CLASS_FUNCTION__NAME = eINSTANCE.getPseudoClassFunction_Name();
 
     /**
      * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
@@ -2230,32 +2423,6 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EClass CSS_TOK = eINSTANCE.getCssTok();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.functionImpl <em>function</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.functionImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getfunction()
-     * @generated
-     */
-    EClass FUNCTION = eINSTANCE.getfunction();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FUNCTION__NAME = eINSTANCE.getfunction_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FUNCTION__PARAMS = eINSTANCE.getfunction_Params();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.URLTypeImpl <em>URL Type</em>}' class.
@@ -2318,78 +2485,6 @@ public interface CssDslPackage extends EPackage
     EAttribute ATTRIBUTE_SELECTOR__VALUE = eINSTANCE.getAttributeSelector_Value();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl <em>Class Selector</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ClassSelectorImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getClassSelector()
-     * @generated
-     */
-    EClass CLASS_SELECTOR = eINSTANCE.getClassSelector();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CLASS_SELECTOR__NAME = eINSTANCE.getClassSelector_Name();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl <em>Element Selector</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.ElementSelectorImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getElementSelector()
-     * @generated
-     */
-    EClass ELEMENT_SELECTOR = eINSTANCE.getElementSelector();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ELEMENT_SELECTOR__NAME = eINSTANCE.getElementSelector_Name();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl <em>Universal Selector</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UniversalSelectorImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getUniversalSelector()
-     * @generated
-     */
-    EClass UNIVERSAL_SELECTOR = eINSTANCE.getUniversalSelector();
-
-    /**
-     * The meta object literal for the '<em><b>Namespece</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute UNIVERSAL_SELECTOR__NAMESPECE = eINSTANCE.getUniversalSelector_Namespece();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl <em>Id Selector</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdSelectorImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdSelector()
-     * @generated
-     */
-    EClass ID_SELECTOR = eINSTANCE.getIdSelector();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ID_SELECTOR__NAME = eINSTANCE.getIdSelector_Name();
-
-    /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SymbolTokImpl <em>Symbol Tok</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2436,24 +2531,6 @@ public interface CssDslPackage extends EPackage
     EAttribute STRING_TOK__VALUE = eINSTANCE.getStringTok_Value();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl <em>Func Tok</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getFuncTok()
-     * @generated
-     */
-    EClass FUNC_TOK = eINSTANCE.getFuncTok();
-
-    /**
-     * The meta object literal for the '<em><b>Func</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FUNC_TOK__FUNC = eINSTANCE.getFuncTok_Func();
-
-    /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.NumberTokImpl <em>Number Tok</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2464,38 +2541,12 @@ public interface CssDslPackage extends EPackage
     EClass NUMBER_TOK = eINSTANCE.getNumberTok();
 
     /**
-     * The meta object literal for the '<em><b>Num</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute NUMBER_TOK__NUM = eINSTANCE.getNumberTok_Num();
-
-    /**
-     * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute NUMBER_TOK__UNIT = eINSTANCE.getNumberTok_Unit();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl <em>Identifier Tok</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdentifierTok()
-     * @generated
-     */
-    EClass IDENTIFIER_TOK = eINSTANCE.getIdentifierTok();
-
-    /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IDENTIFIER_TOK__ID = eINSTANCE.getIdentifierTok_Id();
+    EAttribute NUMBER_TOK__VAL = eINSTANCE.getNumberTok_Val();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.UrlTokImpl <em>Url Tok</em>}' class.
@@ -2526,12 +2577,56 @@ public interface CssDslPackage extends EPackage
     EClass COLOR_TOK = eINSTANCE.getColorTok();
 
     /**
-     * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COLOR_TOK__COLOR = eINSTANCE.getColorTok_Color();
+    EAttribute COLOR_TOK__VALUE = eINSTANCE.getColorTok_Value();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl <em>Identifier Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getIdentifierTok()
+     * @generated
+     */
+    EClass IDENTIFIER_TOK = eINSTANCE.getIdentifierTok();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IDENTIFIER_TOK__NAME = eINSTANCE.getIdentifierTok_Name();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl <em>Func Tok</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.FuncTokImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getFuncTok()
+     * @generated
+     */
+    EClass FUNC_TOK = eINSTANCE.getFuncTok();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_TOK__NAME = eINSTANCE.getFuncTok_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_TOK__PARAMS = eINSTANCE.getFuncTok_Params();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.

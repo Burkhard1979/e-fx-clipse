@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ElementSelectorImpl extends CssSelectorImpl implements ElementSelector
+public class ElementSelectorImpl extends MinimalEObjectImpl.Container implements ElementSelector
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

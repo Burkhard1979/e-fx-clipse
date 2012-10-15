@@ -5,6 +5,7 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +15,7 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespece <em>Namespece</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespace <em>Namespace</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,32 +23,32 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
  * @model
  * @generated
  */
-public interface UniversalSelector extends CssSelector
+public interface UniversalSelector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Namespece</b></em>' attribute.
+   * Returns the value of the '<em><b>Namespace</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Namespece</em>' attribute isn't clear,
+   * If the meaning of the '<em>Namespace</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Namespece</em>' attribute.
-   * @see #setNamespece(String)
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getUniversalSelector_Namespece()
+   * @return the value of the '<em>Namespace</em>' attribute.
+   * @see #setNamespace(String)
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getUniversalSelector_Namespace()
    * @model
    * @generated
    */
-  String getNamespece();
+  String getNamespace();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespece <em>Namespece</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector#getNamespace <em>Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Namespece</em>' attribute.
-   * @see #getNamespece()
+   * @param value the new value of the '<em>Namespace</em>' attribute.
+   * @see #getNamespace()
    * @generated
    */
-  void setNamespece(String value);
+  void setNamespace(String value);
 
 } // UniversalSelector

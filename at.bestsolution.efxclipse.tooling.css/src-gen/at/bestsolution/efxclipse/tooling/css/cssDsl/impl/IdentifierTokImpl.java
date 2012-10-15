@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl#getId <em>Id</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.IdentifierTokImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +30,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String ID_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String id = ID_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +75,9 @@ public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getId()
+  public String getName()
   {
-    return id;
+    return name;
   }
 
   /**
@@ -85,12 +85,12 @@ public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setId(String newId)
+  public void setName(String newName)
   {
-    String oldId = id;
-    id = newId;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.IDENTIFIER_TOK__ID, oldId, id));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.IDENTIFIER_TOK__NAME, oldName, name));
   }
 
   /**
@@ -103,8 +103,8 @@ public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
   {
     switch (featureID)
     {
-      case CssDslPackage.IDENTIFIER_TOK__ID:
-        return getId();
+      case CssDslPackage.IDENTIFIER_TOK__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +119,8 @@ public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
   {
     switch (featureID)
     {
-      case CssDslPackage.IDENTIFIER_TOK__ID:
-        setId((String)newValue);
+      case CssDslPackage.IDENTIFIER_TOK__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +136,8 @@ public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
   {
     switch (featureID)
     {
-      case CssDslPackage.IDENTIFIER_TOK__ID:
-        setId(ID_EDEFAULT);
+      case CssDslPackage.IDENTIFIER_TOK__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +153,8 @@ public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
   {
     switch (featureID)
     {
-      case CssDslPackage.IDENTIFIER_TOK__ID:
-        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+      case CssDslPackage.IDENTIFIER_TOK__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -170,8 +170,8 @@ public class IdentifierTokImpl extends CssTokImpl implements IdentifierTok
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (id: ");
-    result.append(id);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

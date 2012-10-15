@@ -5,6 +5,7 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +15,8 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getFunc <em>Func</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getName <em>Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getParams <em>Params</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +27,45 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
 public interface FuncTok extends CssTok
 {
   /**
-   * Returns the value of the '<em><b>Func</b></em>' containment reference.
+   * Returns the value of the '<em><b>Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Func</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Name</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Func</em>' containment reference.
-   * @see #setFunc(function)
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getFuncTok_Func()
+   * @return the value of the '<em>Name</em>' containment reference.
+   * @see #setName(IdentifierTok)
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getFuncTok_Name()
    * @model containment="true"
    * @generated
    */
-  function getFunc();
+  IdentifierTok getName();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getFunc <em>Func</em>}' containment reference.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok#getName <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Func</em>' containment reference.
-   * @see #getFunc()
+   * @param value the new value of the '<em>Name</em>' containment reference.
+   * @see #getName()
    * @generated
    */
-  void setFunc(function value);
+  void setName(IdentifierTok value);
+
+  /**
+   * Returns the value of the '<em><b>Params</b></em>' containment reference list.
+   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Params</em>' containment reference list.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getFuncTok_Params()
+   * @model containment="true"
+   * @generated
+   */
+  EList<CssTok> getParams();
 
 } // FuncTok

@@ -1,0 +1,12 @@
+test {
+	property: a 1 px 3;
+	
+	with_comment: 1/*comment*/unit;
+	with_space: 1 unit;
+	normal: 1erganunit;
+	
+	asdf: 2px;
+	func: hulligulli(1px);
+}
+
+g {}

@@ -8,8 +8,8 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 
 import java.util.Collection;
 
@@ -22,27 +22,26 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>simple selector</b></em>'.
+ * An implementation of the model object '<em><b>Simple Selector For Negation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.simple_selectorImpl#getElement <em>Element</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.simple_selectorImpl#getUniversal <em>Universal</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.simple_selectorImpl#getSubSelectors <em>Sub Selectors</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl#getUniversal <em>Universal</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl#getSubSelectors <em>Sub Selectors</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class simple_selectorImpl extends MinimalEObjectImpl.Container implements simple_selector
+public class SimpleSelectorForNegationImpl extends PseudoClassFunctionImpl implements SimpleSelectorForNegation
 {
   /**
    * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
@@ -79,7 +78,7 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  protected simple_selectorImpl()
+  protected SimpleSelectorForNegationImpl()
   {
     super();
   }
@@ -92,7 +91,7 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return CssDslPackage.Literals.SIMPLE_SELECTOR;
+    return CssDslPackage.Literals.SIMPLE_SELECTOR_FOR_NEGATION;
   }
 
   /**
@@ -116,7 +115,7 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
     element = newElement;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__ELEMENT, oldElement, newElement);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT, oldElement, newElement);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -133,14 +132,14 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
     {
       NotificationChain msgs = null;
       if (element != null)
-        msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__ELEMENT, null, msgs);
+        msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT, null, msgs);
       if (newElement != null)
-        msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__ELEMENT, null, msgs);
+        msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT, null, msgs);
       msgs = basicSetElement(newElement, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__ELEMENT, newElement, newElement));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT, newElement, newElement));
   }
 
   /**
@@ -164,7 +163,7 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
     universal = newUniversal;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, oldUniversal, newUniversal);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL, oldUniversal, newUniversal);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -181,14 +180,14 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
     {
       NotificationChain msgs = null;
       if (universal != null)
-        msgs = ((InternalEObject)universal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, null, msgs);
+        msgs = ((InternalEObject)universal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL, null, msgs);
       if (newUniversal != null)
-        msgs = ((InternalEObject)newUniversal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, null, msgs);
+        msgs = ((InternalEObject)newUniversal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL, null, msgs);
       msgs = basicSetUniversal(newUniversal, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL, newUniversal, newUniversal));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL, newUniversal, newUniversal));
   }
 
   /**
@@ -200,7 +199,7 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   {
     if (subSelectors == null)
     {
-      subSelectors = new EObjectContainmentEList<CssSelector>(CssSelector.class, this, CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS);
+      subSelectors = new EObjectContainmentEList<CssSelector>(CssSelector.class, this, CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS);
     }
     return subSelectors;
   }
@@ -215,11 +214,11 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT:
         return basicSetElement(null, msgs);
-      case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL:
         return basicSetUniversal(null, msgs);
-      case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS:
         return ((InternalEList<?>)getSubSelectors()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -235,11 +234,11 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT:
         return getElement();
-      case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL:
         return getUniversal();
-      case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS:
         return getSubSelectors();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -256,13 +255,13 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT:
         setElement((ElementSelector)newValue);
         return;
-      case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL:
         setUniversal((UniversalSelector)newValue);
         return;
-      case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS:
         getSubSelectors().clear();
         getSubSelectors().addAll((Collection<? extends CssSelector>)newValue);
         return;
@@ -280,13 +279,13 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT:
         setElement((ElementSelector)null);
         return;
-      case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL:
         setUniversal((UniversalSelector)null);
         return;
-      case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS:
         getSubSelectors().clear();
         return;
     }
@@ -303,14 +302,14 @@ public class simple_selectorImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case CssDslPackage.SIMPLE_SELECTOR__ELEMENT:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT:
         return element != null;
-      case CssDslPackage.SIMPLE_SELECTOR__UNIVERSAL:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL:
         return universal != null;
-      case CssDslPackage.SIMPLE_SELECTOR__SUB_SELECTORS:
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS:
         return subSelectors != null && !subSelectors.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //simple_selectorImpl
+} //SimpleSelectorForNegationImpl

@@ -75,29 +75,30 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
       case CssDslPackage.MEDIA: return createmedia();
       case CssDslPackage.RULESET: return createruleset();
       case CssDslPackage.SELECTOR: return createselector();
-      case CssDslPackage.SIMPLE_SELECTOR: return createsimple_selector();
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION: return createSimpleSelectorForNegation();
       case CssDslPackage.CSS_SELECTOR: return createCssSelector();
-      case CssDslPackage.CSS_DECLARATION: return createcss_declaration();
-      case CssDslPackage.CSS_PROPERTY: return createcss_property();
-      case CssDslPackage.PSEUDO_CLASS: return createPseudoClass();
-      case CssDslPackage.PSEUDO_CLASS_NAME: return createPseudoClassName();
-      case CssDslPackage.PSEUDO_CLASS_FUNCTION: return createPseudoClassFunction();
-      case CssDslPackage.CSS_TOK: return createCssTok();
-      case CssDslPackage.FUNCTION: return createfunction();
-      case CssDslPackage.URL_TYPE: return createURLType();
-      case CssDslPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
+      case CssDslPackage.SIMPLE_SELECTOR: return createsimple_selector();
       case CssDslPackage.CLASS_SELECTOR: return createClassSelector();
       case CssDslPackage.ELEMENT_SELECTOR: return createElementSelector();
       case CssDslPackage.UNIVERSAL_SELECTOR: return createUniversalSelector();
       case CssDslPackage.ID_SELECTOR: return createIdSelector();
+      case CssDslPackage.CSS_DECLARATION: return createcss_declaration();
+      case CssDslPackage.CSS_PROPERTY: return createcss_property();
+      case CssDslPackage.PSEUDO_CLASS_OR_FUNC: return createPseudoClassOrFunc();
+      case CssDslPackage.PSEUDO_CLASS: return createPseudoClass();
+      case CssDslPackage.PSEUDO_CLASS_NAME: return createPseudoClassName();
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION: return createPseudoClassFunction();
+      case CssDslPackage.CSS_TOK: return createCssTok();
+      case CssDslPackage.URL_TYPE: return createURLType();
+      case CssDslPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
       case CssDslPackage.SYMBOL_TOK: return createSymbolTok();
       case CssDslPackage.WS_TOK: return createWSTok();
       case CssDslPackage.STRING_TOK: return createStringTok();
-      case CssDslPackage.FUNC_TOK: return createFuncTok();
       case CssDslPackage.NUMBER_TOK: return createNumberTok();
-      case CssDslPackage.IDENTIFIER_TOK: return createIdentifierTok();
       case CssDslPackage.URL_TOK: return createUrlTok();
       case CssDslPackage.COLOR_TOK: return createColorTok();
+      case CssDslPackage.IDENTIFIER_TOK: return createIdentifierTok();
+      case CssDslPackage.FUNC_TOK: return createFuncTok();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -219,10 +220,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public simple_selector createsimple_selector()
+  public SimpleSelectorForNegation createSimpleSelectorForNegation()
   {
-    simple_selectorImpl simple_selector = new simple_selectorImpl();
-    return simple_selector;
+    SimpleSelectorForNegationImpl simpleSelectorForNegation = new SimpleSelectorForNegationImpl();
+    return simpleSelectorForNegation;
   }
 
   /**
@@ -241,98 +242,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public css_declaration createcss_declaration()
+  public simple_selector createsimple_selector()
   {
-    css_declarationImpl css_declaration = new css_declarationImpl();
-    return css_declaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public css_property createcss_property()
-  {
-    css_propertyImpl css_property = new css_propertyImpl();
-    return css_property;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PseudoClass createPseudoClass()
-  {
-    PseudoClassImpl pseudoClass = new PseudoClassImpl();
-    return pseudoClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PseudoClassName createPseudoClassName()
-  {
-    PseudoClassNameImpl pseudoClassName = new PseudoClassNameImpl();
-    return pseudoClassName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PseudoClassFunction createPseudoClassFunction()
-  {
-    PseudoClassFunctionImpl pseudoClassFunction = new PseudoClassFunctionImpl();
-    return pseudoClassFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CssTok createCssTok()
-  {
-    CssTokImpl cssTok = new CssTokImpl();
-    return cssTok;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public function createfunction()
-  {
-    functionImpl function = new functionImpl();
-    return function;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public URLType createURLType()
-  {
-    URLTypeImpl urlType = new URLTypeImpl();
-    return urlType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AttributeSelector createAttributeSelector()
-  {
-    AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
-    return attributeSelector;
+    simple_selectorImpl simple_selector = new simple_selectorImpl();
+    return simple_selector;
   }
 
   /**
@@ -384,6 +297,105 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public css_declaration createcss_declaration()
+  {
+    css_declarationImpl css_declaration = new css_declarationImpl();
+    return css_declaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public css_property createcss_property()
+  {
+    css_propertyImpl css_property = new css_propertyImpl();
+    return css_property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClassOrFunc createPseudoClassOrFunc()
+  {
+    PseudoClassOrFuncImpl pseudoClassOrFunc = new PseudoClassOrFuncImpl();
+    return pseudoClassOrFunc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClass createPseudoClass()
+  {
+    PseudoClassImpl pseudoClass = new PseudoClassImpl();
+    return pseudoClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClassName createPseudoClassName()
+  {
+    PseudoClassNameImpl pseudoClassName = new PseudoClassNameImpl();
+    return pseudoClassName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClassFunction createPseudoClassFunction()
+  {
+    PseudoClassFunctionImpl pseudoClassFunction = new PseudoClassFunctionImpl();
+    return pseudoClassFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CssTok createCssTok()
+  {
+    CssTokImpl cssTok = new CssTokImpl();
+    return cssTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public URLType createURLType()
+  {
+    URLTypeImpl urlType = new URLTypeImpl();
+    return urlType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AttributeSelector createAttributeSelector()
+  {
+    AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
+    return attributeSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SymbolTok createSymbolTok()
   {
     SymbolTokImpl symbolTok = new SymbolTokImpl();
@@ -417,32 +429,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncTok createFuncTok()
-  {
-    FuncTokImpl funcTok = new FuncTokImpl();
-    return funcTok;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public NumberTok createNumberTok()
   {
     NumberTokImpl numberTok = new NumberTokImpl();
     return numberTok;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IdentifierTok createIdentifierTok()
-  {
-    IdentifierTokImpl identifierTok = new IdentifierTokImpl();
-    return identifierTok;
   }
 
   /**
@@ -465,6 +455,28 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
   {
     ColorTokImpl colorTok = new ColorTokImpl();
     return colorTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IdentifierTok createIdentifierTok()
+  {
+    IdentifierTokImpl identifierTok = new IdentifierTokImpl();
+    return identifierTok;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FuncTok createFuncTok()
+  {
+    FuncTokImpl funcTok = new FuncTokImpl();
+    return funcTok;
   }
 
   /**

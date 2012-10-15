@@ -11,6 +11,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
@@ -20,7 +21,6 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.importExpression;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.media;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.page;
@@ -53,14 +53,16 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		if(semanticObject.eClass().getEPackage() == CssDslPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case CssDslPackage.ATTRIBUTE_SELECTOR:
 				if(context == grammarAccess.getAttributeSelectorRule() ||
-				   context == grammarAccess.getSubSelectorRule()) {
+				   context == grammarAccess.getSubSelectorRule() ||
+				   context == grammarAccess.getSubSelectorForNegationRule()) {
 					sequence_AttributeSelector(context, (AttributeSelector) semanticObject); 
 					return; 
 				}
 				else break;
 			case CssDslPackage.CLASS_SELECTOR:
 				if(context == grammarAccess.getClassSelectorRule() ||
-				   context == grammarAccess.getSubSelectorRule()) {
+				   context == grammarAccess.getSubSelectorRule() ||
+				   context == grammarAccess.getSubSelectorForNegationRule()) {
 					sequence_ClassSelector(context, (ClassSelector) semanticObject); 
 					return; 
 				}
@@ -80,22 +82,24 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 				else break;
 			case CssDslPackage.FUNC_TOK:
 				if(context == grammarAccess.getCssTokRule() ||
-				   context == grammarAccess.getFuncTokRule()) {
-					sequence_FuncTok(context, (FuncTok) semanticObject); 
+				   context == grammarAccess.getIdentifierOrFuncTokRule()) {
+					sequence_IdentifierOrFuncTok(context, (FuncTok) semanticObject); 
 					return; 
 				}
 				else break;
 			case CssDslPackage.ID_SELECTOR:
 				if(context == grammarAccess.getIdSelectorRule() ||
-				   context == grammarAccess.getSubSelectorRule()) {
+				   context == grammarAccess.getSubSelectorRule() ||
+				   context == grammarAccess.getSubSelectorForNegationRule()) {
 					sequence_IdSelector(context, (IdSelector) semanticObject); 
 					return; 
 				}
 				else break;
 			case CssDslPackage.IDENTIFIER_TOK:
 				if(context == grammarAccess.getCssTokRule() ||
-				   context == grammarAccess.getIdentifierTokRule()) {
-					sequence_IdentifierTok(context, (IdentifierTok) semanticObject); 
+				   context == grammarAccess.getIdentifierOrFuncTokRule() ||
+				   context == grammarAccess.getIdentifierOrFuncTokAccess().getFuncTokNameAction_2_0()) {
+					sequence_IdentifierOrFuncTok(context, (IdentifierTok) semanticObject); 
 					return; 
 				}
 				else break;
@@ -107,8 +111,8 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case CssDslPackage.PSEUDO_CLASS_FUNCTION:
-				if(context == grammarAccess.getPseudoClassRule() ||
-				   context == grammarAccess.getPseudoClassFunctionRule() ||
+				if(context == grammarAccess.getPseudoClassFunctionRule() ||
+				   context == grammarAccess.getPseudoClassOrFuncRule() ||
 				   context == grammarAccess.getSubSelectorRule()) {
 					sequence_PseudoClassFunction(context, (PseudoClassFunction) semanticObject); 
 					return; 
@@ -117,8 +121,19 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 			case CssDslPackage.PSEUDO_CLASS_NAME:
 				if(context == grammarAccess.getPseudoClassRule() ||
 				   context == grammarAccess.getPseudoClassNameRule() ||
-				   context == grammarAccess.getSubSelectorRule()) {
+				   context == grammarAccess.getPseudoClassOrFuncRule() ||
+				   context == grammarAccess.getSubSelectorRule() ||
+				   context == grammarAccess.getSubSelectorForNegationRule()) {
 					sequence_PseudoClassName(context, (PseudoClassName) semanticObject); 
+					return; 
+				}
+				else break;
+			case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION:
+				if(context == grammarAccess.getPseudoClassFunctionRule() ||
+				   context == grammarAccess.getPseudoClassOrFuncRule() ||
+				   context == grammarAccess.getSimpleSelectorForNegationRule() ||
+				   context == grammarAccess.getSubSelectorRule()) {
+					sequence_SimpleSelectorForNegation(context, (SimpleSelectorForNegation) semanticObject); 
 					return; 
 				}
 				else break;
@@ -184,12 +199,6 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 					return; 
 				}
 				else break;
-			case CssDslPackage.FUNCTION:
-				if(context == grammarAccess.getFunctionRule()) {
-					sequence_function(context, (function) semanticObject); 
-					return; 
-				}
-				else break;
 			case CssDslPackage.IMPORT_EXPRESSION:
 				if(context == grammarAccess.getImportExpressionRule()) {
 					sequence_importExpression(context, (importExpression) semanticObject); 
@@ -239,7 +248,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	/**
 	 * Constraint:
 	 *     (
-	 *         name=IDENT 
+	 *         name=Identifier 
 	 *         (
 	 *             (
 	 *                 op='^=' | 
@@ -249,7 +258,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	 *                 op=INCLUDES | 
 	 *                 op=DASHMATCH
 	 *             ) 
-	 *             (value=IDENT | value=STRING)
+	 *             (value=Identifier | value=STRING)
 	 *         )?
 	 *     )
 	 */
@@ -260,7 +269,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     name=IDENT
+	 *     name=Identifier
 	 */
 	protected void sequence_ClassSelector(EObject context, ClassSelector semanticObject) {
 		if(errorAcceptor != null) {
@@ -269,23 +278,30 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getClassSelectorAccess().getNameIDENTTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getClassSelectorAccess().getNameIdentifierParserRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (color=HEX | color=IDENT)
+	 *     value=Hex
 	 */
 	protected void sequence_ColorTok(EObject context, ColorTok semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.COLOR_TOK__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.COLOR_TOK__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getColorTokAccess().getValueHexParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     name=IDENT
+	 *     name=Identifier
 	 */
 	protected void sequence_ElementSelector(EObject context, ElementSelector semanticObject) {
 		if(errorAcceptor != null) {
@@ -294,30 +310,14 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getElementSelectorAccess().getNameIDENTTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getElementSelectorAccess().getNameIdentifierParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     func=function
-	 */
-	protected void sequence_FuncTok(EObject context, FuncTok semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.FUNC_TOK__FUNC) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.FUNC_TOK__FUNC));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFuncTokAccess().getFuncFunctionParserRuleCall_1_0(), semanticObject.getFunc());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     name=IDENT
+	 *     name=Identifier
 	 */
 	protected void sequence_IdSelector(EObject context, IdSelector semanticObject) {
 		if(errorAcceptor != null) {
@@ -326,39 +326,55 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIdSelectorAccess().getNameIDENTTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getIdSelectorAccess().getNameIdentifierParserRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     id=ValidPropertyIdent
+	 *     (name=IdentifierOrFuncTok_FuncTok_2_0 params+=CssTok+)
 	 */
-	protected void sequence_IdentifierTok(EObject context, IdentifierTok semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.IDENTIFIER_TOK__ID) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.IDENTIFIER_TOK__ID));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIdentifierTokAccess().getIdValidPropertyIdentParserRuleCall_1_0(), semanticObject.getId());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (num=INTEGER unit=IDENT?)
-	 */
-	protected void sequence_NumberTok(EObject context, NumberTok semanticObject) {
+	protected void sequence_IdentifierOrFuncTok(EObject context, FuncTok semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=IDENT params+=CssTok*)
+	 *     name=Identifier
+	 */
+	protected void sequence_IdentifierOrFuncTok(EObject context, IdentifierTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.IDENTIFIER_TOK__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.IDENTIFIER_TOK__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getIdentifierOrFuncTokAccess().getNameIdentifierParserRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     val=Num
+	 */
+	protected void sequence_NumberTok(EObject context, NumberTok semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.NUMBER_TOK__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.NUMBER_TOK__VAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getNumberTokAccess().getValNumParserRuleCall_1_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=Identifier params+=CssTok*)
 	 */
 	protected void sequence_PseudoClassFunction(EObject context, PseudoClassFunction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -367,17 +383,26 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     name=IDENT
+	 *     name=Identifier
 	 */
 	protected void sequence_PseudoClassName(EObject context, PseudoClassName semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.PSEUDO_CLASS__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.PSEUDO_CLASS__NAME));
+			if(transientValues.isValueTransient(semanticObject, CssDslPackage.Literals.PSEUDO_CLASS_NAME__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CssDslPackage.Literals.PSEUDO_CLASS_NAME__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPseudoClassNameAccess().getNameIDENTTerminalRuleCall_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPseudoClassNameAccess().getNameIdentifierParserRuleCall_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelectorForNegation*) | subSelectors+=SubSelectorForNegation+)
+	 */
+	protected void sequence_SimpleSelectorForNegation(EObject context, SimpleSelectorForNegation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -426,7 +451,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (namespece=css_namespace_prefix?)
+	 *     (namespace=css_namespace_prefix?)
 	 */
 	protected void sequence_UniversalSelector(EObject context, UniversalSelector semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -496,15 +521,6 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getCss_propertyAccess().getNameValidPropertyIdentParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=IDENT params+=CssTok+)
-	 */
-	protected void sequence_function(EObject context, function semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
