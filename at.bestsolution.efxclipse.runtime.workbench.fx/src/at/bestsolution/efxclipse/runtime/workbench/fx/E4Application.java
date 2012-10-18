@@ -191,6 +191,7 @@ public class E4Application extends AbstractJFXApplication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
+						System.err.println("could not find icon at: " + iconPath);
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
