@@ -22,10 +22,10 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.RegistryFactory;
 import org.osgi.framework.Bundle;
 
-import com.sun.javafx.css.StyleManager;
-
 import at.bestsolution.efxclipse.runtime.services.theme.Theme;
 import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
+
+import com.sun.javafx.css.StyleManager;
 
 public class DefaultThemeManager implements ThemeManager {
 	static final String ATT_ID = "id";
