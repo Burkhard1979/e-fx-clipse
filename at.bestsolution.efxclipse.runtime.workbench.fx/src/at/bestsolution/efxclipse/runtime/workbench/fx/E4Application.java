@@ -247,20 +247,6 @@ public class E4Application extends AbstractJFXApplication {
 
 		String themeId = getArgValue(E4Application.THEME_ID, applicationContext, false);
 		appContext.set(E4Application.THEME_ID, themeId);
-
-		String cssURI = getArgValue(E4Workbench.CSS_URI_ARG, applicationContext, false);
-		if (cssURI != null) {
-			appContext.set(E4Workbench.CSS_URI_ARG, cssURI);
-		}
-
-		// Temporary to support old property as well
-		if (cssURI != null && !cssURI.startsWith("platform:")) {
-			System.err.println("Warning " + cssURI + " changed its meaning it is used now to run without theme support");
-			appContext.set(E4Application.THEME_ID, cssURI);
-		}
-
-		String cssResourcesURI = getArgValue(E4Workbench.CSS_RESOURCE_URI_ARG, applicationContext, false);
-		appContext.set(E4Workbench.CSS_RESOURCE_URI_ARG, cssResourcesURI);
 		appContext.set(E4Workbench.RENDERER_FACTORY_URI, getArgValue(E4Workbench.RENDERER_FACTORY_URI, applicationContext, false));
 
 		// This is a default arg, if missing we use the default rendering engine
