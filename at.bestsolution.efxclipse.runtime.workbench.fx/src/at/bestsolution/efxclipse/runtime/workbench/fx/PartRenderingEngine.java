@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
 import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.base.rendering.RendererFactory;
 import at.bestsolution.efxclipse.runtime.workbench.fx.key.KeyBindingDispatcher;
@@ -59,7 +60,8 @@ public class PartRenderingEngine implements IPresentationEngine {
 			@Named(E4Workbench.RENDERER_FACTORY_URI) @Optional String factoryUrl,
 			IEclipseContext context,
 			EModelService modelService,
-			IEventBroker eventBroker) {
+			IEventBroker eventBroker,
+			ThemeManager themeManager) {
 		if( factoryUrl == null ) {
 			factoryUrl = defaultFactoryUrl;
 		}
@@ -69,6 +71,10 @@ public class PartRenderingEngine implements IPresentationEngine {
 		KeyBindingDispatcher dispatcher = ContextInjectionFactory.make(KeyBindingDispatcher.class, context);
 		context.set(KeyBindingDispatcher.class, dispatcher);
 		setupEventListener(eventBroker);
+		
+		if( context.get(E4Application.THEME_ID) != null ) {
+			themeManager.setCurrentThemeId((String)context.get(E4Application.THEME_ID));
+		}
 	}
 	
 	void setupEventListener(IEventBroker eventBroker) {
