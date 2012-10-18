@@ -83,6 +83,7 @@ public class DefMenuItemRenderer extends BaseMenuItemRenderer<MenuItem> {
 		@Override
 		protected MenuItem createWidget() {
 			MenuItem item = internalCreateWidget();
+			item.setMnemonicParsing(true);
 			if( item != null ) {
 				item.setOnAction(new EventHandler<ActionEvent>() {
 					

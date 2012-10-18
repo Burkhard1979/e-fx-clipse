@@ -45,6 +45,7 @@ public class DefMenuRenderer extends BaseMenuRenderer<Menu> {
 		@Override
 		protected Menu createWidget() {
 			final Menu m = new Menu();
+			m.setMnemonicParsing(true);
 			m.setOnShowing(new EventHandler<Event>() {
 				
 				@Override

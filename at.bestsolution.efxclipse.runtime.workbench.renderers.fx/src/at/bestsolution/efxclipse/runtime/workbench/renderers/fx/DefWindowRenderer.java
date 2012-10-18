@@ -159,7 +159,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		boolean initDone;
 		
 		@Inject
-		public WWindowImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MWindow mWindow, KeyBindingDispatcher dispatcher) {
+		public WWindowImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MWindow mWindow, @Optional KeyBindingDispatcher dispatcher) {
 			this.mWindow = mWindow;
 			this.support3d = mWindow.getPersistedState().get("fx.scene.3d") != null && Boolean.parseBoolean(mWindow.getPersistedState().get("fx.scene.3d"));
 			this.dispatcher = dispatcher;
@@ -190,7 +190,11 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 					mWindow.getPersistedState().put(BaseWindowRenderer.KEY_FULL_SCREEN, newValue.toString());
 				}
 			});
-			stage.addEventFilter(KeyEvent.KEY_PRESSED, dispatcher.getKeyHandler());
+			
+			if( dispatcher != null ) {
+				stage.addEventFilter(KeyEvent.KEY_PRESSED, dispatcher.getKeyHandler());	
+			}
+			
 			this.rootPane = new BorderPane() {
 				@Override
 				protected void layoutChildren() {
