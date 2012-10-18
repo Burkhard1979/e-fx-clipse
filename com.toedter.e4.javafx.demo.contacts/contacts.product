@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="E4 Contacs Demo" uid="org.eclipse.e4.demo.contacts.product" id="com.toedter.e4.javafx.demo.contacts.product" application="at.bestsolution.efxclipse.runtime.workbench.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
+<product name="E4 Contacs Demo" uid="org.eclipse.e4.demo.contacts.product" id="com.toedter.e4.javafx.demo.contacts.product" application="at.bestsolution.efxclipse.runtime.workbench.fx.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -30,20 +30,31 @@
 
    <plugins>
       <plugin id="at.bestsolution.efxclipse.runtime.application"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.bindings"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.bindings.e4"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.bindings.generic"/>
       <plugin id="at.bestsolution.efxclipse.runtime.databinding"/>
       <plugin id="at.bestsolution.efxclipse.runtime.di"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.dialogs"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.events"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.examples.e4"/>
       <plugin id="at.bestsolution.efxclipse.runtime.javafx"/>
       <plugin id="at.bestsolution.efxclipse.runtime.osgi" fragment="true"/>
       <plugin id="at.bestsolution.efxclipse.runtime.osgi.util"/>
       <plugin id="at.bestsolution.efxclipse.runtime.panels"/>
       <plugin id="at.bestsolution.efxclipse.runtime.services"/>
       <plugin id="at.bestsolution.efxclipse.runtime.theme"/>
-      <plugin id="at.bestsolution.efxclipse.runtime.workbench"/>
-      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.base"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.fx"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.base"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.fx"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.toedter.e4.javafx.demo.contacts"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
+      <plugin id="javax.servlet"/>
+      <plugin id="javax.xml"/>
+      <plugin id="org.eclipse.ant.core"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.databinding"/>
@@ -51,9 +62,14 @@
       <plugin id="org.eclipse.core.databinding.observable"/>
       <plugin id="org.eclipse.core.databinding.property"/>
       <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.filesystem"/>
+      <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.resources"/>
+      <plugin id="org.eclipse.core.resources.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.core.runtime"/>
       <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.core.variables"/>
       <plugin id="org.eclipse.e4.core.commands"/>
       <plugin id="org.eclipse.e4.core.contexts"/>
       <plugin id="org.eclipse.e4.core.di"/>
@@ -77,6 +93,8 @@
       <plugin id="org.eclipse.equinox.util"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.swt"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
    </plugins>
 
 
