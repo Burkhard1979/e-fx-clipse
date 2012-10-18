@@ -54,6 +54,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.util.Callback;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -155,6 +156,8 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		
 		MWindow mWindow;
 
+		boolean initDone;
+		
 		@Inject
 		public WWindowImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MWindow mWindow, KeyBindingDispatcher dispatcher) {
 			this.mWindow = mWindow;
@@ -162,6 +165,12 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 			this.dispatcher = dispatcher;
 			this.modelContext = mWindow.getContext();
 			this.decorationFXML = mWindow.getPersistedState().get("fx.stage.decoration");
+		}
+		
+		@PostConstruct
+		protected void init() {
+			this.initDone = true;
+			super.init();
 		}
 
 		@Override
@@ -377,6 +386,13 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		
 		@Inject
 		public void setVisible(@Named(UIEvents.UIElement.VISIBLE) boolean visible) {
+			// Skip the init injection because the renderer will take care of showing the stage
+			if( ! initDone ) {
+				return;
+			}
+			
+			System.err.println("Hello world");
+			
 			if( visible ) {
 				getWidget().show();
 			} else {
