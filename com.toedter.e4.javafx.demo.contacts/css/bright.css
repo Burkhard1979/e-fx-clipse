@@ -70,3 +70,9 @@
 #window_max:hover {
     -fx-background-image: url("images/window-expand-over.png");
 }
+
+.MTrimBar {
+	-fx-background-color:
+        linear-gradient(to bottom, derive(-fx-base,-30%), derive(-fx-base,-60%)),
+        linear-gradient(to bottom, derive(-fx-base,65%) 2%, derive(-fx-base,-20%) 95%);
+}
