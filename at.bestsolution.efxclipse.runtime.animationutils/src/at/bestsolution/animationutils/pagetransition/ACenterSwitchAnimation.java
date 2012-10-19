@@ -3,6 +3,7 @@ package at.bestsolution.animationutils.pagetransition;
 import javafx.animation.Animation;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -17,6 +18,9 @@ public abstract class ACenterSwitchAnimation {
 		
 		pane.setCenter(null);
 		
+		Bounds b = curNode.getBoundsInParent();
+		newNode.resizeRelocate(b.getMinX(), b.getMinY(), b.getWidth(), b.getHeight());
+
 		pane.getChildren().add(0,newNode);
 		pane.getChildren().add(1,curNode);
 		
