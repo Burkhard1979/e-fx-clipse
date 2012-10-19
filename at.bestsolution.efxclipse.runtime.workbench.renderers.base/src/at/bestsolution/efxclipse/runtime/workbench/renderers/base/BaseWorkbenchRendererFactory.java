@@ -31,6 +31,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 import org.eclipse.e4.ui.workbench.UIEvents.UIElement;
@@ -60,6 +61,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BasePerspectiveStackRenderer<?, ?, ?> perspectiveStackRenderer;
 	private BasePerspectiveRenderer<?> perspectiveRenderer;
 	private BasePlaceholderRenderer<?> placeholderRenderer;
+	private BaseToolBarElementRenderer<?> toolbarElementRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -148,11 +150,17 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 				placeholderRenderer = ContextInjectionFactory.make(getPlaceholderRendererClass(), context);
 			}
 			return (R) placeholderRenderer;
+		} else if( modelObject instanceof MToolBarElement ) {
+			if(toolbarElementRenderer == null) {
+				toolbarElementRenderer = ContextInjectionFactory.make(getToolBarElementRendererClass(), context);
+			}
+			return (R) toolbarElementRenderer;
 		}
 		
 		return null;
 	}
 
+	
 	protected abstract Class<? extends BaseWindowRenderer<?>> getWindowRendererClass();
 	protected abstract Class<? extends BaseSashRenderer<?>> getSashRendererClass();
 	protected abstract Class<? extends BaseMenuBarRenderer<?>> getMenuBarRendererClass();
@@ -168,4 +176,5 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BasePerspectiveStackRenderer<?, ?, ?>> getPerspectiveStackRendererClass();
 	protected abstract Class<? extends BasePerspectiveRenderer<?>> getPerspectiveRendererClass();
 	protected abstract Class<? extends BasePlaceholderRenderer<?>> getPlaceholderRendererClass();
+	protected abstract Class<? extends BaseToolBarElementRenderer<?>> getToolBarElementRendererClass();
 }
