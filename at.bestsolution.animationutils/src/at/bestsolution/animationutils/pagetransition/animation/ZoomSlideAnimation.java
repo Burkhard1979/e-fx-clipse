@@ -7,8 +7,10 @@ import javafx.animation.ScaleTransitionBuilder;
 import javafx.animation.SequentialTransitionBuilder;
 import javafx.animation.TranslateTransitionBuilder;
 import javafx.scene.Node;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import at.bestsolution.animationutils.pagetransition.ACenterSwitchAnimation;
 
@@ -25,8 +27,8 @@ public class ZoomSlideAnimation extends ACenterSwitchAnimation {
 		newNode.setTranslateX(-deltaX);
 		
 		
-//		curNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
-//		newNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
+		curNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
+		newNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
 		
 		TranslateTransitionBuilder slide = TranslateTransitionBuilder.create()
 			.interpolator(Interpolator.EASE_BOTH)

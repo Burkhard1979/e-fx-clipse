@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import at.bestsolution.animationutils.pagetransition.animation.FadeAnimation;
+import at.bestsolution.animationutils.pagetransition.animation.FlipAnimation;
 import at.bestsolution.animationutils.pagetransition.animation.RotateOutAnimation;
 import at.bestsolution.animationutils.pagetransition.animation.SlideAnimation;
 import at.bestsolution.animationutils.pagetransition.animation.ZoomSlideAnimation;
@@ -29,18 +30,19 @@ public class AnimatedBorderPaneCenterSwitcher {
 	private Text label;
 	
 	private Deque<ACenterSwitchAnimation> animations = new LinkedList<ACenterSwitchAnimation>();
-	private ACenterSwitchAnimation anim = new SlideAnimation();
+	private ACenterSwitchAnimation anim = new FlipAnimation();
 	
 	public AnimatedBorderPaneCenterSwitcher(BorderPane pane) {
 		this.pane = pane;
 		
-		pane.setStyle(	"-fx-background-image: url(\"low_contrast_linen.png\");" +
+		pane.setStyle(	"-fx-background-image: url(\"file:///Users/tomschindl/git/e-fx-clipse/at.bestsolution.animationutils/src/low_contrast_linen.png\");" +
 						"-fx-background-repeat: repeat;");
 		
-		animations.add(new SlideAnimation());
-		animations.add(new FadeAnimation());
-		animations.add(new ZoomSlideAnimation());
-		animations.add(new RotateOutAnimation());
+//		animations.add(new SlideAnimation());
+//		animations.add(new FadeAnimation());
+//		animations.add(new ZoomSlideAnimation());
+//		animations.add(new RotateOutAnimation());
+		animations.add(new FlipAnimation());
 		
 		anim = animations.poll();
 		

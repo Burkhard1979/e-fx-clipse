@@ -23,9 +23,9 @@ public class TestSwitch extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			workspaceA = new ImageView();
-			workspaceA.setImage(new Image("ws1.png")); 
+			workspaceA.setImage(new Image("ws1.jpg")); 
 			workspaceB = new ImageView();
-			workspaceB.setImage(new Image("ws2.png"));
+			workspaceB.setImage(new Image("ws2.jpg"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -33,7 +33,7 @@ public class TestSwitch extends Application {
 		root = new BorderPane();
 		sw = new AnimatedBorderPaneCenterSwitcher(root);
 		root.setCenter(workspaceA);
-		Scene scene = new Scene(root);
+		Scene scene = new Scene(root,400,400,true);
 		scene.setCamera(new PerspectiveCamera());
 		primaryStage.setScene(scene);
 //		primaryStage.setWidth(800);
