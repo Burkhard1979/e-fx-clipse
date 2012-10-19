@@ -17,8 +17,11 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -29,10 +32,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
+import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.URI;
 
 import at.bestsolution.efxclipse.runtime.panels.fx.FXTab;
@@ -43,6 +48,10 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRende
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.WStackItem;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.DetachView;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.MoveToFirst;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.MoveToLast;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.PinToBottom;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
@@ -60,6 +69,9 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		private WCallback<WStackItem<FXTab, Node>, Void> keySelectedItemCallback;
 		private WCallback<WMinMaxState, Void> minMaxCallback;
 		private boolean inKeyTraversal;
+		
+		@Inject
+		private EModelService modelService;
 		
 		public void setMouseSelectedItemCallback(WCallback<WStackItem<FXTab, Node>, Void> mouseSelectedItemCallback) {
 			this.mouseSelectedItemCallback = mouseSelectedItemCallback;
@@ -108,6 +120,62 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		protected FXTabPane createWidget() {
 			FXTabPane p = new FXTabPane();
 			p.setSkin(new MinMaxTabPaneSkin(p));
+			
+			ContextMenu m = new ContextMenu();
+			
+			{
+				MenuItem item = new MenuItem("Detach");
+				item.setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						DetachView d = new DetachView();
+						d.detach((MPart) getDomElement().getSelectedElement(), modelService);
+					}
+				});
+				m.getItems().add(item);	
+			}
+			
+			{
+				MenuItem item = new MenuItem("Move To First");
+				item.setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						MoveToFirst d = new MoveToFirst();
+						d.move((MPart) getDomElement().getSelectedElement());
+					}
+				});
+				m.getItems().add(item);	
+			}
+			
+			{
+				MenuItem item = new MenuItem("Move To Last");
+				item.setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						MoveToLast d = new MoveToLast();
+						d.move((MPart) getDomElement().getSelectedElement());
+					}
+				});
+				m.getItems().add(item);	
+			}
+			
+			{
+				MenuItem item = new MenuItem("Pin To Bottom");
+				item.setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						PinToBottom d = new PinToBottom();
+						d.pin((MPart) getDomElement().getSelectedElement());
+					}
+				});
+				m.getItems().add(item);	
+			}
+			
+			p.setContextMenu(m);
 			p.minMaxStateProperty().addListener(new ChangeListener<MinMaxState>() {
 
 				@Override
