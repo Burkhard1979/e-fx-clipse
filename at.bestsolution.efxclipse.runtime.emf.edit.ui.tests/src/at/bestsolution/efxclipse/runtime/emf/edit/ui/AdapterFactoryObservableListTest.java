@@ -1,8 +1,17 @@
+/******************************************************************************* 
+ * Copyright (c) 2012 TESIS DYNAware GmbH and others. 
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0 
+ * which accompanies this distribution, and is available at 
+ * http://www.eclipse.org/legal/epl-v10.html 
+ * 
+ * Contributors: 
+ *     Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation 
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.emf.edit.ui;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
@@ -31,7 +40,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProvider;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -70,17 +78,17 @@ public class AdapterFactoryObservableListTest {
 		list = new AdapterFactoryObservableList(adapterFactory, root);
 		list.elements = elements;
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorWithNullAdapterFactory() {
 		new AdapterFactoryObservableList(null, DUMMY_OBJECT);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorWithNonAdaptableRoot() {
 		new AdapterFactoryObservableList(adapterFactory, DUMMY_OBJECT);
 	}
-	
+
 	Adapter adapter;
 
 	@Test
@@ -95,21 +103,22 @@ public class AdapterFactoryObservableListTest {
 				adapter = (Adapter) invocation.getArguments()[0];
 				return null;
 			}
-			
+
 		});
 		AdapterFactory adapterFactory = mock(AdapterFactory.class);
 		IStructuredItemContentProvider contentProvider = mock(IStructuredItemContentProvider.class);
 		when(adapterFactory.adapt(any(), any())).thenReturn(contentProvider);
-		AdapterFactoryObservableList observableList = new AdapterFactoryObservableList(adapterFactory, notifier);
+		AdapterFactoryObservableList observableList = new AdapterFactoryObservableList(
+				adapterFactory, notifier);
 		observableList.elements = elements;
-		
+
 		// make sure that notification are forwarded
 		adapter.notifyChanged(mock(Notification.class));
 		verify(elements).setAll(any(Collection.class));
 	}
-	
+
 	INotifyChangedListener changeListener;
-	
+
 	@Test
 	public void constructorWithIChangeNotifierRoot() {
 		ItemProvider itemProvider = mock(ItemProvider.class);
@@ -117,12 +126,15 @@ public class AdapterFactoryObservableListTest {
 
 			@Override
 			public Object answer(InvocationOnMock invocation) throws Throwable {
-				changeListener = (INotifyChangedListener) invocation.getArguments()[0];
+				changeListener = (INotifyChangedListener) invocation
+						.getArguments()[0];
 				return null;
 			}
-		}).when(itemProvider).addListener((INotifyChangedListener) any(IChangeNotifier.class));
-		
-		AdapterFactoryObservableList observableList = new AdapterFactoryObservableList(adapterFactory, itemProvider);
+		}).when(itemProvider).addListener(
+				(INotifyChangedListener) any(IChangeNotifier.class));
+
+		AdapterFactoryObservableList observableList = new AdapterFactoryObservableList(
+				adapterFactory, itemProvider);
 		observableList.elements = elements;
 
 		verify(itemProvider).addListener(any(INotifyChangedListener.class));
@@ -146,7 +158,7 @@ public class AdapterFactoryObservableListTest {
 	public void addAllWithCollection() {
 		list.addAll(DUMMY_LIST);
 	}
-	
+
 	@Test(expected = UnsupportedOperationException.class)
 	public void addAllWithIndexAndCollection() {
 		list.addAll(DUMMY_INDEX, DUMMY_LIST);
@@ -198,7 +210,7 @@ public class AdapterFactoryObservableListTest {
 		verify(elements).iterator();
 		assertEquals(DUMMY_ITERATOR, iterator);
 	}
-	
+
 	@Test
 	public void lastIndexOf() {
 		int index = list.lastIndexOf(DUMMY_OBJECT);
@@ -229,7 +241,7 @@ public class AdapterFactoryObservableListTest {
 	public void removeWithIndex() {
 		list.remove(DUMMY_INDEX);
 	}
-	
+
 	@Test(expected = UnsupportedOperationException.class)
 	public void removeWithFromAndToIndex() {
 		list.remove(DUMMY_INDEX, DUMMY_INDEX);
