@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.Node;
+import javafx.scene.layout.BorderPane;
 
 import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 
-import at.bestsolution.efxclipse.runtime.panels.FillLayoutPane;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiveStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPerspectiveStack;
@@ -29,10 +29,10 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.Perspecti
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<FillLayoutPane,PerspectiveStackItem,Node> {
+public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<BorderPane,PerspectiveStackItem,Node> {
 
 	@Override
-	protected Class<? extends WPerspectiveStack<FillLayoutPane,PerspectiveStackItem,Node>> getWidgetClass() {
+	protected Class<? extends WPerspectiveStack<BorderPane,PerspectiveStackItem,Node>> getWidgetClass() {
 		return PerspectiveStackImpl.class;
 	}
 	
@@ -94,7 +94,7 @@ public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<Fi
 		
 	}
 	
-	public static class PerspectiveStackImpl extends WLayoutedWidgetImpl<FillLayoutPane, FillLayoutPane, MPerspectiveStack> implements WPerspectiveStack<FillLayoutPane, PerspectiveStackItem, Node> {
+	public static class PerspectiveStackImpl extends WLayoutedWidgetImpl<BorderPane, BorderPane, MPerspectiveStack> implements WPerspectiveStack<BorderPane, PerspectiveStackItem, Node> {
 		private List<WStackItem<PerspectiveStackItem, Node>> items = new ArrayList<WStackItem<PerspectiveStackItem,Node>>();
 		
 		@Override
@@ -121,7 +121,7 @@ public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<Fi
 		public void selectItem(int idx) {
 			WStackItem<PerspectiveStackItem, Node> item = items.get(idx);
 			Node node = item.getNativeItem().getContent();
-			getWidget().getChildren().setAll(node);
+			getWidget().setCenter(node); 
 		}
 
 		@Override
@@ -155,13 +155,13 @@ public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<Fi
 		}
 
 		@Override
-		protected FillLayoutPane getWidgetNode() {
+		protected BorderPane getWidgetNode() {
 			return getWidget();
 		}
 
 		@Override
-		protected FillLayoutPane createWidget() {
-			return new FillLayoutPane();
+		protected BorderPane createWidget() {
+			return new BorderPane();
 		}
 	}
 }
