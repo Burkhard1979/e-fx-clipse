@@ -35,6 +35,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
  */
 public class AdapterFactoryObservableList implements ObservableList<Object> {
 
+	private static final String CHANGES_THROUGH_MODEL = "An AdapterFactoryObservableList cannot be manipulated directly. Changes must be made via the model.";
 	protected AdapterFactory adapterFactory;
 	protected Object root;
 	protected IStructuredItemContentProvider provider;
@@ -48,9 +49,13 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 		this.adapterFactory = adapterFactory;
 		this.root = root;
+		Object contentProvider = adapterFactory.adapt(root, IStructuredItemContentProvider.class);
 
-		provider = getStructuredItemContentProvider();
-
+		if(contentProvider instanceof IStructuredItemContentProvider)
+			provider = (IStructuredItemContentProvider) contentProvider;
+		else
+			throw new IllegalArgumentException("Provided root object cannot be adapted.");
+		
 		elements.addAll(provider.getElements(root));
 
 		if (root instanceof Notifier) {
@@ -71,36 +76,35 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 				public void notifyChanged(Notification notification) {
 					elements.setAll(provider.getElements(root));
 				}
+				
 			});
-		} else {
-			throw new IllegalArgumentException("Root object must be a Notifier or IChangeNotifier.");
 		}
 
 	}
 
 	@Override
 	public boolean add(Object e) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public void add(int index, Object element) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean addAll(Collection<? extends Object> c) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean addAll(int index, Collection<? extends Object> c) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public void clear() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
@@ -150,38 +154,32 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 	@Override
 	public boolean remove(Object o) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public Object remove(int index) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public Object set(int index, Object element) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public int size() {
 		return elements.size();
-	}
-
-	private IStructuredItemContentProvider getStructuredItemContentProvider() {
-		IStructuredItemContentProvider provider = (IStructuredItemContentProvider) adapterFactory.adapt(root,
-				IStructuredItemContentProvider.class);
-		return provider;
 	}
 
 	@Override
@@ -211,7 +209,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 	@Override
 	public boolean addAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
@@ -221,12 +219,12 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 	@Override
 	public void remove(int arg0, int arg1) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean removeAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
@@ -236,17 +234,17 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 	@Override
 	public boolean retainAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean setAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean setAll(Collection<? extends Object> arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 }
