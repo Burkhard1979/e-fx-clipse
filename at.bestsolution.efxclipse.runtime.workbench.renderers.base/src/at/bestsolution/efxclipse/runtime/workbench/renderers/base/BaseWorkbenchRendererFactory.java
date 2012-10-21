@@ -32,6 +32,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 import org.eclipse.e4.ui.workbench.UIEvents.UIElement;
@@ -61,7 +62,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BasePerspectiveStackRenderer<?, ?, ?> perspectiveStackRenderer;
 	private BasePerspectiveRenderer<?> perspectiveRenderer;
 	private BasePlaceholderRenderer<?> placeholderRenderer;
-	private BaseToolBarElementRenderer<?> toolbarElementRenderer;
+	private BaseToolControlRenderer<?> toolbarElementRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -150,7 +151,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 				placeholderRenderer = ContextInjectionFactory.make(getPlaceholderRendererClass(), context);
 			}
 			return (R) placeholderRenderer;
-		} else if( modelObject instanceof MToolBarElement ) {
+		} else if( modelObject instanceof MToolControl ) {
 			if(toolbarElementRenderer == null) {
 				toolbarElementRenderer = ContextInjectionFactory.make(getToolBarElementRendererClass(), context);
 			}
@@ -176,5 +177,5 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BasePerspectiveStackRenderer<?, ?, ?>> getPerspectiveStackRendererClass();
 	protected abstract Class<? extends BasePerspectiveRenderer<?>> getPerspectiveRendererClass();
 	protected abstract Class<? extends BasePlaceholderRenderer<?>> getPlaceholderRendererClass();
-	protected abstract Class<? extends BaseToolBarElementRenderer<?>> getToolBarElementRendererClass();
+	protected abstract Class<? extends BaseToolControlRenderer<?>> getToolBarElementRendererClass();
 }

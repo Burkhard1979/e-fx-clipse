@@ -10,9 +10,9 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget;
 
-import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 
 @SuppressWarnings("restriction")
-public interface WToolBarElement<N> extends WWidget<MToolBarElement> {
+public interface WToolControl<N> extends WWidget<MToolControl> {
 
 }

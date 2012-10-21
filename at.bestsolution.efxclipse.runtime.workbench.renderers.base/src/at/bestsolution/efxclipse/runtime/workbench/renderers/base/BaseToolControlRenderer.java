@@ -11,24 +11,24 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
 
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
-import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBarElement;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolControl;
 
 @SuppressWarnings("restriction")
-public abstract class BaseToolBarElementRenderer<N> extends BaseRenderer<MToolBarElement, WToolBarElement<N>> {
+public abstract class BaseToolControlRenderer<N> extends BaseRenderer<MToolControl, WToolControl<N>> {
 	@Override
-	protected void doProcessContent(MToolBarElement element) {
+	protected void doProcessContent(MToolControl element) {
 		// no child
 	}
 
 	@Override
-	public void childRendered(MToolBarElement parentElement, MUIElement element) {
+	public void childRendered(MToolControl parentElement, MUIElement element) {
 		// no child		
 	}
 
 	@Override
-	public void hideChild(MToolBarElement container, MUIElement changedObj) {
+	public void hideChild(MToolControl container, MUIElement changedObj) {
 		// no child		
 	}
 }

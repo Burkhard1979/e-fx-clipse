@@ -23,7 +23,6 @@ import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 
-import at.bestsolution.animationutils.pagetransition.animation.PageChangeAnimation;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiveStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.services.PerspectiveTransitionService;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.services.PerspectiveTransitionService.AnimationDelegate;
@@ -133,7 +132,11 @@ public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<Bo
 			Node node = item.getNativeItem().getContent();
 			if( getWidget().getCenter() != null && perspectiveSwitch != null ) {
 				AnimationDelegate<BorderPane, Node> a = perspectiveSwitch.getDelegate(items.get(currentIndex).getDomElement(), item.getDomElement());
-				a.animate(getWidget(), node);
+				if( a == null ) {
+					getWidget().setCenter(node);
+				} else {
+					a.animate(getWidget(), node);	
+				}
 			} else {
 				getWidget().setCenter(node);	
 			}

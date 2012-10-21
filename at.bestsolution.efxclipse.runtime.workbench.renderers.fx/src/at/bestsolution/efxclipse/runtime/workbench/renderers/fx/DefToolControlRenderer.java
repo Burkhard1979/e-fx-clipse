@@ -14,21 +14,21 @@ import java.util.List;
 
 import javafx.scene.Group;
 
-import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolBarElementRenderer;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBarElement;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolControlRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolControl;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefToolBarElementRenderer extends BaseToolBarElementRenderer<Group> {
+public class DefToolControlRenderer extends BaseToolControlRenderer<Group> {
 
 	@Override
-	protected Class<? extends WToolBarElement<Group>> getWidgetClass() {
-		return WToolBarElementImpl.class;
+	protected Class<? extends WToolControl<Group>> getWidgetClass() {
+		return WToolControlImpl.class;
 	}
 	
-	public static class WToolBarElementImpl extends WWidgetImpl<Group, MToolBarElement> implements WToolBarElement<Group> {
+	public static class WToolControlImpl extends WWidgetImpl<Group, MToolControl> implements WToolControl<Group> {
 
 		@Override
 		public void addStyleClasses(List<String> classnames) {
@@ -51,7 +51,7 @@ public class DefToolBarElementRenderer extends BaseToolBarElementRenderer<Group>
 		}
 
 		@Override
-		protected void setUserData(WWidgetImpl<Group, MToolBarElement> widget) {
+		protected void setUserData(WWidgetImpl<Group, MToolControl> widget) {
 			getWidget().setUserData(widget);
 		}
 		
