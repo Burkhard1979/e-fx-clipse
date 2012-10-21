@@ -27,8 +27,8 @@ public class ZoomSlideAnimation extends ACenterSwitchAnimation {
 		newNode.setTranslateX(-deltaX);
 		
 		
-		curNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
-		newNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
+//		curNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
+//		newNode.setEffect(new DropShadow(2, 2, 2, Color.RED));
 		
 		TranslateTransitionBuilder slide = TranslateTransitionBuilder.create()
 			.interpolator(Interpolator.EASE_BOTH)

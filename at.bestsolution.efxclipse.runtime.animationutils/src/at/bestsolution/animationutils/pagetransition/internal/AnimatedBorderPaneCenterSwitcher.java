@@ -1,4 +1,4 @@
-package at.bestsolution.animationutils.pagetransition;
+package at.bestsolution.animationutils.pagetransition.internal;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import at.bestsolution.animationutils.pagetransition.ACenterSwitchAnimation;
 import at.bestsolution.animationutils.pagetransition.animation.FadeAnimation;
 import at.bestsolution.animationutils.pagetransition.animation.FlipAnimation;
 import at.bestsolution.animationutils.pagetransition.animation.RotateOutAnimation;

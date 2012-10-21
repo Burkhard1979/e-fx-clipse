@@ -9,7 +9,7 @@
             thread="main"
             visible="true">
          <run
-               class="at.bestsolution.animationutils.pagetransition.MyApplication">
+               class="at.bestsolution.animationutils.pagetransition.internal.MyApplication">
          </run>
       </application>
    </extension>

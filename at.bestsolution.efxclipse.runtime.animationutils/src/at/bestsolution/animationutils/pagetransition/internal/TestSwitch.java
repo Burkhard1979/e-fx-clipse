@@ -1,4 +1,4 @@
-package at.bestsolution.animationutils.pagetransition;
+package at.bestsolution.animationutils.pagetransition.internal;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;

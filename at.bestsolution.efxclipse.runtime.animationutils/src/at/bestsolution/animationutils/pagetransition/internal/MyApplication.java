@@ -8,7 +8,7 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.animationutils.pagetransition;
+package at.bestsolution.animationutils.pagetransition.internal;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
