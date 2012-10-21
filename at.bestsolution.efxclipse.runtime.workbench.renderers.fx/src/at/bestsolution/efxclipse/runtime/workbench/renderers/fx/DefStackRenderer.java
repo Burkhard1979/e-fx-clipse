@@ -121,61 +121,61 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 			FXTabPane p = new FXTabPane();
 			p.setSkin(new MinMaxTabPaneSkin(p));
 			
-			ContextMenu m = new ContextMenu();
-			
-			{
-				MenuItem item = new MenuItem("Detach");
-				item.setOnAction(new EventHandler<ActionEvent>() {
-					
-					@Override
-					public void handle(ActionEvent event) {
-						DetachView d = new DetachView();
-						d.detach((MPart) getDomElement().getSelectedElement(), modelService);
-					}
-				});
-				m.getItems().add(item);	
-			}
-			
-			{
-				MenuItem item = new MenuItem("Move To First");
-				item.setOnAction(new EventHandler<ActionEvent>() {
-					
-					@Override
-					public void handle(ActionEvent event) {
-						MoveToFirst d = new MoveToFirst();
-						d.move((MPart) getDomElement().getSelectedElement());
-					}
-				});
-				m.getItems().add(item);	
-			}
-			
-			{
-				MenuItem item = new MenuItem("Move To Last");
-				item.setOnAction(new EventHandler<ActionEvent>() {
-					
-					@Override
-					public void handle(ActionEvent event) {
-						MoveToLast d = new MoveToLast();
-						d.move((MPart) getDomElement().getSelectedElement());
-					}
-				});
-				m.getItems().add(item);	
-			}
-			
-			{
-				MenuItem item = new MenuItem("Pin To Bottom");
-				item.setOnAction(new EventHandler<ActionEvent>() {
-					
-					@Override
-					public void handle(ActionEvent event) {
-						PinToBottom d = new PinToBottom();
-						d.pin((MPart) getDomElement().getSelectedElement());
-					}
-				});
-				m.getItems().add(item);	
-			}
-			
-			p.setContextMenu(m);
+//			ContextMenu m = new ContextMenu();
+//			
+//			{
+//				MenuItem item = new MenuItem("Detach");
+//				item.setOnAction(new EventHandler<ActionEvent>() {
+//					
+//					@Override
+//					public void handle(ActionEvent event) {
+//						DetachView d = new DetachView();
+//						d.detach((MPart) getDomElement().getSelectedElement(), modelService);
+//					}
+//				});
+//				m.getItems().add(item);	
+//			}
+//			
+//			{
+//				MenuItem item = new MenuItem("Move To First");
+//				item.setOnAction(new EventHandler<ActionEvent>() {
+//					
+//					@Override
+//					public void handle(ActionEvent event) {
+//						MoveToFirst d = new MoveToFirst();
+//						d.move((MPart) getDomElement().getSelectedElement());
+//					}
+//				});
+//				m.getItems().add(item);	
+//			}
+//			
+//			{
+//				MenuItem item = new MenuItem("Move To Last");
+//				item.setOnAction(new EventHandler<ActionEvent>() {
+//					
+//					@Override
+//					public void handle(ActionEvent event) {
+//						MoveToLast d = new MoveToLast();
+//						d.move((MPart) getDomElement().getSelectedElement());
+//					}
+//				});
+//				m.getItems().add(item);	
+//			}
+//			
+//			{
+//				MenuItem item = new MenuItem("Pin To Bottom");
+//				item.setOnAction(new EventHandler<ActionEvent>() {
+//					
+//					@Override
+//					public void handle(ActionEvent event) {
+//						PinToBottom d = new PinToBottom();
+//						d.pin((MPart) getDomElement().getSelectedElement());
+//					}
+//				});
+//				m.getItems().add(item);	
+//			}
+//			
+//			p.setContextMenu(m);
 			p.minMaxStateProperty().addListener(new ChangeListener<MinMaxState>() {
 
 				@Override
