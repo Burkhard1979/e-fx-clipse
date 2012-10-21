@@ -24,6 +24,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiv
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePlaceholderRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseSashRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolBarSeparatorRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolControlRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemRenderer;
@@ -115,7 +116,12 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	}
 	
 	@Override
-	protected Class<? extends BaseToolControlRenderer<?>> getToolBarElementRendererClass() {
+	protected Class<? extends BaseToolControlRenderer<?>> getToolcontrolRendererClass() {
 		return DefToolControlRenderer.class;
+	}
+	
+	@Override
+	protected Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass() {
+		return DefToolBarSeparatorRenderer.class;
 	}
 }

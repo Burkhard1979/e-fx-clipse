@@ -24,6 +24,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.EventProcessor
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBar;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
 
 @SuppressWarnings("restriction")
 public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToolBar<N>> implements ChildrenHandler<MToolBar, MToolBarElement> {
@@ -69,7 +70,7 @@ public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToo
 	public void doProcessContent(MToolBar element) {
 		WToolBar<N> toolbar = getWidget(element);
 		for( MToolBarElement item : element.getChildren() ) {
-			WLayoutedWidget<MToolBarElement> itemWidget = engineCreateWidget(item);
+			WWidget<MToolBarElement> itemWidget = engineCreateWidget(item);
 			if( itemWidget != null ) {
 				toolbar.addChild(itemWidget);
 			}

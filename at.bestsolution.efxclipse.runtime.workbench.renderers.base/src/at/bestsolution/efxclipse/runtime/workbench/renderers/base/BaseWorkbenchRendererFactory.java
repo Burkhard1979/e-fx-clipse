@@ -31,7 +31,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
-import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
@@ -62,7 +62,8 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BasePerspectiveStackRenderer<?, ?, ?> perspectiveStackRenderer;
 	private BasePerspectiveRenderer<?> perspectiveRenderer;
 	private BasePlaceholderRenderer<?> placeholderRenderer;
-	private BaseToolControlRenderer<?> toolbarElementRenderer;
+	private BaseToolControlRenderer<?> toolcontrolRenderer;
+	private BaseToolBarSeparatorRenderer<?> toolbarSeparatorRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -152,10 +153,15 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 			}
 			return (R) placeholderRenderer;
 		} else if( modelObject instanceof MToolControl ) {
-			if(toolbarElementRenderer == null) {
-				toolbarElementRenderer = ContextInjectionFactory.make(getToolBarElementRendererClass(), context);
+			if(toolcontrolRenderer == null) {
+				toolcontrolRenderer = ContextInjectionFactory.make(getToolcontrolRendererClass(), context);
 			}
-			return (R) toolbarElementRenderer;
+			return (R) toolcontrolRenderer;
+		} else if(modelObject instanceof MToolBarSeparator) {
+			if(toolbarSeparatorRenderer == null) {
+				toolbarSeparatorRenderer = ContextInjectionFactory.make(getToolBarSeparatorRendererClass(), context);
+			}
+			return (R) toolbarSeparatorRenderer;
 		}
 		
 		return null;
@@ -177,5 +183,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BasePerspectiveStackRenderer<?, ?, ?>> getPerspectiveStackRendererClass();
 	protected abstract Class<? extends BasePerspectiveRenderer<?>> getPerspectiveRendererClass();
 	protected abstract Class<? extends BasePlaceholderRenderer<?>> getPlaceholderRendererClass();
-	protected abstract Class<? extends BaseToolControlRenderer<?>> getToolBarElementRendererClass();
+	protected abstract Class<? extends BaseToolControlRenderer<?>> getToolcontrolRendererClass();
+	protected abstract Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass();
+
 }

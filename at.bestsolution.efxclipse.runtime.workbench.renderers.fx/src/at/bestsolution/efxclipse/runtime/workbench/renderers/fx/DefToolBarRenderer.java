@@ -21,6 +21,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBar;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
@@ -46,18 +47,18 @@ public class DefToolBarRenderer extends BaseToolBarRenderer<ToolBar> {
 		}
 
 		@Override
-		public void addChild(WLayoutedWidget<MToolBarElement> itemWidget) {
+		public void addChild(WWidget<MToolBarElement> itemWidget) {
 			if( itemWidget.getWidget() instanceof Toggle ) {
 				if( group == null ) {
 					group = new ToggleGroup();
 				}
 				group.getToggles().add((Toggle) itemWidget.getWidget());
 			}
-			getWidget().getItems().add((Node) itemWidget.getStaticLayoutNode());
+			getWidget().getItems().add((Node) itemWidget.getWidget());
 		}
 
 		@Override
-		public void addChild(int idx, WLayoutedWidget<MToolBarElement> widget) {
+		public void addChild(int idx, WWidget<MToolBarElement> widget) {
 			if( widget.getWidget() instanceof Toggle ) {
 				if( group == null ) {
 					group = new ToggleGroup();
@@ -65,15 +66,15 @@ public class DefToolBarRenderer extends BaseToolBarRenderer<ToolBar> {
 				group.getToggles().add((Toggle) widget.getWidget());
 			}
 			
-			getWidget().getItems().add(idx, (Node) widget.getStaticLayoutNode());
+			getWidget().getItems().add(idx, (Node) widget.getWidget());
 		}
 
 		@Override
-		public void removeChild(WLayoutedWidget<MToolBarElement> widget) {
+		public void removeChild(WWidget<MToolBarElement> widget) {
 			if( widget.getWidget() instanceof Toggle ) {
 				((Toggle)widget.getWidget()).setToggleGroup(null);
 			}
-			getWidget().getItems().add((Node) widget.getStaticLayoutNode());
+			getWidget().getItems().add((Node) widget.getWidget());
 		}
 	}
 }
