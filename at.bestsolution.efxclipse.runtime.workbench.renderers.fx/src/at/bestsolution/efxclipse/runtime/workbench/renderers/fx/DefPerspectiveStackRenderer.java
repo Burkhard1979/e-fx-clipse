@@ -17,11 +17,16 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 
+import at.bestsolution.animationutils.pagetransition.animation.PageChangeAnimation;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiveStackRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.services.PerspectiveTransitionService;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.services.PerspectiveTransitionService.AnimationDelegate;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPerspectiveStack;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPerspectiveStack.WStackItem;
@@ -96,7 +101,12 @@ public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<Bo
 	
 	public static class PerspectiveStackImpl extends WLayoutedWidgetImpl<BorderPane, BorderPane, MPerspectiveStack> implements WPerspectiveStack<BorderPane, PerspectiveStackItem, Node> {
 		private List<WStackItem<PerspectiveStackItem, Node>> items = new ArrayList<WStackItem<PerspectiveStackItem,Node>>();
+		private int currentIndex;
 		
+		@Inject
+		@Optional
+		private PerspectiveTransitionService<BorderPane, Node> perspectiveSwitch;
+
 		@Override
 		public Class<? extends WStackItem<PerspectiveStackItem, Node>> getStackItemClass() {
 			return PerspectiveStackItemImpl.class;
@@ -121,7 +131,13 @@ public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<Bo
 		public void selectItem(int idx) {
 			WStackItem<PerspectiveStackItem, Node> item = items.get(idx);
 			Node node = item.getNativeItem().getContent();
-			getWidget().setCenter(node); 
+			if( getWidget().getCenter() != null && perspectiveSwitch != null ) {
+				AnimationDelegate<BorderPane, Node> a = perspectiveSwitch.getDelegate(items.get(currentIndex).getDomElement(), item.getDomElement());
+				a.animate(getWidget(), node);
+			} else {
+				getWidget().setCenter(node);	
+			}
+			currentIndex = idx;
 		}
 
 		@Override
