@@ -16,8 +16,8 @@
                value="at.bestsolution.efxclipse.runtime.examples.media/Application.e4xmi">
          </property>
          <property
-               name="applicationCSS"
-               value="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/css/default.css">
+               name="cssTheme"
+               value="wood.theme">
          </property>
       </product>
    </extension>
@@ -25,7 +25,13 @@
          point="at.bestsolution.efxclipse.runtime.theme">
       <theme
             basestylesheet="css/default.css"
-            id="default.theme">
+            id="default.theme"
+            name="Default Theme">
+      </theme>
+      <theme
+            basestylesheet="css/theme2.css"
+            id="wood.theme"
+            name="Wood Theme">
       </theme>
    </extension>
 

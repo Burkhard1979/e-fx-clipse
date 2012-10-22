@@ -36,6 +36,8 @@ import org.osgi.service.prefs.BackingStoreException;
 
 import at.bestsolution.animationutils.pagetransition.ACenterSwitchAnimation;
 import at.bestsolution.efxclipse.runtime.examples.media.addon.PerspectiveAnimationAddon.TransitionImpl;
+import at.bestsolution.efxclipse.runtime.services.theme.Theme;
+import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
 
 @SuppressWarnings("restriction")
 public class ConfigurationPartControler implements Initializable {
@@ -45,7 +47,10 @@ public class ConfigurationPartControler implements Initializable {
 	@Inject
 	@Preference("perspectiveTransition")
 	@Optional
-	private String transition;
+	String transition;
+	
+	@Inject
+	ThemeManager manager;
 	
 	@FXML
 	ChoiceBox<String> themeId;
@@ -57,41 +62,81 @@ public class ConfigurationPartControler implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ObservableList<String> items = FXCollections.observableArrayList();
-		for (String e : transitionService.getAnimations().keySet()) {
-			items.add(e);
-		}
-		Collections.sort(items);
-		items.add(0, "<NONE>");
-		switchType.setItems(items);
-		
-		final ImageView view1 = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/resources/pics/pic1.jpg")));
-		view1.setFitWidth(200);
-		view1.setFitHeight(150);
-		
-		final ImageView view2 = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/resources/pics/pic2.jpg")));
-		view2.setFitWidth(200);
-		view2.setFitHeight(150);
-		
-		switchPreview.setCenter(view1);
-		switchPreview.setClip(new Rectangle(200, 150));
-		switchType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		{
+			ObservableList<String> items = FXCollections.observableArrayList();
+			for( Theme t : manager.getAvailableThemes() ) {
+				items.add(t.getName());
+			}
+			
+			themeId.setItems(items);
+			
+			for( int i = 0; i < items.size(); i++ ) {
+				System.err.println(items.get(i) + " vs " + manager.getCurrentTheme().getName());
+				if( items.get(i).equals(manager.getCurrentTheme().getName()) ) {
+					themeId.getSelectionModel().select(i);
+					System.err.println("SELECTING " + i);
+					break;
+				}
+			}
+			
+			themeId.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if(! "<NONE>".equals(newValue) ) {
-					ACenterSwitchAnimation a = transitionService.getAnimations().get(newValue);
-					if( a != null ) {
-						a.animate(switchPreview, switchPreview.getCenter() == view1 ? view2 : view1);
-						updateTransitionPreference(newValue);
+				@Override
+				public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+					manager.setCurrentThemeId(manager.getAvailableThemes().get(newValue.intValue()).getId());
+				}				
+			});
+		}
+		
+		{
+			ObservableList<String> items = FXCollections.observableArrayList();
+			for (String e : transitionService.getAnimations().keySet()) {
+				items.add(e);
+			}
+			Collections.sort(items);
+			items.add(0, "<NONE>");
+			switchType.setItems(items);
+			
+			final ImageView view1 = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/resources/pics/pic1.jpg")));
+			view1.setFitWidth(200);
+			view1.setFitHeight(150);
+			
+			final ImageView view2 = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/resources/pics/pic2.jpg")));
+			view2.setFitWidth(200);
+			view2.setFitHeight(150);
+			
+			switchPreview.setCenter(view1);
+			switchPreview.setClip(new Rectangle(200, 150));
+			if( transition == null ) {
+				System.err.println("SELECTING FIRST");
+				switchType.getSelectionModel().select(0);
+			} else {
+				for( int i = 0; i < items.size(); i++ ) {
+					if( items.get(i).equals(transition) ) {
+						switchType.getSelectionModel().select(i);
+						System.err.println("SELECTING " + i);
+						break;
+					}
+				}
+			}
+			switchType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+				@Override
+				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					if(! "<NONE>".equals(newValue) ) {
+						ACenterSwitchAnimation a = transitionService.getAnimations().get(newValue);
+						if( a != null ) {
+							a.animate(switchPreview, switchPreview.getCenter() == view1 ? view2 : view1);
+							updateTransitionPreference(newValue);
+						} else {
+							updateTransitionPreference(null);
+						}
 					} else {
 						updateTransitionPreference(null);
 					}
-				} else {
-					updateTransitionPreference(null);
 				}
-			}
-		});
+			});
+		}
 	}
 	
 	private void updateTransitionPreference(String newValue) {
