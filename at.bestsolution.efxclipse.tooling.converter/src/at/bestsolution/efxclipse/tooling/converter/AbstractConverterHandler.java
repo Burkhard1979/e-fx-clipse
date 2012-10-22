@@ -36,7 +36,7 @@ public abstract class AbstractConverterHandler extends AbstractHandler {
 			if( o instanceof IFile ) {
 				IFile f = (IFile) o;
 				IContainer folder = f.getParent();
-				IFile outFile = folder.getFile(new Path(f.getName().substring(0,f.getName().length()-f.getFileExtension().length()-1)+".fxml"));
+				IFile outFile = folder.getFile(new Path(f.getName().substring(0,f.getName().length()-f.getFileExtension().length()-1)+getTargetFileExtension()));
 				String content = convert(outFile, f);
 				
 				if( ! outFile.exists() ) {
@@ -60,4 +60,6 @@ public abstract class AbstractConverterHandler extends AbstractHandler {
 	}
 	
 	protected abstract String convert(IFile outFile, IFile file) throws ExecutionException;
+	
+	protected abstract String getTargetFileExtension();
 }

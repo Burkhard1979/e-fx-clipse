@@ -14,13 +14,14 @@ import java.io.File;
 import java.net.MalformedURLException;
 
 import at.bestsolution.efxclipse.formats.fxg.fxg.Graphic;
-import at.bestsolution.efxclipse.formats.fxg.handler.XMLLoader;
+import at.bestsolution.efxclipse.formats.fxg.handler.FXGLoader;
 
 public class TestConverter {
 	public static void main(String[] args) {
-		XMLLoader l = new XMLLoader();
+		FXGLoader l = new FXGLoader();
 		try {
-			Graphic g = l.loadGrapic(new File("C:/e-ws/fxclipse/fxg-examples/Duke Billboard T-Shirt CLEAN.fxg").toURL().openStream());
+			// TODO use a file in the workspace
+			Graphic g = l.loadGraphic(new File("C:/e-ws/fxclipse/fxg-examples/Duke Billboard T-Shirt CLEAN.fxg").toURI().toURL().openStream());
 			FXMLConverter c = new FXMLConverter();
 			System.out.println(c.generate(g));
 		} catch (MalformedURLException e) {
