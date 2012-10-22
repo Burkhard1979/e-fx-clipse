@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Button fx:id="undo" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Undo" />
+    <Button id="undo" fx:id="redo" layoutX="80.0" layoutY="14.0" mnemonicParsing="false" text="Redo" />
+    <TextArea editable="false" layoutX="433.0" layoutY="51.0" prefHeight="291.0" prefWidth="306.0" text="What can you do in this demo?&#10;&#10;- select one or more items (using CTRL+Click) and drag them around to move and reorder them&#10;&#10;- add and remove contacts using the context menu (right click)&#10;&#10;- use the undo / redo buttons to revert your operations&#10;&#10;- enjoy the icons, labels and styling through the EMF item providers" wrapText="true" />
+    <TabPane layoutX="14.0" layoutY="51.0" prefHeight="510.0" prefWidth="408.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab text="Tree View">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TreeView fx:id="treeView" layoutX="14.0" layoutY="14.0" prefHeight="451.0" prefWidth="380.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Table View">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="451.0" prefWidth="380.0">
+                  <columns>
+                    <TableColumn prefWidth="100.0" text="First Name" fx:id="firstNameColumn" />
+                    <TableColumn prefWidth="100.0" text="Last Name" fx:id="lastNameColumn" />
+                  </columns>
+                </TableView>
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="List View">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <ListView fx:id="listView" layoutX="14.0" layoutY="14.0" prefHeight="451.0" prefWidth="380.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</AnchorPane>

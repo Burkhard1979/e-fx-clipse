@@ -58,6 +58,9 @@ public class BuildPathSupport {
 		
 		try {
 			IVMInstall i = JavaRuntime.getVMInstall(project);
+			if( i == null ) {
+				i = JavaRuntime.getDefaultVMInstall();
+			}
 			return getFxJarPath(i);
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
