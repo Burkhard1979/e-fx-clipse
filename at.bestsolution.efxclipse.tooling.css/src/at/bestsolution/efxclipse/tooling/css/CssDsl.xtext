@@ -24,7 +24,7 @@ charset:
 ;
 
 importExpression:
-	('@import'|'@IMPORT') value=STRING | URLType mediaList=media_list? ';'
+	('@import'|'@IMPORT') (value=STRING | URLType mediaList=media_list?) ';'
 ;
 
 page:
@@ -200,7 +200,37 @@ CssTok hidden(ML_COMMENT):
 
 
 URLType hidden():
-	'url' '(' url=STRING ')'
+//	FULLURL
+	 'url(' url=ValidURL ')'
+;
+
+ValidURLSymbol:
+	':' |
+	'.' |
+	'/' |
+	DASH |
+	PLUS |
+	'?' |
+	'&' |
+	'=' |
+	COMMA |
+	'@' |
+	'url'
+;
+
+ValidURL returns ecore::EString hidden():
+	STRING |
+	( ValidURLSymbol |  
+	  ONE_HEX_LETTER | 
+	  ONE_NON_HEX_LETTER | 
+	  ONE_INT |
+	  '\\ ' |
+	  '\\(' |
+	  '\\)' |
+	  '\\\'' |
+	  '\\"' |
+	  PERCENT (ONE_INT|ONE_HEX_LETTER) (ONE_INT|ONE_HEX_LETTER)
+	)+
 ;
 
 terminal IMPORTANT_SYM:
@@ -208,7 +238,7 @@ terminal IMPORTANT_SYM:
 ;
 
 Identifier returns ecore::EString hidden():
-	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER) => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT)*
+	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | 'url') => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | 'url')*
 ;
 
 Num returns ecore::EDouble hidden():
@@ -222,6 +252,18 @@ Hex returns ecore::EString:
 	HASHMARK => (ONE_INT|ONE_HEX_LETTER)+
 ;
 
+
+//terminal fragment URL_ESCAPES:
+//	'\\' (' '|'('|')'|"'"|'"')
+//;
+//
+//terminal FULLURL:
+//	'url('
+//		'"' ( URL_ESCAPES | !('\\'|'"'|')') )* '"' |
+//		"'" ( URL_ESCAPES | !('\\'|"'"|')') )* "'" |
+//		( URL_ESCAPES | !('\\'|')') )*
+//	')'
+//;
 
 
 terminal ONE_INT: '0'..'9';
@@ -252,9 +294,13 @@ terminal PERCENT: '%';
 
 terminal ML_COMMENT	: '/*' -> '*/';
 terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+
+
 terminal STRING	: 
 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
 			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
+
 			
 terminal INCLUDES: "~=";
 terminal DASHMATCH: "|=";

@@ -112,58 +112,58 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class ImportExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "importExpression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Alternatives cAlternatives_0_0 = (Alternatives)cGroup_0.eContents().get(0);
-		private final Keyword cImportKeyword_0_0_0 = (Keyword)cAlternatives_0_0.eContents().get(0);
-		private final Keyword cIMPORTKeyword_0_0_1 = (Keyword)cAlternatives_0_0.eContents().get(1);
-		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final RuleCall cURLTypeParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final Assignment cMediaListAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cMediaListMedia_listParserRuleCall_1_1_0 = (RuleCall)cMediaListAssignment_1_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cImportKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cIMPORTKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_0_0 = (RuleCall)cValueAssignment_1_0.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final RuleCall cURLTypeParserRuleCall_1_1_0 = (RuleCall)cGroup_1_1.eContents().get(0);
+		private final Assignment cMediaListAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cMediaListMedia_listParserRuleCall_1_1_1_0 = (RuleCall)cMediaListAssignment_1_1_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//importExpression:
-		//	("@import" | "@IMPORT") value=STRING | URLType mediaList=media_list? ";";
+		//	("@import" | "@IMPORT") (value=STRING | URLType mediaList=media_list?) ";";
 		public ParserRule getRule() { return rule; }
 
-		//("@import" | "@IMPORT") value=STRING | URLType mediaList=media_list? ";"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//("@import" | "@IMPORT") value=STRING
-		public Group getGroup_0() { return cGroup_0; }
+		//("@import" | "@IMPORT") (value=STRING | URLType mediaList=media_list?) ";"
+		public Group getGroup() { return cGroup; }
 
 		//"@import" | "@IMPORT"
-		public Alternatives getAlternatives_0_0() { return cAlternatives_0_0; }
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//"@import"
-		public Keyword getImportKeyword_0_0_0() { return cImportKeyword_0_0_0; }
+		public Keyword getImportKeyword_0_0() { return cImportKeyword_0_0; }
 
 		//"@IMPORT"
-		public Keyword getIMPORTKeyword_0_0_1() { return cIMPORTKeyword_0_0_1; }
+		public Keyword getIMPORTKeyword_0_1() { return cIMPORTKeyword_0_1; }
+
+		//value=STRING | URLType mediaList=media_list?
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//value=STRING
-		public Assignment getValueAssignment_0_1() { return cValueAssignment_0_1; }
+		public Assignment getValueAssignment_1_0() { return cValueAssignment_1_0; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_0_1_0() { return cValueSTRINGTerminalRuleCall_0_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_1_0_0() { return cValueSTRINGTerminalRuleCall_1_0_0; }
 
-		//URLType mediaList=media_list? ";"
-		public Group getGroup_1() { return cGroup_1; }
+		//URLType mediaList=media_list?
+		public Group getGroup_1_1() { return cGroup_1_1; }
 
 		//URLType
-		public RuleCall getURLTypeParserRuleCall_1_0() { return cURLTypeParserRuleCall_1_0; }
+		public RuleCall getURLTypeParserRuleCall_1_1_0() { return cURLTypeParserRuleCall_1_1_0; }
 
 		//mediaList=media_list?
-		public Assignment getMediaListAssignment_1_1() { return cMediaListAssignment_1_1; }
+		public Assignment getMediaListAssignment_1_1_1() { return cMediaListAssignment_1_1_1; }
 
 		//media_list
-		public RuleCall getMediaListMedia_listParserRuleCall_1_1_0() { return cMediaListMedia_listParserRuleCall_1_1_0; }
+		public RuleCall getMediaListMedia_listParserRuleCall_1_1_1_0() { return cMediaListMedia_listParserRuleCall_1_1_1_0; }
 
 		//";"
-		public Keyword getSemicolonKeyword_1_2() { return cSemicolonKeyword_1_2; }
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 	}
 
 	public class PageElements extends AbstractParserRuleElementFinder {
@@ -1389,32 +1389,177 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "URLType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cUrlKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cUrlAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cUrlSTRINGTerminalRuleCall_2_0 = (RuleCall)cUrlAssignment_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cUrlAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cUrlValidURLParserRuleCall_1_0 = (RuleCall)cUrlAssignment_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//URLType hidden():
-		//	"url" "(" url=STRING ")";
+		//URLType hidden(): //	FULLURL
+		//	"url(" url=ValidURL ")";
 		public ParserRule getRule() { return rule; }
 
-		//"url" "(" url=STRING ")"
+		////	FULLURL
+		//"url(" url=ValidURL ")"
 		public Group getGroup() { return cGroup; }
 
-		//"url"
+		////	FULLURL
+		//"url("
 		public Keyword getUrlKeyword_0() { return cUrlKeyword_0; }
 
-		//"("
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		//url=ValidURL
+		public Assignment getUrlAssignment_1() { return cUrlAssignment_1; }
 
-		//url=STRING
-		public Assignment getUrlAssignment_2() { return cUrlAssignment_2; }
-
-		//STRING
-		public RuleCall getUrlSTRINGTerminalRuleCall_2_0() { return cUrlSTRINGTerminalRuleCall_2_0; }
+		//ValidURL
+		public RuleCall getUrlValidURLParserRuleCall_1_0() { return cUrlValidURLParserRuleCall_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+	}
+
+	public class ValidURLSymbolElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidURLSymbol");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cColonKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cSolidusKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final RuleCall cDASHTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cPLUSTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final Keyword cQuestionMarkKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cAmpersandKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cEqualsSignKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final RuleCall cCOMMATerminalRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final Keyword cCommercialAtKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cUrlKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		
+		//ValidURLSymbol:
+		//	":" | "." | "/" | DASH | PLUS | "?" | "&" | "=" | COMMA | "@" | "url";
+		public ParserRule getRule() { return rule; }
+
+		//":" | "." | "/" | DASH | PLUS | "?" | "&" | "=" | COMMA | "@" | "url"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//":"
+		public Keyword getColonKeyword_0() { return cColonKeyword_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//"/"
+		public Keyword getSolidusKeyword_2() { return cSolidusKeyword_2; }
+
+		//DASH
+		public RuleCall getDASHTerminalRuleCall_3() { return cDASHTerminalRuleCall_3; }
+
+		//PLUS
+		public RuleCall getPLUSTerminalRuleCall_4() { return cPLUSTerminalRuleCall_4; }
+
+		//"?"
+		public Keyword getQuestionMarkKeyword_5() { return cQuestionMarkKeyword_5; }
+
+		//"&"
+		public Keyword getAmpersandKeyword_6() { return cAmpersandKeyword_6; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_7() { return cEqualsSignKeyword_7; }
+
+		//COMMA
+		public RuleCall getCOMMATerminalRuleCall_8() { return cCOMMATerminalRuleCall_8; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_9() { return cCommercialAtKeyword_9; }
+
+		//"url"
+		public Keyword getUrlKeyword_10() { return cUrlKeyword_10; }
+	}
+
+	public class ValidURLElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidURL");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
+		private final RuleCall cValidURLSymbolParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
+		private final RuleCall cONE_HEX_LETTERTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		private final RuleCall cONE_NON_HEX_LETTERTerminalRuleCall_1_2 = (RuleCall)cAlternatives_1.eContents().get(2);
+		private final RuleCall cONE_INTTerminalRuleCall_1_3 = (RuleCall)cAlternatives_1.eContents().get(3);
+		private final Keyword cReverseSolidusSpaceKeyword_1_4 = (Keyword)cAlternatives_1.eContents().get(4);
+		private final Keyword cReverseSolidusLeftParenthesisKeyword_1_5 = (Keyword)cAlternatives_1.eContents().get(5);
+		private final Keyword cReverseSolidusRightParenthesisKeyword_1_6 = (Keyword)cAlternatives_1.eContents().get(6);
+		private final Keyword cReverseSolidusApostropheKeyword_1_7 = (Keyword)cAlternatives_1.eContents().get(7);
+		private final Keyword cReverseSolidusQuotationMarkKeyword_1_8 = (Keyword)cAlternatives_1.eContents().get(8);
+		private final Group cGroup_1_9 = (Group)cAlternatives_1.eContents().get(9);
+		private final RuleCall cPERCENTTerminalRuleCall_1_9_0 = (RuleCall)cGroup_1_9.eContents().get(0);
+		private final Alternatives cAlternatives_1_9_1 = (Alternatives)cGroup_1_9.eContents().get(1);
+		private final RuleCall cONE_INTTerminalRuleCall_1_9_1_0 = (RuleCall)cAlternatives_1_9_1.eContents().get(0);
+		private final RuleCall cONE_HEX_LETTERTerminalRuleCall_1_9_1_1 = (RuleCall)cAlternatives_1_9_1.eContents().get(1);
+		private final Alternatives cAlternatives_1_9_2 = (Alternatives)cGroup_1_9.eContents().get(2);
+		private final RuleCall cONE_INTTerminalRuleCall_1_9_2_0 = (RuleCall)cAlternatives_1_9_2.eContents().get(0);
+		private final RuleCall cONE_HEX_LETTERTerminalRuleCall_1_9_2_1 = (RuleCall)cAlternatives_1_9_2.eContents().get(1);
+		
+		//ValidURL returns ecore::EString hidden():
+		//	STRING | (ValidURLSymbol | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" | "\\\'" | "\\\"" |
+		//	PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+;
+		public ParserRule getRule() { return rule; }
+
+		//STRING | (ValidURLSymbol | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" | "\\\'" | "\\\"" |
+		//PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+
+		//(ValidURLSymbol | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" | "\\\'" | "\\\"" | PERCENT
+		//(ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//ValidURLSymbol
+		public RuleCall getValidURLSymbolParserRuleCall_1_0() { return cValidURLSymbolParserRuleCall_1_0; }
+
+		//ONE_HEX_LETTER
+		public RuleCall getONE_HEX_LETTERTerminalRuleCall_1_1() { return cONE_HEX_LETTERTerminalRuleCall_1_1; }
+
+		//ONE_NON_HEX_LETTER
+		public RuleCall getONE_NON_HEX_LETTERTerminalRuleCall_1_2() { return cONE_NON_HEX_LETTERTerminalRuleCall_1_2; }
+
+		//ONE_INT
+		public RuleCall getONE_INTTerminalRuleCall_1_3() { return cONE_INTTerminalRuleCall_1_3; }
+
+		//"\\ "
+		public Keyword getReverseSolidusSpaceKeyword_1_4() { return cReverseSolidusSpaceKeyword_1_4; }
+
+		//"\\("
+		public Keyword getReverseSolidusLeftParenthesisKeyword_1_5() { return cReverseSolidusLeftParenthesisKeyword_1_5; }
+
+		//"\\)"
+		public Keyword getReverseSolidusRightParenthesisKeyword_1_6() { return cReverseSolidusRightParenthesisKeyword_1_6; }
+
+		//"\\\'"
+		public Keyword getReverseSolidusApostropheKeyword_1_7() { return cReverseSolidusApostropheKeyword_1_7; }
+
+		//"\\\""
+		public Keyword getReverseSolidusQuotationMarkKeyword_1_8() { return cReverseSolidusQuotationMarkKeyword_1_8; }
+
+		//PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER)
+		public Group getGroup_1_9() { return cGroup_1_9; }
+
+		//PERCENT
+		public RuleCall getPERCENTTerminalRuleCall_1_9_0() { return cPERCENTTerminalRuleCall_1_9_0; }
+
+		//ONE_INT | ONE_HEX_LETTER
+		public Alternatives getAlternatives_1_9_1() { return cAlternatives_1_9_1; }
+
+		//ONE_INT
+		public RuleCall getONE_INTTerminalRuleCall_1_9_1_0() { return cONE_INTTerminalRuleCall_1_9_1_0; }
+
+		//ONE_HEX_LETTER
+		public RuleCall getONE_HEX_LETTERTerminalRuleCall_1_9_1_1() { return cONE_HEX_LETTERTerminalRuleCall_1_9_1_1; }
+
+		//ONE_INT | ONE_HEX_LETTER
+		public Alternatives getAlternatives_1_9_2() { return cAlternatives_1_9_2; }
+
+		//ONE_INT
+		public RuleCall getONE_INTTerminalRuleCall_1_9_2_0() { return cONE_INTTerminalRuleCall_1_9_2_0; }
+
+		//ONE_HEX_LETTER
+		public RuleCall getONE_HEX_LETTERTerminalRuleCall_1_9_2_1() { return cONE_HEX_LETTERTerminalRuleCall_1_9_2_1; }
 	}
 
 	public class IdentifierElements extends AbstractParserRuleElementFinder {
@@ -1425,6 +1570,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUNDERSCORETerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
 		private final RuleCall cONE_HEX_LETTERTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		private final RuleCall cONE_NON_HEX_LETTERTerminalRuleCall_1_2 = (RuleCall)cAlternatives_1.eContents().get(2);
+		private final Keyword cUrlKeyword_1_3 = (Keyword)cAlternatives_1.eContents().get(3);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Alternatives cAlternatives_2_0 = (Alternatives)cGroup_2.eContents().get(0);
 		private final RuleCall cUNDERSCORETerminalRuleCall_2_0_0 = (RuleCall)cAlternatives_2_0.eContents().get(0);
@@ -1432,20 +1578,21 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cONE_HEX_LETTERTerminalRuleCall_2_0_2 = (RuleCall)cAlternatives_2_0.eContents().get(2);
 		private final RuleCall cONE_NON_HEX_LETTERTerminalRuleCall_2_0_3 = (RuleCall)cAlternatives_2_0.eContents().get(3);
 		private final RuleCall cONE_INTTerminalRuleCall_2_0_4 = (RuleCall)cAlternatives_2_0.eContents().get(4);
+		private final Keyword cUrlKeyword_2_0_5 = (Keyword)cAlternatives_2_0.eContents().get(5);
 		
 		//Identifier returns ecore::EString hidden():
-		//	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER) => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER |
-		//	ONE_INT)*;
+		//	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | "url") => (UNDERSCORE | DASH | ONE_HEX_LETTER |
+		//	ONE_NON_HEX_LETTER | ONE_INT | "url")*;
 		public ParserRule getRule() { return rule; }
 
-		//DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER) => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER |
-		//ONE_INT)*
+		//DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | "url") => (UNDERSCORE | DASH | ONE_HEX_LETTER |
+		//ONE_NON_HEX_LETTER | ONE_INT | "url")*
 		public Group getGroup() { return cGroup; }
 
 		//DASH?
 		public RuleCall getDASHTerminalRuleCall_0() { return cDASHTerminalRuleCall_0; }
 
-		//UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER
+		//UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | "url"
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//UNDERSCORE
@@ -1457,10 +1604,13 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//ONE_NON_HEX_LETTER
 		public RuleCall getONE_NON_HEX_LETTERTerminalRuleCall_1_2() { return cONE_NON_HEX_LETTERTerminalRuleCall_1_2; }
 
-		//=> (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT)*
+		//"url"
+		public Keyword getUrlKeyword_1_3() { return cUrlKeyword_1_3; }
+
+		//=> (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "url")*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT
+		//UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "url"
 		public Alternatives getAlternatives_2_0() { return cAlternatives_2_0; }
 
 		//UNDERSCORE
@@ -1477,6 +1627,9 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ONE_INT
 		public RuleCall getONE_INTTerminalRuleCall_2_0_4() { return cONE_INTTerminalRuleCall_2_0_4; }
+
+		//"url"
+		public Keyword getUrlKeyword_2_0_5() { return cUrlKeyword_2_0_5; }
 	}
 
 	public class NumElements extends AbstractParserRuleElementFinder {
@@ -1611,6 +1764,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	private IdentifierOrFuncTokElements pIdentifierOrFuncTok;
 	private CssTokElements pCssTok;
 	private URLTypeElements pURLType;
+	private ValidURLSymbolElements pValidURLSymbol;
+	private ValidURLElements pValidURL;
 	private TerminalRule tIMPORTANT_SYM;
 	private IdentifierElements pIdentifier;
 	private NumElements pNum;
@@ -1681,7 +1836,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//importExpression:
-	//	("@import" | "@IMPORT") value=STRING | URLType mediaList=media_list? ";";
+	//	("@import" | "@IMPORT") (value=STRING | URLType mediaList=media_list?) ";";
 	public ImportExpressionElements getImportExpressionAccess() {
 		return (pImportExpression != null) ? pImportExpression : (pImportExpression = new ImportExpressionElements());
 	}
@@ -2047,14 +2202,35 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getCssTokAccess().getRule();
 	}
 
-	//URLType hidden():
-	//	"url" "(" url=STRING ")";
+	//URLType hidden(): //	FULLURL
+	//	"url(" url=ValidURL ")";
 	public URLTypeElements getURLTypeAccess() {
 		return (pURLType != null) ? pURLType : (pURLType = new URLTypeElements());
 	}
 	
 	public ParserRule getURLTypeRule() {
 		return getURLTypeAccess().getRule();
+	}
+
+	//ValidURLSymbol:
+	//	":" | "." | "/" | DASH | PLUS | "?" | "&" | "=" | COMMA | "@" | "url";
+	public ValidURLSymbolElements getValidURLSymbolAccess() {
+		return (pValidURLSymbol != null) ? pValidURLSymbol : (pValidURLSymbol = new ValidURLSymbolElements());
+	}
+	
+	public ParserRule getValidURLSymbolRule() {
+		return getValidURLSymbolAccess().getRule();
+	}
+
+	//ValidURL returns ecore::EString hidden():
+	//	STRING | (ValidURLSymbol | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" | "\\\'" | "\\\"" |
+	//	PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+;
+	public ValidURLElements getValidURLAccess() {
+		return (pValidURL != null) ? pValidURL : (pValidURL = new ValidURLElements());
+	}
+	
+	public ParserRule getValidURLRule() {
+		return getValidURLAccess().getRule();
 	}
 
 	//terminal IMPORTANT_SYM:
@@ -2064,8 +2240,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//Identifier returns ecore::EString hidden():
-	//	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER) => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER |
-	//	ONE_INT)*;
+	//	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | "url") => (UNDERSCORE | DASH | ONE_HEX_LETTER |
+	//	ONE_NON_HEX_LETTER | ONE_INT | "url")*;
 	public IdentifierElements getIdentifierAccess() {
 		return (pIdentifier != null) ? pIdentifier : (pIdentifier = new IdentifierElements());
 	}
@@ -2094,6 +2270,17 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getHexAccess().getRule();
 	}
 
+	////terminal fragment URL_ESCAPES:
+	////	'\\' (' '|'('|')'|"'"|'"')
+	////;
+	////
+	////terminal FULLURL:
+	////	'url('
+	////		'"' ( URL_ESCAPES | !('\\'|'"'|')') )* '"' |
+	////		"'" ( URL_ESCAPES | !('\\'|"'"|')') )* "'" |
+	////		( URL_ESCAPES | !('\\'|')') )*
+	////	')'
+	////;
 	//terminal ONE_INT:
 	//	"0".."9";
 	public TerminalRule getONE_INTRule() {

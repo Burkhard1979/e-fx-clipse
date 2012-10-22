@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_COMMA", "RULE_WS", "RULE_INCLUDES", "RULE_DASHMATCH", "RULE_HASHMARK", "RULE_IMPORTANT_SYM", "RULE_PLUS", "RULE_PERCENT", "RULE_DASH", "RULE_UNDERSCORE", "RULE_ONE_HEX_LETTER", "RULE_ONE_NON_HEX_LETTER", "RULE_ONE_INT", "RULE_ML_COMMENT", "'@charset'", "'@CHARSET'", "';'", "'@import'", "'@IMPORT'", "'@page'", "'@PAGE'", "'{'", "'}'", "':'", "'@media'", "'@MEDIA'", "'['", "'^='", "'$='", "'*='", "'='", "']'", "'.'", "'*'", "'|'", "':not('", "')'", "'('", "'>'", "'~'", "'url'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_COMMA", "RULE_WS", "RULE_INCLUDES", "RULE_DASHMATCH", "RULE_HASHMARK", "RULE_IMPORTANT_SYM", "RULE_PLUS", "RULE_PERCENT", "RULE_DASH", "RULE_ONE_HEX_LETTER", "RULE_ONE_NON_HEX_LETTER", "RULE_ONE_INT", "RULE_UNDERSCORE", "RULE_ML_COMMENT", "'@charset'", "'@CHARSET'", "';'", "'@import'", "'@IMPORT'", "'@page'", "'@PAGE'", "'{'", "'}'", "':'", "'@media'", "'@MEDIA'", "'['", "'^='", "'$='", "'*='", "'='", "']'", "'.'", "'*'", "'|'", "':not('", "')'", "'('", "'>'", "'~'", "'url('", "'/'", "'?'", "'&'", "'@'", "'url'", "'\\\\ '", "'\\\\('", "'\\\\)'", "'\\\\\\''", "'\\\\\"'"
     };
     public static final int T__29=29;
     public static final int T__28=28;
@@ -30,25 +30,35 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final int T__26=26;
     public static final int T__25=25;
     public static final int T__24=24;
-    public static final int T__23=23;
     public static final int RULE_INCLUDES=7;
+    public static final int T__23=23;
     public static final int T__22=22;
     public static final int T__21=21;
     public static final int T__20=20;
-    public static final int RULE_ONE_INT=17;
+    public static final int RULE_ONE_INT=16;
     public static final int RULE_PERCENT=12;
     public static final int EOF=-1;
+    public static final int T__55=55;
     public static final int T__19=19;
-    public static final int RULE_ONE_NON_HEX_LETTER=16;
+    public static final int T__51=51;
+    public static final int T__52=52;
+    public static final int T__53=53;
+    public static final int T__54=54;
+    public static final int RULE_ONE_NON_HEX_LETTER=15;
+    public static final int T__50=50;
     public static final int T__42=42;
     public static final int T__43=43;
     public static final int T__40=40;
     public static final int T__41=41;
+    public static final int T__46=46;
+    public static final int T__47=47;
     public static final int T__44=44;
     public static final int T__45=45;
-    public static final int RULE_UNDERSCORE=14;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int RULE_UNDERSCORE=17;
     public static final int RULE_PLUS=11;
-    public static final int RULE_ONE_HEX_LETTER=15;
+    public static final int RULE_ONE_HEX_LETTER=14;
     public static final int RULE_COMMA=5;
     public static final int RULE_HASHMARK=9;
     public static final int RULE_ML_COMMENT=18;
@@ -223,7 +233,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( ((LA2_0>=22 && LA2_0<=23)||LA2_0==45) ) {
+                if ( ((LA2_0>=22 && LA2_0<=23)) ) {
                     alt2=1;
                 }
 
@@ -277,15 +287,16 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                 switch ( input.LA(1) ) {
                 case RULE_HASHMARK:
                 case RULE_DASH:
-                case RULE_UNDERSCORE:
                 case RULE_ONE_HEX_LETTER:
                 case RULE_ONE_NON_HEX_LETTER:
+                case RULE_UNDERSCORE:
                 case 28:
                 case 31:
                 case 37:
                 case 38:
                 case 39:
                 case 40:
+                case 50:
                     {
                     alt3=1;
                     }
@@ -660,7 +671,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleimportExpression"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:241:1: ruleimportExpression returns [EObject current=null] : ( ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( (lv_value_2_0= RULE_STRING ) ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? otherlv_5= ';' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:241:1: ruleimportExpression returns [EObject current=null] : ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( ( (lv_value_2_0= RULE_STRING ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? ) ) otherlv_5= ';' ) ;
     public final EObject ruleimportExpression() throws RecognitionException {
         EObject current = null;
 
@@ -676,14 +687,62 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:244:28: ( ( ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( (lv_value_2_0= RULE_STRING ) ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? otherlv_5= ';' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:1: ( ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( (lv_value_2_0= RULE_STRING ) ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? otherlv_5= ';' ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:244:28: ( ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( ( (lv_value_2_0= RULE_STRING ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? ) ) otherlv_5= ';' ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:1: ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( ( (lv_value_2_0= RULE_STRING ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? ) ) otherlv_5= ';' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:1: ( ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( (lv_value_2_0= RULE_STRING ) ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? otherlv_5= ';' ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:1: ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( ( (lv_value_2_0= RULE_STRING ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? ) ) otherlv_5= ';' )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:2: (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( ( (lv_value_2_0= RULE_STRING ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? ) ) otherlv_5= ';'
+            {
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:2: (otherlv_0= '@import' | otherlv_1= '@IMPORT' )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==22) ) {
+                alt5=1;
+            }
+            else if ( (LA5_0==23) ) {
+                alt5=2;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+            }
+            switch (alt5) {
+                case 1 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:4: otherlv_0= '@import'
+                    {
+                    otherlv_0=(Token)match(input,22,FOLLOW_22_in_ruleimportExpression453); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_0, grammarAccess.getImportExpressionAccess().getImportKeyword_0_0());
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:250:7: otherlv_1= '@IMPORT'
+                    {
+                    otherlv_1=(Token)match(input,23,FOLLOW_23_in_ruleimportExpression471); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_1, grammarAccess.getImportExpressionAccess().getIMPORTKeyword_0_1());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:254:2: ( ( (lv_value_2_0= RULE_STRING ) ) | (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? ) )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
-            if ( ((LA7_0>=22 && LA7_0<=23)) ) {
+            if ( (LA7_0==RULE_STRING) ) {
                 alt7=1;
             }
             else if ( (LA7_0==45) ) {
@@ -698,57 +757,9 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             }
             switch (alt7) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:2: ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( (lv_value_2_0= RULE_STRING ) ) )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:254:3: ( (lv_value_2_0= RULE_STRING ) )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:2: ( (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( (lv_value_2_0= RULE_STRING ) ) )
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:3: (otherlv_0= '@import' | otherlv_1= '@IMPORT' ) ( (lv_value_2_0= RULE_STRING ) )
-                    {
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:3: (otherlv_0= '@import' | otherlv_1= '@IMPORT' )
-                    int alt5=2;
-                    int LA5_0 = input.LA(1);
-
-                    if ( (LA5_0==22) ) {
-                        alt5=1;
-                    }
-                    else if ( (LA5_0==23) ) {
-                        alt5=2;
-                    }
-                    else {
-                        if (state.backtracking>0) {state.failed=true; return current;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 5, 0, input);
-
-                        throw nvae;
-                    }
-                    switch (alt5) {
-                        case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:245:5: otherlv_0= '@import'
-                            {
-                            otherlv_0=(Token)match(input,22,FOLLOW_22_in_ruleimportExpression454); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                                  	newLeafNode(otherlv_0, grammarAccess.getImportExpressionAccess().getImportKeyword_0_0_0());
-                                  
-                            }
-
-                            }
-                            break;
-                        case 2 :
-                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:250:7: otherlv_1= '@IMPORT'
-                            {
-                            otherlv_1=(Token)match(input,23,FOLLOW_23_in_ruleimportExpression472); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                                  	newLeafNode(otherlv_1, grammarAccess.getImportExpressionAccess().getIMPORTKeyword_0_0_1());
-                                  
-                            }
-
-                            }
-                            break;
-
-                    }
-
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:254:2: ( (lv_value_2_0= RULE_STRING ) )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:254:3: ( (lv_value_2_0= RULE_STRING ) )
                     // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:255:1: (lv_value_2_0= RULE_STRING )
                     {
                     // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:255:1: (lv_value_2_0= RULE_STRING )
@@ -757,7 +768,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     lv_value_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleimportExpression490); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			newLeafNode(lv_value_2_0, grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0()); 
+                      			newLeafNode(lv_value_2_0, grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0()); 
                       		
                     }
                     if ( state.backtracking==0 ) {
@@ -780,22 +791,19 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
                     }
-
-
-                    }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:273:6: (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? otherlv_5= ';' )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:273:6: (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:273:6: (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? otherlv_5= ';' )
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:274:5: this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? otherlv_5= ';'
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:273:6: (this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )? )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:274:5: this_URLType_3= ruleURLType ( (lv_mediaList_4_0= rulemedia_list ) )?
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getImportExpressionAccess().getURLTypeParserRuleCall_1_0()); 
+                              newCompositeNode(grammarAccess.getImportExpressionAccess().getURLTypeParserRuleCall_1_1_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleURLType_in_ruleimportExpression525);
+                    pushFollow(FOLLOW_ruleURLType_in_ruleimportExpression524);
                     this_URLType_3=ruleURLType();
 
                     state._fsp--;
@@ -810,7 +818,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
-                    if ( ((LA6_0>=RULE_DASH && LA6_0<=RULE_ONE_NON_HEX_LETTER)) ) {
+                    if ( ((LA6_0>=RULE_DASH && LA6_0<=RULE_ONE_NON_HEX_LETTER)||LA6_0==RULE_UNDERSCORE||LA6_0==50) ) {
                         alt6=1;
                     }
                     switch (alt6) {
@@ -822,10 +830,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                             {
                             if ( state.backtracking==0 ) {
                                
-                              	        newCompositeNode(grammarAccess.getImportExpressionAccess().getMediaListMedia_listParserRuleCall_1_1_0()); 
+                              	        newCompositeNode(grammarAccess.getImportExpressionAccess().getMediaListMedia_listParserRuleCall_1_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_rulemedia_list_in_ruleimportExpression545);
+                            pushFollow(FOLLOW_rulemedia_list_in_ruleimportExpression544);
                             lv_mediaList_4_0=rulemedia_list();
 
                             state._fsp--;
@@ -852,18 +860,21 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,21,FOLLOW_21_in_ruleimportExpression558); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_5, grammarAccess.getImportExpressionAccess().getSemicolonKeyword_1_2());
-                          
-                    }
 
                     }
 
 
                     }
                     break;
+
+            }
+
+            otherlv_5=(Token)match(input,21,FOLLOW_21_in_ruleimportExpression559); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_5, grammarAccess.getImportExpressionAccess().getSemicolonKeyword_2());
+                  
+            }
 
             }
 
@@ -1066,7 +1077,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==RULE_WS||(LA10_0>=RULE_DASH && LA10_0<=RULE_ONE_NON_HEX_LETTER)) ) {
+            if ( (LA10_0==RULE_WS||(LA10_0>=RULE_DASH && LA10_0<=RULE_ONE_NON_HEX_LETTER)||LA10_0==RULE_UNDERSCORE||LA10_0==50) ) {
                 alt10=1;
             }
             switch (alt10) {
@@ -1133,7 +1144,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             	    int alt11=2;
             	    int LA11_0 = input.LA(1);
 
-            	    if ( (LA11_0==RULE_WS||(LA11_0>=RULE_DASH && LA11_0<=RULE_ONE_NON_HEX_LETTER)) ) {
+            	    if ( (LA11_0==RULE_WS||(LA11_0>=RULE_DASH && LA11_0<=RULE_ONE_NON_HEX_LETTER)||LA11_0==RULE_UNDERSCORE||LA11_0==50) ) {
             	        alt11=1;
             	    }
             	    switch (alt11) {
@@ -1474,7 +1485,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                 int alt14=2;
                 int LA14_0 = input.LA(1);
 
-                if ( (LA14_0==RULE_HASHMARK||(LA14_0>=RULE_DASH && LA14_0<=RULE_ONE_NON_HEX_LETTER)||LA14_0==28||LA14_0==31||(LA14_0>=37 && LA14_0<=40)) ) {
+                if ( (LA14_0==RULE_HASHMARK||(LA14_0>=RULE_DASH && LA14_0<=RULE_ONE_NON_HEX_LETTER)||LA14_0==RULE_UNDERSCORE||LA14_0==28||LA14_0==31||(LA14_0>=37 && LA14_0<=40)||LA14_0==50) ) {
                     alt14=1;
                 }
 
@@ -2007,7 +2018,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                 int alt18=2;
                 int LA18_0 = input.LA(1);
 
-                if ( (LA18_0==RULE_WS||(LA18_0>=RULE_DASH && LA18_0<=RULE_ONE_NON_HEX_LETTER)) ) {
+                if ( (LA18_0==RULE_WS||(LA18_0>=RULE_DASH && LA18_0<=RULE_ONE_NON_HEX_LETTER)||LA18_0==RULE_UNDERSCORE||LA18_0==50) ) {
                     alt18=1;
                 }
 
@@ -2509,7 +2520,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             int alt25=2;
             int LA25_0 = input.LA(1);
 
-            if ( ((LA25_0>=RULE_DASH && LA25_0<=RULE_ONE_NON_HEX_LETTER)||(LA25_0>=38 && LA25_0<=39)) ) {
+            if ( ((LA25_0>=RULE_DASH && LA25_0<=RULE_ONE_NON_HEX_LETTER)||LA25_0==RULE_UNDERSCORE||(LA25_0>=38 && LA25_0<=39)||LA25_0==50) ) {
                 alt25=1;
             }
             else if ( (LA25_0==RULE_HASHMARK||LA25_0==28||LA25_0==31||LA25_0==37) ) {
@@ -3039,7 +3050,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             int alt30=2;
             int LA30_0 = input.LA(1);
 
-            if ( ((LA30_0>=RULE_DASH && LA30_0<=RULE_ONE_NON_HEX_LETTER)||(LA30_0>=38 && LA30_0<=39)) ) {
+            if ( ((LA30_0>=RULE_DASH && LA30_0<=RULE_ONE_NON_HEX_LETTER)||LA30_0==RULE_UNDERSCORE||(LA30_0>=38 && LA30_0<=39)||LA30_0==50) ) {
                 alt30=1;
             }
             else if ( (LA30_0==RULE_HASHMARK||LA30_0==28||LA30_0==31||LA30_0==37||LA30_0==40) ) {
@@ -3837,7 +3848,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     int alt33=2;
                     int LA33_0 = input.LA(1);
 
-                    if ( ((LA33_0>=RULE_DASH && LA33_0<=RULE_ONE_NON_HEX_LETTER)) ) {
+                    if ( ((LA33_0>=RULE_DASH && LA33_0<=RULE_ONE_NON_HEX_LETTER)||LA33_0==RULE_UNDERSCORE||LA33_0==50) ) {
                         alt33=1;
                     }
                     else if ( (LA33_0==RULE_STRING) ) {
@@ -4283,7 +4294,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             int alt35=2;
             int LA35_0 = input.LA(1);
 
-            if ( ((LA35_0>=RULE_DASH && LA35_0<=RULE_ONE_NON_HEX_LETTER)||LA35_0==39) ) {
+            if ( ((LA35_0>=RULE_DASH && LA35_0<=RULE_ONE_NON_HEX_LETTER)||LA35_0==RULE_UNDERSCORE||LA35_0==39||LA35_0==50) ) {
                 alt35=1;
             }
             else if ( (LA35_0==38) ) {
@@ -4556,7 +4567,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             int alt36=3;
             int LA36_0 = input.LA(1);
 
-            if ( ((LA36_0>=RULE_DASH && LA36_0<=RULE_ONE_NON_HEX_LETTER)) ) {
+            if ( ((LA36_0>=RULE_DASH && LA36_0<=RULE_ONE_NON_HEX_LETTER)||LA36_0==RULE_UNDERSCORE||LA36_0==50) ) {
                 alt36=1;
             }
             else if ( (LA36_0==38) ) {
@@ -4812,7 +4823,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                 int alt39=2;
                 int LA39_0 = input.LA(1);
 
-                if ( ((LA39_0>=RULE_STRING && LA39_0<=RULE_WS)||LA39_0==RULE_HASHMARK||(LA39_0>=RULE_PLUS && LA39_0<=RULE_ONE_INT)||LA39_0==37||LA39_0==45) ) {
+                if ( ((LA39_0>=RULE_STRING && LA39_0<=RULE_WS)||LA39_0==RULE_HASHMARK||(LA39_0>=RULE_PLUS && LA39_0<=RULE_UNDERSCORE)||LA39_0==37||LA39_0==45||LA39_0==50) ) {
                     alt39=1;
                 }
 
@@ -5729,7 +5740,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                         int alt43=2;
                         int LA43_0 = input.LA(1);
 
-                        if ( ((LA43_0>=RULE_STRING && LA43_0<=RULE_WS)||LA43_0==RULE_HASHMARK||(LA43_0>=RULE_PLUS && LA43_0<=RULE_ONE_INT)||LA43_0==37||LA43_0==45) ) {
+                        if ( ((LA43_0>=RULE_STRING && LA43_0<=RULE_WS)||LA43_0==RULE_HASHMARK||(LA43_0>=RULE_PLUS && LA43_0<=RULE_UNDERSCORE)||LA43_0==37||LA43_0==45||LA43_0==50) ) {
                             alt43=1;
                         }
 
@@ -6943,7 +6954,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                         int alt48=2;
                         int LA48_0 = input.LA(1);
 
-                        if ( ((LA48_0>=RULE_STRING && LA48_0<=RULE_WS)||LA48_0==RULE_HASHMARK||(LA48_0>=RULE_PLUS && LA48_0<=RULE_ONE_INT)||LA48_0==37||LA48_0==45) ) {
+                        if ( ((LA48_0>=RULE_STRING && LA48_0<=RULE_WS)||LA48_0==RULE_HASHMARK||(LA48_0>=RULE_PLUS && LA48_0<=RULE_UNDERSCORE)||LA48_0==37||LA48_0==45||LA48_0==50) ) {
                             alt48=1;
                         }
 
@@ -7112,11 +7123,11 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                 {
                 int LA50_1 = input.LA(2);
 
-                if ( ((LA50_1>=RULE_UNDERSCORE && LA50_1<=RULE_ONE_NON_HEX_LETTER)) ) {
-                    alt50=1;
-                }
-                else if ( (LA50_1==RULE_ONE_INT||LA50_1==37) ) {
+                if ( (LA50_1==RULE_ONE_INT||LA50_1==37) ) {
                     alt50=5;
+                }
+                else if ( ((LA50_1>=RULE_ONE_HEX_LETTER && LA50_1<=RULE_ONE_NON_HEX_LETTER)||LA50_1==RULE_UNDERSCORE||LA50_1==50) ) {
+                    alt50=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -7127,9 +7138,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                 }
                 }
                 break;
-            case RULE_UNDERSCORE:
             case RULE_ONE_HEX_LETTER:
             case RULE_ONE_NON_HEX_LETTER:
+            case RULE_UNDERSCORE:
+            case 50:
                 {
                 alt50=1;
                 }
@@ -7402,24 +7414,24 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleURLType"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2504:1: ruleURLType returns [EObject current=null] : (otherlv_0= 'url' otherlv_1= '(' ( (lv_url_2_0= RULE_STRING ) ) otherlv_3= ')' ) ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2504:1: ruleURLType returns [EObject current=null] : (otherlv_0= 'url(' ( (lv_url_1_0= ruleValidURL ) ) otherlv_2= ')' ) ;
     public final EObject ruleURLType() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token otherlv_1=null;
-        Token lv_url_2_0=null;
-        Token otherlv_3=null;
+        Token otherlv_2=null;
+        AntlrDatatypeRuleToken lv_url_1_0 = null;
+
 
          enterRule(); 
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2508:28: ( (otherlv_0= 'url' otherlv_1= '(' ( (lv_url_2_0= RULE_STRING ) ) otherlv_3= ')' ) )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2509:1: (otherlv_0= 'url' otherlv_1= '(' ( (lv_url_2_0= RULE_STRING ) ) otherlv_3= ')' )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2508:28: ( (otherlv_0= 'url(' ( (lv_url_1_0= ruleValidURL ) ) otherlv_2= ')' ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2509:1: (otherlv_0= 'url(' ( (lv_url_1_0= ruleValidURL ) ) otherlv_2= ')' )
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2509:1: (otherlv_0= 'url' otherlv_1= '(' ( (lv_url_2_0= RULE_STRING ) ) otherlv_3= ')' )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2509:3: otherlv_0= 'url' otherlv_1= '(' ( (lv_url_2_0= RULE_STRING ) ) otherlv_3= ')'
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2509:1: (otherlv_0= 'url(' ( (lv_url_1_0= ruleValidURL ) ) otherlv_2= ')' )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2509:3: otherlv_0= 'url(' ( (lv_url_1_0= ruleValidURL ) ) otherlv_2= ')'
             {
             otherlv_0=(Token)match(input,45,FOLLOW_45_in_ruleURLType5654); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -7427,34 +7439,33 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_0, grammarAccess.getURLTypeAccess().getUrlKeyword_0());
                   
             }
-            otherlv_1=(Token)match(input,42,FOLLOW_42_in_ruleURLType5666); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-                  	newLeafNode(otherlv_1, grammarAccess.getURLTypeAccess().getLeftParenthesisKeyword_1());
-                  
-            }
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2517:1: ( (lv_url_2_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2518:1: (lv_url_2_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2513:1: ( (lv_url_1_0= ruleValidURL ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2514:1: (lv_url_1_0= ruleValidURL )
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2518:1: (lv_url_2_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2519:3: lv_url_2_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2514:1: (lv_url_1_0= ruleValidURL )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2515:3: lv_url_1_0= ruleValidURL
             {
-            lv_url_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleURLType5683); if (state.failed) return current;
             if ( state.backtracking==0 ) {
-
-              			newLeafNode(lv_url_2_0, grammarAccess.getURLTypeAccess().getUrlSTRINGTerminalRuleCall_2_0()); 
-              		
+               
+              	        newCompositeNode(grammarAccess.getURLTypeAccess().getUrlValidURLParserRuleCall_1_0()); 
+              	    
             }
+            pushFollow(FOLLOW_ruleValidURL_in_ruleURLType5675);
+            lv_url_1_0=ruleValidURL();
+
+            state._fsp--;
+            if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getURLTypeRule());
+              	            current = createModelElementForParent(grammarAccess.getURLTypeRule());
               	        }
-                     		setWithLastConsumed(
+                     		set(
                      			current, 
                      			"url",
-                      		lv_url_2_0, 
-                      		"STRING");
+                      		lv_url_1_0, 
+                      		"ValidURL");
+              	        afterParserOrEnumRuleCall();
               	    
             }
 
@@ -7463,10 +7474,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,41,FOLLOW_41_in_ruleURLType5700); if (state.failed) return current;
+            otherlv_2=(Token)match(input,41,FOLLOW_41_in_ruleURLType5687); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_3, grammarAccess.getURLTypeAccess().getRightParenthesisKeyword_3());
+                  	newLeafNode(otherlv_2, grammarAccess.getURLTypeAccess().getRightParenthesisKeyword_2());
                   
             }
 
@@ -7494,8 +7505,801 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleURLType"
 
 
+    // $ANTLR start "entryRuleValidURLSymbol"
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2546:1: entryRuleValidURLSymbol returns [String current=null] : iv_ruleValidURLSymbol= ruleValidURLSymbol EOF ;
+    public final String entryRuleValidURLSymbol() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleValidURLSymbol = null;
+
+
+        try {
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2547:2: (iv_ruleValidURLSymbol= ruleValidURLSymbol EOF )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2548:2: iv_ruleValidURLSymbol= ruleValidURLSymbol EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getValidURLSymbolRule()); 
+            }
+            pushFollow(FOLLOW_ruleValidURLSymbol_in_entryRuleValidURLSymbol5728);
+            iv_ruleValidURLSymbol=ruleValidURLSymbol();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleValidURLSymbol.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidURLSymbol5739); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleValidURLSymbol"
+
+
+    // $ANTLR start "ruleValidURLSymbol"
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2555:1: ruleValidURLSymbol returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= ':' | kw= '.' | kw= '/' | this_DASH_3= RULE_DASH | this_PLUS_4= RULE_PLUS | kw= '?' | kw= '&' | kw= '=' | this_COMMA_8= RULE_COMMA | kw= '@' | kw= 'url' ) ;
+    public final AntlrDatatypeRuleToken ruleValidURLSymbol() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+        Token this_DASH_3=null;
+        Token this_PLUS_4=null;
+        Token this_COMMA_8=null;
+
+         enterRule(); 
+            
+        try {
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2558:28: ( (kw= ':' | kw= '.' | kw= '/' | this_DASH_3= RULE_DASH | this_PLUS_4= RULE_PLUS | kw= '?' | kw= '&' | kw= '=' | this_COMMA_8= RULE_COMMA | kw= '@' | kw= 'url' ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2559:1: (kw= ':' | kw= '.' | kw= '/' | this_DASH_3= RULE_DASH | this_PLUS_4= RULE_PLUS | kw= '?' | kw= '&' | kw= '=' | this_COMMA_8= RULE_COMMA | kw= '@' | kw= 'url' )
+            {
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2559:1: (kw= ':' | kw= '.' | kw= '/' | this_DASH_3= RULE_DASH | this_PLUS_4= RULE_PLUS | kw= '?' | kw= '&' | kw= '=' | this_COMMA_8= RULE_COMMA | kw= '@' | kw= 'url' )
+            int alt51=11;
+            switch ( input.LA(1) ) {
+            case 28:
+                {
+                alt51=1;
+                }
+                break;
+            case 37:
+                {
+                alt51=2;
+                }
+                break;
+            case 46:
+                {
+                alt51=3;
+                }
+                break;
+            case RULE_DASH:
+                {
+                alt51=4;
+                }
+                break;
+            case RULE_PLUS:
+                {
+                alt51=5;
+                }
+                break;
+            case 47:
+                {
+                alt51=6;
+                }
+                break;
+            case 48:
+                {
+                alt51=7;
+                }
+                break;
+            case 35:
+                {
+                alt51=8;
+                }
+                break;
+            case RULE_COMMA:
+                {
+                alt51=9;
+                }
+                break;
+            case 49:
+                {
+                alt51=10;
+                }
+                break;
+            case 50:
+                {
+                alt51=11;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 51, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt51) {
+                case 1 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2560:2: kw= ':'
+                    {
+                    kw=(Token)match(input,28,FOLLOW_28_in_ruleValidURLSymbol5777); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getColonKeyword_0()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2567:2: kw= '.'
+                    {
+                    kw=(Token)match(input,37,FOLLOW_37_in_ruleValidURLSymbol5796); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getFullStopKeyword_1()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2574:2: kw= '/'
+                    {
+                    kw=(Token)match(input,46,FOLLOW_46_in_ruleValidURLSymbol5815); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getSolidusKeyword_2()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2580:10: this_DASH_3= RULE_DASH
+                    {
+                    this_DASH_3=(Token)match(input,RULE_DASH,FOLLOW_RULE_DASH_in_ruleValidURLSymbol5836); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_DASH_3);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_DASH_3, grammarAccess.getValidURLSymbolAccess().getDASHTerminalRuleCall_3()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 5 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2588:10: this_PLUS_4= RULE_PLUS
+                    {
+                    this_PLUS_4=(Token)match(input,RULE_PLUS,FOLLOW_RULE_PLUS_in_ruleValidURLSymbol5862); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_PLUS_4);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_PLUS_4, grammarAccess.getValidURLSymbolAccess().getPLUSTerminalRuleCall_4()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 6 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2597:2: kw= '?'
+                    {
+                    kw=(Token)match(input,47,FOLLOW_47_in_ruleValidURLSymbol5886); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getQuestionMarkKeyword_5()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 7 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2604:2: kw= '&'
+                    {
+                    kw=(Token)match(input,48,FOLLOW_48_in_ruleValidURLSymbol5905); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getAmpersandKeyword_6()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 8 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2611:2: kw= '='
+                    {
+                    kw=(Token)match(input,35,FOLLOW_35_in_ruleValidURLSymbol5924); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getEqualsSignKeyword_7()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 9 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2617:10: this_COMMA_8= RULE_COMMA
+                    {
+                    this_COMMA_8=(Token)match(input,RULE_COMMA,FOLLOW_RULE_COMMA_in_ruleValidURLSymbol5945); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_COMMA_8);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_COMMA_8, grammarAccess.getValidURLSymbolAccess().getCOMMATerminalRuleCall_8()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 10 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2626:2: kw= '@'
+                    {
+                    kw=(Token)match(input,49,FOLLOW_49_in_ruleValidURLSymbol5969); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getCommercialAtKeyword_9()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 11 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2633:2: kw= 'url'
+                    {
+                    kw=(Token)match(input,50,FOLLOW_50_in_ruleValidURLSymbol5988); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getValidURLSymbolAccess().getUrlKeyword_10()); 
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleValidURLSymbol"
+
+
+    // $ANTLR start "entryRuleValidURL"
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2646:1: entryRuleValidURL returns [String current=null] : iv_ruleValidURL= ruleValidURL EOF ;
+    public final String entryRuleValidURL() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleValidURL = null;
+
+
+         
+        		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+        	
+        try {
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2650:2: (iv_ruleValidURL= ruleValidURL EOF )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2651:2: iv_ruleValidURL= ruleValidURL EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getValidURLRule()); 
+            }
+            pushFollow(FOLLOW_ruleValidURL_in_entryRuleValidURL6035);
+            iv_ruleValidURL=ruleValidURL();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleValidURL.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidURL6046); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+
+            	myHiddenTokenState.restore();
+
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleValidURL"
+
+
+    // $ANTLR start "ruleValidURL"
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2661:1: ruleValidURL returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | (this_ValidURLSymbol_1= ruleValidURLSymbol | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_4= RULE_ONE_INT | kw= '\\\\ ' | kw= '\\\\(' | kw= '\\\\)' | kw= '\\\\\\'' | kw= '\\\\\"' | (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) ) )+ ) ;
+    public final AntlrDatatypeRuleToken ruleValidURL() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_STRING_0=null;
+        Token this_ONE_HEX_LETTER_2=null;
+        Token this_ONE_NON_HEX_LETTER_3=null;
+        Token this_ONE_INT_4=null;
+        Token kw=null;
+        Token this_PERCENT_10=null;
+        Token this_ONE_INT_11=null;
+        Token this_ONE_HEX_LETTER_12=null;
+        Token this_ONE_INT_13=null;
+        Token this_ONE_HEX_LETTER_14=null;
+        AntlrDatatypeRuleToken this_ValidURLSymbol_1 = null;
+
+
+         enterRule(); 
+        		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+            
+        try {
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2665:28: ( (this_STRING_0= RULE_STRING | (this_ValidURLSymbol_1= ruleValidURLSymbol | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_4= RULE_ONE_INT | kw= '\\\\ ' | kw= '\\\\(' | kw= '\\\\)' | kw= '\\\\\\'' | kw= '\\\\\"' | (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) ) )+ ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2666:1: (this_STRING_0= RULE_STRING | (this_ValidURLSymbol_1= ruleValidURLSymbol | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_4= RULE_ONE_INT | kw= '\\\\ ' | kw= '\\\\(' | kw= '\\\\)' | kw= '\\\\\\'' | kw= '\\\\\"' | (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) ) )+ )
+            {
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2666:1: (this_STRING_0= RULE_STRING | (this_ValidURLSymbol_1= ruleValidURLSymbol | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_4= RULE_ONE_INT | kw= '\\\\ ' | kw= '\\\\(' | kw= '\\\\)' | kw= '\\\\\\'' | kw= '\\\\\"' | (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) ) )+ )
+            int alt55=2;
+            int LA55_0 = input.LA(1);
+
+            if ( (LA55_0==RULE_STRING) ) {
+                alt55=1;
+            }
+            else if ( (LA55_0==RULE_COMMA||(LA55_0>=RULE_PLUS && LA55_0<=RULE_ONE_INT)||LA55_0==28||LA55_0==35||LA55_0==37||(LA55_0>=46 && LA55_0<=55)) ) {
+                alt55=2;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 55, 0, input);
+
+                throw nvae;
+            }
+            switch (alt55) {
+                case 1 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2666:6: this_STRING_0= RULE_STRING
+                    {
+                    this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleValidURL6090); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_STRING_0);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_STRING_0, grammarAccess.getValidURLAccess().getSTRINGTerminalRuleCall_0()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2674:6: (this_ValidURLSymbol_1= ruleValidURLSymbol | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_4= RULE_ONE_INT | kw= '\\\\ ' | kw= '\\\\(' | kw= '\\\\)' | kw= '\\\\\\'' | kw= '\\\\\"' | (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) ) )+
+                    {
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2674:6: (this_ValidURLSymbol_1= ruleValidURLSymbol | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_4= RULE_ONE_INT | kw= '\\\\ ' | kw= '\\\\(' | kw= '\\\\)' | kw= '\\\\\\'' | kw= '\\\\\"' | (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) ) )+
+                    int cnt54=0;
+                    loop54:
+                    do {
+                        int alt54=11;
+                        switch ( input.LA(1) ) {
+                        case RULE_COMMA:
+                        case RULE_PLUS:
+                        case RULE_DASH:
+                        case 28:
+                        case 35:
+                        case 37:
+                        case 46:
+                        case 47:
+                        case 48:
+                        case 49:
+                        case 50:
+                            {
+                            alt54=1;
+                            }
+                            break;
+                        case RULE_ONE_HEX_LETTER:
+                            {
+                            alt54=2;
+                            }
+                            break;
+                        case RULE_ONE_NON_HEX_LETTER:
+                            {
+                            alt54=3;
+                            }
+                            break;
+                        case RULE_ONE_INT:
+                            {
+                            alt54=4;
+                            }
+                            break;
+                        case 51:
+                            {
+                            alt54=5;
+                            }
+                            break;
+                        case 52:
+                            {
+                            alt54=6;
+                            }
+                            break;
+                        case 53:
+                            {
+                            alt54=7;
+                            }
+                            break;
+                        case 54:
+                            {
+                            alt54=8;
+                            }
+                            break;
+                        case 55:
+                            {
+                            alt54=9;
+                            }
+                            break;
+                        case RULE_PERCENT:
+                            {
+                            alt54=10;
+                            }
+                            break;
+
+                        }
+
+                        switch (alt54) {
+                    	case 1 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2675:5: this_ValidURLSymbol_1= ruleValidURLSymbol
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	              newCompositeNode(grammarAccess.getValidURLAccess().getValidURLSymbolParserRuleCall_1_0()); 
+                    	          
+                    	    }
+                    	    pushFollow(FOLLOW_ruleValidURLSymbol_in_ruleValidURL6124);
+                    	    this_ValidURLSymbol_1=ruleValidURLSymbol();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_ValidURLSymbol_1);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	              afterParserOrEnumRuleCall();
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 2 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2686:10: this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER
+                    	    {
+                    	    this_ONE_HEX_LETTER_2=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleValidURL6150); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_ONE_HEX_LETTER_2);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	          newLeafNode(this_ONE_HEX_LETTER_2, grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_1()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 3 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2694:10: this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER
+                    	    {
+                    	    this_ONE_NON_HEX_LETTER_3=(Token)match(input,RULE_ONE_NON_HEX_LETTER,FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleValidURL6176); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_ONE_NON_HEX_LETTER_3);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	          newLeafNode(this_ONE_NON_HEX_LETTER_3, grammarAccess.getValidURLAccess().getONE_NON_HEX_LETTERTerminalRuleCall_1_2()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 4 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2702:10: this_ONE_INT_4= RULE_ONE_INT
+                    	    {
+                    	    this_ONE_INT_4=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleValidURL6202); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_ONE_INT_4);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	          newLeafNode(this_ONE_INT_4, grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_3()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 5 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2711:2: kw= '\\\\ '
+                    	    {
+                    	    kw=(Token)match(input,51,FOLLOW_51_in_ruleValidURL6226); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getValidURLAccess().getReverseSolidusSpaceKeyword_1_4()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 6 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2718:2: kw= '\\\\('
+                    	    {
+                    	    kw=(Token)match(input,52,FOLLOW_52_in_ruleValidURL6245); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getValidURLAccess().getReverseSolidusLeftParenthesisKeyword_1_5()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 7 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2725:2: kw= '\\\\)'
+                    	    {
+                    	    kw=(Token)match(input,53,FOLLOW_53_in_ruleValidURL6264); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getValidURLAccess().getReverseSolidusRightParenthesisKeyword_1_6()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 8 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2732:2: kw= '\\\\\\''
+                    	    {
+                    	    kw=(Token)match(input,54,FOLLOW_54_in_ruleValidURL6283); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getValidURLAccess().getReverseSolidusApostropheKeyword_1_7()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 9 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2739:2: kw= '\\\\\"'
+                    	    {
+                    	    kw=(Token)match(input,55,FOLLOW_55_in_ruleValidURL6302); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	              current.merge(kw);
+                    	              newLeafNode(kw, grammarAccess.getValidURLAccess().getReverseSolidusQuotationMarkKeyword_1_8()); 
+                    	          
+                    	    }
+
+                    	    }
+                    	    break;
+                    	case 10 :
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2745:6: (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) )
+                    	    {
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2745:6: (this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2745:11: this_PERCENT_10= RULE_PERCENT (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER ) (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER )
+                    	    {
+                    	    this_PERCENT_10=(Token)match(input,RULE_PERCENT,FOLLOW_RULE_PERCENT_in_ruleValidURL6324); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      		current.merge(this_PERCENT_10);
+                    	          
+                    	    }
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	          newLeafNode(this_PERCENT_10, grammarAccess.getValidURLAccess().getPERCENTTerminalRuleCall_1_9_0()); 
+                    	          
+                    	    }
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2752:1: (this_ONE_INT_11= RULE_ONE_INT | this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER )
+                    	    int alt52=2;
+                    	    int LA52_0 = input.LA(1);
+
+                    	    if ( (LA52_0==RULE_ONE_INT) ) {
+                    	        alt52=1;
+                    	    }
+                    	    else if ( (LA52_0==RULE_ONE_HEX_LETTER) ) {
+                    	        alt52=2;
+                    	    }
+                    	    else {
+                    	        if (state.backtracking>0) {state.failed=true; return current;}
+                    	        NoViableAltException nvae =
+                    	            new NoViableAltException("", 52, 0, input);
+
+                    	        throw nvae;
+                    	    }
+                    	    switch (alt52) {
+                    	        case 1 :
+                    	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2752:6: this_ONE_INT_11= RULE_ONE_INT
+                    	            {
+                    	            this_ONE_INT_11=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleValidURL6345); if (state.failed) return current;
+                    	            if ( state.backtracking==0 ) {
+
+                    	              		current.merge(this_ONE_INT_11);
+                    	                  
+                    	            }
+                    	            if ( state.backtracking==0 ) {
+                    	               
+                    	                  newLeafNode(this_ONE_INT_11, grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_9_1_0()); 
+                    	                  
+                    	            }
+
+                    	            }
+                    	            break;
+                    	        case 2 :
+                    	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2760:10: this_ONE_HEX_LETTER_12= RULE_ONE_HEX_LETTER
+                    	            {
+                    	            this_ONE_HEX_LETTER_12=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleValidURL6371); if (state.failed) return current;
+                    	            if ( state.backtracking==0 ) {
+
+                    	              		current.merge(this_ONE_HEX_LETTER_12);
+                    	                  
+                    	            }
+                    	            if ( state.backtracking==0 ) {
+                    	               
+                    	                  newLeafNode(this_ONE_HEX_LETTER_12, grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_9_1_1()); 
+                    	                  
+                    	            }
+
+                    	            }
+                    	            break;
+
+                    	    }
+
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2767:2: (this_ONE_INT_13= RULE_ONE_INT | this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER )
+                    	    int alt53=2;
+                    	    int LA53_0 = input.LA(1);
+
+                    	    if ( (LA53_0==RULE_ONE_INT) ) {
+                    	        alt53=1;
+                    	    }
+                    	    else if ( (LA53_0==RULE_ONE_HEX_LETTER) ) {
+                    	        alt53=2;
+                    	    }
+                    	    else {
+                    	        if (state.backtracking>0) {state.failed=true; return current;}
+                    	        NoViableAltException nvae =
+                    	            new NoViableAltException("", 53, 0, input);
+
+                    	        throw nvae;
+                    	    }
+                    	    switch (alt53) {
+                    	        case 1 :
+                    	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2767:7: this_ONE_INT_13= RULE_ONE_INT
+                    	            {
+                    	            this_ONE_INT_13=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleValidURL6393); if (state.failed) return current;
+                    	            if ( state.backtracking==0 ) {
+
+                    	              		current.merge(this_ONE_INT_13);
+                    	                  
+                    	            }
+                    	            if ( state.backtracking==0 ) {
+                    	               
+                    	                  newLeafNode(this_ONE_INT_13, grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_9_2_0()); 
+                    	                  
+                    	            }
+
+                    	            }
+                    	            break;
+                    	        case 2 :
+                    	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2775:10: this_ONE_HEX_LETTER_14= RULE_ONE_HEX_LETTER
+                    	            {
+                    	            this_ONE_HEX_LETTER_14=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleValidURL6419); if (state.failed) return current;
+                    	            if ( state.backtracking==0 ) {
+
+                    	              		current.merge(this_ONE_HEX_LETTER_14);
+                    	                  
+                    	            }
+                    	            if ( state.backtracking==0 ) {
+                    	               
+                    	                  newLeafNode(this_ONE_HEX_LETTER_14, grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_9_2_1()); 
+                    	                  
+                    	            }
+
+                    	            }
+                    	            break;
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt54 >= 1 ) break loop54;
+                    	    if (state.backtracking>0) {state.failed=true; return current;}
+                                EarlyExitException eee =
+                                    new EarlyExitException(54, input);
+                                throw eee;
+                        }
+                        cnt54++;
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+
+            	myHiddenTokenState.restore();
+
+        }
+        return current;
+    }
+    // $ANTLR end "ruleValidURL"
+
+
     // $ANTLR start "entryRuleIdentifier"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2550:1: entryRuleIdentifier returns [String current=null] : iv_ruleIdentifier= ruleIdentifier EOF ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2793:1: entryRuleIdentifier returns [String current=null] : iv_ruleIdentifier= ruleIdentifier EOF ;
     public final String entryRuleIdentifier() throws RecognitionException {
         String current = null;
 
@@ -7506,13 +8310,13 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
         	
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2554:2: (iv_ruleIdentifier= ruleIdentifier EOF )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2555:2: iv_ruleIdentifier= ruleIdentifier EOF
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2797:2: (iv_ruleIdentifier= ruleIdentifier EOF )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2798:2: iv_ruleIdentifier= ruleIdentifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIdentifierRule()); 
             }
-            pushFollow(FOLLOW_ruleIdentifier_in_entryRuleIdentifier5747);
+            pushFollow(FOLLOW_ruleIdentifier_in_entryRuleIdentifier6479);
             iv_ruleIdentifier=ruleIdentifier();
 
             state._fsp--;
@@ -7520,7 +8324,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIdentifier.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIdentifier5758); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIdentifier6490); if (state.failed) return current;
 
             }
 
@@ -7541,7 +8345,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIdentifier"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2565:1: ruleIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )=> (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT ) )* ) ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2808:1: ruleIdentifier returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | kw= 'url' ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )=> (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' ) )* ) ;
     public final AntlrDatatypeRuleToken ruleIdentifier() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -7549,34 +8353,35 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
         Token this_UNDERSCORE_1=null;
         Token this_ONE_HEX_LETTER_2=null;
         Token this_ONE_NON_HEX_LETTER_3=null;
-        Token this_UNDERSCORE_4=null;
-        Token this_DASH_5=null;
-        Token this_ONE_HEX_LETTER_6=null;
-        Token this_ONE_NON_HEX_LETTER_7=null;
-        Token this_ONE_INT_8=null;
+        Token kw=null;
+        Token this_UNDERSCORE_5=null;
+        Token this_DASH_6=null;
+        Token this_ONE_HEX_LETTER_7=null;
+        Token this_ONE_NON_HEX_LETTER_8=null;
+        Token this_ONE_INT_9=null;
 
          enterRule(); 
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2569:28: ( ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )=> (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT ) )* ) )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2570:1: ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )=> (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT ) )* )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2812:28: ( ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | kw= 'url' ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )=> (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' ) )* ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2813:1: ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | kw= 'url' ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )=> (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' ) )* )
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2570:1: ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )=> (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT ) )* )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2570:2: (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )=> (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT ) )*
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2813:1: ( (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | kw= 'url' ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )=> (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' ) )* )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2813:2: (this_DASH_0= RULE_DASH )? (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | kw= 'url' ) ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )=> (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' ) )*
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2570:2: (this_DASH_0= RULE_DASH )?
-            int alt51=2;
-            int LA51_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2813:2: (this_DASH_0= RULE_DASH )?
+            int alt56=2;
+            int LA56_0 = input.LA(1);
 
-            if ( (LA51_0==RULE_DASH) ) {
-                alt51=1;
+            if ( (LA56_0==RULE_DASH) ) {
+                alt56=1;
             }
-            switch (alt51) {
+            switch (alt56) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2570:7: this_DASH_0= RULE_DASH
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2813:7: this_DASH_0= RULE_DASH
                     {
-                    this_DASH_0=(Token)match(input,RULE_DASH,FOLLOW_RULE_DASH_in_ruleIdentifier5803); if (state.failed) return current;
+                    this_DASH_0=(Token)match(input,RULE_DASH,FOLLOW_RULE_DASH_in_ruleIdentifier6535); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_DASH_0);
@@ -7593,37 +8398,42 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2577:3: (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER )
-            int alt52=3;
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2820:3: (this_UNDERSCORE_1= RULE_UNDERSCORE | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER | kw= 'url' )
+            int alt57=4;
             switch ( input.LA(1) ) {
             case RULE_UNDERSCORE:
                 {
-                alt52=1;
+                alt57=1;
                 }
                 break;
             case RULE_ONE_HEX_LETTER:
                 {
-                alt52=2;
+                alt57=2;
                 }
                 break;
             case RULE_ONE_NON_HEX_LETTER:
                 {
-                alt52=3;
+                alt57=3;
+                }
+                break;
+            case 50:
+                {
+                alt57=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 52, 0, input);
+                    new NoViableAltException("", 57, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt52) {
+            switch (alt57) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2577:8: this_UNDERSCORE_1= RULE_UNDERSCORE
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2820:8: this_UNDERSCORE_1= RULE_UNDERSCORE
                     {
-                    this_UNDERSCORE_1=(Token)match(input,RULE_UNDERSCORE,FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier5826); if (state.failed) return current;
+                    this_UNDERSCORE_1=(Token)match(input,RULE_UNDERSCORE,FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier6558); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_UNDERSCORE_1);
@@ -7638,9 +8448,9 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2585:10: this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2828:10: this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER
                     {
-                    this_ONE_HEX_LETTER_2=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier5852); if (state.failed) return current;
+                    this_ONE_HEX_LETTER_2=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier6584); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ONE_HEX_LETTER_2);
@@ -7655,9 +8465,9 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2593:10: this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2836:10: this_ONE_NON_HEX_LETTER_3= RULE_ONE_NON_HEX_LETTER
                     {
-                    this_ONE_NON_HEX_LETTER_3=(Token)match(input,RULE_ONE_NON_HEX_LETTER,FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier5878); if (state.failed) return current;
+                    this_ONE_NON_HEX_LETTER_3=(Token)match(input,RULE_ONE_NON_HEX_LETTER,FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier6610); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ONE_NON_HEX_LETTER_3);
@@ -7671,20 +8481,33 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 4 :
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2845:2: kw= 'url'
+                    {
+                    kw=(Token)match(input,50,FOLLOW_50_in_ruleIdentifier6634); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getIdentifierAccess().getUrlKeyword_1_3()); 
+                          
+                    }
+
+                    }
+                    break;
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2600:2: ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )=> (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT ) )*
-            loop54:
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2850:2: ( ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )=> (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' ) )*
+            loop59:
             do {
-                int alt54=2;
+                int alt59=2;
                 switch ( input.LA(1) ) {
                 case RULE_DASH:
                     {
-                    int LA54_2 = input.LA(2);
+                    int LA59_2 = input.LA(2);
 
                     if ( (synpred3_InternalCssDsl()) ) {
-                        alt54=1;
+                        alt59=1;
                     }
 
 
@@ -7692,10 +8515,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     break;
                 case RULE_UNDERSCORE:
                     {
-                    int LA54_3 = input.LA(2);
+                    int LA59_3 = input.LA(2);
 
                     if ( (synpred3_InternalCssDsl()) ) {
-                        alt54=1;
+                        alt59=1;
                     }
 
 
@@ -7703,10 +8526,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     break;
                 case RULE_ONE_HEX_LETTER:
                     {
-                    int LA54_4 = input.LA(2);
+                    int LA59_4 = input.LA(2);
 
                     if ( (synpred3_InternalCssDsl()) ) {
-                        alt54=1;
+                        alt59=1;
                     }
 
 
@@ -7714,10 +8537,21 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     break;
                 case RULE_ONE_NON_HEX_LETTER:
                     {
-                    int LA54_5 = input.LA(2);
+                    int LA59_5 = input.LA(2);
 
                     if ( (synpred3_InternalCssDsl()) ) {
-                        alt54=1;
+                        alt59=1;
+                    }
+
+
+                    }
+                    break;
+                case 50:
+                    {
+                    int LA59_6 = input.LA(2);
+
+                    if ( (synpred3_InternalCssDsl()) ) {
+                        alt59=1;
                     }
 
 
@@ -7725,10 +8559,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     break;
                 case RULE_ONE_INT:
                     {
-                    int LA54_6 = input.LA(2);
+                    int LA59_7 = input.LA(2);
 
                     if ( (synpred3_InternalCssDsl()) ) {
-                        alt54=1;
+                        alt59=1;
                     }
 
 
@@ -7737,127 +8571,145 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
                 }
 
-                switch (alt54) {
+                switch (alt59) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2600:3: ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )=> (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT )
+            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2850:3: ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )=> (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2604:23: (this_UNDERSCORE_4= RULE_UNDERSCORE | this_DASH_5= RULE_DASH | this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_8= RULE_ONE_INT )
-            	    int alt53=5;
+            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2857:5: (this_UNDERSCORE_5= RULE_UNDERSCORE | this_DASH_6= RULE_DASH | this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER | this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER | this_ONE_INT_9= RULE_ONE_INT | kw= 'url' )
+            	    int alt58=6;
             	    switch ( input.LA(1) ) {
             	    case RULE_UNDERSCORE:
             	        {
-            	        alt53=1;
+            	        alt58=1;
             	        }
             	        break;
             	    case RULE_DASH:
             	        {
-            	        alt53=2;
+            	        alt58=2;
             	        }
             	        break;
             	    case RULE_ONE_HEX_LETTER:
             	        {
-            	        alt53=3;
+            	        alt58=3;
             	        }
             	        break;
             	    case RULE_ONE_NON_HEX_LETTER:
             	        {
-            	        alt53=4;
+            	        alt58=4;
             	        }
             	        break;
             	    case RULE_ONE_INT:
             	        {
-            	        alt53=5;
+            	        alt58=5;
+            	        }
+            	        break;
+            	    case 50:
+            	        {
+            	        alt58=6;
             	        }
             	        break;
             	    default:
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 53, 0, input);
+            	            new NoViableAltException("", 58, 0, input);
 
             	        throw nvae;
             	    }
 
-            	    switch (alt53) {
+            	    switch (alt58) {
             	        case 1 :
-            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2604:28: this_UNDERSCORE_4= RULE_UNDERSCORE
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2857:10: this_UNDERSCORE_5= RULE_UNDERSCORE
             	            {
-            	            this_UNDERSCORE_4=(Token)match(input,RULE_UNDERSCORE,FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier5940); if (state.failed) return current;
+            	            this_UNDERSCORE_5=(Token)match(input,RULE_UNDERSCORE,FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier6702); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              		current.merge(this_UNDERSCORE_4);
+            	              		current.merge(this_UNDERSCORE_5);
             	                  
             	            }
             	            if ( state.backtracking==0 ) {
             	               
-            	                  newLeafNode(this_UNDERSCORE_4, grammarAccess.getIdentifierAccess().getUNDERSCORETerminalRuleCall_2_0_0()); 
+            	                  newLeafNode(this_UNDERSCORE_5, grammarAccess.getIdentifierAccess().getUNDERSCORETerminalRuleCall_2_0_0()); 
             	                  
             	            }
 
             	            }
             	            break;
             	        case 2 :
-            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2612:10: this_DASH_5= RULE_DASH
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2865:10: this_DASH_6= RULE_DASH
             	            {
-            	            this_DASH_5=(Token)match(input,RULE_DASH,FOLLOW_RULE_DASH_in_ruleIdentifier5966); if (state.failed) return current;
+            	            this_DASH_6=(Token)match(input,RULE_DASH,FOLLOW_RULE_DASH_in_ruleIdentifier6728); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              		current.merge(this_DASH_5);
+            	              		current.merge(this_DASH_6);
             	                  
             	            }
             	            if ( state.backtracking==0 ) {
             	               
-            	                  newLeafNode(this_DASH_5, grammarAccess.getIdentifierAccess().getDASHTerminalRuleCall_2_0_1()); 
+            	                  newLeafNode(this_DASH_6, grammarAccess.getIdentifierAccess().getDASHTerminalRuleCall_2_0_1()); 
             	                  
             	            }
 
             	            }
             	            break;
             	        case 3 :
-            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2620:10: this_ONE_HEX_LETTER_6= RULE_ONE_HEX_LETTER
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2873:10: this_ONE_HEX_LETTER_7= RULE_ONE_HEX_LETTER
             	            {
-            	            this_ONE_HEX_LETTER_6=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier5992); if (state.failed) return current;
+            	            this_ONE_HEX_LETTER_7=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier6754); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              		current.merge(this_ONE_HEX_LETTER_6);
+            	              		current.merge(this_ONE_HEX_LETTER_7);
             	                  
             	            }
             	            if ( state.backtracking==0 ) {
             	               
-            	                  newLeafNode(this_ONE_HEX_LETTER_6, grammarAccess.getIdentifierAccess().getONE_HEX_LETTERTerminalRuleCall_2_0_2()); 
+            	                  newLeafNode(this_ONE_HEX_LETTER_7, grammarAccess.getIdentifierAccess().getONE_HEX_LETTERTerminalRuleCall_2_0_2()); 
             	                  
             	            }
 
             	            }
             	            break;
             	        case 4 :
-            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2628:10: this_ONE_NON_HEX_LETTER_7= RULE_ONE_NON_HEX_LETTER
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2881:10: this_ONE_NON_HEX_LETTER_8= RULE_ONE_NON_HEX_LETTER
             	            {
-            	            this_ONE_NON_HEX_LETTER_7=(Token)match(input,RULE_ONE_NON_HEX_LETTER,FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier6018); if (state.failed) return current;
+            	            this_ONE_NON_HEX_LETTER_8=(Token)match(input,RULE_ONE_NON_HEX_LETTER,FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier6780); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              		current.merge(this_ONE_NON_HEX_LETTER_7);
+            	              		current.merge(this_ONE_NON_HEX_LETTER_8);
             	                  
             	            }
             	            if ( state.backtracking==0 ) {
             	               
-            	                  newLeafNode(this_ONE_NON_HEX_LETTER_7, grammarAccess.getIdentifierAccess().getONE_NON_HEX_LETTERTerminalRuleCall_2_0_3()); 
+            	                  newLeafNode(this_ONE_NON_HEX_LETTER_8, grammarAccess.getIdentifierAccess().getONE_NON_HEX_LETTERTerminalRuleCall_2_0_3()); 
             	                  
             	            }
 
             	            }
             	            break;
             	        case 5 :
-            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2636:10: this_ONE_INT_8= RULE_ONE_INT
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2889:10: this_ONE_INT_9= RULE_ONE_INT
             	            {
-            	            this_ONE_INT_8=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleIdentifier6044); if (state.failed) return current;
+            	            this_ONE_INT_9=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleIdentifier6806); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
-            	              		current.merge(this_ONE_INT_8);
+            	              		current.merge(this_ONE_INT_9);
             	                  
             	            }
             	            if ( state.backtracking==0 ) {
             	               
-            	                  newLeafNode(this_ONE_INT_8, grammarAccess.getIdentifierAccess().getONE_INTTerminalRuleCall_2_0_4()); 
+            	                  newLeafNode(this_ONE_INT_9, grammarAccess.getIdentifierAccess().getONE_INTTerminalRuleCall_2_0_4()); 
+            	                  
+            	            }
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2898:2: kw= 'url'
+            	            {
+            	            kw=(Token)match(input,50,FOLLOW_50_in_ruleIdentifier6830); if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	                      current.merge(kw);
+            	                      newLeafNode(kw, grammarAccess.getIdentifierAccess().getUrlKeyword_2_0_5()); 
             	                  
             	            }
 
@@ -7871,7 +8723,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop54;
+            	    break loop59;
                 }
             } while (true);
 
@@ -7901,7 +8753,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNum"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2654:1: entryRuleNum returns [String current=null] : iv_ruleNum= ruleNum EOF ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2914:1: entryRuleNum returns [String current=null] : iv_ruleNum= ruleNum EOF ;
     public final String entryRuleNum() throws RecognitionException {
         String current = null;
 
@@ -7912,13 +8764,13 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
         	
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2658:2: (iv_ruleNum= ruleNum EOF )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2659:2: iv_ruleNum= ruleNum EOF
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2918:2: (iv_ruleNum= ruleNum EOF )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2919:2: iv_ruleNum= ruleNum EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNumRule()); 
             }
-            pushFollow(FOLLOW_ruleNum_in_entryRuleNum6103);
+            pushFollow(FOLLOW_ruleNum_in_entryRuleNum6884);
             iv_ruleNum=ruleNum();
 
             state._fsp--;
@@ -7926,7 +8778,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNum.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNum6114); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNum6895); if (state.failed) return current;
 
             }
 
@@ -7947,7 +8799,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNum"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2669:1: ruleNum returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2929:1: ruleNum returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) ) ;
     public final AntlrDatatypeRuleToken ruleNum() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -7962,27 +8814,27 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2673:28: ( ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2674:1: ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2933:28: ( ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2934:1: ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2674:1: ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2674:2: (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2934:1: ( (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2934:2: (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )? ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2674:2: (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )?
-            int alt55=3;
-            int LA55_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2934:2: (this_PLUS_0= RULE_PLUS | this_DASH_1= RULE_DASH )?
+            int alt60=3;
+            int LA60_0 = input.LA(1);
 
-            if ( (LA55_0==RULE_PLUS) ) {
-                alt55=1;
+            if ( (LA60_0==RULE_PLUS) ) {
+                alt60=1;
             }
-            else if ( (LA55_0==RULE_DASH) ) {
-                alt55=2;
+            else if ( (LA60_0==RULE_DASH) ) {
+                alt60=2;
             }
-            switch (alt55) {
+            switch (alt60) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2674:7: this_PLUS_0= RULE_PLUS
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2934:7: this_PLUS_0= RULE_PLUS
                     {
-                    this_PLUS_0=(Token)match(input,RULE_PLUS,FOLLOW_RULE_PLUS_in_ruleNum6159); if (state.failed) return current;
+                    this_PLUS_0=(Token)match(input,RULE_PLUS,FOLLOW_RULE_PLUS_in_ruleNum6940); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_PLUS_0);
@@ -7997,9 +8849,9 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2682:10: this_DASH_1= RULE_DASH
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2942:10: this_DASH_1= RULE_DASH
                     {
-                    this_DASH_1=(Token)match(input,RULE_DASH,FOLLOW_RULE_DASH_in_ruleNum6185); if (state.failed) return current;
+                    this_DASH_1=(Token)match(input,RULE_DASH,FOLLOW_RULE_DASH_in_ruleNum6966); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_DASH_1);
@@ -8016,60 +8868,60 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2689:3: ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) )
-            int alt60=2;
-            int LA60_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2949:3: ( (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ ) | ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? ) )
+            int alt65=2;
+            int LA65_0 = input.LA(1);
 
-            if ( (LA60_0==37) ) {
-                alt60=1;
+            if ( (LA65_0==37) ) {
+                alt65=1;
             }
-            else if ( (LA60_0==RULE_ONE_INT) ) {
-                alt60=2;
+            else if ( (LA65_0==RULE_ONE_INT) ) {
+                alt65=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 60, 0, input);
+                    new NoViableAltException("", 65, 0, input);
 
                 throw nvae;
             }
-            switch (alt60) {
+            switch (alt65) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2689:4: (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2949:4: (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2689:4: (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ )
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2690:2: kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2949:4: (kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+ )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2950:2: kw= '.' ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+
                     {
-                    kw=(Token)match(input,37,FOLLOW_37_in_ruleNum6207); if (state.failed) return current;
+                    kw=(Token)match(input,37,FOLLOW_37_in_ruleNum6988); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getNumAccess().getFullStopKeyword_1_0_0()); 
                           
                     }
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2695:1: ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+
-                    int cnt56=0;
-                    loop56:
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2955:1: ( ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT )+
+                    int cnt61=0;
+                    loop61:
                     do {
-                        int alt56=2;
-                        int LA56_0 = input.LA(1);
+                        int alt61=2;
+                        int LA61_0 = input.LA(1);
 
-                        if ( (LA56_0==RULE_ONE_INT) ) {
-                            int LA56_2 = input.LA(2);
+                        if ( (LA61_0==RULE_ONE_INT) ) {
+                            int LA61_2 = input.LA(2);
 
                             if ( (synpred4_InternalCssDsl()) ) {
-                                alt56=1;
+                                alt61=1;
                             }
 
 
                         }
 
 
-                        switch (alt56) {
+                        switch (alt61) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2695:2: ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2955:2: ( RULE_ONE_INT )=>this_ONE_INT_3= RULE_ONE_INT
                     	    {
-                    	    this_ONE_INT_3=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleNum6228); if (state.failed) return current;
+                    	    this_ONE_INT_3=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleNum7009); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      		current.merge(this_ONE_INT_3);
@@ -8085,13 +8937,13 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt56 >= 1 ) break loop56;
+                    	    if ( cnt61 >= 1 ) break loop61;
                     	    if (state.backtracking>0) {state.failed=true; return current;}
                                 EarlyExitException eee =
-                                    new EarlyExitException(56, input);
+                                    new EarlyExitException(61, input);
                                 throw eee;
                         }
-                        cnt56++;
+                        cnt61++;
                     } while (true);
 
 
@@ -8101,34 +8953,34 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2703:6: ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2963:6: ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2703:6: ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? )
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2703:7: ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )?
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2963:6: ( ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )? )
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2963:7: ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+ ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )?
                     {
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2703:7: ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+
-                    int cnt57=0;
-                    loop57:
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2963:7: ( ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT )+
+                    int cnt62=0;
+                    loop62:
                     do {
-                        int alt57=2;
-                        int LA57_0 = input.LA(1);
+                        int alt62=2;
+                        int LA62_0 = input.LA(1);
 
-                        if ( (LA57_0==RULE_ONE_INT) ) {
-                            int LA57_2 = input.LA(2);
+                        if ( (LA62_0==RULE_ONE_INT) ) {
+                            int LA62_2 = input.LA(2);
 
                             if ( (synpred5_InternalCssDsl()) ) {
-                                alt57=1;
+                                alt62=1;
                             }
 
 
                         }
 
 
-                        switch (alt57) {
+                        switch (alt62) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2703:8: ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT
+                    	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2963:8: ( RULE_ONE_INT )=>this_ONE_INT_4= RULE_ONE_INT
                     	    {
-                    	    this_ONE_INT_4=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleNum6264); if (state.failed) return current;
+                    	    this_ONE_INT_4=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleNum7045); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      		current.merge(this_ONE_INT_4);
@@ -8144,38 +8996,38 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt57 >= 1 ) break loop57;
+                    	    if ( cnt62 >= 1 ) break loop62;
                     	    if (state.backtracking>0) {state.failed=true; return current;}
                                 EarlyExitException eee =
-                                    new EarlyExitException(57, input);
+                                    new EarlyExitException(62, input);
                                 throw eee;
                         }
-                        cnt57++;
+                        cnt62++;
                     } while (true);
 
-                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2710:3: ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )?
-                    int alt59=2;
-                    int LA59_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2970:3: ( ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+ )?
+                    int alt64=2;
+                    int LA64_0 = input.LA(1);
 
-                    if ( (LA59_0==37) ) {
-                        int LA59_1 = input.LA(2);
+                    if ( (LA64_0==37) ) {
+                        int LA64_1 = input.LA(2);
 
-                        if ( (LA59_1==RULE_ONE_INT) ) {
-                            int LA59_3 = input.LA(3);
+                        if ( (LA64_1==RULE_ONE_INT) ) {
+                            int LA64_3 = input.LA(3);
 
                             if ( (synpred6_InternalCssDsl()) ) {
-                                alt59=1;
+                                alt64=1;
                             }
                         }
                     }
-                    switch (alt59) {
+                    switch (alt64) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2710:4: ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+
+                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2970:4: ( ( '.' )=>kw= '.' ) ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+
                             {
-                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2710:4: ( ( '.' )=>kw= '.' )
-                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2710:5: ( '.' )=>kw= '.'
+                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2970:4: ( ( '.' )=>kw= '.' )
+                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2970:5: ( '.' )=>kw= '.'
                             {
-                            kw=(Token)match(input,37,FOLLOW_37_in_ruleNum6294); if (state.failed) return current;
+                            kw=(Token)match(input,37,FOLLOW_37_in_ruleNum7075); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
@@ -8185,29 +9037,29 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2718:2: ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+
-                            int cnt58=0;
-                            loop58:
+                            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2978:2: ( ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT )+
+                            int cnt63=0;
+                            loop63:
                             do {
-                                int alt58=2;
-                                int LA58_0 = input.LA(1);
+                                int alt63=2;
+                                int LA63_0 = input.LA(1);
 
-                                if ( (LA58_0==RULE_ONE_INT) ) {
-                                    int LA58_2 = input.LA(2);
+                                if ( (LA63_0==RULE_ONE_INT) ) {
+                                    int LA63_2 = input.LA(2);
 
                                     if ( (synpred7_InternalCssDsl()) ) {
-                                        alt58=1;
+                                        alt63=1;
                                     }
 
 
                                 }
 
 
-                                switch (alt58) {
+                                switch (alt63) {
                             	case 1 :
-                            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2718:3: ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT
+                            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2978:3: ( RULE_ONE_INT )=>this_ONE_INT_6= RULE_ONE_INT
                             	    {
-                            	    this_ONE_INT_6=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleNum6316); if (state.failed) return current;
+                            	    this_ONE_INT_6=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleNum7097); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	      		current.merge(this_ONE_INT_6);
@@ -8223,13 +9075,13 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    if ( cnt58 >= 1 ) break loop58;
+                            	    if ( cnt63 >= 1 ) break loop63;
                             	    if (state.backtracking>0) {state.failed=true; return current;}
                                         EarlyExitException eee =
-                                            new EarlyExitException(58, input);
+                                            new EarlyExitException(63, input);
                                         throw eee;
                                 }
-                                cnt58++;
+                                cnt63++;
                             } while (true);
 
 
@@ -8273,7 +9125,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleHex"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2736:1: entryRuleHex returns [String current=null] : iv_ruleHex= ruleHex EOF ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2996:1: entryRuleHex returns [String current=null] : iv_ruleHex= ruleHex EOF ;
     public final String entryRuleHex() throws RecognitionException {
         String current = null;
 
@@ -8281,13 +9133,13 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2737:2: (iv_ruleHex= ruleHex EOF )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2738:2: iv_ruleHex= ruleHex EOF
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2997:2: (iv_ruleHex= ruleHex EOF )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2998:2: iv_ruleHex= ruleHex EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getHexRule()); 
             }
-            pushFollow(FOLLOW_ruleHex_in_entryRuleHex6372);
+            pushFollow(FOLLOW_ruleHex_in_entryRuleHex7153);
             iv_ruleHex=ruleHex();
 
             state._fsp--;
@@ -8295,7 +9147,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleHex.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleHex6383); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleHex7164); if (state.failed) return current;
 
             }
 
@@ -8313,7 +9165,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleHex"
-    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2745:1: ruleHex returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ ) ;
+    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3005:1: ruleHex returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ ) ;
     public final AntlrDatatypeRuleToken ruleHex() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -8324,13 +9176,13 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2748:28: ( (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ ) )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2749:1: (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3008:28: ( (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ ) )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3009:1: (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ )
             {
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2749:1: (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ )
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2749:6: this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3009:1: (this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+ )
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3009:6: this_HASHMARK_0= RULE_HASHMARK ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+
             {
-            this_HASHMARK_0=(Token)match(input,RULE_HASHMARK,FOLLOW_RULE_HASHMARK_in_ruleHex6423); if (state.failed) return current;
+            this_HASHMARK_0=(Token)match(input,RULE_HASHMARK,FOLLOW_RULE_HASHMARK_in_ruleHex7204); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_HASHMARK_0);
@@ -8341,59 +9193,59 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
                   newLeafNode(this_HASHMARK_0, grammarAccess.getHexAccess().getHASHMARKTerminalRuleCall_0()); 
                   
             }
-            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2756:1: ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+
-            int cnt62=0;
-            loop62:
+            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3016:1: ( ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER ) )+
+            int cnt67=0;
+            loop67:
             do {
-                int alt62=2;
-                int LA62_0 = input.LA(1);
+                int alt67=2;
+                int LA67_0 = input.LA(1);
 
-                if ( (LA62_0==RULE_ONE_HEX_LETTER) ) {
-                    int LA62_2 = input.LA(2);
+                if ( (LA67_0==RULE_ONE_HEX_LETTER) ) {
+                    int LA67_2 = input.LA(2);
 
                     if ( (synpred8_InternalCssDsl()) ) {
-                        alt62=1;
+                        alt67=1;
                     }
 
 
                 }
-                else if ( (LA62_0==RULE_ONE_INT) ) {
-                    int LA62_3 = input.LA(2);
+                else if ( (LA67_0==RULE_ONE_INT) ) {
+                    int LA67_3 = input.LA(2);
 
                     if ( (synpred8_InternalCssDsl()) ) {
-                        alt62=1;
+                        alt67=1;
                     }
 
 
                 }
 
 
-                switch (alt62) {
+                switch (alt67) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2756:2: ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER )
+            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3016:2: ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )=> (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2757:30: (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER )
-            	    int alt61=2;
-            	    int LA61_0 = input.LA(1);
+            	    // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3017:30: (this_ONE_INT_1= RULE_ONE_INT | this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER )
+            	    int alt66=2;
+            	    int LA66_0 = input.LA(1);
 
-            	    if ( (LA61_0==RULE_ONE_INT) ) {
-            	        alt61=1;
+            	    if ( (LA66_0==RULE_ONE_INT) ) {
+            	        alt66=1;
             	    }
-            	    else if ( (LA61_0==RULE_ONE_HEX_LETTER) ) {
-            	        alt61=2;
+            	    else if ( (LA66_0==RULE_ONE_HEX_LETTER) ) {
+            	        alt66=2;
             	    }
             	    else {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 61, 0, input);
+            	            new NoViableAltException("", 66, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt61) {
+            	    switch (alt66) {
             	        case 1 :
-            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2757:35: this_ONE_INT_1= RULE_ONE_INT
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3017:35: this_ONE_INT_1= RULE_ONE_INT
             	            {
-            	            this_ONE_INT_1=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleHex6460); if (state.failed) return current;
+            	            this_ONE_INT_1=(Token)match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_ruleHex7241); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              		current.merge(this_ONE_INT_1);
@@ -8408,9 +9260,9 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2765:10: this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER
+            	            // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3025:10: this_ONE_HEX_LETTER_2= RULE_ONE_HEX_LETTER
             	            {
-            	            this_ONE_HEX_LETTER_2=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleHex6486); if (state.failed) return current;
+            	            this_ONE_HEX_LETTER_2=(Token)match(input,RULE_ONE_HEX_LETTER,FOLLOW_RULE_ONE_HEX_LETTER_in_ruleHex7267); if (state.failed) return current;
             	            if ( state.backtracking==0 ) {
 
             	              		current.merge(this_ONE_HEX_LETTER_2);
@@ -8432,13 +9284,13 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt62 >= 1 ) break loop62;
+            	    if ( cnt67 >= 1 ) break loop67;
             	    if (state.backtracking>0) {state.failed=true; return current;}
                         EarlyExitException eee =
-                            new EarlyExitException(62, input);
+                            new EarlyExitException(67, input);
                         throw eee;
                 }
-                cnt62++;
+                cnt67++;
             } while (true);
 
 
@@ -8506,10 +9358,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred3_InternalCssDsl
     public final void synpred3_InternalCssDsl_fragment() throws RecognitionException {   
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2600:3: ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT ) )
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2600:4: ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2850:3: ( ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' ) )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2850:4: ( RULE_UNDERSCORE | RULE_DASH | RULE_ONE_HEX_LETTER | RULE_ONE_NON_HEX_LETTER | RULE_ONE_INT | 'url' )
         {
-        if ( (input.LA(1)>=RULE_DASH && input.LA(1)<=RULE_ONE_INT) ) {
+        if ( (input.LA(1)>=RULE_DASH && input.LA(1)<=RULE_UNDERSCORE)||input.LA(1)==50 ) {
             input.consume();
             state.errorRecovery=false;state.failed=false;
         }
@@ -8526,10 +9378,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred4_InternalCssDsl
     public final void synpred4_InternalCssDsl_fragment() throws RecognitionException {   
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2695:2: ( RULE_ONE_INT )
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2695:4: RULE_ONE_INT
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2955:2: ( RULE_ONE_INT )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2955:4: RULE_ONE_INT
         {
-        match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_synpred4_InternalCssDsl6219); if (state.failed) return ;
+        match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_synpred4_InternalCssDsl7000); if (state.failed) return ;
 
         }
     }
@@ -8537,10 +9389,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred5_InternalCssDsl
     public final void synpred5_InternalCssDsl_fragment() throws RecognitionException {   
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2703:8: ( RULE_ONE_INT )
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2703:10: RULE_ONE_INT
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2963:8: ( RULE_ONE_INT )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2963:10: RULE_ONE_INT
         {
-        match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_synpred5_InternalCssDsl6255); if (state.failed) return ;
+        match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_synpred5_InternalCssDsl7036); if (state.failed) return ;
 
         }
     }
@@ -8548,10 +9400,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred6_InternalCssDsl
     public final void synpred6_InternalCssDsl_fragment() throws RecognitionException {   
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2710:5: ( '.' )
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2711:2: '.'
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2970:5: ( '.' )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2971:2: '.'
         {
-        match(input,37,FOLLOW_37_in_synpred6_InternalCssDsl6285); if (state.failed) return ;
+        match(input,37,FOLLOW_37_in_synpred6_InternalCssDsl7066); if (state.failed) return ;
 
         }
     }
@@ -8559,10 +9411,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred7_InternalCssDsl
     public final void synpred7_InternalCssDsl_fragment() throws RecognitionException {   
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2718:3: ( RULE_ONE_INT )
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2718:5: RULE_ONE_INT
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2978:3: ( RULE_ONE_INT )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2978:5: RULE_ONE_INT
         {
-        match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_synpred7_InternalCssDsl6307); if (state.failed) return ;
+        match(input,RULE_ONE_INT,FOLLOW_RULE_ONE_INT_in_synpred7_InternalCssDsl7088); if (state.failed) return ;
 
         }
     }
@@ -8570,8 +9422,8 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred8_InternalCssDsl
     public final void synpred8_InternalCssDsl_fragment() throws RecognitionException {   
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2756:2: ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )
-        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:2756:3: ( RULE_ONE_INT | RULE_ONE_HEX_LETTER )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3016:2: ( ( RULE_ONE_INT | RULE_ONE_HEX_LETTER ) )
+        // ../at.bestsolution.efxclipse.tooling.css/src-gen/at/bestsolution/efxclipse/tooling/css/parser/antlr/internal/InternalCssDsl.g:3016:3: ( RULE_ONE_INT | RULE_ONE_HEX_LETTER )
         {
         if ( input.LA(1)==RULE_ONE_HEX_LETTER||input.LA(1)==RULE_ONE_INT ) {
             input.consume();
@@ -8715,7 +9567,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     static final String DFA21_minS =
         "\1\5\1\uffff\1\6\2\uffff";
     static final String DFA21_maxS =
-        "\1\54\1\uffff\1\54\2\uffff";
+        "\1\54\1\uffff\1\62\2\uffff";
     static final String DFA21_acceptS =
         "\1\uffff\1\1\1\uffff\1\3\1\2";
     static final String DFA21_specialS =
@@ -8723,8 +9575,9 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     static final String[] DFA21_transitionS = {
             "\1\3\1\2\4\uffff\1\1\16\uffff\1\3\20\uffff\2\1",
             "",
-            "\1\2\2\uffff\1\4\1\uffff\1\4\1\uffff\4\4\11\uffff\1\3\1\uffff"+
-            "\1\4\2\uffff\1\4\5\uffff\4\4\2\uffff\2\4",
+            "\1\2\2\uffff\1\4\1\uffff\1\4\1\uffff\3\4\1\uffff\1\4\10\uffff"+
+            "\1\3\1\uffff\1\4\2\uffff\1\4\5\uffff\4\4\2\uffff\2\4\5\uffff"+
+            "\1\4",
             "",
             ""
     };
@@ -8763,37 +9616,41 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
         }
     }
     static final String DFA22_eotS =
-        "\14\uffff";
+        "\16\uffff";
     static final String DFA22_eofS =
-        "\2\uffff\3\13\1\uffff\5\13\1\uffff";
+        "\2\uffff\4\15\1\uffff\6\15\1\uffff";
     static final String DFA22_minS =
-        "\1\15\1\16\3\11\1\uffff\5\11\1\uffff";
+        "\1\15\1\16\4\11\1\uffff\6\11\1\uffff";
     static final String DFA22_maxS =
-        "\1\47\1\20\3\51\1\uffff\5\51\1\uffff";
+        "\6\62\1\uffff\6\62\1\uffff";
     static final String DFA22_acceptS =
-        "\5\uffff\1\2\5\uffff\1\1";
+        "\6\uffff\1\2\6\uffff\1\1";
     static final String DFA22_specialS =
-        "\14\uffff}>";
+        "\16\uffff}>";
     static final String[] DFA22_transitionS = {
-            "\1\1\1\2\1\3\1\4\25\uffff\2\5",
-            "\1\2\1\3\1\4",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
+            "\1\1\1\3\1\4\1\uffff\1\2\24\uffff\2\6\12\uffff\1\5",
+            "\1\3\1\4\1\uffff\1\2\40\uffff\1\5",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
             "",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
-            "\1\13\3\uffff\1\7\1\6\1\10\1\11\1\12\12\uffff\1\13\2\uffff"+
-            "\1\13\5\uffff\1\13\1\uffff\1\5\1\uffff\1\13",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
+            "\1\15\3\uffff\1\10\1\11\1\12\1\13\1\7\12\uffff\1\15\2\uffff"+
+            "\1\15\5\uffff\1\15\1\uffff\1\6\1\uffff\1\15\10\uffff\1\14",
             ""
     };
 
@@ -8831,45 +9688,51 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
         }
     }
     static final String DFA27_eotS =
-        "\14\uffff";
+        "\16\uffff";
     static final String DFA27_eofS =
-        "\2\uffff\3\13\1\uffff\5\13\1\uffff";
+        "\2\uffff\4\15\1\uffff\6\15\1\uffff";
     static final String DFA27_minS =
-        "\1\15\1\16\3\5\1\uffff\5\5\1\uffff";
+        "\1\15\1\16\4\5\1\uffff\6\5\1\uffff";
     static final String DFA27_maxS =
-        "\1\47\1\20\3\54\1\uffff\5\54\1\uffff";
+        "\6\62\1\uffff\6\62\1\uffff";
     static final String DFA27_acceptS =
-        "\5\uffff\1\2\5\uffff\1\1";
+        "\6\uffff\1\2\6\uffff\1\1";
     static final String DFA27_specialS =
-        "\14\uffff}>";
+        "\16\uffff}>";
     static final String[] DFA27_transitionS = {
-            "\1\1\1\2\1\3\1\4\25\uffff\2\5",
-            "\1\2\1\3\1\4",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
+            "\1\1\1\3\1\4\1\uffff\1\2\24\uffff\2\6\12\uffff\1\5",
+            "\1\3\1\4\1\uffff\1\2\40\uffff\1\5",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
             "",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
-            "\2\13\2\uffff\1\13\1\uffff\1\13\1\uffff\1\7\1\6\1\10\1\11\1"+
-            "\12\10\uffff\1\13\1\uffff\1\13\2\uffff\1\13\5\uffff\1\13\1\uffff"+
-            "\1\5\1\13\2\uffff\2\13",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
+            "\2\15\2\uffff\1\15\1\uffff\1\15\1\uffff\1\10\1\11\1\12\1\13"+
+            "\1\7\10\uffff\1\15\1\uffff\1\15\2\uffff\1\15\5\uffff\1\15\1"+
+            "\uffff\1\6\1\15\2\uffff\2\15\5\uffff\1\14",
             ""
     };
 
@@ -8907,47 +9770,53 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
         }
     }
     static final String DFA41_eotS =
-        "\15\uffff";
+        "\17\uffff";
     static final String DFA41_eofS =
-        "\5\uffff\10\3";
+        "\5\uffff\12\3";
     static final String DFA41_minS =
-        "\1\34\1\15\2\uffff\1\16\10\5";
+        "\1\34\1\15\2\uffff\1\16\12\5";
     static final String DFA41_maxS =
-        "\1\50\1\34\2\uffff\1\20\10\54";
+        "\1\50\1\62\2\uffff\13\62";
     static final String DFA41_acceptS =
-        "\2\uffff\1\2\1\1\11\uffff";
+        "\2\uffff\1\2\1\1\13\uffff";
     static final String DFA41_specialS =
-        "\15\uffff}>";
+        "\17\uffff}>";
     static final String[] DFA41_transitionS = {
             "\1\1\13\uffff\1\2",
-            "\1\4\1\5\1\6\1\7\13\uffff\1\3",
+            "\1\4\1\6\1\7\1\uffff\1\5\12\uffff\1\3\25\uffff\1\10",
             "",
             "",
-            "\1\5\1\6\1\7",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3",
-            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\11\1\10\1\12\1\13\1"+
-            "\14\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
-            "\1\3\1\uffff\1\2\2\3"
+            "\1\6\1\7\1\uffff\1\5\40\uffff\1\10",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16",
+            "\2\3\2\uffff\1\3\1\uffff\1\3\1\uffff\1\12\1\13\1\14\1\15\1"+
+            "\11\10\uffff\1\3\1\uffff\1\3\2\uffff\1\3\5\uffff\1\3\2\uffff"+
+            "\1\3\1\uffff\1\2\2\3\5\uffff\1\16"
     };
 
     static final short[] DFA41_eot = DFA.unpackEncodedString(DFA41_eotS);
@@ -8987,11 +9856,11 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_rulestylesheet_in_entryRulestylesheet75 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulestylesheet85 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulecharset_in_rulestylesheet131 = new BitSet(new long[]{0x000021E0F3C1E202L});
-    public static final BitSet FOLLOW_ruleimportExpression_in_rulestylesheet153 = new BitSet(new long[]{0x000021E0F3C1E202L});
-    public static final BitSet FOLLOW_ruleruleset_in_rulestylesheet176 = new BitSet(new long[]{0x000001E0F301E202L});
-    public static final BitSet FOLLOW_rulemedia_in_rulestylesheet203 = new BitSet(new long[]{0x000001E0F301E202L});
-    public static final BitSet FOLLOW_rulepage_in_rulestylesheet230 = new BitSet(new long[]{0x000001E0F301E202L});
+    public static final BitSet FOLLOW_rulecharset_in_rulestylesheet131 = new BitSet(new long[]{0x000401E0F3C2E202L});
+    public static final BitSet FOLLOW_ruleimportExpression_in_rulestylesheet153 = new BitSet(new long[]{0x000401E0F3C2E202L});
+    public static final BitSet FOLLOW_ruleruleset_in_rulestylesheet176 = new BitSet(new long[]{0x000401E0F302E202L});
+    public static final BitSet FOLLOW_rulemedia_in_rulestylesheet203 = new BitSet(new long[]{0x000401E0F302E202L});
+    public static final BitSet FOLLOW_rulepage_in_rulestylesheet230 = new BitSet(new long[]{0x000401E0F302E202L});
     public static final BitSet FOLLOW_rulecharset_in_entryRulecharset268 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulecharset278 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_19_in_rulecharset316 = new BitSet(new long[]{0x0000000000000010L});
@@ -9000,38 +9869,38 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_21_in_rulecharset369 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleimportExpression_in_entryRuleimportExpression405 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleimportExpression415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleimportExpression454 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_23_in_ruleimportExpression472 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleimportExpression490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleURLType_in_ruleimportExpression525 = new BitSet(new long[]{0x000000000021E000L});
-    public static final BitSet FOLLOW_rulemedia_list_in_ruleimportExpression545 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_21_in_ruleimportExpression558 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleimportExpression453 = new BitSet(new long[]{0x0000200000000010L});
+    public static final BitSet FOLLOW_23_in_ruleimportExpression471 = new BitSet(new long[]{0x0000200000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleimportExpression490 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_ruleURLType_in_ruleimportExpression524 = new BitSet(new long[]{0x000400000022E000L});
+    public static final BitSet FOLLOW_rulemedia_list_in_ruleimportExpression544 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_ruleimportExpression559 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulepage_in_entryRulepage595 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulepage605 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_24_in_rulepage652 = new BitSet(new long[]{0x0000000014000000L});
     public static final BitSet FOLLOW_25_in_rulepage670 = new BitSet(new long[]{0x0000000014000000L});
     public static final BitSet FOLLOW_rulepseudo_page_in_rulepage692 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_rulepage705 = new BitSet(new long[]{0x000000000821E040L});
+    public static final BitSet FOLLOW_26_in_rulepage705 = new BitSet(new long[]{0x000400000822E040L});
     public static final BitSet FOLLOW_rulecss_declaration_in_rulepage726 = new BitSet(new long[]{0x0000000008200000L});
-    public static final BitSet FOLLOW_21_in_rulepage740 = new BitSet(new long[]{0x000000000821E040L});
+    public static final BitSet FOLLOW_21_in_rulepage740 = new BitSet(new long[]{0x000400000822E040L});
     public static final BitSet FOLLOW_rulecss_declaration_in_rulepage761 = new BitSet(new long[]{0x0000000008200000L});
     public static final BitSet FOLLOW_27_in_rulepage776 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulepseudo_page_in_entryRulepseudo_page813 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulepseudo_page824 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rulepseudo_page862 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_28_in_rulepseudo_page862 = new BitSet(new long[]{0x000400000002E000L});
     public static final BitSet FOLLOW_ruleIdentifier_in_rulepseudo_page884 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulemedia_in_entryRulemedia929 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulemedia939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_rulemedia977 = new BitSet(new long[]{0x000000000001E000L});
-    public static final BitSet FOLLOW_30_in_rulemedia995 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_29_in_rulemedia977 = new BitSet(new long[]{0x000400000002E000L});
+    public static final BitSet FOLLOW_30_in_rulemedia995 = new BitSet(new long[]{0x000400000002E000L});
     public static final BitSet FOLLOW_rulemedia_list_in_rulemedia1017 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_rulemedia1029 = new BitSet(new long[]{0x000001E09801E200L});
-    public static final BitSet FOLLOW_ruleruleset_in_rulemedia1050 = new BitSet(new long[]{0x000001E09801E200L});
+    public static final BitSet FOLLOW_26_in_rulemedia1029 = new BitSet(new long[]{0x000401E09802E200L});
+    public static final BitSet FOLLOW_ruleruleset_in_rulemedia1050 = new BitSet(new long[]{0x000401E09802E200L});
     public static final BitSet FOLLOW_27_in_rulemedia1063 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulemedia_list_in_entryRulemedia_list1100 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulemedia_list1111 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulemedium_in_rulemedia_list1158 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_RULE_COMMA_in_rulemedia_list1179 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_RULE_COMMA_in_rulemedia_list1179 = new BitSet(new long[]{0x000400000002E000L});
     public static final BitSet FOLLOW_rulemedium_in_rulemedia_list1206 = new BitSet(new long[]{0x0000000000000022L});
     public static final BitSet FOLLOW_rulemedium_in_entryRulemedium1254 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulemedium1265 = new BitSet(new long[]{0x0000000000000002L});
@@ -9039,20 +9908,20 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleruleset_in_entryRuleruleset1355 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleruleset1365 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleselector_in_ruleruleset1411 = new BitSet(new long[]{0x0000000004000060L});
-    public static final BitSet FOLLOW_RULE_COMMA_in_ruleruleset1423 = new BitSet(new long[]{0x000001E09001E200L});
+    public static final BitSet FOLLOW_RULE_COMMA_in_ruleruleset1423 = new BitSet(new long[]{0x000401E09002E200L});
     public static final BitSet FOLLOW_ruleselector_in_ruleruleset1443 = new BitSet(new long[]{0x0000000004000060L});
     public static final BitSet FOLLOW_RULE_WS_in_ruleruleset1457 = new BitSet(new long[]{0x0000000004000040L});
-    public static final BitSet FOLLOW_26_in_ruleruleset1470 = new BitSet(new long[]{0x000000000801E040L});
+    public static final BitSet FOLLOW_26_in_ruleruleset1470 = new BitSet(new long[]{0x000400000802E040L});
     public static final BitSet FOLLOW_rulecss_declaration_in_ruleruleset1492 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_21_in_ruleruleset1504 = new BitSet(new long[]{0x000000000801E040L});
+    public static final BitSet FOLLOW_21_in_ruleruleset1504 = new BitSet(new long[]{0x000400000802E040L});
     public static final BitSet FOLLOW_27_in_ruleruleset1518 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleselector_in_entryRuleselector1560 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleselector1570 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulesimple_selector_in_ruleselector1620 = new BitSet(new long[]{0x0000180000000842L});
-    public static final BitSet FOLLOW_rulecombinator_in_ruleselector1643 = new BitSet(new long[]{0x000001E09001E200L});
+    public static final BitSet FOLLOW_rulecombinator_in_ruleselector1643 = new BitSet(new long[]{0x000401E09002E200L});
     public static final BitSet FOLLOW_ruleselector_in_ruleselector1664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_ruleselector1684 = new BitSet(new long[]{0x000019E09001EA40L});
-    public static final BitSet FOLLOW_rulecombinator_in_ruleselector1706 = new BitSet(new long[]{0x000001E09001E200L});
+    public static final BitSet FOLLOW_RULE_WS_in_ruleselector1684 = new BitSet(new long[]{0x000419E09002EA40L});
+    public static final BitSet FOLLOW_rulecombinator_in_ruleselector1706 = new BitSet(new long[]{0x000401E09002E200L});
     public static final BitSet FOLLOW_ruleselector_in_ruleselector1728 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSimpleSelectorForNegation_in_entryRuleSimpleSelectorForNegation1771 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSimpleSelectorForNegation1781 = new BitSet(new long[]{0x0000000000000002L});
@@ -9068,10 +9937,10 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_rulePseudoClass_in_ruleSubSelectorForNegation2092 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulesimple_selector_in_entryRulesimple_selector2127 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulesimple_selector2137 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleElementSelector_in_rulesimple_selector2185 = new BitSet(new long[]{0x000001E09001E202L});
-    public static final BitSet FOLLOW_ruleUniversalSelector_in_rulesimple_selector2212 = new BitSet(new long[]{0x000001E09001E202L});
-    public static final BitSet FOLLOW_ruleSubSelector_in_rulesimple_selector2234 = new BitSet(new long[]{0x000001E09001E202L});
-    public static final BitSet FOLLOW_ruleSubSelector_in_rulesimple_selector2273 = new BitSet(new long[]{0x000001E09001E202L});
+    public static final BitSet FOLLOW_ruleElementSelector_in_rulesimple_selector2185 = new BitSet(new long[]{0x000401E09002E202L});
+    public static final BitSet FOLLOW_ruleUniversalSelector_in_rulesimple_selector2212 = new BitSet(new long[]{0x000401E09002E202L});
+    public static final BitSet FOLLOW_ruleSubSelector_in_rulesimple_selector2234 = new BitSet(new long[]{0x000401E09002E202L});
+    public static final BitSet FOLLOW_ruleSubSelector_in_rulesimple_selector2273 = new BitSet(new long[]{0x000401E09002E202L});
     public static final BitSet FOLLOW_ruleSubSelector_in_entryRuleSubSelector2310 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSubSelector2320 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIdSelector_in_ruleSubSelector2367 = new BitSet(new long[]{0x0000000000000002L});
@@ -9080,20 +9949,20 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_rulePseudoClassOrFunc_in_ruleSubSelector2448 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAttributeSelector_in_entryRuleAttributeSelector2483 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAttributeSelector2493 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_ruleAttributeSelector2539 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_31_in_ruleAttributeSelector2539 = new BitSet(new long[]{0x000400000002E000L});
     public static final BitSet FOLLOW_ruleIdentifier_in_ruleAttributeSelector2560 = new BitSet(new long[]{0x0000001F00000180L});
-    public static final BitSet FOLLOW_32_in_ruleAttributeSelector2581 = new BitSet(new long[]{0x000000000001E010L});
-    public static final BitSet FOLLOW_33_in_ruleAttributeSelector2610 = new BitSet(new long[]{0x000000000001E010L});
-    public static final BitSet FOLLOW_34_in_ruleAttributeSelector2639 = new BitSet(new long[]{0x000000000001E010L});
-    public static final BitSet FOLLOW_35_in_ruleAttributeSelector2668 = new BitSet(new long[]{0x000000000001E010L});
-    public static final BitSet FOLLOW_RULE_INCLUDES_in_ruleAttributeSelector2696 = new BitSet(new long[]{0x000000000001E010L});
-    public static final BitSet FOLLOW_RULE_DASHMATCH_in_ruleAttributeSelector2716 = new BitSet(new long[]{0x000000000001E010L});
+    public static final BitSet FOLLOW_32_in_ruleAttributeSelector2581 = new BitSet(new long[]{0x000400000002E010L});
+    public static final BitSet FOLLOW_33_in_ruleAttributeSelector2610 = new BitSet(new long[]{0x000400000002E010L});
+    public static final BitSet FOLLOW_34_in_ruleAttributeSelector2639 = new BitSet(new long[]{0x000400000002E010L});
+    public static final BitSet FOLLOW_35_in_ruleAttributeSelector2668 = new BitSet(new long[]{0x000400000002E010L});
+    public static final BitSet FOLLOW_RULE_INCLUDES_in_ruleAttributeSelector2696 = new BitSet(new long[]{0x000400000002E010L});
+    public static final BitSet FOLLOW_RULE_DASHMATCH_in_ruleAttributeSelector2716 = new BitSet(new long[]{0x000400000002E010L});
     public static final BitSet FOLLOW_ruleIdentifier_in_ruleAttributeSelector2747 = new BitSet(new long[]{0x0000001000000000L});
     public static final BitSet FOLLOW_RULE_STRING_in_ruleAttributeSelector2762 = new BitSet(new long[]{0x0000001000000000L});
     public static final BitSet FOLLOW_36_in_ruleAttributeSelector2784 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleClassSelector_in_entryRuleClassSelector2820 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleClassSelector2830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_ruleClassSelector2876 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_37_in_ruleClassSelector2876 = new BitSet(new long[]{0x000400000002E000L});
     public static final BitSet FOLLOW_ruleIdentifier_in_ruleClassSelector2897 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleElementSelector_in_entryRuleElementSelector2933 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleElementSelector2943 = new BitSet(new long[]{0x0000000000000002L});
@@ -9104,7 +9973,7 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_38_in_ruleUniversalSelector3112 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIdSelector_in_entryRuleIdSelector3148 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleIdSelector3158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_HASHMARK_in_ruleIdSelector3203 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_RULE_HASHMARK_in_ruleIdSelector3203 = new BitSet(new long[]{0x000400000002E000L});
     public static final BitSet FOLLOW_ruleIdentifier_in_ruleIdSelector3223 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulecss_namespace_prefix_in_entryRulecss_namespace_prefix3260 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulecss_namespace_prefix3271 = new BitSet(new long[]{0x0000000000000002L});
@@ -9113,11 +9982,11 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_39_in_rulecss_namespace_prefix3358 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulecss_declaration_in_entryRulecss_declaration3404 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulecss_declaration3414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_WS_in_rulecss_declaration3455 = new BitSet(new long[]{0x000000000001E040L});
+    public static final BitSet FOLLOW_RULE_WS_in_rulecss_declaration3455 = new BitSet(new long[]{0x000400000002E040L});
     public static final BitSet FOLLOW_rulecss_property_in_rulecss_declaration3477 = new BitSet(new long[]{0x0000000010000040L});
     public static final BitSet FOLLOW_RULE_WS_in_rulecss_declaration3489 = new BitSet(new long[]{0x0000000010000040L});
-    public static final BitSet FOLLOW_28_in_rulecss_declaration3502 = new BitSet(new long[]{0x0000202000C3FA70L});
-    public static final BitSet FOLLOW_ruleCssTok_in_rulecss_declaration3523 = new BitSet(new long[]{0x0000202000C3FE72L});
+    public static final BitSet FOLLOW_28_in_rulecss_declaration3502 = new BitSet(new long[]{0x000420200003FA70L});
+    public static final BitSet FOLLOW_ruleCssTok_in_rulecss_declaration3523 = new BitSet(new long[]{0x000420200003FE72L});
     public static final BitSet FOLLOW_RULE_IMPORTANT_SYM_in_rulecss_declaration3541 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulecss_property_in_entryRulecss_property3587 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulecss_property3597 = new BitSet(new long[]{0x0000000000000002L});
@@ -9131,21 +10000,21 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_rulePseudoClassFunction_in_rulePseudoClassOrFunc3874 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePseudoClass_in_entryRulePseudoClass3909 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePseudoClass3919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rulePseudoClass3956 = new BitSet(new long[]{0x000000001001E000L});
-    public static final BitSet FOLLOW_28_in_rulePseudoClass3969 = new BitSet(new long[]{0x000000001001E000L});
+    public static final BitSet FOLLOW_28_in_rulePseudoClass3956 = new BitSet(new long[]{0x000400001002E000L});
+    public static final BitSet FOLLOW_28_in_rulePseudoClass3969 = new BitSet(new long[]{0x000400001002E000L});
     public static final BitSet FOLLOW_rulePseudoClassName_in_rulePseudoClass3993 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePseudoClassName_in_entryRulePseudoClassName4028 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePseudoClassName4038 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIdentifier_in_rulePseudoClassName4083 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePseudoClassFunction_in_entryRulePseudoClassFunction4118 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePseudoClassFunction4128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_rulePseudoClassFunction4172 = new BitSet(new long[]{0x000000E09001E200L});
+    public static final BitSet FOLLOW_40_in_rulePseudoClassFunction4172 = new BitSet(new long[]{0x000400E09002E200L});
     public static final BitSet FOLLOW_ruleSimpleSelectorForNegation_in_rulePseudoClassFunction4206 = new BitSet(new long[]{0x0000020000000000L});
     public static final BitSet FOLLOW_41_in_rulePseudoClassFunction4218 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rulePseudoClassFunction4238 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_28_in_rulePseudoClassFunction4238 = new BitSet(new long[]{0x000400000002E000L});
     public static final BitSet FOLLOW_ruleIdentifier_in_rulePseudoClassFunction4259 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_rulePseudoClassFunction4271 = new BitSet(new long[]{0x0000222000C3FA70L});
-    public static final BitSet FOLLOW_ruleCssTok_in_rulePseudoClassFunction4292 = new BitSet(new long[]{0x0000222000C3FA70L});
+    public static final BitSet FOLLOW_42_in_rulePseudoClassFunction4271 = new BitSet(new long[]{0x000422200003FA70L});
+    public static final BitSet FOLLOW_ruleCssTok_in_rulePseudoClassFunction4292 = new BitSet(new long[]{0x000422200003FA70L});
     public static final BitSet FOLLOW_41_in_rulePseudoClassFunction4305 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulecombinator_in_entryRulecombinator4343 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulecombinator4354 = new BitSet(new long[]{0x0000000000000002L});
@@ -9175,8 +10044,8 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleIdentifierOrFuncTok_in_entryRuleIdentifierOrFuncTok5162 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleIdentifierOrFuncTok5172 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIdentifier_in_ruleIdentifierOrFuncTok5231 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_42_in_ruleIdentifierOrFuncTok5253 = new BitSet(new long[]{0x0000202000C3FA70L});
-    public static final BitSet FOLLOW_ruleCssTok_in_ruleIdentifierOrFuncTok5274 = new BitSet(new long[]{0x0000222000C3FA70L});
+    public static final BitSet FOLLOW_42_in_ruleIdentifierOrFuncTok5253 = new BitSet(new long[]{0x000420200003FA70L});
+    public static final BitSet FOLLOW_ruleCssTok_in_ruleIdentifierOrFuncTok5274 = new BitSet(new long[]{0x000422200003FA70L});
     public static final BitSet FOLLOW_41_in_ruleIdentifierOrFuncTok5287 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleCssTok_in_entryRuleCssTok5335 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleCssTok5345 = new BitSet(new long[]{0x0000000000000002L});
@@ -9189,42 +10058,73 @@ public class InternalCssDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleColorTok_in_ruleCssTok5558 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleURLType_in_entryRuleURLType5603 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleURLType5613 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_ruleURLType5654 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_ruleURLType5666 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleURLType5683 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleURLType5700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIdentifier_in_entryRuleIdentifier5747 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIdentifier5758 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DASH_in_ruleIdentifier5803 = new BitSet(new long[]{0x000000000001C000L});
-    public static final BitSet FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier5826 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier5852 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier5878 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier5940 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_RULE_DASH_in_ruleIdentifier5966 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier5992 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier6018 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleIdentifier6044 = new BitSet(new long[]{0x000000000003E002L});
-    public static final BitSet FOLLOW_ruleNum_in_entryRuleNum6103 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNum6114 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_PLUS_in_ruleNum6159 = new BitSet(new long[]{0x0000002000020000L});
-    public static final BitSet FOLLOW_RULE_DASH_in_ruleNum6185 = new BitSet(new long[]{0x0000002000020000L});
-    public static final BitSet FOLLOW_37_in_ruleNum6207 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleNum6228 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleNum6264 = new BitSet(new long[]{0x0000002000020002L});
-    public static final BitSet FOLLOW_37_in_ruleNum6294 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleNum6316 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_ruleHex_in_entryRuleHex6372 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleHex6383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_HASHMARK_in_ruleHex6423 = new BitSet(new long[]{0x0000000000028000L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleHex6460 = new BitSet(new long[]{0x0000000000028002L});
-    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleHex6486 = new BitSet(new long[]{0x0000000000028002L});
+    public static final BitSet FOLLOW_45_in_ruleURLType5654 = new BitSet(new long[]{0x00FFC0281001F830L});
+    public static final BitSet FOLLOW_ruleValidURL_in_ruleURLType5675 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleURLType5687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidURLSymbol_in_entryRuleValidURLSymbol5728 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidURLSymbol5739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleValidURLSymbol5777 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_ruleValidURLSymbol5796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_ruleValidURLSymbol5815 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DASH_in_ruleValidURLSymbol5836 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_PLUS_in_ruleValidURLSymbol5862 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_ruleValidURLSymbol5886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleValidURLSymbol5905 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleValidURLSymbol5924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_COMMA_in_ruleValidURLSymbol5945 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleValidURLSymbol5969 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleValidURLSymbol5988 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidURL_in_entryRuleValidURL6035 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidURL6046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleValidURL6090 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidURLSymbol_in_ruleValidURL6124 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleValidURL6150 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleValidURL6176 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleValidURL6202 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_51_in_ruleValidURL6226 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_52_in_ruleValidURL6245 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_53_in_ruleValidURL6264 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_54_in_ruleValidURL6283 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_55_in_ruleValidURL6302 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_RULE_PERCENT_in_ruleValidURL6324 = new BitSet(new long[]{0x0000000000014000L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleValidURL6345 = new BitSet(new long[]{0x0000000000014000L});
+    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleValidURL6371 = new BitSet(new long[]{0x0000000000014000L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleValidURL6393 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleValidURL6419 = new BitSet(new long[]{0x00FFC0281001F822L});
+    public static final BitSet FOLLOW_ruleIdentifier_in_entryRuleIdentifier6479 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIdentifier6490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DASH_in_ruleIdentifier6535 = new BitSet(new long[]{0x000400000002C000L});
+    public static final BitSet FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier6558 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier6584 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier6610 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_50_in_ruleIdentifier6634 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_RULE_UNDERSCORE_in_ruleIdentifier6702 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_RULE_DASH_in_ruleIdentifier6728 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleIdentifier6754 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_RULE_ONE_NON_HEX_LETTER_in_ruleIdentifier6780 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleIdentifier6806 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_50_in_ruleIdentifier6830 = new BitSet(new long[]{0x000400000003E002L});
+    public static final BitSet FOLLOW_ruleNum_in_entryRuleNum6884 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNum6895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_PLUS_in_ruleNum6940 = new BitSet(new long[]{0x0000002000010000L});
+    public static final BitSet FOLLOW_RULE_DASH_in_ruleNum6966 = new BitSet(new long[]{0x0000002000010000L});
+    public static final BitSet FOLLOW_37_in_ruleNum6988 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleNum7009 = new BitSet(new long[]{0x0000000000010002L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleNum7045 = new BitSet(new long[]{0x0000002000010002L});
+    public static final BitSet FOLLOW_37_in_ruleNum7075 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleNum7097 = new BitSet(new long[]{0x0000000000010002L});
+    public static final BitSet FOLLOW_ruleHex_in_entryRuleHex7153 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleHex7164 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_HASHMARK_in_ruleHex7204 = new BitSet(new long[]{0x0000000000014000L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_ruleHex7241 = new BitSet(new long[]{0x0000000000014002L});
+    public static final BitSet FOLLOW_RULE_ONE_HEX_LETTER_in_ruleHex7267 = new BitSet(new long[]{0x0000000000014002L});
     public static final BitSet FOLLOW_ruleSubSelectorForNegation_in_synpred1_InternalCssDsl1900 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSubSelector_in_synpred2_InternalCssDsl2256 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_synpred3_InternalCssDsl5895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_synpred4_InternalCssDsl6219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_synpred5_InternalCssDsl6255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_synpred6_InternalCssDsl6285 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ONE_INT_in_synpred7_InternalCssDsl6307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_synpred8_InternalCssDsl6439 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_synpred3_InternalCssDsl6646 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_synpred4_InternalCssDsl7000 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_synpred5_InternalCssDsl7036 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_synpred6_InternalCssDsl7066 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ONE_INT_in_synpred7_InternalCssDsl7088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_synpred8_InternalCssDsl7220 = new BitSet(new long[]{0x0000000000000002L});
 
 }

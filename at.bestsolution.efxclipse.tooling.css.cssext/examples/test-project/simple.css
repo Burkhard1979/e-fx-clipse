@@ -1,3 +1,8 @@
+@import "lala";
+@import url("");
+
+
+
 test {
 	property: a 1 px 3;
 	
@@ -9,4 +14,22 @@ test {
 	func: hulligulli(1px);
 }
 
-g {}
+
+.goodSe_ecto_
+.hurli
+ url
+ .url 
+ #url {
+	doubleQuoted: url("http://www.example.com/image.png");
+	singleQuoted: url('http://www.example.com/image.png');
+	notQuoted: url(http://www.example.com/image.png);
+	
+	notQuoted2: url(http://www.example.com/image\ \(\'2\'\).png); /* with \-escaped special chars */
+	notQuoted3: url(http://www.example.com/image%20%28%272%27%29.png); /* with %-escaped special chars */
+	
+	urlproperty: url(http://internet.com);
+	
+	withUrlInside: url(http://url.com);
+}
+ 
+ 

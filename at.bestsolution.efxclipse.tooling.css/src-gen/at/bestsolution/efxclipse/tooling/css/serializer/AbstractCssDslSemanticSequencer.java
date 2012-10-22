@@ -430,7 +430,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     url=STRING
+	 *     url=ValidURL
 	 */
 	protected void sequence_URLType(EObject context, URLType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -439,7 +439,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (url=STRING mediaList=media_list?)
+	 *     (url=ValidURL mediaList=media_list?)
 	 */
 	protected void sequence_URLType_importExpression(EObject context, URLType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -532,7 +532,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
