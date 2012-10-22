@@ -20,9 +20,12 @@ import javafx.scene.media.MediaView;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.services.IServiceConstants;
 
 import at.bestsolution.efxclipse.runtime.examples.media.model.Media;
 import at.bestsolution.efxclipse.runtime.examples.media.model.MediaType;
@@ -37,6 +40,9 @@ public class MediaPart {
 	
 	@Inject
 	MPart part;
+	
+	@Inject
+	MPerspective perspective;
 
 	private MediaPlayer mediaPlayer;
 	
@@ -118,23 +124,81 @@ public class MediaPart {
 		});
 	}
 	
+	@Inject
+	void startMovie(@Named(IServiceConstants.ACTIVE_PART) MPart activePart) {
+		if( mediaPlayer != null ) {
+			if( activePart == part ) {
+				mediaPlayer.play();
+			} else {
+				System.err.println("Stop");
+				mediaPlayer.pause();
+			}
+		}
+	}
+	
 	private void initMovie(BorderPane p, Media m) {
 		mediaPlayer = new MediaPlayer(new javafx.scene.media.Media(platformUriFix(m.getUrl())));
 		mediaPlayer.setAutoPlay(true);
 		
+		final AnchorPane transformStack = new AnchorPane();
+		String scaleFactor = part.getPersistedState().get(KEY_SCALE_FACTOR);
+		String translateX = part.getPersistedState().get(KEY_TRANSLATE_X);
+		String translateY = part.getPersistedState().get(KEY_TRANSLATE_Y);
+		
+		if( scaleFactor != null ) {
+			transformStack.setScaleX(Double.parseDouble(scaleFactor));
+			transformStack.setScaleY(Double.parseDouble(scaleFactor));
+		}
+		
+		if( translateX != null ) {
+			transformStack.setTranslateX(Double.parseDouble(translateX));
+		}
+		
+		if( translateY != null ) {
+			transformStack.setTranslateY(Double.parseDouble(translateY));
+		}
+		
 		final MediaView mediaView = new MediaView(mediaPlayer);
 		focusNode = mediaView;
-		p.setCenter(mediaView);
-		
+		focusNode = mediaView;
+		transformStack.getChildren().add(mediaView);
+		p.setCenter(transformStack);
 		p.setOnScroll(new EventHandler<ScrollEvent>() {
 
 			@Override
 			public void handle(ScrollEvent event) {
-				int direction = event.getDeltaY() < 0 || event.isShiftDown() ? -1 : 1; 
-				double val = Math.max(mediaView.getScaleX() + 0.05 * direction,0.1);
-				mediaView.setScaleX(val);
-				mediaView.setScaleY(val);
+				int direction = event.getDeltaY() < 0 || event.isShiftDown() ? -1 : 1;
+				double val = Math.max(transformStack.getScaleX() + 0.05 * direction,0.1);
+				transformStack.setScaleX(val);
+				transformStack.setScaleY(val);
 				part.getPersistedState().put(KEY_SCALE_FACTOR, val+"");
+			}
+		});
+		
+		final AtomicReference<MouseEvent> deltaEvent = new AtomicReference<MouseEvent>();
+		p.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				deltaEvent.set(event);	
+			}
+		});
+		
+		p.setOnMouseDragged(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				double deltaX = event.getX() - deltaEvent.get().getX();
+				double deltaY = event.getY() - deltaEvent.get().getY();
+				
+				double targetX = transformStack.getTranslateX() + deltaX;
+				double targetY = transformStack.getTranslateY() + deltaY;
+				transformStack.setTranslateX(targetX);
+				transformStack.setTranslateY(targetY);
+				part.getPersistedState().put(KEY_TRANSLATE_X, targetX+"");
+				part.getPersistedState().put(KEY_TRANSLATE_Y, targetY+"");
+				
+				deltaEvent.set(event);
 			}
 		});
 	}

@@ -128,7 +128,8 @@ public class MediaListPart {
 			l.add(new Media(MediaType.PICTURE, "Lighthouse", "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/pics/pic2.jpg"));
 		} else {
 			l.add(new Media(MediaType.MOVIE,   "Grog",       "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/movs/mov1.flv"));
-			l.add(new Media(MediaType.MOVIE,   "OTN",        "http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv"));			
+			l.add(new Media(MediaType.MOVIE,   "Bourne",        "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/movs/bourne4.mp4"));
+			l.add(new Media(MediaType.MOVIE,   "Java vs .Net",        "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/movs/java_vs_net.mp4"));
 		}
 		return l;
 	}
