@@ -10,6 +10,7 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.highlighting;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
@@ -18,12 +19,16 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle;
 public class CssDslHighlightingConfiguration extends DefaultHighlightingConfiguration {
 	public final static String DECLARATIONNAME = "DeclarationName"; 
 	public final static String SELECTOR = "Selector";
+	public final static String URL = "Url";
+	public final static String FUNCTION = "Function";
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor);
 		acceptor.acceptDefaultHighlighting(DECLARATIONNAME, "Declaration", crossDeclarationTextStyle());
 		acceptor.acceptDefaultHighlighting(SELECTOR, "Selector", crossSelectorTextStyle());
+		acceptor.acceptDefaultHighlighting(URL, "Url", urlTextStyle());
+		acceptor.acceptDefaultHighlighting(FUNCTION, "Function", functionTextStyle());
 	}
 
 	public TextStyle crossDeclarationTextStyle() {
@@ -35,6 +40,17 @@ public class CssDslHighlightingConfiguration extends DefaultHighlightingConfigur
 	public TextStyle crossSelectorTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setColor(new RGB(206,123,0));
+		return textStyle;
+	}
+	
+	public TextStyle urlTextStyle() {
+		TextStyle textStyle = stringTextStyle().copy();
+		return textStyle;
+	}
+	
+	public TextStyle functionTextStyle() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setStyle(SWT.BOLD);
 		return textStyle;
 	}
 }
