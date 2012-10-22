@@ -946,29 +946,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getIdentifierParserRuleCall() { return cIdentifierParserRuleCall; }
 	}
 
-	public class PseudoNegationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PseudoNegation");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNotKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		
-		////css_pseudo
-		////  : ':' ':'? (IDENT | functional_pseudo)
-		////;
-		//PseudoNegation:
-		//	":not(" ")";
-		public ParserRule getRule() { return rule; }
-
-		//":not(" ")"
-		public Group getGroup() { return cGroup; }
-
-		//":not("
-		public Keyword getNotKeyword_0() { return cNotKeyword_0; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_1() { return cRightParenthesisKeyword_1; }
-	}
-
 	public class PseudoClassOrFuncElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PseudoClassOrFunc");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1018,15 +995,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cNameIdentifierParserRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
-		////PseudoNegationArgs:
-		////	((element = element_name | universal=css_universal) subSelectors+=PseudoNegationArgsSubSelector*)
-		////	|
-		////	subSelectors+=sub_selector+
-		////;
-		////
-		////PseudoNegationArgsSubSelector:
-		////	id=css_id | class=css_class | attrib=css_attrib | pseudoclass=PseudoClass
-		////;
 		//PseudoClassName:
 		//	name=Identifier;
 		public ParserRule getRule() { return rule; }
@@ -1042,8 +1010,10 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PseudoClassFunction");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cNotKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final RuleCall cSimpleSelectorForNegationParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Assignment cNotAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final Keyword cNotNotKeyword_0_0_0 = (Keyword)cNotAssignment_0_0.eContents().get(0);
+		private final Assignment cParamSelectorAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0 = (RuleCall)cParamSelectorAssignment_0_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Keyword cColonKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
@@ -1055,20 +1025,26 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		
 		//PseudoClassFunction:
-		//	":not(" SimpleSelectorForNegation ")" | ":" name=Identifier "(" params+=CssTok* ")";
+		//	not?=":not(" paramSelector=SimpleSelectorForNegation ")" | ":" name=Identifier "(" params+=CssTok* ")";
 		public ParserRule getRule() { return rule; }
 
-		//":not(" SimpleSelectorForNegation ")" | ":" name=Identifier "(" params+=CssTok* ")"
+		//not?=":not(" paramSelector=SimpleSelectorForNegation ")" | ":" name=Identifier "(" params+=CssTok* ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//":not(" SimpleSelectorForNegation ")"
+		//not?=":not(" paramSelector=SimpleSelectorForNegation ")"
 		public Group getGroup_0() { return cGroup_0; }
 
+		//not?=":not("
+		public Assignment getNotAssignment_0_0() { return cNotAssignment_0_0; }
+
 		//":not("
-		public Keyword getNotKeyword_0_0() { return cNotKeyword_0_0; }
+		public Keyword getNotNotKeyword_0_0_0() { return cNotNotKeyword_0_0_0; }
+
+		//paramSelector=SimpleSelectorForNegation
+		public Assignment getParamSelectorAssignment_0_1() { return cParamSelectorAssignment_0_1; }
 
 		//SimpleSelectorForNegation
-		public RuleCall getSimpleSelectorForNegationParserRuleCall_0_1() { return cSimpleSelectorForNegationParserRuleCall_0_1; }
+		public RuleCall getParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0() { return cParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
@@ -1107,10 +1083,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTildeKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
 		private final RuleCall cWSTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
-		////css_negation_arg
-		////  : css_type_selector | css_universal | HASH | css_class | css_attrib | css_pseudo
-		////;
-		////
 		//combinator:
 		//	(PLUS | ">" | "~") WS*;
 		public ParserRule getRule() { return rule; }
@@ -1576,13 +1548,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cONE_INTTerminalRuleCall_1_0_0 = (RuleCall)cAlternatives_1_0.eContents().get(0);
 		private final RuleCall cONE_HEX_LETTERTerminalRuleCall_1_0_1 = (RuleCall)cAlternatives_1_0.eContents().get(1);
 		
-		////Integer returns ecore::EInt:
-		////	DASH? => ONE_INT+
-		////;
-		////
-		////Real returns ecore::EDouble:
-		////	DASH? ONE_INT* '.' => ONE_INT+
-		////;
 		//Hex returns ecore::EString:
 		//	HASHMARK => (ONE_INT | ONE_HEX_LETTER)+;
 		public ParserRule getRule() { return rule; }
@@ -1607,25 +1572,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	public class Css_notElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "css_not");
-		private final EnumLiteralDeclaration cNotEnumLiteralDeclaration = (EnumLiteralDeclaration)rule.eContents().get(1);
-		private final Keyword cNotNotKeyword_0 = (Keyword)cNotEnumLiteralDeclaration.eContents().get(0);
-		
-		////css_negation:
-		////	':' not=css_not negation_arg=css_negation_arg ')'
-		////;
-		//enum css_not:
-		//	not="not(";
-		public EnumRule getRule() { return rule; }
-
-		//not="not("
-		public EnumLiteralDeclaration getNotEnumLiteralDeclaration() { return cNotEnumLiteralDeclaration; }
-
-		//"not("
-		public Keyword getNotNotKeyword_0() { return cNotNotKeyword_0; }
-	}
-	
 	private StylesheetElements pStylesheet;
 	private CharsetElements pCharset;
 	private ImportExpressionElements pImportExpression;
@@ -1649,12 +1595,10 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	private Css_declarationElements pCss_declaration;
 	private Css_propertyElements pCss_property;
 	private ValidPropertyIdentElements pValidPropertyIdent;
-	private PseudoNegationElements pPseudoNegation;
 	private PseudoClassOrFuncElements pPseudoClassOrFunc;
 	private PseudoClassElements pPseudoClass;
 	private PseudoClassNameElements pPseudoClassName;
 	private PseudoClassFunctionElements pPseudoClassFunction;
-	private Css_notElements unknownRuleCss_not;
 	private CombinatorElements pCombinator;
 	private OperatorElements pOperator;
 	private Unary_operatorElements pUnary_operator;
@@ -1950,19 +1894,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getValidPropertyIdentAccess().getRule();
 	}
 
-	////css_pseudo
-	////  : ':' ':'? (IDENT | functional_pseudo)
-	////;
-	//PseudoNegation:
-	//	":not(" ")";
-	public PseudoNegationElements getPseudoNegationAccess() {
-		return (pPseudoNegation != null) ? pPseudoNegation : (pPseudoNegation = new PseudoNegationElements());
-	}
-	
-	public ParserRule getPseudoNegationRule() {
-		return getPseudoNegationAccess().getRule();
-	}
-
 	//PseudoClassOrFunc:
 	//	PseudoClass | PseudoClassFunction;
 	public PseudoClassOrFuncElements getPseudoClassOrFuncAccess() {
@@ -1983,15 +1914,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getPseudoClassAccess().getRule();
 	}
 
-	////PseudoNegationArgs:
-	////	((element = element_name | universal=css_universal) subSelectors+=PseudoNegationArgsSubSelector*)
-	////	|
-	////	subSelectors+=sub_selector+
-	////;
-	////
-	////PseudoNegationArgsSubSelector:
-	////	id=css_id | class=css_class | attrib=css_attrib | pseudoclass=PseudoClass
-	////;
 	//PseudoClassName:
 	//	name=Identifier;
 	public PseudoClassNameElements getPseudoClassNameAccess() {
@@ -2003,7 +1925,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PseudoClassFunction:
-	//	":not(" SimpleSelectorForNegation ")" | ":" name=Identifier "(" params+=CssTok* ")";
+	//	not?=":not(" paramSelector=SimpleSelectorForNegation ")" | ":" name=Identifier "(" params+=CssTok* ")";
 	public PseudoClassFunctionElements getPseudoClassFunctionAccess() {
 		return (pPseudoClassFunction != null) ? pPseudoClassFunction : (pPseudoClassFunction = new PseudoClassFunctionElements());
 	}
@@ -2012,23 +1934,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getPseudoClassFunctionAccess().getRule();
 	}
 
-	////css_negation:
-	////	':' not=css_not negation_arg=css_negation_arg ')'
-	////;
-	//enum css_not:
-	//	not="not(";
-	public Css_notElements getCss_notAccess() {
-		return (unknownRuleCss_not != null) ? unknownRuleCss_not : (unknownRuleCss_not = new Css_notElements());
-	}
-	
-	public EnumRule getCss_notRule() {
-		return getCss_notAccess().getRule();
-	}
-
-	////css_negation_arg
-	////  : css_type_selector | css_universal | HASH | css_class | css_attrib | css_pseudo
-	////;
-	////
 	//combinator:
 	//	(PLUS | ">" | "~") WS*;
 	public CombinatorElements getCombinatorAccess() {
@@ -2179,13 +2084,6 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getNumAccess().getRule();
 	}
 
-	////Integer returns ecore::EInt:
-	////	DASH? => ONE_INT+
-	////;
-	////
-	////Real returns ecore::EDouble:
-	////	DASH? ONE_INT* '.' => ONE_INT+
-	////;
 	//Hex returns ecore::EString:
 	//	HASHMARK => (ONE_INT | ONE_HEX_LETTER)+;
 	public HexElements getHexAccess() {

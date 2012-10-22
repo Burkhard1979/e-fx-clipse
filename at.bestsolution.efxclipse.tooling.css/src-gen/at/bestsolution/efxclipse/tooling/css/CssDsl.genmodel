@@ -9,9 +9,6 @@
     editorPluginID="at.bestsolution.efxclipse.tooling.css.editor" runtimeVersion="2.7">
   <genPackages prefix="CssDsl" basePackage="at.bestsolution.efxclipse.tooling.css"
       disposableProviderFactory="true" ecorePackage="CssDsl.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CssDsl.ecore#//css_not">
-      <genEnumLiterals ecoreEnumLiteral="CssDsl.ecore#//css_not/not"/>
-    </genEnums>
     <genClasses ecoreClass="CssDsl.ecore#//stylesheet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//stylesheet/charset"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//stylesheet/imports"/>
@@ -79,6 +76,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//PseudoClassName/name"/>
     </genClasses>
     <genClasses ecoreClass="CssDsl.ecore#//PseudoClassFunction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//PseudoClassFunction/not"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//PseudoClassFunction/paramSelector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssDsl.ecore#//PseudoClassFunction/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssDsl.ecore#//PseudoClassFunction/params"/>
     </genClasses>

@@ -23,6 +23,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
@@ -91,17 +92,26 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 	
 	String text(PseudoClassFunction pseudoFunc) {
 		StringBuilder b = new StringBuilder();
-		b.append(pseudoFunc.getName());
-		b.append("(");
-		Iterator<CssTok> iterator = pseudoFunc.getParams().iterator();
-		while (iterator.hasNext()) {
-			CssTok next = iterator.next();
-			b.append(getText(next));
-			if (iterator.hasNext()) {
-				b.append(",");
-			}
+		if (pseudoFunc.isNot()) {
+			// :not pseudo function
+			b.append("not(");
+			b.append(getText(pseudoFunc.getParamSelector()));
+			b.append(")");
 		}
-		b.append(")");
+		else {
+			// normal pseudo function
+			b.append(pseudoFunc.getName());
+			b.append("(");
+			Iterator<CssTok> iterator = pseudoFunc.getParams().iterator();
+			while (iterator.hasNext()) {
+				CssTok next = iterator.next();
+				b.append(getText(next));
+				if (iterator.hasNext()) {
+					b.append(",");
+				}
+			}
+			b.append(")");
+		}
 		return b.toString();
 	}
 	
@@ -135,6 +145,23 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 	
 	String text(IdSelector idSelector) {
 		return "#" + idSelector.getName();
+	}
+	
+	String text(SimpleSelectorForNegation value) {
+		StringBuilder b = new StringBuilder(/*"si-"*/);
+		
+		if( value.getElement() != null ) {
+			b.append(getText(value.getElement()));
+		}
+		else if (value.getUniversal() != null) {
+			b.append("*");
+		}
+		
+		for( CssSelector sub : value.getSubSelectors() ) {
+			b.append(getText(sub));
+		}
+		
+		return b.toString();
 	}
 	
 	String text(simple_selector value) {

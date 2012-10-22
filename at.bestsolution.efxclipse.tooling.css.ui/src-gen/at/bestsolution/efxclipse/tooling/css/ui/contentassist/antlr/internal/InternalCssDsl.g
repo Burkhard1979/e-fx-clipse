@@ -717,8 +717,6 @@ finally {
 
 
 
-
-
 // Entry rule entryRulePseudoClassOrFunc
 entryRulePseudoClassOrFunc 
 :
@@ -1252,8 +1250,6 @@ ruleHex
 finally {
 	restoreStackSize(stackSize);
 }
-
-
 
 
 
@@ -4507,7 +4503,6 @@ finally {
 
 
 
-
 rule__PseudoClass__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -4622,11 +4617,9 @@ rule__PseudoClassFunction__Group_0__0__Impl
     }
 :
 (
-{ before(grammarAccess.getPseudoClassFunctionAccess().getNotKeyword_0_0()); }
-
-	':not(' 
-
-{ after(grammarAccess.getPseudoClassFunctionAccess().getNotKeyword_0_0()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getNotAssignment_0_0()); }
+(rule__PseudoClassFunction__NotAssignment_0_0)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getNotAssignment_0_0()); }
 )
 
 ;
@@ -4653,9 +4646,9 @@ rule__PseudoClassFunction__Group_0__1__Impl
     }
 :
 (
-{ before(grammarAccess.getPseudoClassFunctionAccess().getSimpleSelectorForNegationParserRuleCall_0_1()); }
-	ruleSimpleSelectorForNegation
-{ after(grammarAccess.getPseudoClassFunctionAccess().getSimpleSelectorForNegationParserRuleCall_0_1()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorAssignment_0_1()); }
+(rule__PseudoClassFunction__ParamSelectorAssignment_0_1)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorAssignment_0_1()); }
 )
 
 ;
@@ -6758,6 +6751,44 @@ rule__PseudoClassName__NameAssignment
 (
 { before(grammarAccess.getPseudoClassNameAccess().getNameIdentifierParserRuleCall_0()); }
 	ruleIdentifier{ after(grammarAccess.getPseudoClassNameAccess().getNameIdentifierParserRuleCall_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PseudoClassFunction__NotAssignment_0_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPseudoClassFunctionAccess().getNotNotKeyword_0_0_0()); }
+(
+{ before(grammarAccess.getPseudoClassFunctionAccess().getNotNotKeyword_0_0_0()); }
+
+	':not(' 
+
+{ after(grammarAccess.getPseudoClassFunctionAccess().getNotNotKeyword_0_0_0()); }
+)
+
+{ after(grammarAccess.getPseudoClassFunctionAccess().getNotNotKeyword_0_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PseudoClassFunction__ParamSelectorAssignment_0_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0()); }
+	ruleSimpleSelectorForNegation{ after(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0()); }
 )
 
 ;

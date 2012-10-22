@@ -44,7 +44,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//selector"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SimpleSelectorForNegation" eSuperTypes="#//PseudoClassFunction">
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleSelectorForNegation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//ElementSelector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="universal" eType="#//UniversalSelector"
@@ -89,12 +89,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PseudoClassFunction" eSuperTypes="#//PseudoClassOrFunc">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramSelector" eType="#//SimpleSelectorForNegation"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="#//CssTok" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="css_not">
-    <eLiterals name="not" literal="not("/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CssTok"/>
   <eClassifiers xsi:type="ecore:EClass" name="URLType" eSuperTypes="#//importExpression">

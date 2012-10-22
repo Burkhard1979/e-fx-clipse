@@ -129,10 +129,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION:
-				if(context == grammarAccess.getPseudoClassFunctionRule() ||
-				   context == grammarAccess.getPseudoClassOrFuncRule() ||
-				   context == grammarAccess.getSimpleSelectorForNegationRule() ||
-				   context == grammarAccess.getSubSelectorRule()) {
+				if(context == grammarAccess.getSimpleSelectorForNegationRule()) {
 					sequence_SimpleSelectorForNegation(context, (SimpleSelectorForNegation) semanticObject); 
 					return; 
 				}
@@ -374,7 +371,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (name=Identifier params+=CssTok*)
+	 *     ((not?=':not(' paramSelector=SimpleSelectorForNegation) | (name=Identifier params+=CssTok*))
 	 */
 	protected void sequence_PseudoClassFunction(EObject context, PseudoClassFunction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -15,6 +15,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#isNot <em>Not</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getParamSelector <em>Param Selector</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getParams <em>Params</em>}</li>
  * </ul>
@@ -26,6 +28,58 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface PseudoClassFunction extends PseudoClassOrFunc
 {
+  /**
+   * Returns the value of the '<em><b>Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Not</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Not</em>' attribute.
+   * @see #setNot(boolean)
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getPseudoClassFunction_Not()
+   * @model
+   * @generated
+   */
+  boolean isNot();
+
+  /**
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#isNot <em>Not</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Not</em>' attribute.
+   * @see #isNot()
+   * @generated
+   */
+  void setNot(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Param Selector</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Param Selector</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Param Selector</em>' containment reference.
+   * @see #setParamSelector(SimpleSelectorForNegation)
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getPseudoClassFunction_ParamSelector()
+   * @model containment="true"
+   * @generated
+   */
+  SimpleSelectorForNegation getParamSelector();
+
+  /**
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getParamSelector <em>Param Selector</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Param Selector</em>' containment reference.
+   * @see #getParamSelector()
+   * @generated
+   */
+  void setParamSelector(SimpleSelectorForNegation value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

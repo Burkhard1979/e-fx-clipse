@@ -128,9 +128,6 @@ public class CssDslSwitch<T> extends Switch<T>
       {
         SimpleSelectorForNegation simpleSelectorForNegation = (SimpleSelectorForNegation)theEObject;
         T result = caseSimpleSelectorForNegation(simpleSelectorForNegation);
-        if (result == null) result = casePseudoClassFunction(simpleSelectorForNegation);
-        if (result == null) result = casePseudoClassOrFunc(simpleSelectorForNegation);
-        if (result == null) result = caseCssSelector(simpleSelectorForNegation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

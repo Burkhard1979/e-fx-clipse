@@ -7,7 +7,6 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -338,6 +337,52 @@ public interface CssDslPackage extends EPackage
   int SELECTOR_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl <em>Simple Selector For Negation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getSimpleSelectorForNegation()
+   * @generated
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT = 0;
+
+  /**
+   * The feature id for the '<em><b>Universal</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL = 1;
+
+  /**
+   * The feature id for the '<em><b>Sub Selectors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS = 2;
+
+  /**
+   * The number of structural features of the '<em>Simple Selector For Negation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SELECTOR_FOR_NEGATION_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssSelectorImpl <em>Css Selector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -355,126 +400,6 @@ public interface CssDslPackage extends EPackage
    * @ordered
    */
   int CSS_SELECTOR_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl <em>Pseudo Class Or Func</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassOrFunc()
-   * @generated
-   */
-  int PSEUDO_CLASS_OR_FUNC = 16;
-
-  /**
-   * The number of structural features of the '<em>Pseudo Class Or Func</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl <em>Pseudo Class Function</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassFunction()
-   * @generated
-   */
-  int PSEUDO_CLASS_FUNCTION = 19;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS_FUNCTION__NAME = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS_FUNCTION__PARAMS = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Pseudo Class Function</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PSEUDO_CLASS_FUNCTION_FEATURE_COUNT = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl <em>Simple Selector For Negation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.SimpleSelectorForNegationImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getSimpleSelectorForNegation()
-   * @generated
-   */
-  int SIMPLE_SELECTOR_FOR_NEGATION = 7;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_SELECTOR_FOR_NEGATION__NAME = PSEUDO_CLASS_FUNCTION__NAME;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_SELECTOR_FOR_NEGATION__PARAMS = PSEUDO_CLASS_FUNCTION__PARAMS;
-
-  /**
-   * The feature id for the '<em><b>Element</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_SELECTOR_FOR_NEGATION__ELEMENT = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Universal</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_SELECTOR_FOR_NEGATION__UNIVERSAL = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Sub Selectors</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_SELECTOR_FOR_NEGATION__SUB_SELECTORS = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Simple Selector For Negation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_SELECTOR_FOR_NEGATION_FEATURE_COUNT = PSEUDO_CLASS_FUNCTION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.simple_selectorImpl <em>simple selector</em>}' class.
@@ -709,6 +634,25 @@ public interface CssDslPackage extends EPackage
   int CSS_PROPERTY_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl <em>Pseudo Class Or Func</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassOrFuncImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassOrFunc()
+   * @generated
+   */
+  int PSEUDO_CLASS_OR_FUNC = 16;
+
+  /**
+   * The number of structural features of the '<em>Pseudo Class Or Func</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT = CSS_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassImpl <em>Pseudo Class</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -754,6 +698,61 @@ public interface CssDslPackage extends EPackage
    * @ordered
    */
   int PSEUDO_CLASS_NAME_FEATURE_COUNT = PSEUDO_CLASS_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl <em>Pseudo Class Function</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.PseudoClassFunctionImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getPseudoClassFunction()
+   * @generated
+   */
+  int PSEUDO_CLASS_FUNCTION = 19;
+
+  /**
+   * The feature id for the '<em><b>Not</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION__NOT = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Param Selector</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION__PARAM_SELECTOR = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION__NAME = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION__PARAMS = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Pseudo Class Function</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PSEUDO_CLASS_FUNCTION_FEATURE_COUNT = PSEUDO_CLASS_OR_FUNC_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssTokImpl <em>Css Tok</em>}' class.
@@ -1089,16 +1088,6 @@ public interface CssDslPackage extends EPackage
    * @ordered
    */
   int FUNC_TOK_FEATURE_COUNT = CSS_TOK_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_not
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_not()
-   * @generated
-   */
-  int CSS_NOT = 31;
 
 
   /**
@@ -1643,6 +1632,28 @@ public interface CssDslPackage extends EPackage
   EClass getPseudoClassFunction();
 
   /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#isNot <em>Not</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Not</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#isNot()
+   * @see #getPseudoClassFunction()
+   * @generated
+   */
+  EAttribute getPseudoClassFunction_Not();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getParamSelector <em>Param Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Param Selector</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getParamSelector()
+   * @see #getPseudoClassFunction()
+   * @generated
+   */
+  EReference getPseudoClassFunction_ParamSelector();
+
+  /**
    * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1916,16 +1927,6 @@ public interface CssDslPackage extends EPackage
    * @generated
    */
   EReference getFuncTok_Params();
-
-  /**
-   * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>css not</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_not
-   * @generated
-   */
-  EEnum getcss_not();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -2399,6 +2400,22 @@ public interface CssDslPackage extends EPackage
     EClass PSEUDO_CLASS_FUNCTION = eINSTANCE.getPseudoClassFunction();
 
     /**
+     * The meta object literal for the '<em><b>Not</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PSEUDO_CLASS_FUNCTION__NOT = eINSTANCE.getPseudoClassFunction_Not();
+
+    /**
+     * The meta object literal for the '<em><b>Param Selector</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PSEUDO_CLASS_FUNCTION__PARAM_SELECTOR = eINSTANCE.getPseudoClassFunction_ParamSelector();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2627,16 +2644,6 @@ public interface CssDslPackage extends EPackage
      * @generated
      */
     EReference FUNC_TOK__PARAMS = eINSTANCE.getFuncTok_Params();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_not <em>css not</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_not
-     * @see at.bestsolution.efxclipse.tooling.css.cssDsl.impl.CssDslPackageImpl#getcss_not()
-     * @generated
-     */
-    EEnum CSS_NOT = eINSTANCE.getcss_not();
 
   }
 

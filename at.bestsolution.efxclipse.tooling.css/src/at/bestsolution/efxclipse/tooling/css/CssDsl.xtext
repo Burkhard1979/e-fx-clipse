@@ -118,14 +118,6 @@ ValidPropertyIdent:
 	Identifier
 ;
 
-//css_pseudo
-//  : ':' ':'? (IDENT | functional_pseudo)
-//;
-
-PseudoNegation:
-	':not(' ')'
-;
-
 PseudoClassOrFunc:
 	PseudoClass | PseudoClassFunction
 ;
@@ -134,38 +126,14 @@ PseudoClass:
 	':' ':'? PseudoClassName
 ;
 
-
-//PseudoNegationArgs:
-//	((element = element_name | universal=css_universal) subSelectors+=PseudoNegationArgsSubSelector*)
-//	|
-//	subSelectors+=sub_selector+
-//;
-//
-//PseudoNegationArgsSubSelector:
-//	id=css_id | class=css_class | attrib=css_attrib | pseudoclass=PseudoClass
-//;
-
 PseudoClassName:
 	name=Identifier
 ;
 
 PseudoClassFunction:
-	':not(' SimpleSelectorForNegation ')' |
+	not?=':not(' paramSelector=SimpleSelectorForNegation ')' |
 	':' name=Identifier '(' params+=CssTok* ')'
 ;
-
-//css_negation:
-//	':' not=css_not negation_arg=css_negation_arg ')'
-//;
-
-enum css_not:
-	not='not('
-;
-
-//css_negation_arg
-//  : css_type_selector | css_universal | HASH | css_class | css_attrib | css_pseudo
-//;
-//
 
 combinator
   : 
@@ -249,13 +217,6 @@ Num returns ecore::EDouble hidden():
 		=> ONE_INT+ (=> '.' => ONE_INT+)?
 	)
 ;
-//Integer returns ecore::EInt:
-//	DASH? => ONE_INT+
-//;
-//
-//Real returns ecore::EDouble:
-//	DASH? ONE_INT* '.' => ONE_INT+
-//;
 
 Hex returns ecore::EString:
 	HASHMARK => (ONE_INT|ONE_HEX_LETTER)+

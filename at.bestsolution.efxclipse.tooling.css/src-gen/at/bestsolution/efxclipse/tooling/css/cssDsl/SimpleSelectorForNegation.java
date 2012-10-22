@@ -7,6 +7,8 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Simple Selector For Negation</b></em>'.
@@ -25,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface SimpleSelectorForNegation extends PseudoClassFunction
+public interface SimpleSelectorForNegation extends EObject
 {
   /**
    * Returns the value of the '<em><b>Element</b></em>' containment reference.

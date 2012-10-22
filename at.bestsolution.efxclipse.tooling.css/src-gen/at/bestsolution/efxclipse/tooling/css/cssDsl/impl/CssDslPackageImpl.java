@@ -30,7 +30,6 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.charset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_not;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.importExpression;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.media;
@@ -42,7 +41,6 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -272,13 +270,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * @generated
    */
   private EClass funcTokEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum css_notEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -858,7 +849,7 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPseudoClassFunction_Name()
+  public EAttribute getPseudoClassFunction_Not()
   {
     return (EAttribute)pseudoClassFunctionEClass.getEStructuralFeatures().get(0);
   }
@@ -868,9 +859,29 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPseudoClassFunction_Params()
+  public EReference getPseudoClassFunction_ParamSelector()
   {
     return (EReference)pseudoClassFunctionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPseudoClassFunction_Name()
+  {
+    return (EAttribute)pseudoClassFunctionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPseudoClassFunction_Params()
+  {
+    return (EReference)pseudoClassFunctionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1118,16 +1129,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getcss_not()
-  {
-    return css_notEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public CssDslFactory getCssDslFactory()
   {
     return (CssDslFactory)getEFactoryInstance();
@@ -1223,6 +1224,8 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     createEAttribute(pseudoClassNameEClass, PSEUDO_CLASS_NAME__NAME);
 
     pseudoClassFunctionEClass = createEClass(PSEUDO_CLASS_FUNCTION);
+    createEAttribute(pseudoClassFunctionEClass, PSEUDO_CLASS_FUNCTION__NOT);
+    createEReference(pseudoClassFunctionEClass, PSEUDO_CLASS_FUNCTION__PARAM_SELECTOR);
     createEAttribute(pseudoClassFunctionEClass, PSEUDO_CLASS_FUNCTION__NAME);
     createEReference(pseudoClassFunctionEClass, PSEUDO_CLASS_FUNCTION__PARAMS);
 
@@ -1260,9 +1263,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     funcTokEClass = createEClass(FUNC_TOK);
     createEReference(funcTokEClass, FUNC_TOK__NAME);
     createEReference(funcTokEClass, FUNC_TOK__PARAMS);
-
-    // Create enums
-    css_notEEnum = createEEnum(CSS_NOT);
   }
 
   /**
@@ -1294,7 +1294,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    simpleSelectorForNegationEClass.getESuperTypes().add(this.getPseudoClassFunction());
     classSelectorEClass.getESuperTypes().add(this.getCssSelector());
     idSelectorEClass.getESuperTypes().add(this.getCssSelector());
     pseudoClassOrFuncEClass.getESuperTypes().add(this.getCssSelector());
@@ -1384,6 +1383,8 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEAttribute(getPseudoClassName_Name(), ecorePackage.getEString(), "name", null, 0, 1, PseudoClassName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(pseudoClassFunctionEClass, PseudoClassFunction.class, "PseudoClassFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPseudoClassFunction_Not(), ecorePackage.getEBoolean(), "not", null, 0, 1, PseudoClassFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPseudoClassFunction_ParamSelector(), this.getSimpleSelectorForNegation(), null, "paramSelector", null, 0, 1, PseudoClassFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPseudoClassFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, PseudoClassFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPseudoClassFunction_Params(), this.getCssTok(), null, "params", null, 0, -1, PseudoClassFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1421,10 +1422,6 @@ public class CssDslPackageImpl extends EPackageImpl implements CssDslPackage
     initEClass(funcTokEClass, FuncTok.class, "FuncTok", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncTok_Name(), this.getIdentifierTok(), null, "name", null, 0, 1, FuncTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncTok_Params(), this.getCssTok(), null, "params", null, 0, -1, FuncTok.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    // Initialize enums and add enum literals
-    initEEnum(css_notEEnum, css_not.class, "css_not");
-    addEEnumLiteral(css_notEEnum, css_not.NOT);
 
     // Create resource
     createResource(eNS_URI);

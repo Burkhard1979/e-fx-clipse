@@ -24,7 +24,6 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -1728,8 +1727,6 @@ ruleValidPropertyIdent returns [AntlrDatatypeRuleToken current=new AntlrDatatype
 
 
 
-
-
 // Entry rule entryRulePseudoClassOrFunc
 entryRulePseudoClassOrFunc returns [EObject current=null] 
 	:
@@ -1861,20 +1858,40 @@ rulePseudoClassFunction returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((	otherlv_0=':not(' 
+(((
+(
+		lv_not_0_0=	':not(' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getPseudoClassFunctionAccess().getNotKeyword_0_0());
+        newLeafNode(lv_not_0_0, grammarAccess.getPseudoClassFunctionAccess().getNotNotKeyword_0_0_0());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPseudoClassFunctionRule());
+	        }
+       		setWithLastConsumed($current, "not", true, ":not(");
+	    }
 
-    { 
-        newCompositeNode(grammarAccess.getPseudoClassFunctionAccess().getSimpleSelectorForNegationParserRuleCall_0_1()); 
-    }
-    this_SimpleSelectorForNegation_1=ruleSimpleSelectorForNegation
-    { 
-        $current = $this_SimpleSelectorForNegation_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-	otherlv_2=')' 
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0()); 
+	    }
+		lv_paramSelector_1_0=ruleSimpleSelectorForNegation		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPseudoClassFunctionRule());
+	        }
+       		set(
+       			$current, 
+       			"paramSelector",
+        		lv_paramSelector_1_0, 
+        		"SimpleSelectorForNegation");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_2=')' 
     {
     	newLeafNode(otherlv_2, grammarAccess.getPseudoClassFunctionAccess().getRightParenthesisKeyword_0_2());
     }
@@ -2754,8 +2771,6 @@ ruleHex returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     }
 ))+)
     ;
-
-
 
 
 
