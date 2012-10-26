@@ -1,3 +1,13 @@
+/******************************************************************************* 
+ * Copyright (c) 2012 TESIS DYNAware GmbH and others. 
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0 
+ * which accompanies this distribution, and is available at 
+ * http://www.eclipse.org/legal/epl-v10.html 
+ * 
+ * Contributors: 
+ *     Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation 
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.emf.edit.ui;
 
 import static org.junit.Assert.assertEquals;
@@ -7,14 +17,17 @@ import static org.mockito.Mockito.mock;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellCreationListener;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
 
+//@RunWith(PowerMockRunner.class)
 public class AdapterFactoryCellFactoryTest {
 	
 	AdapterFactoryImpl adapterFactory;
-	private AdapterFactoryCellFactory cellFactory;
+	AdapterFactoryCellFactory cellFactory;
 
 	@Before
 	public void setUp() {

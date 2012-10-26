@@ -25,15 +25,18 @@ import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
 /**
- * This list cell factory wraps an {@link AdapterFactory} and delegates calls to its {@link ListCell}s to the
- * corresponding adapter-implemented item provider interfaces.
+ * This list cell factory wraps an {@link AdapterFactory} and delegates calls to
+ * its {@link ListCell}s to the corresponding adapter-implemented item provider
+ * interfaces.
  * 
  * <ul>
- * <li>{@link Cell#setText(String)} and {@link Cell#setGraphic(Node)} are delegated to
- * {@link IItemLabelProvider}</li>
+ * <li>{@link Cell#setText(String)} and {@link Cell#setGraphic(Node)} are
+ * delegated to {@link IItemLabelProvider}</li>
  * <li>{@link Cell#setTextFill(javafx.scene.paint.Paint)} and the CSS property
- * <code>-fx-background-color</code> are delegated to {@link IItemColorProvider}</li>
- * <li>{@link Cell#setFont(javafx.scene.text.Font)} is delegated to {@link IItemFontProvider}</li>
+ * <code>-fx-background-color</code> are delegated to {@link IItemColorProvider}
+ * </li>
+ * <li>{@link Cell#setFont(javafx.scene.text.Font)} is delegated to
+ * {@link IItemFontProvider}</li>
  * </ul>
  */
 public class AdapterFactoryListCellFactory extends AdapterFactoryCellFactory implements Callback<ListView<Object>, ListCell<Object>> {
@@ -59,14 +62,14 @@ public class AdapterFactoryListCellFactory extends AdapterFactoryCellFactory imp
 			@Override
 			protected void updateItem(Object item, boolean empty) {
 				super.updateItem(item, empty);
-				
+
 				// check if the item changed
 				if (item != currentItem) {
-					
+
 					// remove the adapter if attached
-					if(currentItem instanceof Notifier)						
+					if (currentItem instanceof Notifier)
 						((Notifier) currentItem).eAdapters().remove(adapter);
-					
+
 					// update the current item
 					currentItem = item;
 
@@ -83,7 +86,7 @@ public class AdapterFactoryListCellFactory extends AdapterFactoryCellFactory imp
 			}
 
 			private void update(Object item) {
-				CellFactoryUtil.applyItemProviderStyle(item, this, adapterFactory);
+				applyItemProviderStyle(item, this, adapterFactory);
 			}
 
 		};
