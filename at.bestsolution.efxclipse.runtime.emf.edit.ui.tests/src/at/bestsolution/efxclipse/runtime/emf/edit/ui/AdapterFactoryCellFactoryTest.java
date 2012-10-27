@@ -17,13 +17,10 @@ import static org.mockito.Mockito.mock;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellCreationListener;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
 
-//@RunWith(PowerMockRunner.class)
 public class AdapterFactoryCellFactoryTest {
 	
 	AdapterFactoryImpl adapterFactory;

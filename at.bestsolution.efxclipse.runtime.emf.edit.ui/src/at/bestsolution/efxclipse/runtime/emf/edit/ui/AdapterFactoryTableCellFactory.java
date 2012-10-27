@@ -105,14 +105,26 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 
 		return tableCell;
 	}
-	
-	public void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+
+	/* package */void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
 		applyTableItemProviderLabel(item, columnIndex, cell, adapterFactory);
 		applyTableItemProviderColor(item, columnIndex, cell, adapterFactory);
 		applyTableItemProviderFont(item, columnIndex, cell, adapterFactory);
 	}
-	
-	public void applyTableItemProviderColor(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+
+	/* package */void applyTableItemProviderLabel(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		ITableItemLabelProvider labelProvider = (ITableItemLabelProvider) adapterFactory.adapt(item, ITableItemLabelProvider.class);
+		if (labelProvider != null) {
+			cell.setText(labelProvider.getColumnText(item, columnIndex));
+			Object image = labelProvider.getColumnImage(item, columnIndex);
+			if (image instanceof URL) {
+				Node graphic = new ImageView(((URL) image).toExternalForm());
+				cell.setGraphic(graphic);
+			}
+		}
+	}
+
+	/* package */void applyTableItemProviderColor(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
 		ITableItemColorProvider colorProvider = (ITableItemColorProvider) adapterFactory.adapt(item, ITableItemColorProvider.class);
 		if (colorProvider != null) {
 			Color foreground = colorFromObject(colorProvider.getForeground(item, columnIndex));
@@ -124,28 +136,13 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 				cell.setStyle("-fx-background-color: " + background);
 		}
 	}
-	
-	public void applyTableItemProviderFont(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+
+	/* package */void applyTableItemProviderFont(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
 		ITableItemFontProvider fontProvider = (ITableItemFontProvider) adapterFactory.adapt(item, ITableItemFontProvider.class);
 		if (fontProvider != null) {
 			Font font = fontFromObject(fontProvider.getFont(item, columnIndex));
 			if (font != null)
 				cell.setFont(font);
-		}
-	}
-	
-	public void applyTableItemProviderLabel(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
-		ITableItemLabelProvider labelProvider = (ITableItemLabelProvider) adapterFactory.adapt(item, ITableItemLabelProvider.class);
-
-		if (labelProvider != null)
-			cell.setText(labelProvider.getColumnText(item, columnIndex));
-
-		if (item != null) {
-			Object image = labelProvider.getColumnImage(item, columnIndex);
-			if (image instanceof URL) {
-				Node graphic = new ImageView(((URL) image).toExternalForm());
-				cell.setGraphic(graphic);
-			}
 		}
 	}
 
