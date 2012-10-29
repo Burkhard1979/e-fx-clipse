@@ -557,7 +557,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (selectors+=selector selectors+=selector* declarations+=css_declaration*)
+	 *     (selectors+=selector selectors+=selector* (declarations+=css_declaration declarations+=css_declaration*)?)
 	 */
 	protected void sequence_ruleset(EObject context, ruleset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

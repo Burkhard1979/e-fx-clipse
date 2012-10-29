@@ -50,9 +50,10 @@ medium:
 
 ruleset:
 	selectors+=selector ( COMMA selectors+=selector )* WS* '{'
-		(declarations+=css_declaration ';' )*
+		(declarations+=css_declaration (';' declarations+=css_declaration)* ';'?)?
 	'}'
 ;
+
 
 selector hidden():
 	simpleselectors+=simple_selector ( combinator=combinator WS* selector=selector | WS+ (combinator=combinator WS*)? selector=selector )?
@@ -209,16 +210,10 @@ URLType hidden():
 ;
 
 ValidURLSymbol:
-	COLON |
-	'.' |
-	'/' |
-	DASH |
-	PLUS |
-	'?' |
-	'&' |
-	'=' |
-	COMMA |
-	'@' |
+	DASH | '.' | UNDERSCORE | '~' | COLON |
+	'/' |'?' | HASHMARK | '[' | ']' | '@' |
+	'!' | '$' | '&' | /* "'" | '(' | ')' | need to be escaped*/
+	'*' | PLUS | COMMA | ';' | '='
 	KeywordHack
 ;
 
@@ -231,7 +226,8 @@ KeywordHack:
 
 ValidURL returns ecore::EString hidden():
 	STRING |
-	( ValidURLSymbol |  
+	( ValidURLSymbol |
+	  KeywordHack |
 	  ONE_HEX_LETTER | 
 	  ONE_NON_HEX_LETTER | 
 	  ONE_INT |

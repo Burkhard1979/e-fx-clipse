@@ -27,6 +27,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	protected AbstractElementAlias match_page_PAGEKeyword_1_1_or_PageKeyword_1_0;
 	protected AbstractElementAlias match_page_SemicolonKeyword_5_0_a;
 	protected AbstractElementAlias match_page_SemicolonKeyword_5_0_p;
+	protected AbstractElementAlias match_ruleset_SemicolonKeyword_4_2_q;
 	protected AbstractElementAlias match_ruleset_WSTerminalRuleCall_2_a;
 	protected AbstractElementAlias match_selector_WSTerminalRuleCall_1_0_1_a;
 	protected AbstractElementAlias match_selector_WSTerminalRuleCall_1_1_0_p;
@@ -44,6 +45,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 		match_page_PAGEKeyword_1_1_or_PageKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPageAccess().getPAGEKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getPageAccess().getPageKeyword_1_0()));
 		match_page_SemicolonKeyword_5_0_a = new TokenAlias(true, true, grammarAccess.getPageAccess().getSemicolonKeyword_5_0());
 		match_page_SemicolonKeyword_5_0_p = new TokenAlias(true, false, grammarAccess.getPageAccess().getSemicolonKeyword_5_0());
+		match_ruleset_SemicolonKeyword_4_2_q = new TokenAlias(false, true, grammarAccess.getRulesetAccess().getSemicolonKeyword_4_2());
 		match_ruleset_WSTerminalRuleCall_2_a = new TokenAlias(true, true, grammarAccess.getRulesetAccess().getWSTerminalRuleCall_2());
 		match_selector_WSTerminalRuleCall_1_0_1_a = new TokenAlias(true, true, grammarAccess.getSelectorAccess().getWSTerminalRuleCall_1_0_1());
 		match_selector_WSTerminalRuleCall_1_1_0_p = new TokenAlias(true, false, grammarAccess.getSelectorAccess().getWSTerminalRuleCall_1_1_0());
@@ -149,6 +151,8 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 				emit_page_SemicolonKeyword_5_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_page_SemicolonKeyword_5_0_p.equals(syntax))
 				emit_page_SemicolonKeyword_5_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_ruleset_SemicolonKeyword_4_2_q.equals(syntax))
+				emit_ruleset_SemicolonKeyword_4_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_ruleset_WSTerminalRuleCall_2_a.equals(syntax))
 				emit_ruleset_WSTerminalRuleCall_2_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_selector_WSTerminalRuleCall_1_0_1_a.equals(syntax))
@@ -195,7 +199,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     '@import' | '@IMPORT'
+	 *     '@IMPORT' | '@import'
 	 */
 	protected void emit_importExpression_IMPORTKeyword_0_1_or_ImportKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -203,7 +207,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     '@MEDIA' | '@media'
+	 *     '@media' | '@MEDIA'
 	 */
 	protected void emit_media_MEDIAKeyword_0_1_or_MediaKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -211,7 +215,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     '@page' | '@PAGE'
+	 *     '@PAGE' | '@page'
 	 */
 	protected void emit_page_PAGEKeyword_1_1_or_PageKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -230,6 +234,14 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	 *     ';'+
 	 */
 	protected void emit_page_SemicolonKeyword_5_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ';'?
+	 */
+	protected void emit_ruleset_SemicolonKeyword_4_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
