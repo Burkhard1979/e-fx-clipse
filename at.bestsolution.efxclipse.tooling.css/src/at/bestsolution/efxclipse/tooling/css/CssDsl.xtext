@@ -33,7 +33,7 @@ page:
 ;
 
 pseudo_page: 
-	':' Identifier
+	COLON Identifier
 ;
 
 media: 
@@ -107,7 +107,7 @@ css_namespace_prefix
   ;
 
 css_declaration hidden(ML_COMMENT):
-	WS* property=css_property WS* ':' valueTokens+=CssTok+ important?=IMPORTANT_SYM?
+	WS* property=css_property WS* COLON valueTokens+=CssTok+ important?=IMPORTANT_SYM?
 ;
 
 css_property:
@@ -123,7 +123,7 @@ PseudoClassOrFunc:
 ;
 
 PseudoClass:
-	':' ':'? PseudoClassName
+	COLON COLON? PseudoClassName
 ;
 
 PseudoClassName:
@@ -131,8 +131,12 @@ PseudoClassName:
 ;
 
 PseudoClassFunction:
-	not?=':not(' paramSelector=SimpleSelectorForNegation ')' |
-	':' name=Identifier '(' params+=CssTok* ')'
+	not?=NotFunctionCall paramSelector=SimpleSelectorForNegation ')' |
+	COLON name=Identifier '(' params+=CssTok* ')'
+;
+
+NotFunctionCall hidden():
+	COLON 'not('
 ;
 
 combinator
@@ -205,7 +209,7 @@ URLType hidden():
 ;
 
 ValidURLSymbol:
-	':' |
+	COLON |
 	'.' |
 	'/' |
 	DASH |
@@ -215,6 +219,12 @@ ValidURLSymbol:
 	'=' |
 	COMMA |
 	'@' |
+	KeywordHack
+;
+
+KeywordHack:
+	'not' |
+	'no' |
 	'url' |
 	'ur'
 ;
@@ -239,7 +249,7 @@ terminal IMPORTANT_SYM:
 ;
 
 Identifier returns ecore::EString hidden():
-	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | 'url' | 'ur') => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | 'url' | 'ur')*
+	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | KeywordHack) => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | KeywordHack)*
 ;
 
 Num returns ecore::EDouble hidden():
@@ -305,3 +315,5 @@ terminal STRING	:
 			
 terminal INCLUDES: "~=";
 terminal DASHMATCH: "|=";
+
+terminal COLON: ':';

@@ -371,7 +371,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     ((not?=':not(' paramSelector=SimpleSelectorForNegation) | (name=Identifier params+=CssTok*))
+	 *     ((not?=NotFunctionCall paramSelector=SimpleSelectorForNegation) | (name=Identifier params+=CssTok*))
 	 */
 	protected void sequence_PseudoClassFunction(EObject context, PseudoClassFunction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
