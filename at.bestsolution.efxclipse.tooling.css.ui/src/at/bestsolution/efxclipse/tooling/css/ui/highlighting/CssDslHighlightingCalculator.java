@@ -11,6 +11,7 @@
 package at.bestsolution.efxclipse.tooling.css.ui.highlighting;
 
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -20,6 +21,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
@@ -39,10 +41,12 @@ public class CssDslHighlightingCalculator implements ISemanticHighlightingCalcul
 			Object o = it.next();
 			
 			if (o instanceof ElementSelector) {
-				ElementSelector sec = (ElementSelector) o;
-				ICompositeNode n = NodeModelUtils.getNode(sec);
-				
+				ICompositeNode n = NodeModelUtils.getNode((EObject)o);
 				acceptor.addPosition(n.getOffset(), n.getLength(), CssDslHighlightingConfiguration.ELEMENT);
+			}
+			else if (o instanceof IdentifierTok) {
+				ICompositeNode n = NodeModelUtils.getNode((EObject)o);
+				acceptor.addPosition(n.getOffset(), n.getLength(), CssDslHighlightingConfiguration.DEFAULT_ID);
 			}
 			else if( o instanceof css_declaration ) {
 				css_declaration dec = (css_declaration) o;

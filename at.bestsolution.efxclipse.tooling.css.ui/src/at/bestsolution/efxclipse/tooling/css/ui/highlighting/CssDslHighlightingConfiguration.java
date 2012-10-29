@@ -25,7 +25,14 @@ public class CssDslHighlightingConfiguration extends DefaultHighlightingConfigur
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
-		super.configure(acceptor);
+		// from super (without the keyword)
+		acceptor.acceptDefaultHighlighting(PUNCTUATION_ID, "Punctuation character", punctuationTextStyle());
+		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment", commentTextStyle());
+		acceptor.acceptDefaultHighlighting(STRING_ID, "String", stringTextStyle());
+		acceptor.acceptDefaultHighlighting(NUMBER_ID, "Number", numberTextStyle());
+		acceptor.acceptDefaultHighlighting(DEFAULT_ID, "Default", defaultTextStyle());
+		acceptor.acceptDefaultHighlighting(INVALID_TOKEN_ID, "Invalid Symbol", errorTextStyle());
+		// local
 		acceptor.acceptDefaultHighlighting(DECLARATIONNAME, "Declaration", crossDeclarationTextStyle());
 		acceptor.acceptDefaultHighlighting(SELECTOR, "Selector", crossSelectorTextStyle());
 		acceptor.acceptDefaultHighlighting(URL, "Url", urlTextStyle());

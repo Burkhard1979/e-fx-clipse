@@ -259,7 +259,7 @@ body.v-ie7 .v-menubar-submenu,
 .v-label,
 .sidebar-menu .v-label,
 .v-table-scrollposition {
-	@optional-generated-shadow@
+/*	@optional-generated-shadow@*/
 	}
 
 /* Base background color */

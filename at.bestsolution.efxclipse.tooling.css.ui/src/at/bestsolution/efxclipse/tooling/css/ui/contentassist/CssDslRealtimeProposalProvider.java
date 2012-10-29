@@ -21,6 +21,7 @@ import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
+import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.StyledString.Styler;
@@ -34,6 +35,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.hover.AbstractEObjectHover;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
@@ -60,12 +62,13 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	
 	private @Inject ILabelProvider labelProvider;
 	
+	private @Inject ITemplateProposalProvider templateProposalProvider;
+	
 	public CssDslRealtimeProposalProvider() {
 		BundleContext context = CssDslActivator.getInstance().getBundle().getBundleContext();
 		ServiceReference<CssDialectExtensionComponent> ref = context.getServiceReference(CssDialectExtensionComponent.class);
 		extension = context.getService(ref);
 	}
-	
 	
 	public void complete_ColorTok(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 //		ConfigurableCompletionProposal dialogProposal = (ConfigurableCompletionProposal) createCompletionProposal("Pick color ...",context);
