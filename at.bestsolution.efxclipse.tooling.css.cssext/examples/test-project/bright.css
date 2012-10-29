@@ -32,8 +32,8 @@
     -fx-color: -fx-hover-base;
 }
 
-#window-resize-button {
-    -fx-background-image: url("images/window-corner.png");
+#window-resize-button { 
+    -fx-background-image: url(images/window-corner.png);
     -fx-background-position: right 1px bottom 1px;
     -fx-background-repeat: no-repeat;
 }

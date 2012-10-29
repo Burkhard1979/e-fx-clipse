@@ -18,6 +18,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
@@ -37,7 +38,13 @@ public class CssDslHighlightingCalculator implements ISemanticHighlightingCalcul
 		while( it.hasNext() ) {
 			Object o = it.next();
 			
-			if( o instanceof css_declaration ) {
+			if (o instanceof ElementSelector) {
+				ElementSelector sec = (ElementSelector) o;
+				ICompositeNode n = NodeModelUtils.getNode(sec);
+				
+				acceptor.addPosition(n.getOffset(), n.getLength(), CssDslHighlightingConfiguration.ELEMENT);
+			}
+			else if( o instanceof css_declaration ) {
 				css_declaration dec = (css_declaration) o;
 				if( dec.getProperty() != null && dec.getProperty().getName() != null && dec.getProperty().getName().trim().length() > 0 ) {
 					ICompositeNode n = NodeModelUtils.getNode(dec);

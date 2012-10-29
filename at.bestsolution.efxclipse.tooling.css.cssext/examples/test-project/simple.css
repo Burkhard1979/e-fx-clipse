@@ -12,16 +12,17 @@ test {
 	
 	asdf: 2px;
 	func: hulligulli(1px);
+	-fx-border-color: rgb(72,103,255);
 }
 
 
-.goodSe_ecto_
+.goodSelector >   
 .hurli
  url
  .url 
  #url {
 	doubleQuoted: url("http://www.example.com/image.png");
-	singleQuoted: url('http://www.example.com/image.png');
+	singleQuoted: url('http://www.example.com/url/image.png');
 	notQuoted: url(http://www.example.com/image.png);
 	
 	notQuoted2: url(http://www.example.com/image\ \(\'2\'\).png); /* with \-escaped special chars */

@@ -71,7 +71,9 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 			b.append(" " + text(value.getSelector()));
 		}
 		
-		return b.toString();
+		String r = b.toString();
+		System.err.println(r);
+		return r;
 	}
 	
 	String image(ruleset ele) {

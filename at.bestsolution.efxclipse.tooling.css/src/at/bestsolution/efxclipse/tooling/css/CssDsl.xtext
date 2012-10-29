@@ -55,7 +55,7 @@ ruleset:
 ;
 
 selector hidden():
-	simpleselectors+=simple_selector ( combinator=combinator selector=selector | WS+ combinator=combinator? selector=selector )?
+	simpleselectors+=simple_selector ( combinator=combinator WS* selector=selector | WS+ (combinator=combinator WS*)? selector=selector )?
 ;
 
 SimpleSelectorForNegation:
@@ -141,7 +141,7 @@ combinator
   	  PLUS
   	| '>'
   	| '~'
-  ) WS*
+  )
 ;
   
 operator
@@ -215,7 +215,8 @@ ValidURLSymbol:
 	'=' |
 	COMMA |
 	'@' |
-	'url'
+	'url' |
+	'ur'
 ;
 
 ValidURL returns ecore::EString hidden():
@@ -238,7 +239,7 @@ terminal IMPORTANT_SYM:
 ;
 
 Identifier returns ecore::EString hidden():
-	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | 'url') => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | 'url')*
+	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | 'url' | 'ur') => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | 'url' | 'ur')*
 ;
 
 Num returns ecore::EDouble hidden():

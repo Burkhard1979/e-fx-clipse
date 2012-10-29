@@ -11,6 +11,10 @@ ElementSelector > .ClassSelector {}
 
 }
 
+.lala:asdf(3n) {
+	
+}
+
 *:not(:link):not(:visited) {
 	
 }

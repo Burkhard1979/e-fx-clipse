@@ -19,6 +19,7 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle;
 public class CssDslHighlightingConfiguration extends DefaultHighlightingConfiguration {
 	public final static String DECLARATIONNAME = "DeclarationName"; 
 	public final static String SELECTOR = "Selector";
+	public final static String ELEMENT = "ELEMENT";
 	public final static String URL = "Url";
 	public final static String FUNCTION = "Function";
 
@@ -29,6 +30,7 @@ public class CssDslHighlightingConfiguration extends DefaultHighlightingConfigur
 		acceptor.acceptDefaultHighlighting(SELECTOR, "Selector", crossSelectorTextStyle());
 		acceptor.acceptDefaultHighlighting(URL, "Url", urlTextStyle());
 		acceptor.acceptDefaultHighlighting(FUNCTION, "Function", functionTextStyle());
+		acceptor.acceptDefaultHighlighting(ELEMENT, "Element", elementTextStyle());
 	}
 
 	public TextStyle crossDeclarationTextStyle() {
@@ -36,6 +38,13 @@ public class CssDslHighlightingConfiguration extends DefaultHighlightingConfigur
 		textStyle.setColor(new RGB(0,153,0));
 		return textStyle;
 	}
+	
+	public TextStyle elementTextStyle() {
+		TextStyle textStyle = crossSelectorTextStyle().copy();
+		textStyle.setStyle(SWT.BOLD);
+		return textStyle;
+	}
+	
 
 	public TextStyle crossSelectorTextStyle() {
 		TextStyle textStyle = defaultTextStyle().copy();
