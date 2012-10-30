@@ -16,8 +16,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
+
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.contexts.Context;
 import org.eclipse.core.commands.contexts.ContextManager;
@@ -26,7 +28,6 @@ import org.eclipse.e4.core.di.annotations.Optional;
 
 import at.bestsolution.efxclipse.runtime.bindings.Binding;
 import at.bestsolution.efxclipse.runtime.bindings.KeyLookup;
-import at.bestsolution.efxclipse.runtime.bindings.KeySequence;
 import at.bestsolution.efxclipse.runtime.bindings.ParseException;
 import at.bestsolution.efxclipse.runtime.bindings.TriggerSequence;
 import at.bestsolution.efxclipse.runtime.bindings.e4.EBindingService;
@@ -49,10 +50,10 @@ public class BindingServiceImpl implements EBindingService {
 
 	@Inject
 	private ContextManager contextManager;
-	
+
 	@Inject
 	private KeyLookup keylookup;
-	
+
 	@Inject
 	private BindingFactory factory;
 
@@ -61,17 +62,20 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.e4.ui.bindings.EBindingService#createBinding(org.eclipse.jface.bindings.
-	 * TriggerSequence, org.eclipse.core.commands.ParameterizedCommand, java.lang.String,
+	 * @see
+	 * org.eclipse.e4.ui.bindings.EBindingService#createBinding(org.eclipse.
+	 * jface.bindings. TriggerSequence,
+	 * org.eclipse.core.commands.ParameterizedCommand, java.lang.String,
 	 * java.lang.String, java.util.Map)
 	 */
-	public Binding createBinding(TriggerSequence sequence, ParameterizedCommand command,
-			String contextId, Map<String, String> attributes) {
+	public Binding createBinding(TriggerSequence sequence,
+			ParameterizedCommand command, String contextId,
+			Map<String, String> attributes) {
 
 		String schemeId = DEFAULT_SCHEME_ID;
-		String locale = null;
-		String platform = null;
-		int bindingType = Binding.SYSTEM;
+		// String locale = null;
+		// String platform = null;
+		// int bindingType = Binding.SYSTEM;
 
 		if (sequence != null && !sequence.isEmpty() && contextId != null) {
 			if (attributes != null) {
@@ -79,15 +83,17 @@ public class BindingServiceImpl implements EBindingService {
 				if (tmp != null && tmp.length() > 0) {
 					schemeId = tmp;
 				}
-				locale = attributes.get(LOCALE_ATTR_TAG);
-				platform = attributes.get(PLATFORM_ATTR_TAG);
-				if (USER_TYPE.equals(attributes.get(TYPE_ATTR_TAG))) {
-					bindingType = Binding.USER; 
-				}
+				// locale = attributes.get(LOCALE_ATTR_TAG);
+				// platform = attributes.get(PLATFORM_ATTR_TAG);
+				// if (USER_TYPE.equals(attributes.get(TYPE_ATTR_TAG))) {
+				// bindingType = Binding.USER;
+				// }
 			}
-			return factory.createKeyBinding(sequence, command, schemeId, contextId);
-//			return factory.createKeyBinding((EKeySequence) sequence, command, schemeId, contextId, locale,
-//					platform, null, bindingType);
+			return factory.createKeyBinding(sequence, command, schemeId,
+					contextId);
+			// return factory.createKeyBinding((EKeySequence) sequence, command,
+			// schemeId, contextId, locale,
+			// platform, null, bindingType);
 		}
 		return null;
 	}
@@ -96,8 +102,8 @@ public class BindingServiceImpl implements EBindingService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.e4.ui.bindings.EBindingService#activateBinding(org.eclipse.jface.bindings.Binding
-	 * )
+	 * org.eclipse.e4.ui.bindings.EBindingService#activateBinding(org.eclipse
+	 * .jface.bindings.Binding )
 	 */
 	public void activateBinding(Binding binding) {
 		String contextId = binding.getContextId();
@@ -112,8 +118,8 @@ public class BindingServiceImpl implements EBindingService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.e4.ui.bindings.EBindingService#deactivateBinding(org.eclipse.jface.bindings.Binding
-	 * )
+	 * org.eclipse.e4.ui.bindings.EBindingService#deactivateBinding(org.eclipse
+	 * .jface.bindings.Binding )
 	 */
 	public void deactivateBinding(Binding binding) {
 		String contextId = binding.getContextId();
@@ -128,7 +134,9 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.e4.ui.bindings.EBindingService#createSequence(java.lang.String)
+	 * @see
+	 * org.eclipse.e4.ui.bindings.EBindingService#createSequence(java.lang.String
+	 * )
 	 */
 	public TriggerSequence createSequence(String sequence) {
 		try {
@@ -142,8 +150,8 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getConflictsFor(org.eclipse.e4.ui.bindings.
-	 * TriggerSequence)
+	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getConflictsFor(org.eclipse
+	 * .e4.ui.bindings. TriggerSequence)
 	 */
 	public Collection<Binding> getConflictsFor(TriggerSequence sequence) {
 		return manager.getConflictsFor(contextSet, sequence);
@@ -156,8 +164,8 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getPerfectMatch(org.eclipse.e4.ui.bindings.
-	 * TriggerSequence)
+	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getPerfectMatch(org.eclipse
+	 * .e4.ui.bindings. TriggerSequence)
 	 */
 	public Binding getPerfectMatch(TriggerSequence trigger) {
 		return manager.getPerfectMatch(contextSet, trigger);
@@ -166,8 +174,8 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#isPartialMatch(org.eclipse.e4.ui.bindings.
-	 * TriggerSequence)
+	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#isPartialMatch(org.eclipse.
+	 * e4.ui.bindings. TriggerSequence)
 	 */
 	public boolean isPartialMatch(TriggerSequence keySequence) {
 		return manager.isPartialMatch(contextSet, keySequence);
@@ -176,8 +184,8 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getBestSequenceFor(org.eclipse.core.commands.
-	 * ParameterizedCommand)
+	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getBestSequenceFor(org.eclipse
+	 * .core.commands. ParameterizedCommand)
 	 */
 	public TriggerSequence getBestSequenceFor(ParameterizedCommand command) {
 		Binding binding = manager.getBestSequenceFor(contextSet, command);
@@ -187,12 +195,15 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getSequencesFor(org.eclipse.core.commands.
-	 * ParameterizedCommand)
+	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getSequencesFor(org.eclipse
+	 * .core.commands. ParameterizedCommand)
 	 */
-	public Collection<TriggerSequence> getSequencesFor(ParameterizedCommand command) {
-		Collection<Binding> bindings = manager.getSequencesFor(contextSet, command);
-		ArrayList<TriggerSequence> sequences = new ArrayList<TriggerSequence>(bindings.size());
+	public Collection<TriggerSequence> getSequencesFor(
+			ParameterizedCommand command) {
+		Collection<Binding> bindings = manager.getSequencesFor(contextSet,
+				command);
+		ArrayList<TriggerSequence> sequences = new ArrayList<TriggerSequence>(
+				bindings.size());
 		for (Binding binding : bindings) {
 			sequences.add(binding.getTriggerSequence());
 		}
@@ -206,8 +217,8 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#isPerfectMatch(org.eclipse.e4.ui.bindings.
-	 * TriggerSequence)
+	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#isPerfectMatch(org.eclipse.
+	 * e4.ui.bindings. TriggerSequence)
 	 */
 	public boolean isPerfectMatch(TriggerSequence sequence) {
 		return getPerfectMatch(sequence) != null;
@@ -216,8 +227,8 @@ public class BindingServiceImpl implements EBindingService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getPartialMatches(org.eclipse.e4.ui.bindings.
-	 * TriggerSequence)
+	 * @seeorg.eclipse.e4.ui.bindings.EBindingService#getPartialMatches(org.eclipse
+	 * .e4.ui.bindings. TriggerSequence)
 	 */
 	public Collection<Binding> getPartialMatches(TriggerSequence sequence) {
 		return manager.getPartialMatches(contextSet, sequence);

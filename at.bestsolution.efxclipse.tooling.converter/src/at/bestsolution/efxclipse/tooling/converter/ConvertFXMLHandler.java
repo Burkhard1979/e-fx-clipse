@@ -12,6 +12,10 @@ package at.bestsolution.efxclipse.tooling.converter;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.jdt.core.formatter.CodeFormatter;
+import org.eclipse.jface.text.Document;
+import org.eclipse.jface.text.IDocument;
+import org.eclipse.text.edits.TextEdit;
 
 import at.bestsolution.efxclipse.formats.fxg.converter.FXGraphConverter;
 import at.bestsolution.efxclipse.formats.fxg.handler.FXMLLoader;
@@ -30,5 +34,27 @@ public class ConvertFXMLHandler extends AbstractConverterHandler {
 	@Override
 	protected String getTargetFileExtension() {
 		return ".fxgraph";
+	}
+
+	@Override
+	protected String format(String contents, CodeFormatter codeFormatter) {
+		if (codeFormatter instanceof CodeFormatter) {
+			IDocument doc = new Document(contents);
+			// FIXME always returns null
+			TextEdit edit = ((CodeFormatter) codeFormatter).format(
+					CodeFormatter.K_COMPILATION_UNIT, doc.get(), 0, doc.get()
+							.length(), 0, null);
+
+			if (edit != null) {
+				try {
+					edit.apply(doc);
+					contents = doc.get();
+				} catch (Exception e) {
+					// TODO
+					e.printStackTrace();
+				}
+			}
+		}
+		return contents;
 	}
 }

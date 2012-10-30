@@ -16,8 +16,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.JavaCore;
@@ -25,13 +23,16 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import at.bestsolution.efxclipse.formats.fxg.fxg.FXGElement;
-import at.bestsolution.efxclipse.formats.fxg.fxg.FxgPackage;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ComponentDefinition;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.FXGraphFactory;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Import;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Model;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.PackageDeclaration;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Property;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.SimpleValueProperty;
 
 public class FXMLLoader {
 
@@ -52,16 +53,12 @@ public class FXMLLoader {
 		private final IFile fxmlFile;
 		private Model model;
 
-		private Stack<FXGElement> elementStack = new Stack<FXGElement>();
-		private Stack<EStructuralFeature> targetFeatureStack = new Stack<EStructuralFeature>();
-		private Stack<String> foreignNamespace = new Stack<String>();
-		private boolean inRichText;
+		private Stack<Element> elementStack = new Stack<Element>();
 		private boolean inRichTextContent;
-		private StringBuilder richtTextContent;
-		// private Stack<RichTextContent> richtTextContentStack = new
-		// Stack<RichTextContent>();
-
-		private static final String FXG_NS = "http://ns.adobe.com/fxg/2008";
+		private StringBuilder richtTextContent = new StringBuilder();
+		private boolean isProperty = false;
+		private String propertyName;
+		private Property property = null;
 
 		public FXMLHandler(IFile fxmlFile) {
 			this.fxmlFile = fxmlFile;
@@ -105,170 +102,135 @@ public class FXMLLoader {
 				i.setImportedNamespace(data);
 				model.getImports().add(i);
 			}
+			else if ("scenebuilder-stylesheet".equals(target)) {
+				// TODO what if there are more than one?
+				model.getComponentDef().getPreviewCssFiles().add(data);
+			}
+			else if ("scenebuilder-preview-i18n-resource".equals(target)) {
+				model.getComponentDef().setPreviewResourceBundle(data);
+			}
 		}
 
 		@Override
 		public void startElement(String uri, String localName, String qName,
 				Attributes attributes) throws SAXException {
-			System.err.println("uri: " + uri);
-			System.err.println(" localName: " + localName);
-			System.err.println(" qName: " + qName);
-			System.err.println(" attributes: " + attributes.getLength());
-
-			if (Character.isUpperCase(localName.charAt(0))) {
-				EClassifier classifier = FxgPackage.eINSTANCE
-						.getEClassifier(localName);
-				//System.err.println(classifier.getName());
+			System.err.println("start " + localName);
+			if (!"children".equals(localName)) {
+				if (Character.isLowerCase(localName.charAt(0))) {
+					if (isProperty) {
+						// TODO
+					} else {
+						isProperty = true;
+						property = null;
+						propertyName = localName;
+					}
+				} else {
+					Element e = createElement(localName, attributes);
+					if (isProperty) {
+						if (property == null) {
+							property = FXGraphFactory.eINSTANCE
+									.createProperty();
+							property.setName(propertyName);
+							property.setModifier(localName);
+							ListValueProperty vp = FXGraphFactory.eINSTANCE
+									.createListValueProperty();
+							for (Property p : e.getProperties()) {
+								SimpleValueProperty v = FXGraphFactory.eINSTANCE
+										.createSimpleValueProperty();
+								v.setStringValue(p.getName()
+										+ " : \""
+										+ ((SimpleValueProperty) p.getValue())
+												.getStringValue()+"\"");
+								vp.getValue().add(v);
+							}
+							property.setValue(vp);
+							elementStack.peek().getProperties().add(property);
+						} else {
+							System.err
+									.println("irgendwasssssssssssssssssssssssssssssssssssssssssssssssssss");
+						}
+					} else {
+						// root element
+						if (model.getComponentDef().getDefines().isEmpty()) {
+							Define d = FXGraphFactory.eINSTANCE.createDefine();
+							model.getComponentDef().getDefines().add(d);
+							d.setElement(e);
+						} else {
+							// if ()
+							elementStack.peek().getDefaultChildren().add(e);
+						}
+						System.err.println("push " + localName);
+						elementStack.push(e);
+					}
+				}
 			}
+		}
 
-			// if (FXG_NS.equals(uri)) {
-			// if (foreignNamespace.isEmpty()) {
-			// if (Character.isUpperCase(localName.charAt(0))) {
-			// EClassifier classifier = FxgPackage.eINSTANCE
-			// .getEClassifier(localName);
-			// FXGElement element = null;
-			//
-			// if (classifier == null) {
-			// if (graphic.get_children().get(0) instanceof Library) {
-			// Library l = (Library) graphic.get_children()
-			// .get(0);
-			// for (Definition d : l.get_children()) {
-			// if (localName.equals(d.getName())) {
-			// element = EcoreUtil.copy(d
-			// .get_children().get(0));
-			// break;
-			// }
-			// }
-			// }
-			// } else {
-			// element = (FXGElement) EcoreUtil
-			// .create((EClass) classifier);
-			// }
-			//
-			// if (element == null) {
-			// throw new IllegalStateException();
-			// }
-			//
-			// if (element instanceof Graphic) {
-			// graphic = (Graphic) element;
-			// }
-			//
-			// EStructuralFeature feature = null;
-			// if (!targetFeatureStack.isEmpty()) {
-			// feature = targetFeatureStack.lastElement();
-			// }
-			//
-			// if (feature != null && !elementStack.isEmpty()) {
-			// if (feature.isMany()) {
-			// List<FXGElement> list = (List<FXGElement>) elementStack
-			// .lastElement().eGet(feature);
-			// list.add(element);
-			// } else {
-			// elementStack.lastElement().eSet(feature,
-			// element);
-			// }
-			// }
-			//
-			// for (int i = 0; i < attributes.getLength(); i++) {
-			// if (FXG_NS.equals(attributes.getURI(i))
-			// || "".equals(attributes.getURI(i))) {
-			// String name = attributes.getLocalName(i);
-			// EStructuralFeature f = element.eClass()
-			// .getEStructuralFeature(name);
-			// if (f != null) {
-			// Object o = EcoreUtil.createFromString(
-			// (EDataType) f.getEType(),
-			// attributes.getValue(i));
-			// element.eSet(f, o);
-			// } else {
-			// System.err
-			// .println("Could not find feature '"
-			// + name
-			// + "' in "
-			// + element.eClass()
-			// .getName());
-			// }
-			// }
-			// }
-			//
-			// if (element instanceof ContainerElement<?>) {
-			// targetFeatureStack
-			// .add(FxgPackage.Literals.CONTAINER_ELEMENT__CHILDREN);
-			// } else {
-			// targetFeatureStack.add(null);
-			// }
-			// elementStack.add(element);
-			//
-			// if (element instanceof RichText) {
-			// inRichText = true;
-			// }
-			//
-			// } else {
-			// if (!elementStack.isEmpty()) {
-			// if (inRichTextContent) {
-			// richtTextContent.append("<" + localName);
-			// richtTextContent.append(toString(attributes));
-			// richtTextContent.append(">");
-			// } else {
-			// EStructuralFeature f = elementStack
-			// .lastElement().eClass()
-			// .getEStructuralFeature(localName);
-			// targetFeatureStack.add(f);
-			// if (inRichText
-			// && f == FxgPackage.Literals.RICH_TEXT__CONTENT) {
-			// inRichTextContent = true;
-			// richtTextContent = new StringBuilder();
-			// }
-			// }
-			// }
-			// }
-			// }
-			// } else {
-			// foreignNamespace.add(uri);
-			// }
+		/**
+		 * @param localName
+		 * @param attributes
+		 * @return
+		 */
+		private Element createElement(String localName, Attributes attributes) {
+			Element root = FXGraphFactory.eINSTANCE.createElement();
+			root.setName(localName);
+			for (int i = 0; i < attributes.getLength(); i++) {
+				String name = attributes.getLocalName(i);
+				String value = attributes.getValue(i);
+				Property p = FXGraphFactory.eINSTANCE.createProperty();
+				SimpleValueProperty vp = FXGraphFactory.eINSTANCE
+						.createSimpleValueProperty();
+				vp.setStringValue(value);
+				p.setName(name);
+				p.setValue(vp);
+				root.getProperties().add(p);
+			}
+			return root;
 		}
 
 		@Override
 		public void characters(char[] ch, int start, int length)
 				throws SAXException {
-			if (inRichTextContent) {
-				richtTextContent.append(new String(ch, start, length));
+			if (isProperty) {
+				richtTextContent = new StringBuilder().append(new String(ch,
+						start, length));
+				richtTextContent.trimToSize();
 			}
 		}
 
 		@Override
 		public void endElement(String uri, String localName, String qName)
 				throws SAXException {
-			System.err.println("END uri: " + uri);
-			System.err.println("END  localName: " + localName);
-			System.err.println("END  qName: " + qName);
+			System.err.println("end " + localName);
+			if (!"children".equals(localName)) {
+				if (isProperty && property != null
+						&& richtTextContent.length() > 0) {
+					String text = richtTextContent.toString()
+							.replaceAll("\n", "").replaceAll("\t", "").trim();
+					if (text.length() > 0) {
+						ListValueProperty vp = (ListValueProperty) property
+								.getValue();
+						SimpleValueProperty v = FXGraphFactory.eINSTANCE
+								.createSimpleValueProperty();
+						v.setStringValue(localName + " : "
+								+ richtTextContent.toString());
+						System.err.println("richtTextContent "
+								+ richtTextContent);
+						vp.getValue().add(v);
+					}
+				}
 
-			// if (FXG_NS.equals(uri)) {
-			// if (!"Graphic".equals(localName) && foreignNamespace.isEmpty()) {
-			// if (Character.isUpperCase(localName.charAt(0))) {
-			// targetFeatureStack.pop();
-			// if (elementStack.pop() instanceof RichText) {
-			// inRichText = false;
-			// }
-			// } else {
-			// if (inRichText) {
-			// if ("content".equals(localName)) {
-			// inRichTextContent = false;
-			// targetFeatureStack.pop();
-			// ((RichText) elementStack.lastElement())
-			// .set_tempcontent(richtTextContent
-			// .toString());
-			// } else {
-			// richtTextContent.append("</" + localName + ">");
-			// }
-			// } else {
-			// targetFeatureStack.pop();
-			// }
-			// }
-			// }
-			// } else {
-			// foreignNamespace.pop();
-			// }
+				if (!isProperty && Character.isUpperCase(localName.charAt(0))) {
+					// if (!isProperty) {
+					Element e = elementStack.pop();
+					System.err.println("pop " + e.getName());
+					// }
+				} else {
+					if (localName.equals(propertyName)) {
+						isProperty = false;
+					}
+				}
+			}
 		}
 	}
 }
