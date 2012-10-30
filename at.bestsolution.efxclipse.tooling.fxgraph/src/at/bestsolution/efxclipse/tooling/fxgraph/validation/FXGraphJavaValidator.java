@@ -120,7 +120,7 @@ public class FXGraphJavaValidator extends AbstractFXGraphJavaValidator {
 					componentDef.getPreviewResourceBundle());
 			
 			if( absFile == null || ! absFile.exists() ) {
-				error("The specified resource file '"+componentDef.getPreviewResourceBundle()+"'", FXGraphPackage.Literals.COMPONENT_DEFINITION__PREVIEW_RESOURCE_BUNDLE);
+				error("The specified resource file '"+componentDef.getPreviewResourceBundle()+"' could not be found", FXGraphPackage.Literals.COMPONENT_DEFINITION__PREVIEW_RESOURCE_BUNDLE);
 			}
 		}
 	}
