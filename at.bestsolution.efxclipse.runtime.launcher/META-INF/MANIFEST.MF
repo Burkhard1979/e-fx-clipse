@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Launcher
-Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.launcher
-Bundle-Version: 0.1.1.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Main-Class: at.bestsolution.efxclipse.runtime.launcher.Main
-JavaFX-Application-Class: at.bestsolution.efxclipse.runtime.launcher.Main
