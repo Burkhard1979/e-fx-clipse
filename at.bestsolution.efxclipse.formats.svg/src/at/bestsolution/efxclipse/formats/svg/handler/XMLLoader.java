@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -202,6 +204,11 @@ public class XMLLoader {
 		
 		private static final String SVG_NS = "http://www.w3.org/2000/svg";
 		private static final String XLINK_NS = "http://www.w3.org/1999/xlink";
+		
+		@Override
+		public InputSource resolveEntity(String arg0, String arg1) throws IOException, SAXException {
+			return new InputSource(new StringReader(""));
+		}
 		
 		@Override
 		public void startElement(String uri, String localName, String qName,
