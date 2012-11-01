@@ -116,8 +116,12 @@ public class PartRenderingEngine implements IPresentationEngine {
 			r.processContent(element);
 			r.postProcess(element);
 			
-			if (((EObject)element).eContainer() instanceof MUIElement) {
-				MUIElement parentElement = (MUIElement) ((EObject)element).eContainer();
+			Object parent = (element.getCurSharedRef() == null)
+					? ((EObject)element).eContainer()
+					: element.getCurSharedRef();
+
+			if (parent instanceof MUIElement) {
+				MUIElement parentElement = (MUIElement) parent;
 				AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(parentElement);
 				if (parentRenderer != null) {
 					parentRenderer.childRendered(parentElement, element);
@@ -225,7 +229,9 @@ public class PartRenderingEngine implements IPresentationEngine {
 
 	@SuppressWarnings("unchecked")
 	public void removeGui(MUIElement element) {
-		MUIElement container = (MUIElement) ((EObject)element).eContainer();
+		MUIElement container = (element.getCurSharedRef() == null)
+				? element.getCurSharedRef()
+				: (MUIElement) ((EObject)element).eContainer();
 		
 		if( container != null ) {
 			AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(container);
