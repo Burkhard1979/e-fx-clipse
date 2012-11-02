@@ -10,12 +10,16 @@
  */
 package at.bestsolution.efxclipse.runtime.emf.databinding.edit;
 
+import javafx.beans.property.ListPropertyBase;
 import javafx.beans.property.ObjectPropertyBase;
 import javafx.beans.property.Property;
+import javafx.collections.ObservableList;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -32,6 +36,30 @@ public class EMFEditFXProperties {
 	 */
 	public static <T> Property<T> value(EditingDomain editingDomain, EObject eObject, EStructuralFeature feature) {
 		return new EObjectProperty<>(editingDomain, eObject, feature);
+	}
+
+	public static <T> ObservableList<T> list(EditingDomain editingDomain, Notifier owner, EList<T> list) {
+		throw new UnsupportedOperationException("Not implemented");
+	}
+	
+	public static <T> ObservableList<T> list(EditingDomain editingDomain, EObject eObject, EStructuralFeature feature) {
+		throw new UnsupportedOperationException("Not implemented");
+	}
+	
+	static class EObjectObservableList<T> extends ListPropertyBase<T> {
+
+		EObject eObject;
+		EStructuralFeature feature;
+		EditingDomain editingDomain;
+		
+		public Object getBean() {
+			return eObject;
+		}
+
+		public String getName() {
+			return feature.getName();
+		}
+		
 	}
 
 	static class EObjectProperty<T> extends ObjectPropertyBase<T> {

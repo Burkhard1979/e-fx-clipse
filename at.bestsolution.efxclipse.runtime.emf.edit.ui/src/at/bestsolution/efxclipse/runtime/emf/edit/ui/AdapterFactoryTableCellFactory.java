@@ -44,8 +44,8 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
  * {@link ITableItemFontProvider}</li>
  * </ul>
  */
-public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory implements
-		Callback<TableColumn<Object, Object>, TableCell<Object, Object>> {
+public class AdapterFactoryTableCellFactory<S, T> extends AdapterFactoryCellFactory implements
+		Callback<TableColumn<S,T>, TableCell<S, T>> {
 
 	protected int columnIndex;
 
@@ -55,7 +55,8 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 	}
 
 	@Override
-	public TableCell<Object, Object> call(TableColumn<Object, Object> arg0) {
+	@SuppressWarnings("unchecked")
+	public TableCell<S, T> call(TableColumn<S, T> arg0) {
 
 		final TableCell<Object, Object> tableCell = new TableCell<Object, Object>() {
 
@@ -103,7 +104,7 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 		for (ICellCreationListener cellCreationListener : cellCreationListeners)
 			cellCreationListener.cellCreated(tableCell);
 
-		return tableCell;
+		return (TableCell<S, T>) tableCell;
 	}
 
 	/* package */void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {

@@ -19,18 +19,19 @@ import javafx.util.Callback;
 /**
  *	A cell value factory that simply forwards {@link CellDataFeatures#getValue()} as an {@link ObservableValue}. 
  */
-public class ProxyCellValueFactory implements Callback<TableColumn.CellDataFeatures<Object, Object>, ObservableValue<Object>> {
+public class ProxyCellValueFactory<S, T> implements Callback<TableColumn.CellDataFeatures<S, T>, ObservableValue<T>> {
 
 	@Override
-	public ObservableValue<Object> call(final CellDataFeatures<Object, Object> features) {
+	public ObservableValue<T> call(final CellDataFeatures<S, T> features) {
 
 		//TODO add notifications on update
 	
-		return new ObservableValueBase<Object>() {
+		return new ObservableValueBase<T>() {
 
 			@Override
-			public Object getValue() {
-				return features.getValue();
+			@SuppressWarnings("unchecked")
+			public T getValue() {
+				return (T) features.getValue();
 			}
 
 		};

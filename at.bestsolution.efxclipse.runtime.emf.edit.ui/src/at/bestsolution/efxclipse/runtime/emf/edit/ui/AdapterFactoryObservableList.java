@@ -33,14 +33,15 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
  * adapter-implemented {@link IStructuredItemContentProvider} interface. The content of the list can only be
  * modified through changes to the underlying model.
  */
-public class AdapterFactoryObservableList implements ObservableList<Object> {
+public class AdapterFactoryObservableList<T> implements ObservableList<T> {
 
 	private static final String CHANGES_THROUGH_MODEL = "An AdapterFactoryObservableList cannot be manipulated directly. Changes must be made via the model.";
 	protected AdapterFactory adapterFactory;
 	protected Object root;
 	protected IStructuredItemContentProvider provider;
-	/* package */ObservableList<Object> elements = FXCollections.observableArrayList();
+	/* package */ObservableList<T> elements = FXCollections.observableArrayList();
 
+	@SuppressWarnings("unchecked")
 	public AdapterFactoryObservableList(AdapterFactory adapterFactory, final Object root) {
 		super();
 
@@ -56,14 +57,14 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 		else
 			throw new IllegalArgumentException("Provided root object cannot be adapted.");
 		
-		elements.addAll(provider.getElements(root));
+		elements.addAll((Collection<? extends T>) provider.getElements(root));
 
 		if (root instanceof Notifier) {
 			AdapterImpl adapter = new AdapterImpl() {
 
 				@Override
 				public void notifyChanged(Notification msg) {
-					elements.setAll(provider.getElements(root));
+					elements.setAll((Collection<? extends T>) provider.getElements(root));
 				}
 
 			};
@@ -74,7 +75,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 				@Override
 				public void notifyChanged(Notification notification) {
-					elements.setAll(provider.getElements(root));
+					elements.setAll((Collection<? extends T>) provider.getElements(root));
 				}
 				
 			});
@@ -93,12 +94,12 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public boolean addAll(Collection<? extends Object> c) {
+	public boolean addAll(Collection<? extends T> c) {
 		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public boolean addAll(int index, Collection<? extends Object> c) {
+	public boolean addAll(int index, Collection<? extends T> c) {
 		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
@@ -118,7 +119,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public Object get(int index) {
+	public T get(int index) {
 		return elements.get(index);
 	}
 
@@ -133,7 +134,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public Iterator<Object> iterator() {
+	public Iterator<T> iterator() {
 		return elements.iterator();
 	}
 
@@ -143,12 +144,12 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public ListIterator<Object> listIterator() {
+	public ListIterator<T> listIterator() {
 		return elements.listIterator();
 	}
 
 	@Override
-	public ListIterator<Object> listIterator(int index) {
+	public ListIterator<T> listIterator(int index) {
 		return elements.listIterator(index);
 	}
 
@@ -158,7 +159,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public Object remove(int index) {
+	public T remove(int index) {
 		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
@@ -173,7 +174,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public Object set(int index, Object element) {
+	public T set(int index, Object element) {
 		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
@@ -183,7 +184,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public List<Object> subList(int fromIndex, int toIndex) {
+	public List<T> subList(int fromIndex, int toIndex) {
 		return elements.subList(fromIndex, toIndex);
 	}
 
@@ -193,7 +194,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public <T> T[] toArray(T[] a) {
+	public <A> A[] toArray(A[] a) {
 		return elements.toArray(a);
 	}
 
@@ -213,7 +214,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public void addListener(ListChangeListener<? super Object> listener) {
+	public void addListener(ListChangeListener<? super T> listener) {
 		elements.addListener(listener);
 	}
 
@@ -228,7 +229,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public void removeListener(ListChangeListener<? super Object> listener) {
+	public void removeListener(ListChangeListener<? super T> listener) {
 		elements.removeListener(listener);
 	}
 
@@ -243,7 +244,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public boolean setAll(Collection<? extends Object> arg0) {
+	public boolean setAll(Collection<? extends T> arg0) {
 		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
