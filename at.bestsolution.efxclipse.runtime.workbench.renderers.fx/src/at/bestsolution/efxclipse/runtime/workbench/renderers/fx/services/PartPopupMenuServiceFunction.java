@@ -8,11 +8,18 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.runtime.workbench.renderers.base.services;
+package at.bestsolution.efxclipse.runtime.workbench.renderers.fx.services;
 
-import org.eclipse.e4.ui.model.application.ui.menu.MPopupMenu;
+import org.eclipse.e4.core.contexts.ContextFunction;
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 
 @SuppressWarnings("restriction")
-public interface PopupMenuService<W> {
-	public MPopupMenu registerContextMenu(W widget, String id);
+public class PartPopupMenuServiceFunction extends ContextFunction {
+
+	@Override
+	public Object compute(IEclipseContext context) {
+		return ContextInjectionFactory.make(PartPopupMenuServiceImpl.class, context);
+	}
+
 }

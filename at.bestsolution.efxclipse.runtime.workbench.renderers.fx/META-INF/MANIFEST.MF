@@ -36,3 +36,5 @@ Import-Package: javafx.application,
  javafx.stage,
  javafx.util,
  javax.inject;version="1.0.0"
+Service-Component: OSGI-INF/popupfunction.xml
+Bundle-ActivationPolicy: lazy

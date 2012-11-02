@@ -31,6 +31,7 @@ import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
+import org.eclipse.e4.ui.model.application.ui.menu.MPopupMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
@@ -66,6 +67,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BaseToolControlRenderer<?> toolcontrolRenderer;
 	private BaseToolBarSeparatorRenderer<?> toolbarSeparatorRenderer;
 	private BaseAreaRenderer<?> areaRenderer;
+	private BasePopupMenuRenderer<?> popupMenuRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -77,7 +79,12 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <R extends AbstractRenderer<?,?>> R getRenderer(MUIElement modelObject) {
-		if( areaRenderer instanceof MArea ) {
+		if( modelObject instanceof MPopupMenu ) {
+			if( popupMenuRenderer == null ) {
+				popupMenuRenderer = ContextInjectionFactory.make(getPopupMenuRendererClass(), context);
+			}
+			return (R) popupMenuRenderer;
+		} else if( areaRenderer instanceof MArea ) {
 			if( areaRenderer == null ) {
 				areaRenderer = ContextInjectionFactory.make(getAreaRendererClass(), context);
 			}
@@ -193,5 +200,6 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BaseToolControlRenderer<?>> getToolcontrolRendererClass();
 	protected abstract Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass();
 	protected abstract Class<? extends BaseAreaRenderer<?>> getAreaRendererClass();
+	protected abstract Class<? extends BasePopupMenuRenderer<?>> getPopupMenuRendererClass();
 
 }

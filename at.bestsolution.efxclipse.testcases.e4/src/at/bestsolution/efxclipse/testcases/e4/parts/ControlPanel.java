@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -24,15 +25,18 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicFactoryImpl;
+import org.eclipse.e4.ui.workbench.UIEvents.Perspective;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
+
+import at.bestsolution.efxclipse.runtime.services.PopupMenuService;
 
 @SuppressWarnings("restriction")
 public class ControlPanel {
 	
 	@SuppressWarnings("rawtypes")
 	@Inject
-	public ControlPanel(BorderPane p, final MApplication application, final MWindow window, @Optional final MPerspective perspective, final EPartService partService, final EModelService modelService) {
+	public ControlPanel(BorderPane p, final MApplication application, final MWindow window, @Optional final MPerspective perspective, final EPartService partService, final EModelService modelService, PopupMenuService<Control> menuService) {
 		VBox box = new VBox();
 		
 		{
@@ -353,11 +357,16 @@ public class ControlPanel {
 				vbox.getChildren().add(hbox);
 			}
 			
-			
 			pane.setContent(vbox);
-			box.getChildren().add(pane);
+			box.getChildren().add(pane);			
 		}
 		
+		{
+			Label label = new Label("Context menu");
+			menuService.registerContextMenu(label, "at.bestsolution.efxclipse.testcases.e4.popupmenu.0");
+			box.getChildren().add(label);
+		}
+
 		p.setTop(box);
 	}
 }
