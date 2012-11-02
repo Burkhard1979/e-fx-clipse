@@ -34,7 +34,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetIm
 public class DefMenuRenderer extends BaseMenuRenderer<Menu> {
 
 	@Override
-	protected Class<? extends WMenu<Menu>> getWidgetClass() {
+	protected Class<? extends WMenu<Menu>> getWidgetClass(MMenu menu) {
 		return MenuImpl.class;
 	}
 

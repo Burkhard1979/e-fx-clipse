@@ -36,7 +36,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefPerspectiveStackRenderer extends BasePerspectiveStackRenderer<BorderPane,PerspectiveStackItem,Node> {
 
 	@Override
-	protected Class<? extends WPerspectiveStack<BorderPane,PerspectiveStackItem,Node>> getWidgetClass() {
+	protected Class<? extends WPerspectiveStack<BorderPane,PerspectiveStackItem,Node>> getWidgetClass(MPerspectiveStack stack) {
 		return PerspectiveStackImpl.class;
 	}
 	
