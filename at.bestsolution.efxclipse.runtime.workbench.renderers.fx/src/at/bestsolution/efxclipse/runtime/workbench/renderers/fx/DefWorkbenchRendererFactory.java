@@ -14,6 +14,7 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseAreaRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuItemRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuRenderer;
@@ -123,5 +124,10 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	@Override
 	protected Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass() {
 		return DefToolBarSeparatorRenderer.class;
+	}
+	
+	@Override
+	protected Class<? extends BaseAreaRenderer<?>> getAreaRendererClass() {
+		return DefAreaRenderer.class;
 	}
 }

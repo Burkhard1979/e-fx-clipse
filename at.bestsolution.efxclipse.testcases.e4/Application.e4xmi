@@ -24,6 +24,12 @@
           <children xsi:type="advanced:Placeholder" xmi:id="_cRNfUPW7EeG7tr8qKhf17Q" elementId="at.bestsolution.efxclipse.testcases.e4.placeholder.0" ref="_T4J0kPW5EeG7tr8qKhf17Q"/>
         </children>
       </children>
+      <children xsi:type="advanced:Perspective" xmi:id="_EQ6_wCTGEeKdCOcPGN2T3w" elementId="at.bestsolution.efxclipse.testcases.e4.perspective.2" label="P 3">
+        <children xsi:type="advanced:Area" xmi:id="_EWB3UCTIEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.area.0" horizontal="true">
+          <children xsi:type="advanced:Placeholder" xmi:id="_IJx1wCTIEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.placeholder.1" ref="_T4J0kPW5EeG7tr8qKhf17Q"/>
+          <children xsi:type="advanced:Placeholder" xmi:id="_KaEdYCTIEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.placeholder.2" ref="_wH3xYCTGEeKdCOcPGN2T3w"/>
+        </children>
+      </children>
     </children>
     <mainMenu xmi:id="_W8hHoORZEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.0">
       <children xsi:type="menu:Menu" xmi:id="_Xwuy0ORZEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.1" label="M1">
@@ -45,9 +51,16 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_qMwYEO6zEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.5" label="Perspective 1" command="_kCbZQO6yEeG4lfn-YKJbJw">
           <parameters xmi:id="_wqiT0O6zEeG4lfn-YKJbJw" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.1"/>
         </children>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_YIzeQCTIEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.6" label="Perspective 2" command="_kCbZQO6yEeG4lfn-YKJbJw">
+          <parameters xmi:id="_dtM68CTIEeKY8NYIo6jIvQ" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.2"/>
+        </children>
       </children>
     </mainMenu>
     <sharedElements xsi:type="basic:Part" xmi:id="_T4J0kPW5EeG7tr8qKhf17Q" elementId="at.bestsolution.efxclipse.testcases.e4.part.7" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C7"/>
+    <sharedElements xsi:type="basic:PartSashContainer" xmi:id="_wH3xYCTGEeKdCOcPGN2T3w" elementId="at.bestsolution.efxclipse.testcases.e4.partsashcontainer.1">
+      <children xsi:type="basic:Part" xmi:id="_wppBsCTGEeKdCOcPGN2T3w" elementId="at.bestsolution.efxclipse.testcases.e4.part.8" containerData="1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="P 8"/>
+      <children xsi:type="basic:Part" xmi:id="_3AyxACTGEeKdCOcPGN2T3w" elementId="at.bestsolution.efxclipse.testcases.e4.part.9" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="P 9"/>
+    </sharedElements>
     <trimBars xmi:id="_A7Q9o-L-EeGP-5z69KadAQ">
       <children xsi:type="menu:ToolBar" xmi:id="_A7Q9pOL-EeGP-5z69KadAQ" elementId="org.efxclipse.e4.maintoolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_fbkNAORYEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledtoolitem.0" label="Push - HI 0" command="_FEZr8OUcEeGP-5z69KadAQ"/>
