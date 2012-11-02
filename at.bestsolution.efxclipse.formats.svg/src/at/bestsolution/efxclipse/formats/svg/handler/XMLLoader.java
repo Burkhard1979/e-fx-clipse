@@ -97,12 +97,19 @@ public class XMLLoader {
 		}
 	}
 	
-	private void postProcess(String outFile, StringBuilder cssString, SvgSvgElement root) {
+	private void postProcess(String outFile, StringBuilder cssString, SvgSvgElement root) throws IOException {
 		int imageCount = 0;
 		TreeIterator<EObject> it = EcoreUtil.getAllContents(root, true);
 
 		if( cssString != null ) {
-			File outCssFile = new File(outFile+".css");
+			File outCssFile;
+			if( outFile == null ) {
+				outCssFile = File.createTempFile("conversion", ".css");
+				outCssFile.deleteOnExit();
+			} else {
+				outCssFile = new File(outFile+".css");	
+			}
+			
 			try {
 				FileOutputStream out = new FileOutputStream(outCssFile);
 				out.write(cssString.toString().getBytes());
@@ -142,7 +149,7 @@ public class XMLLoader {
 				String link = (String) o.eGet(f);
 				if( link != null && link.startsWith("data:") ) {
 					String type = link.substring(0,link.indexOf(';'));
-					String encoding = link.substring(link.indexOf(';')+1,link.indexOf(','));
+//					String encoding = link.substring(link.indexOf(';')+1,link.indexOf(','));
 					String data = link.substring(link.indexOf(',')+1);
 					byte[] b = DatatypeConverter.parseBase64Binary(data);
 					try {
@@ -150,9 +157,18 @@ public class XMLLoader {
 						if( suffix == null ) {
 							suffix = type.substring(type.indexOf('/')+1);
 						}
-						File outDir = new File(outFile+"img");
+						
+						File outDir;
+						
+						if( outFile == null ) {
+							outDir  = File.createTempFile("conversion", "_img");
+							outDir.delete();
+						} else {
+							outDir = new File(outFile+"img");
+						}
+						
 						File outF = new File(outDir, "img_"+(imageCount++)+"."+suffix);
-						outDir.mkdir();
+						outDir.mkdirs();
 						FileOutputStream out = new FileOutputStream(outF);
 						out.write(b);
 						out.close();
