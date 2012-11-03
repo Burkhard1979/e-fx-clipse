@@ -10,8 +10,6 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.fxml.editors;
 
-import java.util.Map;
-
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IJavaElement;
@@ -38,6 +36,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.ProcessingInstruction;
 
 import at.bestsolution.efxclipse.tooling.fxml.editors.FXMLCompletionProposalComputer.JavadocHoverWrapper;
 import at.bestsolution.efxclipse.tooling.model.FXPlugin;
@@ -98,9 +97,12 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 	}
 
 	
-	private IJavaElement computeTagNameHelp(IDOMNode xmlnode, IDOMNode parentNode, IStructuredDocumentRegion flatNode, ITextRegion region) {
+	public static IJavaElement computeTagNameHelp(IDOMNode xmlnode) {
 		if( Character.isLowerCase(xmlnode.getNodeName().charAt(0)) ) {
 			Node parent = xmlnode.getParentNode();
+			if( parent == null || parent.getNodeName() == null ||  parent.getOwnerDocument() == null) {
+				return null;
+			}
 			IType ownerType = Util.findType(parent.getNodeName(), parent.getOwnerDocument());
 			if( ownerType != null ) {
 				IFXClass fxClass = FXPlugin.getClassmodel().findClass(ownerType.getJavaProject(), ownerType);
@@ -143,7 +145,7 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 		return null;
 	}
 	
-	private IJavaElement computeTagAttNameHelp(IDOMNode xmlnode, IDOMNode parentNode, IStructuredDocumentRegion flatNode, ITextRegion region, int offset) {
+	public static IJavaElement computeTagAttNameHelp(IDOMNode xmlnode,int offset) {
 		NamedNodeMap m = xmlnode.getAttributes();
 		IDOMNode attribute = null;
 		if( m != null ) {
@@ -187,7 +189,7 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 		return null;
 	}
 	
-	private IJavaElement computeTagAttValueHelp(IDOMNode xmlnode, IDOMNode parentNode, IStructuredDocumentRegion flatNode, ITextRegion region, int offset) {
+	public static IJavaElement computeTagAttValueHelp(IDOMNode xmlnode, int offset) {
 		NamedNodeMap m = xmlnode.getAttributes();
 		IDOMNode attribute = null;
 		for( int i = 0; i < m.getLength(); i++ ) {
@@ -292,8 +294,6 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 		while ((node != null) && (node.getNodeType() == Node.TEXT_NODE) && (node.getParentNode() != null)) {
 			node = node.getParentNode();
 		}
-		IDOMNode parentNode = (IDOMNode) node;
-		
 		IStructuredDocumentRegion flatNode = ((IStructuredDocument) textViewer.getDocument()).getRegionAtCharacterOffset(documentOffset);
 		
 		if (flatNode != null) {
@@ -301,13 +301,22 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 			if (region != null) {
 				String regionType = region.getType();
 				if (regionType == DOMRegionContext.XML_TAG_NAME) {
-					element = computeTagNameHelp((IDOMNode) treeNode, parentNode, flatNode, region);
+					element = computeTagNameHelp((IDOMNode) treeNode);
 				}
 				else if (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_NAME) {
-					element = computeTagAttNameHelp((IDOMNode) treeNode, parentNode, flatNode, region, documentOffset);
+					IDOMNode dom = (IDOMNode)treeNode;
+					if( dom instanceof ProcessingInstruction ) {
+						String fqn = dom.getNodeValue();
+						if( fqn.endsWith("?") ) {
+							fqn = fqn.substring(0,fqn.length()-1);
+						}
+						element = Util.findType(fqn, dom.getOwnerDocument());
+					} else {
+						element = computeTagAttNameHelp((IDOMNode) treeNode, documentOffset);	
+					}
 				}
 				else if (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_VALUE) {
-					element = computeTagAttValueHelp((IDOMNode) treeNode, parentNode, flatNode, region, documentOffset);
+					element = computeTagAttValueHelp((IDOMNode) treeNode, documentOffset);
 				}
 			}
 		}

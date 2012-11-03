@@ -70,5 +70,15 @@
             </partitionType></contentTypeIdentifier>
       </validator>
    </extension>
+   <extension
+         point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+      <hyperlinkDetector
+            activate="true"
+            class="at.bestsolution.efxclipse.tooling.fxml.editors.FXMLHyperlinkDetector"
+            id="at.bestsolution.efxclipse.tooling.fxml.hyperlinkDetector1"
+            name="FXML Hyperlink Detector"
+            targetId="org.eclipse.core.runtime.xml">
+      </hyperlinkDetector>
+   </extension>
 
 </plugin>
