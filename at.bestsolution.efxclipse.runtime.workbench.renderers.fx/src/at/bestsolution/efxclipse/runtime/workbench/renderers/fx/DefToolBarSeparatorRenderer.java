@@ -24,7 +24,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetIm
 public class DefToolBarSeparatorRenderer extends BaseToolBarSeparatorRenderer<Separator> {
 
 	@Override
-	protected Class<? extends WToolBarSeparator<Separator>> getWidgetClass() {
+	protected Class<? extends WToolBarSeparator<Separator>> getWidgetClass(MToolBarSeparator separator) {
 		return ToolbarSeparatorImpl.class;
 	}
 

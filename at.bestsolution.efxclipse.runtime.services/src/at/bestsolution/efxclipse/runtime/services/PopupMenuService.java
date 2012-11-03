@@ -8,8 +8,8 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
+package at.bestsolution.efxclipse.runtime.services;
 
-public class DefSharedElementsRenderer {
-
+public interface PopupMenuService<W> {
+	public void registerContextMenu(W widget, String id);
 }

@@ -42,7 +42,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetIm
 public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 
 	@Override
-	protected Class<? extends WToolItem<Node>> getWidgetClass() {
+	protected Class<? extends WToolItem<Node>> getWidgetClass(MToolItem item) {
 		return ToolItemImpl.class;
 	}
 

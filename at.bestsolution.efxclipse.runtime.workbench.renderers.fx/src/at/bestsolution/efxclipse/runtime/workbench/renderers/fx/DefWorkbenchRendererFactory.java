@@ -14,6 +14,7 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseAreaRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuBarRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuItemRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuRenderer;
@@ -22,6 +23,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePartRender
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiveRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiveStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePlaceholderRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePopupMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseSashRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolBarSeparatorRenderer;
@@ -64,37 +66,37 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	protected Class<? extends BaseToolBarRenderer<?>> getToolBarRendererClass() {
 		return DefToolBarRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseToolItemRenderer<?>> getToolItemRendererClass() {
 		return DefToolItemRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseStackRenderer<?, ?, ?>> getStackRendererClass() {
 		return DefStackRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BasePartRenderer<?>> getPartRendererClass() {
 		return DefPartRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseMenuRenderer<?>> getMenuRendererClass() {
 		return DefMenuRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseMenuItemRenderer<?>> getMenuItemRendererClass() {
 		return DefMenuItemRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseMenuSeparatorRenderer<?>> getMenuSeparatorRendererClass() {
 		return DefMenuSeparatorRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseMenuRenderer<?>> getToolItemMenuRendererClass() {
 		return DefToolItemMenuRenderer.class;
@@ -109,19 +111,29 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	protected Class<? extends BasePerspectiveRenderer<?>> getPerspectiveRendererClass() {
 		return DefPerspectiveRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BasePlaceholderRenderer<?>> getPlaceholderRendererClass() {
 		return DefPlaceholderRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseToolControlRenderer<?>> getToolcontrolRendererClass() {
 		return DefToolControlRenderer.class;
 	}
-	
+
 	@Override
 	protected Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass() {
 		return DefToolBarSeparatorRenderer.class;
+	}
+
+	@Override
+	protected Class<? extends BaseAreaRenderer<?>> getAreaRendererClass() {
+		return DefAreaRenderer.class;
+	}
+	
+	@Override
+	protected Class<? extends BasePopupMenuRenderer<?>> getPopupMenuRendererClass() {
+		return DefPopupMenuRenderer.class;
 	}
 }

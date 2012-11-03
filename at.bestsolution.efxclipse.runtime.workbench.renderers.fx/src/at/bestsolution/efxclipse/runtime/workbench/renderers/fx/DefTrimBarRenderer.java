@@ -25,7 +25,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefTrimBarRenderer extends BaseTrimBarRenderer<HBox> {
 
 	@Override
-	protected Class<? extends WTrimBar<HBox>> getWidgetClass() {
+	protected Class<? extends WTrimBar<HBox>> getWidgetClass(MTrimBar trimbar) {
 		return WTrimBarImpl.class;
 	}
 

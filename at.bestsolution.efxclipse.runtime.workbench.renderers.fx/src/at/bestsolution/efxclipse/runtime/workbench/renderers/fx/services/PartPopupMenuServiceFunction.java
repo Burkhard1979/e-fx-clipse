@@ -8,8 +8,18 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.runtime.workbench.renderers.base;
+package at.bestsolution.efxclipse.runtime.workbench.renderers.fx.services;
 
-public class BaseContextMenuRenderer {
+import org.eclipse.e4.core.contexts.ContextFunction;
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+
+@SuppressWarnings("restriction")
+public class PartPopupMenuServiceFunction extends ContextFunction {
+
+	@Override
+	public Object compute(IEclipseContext context) {
+		return ContextInjectionFactory.make(PartPopupMenuServiceImpl.class, context);
+	}
 
 }

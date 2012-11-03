@@ -38,7 +38,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefSashRenderer extends BaseSashRenderer<SplitPane> {
 
 	@Override
-	protected Class<? extends WSash<SplitPane>> getWidgetClass() {
+	protected Class<? extends WSash<SplitPane>> getWidgetClass(MPartSashContainer container) {
 		return WSashImpl.class;
 	}
 

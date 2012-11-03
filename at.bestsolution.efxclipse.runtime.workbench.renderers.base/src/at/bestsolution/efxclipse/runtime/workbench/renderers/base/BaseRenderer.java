@@ -83,7 +83,7 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 	public final W createWidget(final M element) {
 		final IEclipseContext context = setupRenderingContext(element);
 		
-		W widget =  ContextInjectionFactory.make(getWidgetClass(), context);
+		W widget =  ContextInjectionFactory.make(getWidgetClass(element), context);
 		widget.setPropertyChangeHandler(new WPropertyChangeHandler<W>() {
 
 			@Override
@@ -277,7 +277,7 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 		return _context.get(IPresentationEngine.class);
 	}
 	
-	protected abstract Class<? extends W> getWidgetClass();
+	protected abstract Class<? extends W> getWidgetClass(M element);
 	
 	@SuppressWarnings("unchecked")
 	protected <LW extends WWidget<PM>, PM extends MUIElement> LW engineCreateWidget(PM pm) {

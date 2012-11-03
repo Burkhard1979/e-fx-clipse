@@ -28,7 +28,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefToolBarRenderer extends BaseToolBarRenderer<ToolBar> {
 
 	@Override
-	protected Class<? extends WToolBar<ToolBar>> getWidgetClass() {
+	protected Class<? extends WToolBar<ToolBar>> getWidgetClass(MToolBar toolbar) {
 		return WToolBarImpl.class;
 	}
 

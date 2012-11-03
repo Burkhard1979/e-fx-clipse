@@ -58,7 +58,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 
 	@Override
-	protected Class<? extends WStack<FXTabPane,FXTab, Node>> getWidgetClass() {
+	protected Class<? extends WStack<FXTabPane,FXTab, Node>> getWidgetClass(MPartStack stack) {
 		return StackWidgetImpl.class;
 	}
 

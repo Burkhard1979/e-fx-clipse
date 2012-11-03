@@ -10,17 +10,18 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx.services;
 
-import javax.inject.Inject;
-
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Control;
+
+import javax.inject.Inject;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MPopupMenu;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 
-import at.bestsolution.efxclipse.runtime.workbench.renderers.base.services.PopupMenuService;
+import at.bestsolution.efxclipse.runtime.services.PopupMenuService;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPopupMenu;
 
 @SuppressWarnings("restriction")
 public class PartPopupMenuServiceImpl implements PopupMenuService<Control> {
@@ -28,19 +29,15 @@ public class PartPopupMenuServiceImpl implements PopupMenuService<Control> {
 	private MPart part;
 
 	@Override
-	public MPopupMenu registerContextMenu(Control widget, String id) {
+	public void registerContextMenu(Control widget, String id) {
 		for (MMenu mmenu : part.getMenus()) {
 			if (id.equals(mmenu.getElementId()) && mmenu instanceof MPopupMenu) {
 				ContextMenu menu = registerMenu(widget, (MPopupMenu) mmenu, part);
 				if (menu != null) {
 					widget.setContextMenu(menu);
-					return (MPopupMenu) mmenu;
-				} else {
-					return null;
 				}
 			}
 		}
-		return null;
 	}
 
 	private ContextMenu registerMenu(Control widget, MPopupMenu menu, MPart part) {
@@ -49,10 +46,7 @@ public class PartPopupMenuServiceImpl implements PopupMenuService<Control> {
 		}
 		
 		IPresentationEngine engine = part.getContext().get(IPresentationEngine.class);
-		engine.createGui(menu);
-		
-		// TODO Auto-generated method stub
-		return null;
+		return (ContextMenu) ( (WPopupMenu<ContextMenu>) engine.createGui(menu)).getWidget();
 	}
 
 }

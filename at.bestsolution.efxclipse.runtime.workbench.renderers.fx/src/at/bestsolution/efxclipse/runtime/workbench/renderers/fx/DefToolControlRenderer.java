@@ -24,7 +24,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetIm
 public class DefToolControlRenderer extends BaseToolControlRenderer<Group> {
 
 	@Override
-	protected Class<? extends WToolControl<Group>> getWidgetClass() {
+	protected Class<? extends WToolControl<Group>> getWidgetClass(MToolControl control) {
 		return WToolControlImpl.class;
 	}
 	

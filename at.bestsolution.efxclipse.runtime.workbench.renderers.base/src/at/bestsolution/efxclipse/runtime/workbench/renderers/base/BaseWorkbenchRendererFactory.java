@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.advanced.MArea;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
@@ -30,6 +31,7 @@ import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
+import org.eclipse.e4.ui.model.application.ui.menu.MPopupMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
@@ -64,6 +66,8 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BasePlaceholderRenderer<?> placeholderRenderer;
 	private BaseToolControlRenderer<?> toolcontrolRenderer;
 	private BaseToolBarSeparatorRenderer<?> toolbarSeparatorRenderer;
+	private BaseAreaRenderer<?> areaRenderer;
+	private BasePopupMenuRenderer<?> popupMenuRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -75,7 +79,17 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <R extends AbstractRenderer<?,?>> R getRenderer(MUIElement modelObject) {
-		if( modelObject instanceof MWindow ) {
+		if( modelObject instanceof MPopupMenu ) {
+			if( popupMenuRenderer == null ) {
+				popupMenuRenderer = ContextInjectionFactory.make(getPopupMenuRendererClass(), context);
+			}
+			return (R) popupMenuRenderer;
+		} else if( areaRenderer instanceof MArea ) {
+			if( areaRenderer == null ) {
+				areaRenderer = ContextInjectionFactory.make(getAreaRendererClass(), context);
+			}
+			return (R) areaRenderer;
+		} else if( modelObject instanceof MWindow ) {
 			if( windowRenderer == null ) {
 				windowRenderer = make(getWindowRendererClass());
 			}
@@ -193,5 +207,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BasePlaceholderRenderer<?>> getPlaceholderRendererClass();
 	protected abstract Class<? extends BaseToolControlRenderer<?>> getToolcontrolRendererClass();
 	protected abstract Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass();
+	protected abstract Class<? extends BaseAreaRenderer<?>> getAreaRendererClass();
+	protected abstract Class<? extends BasePopupMenuRenderer<?>> getPopupMenuRendererClass();
 
 }

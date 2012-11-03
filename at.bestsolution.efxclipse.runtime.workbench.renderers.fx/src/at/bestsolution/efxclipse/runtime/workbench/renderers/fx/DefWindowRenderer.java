@@ -125,7 +125,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 	}
 
 	@Override
-	protected Class<? extends WWindow<Stage>> getWidgetClass() {
+	protected Class<? extends WWindow<Stage>> getWidgetClass(MWindow window) {
 		return WWindowImpl.class;
 	}
 
