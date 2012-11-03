@@ -10,6 +10,8 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.fxml.editors;
 
+import java.util.Map;
+
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IJavaElement;
@@ -31,13 +33,19 @@ import org.eclipse.wst.sse.ui.internal.contentassist.ContentAssistUtils;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.core.internal.regions.DOMRegionContext;
 import org.eclipse.wst.xml.ui.internal.Logger;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import at.bestsolution.efxclipse.tooling.fxml.editors.FXMLCompletionProposalComputer.JavadocHoverWrapper;
 import at.bestsolution.efxclipse.tooling.model.FXPlugin;
 import at.bestsolution.efxclipse.tooling.model.IFXClass;
+import at.bestsolution.efxclipse.tooling.model.IFXCtrlClass;
+import at.bestsolution.efxclipse.tooling.model.IFXCtrlEventMethod;
 import at.bestsolution.efxclipse.tooling.model.IFXEnumProperty;
+import at.bestsolution.efxclipse.tooling.model.IFXEventHandlerProperty;
 import at.bestsolution.efxclipse.tooling.model.IFXProperty;
 
 @SuppressWarnings("restriction")
@@ -193,6 +201,11 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 			Node parent = xmlnode;
 			IFXProperty p = null;
 			
+			if( "http://javafx.com/fxml".equals(attribute.getNamespaceURI()) ) {
+				Document d = xmlnode.getOwnerDocument();
+				return Util.findType(attribute.getNodeValue(), d);
+			}
+			
 			if( attribute.getNodeName().contains(".") ) {
 				String[] parts = attribute.getNodeName().split("\\.");
 				IType ownerType = Util.findType(parts[0], parent.getOwnerDocument());
@@ -227,6 +240,20 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 				} catch (JavaModelException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}
+			} else if( p instanceof IFXEventHandlerProperty && attribute.getNodeValue().startsWith("#") ) {
+				Document d = xmlnode.getOwnerDocument();
+				Element e = d.getDocumentElement();
+				Attr a = e.getAttributeNodeNS("http://javafx.com/fxml", "controller");
+				if (a != null) {
+					IType t = Util.findType(a.getValue(), d);
+					if( t != null ) {
+						IFXCtrlClass cl = FXPlugin.getClassmodel().findCtrlClass(t.getJavaProject(), t);
+						 IFXCtrlEventMethod method = cl.getAllEventMethods().get(attribute.getNodeValue().substring(1));
+						 if( method != null ) {
+							 return method.getJavaElement();
+						 }
+					}
 				}
 			}
 		}
