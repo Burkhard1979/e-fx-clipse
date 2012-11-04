@@ -38,7 +38,7 @@
       </children>
       <children xsi:type="advanced:Perspective" xmi:id="_KhnNsCZmEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.perspective.3" label="P 3">
         <children xsi:type="basic:PartSashContainer" xmi:id="_N8CGICZmEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.partsashcontainer.2" horizontal="true">
-          <tags>fixedLayout</tags>
+          <tags>fx_fixedLayout</tags>
           <children xsi:type="basic:Part" xmi:id="_Tp95UCZmEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.10" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 10">
             <persistedState key="fx_layout_width" value="300"/>
             <tags>content_a</tags>
@@ -48,6 +48,13 @@
             <persistedState key="fx_layout_grab_vertical" value="true"/>
             <tags>content_b</tags>
           </children>
+        </children>
+      </children>
+      <children xsi:type="advanced:Perspective" xmi:id="_l1lrgCaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.perspective.4" label="P 4">
+        <children xsi:type="basic:PartStack" xmi:id="_n0_-gCaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.partstack.0">
+          <tags>fx_pagination</tags>
+          <children xsi:type="basic:Part" xmi:id="_x8MQ8CaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.12" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 12"/>
+          <children xsi:type="basic:Part" xmi:id="_yVlBUCaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.13" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 13"/>
         </children>
       </children>
     </children>
@@ -76,6 +83,9 @@
         </children>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_GjUWsCZnEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.8" label="Perspective 3" command="_kCbZQO6yEeG4lfn-YKJbJw">
           <parameters xmi:id="_HkPoMCZnEeKqs9jU_V83wg" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.3"/>
+        </children>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_6V3RoCaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.9" label="Perspective 4" command="_kCbZQO6yEeG4lfn-YKJbJw">
+          <parameters xmi:id="_7xfiICaCEeKqs9jU_V83wg" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.4"/>
         </children>
       </children>
     </mainMenu>
