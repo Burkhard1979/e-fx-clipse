@@ -49,6 +49,7 @@ import org.eclipse.e4.ui.internal.workbench.DefaultLoggerProvider;
 import org.eclipse.e4.ui.internal.workbench.E4Workbench;
 import org.eclipse.e4.ui.internal.workbench.ExceptionHandler;
 import org.eclipse.e4.ui.internal.workbench.ModelServiceImpl;
+import org.eclipse.e4.ui.internal.workbench.PlaceholderResolver;
 import org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory;
 import org.eclipse.e4.ui.internal.workbench.ResourceHandler;
 import org.eclipse.e4.ui.internal.workbench.WorkbenchLogger;
@@ -63,6 +64,7 @@ import org.eclipse.e4.ui.workbench.lifecycle.PreSave;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessRemovals;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.e4.ui.workbench.modeling.EPlaceholderResolver;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -372,6 +374,7 @@ public class E4Application extends AbstractJFXApplication {
 		appContext.set(Logger.class.getName(), ContextInjectionFactory.make(WorkbenchLogger.class, appContext));
 
 		appContext.set(EModelService.class, new ModelServiceImpl(appContext));
+		appContext.set(EPlaceholderResolver.class, new PlaceholderResolver());
 
 		// translation
 		String locale = Locale.getDefault().toString();
