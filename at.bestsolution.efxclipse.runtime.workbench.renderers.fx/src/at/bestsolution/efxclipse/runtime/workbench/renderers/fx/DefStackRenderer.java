@@ -489,9 +489,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		}
 
 		@Override
-		public void setKeySelectedItemCallback(WCallback<WStack.WStackItem<Object, Node>, Void> selectedItemCallback) {
-			// TODO Auto-generated method stub
-			
+		public void setKeySelectedItemCallback(WCallback<WStack.WStackItem<Object, Node>, Void> selectedItemCallback) {			
 		}
 
 		@Override
