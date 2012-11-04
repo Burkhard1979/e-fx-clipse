@@ -202,6 +202,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			}
 		}
 
+		stack.selectItem(stack.getItems().indexOf(initalItem));
 	}
 
 	private WStackItem<I, IC> createStackItem(WStack<N, I, IC> stack, final MStackElement e, AbstractRenderer<MStackElement, ?> renderer) {
