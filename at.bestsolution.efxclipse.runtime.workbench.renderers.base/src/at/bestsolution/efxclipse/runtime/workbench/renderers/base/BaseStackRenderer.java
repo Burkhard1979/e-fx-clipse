@@ -43,7 +43,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.
 @SuppressWarnings("restriction")
 public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStack, WStack<N, I, IC>> {
 	// private static final String MAP_ITEM_KEY = "fx.rendering.stackitem";
-
+	
 	@Inject
 	RendererFactory factory;
 	

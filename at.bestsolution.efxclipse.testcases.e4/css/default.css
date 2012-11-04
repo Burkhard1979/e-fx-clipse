@@ -97,3 +97,13 @@
 .album-list .list-cell:selected {
 	-fx-selection-bar: orange;
 }
+
+.content_a {
+	-fx-background-color: #f00;
+	-fx-padding: 10;
+}
+
+.content_b {
+	-fx-background-color: #0f0;
+	-fx-padding: 10;
+}
