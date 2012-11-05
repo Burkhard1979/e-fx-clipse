@@ -17,11 +17,9 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -32,7 +30,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.Optional;
-import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.eclipse.e4.ui.workbench.IResourceUtilities;
@@ -48,41 +45,47 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRende
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.WStackItem;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.DetachView;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.MoveToFirst;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.MoveToLast;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions.PinToBottom;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.PaginationItem;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
+public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 
 	@Override
-	protected Class<? extends WStack<FXTabPane,FXTab, Node>> getWidgetClass(MPartStack stack) {
-		return StackWidgetImpl.class;
+	protected Class<? extends WStack<Node,Object, Node>> getWidgetClass(MPartStack stack) {
+		if( stack.getTags().contains(WStack.TAG_PAGINATION) ) {
+			return PaginationWidgetImpl.class;
+		} else {
+			return StackWidgetImpl.class;	
+		}
+		
 	}
 
-	
-	public static class StackWidgetImpl extends WLayoutedWidgetImpl<FXTabPane, FXTabPane, MPartStack> implements WStack<FXTabPane, FXTab, Node> {
+	public static class StackWidgetImpl extends WLayoutedWidgetImpl<Node, Node, MPartStack> implements WStack<Node, Object, Node> {
 		
-		private WCallback<WStackItem<FXTab, Node>, Void> mouseSelectedItemCallback;
-		private WCallback<WStackItem<FXTab, Node>, Void> keySelectedItemCallback;
+		private WCallback<WStackItem<Object, Node>, Void> mouseSelectedItemCallback;
+		private WCallback<WStackItem<Object, Node>, Void> keySelectedItemCallback;
 		private WCallback<WMinMaxState, Void> minMaxCallback;
 		private boolean inKeyTraversal;
 		
 		@Inject
 		private EModelService modelService;
 		
-		public void setMouseSelectedItemCallback(WCallback<WStackItem<FXTab, Node>, Void> mouseSelectedItemCallback) {
+		public void setMouseSelectedItemCallback(WCallback<WStackItem<Object, Node>, Void> mouseSelectedItemCallback) {
 			this.mouseSelectedItemCallback = mouseSelectedItemCallback;
 		}
 		
-		public void setKeySelectedItemCallback(WCallback<WStackItem<FXTab, Node>, Void> keySelectedItemCallback) {
+		public void setKeySelectedItemCallback(WCallback<WStackItem<Object, Node>, Void> keySelectedItemCallback) {
 			this.keySelectedItemCallback = keySelectedItemCallback;
 		}
 		
 		@Override
-		public int indexOf(WStackItem<FXTab, Node> item) {
+		public FXTabPane getWidget() {
+			return (FXTabPane) super.getWidget();
+		}
+		
+		@Override
+		public int indexOf(WStackItem<Object, Node> item) {
 			return getWidget().getTabs().indexOf(item.getNativeItem());
 		}
 		
@@ -225,7 +228,7 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 					final StackItemImpl w = (StackItemImpl) newValue.getUserData();
 					w.handleSelection();
 					 
-					final WCallback<WStackItem<FXTab, Node>, Void> cb;
+					final WCallback<WStackItem<Object, Node>, Void> cb;
 					if( ! inKeyTraversal ) {
 						cb = mouseSelectedItemCallback;
 					} else {
@@ -270,29 +273,29 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		}
 
 		@Override
-		public Class<? extends WStackItem<FXTab, Node>> getStackItemClass() {
+		public Class<? extends WStackItem<Object, Node>> getStackItemClass() {
 			return StackItemImpl.class;
 		}
 		
 		@Override
-		public void addItem(WStackItem<FXTab, Node> item) {
+		public void addItem(WStackItem<Object, Node> item) {
 			addItems(Collections.singletonList(item));
 		}
 		
 		@Override
-		public void addItems(List<WStackItem<FXTab, Node>> items) {
+		public void addItems(List<WStackItem<Object, Node>> items) {
 			getWidget().getTabs().addAll(extractTabs(items));
 		}
 		
 		@Override
-		public void addItems(int index, List<WStackItem<FXTab, Node>> items) {
+		public void addItems(int index, List<WStackItem<Object, Node>> items) {
 			getWidget().getTabs().addAll(index, extractTabs(items));
 		}
 		
-		private static final List<FXTab> extractTabs(List<WStackItem<FXTab, Node>> items) {
+		private static final List<FXTab> extractTabs(List<WStackItem<Object, Node>> items) {
 			List<FXTab> tabs = new ArrayList<FXTab>(items.size());
-			for( WStackItem<FXTab, Node> t : items ) {
-				tabs.add(t.getNativeItem());
+			for( WStackItem<Object, Node> t : items ) {
+				tabs.add((FXTab) t.getNativeItem());
 			}
 			return tabs;
 		}
@@ -303,11 +306,11 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		}
 
 		@Override
-		public List<WStackItem<FXTab, Node>> getItems() {
-			List<WStackItem<FXTab, Node>> rv = new ArrayList<WStackItem<FXTab, Node>>();
+		public List<WStackItem<Object, Node>> getItems() {
+			List<WStackItem<Object, Node>> rv = new ArrayList<WStackItem<Object, Node>>();
 			for( FXTab t : getWidget().getTabs() ) {
 				@SuppressWarnings("unchecked")
-				WStackItem<FXTab, Node> i = (WStackItem<FXTab, Node>) t.getUserData();
+				WStackItem<Object, Node> i = (WStackItem<Object, Node>) t.getUserData();
 				if( i != null ) {
 					rv.add(i);	
 				}
@@ -316,19 +319,19 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		}
 
 		@Override
-		public void removeItems(List<WStackItem<FXTab, Node>> items) {
-			List<FXTab> l = new ArrayList<FXTab>();
-			for( WStackItem<FXTab, Node> i : items ) {
+		public void removeItems(List<WStackItem<Object, Node>> items) {
+			List<Object> l = new ArrayList<Object>();
+			for( WStackItem<Object, Node> i : items ) {
 				l.add(i.getNativeItem());
 			}
 			getWidget().getTabs().removeAll(l);
 		}
 	}
 	
-	public static class StackItemImpl implements WStackItem<FXTab, Node> {
+	public static class StackItemImpl implements WStackItem<Object, Node> {
 		private FXTab tab;
-		private WCallback<WStackItem<FXTab, Node>, Node> initCallback;
-		private WCallback<WStackItem<FXTab, Node>, Boolean> closeCallback;
+		private WCallback<WStackItem<Object, Node>, Node> initCallback;
+		private WCallback<WStackItem<Object, Node>, Boolean> closeCallback;
 		private MStackElement domElement;
 		
 		@Inject
@@ -379,7 +382,7 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 			}	
 		}
 		
-		public void setInitCallback(WCallback<WStackItem<FXTab, Node>, Node> initCallback) {
+		public void setInitCallback(WCallback<WStackItem<Object, Node>, Node> initCallback) {
 			this.initCallback = initCallback;
 		}
 
@@ -408,8 +411,160 @@ public class DefStackRenderer extends BaseStackRenderer<FXTabPane,FXTab, Node> {
 		}
 		
 		@Override
-		public void setOnCloseCallback(final WCallback<WStackItem<FXTab, Node>, Boolean> callback) {
+		public void setOnCloseCallback(final WCallback<WStackItem<Object, Node>, Boolean> callback) {
 			this.closeCallback = callback;
+		}
+	}
+	
+	
+	public static class PaginationWidgetImpl extends WLayoutedWidgetImpl<Node, Node, MPartStack> implements WStack<Node, Object, Node> {
+		private List<WStackItem<Object, Node>> items = new ArrayList<WStack.WStackItem<Object,Node>>();
+		private WCallback<WStackItem<Object, Node>, Void> mouseSelectedItemCallback;
+		
+		@Override
+		public void setMinMaxCallback(WCallback<WMinMaxState, Void> minMaxCallback) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void setMinMaxState(WMinMaxState state) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public Class<? extends WStackItem<Object, Node>> getStackItemClass() {
+			return PagninationItemImpl.class;
+		}
+
+		
+		@Override
+		public Pagination getWidget() {
+			return (Pagination) super.getWidget();
+		}
+		
+		@Override
+		public void addItem(WStackItem<Object, Node> item) {
+			items.add(item);
+			getWidget().setPageCount(items.size());
+		}
+
+		@Override
+		public void addItems(List<WStackItem<Object, Node>> items) {
+			this.items.addAll(items);
+			getWidget().setPageCount(this.items.size());
+		}
+
+		@Override
+		public void addItems(int index, List<WStack.WStackItem<Object, Node>> items) {
+			this.items.addAll(index, items);
+			getWidget().setPageCount(this.items.size());
+		}
+
+		@Override
+		public void selectItem(int idx) {
+			getWidget().setCurrentPageIndex(idx);
+		}
+
+		@Override
+		public int indexOf(WStackItem<Object, Node> item) {
+			return items.indexOf(item);
+		}
+
+		@Override
+		public List<WStackItem<Object, Node>> getItems() {
+			return items;
+		}
+
+		@Override
+		public void removeItems(List<WStackItem<Object, Node>> items) {
+			this.items.removeAll(items);
+			getWidget().setPageCount(this.items.size());
+		}
+
+		@Override
+		public void setMouseSelectedItemCallback(WCallback<WStack.WStackItem<Object, Node>, Void> selectedItemCallback) {
+			this.mouseSelectedItemCallback = selectedItemCallback;
+		}
+
+		@Override
+		public void setKeySelectedItemCallback(WCallback<WStack.WStackItem<Object, Node>, Void> selectedItemCallback) {			
+		}
+
+		@Override
+		public int getItemCount() {
+			return items.size();
+		}
+
+		@Override
+		protected Pagination getWidgetNode() {
+			return getWidget();
+		}
+
+		@Override
+		protected Pagination createWidget() {
+			Pagination p = new Pagination();
+			p.setPageFactory(new Callback<Integer, Node>() {
+				
+				@Override
+				public Node call(Integer param) {
+					PagninationItemImpl item = (PagninationItemImpl) items.get(param.intValue());
+					item.handleSelection();
+					mouseSelectedItemCallback.call(item);
+					return item.getNativeItem().getContent();
+				}
+			});
+			p.currentPageIndexProperty().addListener(new ChangeListener<Number>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+					final PagninationItemImpl item =  (PagninationItemImpl) items.get(newValue.intValue());
+					if( mouseSelectedItemCallback != null ) {
+						mouseSelectedItemCallback.call(item);
+					}
+				}
+			});
+			return p;
+		}
+		
+	}
+
+	public static class PagninationItemImpl implements WStackItem<Object, Node> {
+		private WCallback<WStackItem<Object, Node>, Node> initCallback;
+		private PaginationItem item = new PaginationItem();
+		private MStackElement domElement;
+		
+		void handleSelection() {
+			if( initCallback != null ) {
+				item.setContent(initCallback.call(this));
+				initCallback = null;
+			}	
+		}
+		
+		@Override
+		public PaginationItem getNativeItem() {
+			return item;
+		}
+
+		@Override
+		public void setDomElement(MStackElement domElement) {
+			this.domElement = domElement;
+		}
+
+		@Override
+		public MStackElement getDomElement() {
+			return domElement;
+		}
+
+		@Override
+		public void setInitCallback(WCallback<WStackItem<Object, Node>, Node> callback) {
+			this.initCallback = callback;
+		}
+
+		@Override
+		public void setOnCloseCallback(WCallback<WStackItem<Object, Node>, Boolean> callback) {
+			// there's no close
 		}
 	}
 }
