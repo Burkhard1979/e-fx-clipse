@@ -17,6 +17,7 @@ import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.doubleClicking.LexerTokenAndCharacterPairAwareStrategy;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.model.TokenTypeToStringMapper;
+import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
@@ -32,6 +33,7 @@ import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
+import at.bestsolution.efxclipse.tooling.css.ui.occurrences.CssDslOccurenceComputer;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
@@ -82,6 +84,8 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		binder.bind(LexerTokenAndCharacterPairAwareStrategy.class).to(CssGrammarAwareStrategy.class);
 		
 		binder.bind(AbstractAntlrTokenToAttributeIdMapper.class).to(TokenMapper.class);
+		
+		binder.bind(IOccurrenceComputer.class).to(CssDslOccurenceComputer.class);
 		
 	}
 	
