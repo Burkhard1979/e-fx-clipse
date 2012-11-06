@@ -29,6 +29,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
@@ -78,7 +79,6 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		}
 		
 		String r = b.toString();
-		System.err.println(r);
 		return r;
 	}
 	
@@ -150,6 +150,9 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 				func.append(getText(next));
 			}
 			return getText(funcTok.getName()) + "(" + func.toString().trim()+ ")";
+		}
+		else if (cssTok instanceof UrlTok) {
+			return "url(" + ((UrlTok)cssTok).getUrl().getUrl() + ")";
 		}
 		else return cssTok.toString();
 	}

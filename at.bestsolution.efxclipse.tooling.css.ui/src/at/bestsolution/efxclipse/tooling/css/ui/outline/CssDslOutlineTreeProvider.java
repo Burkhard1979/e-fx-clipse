@@ -32,7 +32,6 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
 public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
 	protected void _createChildren(DocumentRootNode parentNode, stylesheet stylesheet) {
-		System.err.println("do parent");
 		for (ruleset ruleset : stylesheet.getRuleset()) {
 			for (selector s : ruleset.getSelectors()) {
 				boolean isLeaf = ruleset.getDeclarations().isEmpty();
@@ -47,7 +46,6 @@ public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	}
 	
 	protected void _createChildren(IOutlineNode parentNode, ruleset ruleset) {
-		System.err.println("do ruleset");
 		for (css_declaration d : ruleset.getDeclarations()) {
 			StringBuilder valueBuilder = new StringBuilder();
 			Iterator<CssTok> iterator = d.getValueTokens().iterator();
@@ -55,7 +53,7 @@ public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 				CssTok next = iterator.next();
 				valueBuilder.append(labelProvider.getText(next));
 			}
-			EObjectNode node = createEObjectNode(parentNode, d, labelProvider.getImage(d.getProperty()), labelProvider.getText(d.getProperty()) + ": " +valueBuilder.toString().trim(), true);
+			EObjectNode node = createEObjectNode(parentNode, d, labelProvider.getImage(d.getProperty()), labelProvider.getText(d.getProperty()) + ": " +valueBuilder.toString().trim() + (d.isImportant()?" !important":""), true);
 			node.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(d.getProperty()));
 		}
 	}
