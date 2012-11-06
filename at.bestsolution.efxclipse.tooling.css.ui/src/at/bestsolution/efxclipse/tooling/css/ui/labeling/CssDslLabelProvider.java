@@ -17,9 +17,11 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.AttributeSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
@@ -135,6 +137,19 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		}
 		else if (cssTok instanceof WSTok) {
 			return " ";
+		}
+		else if (cssTok instanceof ColorTok) {
+			return ((ColorTok) cssTok).getValue();
+		}
+		else if (cssTok instanceof FuncTok) {
+			FuncTok funcTok = (FuncTok) cssTok;
+			StringBuilder func = new StringBuilder();
+			Iterator<CssTok> iterator = funcTok.getParams().iterator();
+			while (iterator.hasNext()) {
+				CssTok next = iterator.next();
+				func.append(getText(next));
+			}
+			return getText(funcTok.getName()) + "(" + func.toString().trim()+ ")";
 		}
 		else return cssTok.toString();
 	}

@@ -10,12 +10,15 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.outline;
 
+import java.util.Iterator;
+
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
 import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
@@ -46,7 +49,13 @@ public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	protected void _createChildren(IOutlineNode parentNode, ruleset ruleset) {
 		System.err.println("do ruleset");
 		for (css_declaration d : ruleset.getDeclarations()) {
-			EObjectNode node = createEObjectNode(parentNode, d, labelProvider.getImage(d.getProperty()), labelProvider.getText(d.getProperty()), true);
+			StringBuilder valueBuilder = new StringBuilder();
+			Iterator<CssTok> iterator = d.getValueTokens().iterator();
+			while (iterator.hasNext()) {
+				CssTok next = iterator.next();
+				valueBuilder.append(labelProvider.getText(next));
+			}
+			EObjectNode node = createEObjectNode(parentNode, d, labelProvider.getImage(d.getProperty()), labelProvider.getText(d.getProperty()) + ": " +valueBuilder.toString().trim(), true);
 			node.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(d.getProperty()));
 		}
 	}
