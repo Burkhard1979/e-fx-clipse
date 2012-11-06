@@ -10,7 +10,6 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.outline;
 
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
@@ -23,23 +22,21 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
 
-import com.google.inject.Inject;
-
 /**
  * customization of the default outline structure
  * 
  */
 public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
-	@Inject ILabelProvider lbl;
-	
 	protected void _createChildren(DocumentRootNode parentNode, stylesheet stylesheet) {
 		System.err.println("do parent");
 		for (ruleset ruleset : stylesheet.getRuleset()) {
 			for (selector s : ruleset.getSelectors()) {
-				IOutlineNode selectorNode = new EObjectNode(s, parentNode, lbl.getImage(s), lbl.getText(s), ruleset.getDeclarations().isEmpty());
-				if (!ruleset.getDeclarations().isEmpty()) {
-					createChildren(selectorNode, ruleset);
+				boolean isLeaf = ruleset.getDeclarations().isEmpty();
+				EObjectNode node = createEObjectNode(parentNode, ruleset, labelProvider.getImage(s), labelProvider.getText(s), isLeaf);
+				node.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(s));
+				if (!isLeaf) {
+					createChildren(node, ruleset);
 				}
 			}
 			
@@ -49,17 +46,17 @@ public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	protected void _createChildren(IOutlineNode parentNode, ruleset ruleset) {
 		System.err.println("do ruleset");
 		for (css_declaration d : ruleset.getDeclarations()) {
-			createNode(parentNode, d.getProperty());
+			EObjectNode node = createEObjectNode(parentNode, d, labelProvider.getImage(d.getProperty()), labelProvider.getText(d.getProperty()), true);
+			node.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(d.getProperty()));
 		}
 	}
 	
 	protected Image _image(ruleset ruleset) {
-		return lbl.getImage(ruleset);
+		return labelProvider.getImage(ruleset);
 	}
 	
 	protected Image _image(css_property property) {
-		System.err.println("LBL is " + lbl);
-		return lbl.getImage(property);
+		return labelProvider.getImage(property);
 	}
 	
 	protected boolean _isLeaf(css_property property) {
