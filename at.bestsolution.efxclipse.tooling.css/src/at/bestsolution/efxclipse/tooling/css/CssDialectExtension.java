@@ -14,9 +14,7 @@ import static at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Util.fro
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -24,12 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.framework.Version;
 
-import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 
 public interface CssDialectExtension {
 	public enum ValidationStatus {
@@ -102,7 +95,7 @@ public interface CssDialectExtension {
 	}
 	
 	public interface MultiValuesGroupProperty {
-		public List<Proposal> getNextTermProposal(int index, termGroup currentGroup, term term);
+//		public List<Proposal> getNextTermProposal(int index, termGroup currentGroup, term term);
 	}
 	
 	public interface MultiTermGroupProperty {
@@ -415,14 +408,14 @@ public interface CssDialectExtension {
 			return proposals;
 		}
 
-		@Override
-		public List<Proposal> getNextTermProposal(int index,
-				termGroup currentGroup, term term) {
-			if( index < partCount ) {
-				return singleTerms;
-			}
-			return Collections.emptyList();
-		}
+//		@Override
+//		public List<Proposal> getNextTermProposal(int index,
+//				termGroup currentGroup, term term) {
+//			if( index < partCount ) {
+//				return singleTerms;
+//			}
+//			return Collections.emptyList();
+//		}
 		
 		@Override
 		public ValidationResult[] validate(css_declaration dec) {
@@ -654,26 +647,26 @@ public interface CssDialectExtension {
 			return rv;
 		}
 		
-		public static ValidationResult checkNumber(term term, String message) {
-			try {
-				Double.parseDouble(term.getNumber());
-			} catch (NumberFormatException e) {
-				return new ValidationResult(ValidationStatus.ERROR, message, term, null, -1);
-			}
-			return null;
-		}
+//		public static ValidationResult checkNumber(term term, String message) {
+//			try {
+//				Double.parseDouble(term.getNumber());
+//			} catch (NumberFormatException e) {
+//				return new ValidationResult(ValidationStatus.ERROR, message, term, null, -1);
+//			}
+//			return null;
+//		}
 		
-		public static ValidationResult checkPercentage(term term, String message, int min, int max) {
-			if( term.getNumber().matches("^\\d+(\\.\\d+)?%$") || term.getNumber().matches("^-\\d+(\\.\\d+)?%$") || term.getNumber().matches("^\\+\\d+(\\.\\d+)?%$") ) {
-				double v = Double.parseDouble(term.getNumber().substring(0, term.getNumber().length()-1));
-				if( v < min * 1.0 || v > max * 1.0 ) {
-					return new ValidationResult(ValidationStatus.ERROR, message, term, null, -1);
-				}
-			} else {
-				return new ValidationResult(ValidationStatus.ERROR, message, term, null, -1);
-			}
-			return null;
-		}
+//		public static ValidationResult checkPercentage(term term, String message, int min, int max) {
+//			if( term.getNumber().matches("^\\d+(\\.\\d+)?%$") || term.getNumber().matches("^-\\d+(\\.\\d+)?%$") || term.getNumber().matches("^\\+\\d+(\\.\\d+)?%$") ) {
+//				double v = Double.parseDouble(term.getNumber().substring(0, term.getNumber().length()-1));
+//				if( v < min * 1.0 || v > max * 1.0 ) {
+//					return new ValidationResult(ValidationStatus.ERROR, message, term, null, -1);
+//				}
+//			} else {
+//				return new ValidationResult(ValidationStatus.ERROR, message, term, null, -1);
+//			}
+//			return null;
+//		}
 	}
 	
 	public List<Property> getProperties();

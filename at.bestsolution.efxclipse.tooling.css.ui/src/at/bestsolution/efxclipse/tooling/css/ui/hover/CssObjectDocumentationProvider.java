@@ -15,6 +15,7 @@ import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
@@ -46,7 +47,11 @@ public class CssObjectDocumentationProvider implements
 		
 		if (o instanceof simple_selector) {
 			simple_selector s = ((simple_selector)o);
-			return extension.getDocForElement(o.eResource().getURI(), s.getElement());
+			String elementName = null;
+			if (s.getElement() instanceof ElementSelector) {
+				elementName = ((ElementSelector)s.getElement()).getName();
+			}
+			return extension.getDocForElement(o.eResource().getURI(), elementName);
 		}
 		
 		// css ext rules

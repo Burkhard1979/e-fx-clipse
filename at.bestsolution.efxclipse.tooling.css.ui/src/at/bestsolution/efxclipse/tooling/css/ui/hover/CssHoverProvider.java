@@ -16,23 +16,19 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.internal.text.html.HTMLPrinter;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.graphics.FontData;
-import org.eclipse.ui.internal.util.BundleUtility;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.function;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 
 import com.google.inject.Inject;
@@ -94,30 +90,38 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 		return null;
 	}
 	
+	private String getColorHoverForFunction(FuncTok f) {
+		if( "rgb".equals(f.getName().getName()) ) {
+			String rgbHex = "#";
+			int idx = 0;
+			for( CssTok p : f.getParams() ) {
+				if( p instanceof NumberTok ) {
+					String hex = Integer.toHexString((int)Math.round(((NumberTok) p).getVal()));
+					rgbHex += hex.length() < 2 ? "0"+hex : hex;
+				}
+				
+				if( idx == 3 ) {
+					break;
+				}
+			}
+			String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+rgbHex+"'></div></td><td>"+rgbHex+"</td></tr></table>";
+			return rv;
+		}
+		else return null;
+	}
+	
 	protected String getHoverInfoAsHtml(EObject o) {
 		// QnD hack to get tooltips back
 		if( o instanceof ColorTok ) {
 			ColorTok t = (ColorTok) o;
-			String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+t.getColor()+"'></div></td><td>"+t.getColor()+"</td></tr></table>";
+			String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+t.getValue()+"'></div></td><td>"+t.getValue()+"</td></tr></table>";
 			return rv;
-		} else if( o instanceof function ) {
-			function f = (function) o;
-			if( "rgb".equals(f.getName()) ) {
-				String rgbHex = "#";
-				int idx = 0;
-				for( CssTok p : f.getParams() ) {
-					if( p instanceof NumberTok ) {
-						String hex = Integer.toHexString(Integer.valueOf(((NumberTok) p).getNum()));
-						rgbHex += hex.length() < 2 ? "0"+hex : hex;
-					}
-					
-					if( idx == 3 ) {
-						break;
-					}
-				}
-				String rv = "<table><tr><td><div style='height: 20px; width: 20px;border:1;border-style:solid;background-color: "+rgbHex+"'></div></td><td>"+rgbHex+"</td></tr></table>";
-				return rv;
-			}
+		} else if( o instanceof FuncTok ) {
+			FuncTok f = (FuncTok) o;
+			return getColorHoverForFunction(f);
+		}
+		else if (o.eContainer() instanceof FuncTok) {
+			return getColorHoverForFunction((FuncTok) o.eContainer());
 		}
 		
 //		System.err.println(o);
@@ -155,6 +159,7 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	@Override
 	protected String getFirstLine(EObject o) {
 		
+		//if (1-1==0) return o.toString();
 		
 		if (o instanceof css_property) {
 			// Properties
@@ -163,7 +168,11 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 		
 		if (o instanceof simple_selector) {
 			simple_selector s = ((simple_selector)o);
-			return extension.getDocForHeadElement(o.eResource().getURI(), s.getElement());
+			String elementName = null;
+			if (s.getElement() instanceof ElementSelector) {
+				elementName = ((ElementSelector)s.getElement()).getName();
+			}
+			return extension.getDocForHeadElement(o.eResource().getURI(), elementName);
 		}
 		
 		String firstLine =  extension.getDocHead(o.eResource().getURI(), o);

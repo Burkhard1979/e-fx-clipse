@@ -1,6 +1,9 @@
+Node[no=me] {
+	-fx-alignment: a;
+}
 
 Region.test {
-	-fx-blend-mode: a;
+	-fx-blend-mode: asdf;
 	-fx-padding: 12px;
 	-fx-padding: 12%;
 	-fx-arc-height: 1cm;
@@ -13,6 +16,35 @@ Region.test {
 	-fx-halignment: left;
 }
 
+.a {
+	property:none;
+}
+.b {
+	eigenschaft:nice;
+}
+
+ 
 .la.li.lu {
+	lala: url(halligalliurtoo.com);
+}
+
+
+.future {
+	
+}
+
+.current {
+	
+}
+
+.ua {
+	
+}
+
+.ue {
+	
+}
+
+.ur {
 	
 }
