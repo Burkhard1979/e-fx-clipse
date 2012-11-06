@@ -15,15 +15,19 @@ import java.util.Iterator;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.AttributeSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
@@ -76,6 +80,11 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		return r;
 	}
 	
+	
+	String image(selector s) {
+		return "selector_16x16.png";
+	}
+	
 	String image(ruleset ele) {
 		return "selector_16x16.png";
 	}
@@ -108,13 +117,26 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 			while (iterator.hasNext()) {
 				CssTok next = iterator.next();
 				b.append(getText(next));
-				if (iterator.hasNext()) {
-					b.append(",");
-				}
 			}
 			b.append(")");
 		}
 		return b.toString();
+	}
+	
+	String text(CssTok cssTok) {
+		if (cssTok instanceof IdentifierTok) {
+			return ((IdentifierTok) cssTok).getName();
+		}
+		else if (cssTok instanceof NumberTok) {
+			return String.valueOf(((NumberTok) cssTok).getVal());
+		}
+		else if (cssTok instanceof SymbolTok) {
+			return ((SymbolTok) cssTok).getSymbol();
+		}
+		else if (cssTok instanceof WSTok) {
+			return " ";
+		}
+		else return cssTok.toString();
 	}
 	
 	String text(CssSelector cssSelector) {
@@ -133,8 +155,20 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		else if (cssSelector instanceof PseudoClassFunction) {
 			return ":" + text((PseudoClassFunction)cssSelector);
 		}
+		else if (cssSelector instanceof AttributeSelector) {
+			return "[" + text((AttributeSelector)cssSelector) + "]";
+		}
 		
 		return cssSelector.toString();
+	}
+	
+	String text(AttributeSelector s) {
+		if (s.getOp() != null && s.getValue() != null) {
+			return s.getName() + s.getOp() + s.getValue();
+		}
+		else {
+			return s.getName();
+		}
 	}
 	
 	String text(ElementSelector elementSelector) {

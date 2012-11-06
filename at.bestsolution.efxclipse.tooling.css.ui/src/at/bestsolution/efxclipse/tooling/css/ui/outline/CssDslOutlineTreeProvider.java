@@ -15,10 +15,12 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
+import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
 
 import com.google.inject.Inject;
@@ -33,8 +35,15 @@ public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
 	protected void _createChildren(DocumentRootNode parentNode, stylesheet stylesheet) {
 		System.err.println("do parent");
-		for (ruleset ruleset : stylesheet.getRuleset())
-			createNode(parentNode, ruleset);
+		for (ruleset ruleset : stylesheet.getRuleset()) {
+			for (selector s : ruleset.getSelectors()) {
+				IOutlineNode selectorNode = new EObjectNode(s, parentNode, lbl.getImage(s), lbl.getText(s), ruleset.getDeclarations().isEmpty());
+				if (!ruleset.getDeclarations().isEmpty()) {
+					createChildren(selectorNode, ruleset);
+				}
+			}
+			
+		}
 	}
 	
 	protected void _createChildren(IOutlineNode parentNode, ruleset ruleset) {
