@@ -8,8 +8,11 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
+package at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget;
 
-public class DefSharedElementsRenderer {
+import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
+
+@SuppressWarnings("restriction")
+public interface WToolControl<N> extends WWidget<MToolControl> {
 
 }

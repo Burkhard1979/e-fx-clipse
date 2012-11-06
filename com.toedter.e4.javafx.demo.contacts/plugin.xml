@@ -5,7 +5,7 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="at.bestsolution.efxclipse.runtime.workbench.application"
+            application="at.bestsolution.efxclipse.runtime.workbench.fx.application"
             name="E4 Contacs Demo">
          <property
                name="appName"
@@ -23,6 +23,11 @@
                name="cssTheme"
                value="themes.dark">
          </property>
+                  <property
+               name="applicationCSS"
+               value="platform:/plugin/com.toedter.e4.javafx.demo.contacts/css/dark.css">
+         </property>
+         
          <property
                name="startupForegroundColor"
                value="FFFFFF">

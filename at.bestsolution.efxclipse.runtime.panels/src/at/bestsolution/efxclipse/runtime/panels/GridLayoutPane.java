@@ -12,15 +12,13 @@
 package at.bestsolution.efxclipse.runtime.panels;
 
 
-import java.util.WeakHashMap;
-
-import at.bestsolution.efxclipse.runtime.panels.GridData.Alignment;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.WritableIntegerValue;
 import javafx.scene.Node;
+import at.bestsolution.efxclipse.runtime.panels.GridData.Alignment;
 
 public class GridLayoutPane extends AbstractLayoutPane<GridData> {
 	private IntegerProperty numColumns = new SimpleIntegerProperty(this, "columns", 1);
@@ -37,15 +35,13 @@ public class GridLayoutPane extends AbstractLayoutPane<GridData> {
 	
 	private IntegerProperty horizontalSpacing = new SimpleIntegerProperty(this, "horizontalSpacing", 5);
 	private IntegerProperty verticalSpacing = new SimpleIntegerProperty(this, "verticalSpacing", 5);
-	
-	private static WeakHashMap<Node, GridData> CONSTRAINTS = new WeakHashMap<Node, GridData>();
-	
+		
 	public static void setConstraint(Node n, GridData griddata) {
-		CONSTRAINTS.put(n, griddata);
+		setConstraint(n, "gd",griddata);
 	}
 	
 	public static GridData getConstraint(Node n) {
-		return CONSTRAINTS.get(n);
+		return (GridData)getConstraint(n,"gd");
 	}
 	
 	@Override
@@ -71,7 +67,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridData> {
 		int count = 0;
 		for (int i=0; i<children.length; i++) {
 			Node control = children [i];
-			GridData data = getConstraint(control);
+			GridData data = (GridData) getConstraint(control,"gd");
 			if (data == null || !data.exclude.get()) {
 				children [count++] = children [i];
 			} 
@@ -81,13 +77,17 @@ public class GridLayoutPane extends AbstractLayoutPane<GridData> {
 		}
 		for (int i=0; i<count; i++) {
 			Node child = children [i];
-			GridData data = getConstraint(child);
+			GridData data = (GridData) getConstraint(child,"gd");
+			
 			if (data == null) {
 				data = new GridData ();
-				setConstraint(child, data);
+				setConstraint(child, "gd",data);
 			}
+			
 			if (flushCache) data.flushCache ();
+			
 			data.computeSize (child, data.widthHint.get(), data.heightHint.get(), flushCache);
+			
 			if (data.grabExcessHorizontalSpace.get() && data.minimumWidth.get() > 0) {
 				if (data.cacheWidth < data.minimumWidth.get()) {
 					int trim = 0;
@@ -113,7 +113,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridData> {
 		Node [][] grid = new Node [4] [columnCount];
 		for (int i=0; i<count; i++) {	
 			Node child = children [i];
-			GridData data = getConstraint(child);
+			GridData data = (GridData) getConstraint(child,"gd");
 			int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
 			int vSpan = Math.max (1, data.verticalSpan.get());
 			while (true) {
@@ -598,7 +598,7 @@ public class GridLayoutPane extends AbstractLayoutPane<GridData> {
 	GridData getData (Node [][] grid, int row, int column, int rowCount, int columnCount, boolean first) {
 		Node control = grid [row] [column];
 		if (control != null) {
-			GridData data = getConstraint(control);
+			GridData data = (GridData) getConstraint(control,"gd");
 			int hSpan = Math.max (1, Math.min (data.horizontalSpan.get(), columnCount));
 			int vSpan = Math.max (1, data.verticalSpan.get());
 			int i = first ? row + vSpan - 1 : row - vSpan + 1;

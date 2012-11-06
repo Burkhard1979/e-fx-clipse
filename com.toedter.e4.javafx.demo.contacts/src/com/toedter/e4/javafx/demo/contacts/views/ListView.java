@@ -12,6 +12,8 @@
 
 package com.toedter.e4.javafx.demo.contacts.views;
 
+import at.bestsolution.efxclipse.runtime.databinding.AdapterFactory;
+
 import com.toedter.e4.javafx.demo.contacts.model.Contact;
 import com.toedter.e4.javafx.demo.contacts.model.ContactsRepositoryFactory;
 import javafx.beans.value.ChangeListener;
@@ -39,7 +41,7 @@ public class ListView {
 
 		table.getColumns().addAll(firstNameCol, lastNameCol);
 
-		ObservableList<Contact> data = FXCollections.observableArrayList(ContactsRepositoryFactory
+		ObservableList<Contact> data = AdapterFactory.adapt(ContactsRepositoryFactory
 				.getContactsRepository().getAllContacts());
 		table.setItems(data);
 

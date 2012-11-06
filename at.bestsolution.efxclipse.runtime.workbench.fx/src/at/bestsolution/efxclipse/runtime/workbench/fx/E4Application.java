@@ -49,6 +49,7 @@ import org.eclipse.e4.ui.internal.workbench.DefaultLoggerProvider;
 import org.eclipse.e4.ui.internal.workbench.E4Workbench;
 import org.eclipse.e4.ui.internal.workbench.ExceptionHandler;
 import org.eclipse.e4.ui.internal.workbench.ModelServiceImpl;
+import org.eclipse.e4.ui.internal.workbench.PlaceholderResolver;
 import org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory;
 import org.eclipse.e4.ui.internal.workbench.ResourceHandler;
 import org.eclipse.e4.ui.internal.workbench.WorkbenchLogger;
@@ -63,6 +64,7 @@ import org.eclipse.e4.ui.workbench.lifecycle.PreSave;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessRemovals;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.e4.ui.workbench.modeling.EPlaceholderResolver;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -191,6 +193,7 @@ public class E4Application extends AbstractJFXApplication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
+						System.err.println("could not find icon at: " + iconPath);
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
@@ -246,20 +249,6 @@ public class E4Application extends AbstractJFXApplication {
 
 		String themeId = getArgValue(E4Application.THEME_ID, applicationContext, false);
 		appContext.set(E4Application.THEME_ID, themeId);
-
-		String cssURI = getArgValue(E4Workbench.CSS_URI_ARG, applicationContext, false);
-		if (cssURI != null) {
-			appContext.set(E4Workbench.CSS_URI_ARG, cssURI);
-		}
-
-		// Temporary to support old property as well
-		if (cssURI != null && !cssURI.startsWith("platform:")) {
-			System.err.println("Warning " + cssURI + " changed its meaning it is used now to run without theme support");
-			appContext.set(E4Application.THEME_ID, cssURI);
-		}
-
-		String cssResourcesURI = getArgValue(E4Workbench.CSS_RESOURCE_URI_ARG, applicationContext, false);
-		appContext.set(E4Workbench.CSS_RESOURCE_URI_ARG, cssResourcesURI);
 		appContext.set(E4Workbench.RENDERER_FACTORY_URI, getArgValue(E4Workbench.RENDERER_FACTORY_URI, applicationContext, false));
 
 		// This is a default arg, if missing we use the default rendering engine
@@ -385,6 +374,7 @@ public class E4Application extends AbstractJFXApplication {
 		appContext.set(Logger.class.getName(), ContextInjectionFactory.make(WorkbenchLogger.class, appContext));
 
 		appContext.set(EModelService.class, new ModelServiceImpl(appContext));
+		appContext.set(EPlaceholderResolver.class, new PlaceholderResolver());
 
 		// translation
 		String locale = Locale.getDefault().toString();

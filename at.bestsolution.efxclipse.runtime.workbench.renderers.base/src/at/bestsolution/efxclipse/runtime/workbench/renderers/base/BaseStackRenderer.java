@@ -43,7 +43,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack.
 @SuppressWarnings("restriction")
 public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStack, WStack<N, I, IC>> {
 	// private static final String MAP_ITEM_KEY = "fx.rendering.stackitem";
-
+	
 	@Inject
 	RendererFactory factory;
 	
@@ -202,6 +202,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			}
 		}
 
+		stack.selectItem(stack.getItems().indexOf(initalItem));
 	}
 
 	private WStackItem<I, IC> createStackItem(WStack<N, I, IC> stack, final MStackElement e, AbstractRenderer<MStackElement, ?> renderer) {

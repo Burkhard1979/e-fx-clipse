@@ -38,22 +38,28 @@ public class DIApplication extends AbstractJFXApplication implements IExecutable
 	@Override
 	protected void jfxStart(IApplicationContext applicationContext,
 			Application jfxApplication, Stage primaryStage) {
+		System.err.println("DI application is a launching");
 		BundleContext context = FrameworkUtil.getBundle(DIApplication.class).getBundleContext();
 		ServiceReference<PackageAdmin> ref = context.getServiceReference(PackageAdmin.class);
 		PackageAdmin packageAdmin = context.getService(ref);
+		System.err.println("Searching for bundle: " + bundleName);
 		Bundle[] bundles = packageAdmin.getBundles(bundleName, null);
 		if( bundles != null && bundles.length > 0 ) {
 			try {
 				Class<?> cl = bundles[0].loadClass(applicationClass);
+				System.err.println("loaded class: " + cl);
 				IEclipseContext eContext = EclipseContextFactory.getServiceContext(context);
 				eContext.set(IApplicationContext.class, applicationContext);
 				eContext.set(Application.class, jfxApplication);
 				eContext.set(Stage.class, primaryStage);
 				ContextInjectionFactory.make(cl, eContext);
+				System.err.println("Injection is done" );
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else {
+			System.err.println("Unable to locate bundle: " + bundleName);
 		}
 	}
 

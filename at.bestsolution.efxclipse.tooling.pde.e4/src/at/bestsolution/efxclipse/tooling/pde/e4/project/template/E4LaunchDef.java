@@ -40,6 +40,7 @@ public class E4LaunchDef extends BasicLaunchDef {
 		set.add(new PluginLaunchDef("com.ibm.icu"));
 		set.add(new PluginLaunchDef("javax.annotation"));
 		set.add(new PluginLaunchDef("javax.inject"));
+		set.add(new PluginLaunchDef("javax.xml"));
 		set.add(new PluginLaunchDef("org.apache.commons.logging"));
 		set.add(new PluginLaunchDef("org.eclipse.core.commands"));
 		set.add(new PluginLaunchDef("org.eclipse.core.contenttype"));

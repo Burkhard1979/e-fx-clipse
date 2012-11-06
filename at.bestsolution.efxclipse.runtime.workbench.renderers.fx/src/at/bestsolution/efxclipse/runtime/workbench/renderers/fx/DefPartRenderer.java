@@ -23,7 +23,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 
 	@Override
-	protected Class<? extends WPart<BorderPane>> getWidgetClass() {
+	protected Class<? extends WPart<BorderPane>> getWidgetClass(MPart part) {
 		return PartImpl.class;
 	}
 	

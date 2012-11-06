@@ -446,13 +446,14 @@ public class GridData {
 	void computeSize(Node control, int wHint, int hHint, boolean flushCache) {
 		if (cacheWidth != -1 && cacheHeight != -1)
 			return;
+		
 		if (wHint == this.widthHint.get() && hHint == this.heightHint.get()) {
 			if (defaultWidth == -1 || defaultHeight == -1 || wHint != defaultWhint || hHint != defaultHhint) {
 				// Point size = control.computeSize (wHint, hHint, flushCache);
 				defaultWhint = wHint;
 				defaultHhint = hHint;
-				defaultWidth = control.prefWidth(wHint);
-				defaultHeight = control.prefHeight(hHint);
+				defaultWidth = wHint == -1 ? control.prefWidth(hHint) : defaultWhint;
+				defaultHeight = hHint == -1 ? control.prefHeight(wHint) : defaultHhint;
 			}
 			cacheWidth = defaultWidth;
 			cacheHeight = defaultHeight;
@@ -677,6 +678,7 @@ public class GridData {
 			hAlign = "Undefined " + horizontalAlignment;
 			break;
 		}
+		
 		String vAlign = "";
 		switch (verticalAlignment.get()) {
 		case FILL:
@@ -695,31 +697,32 @@ public class GridData {
 			vAlign = "Undefined " + verticalAlignment;
 			break;
 		}
+		
 		String string = getName() + " {";
 		string += "horizontalAlignment=" + hAlign + " ";
 		if (horizontalIndent.get() != 0)
-			string += "horizontalIndent=" + horizontalIndent + " ";
+			string += "horizontalIndent=" + horizontalIndent.get() + " ";
 		if (horizontalSpan.get() != 1)
-			string += "horizontalSpan=" + horizontalSpan + " ";
+			string += "horizontalSpan=" + horizontalSpan.get() + " ";
 		if (grabExcessHorizontalSpace.get())
-			string += "grabExcessHorizontalSpace=" + grabExcessHorizontalSpace + " ";
+			string += "grabExcessHorizontalSpace=" + grabExcessHorizontalSpace.get() + " ";
 		if (widthHint.get() != FX_DEFAULT)
-			string += "widthHint=" + widthHint + " ";
+			string += "widthHint=" + widthHint.get() + " ";
 		if (minimumWidth.get() != 0)
-			string += "minimumWidth=" + minimumWidth + " ";
+			string += "minimumWidth=" + minimumWidth.get() + " ";
 		string += "verticalAlignment=" + vAlign + " ";
 		if (verticalIndent.get() != 0)
-			string += "verticalIndent=" + verticalIndent + " ";
+			string += "verticalIndent=" + verticalIndent .get()+ " ";
 		if (verticalSpan.get() != 1)
-			string += "verticalSpan=" + verticalSpan + " ";
+			string += "verticalSpan=" + verticalSpan.get() + " ";
 		if (grabExcessVerticalSpace.get())
-			string += "grabExcessVerticalSpace=" + grabExcessVerticalSpace + " ";
+			string += "grabExcessVerticalSpace=" + grabExcessVerticalSpace.get() + " ";
 		if (heightHint.get() != FX_DEFAULT)
-			string += "heightHint=" + heightHint + " ";
+			string += "heightHint=" + heightHint.get() + " ";
 		if (minimumHeight.get() != 0)
-			string += "minimumHeight=" + minimumHeight + " ";
+			string += "minimumHeight=" + minimumHeight.get() + " ";
 		if (exclude.get())
-			string += "exclude=" + exclude + " ";
+			string += "exclude=" + exclude.get() + " ";
 		string = string.trim();
 		string += "}";
 		return string;
