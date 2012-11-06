@@ -3651,9 +3651,9 @@ rule__Ruleset__Group_1__0__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_0()); }
-	RULE_COMMA
-{ after(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_0()); }
+{ before(grammarAccess.getRulesetAccess().getWSTerminalRuleCall_1_0()); }
+(	RULE_WS)*
+{ after(grammarAccess.getRulesetAccess().getWSTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -3668,6 +3668,7 @@ rule__Ruleset__Group_1__1
     }
 :
 	rule__Ruleset__Group_1__1__Impl
+	rule__Ruleset__Group_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3679,15 +3680,45 @@ rule__Ruleset__Group_1__1__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_1()); }
-(rule__Ruleset__SelectorsAssignment_1_1)
-{ after(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_1()); }
+{ before(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_1()); }
+	RULE_COMMA
+{ after(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_1()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Ruleset__Group_1__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Ruleset__Group_1__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Ruleset__Group_1__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_2()); }
+(rule__Ruleset__SelectorsAssignment_1_2)
+{ after(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -7140,14 +7171,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Ruleset__SelectorsAssignment_1_1
+rule__Ruleset__SelectorsAssignment_1_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_1_0()); }
-	ruleselector{ after(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_1_0()); }
+{ before(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_2_0()); }
+	ruleselector{ after(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_2_0()); }
 )
 
 ;

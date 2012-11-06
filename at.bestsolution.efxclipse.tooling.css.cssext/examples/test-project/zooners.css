@@ -10,6 +10,9 @@ img#loader {
 	float: right;
 }
 
+Element .Class ThisIsSparta  #ThisIsId  {}
+
+
 
 /********************/
 /* GHL Customs by CB*/
@@ -20,7 +23,7 @@ span.cb-two-lines {padding-top:2px;}
 #main-contact {background:#FFFFFF;font-size:14px;line-height: 20px;}
 #main-contact > div > div > div.image {margin-bottom:0px;line-height:0px;}
 #main-contact > div > div > div.image {margin-bottom:0px;}
-#main-contact * div.address,#main-contact * div.contact, #main-contact * div.open, #main-contact * div.reservation, #main-contact * div.info {padding-left:30px;padding-right:30px;}
+#main-contact * div.address,#main-contact * div.contact ,  #main-contact * div.open, #main-contact * div.reservation, #main-contact * div.info {padding-left:30px;padding-right:30px;}
 #main-contact  h1{background: none repeat scroll 0 0 rgba(202, 179, 91, 0.9);color: #007181;font-size: 17px;font-weight: bold;height: 20px;line-height: 18px;margin-top: 0;padding-bottom: 3px;margin-left: -30px;margin-right: -30px;padding-left: 30px;padding-top: 3px;/*text-shadow: 1px 1px 1px #404040;*/vertical-align: middle;}
 #main-contact * div.address > span.title{font-size:17px;font-weight:bold;}
 #main-contact * div.address {font-size:13px;line-height: 17px;}
@@ -55,7 +58,7 @@ span.tab {display: inline-block;width:70px;}
 ul.roundlist li a ul.wind {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0; 
   float:none;
   height: 64px;
 }
@@ -711,7 +714,8 @@ ul.buttonlist li a {
 .roundlist .zc a .zcbody .time {
 	font-size: 13px;
 	color: #005EC8;
-}#zooncard .address > .date, #zooncard .address > .distance {
+}
+#zooncard .address > .date, #zooncard .address > .distance {
 	color: #006CC5;
 	margin-top: 5px;
 	display: inline-block;

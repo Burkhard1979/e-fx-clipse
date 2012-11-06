@@ -1,9 +1,35 @@
 @import "lala";
 @import url("");
 
+Hallo, Du {
+	element: no rule for element foundvalue;
+}
+
+E[foo] {
+	some: content;
+}
+E[foo="bar"] {
+	
+}
+E[foo~="bar"] {
+	
+}
+E[foo^="bar"] {
+	
+}
+E[foo$="bar"] {
+	
+}
+E[foo*="bar"] {
+	
+}
+E[foo|="bar"] {
+	
+}
 
 
-test {
+test:n-th(2n),
+test[a=jada] {
 	property: a 1 px 3;
 	
 	with_comment: 1/*comment*/unit;

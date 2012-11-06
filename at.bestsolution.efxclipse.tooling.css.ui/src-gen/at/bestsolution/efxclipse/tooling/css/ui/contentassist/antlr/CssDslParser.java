@@ -137,7 +137,7 @@ public class CssDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMediaAccess().getMedialistAssignment_1(), "rule__Media__MedialistAssignment_1");
 					put(grammarAccess.getMediaAccess().getRulesetsAssignment_3(), "rule__Media__RulesetsAssignment_3");
 					put(grammarAccess.getRulesetAccess().getSelectorsAssignment_0(), "rule__Ruleset__SelectorsAssignment_0");
-					put(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_1(), "rule__Ruleset__SelectorsAssignment_1_1");
+					put(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_2(), "rule__Ruleset__SelectorsAssignment_1_2");
 					put(grammarAccess.getRulesetAccess().getDeclarationsAssignment_4_0(), "rule__Ruleset__DeclarationsAssignment_4_0");
 					put(grammarAccess.getRulesetAccess().getDeclarationsAssignment_4_1_1(), "rule__Ruleset__DeclarationsAssignment_4_1_1");
 					put(grammarAccess.getSelectorAccess().getSimpleselectorsAssignment_0(), "rule__Selector__SimpleselectorsAssignment_0");
