@@ -4,10 +4,9 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 generate decoraDsl "http://www.bestsolution.at/efxclipse/tooling/decora/DecoraDsl"
 
-//Model:
-//	expr=translation_unit
-////	greetings+=Greeting*
-//;
+Model:
+	unit=translation_unit
+;
 
 field_selection// returns [String fields]
         : r=RGBA_FIELDS// { $fields = $r.text; }
@@ -370,8 +369,8 @@ compound_statement_no_new_scope //returns [Stmt stmt]
         ;
         
 expression_statement //returns [Stmt stmt]
-        : {expression_statement} SEMICOLON              //{ $stmt = tm.exprStmt(null); }
-        | e=expression SEMICOLON //{ $stmt = tm.exprStmt($e.expr); }
+        : ({expression_statement} SEMICOLON)              //{ $stmt = tm.exprStmt(null); }
+        | (e=expression SEMICOLON) //{ $stmt = tm.exprStmt($e.expr); }
         ;
         
 constant_expression //returns [Expr expr]
@@ -420,7 +419,7 @@ jump_statement //returns [Stmt stmt]
         | {jump_statement}BREAK SEMICOLON               //{ $stmt = tm.breakStmt(); }
         | {jump_statement}DISCARD SEMICOLON             //{ $stmt = tm.discardStmt(); }
         | {jump_statement}RETURN SEMICOLON              //{ $stmt = tm.returnStmt(null); }
-        | RETURN e=expression SEMICOLON //{ $stmt = tm.returnStmt($e.expr); }
+        | (RETURN e=expression SEMICOLON) //{ $stmt = tm.returnStmt($e.expr); }
         ;
         
 // From GLSL spec...

@@ -25,7 +25,7 @@ public class DecoraDslParser extends org.eclipse.xtext.parser.antlr.AbstractAntl
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "field_selection";
+		return "Model";
 	}
 	
 	public DecoraDslGrammarAccess getGrammarAccess() {
