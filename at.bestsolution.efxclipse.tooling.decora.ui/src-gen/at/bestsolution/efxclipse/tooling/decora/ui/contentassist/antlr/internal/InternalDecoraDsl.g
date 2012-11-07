@@ -5,6 +5,7 @@ grammar InternalDecoraDsl;
 
 options {
 	superClass=AbstractInternalContentAssistParser;
+	backtrack=true;
 	
 }
 
