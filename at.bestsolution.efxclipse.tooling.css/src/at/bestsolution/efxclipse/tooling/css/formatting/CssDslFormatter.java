@@ -56,7 +56,7 @@ public class CssDslFormatter extends AbstractDeclarativeFormatter {
 		
 		
 		c.setSpace(" ").before(f.getCssTokRule());
-		c.setSpace(" ").before(f.getIdentifierTokRule());
+		c.setSpace(" ").before(f.getIdentifierOrFuncTokRule());
 		c.setSpace(" ").before(f.getNumberTokRule());
 		c.setSpace(" ").before(f.getSymbolTokRule());
 		

@@ -10,18 +10,20 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.outline;
 
-import org.eclipse.jface.viewers.ILabelProvider;
+import java.util.Iterator;
+
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
+import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
-
-import com.google.inject.Inject;
 
 /**
  * customization of the default outline structure
@@ -29,28 +31,39 @@ import com.google.inject.Inject;
  */
 public class CssDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
-	@Inject ILabelProvider lbl;
-	
 	protected void _createChildren(DocumentRootNode parentNode, stylesheet stylesheet) {
-		System.err.println("do parent");
-		for (ruleset ruleset : stylesheet.getRuleset())
-			createNode(parentNode, ruleset);
+		for (ruleset ruleset : stylesheet.getRuleset()) {
+			for (selector s : ruleset.getSelectors()) {
+				boolean isLeaf = ruleset.getDeclarations().isEmpty();
+				EObjectNode node = createEObjectNode(parentNode, ruleset, labelProvider.getImage(s), labelProvider.getText(s), isLeaf);
+				node.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(s));
+				if (!isLeaf) {
+					createChildren(node, ruleset);
+				}
+			}
+			
+		}
 	}
 	
 	protected void _createChildren(IOutlineNode parentNode, ruleset ruleset) {
-		System.err.println("do ruleset");
 		for (css_declaration d : ruleset.getDeclarations()) {
-			createNode(parentNode, d.getProperty());
+			StringBuilder valueBuilder = new StringBuilder();
+			Iterator<CssTok> iterator = d.getValueTokens().iterator();
+			while (iterator.hasNext()) {
+				CssTok next = iterator.next();
+				valueBuilder.append(labelProvider.getText(next));
+			}
+			EObjectNode node = createEObjectNode(parentNode, d, labelProvider.getImage(d.getProperty()), labelProvider.getText(d.getProperty()) + ": " +valueBuilder.toString().trim() + (d.isImportant()?" !important":""), true);
+			node.setShortTextRegion(locationInFileProvider.getSignificantTextRegion(d.getProperty()));
 		}
 	}
 	
 	protected Image _image(ruleset ruleset) {
-		return lbl.getImage(ruleset);
+		return labelProvider.getImage(ruleset);
 	}
 	
 	protected Image _image(css_property property) {
-		System.err.println("LBL is " + lbl);
-		return lbl.getImage(property);
+		return labelProvider.getImage(property);
 	}
 	
 	protected boolean _isLeaf(css_property property) {

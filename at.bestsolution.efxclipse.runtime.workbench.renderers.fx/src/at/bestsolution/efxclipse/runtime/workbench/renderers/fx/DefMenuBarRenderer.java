@@ -26,7 +26,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefMenuBarRenderer extends BaseMenuBarRenderer<MenuBar> {
 
 	@Override
-	protected Class<? extends WMenuBar<MenuBar>> getWidgetClass() {
+	protected Class<? extends WMenuBar<MenuBar>> getWidgetClass(MMenu menu) {
 		return WMenuBarImpl.class;
 	}
 	

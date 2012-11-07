@@ -25,7 +25,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefPlaceholderRenderer extends BasePlaceholderRenderer<FillLayoutPane> {
 
 	@Override
-	protected Class<? extends WPlaceholderWidget> getWidgetClass() {
+	protected Class<? extends WPlaceholderWidget> getWidgetClass(MPlaceholder placeholder) {
 		return PlaceholderWidget.class;
 	}
 	

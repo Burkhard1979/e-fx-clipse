@@ -390,7 +390,6 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 
 	@Override
 	protected void addTagNameProposals(ContentAssistRequest contentAssistRequest, int childPosition, CompletionProposalInvocationContext context) {
-		System.err.println("==============> HERE I AM");
 		Node parent = contentAssistRequest.getParent();
 
 		if (parent.getNodeType() == Node.ELEMENT_NODE) {

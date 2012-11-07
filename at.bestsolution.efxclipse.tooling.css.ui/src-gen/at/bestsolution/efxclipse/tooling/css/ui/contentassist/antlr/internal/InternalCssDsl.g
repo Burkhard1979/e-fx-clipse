@@ -5,6 +5,7 @@ grammar InternalCssDsl;
 
 options {
 	superClass=AbstractInternalContentAssistParser;
+	backtrack=true;
 	
 }
 
@@ -128,9 +129,9 @@ ruleimportExpression
     }
 	:
 (
-{ before(grammarAccess.getImportExpressionAccess().getAlternatives()); }
-(rule__ImportExpression__Alternatives)
-{ after(grammarAccess.getImportExpressionAccess().getAlternatives()); }
+{ before(grammarAccess.getImportExpressionAccess().getGroup()); }
+(rule__ImportExpression__Group__0)
+{ after(grammarAccess.getImportExpressionAccess().getGroup()); }
 )
 
 ;
@@ -268,9 +269,9 @@ rulemedium
     }
 	:
 (
-{ before(grammarAccess.getMediumAccess().getIDENTTerminalRuleCall()); }
-	RULE_IDENT
-{ after(grammarAccess.getMediumAccess().getIDENTTerminalRuleCall()); }
+{ before(grammarAccess.getMediumAccess().getIdentifierParserRuleCall()); }
+	ruleIdentifier
+{ after(grammarAccess.getMediumAccess().getIdentifierParserRuleCall()); }
 )
 
 ;
@@ -344,6 +345,62 @@ finally {
 
 
 
+// Entry rule entryRuleSimpleSelectorForNegation
+entryRuleSimpleSelectorForNegation 
+:
+{ before(grammarAccess.getSimpleSelectorForNegationRule()); }
+	 ruleSimpleSelectorForNegation
+{ after(grammarAccess.getSimpleSelectorForNegationRule()); } 
+	 EOF 
+;
+
+// Rule SimpleSelectorForNegation
+ruleSimpleSelectorForNegation
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getAlternatives()); }
+(rule__SimpleSelectorForNegation__Alternatives)
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+// Entry rule entryRuleSubSelectorForNegation
+entryRuleSubSelectorForNegation 
+:
+{ before(grammarAccess.getSubSelectorForNegationRule()); }
+	 ruleSubSelectorForNegation
+{ after(grammarAccess.getSubSelectorForNegationRule()); } 
+	 EOF 
+;
+
+// Rule SubSelectorForNegation
+ruleSubSelectorForNegation
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getSubSelectorForNegationAccess().getAlternatives()); }
+(rule__SubSelectorForNegation__Alternatives)
+{ after(grammarAccess.getSubSelectorForNegationAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRulesimple_selector
 entryRulesimple_selector 
 :
@@ -372,25 +429,25 @@ finally {
 
 
 
-// Entry rule entryRuleelement_name
-entryRuleelement_name 
+// Entry rule entryRuleSubSelector
+entryRuleSubSelector 
 :
-{ before(grammarAccess.getElement_nameRule()); }
-	 ruleelement_name
-{ after(grammarAccess.getElement_nameRule()); } 
+{ before(grammarAccess.getSubSelectorRule()); }
+	 ruleSubSelector
+{ after(grammarAccess.getSubSelectorRule()); } 
 	 EOF 
 ;
 
-// Rule element_name
-ruleelement_name
+// Rule SubSelector
+ruleSubSelector
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getElement_nameAccess().getAlternatives()); }
-(rule__Element_name__Alternatives)
-{ after(grammarAccess.getElement_nameAccess().getAlternatives()); }
+{ before(grammarAccess.getSubSelectorAccess().getAlternatives()); }
+(rule__SubSelector__Alternatives)
+{ after(grammarAccess.getSubSelectorAccess().getAlternatives()); }
 )
 
 ;
@@ -400,25 +457,25 @@ finally {
 
 
 
-// Entry rule entryRulesub_selector
-entryRulesub_selector 
+// Entry rule entryRuleAttributeSelector
+entryRuleAttributeSelector 
 :
-{ before(grammarAccess.getSub_selectorRule()); }
-	 rulesub_selector
-{ after(grammarAccess.getSub_selectorRule()); } 
+{ before(grammarAccess.getAttributeSelectorRule()); }
+	 ruleAttributeSelector
+{ after(grammarAccess.getAttributeSelectorRule()); } 
 	 EOF 
 ;
 
-// Rule sub_selector
-rulesub_selector
+// Rule AttributeSelector
+ruleAttributeSelector
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getSub_selectorAccess().getAlternatives()); }
-(rule__Sub_selector__Alternatives)
-{ after(grammarAccess.getSub_selectorAccess().getAlternatives()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getGroup()); }
+(rule__AttributeSelector__Group__0)
+{ after(grammarAccess.getAttributeSelectorAccess().getGroup()); }
 )
 
 ;
@@ -428,25 +485,109 @@ finally {
 
 
 
-// Entry rule entryRulecss_type_selector
-entryRulecss_type_selector 
+// Entry rule entryRuleClassSelector
+entryRuleClassSelector 
 :
-{ before(grammarAccess.getCss_type_selectorRule()); }
-	 rulecss_type_selector
-{ after(grammarAccess.getCss_type_selectorRule()); } 
+{ before(grammarAccess.getClassSelectorRule()); }
+	 ruleClassSelector
+{ after(grammarAccess.getClassSelectorRule()); } 
 	 EOF 
 ;
 
-// Rule css_type_selector
-rulecss_type_selector
+// Rule ClassSelector
+ruleClassSelector
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getCss_type_selectorAccess().getGroup()); }
-(rule__Css_type_selector__Group__0)
-{ after(grammarAccess.getCss_type_selectorAccess().getGroup()); }
+{ before(grammarAccess.getClassSelectorAccess().getGroup()); }
+(rule__ClassSelector__Group__0)
+{ after(grammarAccess.getClassSelectorAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+// Entry rule entryRuleElementSelector
+entryRuleElementSelector 
+:
+{ before(grammarAccess.getElementSelectorRule()); }
+	 ruleElementSelector
+{ after(grammarAccess.getElementSelectorRule()); } 
+	 EOF 
+;
+
+// Rule ElementSelector
+ruleElementSelector
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getElementSelectorAccess().getGroup()); }
+(rule__ElementSelector__Group__0)
+{ after(grammarAccess.getElementSelectorAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+// Entry rule entryRuleUniversalSelector
+entryRuleUniversalSelector 
+:
+{ before(grammarAccess.getUniversalSelectorRule()); }
+	 ruleUniversalSelector
+{ after(grammarAccess.getUniversalSelectorRule()); } 
+	 EOF 
+;
+
+// Rule UniversalSelector
+ruleUniversalSelector
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getUniversalSelectorAccess().getGroup()); }
+(rule__UniversalSelector__Group__0)
+{ after(grammarAccess.getUniversalSelectorAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+// Entry rule entryRuleIdSelector
+entryRuleIdSelector 
+:
+{ before(grammarAccess.getIdSelectorRule()); }
+	 ruleIdSelector
+{ after(grammarAccess.getIdSelectorRule()); } 
+	 EOF 
+;
+
+// Rule IdSelector
+ruleIdSelector
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getIdSelectorAccess().getGroup()); }
+(rule__IdSelector__Group__0)
+{ after(grammarAccess.getIdSelectorAccess().getGroup()); }
 )
 
 ;
@@ -475,118 +616,6 @@ rulecss_namespace_prefix
 { before(grammarAccess.getCss_namespace_prefixAccess().getGroup()); }
 (rule__Css_namespace_prefix__Group__0)
 { after(grammarAccess.getCss_namespace_prefixAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRulecss_universal
-entryRulecss_universal 
-:
-{ before(grammarAccess.getCss_universalRule()); }
-	 rulecss_universal
-{ after(grammarAccess.getCss_universalRule()); } 
-	 EOF 
-;
-
-// Rule css_universal
-rulecss_universal
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getCss_universalAccess().getGroup()); }
-(rule__Css_universal__Group__0)
-{ after(grammarAccess.getCss_universalAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRulecss_class
-entryRulecss_class 
-:
-{ before(grammarAccess.getCss_classRule()); }
-	 rulecss_class
-{ after(grammarAccess.getCss_classRule()); } 
-	 EOF 
-;
-
-// Rule css_class
-rulecss_class
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getCss_classAccess().getGroup()); }
-(rule__Css_class__Group__0)
-{ after(grammarAccess.getCss_classAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRulecss_id
-entryRulecss_id 
-:
-{ before(grammarAccess.getCss_idRule()); }
-	 rulecss_id
-{ after(grammarAccess.getCss_idRule()); } 
-	 EOF 
-;
-
-// Rule css_id
-rulecss_id
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getCss_idAccess().getHASHTerminalRuleCall()); }
-	RULE_HASH
-{ after(grammarAccess.getCss_idAccess().getHASHTerminalRuleCall()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRulecss_attrib
-entryRulecss_attrib 
-:
-{ before(grammarAccess.getCss_attribRule()); }
-	 rulecss_attrib
-{ after(grammarAccess.getCss_attribRule()); } 
-	 EOF 
-;
-
-// Rule css_attrib
-rulecss_attrib
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getCss_attribAccess().getGroup()); }
-(rule__Css_attrib__Group__0)
-{ after(grammarAccess.getCss_attribAccess().getGroup()); }
 )
 
 ;
@@ -628,34 +657,6 @@ rulecss_declaration
 finally {
 	restoreStackSize(stackSize);
 	myHiddenTokenState.restore();
-}
-
-
-
-// Entry rule entryRulecss_prio
-entryRulecss_prio 
-:
-{ before(grammarAccess.getCss_prioRule()); }
-	 rulecss_prio
-{ after(grammarAccess.getCss_prioRule()); } 
-	 EOF 
-;
-
-// Rule css_prio
-rulecss_prio
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getCss_prioAccess().getIMPORTANT_SYMParserRuleCall()); }
-	ruleIMPORTANT_SYM
-{ after(grammarAccess.getCss_prioAccess().getIMPORTANT_SYMParserRuleCall()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
 }
 
 
@@ -704,9 +705,9 @@ ruleValidPropertyIdent
     }
 	:
 (
-{ before(grammarAccess.getValidPropertyIdentAccess().getGroup()); }
-(rule__ValidPropertyIdent__Group__0)
-{ after(grammarAccess.getValidPropertyIdentAccess().getGroup()); }
+{ before(grammarAccess.getValidPropertyIdentAccess().getIdentifierParserRuleCall()); }
+	ruleIdentifier
+{ after(grammarAccess.getValidPropertyIdentAccess().getIdentifierParserRuleCall()); }
 )
 
 ;
@@ -716,25 +717,25 @@ finally {
 
 
 
-// Entry rule entryRulecss_pseudo
-entryRulecss_pseudo 
+// Entry rule entryRulePseudoClassOrFunc
+entryRulePseudoClassOrFunc 
 :
-{ before(grammarAccess.getCss_pseudoRule()); }
-	 rulecss_pseudo
-{ after(grammarAccess.getCss_pseudoRule()); } 
+{ before(grammarAccess.getPseudoClassOrFuncRule()); }
+	 rulePseudoClassOrFunc
+{ after(grammarAccess.getPseudoClassOrFuncRule()); } 
 	 EOF 
 ;
 
-// Rule css_pseudo
-rulecss_pseudo
+// Rule PseudoClassOrFunc
+rulePseudoClassOrFunc
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getCss_pseudoAccess().getGroup()); }
-(rule__Css_pseudo__Group__0)
-{ after(grammarAccess.getCss_pseudoAccess().getGroup()); }
+{ before(grammarAccess.getPseudoClassOrFuncAccess().getAlternatives()); }
+(rule__PseudoClassOrFunc__Alternatives)
+{ after(grammarAccess.getPseudoClassOrFuncAccess().getAlternatives()); }
 )
 
 ;
@@ -744,25 +745,25 @@ finally {
 
 
 
-// Entry rule entryRulecss_negation
-entryRulecss_negation 
+// Entry rule entryRulePseudoClass
+entryRulePseudoClass 
 :
-{ before(grammarAccess.getCss_negationRule()); }
-	 rulecss_negation
-{ after(grammarAccess.getCss_negationRule()); } 
+{ before(grammarAccess.getPseudoClassRule()); }
+	 rulePseudoClass
+{ after(grammarAccess.getPseudoClassRule()); } 
 	 EOF 
 ;
 
-// Rule css_negation
-rulecss_negation
+// Rule PseudoClass
+rulePseudoClass
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getCss_negationAccess().getGroup()); }
-(rule__Css_negation__Group__0)
-{ after(grammarAccess.getCss_negationAccess().getGroup()); }
+{ before(grammarAccess.getPseudoClassAccess().getGroup()); }
+(rule__PseudoClass__Group__0)
+{ after(grammarAccess.getPseudoClassAccess().getGroup()); }
 )
 
 ;
@@ -772,25 +773,25 @@ finally {
 
 
 
-// Entry rule entryRulecss_negation_arg
-entryRulecss_negation_arg 
+// Entry rule entryRulePseudoClassName
+entryRulePseudoClassName 
 :
-{ before(grammarAccess.getCss_negation_argRule()); }
-	 rulecss_negation_arg
-{ after(grammarAccess.getCss_negation_argRule()); } 
+{ before(grammarAccess.getPseudoClassNameRule()); }
+	 rulePseudoClassName
+{ after(grammarAccess.getPseudoClassNameRule()); } 
 	 EOF 
 ;
 
-// Rule css_negation_arg
-rulecss_negation_arg
+// Rule PseudoClassName
+rulePseudoClassName
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getCss_negation_argAccess().getAlternatives()); }
-(rule__Css_negation_arg__Alternatives)
-{ after(grammarAccess.getCss_negation_argAccess().getAlternatives()); }
+{ before(grammarAccess.getPseudoClassNameAccess().getNameAssignment()); }
+(rule__PseudoClassName__NameAssignment)
+{ after(grammarAccess.getPseudoClassNameAccess().getNameAssignment()); }
 )
 
 ;
@@ -800,25 +801,25 @@ finally {
 
 
 
-// Entry rule entryRulefunctional_pseudo
-entryRulefunctional_pseudo 
+// Entry rule entryRulePseudoClassFunction
+entryRulePseudoClassFunction 
 :
-{ before(grammarAccess.getFunctional_pseudoRule()); }
-	 rulefunctional_pseudo
-{ after(grammarAccess.getFunctional_pseudoRule()); } 
+{ before(grammarAccess.getPseudoClassFunctionRule()); }
+	 rulePseudoClassFunction
+{ after(grammarAccess.getPseudoClassFunctionRule()); } 
 	 EOF 
 ;
 
-// Rule functional_pseudo
-rulefunctional_pseudo
+// Rule PseudoClassFunction
+rulePseudoClassFunction
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getFunctional_pseudoAccess().getGroup()); }
-(rule__Functional_pseudo__Group__0)
-{ after(grammarAccess.getFunctional_pseudoAccess().getGroup()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getAlternatives()); }
+(rule__PseudoClassFunction__Alternatives)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getAlternatives()); }
 )
 
 ;
@@ -828,65 +829,38 @@ finally {
 
 
 
-// Entry rule entryRulefunction_expr
-entryRulefunction_expr 
+// Entry rule entryRuleNotFunctionCall
+entryRuleNotFunctionCall 
+@init {
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+}
 :
-{ before(grammarAccess.getFunction_exprRule()); }
-	 rulefunction_expr
-{ after(grammarAccess.getFunction_exprRule()); } 
+{ before(grammarAccess.getNotFunctionCallRule()); }
+	 ruleNotFunctionCall
+{ after(grammarAccess.getNotFunctionCallRule()); } 
 	 EOF 
 ;
-
-// Rule function_expr
-rulefunction_expr
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-(
-{ before(grammarAccess.getFunction_exprAccess().getAlternatives()); }
-(rule__Function_expr__Alternatives)
-{ after(grammarAccess.getFunction_exprAccess().getAlternatives()); }
-)
-(
-{ before(grammarAccess.getFunction_exprAccess().getAlternatives()); }
-(rule__Function_expr__Alternatives)*
-{ after(grammarAccess.getFunction_exprAccess().getAlternatives()); }
-)
-)
-
-;
 finally {
-	restoreStackSize(stackSize);
+	myHiddenTokenState.restore();
 }
 
-
-
-// Entry rule entryRuleDIMENSION
-entryRuleDIMENSION 
-:
-{ before(grammarAccess.getDIMENSIONRule()); }
-	 ruleDIMENSION
-{ after(grammarAccess.getDIMENSIONRule()); } 
-	 EOF 
-;
-
-// Rule DIMENSION
-ruleDIMENSION
+// Rule NotFunctionCall
+ruleNotFunctionCall
     @init {
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getDIMENSIONAccess().getAlternatives()); }
-(rule__DIMENSION__Alternatives)
-{ after(grammarAccess.getDIMENSIONAccess().getAlternatives()); }
+{ before(grammarAccess.getNotFunctionCallAccess().getGroup()); }
+(rule__NotFunctionCall__Group__0)
+{ after(grammarAccess.getNotFunctionCallAccess().getGroup()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
+	myHiddenTokenState.restore();
 }
 
 
@@ -907,9 +881,9 @@ rulecombinator
     }
 	:
 (
-{ before(grammarAccess.getCombinatorAccess().getGroup()); }
-(rule__Combinator__Group__0)
-{ after(grammarAccess.getCombinatorAccess().getGroup()); }
+{ before(grammarAccess.getCombinatorAccess().getAlternatives()); }
+(rule__Combinator__Alternatives)
+{ after(grammarAccess.getCombinatorAccess().getAlternatives()); }
 )
 
 ;
@@ -919,81 +893,22 @@ finally {
 
 
 
-// Entry rule entryRuleoperator
-entryRuleoperator 
-:
-{ before(grammarAccess.getOperatorRule()); }
-	 ruleoperator
-{ after(grammarAccess.getOperatorRule()); } 
-	 EOF 
-;
 
-// Rule operator
-ruleoperator
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getOperatorAccess().getAlternatives()); }
-(rule__Operator__Alternatives)
-{ after(grammarAccess.getOperatorAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleunary_operator
-entryRuleunary_operator 
-:
-{ before(grammarAccess.getUnary_operatorRule()); }
-	 ruleunary_operator
-{ after(grammarAccess.getUnary_operatorRule()); } 
-	 EOF 
-;
-
-// Rule unary_operator
-ruleunary_operator
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getUnary_operatorAccess().getAlternatives()); }
-(rule__Unary_operator__Alternatives)
-{ after(grammarAccess.getUnary_operatorAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
 
 
 
 // Entry rule entryRuleSymbolTok
 entryRuleSymbolTok 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-}
 :
 { before(grammarAccess.getSymbolTokRule()); }
 	 ruleSymbolTok
 { after(grammarAccess.getSymbolTokRule()); } 
 	 EOF 
 ;
-finally {
-	myHiddenTokenState.restore();
-}
 
 // Rule SymbolTok
 ruleSymbolTok
     @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 		int stackSize = keepStackSize();
     }
 	:
@@ -1006,30 +921,22 @@ ruleSymbolTok
 ;
 finally {
 	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
 }
 
 
 
 // Entry rule entryRuleWSTok
 entryRuleWSTok 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-}
 :
 { before(grammarAccess.getWSTokRule()); }
 	 ruleWSTok
 { after(grammarAccess.getWSTokRule()); } 
 	 EOF 
 ;
-finally {
-	myHiddenTokenState.restore();
-}
 
 // Rule WSTok
 ruleWSTok
     @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 		int stackSize = keepStackSize();
     }
 	:
@@ -1042,30 +949,22 @@ ruleWSTok
 ;
 finally {
 	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
 }
 
 
 
 // Entry rule entryRuleStringTok
 entryRuleStringTok 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-}
 :
 { before(grammarAccess.getStringTokRule()); }
 	 ruleStringTok
 { after(grammarAccess.getStringTokRule()); } 
 	 EOF 
 ;
-finally {
-	myHiddenTokenState.restore();
-}
 
 // Rule StringTok
 ruleStringTok
     @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 		int stackSize = keepStackSize();
     }
 	:
@@ -1078,43 +977,6 @@ ruleStringTok
 ;
 finally {
 	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
-}
-
-
-
-// Entry rule entryRuleFuncTok
-entryRuleFuncTok 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-}
-:
-{ before(grammarAccess.getFuncTokRule()); }
-	 ruleFuncTok
-{ after(grammarAccess.getFuncTokRule()); } 
-	 EOF 
-;
-finally {
-	myHiddenTokenState.restore();
-}
-
-// Rule FuncTok
-ruleFuncTok
-    @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getFuncTokAccess().getGroup()); }
-(rule__FuncTok__Group__0)
-{ after(grammarAccess.getFuncTokAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
 }
 
 
@@ -1122,7 +984,7 @@ finally {
 // Entry rule entryRuleNumberTok
 entryRuleNumberTok 
 @init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 }
 :
 { before(grammarAccess.getNumberTokRule()); }
@@ -1137,7 +999,7 @@ finally {
 // Rule NumberTok
 ruleNumberTok
     @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 		int stackSize = keepStackSize();
     }
 	:
@@ -1155,61 +1017,18 @@ finally {
 
 
 
-// Entry rule entryRuleIdentifierTok
-entryRuleIdentifierTok 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-}
-:
-{ before(grammarAccess.getIdentifierTokRule()); }
-	 ruleIdentifierTok
-{ after(grammarAccess.getIdentifierTokRule()); } 
-	 EOF 
-;
-finally {
-	myHiddenTokenState.restore();
-}
-
-// Rule IdentifierTok
-ruleIdentifierTok
-    @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getIdentifierTokAccess().getGroup()); }
-(rule__IdentifierTok__Group__0)
-{ after(grammarAccess.getIdentifierTokAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
-}
-
-
-
 // Entry rule entryRuleUrlTok
 entryRuleUrlTok 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
-}
 :
 { before(grammarAccess.getUrlTokRule()); }
 	 ruleUrlTok
 { after(grammarAccess.getUrlTokRule()); } 
 	 EOF 
 ;
-finally {
-	myHiddenTokenState.restore();
-}
 
 // Rule UrlTok
 ruleUrlTok
     @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 		int stackSize = keepStackSize();
     }
 	:
@@ -1222,7 +1041,6 @@ ruleUrlTok
 ;
 finally {
 	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
 }
 
 
@@ -1230,7 +1048,7 @@ finally {
 // Entry rule entryRuleColorTok
 entryRuleColorTok 
 @init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 }
 :
 { before(grammarAccess.getColorTokRule()); }
@@ -1245,7 +1063,7 @@ finally {
 // Rule ColorTok
 ruleColorTok
     @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 		int stackSize = keepStackSize();
     }
 	:
@@ -1253,6 +1071,42 @@ ruleColorTok
 { before(grammarAccess.getColorTokAccess().getGroup()); }
 (rule__ColorTok__Group__0)
 { after(grammarAccess.getColorTokAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+	myHiddenTokenState.restore();
+}
+
+
+
+// Entry rule entryRuleIdentifierOrFuncTok
+entryRuleIdentifierOrFuncTok 
+@init {
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+}
+:
+{ before(grammarAccess.getIdentifierOrFuncTokRule()); }
+	 ruleIdentifierOrFuncTok
+{ after(grammarAccess.getIdentifierOrFuncTokRule()); } 
+	 EOF 
+;
+finally {
+	myHiddenTokenState.restore();
+}
+
+// Rule IdentifierOrFuncTok
+ruleIdentifierOrFuncTok
+    @init {
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getGroup()); }
+(rule__IdentifierOrFuncTok__Group__0)
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getGroup()); }
 )
 
 ;
@@ -1299,207 +1153,6 @@ finally {
 
 
 
-
-
-// Entry rule entryRuletermGroup
-entryRuletermGroup 
-:
-{ before(grammarAccess.getTermGroupRule()); }
-	 ruletermGroup
-{ after(grammarAccess.getTermGroupRule()); } 
-	 EOF 
-;
-
-// Rule termGroup
-ruletermGroup
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-(
-{ before(grammarAccess.getTermGroupAccess().getTermsAssignment()); }
-(rule__TermGroup__TermsAssignment)
-{ after(grammarAccess.getTermGroupAccess().getTermsAssignment()); }
-)
-(
-{ before(grammarAccess.getTermGroupAccess().getTermsAssignment()); }
-(rule__TermGroup__TermsAssignment)*
-{ after(grammarAccess.getTermGroupAccess().getTermsAssignment()); }
-)
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleterm
-entryRuleterm 
-:
-{ before(grammarAccess.getTermRule()); }
-	 ruleterm
-{ after(grammarAccess.getTermRule()); } 
-	 EOF 
-;
-
-// Rule term
-ruleterm
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getTermAccess().getAlternatives()); }
-(rule__Term__Alternatives)
-{ after(grammarAccess.getTermAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRulenumberTerm
-entryRulenumberTerm 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
-}
-:
-{ before(grammarAccess.getNumberTermRule()); }
-	 rulenumberTerm
-{ after(grammarAccess.getNumberTermRule()); } 
-	 EOF 
-;
-finally {
-	myHiddenTokenState.restore();
-}
-
-// Rule numberTerm
-rulenumberTerm
-    @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getNumberTermAccess().getGroup()); }
-(rule__NumberTerm__Group__0)
-{ after(grammarAccess.getNumberTermAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
-}
-
-
-
-// Entry rule entryRulenum
-entryRulenum 
-:
-{ before(grammarAccess.getNumRule()); }
-	 rulenum
-{ after(grammarAccess.getNumRule()); } 
-	 EOF 
-;
-
-// Rule num
-rulenum
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getNumAccess().getAlternatives()); }
-(rule__Num__Alternatives)
-{ after(grammarAccess.getNumAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRulefunction
-entryRulefunction 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
-}
-:
-{ before(grammarAccess.getFunctionRule()); }
-	 rulefunction
-{ after(grammarAccess.getFunctionRule()); } 
-	 EOF 
-;
-finally {
-	myHiddenTokenState.restore();
-}
-
-// Rule function
-rulefunction
-    @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getFunctionAccess().getGroup()); }
-(rule__Function__Group__0)
-{ after(grammarAccess.getFunctionAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
-}
-
-
-
-// Entry rule entryRuleHexColor
-entryRuleHexColor 
-@init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
-}
-:
-{ before(grammarAccess.getHexColorRule()); }
-	 ruleHexColor
-{ after(grammarAccess.getHexColorRule()); } 
-	 EOF 
-;
-finally {
-	myHiddenTokenState.restore();
-}
-
-// Rule HexColor
-ruleHexColor
-    @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getHexColorAccess().getHASHTerminalRuleCall()); }
-	RULE_HASH
-{ after(grammarAccess.getHexColorAccess().getHASHTerminalRuleCall()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-	myHiddenTokenState.restore();
-}
-
-
-
 // Entry rule entryRuleURLType
 entryRuleURLType 
 @init {
@@ -1536,25 +1189,25 @@ finally {
 
 
 
-// Entry rule entryRuleNUMBER
-entryRuleNUMBER 
+// Entry rule entryRuleValidURLSymbol
+entryRuleValidURLSymbol 
 :
-{ before(grammarAccess.getNUMBERRule()); }
-	 ruleNUMBER
-{ after(grammarAccess.getNUMBERRule()); } 
+{ before(grammarAccess.getValidURLSymbolRule()); }
+	 ruleValidURLSymbol
+{ after(grammarAccess.getValidURLSymbolRule()); } 
 	 EOF 
 ;
 
-// Rule NUMBER
-ruleNUMBER
+// Rule ValidURLSymbol
+ruleValidURLSymbol
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getNUMBERAccess().getNumParserRuleCall()); }
-	rulenum
-{ after(grammarAccess.getNUMBERAccess().getNumParserRuleCall()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getAlternatives()); }
+(rule__ValidURLSymbol__Alternatives)
+{ after(grammarAccess.getValidURLSymbolAccess().getAlternatives()); }
 )
 
 ;
@@ -1564,25 +1217,25 @@ finally {
 
 
 
-// Entry rule entryRulePERCENTAGE
-entryRulePERCENTAGE 
+// Entry rule entryRuleKeywordHack
+entryRuleKeywordHack 
 :
-{ before(grammarAccess.getPERCENTAGERule()); }
-	 rulePERCENTAGE
-{ after(grammarAccess.getPERCENTAGERule()); } 
+{ before(grammarAccess.getKeywordHackRule()); }
+	 ruleKeywordHack
+{ after(grammarAccess.getKeywordHackRule()); } 
 	 EOF 
 ;
 
-// Rule PERCENTAGE
-rulePERCENTAGE
+// Rule KeywordHack
+ruleKeywordHack
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getPERCENTAGEAccess().getGroup()); }
-(rule__PERCENTAGE__Group__0)
-{ after(grammarAccess.getPERCENTAGEAccess().getGroup()); }
+{ before(grammarAccess.getKeywordHackAccess().getAlternatives()); }
+(rule__KeywordHack__Alternatives)
+{ after(grammarAccess.getKeywordHackAccess().getAlternatives()); }
 )
 
 ;
@@ -1592,88 +1245,32 @@ finally {
 
 
 
-// Entry rule entryRuleEMS
-entryRuleEMS 
-:
-{ before(grammarAccess.getEMSRule()); }
-	 ruleEMS
-{ after(grammarAccess.getEMSRule()); } 
-	 EOF 
-;
-
-// Rule EMS
-ruleEMS
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getEMSAccess().getGroup()); }
-(rule__EMS__Group__0)
-{ after(grammarAccess.getEMSAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleEXS
-entryRuleEXS 
-:
-{ before(grammarAccess.getEXSRule()); }
-	 ruleEXS
-{ after(grammarAccess.getEXSRule()); } 
-	 EOF 
-;
-
-// Rule EXS
-ruleEXS
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getEXSAccess().getGroup()); }
-(rule__EXS__Group__0)
-{ after(grammarAccess.getEXSAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleLENGTH
-entryRuleLENGTH 
+// Entry rule entryRuleValidURL
+entryRuleValidURL 
 @init {
 	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 }
 :
-{ before(grammarAccess.getLENGTHRule()); }
-	 ruleLENGTH
-{ after(grammarAccess.getLENGTHRule()); } 
+{ before(grammarAccess.getValidURLRule()); }
+	 ruleValidURL
+{ after(grammarAccess.getValidURLRule()); } 
 	 EOF 
 ;
 finally {
 	myHiddenTokenState.restore();
 }
 
-// Rule LENGTH
-ruleLENGTH
+// Rule ValidURL
+ruleValidURL
     @init {
 		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getLENGTHAccess().getGroup()); }
-(rule__LENGTH__Group__0)
-{ after(grammarAccess.getLENGTHAccess().getGroup()); }
+{ before(grammarAccess.getValidURLAccess().getAlternatives()); }
+(rule__ValidURL__Alternatives)
+{ after(grammarAccess.getValidURLAccess().getAlternatives()); }
 )
 
 ;
@@ -1684,25 +1281,97 @@ finally {
 
 
 
-// Entry rule entryRuleANGLE
-entryRuleANGLE 
+// Entry rule entryRuleIdentifier
+entryRuleIdentifier 
+@init {
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+}
 :
-{ before(grammarAccess.getANGLERule()); }
-	 ruleANGLE
-{ after(grammarAccess.getANGLERule()); } 
+{ before(grammarAccess.getIdentifierRule()); }
+	 ruleIdentifier
+{ after(grammarAccess.getIdentifierRule()); } 
+	 EOF 
+;
+finally {
+	myHiddenTokenState.restore();
+}
+
+// Rule Identifier
+ruleIdentifier
+    @init {
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getIdentifierAccess().getGroup()); }
+(rule__Identifier__Group__0)
+{ after(grammarAccess.getIdentifierAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+	myHiddenTokenState.restore();
+}
+
+
+
+// Entry rule entryRuleNum
+entryRuleNum 
+@init {
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+}
+:
+{ before(grammarAccess.getNumRule()); }
+	 ruleNum
+{ after(grammarAccess.getNumRule()); } 
+	 EOF 
+;
+finally {
+	myHiddenTokenState.restore();
+}
+
+// Rule Num
+ruleNum
+    @init {
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getNumAccess().getGroup()); }
+(rule__Num__Group__0)
+{ after(grammarAccess.getNumAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+	myHiddenTokenState.restore();
+}
+
+
+
+// Entry rule entryRuleHex
+entryRuleHex 
+:
+{ before(grammarAccess.getHexRule()); }
+	 ruleHex
+{ after(grammarAccess.getHexRule()); } 
 	 EOF 
 ;
 
-// Rule ANGLE
-ruleANGLE
+// Rule Hex
+ruleHex
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getANGLEAccess().getGroup()); }
-(rule__ANGLE__Group__0)
-{ after(grammarAccess.getANGLEAccess().getGroup()); }
+{ before(grammarAccess.getHexAccess().getGroup()); }
+(rule__Hex__Group__0)
+{ after(grammarAccess.getHexAccess().getGroup()); }
 )
 
 ;
@@ -1710,140 +1379,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-
-
-// Entry rule entryRuleTIME
-entryRuleTIME 
-:
-{ before(grammarAccess.getTIMERule()); }
-	 ruleTIME
-{ after(grammarAccess.getTIMERule()); } 
-	 EOF 
-;
-
-// Rule TIME
-ruleTIME
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getTIMEAccess().getGroup()); }
-(rule__TIME__Group__0)
-{ after(grammarAccess.getTIMEAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleFREQ
-entryRuleFREQ 
-:
-{ before(grammarAccess.getFREQRule()); }
-	 ruleFREQ
-{ after(grammarAccess.getFREQRule()); } 
-	 EOF 
-;
-
-// Rule FREQ
-ruleFREQ
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getFREQAccess().getGroup()); }
-(rule__FREQ__Group__0)
-{ after(grammarAccess.getFREQAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleIMPORTANT_SYM
-entryRuleIMPORTANT_SYM 
-:
-{ before(grammarAccess.getIMPORTANT_SYMRule()); }
-	 ruleIMPORTANT_SYM
-{ after(grammarAccess.getIMPORTANT_SYMRule()); } 
-	 EOF 
-;
-
-// Rule IMPORTANT_SYM
-ruleIMPORTANT_SYM
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getIMPORTANT_SYMAccess().getImportantKeyword()); }
-
-	'!important' 
-
-{ after(grammarAccess.getIMPORTANT_SYMAccess().getImportantKeyword()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleReservedWords
-entryRuleReservedWords 
-:
-{ before(grammarAccess.getReservedWordsRule()); }
-	 ruleReservedWords
-{ after(grammarAccess.getReservedWordsRule()); } 
-	 EOF 
-;
-
-// Rule ReservedWords
-ruleReservedWords
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getReservedWordsAccess().getAlternatives()); }
-(rule__ReservedWords__Alternatives)
-{ after(grammarAccess.getReservedWordsAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-// Rule css_not
-rulecss_not
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_notAccess().getNotEnumLiteralDeclaration()); }
-(	'not(' 
-)
-{ after(grammarAccess.getCss_notAccess().getNotEnumLiteralDeclaration()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
 
 
 
@@ -1901,21 +1436,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ImportExpression__Alternatives
+rule__ImportExpression__Alternatives_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getGroup_0()); }
-(rule__ImportExpression__Group_0__0)
-{ after(grammarAccess.getImportExpressionAccess().getGroup_0()); }
+{ before(grammarAccess.getImportExpressionAccess().getImportKeyword_0_0()); }
+
+	'@import' 
+
+{ after(grammarAccess.getImportExpressionAccess().getImportKeyword_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getImportExpressionAccess().getGroup_1()); }
-(rule__ImportExpression__Group_1__0)
-{ after(grammarAccess.getImportExpressionAccess().getGroup_1()); }
+{ before(grammarAccess.getImportExpressionAccess().getIMPORTKeyword_0_1()); }
+
+	'@IMPORT' 
+
+{ after(grammarAccess.getImportExpressionAccess().getIMPORTKeyword_0_1()); }
 )
 
 ;
@@ -1923,25 +1462,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ImportExpression__Alternatives_0_0
+rule__ImportExpression__Alternatives_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getImportKeyword_0_0_0()); }
-
-	'@import' 
-
-{ after(grammarAccess.getImportExpressionAccess().getImportKeyword_0_0_0()); }
+{ before(grammarAccess.getImportExpressionAccess().getValueAssignment_1_0()); }
+(rule__ImportExpression__ValueAssignment_1_0)
+{ after(grammarAccess.getImportExpressionAccess().getValueAssignment_1_0()); }
 )
 
     |(
-{ before(grammarAccess.getImportExpressionAccess().getIMPORTKeyword_0_0_1()); }
-
-	'@IMPORT' 
-
-{ after(grammarAccess.getImportExpressionAccess().getIMPORTKeyword_0_0_1()); }
+{ before(grammarAccess.getImportExpressionAccess().getGroup_1_1()); }
+(rule__ImportExpression__Group_1_1__0)
+{ after(grammarAccess.getImportExpressionAccess().getGroup_1_1()); }
 )
 
 ;
@@ -2023,6 +1558,91 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__SimpleSelectorForNegation__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getGroup_0()); }
+(rule__SimpleSelectorForNegation__Group_0__0)
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getGroup_0()); }
+)
+
+    |(
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsAssignment_1()); }
+(rule__SimpleSelectorForNegation__SubSelectorsAssignment_1)
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsAssignment_1()); }
+)
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsAssignment_1()); }
+(rule__SimpleSelectorForNegation__SubSelectorsAssignment_1)*
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsAssignment_1()); }
+)
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SimpleSelectorForNegation__Alternatives_0_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getElementAssignment_0_0_0()); }
+(rule__SimpleSelectorForNegation__ElementAssignment_0_0_0)
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getElementAssignment_0_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getUniversalAssignment_0_0_1()); }
+(rule__SimpleSelectorForNegation__UniversalAssignment_0_0_1)
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getUniversalAssignment_0_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SubSelectorForNegation__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSubSelectorForNegationAccess().getIdSelectorParserRuleCall_0()); }
+	ruleIdSelector
+{ after(grammarAccess.getSubSelectorForNegationAccess().getIdSelectorParserRuleCall_0()); }
+)
+
+    |(
+{ before(grammarAccess.getSubSelectorForNegationAccess().getClassSelectorParserRuleCall_1()); }
+	ruleClassSelector
+{ after(grammarAccess.getSubSelectorForNegationAccess().getClassSelectorParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getSubSelectorForNegationAccess().getAttributeSelectorParserRuleCall_2()); }
+	ruleAttributeSelector
+{ after(grammarAccess.getSubSelectorForNegationAccess().getAttributeSelectorParserRuleCall_2()); }
+)
+
+    |(
+{ before(grammarAccess.getSubSelectorForNegationAccess().getPseudoClassParserRuleCall_3()); }
+	rulePseudoClass
+{ after(grammarAccess.getSubSelectorForNegationAccess().getPseudoClassParserRuleCall_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Simple_selector__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -2074,21 +1694,33 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Element_name__Alternatives
+rule__SubSelector__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getElement_nameAccess().getIDENTTerminalRuleCall_0()); }
-	RULE_IDENT
-{ after(grammarAccess.getElement_nameAccess().getIDENTTerminalRuleCall_0()); }
+{ before(grammarAccess.getSubSelectorAccess().getIdSelectorParserRuleCall_0()); }
+	ruleIdSelector
+{ after(grammarAccess.getSubSelectorAccess().getIdSelectorParserRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getElement_nameAccess().getReservedWordsParserRuleCall_1()); }
-	ruleReservedWords
-{ after(grammarAccess.getElement_nameAccess().getReservedWordsParserRuleCall_1()); }
+{ before(grammarAccess.getSubSelectorAccess().getClassSelectorParserRuleCall_1()); }
+	ruleClassSelector
+{ after(grammarAccess.getSubSelectorAccess().getClassSelectorParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getSubSelectorAccess().getAttributeSelectorParserRuleCall_2()); }
+	ruleAttributeSelector
+{ after(grammarAccess.getSubSelectorAccess().getAttributeSelectorParserRuleCall_2()); }
+)
+
+    |(
+{ before(grammarAccess.getSubSelectorAccess().getPseudoClassOrFuncParserRuleCall_3()); }
+	rulePseudoClassOrFunc
+{ after(grammarAccess.getSubSelectorAccess().getPseudoClassOrFuncParserRuleCall_3()); }
 )
 
 ;
@@ -2096,39 +1728,75 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sub_selector__Alternatives
+rule__AttributeSelector__OpAlternatives_3_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSub_selectorAccess().getIdAssignment_0()); }
-(rule__Sub_selector__IdAssignment_0)
-{ after(grammarAccess.getSub_selectorAccess().getIdAssignment_0()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getOpCircumflexAccentEqualsSignKeyword_3_0_0_0()); }
+
+	'^=' 
+
+{ after(grammarAccess.getAttributeSelectorAccess().getOpCircumflexAccentEqualsSignKeyword_3_0_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getSub_selectorAccess().getClassAssignment_1()); }
-(rule__Sub_selector__ClassAssignment_1)
-{ after(grammarAccess.getSub_selectorAccess().getClassAssignment_1()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getOpDollarSignEqualsSignKeyword_3_0_0_1()); }
+
+	'$=' 
+
+{ after(grammarAccess.getAttributeSelectorAccess().getOpDollarSignEqualsSignKeyword_3_0_0_1()); }
 )
 
     |(
-{ before(grammarAccess.getSub_selectorAccess().getAttribAssignment_2()); }
-(rule__Sub_selector__AttribAssignment_2)
-{ after(grammarAccess.getSub_selectorAccess().getAttribAssignment_2()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getOpAsteriskEqualsSignKeyword_3_0_0_2()); }
+
+	'*=' 
+
+{ after(grammarAccess.getAttributeSelectorAccess().getOpAsteriskEqualsSignKeyword_3_0_0_2()); }
 )
 
     |(
-{ before(grammarAccess.getSub_selectorAccess().getPseudoclassAssignment_3()); }
-(rule__Sub_selector__PseudoclassAssignment_3)
-{ after(grammarAccess.getSub_selectorAccess().getPseudoclassAssignment_3()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getOpEqualsSignKeyword_3_0_0_3()); }
+
+	'=' 
+
+{ after(grammarAccess.getAttributeSelectorAccess().getOpEqualsSignKeyword_3_0_0_3()); }
 )
 
     |(
-{ before(grammarAccess.getSub_selectorAccess().getNegotationAssignment_4()); }
-(rule__Sub_selector__NegotationAssignment_4)
-{ after(grammarAccess.getSub_selectorAccess().getNegotationAssignment_4()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getOpINCLUDESTerminalRuleCall_3_0_0_4()); }
+	RULE_INCLUDES
+{ after(grammarAccess.getAttributeSelectorAccess().getOpINCLUDESTerminalRuleCall_3_0_0_4()); }
+)
+
+    |(
+{ before(grammarAccess.getAttributeSelectorAccess().getOpDASHMATCHTerminalRuleCall_3_0_0_5()); }
+	RULE_DASHMATCH
+{ after(grammarAccess.getAttributeSelectorAccess().getOpDASHMATCHTerminalRuleCall_3_0_0_5()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AttributeSelector__ValueAlternatives_3_1_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeSelectorAccess().getValueIdentifierParserRuleCall_3_1_0_0()); }
+	ruleIdentifier
+{ after(grammarAccess.getAttributeSelectorAccess().getValueIdentifierParserRuleCall_3_1_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getAttributeSelectorAccess().getValueSTRINGTerminalRuleCall_3_1_0_1()); }
+	RULE_STRING
+{ after(grammarAccess.getAttributeSelectorAccess().getValueSTRINGTerminalRuleCall_3_1_0_1()); }
 )
 
 ;
@@ -2142,9 +1810,9 @@ rule__Css_namespace_prefix__Alternatives_0
     }
 :
 (
-{ before(grammarAccess.getCss_namespace_prefixAccess().getIDENTTerminalRuleCall_0_0()); }
-	RULE_IDENT
-{ after(grammarAccess.getCss_namespace_prefixAccess().getIDENTTerminalRuleCall_0_0()); }
+{ before(grammarAccess.getCss_namespace_prefixAccess().getIdentifierParserRuleCall_0_0()); }
+	ruleIdentifier
+{ after(grammarAccess.getCss_namespace_prefixAccess().getIdentifierParserRuleCall_0_0()); }
 )
 
     |(
@@ -2160,21 +1828,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_class__Alternatives_1
+rule__PseudoClassOrFunc__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_classAccess().getIDENTTerminalRuleCall_1_0()); }
-	RULE_IDENT
-{ after(grammarAccess.getCss_classAccess().getIDENTTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getPseudoClassOrFuncAccess().getPseudoClassParserRuleCall_0()); }
+	rulePseudoClass
+{ after(grammarAccess.getPseudoClassOrFuncAccess().getPseudoClassParserRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getCss_classAccess().getReservedWordsParserRuleCall_1_1()); }
-	ruleReservedWords
-{ after(grammarAccess.getCss_classAccess().getReservedWordsParserRuleCall_1_1()); }
+{ before(grammarAccess.getPseudoClassOrFuncAccess().getPseudoClassFunctionParserRuleCall_1()); }
+	rulePseudoClassFunction
+{ after(grammarAccess.getPseudoClassOrFuncAccess().getPseudoClassFunctionParserRuleCall_1()); }
 )
 
 ;
@@ -2182,21 +1850,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_attrib__Alternatives_1
+rule__PseudoClassFunction__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_attribAccess().getIDENTTerminalRuleCall_1_0()); }
-	RULE_IDENT
-{ after(grammarAccess.getCss_attribAccess().getIDENTTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getGroup_0()); }
+(rule__PseudoClassFunction__Group_0__0)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getGroup_0()); }
 )
 
     |(
-{ before(grammarAccess.getCss_attribAccess().getReservedWordsParserRuleCall_1_1()); }
-	ruleReservedWords
-{ after(grammarAccess.getCss_attribAccess().getReservedWordsParserRuleCall_1_1()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getGroup_1()); }
+(rule__PseudoClassFunction__Group_1__0)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getGroup_1()); }
 )
 
 ;
@@ -2204,301 +1872,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_attrib__Alternatives_2_0
+rule__Combinator__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_attribAccess().getCircumflexAccentEqualsSignKeyword_2_0_0()); }
-
-	'^=' 
-
-{ after(grammarAccess.getCss_attribAccess().getCircumflexAccentEqualsSignKeyword_2_0_0()); }
+{ before(grammarAccess.getCombinatorAccess().getPLUSTerminalRuleCall_0()); }
+	RULE_PLUS
+{ after(grammarAccess.getCombinatorAccess().getPLUSTerminalRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getCss_attribAccess().getDollarSignEqualsSignKeyword_2_0_1()); }
-
-	'$=' 
-
-{ after(grammarAccess.getCss_attribAccess().getDollarSignEqualsSignKeyword_2_0_1()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_attribAccess().getAsteriskEqualsSignKeyword_2_0_2()); }
-
-	'*=' 
-
-{ after(grammarAccess.getCss_attribAccess().getAsteriskEqualsSignKeyword_2_0_2()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_attribAccess().getEqualsSignKeyword_2_0_3()); }
-
-	'=' 
-
-{ after(grammarAccess.getCss_attribAccess().getEqualsSignKeyword_2_0_3()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_attribAccess().getINCLUDESTerminalRuleCall_2_0_4()); }
-	RULE_INCLUDES
-{ after(grammarAccess.getCss_attribAccess().getINCLUDESTerminalRuleCall_2_0_4()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_attribAccess().getDASHMATCHTerminalRuleCall_2_0_5()); }
-	RULE_DASHMATCH
-{ after(grammarAccess.getCss_attribAccess().getDASHMATCHTerminalRuleCall_2_0_5()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Alternatives_2_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getAlternatives_2_1_0()); }
-(rule__Css_attrib__Alternatives_2_1_0)
-{ after(grammarAccess.getCss_attribAccess().getAlternatives_2_1_0()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_attribAccess().getSTRINGTerminalRuleCall_2_1_1()); }
-	RULE_STRING
-{ after(grammarAccess.getCss_attribAccess().getSTRINGTerminalRuleCall_2_1_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Alternatives_2_1_0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getIDENTTerminalRuleCall_2_1_0_0()); }
-	RULE_IDENT
-{ after(grammarAccess.getCss_attribAccess().getIDENTTerminalRuleCall_2_1_0_0()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_attribAccess().getReservedWordsParserRuleCall_2_1_0_1()); }
-	ruleReservedWords
-{ after(grammarAccess.getCss_attribAccess().getReservedWordsParserRuleCall_2_1_0_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_pseudo__Alternatives_2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_pseudoAccess().getIDENTTerminalRuleCall_2_0()); }
-	RULE_IDENT
-{ after(grammarAccess.getCss_pseudoAccess().getIDENTTerminalRuleCall_2_0()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_pseudoAccess().getFunctional_pseudoParserRuleCall_2_1()); }
-	rulefunctional_pseudo
-{ after(grammarAccess.getCss_pseudoAccess().getFunctional_pseudoParserRuleCall_2_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_negation_arg__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_negation_argAccess().getCss_type_selectorParserRuleCall_0()); }
-	rulecss_type_selector
-{ after(grammarAccess.getCss_negation_argAccess().getCss_type_selectorParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_negation_argAccess().getCss_universalParserRuleCall_1()); }
-	rulecss_universal
-{ after(grammarAccess.getCss_negation_argAccess().getCss_universalParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_negation_argAccess().getHASHTerminalRuleCall_2()); }
-	RULE_HASH
-{ after(grammarAccess.getCss_negation_argAccess().getHASHTerminalRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_negation_argAccess().getCss_classParserRuleCall_3()); }
-	rulecss_class
-{ after(grammarAccess.getCss_negation_argAccess().getCss_classParserRuleCall_3()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_negation_argAccess().getCss_attribParserRuleCall_4()); }
-	rulecss_attrib
-{ after(grammarAccess.getCss_negation_argAccess().getCss_attribParserRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getCss_negation_argAccess().getCss_pseudoParserRuleCall_5()); }
-	rulecss_pseudo
-{ after(grammarAccess.getCss_negation_argAccess().getCss_pseudoParserRuleCall_5()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Function_expr__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunction_exprAccess().getPlusSignKeyword_0()); }
-
-	'+' 
-
-{ after(grammarAccess.getFunction_exprAccess().getPlusSignKeyword_0()); }
-)
-
-    |(
-{ before(grammarAccess.getFunction_exprAccess().getHyphenMinusKeyword_1()); }
-
-	'-' 
-
-{ after(grammarAccess.getFunction_exprAccess().getHyphenMinusKeyword_1()); }
-)
-
-    |(
-{ before(grammarAccess.getFunction_exprAccess().getDIMENSIONParserRuleCall_2()); }
-	ruleDIMENSION
-{ after(grammarAccess.getFunction_exprAccess().getDIMENSIONParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getFunction_exprAccess().getNUMBERParserRuleCall_3()); }
-	ruleNUMBER
-{ after(grammarAccess.getFunction_exprAccess().getNUMBERParserRuleCall_3()); }
-)
-
-    |(
-{ before(grammarAccess.getFunction_exprAccess().getSTRINGTerminalRuleCall_4()); }
-	RULE_STRING
-{ after(grammarAccess.getFunction_exprAccess().getSTRINGTerminalRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getFunction_exprAccess().getIDENTTerminalRuleCall_5()); }
-	RULE_IDENT
-{ after(grammarAccess.getFunction_exprAccess().getIDENTTerminalRuleCall_5()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__DIMENSION__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getDIMENSIONAccess().getPERCENTAGEParserRuleCall_0()); }
-	rulePERCENTAGE
-{ after(grammarAccess.getDIMENSIONAccess().getPERCENTAGEParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getDIMENSIONAccess().getLENGTHParserRuleCall_1()); }
-	ruleLENGTH
-{ after(grammarAccess.getDIMENSIONAccess().getLENGTHParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getDIMENSIONAccess().getEMSParserRuleCall_2()); }
-	ruleEMS
-{ after(grammarAccess.getDIMENSIONAccess().getEMSParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getDIMENSIONAccess().getEXSParserRuleCall_3()); }
-	ruleEXS
-{ after(grammarAccess.getDIMENSIONAccess().getEXSParserRuleCall_3()); }
-)
-
-    |(
-{ before(grammarAccess.getDIMENSIONAccess().getANGLEParserRuleCall_4()); }
-	ruleANGLE
-{ after(grammarAccess.getDIMENSIONAccess().getANGLEParserRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getDIMENSIONAccess().getTIMEParserRuleCall_5()); }
-	ruleTIME
-{ after(grammarAccess.getDIMENSIONAccess().getTIMEParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getDIMENSIONAccess().getFREQParserRuleCall_6()); }
-	ruleFREQ
-{ after(grammarAccess.getDIMENSIONAccess().getFREQParserRuleCall_6()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Combinator__Alternatives_0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCombinatorAccess().getPlusSignKeyword_0_0()); }
-
-	'+' 
-
-{ after(grammarAccess.getCombinatorAccess().getPlusSignKeyword_0_0()); }
-)
-
-    |(
-{ before(grammarAccess.getCombinatorAccess().getGreaterThanSignKeyword_0_1()); }
+{ before(grammarAccess.getCombinatorAccess().getGreaterThanSignKeyword_1()); }
 
 	'>' 
 
-{ after(grammarAccess.getCombinatorAccess().getGreaterThanSignKeyword_0_1()); }
+{ after(grammarAccess.getCombinatorAccess().getGreaterThanSignKeyword_1()); }
 )
 
     |(
-{ before(grammarAccess.getCombinatorAccess().getTildeKeyword_0_2()); }
+{ before(grammarAccess.getCombinatorAccess().getTildeKeyword_2()); }
 
 	'~' 
 
-{ after(grammarAccess.getCombinatorAccess().getTildeKeyword_0_2()); }
+{ after(grammarAccess.getCombinatorAccess().getTildeKeyword_2()); }
 )
 
 ;
@@ -2506,49 +1904,23 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Operator__Alternatives
+
+
+rule__SymbolTok__SymbolAlternatives_1_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getOperatorAccess().getSolidusKeyword_0()); }
-
-	'/' 
-
-{ after(grammarAccess.getOperatorAccess().getSolidusKeyword_0()); }
-)
-
-    |(
-{ before(grammarAccess.getOperatorAccess().getCOMMATerminalRuleCall_1()); }
+{ before(grammarAccess.getSymbolTokAccess().getSymbolCOMMATerminalRuleCall_1_0_0()); }
 	RULE_COMMA
-{ after(grammarAccess.getOperatorAccess().getCOMMATerminalRuleCall_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Unary_operator__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getUnary_operatorAccess().getHyphenMinusKeyword_0()); }
-
-	'-' 
-
-{ after(grammarAccess.getUnary_operatorAccess().getHyphenMinusKeyword_0()); }
+{ after(grammarAccess.getSymbolTokAccess().getSymbolCOMMATerminalRuleCall_1_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getUnary_operatorAccess().getPlusSignKeyword_1()); }
-
-	'+' 
-
-{ after(grammarAccess.getUnary_operatorAccess().getPlusSignKeyword_1()); }
+{ before(grammarAccess.getSymbolTokAccess().getSymbolPERCENTTerminalRuleCall_1_0_1()); }
+	RULE_PERCENT
+{ after(grammarAccess.getSymbolTokAccess().getSymbolPERCENTTerminalRuleCall_1_0_1()); }
 )
 
 ;
@@ -2562,27 +1934,27 @@ rule__CssTok__Alternatives
     }
 :
 (
-{ before(grammarAccess.getCssTokAccess().getSymbolTokParserRuleCall_0()); }
+{ before(grammarAccess.getCssTokAccess().getIdentifierOrFuncTokParserRuleCall_0()); }
+	ruleIdentifierOrFuncTok
+{ after(grammarAccess.getCssTokAccess().getIdentifierOrFuncTokParserRuleCall_0()); }
+)
+
+    |(
+{ before(grammarAccess.getCssTokAccess().getSymbolTokParserRuleCall_1()); }
 	ruleSymbolTok
-{ after(grammarAccess.getCssTokAccess().getSymbolTokParserRuleCall_0()); }
+{ after(grammarAccess.getCssTokAccess().getSymbolTokParserRuleCall_1()); }
 )
 
     |(
-{ before(grammarAccess.getCssTokAccess().getWSTokParserRuleCall_1()); }
+{ before(grammarAccess.getCssTokAccess().getWSTokParserRuleCall_2()); }
 	ruleWSTok
-{ after(grammarAccess.getCssTokAccess().getWSTokParserRuleCall_1()); }
+{ after(grammarAccess.getCssTokAccess().getWSTokParserRuleCall_2()); }
 )
 
     |(
-{ before(grammarAccess.getCssTokAccess().getStringTokParserRuleCall_2()); }
+{ before(grammarAccess.getCssTokAccess().getStringTokParserRuleCall_3()); }
 	ruleStringTok
-{ after(grammarAccess.getCssTokAccess().getStringTokParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getCssTokAccess().getFuncTokParserRuleCall_3()); }
-	ruleFuncTok
-{ after(grammarAccess.getCssTokAccess().getFuncTokParserRuleCall_3()); }
+{ after(grammarAccess.getCssTokAccess().getStringTokParserRuleCall_3()); }
 )
 
     |(
@@ -2592,21 +1964,15 @@ rule__CssTok__Alternatives
 )
 
     |(
-{ before(grammarAccess.getCssTokAccess().getIdentifierTokParserRuleCall_5()); }
-	ruleIdentifierTok
-{ after(grammarAccess.getCssTokAccess().getIdentifierTokParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getCssTokAccess().getUrlTokParserRuleCall_6()); }
+{ before(grammarAccess.getCssTokAccess().getUrlTokParserRuleCall_5()); }
 	ruleUrlTok
-{ after(grammarAccess.getCssTokAccess().getUrlTokParserRuleCall_6()); }
+{ after(grammarAccess.getCssTokAccess().getUrlTokParserRuleCall_5()); }
 )
 
     |(
-{ before(grammarAccess.getCssTokAccess().getColorTokParserRuleCall_7()); }
+{ before(grammarAccess.getCssTokAccess().getColorTokParserRuleCall_6()); }
 	ruleColorTok
-{ after(grammarAccess.getCssTokAccess().getColorTokParserRuleCall_7()); }
+{ after(grammarAccess.getCssTokAccess().getColorTokParserRuleCall_6()); }
 )
 
 ;
@@ -2614,45 +1980,147 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Term__Alternatives
+rule__ValidURLSymbol__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTermAccess().getNumberAssignment_0()); }
-(rule__Term__NumberAssignment_0)
-{ after(grammarAccess.getTermAccess().getNumberAssignment_0()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getDASHTerminalRuleCall_0()); }
+	RULE_DASH
+{ after(grammarAccess.getValidURLSymbolAccess().getDASHTerminalRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getTermAccess().getStringValueAssignment_1()); }
-(rule__Term__StringValueAssignment_1)
-{ after(grammarAccess.getTermAccess().getStringValueAssignment_1()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getFullStopKeyword_1()); }
+
+	'.' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getFullStopKeyword_1()); }
 )
 
     |(
-{ before(grammarAccess.getTermAccess().getIdentifierAssignment_2()); }
-(rule__Term__IdentifierAssignment_2)
-{ after(grammarAccess.getTermAccess().getIdentifierAssignment_2()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getUNDERSCORETerminalRuleCall_2()); }
+	RULE_UNDERSCORE
+{ after(grammarAccess.getValidURLSymbolAccess().getUNDERSCORETerminalRuleCall_2()); }
 )
 
     |(
-{ before(grammarAccess.getTermAccess().getUrlAssignment_3()); }
-(rule__Term__UrlAssignment_3)
-{ after(grammarAccess.getTermAccess().getUrlAssignment_3()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getTildeKeyword_3()); }
+
+	'~' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getTildeKeyword_3()); }
 )
 
     |(
-{ before(grammarAccess.getTermAccess().getFunctionAssignment_4()); }
-(rule__Term__FunctionAssignment_4)
-{ after(grammarAccess.getTermAccess().getFunctionAssignment_4()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getCOLONTerminalRuleCall_4()); }
+	RULE_COLON
+{ after(grammarAccess.getValidURLSymbolAccess().getCOLONTerminalRuleCall_4()); }
 )
 
     |(
-{ before(grammarAccess.getTermAccess().getHexColorAssignment_5()); }
-(rule__Term__HexColorAssignment_5)
-{ after(grammarAccess.getTermAccess().getHexColorAssignment_5()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getSolidusKeyword_5()); }
+
+	'/' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getSolidusKeyword_5()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getQuestionMarkKeyword_6()); }
+
+	'?' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getQuestionMarkKeyword_6()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getHASHMARKTerminalRuleCall_7()); }
+	RULE_HASHMARK
+{ after(grammarAccess.getValidURLSymbolAccess().getHASHMARKTerminalRuleCall_7()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getLeftSquareBracketKeyword_8()); }
+
+	'[' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getLeftSquareBracketKeyword_8()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getRightSquareBracketKeyword_9()); }
+
+	']' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getRightSquareBracketKeyword_9()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getCommercialAtKeyword_10()); }
+
+	'@' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getCommercialAtKeyword_10()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getExclamationMarkKeyword_11()); }
+
+	'!' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getExclamationMarkKeyword_11()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getDollarSignKeyword_12()); }
+
+	'$' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getDollarSignKeyword_12()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getAmpersandKeyword_13()); }
+
+	'&' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getAmpersandKeyword_13()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getAsteriskKeyword_14()); }
+
+	'*' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getAsteriskKeyword_14()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getPLUSTerminalRuleCall_15()); }
+	RULE_PLUS
+{ after(grammarAccess.getValidURLSymbolAccess().getPLUSTerminalRuleCall_15()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getCOMMATerminalRuleCall_16()); }
+	RULE_COMMA
+{ after(grammarAccess.getValidURLSymbolAccess().getCOMMATerminalRuleCall_16()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getSemicolonKeyword_17()); }
+
+	';' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getSemicolonKeyword_17()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLSymbolAccess().getGroup_18()); }
+(rule__ValidURLSymbol__Group_18__0)
+{ after(grammarAccess.getValidURLSymbolAccess().getGroup_18()); }
 )
 
 ;
@@ -2660,57 +2128,41 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__NumberTerm__Alternatives_1
+rule__KeywordHack__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getNumberTermAccess().getNUMBERParserRuleCall_1_0()); }
-	ruleNUMBER
-{ after(grammarAccess.getNumberTermAccess().getNUMBERParserRuleCall_1_0()); }
+{ before(grammarAccess.getKeywordHackAccess().getNotKeyword_0()); }
+
+	'not' 
+
+{ after(grammarAccess.getKeywordHackAccess().getNotKeyword_0()); }
 )
 
     |(
-{ before(grammarAccess.getNumberTermAccess().getPERCENTAGEParserRuleCall_1_1()); }
-	rulePERCENTAGE
-{ after(grammarAccess.getNumberTermAccess().getPERCENTAGEParserRuleCall_1_1()); }
+{ before(grammarAccess.getKeywordHackAccess().getNoKeyword_1()); }
+
+	'no' 
+
+{ after(grammarAccess.getKeywordHackAccess().getNoKeyword_1()); }
 )
 
     |(
-{ before(grammarAccess.getNumberTermAccess().getLENGTHParserRuleCall_1_2()); }
-	ruleLENGTH
-{ after(grammarAccess.getNumberTermAccess().getLENGTHParserRuleCall_1_2()); }
+{ before(grammarAccess.getKeywordHackAccess().getUrlKeyword_2()); }
+
+	'url' 
+
+{ after(grammarAccess.getKeywordHackAccess().getUrlKeyword_2()); }
 )
 
     |(
-{ before(grammarAccess.getNumberTermAccess().getEMSParserRuleCall_1_3()); }
-	ruleEMS
-{ after(grammarAccess.getNumberTermAccess().getEMSParserRuleCall_1_3()); }
-)
+{ before(grammarAccess.getKeywordHackAccess().getUrKeyword_3()); }
 
-    |(
-{ before(grammarAccess.getNumberTermAccess().getEXSParserRuleCall_1_4()); }
-	ruleEXS
-{ after(grammarAccess.getNumberTermAccess().getEXSParserRuleCall_1_4()); }
-)
+	'ur' 
 
-    |(
-{ before(grammarAccess.getNumberTermAccess().getANGLEParserRuleCall_1_5()); }
-	ruleANGLE
-{ after(grammarAccess.getNumberTermAccess().getANGLEParserRuleCall_1_5()); }
-)
-
-    |(
-{ before(grammarAccess.getNumberTermAccess().getTIMEParserRuleCall_1_6()); }
-	ruleTIME
-{ after(grammarAccess.getNumberTermAccess().getTIMEParserRuleCall_1_6()); }
-)
-
-    |(
-{ before(grammarAccess.getNumberTermAccess().getFREQParserRuleCall_1_7()); }
-	ruleFREQ
-{ after(grammarAccess.getNumberTermAccess().getFREQParserRuleCall_1_7()); }
+{ after(grammarAccess.getKeywordHackAccess().getUrKeyword_3()); }
 )
 
 ;
@@ -2718,21 +2170,28 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Num__Alternatives
+rule__ValidURL__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getNumAccess().getINTEGERTerminalRuleCall_0()); }
-	RULE_INTEGER
-{ after(grammarAccess.getNumAccess().getINTEGERTerminalRuleCall_0()); }
+{ before(grammarAccess.getValidURLAccess().getSTRINGTerminalRuleCall_0()); }
+	RULE_STRING
+{ after(grammarAccess.getValidURLAccess().getSTRINGTerminalRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getNumAccess().getREALTerminalRuleCall_1()); }
-	RULE_REAL
-{ after(grammarAccess.getNumAccess().getREALTerminalRuleCall_1()); }
+(
+{ before(grammarAccess.getValidURLAccess().getAlternatives_1()); }
+(rule__ValidURL__Alternatives_1)
+{ after(grammarAccess.getValidURLAccess().getAlternatives_1()); }
+)
+(
+{ before(grammarAccess.getValidURLAccess().getAlternatives_1()); }
+(rule__ValidURL__Alternatives_1)*
+{ after(grammarAccess.getValidURLAccess().getAlternatives_1()); }
+)
 )
 
 ;
@@ -2740,57 +2199,85 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__LENGTH__Alternatives_1
+rule__ValidURL__Alternatives_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getLENGTHAccess().getPxKeyword_1_0()); }
-
-	'px' 
-
-{ after(grammarAccess.getLENGTHAccess().getPxKeyword_1_0()); }
+{ before(grammarAccess.getValidURLAccess().getValidURLSymbolParserRuleCall_1_0()); }
+	ruleValidURLSymbol
+{ after(grammarAccess.getValidURLAccess().getValidURLSymbolParserRuleCall_1_0()); }
 )
 
     |(
-{ before(grammarAccess.getLENGTHAccess().getCmKeyword_1_1()); }
-
-	'cm' 
-
-{ after(grammarAccess.getLENGTHAccess().getCmKeyword_1_1()); }
+{ before(grammarAccess.getValidURLAccess().getKeywordHackParserRuleCall_1_1()); }
+	ruleKeywordHack
+{ after(grammarAccess.getValidURLAccess().getKeywordHackParserRuleCall_1_1()); }
 )
 
     |(
-{ before(grammarAccess.getLENGTHAccess().getMmKeyword_1_2()); }
-
-	'mm' 
-
-{ after(grammarAccess.getLENGTHAccess().getMmKeyword_1_2()); }
+{ before(grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_2()); }
+	RULE_ONE_HEX_LETTER
+{ after(grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_2()); }
 )
 
     |(
-{ before(grammarAccess.getLENGTHAccess().getInKeyword_1_3()); }
-
-	'in' 
-
-{ after(grammarAccess.getLENGTHAccess().getInKeyword_1_3()); }
+{ before(grammarAccess.getValidURLAccess().getONE_NON_HEX_LETTERTerminalRuleCall_1_3()); }
+	RULE_ONE_NON_HEX_LETTER
+{ after(grammarAccess.getValidURLAccess().getONE_NON_HEX_LETTERTerminalRuleCall_1_3()); }
 )
 
     |(
-{ before(grammarAccess.getLENGTHAccess().getPtKeyword_1_4()); }
-
-	'pt' 
-
-{ after(grammarAccess.getLENGTHAccess().getPtKeyword_1_4()); }
+{ before(grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_4()); }
+	RULE_ONE_INT
+{ after(grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_4()); }
 )
 
     |(
-{ before(grammarAccess.getLENGTHAccess().getPcKeyword_1_5()); }
+{ before(grammarAccess.getValidURLAccess().getReverseSolidusSpaceKeyword_1_5()); }
 
-	'pc' 
+	'\\ ' 
 
-{ after(grammarAccess.getLENGTHAccess().getPcKeyword_1_5()); }
+{ after(grammarAccess.getValidURLAccess().getReverseSolidusSpaceKeyword_1_5()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLAccess().getReverseSolidusLeftParenthesisKeyword_1_6()); }
+
+	'\\(' 
+
+{ after(grammarAccess.getValidURLAccess().getReverseSolidusLeftParenthesisKeyword_1_6()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLAccess().getReverseSolidusRightParenthesisKeyword_1_7()); }
+
+	'\\)' 
+
+{ after(grammarAccess.getValidURLAccess().getReverseSolidusRightParenthesisKeyword_1_7()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLAccess().getReverseSolidusApostropheKeyword_1_8()); }
+
+	'\\\'' 
+
+{ after(grammarAccess.getValidURLAccess().getReverseSolidusApostropheKeyword_1_8()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLAccess().getReverseSolidusQuotationMarkKeyword_1_9()); }
+
+	'\\"' 
+
+{ after(grammarAccess.getValidURLAccess().getReverseSolidusQuotationMarkKeyword_1_9()); }
+)
+
+    |(
+{ before(grammarAccess.getValidURLAccess().getGroup_1_10()); }
+(rule__ValidURL__Group_1_10__0)
+{ after(grammarAccess.getValidURLAccess().getGroup_1_10()); }
 )
 
 ;
@@ -2798,33 +2285,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ANGLE__Alternatives_1
+rule__ValidURL__Alternatives_1_10_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getANGLEAccess().getDegKeyword_1_0()); }
-
-	'deg' 
-
-{ after(grammarAccess.getANGLEAccess().getDegKeyword_1_0()); }
+{ before(grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_10_1_0()); }
+	RULE_ONE_INT
+{ after(grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_10_1_0()); }
 )
 
     |(
-{ before(grammarAccess.getANGLEAccess().getRadKeyword_1_1()); }
-
-	'rad' 
-
-{ after(grammarAccess.getANGLEAccess().getRadKeyword_1_1()); }
-)
-
-    |(
-{ before(grammarAccess.getANGLEAccess().getGradKeyword_1_2()); }
-
-	'grad' 
-
-{ after(grammarAccess.getANGLEAccess().getGradKeyword_1_2()); }
+{ before(grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_10_1_1()); }
+	RULE_ONE_HEX_LETTER
+{ after(grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_10_1_1()); }
 )
 
 ;
@@ -2832,25 +2307,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__TIME__Alternatives_1
+rule__ValidURL__Alternatives_1_10_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTIMEAccess().getMsKeyword_1_0()); }
-
-	'ms' 
-
-{ after(grammarAccess.getTIMEAccess().getMsKeyword_1_0()); }
+{ before(grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_10_2_0()); }
+	RULE_ONE_INT
+{ after(grammarAccess.getValidURLAccess().getONE_INTTerminalRuleCall_1_10_2_0()); }
 )
 
     |(
-{ before(grammarAccess.getTIMEAccess().getSKeyword_1_1()); }
-
-	's' 
-
-{ after(grammarAccess.getTIMEAccess().getSKeyword_1_1()); }
+{ before(grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_10_2_1()); }
+	RULE_ONE_HEX_LETTER
+{ after(grammarAccess.getValidURLAccess().getONE_HEX_LETTERTerminalRuleCall_1_10_2_1()); }
 )
 
 ;
@@ -2858,25 +2329,33 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FREQ__Alternatives_1
+rule__Identifier__Alternatives_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFREQAccess().getHzKeyword_1_0()); }
-
-	'hz' 
-
-{ after(grammarAccess.getFREQAccess().getHzKeyword_1_0()); }
+{ before(grammarAccess.getIdentifierAccess().getUNDERSCORETerminalRuleCall_1_0()); }
+	RULE_UNDERSCORE
+{ after(grammarAccess.getIdentifierAccess().getUNDERSCORETerminalRuleCall_1_0()); }
 )
 
     |(
-{ before(grammarAccess.getFREQAccess().getKhzKeyword_1_1()); }
+{ before(grammarAccess.getIdentifierAccess().getONE_HEX_LETTERTerminalRuleCall_1_1()); }
+	RULE_ONE_HEX_LETTER
+{ after(grammarAccess.getIdentifierAccess().getONE_HEX_LETTERTerminalRuleCall_1_1()); }
+)
 
-	'khz' 
+    |(
+{ before(grammarAccess.getIdentifierAccess().getONE_NON_HEX_LETTERTerminalRuleCall_1_2()); }
+	RULE_ONE_NON_HEX_LETTER
+{ after(grammarAccess.getIdentifierAccess().getONE_NON_HEX_LETTERTerminalRuleCall_1_2()); }
+)
 
-{ after(grammarAccess.getFREQAccess().getKhzKeyword_1_1()); }
+    |(
+{ before(grammarAccess.getIdentifierAccess().getKeywordHackParserRuleCall_1_3()); }
+	ruleKeywordHack
+{ after(grammarAccess.getIdentifierAccess().getKeywordHackParserRuleCall_1_3()); }
 )
 
 ;
@@ -2884,129 +2363,111 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ReservedWords__Alternatives
+rule__Identifier__Alternatives_2_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getReservedWordsAccess().getEmKeyword_0()); }
-
-	'em' 
-
-{ after(grammarAccess.getReservedWordsAccess().getEmKeyword_0()); }
+{ before(grammarAccess.getIdentifierAccess().getUNDERSCORETerminalRuleCall_2_0_0()); }
+	RULE_UNDERSCORE
+{ after(grammarAccess.getIdentifierAccess().getUNDERSCORETerminalRuleCall_2_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getExKeyword_1()); }
-
-	'ex' 
-
-{ after(grammarAccess.getReservedWordsAccess().getExKeyword_1()); }
+{ before(grammarAccess.getIdentifierAccess().getDASHTerminalRuleCall_2_0_1()); }
+	RULE_DASH
+{ after(grammarAccess.getIdentifierAccess().getDASHTerminalRuleCall_2_0_1()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getPxKeyword_2()); }
-
-	'px' 
-
-{ after(grammarAccess.getReservedWordsAccess().getPxKeyword_2()); }
+{ before(grammarAccess.getIdentifierAccess().getONE_HEX_LETTERTerminalRuleCall_2_0_2()); }
+	RULE_ONE_HEX_LETTER
+{ after(grammarAccess.getIdentifierAccess().getONE_HEX_LETTERTerminalRuleCall_2_0_2()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getCmKeyword_3()); }
-
-	'cm' 
-
-{ after(grammarAccess.getReservedWordsAccess().getCmKeyword_3()); }
+{ before(grammarAccess.getIdentifierAccess().getONE_NON_HEX_LETTERTerminalRuleCall_2_0_3()); }
+	RULE_ONE_NON_HEX_LETTER
+{ after(grammarAccess.getIdentifierAccess().getONE_NON_HEX_LETTERTerminalRuleCall_2_0_3()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getMmKeyword_4()); }
-
-	'mm' 
-
-{ after(grammarAccess.getReservedWordsAccess().getMmKeyword_4()); }
+{ before(grammarAccess.getIdentifierAccess().getONE_INTTerminalRuleCall_2_0_4()); }
+	RULE_ONE_INT
+{ after(grammarAccess.getIdentifierAccess().getONE_INTTerminalRuleCall_2_0_4()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getInKeyword_5()); }
+{ before(grammarAccess.getIdentifierAccess().getKeywordHackParserRuleCall_2_0_5()); }
+	ruleKeywordHack
+{ after(grammarAccess.getIdentifierAccess().getKeywordHackParserRuleCall_2_0_5()); }
+)
 
-	'in' 
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
-{ after(grammarAccess.getReservedWordsAccess().getInKeyword_5()); }
+rule__Num__Alternatives_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNumAccess().getPLUSTerminalRuleCall_0_0()); }
+	RULE_PLUS
+{ after(grammarAccess.getNumAccess().getPLUSTerminalRuleCall_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getPtKeyword_6()); }
+{ before(grammarAccess.getNumAccess().getDASHTerminalRuleCall_0_1()); }
+	RULE_DASH
+{ after(grammarAccess.getNumAccess().getDASHTerminalRuleCall_0_1()); }
+)
 
-	'pt' 
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
-{ after(grammarAccess.getReservedWordsAccess().getPtKeyword_6()); }
+rule__Num__Alternatives_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNumAccess().getGroup_1_0()); }
+(rule__Num__Group_1_0__0)
+{ after(grammarAccess.getNumAccess().getGroup_1_0()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getPcKeyword_7()); }
+{ before(grammarAccess.getNumAccess().getGroup_1_1()); }
+(rule__Num__Group_1_1__0)
+{ after(grammarAccess.getNumAccess().getGroup_1_1()); }
+)
 
-	'pc' 
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
-{ after(grammarAccess.getReservedWordsAccess().getPcKeyword_7()); }
+rule__Hex__Alternatives_1_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getHexAccess().getONE_INTTerminalRuleCall_1_0_0()); }
+	RULE_ONE_INT
+{ after(grammarAccess.getHexAccess().getONE_INTTerminalRuleCall_1_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getReservedWordsAccess().getDegKeyword_8()); }
-
-	'deg' 
-
-{ after(grammarAccess.getReservedWordsAccess().getDegKeyword_8()); }
-)
-
-    |(
-{ before(grammarAccess.getReservedWordsAccess().getRadKeyword_9()); }
-
-	'rad' 
-
-{ after(grammarAccess.getReservedWordsAccess().getRadKeyword_9()); }
-)
-
-    |(
-{ before(grammarAccess.getReservedWordsAccess().getGradKeyword_10()); }
-
-	'grad' 
-
-{ after(grammarAccess.getReservedWordsAccess().getGradKeyword_10()); }
-)
-
-    |(
-{ before(grammarAccess.getReservedWordsAccess().getMsKeyword_11()); }
-
-	'ms' 
-
-{ after(grammarAccess.getReservedWordsAccess().getMsKeyword_11()); }
-)
-
-    |(
-{ before(grammarAccess.getReservedWordsAccess().getSKeyword_12()); }
-
-	's' 
-
-{ after(grammarAccess.getReservedWordsAccess().getSKeyword_12()); }
-)
-
-    |(
-{ before(grammarAccess.getReservedWordsAccess().getHzKeyword_13()); }
-
-	'hz' 
-
-{ after(grammarAccess.getReservedWordsAccess().getHzKeyword_13()); }
-)
-
-    |(
-{ before(grammarAccess.getReservedWordsAccess().getKhzKeyword_14()); }
-
-	'khz' 
-
-{ after(grammarAccess.getReservedWordsAccess().getKhzKeyword_14()); }
+{ before(grammarAccess.getHexAccess().getONE_HEX_LETTERTerminalRuleCall_1_0_1()); }
+	RULE_ONE_HEX_LETTER
+{ after(grammarAccess.getHexAccess().getONE_HEX_LETTERTerminalRuleCall_1_0_1()); }
 )
 
 ;
@@ -3202,27 +2663,27 @@ finally {
 
 
 
-rule__ImportExpression__Group_0__0
+rule__ImportExpression__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__ImportExpression__Group_0__0__Impl
-	rule__ImportExpression__Group_0__1
+	rule__ImportExpression__Group__0__Impl
+	rule__ImportExpression__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ImportExpression__Group_0__0__Impl
+rule__ImportExpression__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getAlternatives_0_0()); }
-(rule__ImportExpression__Alternatives_0_0)
-{ after(grammarAccess.getImportExpressionAccess().getAlternatives_0_0()); }
+{ before(grammarAccess.getImportExpressionAccess().getAlternatives_0()); }
+(rule__ImportExpression__Alternatives_0)
+{ after(grammarAccess.getImportExpressionAccess().getAlternatives_0()); }
 )
 
 ;
@@ -3231,26 +2692,27 @@ finally {
 }
 
 
-rule__ImportExpression__Group_0__1
+rule__ImportExpression__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__ImportExpression__Group_0__1__Impl
+	rule__ImportExpression__Group__1__Impl
+	rule__ImportExpression__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ImportExpression__Group_0__1__Impl
+rule__ImportExpression__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getValueAssignment_0_1()); }
-(rule__ImportExpression__ValueAssignment_0_1)
-{ after(grammarAccess.getImportExpressionAccess().getValueAssignment_0_1()); }
+{ before(grammarAccess.getImportExpressionAccess().getAlternatives_1()); }
+(rule__ImportExpression__Alternatives_1)
+{ after(grammarAccess.getImportExpressionAccess().getAlternatives_1()); }
 )
 
 ;
@@ -3259,90 +2721,28 @@ finally {
 }
 
 
-
-
-
-
-rule__ImportExpression__Group_1__0
+rule__ImportExpression__Group__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__ImportExpression__Group_1__0__Impl
-	rule__ImportExpression__Group_1__1
+	rule__ImportExpression__Group__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ImportExpression__Group_1__0__Impl
+rule__ImportExpression__Group__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getURLTypeParserRuleCall_1_0()); }
-	ruleURLType
-{ after(grammarAccess.getImportExpressionAccess().getURLTypeParserRuleCall_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__ImportExpression__Group_1__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__ImportExpression__Group_1__1__Impl
-	rule__ImportExpression__Group_1__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ImportExpression__Group_1__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getImportExpressionAccess().getMediaListAssignment_1_1()); }
-(rule__ImportExpression__MediaListAssignment_1_1)?
-{ after(grammarAccess.getImportExpressionAccess().getMediaListAssignment_1_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__ImportExpression__Group_1__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__ImportExpression__Group_1__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ImportExpression__Group_1__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getImportExpressionAccess().getSemicolonKeyword_1_2()); }
+{ before(grammarAccess.getImportExpressionAccess().getSemicolonKeyword_2()); }
 
 	';' 
 
-{ after(grammarAccess.getImportExpressionAccess().getSemicolonKeyword_1_2()); }
+{ after(grammarAccess.getImportExpressionAccess().getSemicolonKeyword_2()); }
 )
 
 ;
@@ -3351,6 +2751,67 @@ finally {
 }
 
 
+
+
+
+
+
+
+rule__ImportExpression__Group_1_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ImportExpression__Group_1_1__0__Impl
+	rule__ImportExpression__Group_1_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ImportExpression__Group_1_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getImportExpressionAccess().getURLTypeParserRuleCall_1_1_0()); }
+	ruleURLType
+{ after(grammarAccess.getImportExpressionAccess().getURLTypeParserRuleCall_1_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ImportExpression__Group_1_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ImportExpression__Group_1_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ImportExpression__Group_1_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getImportExpressionAccess().getMediaListAssignment_1_1_1()); }
+(rule__ImportExpression__MediaListAssignment_1_1_1)?
+{ after(grammarAccess.getImportExpressionAccess().getMediaListAssignment_1_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -3660,11 +3121,9 @@ rule__Pseudo_page__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getPseudo_pageAccess().getColonKeyword_0()); }
-
-	':' 
-
-{ after(grammarAccess.getPseudo_pageAccess().getColonKeyword_0()); }
+{ before(grammarAccess.getPseudo_pageAccess().getCOLONTerminalRuleCall_0()); }
+	RULE_COLON
+{ after(grammarAccess.getPseudo_pageAccess().getCOLONTerminalRuleCall_0()); }
 )
 
 ;
@@ -3690,9 +3149,9 @@ rule__Pseudo_page__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getPseudo_pageAccess().getIDENTTerminalRuleCall_1()); }
-	RULE_IDENT
-{ after(grammarAccess.getPseudo_pageAccess().getIDENTTerminalRuleCall_1()); }
+{ before(grammarAccess.getPseudo_pageAccess().getIdentifierParserRuleCall_1()); }
+	ruleIdentifier
+{ after(grammarAccess.getPseudo_pageAccess().getIdentifierParserRuleCall_1()); }
 )
 
 ;
@@ -4122,7 +3581,7 @@ rule__Ruleset__Group__4__Impl
 :
 (
 { before(grammarAccess.getRulesetAccess().getGroup_4()); }
-(rule__Ruleset__Group_4__0)*
+(rule__Ruleset__Group_4__0)?
 { after(grammarAccess.getRulesetAccess().getGroup_4()); }
 )
 
@@ -4192,9 +3651,9 @@ rule__Ruleset__Group_1__0__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_0()); }
-	RULE_COMMA
-{ after(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_0()); }
+{ before(grammarAccess.getRulesetAccess().getWSTerminalRuleCall_1_0()); }
+(	RULE_WS)*
+{ after(grammarAccess.getRulesetAccess().getWSTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -4209,6 +3668,7 @@ rule__Ruleset__Group_1__1
     }
 :
 	rule__Ruleset__Group_1__1__Impl
+	rule__Ruleset__Group_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4220,15 +3680,45 @@ rule__Ruleset__Group_1__1__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_1()); }
-(rule__Ruleset__SelectorsAssignment_1_1)
-{ after(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_1()); }
+{ before(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_1()); }
+	RULE_COMMA
+{ after(grammarAccess.getRulesetAccess().getCOMMATerminalRuleCall_1_1()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Ruleset__Group_1__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Ruleset__Group_1__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Ruleset__Group_1__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_2()); }
+(rule__Ruleset__SelectorsAssignment_1_2)
+{ after(grammarAccess.getRulesetAccess().getSelectorsAssignment_1_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -4270,6 +3760,7 @@ rule__Ruleset__Group_4__1
     }
 :
 	rule__Ruleset__Group_4__1__Impl
+	rule__Ruleset__Group_4__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4281,11 +3772,104 @@ rule__Ruleset__Group_4__1__Impl
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_1()); }
+{ before(grammarAccess.getRulesetAccess().getGroup_4_1()); }
+(rule__Ruleset__Group_4_1__0)*
+{ after(grammarAccess.getRulesetAccess().getGroup_4_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Ruleset__Group_4__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Ruleset__Group_4__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Ruleset__Group_4__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_2()); }
+(
+	';' 
+)?
+{ after(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__Ruleset__Group_4_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Ruleset__Group_4_1__0__Impl
+	rule__Ruleset__Group_4_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Ruleset__Group_4_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_1_0()); }
 
 	';' 
 
-{ after(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_1()); }
+{ after(grammarAccess.getRulesetAccess().getSemicolonKeyword_4_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Ruleset__Group_4_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Ruleset__Group_4_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Ruleset__Group_4_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRulesetAccess().getDeclarationsAssignment_4_1_1()); }
+(rule__Ruleset__DeclarationsAssignment_4_1_1)
+{ after(grammarAccess.getRulesetAccess().getDeclarationsAssignment_4_1_1()); }
 )
 
 ;
@@ -4394,6 +3978,7 @@ rule__Selector__Group_1_0__1
     }
 :
 	rule__Selector__Group_1_0__1__Impl
+	rule__Selector__Group_1_0__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4405,15 +3990,45 @@ rule__Selector__Group_1_0__1__Impl
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getSelectorAssignment_1_0_1()); }
-(rule__Selector__SelectorAssignment_1_0_1)
-{ after(grammarAccess.getSelectorAccess().getSelectorAssignment_1_0_1()); }
+{ before(grammarAccess.getSelectorAccess().getWSTerminalRuleCall_1_0_1()); }
+(	RULE_WS)*
+{ after(grammarAccess.getSelectorAccess().getWSTerminalRuleCall_1_0_1()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Selector__Group_1_0__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Selector__Group_1_0__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Selector__Group_1_0__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSelectorAccess().getSelectorAssignment_1_0_2()); }
+(rule__Selector__SelectorAssignment_1_0_2)
+{ after(grammarAccess.getSelectorAccess().getSelectorAssignment_1_0_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -4474,9 +4089,9 @@ rule__Selector__Group_1_1__1__Impl
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1()); }
-(rule__Selector__CombinatorAssignment_1_1_1)?
-{ after(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1()); }
+{ before(grammarAccess.getSelectorAccess().getGroup_1_1_1()); }
+(rule__Selector__Group_1_1_1__0)?
+{ after(grammarAccess.getSelectorAccess().getGroup_1_1_1()); }
 )
 
 ;
@@ -4513,6 +4128,128 @@ finally {
 }
 
 
+
+
+
+
+
+
+rule__Selector__Group_1_1_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Selector__Group_1_1_1__0__Impl
+	rule__Selector__Group_1_1_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Selector__Group_1_1_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1_0()); }
+(rule__Selector__CombinatorAssignment_1_1_1_0)
+{ after(grammarAccess.getSelectorAccess().getCombinatorAssignment_1_1_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Selector__Group_1_1_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Selector__Group_1_1_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Selector__Group_1_1_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSelectorAccess().getWSTerminalRuleCall_1_1_1_1()); }
+(	RULE_WS)*
+{ after(grammarAccess.getSelectorAccess().getWSTerminalRuleCall_1_1_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__SimpleSelectorForNegation__Group_0__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__SimpleSelectorForNegation__Group_0__0__Impl
+	rule__SimpleSelectorForNegation__Group_0__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SimpleSelectorForNegation__Group_0__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getAlternatives_0_0()); }
+(rule__SimpleSelectorForNegation__Alternatives_0_0)
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getAlternatives_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__SimpleSelectorForNegation__Group_0__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__SimpleSelectorForNegation__Group_0__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SimpleSelectorForNegation__Group_0__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsAssignment_0_1()); }
+(rule__SimpleSelectorForNegation__SubSelectorsAssignment_0_1)*
+{ after(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsAssignment_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -4580,27 +4317,29 @@ finally {
 
 
 
-rule__Css_type_selector__Group__0
+rule__AttributeSelector__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Css_type_selector__Group__0__Impl
-	rule__Css_type_selector__Group__1
+	rule__AttributeSelector__Group__0__Impl
+	rule__AttributeSelector__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_type_selector__Group__0__Impl
+rule__AttributeSelector__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_type_selectorAccess().getCss_namespace_prefixParserRuleCall_0()); }
-(	rulecss_namespace_prefix)?
-{ after(grammarAccess.getCss_type_selectorAccess().getCss_namespace_prefixParserRuleCall_0()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getAttributeSelectorAction_0()); }
+(
+
+)
+{ after(grammarAccess.getAttributeSelectorAccess().getAttributeSelectorAction_0()); }
 )
 
 ;
@@ -4609,32 +4348,539 @@ finally {
 }
 
 
-rule__Css_type_selector__Group__1
+rule__AttributeSelector__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Css_type_selector__Group__1__Impl
+	rule__AttributeSelector__Group__1__Impl
+	rule__AttributeSelector__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_type_selector__Group__1__Impl
+rule__AttributeSelector__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_type_selectorAccess().getElement_nameParserRuleCall_1()); }
-	ruleelement_name
-{ after(grammarAccess.getCss_type_selectorAccess().getElement_nameParserRuleCall_1()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getLeftSquareBracketKeyword_1()); }
+
+	'[' 
+
+{ after(grammarAccess.getAttributeSelectorAccess().getLeftSquareBracketKeyword_1()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__AttributeSelector__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AttributeSelector__Group__2__Impl
+	rule__AttributeSelector__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AttributeSelector__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeSelectorAccess().getNameAssignment_2()); }
+(rule__AttributeSelector__NameAssignment_2)
+{ after(grammarAccess.getAttributeSelectorAccess().getNameAssignment_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__AttributeSelector__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AttributeSelector__Group__3__Impl
+	rule__AttributeSelector__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AttributeSelector__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeSelectorAccess().getGroup_3()); }
+(rule__AttributeSelector__Group_3__0)?
+{ after(grammarAccess.getAttributeSelectorAccess().getGroup_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__AttributeSelector__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AttributeSelector__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AttributeSelector__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeSelectorAccess().getRightSquareBracketKeyword_4()); }
+
+	']' 
+
+{ after(grammarAccess.getAttributeSelectorAccess().getRightSquareBracketKeyword_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+rule__AttributeSelector__Group_3__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AttributeSelector__Group_3__0__Impl
+	rule__AttributeSelector__Group_3__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AttributeSelector__Group_3__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeSelectorAccess().getOpAssignment_3_0()); }
+(rule__AttributeSelector__OpAssignment_3_0)
+{ after(grammarAccess.getAttributeSelectorAccess().getOpAssignment_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__AttributeSelector__Group_3__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AttributeSelector__Group_3__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AttributeSelector__Group_3__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeSelectorAccess().getValueAssignment_3_1()); }
+(rule__AttributeSelector__ValueAssignment_3_1)
+{ after(grammarAccess.getAttributeSelectorAccess().getValueAssignment_3_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__ClassSelector__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClassSelector__Group__0__Impl
+	rule__ClassSelector__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassSelector__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassSelectorAccess().getClassSelectorAction_0()); }
+(
+
+)
+{ after(grammarAccess.getClassSelectorAccess().getClassSelectorAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ClassSelector__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClassSelector__Group__1__Impl
+	rule__ClassSelector__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassSelector__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassSelectorAccess().getFullStopKeyword_1()); }
+
+	'.' 
+
+{ after(grammarAccess.getClassSelectorAccess().getFullStopKeyword_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ClassSelector__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ClassSelector__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassSelector__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getClassSelectorAccess().getNameAssignment_2()); }
+(rule__ClassSelector__NameAssignment_2)
+{ after(grammarAccess.getClassSelectorAccess().getNameAssignment_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__ElementSelector__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ElementSelector__Group__0__Impl
+	rule__ElementSelector__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ElementSelector__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getElementSelectorAccess().getElementSelectorAction_0()); }
+(
+
+)
+{ after(grammarAccess.getElementSelectorAccess().getElementSelectorAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ElementSelector__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ElementSelector__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ElementSelector__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getElementSelectorAccess().getNameAssignment_1()); }
+(rule__ElementSelector__NameAssignment_1)
+{ after(grammarAccess.getElementSelectorAccess().getNameAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__UniversalSelector__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__UniversalSelector__Group__0__Impl
+	rule__UniversalSelector__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__UniversalSelector__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getUniversalSelectorAccess().getUniversalSelectorAction_0()); }
+(
+
+)
+{ after(grammarAccess.getUniversalSelectorAccess().getUniversalSelectorAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__UniversalSelector__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__UniversalSelector__Group__1__Impl
+	rule__UniversalSelector__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__UniversalSelector__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getUniversalSelectorAccess().getNamespaceAssignment_1()); }
+(rule__UniversalSelector__NamespaceAssignment_1)?
+{ after(grammarAccess.getUniversalSelectorAccess().getNamespaceAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__UniversalSelector__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__UniversalSelector__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__UniversalSelector__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getUniversalSelectorAccess().getAsteriskKeyword_2()); }
+
+	'*' 
+
+{ after(grammarAccess.getUniversalSelectorAccess().getAsteriskKeyword_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__IdSelector__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__IdSelector__Group__0__Impl
+	rule__IdSelector__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdSelector__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdSelectorAccess().getIdSelectorAction_0()); }
+(
+
+)
+{ after(grammarAccess.getIdSelectorAccess().getIdSelectorAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__IdSelector__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__IdSelector__Group__1__Impl
+	rule__IdSelector__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdSelector__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdSelectorAccess().getHASHMARKTerminalRuleCall_1()); }
+	RULE_HASHMARK
+{ after(grammarAccess.getIdSelectorAccess().getHASHMARKTerminalRuleCall_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__IdSelector__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__IdSelector__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdSelector__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdSelectorAccess().getNameAssignment_2()); }
+(rule__IdSelector__NameAssignment_2)
+{ after(grammarAccess.getIdSelectorAccess().getNameAssignment_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -4692,320 +4938,6 @@ rule__Css_namespace_prefix__Group__1__Impl
 	'|' 
 
 { after(grammarAccess.getCss_namespace_prefixAccess().getVerticalLineKeyword_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-rule__Css_universal__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_universal__Group__0__Impl
-	rule__Css_universal__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_universal__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_universalAccess().getCss_namespace_prefixParserRuleCall_0()); }
-(	rulecss_namespace_prefix)?
-{ after(grammarAccess.getCss_universalAccess().getCss_namespace_prefixParserRuleCall_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_universal__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_universal__Group__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_universal__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_universalAccess().getAsteriskKeyword_1()); }
-
-	'*' 
-
-{ after(grammarAccess.getCss_universalAccess().getAsteriskKeyword_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-rule__Css_class__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_class__Group__0__Impl
-	rule__Css_class__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_class__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_classAccess().getFullStopKeyword_0()); }
-
-	'.' 
-
-{ after(grammarAccess.getCss_classAccess().getFullStopKeyword_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_class__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_class__Group__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_class__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_classAccess().getAlternatives_1()); }
-(rule__Css_class__Alternatives_1)
-{ after(grammarAccess.getCss_classAccess().getAlternatives_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-rule__Css_attrib__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_attrib__Group__0__Impl
-	rule__Css_attrib__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getLeftSquareBracketKeyword_0()); }
-
-	'[' 
-
-{ after(grammarAccess.getCss_attribAccess().getLeftSquareBracketKeyword_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_attrib__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_attrib__Group__1__Impl
-	rule__Css_attrib__Group__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getAlternatives_1()); }
-(rule__Css_attrib__Alternatives_1)
-{ after(grammarAccess.getCss_attribAccess().getAlternatives_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_attrib__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_attrib__Group__2__Impl
-	rule__Css_attrib__Group__3
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getGroup_2()); }
-(rule__Css_attrib__Group_2__0)?
-{ after(grammarAccess.getCss_attribAccess().getGroup_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_attrib__Group__3
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_attrib__Group__3__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Group__3__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getRightSquareBracketKeyword_3()); }
-
-	']' 
-
-{ after(grammarAccess.getCss_attribAccess().getRightSquareBracketKeyword_3()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-
-
-
-
-rule__Css_attrib__Group_2__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_attrib__Group_2__0__Impl
-	rule__Css_attrib__Group_2__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Group_2__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getAlternatives_2_0()); }
-(rule__Css_attrib__Alternatives_2_0)
-{ after(grammarAccess.getCss_attribAccess().getAlternatives_2_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_attrib__Group_2__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_attrib__Group_2__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_attrib__Group_2__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_attribAccess().getAlternatives_2_1()); }
-(rule__Css_attrib__Alternatives_2_1)
-{ after(grammarAccess.getCss_attribAccess().getAlternatives_2_1()); }
 )
 
 ;
@@ -5123,11 +5055,9 @@ rule__Css_declaration__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getCss_declarationAccess().getColonKeyword_3()); }
-
-	':' 
-
-{ after(grammarAccess.getCss_declarationAccess().getColonKeyword_3()); }
+{ before(grammarAccess.getCss_declarationAccess().getCOLONTerminalRuleCall_3()); }
+	RULE_COLON
+{ after(grammarAccess.getCss_declarationAccess().getCOLONTerminalRuleCall_3()); }
 )
 
 ;
@@ -5189,9 +5119,9 @@ rule__Css_declaration__Group__5__Impl
     }
 :
 (
-{ before(grammarAccess.getCss_declarationAccess().getPrioAssignment_5()); }
-(rule__Css_declaration__PrioAssignment_5)?
-{ after(grammarAccess.getCss_declarationAccess().getPrioAssignment_5()); }
+{ before(grammarAccess.getCss_declarationAccess().getImportantAssignment_5()); }
+(rule__Css_declaration__ImportantAssignment_5)?
+{ after(grammarAccess.getCss_declarationAccess().getImportantAssignment_5()); }
 )
 
 ;
@@ -5275,29 +5205,27 @@ finally {
 
 
 
-rule__ValidPropertyIdent__Group__0
+rule__PseudoClass__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__ValidPropertyIdent__Group__0__Impl
-	rule__ValidPropertyIdent__Group__1
+	rule__PseudoClass__Group__0__Impl
+	rule__PseudoClass__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ValidPropertyIdent__Group__0__Impl
+rule__PseudoClass__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getValidPropertyIdentAccess().getHyphenMinusKeyword_0()); }
-(
-	'-' 
-)?
-{ after(grammarAccess.getValidPropertyIdentAccess().getHyphenMinusKeyword_0()); }
+{ before(grammarAccess.getPseudoClassAccess().getCOLONTerminalRuleCall_0()); }
+	RULE_COLON
+{ after(grammarAccess.getPseudoClassAccess().getCOLONTerminalRuleCall_0()); }
 )
 
 ;
@@ -5306,26 +5234,27 @@ finally {
 }
 
 
-rule__ValidPropertyIdent__Group__1
+rule__PseudoClass__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__ValidPropertyIdent__Group__1__Impl
+	rule__PseudoClass__Group__1__Impl
+	rule__PseudoClass__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ValidPropertyIdent__Group__1__Impl
+rule__PseudoClass__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getValidPropertyIdentAccess().getIDENTTerminalRuleCall_1()); }
-	RULE_IDENT
-{ after(grammarAccess.getValidPropertyIdentAccess().getIDENTTerminalRuleCall_1()); }
+{ before(grammarAccess.getPseudoClassAccess().getCOLONTerminalRuleCall_1()); }
+(	RULE_COLON)?
+{ after(grammarAccess.getPseudoClassAccess().getCOLONTerminalRuleCall_1()); }
 )
 
 ;
@@ -5334,92 +5263,26 @@ finally {
 }
 
 
-
-
-
-
-rule__Css_pseudo__Group__0
+rule__PseudoClass__Group__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Css_pseudo__Group__0__Impl
-	rule__Css_pseudo__Group__1
+	rule__PseudoClass__Group__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_pseudo__Group__0__Impl
+rule__PseudoClass__Group__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_pseudoAccess().getColonKeyword_0()); }
-
-	':' 
-
-{ after(grammarAccess.getCss_pseudoAccess().getColonKeyword_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_pseudo__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_pseudo__Group__1__Impl
-	rule__Css_pseudo__Group__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_pseudo__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_pseudoAccess().getColonKeyword_1()); }
-(
-	':' 
-)?
-{ after(grammarAccess.getCss_pseudoAccess().getColonKeyword_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_pseudo__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_pseudo__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_pseudo__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_pseudoAccess().getAlternatives_2()); }
-(rule__Css_pseudo__Alternatives_2)
-{ after(grammarAccess.getCss_pseudoAccess().getAlternatives_2()); }
+{ before(grammarAccess.getPseudoClassAccess().getPseudoClassNameParserRuleCall_2()); }
+	rulePseudoClassName
+{ after(grammarAccess.getPseudoClassAccess().getPseudoClassNameParserRuleCall_2()); }
 )
 
 ;
@@ -5434,29 +5297,27 @@ finally {
 
 
 
-rule__Css_negation__Group__0
+rule__PseudoClassFunction__Group_0__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Css_negation__Group__0__Impl
-	rule__Css_negation__Group__1
+	rule__PseudoClassFunction__Group_0__0__Impl
+	rule__PseudoClassFunction__Group_0__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_negation__Group__0__Impl
+rule__PseudoClassFunction__Group_0__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getColonKeyword_0()); }
-
-	':' 
-
-{ after(grammarAccess.getCss_negationAccess().getColonKeyword_0()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getNotAssignment_0_0()); }
+(rule__PseudoClassFunction__NotAssignment_0_0)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getNotAssignment_0_0()); }
 )
 
 ;
@@ -5465,27 +5326,27 @@ finally {
 }
 
 
-rule__Css_negation__Group__1
+rule__PseudoClassFunction__Group_0__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Css_negation__Group__1__Impl
-	rule__Css_negation__Group__2
+	rule__PseudoClassFunction__Group_0__1__Impl
+	rule__PseudoClassFunction__Group_0__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_negation__Group__1__Impl
+rule__PseudoClassFunction__Group_0__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getNotAssignment_1()); }
-(rule__Css_negation__NotAssignment_1)
-{ after(grammarAccess.getCss_negationAccess().getNotAssignment_1()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorAssignment_0_1()); }
+(rule__PseudoClassFunction__ParamSelectorAssignment_0_1)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorAssignment_0_1()); }
 )
 
 ;
@@ -5494,57 +5355,28 @@ finally {
 }
 
 
-rule__Css_negation__Group__2
+rule__PseudoClassFunction__Group_0__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Css_negation__Group__2__Impl
-	rule__Css_negation__Group__3
+	rule__PseudoClassFunction__Group_0__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_negation__Group__2__Impl
+rule__PseudoClassFunction__Group_0__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getNegation_argAssignment_2()); }
-(rule__Css_negation__Negation_argAssignment_2)
-{ after(grammarAccess.getCss_negationAccess().getNegation_argAssignment_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Css_negation__Group__3
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Css_negation__Group__3__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Css_negation__Group__3__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCss_negationAccess().getRightParenthesisKeyword_3()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getRightParenthesisKeyword_0_2()); }
 
 	')' 
 
-{ after(grammarAccess.getCss_negationAccess().getRightParenthesisKeyword_3()); }
+{ after(grammarAccess.getPseudoClassFunctionAccess().getRightParenthesisKeyword_0_2()); }
 )
 
 ;
@@ -5559,29 +5391,27 @@ finally {
 
 
 
-
-
-rule__Functional_pseudo__Group__0
+rule__PseudoClassFunction__Group_1__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Functional_pseudo__Group__0__Impl
-	rule__Functional_pseudo__Group__1
+	rule__PseudoClassFunction__Group_1__0__Impl
+	rule__PseudoClassFunction__Group_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Functional_pseudo__Group__0__Impl
+rule__PseudoClassFunction__Group_1__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctional_pseudoAccess().getIDENTTerminalRuleCall_0()); }
-	RULE_IDENT
-{ after(grammarAccess.getFunctional_pseudoAccess().getIDENTTerminalRuleCall_0()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getCOLONTerminalRuleCall_1_0()); }
+	RULE_COLON
+{ after(grammarAccess.getPseudoClassFunctionAccess().getCOLONTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -5590,29 +5420,58 @@ finally {
 }
 
 
-rule__Functional_pseudo__Group__1
+rule__PseudoClassFunction__Group_1__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Functional_pseudo__Group__1__Impl
-	rule__Functional_pseudo__Group__2
+	rule__PseudoClassFunction__Group_1__1__Impl
+	rule__PseudoClassFunction__Group_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Functional_pseudo__Group__1__Impl
+rule__PseudoClassFunction__Group_1__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctional_pseudoAccess().getLeftParenthesisKeyword_1()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getNameAssignment_1_1()); }
+(rule__PseudoClassFunction__NameAssignment_1_1)
+{ after(grammarAccess.getPseudoClassFunctionAccess().getNameAssignment_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__PseudoClassFunction__Group_1__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PseudoClassFunction__Group_1__2__Impl
+	rule__PseudoClassFunction__Group_1__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PseudoClassFunction__Group_1__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPseudoClassFunctionAccess().getLeftParenthesisKeyword_1_2()); }
 
 	'(' 
 
-{ after(grammarAccess.getFunctional_pseudoAccess().getLeftParenthesisKeyword_1()); }
+{ after(grammarAccess.getPseudoClassFunctionAccess().getLeftParenthesisKeyword_1_2()); }
 )
 
 ;
@@ -5621,27 +5480,27 @@ finally {
 }
 
 
-rule__Functional_pseudo__Group__2
+rule__PseudoClassFunction__Group_1__3
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Functional_pseudo__Group__2__Impl
-	rule__Functional_pseudo__Group__3
+	rule__PseudoClassFunction__Group_1__3__Impl
+	rule__PseudoClassFunction__Group_1__4
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Functional_pseudo__Group__2__Impl
+rule__PseudoClassFunction__Group_1__3__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctional_pseudoAccess().getFunction_exprParserRuleCall_2()); }
-	rulefunction_expr
-{ after(grammarAccess.getFunctional_pseudoAccess().getFunction_exprParserRuleCall_2()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getParamsAssignment_1_3()); }
+(rule__PseudoClassFunction__ParamsAssignment_1_3)*
+{ after(grammarAccess.getPseudoClassFunctionAccess().getParamsAssignment_1_3()); }
 )
 
 ;
@@ -5650,28 +5509,28 @@ finally {
 }
 
 
-rule__Functional_pseudo__Group__3
+rule__PseudoClassFunction__Group_1__4
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Functional_pseudo__Group__3__Impl
+	rule__PseudoClassFunction__Group_1__4__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Functional_pseudo__Group__3__Impl
+rule__PseudoClassFunction__Group_1__4__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctional_pseudoAccess().getRightParenthesisKeyword_3()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getRightParenthesisKeyword_1_4()); }
 
 	')' 
 
-{ after(grammarAccess.getFunctional_pseudoAccess().getRightParenthesisKeyword_3()); }
+{ after(grammarAccess.getPseudoClassFunctionAccess().getRightParenthesisKeyword_1_4()); }
 )
 
 ;
@@ -5688,27 +5547,29 @@ finally {
 
 
 
-rule__Combinator__Group__0
+
+
+rule__NotFunctionCall__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Combinator__Group__0__Impl
-	rule__Combinator__Group__1
+	rule__NotFunctionCall__Group__0__Impl
+	rule__NotFunctionCall__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Combinator__Group__0__Impl
+rule__NotFunctionCall__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCombinatorAccess().getAlternatives_0()); }
-(rule__Combinator__Alternatives_0)
-{ after(grammarAccess.getCombinatorAccess().getAlternatives_0()); }
+{ before(grammarAccess.getNotFunctionCallAccess().getCOLONTerminalRuleCall_0()); }
+	RULE_COLON
+{ after(grammarAccess.getNotFunctionCallAccess().getCOLONTerminalRuleCall_0()); }
 )
 
 ;
@@ -5717,26 +5578,28 @@ finally {
 }
 
 
-rule__Combinator__Group__1
+rule__NotFunctionCall__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Combinator__Group__1__Impl
+	rule__NotFunctionCall__Group__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Combinator__Group__1__Impl
+rule__NotFunctionCall__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCombinatorAccess().getWSTerminalRuleCall_1()); }
-(	RULE_WS)*
-{ after(grammarAccess.getCombinatorAccess().getWSTerminalRuleCall_1()); }
+{ before(grammarAccess.getNotFunctionCallAccess().getNotKeyword_1()); }
+
+	'not(' 
+
+{ after(grammarAccess.getNotFunctionCallAccess().getNotKeyword_1()); }
 )
 
 ;
@@ -5938,69 +5801,6 @@ finally {
 
 
 
-rule__FuncTok__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__FuncTok__Group__0__Impl
-	rule__FuncTok__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FuncTok__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFuncTokAccess().getFuncTokAction_0()); }
-(
-
-)
-{ after(grammarAccess.getFuncTokAccess().getFuncTokAction_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__FuncTok__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__FuncTok__Group__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FuncTok__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFuncTokAccess().getFuncAssignment_1()); }
-(rule__FuncTok__FuncAssignment_1)
-{ after(grammarAccess.getFuncTokAccess().getFuncAssignment_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
 rule__NumberTok__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -6049,72 +5849,9 @@ rule__NumberTok__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getNumberTokAccess().getNumAssignment_1()); }
-(rule__NumberTok__NumAssignment_1)
-{ after(grammarAccess.getNumberTokAccess().getNumAssignment_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-rule__IdentifierTok__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__IdentifierTok__Group__0__Impl
-	rule__IdentifierTok__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__IdentifierTok__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getIdentifierTokAccess().getIdentifierTokAction_0()); }
-(
-
-)
-{ after(grammarAccess.getIdentifierTokAccess().getIdentifierTokAction_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__IdentifierTok__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__IdentifierTok__Group__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__IdentifierTok__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getIdentifierTokAccess().getIdAssignment_1()); }
-(rule__IdentifierTok__IdAssignment_1)
-{ after(grammarAccess.getIdentifierTokAccess().getIdAssignment_1()); }
+{ before(grammarAccess.getNumberTokAccess().getValAssignment_1()); }
+(rule__NumberTok__ValAssignment_1)
+{ after(grammarAccess.getNumberTokAccess().getValAssignment_1()); }
 )
 
 ;
@@ -6238,9 +5975,101 @@ rule__ColorTok__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getColorTokAccess().getColorAssignment_1()); }
-(rule__ColorTok__ColorAssignment_1)
-{ after(grammarAccess.getColorTokAccess().getColorAssignment_1()); }
+{ before(grammarAccess.getColorTokAccess().getValueAssignment_1()); }
+(rule__ColorTok__ValueAssignment_1)
+{ after(grammarAccess.getColorTokAccess().getValueAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__IdentifierOrFuncTok__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__IdentifierOrFuncTok__Group__0__Impl
+	rule__IdentifierOrFuncTok__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdentifierOrFuncTok__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getIdentifierTokAction_0()); }
+(
+
+)
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getIdentifierTokAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__IdentifierOrFuncTok__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__IdentifierOrFuncTok__Group__1__Impl
+	rule__IdentifierOrFuncTok__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdentifierOrFuncTok__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getNameAssignment_1()); }
+(rule__IdentifierOrFuncTok__NameAssignment_1)
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getNameAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__IdentifierOrFuncTok__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__IdentifierOrFuncTok__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdentifierOrFuncTok__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getGroup_2()); }
+(rule__IdentifierOrFuncTok__Group_2__0)?
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getGroup_2()); }
 )
 
 ;
@@ -6255,27 +6084,29 @@ finally {
 
 
 
-rule__NumberTerm__Group__0
+rule__IdentifierOrFuncTok__Group_2__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__NumberTerm__Group__0__Impl
-	rule__NumberTerm__Group__1
+	rule__IdentifierOrFuncTok__Group_2__0__Impl
+	rule__IdentifierOrFuncTok__Group_2__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__NumberTerm__Group__0__Impl
+rule__IdentifierOrFuncTok__Group_2__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getNumberTermAccess().getUnary_operatorParserRuleCall_0()); }
-(	ruleunary_operator)?
-{ after(grammarAccess.getNumberTermAccess().getUnary_operatorParserRuleCall_0()); }
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getFuncTokNameAction_2_0()); }
+(
+
+)
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getFuncTokNameAction_2_0()); }
 )
 
 ;
@@ -6284,121 +6115,29 @@ finally {
 }
 
 
-rule__NumberTerm__Group__1
+rule__IdentifierOrFuncTok__Group_2__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__NumberTerm__Group__1__Impl
+	rule__IdentifierOrFuncTok__Group_2__1__Impl
+	rule__IdentifierOrFuncTok__Group_2__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__NumberTerm__Group__1__Impl
+rule__IdentifierOrFuncTok__Group_2__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getNumberTermAccess().getAlternatives_1()); }
-(rule__NumberTerm__Alternatives_1)
-{ after(grammarAccess.getNumberTermAccess().getAlternatives_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-rule__Function__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Function__Group__0__Impl
-	rule__Function__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Function__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionAccess().getHyphenMinusKeyword_0()); }
-(
-	'-' 
-)?
-{ after(grammarAccess.getFunctionAccess().getHyphenMinusKeyword_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Function__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Function__Group__1__Impl
-	rule__Function__Group__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Function__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionAccess().getNameAssignment_1()); }
-(rule__Function__NameAssignment_1)
-{ after(grammarAccess.getFunctionAccess().getNameAssignment_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__Function__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__Function__Group__2__Impl
-	rule__Function__Group__3
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Function__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_2()); }
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getLeftParenthesisKeyword_2_1()); }
 
 	'(' 
 
-{ after(grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_2()); }
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getLeftParenthesisKeyword_2_1()); }
 )
 
 ;
@@ -6407,33 +6146,33 @@ finally {
 }
 
 
-rule__Function__Group__3
+rule__IdentifierOrFuncTok__Group_2__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Function__Group__3__Impl
-	rule__Function__Group__4
+	rule__IdentifierOrFuncTok__Group_2__2__Impl
+	rule__IdentifierOrFuncTok__Group_2__3
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Function__Group__3__Impl
+rule__IdentifierOrFuncTok__Group_2__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
 (
-{ before(grammarAccess.getFunctionAccess().getParamsAssignment_3()); }
-(rule__Function__ParamsAssignment_3)
-{ after(grammarAccess.getFunctionAccess().getParamsAssignment_3()); }
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getParamsAssignment_2_2()); }
+(rule__IdentifierOrFuncTok__ParamsAssignment_2_2)
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getParamsAssignment_2_2()); }
 )
 (
-{ before(grammarAccess.getFunctionAccess().getParamsAssignment_3()); }
-(rule__Function__ParamsAssignment_3)*
-{ after(grammarAccess.getFunctionAccess().getParamsAssignment_3()); }
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getParamsAssignment_2_2()); }
+(rule__IdentifierOrFuncTok__ParamsAssignment_2_2)*
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getParamsAssignment_2_2()); }
 )
 )
 
@@ -6443,36 +6182,34 @@ finally {
 }
 
 
-rule__Function__Group__4
+rule__IdentifierOrFuncTok__Group_2__3
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Function__Group__4__Impl
+	rule__IdentifierOrFuncTok__Group_2__3__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Function__Group__4__Impl
+rule__IdentifierOrFuncTok__Group_2__3__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4()); }
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getRightParenthesisKeyword_2_3()); }
 
 	')' 
 
-{ after(grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4()); }
+{ after(grammarAccess.getIdentifierOrFuncTokAccess().getRightParenthesisKeyword_2_3()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
-
-
 
 
 
@@ -6503,7 +6240,7 @@ rule__URLType__Group__0__Impl
 (
 { before(grammarAccess.getURLTypeAccess().getUrlKeyword_0()); }
 
-	'url' 
+	'url(' 
 
 { after(grammarAccess.getURLTypeAccess().getUrlKeyword_0()); }
 )
@@ -6532,11 +6269,9 @@ rule__URLType__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getURLTypeAccess().getLeftParenthesisKeyword_1()); }
-
-	'(' 
-
-{ after(grammarAccess.getURLTypeAccess().getLeftParenthesisKeyword_1()); }
+{ before(grammarAccess.getURLTypeAccess().getUrlAssignment_1()); }
+(rule__URLType__UrlAssignment_1)
+{ after(grammarAccess.getURLTypeAccess().getUrlAssignment_1()); }
 )
 
 ;
@@ -6551,7 +6286,6 @@ rule__URLType__Group__2
     }
 :
 	rule__URLType__Group__2__Impl
-	rule__URLType__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -6563,39 +6297,11 @@ rule__URLType__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getURLTypeAccess().getUrlAssignment_2()); }
-(rule__URLType__UrlAssignment_2)
-{ after(grammarAccess.getURLTypeAccess().getUrlAssignment_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__URLType__Group__3
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__URLType__Group__3__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__URLType__Group__3__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getURLTypeAccess().getRightParenthesisKeyword_3()); }
+{ before(grammarAccess.getURLTypeAccess().getRightParenthesisKeyword_2()); }
 
 	')' 
 
-{ after(grammarAccess.getURLTypeAccess().getRightParenthesisKeyword_3()); }
+{ after(grammarAccess.getURLTypeAccess().getRightParenthesisKeyword_2()); }
 )
 
 ;
@@ -6610,29 +6316,29 @@ finally {
 
 
 
-
-
-rule__PERCENTAGE__Group__0
+rule__ValidURLSymbol__Group_18__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__PERCENTAGE__Group__0__Impl
-	rule__PERCENTAGE__Group__1
+	rule__ValidURLSymbol__Group_18__0__Impl
+	rule__ValidURLSymbol__Group_18__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PERCENTAGE__Group__0__Impl
+rule__ValidURLSymbol__Group_18__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPERCENTAGEAccess().getNumParserRuleCall_0()); }
-	rulenum
-{ after(grammarAccess.getPERCENTAGEAccess().getNumParserRuleCall_0()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getEqualsSignKeyword_18_0()); }
+
+	'=' 
+
+{ after(grammarAccess.getValidURLSymbolAccess().getEqualsSignKeyword_18_0()); }
 )
 
 ;
@@ -6641,28 +6347,26 @@ finally {
 }
 
 
-rule__PERCENTAGE__Group__1
+rule__ValidURLSymbol__Group_18__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__PERCENTAGE__Group__1__Impl
+	rule__ValidURLSymbol__Group_18__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PERCENTAGE__Group__1__Impl
+rule__ValidURLSymbol__Group_18__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPERCENTAGEAccess().getPercentSignKeyword_1()); }
-
-	'%' 
-
-{ after(grammarAccess.getPERCENTAGEAccess().getPercentSignKeyword_1()); }
+{ before(grammarAccess.getValidURLSymbolAccess().getKeywordHackParserRuleCall_18_1()); }
+	ruleKeywordHack
+{ after(grammarAccess.getValidURLSymbolAccess().getKeywordHackParserRuleCall_18_1()); }
 )
 
 ;
@@ -6675,27 +6379,27 @@ finally {
 
 
 
-rule__EMS__Group__0
+rule__ValidURL__Group_1_10__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__EMS__Group__0__Impl
-	rule__EMS__Group__1
+	rule__ValidURL__Group_1_10__0__Impl
+	rule__ValidURL__Group_1_10__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EMS__Group__0__Impl
+rule__ValidURL__Group_1_10__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getEMSAccess().getNumParserRuleCall_0()); }
-	rulenum
-{ after(grammarAccess.getEMSAccess().getNumParserRuleCall_0()); }
+{ before(grammarAccess.getValidURLAccess().getPERCENTTerminalRuleCall_1_10_0()); }
+	RULE_PERCENT
+{ after(grammarAccess.getValidURLAccess().getPERCENTTerminalRuleCall_1_10_0()); }
 )
 
 ;
@@ -6704,28 +6408,27 @@ finally {
 }
 
 
-rule__EMS__Group__1
+rule__ValidURL__Group_1_10__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__EMS__Group__1__Impl
+	rule__ValidURL__Group_1_10__1__Impl
+	rule__ValidURL__Group_1_10__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EMS__Group__1__Impl
+rule__ValidURL__Group_1_10__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getEMSAccess().getEmKeyword_1()); }
-
-	'em' 
-
-{ after(grammarAccess.getEMSAccess().getEmKeyword_1()); }
+{ before(grammarAccess.getValidURLAccess().getAlternatives_1_10_1()); }
+(rule__ValidURL__Alternatives_1_10_1)
+{ after(grammarAccess.getValidURLAccess().getAlternatives_1_10_1()); }
 )
 
 ;
@@ -6734,31 +6437,26 @@ finally {
 }
 
 
-
-
-
-
-rule__EXS__Group__0
+rule__ValidURL__Group_1_10__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__EXS__Group__0__Impl
-	rule__EXS__Group__1
+	rule__ValidURL__Group_1_10__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EXS__Group__0__Impl
+rule__ValidURL__Group_1_10__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getEXSAccess().getNumParserRuleCall_0()); }
-	rulenum
-{ after(grammarAccess.getEXSAccess().getNumParserRuleCall_0()); }
+{ before(grammarAccess.getValidURLAccess().getAlternatives_1_10_2()); }
+(rule__ValidURL__Alternatives_1_10_2)
+{ after(grammarAccess.getValidURLAccess().getAlternatives_1_10_2()); }
 )
 
 ;
@@ -6767,28 +6465,33 @@ finally {
 }
 
 
-rule__EXS__Group__1
+
+
+
+
+
+
+rule__Identifier__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__EXS__Group__1__Impl
+	rule__Identifier__Group__0__Impl
+	rule__Identifier__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EXS__Group__1__Impl
+rule__Identifier__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getEXSAccess().getExKeyword_1()); }
-
-	'ex' 
-
-{ after(grammarAccess.getEXSAccess().getExKeyword_1()); }
+{ before(grammarAccess.getIdentifierAccess().getDASHTerminalRuleCall_0()); }
+(	RULE_DASH)?
+{ after(grammarAccess.getIdentifierAccess().getDASHTerminalRuleCall_0()); }
 )
 
 ;
@@ -6797,31 +6500,27 @@ finally {
 }
 
 
-
-
-
-
-rule__LENGTH__Group__0
+rule__Identifier__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__LENGTH__Group__0__Impl
-	rule__LENGTH__Group__1
+	rule__Identifier__Group__1__Impl
+	rule__Identifier__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__LENGTH__Group__0__Impl
+rule__Identifier__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getLENGTHAccess().getNumParserRuleCall_0()); }
-	rulenum
-{ after(grammarAccess.getLENGTHAccess().getNumParserRuleCall_0()); }
+{ before(grammarAccess.getIdentifierAccess().getAlternatives_1()); }
+(rule__Identifier__Alternatives_1)
+{ after(grammarAccess.getIdentifierAccess().getAlternatives_1()); }
 )
 
 ;
@@ -6830,26 +6529,26 @@ finally {
 }
 
 
-rule__LENGTH__Group__1
+rule__Identifier__Group__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__LENGTH__Group__1__Impl
+	rule__Identifier__Group__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__LENGTH__Group__1__Impl
+rule__Identifier__Group__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getLENGTHAccess().getAlternatives_1()); }
-(rule__LENGTH__Alternatives_1)
-{ after(grammarAccess.getLENGTHAccess().getAlternatives_1()); }
+{ before(grammarAccess.getIdentifierAccess().getGroup_2()); }
+(rule__Identifier__Group_2__0)*
+{ after(grammarAccess.getIdentifierAccess().getGroup_2()); }
 )
 
 ;
@@ -6862,27 +6561,28 @@ finally {
 
 
 
-rule__ANGLE__Group__0
+
+
+rule__Identifier__Group_2__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__ANGLE__Group__0__Impl
-	rule__ANGLE__Group__1
+	rule__Identifier__Group_2__0__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ANGLE__Group__0__Impl
+rule__Identifier__Group_2__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getANGLEAccess().getNumParserRuleCall_0()); }
-	rulenum
-{ after(grammarAccess.getANGLEAccess().getNumParserRuleCall_0()); }
+{ before(grammarAccess.getIdentifierAccess().getAlternatives_2_0()); }
+(rule__Identifier__Alternatives_2_0)
+{ after(grammarAccess.getIdentifierAccess().getAlternatives_2_0()); }
 )
 
 ;
@@ -6891,26 +6591,29 @@ finally {
 }
 
 
-rule__ANGLE__Group__1
+
+
+rule__Num__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__ANGLE__Group__1__Impl
+	rule__Num__Group__0__Impl
+	rule__Num__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ANGLE__Group__1__Impl
+rule__Num__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getANGLEAccess().getAlternatives_1()); }
-(rule__ANGLE__Alternatives_1)
-{ after(grammarAccess.getANGLEAccess().getAlternatives_1()); }
+{ before(grammarAccess.getNumAccess().getAlternatives_0()); }
+(rule__Num__Alternatives_0)?
+{ after(grammarAccess.getNumAccess().getAlternatives_0()); }
 )
 
 ;
@@ -6919,31 +6622,26 @@ finally {
 }
 
 
-
-
-
-
-rule__TIME__Group__0
+rule__Num__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__TIME__Group__0__Impl
-	rule__TIME__Group__1
+	rule__Num__Group__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__TIME__Group__0__Impl
+rule__Num__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTIMEAccess().getNumParserRuleCall_0()); }
-	rulenum
-{ after(grammarAccess.getTIMEAccess().getNumParserRuleCall_0()); }
+{ before(grammarAccess.getNumAccess().getAlternatives_1()); }
+(rule__Num__Alternatives_1)
+{ after(grammarAccess.getNumAccess().getAlternatives_1()); }
 )
 
 ;
@@ -6952,26 +6650,33 @@ finally {
 }
 
 
-rule__TIME__Group__1
+
+
+
+
+rule__Num__Group_1_0__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__TIME__Group__1__Impl
+	rule__Num__Group_1_0__0__Impl
+	rule__Num__Group_1_0__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__TIME__Group__1__Impl
+rule__Num__Group_1_0__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTIMEAccess().getAlternatives_1()); }
-(rule__TIME__Alternatives_1)
-{ after(grammarAccess.getTIMEAccess().getAlternatives_1()); }
+{ before(grammarAccess.getNumAccess().getFullStopKeyword_1_0_0()); }
+
+	'.' 
+
+{ after(grammarAccess.getNumAccess().getFullStopKeyword_1_0_0()); }
 )
 
 ;
@@ -6980,31 +6685,33 @@ finally {
 }
 
 
-
-
-
-
-rule__FREQ__Group__0
+rule__Num__Group_1_0__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FREQ__Group__0__Impl
-	rule__FREQ__Group__1
+	rule__Num__Group_1_0__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FREQ__Group__0__Impl
+rule__Num__Group_1_0__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFREQAccess().getNumParserRuleCall_0()); }
-	rulenum
-{ after(grammarAccess.getFREQAccess().getNumParserRuleCall_0()); }
+(
+{ before(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_0_1()); }
+(	RULE_ONE_INT)
+{ after(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_0_1()); }
+)
+(
+{ before(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_0_1()); }
+(	RULE_ONE_INT)*
+{ after(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_0_1()); }
+)
 )
 
 ;
@@ -7013,26 +6720,38 @@ finally {
 }
 
 
-rule__FREQ__Group__1
+
+
+
+
+rule__Num__Group_1_1__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FREQ__Group__1__Impl
+	rule__Num__Group_1_1__0__Impl
+	rule__Num__Group_1_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FREQ__Group__1__Impl
+rule__Num__Group_1_1__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFREQAccess().getAlternatives_1()); }
-(rule__FREQ__Alternatives_1)
-{ after(grammarAccess.getFREQAccess().getAlternatives_1()); }
+(
+{ before(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_0()); }
+(	RULE_ONE_INT)
+{ after(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_0()); }
+)
+(
+{ before(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_0()); }
+(	RULE_ONE_INT)*
+{ after(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_0()); }
+)
 )
 
 ;
@@ -7041,6 +6760,202 @@ finally {
 }
 
 
+rule__Num__Group_1_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Num__Group_1_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Num__Group_1_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNumAccess().getGroup_1_1_1()); }
+(rule__Num__Group_1_1_1__0)?
+{ after(grammarAccess.getNumAccess().getGroup_1_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__Num__Group_1_1_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Num__Group_1_1_1__0__Impl
+	rule__Num__Group_1_1_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Num__Group_1_1_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNumAccess().getFullStopKeyword_1_1_1_0()); }
+(
+	'.' 
+)
+{ after(grammarAccess.getNumAccess().getFullStopKeyword_1_1_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Num__Group_1_1_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Num__Group_1_1_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Num__Group_1_1_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+(
+{ before(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_1_1()); }
+(	RULE_ONE_INT)
+{ after(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_1_1()); }
+)
+(
+{ before(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_1_1()); }
+(	RULE_ONE_INT)*
+{ after(grammarAccess.getNumAccess().getONE_INTTerminalRuleCall_1_1_1_1()); }
+)
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__Hex__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Hex__Group__0__Impl
+	rule__Hex__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Hex__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getHexAccess().getHASHMARKTerminalRuleCall_0()); }
+	RULE_HASHMARK
+{ after(grammarAccess.getHexAccess().getHASHMARKTerminalRuleCall_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Hex__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Hex__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Hex__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+(
+{ before(grammarAccess.getHexAccess().getGroup_1()); }
+(rule__Hex__Group_1__0)
+{ after(grammarAccess.getHexAccess().getGroup_1()); }
+)
+(
+{ before(grammarAccess.getHexAccess().getGroup_1()); }
+(rule__Hex__Group_1__0)*
+{ after(grammarAccess.getHexAccess().getGroup_1()); }
+)
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__Hex__Group_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Hex__Group_1__0__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Hex__Group_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getHexAccess().getAlternatives_1_0()); }
+(rule__Hex__Alternatives_1_0)
+{ after(grammarAccess.getHexAccess().getAlternatives_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -7136,14 +7051,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ImportExpression__ValueAssignment_0_1
+rule__ImportExpression__ValueAssignment_1_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0()); }
-	RULE_STRING{ after(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0()); }
+{ before(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0()); }
+	RULE_STRING{ after(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0()); }
 )
 
 ;
@@ -7151,14 +7066,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ImportExpression__MediaListAssignment_1_1
+rule__ImportExpression__MediaListAssignment_1_1_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getMediaListMedia_listParserRuleCall_1_1_0()); }
-	rulemedia_list{ after(grammarAccess.getImportExpressionAccess().getMediaListMedia_listParserRuleCall_1_1_0()); }
+{ before(grammarAccess.getImportExpressionAccess().getMediaListMedia_listParserRuleCall_1_1_1_0()); }
+	rulemedia_list{ after(grammarAccess.getImportExpressionAccess().getMediaListMedia_listParserRuleCall_1_1_1_0()); }
 )
 
 ;
@@ -7256,14 +7171,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Ruleset__SelectorsAssignment_1_1
+rule__Ruleset__SelectorsAssignment_1_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_1_0()); }
-	ruleselector{ after(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_1_0()); }
+{ before(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_2_0()); }
+	ruleselector{ after(grammarAccess.getRulesetAccess().getSelectorsSelectorParserRuleCall_1_2_0()); }
 )
 
 ;
@@ -7279,6 +7194,21 @@ rule__Ruleset__DeclarationsAssignment_4_0
 (
 { before(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_4_0_0()); }
 	rulecss_declaration{ after(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_4_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Ruleset__DeclarationsAssignment_4_1_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_4_1_1_0()); }
+	rulecss_declaration{ after(grammarAccess.getRulesetAccess().getDeclarationsCss_declarationParserRuleCall_4_1_1_0()); }
 )
 
 ;
@@ -7316,14 +7246,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Selector__SelectorAssignment_1_0_1
+rule__Selector__SelectorAssignment_1_0_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_0_1_0()); }
-	ruleselector{ after(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_0_1_0()); }
+{ before(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_0_2_0()); }
+	ruleselector{ after(grammarAccess.getSelectorAccess().getSelectorSelectorParserRuleCall_1_0_2_0()); }
 )
 
 ;
@@ -7331,14 +7261,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Selector__CombinatorAssignment_1_1_1
+rule__Selector__CombinatorAssignment_1_1_1_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0()); }
-	rulecombinator{ after(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0()); }
+{ before(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0_0()); }
+	rulecombinator{ after(grammarAccess.getSelectorAccess().getCombinatorCombinatorParserRuleCall_1_1_1_0_0()); }
 )
 
 ;
@@ -7361,14 +7291,74 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__SimpleSelectorForNegation__ElementAssignment_0_0_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getElementElementSelectorParserRuleCall_0_0_0_0()); }
+	ruleElementSelector{ after(grammarAccess.getSimpleSelectorForNegationAccess().getElementElementSelectorParserRuleCall_0_0_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SimpleSelectorForNegation__UniversalAssignment_0_0_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getUniversalUniversalSelectorParserRuleCall_0_0_1_0()); }
+	ruleUniversalSelector{ after(grammarAccess.getSimpleSelectorForNegationAccess().getUniversalUniversalSelectorParserRuleCall_0_0_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SimpleSelectorForNegation__SubSelectorsAssignment_0_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsSubSelectorForNegationParserRuleCall_0_1_0()); }
+	ruleSubSelectorForNegation{ after(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsSubSelectorForNegationParserRuleCall_0_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SimpleSelectorForNegation__SubSelectorsAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsSubSelectorForNegationParserRuleCall_1_0()); }
+	ruleSubSelectorForNegation{ after(grammarAccess.getSimpleSelectorForNegationAccess().getSubSelectorsSubSelectorForNegationParserRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Simple_selector__ElementAssignment_0_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSimple_selectorAccess().getElementElement_nameParserRuleCall_0_0_0_0()); }
-	ruleelement_name{ after(grammarAccess.getSimple_selectorAccess().getElementElement_nameParserRuleCall_0_0_0_0()); }
+{ before(grammarAccess.getSimple_selectorAccess().getElementElementSelectorParserRuleCall_0_0_0_0()); }
+	ruleElementSelector{ after(grammarAccess.getSimple_selectorAccess().getElementElementSelectorParserRuleCall_0_0_0_0()); }
 )
 
 ;
@@ -7382,8 +7372,8 @@ rule__Simple_selector__UniversalAssignment_0_0_1
     }
 :
 (
-{ before(grammarAccess.getSimple_selectorAccess().getUniversalCss_universalParserRuleCall_0_0_1_0()); }
-	rulecss_universal{ after(grammarAccess.getSimple_selectorAccess().getUniversalCss_universalParserRuleCall_0_0_1_0()); }
+{ before(grammarAccess.getSimple_selectorAccess().getUniversalUniversalSelectorParserRuleCall_0_0_1_0()); }
+	ruleUniversalSelector{ after(grammarAccess.getSimple_selectorAccess().getUniversalUniversalSelectorParserRuleCall_0_0_1_0()); }
 )
 
 ;
@@ -7397,8 +7387,8 @@ rule__Simple_selector__SubSelectorsAssignment_0_1
     }
 :
 (
-{ before(grammarAccess.getSimple_selectorAccess().getSubSelectorsSub_selectorParserRuleCall_0_1_0()); }
-	rulesub_selector{ after(grammarAccess.getSimple_selectorAccess().getSubSelectorsSub_selectorParserRuleCall_0_1_0()); }
+{ before(grammarAccess.getSimple_selectorAccess().getSubSelectorsSubSelectorParserRuleCall_0_1_0()); }
+	ruleSubSelector{ after(grammarAccess.getSimple_selectorAccess().getSubSelectorsSubSelectorParserRuleCall_0_1_0()); }
 )
 
 ;
@@ -7412,8 +7402,8 @@ rule__Simple_selector__SubSelectorsAssignment_1
     }
 :
 (
-{ before(grammarAccess.getSimple_selectorAccess().getSubSelectorsSub_selectorParserRuleCall_1_0()); }
-	rulesub_selector{ after(grammarAccess.getSimple_selectorAccess().getSubSelectorsSub_selectorParserRuleCall_1_0()); }
+{ before(grammarAccess.getSimple_selectorAccess().getSubSelectorsSubSelectorParserRuleCall_1_0()); }
+	ruleSubSelector{ after(grammarAccess.getSimple_selectorAccess().getSubSelectorsSubSelectorParserRuleCall_1_0()); }
 )
 
 ;
@@ -7421,14 +7411,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sub_selector__IdAssignment_0
+rule__AttributeSelector__NameAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSub_selectorAccess().getIdCss_idParserRuleCall_0_0()); }
-	rulecss_id{ after(grammarAccess.getSub_selectorAccess().getIdCss_idParserRuleCall_0_0()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getNameIdentifierParserRuleCall_2_0()); }
+	ruleIdentifier{ after(grammarAccess.getAttributeSelectorAccess().getNameIdentifierParserRuleCall_2_0()); }
 )
 
 ;
@@ -7436,14 +7426,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sub_selector__ClassAssignment_1
+rule__AttributeSelector__OpAssignment_3_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSub_selectorAccess().getClassCss_classParserRuleCall_1_0()); }
-	rulecss_class{ after(grammarAccess.getSub_selectorAccess().getClassCss_classParserRuleCall_1_0()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getOpAlternatives_3_0_0()); }
+(rule__AttributeSelector__OpAlternatives_3_0_0)
+{ after(grammarAccess.getAttributeSelectorAccess().getOpAlternatives_3_0_0()); }
 )
 
 ;
@@ -7451,14 +7442,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sub_selector__AttribAssignment_2
+rule__AttributeSelector__ValueAssignment_3_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSub_selectorAccess().getAttribCss_attribParserRuleCall_2_0()); }
-	rulecss_attrib{ after(grammarAccess.getSub_selectorAccess().getAttribCss_attribParserRuleCall_2_0()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getValueAlternatives_3_1_0()); }
+(rule__AttributeSelector__ValueAlternatives_3_1_0)
+{ after(grammarAccess.getAttributeSelectorAccess().getValueAlternatives_3_1_0()); }
 )
 
 ;
@@ -7466,14 +7458,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sub_selector__PseudoclassAssignment_3
+rule__ClassSelector__NameAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSub_selectorAccess().getPseudoclassCss_pseudoParserRuleCall_3_0()); }
-	rulecss_pseudo{ after(grammarAccess.getSub_selectorAccess().getPseudoclassCss_pseudoParserRuleCall_3_0()); }
+{ before(grammarAccess.getClassSelectorAccess().getNameIdentifierParserRuleCall_2_0()); }
+	ruleIdentifier{ after(grammarAccess.getClassSelectorAccess().getNameIdentifierParserRuleCall_2_0()); }
 )
 
 ;
@@ -7481,14 +7473,44 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Sub_selector__NegotationAssignment_4
+rule__ElementSelector__NameAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSub_selectorAccess().getNegotationCss_negationParserRuleCall_4_0()); }
-	rulecss_negation{ after(grammarAccess.getSub_selectorAccess().getNegotationCss_negationParserRuleCall_4_0()); }
+{ before(grammarAccess.getElementSelectorAccess().getNameIdentifierParserRuleCall_1_0()); }
+	ruleIdentifier{ after(grammarAccess.getElementSelectorAccess().getNameIdentifierParserRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__UniversalSelector__NamespaceAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getUniversalSelectorAccess().getNamespaceCss_namespace_prefixParserRuleCall_1_0()); }
+	rulecss_namespace_prefix{ after(grammarAccess.getUniversalSelectorAccess().getNamespaceCss_namespace_prefixParserRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdSelector__NameAssignment_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdSelectorAccess().getNameIdentifierParserRuleCall_2_0()); }
+	ruleIdentifier{ after(grammarAccess.getIdSelectorAccess().getNameIdentifierParserRuleCall_2_0()); }
 )
 
 ;
@@ -7526,14 +7548,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_declaration__PrioAssignment_5
+rule__Css_declaration__ImportantAssignment_5
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_declarationAccess().getPrioCss_prioParserRuleCall_5_0()); }
-	rulecss_prio{ after(grammarAccess.getCss_declarationAccess().getPrioCss_prioParserRuleCall_5_0()); }
+{ before(grammarAccess.getCss_declarationAccess().getImportantIMPORTANT_SYMTerminalRuleCall_5_0()); }
+	RULE_IMPORTANT_SYM{ after(grammarAccess.getCss_declarationAccess().getImportantIMPORTANT_SYMTerminalRuleCall_5_0()); }
 )
 
 ;
@@ -7556,14 +7578,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_negation__NotAssignment_1
+rule__PseudoClassName__NameAssignment
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getNotCss_notEnumRuleCall_1_0()); }
-	rulecss_not{ after(grammarAccess.getCss_negationAccess().getNotCss_notEnumRuleCall_1_0()); }
+{ before(grammarAccess.getPseudoClassNameAccess().getNameIdentifierParserRuleCall_0()); }
+	ruleIdentifier{ after(grammarAccess.getPseudoClassNameAccess().getNameIdentifierParserRuleCall_0()); }
 )
 
 ;
@@ -7571,14 +7593,59 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Css_negation__Negation_argAssignment_2
+rule__PseudoClassFunction__NotAssignment_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCss_negationAccess().getNegation_argCss_negation_argParserRuleCall_2_0()); }
-	rulecss_negation_arg{ after(grammarAccess.getCss_negationAccess().getNegation_argCss_negation_argParserRuleCall_2_0()); }
+{ before(grammarAccess.getPseudoClassFunctionAccess().getNotNotFunctionCallParserRuleCall_0_0_0()); }
+	ruleNotFunctionCall{ after(grammarAccess.getPseudoClassFunctionAccess().getNotNotFunctionCallParserRuleCall_0_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PseudoClassFunction__ParamSelectorAssignment_0_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0()); }
+	ruleSimpleSelectorForNegation{ after(grammarAccess.getPseudoClassFunctionAccess().getParamSelectorSimpleSelectorForNegationParserRuleCall_0_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PseudoClassFunction__NameAssignment_1_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPseudoClassFunctionAccess().getNameIdentifierParserRuleCall_1_1_0()); }
+	ruleIdentifier{ after(grammarAccess.getPseudoClassFunctionAccess().getNameIdentifierParserRuleCall_1_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PseudoClassFunction__ParamsAssignment_1_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPseudoClassFunctionAccess().getParamsCssTokParserRuleCall_1_3_0()); }
+	ruleCssTok{ after(grammarAccess.getPseudoClassFunctionAccess().getParamsCssTokParserRuleCall_1_3_0()); }
 )
 
 ;
@@ -7592,8 +7659,9 @@ rule__SymbolTok__SymbolAssignment_1
     }
 :
 (
-{ before(grammarAccess.getSymbolTokAccess().getSymbolCOMMATerminalRuleCall_1_0()); }
-	RULE_COMMA{ after(grammarAccess.getSymbolTokAccess().getSymbolCOMMATerminalRuleCall_1_0()); }
+{ before(grammarAccess.getSymbolTokAccess().getSymbolAlternatives_1_0()); }
+(rule__SymbolTok__SymbolAlternatives_1_0)
+{ after(grammarAccess.getSymbolTokAccess().getSymbolAlternatives_1_0()); }
 )
 
 ;
@@ -7616,44 +7684,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FuncTok__FuncAssignment_1
+rule__NumberTok__ValAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFuncTokAccess().getFuncFunctionParserRuleCall_1_0()); }
-	rulefunction{ after(grammarAccess.getFuncTokAccess().getFuncFunctionParserRuleCall_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__NumberTok__NumAssignment_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getNumberTokAccess().getNumNumberTermParserRuleCall_1_0()); }
-	rulenumberTerm{ after(grammarAccess.getNumberTokAccess().getNumNumberTermParserRuleCall_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__IdentifierTok__IdAssignment_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getIdentifierTokAccess().getIdValidPropertyIdentParserRuleCall_1_0()); }
-	ruleValidPropertyIdent{ after(grammarAccess.getIdentifierTokAccess().getIdValidPropertyIdentParserRuleCall_1_0()); }
+{ before(grammarAccess.getNumberTokAccess().getValNumParserRuleCall_1_0()); }
+	ruleNum{ after(grammarAccess.getNumberTokAccess().getValNumParserRuleCall_1_0()); }
 )
 
 ;
@@ -7676,14 +7714,59 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ColorTok__ColorAssignment_1
+rule__ColorTok__ValueAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getColorTokAccess().getColorHASHTerminalRuleCall_1_0()); }
-	RULE_HASH{ after(grammarAccess.getColorTokAccess().getColorHASHTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getColorTokAccess().getValueHexParserRuleCall_1_0()); }
+	ruleHex{ after(grammarAccess.getColorTokAccess().getValueHexParserRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdentifierOrFuncTok__NameAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getNameIdentifierParserRuleCall_1_0()); }
+	ruleIdentifier{ after(grammarAccess.getIdentifierOrFuncTokAccess().getNameIdentifierParserRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__IdentifierOrFuncTok__ParamsAssignment_2_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getIdentifierOrFuncTokAccess().getParamsCssTokParserRuleCall_2_2_0()); }
+	ruleCssTok{ after(grammarAccess.getIdentifierOrFuncTokAccess().getParamsCssTokParserRuleCall_2_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__URLType__UrlAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getURLTypeAccess().getUrlValidURLParserRuleCall_1_0()); }
+	ruleValidURL{ after(grammarAccess.getURLTypeAccess().getUrlValidURLParserRuleCall_1_0()); }
 )
 
 ;
@@ -7692,167 +7775,25 @@ finally {
 }
 
 
+RULE_IMPORTANT_SYM : '!important';
 
-rule__TermGroup__TermsAssignment
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTermGroupAccess().getTermsTermParserRuleCall_0()); }
-	ruleterm{ after(grammarAccess.getTermGroupAccess().getTermsTermParserRuleCall_0()); }
-)
+RULE_ONE_INT : '0'..'9';
 
-;
-finally {
-	restoreStackSize(stackSize);
-}
+RULE_ONE_HEX_LETTER : ('a'..'f'|'A'..'F');
 
-rule__Term__NumberAssignment_0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTermAccess().getNumberNumberTermParserRuleCall_0_0()); }
-	rulenumberTerm{ after(grammarAccess.getTermAccess().getNumberNumberTermParserRuleCall_0_0()); }
-)
+RULE_ONE_NON_HEX_LETTER : ('g'..'z'|'G'..'Z');
 
-;
-finally {
-	restoreStackSize(stackSize);
-}
+RULE_UNDERSCORE : '_';
 
-rule__Term__StringValueAssignment_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTermAccess().getStringValueSTRINGTerminalRuleCall_1_0()); }
-	RULE_STRING{ after(grammarAccess.getTermAccess().getStringValueSTRINGTerminalRuleCall_1_0()); }
-)
+RULE_DASH : '-';
 
-;
-finally {
-	restoreStackSize(stackSize);
-}
+RULE_PLUS : '+';
 
-rule__Term__IdentifierAssignment_2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTermAccess().getIdentifierValidPropertyIdentParserRuleCall_2_0()); }
-	ruleValidPropertyIdent{ after(grammarAccess.getTermAccess().getIdentifierValidPropertyIdentParserRuleCall_2_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Term__UrlAssignment_3
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTermAccess().getUrlURLTypeParserRuleCall_3_0()); }
-	ruleURLType{ after(grammarAccess.getTermAccess().getUrlURLTypeParserRuleCall_3_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Term__FunctionAssignment_4
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTermAccess().getFunctionFunctionParserRuleCall_4_0()); }
-	rulefunction{ after(grammarAccess.getTermAccess().getFunctionFunctionParserRuleCall_4_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Term__HexColorAssignment_5
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTermAccess().getHexColorHexColorParserRuleCall_5_0()); }
-	ruleHexColor{ after(grammarAccess.getTermAccess().getHexColorHexColorParserRuleCall_5_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Function__NameAssignment_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionAccess().getNameIDENTTerminalRuleCall_1_0()); }
-	RULE_IDENT{ after(grammarAccess.getFunctionAccess().getNameIDENTTerminalRuleCall_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Function__ParamsAssignment_3
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionAccess().getParamsCssTokParserRuleCall_3_0()); }
-	ruleCssTok{ after(grammarAccess.getFunctionAccess().getParamsCssTokParserRuleCall_3_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__URLType__UrlAssignment_2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getURLTypeAccess().getUrlSTRINGTerminalRuleCall_2_0()); }
-	RULE_STRING{ after(grammarAccess.getURLTypeAccess().getUrlSTRINGTerminalRuleCall_2_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-RULE_INTEGER : ('0'..'9')+;
-
-RULE_REAL : ('0'..'9')* '.' ('0'..'9')+;
-
-RULE_HASH : '#' ('_'|'-'|'a'..'z'|'A'..'Z'|'0'..'9')+;
-
-RULE_IDENT : ('_'|'a'..'z'|'A'..'Z') ('_'|'-'|'a'..'z'|'A'..'Z'|'0'..'9')*;
+RULE_HASHMARK : '#';
 
 RULE_COMMA : ',';
+
+RULE_PERCENT : '%';
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
@@ -7863,5 +7804,7 @@ RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))*
 RULE_INCLUDES : '~=';
 
 RULE_DASHMATCH : '|=';
+
+RULE_COLON : ':';
 
 

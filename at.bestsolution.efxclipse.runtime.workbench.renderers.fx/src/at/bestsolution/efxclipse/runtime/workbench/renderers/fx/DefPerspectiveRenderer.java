@@ -29,7 +29,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 public class DefPerspectiveRenderer extends BasePerspectiveRenderer<FillLayoutPane> {
 
 	@Override
-	protected Class<? extends WPerspective<FillLayoutPane>> getWidgetClass() {
+	protected Class<? extends WPerspective<FillLayoutPane>> getWidgetClass(MPerspective perspective) {
 		return PerspectiveWidgetImpl.class;
 	}
 

@@ -24,7 +24,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetIm
 public class DefMenuSeparatorRenderer extends BaseMenuSeparatorRenderer<SeparatorMenuItem> {
 
 	@Override
-	protected Class<? extends WMenuSeparator<SeparatorMenuItem>> getWidgetClass() {
+	protected Class<? extends WMenuSeparator<SeparatorMenuItem>> getWidgetClass(MMenuSeparator separator) {
 		return MenuSeparatorImpl.class;
 	}
 

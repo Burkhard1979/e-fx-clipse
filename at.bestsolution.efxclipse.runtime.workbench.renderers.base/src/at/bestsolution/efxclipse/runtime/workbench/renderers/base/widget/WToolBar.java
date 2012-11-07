@@ -16,10 +16,10 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 @SuppressWarnings("restriction")
 public interface WToolBar<N> extends WLayoutedWidget<MToolBar> {
 
-	void addChild(WLayoutedWidget<MToolBarElement> itemWidget);
+	void addChild(WWidget<MToolBarElement> itemWidget);
 
-	void addChild(int idx, WLayoutedWidget<MToolBarElement> widget);
+	void addChild(int idx, WWidget<MToolBarElement> widget);
 
-	void removeChild(WLayoutedWidget<MToolBarElement> widget);
+	void removeChild(WWidget<MToolBarElement> widget);
 
 }

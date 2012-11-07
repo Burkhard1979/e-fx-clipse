@@ -124,6 +124,20 @@ package javafx {
 					coral | cornflowerblue | cornsilk | crimson |
 					cyan | darkblue | darkcyan | darkgoldenrod |
 					darkgray | darkgreen | darkgrey | darkkhaki; // TODO finish this!
+					
+//	annotated-named-color-1 = 	/** @color #123456 */ aliceblue |
+//								/** @color #123456 */ antiquewhite;
+//								
+//	annotated-named-color-2 =	@Color(#123456) aliceblue |
+//								@Color(#123456) antiquewhite;
+//								
+//	annotated-named-color-3 =	@Alias(#123456) aliceblue |
+//								@Alias(#123456) antiquewhite;
+//								
+//	annotated-named-color-4 =	@Color @Alias(#123456) aliceblue |
+//								@Color @Alias(#123456) antiquewhite
+												
+					
 	looked-up-color = reference_to_other_color_property; // TODO howto implement?!
 	
 	hashcolor = $#[0123456789ABCDEFabcdef]{6}$ | $#[0123456789ABCDEFabcdef]{3}$;
@@ -197,22 +211,22 @@ package javafx {
 			
 			//TODO REMOVE if attribute references are available
 			helper-background-color = <paint> [, <paint>]*; 
-			helper-background-insets = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
-			helper-background-radius = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-background-insets = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-background-radius = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 			helper-background-image = <uri> [ , <uri> ]*;
 			helper-background-position = <bg-position> [ , <bg-position> ]*;
 			helper-background-repeat =<repeat-style> [ , <repeat-style> ]*;
 			helper-background-size = <bg-size> [ , <bg-size> ]*;
-			helper-border-color = <paint> | <paint> <paint> <paint> <paint> [ , [<paint> | <paint> <paint> <paint> <paint>] ]*;
-			helper-border-insets = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
-			helper-border-radius = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-border-color = [<paint> | <paint> <paint> <paint> <paint>] [ , [<paint> | <paint> <paint> <paint> <paint>] ]*;
+			helper-border-insets = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-border-radius = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 			helper-border-style =<border-style> [ , <border-style> ]*;
-			helper-border-width = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-border-width = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 			helper-border-image-source = <uri> [ , <uri>]*;
-			helper-border-image-insets = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size> ] ]*;
+			helper-border-image-insets = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size> ] ]*;
 			helper-border-image-repeat = <repeat-style> [ , <repeat-style> ]*;
 			helper-border-image-slice = [<size> | <size> <size> <size> <size> ] fill? [ , [ <size> | <size><size> <size> <size> <size> ] fill? ]*;
-			helper-border-image-width = <size> | <size> <size> <size> <size> [ , [ <size> | <size> <size> <size> <size>] ]*;
+			helper-border-image-width = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 			
 			/**
 			 * <p>

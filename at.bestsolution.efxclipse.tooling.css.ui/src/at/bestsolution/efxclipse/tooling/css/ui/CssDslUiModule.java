@@ -12,19 +12,28 @@ package at.bestsolution.efxclipse.tooling.css.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
+import org.eclipse.xtext.ui.editor.doubleClicking.LexerTokenAndCharacterPairAwareStrategy;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
+import org.eclipse.xtext.ui.editor.model.TokenTypeToStringMapper;
+import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+import at.bestsolution.efxclipse.tooling.css.ui.contentassist.TemplateProposalProvider;
+import at.bestsolution.efxclipse.tooling.css.ui.doubleclicking.CssGrammarAwareStrategy;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingCalculator;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingConfiguration;
+import at.bestsolution.efxclipse.tooling.css.ui.highlighting.TokenMapper;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
+import at.bestsolution.efxclipse.tooling.css.ui.occurrences.CssDslOccurenceComputer;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
@@ -71,7 +80,20 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 //		binder.bind(IHiddenTokenHelper.class).to(HiddenTokenHelper.class);
 		
 		binder.bind(String.class).annotatedWith(Names.named(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)).toInstance(": ");
+		
+		binder.bind(LexerTokenAndCharacterPairAwareStrategy.class).to(CssGrammarAwareStrategy.class);
+		
+		binder.bind(AbstractAntlrTokenToAttributeIdMapper.class).to(TokenMapper.class);
+		
+		binder.bind(IOccurrenceComputer.class).to(CssDslOccurenceComputer.class);
+		
 	}
+	
+	@Override
+	  public Class<? extends ITemplateProposalProvider>
+	      bindITemplateProposalProvider() {
+	    return TemplateProposalProvider.class;
+	  }
 	
 	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {
 		return at.bestsolution.efxclipse.tooling.css.ui.contentassist.CssDslRealtimeProposalProvider.class;

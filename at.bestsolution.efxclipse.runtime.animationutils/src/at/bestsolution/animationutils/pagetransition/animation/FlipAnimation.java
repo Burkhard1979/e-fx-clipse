@@ -94,7 +94,7 @@ public class FlipAnimation extends ACenterSwitchAnimation {
 						.axis(Rotate.Y_AXIS)
 						.node(area)
 						.byAngle(180)
-						.duration(new Duration(600))
+						.duration(new Duration(8000))
 						.interpolator(Interpolator.EASE_BOTH).build(),
 						zoomIn.node(area).build()
 					)

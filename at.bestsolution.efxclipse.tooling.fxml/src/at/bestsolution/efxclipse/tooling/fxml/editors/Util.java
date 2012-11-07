@@ -53,7 +53,6 @@ public class Util {
 	
 	public static IType findType(String name, Document xmlDoc) {
 		IJavaProject jpProject = findProject(xmlDoc);
-		List<String> imports = getImportedTypes(xmlDoc);
 		
 		if( name.contains(".") ) {
 			try {
@@ -68,6 +67,7 @@ public class Util {
 			
 		}
 
+		List<String> imports = getImportedTypes(xmlDoc);
 		for (String i : imports) {
 			if (i.endsWith("." + name)) {
 				try {

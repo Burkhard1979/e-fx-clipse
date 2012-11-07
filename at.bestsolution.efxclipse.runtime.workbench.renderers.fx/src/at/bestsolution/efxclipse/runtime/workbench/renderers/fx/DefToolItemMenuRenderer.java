@@ -37,7 +37,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetIm
 public class DefToolItemMenuRenderer extends BaseMenuRenderer<ToolItemMenu> {
 
 	@Override
-	protected Class<? extends WMenu<ToolItemMenu>> getWidgetClass() {
+	protected Class<? extends WMenu<ToolItemMenu>> getWidgetClass(MMenu item) {
 		return WMenuImpl.class;
 	}
 
