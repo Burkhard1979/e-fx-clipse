@@ -30,12 +30,12 @@ public interface constant_expression extends array_brackets
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>C</em>' containment reference.
-   * @see #setC(conditional_expression)
+   * @see #setC(Expr)
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage#getconstant_expression_C()
    * @model containment="true"
    * @generated
    */
-  conditional_expression getC();
+  Expr getC();
 
   /**
    * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.constant_expression#getC <em>C</em>}' containment reference.
@@ -45,6 +45,6 @@ public interface constant_expression extends array_brackets
    * @see #getC()
    * @generated
    */
-  void setC(conditional_expression value);
+  void setC(Expr value);
 
 } // constant_expression

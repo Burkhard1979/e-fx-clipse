@@ -62,14 +62,6 @@ public class DecoraDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFor_rest_statementAccess().getAlternatives(), "rule__For_rest_statement__Alternatives");
 					put(grammarAccess.getJump_statementAccess().getAlternatives(), "rule__Jump_statement__Alternatives");
 					put(grammarAccess.getExternal_declarationAccess().getAlternatives(), "rule__External_declaration__Alternatives");
-					put(grammarAccess.getTYPEAccess().getAlternatives(), "rule__TYPE__Alternatives");
-					put(grammarAccess.getBOOLCONSTANTAccess().getAlternatives(), "rule__BOOLCONSTANT__Alternatives");
-					put(grammarAccess.getRGBA_FIELDSAccess().getAlternatives(), "rule__RGBA_FIELDS__Alternatives");
-					put(grammarAccess.getIDENTIFIERAccess().getAlternatives_1(), "rule__IDENTIFIER__Alternatives_1");
-					put(grammarAccess.getPrimary_expressionAccess().getGroup_0(), "rule__Primary_expression__Group_0__0");
-					put(grammarAccess.getPrimary_expressionAccess().getGroup_1(), "rule__Primary_expression__Group_1__0");
-					put(grammarAccess.getPrimary_expressionAccess().getGroup_2(), "rule__Primary_expression__Group_2__0");
-					put(grammarAccess.getPrimary_expressionAccess().getGroup_3(), "rule__Primary_expression__Group_3__0");
 					put(grammarAccess.getPrimary_expressionAccess().getGroup_4(), "rule__Primary_expression__Group_4__0");
 					put(grammarAccess.getPostfix_expressionAccess().getGroup_0(), "rule__Postfix_expression__Group_0__0");
 					put(grammarAccess.getPostfix_expressionAccess().getGroup_1(), "rule__Postfix_expression__Group_1__0");
@@ -142,11 +134,6 @@ public class DecoraDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJump_statementAccess().getGroup_3(), "rule__Jump_statement__Group_3__0");
 					put(grammarAccess.getJump_statementAccess().getGroup_4(), "rule__Jump_statement__Group_4__0");
 					put(grammarAccess.getFunction_definitionAccess().getGroup(), "rule__Function_definition__Group__0");
-					put(grammarAccess.getRGBA_FIELDSAccess().getGroup_0(), "rule__RGBA_FIELDS__Group_0__0");
-					put(grammarAccess.getRGBA_FIELDSAccess().getGroup_1(), "rule__RGBA_FIELDS__Group_1__0");
-					put(grammarAccess.getRGBA_FIELDSAccess().getGroup_2(), "rule__RGBA_FIELDS__Group_2__0");
-					put(grammarAccess.getRGBA_FIELDSAccess().getGroup_3(), "rule__RGBA_FIELDS__Group_3__0");
-					put(grammarAccess.getIDENTIFIERAccess().getGroup(), "rule__IDENTIFIER__Group__0");
 					put(grammarAccess.getModelAccess().getUnitAssignment(), "rule__Model__UnitAssignment");
 					put(grammarAccess.getField_selectionAccess().getRAssignment_0(), "rule__Field_selection__RAssignment_0");
 					put(grammarAccess.getField_selectionAccess().getXAssignment_1(), "rule__Field_selection__XAssignment_1");

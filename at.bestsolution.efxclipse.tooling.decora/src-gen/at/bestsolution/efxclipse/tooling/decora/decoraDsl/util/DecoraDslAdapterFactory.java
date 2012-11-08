@@ -85,24 +85,9 @@ public class DecoraDslAdapterFactory extends AdapterFactoryImpl
         return createfield_selectionAdapter();
       }
       @Override
-      public Adapter caseprimary_expression(primary_expression object)
+      public Adapter caseExpr(Expr object)
       {
-        return createprimary_expressionAdapter();
-      }
-      @Override
-      public Adapter caseprimary_or_call(primary_or_call object)
-      {
-        return createprimary_or_callAdapter();
-      }
-      @Override
-      public Adapter casepostfix_expression(postfix_expression object)
-      {
-        return createpostfix_expressionAdapter();
-      }
-      @Override
-      public Adapter casefunction_call(function_call object)
-      {
-        return createfunction_callAdapter();
+        return createExprAdapter();
       }
       @Override
       public Adapter casefunction_call_parameter_list(function_call_parameter_list object)
@@ -110,64 +95,9 @@ public class DecoraDslAdapterFactory extends AdapterFactoryImpl
         return createfunction_call_parameter_listAdapter();
       }
       @Override
-      public Adapter caseunary_expression(unary_expression object)
-      {
-        return createunary_expressionAdapter();
-      }
-      @Override
-      public Adapter casemultiplicative_expression(multiplicative_expression object)
-      {
-        return createmultiplicative_expressionAdapter();
-      }
-      @Override
-      public Adapter caseadditive_expression(additive_expression object)
-      {
-        return createadditive_expressionAdapter();
-      }
-      @Override
-      public Adapter caserelational_expression(relational_expression object)
-      {
-        return createrelational_expressionAdapter();
-      }
-      @Override
-      public Adapter caseequality_expression(equality_expression object)
-      {
-        return createequality_expressionAdapter();
-      }
-      @Override
-      public Adapter caselogical_and_expression(logical_and_expression object)
-      {
-        return createlogical_and_expressionAdapter();
-      }
-      @Override
-      public Adapter caselogical_xor_expression(logical_xor_expression object)
-      {
-        return createlogical_xor_expressionAdapter();
-      }
-      @Override
-      public Adapter caselogical_or_expression(logical_or_expression object)
-      {
-        return createlogical_or_expressionAdapter();
-      }
-      @Override
       public Adapter caseternary_part(ternary_part object)
       {
         return createternary_partAdapter();
-      }
-      @Override
-      public Adapter caseconditional_expression(conditional_expression object)
-      {
-        return createconditional_expressionAdapter();
-      }
-      @Override
-      public Adapter caseassignment_expression(assignment_expression object)
-      {
-        return createassignment_expressionAdapter();
-      }
-      @Override
-      public Adapter caseexpression(expression object)
-      {
-        return createexpressionAdapter();
       }
       @Override
       public Adapter casefunction_prototype(function_prototype object)
@@ -367,61 +297,16 @@ public class DecoraDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_expression <em>primary expression</em>}'.
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr <em>Expr</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_expression
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr
    * @generated
    */
-  public Adapter createprimary_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call <em>primary or call</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call
-   * @generated
-   */
-  public Adapter createprimary_or_callAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression <em>postfix expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression
-   * @generated
-   */
-  public Adapter createpostfix_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call <em>function call</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call
-   * @generated
-   */
-  public Adapter createfunction_callAdapter()
+  public Adapter createExprAdapter()
   {
     return null;
   }
@@ -442,126 +327,6 @@ public class DecoraDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression <em>unary expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression
-   * @generated
-   */
-  public Adapter createunary_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression <em>multiplicative expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression
-   * @generated
-   */
-  public Adapter createmultiplicative_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression <em>additive expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression
-   * @generated
-   */
-  public Adapter createadditive_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression <em>relational expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression
-   * @generated
-   */
-  public Adapter createrelational_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression <em>equality expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression
-   * @generated
-   */
-  public Adapter createequality_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression <em>logical and expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression
-   * @generated
-   */
-  public Adapter createlogical_and_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression <em>logical xor expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression
-   * @generated
-   */
-  public Adapter createlogical_xor_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression <em>logical or expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression
-   * @generated
-   */
-  public Adapter createlogical_or_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.ternary_part <em>ternary part</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -572,51 +337,6 @@ public class DecoraDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createternary_partAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression <em>conditional expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression
-   * @generated
-   */
-  public Adapter createconditional_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression <em>assignment expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression
-   * @generated
-   */
-  public Adapter createassignment_expressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression <em>expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression
-   * @generated
-   */
-  public Adapter createexpressionAdapter()
   {
     return null;
   }

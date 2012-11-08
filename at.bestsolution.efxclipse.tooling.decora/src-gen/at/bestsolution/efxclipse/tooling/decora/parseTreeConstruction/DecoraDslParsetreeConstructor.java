@@ -208,9 +208,9 @@ protected class Field_selection_RAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("r",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("r");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getField_selectionAccess().getRRGBA_FIELDSParserRuleCall_0_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getField_selectionAccess().getRRGBA_FIELDSParserRuleCall_0_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getField_selectionAccess().getRRGBA_FIELDSTerminalRuleCall_0_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getField_selectionAccess().getRRGBA_FIELDSTerminalRuleCall_0_0();
 			return obj;
 		}
 		return null;
@@ -258,22 +258,21 @@ protected class Field_selection_XAssignment_1 extends AssignmentToken  {
 
 /************ begin Rule primary_expression ****************
  *
- * // returns [Expr expr]
- * primary_expression:
- * 	{primary_expression} //    { $expr = tm.variable($IDENTIFIER.text); }
+ * primary_expression returns // returns [Expr expr]
+ * Expr: //    { $expr = tm.variable($IDENTIFIER.text); }
  * 	IDENTIFIER //{ $expr = tm.parenExpr($e.expr); }
- * 	| {primary_expression} //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
- * 	INTCONSTANT | {primary_expression} // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
- * 	FLOATCONSTANT | {primary_expression} //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
+ * 	| //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
+ * 	INTCONSTANT | // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
+ * 	FLOATCONSTANT | //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
  * 	BOOLCONSTANT | LEFT_PAREN e=expression RIGHT_PAREN;
  *
  **/
 
-// {primary_expression} //    { $expr = tm.variable($IDENTIFIER.text); }
+// //    { $expr = tm.variable($IDENTIFIER.text); }
 // IDENTIFIER //{ $expr = tm.parenExpr($e.expr); }
-// | {primary_expression} //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-// INTCONSTANT | {primary_expression} // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-// FLOATCONSTANT | {primary_expression} //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
+// | //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
+// INTCONSTANT | // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
+// FLOATCONSTANT | //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
 // BOOLCONSTANT | LEFT_PAREN e=expression RIGHT_PAREN
 protected class Primary_expression_Alternatives extends AlternativesToken {
 
@@ -289,11 +288,8 @@ protected class Primary_expression_Alternatives extends AlternativesToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Primary_expression_Group_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Primary_expression_Group_1(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new Primary_expression_Group_2(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new Primary_expression_Group_3(lastRuleCallOrigin, this, 3, inst);
-			case 4: return new Primary_expression_Group_4(lastRuleCallOrigin, this, 4, inst);
+			case 0: return new Primary_expression_IDENTIFIERTerminalRuleCall_0(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Primary_expression_Group_4(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -307,112 +303,17 @@ protected class Primary_expression_Alternatives extends AlternativesToken {
 
 }
 
-// {primary_expression} //    { $expr = tm.variable($IDENTIFIER.text); }
-// IDENTIFIER
-protected class Primary_expression_Group_0 extends GroupToken {
-	
-	public Primary_expression_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_IDENTIFIERParserRuleCall_0_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// {primary_expression}
-protected class Primary_expression_Primary_expressionAction_0_0 extends ActionToken  {
-
-	public Primary_expression_Primary_expressionAction_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getPrimary_expressionAction_0_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(!eObjectConsumer.isConsumed()) return null;
-		return eObjectConsumer;
-	}
-}
-
 // //    { $expr = tm.variable($IDENTIFIER.text); }
 // IDENTIFIER
-protected class Primary_expression_IDENTIFIERParserRuleCall_0_1 extends UnassignedTextToken {
+protected class Primary_expression_IDENTIFIERTerminalRuleCall_0 extends UnassignedTextToken {
 
-	public Primary_expression_IDENTIFIERParserRuleCall_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Primary_expression_IDENTIFIERTerminalRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getIDENTIFIERParserRuleCall_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_Primary_expressionAction_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// {primary_expression} //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-// INTCONSTANT
-protected class Primary_expression_Group_1 extends GroupToken {
-	
-	public Primary_expression_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_INTCONSTANTTerminalRuleCall_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// {primary_expression}
-protected class Primary_expression_Primary_expressionAction_1_0 extends ActionToken  {
-
-	public Primary_expression_Primary_expressionAction_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getPrimary_expressionAction_1_0();
+		return grammarAccess.getPrimary_expressionAccess().getIDENTIFIERTerminalRuleCall_0();
 	}
 
     @Override
@@ -422,182 +323,7 @@ protected class Primary_expression_Primary_expressionAction_1_0 extends ActionTo
 		}	
 	}
 
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(!eObjectConsumer.isConsumed()) return null;
-		return eObjectConsumer;
-	}
 }
-
-// //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-// INTCONSTANT
-protected class Primary_expression_INTCONSTANTTerminalRuleCall_1_1 extends UnassignedTextToken {
-
-	public Primary_expression_INTCONSTANTTerminalRuleCall_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getINTCONSTANTTerminalRuleCall_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_Primary_expressionAction_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// {primary_expression} // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-// FLOATCONSTANT
-protected class Primary_expression_Group_2 extends GroupToken {
-	
-	public Primary_expression_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getGroup_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_FLOATCONSTANTTerminalRuleCall_2_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// {primary_expression}
-protected class Primary_expression_Primary_expressionAction_2_0 extends ActionToken  {
-
-	public Primary_expression_Primary_expressionAction_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getPrimary_expressionAction_2_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(!eObjectConsumer.isConsumed()) return null;
-		return eObjectConsumer;
-	}
-}
-
-// // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-// FLOATCONSTANT
-protected class Primary_expression_FLOATCONSTANTTerminalRuleCall_2_1 extends UnassignedTextToken {
-
-	public Primary_expression_FLOATCONSTANTTerminalRuleCall_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getFLOATCONSTANTTerminalRuleCall_2_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_Primary_expressionAction_2_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-
-// {primary_expression} //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
-// BOOLCONSTANT
-protected class Primary_expression_Group_3 extends GroupToken {
-	
-	public Primary_expression_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getGroup_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_BOOLCONSTANTParserRuleCall_3_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// {primary_expression}
-protected class Primary_expression_Primary_expressionAction_3_0 extends ActionToken  {
-
-	public Primary_expression_Primary_expressionAction_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getPrimary_expressionAction_3_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(!eObjectConsumer.isConsumed()) return null;
-		return eObjectConsumer;
-	}
-}
-
-// //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
-// BOOLCONSTANT
-protected class Primary_expression_BOOLCONSTANTParserRuleCall_3_1 extends UnassignedTextToken {
-
-	public Primary_expression_BOOLCONSTANTParserRuleCall_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getPrimary_expressionAccess().getBOOLCONSTANTParserRuleCall_3_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Primary_expression_Primary_expressionAction_3_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
 
 // LEFT_PAREN e=expression RIGHT_PAREN
 protected class Primary_expression_Group_4 extends GroupToken {
@@ -717,8 +443,7 @@ protected class Primary_expression_RIGHT_PARENTerminalRuleCall_4_2 extends Unass
 
 /************ begin Rule primary_or_call ****************
  *
- * // returns [Expr expr]
- * primary_or_call:
+ * primary_or_call returns Expr:
  * 	e= //{ $expr = $e.expr; }
  * 	primary_expression | f= //{ $expr = $f.expr; }
  * 	function_call;
@@ -867,9 +592,8 @@ protected class Primary_or_call_FAssignment_1 extends AssignmentToken  {
  * // but not things like:
  * //   arr[3].r++
  * //
- * //returns [Expr expr]
  * //{ $expr = $e.expr; }
- * postfix_expression:
+ * postfix_expression returns Expr:
  * 	e=primary_or_call LEFT_BRACKET ae=expression RIGHT_BRACKET fs=field_selection //{ $expr = tm.fieldSelect(tm.arrayAccess($e.expr, $ae.expr), $fs.fields); }
  * 	//{ $expr = tm.arrayAccess($e.expr, $ae.expr); }
  * 	//{ $expr = tm.fieldSelect($e.expr, $fs.fields); }
@@ -1631,12 +1355,11 @@ protected class Postfix_expression_EAssignment_5 extends AssignmentToken  {
  * // Grammar Note: Constructors look like functions, but lexical
  * // analysis recognized most of them as keywords.  They are now
  * // recognized through "type_specifier".
- * //returns [Expr expr]
  * //            {
  * //                Type type = Type.fromToken($ts.text);
  * //                $expr = tm.vectorCtor(type, p!=null ? $p.exprList : null);
  * //            }
- * function_call:
+ * function_call returns Expr:
  * 	id=IDENTIFIER LEFT_PAREN p=function_call_parameter_list? RIGHT_PAREN //            {
  * 	//                $expr = tm.call($id.text, p!=null ? $p.exprList : null);
  * 	//            }
@@ -1722,9 +1445,9 @@ protected class Function_call_IdAssignment_0_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("id",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("id");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFunction_callAccess().getIdIDENTIFIERParserRuleCall_0_0_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getFunction_callAccess().getIdIDENTIFIERParserRuleCall_0_0_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFunction_callAccess().getIdIDENTIFIERTerminalRuleCall_0_0_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getFunction_callAccess().getIdIDENTIFIERTerminalRuleCall_0_0_0();
 			return obj;
 		}
 		return null;
@@ -2175,8 +1898,7 @@ protected class Function_call_parameter_list_AAssignment_1_1 extends AssignmentT
 
 /************ begin Rule unary_expression ****************
  *
- * //returns [Expr expr]
- * unary_expression:
+ * unary_expression returns Expr:
  * 	p=postfix_expression //{ $expr = $p.expr; }
  * 	//{ $expr = tm.unary(UnaryOpType.INC,     $u.expr); }
  * 	//{ $expr = tm.unary(UnaryOpType.DEC,     $u.expr); }
@@ -2734,8 +2456,7 @@ protected class Unary_expression_UAssignment_5_1 extends AssignmentToken  {
  * // Grammar Note:  No traditional style type casts.
  * // From the GLSL spec...
  * // Grammar Note:  No '*' or '&' unary ops.  Pointers are not supported.
- * //returns [Expr expr]
- * multiplicative_expression:
+ * multiplicative_expression returns Expr:
  * 	a= //{ $expr = $a.expr; }
  * 	unary_expression (STAR b+=multiplicative_expression //{ $expr = tm.binary(BinaryOpType.MUL, $expr, $b.expr); }
  * 	//{ $expr = tm.binary(BinaryOpType.DIV, $expr, $b.expr); }
@@ -3038,8 +2759,7 @@ protected class Multiplicative_expression_BAssignment_1_1_1 extends AssignmentTo
 
 /************ begin Rule additive_expression ****************
  *
- * //returns [Expr expr]
- * additive_expression:
+ * additive_expression returns Expr:
  * 	a= //{ $expr = $a.expr; }
  * 	multiplicative_expression (PLUS b+=multiplicative_expression //{ $expr = tm.binary(BinaryOpType.ADD, $expr, $b.expr); }
  * 	//{ $expr = tm.binary(BinaryOpType.SUB, $expr, $b.expr); }
@@ -3342,8 +3062,7 @@ protected class Additive_expression_BAssignment_1_1_1 extends AssignmentToken  {
 
 /************ begin Rule relational_expression ****************
  *
- * //returns [Expr expr]
- * relational_expression:
+ * relational_expression returns Expr:
  * 	a= //{ $expr = $a.expr; }
  * 	additive_expression (LTEQ b+=additive_expression //{ $expr = tm.binary(BinaryOpType.LTEQ, $expr, $b.expr); }
  * 	//{ $expr = tm.binary(BinaryOpType.GTEQ, $expr, $b.expr); }
@@ -3838,8 +3557,7 @@ protected class Relational_expression_BAssignment_1_3_1 extends AssignmentToken 
 
 /************ begin Rule equality_expression ****************
  *
- * //returns [Expr expr]
- * equality_expression:
+ * equality_expression returns Expr:
  * 	a= //{ $expr = $a.expr; }
  * 	relational_expression (EQEQ b+=relational_expression //{ $expr = tm.binary(BinaryOpType.EQEQ, $expr, $b.expr); }
  * 	//{ $expr = tm.binary(BinaryOpType.NEQ,  $expr, $b.expr); }
@@ -4142,8 +3860,7 @@ protected class Equality_expression_BAssignment_1_1_1 extends AssignmentToken  {
 
 /************ begin Rule logical_and_expression ****************
  *
- * //returns [Expr expr]
- * logical_and_expression:
+ * logical_and_expression returns Expr:
  * 	a= //{ $expr = $a.expr; }
  * 	equality_expression (AND b+= //{ $expr = tm.binary(BinaryOpType.AND, $expr, $b.expr); }
  * 	equality_expression)*;
@@ -4328,8 +4045,7 @@ protected class Logical_and_expression_BAssignment_1_1 extends AssignmentToken  
 
 /************ begin Rule logical_xor_expression ****************
  *
- * //returns [Expr expr]
- * logical_xor_expression:
+ * logical_xor_expression returns Expr:
  * 	a= //{ $expr = $a.expr; }
  * 	logical_and_expression (XOR b+= //{ $expr = tm.binary(BinaryOpType.XOR, $expr, $b.expr); }
  * 	logical_and_expression)*;
@@ -4514,8 +4230,7 @@ protected class Logical_xor_expression_BAssignment_1_1 extends AssignmentToken  
 
 /************ begin Rule logical_or_expression ****************
  *
- * //returns [Expr expr]
- * logical_or_expression:
+ * logical_or_expression returns Expr:
  * 	a= //{ $expr = $a.expr; }
  * 	logical_xor_expression (OR b+= //{ $expr = tm.binary(BinaryOpType.OR, $expr, $b.expr); }
  * 	logical_xor_expression)*;
@@ -4865,8 +4580,7 @@ protected class Ternary_part_AAssignment_3 extends AssignmentToken  {
 /************ begin Rule conditional_expression ****************
  *
  * // TODO: handle ternary
- * //returns [Expr expr]
- * conditional_expression:
+ * conditional_expression returns Expr:
  * 	a=logical_or_expression //{ $expr = $a.expr; }
  * 	t=ternary_part?;
  *
@@ -5001,15 +4715,14 @@ protected class Conditional_expression_TAssignment_1 extends AssignmentToken  {
 
 /************ begin Rule assignment_expression ****************
  *
- * //returns [Expr expr]
  * //{ $expr = $c.expr; }
- * assignment_expression:
- * 	a=unary_expression op=assignment_operator b=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
+ * assignment_expression returns Expr:
+ * 	a=unary_expression op=assignment_operator b+=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
  * 	| c=conditional_expression;
  *
  **/
 
-// a=unary_expression op=assignment_operator b=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
+// a=unary_expression op=assignment_operator b+=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
 // | c=conditional_expression
 protected class Assignment_expression_Alternatives extends AlternativesToken {
 
@@ -5040,7 +4753,7 @@ protected class Assignment_expression_Alternatives extends AlternativesToken {
 
 }
 
-// a=unary_expression op=assignment_operator b=assignment_expression
+// a=unary_expression op=assignment_operator b+=assignment_expression
 protected class Assignment_expression_Group_0 extends GroupToken {
 	
 	public Assignment_expression_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5141,7 +4854,7 @@ protected class Assignment_expression_OpAssignment_0_1 extends AssignmentToken  
 
 }
 
-// b=assignment_expression
+// b+=assignment_expression
 protected class Assignment_expression_BAssignment_0_2 extends AssignmentToken  {
 	
 	public Assignment_expression_BAssignment_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5245,8 +4958,7 @@ protected class Assignment_expression_CAssignment_1 extends AssignmentToken  {
  * //        : e=assignment_expression { $exprList.add($e.expr); }
  * //          (COMMA e=assignment_expression { $exprList.add($e.expr); })*
  * //        ;
- * //returns [Expr expr]
- * expression:
+ * expression returns Expr:
  * 	e= //{ $expr = $e.expr; }
  * 	assignment_expression;
  *
@@ -5413,9 +5125,9 @@ protected class Function_prototype_IdAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("id",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("id");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFunction_prototypeAccess().getIdIDENTIFIERParserRuleCall_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getFunction_prototypeAccess().getIdIDENTIFIERParserRuleCall_1_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFunction_prototypeAccess().getIdIDENTIFIERTerminalRuleCall_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getFunction_prototypeAccess().getIdIDENTIFIERTerminalRuleCall_1_0();
 			return obj;
 		}
 		return null;
@@ -5628,9 +5340,9 @@ protected class Parameter_declaration_IdAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("id",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("id");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getParameter_declarationAccess().getIdIDENTIFIERParserRuleCall_1_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getParameter_declarationAccess().getIdIDENTIFIERParserRuleCall_1_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getParameter_declarationAccess().getIdIDENTIFIERTerminalRuleCall_1_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getParameter_declarationAccess().getIdIDENTIFIERTerminalRuleCall_1_0();
 			return obj;
 		}
 		return null;
@@ -5891,9 +5603,9 @@ protected class Declaration_identifier_and_init_IdAssignment_0 extends Assignmen
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("id",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("id");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getDeclaration_identifier_and_initAccess().getIdIDENTIFIERParserRuleCall_0_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getDeclaration_identifier_and_initAccess().getIdIDENTIFIERParserRuleCall_0_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getDeclaration_identifier_and_initAccess().getIdIDENTIFIERTerminalRuleCall_0_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getDeclaration_identifier_and_initAccess().getIdIDENTIFIERTerminalRuleCall_0_0();
 			return obj;
 		}
 		return null;
@@ -11459,9 +11171,5 @@ protected class Glue_block_GAssignment extends AssignmentToken  {
 }
 
 /************ end Rule glue_block ****************/
-
-
-
-
 
 }

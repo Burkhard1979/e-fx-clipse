@@ -38,7 +38,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "field_selection");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Assignment cRAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cRRGBA_FIELDSParserRuleCall_0_0 = (RuleCall)cRAssignment_0.eContents().get(0);
+		private final RuleCall cRRGBA_FIELDSTerminalRuleCall_0_0 = (RuleCall)cRAssignment_0.eContents().get(0);
 		private final Assignment cXAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cXXYZW_FIELDSTerminalRuleCall_1_0 = (RuleCall)cXAssignment_1.eContents().get(0);
 		
@@ -60,7 +60,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		//// { $fields = $r.text; }
 		//RGBA_FIELDS
-		public RuleCall getRRGBA_FIELDSParserRuleCall_0_0() { return cRRGBA_FIELDSParserRuleCall_0_0; }
+		public RuleCall getRRGBA_FIELDSTerminalRuleCall_0_0() { return cRRGBA_FIELDSTerminalRuleCall_0_0; }
 
 		//x= // { $fields = $x.text; }
 		//XYZW_FIELDS
@@ -74,85 +74,48 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class Primary_expressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "primary_expression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cPrimary_expressionAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final RuleCall cIDENTIFIERParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cPrimary_expressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final RuleCall cINTCONSTANTTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cPrimary_expressionAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final RuleCall cFLOATCONSTANTTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cPrimary_expressionAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final RuleCall cBOOLCONSTANTParserRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
+		private final RuleCall cIDENTIFIERTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cINTCONSTANTTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cFLOATCONSTANTTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cBOOLCONSTANTTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
 		private final RuleCall cLEFT_PARENTerminalRuleCall_4_0 = (RuleCall)cGroup_4.eContents().get(0);
 		private final Assignment cEAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cEExpressionParserRuleCall_4_1_0 = (RuleCall)cEAssignment_4_1.eContents().get(0);
 		private final RuleCall cRIGHT_PARENTerminalRuleCall_4_2 = (RuleCall)cGroup_4.eContents().get(2);
 		
-		//// returns [Expr expr]
-		//primary_expression:
-		//	{primary_expression} //    { $expr = tm.variable($IDENTIFIER.text); }
+		//primary_expression returns // returns [Expr expr]
+		//Expr: //    { $expr = tm.variable($IDENTIFIER.text); }
 		//	IDENTIFIER //{ $expr = tm.parenExpr($e.expr); }
-		//	| {primary_expression} //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-		//	INTCONSTANT | {primary_expression} // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-		//	FLOATCONSTANT | {primary_expression} //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
+		//	| //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
+		//	INTCONSTANT | // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
+		//	FLOATCONSTANT | //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
 		//	BOOLCONSTANT | LEFT_PAREN e=expression RIGHT_PAREN;
 		public ParserRule getRule() { return rule; }
 
-		//{primary_expression} //    { $expr = tm.variable($IDENTIFIER.text); }
+		////    { $expr = tm.variable($IDENTIFIER.text); }
 		//IDENTIFIER //{ $expr = tm.parenExpr($e.expr); }
-		//| {primary_expression} //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-		//INTCONSTANT | {primary_expression} // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-		//FLOATCONSTANT | {primary_expression} //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
+		//| //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
+		//INTCONSTANT | // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
+		//FLOATCONSTANT | //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
 		//BOOLCONSTANT | LEFT_PAREN e=expression RIGHT_PAREN
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{primary_expression} //    { $expr = tm.variable($IDENTIFIER.text); }
-		//IDENTIFIER
-		public Group getGroup_0() { return cGroup_0; }
-
-		//{primary_expression}
-		public Action getPrimary_expressionAction_0_0() { return cPrimary_expressionAction_0_0; }
-
 		////    { $expr = tm.variable($IDENTIFIER.text); }
 		//IDENTIFIER
-		public RuleCall getIDENTIFIERParserRuleCall_0_1() { return cIDENTIFIERParserRuleCall_0_1; }
-
-		//{primary_expression} //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-		//INTCONSTANT
-		public Group getGroup_1() { return cGroup_1; }
-
-		//{primary_expression}
-		public Action getPrimary_expressionAction_1_0() { return cPrimary_expressionAction_1_0; }
+		public RuleCall getIDENTIFIERTerminalRuleCall_0() { return cIDENTIFIERTerminalRuleCall_0; }
 
 		////   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
 		//INTCONSTANT
-		public RuleCall getINTCONSTANTTerminalRuleCall_1_1() { return cINTCONSTANTTerminalRuleCall_1_1; }
-
-		//{primary_expression} // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-		//FLOATCONSTANT
-		public Group getGroup_2() { return cGroup_2; }
-
-		//{primary_expression}
-		public Action getPrimary_expressionAction_2_0() { return cPrimary_expressionAction_2_0; }
+		public RuleCall getINTCONSTANTTerminalRuleCall_1() { return cINTCONSTANTTerminalRuleCall_1; }
 
 		//// { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
 		//FLOATCONSTANT
-		public RuleCall getFLOATCONSTANTTerminalRuleCall_2_1() { return cFLOATCONSTANTTerminalRuleCall_2_1; }
-
-		//{primary_expression} //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
-		//BOOLCONSTANT
-		public Group getGroup_3() { return cGroup_3; }
-
-		//{primary_expression}
-		public Action getPrimary_expressionAction_3_0() { return cPrimary_expressionAction_3_0; }
+		public RuleCall getFLOATCONSTANTTerminalRuleCall_2() { return cFLOATCONSTANTTerminalRuleCall_2; }
 
 		////  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
 		//BOOLCONSTANT
-		public RuleCall getBOOLCONSTANTParserRuleCall_3_1() { return cBOOLCONSTANTParserRuleCall_3_1; }
+		public RuleCall getBOOLCONSTANTTerminalRuleCall_3() { return cBOOLCONSTANTTerminalRuleCall_3; }
 
 		//LEFT_PAREN e=expression RIGHT_PAREN
 		public Group getGroup_4() { return cGroup_4; }
@@ -178,8 +141,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cFAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cFFunction_callParserRuleCall_1_0 = (RuleCall)cFAssignment_1.eContents().get(0);
 		
-		//// returns [Expr expr]
-		//primary_or_call:
+		//primary_or_call returns Expr:
 		//	e= //{ $expr = $e.expr; }
 		//	primary_expression | f= //{ $expr = $f.expr; }
 		//	function_call;
@@ -254,9 +216,8 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		//// but not things like:
 		////   arr[3].r++
 		////
-		////returns [Expr expr]
 		////{ $expr = $e.expr; }
-		//postfix_expression:
+		//postfix_expression returns Expr:
 		//	e=primary_or_call LEFT_BRACKET ae=expression RIGHT_BRACKET fs=field_selection //{ $expr = tm.fieldSelect(tm.arrayAccess($e.expr, $ae.expr), $fs.fields); }
 		//	//{ $expr = tm.arrayAccess($e.expr, $ae.expr); }
 		//	//{ $expr = tm.fieldSelect($e.expr, $fs.fields); }
@@ -374,7 +335,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Assignment cIdAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cIdIDENTIFIERParserRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
+		private final RuleCall cIdIDENTIFIERTerminalRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
 		private final RuleCall cLEFT_PARENTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final Assignment cPAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cPFunction_call_parameter_listParserRuleCall_0_2_0 = (RuleCall)cPAssignment_0_2.eContents().get(0);
@@ -391,12 +352,11 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		//// Grammar Note: Constructors look like functions, but lexical
 		//// analysis recognized most of them as keywords.  They are now
 		//// recognized through "type_specifier".
-		////returns [Expr expr]
 		////            {
 		////                Type type = Type.fromToken($ts.text);
 		////                $expr = tm.vectorCtor(type, p!=null ? $p.exprList : null);
 		////            }
-		//function_call:
+		//function_call returns Expr:
 		//	id=IDENTIFIER LEFT_PAREN p=function_call_parameter_list? RIGHT_PAREN //            {
 		//	//                $expr = tm.call($id.text, p!=null ? $p.exprList : null);
 		//	//            }
@@ -416,7 +376,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Assignment getIdAssignment_0_0() { return cIdAssignment_0_0; }
 
 		//IDENTIFIER
-		public RuleCall getIdIDENTIFIERParserRuleCall_0_0_0() { return cIdIDENTIFIERParserRuleCall_0_0_0; }
+		public RuleCall getIdIDENTIFIERTerminalRuleCall_0_0_0() { return cIdIDENTIFIERTerminalRuleCall_0_0_0; }
 
 		//LEFT_PAREN
 		public RuleCall getLEFT_PARENTerminalRuleCall_0_1() { return cLEFT_PARENTerminalRuleCall_0_1; }
@@ -524,8 +484,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cUAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
 		private final RuleCall cUUnary_expressionParserRuleCall_5_1_0 = (RuleCall)cUAssignment_5_1.eContents().get(0);
 		
-		////returns [Expr expr]
-		//unary_expression:
+		//unary_expression returns Expr:
 		//	p=postfix_expression //{ $expr = $p.expr; }
 		//	//{ $expr = tm.unary(UnaryOpType.INC,     $u.expr); }
 		//	//{ $expr = tm.unary(UnaryOpType.DEC,     $u.expr); }
@@ -632,8 +591,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		//// Grammar Note:  No traditional style type casts.
 		//// From the GLSL spec...
 		//// Grammar Note:  No '*' or '&' unary ops.  Pointers are not supported.
-		////returns [Expr expr]
-		//multiplicative_expression:
+		//multiplicative_expression returns Expr:
 		//	a= //{ $expr = $a.expr; }
 		//	unary_expression (STAR b+=multiplicative_expression //{ $expr = tm.binary(BinaryOpType.MUL, $expr, $b.expr); }
 		//	//{ $expr = tm.binary(BinaryOpType.DIV, $expr, $b.expr); }
@@ -699,8 +657,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
 		private final RuleCall cBMultiplicative_expressionParserRuleCall_1_1_1_0 = (RuleCall)cBAssignment_1_1_1.eContents().get(0);
 		
-		////returns [Expr expr]
-		//additive_expression:
+		//additive_expression returns Expr:
 		//	a= //{ $expr = $a.expr; }
 		//	multiplicative_expression (PLUS b+=multiplicative_expression //{ $expr = tm.binary(BinaryOpType.ADD, $expr, $b.expr); }
 		//	//{ $expr = tm.binary(BinaryOpType.SUB, $expr, $b.expr); }
@@ -774,8 +731,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBAssignment_1_3_1 = (Assignment)cGroup_1_3.eContents().get(1);
 		private final RuleCall cBAdditive_expressionParserRuleCall_1_3_1_0 = (RuleCall)cBAssignment_1_3_1.eContents().get(0);
 		
-		////returns [Expr expr]
-		//relational_expression:
+		//relational_expression returns Expr:
 		//	a= //{ $expr = $a.expr; }
 		//	additive_expression (LTEQ b+=additive_expression //{ $expr = tm.binary(BinaryOpType.LTEQ, $expr, $b.expr); }
 		//	//{ $expr = tm.binary(BinaryOpType.GTEQ, $expr, $b.expr); }
@@ -871,8 +827,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
 		private final RuleCall cBRelational_expressionParserRuleCall_1_1_1_0 = (RuleCall)cBAssignment_1_1_1.eContents().get(0);
 		
-		////returns [Expr expr]
-		//equality_expression:
+		//equality_expression returns Expr:
 		//	a= //{ $expr = $a.expr; }
 		//	relational_expression (EQEQ b+=relational_expression //{ $expr = tm.binary(BinaryOpType.EQEQ, $expr, $b.expr); }
 		//	//{ $expr = tm.binary(BinaryOpType.NEQ,  $expr, $b.expr); }
@@ -933,8 +888,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cBEquality_expressionParserRuleCall_1_1_0 = (RuleCall)cBAssignment_1_1.eContents().get(0);
 		
-		////returns [Expr expr]
-		//logical_and_expression:
+		//logical_and_expression returns Expr:
 		//	a= //{ $expr = $a.expr; }
 		//	equality_expression (AND b+= //{ $expr = tm.binary(BinaryOpType.AND, $expr, $b.expr); }
 		//	equality_expression)*;
@@ -979,8 +933,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cBLogical_and_expressionParserRuleCall_1_1_0 = (RuleCall)cBAssignment_1_1.eContents().get(0);
 		
-		////returns [Expr expr]
-		//logical_xor_expression:
+		//logical_xor_expression returns Expr:
 		//	a= //{ $expr = $a.expr; }
 		//	logical_and_expression (XOR b+= //{ $expr = tm.binary(BinaryOpType.XOR, $expr, $b.expr); }
 		//	logical_and_expression)*;
@@ -1025,8 +978,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cBLogical_xor_expressionParserRuleCall_1_1_0 = (RuleCall)cBAssignment_1_1.eContents().get(0);
 		
-		////returns [Expr expr]
-		//logical_or_expression:
+		//logical_or_expression returns Expr:
 		//	a= //{ $expr = $a.expr; }
 		//	logical_xor_expression (OR b+= //{ $expr = tm.binary(BinaryOpType.OR, $expr, $b.expr); }
 		//	logical_xor_expression)*;
@@ -1102,8 +1054,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTTernary_partParserRuleCall_1_0 = (RuleCall)cTAssignment_1.eContents().get(0);
 		
 		//// TODO: handle ternary
-		////returns [Expr expr]
-		//conditional_expression:
+		//conditional_expression returns Expr:
 		//	a=logical_or_expression //{ $expr = $a.expr; }
 		//	t=ternary_part?;
 		public ParserRule getRule() { return rule; }
@@ -1139,18 +1090,17 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cCConditional_expressionParserRuleCall_1_0 = (RuleCall)cCAssignment_1.eContents().get(0);
 		
-		////returns [Expr expr]
 		////{ $expr = $c.expr; }
-		//assignment_expression:
-		//	a=unary_expression op=assignment_operator b=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
+		//assignment_expression returns Expr:
+		//	a=unary_expression op=assignment_operator b+=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
 		//	| c=conditional_expression;
 		public ParserRule getRule() { return rule; }
 
-		//a=unary_expression op=assignment_operator b=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
+		//a=unary_expression op=assignment_operator b+=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
 		//| c=conditional_expression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//a=unary_expression op=assignment_operator b=assignment_expression
+		//a=unary_expression op=assignment_operator b+=assignment_expression
 		public Group getGroup_0() { return cGroup_0; }
 
 		//a=unary_expression
@@ -1165,7 +1115,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		//assignment_operator
 		public RuleCall getOpAssignment_operatorParserRuleCall_0_1_0() { return cOpAssignment_operatorParserRuleCall_0_1_0; }
 
-		//b=assignment_expression
+		//b+=assignment_expression
 		public Assignment getBAssignment_0_2() { return cBAssignment_0_2; }
 
 		//assignment_expression
@@ -1220,8 +1170,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		////        : e=assignment_expression { $exprList.add($e.expr); }
 		////          (COMMA e=assignment_expression { $exprList.add($e.expr); })*
 		////        ;
-		////returns [Expr expr]
-		//expression:
+		//expression returns Expr:
 		//	e= //{ $expr = $e.expr; }
 		//	assignment_expression;
 		public ParserRule getRule() { return rule; }
@@ -1241,7 +1190,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTType_specifierParserRuleCall_0_0 = (RuleCall)cTAssignment_0.eContents().get(0);
 		private final Assignment cIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cIdIDENTIFIERParserRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
+		private final RuleCall cIdIDENTIFIERTerminalRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
 		private final RuleCall cLEFT_PARENTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Assignment cPAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cPParameter_declaration_listParserRuleCall_3_0 = (RuleCall)cPAssignment_3.eContents().get(0);
@@ -1269,7 +1218,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Assignment getIdAssignment_1() { return cIdAssignment_1; }
 
 		//IDENTIFIER
-		public RuleCall getIdIDENTIFIERParserRuleCall_1_0() { return cIdIDENTIFIERParserRuleCall_1_0; }
+		public RuleCall getIdIDENTIFIERTerminalRuleCall_1_0() { return cIdIDENTIFIERTerminalRuleCall_1_0; }
 
 		//LEFT_PAREN
 		public RuleCall getLEFT_PARENTerminalRuleCall_2() { return cLEFT_PARENTerminalRuleCall_2; }
@@ -1290,7 +1239,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTType_specifierParserRuleCall_0_0 = (RuleCall)cTAssignment_0.eContents().get(0);
 		private final Assignment cIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cIdIDENTIFIERParserRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
+		private final RuleCall cIdIDENTIFIERTerminalRuleCall_1_0 = (RuleCall)cIdAssignment_1.eContents().get(0);
 		
 		////returns [Param param]
 		////            {
@@ -1314,7 +1263,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Assignment getIdAssignment_1() { return cIdAssignment_1; }
 
 		//IDENTIFIER
-		public RuleCall getIdIDENTIFIERParserRuleCall_1_0() { return cIdIDENTIFIERParserRuleCall_1_0; }
+		public RuleCall getIdIDENTIFIERTerminalRuleCall_1_0() { return cIdIDENTIFIERTerminalRuleCall_1_0; }
 	}
 
 	public class Parameter_declaration_listElements extends AbstractParserRuleElementFinder {
@@ -1362,7 +1311,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "declaration_identifier_and_init");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cIdAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cIdIDENTIFIERParserRuleCall_0_0 = (RuleCall)cIdAssignment_0.eContents().get(0);
+		private final RuleCall cIdIDENTIFIERTerminalRuleCall_0_0 = (RuleCall)cIdAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final RuleCall cLEFT_BRACKETTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Assignment cAeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
@@ -1391,7 +1340,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		////{ $name = $id.text; }
 		//IDENTIFIER
-		public RuleCall getIdIDENTIFIERParserRuleCall_0_0() { return cIdIDENTIFIERParserRuleCall_0_0; }
+		public RuleCall getIdIDENTIFIERTerminalRuleCall_0_0() { return cIdIDENTIFIERTerminalRuleCall_0_0; }
 
 		//(LEFT_BRACKET ae=constant_expression / *{ $arrayInit = $ae.expr; }* / RIGHT_BRACKET)?
 		public Group getGroup_1() { return cGroup_1; }
@@ -1782,7 +1731,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class Type_specifier_nonarrayElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "type_specifier_nonarray");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cTYPEParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cTYPETerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cVOIDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//type_specifier_nonarray:
@@ -1793,7 +1742,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//TYPE
-		public RuleCall getTYPEParserRuleCall_0() { return cTYPEParserRuleCall_0; }
+		public RuleCall getTYPETerminalRuleCall_0() { return cTYPETerminalRuleCall_0; }
 
 		//VOID
 		public RuleCall getVOIDTerminalRuleCall_1() { return cVOIDTerminalRuleCall_1; }
@@ -2786,212 +2735,6 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		//T_GLUE_BLOCK
 		public RuleCall getGT_GLUE_BLOCKTerminalRuleCall_0() { return cGT_GLUE_BLOCKTerminalRuleCall_0; }
 	}
-
-	public class TYPEElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TYPE");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cFloat2Keyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cFloat3Keyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cFloat4Keyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cFloatKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cInt2Keyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		private final Keyword cInt3Keyword_5 = (Keyword)cAlternatives.eContents().get(5);
-		private final Keyword cInt4Keyword_6 = (Keyword)cAlternatives.eContents().get(6);
-		private final Keyword cIntKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
-		private final Keyword cBool2Keyword_8 = (Keyword)cAlternatives.eContents().get(8);
-		private final Keyword cBool3Keyword_9 = (Keyword)cAlternatives.eContents().get(9);
-		private final Keyword cBool4Keyword_10 = (Keyword)cAlternatives.eContents().get(10);
-		private final Keyword cBoolKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
-		private final Keyword cSamplerKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
-		private final Keyword cLsamplerKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
-		private final Keyword cFsamplerKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
-		
-		//TYPE:
-		//	"float2" | "float3" | "float4" | "float" | "int2" | "int3" | "int4" | "int" | "bool2" | "bool3" | "bool4" | "bool" |
-		//	"sampler" | "lsampler" | "fsampler";
-		public ParserRule getRule() { return rule; }
-
-		//"float2" | "float3" | "float4" | "float" | "int2" | "int3" | "int4" | "int" | "bool2" | "bool3" | "bool4" | "bool" |
-		//"sampler" | "lsampler" | "fsampler"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"float2"
-		public Keyword getFloat2Keyword_0() { return cFloat2Keyword_0; }
-
-		//"float3"
-		public Keyword getFloat3Keyword_1() { return cFloat3Keyword_1; }
-
-		//"float4"
-		public Keyword getFloat4Keyword_2() { return cFloat4Keyword_2; }
-
-		//"float"
-		public Keyword getFloatKeyword_3() { return cFloatKeyword_3; }
-
-		//"int2"
-		public Keyword getInt2Keyword_4() { return cInt2Keyword_4; }
-
-		//"int3"
-		public Keyword getInt3Keyword_5() { return cInt3Keyword_5; }
-
-		//"int4"
-		public Keyword getInt4Keyword_6() { return cInt4Keyword_6; }
-
-		//"int"
-		public Keyword getIntKeyword_7() { return cIntKeyword_7; }
-
-		//"bool2"
-		public Keyword getBool2Keyword_8() { return cBool2Keyword_8; }
-
-		//"bool3"
-		public Keyword getBool3Keyword_9() { return cBool3Keyword_9; }
-
-		//"bool4"
-		public Keyword getBool4Keyword_10() { return cBool4Keyword_10; }
-
-		//"bool"
-		public Keyword getBoolKeyword_11() { return cBoolKeyword_11; }
-
-		//"sampler"
-		public Keyword getSamplerKeyword_12() { return cSamplerKeyword_12; }
-
-		//"lsampler"
-		public Keyword getLsamplerKeyword_13() { return cLsamplerKeyword_13; }
-
-		//"fsampler"
-		public Keyword getFsamplerKeyword_14() { return cFsamplerKeyword_14; }
-	}
-
-	public class BOOLCONSTANTElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLCONSTANT");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		
-		//BOOLCONSTANT:
-		//	"true" | "false";
-		public ParserRule getRule() { return rule; }
-
-		//"true" | "false"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"true"
-		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
-
-		//"false"
-		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
-	}
-
-	public class RGBA_FIELDSElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RGBA_FIELDS");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final RuleCall cDOTTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final RuleCall cRFIELDTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
-		private final RuleCall cRFIELDTerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
-		private final RuleCall cRFIELDTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
-		private final RuleCall cRFIELDTerminalRuleCall_0_4 = (RuleCall)cGroup_0.eContents().get(4);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final RuleCall cDOTTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
-		private final RuleCall cRFIELDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		private final RuleCall cRFIELDTerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
-		private final RuleCall cRFIELDTerminalRuleCall_1_3 = (RuleCall)cGroup_1.eContents().get(3);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final RuleCall cDOTTerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
-		private final RuleCall cRFIELDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final RuleCall cRFIELDTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final RuleCall cDOTTerminalRuleCall_3_0 = (RuleCall)cGroup_3.eContents().get(0);
-		private final RuleCall cRFIELDTerminalRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
-		
-		//RGBA_FIELDS:
-		//	DOT RFIELD RFIELD RFIELD RFIELD | DOT RFIELD RFIELD RFIELD | DOT RFIELD RFIELD | DOT RFIELD;
-		public ParserRule getRule() { return rule; }
-
-		//DOT RFIELD RFIELD RFIELD RFIELD | DOT RFIELD RFIELD RFIELD | DOT RFIELD RFIELD | DOT RFIELD
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//DOT RFIELD RFIELD RFIELD RFIELD
-		public Group getGroup_0() { return cGroup_0; }
-
-		//DOT
-		public RuleCall getDOTTerminalRuleCall_0_0() { return cDOTTerminalRuleCall_0_0; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_0_1() { return cRFIELDTerminalRuleCall_0_1; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_0_2() { return cRFIELDTerminalRuleCall_0_2; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_0_3() { return cRFIELDTerminalRuleCall_0_3; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_0_4() { return cRFIELDTerminalRuleCall_0_4; }
-
-		//DOT RFIELD RFIELD RFIELD
-		public Group getGroup_1() { return cGroup_1; }
-
-		//DOT
-		public RuleCall getDOTTerminalRuleCall_1_0() { return cDOTTerminalRuleCall_1_0; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_1_1() { return cRFIELDTerminalRuleCall_1_1; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_1_2() { return cRFIELDTerminalRuleCall_1_2; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_1_3() { return cRFIELDTerminalRuleCall_1_3; }
-
-		//DOT RFIELD RFIELD
-		public Group getGroup_2() { return cGroup_2; }
-
-		//DOT
-		public RuleCall getDOTTerminalRuleCall_2_0() { return cDOTTerminalRuleCall_2_0; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_2_1() { return cRFIELDTerminalRuleCall_2_1; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_2_2() { return cRFIELDTerminalRuleCall_2_2; }
-
-		//DOT RFIELD
-		public Group getGroup_3() { return cGroup_3; }
-
-		//DOT
-		public RuleCall getDOTTerminalRuleCall_3_0() { return cDOTTerminalRuleCall_3_0; }
-
-		//RFIELD
-		public RuleCall getRFIELDTerminalRuleCall_3_1() { return cRFIELDTerminalRuleCall_3_1; }
-	}
-
-	public class IDENTIFIERElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IDENTIFIER");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cLETTERTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final RuleCall cLETTERTerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
-		private final RuleCall cDIGITTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
-		
-		//IDENTIFIER:
-		//	LETTER (LETTER | DIGIT)*;
-		public ParserRule getRule() { return rule; }
-
-		//LETTER (LETTER | DIGIT)*
-		public Group getGroup() { return cGroup; }
-
-		//LETTER
-		public RuleCall getLETTERTerminalRuleCall_0() { return cLETTERTerminalRuleCall_0; }
-
-		//(LETTER | DIGIT)*
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-
-		//LETTER
-		public RuleCall getLETTERTerminalRuleCall_1_0() { return cLETTERTerminalRuleCall_1_0; }
-
-		//DIGIT
-		public RuleCall getDIGITTerminalRuleCall_1_1() { return cDIGITTerminalRuleCall_1_1; }
-	}
 	
 	
 	private ModelElements pModel;
@@ -3046,21 +2789,8 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	private External_declarationElements pExternal_declaration;
 	private Function_definitionElements pFunction_definition;
 	private Glue_blockElements pGlue_block;
-	private TYPEElements pTYPE;
-	private BOOLCONSTANTElements pBOOLCONSTANT;
-	private RGBA_FIELDSElements pRGBA_FIELDS;
-	private TerminalRule tRFIELD;
-	private TerminalRule tXYZW_FIELDS;
-	private TerminalRule tXFIELD;
-	private IDENTIFIERElements pIDENTIFIER;
-	private TerminalRule tLETTER;
-	private TerminalRule tDIGIT;
-	private TerminalRule tINTCONSTANT;
-	private TerminalRule tFLOATCONSTANT;
-	private TerminalRule tWS;
-	private TerminalRule tCOMMENT;
-	private TerminalRule tLINE_COMMENT;
-	private TerminalRule tT_GLUE_BLOCK;
+	private TerminalRule tTYPE;
+	private TerminalRule tBOOLCONSTANT;
 	private TerminalRule tSTAR;
 	private TerminalRule tSLASH;
 	private TerminalRule tPLUS;
@@ -3107,6 +2837,19 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tDISCARD;
 	private TerminalRule tRETURN;
 	private TerminalRule tVOID;
+	private TerminalRule tRGBA_FIELDS;
+	private TerminalRule tRFIELD;
+	private TerminalRule tXYZW_FIELDS;
+	private TerminalRule tXFIELD;
+	private TerminalRule tIDENTIFIER;
+	private TerminalRule tLETTER;
+	private TerminalRule tDIGIT;
+	private TerminalRule tINTCONSTANT;
+	private TerminalRule tFLOATCONSTANT;
+	private TerminalRule tWS;
+	private TerminalRule tCOMMENT;
+	private TerminalRule tLINE_COMMENT;
+	private TerminalRule tT_GLUE_BLOCK;
 	
 	private final Grammar grammar;
 
@@ -3161,13 +2904,12 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getField_selectionAccess().getRule();
 	}
 
-	//// returns [Expr expr]
-	//primary_expression:
-	//	{primary_expression} //    { $expr = tm.variable($IDENTIFIER.text); }
+	//primary_expression returns // returns [Expr expr]
+	//Expr: //    { $expr = tm.variable($IDENTIFIER.text); }
 	//	IDENTIFIER //{ $expr = tm.parenExpr($e.expr); }
-	//	| {primary_expression} //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-	//	INTCONSTANT | {primary_expression} // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-	//	FLOATCONSTANT | {primary_expression} //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
+	//	| //   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
+	//	INTCONSTANT | // { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
+	//	FLOATCONSTANT | //  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
 	//	BOOLCONSTANT | LEFT_PAREN e=expression RIGHT_PAREN;
 	public Primary_expressionElements getPrimary_expressionAccess() {
 		return (pPrimary_expression != null) ? pPrimary_expression : (pPrimary_expression = new Primary_expressionElements());
@@ -3177,8 +2919,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getPrimary_expressionAccess().getRule();
 	}
 
-	//// returns [Expr expr]
-	//primary_or_call:
+	//primary_or_call returns Expr:
 	//	e= //{ $expr = $e.expr; }
 	//	primary_expression | f= //{ $expr = $f.expr; }
 	//	function_call;
@@ -3202,9 +2943,8 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	//// but not things like:
 	////   arr[3].r++
 	////
-	////returns [Expr expr]
 	////{ $expr = $e.expr; }
-	//postfix_expression:
+	//postfix_expression returns Expr:
 	//	e=primary_or_call LEFT_BRACKET ae=expression RIGHT_BRACKET fs=field_selection //{ $expr = tm.fieldSelect(tm.arrayAccess($e.expr, $ae.expr), $fs.fields); }
 	//	//{ $expr = tm.arrayAccess($e.expr, $ae.expr); }
 	//	//{ $expr = tm.fieldSelect($e.expr, $fs.fields); }
@@ -3224,12 +2964,11 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	//// Grammar Note: Constructors look like functions, but lexical
 	//// analysis recognized most of them as keywords.  They are now
 	//// recognized through "type_specifier".
-	////returns [Expr expr]
 	////            {
 	////                Type type = Type.fromToken($ts.text);
 	////                $expr = tm.vectorCtor(type, p!=null ? $p.exprList : null);
 	////            }
-	//function_call:
+	//function_call returns Expr:
 	//	id=IDENTIFIER LEFT_PAREN p=function_call_parameter_list? RIGHT_PAREN //            {
 	//	//                $expr = tm.call($id.text, p!=null ? $p.exprList : null);
 	//	//            }
@@ -3255,8 +2994,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getFunction_call_parameter_listAccess().getRule();
 	}
 
-	////returns [Expr expr]
-	//unary_expression:
+	//unary_expression returns Expr:
 	//	p=postfix_expression //{ $expr = $p.expr; }
 	//	//{ $expr = tm.unary(UnaryOpType.INC,     $u.expr); }
 	//	//{ $expr = tm.unary(UnaryOpType.DEC,     $u.expr); }
@@ -3277,8 +3015,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	//// Grammar Note:  No traditional style type casts.
 	//// From the GLSL spec...
 	//// Grammar Note:  No '*' or '&' unary ops.  Pointers are not supported.
-	////returns [Expr expr]
-	//multiplicative_expression:
+	//multiplicative_expression returns Expr:
 	//	a= //{ $expr = $a.expr; }
 	//	unary_expression (STAR b+=multiplicative_expression //{ $expr = tm.binary(BinaryOpType.MUL, $expr, $b.expr); }
 	//	//{ $expr = tm.binary(BinaryOpType.DIV, $expr, $b.expr); }
@@ -3291,8 +3028,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getMultiplicative_expressionAccess().getRule();
 	}
 
-	////returns [Expr expr]
-	//additive_expression:
+	//additive_expression returns Expr:
 	//	a= //{ $expr = $a.expr; }
 	//	multiplicative_expression (PLUS b+=multiplicative_expression //{ $expr = tm.binary(BinaryOpType.ADD, $expr, $b.expr); }
 	//	//{ $expr = tm.binary(BinaryOpType.SUB, $expr, $b.expr); }
@@ -3305,8 +3041,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getAdditive_expressionAccess().getRule();
 	}
 
-	////returns [Expr expr]
-	//relational_expression:
+	//relational_expression returns Expr:
 	//	a= //{ $expr = $a.expr; }
 	//	additive_expression (LTEQ b+=additive_expression //{ $expr = tm.binary(BinaryOpType.LTEQ, $expr, $b.expr); }
 	//	//{ $expr = tm.binary(BinaryOpType.GTEQ, $expr, $b.expr); }
@@ -3321,8 +3056,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getRelational_expressionAccess().getRule();
 	}
 
-	////returns [Expr expr]
-	//equality_expression:
+	//equality_expression returns Expr:
 	//	a= //{ $expr = $a.expr; }
 	//	relational_expression (EQEQ b+=relational_expression //{ $expr = tm.binary(BinaryOpType.EQEQ, $expr, $b.expr); }
 	//	//{ $expr = tm.binary(BinaryOpType.NEQ,  $expr, $b.expr); }
@@ -3335,8 +3069,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getEquality_expressionAccess().getRule();
 	}
 
-	////returns [Expr expr]
-	//logical_and_expression:
+	//logical_and_expression returns Expr:
 	//	a= //{ $expr = $a.expr; }
 	//	equality_expression (AND b+= //{ $expr = tm.binary(BinaryOpType.AND, $expr, $b.expr); }
 	//	equality_expression)*;
@@ -3348,8 +3081,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getLogical_and_expressionAccess().getRule();
 	}
 
-	////returns [Expr expr]
-	//logical_xor_expression:
+	//logical_xor_expression returns Expr:
 	//	a= //{ $expr = $a.expr; }
 	//	logical_and_expression (XOR b+= //{ $expr = tm.binary(BinaryOpType.XOR, $expr, $b.expr); }
 	//	logical_and_expression)*;
@@ -3361,8 +3093,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getLogical_xor_expressionAccess().getRule();
 	}
 
-	////returns [Expr expr]
-	//logical_or_expression:
+	//logical_or_expression returns Expr:
 	//	a= //{ $expr = $a.expr; }
 	//	logical_xor_expression (OR b+= //{ $expr = tm.binary(BinaryOpType.OR, $expr, $b.expr); }
 	//	logical_xor_expression)*;
@@ -3385,8 +3116,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// TODO: handle ternary
-	////returns [Expr expr]
-	//conditional_expression:
+	//conditional_expression returns Expr:
 	//	a=logical_or_expression //{ $expr = $a.expr; }
 	//	t=ternary_part?;
 	public Conditional_expressionElements getConditional_expressionAccess() {
@@ -3397,10 +3127,9 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getConditional_expressionAccess().getRule();
 	}
 
-	////returns [Expr expr]
 	////{ $expr = $c.expr; }
-	//assignment_expression:
-	//	a=unary_expression op=assignment_operator b=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
+	//assignment_expression returns Expr:
+	//	a=unary_expression op=assignment_operator b+=assignment_expression //{ $expr = tm.binary(BinaryOpType.forSymbol($op.text), $a.expr, $b.expr); }
 	//	| c=conditional_expression;
 	public Assignment_expressionElements getAssignment_expressionAccess() {
 		return (pAssignment_expression != null) ? pAssignment_expression : (pAssignment_expression = new Assignment_expressionElements());
@@ -3425,8 +3154,7 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	////        : e=assignment_expression { $exprList.add($e.expr); }
 	////          (COMMA e=assignment_expression { $exprList.add($e.expr); })*
 	////        ;
-	////returns [Expr expr]
-	//expression:
+	//expression returns Expr:
 	//	e= //{ $expr = $e.expr; }
 	//	assignment_expression;
 	public ExpressionElements getExpressionAccess() {
@@ -3940,113 +3668,17 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getGlue_blockAccess().getRule();
 	}
 
-	//TYPE:
+	//terminal TYPE:
 	//	"float2" | "float3" | "float4" | "float" | "int2" | "int3" | "int4" | "int" | "bool2" | "bool3" | "bool4" | "bool" |
 	//	"sampler" | "lsampler" | "fsampler";
-	public TYPEElements getTYPEAccess() {
-		return (pTYPE != null) ? pTYPE : (pTYPE = new TYPEElements());
-	}
-	
-	public ParserRule getTYPERule() {
-		return getTYPEAccess().getRule();
-	}
+	public TerminalRule getTYPERule() {
+		return (tTYPE != null) ? tTYPE : (tTYPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TYPE"));
+	} 
 
-	//BOOLCONSTANT:
+	//terminal BOOLCONSTANT:
 	//	"true" | "false";
-	public BOOLCONSTANTElements getBOOLCONSTANTAccess() {
-		return (pBOOLCONSTANT != null) ? pBOOLCONSTANT : (pBOOLCONSTANT = new BOOLCONSTANTElements());
-	}
-	
-	public ParserRule getBOOLCONSTANTRule() {
-		return getBOOLCONSTANTAccess().getRule();
-	}
-
-	//RGBA_FIELDS:
-	//	DOT RFIELD RFIELD RFIELD RFIELD | DOT RFIELD RFIELD RFIELD | DOT RFIELD RFIELD | DOT RFIELD;
-	public RGBA_FIELDSElements getRGBA_FIELDSAccess() {
-		return (pRGBA_FIELDS != null) ? pRGBA_FIELDS : (pRGBA_FIELDS = new RGBA_FIELDSElements());
-	}
-	
-	public ParserRule getRGBA_FIELDSRule() {
-		return getRGBA_FIELDSAccess().getRule();
-	}
-
-	//// fragment
-	//terminal RFIELD:
-	//	"r" | "g" | "b" | "a";
-	public TerminalRule getRFIELDRule() {
-		return (tRFIELD != null) ? tRFIELD : (tRFIELD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RFIELD"));
-	} 
-
-	//terminal XYZW_FIELDS:
-	//	DOT XFIELD XFIELD XFIELD XFIELD | DOT XFIELD XFIELD XFIELD | DOT XFIELD XFIELD | DOT XFIELD;
-	public TerminalRule getXYZW_FIELDSRule() {
-		return (tXYZW_FIELDS != null) ? tXYZW_FIELDS : (tXYZW_FIELDS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "XYZW_FIELDS"));
-	} 
-
-	//terminal XFIELD:
-	//	"x" | "y" | "z" | "w";
-	public TerminalRule getXFIELDRule() {
-		return (tXFIELD != null) ? tXFIELD : (tXFIELD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "XFIELD"));
-	} 
-
-	//IDENTIFIER:
-	//	LETTER (LETTER | DIGIT)*;
-	public IDENTIFIERElements getIDENTIFIERAccess() {
-		return (pIDENTIFIER != null) ? pIDENTIFIER : (pIDENTIFIER = new IDENTIFIERElements());
-	}
-	
-	public ParserRule getIDENTIFIERRule() {
-		return getIDENTIFIERAccess().getRule();
-	}
-
-	//terminal LETTER:
-	//	"$" | "A".."Z" | "a".."z" | "_";
-	public TerminalRule getLETTERRule() {
-		return (tLETTER != null) ? tLETTER : (tLETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LETTER"));
-	} 
-
-	////fragment
-	//terminal DIGIT:
-	//	"0".."9";
-	public TerminalRule getDIGITRule() {
-		return (tDIGIT != null) ? tDIGIT : (tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DIGIT"));
-	} 
-
-	//terminal INTCONSTANT:
-	//	"0" | "1".."9" DIGIT*;
-	public TerminalRule getINTCONSTANTRule() {
-		return (tINTCONSTANT != null) ? tINTCONSTANT : (tINTCONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INTCONSTANT"));
-	} 
-
-	//terminal FLOATCONSTANT:
-	//	DIGIT+ "." DIGIT* | "." DIGIT+;
-	public TerminalRule getFLOATCONSTANTRule() {
-		return (tFLOATCONSTANT != null) ? tFLOATCONSTANT : (tFLOATCONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FLOATCONSTANT"));
-	} 
-
-	//terminal WS:
-	//	" " / * |'\u000C'* / | "\r" | "\t" | "\n";
-	public TerminalRule getWSRule() {
-		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
-	} 
-
-	//terminal COMMENT:
-	//	"/ *"->"* /";
-	public TerminalRule getCOMMENTRule() {
-		return (tCOMMENT != null) ? tCOMMENT : (tCOMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT"));
-	} 
-
-	//terminal LINE_COMMENT:
-	//	"//" !("\n" | "\r")* "\r"? "\n";
-	public TerminalRule getLINE_COMMENTRule() {
-		return (tLINE_COMMENT != null) ? tLINE_COMMENT : (tLINE_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LINE_COMMENT"));
-	} 
-
-	//terminal T_GLUE_BLOCK:
-	//	LEFT_FRENCH .* RIGHT_FRENCH;
-	public TerminalRule getT_GLUE_BLOCKRule() {
-		return (tT_GLUE_BLOCK != null) ? tT_GLUE_BLOCK : (tT_GLUE_BLOCK = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "T_GLUE_BLOCK"));
+	public TerminalRule getBOOLCONSTANTRule() {
+		return (tBOOLCONSTANT != null) ? tBOOLCONSTANT : (tBOOLCONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLCONSTANT"));
 	} 
 
 	//terminal STAR:
@@ -4323,5 +3955,85 @@ public class DecoraDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	"void";
 	public TerminalRule getVOIDRule() {
 		return (tVOID != null) ? tVOID : (tVOID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "VOID"));
+	} 
+
+	//terminal RGBA_FIELDS:
+	//	DOT RFIELD RFIELD RFIELD RFIELD | DOT RFIELD RFIELD RFIELD | DOT RFIELD RFIELD | DOT RFIELD;
+	public TerminalRule getRGBA_FIELDSRule() {
+		return (tRGBA_FIELDS != null) ? tRGBA_FIELDS : (tRGBA_FIELDS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RGBA_FIELDS"));
+	} 
+
+	//// fragment
+	//terminal fragment RFIELD:
+	//	"r" | "g" | "b" | "a";
+	public TerminalRule getRFIELDRule() {
+		return (tRFIELD != null) ? tRFIELD : (tRFIELD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RFIELD"));
+	} 
+
+	//terminal XYZW_FIELDS:
+	//	DOT XFIELD XFIELD XFIELD XFIELD | DOT XFIELD XFIELD XFIELD | DOT XFIELD XFIELD | DOT XFIELD;
+	public TerminalRule getXYZW_FIELDSRule() {
+		return (tXYZW_FIELDS != null) ? tXYZW_FIELDS : (tXYZW_FIELDS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "XYZW_FIELDS"));
+	} 
+
+	//terminal fragment XFIELD:
+	//	"x" | "y" | "z" | "w";
+	public TerminalRule getXFIELDRule() {
+		return (tXFIELD != null) ? tXFIELD : (tXFIELD = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "XFIELD"));
+	} 
+
+	//terminal IDENTIFIER:
+	//	LETTER (LETTER | DIGIT)*;
+	public TerminalRule getIDENTIFIERRule() {
+		return (tIDENTIFIER != null) ? tIDENTIFIER : (tIDENTIFIER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDENTIFIER"));
+	} 
+
+	//terminal fragment LETTER:
+	//	"$" | "A".."Z" | "a".."z" | "_";
+	public TerminalRule getLETTERRule() {
+		return (tLETTER != null) ? tLETTER : (tLETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LETTER"));
+	} 
+
+	////fragment
+	//terminal fragment DIGIT:
+	//	"0".."9";
+	public TerminalRule getDIGITRule() {
+		return (tDIGIT != null) ? tDIGIT : (tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DIGIT"));
+	} 
+
+	//terminal INTCONSTANT:
+	//	"0" | "1".."9" DIGIT*;
+	public TerminalRule getINTCONSTANTRule() {
+		return (tINTCONSTANT != null) ? tINTCONSTANT : (tINTCONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INTCONSTANT"));
+	} 
+
+	//terminal FLOATCONSTANT:
+	//	DIGIT+ "." DIGIT* | "." DIGIT+;
+	public TerminalRule getFLOATCONSTANTRule() {
+		return (tFLOATCONSTANT != null) ? tFLOATCONSTANT : (tFLOATCONSTANT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FLOATCONSTANT"));
+	} 
+
+	//terminal WS:
+	//	" " / * |'\u000C'* / | "\r" | "\t" | "\n";
+	public TerminalRule getWSRule() {
+		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
+	} 
+
+	//terminal COMMENT:
+	//	"/ *"->"* /";
+	public TerminalRule getCOMMENTRule() {
+		return (tCOMMENT != null) ? tCOMMENT : (tCOMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMENT"));
+	} 
+
+	//terminal LINE_COMMENT:
+	//	"//" !("\n" | "\r")* "\r"? "\n";
+	public TerminalRule getLINE_COMMENTRule() {
+		return (tLINE_COMMENT != null) ? tLINE_COMMENT : (tLINE_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LINE_COMMENT"));
+	} 
+
+	//terminal T_GLUE_BLOCK:
+	//	LEFT_FRENCH .* RIGHT_FRENCH;
+	public TerminalRule getT_GLUE_BLOCKRule() {
+		return (tT_GLUE_BLOCK != null) ? tT_GLUE_BLOCK : (tT_GLUE_BLOCK = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "T_GLUE_BLOCK"));
 	} 
 }

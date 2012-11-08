@@ -41,40 +41,13 @@ public interface DecoraDslFactory extends EFactory
   field_selection createfield_selection();
 
   /**
-   * Returns a new object of class '<em>primary expression</em>'.
+   * Returns a new object of class '<em>Expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>primary expression</em>'.
+   * @return a new object of class '<em>Expr</em>'.
    * @generated
    */
-  primary_expression createprimary_expression();
-
-  /**
-   * Returns a new object of class '<em>primary or call</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>primary or call</em>'.
-   * @generated
-   */
-  primary_or_call createprimary_or_call();
-
-  /**
-   * Returns a new object of class '<em>postfix expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>postfix expression</em>'.
-   * @generated
-   */
-  postfix_expression createpostfix_expression();
-
-  /**
-   * Returns a new object of class '<em>function call</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>function call</em>'.
-   * @generated
-   */
-  function_call createfunction_call();
+  Expr createExpr();
 
   /**
    * Returns a new object of class '<em>function call parameter list</em>'.
@@ -86,78 +59,6 @@ public interface DecoraDslFactory extends EFactory
   function_call_parameter_list createfunction_call_parameter_list();
 
   /**
-   * Returns a new object of class '<em>unary expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>unary expression</em>'.
-   * @generated
-   */
-  unary_expression createunary_expression();
-
-  /**
-   * Returns a new object of class '<em>multiplicative expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>multiplicative expression</em>'.
-   * @generated
-   */
-  multiplicative_expression createmultiplicative_expression();
-
-  /**
-   * Returns a new object of class '<em>additive expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>additive expression</em>'.
-   * @generated
-   */
-  additive_expression createadditive_expression();
-
-  /**
-   * Returns a new object of class '<em>relational expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>relational expression</em>'.
-   * @generated
-   */
-  relational_expression createrelational_expression();
-
-  /**
-   * Returns a new object of class '<em>equality expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>equality expression</em>'.
-   * @generated
-   */
-  equality_expression createequality_expression();
-
-  /**
-   * Returns a new object of class '<em>logical and expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>logical and expression</em>'.
-   * @generated
-   */
-  logical_and_expression createlogical_and_expression();
-
-  /**
-   * Returns a new object of class '<em>logical xor expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>logical xor expression</em>'.
-   * @generated
-   */
-  logical_xor_expression createlogical_xor_expression();
-
-  /**
-   * Returns a new object of class '<em>logical or expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>logical or expression</em>'.
-   * @generated
-   */
-  logical_or_expression createlogical_or_expression();
-
-  /**
    * Returns a new object of class '<em>ternary part</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -165,33 +66,6 @@ public interface DecoraDslFactory extends EFactory
    * @generated
    */
   ternary_part createternary_part();
-
-  /**
-   * Returns a new object of class '<em>conditional expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>conditional expression</em>'.
-   * @generated
-   */
-  conditional_expression createconditional_expression();
-
-  /**
-   * Returns a new object of class '<em>assignment expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>assignment expression</em>'.
-   * @generated
-   */
-  assignment_expression createassignment_expression();
-
-  /**
-   * Returns a new object of class '<em>expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>expression</em>'.
-   * @generated
-   */
-  expression createexpression();
 
   /**
    * Returns a new object of class '<em>function prototype</em>'.

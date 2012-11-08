@@ -3,7 +3,7 @@
 package at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression;
+import at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call_parameter_list;
 
 import java.util.Collection;
@@ -43,7 +43,7 @@ public class function_call_parameter_listImpl extends MinimalEObjectImpl.Contain
    * @generated
    * @ordered
    */
-  protected EList<assignment_expression> a;
+  protected EList<Expr> a;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,11 +71,11 @@ public class function_call_parameter_listImpl extends MinimalEObjectImpl.Contain
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<assignment_expression> getA()
+  public EList<Expr> getA()
   {
     if (a == null)
     {
-      a = new EObjectContainmentEList<assignment_expression>(assignment_expression.class, this, DecoraDslPackage.FUNCTION_CALL_PARAMETER_LIST__A);
+      a = new EObjectContainmentEList<Expr>(Expr.class, this, DecoraDslPackage.FUNCTION_CALL_PARAMETER_LIST__A);
     }
     return a;
   }
@@ -125,7 +125,7 @@ public class function_call_parameter_listImpl extends MinimalEObjectImpl.Contain
     {
       case DecoraDslPackage.FUNCTION_CALL_PARAMETER_LIST__A:
         getA().clear();
-        getA().addAll((Collection<? extends assignment_expression>)newValue);
+        getA().addAll((Collection<? extends Expr>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

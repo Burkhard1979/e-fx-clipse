@@ -9,7 +9,7 @@
             class="at.bestsolution.efxclipse.tooling.decora.ui.DecoraDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="decora"
+            extensions="jsl"
             id="at.bestsolution.efxclipse.tooling.decora.DecoraDsl"
             name="DecoraDsl Editor">
         </editor>
@@ -140,13 +140,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="at.bestsolution.efxclipse.tooling.decora.ui.DecoraDslExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="decora">
+			type="jsl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="at.bestsolution.efxclipse.tooling.decora.ui.DecoraDslExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="decora">
+            uriExtension="jsl">
         </resourceServiceProvider>
     </extension>
 

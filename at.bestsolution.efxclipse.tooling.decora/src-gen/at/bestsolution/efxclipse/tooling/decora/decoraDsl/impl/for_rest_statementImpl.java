@@ -3,8 +3,8 @@
 package at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage;
+import at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.condition;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.for_rest_statement;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -50,7 +50,7 @@ public class for_rest_statementImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected expression e;
+  protected Expr e;
 
   /**
    * <!-- begin-user-doc -->
@@ -126,7 +126,7 @@ public class for_rest_statementImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public expression getE()
+  public Expr getE()
   {
     return e;
   }
@@ -136,9 +136,9 @@ public class for_rest_statementImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetE(expression newE, NotificationChain msgs)
+  public NotificationChain basicSetE(Expr newE, NotificationChain msgs)
   {
-    expression oldE = e;
+    Expr oldE = e;
     e = newE;
     if (eNotificationRequired())
     {
@@ -153,7 +153,7 @@ public class for_rest_statementImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setE(expression newE)
+  public void setE(Expr newE)
   {
     if (newE != e)
     {
@@ -219,7 +219,7 @@ public class for_rest_statementImpl extends MinimalEObjectImpl.Container impleme
         setC((condition)newValue);
         return;
       case DecoraDslPackage.FOR_REST_STATEMENT__E:
-        setE((expression)newValue);
+        setE((Expr)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,7 +239,7 @@ public class for_rest_statementImpl extends MinimalEObjectImpl.Container impleme
         setC((condition)null);
         return;
       case DecoraDslPackage.FOR_REST_STATEMENT__E:
-        setE((expression)null);
+        setE((Expr)null);
         return;
     }
     super.eUnset(featureID);

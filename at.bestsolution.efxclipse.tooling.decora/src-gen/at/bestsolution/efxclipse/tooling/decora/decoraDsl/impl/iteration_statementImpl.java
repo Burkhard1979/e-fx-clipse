@@ -3,8 +3,8 @@
 package at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage;
+import at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.condition;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.for_init_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.for_rest_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.iteration_statement;
@@ -80,7 +80,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * @generated
    * @ordered
    */
-  protected expression e;
+  protected Expr e;
 
   /**
    * The cached value of the '{@link #getU() <em>U</em>}' containment reference.
@@ -282,7 +282,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public expression getE()
+  public Expr getE()
   {
     return e;
   }
@@ -292,9 +292,9 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetE(expression newE, NotificationChain msgs)
+  public NotificationChain basicSetE(Expr newE, NotificationChain msgs)
   {
-    expression oldE = e;
+    Expr oldE = e;
     e = newE;
     if (eNotificationRequired())
     {
@@ -309,7 +309,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setE(expression newE)
+  public void setE(Expr newE)
   {
     if (newE != e)
     {
@@ -545,7 +545,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
         setS((statement)newValue);
         return;
       case DecoraDslPackage.ITERATION_STATEMENT__E:
-        setE((expression)newValue);
+        setE((Expr)newValue);
         return;
       case DecoraDslPackage.ITERATION_STATEMENT__U:
         setU((unroll_modifier)newValue);
@@ -580,7 +580,7 @@ public class iteration_statementImpl extends MinimalEObjectImpl.Container implem
         setS((statement)null);
         return;
       case DecoraDslPackage.ITERATION_STATEMENT__E:
-        setE((expression)null);
+        setE((Expr)null);
         return;
       case DecoraDslPackage.ITERATION_STATEMENT__U:
         setU((unroll_modifier)null);

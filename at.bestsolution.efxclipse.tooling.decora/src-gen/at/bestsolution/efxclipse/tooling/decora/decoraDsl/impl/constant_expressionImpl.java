@@ -3,7 +3,7 @@
 package at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression;
+import at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.constant_expression;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -37,7 +37,7 @@ public class constant_expressionImpl extends array_bracketsImpl implements const
    * @generated
    * @ordered
    */
-  protected conditional_expression c;
+  protected Expr c;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class constant_expressionImpl extends array_bracketsImpl implements const
    * <!-- end-user-doc -->
    * @generated
    */
-  public conditional_expression getC()
+  public Expr getC()
   {
     return c;
   }
@@ -75,9 +75,9 @@ public class constant_expressionImpl extends array_bracketsImpl implements const
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetC(conditional_expression newC, NotificationChain msgs)
+  public NotificationChain basicSetC(Expr newC, NotificationChain msgs)
   {
-    conditional_expression oldC = c;
+    Expr oldC = c;
     c = newC;
     if (eNotificationRequired())
     {
@@ -92,7 +92,7 @@ public class constant_expressionImpl extends array_bracketsImpl implements const
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setC(conditional_expression newC)
+  public void setC(Expr newC)
   {
     if (newC != c)
     {
@@ -151,7 +151,7 @@ public class constant_expressionImpl extends array_bracketsImpl implements const
     switch (featureID)
     {
       case DecoraDslPackage.CONSTANT_EXPRESSION__C:
-        setC((conditional_expression)newValue);
+        setC((Expr)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,7 +168,7 @@ public class constant_expressionImpl extends array_bracketsImpl implements const
     switch (featureID)
     {
       case DecoraDslPackage.CONSTANT_EXPRESSION__C:
-        setC((conditional_expression)null);
+        setC((Expr)null);
         return;
     }
     super.eUnset(featureID);

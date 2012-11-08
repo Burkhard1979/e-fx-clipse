@@ -26,7 +26,7 @@ public interface function_call_parameter_list extends EObject
 {
   /**
    * Returns the value of the '<em><b>A</b></em>' containment reference list.
-   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression}.
+   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>A</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface function_call_parameter_list extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<assignment_expression> getA();
+  EList<Expr> getA();
 
 } // function_call_parameter_list

@@ -31,12 +31,12 @@ public interface jump_statement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>E</em>' containment reference.
-   * @see #setE(expression)
+   * @see #setE(Expr)
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage#getjump_statement_E()
    * @model containment="true"
    * @generated
    */
-  expression getE();
+  Expr getE();
 
   /**
    * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.jump_statement#getE <em>E</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface jump_statement extends EObject
    * @see #getE()
    * @generated
    */
-  void setE(expression value);
+  void setE(Expr value);
 
 } // jump_statement

@@ -66,23 +66,9 @@ public class DecoraDslFactoryImpl extends EFactoryImpl implements DecoraDslFacto
     {
       case DecoraDslPackage.MODEL: return createModel();
       case DecoraDslPackage.FIELD_SELECTION: return createfield_selection();
-      case DecoraDslPackage.PRIMARY_EXPRESSION: return createprimary_expression();
-      case DecoraDslPackage.PRIMARY_OR_CALL: return createprimary_or_call();
-      case DecoraDslPackage.POSTFIX_EXPRESSION: return createpostfix_expression();
-      case DecoraDslPackage.FUNCTION_CALL: return createfunction_call();
+      case DecoraDslPackage.EXPR: return createExpr();
       case DecoraDslPackage.FUNCTION_CALL_PARAMETER_LIST: return createfunction_call_parameter_list();
-      case DecoraDslPackage.UNARY_EXPRESSION: return createunary_expression();
-      case DecoraDslPackage.MULTIPLICATIVE_EXPRESSION: return createmultiplicative_expression();
-      case DecoraDslPackage.ADDITIVE_EXPRESSION: return createadditive_expression();
-      case DecoraDslPackage.RELATIONAL_EXPRESSION: return createrelational_expression();
-      case DecoraDslPackage.EQUALITY_EXPRESSION: return createequality_expression();
-      case DecoraDslPackage.LOGICAL_AND_EXPRESSION: return createlogical_and_expression();
-      case DecoraDslPackage.LOGICAL_XOR_EXPRESSION: return createlogical_xor_expression();
-      case DecoraDslPackage.LOGICAL_OR_EXPRESSION: return createlogical_or_expression();
       case DecoraDslPackage.TERNARY_PART: return createternary_part();
-      case DecoraDslPackage.CONDITIONAL_EXPRESSION: return createconditional_expression();
-      case DecoraDslPackage.ASSIGNMENT_EXPRESSION: return createassignment_expression();
-      case DecoraDslPackage.EXPRESSION: return createexpression();
       case DecoraDslPackage.FUNCTION_PROTOTYPE: return createfunction_prototype();
       case DecoraDslPackage.PARAMETER_DECLARATION: return createparameter_declaration();
       case DecoraDslPackage.PARAMETER_DECLARATION_LIST: return createparameter_declaration_list();
@@ -144,43 +130,10 @@ public class DecoraDslFactoryImpl extends EFactoryImpl implements DecoraDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public primary_expression createprimary_expression()
+  public Expr createExpr()
   {
-    primary_expressionImpl primary_expression = new primary_expressionImpl();
-    return primary_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public primary_or_call createprimary_or_call()
-  {
-    primary_or_callImpl primary_or_call = new primary_or_callImpl();
-    return primary_or_call;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public postfix_expression createpostfix_expression()
-  {
-    postfix_expressionImpl postfix_expression = new postfix_expressionImpl();
-    return postfix_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public function_call createfunction_call()
-  {
-    function_callImpl function_call = new function_callImpl();
-    return function_call;
+    ExprImpl expr = new ExprImpl();
+    return expr;
   }
 
   /**
@@ -199,131 +152,10 @@ public class DecoraDslFactoryImpl extends EFactoryImpl implements DecoraDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public unary_expression createunary_expression()
-  {
-    unary_expressionImpl unary_expression = new unary_expressionImpl();
-    return unary_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public multiplicative_expression createmultiplicative_expression()
-  {
-    multiplicative_expressionImpl multiplicative_expression = new multiplicative_expressionImpl();
-    return multiplicative_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public additive_expression createadditive_expression()
-  {
-    additive_expressionImpl additive_expression = new additive_expressionImpl();
-    return additive_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public relational_expression createrelational_expression()
-  {
-    relational_expressionImpl relational_expression = new relational_expressionImpl();
-    return relational_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public equality_expression createequality_expression()
-  {
-    equality_expressionImpl equality_expression = new equality_expressionImpl();
-    return equality_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public logical_and_expression createlogical_and_expression()
-  {
-    logical_and_expressionImpl logical_and_expression = new logical_and_expressionImpl();
-    return logical_and_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public logical_xor_expression createlogical_xor_expression()
-  {
-    logical_xor_expressionImpl logical_xor_expression = new logical_xor_expressionImpl();
-    return logical_xor_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public logical_or_expression createlogical_or_expression()
-  {
-    logical_or_expressionImpl logical_or_expression = new logical_or_expressionImpl();
-    return logical_or_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ternary_part createternary_part()
   {
     ternary_partImpl ternary_part = new ternary_partImpl();
     return ternary_part;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public conditional_expression createconditional_expression()
-  {
-    conditional_expressionImpl conditional_expression = new conditional_expressionImpl();
-    return conditional_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public assignment_expression createassignment_expression()
-  {
-    assignment_expressionImpl assignment_expression = new assignment_expressionImpl();
-    return assignment_expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public expression createexpression()
-  {
-    expressionImpl expression = new expressionImpl();
-    return expression;
   }
 
   /**
