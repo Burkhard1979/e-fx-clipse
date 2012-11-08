@@ -24,7 +24,7 @@ charset:
 ;
 
 importExpression:
-	('@import'|'@IMPORT') value=STRING | URLType mediaList=media_list? ';'
+	('@import'|'@IMPORT') (value=STRING | URLType mediaList=media_list?) ';'
 ;
 
 page:
@@ -33,7 +33,7 @@ page:
 ;
 
 pseudo_page: 
-	':' IDENT
+	COLON Identifier
 ;
 
 media: 
@@ -45,64 +45,70 @@ media_list:
 ;
 
 medium: 
-	IDENT
+	Identifier
 ;
 
 ruleset:
-	selectors+=selector ( COMMA selectors+=selector )* WS* '{'
-		(declarations+=css_declaration ';' )*
+	selectors+=selector ( WS* COMMA selectors+=selector )* WS* '{'
+		(declarations+=css_declaration (';' declarations+=css_declaration)* ';'?)?
 	'}'
 ;
 
+
 selector hidden():
-	simpleselectors+=simple_selector ( combinator=combinator selector=selector | WS+ combinator=combinator? selector=selector )?
+	simpleselectors+=simple_selector ( combinator=combinator WS* selector=selector | WS+ (combinator=combinator WS*)? selector=selector )?
 ;
 
+SimpleSelectorForNegation:
+	((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelectorForNegation*) |
+	=> subSelectors+=SubSelectorForNegation+
+;
+
+SubSelectorForNegation returns CssSelector:
+	IdSelector |
+	ClassSelector |
+	AttributeSelector |
+	PseudoClass
+;
 
 simple_selector:
-	((element = element_name | universal=css_universal) subSelectors+=sub_selector*)
-	|
-	subSelectors+=sub_selector+
+	((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector*) |
+	=> subSelectors+=SubSelector+
 ;
 
-element_name:
-	(IDENT | ReservedWords)
+SubSelector returns CssSelector:
+	IdSelector |
+	ClassSelector |
+	AttributeSelector |
+	PseudoClassOrFunc
 ;
 
-sub_selector:
-	id=css_id | class=css_class | attrib=css_attrib | pseudoclass=css_pseudo | negotation=css_negation
+AttributeSelector returns CssSelector:
+	{AttributeSelector} '[' name=Identifier ( op=( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) value=( Identifier | STRING ) )? ']'
 ;
 
-css_type_selector:
-	( css_namespace_prefix )? element_name
+ClassSelector:
+	{ClassSelector} '.' name=Identifier
+;
+
+ElementSelector:
+	{ElementSelector} name=Identifier
+;
+
+UniversalSelector:
+	{UniversalSelector} ( namespace=css_namespace_prefix )? '*'
+;
+
+IdSelector:
+	{IdSelector} HASHMARK name=Identifier
 ;
 
 css_namespace_prefix
-  : ( IDENT | '*' )? '|'
+  : ( Identifier | '*' )? '|'
   ;
-
-css_universal: 
-	( css_namespace_prefix )? '*'
-;
-  
-css_class
-  : '.' ( IDENT | ReservedWords )
-  ;
-
-css_id:
-	HASH
-;
-
-css_attrib:
-	'[' (IDENT | ReservedWords) ( ( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) (( IDENT | ReservedWords ) | STRING ) )? ']'
-;
 
 css_declaration hidden(ML_COMMENT):
-	WS* property=css_property WS* ':' valueTokens+=CssTok+ prio=css_prio?
-;
-
-css_prio:
-	IMPORTANT_SYM
+	WS* property=css_property WS* COLON valueTokens+=CssTok+ important?=IMPORTANT_SYM?
 ;
 
 css_property:
@@ -110,44 +116,37 @@ css_property:
 ;
 
 ValidPropertyIdent:
-	('-')?(IDENT)
+	Identifier
 ;
 
-css_pseudo
-  : ':' ':'? (IDENT | functional_pseudo)
+PseudoClassOrFunc:
+	PseudoClass | PseudoClassFunction
 ;
 
-css_negation:
-	':' not=css_not negation_arg=css_negation_arg ')'
+PseudoClass:
+	COLON COLON? PseudoClassName
 ;
 
-enum css_not:
-	not='not('
+PseudoClassName:
+	name=Identifier
 ;
 
-css_negation_arg
-  : css_type_selector | css_universal | HASH | css_class | css_attrib | css_pseudo
+PseudoClassFunction:
+	not?=NotFunctionCall paramSelector=SimpleSelectorForNegation ')' |
+	COLON name=Identifier '(' params+=CssTok* ')'
 ;
 
-functional_pseudo:
-	IDENT '(' function_expr ')'	
-;
-
-function_expr:
-	( ( '+' | '-' | DIMENSION | NUMBER | STRING | IDENT ) )+	
-;
-
-DIMENSION:
- 	PERCENTAGE | LENGTH | EMS | EXS | ANGLE | TIME | FREQ
+NotFunctionCall hidden():
+	COLON 'not('
 ;
 
 combinator
   : 
   (
-  	  '+'
+  	  PLUS
   	| '>'
   	| '~'
-  ) WS*
+  )
 ;
   
 operator
@@ -155,150 +154,162 @@ operator
   ;
   
 unary_operator
-  : '-' | '+'
+  : DASH | PLUS
   ;
 
-SymbolTok returns CssTok hidden(ML_COMMENT):
-	{SymbolTok} symbol=COMMA
+SymbolTok returns CssTok:
+	{SymbolTok} symbol=(COMMA|PERCENT)
 ;
 
-WSTok returns CssTok hidden(ML_COMMENT):
+WSTok returns CssTok:
 	{WSTok} WS
 ;
 
-StringTok returns CssTok hidden(ML_COMMENT): 
+StringTok returns CssTok: 
 	{StringTok} value=STRING
 ;
 
-FuncTok returns CssTok hidden(ML_COMMENT):
-	{FuncTok} func=function
+
+
+NumberTok returns CssTok hidden():
+	{NumberTok} val=Num
+	
+//	{NumberTok} DASH? ( ONE_INT+ | ONE_INT* '.' => ONE_INT+)
+	
+//	{NumberTok} val=Integer | Real
+	//sign=DASH? ( ival=Integer | dval=Real)
 ;
 
-NumberTok returns CssTok hidden(ML_COMMENT):
-	{NumberTok} num=numberTerm
-;
 
-IdentifierTok returns CssTok hidden(ML_COMMENT):
-	{IdentifierTok} id=ValidPropertyIdent
-;
-
-UrlTok returns CssTok hidden(ML_COMMENT):
+UrlTok returns CssTok:
 	{UrlTok} url=URLType
 ;
 
-ColorTok returns CssTok hidden(ML_COMMENT):
-	{ColorTok} color=HASH
+ColorTok returns CssTok hidden():
+	{ColorTok} value=Hex
+;
+
+IdentifierOrFuncTok returns CssTok hidden(ML_COMMENT):
+	{IdentifierTok} name=Identifier ( {FuncTok.name=current} '(' params+=CssTok+ ')')?
 ;
 
 CssTok hidden(ML_COMMENT):
+	IdentifierOrFuncTok |
 	SymbolTok |
 	WSTok |
 	StringTok |
-	FuncTok |
 	NumberTok |
-	IdentifierTok |
 	UrlTok |
 	ColorTok
 ;
 
-expr hidden(WS,ML_COMMENT): termGroups+=termGroup ( operator termGroups+=termGroup )*
-  ;
-
-termGroup:
-	terms+=term+
-;
-
-term
-  :   number=numberTerm
-  	| stringValue=STRING 
-  	| identifier=ValidPropertyIdent // this is only a string and not a ref to css_property, becaus it also matches enums :/
-  	| url=URLType 
-  	| function=function
-  	| hexColor=HexColor
-//  	| gradient=Gradient
-//  	| pair=pair
-;
-  
-//Gradient:
-//	LinearGradient | RadialGradient 
-//;
-//
-//LinearGradient:
-//	IDENT '(' start=PointValue ')' IDENT '(' end=PointValue ')' IDENT ( '(' stops+=StopValue ')' )+ // ( ('repeat' | 'reflect') )?
-//;
-//
-//RadialGradient:
-//	IDENT ( '(' center=PointValue ')' COMMA )? radius=SizeType ( IDENT '(' focus=PointValue ')' ) IDENT ( '(' stops+=StopValue ')' )+ //( ( 'repeat' | 'reflect' ))?
-//;
-//
-//StopValue:
-//	pos=SizeType COMMA color=HexColor
-//;
-//
-//PointValue:
-//	x=SizeType COMMA y=SizeType
-//;
-//pair:
-//	'(' expr1=expr COMMA expr2=expr ')'
-//;
-
-numberTerm hidden():
-	(unary_operator? 
-    ( NUMBER | PERCENTAGE | LENGTH | EMS | EXS | ANGLE |
-      TIME | FREQ ))
-;
-  
-num:
-	INTEGER | REAL
-;
-
-function hidden():
-	('-')?name=IDENT '(' params+=CssTok+/*expression=expr*/ ')'
-;
-
-HexColor hidden():
-	HASH
-;
-
 
 URLType hidden():
-	'url' '(' url=STRING ')'
+//	FULLURL
+	 'url(' url=ValidURL ')'
 ;
 
-NUMBER: num;
-PERCENTAGE: num'%';
-EMS: num 'em';
-EXS: num 'ex';
-LENGTH hidden(): num ('px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc' ) ;
+ValidURLSymbol:
+	DASH | '.' | UNDERSCORE | '~' | COLON |
+	'/' |'?' | HASHMARK | '[' | ']' | '@' |
+	'!' | '$' | '&' | /* "'" | '(' | ')' | need to be escaped*/
+	'*' | PLUS | COMMA | ';' | '='
+	KeywordHack
+;
 
-ANGLE: num ('deg' | 'rad' | 'grad' );
-TIME: num ('ms'| 's' );
-FREQ: num ('hz' | 'khz');
+KeywordHack:
+	'not' |
+	'no' |
+	'url' |
+	'ur'
+;
 
-IMPORTANT_SYM:
+ValidURL returns ecore::EString hidden():
+	STRING |
+	( ValidURLSymbol |
+	  KeywordHack |
+	  ONE_HEX_LETTER | 
+	  ONE_NON_HEX_LETTER | 
+	  ONE_INT |
+	  '\\ ' |
+	  '\\(' |
+	  '\\)' |
+	  '\\\'' |
+	  '\\"' |
+	  PERCENT (ONE_INT|ONE_HEX_LETTER) (ONE_INT|ONE_HEX_LETTER)
+	)+
+;
+
+terminal IMPORTANT_SYM:
 	'!important'
 ;
 
-ReservedWords:
-	  'em' 
-	| 'ex'
-	| 'px' | 'cm' | 'mm' | 'in' | 'pt' | 'pc'
-	| 'deg' | 'rad' | 'grad'
-	| 'ms'| 's'
-	| 'hz' | 'khz'
+Identifier returns ecore::EString hidden():
+	DASH? (UNDERSCORE | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | KeywordHack) => (UNDERSCORE | DASH | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | KeywordHack)*
 ;
 
-terminal INTEGER:('0'..'9')+;
-terminal REAL: (('0'..'9')*"."('0'..'9')+);
-terminal HASH: '#' ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )+;
+Num returns ecore::EDouble hidden():
+	(PLUS|DASH)? (
+		'.' => ONE_INT+ |
+		=> ONE_INT+ (=> '.' => ONE_INT+)?
+	)
+;
 
-terminal IDENT: ('_' | 'a'..'z' | 'A'..'Z' ) ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )*;
+Hex returns ecore::EString:
+	HASHMARK => (ONE_INT|ONE_HEX_LETTER)+
+;
+
+
+//terminal fragment URL_ESCAPES:
+//	'\\' (' '|'('|')'|"'"|'"')
+//;
+//
+//terminal FULLURL:
+//	'url('
+//		'"' ( URL_ESCAPES | !('\\'|'"'|')') )* '"' |
+//		"'" ( URL_ESCAPES | !('\\'|"'"|')') )* "'" |
+//		( URL_ESCAPES | !('\\'|')') )*
+//	')'
+//;
+
+
+terminal ONE_INT: '0'..'9';
+terminal ONE_HEX_LETTER: ('a'..'f'|'A'..'F');
+terminal ONE_NON_HEX_LETTER: ('g'..'z'|'G'..'Z');
+
+
+terminal UNDERSCORE: '_';
+terminal DASH: '-';
+terminal PLUS: '+';
+
+//terminal INTEGER returns ecore::EInt: ('0'..'9')+;
+//terminal INTEGER:('0'..'9')+;
+
+//terminal REAL: (('0'..'9')*"."('0'..'9')+);
+//terminal HASH: '#' ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )+;
+
+terminal HASHMARK: '#';
+
+//terminal COLORHASH: '#' ('a'..'z' | 'A'..'Z' | '0'..'9' )+;
+
+//terminal IDENT: ('_' | 'a'..'z' | 'A'..'Z' ) ('_' | '-' | 'a'..'z' | 'A'..'Z' | '0'..'9' )*;
+
+//terminal HEX: '###' ('a'..'z' | 'A'..'Z' | '0'..'9' )+;
+
 terminal COMMA: ',';
+terminal PERCENT: '%';
+
 terminal ML_COMMENT	: '/*' -> '*/';
 terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+
+
 terminal STRING	: 
 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
 			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
+
 			
 terminal INCLUDES: "~=";
 terminal DASHMATCH: "|=";
+
+terminal COLON: ':';

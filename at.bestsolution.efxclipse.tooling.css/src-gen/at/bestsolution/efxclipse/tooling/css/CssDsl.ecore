@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cssDsl" nsURI="http://www.bestsolution.at/efxclipse/tooling/css/CssDsl"
-    nsPrefix="cssDsl">
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cssDsl"
+    nsURI="http://www.bestsolution.at/efxclipse/tooling/css/CssDsl" nsPrefix="cssDsl">
   <eClassifiers xsi:type="ecore:EClass" name="stylesheet">
     <eStructuralFeatures xsi:type="ecore:EReference" name="charset" eType="#//charset"
         containment="true"/>
@@ -43,64 +44,67 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//selector"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="simple_selector">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="element" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="universal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelectors" upperBound="-1"
-        eType="#//sub_selector" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="sub_selector">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attrib" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pseudoclass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="negotation" eType="#//css_negation"
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleSelectorForNegation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//ElementSelector"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="universal" eType="#//UniversalSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelectors" upperBound="-1"
+        eType="#//CssSelector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CssSelector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="simple_selector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//ElementSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="universal" eType="#//UniversalSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelectors" upperBound="-1"
+        eType="#//CssSelector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassSelector" eSuperTypes="#//CssSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElementSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UniversalSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdSelector" eSuperTypes="#//CssSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="css_declaration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//css_property"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="valueTokens" upperBound="-1"
         eType="#//CssTok" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="important" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="css_property">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="css_negation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="#//css_not"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="negation_arg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoClassOrFunc" eSuperTypes="#//CssSelector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoClass" eSuperTypes="#//CssSelector #//PseudoClassOrFunc"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoClassName" eSuperTypes="#//PseudoClass">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="css_not">
-    <eLiterals name="not" literal="not("/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CssTok"/>
-  <eClassifiers xsi:type="ecore:EClass" name="expr">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="termGroups" upperBound="-1"
-        eType="#//termGroup" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="termGroup">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="terms" upperBound="-1"
-        eType="#//term" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="term">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="url" eType="#//URLType"
+  <eClassifiers xsi:type="ecore:EClass" name="PseudoClassFunction" eSuperTypes="#//PseudoClassOrFunc">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramSelector" eType="#//SimpleSelectorForNegation"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//function"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hexColor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="function">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="#//CssTok" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CssTok"/>
   <eClassifiers xsi:type="ecore:EClass" name="URLType" eSuperTypes="#//importExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediaList" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeSelector" eSuperTypes="#//CssSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SymbolTok" eSuperTypes="#//CssTok">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -109,21 +113,23 @@
   <eClassifiers xsi:type="ecore:EClass" name="StringTok" eSuperTypes="#//CssTok">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FuncTok" eSuperTypes="#//CssTok">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="func" eType="#//function"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumberTok" eSuperTypes="#//CssTok">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="num" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IdentifierTok" eSuperTypes="#//CssTok">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UrlTok" eSuperTypes="#//CssTok">
     <eStructuralFeatures xsi:type="ecore:EReference" name="url" eType="#//URLType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ColorTok" eSuperTypes="#//CssTok">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifierTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncTok" eSuperTypes="#//CssTok">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//IdentifierTok"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//CssTok" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

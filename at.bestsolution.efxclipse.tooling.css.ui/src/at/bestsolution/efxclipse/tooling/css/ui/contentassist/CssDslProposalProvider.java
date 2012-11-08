@@ -10,34 +10,6 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.text.IRegion;
-import org.eclipse.jface.text.ITextViewer;
-import org.eclipse.jface.viewers.StyledString;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
-import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
-import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
-
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.DialogProposal;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiTermGroupProperty;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.MultiValuesGroupProperty;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.expr;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */

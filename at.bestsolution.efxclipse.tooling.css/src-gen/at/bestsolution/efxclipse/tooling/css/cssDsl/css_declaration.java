@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
@@ -16,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getProperty <em>Property</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getValueTokens <em>Value Tokens</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getPrio <em>Prio</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#isImportant <em>Important</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,29 +72,29 @@ public interface css_declaration extends EObject
   EList<CssTok> getValueTokens();
 
   /**
-   * Returns the value of the '<em><b>Prio</b></em>' attribute.
+   * Returns the value of the '<em><b>Important</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Prio</em>' attribute isn't clear,
+   * If the meaning of the '<em>Important</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Prio</em>' attribute.
-   * @see #setPrio(String)
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getcss_declaration_Prio()
+   * @return the value of the '<em>Important</em>' attribute.
+   * @see #setImportant(boolean)
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getcss_declaration_Important()
    * @model
    * @generated
    */
-  String getPrio();
+  boolean isImportant();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#getPrio <em>Prio</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration#isImportant <em>Important</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Prio</em>' attribute.
-   * @see #getPrio()
+   * @param value the new value of the '<em>Important</em>' attribute.
+   * @see #isImportant()
    * @generated
    */
-  void setPrio(String value);
+  void setImportant(boolean value);
 
 } // css_declaration
