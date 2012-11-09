@@ -24,6 +24,7 @@
 	<modules>
 		<module>../at.bestsolution.efxclipse.runtime.osgi</module>
 		<module>../at.bestsolution.efxclipse.runtime.javafx</module>
+		<module>../at.bestsolution.efxclipse.runtime.animationutils</module>
 		<module>../at.bestsolution.efxclipse.runtime.model</module>
 		<module>../at.bestsolution.efxclipse.runtime.databinding</module>
 		<module>../at.bestsolution.efxclipse.runtime.application</module>

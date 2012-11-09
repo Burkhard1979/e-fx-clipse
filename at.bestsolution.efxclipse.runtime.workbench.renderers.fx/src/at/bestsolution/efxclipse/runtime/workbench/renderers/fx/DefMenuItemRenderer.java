@@ -37,7 +37,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetIm
 public class DefMenuItemRenderer extends BaseMenuItemRenderer<MenuItem> {
 
 	@Override
-	protected Class<? extends WMenuItem<MenuItem>> getWidgetClass() {
+	protected Class<? extends WMenuItem<MenuItem>> getWidgetClass(MMenuItem item) {
 		return MenuItemImpl.class;
 	}
 
@@ -83,6 +83,7 @@ public class DefMenuItemRenderer extends BaseMenuItemRenderer<MenuItem> {
 		@Override
 		protected MenuItem createWidget() {
 			MenuItem item = internalCreateWidget();
+			item.setMnemonicParsing(true);
 			if( item != null ) {
 				item.setOnAction(new EventHandler<ActionEvent>() {
 					

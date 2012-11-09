@@ -35,9 +35,8 @@
 }
 
 .menu-bar {
-    -fx-background-color: linear-gradient(to bottom, -fx-base, derive(-fx-base,+50%));
-    -fx-text-fill: black;
-}
+    -fx-background-color: linear-gradient(to bottom, #7eaacc, derive(#7eaacc,+50%));
+ }
 
 .menu-bar .menu .label {
     -fx-padding: 0.333em 0.5em 0.333em 0.5em; /* 4 6 4 6*/
@@ -89,4 +88,17 @@
 
 #window_max:hover {
     -fx-background-image: url("images/window-expand-over.png");
+}
+
+.MTrimBar {
+	-fx-background-color:
+        linear-gradient(to bottom, derive(-fx-base,-30%), derive(-fx-base,-60%)),
+        linear-gradient(to bottom, derive(-fx-base,65%) 2%, derive(-fx-base,-20%) 95%);
+}
+
+.MTrimBar .tool-bar {
+    -fx-border-style: solid;
+    -fx-background-color: null;
+    -fx-border-color:  null;
+    -fx-border-width: 0px;
 }

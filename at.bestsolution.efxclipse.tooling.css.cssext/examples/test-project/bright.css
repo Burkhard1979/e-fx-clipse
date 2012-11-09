@@ -3,7 +3,7 @@
     -fx-background: #f4f4f4;
     -fx-control-inner-background: white;
 }
-
+ 
 .menu-bar {
     -fx-background-color: linear-gradient(to bottom, -fx-base, derive(-fx-base,+50%));
     -fx-text-fill: black;
@@ -32,8 +32,8 @@
     -fx-color: -fx-hover-base;
 }
 
-#window-resize-button {
-    -fx-background-image: url("images/window-corner.png");
+#window-resize-button { 
+    -fx-background-image: url(images/window-corner.png);
     -fx-background-position: right 1px bottom 1px;
     -fx-background-repeat: no-repeat;
 }

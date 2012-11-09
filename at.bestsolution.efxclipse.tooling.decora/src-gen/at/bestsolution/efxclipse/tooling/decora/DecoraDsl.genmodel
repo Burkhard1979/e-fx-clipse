@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/at.bestsolution.efxclipse.tooling.decora/src-gen"
+    editDirectory="/at.bestsolution.efxclipse.tooling.decora.edit/src" editorDirectory="/at.bestsolution.efxclipse.tooling.decora.editor/src"
+    modelPluginID="at.bestsolution.efxclipse.tooling.decora" forceOverwrite="true"
+    modelName="DecoraDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="at.bestsolution.efxclipse.tooling.decora.edit"
+    editorPluginID="at.bestsolution.efxclipse.tooling.decora.editor" runtimeVersion="2.8">
+  <genPackages prefix="DecoraDsl" basePackage="at.bestsolution.efxclipse.tooling.decora"
+      disposableProviderFactory="true" ecorePackage="DecoraDsl.ecore#/">
+    <genClasses ecoreClass="DecoraDsl.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Model/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//field_selection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//field_selection/r"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//field_selection/x"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//Expr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/e"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/f"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/ae"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/fs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//Expr/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/p"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/ts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/u"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/a"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/b"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/t"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//Expr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//Expr/c"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//function_call_parameter_list">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//function_call_parameter_list/a"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//ternary_part"/>
+    <genClasses ecoreClass="DecoraDsl.ecore#//function_prototype">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//function_prototype/t"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//function_prototype/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//function_prototype/p"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//parameter_declaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//parameter_declaration/t"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//parameter_declaration/id"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//parameter_declaration_list">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//parameter_declaration_list/p"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//declaration_identifier_and_init">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//declaration_identifier_and_init/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//declaration_identifier_and_init/ae"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//declaration_identifier_and_init/e"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//single_declaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//single_declaration/t"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//single_declaration/d"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//declaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//declaration/s"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//declaration/d"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//fully_specified_type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//fully_specified_type/tq"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//fully_specified_type/tp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//fully_specified_type/ts"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//type_specifier"/>
+    <genClasses ecoreClass="DecoraDsl.ecore#//array_brackets"/>
+    <genClasses ecoreClass="DecoraDsl.ecore#//initializer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//initializer/e"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//declaration_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//declaration_statement/d"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//statement/c"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//statement/s"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//simple_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//simple_statement/d"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//simple_statement/e"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//simple_statement/s"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//simple_statement/i"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//simple_statement/j"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//compound_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//compound_statement/s"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//statement_no_new_scope">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//statement_no_new_scope/c"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//statement_no_new_scope/s"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//compound_statement_no_new_scope">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//compound_statement_no_new_scope/s"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//expression_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//expression_statement/e"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//constant_expression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//constant_expression/c"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//selection_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//selection_statement/e"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//selection_statement/a"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//selection_statement/b"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//condition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//condition/e"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//iteration_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//iteration_statement/c"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//iteration_statement/snns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//iteration_statement/s"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//iteration_statement/e"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//iteration_statement/u"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//iteration_statement/init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//iteration_statement/rem"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//unroll_modifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//unroll_modifier/m"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//unroll_modifier/c"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//for_init_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//for_init_statement/e"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//for_init_statement/d"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//for_rest_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//for_rest_statement/c"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//for_rest_statement/e"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//jump_statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//jump_statement/e"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//translation_unit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//translation_unit/e"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//external_declaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//external_declaration/f"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//external_declaration/d"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//external_declaration/g"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//function_definition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//function_definition/p"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DecoraDsl.ecore#//function_definition/s"/>
+    </genClasses>
+    <genClasses ecoreClass="DecoraDsl.ecore#//glue_block">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DecoraDsl.ecore#//glue_block/g"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

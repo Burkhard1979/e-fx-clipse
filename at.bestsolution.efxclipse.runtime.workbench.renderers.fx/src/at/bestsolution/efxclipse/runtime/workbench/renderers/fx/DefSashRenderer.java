@@ -12,6 +12,7 @@ package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,20 +30,144 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
 import org.eclipse.e4.ui.workbench.UIEvents;
 
+import at.bestsolution.efxclipse.runtime.panels.GridData;
+import at.bestsolution.efxclipse.runtime.panels.GridData.Alignment;
+import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseSashRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WSash;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefSashRenderer extends BaseSashRenderer<SplitPane> {
+public class DefSashRenderer extends BaseSashRenderer<Node> {
 
 	@Override
-	protected Class<? extends WSash<SplitPane>> getWidgetClass() {
-		return WSashImpl.class;
+	protected Class<? extends WSash<Node>> getWidgetClass(MPartSashContainer container) {
+		if( container.getTags().contains(WSash.TAG_FIXED_LAYOUT) ) {
+			return WFixedSashImpl.class;
+		} else {
+			return WResizableSashImpl.class;	
+		}
 	}
+	
+	public static class WFixedSashImpl extends WLayoutedWidgetImpl<GridLayoutPane, Node, MPartSashContainer> implements WSash<Node> {
 
-	public static class WSashImpl extends WLayoutedWidgetImpl<SplitPane, SplitPane, MPartSashContainer> implements WSash<SplitPane> {
+		private static GridData toGridData(Map<String, String> dataMap) {
+			GridData gd = new GridData();
+			if( dataMap.containsKey(WSash.FIXED_LAYOUT_WIDTH) ) {
+				gd.widthHint.set(Integer.parseInt(dataMap.get(WSash.FIXED_LAYOUT_WIDTH)));
+				if( !dataMap.containsKey(WSash.FIXED_LAYOUT_HEIGHT) ) {
+					gd.grabExcessVerticalSpace.set(true);
+					gd.verticalAlignment.set(Alignment.FILL);
+				}
+			}
+			
+			if( dataMap.containsKey(WSash.FIXED_LAYOUT_HEIGHT) ) {
+				gd.heightHint.set(Integer.parseInt(dataMap.get(WSash.FIXED_LAYOUT_HEIGHT)));
+				if( !dataMap.containsKey(WSash.FIXED_LAYOUT_WIDTH) ) {
+					gd.grabExcessHorizontalSpace.set(true);
+					gd.horizontalAlignment.set(Alignment.FILL);
+				}
+			}
+			
+			if( dataMap.containsKey(WSash.FIXED_LAYOUT_GRAB_HORIZONTAL) ) {
+				gd.grabExcessHorizontalSpace.set(Boolean.parseBoolean(dataMap.get(WSash.FIXED_LAYOUT_GRAB_HORIZONTAL)));
+				gd.horizontalAlignment.set(Alignment.FILL);
+			}
+			
+			if( dataMap.containsKey(WSash.FIXED_LAYOUT_GRAB_VERTICAL) ) {
+				gd.grabExcessVerticalSpace.set(Boolean.parseBoolean(dataMap.get(WSash.FIXED_LAYOUT_GRAB_VERTICAL)));
+				gd.verticalAlignment.set(Alignment.FILL);
+			}
+			
+			return gd;
+		}
+		
+		@Override
+		public void addItem(WLayoutedWidget<MPartSashContainerElement> widget) {
+			Node n = (Node) widget.getStaticLayoutNode();
+			
+			GridLayoutPane p = getWidget();
+			if( getDomElement().isHorizontal() ) {
+				p.setNumColumns(p.getNumColumns()+1);
+			}
+			
+			GridData gd = toGridData(widget.getDomElement().getPersistedState());
+			GridLayoutPane.setConstraint(n, gd);
+			p.getChildren().add(n);
+		}
+
+		@Override
+		public int getItemCount() {
+			return getWidget().getChildren().size();
+		}
+
+		@Override
+		public void addItems(List<WLayoutedWidget<MPartSashContainerElement>> list) {
+			List<Node> nodeList = new ArrayList<Node>();
+			GridLayoutPane p = getWidget();
+			
+			for( WLayoutedWidget<MPartSashContainerElement> w : list ) {
+				Node n = (Node) w.getStaticLayoutNode();
+				
+				GridData gd = toGridData(w.getDomElement().getPersistedState());
+				GridLayoutPane.setConstraint(n, gd);
+				nodeList.add(n);
+			}
+			
+			if( getDomElement().isHorizontal() ) {
+				p.setNumColumns(p.getNumColumns()+nodeList.size());
+			}
+			
+			p.getChildren().addAll(nodeList);
+		}
+
+		@Override
+		public void addItems(int index, List<WLayoutedWidget<MPartSashContainerElement>> list) {
+			List<Node> nodeList = new ArrayList<Node>();
+			GridLayoutPane p = getWidget();
+			
+			for( WLayoutedWidget<MPartSashContainerElement> w : list ) {
+				Node n = (Node) w.getStaticLayoutNode();
+				
+				GridData gd = toGridData(w.getDomElement().getPersistedState());
+				GridLayoutPane.setConstraint(n, gd);
+				nodeList.add(n);
+			}
+			
+			if( getDomElement().isHorizontal() ) {
+				p.setNumColumns(p.getNumColumns()+nodeList.size());
+			}
+			
+			p.getChildren().addAll(index,nodeList);
+		}
+
+		@Override
+		public void removeItem(WLayoutedWidget<MPartSashContainerElement> widget) {
+			Node n = (Node) widget.getStaticLayoutNode();
+			GridLayoutPane p = getWidget();
+			p.setNumColumns(p.getNumColumns()-1);
+			p.getChildren().remove(n);
+		}
+
+		@Override
+		protected GridLayoutPane getWidgetNode() {
+			return getWidget();
+		}
+
+		@Override
+		protected GridLayoutPane createWidget() {
+			GridLayoutPane p = new GridLayoutPane();
+			p.setMarginWidth(0);
+			p.setMarginHeight(0);
+			p.setHorizontalSpacing(0);
+			p.setVerticalSpacing(0);
+			return p;
+		}
+		
+	}
+	
+	public static class WResizableSashImpl extends WLayoutedWidgetImpl<SplitPane, SplitPane, MPartSashContainer> implements WSash<Node> {
 		private List<WLayoutedWidget<MPartSashContainerElement>> items = new ArrayList<WLayoutedWidget<MPartSashContainerElement>>();
 
 		private ChangeListener<Number> listener = new ChangeListener<Number>() {

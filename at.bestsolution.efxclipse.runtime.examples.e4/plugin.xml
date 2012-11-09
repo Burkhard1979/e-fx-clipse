@@ -6,7 +6,7 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="at.bestsolution.efxclipse.runtime.workbench.application"
+            application="at.bestsolution.efxclipse.runtime.workbench.fx.application"
             name="Hello JavaFX e4">
          <property
                name="windowImages"

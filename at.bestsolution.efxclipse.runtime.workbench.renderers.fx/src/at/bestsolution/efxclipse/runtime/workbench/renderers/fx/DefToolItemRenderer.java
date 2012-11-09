@@ -10,6 +10,8 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -34,18 +36,18 @@ import org.eclipse.emf.common.util.URI;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseToolItemRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
-import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WWidgetImpl;
 
 @SuppressWarnings("restriction")
 public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 
 	@Override
-	protected Class<? extends WToolItem<Node>> getWidgetClass() {
+	protected Class<? extends WToolItem<Node>> getWidgetClass(MToolItem item) {
 		return ToolItemImpl.class;
 	}
 
 	
-	public static class ToolItemImpl extends WLayoutedWidgetImpl<ButtonBase, ButtonBase, MToolItem> implements WToolItem<Node> {
+	public static class ToolItemImpl extends WWidgetImpl<ButtonBase,  MToolItem> implements WToolItem<Node> {
 		private ItemType type;
 		private boolean menuButton;
 		private Runnable onActionCallback;
@@ -171,10 +173,25 @@ public class DefToolItemRenderer extends BaseToolItemRenderer<Node> {
 			}
 			return null;
 		}
-		
+
 		@Override
-		protected ButtonBase getWidgetNode() {
-			return getWidget();
+		public void addStyleClasses(List<String> classnames) {
+			getWidget().getStyleClass().addAll(classnames);
 		}
+
+		@Override
+		public void addStyleClasses(String... classnames) {
+			getWidget().getStyleClass().addAll(classnames);
+		}
+
+		@Override
+		public void setStyleId(String id) {
+			getWidget().setId(id);
+		}
+
+		@Override
+		protected void setUserData(WWidgetImpl<ButtonBase, MToolItem> widget) {
+			getWidget().setUserData(widget);
+		}		
 	}
 }

@@ -52,6 +52,7 @@ public class EventProcessor {
 	public static <M extends MUIElement, R extends BaseRenderer<M, ?>> void attachVisibleProcessor(IEventBroker eventBroker, final R renderer) {
 		eventBroker.subscribe(UIEvents.UIElement.TOPIC_VISIBLE, new EventHandler() {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public void handleEvent(Event event) {
 				MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);

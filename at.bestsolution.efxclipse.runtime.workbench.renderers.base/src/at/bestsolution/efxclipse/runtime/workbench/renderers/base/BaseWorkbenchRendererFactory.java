@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.advanced.MArea;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
@@ -30,7 +31,10 @@ import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
+import org.eclipse.e4.ui.model.application.ui.menu.MPopupMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
+import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 import org.eclipse.e4.ui.workbench.UIEvents.UIElement;
@@ -60,6 +64,10 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BasePerspectiveStackRenderer<?, ?, ?> perspectiveStackRenderer;
 	private BasePerspectiveRenderer<?> perspectiveRenderer;
 	private BasePlaceholderRenderer<?> placeholderRenderer;
+	private BaseToolControlRenderer<?> toolcontrolRenderer;
+	private BaseToolBarSeparatorRenderer<?> toolbarSeparatorRenderer;
+	private BaseAreaRenderer<?> areaRenderer;
+	private BasePopupMenuRenderer<?> popupMenuRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -71,7 +79,17 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <R extends AbstractRenderer<?,?>> R getRenderer(MUIElement modelObject) {
-		if( modelObject instanceof MWindow ) {
+		if( modelObject instanceof MPopupMenu ) {
+			if( popupMenuRenderer == null ) {
+				popupMenuRenderer = ContextInjectionFactory.make(getPopupMenuRendererClass(), context);
+			}
+			return (R) popupMenuRenderer;
+		} else if( areaRenderer instanceof MArea ) {
+			if( areaRenderer == null ) {
+				areaRenderer = ContextInjectionFactory.make(getAreaRendererClass(), context);
+			}
+			return (R) areaRenderer;
+		} else if( modelObject instanceof MWindow ) {
 			if( windowRenderer == null ) {
 				windowRenderer = ContextInjectionFactory.make(getWindowRendererClass(), context);
 			}
@@ -148,11 +166,22 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 				placeholderRenderer = ContextInjectionFactory.make(getPlaceholderRendererClass(), context);
 			}
 			return (R) placeholderRenderer;
+		} else if( modelObject instanceof MToolControl ) {
+			if(toolcontrolRenderer == null) {
+				toolcontrolRenderer = ContextInjectionFactory.make(getToolcontrolRendererClass(), context);
+			}
+			return (R) toolcontrolRenderer;
+		} else if(modelObject instanceof MToolBarSeparator) {
+			if(toolbarSeparatorRenderer == null) {
+				toolbarSeparatorRenderer = ContextInjectionFactory.make(getToolBarSeparatorRendererClass(), context);
+			}
+			return (R) toolbarSeparatorRenderer;
 		}
 		
 		return null;
 	}
 
+	
 	protected abstract Class<? extends BaseWindowRenderer<?>> getWindowRendererClass();
 	protected abstract Class<? extends BaseSashRenderer<?>> getSashRendererClass();
 	protected abstract Class<? extends BaseMenuBarRenderer<?>> getMenuBarRendererClass();
@@ -168,4 +197,9 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BasePerspectiveStackRenderer<?, ?, ?>> getPerspectiveStackRendererClass();
 	protected abstract Class<? extends BasePerspectiveRenderer<?>> getPerspectiveRendererClass();
 	protected abstract Class<? extends BasePlaceholderRenderer<?>> getPlaceholderRendererClass();
+	protected abstract Class<? extends BaseToolControlRenderer<?>> getToolcontrolRendererClass();
+	protected abstract Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass();
+	protected abstract Class<? extends BaseAreaRenderer<?>> getAreaRendererClass();
+	protected abstract Class<? extends BasePopupMenuRenderer<?>> getPopupMenuRendererClass();
+
 }

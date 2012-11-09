@@ -1,3 +1,6 @@
+Node[no=me] {
+	-fx-alignment: a;
+}
 
 Region.test {
 	-fx-blend-mode: add;
@@ -12,6 +15,35 @@ Region.test {
 	-fx-halignment: left;
 }
 
+.a {
+	property:none;
+}
+.b {
+	eigenschaft:nice;
+}
+
+ 
 .la.li.lu {
+	lala: url(halligalliurtoo.com);
+}
+
+
+.future {
+	
+}
+
+.current {
+	
+}
+
+.ua {
+	
+}
+
+.ue {
+	
+}
+
+.ur {
 	
 }

@@ -244,7 +244,7 @@ public class AutoCompletionParser {
 	
 	private boolean matchCssTok(CssTok tok, String literal) {
 		if (tok instanceof IdentifierTok) {
-			return literal.equals(((IdentifierTok)tok).getId());
+			return literal.equals(((IdentifierTok)tok).getName());
 		}
 		System.err.println("problem matching " + tok);
 		return false;

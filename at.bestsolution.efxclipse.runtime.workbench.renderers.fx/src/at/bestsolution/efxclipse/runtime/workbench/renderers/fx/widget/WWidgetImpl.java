@@ -68,7 +68,7 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	}
 	
 	@PostConstruct
-	void init() {
+	protected void init() {
 		getWidget(); // ensure that the widget is created
 	}
 	

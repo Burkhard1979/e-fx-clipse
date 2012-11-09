@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.util;
 
@@ -121,6 +124,20 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION:
+      {
+        SimpleSelectorForNegation simpleSelectorForNegation = (SimpleSelectorForNegation)theEObject;
+        T result = caseSimpleSelectorForNegation(simpleSelectorForNegation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.CSS_SELECTOR:
+      {
+        CssSelector cssSelector = (CssSelector)theEObject;
+        T result = caseCssSelector(cssSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CssDslPackage.SIMPLE_SELECTOR:
       {
         simple_selector simple_selector = (simple_selector)theEObject;
@@ -128,10 +145,33 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssDslPackage.SUB_SELECTOR:
+      case CssDslPackage.CLASS_SELECTOR:
       {
-        sub_selector sub_selector = (sub_selector)theEObject;
-        T result = casesub_selector(sub_selector);
+        ClassSelector classSelector = (ClassSelector)theEObject;
+        T result = caseClassSelector(classSelector);
+        if (result == null) result = caseCssSelector(classSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.ELEMENT_SELECTOR:
+      {
+        ElementSelector elementSelector = (ElementSelector)theEObject;
+        T result = caseElementSelector(elementSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.UNIVERSAL_SELECTOR:
+      {
+        UniversalSelector universalSelector = (UniversalSelector)theEObject;
+        T result = caseUniversalSelector(universalSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.ID_SELECTOR:
+      {
+        IdSelector idSelector = (IdSelector)theEObject;
+        T result = caseIdSelector(idSelector);
+        if (result == null) result = caseCssSelector(idSelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -149,10 +189,39 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssDslPackage.CSS_NEGATION:
+      case CssDslPackage.PSEUDO_CLASS_OR_FUNC:
       {
-        css_negation css_negation = (css_negation)theEObject;
-        T result = casecss_negation(css_negation);
+        PseudoClassOrFunc pseudoClassOrFunc = (PseudoClassOrFunc)theEObject;
+        T result = casePseudoClassOrFunc(pseudoClassOrFunc);
+        if (result == null) result = caseCssSelector(pseudoClassOrFunc);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.PSEUDO_CLASS:
+      {
+        PseudoClass pseudoClass = (PseudoClass)theEObject;
+        T result = casePseudoClass(pseudoClass);
+        if (result == null) result = casePseudoClassOrFunc(pseudoClass);
+        if (result == null) result = caseCssSelector(pseudoClass);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.PSEUDO_CLASS_NAME:
+      {
+        PseudoClassName pseudoClassName = (PseudoClassName)theEObject;
+        T result = casePseudoClassName(pseudoClassName);
+        if (result == null) result = casePseudoClass(pseudoClassName);
+        if (result == null) result = casePseudoClassOrFunc(pseudoClassName);
+        if (result == null) result = caseCssSelector(pseudoClassName);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION:
+      {
+        PseudoClassFunction pseudoClassFunction = (PseudoClassFunction)theEObject;
+        T result = casePseudoClassFunction(pseudoClassFunction);
+        if (result == null) result = casePseudoClassOrFunc(pseudoClassFunction);
+        if (result == null) result = caseCssSelector(pseudoClassFunction);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,39 +232,19 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssDslPackage.EXPR:
-      {
-        expr expr = (expr)theEObject;
-        T result = caseexpr(expr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CssDslPackage.TERM_GROUP:
-      {
-        termGroup termGroup = (termGroup)theEObject;
-        T result = casetermGroup(termGroup);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CssDslPackage.TERM:
-      {
-        term term = (term)theEObject;
-        T result = caseterm(term);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CssDslPackage.FUNCTION:
-      {
-        function function = (function)theEObject;
-        T result = casefunction(function);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CssDslPackage.URL_TYPE:
       {
         URLType urlType = (URLType)theEObject;
         T result = caseURLType(urlType);
         if (result == null) result = caseimportExpression(urlType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.ATTRIBUTE_SELECTOR:
+      {
+        AttributeSelector attributeSelector = (AttributeSelector)theEObject;
+        T result = caseAttributeSelector(attributeSelector);
+        if (result == null) result = caseCssSelector(attributeSelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -223,27 +272,11 @@ public class CssDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssDslPackage.FUNC_TOK:
-      {
-        FuncTok funcTok = (FuncTok)theEObject;
-        T result = caseFuncTok(funcTok);
-        if (result == null) result = caseCssTok(funcTok);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CssDslPackage.NUMBER_TOK:
       {
         NumberTok numberTok = (NumberTok)theEObject;
         T result = caseNumberTok(numberTok);
         if (result == null) result = caseCssTok(numberTok);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CssDslPackage.IDENTIFIER_TOK:
-      {
-        IdentifierTok identifierTok = (IdentifierTok)theEObject;
-        T result = caseIdentifierTok(identifierTok);
-        if (result == null) result = caseCssTok(identifierTok);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -260,6 +293,22 @@ public class CssDslSwitch<T> extends Switch<T>
         ColorTok colorTok = (ColorTok)theEObject;
         T result = caseColorTok(colorTok);
         if (result == null) result = caseCssTok(colorTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.IDENTIFIER_TOK:
+      {
+        IdentifierTok identifierTok = (IdentifierTok)theEObject;
+        T result = caseIdentifierTok(identifierTok);
+        if (result == null) result = caseCssTok(identifierTok);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssDslPackage.FUNC_TOK:
+      {
+        FuncTok funcTok = (FuncTok)theEObject;
+        T result = caseFuncTok(funcTok);
+        if (result == null) result = caseCssTok(funcTok);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -380,6 +429,38 @@ public class CssDslSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Simple Selector For Negation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Simple Selector For Negation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSimpleSelectorForNegation(SimpleSelectorForNegation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Css Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Css Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCssSelector(CssSelector object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>simple selector</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -396,17 +477,65 @@ public class CssDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>sub selector</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Class Selector</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>sub selector</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Class Selector</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casesub_selector(sub_selector object)
+  public T caseClassSelector(ClassSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Element Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseElementSelector(ElementSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Universal Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Universal Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUniversalSelector(UniversalSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Id Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Id Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIdSelector(IdSelector object)
   {
     return null;
   }
@@ -444,17 +573,65 @@ public class CssDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>css negation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Pseudo Class Or Func</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>css negation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Pseudo Class Or Func</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casecss_negation(css_negation object)
+  public T casePseudoClassOrFunc(PseudoClassOrFunc object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pseudo Class</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pseudo Class</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePseudoClass(PseudoClass object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pseudo Class Name</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pseudo Class Name</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePseudoClassName(PseudoClassName object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pseudo Class Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pseudo Class Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePseudoClassFunction(PseudoClassFunction object)
   {
     return null;
   }
@@ -476,70 +653,6 @@ public class CssDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>expr</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>expr</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseexpr(expr object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>term Group</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>term Group</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casetermGroup(termGroup object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>term</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>term</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseterm(term object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>function</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>function</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casefunction(function object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>URL Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -551,6 +664,22 @@ public class CssDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseURLType(URLType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Attribute Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Attribute Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAttributeSelector(AttributeSelector object)
   {
     return null;
   }
@@ -604,22 +733,6 @@ public class CssDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Tok</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Tok</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFuncTok(FuncTok object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Number Tok</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -631,22 +744,6 @@ public class CssDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNumberTok(NumberTok object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Identifier Tok</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Identifier Tok</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIdentifierTok(IdentifierTok object)
   {
     return null;
   }
@@ -679,6 +776,38 @@ public class CssDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseColorTok(ColorTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Identifier Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Identifier Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIdentifierTok(IdentifierTok object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func Tok</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func Tok</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncTok(FuncTok object)
   {
     return null;
   }

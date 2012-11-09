@@ -38,6 +38,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.bindings.e4.EBindingService;
+import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
 import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.base.rendering.RendererFactory;
 import at.bestsolution.efxclipse.runtime.workbench.fx.key.KeyBindingDispatcher;
@@ -59,16 +61,25 @@ public class PartRenderingEngine implements IPresentationEngine {
 			@Named(E4Workbench.RENDERER_FACTORY_URI) @Optional String factoryUrl,
 			IEclipseContext context,
 			EModelService modelService,
-			IEventBroker eventBroker) {
+			IEventBroker eventBroker,
+			ThemeManager themeManager) {
 		if( factoryUrl == null ) {
 			factoryUrl = defaultFactoryUrl;
 		}
 		IContributionFactory contribFactory = context.get(IContributionFactory.class);
 		this.factory = (RendererFactory) contribFactory.create(factoryUrl, context);
 		this.modelService = modelService;
-		KeyBindingDispatcher dispatcher = ContextInjectionFactory.make(KeyBindingDispatcher.class, context);
-		context.set(KeyBindingDispatcher.class, dispatcher);
+		
+		if(  context.get(EBindingService.class.getName()) != null ) {
+			KeyBindingDispatcher dispatcher = ContextInjectionFactory.make(KeyBindingDispatcher.class, context);
+			context.set(KeyBindingDispatcher.class, dispatcher);
+		}
+		
 		setupEventListener(eventBroker);
+		
+		if( context.get(E4Application.THEME_ID) != null ) {
+			themeManager.setCurrentThemeId((String)context.get(E4Application.THEME_ID));
+		}
 	}
 	
 	void setupEventListener(IEventBroker eventBroker) {
@@ -105,8 +116,12 @@ public class PartRenderingEngine implements IPresentationEngine {
 			r.processContent(element);
 			r.postProcess(element);
 			
-			if (((EObject)element).eContainer() instanceof MUIElement) {
-				MUIElement parentElement = (MUIElement) ((EObject)element).eContainer();
+			Object parent = (element.getCurSharedRef() == null)
+					? ((EObject)element).eContainer()
+					: element.getCurSharedRef();
+
+			if (parent instanceof MUIElement) {
+				MUIElement parentElement = (MUIElement) parent;
 				AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(parentElement);
 				if (parentRenderer != null) {
 					parentRenderer.childRendered(parentElement, element);
@@ -214,7 +229,9 @@ public class PartRenderingEngine implements IPresentationEngine {
 
 	@SuppressWarnings("unchecked")
 	public void removeGui(MUIElement element) {
-		MUIElement container = (MUIElement) ((EObject)element).eContainer();
+		MUIElement container = (element.getCurSharedRef() == null)
+				? element.getCurSharedRef()
+				: (MUIElement) ((EObject)element).eContainer();
 		
 		if( container != null ) {
 			AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(container);
