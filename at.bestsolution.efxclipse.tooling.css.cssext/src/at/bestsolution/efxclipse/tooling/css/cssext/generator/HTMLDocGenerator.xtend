@@ -17,6 +17,9 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRegex
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleFunc
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSDefaultValue
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition
+import java.util.HashSet
 
 class HTMLDocGenerator {
 	def generate(Resource resource) '''
@@ -39,6 +42,10 @@ class HTMLDocGenerator {
     <title>CSS Documentation</title>
 
     <!-- Le styles -->
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -69,10 +76,13 @@ class HTMLDocGenerator {
     padding: 39px 19px 14px;
     position: relative;
 }
+.bs-href {
+	color: inherit;
+}
+.bs-href:hover {
+	color: #0088CC;
+}
     </style>
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 <body>
 	'''
 	def navbar(String name) '''
@@ -82,8 +92,8 @@ class HTMLDocGenerator {
 			<a class="brand" href="#">«name»</a>
 			<ul class="nav">
 				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
+				<!--<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>-->
 			</ul>
 		</div>
 	</div>
@@ -123,7 +133,8 @@ class HTMLDocGenerator {
 		</div>
 		<h2>Rules</h2>
 		«FOR r : p.rules»
-		<h4>«r.name.name»</h4>
+		<a name="r_«p.calcPackagename+"."+r.name.name»"></a>
+		<h3>«r.name.name»</h3>
 		<div style="padding-left: 40px;">
 			<code>«IF r.rule != null»«r.rule.translateRule»«ELSE»«(r.func as CSSRuleFunc).name»(«(r.func as CSSRuleFunc).params.translateRule»)«ENDIF»</code>
 			<div class="bs-docs-description">«r?.doku?.content?.fixJDoc»</div>
@@ -131,33 +142,98 @@ class HTMLDocGenerator {
 		«ENDFOR»
 		<h2>Elements</h2>
 		«FOR e : p.elements»
-		<h4>«e.name»</h4>
+		<a name="el_«p.calcPackagename+"."+e.name»"></a>
+		<h3>«e.name»«IF ! e.getSuper().empty»  <small>extends «e.getSuper().map(el|"<a class='bs-href' href='#el_"+(el.eContainer as PackageDefinition).calcPackagename+"."+el.name+"'>"+el.name+"</a>").join(",")»</small>«ENDIF»</h3>
 		<div style="padding-left: 40px;">
-			<div class="bs-docs-description">«e?.doku?.content?.fixJDoc»</div>
-			<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Property</th>
-					<th>Definition</th>
-					<th>Default</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-			«FOR prop : e.properties»
-			<tr>
-				<td><nobr>«prop.name»</nobr></td>
-				<td>«prop.rule.translateRule»</td>
-				<td>«prop?.getDefault()?.calcDefault»</td>
-				<td>«prop?.doku?.content?.fixJDoc»</td>
-			</tr>
-			«ENDFOR»
-			</tbody>
-			</table>
+			<div class="accordion" id="ac_«p.calcPackagename.replace('.','_')+"_"+e.name»">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#ac_«p.calcPackagename.replace('.','_')+"_"+e.name»" href="#desc_«p.calcPackagename.replace('.','_')+"_"+e.name»">
+							Description
+						</a>
+					</div>
+					<div id="desc_«p.calcPackagename.replace('.','_')+"_"+e.name»" class="accordion-body collapse">
+						<div class="accordion-inner">
+							«e?.doku?.content?.fixJDoc»
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#ac_«p.calcPackagename.replace('.','_')+"_"+e.name»" href="#props_«p.calcPackagename.replace('.','_')+"_"+e.name»">
+							Properties
+						</a>
+					</div>
+					<div id="props_«p.calcPackagename.replace('.','_')+"_"+e.name»" class="accordion-body collapse">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Property</th>
+									<th>Definition</th>
+									<th>Default</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								«FOR prop : e.properties»
+									<tr>
+										<td><nobr>«prop.name»</nobr></td>
+										<td>«prop.rule.translateRule»</td>
+										<td>«prop?.getDefault()?.calcDefault»</td>
+										<td>«prop?.doku?.content?.fixJDoc»</td>
+									</tr>
+								«ENDFOR»
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#ac_«p.calcPackagename.replace('.','_')+"_"+e.name»" href="#props_«p.calcPackagename.replace('.','_')+"_"+e.name»_inherited">
+							Inherited Properties
+						</a>
+					</div>
+					<div id="props_«p.calcPackagename.replace('.','_')+"_"+e.name»_inherited" class="accordion-body collapse">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Element</th>
+									<th>Property</th>
+									<th>Definition</th>
+									<th>Default</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								«FOR su : e.allSuperElements()»
+									«FOR prop : (su as ElementDefinition).properties»
+										<tr>
+											<td>«IF(su as ElementDefinition).properties.get(0) == prop»<nobr>«(su as ElementDefinition).name»</nobr>«ENDIF»</td>
+											<td><nobr>«prop.name»</nobr></td>
+											<td>«prop.rule.translateRule»</td>
+											<td>«prop?.getDefault()?.calcDefault»</td>
+											<td>«prop?.doku?.content?.fixJDoc»</td>
+										</tr>
+									«ENDFOR»
+								«ENDFOR»
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 		«ENDFOR»
 	</section>
 	'''
+	
+	def allSuperElements(ElementDefinition definition) {
+		val set = new HashSet<ElementDefinition>
+		for( su : definition.getSuper() ) {
+			set.add(su);
+			set.addAll(allSuperElements(su));
+		}
+		return set;
+	}
 	
 	def calcDefault(CSSDefaultValue defaultValue) {
 		if( defaultValue.getVal() != null ) {
@@ -243,7 +319,8 @@ class HTMLDocGenerator {
 			result.append((r as CSSNumLiteral).getValue());
 		}
 		else if (r instanceof CSSRuleRef) {
-			result.append("&lt;" + (r as CSSRuleRef).getRef().getName() + "&gt;");
+			val ref = r as CSSRuleRef;
+			result.append("&lt;<a class='bs-href' href='#r_"+(ref.getRef().findpackage as PackageDefinition).calcPackagename+"."+ref.getRef().getName()+"'>" + ref.getRef().getName() + "</a>&gt;");
 		}
 		else if (r instanceof CSSRulePostfix) {
 			result.append(translateRule(( r as CSSRulePostfix).getRule()) + (r as CSSRulePostfix).getCardinality());
@@ -265,6 +342,14 @@ class HTMLDocGenerator {
 		return result.toString;
 	}
 	
+	def findpackage(CSSRuleId rule) {
+		var e = rule.eContainer;
+		while( e != null && !(e instanceof PackageDefinition) ) {
+			e = e.eContainer;
+		}
+		return e;
+	}
+	
 	def leadout() '''
 	<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
@@ -279,6 +364,7 @@ class HTMLDocGenerator {
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-affix.js">
 </body>
 </html>
 	'''

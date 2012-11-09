@@ -22,6 +22,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -30,7 +31,10 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class HTMLDocGenerator {
@@ -89,6 +93,16 @@ public class HTMLDocGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("<!-- Le styles -->");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<link href=\"http://twitter.github.com/bootstrap/assets/css/bootstrap.css\" rel=\"stylesheet\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<link href=\"http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css\" rel=\"stylesheet\">");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<link href=\"http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css\" rel=\"stylesheet\">");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("    ");
     _builder.append("<style type=\"text/css\">");
@@ -176,17 +190,22 @@ public class HTMLDocGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    _builder.append(".bs-href {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("color: inherit;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append(".bs-href:hover {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("color: #0088CC;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
     _builder.append("    ");
     _builder.append("</style>");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("<link href=\"http://twitter.github.com/bootstrap/assets/css/bootstrap.css\" rel=\"stylesheet\">");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("<link href=\"http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css\" rel=\"stylesheet\">");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("<link href=\"http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css\" rel=\"stylesheet\">");
     _builder.newLine();
     _builder.append("<body>");
     _builder.newLine();
@@ -215,10 +234,10 @@ public class HTMLDocGenerator {
     _builder.append("<li class=\"active\"><a href=\"#\">Home</a></li>");
     _builder.newLine();
     _builder.append("\t\t\t\t");
-    _builder.append("<li><a href=\"#about\">About</a></li>");
+    _builder.append("<!--<li><a href=\"#about\">About</a></li>");
     _builder.newLine();
     _builder.append("\t\t\t\t");
-    _builder.append("<li><a href=\"#contact\">Contact</a></li>");
+    _builder.append("<li><a href=\"#contact\">Contact</a></li>-->");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("</ul>");
@@ -330,11 +349,21 @@ public class HTMLDocGenerator {
       EList<CSSRuleDefinition> _rules = p.getRules();
       for(final CSSRuleDefinition r : _rules) {
         _builder.append("\t");
-        _builder.append("<h4>");
+        _builder.append("<a name=\"r_");
+        String _calcPackagename_1 = this.calcPackagename(p);
+        String _plus = (_calcPackagename_1 + ".");
         CSSRuleId _name = r.getName();
         String _name_1 = _name.getName();
-        _builder.append(_name_1, "	");
-        _builder.append("</h4>");
+        String _plus_1 = (_plus + _name_1);
+        _builder.append(_plus_1, "	");
+        _builder.append("\"></a>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<h3>");
+        CSSRuleId _name_2 = r.getName();
+        String _name_3 = _name_2.getName();
+        _builder.append(_name_3, "	");
+        _builder.append("</h3>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<div style=\"padding-left: 40px;\">");
@@ -351,8 +380,8 @@ public class HTMLDocGenerator {
             _builder.append(_translateRule, "		");
           } else {
             CSSRule _func = r.getFunc();
-            String _name_2 = ((CSSRuleFunc) _func).getName();
-            _builder.append(_name_2, "		");
+            String _name_4 = ((CSSRuleFunc) _func).getName();
+            _builder.append(_name_4, "		");
             _builder.append("(");
             CSSRule _func_1 = r.getFunc();
             CSSRule _params = ((CSSRuleFunc) _func_1).getParams();
@@ -384,119 +413,471 @@ public class HTMLDocGenerator {
       EList<ElementDefinition> _elements = p.getElements();
       for(final ElementDefinition e : _elements) {
         _builder.append("\t");
-        _builder.append("<h4>");
-        String _name_3 = e.getName();
-        _builder.append(_name_3, "	");
-        _builder.append("</h4>");
+        _builder.append("<a name=\"el_");
+        String _calcPackagename_2 = this.calcPackagename(p);
+        String _plus_2 = (_calcPackagename_2 + ".");
+        String _name_5 = e.getName();
+        String _plus_3 = (_plus_2 + _name_5);
+        _builder.append(_plus_3, "	");
+        _builder.append("\"></a>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<h3>");
+        String _name_6 = e.getName();
+        _builder.append(_name_6, "	");
+        {
+          EList<ElementDefinition> _super = e.getSuper();
+          boolean _isEmpty = _super.isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            _builder.append("  <small>extends ");
+            EList<ElementDefinition> _super_1 = e.getSuper();
+            final Function1<ElementDefinition,String> _function = new Function1<ElementDefinition,String>() {
+                public String apply(final ElementDefinition el) {
+                  EObject _eContainer = el.eContainer();
+                  String _calcPackagename = HTMLDocGenerator.this.calcPackagename(((PackageDefinition) _eContainer));
+                  String _plus = ("<a class=\'bs-href\' href=\'#el_" + _calcPackagename);
+                  String _plus_1 = (_plus + ".");
+                  String _name = el.getName();
+                  String _plus_2 = (_plus_1 + _name);
+                  String _plus_3 = (_plus_2 + "\'>");
+                  String _name_1 = el.getName();
+                  String _plus_4 = (_plus_3 + _name_1);
+                  String _plus_5 = (_plus_4 + "</a>");
+                  return _plus_5;
+                }
+              };
+            List<String> _map = ListExtensions.<ElementDefinition, String>map(_super_1, _function);
+            String _join = IterableExtensions.join(_map, ",");
+            _builder.append(_join, "	");
+            _builder.append("</small>");
+          }
+        }
+        _builder.append("</h3>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<div style=\"padding-left: 40px;\">");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("<div class=\"bs-docs-description\">");
+        _builder.append("<div class=\"accordion\" id=\"ac_");
+        String _calcPackagename_3 = this.calcPackagename(p);
+        String _replace = _calcPackagename_3.replace(".", "_");
+        String _plus_4 = (_replace + "_");
+        String _name_7 = e.getName();
+        String _plus_5 = (_plus_4 + _name_7);
+        _builder.append(_plus_5, "		");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<div class=\"accordion-group\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("<div class=\"accordion-heading\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
+        String _calcPackagename_4 = this.calcPackagename(p);
+        String _replace_1 = _calcPackagename_4.replace(".", "_");
+        String _plus_6 = (_replace_1 + "_");
+        String _name_8 = e.getName();
+        String _plus_7 = (_plus_6 + _name_8);
+        _builder.append(_plus_7, "					");
+        _builder.append("\" href=\"#desc_");
+        String _calcPackagename_5 = this.calcPackagename(p);
+        String _replace_2 = _calcPackagename_5.replace(".", "_");
+        String _plus_8 = (_replace_2 + "_");
+        String _name_9 = e.getName();
+        String _plus_9 = (_plus_8 + _name_9);
+        _builder.append(_plus_9, "					");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
+        _builder.append("Description");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("</a>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("<div id=\"desc_");
+        String _calcPackagename_6 = this.calcPackagename(p);
+        String _replace_3 = _calcPackagename_6.replace(".", "_");
+        String _plus_10 = (_replace_3 + "_");
+        String _name_10 = e.getName();
+        String _plus_11 = (_plus_10 + _name_10);
+        _builder.append(_plus_11, "				");
+        _builder.append("\" class=\"accordion-body collapse\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("<div class=\"accordion-inner\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
         Doku _doku_1 = e==null?(Doku)null:e.getDoku();
         String _content_1 = _doku_1==null?(String)null:_doku_1.getContent();
         String _fixJDoc_1 = _content_1==null?(String)null:this.fixJDoc(_content_1);
-        _builder.append(_fixJDoc_1, "		");
-        _builder.append("</div>");
+        _builder.append(_fixJDoc_1, "						");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
         _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<div class=\"accordion-group\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("<div class=\"accordion-heading\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
+        String _calcPackagename_7 = this.calcPackagename(p);
+        String _replace_4 = _calcPackagename_7.replace(".", "_");
+        String _plus_12 = (_replace_4 + "_");
+        String _name_11 = e.getName();
+        String _plus_13 = (_plus_12 + _name_11);
+        _builder.append(_plus_13, "					");
+        _builder.append("\" href=\"#props_");
+        String _calcPackagename_8 = this.calcPackagename(p);
+        String _replace_5 = _calcPackagename_8.replace(".", "_");
+        String _plus_14 = (_replace_5 + "_");
+        String _name_12 = e.getName();
+        String _plus_15 = (_plus_14 + _name_12);
+        _builder.append(_plus_15, "					");
+        _builder.append("\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
+        _builder.append("Properties");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("</a>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("<div id=\"props_");
+        String _calcPackagename_9 = this.calcPackagename(p);
+        String _replace_6 = _calcPackagename_9.replace(".", "_");
+        String _plus_16 = (_replace_6 + "_");
+        String _name_13 = e.getName();
+        String _plus_17 = (_plus_16 + _name_13);
+        _builder.append(_plus_17, "				");
+        _builder.append("\" class=\"accordion-body collapse\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
         _builder.append("<table class=\"table table-bordered table-striped\">");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
         _builder.append("<thead>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t\t");
+        _builder.append("\t\t\t\t\t\t");
         _builder.append("<tr>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t\t\t");
+        _builder.append("\t\t\t\t\t\t\t");
         _builder.append("<th>Property</th>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t\t\t");
+        _builder.append("\t\t\t\t\t\t\t");
         _builder.append("<th>Definition</th>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t\t\t");
+        _builder.append("\t\t\t\t\t\t\t");
         _builder.append("<th>Default</th>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t\t\t");
+        _builder.append("\t\t\t\t\t\t\t");
         _builder.append("<th>Description</th>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t\t");
+        _builder.append("\t\t\t\t\t\t");
         _builder.append("</tr>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
         _builder.append("</thead>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
         _builder.append("<tbody>");
         _builder.newLine();
         {
           EList<PropertyDefinition> _properties = e.getProperties();
           for(final PropertyDefinition prop : _properties) {
             _builder.append("\t");
-            _builder.append("\t");
+            _builder.append("\t\t\t\t\t\t");
             _builder.append("<tr>");
             _builder.newLine();
             _builder.append("\t");
-            _builder.append("\t");
+            _builder.append("\t\t\t\t\t\t");
             _builder.append("\t");
             _builder.append("<td><nobr>");
-            String _name_4 = prop.getName();
-            _builder.append(_name_4, "			");
+            String _name_14 = prop.getName();
+            _builder.append(_name_14, "								");
             _builder.append("</nobr></td>");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            _builder.append("\t");
+            _builder.append("\t\t\t\t\t\t");
             _builder.append("\t");
             _builder.append("<td>");
             CSSRule _rule_2 = prop.getRule();
             String _translateRule_2 = this.translateRule(_rule_2);
-            _builder.append(_translateRule_2, "			");
+            _builder.append(_translateRule_2, "								");
             _builder.append("</td>");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            _builder.append("\t");
+            _builder.append("\t\t\t\t\t\t");
             _builder.append("\t");
             _builder.append("<td>");
             CSSDefaultValue _default = prop==null?(CSSDefaultValue)null:prop.getDefault();
             String _calcDefault = _default==null?(String)null:this.calcDefault(_default);
-            _builder.append(_calcDefault, "			");
+            _builder.append(_calcDefault, "								");
             _builder.append("</td>");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            _builder.append("\t");
+            _builder.append("\t\t\t\t\t\t");
             _builder.append("\t");
             _builder.append("<td>");
             Doku _doku_2 = prop==null?(Doku)null:prop.getDoku();
             String _content_2 = _doku_2==null?(String)null:_doku_2.getContent();
             String _fixJDoc_2 = _content_2==null?(String)null:this.fixJDoc(_content_2);
-            _builder.append(_fixJDoc_2, "			");
+            _builder.append(_fixJDoc_2, "								");
             _builder.append("</td>");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            _builder.append("\t");
+            _builder.append("\t\t\t\t\t\t");
             _builder.append("</tr>");
             _builder.newLine();
           }
         }
         _builder.append("\t");
-        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
         _builder.append("</tbody>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("\t");
+        _builder.append("\t\t\t\t");
         _builder.append("</table>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("<div class=\"accordion-group\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("<div class=\"accordion-heading\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
+        String _calcPackagename_10 = this.calcPackagename(p);
+        String _replace_7 = _calcPackagename_10.replace(".", "_");
+        String _plus_18 = (_replace_7 + "_");
+        String _name_15 = e.getName();
+        String _plus_19 = (_plus_18 + _name_15);
+        _builder.append(_plus_19, "					");
+        _builder.append("\" href=\"#props_");
+        String _calcPackagename_11 = this.calcPackagename(p);
+        String _replace_8 = _calcPackagename_11.replace(".", "_");
+        String _plus_20 = (_replace_8 + "_");
+        String _name_16 = e.getName();
+        String _plus_21 = (_plus_20 + _name_16);
+        _builder.append(_plus_21, "					");
+        _builder.append("_inherited\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
+        _builder.append("Inherited Properties");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("</a>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("<div id=\"props_");
+        String _calcPackagename_12 = this.calcPackagename(p);
+        String _replace_9 = _calcPackagename_12.replace(".", "_");
+        String _plus_22 = (_replace_9 + "_");
+        String _name_17 = e.getName();
+        String _plus_23 = (_plus_22 + _name_17);
+        _builder.append(_plus_23, "				");
+        _builder.append("_inherited\" class=\"accordion-body collapse\">");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("<table class=\"table table-bordered table-striped\">");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
+        _builder.append("<thead>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t\t");
+        _builder.append("<tr>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t\t\t");
+        _builder.append("<th>Element</th>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t\t\t");
+        _builder.append("<th>Property</th>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t\t\t");
+        _builder.append("<th>Definition</th>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t\t\t");
+        _builder.append("<th>Default</th>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t\t\t");
+        _builder.append("<th>Description</th>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t\t");
+        _builder.append("</tr>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
+        _builder.append("</thead>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
+        _builder.append("<tbody>");
+        _builder.newLine();
+        {
+          HashSet<ElementDefinition> _allSuperElements = this.allSuperElements(e);
+          for(final ElementDefinition su : _allSuperElements) {
+            {
+              EList<PropertyDefinition> _properties_1 = ((ElementDefinition) su).getProperties();
+              for(final PropertyDefinition prop_1 : _properties_1) {
+                _builder.append("\t");
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("<tr>");
+                _builder.newLine();
+                _builder.append("\t");
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("\t");
+                _builder.append("<td>");
+                {
+                  EList<PropertyDefinition> _properties_2 = ((ElementDefinition) su).getProperties();
+                  PropertyDefinition _get = _properties_2.get(0);
+                  boolean _equals = Objects.equal(_get, prop_1);
+                  if (_equals) {
+                    _builder.append("<nobr>");
+                    String _name_18 = ((ElementDefinition) su).getName();
+                    _builder.append(_name_18, "								");
+                    _builder.append("</nobr>");
+                  }
+                }
+                _builder.append("</td>");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("\t");
+                _builder.append("<td><nobr>");
+                String _name_19 = prop_1.getName();
+                _builder.append(_name_19, "								");
+                _builder.append("</nobr></td>");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("\t");
+                _builder.append("<td>");
+                CSSRule _rule_3 = prop_1.getRule();
+                String _translateRule_3 = this.translateRule(_rule_3);
+                _builder.append(_translateRule_3, "								");
+                _builder.append("</td>");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("\t");
+                _builder.append("<td>");
+                CSSDefaultValue _default_1 = prop_1==null?(CSSDefaultValue)null:prop_1.getDefault();
+                String _calcDefault_1 = _default_1==null?(String)null:this.calcDefault(_default_1);
+                _builder.append(_calcDefault_1, "								");
+                _builder.append("</td>");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("\t");
+                _builder.append("<td>");
+                Doku _doku_3 = prop_1==null?(Doku)null:prop_1.getDoku();
+                String _content_3 = _doku_3==null?(String)null:_doku_3.getContent();
+                String _fixJDoc_3 = _content_3==null?(String)null:this.fixJDoc(_content_3);
+                _builder.append(_fixJDoc_3, "								");
+                _builder.append("</td>");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("</tr>");
+                _builder.newLine();
+              }
+            }
+          }
+        }
+        _builder.append("\t");
+        _builder.append("\t\t\t\t\t");
+        _builder.append("</tbody>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t\t");
+        _builder.append("</table>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t\t");
+        _builder.append("</div>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</div>");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("</div>");
@@ -506,6 +887,20 @@ public class HTMLDocGenerator {
     _builder.append("</section>");
     _builder.newLine();
     return _builder;
+  }
+  
+  public HashSet<ElementDefinition> allSuperElements(final ElementDefinition definition) {
+    HashSet<ElementDefinition> _hashSet = new HashSet<ElementDefinition>();
+    final HashSet<ElementDefinition> set = _hashSet;
+    EList<ElementDefinition> _super = definition.getSuper();
+    for (final ElementDefinition su : _super) {
+      {
+        set.add(su);
+        HashSet<ElementDefinition> _allSuperElements = this.allSuperElements(su);
+        set.addAll(_allSuperElements);
+      }
+    }
+    return set;
   }
   
   public String calcDefault(final CSSDefaultValue defaultValue) {
@@ -669,18 +1064,28 @@ public class HTMLDocGenerator {
                 result.append(_value_1);
               } else {
                 if ((r instanceof CSSRuleRef)) {
-                  CSSRuleId _ref = ((CSSRuleRef) r).getRef();
-                  String _name = _ref.getName();
-                  String _plus_2 = ("&lt;" + _name);
-                  String _plus_3 = (_plus_2 + "&gt;");
-                  result.append(_plus_3);
+                  final CSSRuleRef ref = ((CSSRuleRef) r);
+                  CSSRuleId _ref = ref.getRef();
+                  EObject _findpackage = this.findpackage(_ref);
+                  String _calcPackagename = this.calcPackagename(((PackageDefinition) _findpackage));
+                  String _plus_2 = ("&lt;<a class=\'bs-href\' href=\'#r_" + _calcPackagename);
+                  String _plus_3 = (_plus_2 + ".");
+                  CSSRuleId _ref_1 = ref.getRef();
+                  String _name = _ref_1.getName();
+                  String _plus_4 = (_plus_3 + _name);
+                  String _plus_5 = (_plus_4 + "\'>");
+                  CSSRuleId _ref_2 = ref.getRef();
+                  String _name_1 = _ref_2.getName();
+                  String _plus_6 = (_plus_5 + _name_1);
+                  String _plus_7 = (_plus_6 + "</a>&gt;");
+                  result.append(_plus_7);
                 } else {
                   if ((r instanceof CSSRulePostfix)) {
                     CSSRule _rule = ((CSSRulePostfix) r).getRule();
                     String _translateRule_1 = this.translateRule(_rule);
                     String _cardinality = ((CSSRulePostfix) r).getCardinality();
-                    String _plus_4 = (_translateRule_1 + _cardinality);
-                    result.append(_plus_4);
+                    String _plus_8 = (_translateRule_1 + _cardinality);
+                    result.append(_plus_8);
                   } else {
                     if ((r instanceof CSSRuleRegex)) {
                       String _regex = ((CSSRuleRegex) r).getRegex();
@@ -707,6 +1112,33 @@ public class HTMLDocGenerator {
       }
     }
     return result.toString();
+  }
+  
+  public EObject findpackage(final CSSRuleId rule) {
+    EObject e = rule.eContainer();
+    boolean _and = false;
+    boolean _notEquals = (!Objects.equal(e, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      boolean _not = (!(e instanceof PackageDefinition));
+      _and = (_notEquals && _not);
+    }
+    boolean _while = _and;
+    while (_while) {
+      EObject _eContainer = e.eContainer();
+      e = _eContainer;
+      boolean _and_1 = false;
+      boolean _notEquals_1 = (!Objects.equal(e, null));
+      if (!_notEquals_1) {
+        _and_1 = false;
+      } else {
+        boolean _not_1 = (!(e instanceof PackageDefinition));
+        _and_1 = (_notEquals_1 && _not_1);
+      }
+      _while = _and_1;
+    }
+    return e;
   }
   
   public CharSequence leadout() {
@@ -749,6 +1181,9 @@ public class HTMLDocGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("<script src=\"http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js\"></script>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("<script src=\"http://twitter.github.com/bootstrap/assets/js/bootstrap-affix.js\">");
     _builder.newLine();
     _builder.append("</body>");
     _builder.newLine();
