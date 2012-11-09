@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.formats.fxg.converter;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.BindValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ControllerHandledValueProperty;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.IncludeValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueElement;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueProperty;
@@ -99,14 +100,20 @@ public class ValuePropertyFormatter {
 			sb.append("const " + p.getType().getSimpleName() + "#"
 					+ p.getField());
 			formattedValue = sb.toString();
+		} else if (value instanceof IncludeValueProperty) {
+			IncludeValueProperty inc = (IncludeValueProperty) value;
+			formattedValue = "include " + "source=" + inc.getSource()
+					+ " name=" + inc.getName(); // TODO
 		} else if (value instanceof ReferenceValueProperty) {
 			ReferenceValueProperty ref = (ReferenceValueProperty) value;
 			StringBuffer sb = new StringBuffer();
 			sb.append("idref ");
-			sb.append(ref.getReference()); // TODO get the name
+			if (ref.getReference() instanceof Element) {
+				sb.append(((Element) ref.getReference()).getType()
+						.getSimpleName());
+			}
 			if (!ref.getStaticCallProperties().isEmpty()
 					|| !ref.getStaticProperties().isEmpty()) {
-				// TODO
 				sb.append("{");
 				boolean comma = false;
 				for (StaticCallValueProperty p : ref.getStaticCallProperties()) {
@@ -126,11 +133,6 @@ public class ValuePropertyFormatter {
 				sb.append("}");
 			}
 			formattedValue = sb.toString();
-		} else if (value instanceof IncludeValueProperty) {
-			IncludeValueProperty inc = (IncludeValueProperty) value;
-			formattedValue = "include " + "source=" + inc.getSource()
-					+ " name=" + inc.getName(); // TODO
-
 		} else if (value instanceof SimpleValueProperty) {
 			SimpleValueProperty v = (SimpleValueProperty) value;
 			if (v.getBooleanValue() != null) {
