@@ -122,7 +122,7 @@ class FXGraphConverter {
 		«p.name» : [
 		«var Boolean comma = false»
 			«FOR Property inner : list.properties»
-				«IF comma»,«ENDIF»«inner.name»(«new ValuePropertyFormatter(inner.value).formattedValue»)
+				«IF comma»,«ENDIF»«IF inner.name.toFirstUpper.equals(inner.name)»«new ValuePropertyFormatter(inner).formattedValue»«ELSE»«inner.name»(«new ValuePropertyFormatter(inner.value).formattedValue»)«ENDIF»
 				«val nix = comma = true»
 			«ENDFOR»
 		]'''

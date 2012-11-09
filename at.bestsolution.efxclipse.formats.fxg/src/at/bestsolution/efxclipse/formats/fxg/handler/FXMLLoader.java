@@ -242,9 +242,14 @@ public class FXMLLoader {
 												FXGraphFactory.eINSTANCE
 														.createListValueProperty());
 									}
+									if (p.getValue() instanceof ListValueProperty) {
 									ListValueProperty list = (ListValueProperty) p
 											.getValue();
 									list.getValue().add(e);
+									}
+									else if ((p.getValue() instanceof ListValueProperty)) {
+										System.err.println("TODO");
+									}
 									parent.getProperties().add(p);
 								} else if ("fx:define"
 										.equals(getStructuralParent())) {
@@ -398,7 +403,7 @@ public class FXMLLoader {
 		 * @return
 		 */
 		private boolean isSpecial(String s) {
-			return "styleClass".equals(s);
+			return "styleClass".equals(s)||"points".equals(s);
 		}
 
 		@Override
@@ -571,12 +576,19 @@ public class FXMLLoader {
 				vp.setBooleanValue(value);
 			} else {
 				try {
-					Integer i = Integer.parseInt(value);
-					vp.setIntValue(i);
+					Double i = Double.parseDouble(value);
+					vp.setRealValue(i);
 					vp.setNegative(i < 0);
 
 				} catch (NumberFormatException e) {
-					vp.setStringValue(value);
+					try {
+						Integer i = Integer.parseInt(value);
+						vp.setIntValue(i);
+						vp.setNegative(i < 0);
+
+					} catch (NumberFormatException ex) {
+						vp.setStringValue(value);
+					}
 				}
 			}
 			return vp;

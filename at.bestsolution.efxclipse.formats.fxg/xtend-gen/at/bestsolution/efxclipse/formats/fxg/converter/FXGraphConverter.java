@@ -457,14 +457,26 @@ public class FXGraphConverter {
             _builder.append(",");
           }
         }
-        String _name_1 = inner.getName();
-        _builder.append(_name_1, "	");
-        _builder.append("(");
-        ValueProperty _value_1 = inner.getValue();
-        ValuePropertyFormatter _valuePropertyFormatter = new ValuePropertyFormatter(_value_1);
-        String _formattedValue = _valuePropertyFormatter.getFormattedValue();
-        _builder.append(_formattedValue, "	");
-        _builder.append(")");
+        {
+          String _name_1 = inner.getName();
+          String _firstUpper = StringExtensions.toFirstUpper(_name_1);
+          String _name_2 = inner.getName();
+          boolean _equals = _firstUpper.equals(_name_2);
+          if (_equals) {
+            ValuePropertyFormatter _valuePropertyFormatter = new ValuePropertyFormatter(inner);
+            String _formattedValue = _valuePropertyFormatter.getFormattedValue();
+            _builder.append(_formattedValue, "	");
+          } else {
+            String _name_3 = inner.getName();
+            _builder.append(_name_3, "	");
+            _builder.append("(");
+            ValueProperty _value_1 = inner.getValue();
+            ValuePropertyFormatter _valuePropertyFormatter_1 = new ValuePropertyFormatter(_value_1);
+            String _formattedValue_1 = _valuePropertyFormatter_1.getFormattedValue();
+            _builder.append(_formattedValue_1, "	");
+            _builder.append(")");
+          }
+        }
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         final Boolean nix = comma = Boolean.valueOf(true);

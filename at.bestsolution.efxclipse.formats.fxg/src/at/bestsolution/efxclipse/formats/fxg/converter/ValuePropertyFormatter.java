@@ -36,12 +36,17 @@ public class ValuePropertyFormatter {
 		} else if (value instanceof Property) {
 			Property p = (Property) value;
 			StringBuffer sb = new StringBuffer();
-			if (p.getModifier() != null) {
-				sb.append(p.getModifier() + " ");
+			if ("Integer".equals(p.getName()) || "Double".equals(p.getName())) {
+				sb.append(new ValuePropertyFormatter(p.getValue())
+						.getFormattedValue().replaceAll("\"", ""));
+			} else {
+				if (p.getModifier() != null) {
+					sb.append(p.getModifier() + " ");
+				}
+				sb.append(p.getName() + " : ");
+				sb.append(new ValuePropertyFormatter(p.getValue())
+						.getFormattedValue());
 			}
-			sb.append(p.getName() + " : ");
-			sb.append(new ValuePropertyFormatter(p.getValue())
-					.getFormattedValue());
 			formattedValue = sb.toString();
 		} else if (value instanceof ResourceValueProperty) {
 			ResourceValueProperty p = (ResourceValueProperty) value;
@@ -132,6 +137,8 @@ public class ValuePropertyFormatter {
 				formattedValue = v.getBooleanValue();
 			} else if (v.getStringValue() != null) {
 				formattedValue = "\"" + v.getStringValue() + "\"";
+			} else if (v.getRealValue() != 0.0) {
+				formattedValue = "" + v.getRealValue();
 			} else {
 				formattedValue = "" + v.getIntValue();
 			}
