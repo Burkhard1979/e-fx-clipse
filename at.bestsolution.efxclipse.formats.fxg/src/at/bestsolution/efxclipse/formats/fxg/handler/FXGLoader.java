@@ -34,9 +34,9 @@ import at.bestsolution.efxclipse.formats.fxg.fxg.Graphic;
 import at.bestsolution.efxclipse.formats.fxg.fxg.Library;
 import at.bestsolution.efxclipse.formats.fxg.fxg.RichText;
 
-public class XMLLoader {
+public class FXGLoader {
 
-	public Graphic loadGrapic(InputStream in) {
+	public Graphic loadGraphic(InputStream in) {
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			factory.setNamespaceAware(true);
@@ -62,14 +62,6 @@ public class XMLLoader {
 		// Stack<RichTextContent>();
 
 		private static final String FXG_NS = "http://ns.adobe.com/fxg/2008";
-
-		private String identing() {
-			String rv = "";
-			for (int i = 0; i < elementStack.size(); i++) {
-				rv += " ";
-			}
-			return rv;
-		}
 
 		@SuppressWarnings("unchecked")
 		@Override

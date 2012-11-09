@@ -57,21 +57,24 @@ public class XMLLoader {
 	public static void main(String[] args) {
 		XMLLoader l = new XMLLoader();
 		try {
+			// TODO use workspace file
 			File f = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/player.svg");
 			InputStream in;
 			
 			if( f.getName().endsWith("svgz") ) {
-				in = new GZIPInputStream(f.toURL().openStream());
+				in = new GZIPInputStream(f.toURI().toURL().openStream());
 			} else {
-				in = f.toURL().openStream();
+				in = f.toURI().toURL().openStream();
 			}
 			
 			
+			// TODO use workspace file
 			SvgSvgElement g = l.loadDocument("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/test.fxml",in);
 //			SvgSvgElement g = l.loadDocument(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/w3/images/shapes/rect01.svg").toURL().openStream());
 //			SvgSvgElement g = l.loadDocument(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/w3/images/filters/filters01.svg").toURL().openStream());
 			FXMLConverter c = new FXMLConverter(g);
 			String fxmlData = c.generate().toString();
+			// TODO use workspace file
 			File outFile = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/test.fxml");
 			FileOutputStream out = new FileOutputStream(outFile);
 			out.write(fxmlData.getBytes());
@@ -221,6 +224,7 @@ public class XMLLoader {
 		private static final String SVG_NS = "http://www.w3.org/2000/svg";
 		private static final String XLINK_NS = "http://www.w3.org/1999/xlink";
 		
+		@SuppressWarnings("unchecked")
 		@Override
 		public InputSource resolveEntity(String arg0, String arg1) throws IOException, SAXException {
 			return new InputSource(new StringReader(""));
