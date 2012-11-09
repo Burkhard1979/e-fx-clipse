@@ -17,6 +17,7 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.BindValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ComponentDefinition;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ControllerHandledValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.CopyValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define;
@@ -128,6 +129,8 @@ public class FXGraphLabelProvider extends DefaultEObjectLabelProvider {
 		} else if( element.getValue() instanceof ScriptHandlerHandledValueProperty ) {
 			return IconKeys.getIcon(IconKeys.EVENT_KEY);
 		} else if( element.getValue() instanceof SimpleValueProperty ) {
+			return IconKeys.getIcon(IconKeys.FIELD_KEY);
+		} else if( element.getValue() instanceof ConstValueProperty ) {
 			return IconKeys.getIcon(IconKeys.FIELD_KEY);
 		}
 		

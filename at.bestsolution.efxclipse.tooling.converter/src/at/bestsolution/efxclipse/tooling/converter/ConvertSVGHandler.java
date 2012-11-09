@@ -30,4 +30,8 @@ public class ConvertSVGHandler extends AbstractConverterHandler {
 		}
 	}
 
+	@Override
+	protected String getTargetFileExtension() {
+		return ".fxml";
+	}
 }

@@ -33,7 +33,7 @@
          </command>
          <command
                commandId="at.bestsolution.efxclipse.tooling.converter.fxg"
-               label="Convert FXG To FXML"
+               label="Convert FXG to FXML"
                style="push">
             <visibleWhen
                   checkEnabled="true">
@@ -56,6 +56,31 @@
                </with>
             </visibleWhen>
          </command>
+         <command
+               commandId="at.bestsolution.efxclipse.tooling.converter.fxml"
+               label="Convert FXML to FXGraph"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <adapt
+                           type="org.eclipse.core.resources.IFile">
+                        <test
+                              property="org.eclipse.core.resources.name"
+                              value="*.fxml">
+                        </test>
+                     </adapt>
+                  </iterate>
+                  <count
+                        value="1">
+                  </count>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -64,6 +89,11 @@
             defaultHandler="at.bestsolution.efxclipse.tooling.converter.ConvertFXGHandler"
             id="at.bestsolution.efxclipse.tooling.converter.fxg"
             name="Convert FXG">
+      </command>
+      <command
+            defaultHandler="at.bestsolution.efxclipse.tooling.converter.ConvertFXMLHandler"
+            id="at.bestsolution.efxclipse.tooling.converter.fxml"
+            name="Convert FXML">
       </command>
       <command
             defaultHandler="at.bestsolution.efxclipse.tooling.converter.ConvertSVGHandler"
