@@ -192,6 +192,9 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 	public static IJavaElement computeTagAttValueHelp(IDOMNode xmlnode, int offset) {
 		NamedNodeMap m = xmlnode.getAttributes();
 		IDOMNode attribute = null;
+		if( m == null ) {
+			return null;
+		}
 		for( int i = 0; i < m.getLength(); i++ ) {
 			IDOMNode a = (IDOMNode) m.item(i);
 			if( a.contains(offset) ) {
