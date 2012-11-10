@@ -981,6 +981,72 @@ package javafx {
 			 * <p>
 			 * A Region is a Node (extending from Parent) with backgrounds and borders that are styleable via CSS. A Region is typically a rounded rectangle, though this can be modified through CSS to be an arbitrary shape. Regions can contain other Region objects (sub-regions) or they can contain sub-controls. All Regions have the same set of CSS properties as described below.
 			 * </p>
+			 * <p> 
+			 * Each Region consists of several layers, painted from bottom to top, in this order:
+			 * <ol>
+    		 * <li>background fills</li>
+    		 * <li>background images</li>
+    		 * <li>contents</li>
+    		 * <li>border strokes</li>
+    		 * <li>border images</li>
+    		 * </ol>
+    		 * </p>
+    		 * <p>
+    		 * The background and border mechanisms are patterned after the CSS 3 draft backgrounds and borders module. 
+    		 * See [4] for a detailed description.
+    		 * </p>
+    		 * <p>
+    		 * Background fills are specified with the properties -fx-background-color, -fx-background-radius 
+    		 * and -fx-background-insets. The -fx-background-color property is a series of one or more 
+    		 * comma-separated <paint> values. The number of values in the series determines the number of 
+    		 * background rectangles that are painted. Background rectangles are painted in the order specified 
+    		 * using the given <paint> value. Each background rectangle can have different radii and insets. 
+    		 * The -fx-background-radius and -fx-background-insets properties are series of comma-separated 
+    		 * values (or sets of values). The radius and insets values used for a particular background are 
+    		 * the found in the corresponding position in the -fx-background-radius and -fx-background-insets 
+    		 * series. For example, suppose a series of three values is given for the -fx-background-color property. 
+    		 * A series of three values should also be specified for the -fx-background-radius and -fx-background-insets 
+    		 * properties. The first background will be painted using the first radius value and first insets value, 
+    		 * the second background will be painted with the second radius value and second insets value, and so forth.
+    		 * </p>
+    		 * <p>
+    		 * Note also that properties such as -fx-background-radius and -fx-background-insets can contain a series 
+    		 * of values or sets of four values. A set of values is separated by whitespace, whereas the values or 
+    		 * sets-of-values in a series are separated by commas. For -fx-background-radius, a single value indicates 
+    		 * that the value should be used for the radius of all four corners of the background rectangle. A set of 
+    		 * four values indicates that different radius values are to be used for the top-left, top-right, 
+    		 * bottom-right, and bottom-left corners, in that order. Similarly, the -fx-background-insets property 
+    		 * can also contain a series of values or sets of values. A set of four values for -fx-background-insets 
+    		 * indicates that different insets are to be used for the top, right, bottom, and left edges of the rectangle, 
+    		 * in that order.
+    		 * </p>
+    		 * <p>
+    		 * Background images are specified with the properties -fx-background-image, -fx-background-repeat, 
+    		 * -fx-background-position and -fx-background-size. The number of images in the series of -fx-background-image 
+    		 * values determines the number of background images that are painted. The -fx-background-repeat, 
+    		 * -fx-background-position, and -fx-background-size properties each can contain a series of values. 
+    		 * For each item in the -fx-background-image series, the corresponding items in the -fx-background-repeat, 
+    		 * -fx-background-position, and -fx-background-size properties are applied to that background image.
+    		 * </p>
+    		 * <p>
+    		 * Stroked borders are specified with the properties -fx-border-color, -fx-border-style, -fx-border-width, 
+    		 * -fx-border-radius and -fx-border-insets. Each property contains a series of items. The number of items 
+    		 * in the-fx- border-color property determines the number of borders that are painted. Each border in 
+    		 * the series is painted using information from the corresponding series item of the -fx-border-style, 
+    		 * -fx-border-width, -fx-border-radius, and -fx-border-insets properties.
+    		 * </p>
+    		 * <p>
+    		 * Image borders are specified with the properties -fx-border-image-source, -fx-border-image-repeat, 
+    		 * -fx-border-image-slice, -fx-border-image-width and -fx-border-image-insets. Each property contains 
+    		 * a series of items. The number of items in the -fx-border-image-source property determines the number 
+    		 * of images that are painted. Each image in the series is painted using information from the corresponding 
+    		 * series items of the -fx-border-image-repeat, -fx-border-image-slice, -fx-border-image-width, and 
+    		 * -fx-border-image-insets properties.
+    		 * </p>
+    		 * <p>
+    		 * The region's contents are a sequence of nodes, like any other container. The contents are set 
+    		 * programmatically and cannot be set via CSS.
+    		 * </p>
 			 */
 			Region extends Parent {
 				
