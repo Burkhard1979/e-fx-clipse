@@ -117,13 +117,578 @@ package javafx {
 	font = [ <font-style> || <font-weight> ]? <font-size> <font-family>;
 	
 	color = <named-color> | <looked-up-color> | <rgb-color> | <hsb-color> | <color-function>;
-	named-color = 	aliceblue | anitquewhite | aqua | aquamarine |
-					azure | beige | bisque | black |
-					blanchedalmond | blue | blueviolet | brown |
-					burlywood | cadetblue | chartreuse | chocolate |
-					coral | cornflowerblue | cornsilk | crimson |
-					cyan | darkblue | darkcyan | darkgoldenrod |
-					darkgray | darkgreen | darkgrey | darkkhaki; // TODO finish this!
+	
+	/**
+	 * CSS supports a bunch of named constant colors. Named colors can be specified with just their unquoted name for example:<br />
+	 * <code>
+	 * .button {<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;-fx-background-color: red;<br />
+     * }
+	 * </code><br />
+	 * 
+	 * The named colors that are available in CSS are:
+	 * 
+	 * <table summary="property table" class="html4colortable">
+     * <tbody>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% aliceblue;"></span>
+     *     </td>
+     *     <td>aliceblue = #f0f8ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% antiquewhite;"></span>
+     *     </td>
+     *     <td>antiquewhite = #faebd7</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% aqua;"></span>
+     *     </td>
+     *     <td>aqua = #00ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% aquamarine;"></span>
+     *     </td>
+     *     <td>aquamarine = #7fffd4</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% azure;"></span>
+     *     </td>
+     *     <td>azure = #f0ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% beige;"></span>
+     *     </td>
+     *     <td>beige = #f5f5dc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% bisque;"></span>
+     *     </td>
+     *     <td>bisque = #ffe4c4</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% black;"></span>
+     *     </td>
+     *     <td>black = #000000</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% blanchedalmond;"></span>
+     *     </td>
+     *     <td>blanchedalmond = #ffebcd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% blue;"></span>
+     *     </td>
+     *     <td>blue = #0000ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% blueviolet;"></span>
+     *     </td>
+     *     <td>blueviolet = #8a2be2</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% brown;"></span>
+     *     </td>
+     *     <td>brown = #a52a2a</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% burlywood;"></span>
+     *     </td>
+     *     <td>burlywood = #deb887</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cadetblue;"></span>
+     *     </td>
+     *     <td>cadetblue = #5f9ea0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% chartreuse;"></span>
+     *     </td>
+     *     <td>chartreuse = #7fff00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% chocolate;"></span>
+     *     </td>
+     *     <td>chocolate = #d2691e</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% coral;"></span>
+     *     </td>
+     *     <td>coral = #ff7f50</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cornflowerblue;"></span>
+     *     </td>
+     *     <td>cornflowerblue = #6495ed</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cornsilk;"></span>
+     *     </td>
+     *     <td>cornsilk = #fff8dc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% crimson;"></span>
+     *     </td>
+     *     <td>crimson = #dc143c</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cyan;"></span>
+     *     </td>
+     *     <td>cyan = #00ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkblue;"></span>
+     *     </td>
+     *     <td>darkblue = #00008b</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkcyan;"></span>
+     *     </td>
+     *     <td>darkcyan = #008b8b</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgoldenrod;"></span>
+     *     </td>
+     *     <td>darkgoldenrod = #b8860b</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgray;"></span>
+     *     </td>
+     *     <td>darkgray = #a9a9a9</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgreen;"></span>
+     *     </td>
+     *     <td>darkgreen = #006400</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgrey;"></span>
+     *     </td>
+     *     <td>darkgrey = #a9a9a9</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkkhaki;"></span>
+     *     </td>
+     *     <td>darkkhaki = #bdb76b</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkmagenta;"></span>
+     *     </td>
+     *     <td>darkmagenta = #8b008b</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkolivegreen;"></span>
+     *     </td>
+     *     <td>darkolivegreen = #556b2f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkorange;"></span>
+     *     </td>
+     *     <td>darkorange = #ff8c00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkorchid;"></span>
+     *     </td>
+     *     <td>darkorchid = #9932cc</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkred;"></span>
+     *     </td>
+     *     <td>darkred = #8b0000</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darksalmon;"></span>
+     *     </td>
+     *     <td>darksalmon = #e9967a</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkseagreen;"></span>
+     *     </td>
+     *     <td>darkseagreen = #8fbc8f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkslateblue;"></span>
+     *     </td>
+     *     <td>darkslateblue = #483d8b</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkslategray;"></span>
+     *     </td>
+     *     <td>darkslategray = #2f4f4f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkslategrey;"></span>
+     *     </td>
+     *     <td>darkslategrey = #2f4f4f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkturquoise;"></span>
+     *     </td>
+     *     <td>darkturquoise = #00ced1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkviolet;"></span>
+     *     </td>
+     *     <td>darkviolet = #9400d3</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% deeppink;"></span>
+     *     </td>
+     *     <td>deeppink = #ff1493</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% deepskyblue;"></span>
+     *     </td>
+     *     <td>deepskyblue = #00bfff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% dimgray;"></span>
+     *     </td>
+     *     <td>dimgray = #696969</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% dimgrey;"></span>
+     *     </td>
+     *     <td>dimgrey = #696969</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% dodgerblue;"></span>
+     *     </td>
+     *     <td>dodgerblue = #1e90ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% firebrick;"></span>
+     *     </td>
+     *     <td>firebrick = #b22222</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% floralwhite;"></span>
+     *     </td>
+     *     <td>floralwhite = #fffaf0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% forestgreen;"></span>
+     *     </td>
+     *     <td>forestgreen = #228b22</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% fuchsia;"></span>
+     *     </td>
+     *     <td>fuchsia = #ff00ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% gainsboro;"></span>
+     *     </td>
+     *     <td>gainsboro = #dcdcdc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% ghostwhite;"></span>
+     *     </td>
+     *     <td>ghostwhite = #f8f8ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% gold;"></span>
+     *     </td>
+     *     <td>gold = #ffd700</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% goldenrod;"></span>
+     *     </td>
+     *     <td>goldenrod = #daa520</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% gray;"></span>
+     *     </td>
+     *     <td>gray = #808080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% green;"></span>
+     *     </td>
+     *     <td>green = #008000</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% greenyellow;"></span>
+     *     </td>
+     *     <td>greenyellow = #adff2f</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% grey;"></span>
+     *     </td>
+     *     <td>grey = #808080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% honeydew;"></span>
+     *     </td>
+     *     <td>honeydew = #f0fff0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% hotpink;"></span>
+     *     </td>
+     *     <td>hotpink = #ff69b4</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% indianred;"></span>
+     *     </td>
+     *     <td>indianred = #cd5c5c</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% indigo;"></span>
+     *     </td>
+     *     <td>indigo = #4b0082</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% ivory;"></span>
+     *     </td>
+     *     <td>ivory = #fffff0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% khaki;"></span>
+     *     </td>
+     *     <td>khaki = #f0e68c</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lavender;"></span>
+     *     </td>
+     *     <td>lavender = #e6e6fa</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lavenderblush;"></span>
+     *     </td>
+     *     <td>lavenderblush = #fff0f5</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lawngreen;"></span>
+     *     </td>
+     *     <td>lawngreen = #7cfc00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lemonchiffon;"></span>
+     *     </td>
+     *     <td>lemonchiffon = #fffacd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightblue;"></span>
+     *     </td>
+     *     <td>lightblue = #add8e6</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightcoral;"></span>
+     *     </td>
+     *     <td>lightcoral = #f08080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightcyan;"></span>
+     *     </td>
+     *     <td>lightcyan = #e0ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgoldenrodyellow;"></span>
+     *     </td>
+     *     <td>lightgoldenrodyellow = #fafad2</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgray;"></span>
+     *     </td>
+     *     <td>lightgray = #d3d3d3</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgreen;"></span>
+     *     </td>
+     *     <td>lightgreen = #90ee90</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgrey;"></span>
+     *     </td>
+     *     <td>lightgrey = #d3d3d3</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightpink;"></span>
+     *     </td>
+     *     <td>lightpink = #ffb6c1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightsalmon;"></span>
+     *     </td>
+     *     <td>lightsalmon = #ffa07a</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightseagreen;"></span>
+     *     </td>
+     *     <td>lightseagreen = #20b2aa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightskyblue;"></span>
+     *     </td>
+     *     <td>lightskyblue = #87cefa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightslategray;"></span>
+     *     </td>
+     *     <td>lightslategray = #778899</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightslategrey;"></span>
+     *     </td>
+     *     <td>lightslategrey = #778899</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightsteelblue;"></span>
+     *     </td>
+     *     <td>lightsteelblue = #b0c4de</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightyellow;"></span>
+     *     </td>
+     *     <td>lightyellow = #ffffe0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lime;"></span>
+     *     </td>
+     *     <td>lime = #00ff00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% limegreen;"></span>
+     *     </td>
+     *     <td>limegreen = #32cd32</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% linen;"></span>
+     *     </td>
+     *     <td>linen = #faf0e6</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% magenta;"></span>
+     *     </td>
+     *     <td>magenta = #ff00ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% maroon;"></span>
+     *     </td>
+     *     <td>maroon = #800000</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumaquamarine;"></span>
+     *     </td>
+     *     <td>mediumaquamarine = #66cdaa</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumblue;"></span>
+     *     </td>
+     *     <td>mediumblue = #0000cd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumorchid;"></span>
+     *     </td>
+     *     <td>mediumorchid = #ba55d3</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumpurple;"></span>
+     *     </td>
+     *     <td>mediumpurple = #9370db</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumseagreen;"></span>
+     *     </td>
+     *     <td>mediumseagreen = #3cb371</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumslateblue;"></span>
+     *     </td>
+     *     <td>mediumslateblue = #7b68ee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumspringgreen;"></span>
+     *     </td>
+     *     <td>mediumspringgreen = #00fa9a</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumturquoise;"></span>
+     *     </td>
+     *     <td>mediumturquoise = #48d1cc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumvioletred;"></span>
+     *     </td>
+     *     <td>mediumvioletred = #c71585</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% midnightblue;"></span>
+     *     </td>
+     *     <td>midnightblue = #191970</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mintcream;"></span>
+     *     </td>
+     *     <td>mintcream = #f5fffa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mistyrose;"></span>
+     *     </td>
+     *     <td>mistyrose = #ffe4e1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% moccasin;"></span>
+     *     </td>
+     *     <td>moccasin = #ffe4b5</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% navajowhite;"></span>
+     *     </td>
+     *     <td>navajowhite = #ffdead</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% navy;"></span>
+     *     </td>
+     *     <td>navy = #000080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% oldlace;"></span>
+     *     </td>
+     *     <td>oldlace = #fdf5e6</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% olive;"></span>
+     *     </td>
+     *     <td>olive = #808000</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% olivedrab;"></span>
+     *     </td>
+     *     <td>olivedrab = #6b8e23</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% orange;"></span>
+     *     </td>
+     *     <td>orange = #ffa500</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% orangered;"></span>
+     *     </td>
+     *     <td>orangered = #ff4500</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% orchid;"></span>
+     *     </td>
+     *     <td>orchid = #da70d6</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% palegoldenrod;"></span>
+     *     </td>
+     *     <td>palegoldenrod = #eee8aa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% palegreen;"></span>
+     *     </td>
+     *     <td>palegreen = #98fb98</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% paleturquoise;"></span>
+     *     </td>
+     *     <td>paleturquoise = #afeeee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% palevioletred;"></span>
+     *     </td>
+     *     <td>palevioletred = #db7093</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% papayawhip;"></span>
+     *     </td>
+     *     <td>papayawhip = #ffefd5</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% peachpuff;"></span>
+     *     </td>
+     *     <td>peachpuff = #ffdab9</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% peru;"></span>
+     *     </td>
+     *     <td>peru = #cd853f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% pink;"></span>
+     *     </td>
+     *     <td>pink = #ffc0cb</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% plum;"></span>
+     *     </td>
+     *     <td>plum = #dda0dd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% powderblue;"></span>
+     *     </td>
+     *     <td>powderblue = #b0e0e6</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% purple;"></span>
+     *     </td>
+     *     <td>purple = #800080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% red;"></span>
+     *     </td>
+     *     <td>red = #ff0000</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% rosybrown;"></span>
+     *     </td>
+     *     <td>rosybrown = #bc8f8f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% royalblue;"></span>
+     *     </td>
+     *     <td>royalblue = #4169e1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% saddlebrown;"></span>
+     *     </td>
+     *     <td>saddlebrown = #8b4513</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% salmon;"></span>
+     *     </td>
+     *     <td>salmon = #fa8072</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% sandybrown;"></span>
+     *     </td>
+     *     <td>sandybrown = #f4a460</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% seagreen;"></span>
+     *     </td>
+     *     <td>seagreen = #2e8b57</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% seashell;"></span>
+     *     </td>
+     *     <td>seashell = #fff5ee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% sienna;"></span>
+     *     </td>
+     *     <td>sienna = #a0522d</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% silver;"></span>
+     *     </td>
+     *     <td>silver = #c0c0c0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% skyblue;"></span>
+     *     </td>
+     *     <td>skyblue = #87ceeb</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% slateblue;"></span>
+     *     </td>
+     *     <td>slateblue = #6a5acd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% slategray;"></span>
+     *     </td>
+     *     <td>slategray = #708090</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% slategrey;"></span>
+     *     </td>
+     *     <td>slategrey = #708090</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% snow;"></span>
+     *     </td>
+     *     <td>snow = #fffafa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% springgreen;"></span>
+     *     </td>
+     *     <td>springgreen = #00ff7f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% steelblue;"></span>
+     *     </td>
+     *     <td>steelblue = #4682b4</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% tan;"></span>
+     *     </td>
+     *     <td>tan = #d2b48c</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% teal;"></span>
+     *     </td>
+     *     <td>teal = #008080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% thistle;"></span>
+     *     </td>
+     *     <td>thistle = #d8bfd8</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% tomato;"></span>
+     *     </td>
+     *     <td>tomato = #ff6347</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% turquoise;"></span>
+     *     </td>
+     *     <td>turquoise = #40e0d0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% violet;"></span>
+     *     </td>
+     *     <td>violet = #ee82ee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% wheat;"></span>
+     *     </td>
+     *     <td>wheat = #f5deb3</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% white;"></span>
+     *     </td>
+     *     <td>white = #ffffff</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% whitesmoke;"></span>
+     *     </td>
+     *     <td>whitesmoke = #f5f5f5</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% yellow;"></span>
+     *     </td>
+     *     <td>yellow = #ffff00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% yellowgreen;"></span>
+     *     </td>
+     *     <td>yellowgreen = #9acd32</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% transparent;"></span>
+     *     </td>
+     *     <td>transparent = rgba(0,0,0,0)</td>
+     *   </tr>
+     * </tbody>
+     * </table>
+	 */
+	named-color = 	aliceblue 		| anitquewhite 		| aqua 					| aquamarine 		|
+					azure 			| beige 			| bisque 				| black 			|
+					blanchedalmond 	| blue 				| blueviolet 			| brown 			|
+					burlywood 		| cadetblue 		| chartreuse 			| chocolate 		|
+					coral 			| cornflowerblue 	| cornsilk 				| crimson 			|
+					cyan 			| darkblue 			| darkcyan 				| darkgoldenrod 	|
+					darkgray 		| darkgreen 		| darkgrey 				| darkkhaki			|
+					darkmagenta 	| darkolivegreen 	| darkorange 			| darkorchid 		|
+					darkred 		| darksalmon 		| darkseagreen 			| darkslateblue 	|
+					darkslategray 	| darkslategrey 	| darkturquoise 		| darkviolet 		|
+					deeppink 		| deepskyblue 		| dimgray 				| dimgrey 			|
+					dodgerblue		| firebrick			| floralwhite 			| forestgreen 		|
+					fuchsia			| gainsboro 		| ghostwhite 			| gold 				|
+					goldenrod		| gray 				| green 				| greenyellow 		|
+					grey			| honeydew 			| hotpink 				| indianred 		|
+					indigo			| ivory 			| khaki 				| lavender 			|
+					lavenderblush 	| lawngreen 		| lemonchiffon 			| lightblue 		|
+					lightcoral 		| lightcyan 		| lightgoldenrodyellow 	| lightgray 		|
+					lightgreen 		| lightgrey 		| lightpink 			| lightsalmon 		|
+					lightseagreen 	| lightskyblue 		| lightslategray 		| lightslategrey 	|
+					lightsteelblue  | lightyellow 		| lime 					| limegreen 		|
+					linen 			| magenta 			| maroon 				| mediumaquamarine 	|
+					mediumblue 		| mediumorchid 		| mediumpurple 			| mediumseagreen 	|
+					mediumslateblue | mediumspringgreen | mediumturquoise 		| mediumvioletred 	|
+					midnightblue 	| mintcream 		| mistyrose 			| moccasin 			|
+					navajowhite		| navy 				| oldlace 				| olive 			|
+					olivedrab 		| orange 			| orangered 			| orchid 			|
+					palegoldenrod 	| palegreen 		| paleturquoise 		| palevioletred 	|
+					papayawhip 		| peachpuff 		| peru  				| pink 				|
+					plum 			| powderblue 		| purple 				| red 				|
+					rosybrown 		| royalblue 		| saddlebrown 			| salmon 			|
+					sandybrown 		| seagreen 			| seashell 				| sienna 			|
+					silver 			| skyblue 			| slateblue 			| slategray 		|
+					slategrey 		| snow 				| springgreen 			| steelblue 		|
+					tan 			| teal 				| thistle 				| tomato 			|
+					turquoise 		| violet 			| wheat 				| white 			|
+					whitesmoke 		| yellow 			| yellowgreen 			| transparent
+					; // TODO finish this!
 					
 //	annotated-named-color-1 = 	/** @color #123456 */ aliceblue |
 //								/** @color #123456 */ antiquewhite;
@@ -137,25 +702,142 @@ package javafx {
 //	annotated-named-color-4 =	@Color @Alias(#123456) aliceblue |
 //								@Color @Alias(#123456) antiquewhite
 												
-					
+	/**
+	 * <p>
+	 * With looked-up colors you can refer to any other color property that is set on the current node or any of its parents. This is a very powerful feature, as it allows a generic palette of colors to be specified on the scene then used thoughout the application. If you want to change one of those palette colors you can do so at any level in the scene tree and it will affect that node and all its decendents. Looked-up colors are not looked up until they are applied, so they are live and react to any style changes that might occur, such as replacing a palette color at runtime with the "style" property on a node.
+	 * </p>
+	 * <p>
+	 * In the following example, all background color of all buttons uses the looked up color "abc".
+	 * </p>
+	 * <p>
+	 * <code>
+	 * .root { abc: #f00 }
+	 * </code>
+	 * </p>
+	 * <p>
+	 * <code>
+	 * .button { -fx-background-color: abc }
+	 * </code>
+	 * </p>
+	 */
 	looked-up-color = reference_to_other_color_property; // TODO howto implement?!
 	
+	/**
+	 * The format of an RGB value in hexadecimal notation is a ‘#’ immediately followed by either three or six hexadecimal characters. The three-digit RGB notation (#rgb) is converted into six-digit form (#rrggbb) by replicating digits, not by adding zeros. For example, #fb0 expands to #ffbb00. This ensures that white (#ffffff) can be specified with the short notation (#fff) and removes any dependencies on the color depth of the display.
+	 */
 	hashcolor = $#[0123456789ABCDEFabcdef]{6}$ | $#[0123456789ABCDEFabcdef]{3}$;
+	
+	/**
+	 * The RGB color model is used in numerical color specifications.
+	 */
 	rgb-color = <hashcolor> | <rgb> | rgbp | <rgba>;
+	
+	/**
+	 * The format of an RGB value in the functional notation is ‘rgb(’ followed by a comma-separated list of three numerical values (either three decimal integer values or three percentage values) followed by ‘)’. The integer value 255 corresponds to 100%, and to F or FF in the hexadecimal notation: rgb(255,255,255) = rgb(100%,100%,100%) = #FFF. White space characters are allowed around the numerical values.
+	 */
 	rgb = rgb(int(0->255), int(0->255), int(0->255) | <percentage>, <percentage>, <percentage>);
+	
+	/**
+	 * <p>
+	 * This is an extension of the RGB color model to include an ‘alpha’ value that specifies the opacity of a color. This is accomplished via a functional syntax of the form rgba(...) form that takes a fourth parameter which is the alpha value. The alpha value must be a number in the range 0.0 (representing completely transparent) and 1.0 (completely opaque). As with the rgb() function, the red, green, and blue values may be decimal integers or percentages. The following examples all specify the same color:
+	 * </p>
+	 * <code>.label { -fx-text-fill: rgb(255,0,0) }</code><br /> 
+     * <code>.label { -fx-text-fill: rgba(255,0,0,1)}</code><br /> 
+     * <code>.label { -fx-text-fill: rgb(100%,0%,0%) }</code><br /> 
+     * <code>.label { -fx-text-fill: rgba(100%,0%,0%,1) }</code>
+	 */
 	rgba = rgba(int(0->255), int(0->255), int(0->255), double(.0->1.0) | <percentage>, <percentage>, <percentage>, double(.0->1.0));
+	
+	// TODO hsb colors
+	/**
+	 * Colors can be specified using the HSB (sometimes called HSV) color model
+	 */
+	hsb-color = <hsb> | <hsba>;
+	
+	/**
+	 * The first number is hue, a number in the range 0 to 360 degrees. The second number is saturation, a percentage in the range 0% to 100%. The third number is brightness, also a percentage in the range 0% to 100%.
+	 */
+	hsb = hsb(double(.0->360.0), <percentage>, <percentage>);
+
+	/**
+	 * The first number is hue, a number in the range 0 to 360 degrees. The second number is saturation, a percentage in the range 0% to 100%. The third number is brightness, also a percentage in the range 0% to 100%.
+	 * The fourth parameter at the end which is a alpha value in the range 0.0 to 1.0, specifying completely transparent and completely opaque, respectively
+	 */
+	hsba = hsba(double(.0->360.0), <percentage>, <percentage>, double(.0->1.0));
+
+	/**
+	 * JavaFX supports some color computation functions. These compute new colors from input colors at the time the color style is applied. This enables a color theme to be specified using a single base color and to have variant colors computed from that base color. There are two color functions: derive() and ladder().
+	 */
+	color-function = <ladder> | <derive>;
+	
+	/**
+	 * The ladder function interpolates between colors. The effect is as if a gradient is created using the stops provided, and then the brightness of the provided <color> is used to index a color value within that gradient. At 0% brightness, the color at the 0.0 end of the gradient is used; at 100% brightness, the color at the 1.0 end of the gradient is used; and at 50% brightness, the color at 0.5, the midway point of the gradient, is used. Note that no gradient is actually rendered. This is merely an interpolation function that results in a single color. 
+	 */
+	ladder = ladder(<color>, <color-stop> [, <color-stop>]+);
+	
+	/**
+	 * The derive function takes a color and computes a brighter or darker version of that color. The second parameter is the brightness offset, ranging from -100% to 100%. Positive percentages indicate brighter colors and negative percentages indicate darker colors. A value of -100% means completely black, 0% means no change in brightness, and 100% means completely white.
+	 */
+	derive = derive(<color>, <percentage>);
+
+	/**
+	 * Paint values can either be a solid color specified in one of the color syntaxes or they can be a linear or radial gradient.
+	 */
 	paint = <color> | <linear-gradient> | <radial-gradient>;
 	side-or-corner = [left | right] || [top | bottom];
-	linear-gradient = linear-gradient( [ [from <point> to <point>] | [ to <side-or-corner>], ]? [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
-	radial-gradient = radial-gradient([ focus-angle <angle>, ]? [ focus-distance <percentage>, ]? [ center <point>, ]? radius [ <length> | <percentage> ] [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
-	// TODO hsb colors
-	hsb-color = <hsb> | <hsba>;
-	hsb = hsb(double(.0->360.0), <percentage>, <percentage>);
-	hsba = hsba(double(.0->360.0), <percentage>, <percentage>, double(.0->1.0));
 	
-	color-function = <ladder> | <derive>;
-	ladder = ladder(<color>, <color-stop> [, <color-stop>]+);
-	derive = derive(<color>, <percentage>);
+	/**
+	 * <p>
+	 * Linear gradient creates a gradient going though all the stop colors along the line between the "from" <point> and the "to" <point>. If the points are percentages, then they are relative to the size of the area being filled. Percentage and length sizes can not be mixed in a single gradient function.
+	 * </p>
+	 * <p>
+	 * If neither repeat nor reflect are given, then the CycleMethod defaults "NO_CYCLE".
+	 * </p>
+	 * <p>
+	 * If neither [from <point> to <point>] nor [ to <side-or-corner> ] are given, then the gradient direction defaults to 'to bottom'.
+	 * </p>
+	 * <p>
+	 * Stops are per W3C color-stop syntax and are normalized accordingly.
+	 * </p>
+	 * <p>
+	 * This example will create a gradient from top left to bottom right of the filled area with red at the top left corner and black at the bottom right.
+	 * </p>
+	 * <p>
+	 * <code>linear-gradient(to bottom right, red, black)</code>
+	 * </p>
+	 * <p>
+	 * This is equivalent to:
+	 * </p>
+	 * <p>
+	 * <code>
+	 * linear-gradient(from 0% 0% to 100% 100%, red 0%, black 100%)
+	 * </code>
+	 * </p>
+	 * <p>
+	 * This more complex example will create a 50px high bar at the top with a 3 color gradient with white underneath for the rest of the filled area.
+	 * </p>
+	 * <p>
+	 * <code>
+	 * linear-gradient(from 0px 0px to 0px 50px, gray, darkgray 50%, dimgray 99%, white)
+	 * </code>
+	 * </p>
+	 */
+	linear-gradient = linear-gradient( [ [from <point> to <point>] | [ to <side-or-corner>], ]? [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
+	/**
+	 * <p>
+	 * If neither repeat nor reflect are given, then the CycleMethod defaults "NO_CYCLE".
+	 * </p>
+	 * <p>
+	 * <p>
+	 * Stops are per W3C color-stop syntax and are normalized accordingly.
+	 * </p>
+	 * <p>
+	 * Following are examples of the use of radial-gradient:
+	 * </p>
+	 * <code>radial-gradient(radius 100%, red, darkgray, black)</code><br />
+	 * <code>radial-gradient(focus-angle 45deg, focus-distance 20%, center 25% 25%, radius 50%, reflect, gray, darkgray 75%, dimgray)</code>
+	 */
+	radial-gradient = radial-gradient([ focus-angle <angle>, ]? [ focus-distance <percentage>, ]? [ center <point>, ]? radius [ <length> | <percentage> ] [ [ repeat | reflect ], ]? <color-stop>[, <color-stop>]+);
 	
 	
 	package scene {
@@ -163,37 +845,104 @@ package javafx {
 		cursor = [ null | crosshair | default | hand | move | e-resize | h-resize | ne-resize | nw-resize | n-resize | se-resize | sw-resize | s-resize | w-resize | v-resize | text | wait ] | <uri>;
 		visibility = [ visible | hidden | collapse | inherit ];
 		
-		
-		
+		/**
+		 * Base class for scene graph nodes. A scene graph is a set of tree data structures
+ 		 * where every item has zero or one parent, and each item is either
+ 		 * a "leaf" with zero sub-items or a "branch" with zero or more sub-items.
+		 */
 		Node {
+			/**
+			 * The mode used to blend this individual node into the scene behind it
+			 */
 			-fx-blend-mode <blend-mode> default: null;
+			/**
+			 * Defines the mouse cursor for this Node and subnodes
+			 */
 			-fx-cursor <cursor> default: null;
+			/**
+			 * Specifies an effect to apply to this Node
+			 */
 			-fx-effect <effect> default: null;
+			/**
+			 * Specifies whether this Node should be a part of focus traversal cycle
+			 */
 			-fx-focus-traversable <boolean> default: null;
+			/**
+			 * Opacity can be thought of conceptually as a postprocessing operation. Conceptually, after the node (including its descendants) is rendered into an RGBA offscreen image, the opacity setting specifies how to blend the offscreen rendering into the current composite rendering. 
+			 */
 			-fx-opacity double(.0->1.0) default: 1.0;
+			/**
+			 * This is the angle of the rotation in degrees. Zero degrees is at 3 o'clock (directly to the right). Angle values are positive clockwise. Rotation is about the center.
+			 */
 			-fx-rotate double default: 0;
+			/**
+			 * Defines the factor by which coordinates are scaled about the center of the
+     		 * object along the X axis of this Node.
+			 */
 			-fx-scale-x double default: 1;
+			/**
+			 * Defines the factor by which coordinates are scaled about the center of the
+     		 * object along the Y axis of this Node.
+			 */
 			-fx-scale-y double default: 1;
+			/**
+			 * Defines the factor by which coordinates are scaled about the center of the
+     		 * object along the Z axis of this Node.
+			 */
 			-fx-scale-z double default: 1;
+			/**
+			 * Defines the x coordinate of the translation that is added to this Node's
+     		 * transform.
+			 */
 			-fx-translate-x double default: 0;
+			/**
+			 * Defines the y coordinate of the translation that is added to this Node's
+     		 * transform.
+			 */
 			-fx-translate-y double default: 0;
+			/**
+			 * Defines the z coordinate of the translation that is added to this Node's
+     		 * transform.
+			 */
 			-fx-translate-z double default: 0;
 			visibility <visibility> default: visible;
 			
+			/**
+			 * applies when the disabled variable is true
+			 */
 			:disabled
+			/**
+			 * applies when the focused variable is true
+			 */
 			:focused
+			/**
+			 * applies when the hover variable is true
+			 */
 			:hover
+			/**
+			 * applies when the pressed variable is true
+			 */
 			:pressed
+			/**
+			 * apples when the mnemonic affordance (typically an underscore) should be shown.
+			 */
 			:show-mnemonic
 		}
-		
+		/**
+		 * The base class for all nodes that have children in the scene graph.
+		 */
 		Parent extends Node {
 		}
-		
+		/**
+		 * A Group node contains a list of children that are rendered in order whenever this node is rendered.
+		 */
 		Group extends Parent {
 		}
 		
 		package image {
+			/**
+			 * The ImageView is a Node used for painting images loaded with Image class.
+			 */
 			ImageView extends Node {
 				-fx-image <uri> default: null;
 			}
@@ -232,72 +981,6 @@ package javafx {
 			 * <p>
 			 * A Region is a Node (extending from Parent) with backgrounds and borders that are styleable via CSS. A Region is typically a rounded rectangle, though this can be modified through CSS to be an arbitrary shape. Regions can contain other Region objects (sub-regions) or they can contain sub-controls. All Regions have the same set of CSS properties as described below.
 			 * </p>
-			 * <p> 
-			 * Each Region consists of several layers, painted from bottom to top, in this order:
-			 * <ol>
-    		 * <li>background fills</li>
-    		 * <li>background images</li>
-    		 * <li>contents</li>
-    		 * <li>border strokes</li>
-    		 * <li>border images</li>
-    		 * </ol>
-    		 * </p>
-    		 * <p>
-    		 * The background and border mechanisms are patterned after the CSS 3 draft backgrounds and borders module. 
-    		 * See [4] for a detailed description.
-    		 * </p>
-    		 * <p>
-    		 * Background fills are specified with the properties -fx-background-color, -fx-background-radius 
-    		 * and -fx-background-insets. The -fx-background-color property is a series of one or more 
-    		 * comma-separated <paint> values. The number of values in the series determines the number of 
-    		 * background rectangles that are painted. Background rectangles are painted in the order specified 
-    		 * using the given <paint> value. Each background rectangle can have different radii and insets. 
-    		 * The -fx-background-radius and -fx-background-insets properties are series of comma-separated 
-    		 * values (or sets of values). The radius and insets values used for a particular background are 
-    		 * the found in the corresponding position in the -fx-background-radius and -fx-background-insets 
-    		 * series. For example, suppose a series of three values is given for the -fx-background-color property. 
-    		 * A series of three values should also be specified for the -fx-background-radius and -fx-background-insets 
-    		 * properties. The first background will be painted using the first radius value and first insets value, 
-    		 * the second background will be painted with the second radius value and second insets value, and so forth.
-    		 * </p>
-    		 * <p>
-    		 * Note also that properties such as -fx-background-radius and -fx-background-insets can contain a series 
-    		 * of values or sets of four values. A set of values is separated by whitespace, whereas the values or 
-    		 * sets-of-values in a series are separated by commas. For -fx-background-radius, a single value indicates 
-    		 * that the value should be used for the radius of all four corners of the background rectangle. A set of 
-    		 * four values indicates that different radius values are to be used for the top-left, top-right, 
-    		 * bottom-right, and bottom-left corners, in that order. Similarly, the -fx-background-insets property 
-    		 * can also contain a series of values or sets of values. A set of four values for -fx-background-insets 
-    		 * indicates that different insets are to be used for the top, right, bottom, and left edges of the rectangle, 
-    		 * in that order.
-    		 * </p>
-    		 * <p>
-    		 * Background images are specified with the properties -fx-background-image, -fx-background-repeat, 
-    		 * -fx-background-position and -fx-background-size. The number of images in the series of -fx-background-image 
-    		 * values determines the number of background images that are painted. The -fx-background-repeat, 
-    		 * -fx-background-position, and -fx-background-size properties each can contain a series of values. 
-    		 * For each item in the -fx-background-image series, the corresponding items in the -fx-background-repeat, 
-    		 * -fx-background-position, and -fx-background-size properties are applied to that background image.
-    		 * </p>
-    		 * <p>
-    		 * Stroked borders are specified with the properties -fx-border-color, -fx-border-style, -fx-border-width, 
-    		 * -fx-border-radius and -fx-border-insets. Each property contains a series of items. The number of items 
-    		 * in the-fx- border-color property determines the number of borders that are painted. Each border in 
-    		 * the series is painted using information from the corresponding series item of the -fx-border-style, 
-    		 * -fx-border-width, -fx-border-radius, and -fx-border-insets properties.
-    		 * </p>
-    		 * <p>
-    		 * Image borders are specified with the properties -fx-border-image-source, -fx-border-image-repeat, 
-    		 * -fx-border-image-slice, -fx-border-image-width and -fx-border-image-insets. Each property contains 
-    		 * a series of items. The number of items in the -fx-border-image-source property determines the number 
-    		 * of images that are painted. Each image in the series is painted using information from the corresponding 
-    		 * series items of the -fx-border-image-repeat, -fx-border-image-slice, -fx-border-image-width, and 
-    		 * -fx-border-image-insets properties.
-    		 * </p>
-    		 * <p>
-    		 * The region's contents are a sequence of nodes, like any other container. The contents are set 
-    		 * programmatically and cannot be set via CSS.
-    		 * </p>
 			 */
 			Region extends Parent {
 				
@@ -570,7 +1253,7 @@ package javafx {
 			Control extends Parent {
         		-fx-skin <string> default: null;
         	}
-        	Labeled {
+        	Labeled extends Control {
         		-fx-alignment [ top-left | top-center | top-right | center-left | center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right ] default: top-level;
         		-fx-text-alignment [ left | center | right | justify ] default: left;
         		-fx-text-overrun [ center-ellipsis | center-word-ellipsis | clip | ellipsis | leading-ellipsis | leading-word-ellipsis | word-ellipsis ] default: ellipsis;

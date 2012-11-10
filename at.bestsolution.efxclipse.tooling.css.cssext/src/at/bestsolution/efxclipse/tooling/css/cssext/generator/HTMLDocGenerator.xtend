@@ -107,7 +107,7 @@ class HTMLDocGenerator {
 			«FOR j : cssExt.eAllContents.filter(typeof(PackageDefinition)).toList»
 				<li class="nav-header">«j.calcPackagename»</li>
 				«FOR c : (j as PackageDefinition).elements»
-				<li><a href="#">«c.name»</a></li>
+				<li><a href='#el_«(c.eContainer as PackageDefinition).calcPackagename».«c.name»'>«c.name»</a></li>
 				«ENDFOR»
 			«ENDFOR»
 		</ul>
@@ -137,7 +137,9 @@ class HTMLDocGenerator {
 		<h3>«r.name.name»</h3>
 		<div style="padding-left: 40px;">
 			<code>«IF r.rule != null»«r.rule.translateRule»«ELSE»«(r.func as CSSRuleFunc).name»(«(r.func as CSSRuleFunc).params.translateRule»)«ENDIF»</code>
+			«IF r.doku != null»
 			<div class="bs-docs-description">«r?.doku?.content?.fixJDoc»</div>
+			«ENDIF»
 		</div>
 		«ENDFOR»
 		<h2>Elements</h2>
@@ -158,6 +160,7 @@ class HTMLDocGenerator {
 						</div>
 					</div>
 				</div>
+				«IF ! e.properties.empty»
 				<div class="accordion-group">
 					<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" data-parent="#ac_«p.calcPackagename.replace('.','_')+"_"+e.name»" href="#props_«p.calcPackagename.replace('.','_')+"_"+e.name»">
@@ -187,6 +190,8 @@ class HTMLDocGenerator {
 						</table>
 					</div>
 				</div>
+				«ENDIF»
+				«IF ! e.allSuperElements().empty»
 				<div class="accordion-group">
 					<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" data-parent="#ac_«p.calcPackagename.replace('.','_')+"_"+e.name»" href="#props_«p.calcPackagename.replace('.','_')+"_"+e.name»_inherited">
@@ -220,6 +225,66 @@ class HTMLDocGenerator {
 						</table>
 					</div>
 				</div>
+				«ENDIF»
+				«IF ! e.pseudoClasses.empty»
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#ac_«p.calcPackagename.replace('.','_')+"_"+e.name»" href="#pseudo_«p.calcPackagename.replace('.','_')+"_"+e.name»">
+							Pseudo-Classes
+						</a>
+					</div>
+					<div id="pseudo_«p.calcPackagename.replace('.','_')+"_"+e.name»" class="accordion-body collapse">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Definition</th>
+								</tr>
+							</thead>
+							<tbody>
+							«FOR pseudo : e.pseudoClasses»
+								<tr>
+									
+									<td>«pseudo.name»</td>
+									<td>«pseudo?.doku?.content?.fixJDoc»</td>
+								</tr>
+							«ENDFOR»
+							</tbody>
+						</table>
+					</div>
+				</div>
+				«ENDIF»
+				«IF ! e.allSuperElements.empty»
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#ac_«p.calcPackagename.replace('.','_')+"_"+e.name»" href="#pseudo_«p.calcPackagename.replace('.','_')+"_"+e.name»_inherited">
+							Inherited Pseudo-Classes
+						</a>
+					</div>
+					<div id="pseudo_«p.calcPackagename.replace('.','_')+"_"+e.name»_inherited" class="accordion-body collapse">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Element</th>
+									<th>Name</th>
+									<th>Definition</th>
+								</tr>
+							</thead>
+							<tbody>
+							«FOR su : e.allSuperElements()»
+								«FOR pseudo : su.pseudoClasses»
+									<tr>
+										<td>«IF(su as ElementDefinition).pseudoClasses.get(0) == pseudo»<nobr>«(su as ElementDefinition).name»</nobr>«ENDIF»</td>
+										<td>«pseudo.name»</td>
+										<td>«pseudo?.doku?.content?.fixJDoc»</td>
+									</tr>
+								«ENDFOR»
+							«ENDFOR»
+							</tbody>
+						</table>
+					</div>
+				</div>
+				«ENDIF»	
 			</div>
 		</div>
 		«ENDFOR»
