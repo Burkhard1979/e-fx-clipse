@@ -255,69 +255,42 @@ public class FXGraphConverter {
   
   public CharSequence generateElement(final Element element) {
     StringConcatenation _builder = new StringConcatenation();
-    JvmTypeReference _type = element.getType();
-    String _simpleName = _type.getSimpleName();
-    _builder.append(_simpleName, "");
     {
-      SimpleValueProperty _value = element.getValue();
-      boolean _notEquals = (!Objects.equal(_value, null));
+      String _factory = element.getFactory();
+      boolean _notEquals = (!Objects.equal(_factory, null));
       if (_notEquals) {
-        _builder.append(" ( ");
-        SimpleValueProperty _value_1 = element.getValue();
-        String _stringValue = _value_1.getStringValue();
-        _builder.append(_stringValue, "");
-        _builder.append(" )");
-      }
-    }
-    {
-      String _name = element.getName();
-      boolean _notEquals_1 = (!Objects.equal(_name, null));
-      if (_notEquals_1) {
-        _builder.append(" id ");
-        String _name_1 = element.getName();
-        _builder.append(_name_1, "");
-      }
-    }
-    {
-      boolean _elementHasSubEntries = this.elementHasSubEntries(element);
-      if (_elementHasSubEntries) {
+        JvmTypeReference _type = element.getType();
+        String _simpleName = _type.getSimpleName();
+        _builder.append(_simpleName, "");
+        _builder.append(" createdby ");
+        String _factory_1 = element.getFactory();
+        _builder.append(_factory_1, "");
         _builder.append(" {");
         _builder.newLineIfNotEmpty();
         Boolean comma = Boolean.valueOf(false);
         _builder.newLineIfNotEmpty();
         {
-          EList<Property> _properties = element.getProperties();
-          for(final Property p : _properties) {
+          EList<FactoryValueElement> _values = element.getValues();
+          for(final FactoryValueElement e : _values) {
             {
               if ((comma).booleanValue()) {
                 _builder.append(",");
               }
             }
             {
-              ValueProperty _value_2 = p.getValue();
-              if ((_value_2 instanceof Element)) {
-                CharSequence _generatePropertyElement = this.generatePropertyElement(p);
-                _builder.append(_generatePropertyElement, "");
+              if ((e instanceof Element)) {
+                CastHelper _castHelper = new CastHelper();
+                Element _castToElement = _castHelper.castToElement(e);
+                CharSequence _generateElement = this.generateElement(_castToElement);
+                _builder.append(_generateElement, "");
               } else {
                 {
-                  ValueProperty _value_3 = p.getValue();
-                  if ((_value_3 instanceof ListValueProperty)) {
-                    CharSequence _generateListValueProperty = this.generateListValueProperty(p);
-                    _builder.append(_generateListValueProperty, "");
-                  } else {
-                    {
-                      ValueProperty _value_4 = p.getValue();
-                      if ((_value_4 instanceof MapValueProperty)) {
-                        CharSequence _generateMapValueProperty = this.generateMapValueProperty(p);
-                        _builder.append(_generateMapValueProperty, "");
-                      } else {
-                        ValuePropertyFormatter _valuePropertyFormatter = new ValuePropertyFormatter(p);
-                        String _formattedValue = _valuePropertyFormatter.getFormattedValue();
-                        _builder.append(_formattedValue, "");
-                      }
-                    }
+                  if ((e instanceof SimpleValueProperty)) {
                   }
                 }
+                ValuePropertyFormatter _valuePropertyFormatter = new ValuePropertyFormatter(e);
+                String _formattedValue = _valuePropertyFormatter.getFormattedValue();
+                _builder.append(_formattedValue, "");
               }
             }
             _builder.newLineIfNotEmpty();
@@ -325,80 +298,152 @@ public class FXGraphConverter {
             _builder.newLineIfNotEmpty();
           }
         }
+        _builder.append("}");
+      } else {
+        _builder.newLineIfNotEmpty();
+        JvmTypeReference _type_1 = element.getType();
+        String _simpleName_1 = _type_1.getSimpleName();
+        _builder.append(_simpleName_1, "");
         {
-          EList<StaticValueProperty> _staticProperties = element.getStaticProperties();
-          for(final StaticValueProperty p_1 : _staticProperties) {
-            {
-              if ((comma).booleanValue()) {
-                _builder.append(",");
-              }
-            }
-            ValuePropertyFormatter _valuePropertyFormatter_1 = new ValuePropertyFormatter(p_1);
-            String _formattedValue_1 = _valuePropertyFormatter_1.getFormattedValue();
-            _builder.append(_formattedValue_1, "");
-            _builder.newLineIfNotEmpty();
-            final Boolean nix_1 = comma = Boolean.valueOf(true);
-            _builder.newLineIfNotEmpty();
+          SimpleValueProperty _value = element.getValue();
+          boolean _notEquals_1 = (!Objects.equal(_value, null));
+          if (_notEquals_1) {
+            _builder.append(" ( ");
+            SimpleValueProperty _value_1 = element.getValue();
+            String _stringValue = _value_1.getStringValue();
+            _builder.append(_stringValue, "");
+            _builder.append(" )");
           }
         }
         {
-          EList<StaticCallValueProperty> _staticCallProperties = element.getStaticCallProperties();
-          for(final StaticCallValueProperty p_2 : _staticCallProperties) {
-            {
-              if ((comma).booleanValue()) {
-                _builder.append(",");
-              }
-            }
-            ValuePropertyFormatter _valuePropertyFormatter_2 = new ValuePropertyFormatter(p_2);
-            String _formattedValue_2 = _valuePropertyFormatter_2.getFormattedValue();
-            _builder.append(_formattedValue_2, "");
-            _builder.newLineIfNotEmpty();
-            final Boolean nix_2 = comma = Boolean.valueOf(true);
-            _builder.newLineIfNotEmpty();
+          String _name = element.getName();
+          boolean _notEquals_2 = (!Objects.equal(_name, null));
+          if (_notEquals_2) {
+            _builder.append(" id ");
+            String _name_1 = element.getName();
+            _builder.append(_name_1, "");
           }
         }
         {
-          EList<Element> _defaultChildren = element.getDefaultChildren();
-          int _size = _defaultChildren.size();
-          boolean _greaterThan = (_size > 0);
-          if (_greaterThan) {
-            _builder.append("\t");
-            {
-              if ((comma).booleanValue()) {
-                _builder.append(",");
-              }
-            }
-            _builder.append("children : [");
+          boolean _elementHasSubEntries = this.elementHasSubEntries(element);
+          if (_elementHasSubEntries) {
+            _builder.append(" {");
             _builder.newLineIfNotEmpty();
-            Boolean internalComma = Boolean.valueOf(false);
+            Boolean comma_1 = Boolean.valueOf(false);
             _builder.newLineIfNotEmpty();
             {
-              EList<Element> _defaultChildren_1 = element.getDefaultChildren();
-              for(final Element e : _defaultChildren_1) {
+              EList<Property> _properties = element.getProperties();
+              for(final Property p : _properties) {
                 {
-                  if ((internalComma).booleanValue()) {
+                  if ((comma_1).booleanValue()) {
                     _builder.append(",");
                   }
                 }
-                CharSequence _generateElement = this.generateElement(e);
-                _builder.append(_generateElement, "");
+                {
+                  ValueProperty _value_2 = p.getValue();
+                  if ((_value_2 instanceof Element)) {
+                    CharSequence _generatePropertyElement = this.generatePropertyElement(p);
+                    _builder.append(_generatePropertyElement, "");
+                  } else {
+                    {
+                      ValueProperty _value_3 = p.getValue();
+                      if ((_value_3 instanceof ListValueProperty)) {
+                        CharSequence _generateListValueProperty = this.generateListValueProperty(p);
+                        _builder.append(_generateListValueProperty, "");
+                      } else {
+                        {
+                          ValueProperty _value_4 = p.getValue();
+                          if ((_value_4 instanceof MapValueProperty)) {
+                            CharSequence _generateMapValueProperty = this.generateMapValueProperty(p);
+                            _builder.append(_generateMapValueProperty, "");
+                          } else {
+                            ValuePropertyFormatter _valuePropertyFormatter_1 = new ValuePropertyFormatter(p);
+                            String _formattedValue_1 = _valuePropertyFormatter_1.getFormattedValue();
+                            _builder.append(_formattedValue_1, "");
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
                 _builder.newLineIfNotEmpty();
-                final Boolean nix_3 = internalComma = Boolean.valueOf(true);
+                final Boolean nix_1 = comma_1 = Boolean.valueOf(true);
                 _builder.newLineIfNotEmpty();
               }
             }
+            {
+              EList<StaticValueProperty> _staticProperties = element.getStaticProperties();
+              for(final StaticValueProperty p_1 : _staticProperties) {
+                {
+                  if ((comma_1).booleanValue()) {
+                    _builder.append(",");
+                  }
+                }
+                ValuePropertyFormatter _valuePropertyFormatter_2 = new ValuePropertyFormatter(p_1);
+                String _formattedValue_2 = _valuePropertyFormatter_2.getFormattedValue();
+                _builder.append(_formattedValue_2, "");
+                _builder.newLineIfNotEmpty();
+                final Boolean nix_2 = comma_1 = Boolean.valueOf(true);
+                _builder.newLineIfNotEmpty();
+              }
+            }
+            {
+              EList<StaticCallValueProperty> _staticCallProperties = element.getStaticCallProperties();
+              for(final StaticCallValueProperty p_2 : _staticCallProperties) {
+                {
+                  if ((comma_1).booleanValue()) {
+                    _builder.append(",");
+                  }
+                }
+                ValuePropertyFormatter _valuePropertyFormatter_3 = new ValuePropertyFormatter(p_2);
+                String _formattedValue_3 = _valuePropertyFormatter_3.getFormattedValue();
+                _builder.append(_formattedValue_3, "");
+                _builder.newLineIfNotEmpty();
+                final Boolean nix_3 = comma_1 = Boolean.valueOf(true);
+                _builder.newLineIfNotEmpty();
+              }
+            }
+            {
+              EList<Element> _defaultChildren = element.getDefaultChildren();
+              int _size = _defaultChildren.size();
+              boolean _greaterThan = (_size > 0);
+              if (_greaterThan) {
+                _builder.append("\t");
+                {
+                  if ((comma_1).booleanValue()) {
+                    _builder.append(",");
+                  }
+                }
+                _builder.append("children : [");
+                _builder.newLineIfNotEmpty();
+                Boolean internalComma = Boolean.valueOf(false);
+                _builder.newLineIfNotEmpty();
+                {
+                  EList<Element> _defaultChildren_1 = element.getDefaultChildren();
+                  for(final Element e_1 : _defaultChildren_1) {
+                    {
+                      if ((internalComma).booleanValue()) {
+                        _builder.append(",");
+                      }
+                    }
+                    CharSequence _generateElement_1 = this.generateElement(e_1);
+                    _builder.append(_generateElement_1, "");
+                    _builder.newLineIfNotEmpty();
+                    final Boolean nix_4 = internalComma = Boolean.valueOf(true);
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+                _builder.append("\t");
+                _builder.append("]");
+                _builder.newLine();
+              }
+            }
             _builder.append("\t");
-            _builder.append("]");
-            _builder.newLine();
+            _builder.append("}");
           }
         }
-        _builder.append("\t");
-        _builder.append("}");
       }
     }
-    _builder.append(" ");
-    CharSequence _generateFactory = this.generateFactory(element);
-    _builder.append(_generateFactory, "");
     return _builder;
   }
   
@@ -457,14 +502,32 @@ public class FXGraphConverter {
             _builder.append(",");
           }
         }
-        String _name_1 = inner.getName();
-        _builder.append(_name_1, "	");
-        _builder.append("(");
-        ValueProperty _value_1 = inner.getValue();
-        ValuePropertyFormatter _valuePropertyFormatter = new ValuePropertyFormatter(_value_1);
-        String _formattedValue = _valuePropertyFormatter.getFormattedValue();
-        _builder.append(_formattedValue, "	");
-        _builder.append(")");
+        {
+          boolean _or = false;
+          String _name_1 = inner.getName();
+          boolean _equals = "Integer".equals(_name_1);
+          if (_equals) {
+            _or = true;
+          } else {
+            String _name_2 = inner.getName();
+            boolean _equals_1 = "Double".equals(_name_2);
+            _or = (_equals || _equals_1);
+          }
+          if (_or) {
+            ValuePropertyFormatter _valuePropertyFormatter = new ValuePropertyFormatter(inner);
+            String _formattedValue = _valuePropertyFormatter.getFormattedValue();
+            _builder.append(_formattedValue, "	");
+          } else {
+            String _name_3 = inner.getName();
+            _builder.append(_name_3, "	");
+            _builder.append("(");
+            ValueProperty _value_1 = inner.getValue();
+            ValuePropertyFormatter _valuePropertyFormatter_1 = new ValuePropertyFormatter(_value_1);
+            String _formattedValue_1 = _valuePropertyFormatter_1.getFormattedValue();
+            _builder.append(_formattedValue_1, "	");
+            _builder.append(")");
+          }
+        }
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         final Boolean nix = comma = Boolean.valueOf(true);

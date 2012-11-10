@@ -43,6 +43,7 @@ import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.MapValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Model;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.PackageDeclaration;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Property;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ReferenceValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ResourceValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Script;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ScriptValueReference;
@@ -173,6 +174,19 @@ public class FXMLLoader {
 						model.getComponentDef().getScripts().add(s);
 					}
 				}
+			} else if ("fx:reference".equals(qName)) {
+				for (int i = 0; i < attributes.getLength(); i++) {
+					String propertyQName = attributes.getQName(i);
+					String value = attributes.getValue(i);
+					if ("source".equals(propertyQName)) {
+						Element e = createElementWithJVMType("idref " + value); // TODO
+																				// this
+																				// is
+																				// really
+																				// dirty
+						elementStack.peek().getDefaultChildren().add(e);
+					}
+				}
 			} else if (!"children".equals(localName)) {
 				if (Character.isLowerCase(localName.charAt(0))) {
 					if (isSpecial(localName)) {
@@ -222,7 +236,24 @@ public class FXMLLoader {
 							if (model.getComponentDef().getRootNode() == null) {
 								model.getComponentDef().setRootNode(e);
 							} else {
-								if ("children".equals(getStructuralParent())) {
+								// Factory values
+								if (elementStack.peek().getFactory() != null) {
+									// is it a constant or an element
+									if (attributes.getLength() == 1
+											&& "fx:value".equals(attributes
+													.getQName(0))) {
+										SimpleValueProperty sp = FXGraphFactory.eINSTANCE
+												.createSimpleValueProperty();
+										sp.setStringValue(attributes
+												.getValue(0));
+										elementStack.peek().getValues().add(sp);
+									} else {
+										elementStack.peek().getValues().add(e);
+									}
+								}
+								// child elements
+								else if ("children"
+										.equals(getStructuralParent())) {
 									elementStack.peek().getDefaultChildren()
 											.add(e);
 								} else if (isContainer(getStructuralParent())) {
@@ -242,9 +273,13 @@ public class FXMLLoader {
 												FXGraphFactory.eINSTANCE
 														.createListValueProperty());
 									}
-									ListValueProperty list = (ListValueProperty) p
-											.getValue();
-									list.getValue().add(e);
+									if (p.getValue() instanceof ListValueProperty) {
+										ListValueProperty list = (ListValueProperty) p
+												.getValue();
+										list.getValue().add(e);
+									} else if ((p.getValue() instanceof ListValueProperty)) {
+										System.err.println("TODO");
+									}
 									parent.getProperties().add(p);
 								} else if ("fx:define"
 										.equals(getStructuralParent())) {
@@ -282,12 +317,7 @@ public class FXMLLoader {
 			ConstValueProperty c = FXGraphFactory.eINSTANCE
 					.createConstValueProperty();
 			c.setField(attributes.getValue("fx:constant"));
-			JvmParameterizedTypeReference constType = TypesFactory.eINSTANCE
-					.createJvmParameterizedTypeReference();
-			JvmPrimitiveType constJvmType = TypesFactory.eINSTANCE
-					.createJvmPrimitiveType();
-			constJvmType.setSimpleName(localName);
-			constType.setType(constJvmType);
+			JvmParameterizedTypeReference constType = createJvmParameterizedTypeReference(localName);
 			c.setType(constType);
 			return c;
 		}
@@ -331,15 +361,7 @@ public class FXMLLoader {
 		 * @return
 		 */
 		private Element createElement(String localName, Attributes attributes) {
-			Element element = FXGraphFactory.eINSTANCE.createElement();
-			// build the type
-			JvmParameterizedTypeReference type = TypesFactory.eINSTANCE
-					.createJvmParameterizedTypeReference();
-			JvmPrimitiveType jvmType = TypesFactory.eINSTANCE
-					.createJvmPrimitiveType();
-			jvmType.setSimpleName(localName);
-			type.setType(jvmType);
-			element.setType(type);
+			Element element = createElementWithJVMType(localName);
 			// attributes
 			for (int i = 0; i < attributes.getLength(); i++) {
 				String qName = attributes.getQName(i);
@@ -365,22 +387,16 @@ public class FXMLLoader {
 							System.err.println("TODO could not attach value");
 						}
 					} else {
-						// TODO handle this
-						System.err
-								.println("TODO value found, structural parent is "
-										+ getStructuralParent());
+						if (elementStack.peek().getFactory() == null) {
+							System.err
+									.println("TODO value found, structural parent is "
+											+ getStructuralParent());
+						}
 					}
 				} else if ("fx:factory".equals(qName)) {
-					// TODO handle this
-					System.err.println("TODO factory found");
-
+					element.setFactory(value);
 				} else if ("fx:controller".equals(qName)) {
-					JvmParameterizedTypeReference c = TypesFactory.eINSTANCE
-							.createJvmParameterizedTypeReference();
-					JvmPrimitiveType t = TypesFactory.eINSTANCE
-							.createJvmPrimitiveType();
-					t.setSimpleName(value);
-					c.setType(t);
+					JvmParameterizedTypeReference c = createJvmParameterizedTypeReference(value);
 					model.getComponentDef().setController(c);
 				} else if ("fx:id".equals(qName)) {
 					element.setName(value);
@@ -398,7 +414,7 @@ public class FXMLLoader {
 		 * @return
 		 */
 		private boolean isSpecial(String s) {
-			return "styleClass".equals(s);
+			return "styleClass".equals(s) || "points".equals(s);
 		}
 
 		@Override
@@ -469,7 +485,8 @@ public class FXMLLoader {
 			elements.clear();
 			// just for testing
 			if (elementStack.size() > 0) {
-				throw new SAXException("elementStack.size() > 0");
+				throw new SAXException("elementStack.size() =  "
+						+ elementStack.size());
 			}
 		}
 
@@ -518,21 +535,15 @@ public class FXMLLoader {
 				s.setAttribute(split[1].replaceFirst("[}]", ""));
 				return s;
 			} else if (value != null && value.startsWith("$")) {
-
-				// else if ("fx:reference".equals(getStructuralParent())) {
-				// ReferenceValueProperty p = FXGraphFactory.eINSTANCE
-				// .createReferenceValueProperty();
-				// ReferenceType ref = FXGraphFactory.eINSTANCE
-				// .createReferenceType();
-				// // TODO set attributes
-				// p.setReference(ref);
-				// System.err.println("TODO FOUND reference");
-				// }
-
-				ScriptValueReference s = FXGraphFactory.eINSTANCE
-						.createScriptValueReference();
-				s.setReference(value.replaceFirst("[$]", ""));
-				return s;
+				String valueName = value.replaceFirst("[$]", "");
+				if (elements.containsKey(valueName)) {
+					return createReferenceValueProperty(valueName);
+				} else {
+					ScriptValueReference s = FXGraphFactory.eINSTANCE
+							.createScriptValueReference();
+					s.setReference(valueName);
+					return s;
+				}
 			} else if (value != null && value.startsWith("@")) {
 				LocationValueProperty l = FXGraphFactory.eINSTANCE
 						.createLocationValueProperty();
@@ -551,6 +562,45 @@ public class FXMLLoader {
 						value);
 				return vp;
 			}
+		}
+
+		/**
+		 * @param refName
+		 * @return
+		 */
+		private ReferenceValueProperty createReferenceValueProperty(
+				String refName) {
+			ReferenceValueProperty r = FXGraphFactory.eINSTANCE
+					.createReferenceValueProperty();
+			Element refElement = createElementWithJVMType(refName);
+			r.setReference(refElement);
+			return r;
+		}
+
+		/**
+		 * @param simpleName
+		 * @return
+		 */
+		private Element createElementWithJVMType(String simpleName) {
+			Element refElement = FXGraphFactory.eINSTANCE.createElement();
+			JvmParameterizedTypeReference type = createJvmParameterizedTypeReference(simpleName);
+			refElement.setType(type);
+			return refElement;
+		}
+
+		/**
+		 * @param simpleName
+		 * @return
+		 */
+		private JvmParameterizedTypeReference createJvmParameterizedTypeReference(
+				String simpleName) {
+			JvmParameterizedTypeReference type = TypesFactory.eINSTANCE
+					.createJvmParameterizedTypeReference();
+			JvmPrimitiveType jvmType = TypesFactory.eINSTANCE
+					.createJvmPrimitiveType();
+			jvmType.setSimpleName(simpleName);
+			type.setType(jvmType);
+			return type;
 		}
 
 		/**
@@ -574,9 +624,14 @@ public class FXMLLoader {
 					Integer i = Integer.parseInt(value);
 					vp.setIntValue(i);
 					vp.setNegative(i < 0);
-
 				} catch (NumberFormatException e) {
-					vp.setStringValue(value);
+					try {
+						Double i = Double.parseDouble(value);
+						vp.setRealValue(i);
+						vp.setNegative(i < 0);
+					} catch (NumberFormatException ex) {
+						vp.setStringValue(value);
+					}
 				}
 			}
 			return vp;

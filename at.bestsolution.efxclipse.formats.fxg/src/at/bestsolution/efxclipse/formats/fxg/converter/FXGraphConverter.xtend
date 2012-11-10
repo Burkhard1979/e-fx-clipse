@@ -15,6 +15,9 @@ import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.FactoryValueElement
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Import
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueElement
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueProperty
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.MapValueProperty
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Model
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Property
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Script
@@ -23,9 +26,6 @@ import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.StaticCallValueProperty
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.StaticValueProperty
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmTypeReference
-import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueProperty
-import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueElement
-import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.MapValueProperty
 
 class FXGraphConverter {
 	def generate(Model model) '''
@@ -88,6 +88,13 @@ class FXGraphConverter {
 	}#	'''
 
 	def generateElement(Element element) '''
+		«IF element.factory!=null»«element.type.simpleName» createdby «element.factory» {
+		«var Boolean comma = false»
+		«FOR FactoryValueElement e : element.values»
+			«IF comma»,«ENDIF»«IF e instanceof Element»«generateElement(new CastHelper().castToElement(e))»«ELSE»«IF e instanceof SimpleValueProperty»«ENDIF»«new ValuePropertyFormatter(e).formattedValue»«ENDIF»
+			«val nix = comma = true»
+		«ENDFOR»			
+		}«ELSE»
 		«element.type.simpleName»«IF element.value!=null» ( «element.value.stringValue» )«ENDIF»«IF element.name!=null» id «element.name»«ENDIF»«IF elementHasSubEntries(element)» {
 		«var Boolean comma = false»
 		«FOR Property p : element.properties»
@@ -111,7 +118,7 @@ class FXGraphConverter {
 		«ENDFOR»			
 			]
 		«ENDIF»				
-	}«ENDIF» «generateFactory(element)»'''
+	}«ENDIF»«ENDIF»'''
 	
 	def boolean elementHasSubEntries(Element element) {
 		return element.properties.size>0 || element.staticProperties.size>0 ||element.staticCallProperties.size>0 ||element.defaultChildren.size>0 ;
@@ -122,7 +129,7 @@ class FXGraphConverter {
 		«p.name» : [
 		«var Boolean comma = false»
 			«FOR Property inner : list.properties»
-				«IF comma»,«ENDIF»«inner.name»(«new ValuePropertyFormatter(inner.value).formattedValue»)
+				«IF comma»,«ENDIF»«IF "Integer".equals(inner.name)||"Double".equals(inner.name)»«new ValuePropertyFormatter(inner).formattedValue»«ELSE»«inner.name»(«new ValuePropertyFormatter(inner.value).formattedValue»)«ENDIF»
 				«val nix = comma = true»
 			«ENDFOR»
 		]'''

@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.formats.fxg.converter;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.BindValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ConstValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ControllerHandledValueProperty;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.IncludeValueProperty;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueElement;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ListValueProperty;
@@ -36,12 +37,17 @@ public class ValuePropertyFormatter {
 		} else if (value instanceof Property) {
 			Property p = (Property) value;
 			StringBuffer sb = new StringBuffer();
-			if (p.getModifier() != null) {
-				sb.append(p.getModifier() + " ");
+			if ("Integer".equals(p.getName()) || "Double".equals(p.getName())) {
+				sb.append(new ValuePropertyFormatter(p.getValue())
+						.getFormattedValue().replaceAll("\"", ""));
+			} else {
+				if (p.getModifier() != null) {
+					sb.append(p.getModifier() + " ");
+				}
+				sb.append(p.getName() + " : ");
+				sb.append(new ValuePropertyFormatter(p.getValue())
+						.getFormattedValue());
 			}
-			sb.append(p.getName() + " : ");
-			sb.append(new ValuePropertyFormatter(p.getValue())
-					.getFormattedValue());
 			formattedValue = sb.toString();
 		} else if (value instanceof ResourceValueProperty) {
 			ResourceValueProperty p = (ResourceValueProperty) value;
@@ -94,14 +100,20 @@ public class ValuePropertyFormatter {
 			sb.append("const " + p.getType().getSimpleName() + "#"
 					+ p.getField());
 			formattedValue = sb.toString();
+		} else if (value instanceof IncludeValueProperty) {
+			IncludeValueProperty inc = (IncludeValueProperty) value;
+			formattedValue = "include " + "source=" + inc.getSource()
+					+ " name=" + inc.getName(); // TODO
 		} else if (value instanceof ReferenceValueProperty) {
 			ReferenceValueProperty ref = (ReferenceValueProperty) value;
 			StringBuffer sb = new StringBuffer();
 			sb.append("idref ");
-			sb.append(ref.getReference()); // TODO get the name
+			if (ref.getReference() instanceof Element) {
+				sb.append(((Element) ref.getReference()).getType()
+						.getSimpleName());
+			}
 			if (!ref.getStaticCallProperties().isEmpty()
 					|| !ref.getStaticProperties().isEmpty()) {
-				// TODO
 				sb.append("{");
 				boolean comma = false;
 				for (StaticCallValueProperty p : ref.getStaticCallProperties()) {
@@ -121,17 +133,14 @@ public class ValuePropertyFormatter {
 				sb.append("}");
 			}
 			formattedValue = sb.toString();
-		} else if (value instanceof IncludeValueProperty) {
-			IncludeValueProperty inc = (IncludeValueProperty) value;
-			formattedValue = "include " + "source=" + inc.getSource()
-					+ " name=" + inc.getName(); // TODO
-
 		} else if (value instanceof SimpleValueProperty) {
 			SimpleValueProperty v = (SimpleValueProperty) value;
 			if (v.getBooleanValue() != null) {
 				formattedValue = v.getBooleanValue();
 			} else if (v.getStringValue() != null) {
 				formattedValue = "\"" + v.getStringValue() + "\"";
+			} else if (v.getRealValue() != 0.0) {
+				formattedValue = "" + v.getRealValue();
 			} else {
 				formattedValue = "" + v.getIntValue();
 			}
