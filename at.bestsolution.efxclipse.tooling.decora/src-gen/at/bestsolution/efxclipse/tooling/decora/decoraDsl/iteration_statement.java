@@ -115,12 +115,12 @@ public interface iteration_statement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>E</em>' containment reference.
-   * @see #setE(expression)
+   * @see #setE(Expr)
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage#getiteration_statement_E()
    * @model containment="true"
    * @generated
    */
-  expression getE();
+  Expr getE();
 
   /**
    * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.iteration_statement#getE <em>E</em>}' containment reference.
@@ -130,7 +130,7 @@ public interface iteration_statement extends EObject
    * @see #getE()
    * @generated
    */
-  void setE(expression value);
+  void setE(Expr value);
 
   /**
    * Returns the value of the '<em><b>U</b></em>' containment reference.

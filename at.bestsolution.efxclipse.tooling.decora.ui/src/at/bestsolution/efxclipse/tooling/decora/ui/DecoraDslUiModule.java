@@ -4,6 +4,11 @@
 package at.bestsolution.efxclipse.tooling.decora.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
+
+import at.bestsolution.efxclipse.tooling.decora.ui.highlighting.TokenMapper;
+
+import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -11,5 +16,11 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class DecoraDslUiModule extends at.bestsolution.efxclipse.tooling.decora.ui.AbstractDecoraDslUiModule {
 	public DecoraDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(AbstractAntlrTokenToAttributeIdMapper.class).to(TokenMapper.class);
 	}
 }

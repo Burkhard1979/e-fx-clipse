@@ -31,12 +31,12 @@ public interface condition extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>E</em>' containment reference.
-   * @see #setE(expression)
+   * @see #setE(Expr)
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage#getcondition_E()
    * @model containment="true"
    * @generated
    */
-  expression getE();
+  Expr getE();
 
   /**
    * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.condition#getE <em>E</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface condition extends EObject
    * @see #getE()
    * @generated
    */
-  void setE(expression value);
+  void setE(Expr value);
 
 } // condition

@@ -4,27 +4,22 @@ package at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslFactory;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage;
+import at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.Model;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.array_brackets;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.compound_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.compound_statement_no_new_scope;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.condition;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.constant_expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.declaration;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.declaration_identifier_and_init;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.declaration_statement;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.external_declaration;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.field_selection;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.for_init_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.for_rest_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.fully_specified_type;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call_parameter_list;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_definition;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_prototype;
@@ -32,16 +27,8 @@ import at.bestsolution.efxclipse.tooling.decora.decoraDsl.glue_block;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.initializer;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.iteration_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.jump_statement;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.parameter_declaration;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.parameter_declaration_list;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_expression;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.selection_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.simple_statement;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.single_declaration;
@@ -50,7 +37,6 @@ import at.bestsolution.efxclipse.tooling.decora.decoraDsl.statement_no_new_scope
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.ternary_part;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.translation_unit;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.type_specifier;
-import at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression;
 import at.bestsolution.efxclipse.tooling.decora.decoraDsl.unroll_modifier;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -87,28 +73,7 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass primary_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass primary_or_callEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass postfix_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass function_callEClass = null;
+  private EClass exprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -122,84 +87,7 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass unary_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass multiplicative_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass additive_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass relational_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass equality_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logical_and_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logical_xor_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logical_or_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass ternary_partEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass conditional_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass assignment_expressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass expressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -522,9 +410,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getprimary_expression()
+  public EClass getExpr()
   {
-    return primary_expressionEClass;
+    return exprEClass;
   }
 
   /**
@@ -532,9 +420,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getprimary_expression_E()
+  public EReference getExpr_E()
   {
-    return (EReference)primary_expressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -542,9 +430,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getprimary_or_call()
+  public EReference getExpr_F()
   {
-    return primary_or_callEClass;
+    return (EReference)exprEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -552,9 +440,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getprimary_or_call_E()
+  public EReference getExpr_Ae()
   {
-    return (EReference)primary_or_callEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -562,9 +450,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getprimary_or_call_F()
+  public EReference getExpr_Fs()
   {
-    return (EReference)primary_or_callEClass.getEStructuralFeatures().get(1);
+    return (EReference)exprEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -572,9 +460,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getpostfix_expression()
+  public EAttribute getExpr_Id()
   {
-    return postfix_expressionEClass;
+    return (EAttribute)exprEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -582,9 +470,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getpostfix_expression_E()
+  public EReference getExpr_P()
   {
-    return (EReference)postfix_expressionEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -592,9 +480,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getpostfix_expression_Ae()
+  public EReference getExpr_Ts()
   {
-    return (EReference)postfix_expressionEClass.getEStructuralFeatures().get(1);
+    return (EReference)exprEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -602,9 +490,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getpostfix_expression_Fs()
+  public EReference getExpr_U()
   {
-    return (EReference)postfix_expressionEClass.getEStructuralFeatures().get(2);
+    return (EReference)exprEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -612,9 +500,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getfunction_call()
+  public EReference getExpr_A()
   {
-    return function_callEClass;
+    return (EReference)exprEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -622,9 +510,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getfunction_call_Id()
+  public EReference getExpr_B()
   {
-    return (EAttribute)function_callEClass.getEStructuralFeatures().get(0);
+    return (EReference)exprEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -632,9 +520,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getfunction_call_P()
+  public EReference getExpr_T()
   {
-    return (EReference)function_callEClass.getEStructuralFeatures().get(1);
+    return (EReference)exprEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -642,9 +530,19 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getfunction_call_Ts()
+  public EAttribute getExpr_Op()
   {
-    return (EReference)function_callEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)exprEClass.getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpr_C()
+  {
+    return (EReference)exprEClass.getEStructuralFeatures().get(12);
   }
 
   /**
@@ -672,359 +570,9 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getunary_expression()
-  {
-    return unary_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getunary_expression_P()
-  {
-    return (EReference)unary_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getunary_expression_U()
-  {
-    return (EReference)unary_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getmultiplicative_expression()
-  {
-    return multiplicative_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getmultiplicative_expression_A()
-  {
-    return (EReference)multiplicative_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getmultiplicative_expression_B()
-  {
-    return (EReference)multiplicative_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getadditive_expression()
-  {
-    return additive_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getadditive_expression_A()
-  {
-    return (EReference)additive_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getadditive_expression_B()
-  {
-    return (EReference)additive_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getrelational_expression()
-  {
-    return relational_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getrelational_expression_A()
-  {
-    return (EReference)relational_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getrelational_expression_B()
-  {
-    return (EReference)relational_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getequality_expression()
-  {
-    return equality_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getequality_expression_A()
-  {
-    return (EReference)equality_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getequality_expression_B()
-  {
-    return (EReference)equality_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getlogical_and_expression()
-  {
-    return logical_and_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_and_expression_A()
-  {
-    return (EReference)logical_and_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_and_expression_B()
-  {
-    return (EReference)logical_and_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getlogical_xor_expression()
-  {
-    return logical_xor_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_xor_expression_A()
-  {
-    return (EReference)logical_xor_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_xor_expression_B()
-  {
-    return (EReference)logical_xor_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getlogical_or_expression()
-  {
-    return logical_or_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_or_expression_A()
-  {
-    return (EReference)logical_or_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getlogical_or_expression_B()
-  {
-    return (EReference)logical_or_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getternary_part()
   {
     return ternary_partEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getconditional_expression()
-  {
-    return conditional_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getconditional_expression_A()
-  {
-    return (EReference)conditional_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getconditional_expression_T()
-  {
-    return (EReference)conditional_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getassignment_expression()
-  {
-    return assignment_expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getassignment_expression_A()
-  {
-    return (EReference)assignment_expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getassignment_expression_Op()
-  {
-    return (EAttribute)assignment_expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getassignment_expression_B()
-  {
-    return (EReference)assignment_expressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getassignment_expression_C()
-  {
-    return (EReference)assignment_expressionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getexpression()
-  {
-    return expressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getexpression_A()
-  {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getexpression_E()
-  {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1914,73 +1462,25 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
     createEAttribute(field_selectionEClass, FIELD_SELECTION__R);
     createEAttribute(field_selectionEClass, FIELD_SELECTION__X);
 
-    primary_expressionEClass = createEClass(PRIMARY_EXPRESSION);
-    createEReference(primary_expressionEClass, PRIMARY_EXPRESSION__E);
-
-    primary_or_callEClass = createEClass(PRIMARY_OR_CALL);
-    createEReference(primary_or_callEClass, PRIMARY_OR_CALL__E);
-    createEReference(primary_or_callEClass, PRIMARY_OR_CALL__F);
-
-    postfix_expressionEClass = createEClass(POSTFIX_EXPRESSION);
-    createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__E);
-    createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__AE);
-    createEReference(postfix_expressionEClass, POSTFIX_EXPRESSION__FS);
-
-    function_callEClass = createEClass(FUNCTION_CALL);
-    createEAttribute(function_callEClass, FUNCTION_CALL__ID);
-    createEReference(function_callEClass, FUNCTION_CALL__P);
-    createEReference(function_callEClass, FUNCTION_CALL__TS);
+    exprEClass = createEClass(EXPR);
+    createEReference(exprEClass, EXPR__E);
+    createEReference(exprEClass, EXPR__F);
+    createEReference(exprEClass, EXPR__AE);
+    createEReference(exprEClass, EXPR__FS);
+    createEAttribute(exprEClass, EXPR__ID);
+    createEReference(exprEClass, EXPR__P);
+    createEReference(exprEClass, EXPR__TS);
+    createEReference(exprEClass, EXPR__U);
+    createEReference(exprEClass, EXPR__A);
+    createEReference(exprEClass, EXPR__B);
+    createEReference(exprEClass, EXPR__T);
+    createEAttribute(exprEClass, EXPR__OP);
+    createEReference(exprEClass, EXPR__C);
 
     function_call_parameter_listEClass = createEClass(FUNCTION_CALL_PARAMETER_LIST);
     createEReference(function_call_parameter_listEClass, FUNCTION_CALL_PARAMETER_LIST__A);
 
-    unary_expressionEClass = createEClass(UNARY_EXPRESSION);
-    createEReference(unary_expressionEClass, UNARY_EXPRESSION__P);
-    createEReference(unary_expressionEClass, UNARY_EXPRESSION__U);
-
-    multiplicative_expressionEClass = createEClass(MULTIPLICATIVE_EXPRESSION);
-    createEReference(multiplicative_expressionEClass, MULTIPLICATIVE_EXPRESSION__A);
-    createEReference(multiplicative_expressionEClass, MULTIPLICATIVE_EXPRESSION__B);
-
-    additive_expressionEClass = createEClass(ADDITIVE_EXPRESSION);
-    createEReference(additive_expressionEClass, ADDITIVE_EXPRESSION__A);
-    createEReference(additive_expressionEClass, ADDITIVE_EXPRESSION__B);
-
-    relational_expressionEClass = createEClass(RELATIONAL_EXPRESSION);
-    createEReference(relational_expressionEClass, RELATIONAL_EXPRESSION__A);
-    createEReference(relational_expressionEClass, RELATIONAL_EXPRESSION__B);
-
-    equality_expressionEClass = createEClass(EQUALITY_EXPRESSION);
-    createEReference(equality_expressionEClass, EQUALITY_EXPRESSION__A);
-    createEReference(equality_expressionEClass, EQUALITY_EXPRESSION__B);
-
-    logical_and_expressionEClass = createEClass(LOGICAL_AND_EXPRESSION);
-    createEReference(logical_and_expressionEClass, LOGICAL_AND_EXPRESSION__A);
-    createEReference(logical_and_expressionEClass, LOGICAL_AND_EXPRESSION__B);
-
-    logical_xor_expressionEClass = createEClass(LOGICAL_XOR_EXPRESSION);
-    createEReference(logical_xor_expressionEClass, LOGICAL_XOR_EXPRESSION__A);
-    createEReference(logical_xor_expressionEClass, LOGICAL_XOR_EXPRESSION__B);
-
-    logical_or_expressionEClass = createEClass(LOGICAL_OR_EXPRESSION);
-    createEReference(logical_or_expressionEClass, LOGICAL_OR_EXPRESSION__A);
-    createEReference(logical_or_expressionEClass, LOGICAL_OR_EXPRESSION__B);
-
     ternary_partEClass = createEClass(TERNARY_PART);
-
-    conditional_expressionEClass = createEClass(CONDITIONAL_EXPRESSION);
-    createEReference(conditional_expressionEClass, CONDITIONAL_EXPRESSION__A);
-    createEReference(conditional_expressionEClass, CONDITIONAL_EXPRESSION__T);
-
-    assignment_expressionEClass = createEClass(ASSIGNMENT_EXPRESSION);
-    createEReference(assignment_expressionEClass, ASSIGNMENT_EXPRESSION__A);
-    createEAttribute(assignment_expressionEClass, ASSIGNMENT_EXPRESSION__OP);
-    createEReference(assignment_expressionEClass, ASSIGNMENT_EXPRESSION__B);
-    createEReference(assignment_expressionEClass, ASSIGNMENT_EXPRESSION__C);
-
-    expressionEClass = createEClass(EXPRESSION);
-    createEReference(expressionEClass, EXPRESSION__A);
-    createEReference(expressionEClass, EXPRESSION__E);
 
     function_prototypeEClass = createEClass(FUNCTION_PROTOTYPE);
     createEReference(function_prototypeEClass, FUNCTION_PROTOTYPE__T);
@@ -2126,7 +1626,7 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    expressionEClass.getESuperTypes().add(this.getternary_part());
+    exprEClass.getESuperTypes().add(this.getternary_part());
     array_bracketsEClass.getESuperTypes().add(this.gettype_specifier());
     constant_expressionEClass.getESuperTypes().add(this.getarray_brackets());
 
@@ -2138,73 +1638,25 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
     initEAttribute(getfield_selection_R(), ecorePackage.getEString(), "r", null, 0, 1, field_selection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getfield_selection_X(), ecorePackage.getEString(), "x", null, 0, 1, field_selection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(primary_expressionEClass, primary_expression.class, "primary_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getprimary_expression_E(), this.getexpression(), null, "e", null, 0, 1, primary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(primary_or_callEClass, primary_or_call.class, "primary_or_call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getprimary_or_call_E(), this.getprimary_expression(), null, "e", null, 0, 1, primary_or_call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getprimary_or_call_F(), this.getfunction_call(), null, "f", null, 0, 1, primary_or_call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(postfix_expressionEClass, postfix_expression.class, "postfix_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getpostfix_expression_E(), this.getprimary_or_call(), null, "e", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getpostfix_expression_Ae(), this.getexpression(), null, "ae", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getpostfix_expression_Fs(), this.getfield_selection(), null, "fs", null, 0, 1, postfix_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(function_callEClass, function_call.class, "function_call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getfunction_call_Id(), ecorePackage.getEString(), "id", null, 0, 1, function_call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getfunction_call_P(), this.getfunction_call_parameter_list(), null, "p", null, 0, 1, function_call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getfunction_call_Ts(), this.gettype_specifier(), null, "ts", null, 0, 1, function_call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(exprEClass, Expr.class, "Expr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpr_E(), this.getExpr(), null, "e", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_F(), this.getExpr(), null, "f", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_Ae(), this.getExpr(), null, "ae", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_Fs(), this.getfield_selection(), null, "fs", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExpr_Id(), ecorePackage.getEString(), "id", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_P(), ecorePackage.getEObject(), null, "p", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_Ts(), this.gettype_specifier(), null, "ts", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_U(), this.getExpr(), null, "u", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_A(), this.getExpr(), null, "a", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_B(), this.getExpr(), null, "b", null, 0, -1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_T(), this.getternary_part(), null, "t", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExpr_Op(), ecorePackage.getEString(), "op", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_C(), this.getExpr(), null, "c", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(function_call_parameter_listEClass, function_call_parameter_list.class, "function_call_parameter_list", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getfunction_call_parameter_list_A(), this.getassignment_expression(), null, "a", null, 0, -1, function_call_parameter_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(unary_expressionEClass, unary_expression.class, "unary_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getunary_expression_P(), this.getpostfix_expression(), null, "p", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getunary_expression_U(), this.getunary_expression(), null, "u", null, 0, 1, unary_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(multiplicative_expressionEClass, multiplicative_expression.class, "multiplicative_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getmultiplicative_expression_A(), this.getunary_expression(), null, "a", null, 0, 1, multiplicative_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getmultiplicative_expression_B(), this.getmultiplicative_expression(), null, "b", null, 0, -1, multiplicative_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(additive_expressionEClass, additive_expression.class, "additive_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getadditive_expression_A(), this.getmultiplicative_expression(), null, "a", null, 0, 1, additive_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getadditive_expression_B(), this.getmultiplicative_expression(), null, "b", null, 0, -1, additive_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(relational_expressionEClass, relational_expression.class, "relational_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getrelational_expression_A(), this.getadditive_expression(), null, "a", null, 0, 1, relational_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getrelational_expression_B(), this.getadditive_expression(), null, "b", null, 0, -1, relational_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(equality_expressionEClass, equality_expression.class, "equality_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getequality_expression_A(), this.getrelational_expression(), null, "a", null, 0, 1, equality_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getequality_expression_B(), this.getrelational_expression(), null, "b", null, 0, -1, equality_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logical_and_expressionEClass, logical_and_expression.class, "logical_and_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getlogical_and_expression_A(), this.getequality_expression(), null, "a", null, 0, 1, logical_and_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_and_expression_B(), this.getequality_expression(), null, "b", null, 0, -1, logical_and_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logical_xor_expressionEClass, logical_xor_expression.class, "logical_xor_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getlogical_xor_expression_A(), this.getlogical_and_expression(), null, "a", null, 0, 1, logical_xor_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_xor_expression_B(), this.getlogical_and_expression(), null, "b", null, 0, -1, logical_xor_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logical_or_expressionEClass, logical_or_expression.class, "logical_or_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getlogical_or_expression_A(), this.getlogical_xor_expression(), null, "a", null, 0, 1, logical_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getlogical_or_expression_B(), this.getlogical_xor_expression(), null, "b", null, 0, -1, logical_or_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getfunction_call_parameter_list_A(), this.getExpr(), null, "a", null, 0, -1, function_call_parameter_list.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ternary_partEClass, ternary_part.class, "ternary_part", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(conditional_expressionEClass, conditional_expression.class, "conditional_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getconditional_expression_A(), this.getlogical_or_expression(), null, "a", null, 0, 1, conditional_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getconditional_expression_T(), this.getternary_part(), null, "t", null, 0, 1, conditional_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(assignment_expressionEClass, assignment_expression.class, "assignment_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getassignment_expression_A(), this.getunary_expression(), null, "a", null, 0, 1, assignment_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getassignment_expression_Op(), ecorePackage.getEString(), "op", null, 0, 1, assignment_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getassignment_expression_B(), this.getassignment_expression(), null, "b", null, 0, 1, assignment_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getassignment_expression_C(), this.getconditional_expression(), null, "c", null, 0, 1, assignment_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(expressionEClass, expression.class, "expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getexpression_A(), this.getassignment_expression(), null, "a", null, 0, 1, expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getexpression_E(), this.getassignment_expression(), null, "e", null, 0, 1, expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(function_prototypeEClass, function_prototype.class, "function_prototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getfunction_prototype_T(), this.gettype_specifier(), null, "t", null, 0, 1, function_prototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2241,7 +1693,7 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
     initEClass(array_bracketsEClass, array_brackets.class, "array_brackets", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(initializerEClass, initializer.class, "initializer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getinitializer_E(), this.getassignment_expression(), null, "e", null, 0, 1, initializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getinitializer_E(), this.getExpr(), null, "e", null, 0, 1, initializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(declaration_statementEClass, declaration_statement.class, "declaration_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getdeclaration_statement_D(), this.getdeclaration(), null, "d", null, 0, 1, declaration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2268,24 +1720,24 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
     initEReference(getcompound_statement_no_new_scope_S(), this.getstatement(), null, "s", null, 0, -1, compound_statement_no_new_scope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expression_statementEClass, expression_statement.class, "expression_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getexpression_statement_E(), this.getexpression(), null, "e", null, 0, 1, expression_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getexpression_statement_E(), this.getExpr(), null, "e", null, 0, 1, expression_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constant_expressionEClass, constant_expression.class, "constant_expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getconstant_expression_C(), this.getconditional_expression(), null, "c", null, 0, 1, constant_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getconstant_expression_C(), this.getExpr(), null, "c", null, 0, 1, constant_expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selection_statementEClass, selection_statement.class, "selection_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getselection_statement_E(), this.getexpression(), null, "e", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getselection_statement_E(), this.getExpr(), null, "e", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getselection_statement_A(), this.getstatement(), null, "a", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getselection_statement_B(), this.getstatement(), null, "b", null, 0, 1, selection_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionEClass, condition.class, "condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getcondition_E(), this.getexpression(), null, "e", null, 0, 1, condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getcondition_E(), this.getExpr(), null, "e", null, 0, 1, condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(iteration_statementEClass, iteration_statement.class, "iteration_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getiteration_statement_C(), this.getcondition(), null, "c", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getiteration_statement_Snns(), this.getstatement_no_new_scope(), null, "snns", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getiteration_statement_S(), this.getstatement(), null, "s", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getiteration_statement_E(), this.getexpression(), null, "e", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getiteration_statement_E(), this.getExpr(), null, "e", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getiteration_statement_U(), this.getunroll_modifier(), null, "u", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getiteration_statement_Init(), this.getfor_init_statement(), null, "init", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getiteration_statement_Rem(), this.getfor_rest_statement(), null, "rem", null, 0, 1, iteration_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2300,10 +1752,10 @@ public class DecoraDslPackageImpl extends EPackageImpl implements DecoraDslPacka
 
     initEClass(for_rest_statementEClass, for_rest_statement.class, "for_rest_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getfor_rest_statement_C(), this.getcondition(), null, "c", null, 0, 1, for_rest_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getfor_rest_statement_E(), this.getexpression(), null, "e", null, 0, 1, for_rest_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getfor_rest_statement_E(), this.getExpr(), null, "e", null, 0, 1, for_rest_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jump_statementEClass, jump_statement.class, "jump_statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getjump_statement_E(), this.getexpression(), null, "e", null, 0, 1, jump_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getjump_statement_E(), this.getExpr(), null, "e", null, 0, 1, jump_statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(translation_unitEClass, translation_unit.class, "translation_unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(gettranslation_unit_E(), this.getexternal_declaration(), null, "e", null, 0, -1, translation_unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

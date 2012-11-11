@@ -122,14 +122,33 @@ public interface DecoraDslPackage extends EPackage
   int FIELD_SELECTION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_expressionImpl <em>primary expression</em>}' class.
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ternary_partImpl <em>ternary part</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getprimary_expression()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ternary_partImpl
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getternary_part()
    * @generated
    */
-  int PRIMARY_EXPRESSION = 2;
+  int TERNARY_PART = 4;
+
+  /**
+   * The number of structural features of the '<em>ternary part</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TERNARY_PART_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ExprImpl <em>Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ExprImpl
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getExpr()
+   * @generated
+   */
+  int EXPR = 2;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference.
@@ -138,35 +157,7 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_EXPRESSION__E = 0;
-
-  /**
-   * The number of structural features of the '<em>primary expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_EXPRESSION_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_or_callImpl <em>primary or call</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_or_callImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getprimary_or_call()
-   * @generated
-   */
-  int PRIMARY_OR_CALL = 3;
-
-  /**
-   * The feature id for the '<em><b>E</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_OR_CALL__E = 0;
+  int EXPR__E = TERNARY_PART_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>F</b></em>' containment reference.
@@ -175,35 +166,7 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_OR_CALL__F = 1;
-
-  /**
-   * The number of structural features of the '<em>primary or call</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_OR_CALL_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.postfix_expressionImpl <em>postfix expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.postfix_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getpostfix_expression()
-   * @generated
-   */
-  int POSTFIX_EXPRESSION = 4;
-
-  /**
-   * The feature id for the '<em><b>E</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POSTFIX_EXPRESSION__E = 0;
+  int EXPR__F = TERNARY_PART_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Ae</b></em>' containment reference.
@@ -212,7 +175,7 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POSTFIX_EXPRESSION__AE = 1;
+  int EXPR__AE = TERNARY_PART_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Fs</b></em>' containment reference.
@@ -221,26 +184,7 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POSTFIX_EXPRESSION__FS = 2;
-
-  /**
-   * The number of structural features of the '<em>postfix expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POSTFIX_EXPRESSION_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_callImpl <em>function call</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_callImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfunction_call()
-   * @generated
-   */
-  int FUNCTION_CALL = 5;
+  int EXPR__FS = TERNARY_PART_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -249,7 +193,7 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_CALL__ID = 0;
+  int EXPR__ID = TERNARY_PART_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>P</b></em>' containment reference.
@@ -258,7 +202,7 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_CALL__P = 1;
+  int EXPR__P = TERNARY_PART_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Ts</b></em>' containment reference.
@@ -267,16 +211,70 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_CALL__TS = 2;
+  int EXPR__TS = TERNARY_PART_FEATURE_COUNT + 6;
 
   /**
-   * The number of structural features of the '<em>function call</em>' class.
+   * The feature id for the '<em><b>U</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_CALL_FEATURE_COUNT = 3;
+  int EXPR__U = TERNARY_PART_FEATURE_COUNT + 7;
+
+  /**
+   * The feature id for the '<em><b>A</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__A = TERNARY_PART_FEATURE_COUNT + 8;
+
+  /**
+   * The feature id for the '<em><b>B</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__B = TERNARY_PART_FEATURE_COUNT + 9;
+
+  /**
+   * The feature id for the '<em><b>T</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__T = TERNARY_PART_FEATURE_COUNT + 10;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__OP = TERNARY_PART_FEATURE_COUNT + 11;
+
+  /**
+   * The feature id for the '<em><b>C</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__C = TERNARY_PART_FEATURE_COUNT + 12;
+
+  /**
+   * The number of structural features of the '<em>Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_FEATURE_COUNT = TERNARY_PART_FEATURE_COUNT + 13;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_call_parameter_listImpl <em>function call parameter list</em>}' class.
@@ -286,7 +284,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfunction_call_parameter_list()
    * @generated
    */
-  int FUNCTION_CALL_PARAMETER_LIST = 6;
+  int FUNCTION_CALL_PARAMETER_LIST = 3;
 
   /**
    * The feature id for the '<em><b>A</b></em>' containment reference list.
@@ -307,450 +305,6 @@ public interface DecoraDslPackage extends EPackage
   int FUNCTION_CALL_PARAMETER_LIST_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.unary_expressionImpl <em>unary expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.unary_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getunary_expression()
-   * @generated
-   */
-  int UNARY_EXPRESSION = 7;
-
-  /**
-   * The feature id for the '<em><b>P</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int UNARY_EXPRESSION__P = 0;
-
-  /**
-   * The feature id for the '<em><b>U</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int UNARY_EXPRESSION__U = 1;
-
-  /**
-   * The number of structural features of the '<em>unary expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int UNARY_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.multiplicative_expressionImpl <em>multiplicative expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.multiplicative_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getmultiplicative_expression()
-   * @generated
-   */
-  int MULTIPLICATIVE_EXPRESSION = 8;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICATIVE_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICATIVE_EXPRESSION__B = 1;
-
-  /**
-   * The number of structural features of the '<em>multiplicative expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICATIVE_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.additive_expressionImpl <em>additive expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.additive_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getadditive_expression()
-   * @generated
-   */
-  int ADDITIVE_EXPRESSION = 9;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADDITIVE_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADDITIVE_EXPRESSION__B = 1;
-
-  /**
-   * The number of structural features of the '<em>additive expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADDITIVE_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.relational_expressionImpl <em>relational expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.relational_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getrelational_expression()
-   * @generated
-   */
-  int RELATIONAL_EXPRESSION = 10;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RELATIONAL_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RELATIONAL_EXPRESSION__B = 1;
-
-  /**
-   * The number of structural features of the '<em>relational expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RELATIONAL_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.equality_expressionImpl <em>equality expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.equality_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getequality_expression()
-   * @generated
-   */
-  int EQUALITY_EXPRESSION = 11;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_EXPRESSION__B = 1;
-
-  /**
-   * The number of structural features of the '<em>equality expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_and_expressionImpl <em>logical and expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_and_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getlogical_and_expression()
-   * @generated
-   */
-  int LOGICAL_AND_EXPRESSION = 12;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_AND_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_AND_EXPRESSION__B = 1;
-
-  /**
-   * The number of structural features of the '<em>logical and expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_AND_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_xor_expressionImpl <em>logical xor expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_xor_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getlogical_xor_expression()
-   * @generated
-   */
-  int LOGICAL_XOR_EXPRESSION = 13;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_XOR_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_XOR_EXPRESSION__B = 1;
-
-  /**
-   * The number of structural features of the '<em>logical xor expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_XOR_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_or_expressionImpl <em>logical or expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_or_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getlogical_or_expression()
-   * @generated
-   */
-  int LOGICAL_OR_EXPRESSION = 14;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_OR_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_OR_EXPRESSION__B = 1;
-
-  /**
-   * The number of structural features of the '<em>logical or expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGICAL_OR_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ternary_partImpl <em>ternary part</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ternary_partImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getternary_part()
-   * @generated
-   */
-  int TERNARY_PART = 15;
-
-  /**
-   * The number of structural features of the '<em>ternary part</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TERNARY_PART_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.conditional_expressionImpl <em>conditional expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.conditional_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getconditional_expression()
-   * @generated
-   */
-  int CONDITIONAL_EXPRESSION = 16;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITIONAL_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>T</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITIONAL_EXPRESSION__T = 1;
-
-  /**
-   * The number of structural features of the '<em>conditional expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITIONAL_EXPRESSION_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.assignment_expressionImpl <em>assignment expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.assignment_expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getassignment_expression()
-   * @generated
-   */
-  int ASSIGNMENT_EXPRESSION = 17;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGNMENT_EXPRESSION__A = 0;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGNMENT_EXPRESSION__OP = 1;
-
-  /**
-   * The feature id for the '<em><b>B</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGNMENT_EXPRESSION__B = 2;
-
-  /**
-   * The feature id for the '<em><b>C</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGNMENT_EXPRESSION__C = 3;
-
-  /**
-   * The number of structural features of the '<em>assignment expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGNMENT_EXPRESSION_FEATURE_COUNT = 4;
-
-  /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.expressionImpl <em>expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.expressionImpl
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getexpression()
-   * @generated
-   */
-  int EXPRESSION = 18;
-
-  /**
-   * The feature id for the '<em><b>A</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__A = TERNARY_PART_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>E</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__E = TERNARY_PART_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION_FEATURE_COUNT = TERNARY_PART_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_prototypeImpl <em>function prototype</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -758,7 +312,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfunction_prototype()
    * @generated
    */
-  int FUNCTION_PROTOTYPE = 19;
+  int FUNCTION_PROTOTYPE = 5;
 
   /**
    * The feature id for the '<em><b>T</b></em>' containment reference.
@@ -804,7 +358,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getparameter_declaration()
    * @generated
    */
-  int PARAMETER_DECLARATION = 20;
+  int PARAMETER_DECLARATION = 6;
 
   /**
    * The feature id for the '<em><b>T</b></em>' containment reference.
@@ -841,7 +395,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getparameter_declaration_list()
    * @generated
    */
-  int PARAMETER_DECLARATION_LIST = 21;
+  int PARAMETER_DECLARATION_LIST = 7;
 
   /**
    * The feature id for the '<em><b>P</b></em>' containment reference list.
@@ -869,7 +423,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getdeclaration_identifier_and_init()
    * @generated
    */
-  int DECLARATION_IDENTIFIER_AND_INIT = 22;
+  int DECLARATION_IDENTIFIER_AND_INIT = 8;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -915,7 +469,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getsingle_declaration()
    * @generated
    */
-  int SINGLE_DECLARATION = 23;
+  int SINGLE_DECLARATION = 9;
 
   /**
    * The feature id for the '<em><b>T</b></em>' containment reference.
@@ -952,7 +506,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getdeclaration()
    * @generated
    */
-  int DECLARATION = 24;
+  int DECLARATION = 10;
 
   /**
    * The feature id for the '<em><b>S</b></em>' containment reference.
@@ -989,7 +543,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfully_specified_type()
    * @generated
    */
-  int FULLY_SPECIFIED_TYPE = 25;
+  int FULLY_SPECIFIED_TYPE = 11;
 
   /**
    * The feature id for the '<em><b>Tq</b></em>' attribute.
@@ -1035,7 +589,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#gettype_specifier()
    * @generated
    */
-  int TYPE_SPECIFIER = 26;
+  int TYPE_SPECIFIER = 12;
 
   /**
    * The number of structural features of the '<em>type specifier</em>' class.
@@ -1054,7 +608,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getarray_brackets()
    * @generated
    */
-  int ARRAY_BRACKETS = 27;
+  int ARRAY_BRACKETS = 13;
 
   /**
    * The number of structural features of the '<em>array brackets</em>' class.
@@ -1073,7 +627,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getinitializer()
    * @generated
    */
-  int INITIALIZER = 28;
+  int INITIALIZER = 14;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference.
@@ -1101,7 +655,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getdeclaration_statement()
    * @generated
    */
-  int DECLARATION_STATEMENT = 29;
+  int DECLARATION_STATEMENT = 15;
 
   /**
    * The feature id for the '<em><b>D</b></em>' containment reference.
@@ -1129,7 +683,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getstatement()
    * @generated
    */
-  int STATEMENT = 30;
+  int STATEMENT = 16;
 
   /**
    * The feature id for the '<em><b>C</b></em>' containment reference.
@@ -1166,7 +720,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getsimple_statement()
    * @generated
    */
-  int SIMPLE_STATEMENT = 31;
+  int SIMPLE_STATEMENT = 17;
 
   /**
    * The feature id for the '<em><b>D</b></em>' containment reference.
@@ -1230,7 +784,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getcompound_statement()
    * @generated
    */
-  int COMPOUND_STATEMENT = 32;
+  int COMPOUND_STATEMENT = 18;
 
   /**
    * The feature id for the '<em><b>S</b></em>' containment reference list.
@@ -1258,7 +812,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getstatement_no_new_scope()
    * @generated
    */
-  int STATEMENT_NO_NEW_SCOPE = 33;
+  int STATEMENT_NO_NEW_SCOPE = 19;
 
   /**
    * The feature id for the '<em><b>C</b></em>' containment reference.
@@ -1295,7 +849,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getcompound_statement_no_new_scope()
    * @generated
    */
-  int COMPOUND_STATEMENT_NO_NEW_SCOPE = 34;
+  int COMPOUND_STATEMENT_NO_NEW_SCOPE = 20;
 
   /**
    * The feature id for the '<em><b>S</b></em>' containment reference list.
@@ -1323,7 +877,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getexpression_statement()
    * @generated
    */
-  int EXPRESSION_STATEMENT = 35;
+  int EXPRESSION_STATEMENT = 21;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference.
@@ -1351,7 +905,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getconstant_expression()
    * @generated
    */
-  int CONSTANT_EXPRESSION = 36;
+  int CONSTANT_EXPRESSION = 22;
 
   /**
    * The feature id for the '<em><b>C</b></em>' containment reference.
@@ -1379,7 +933,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getselection_statement()
    * @generated
    */
-  int SELECTION_STATEMENT = 37;
+  int SELECTION_STATEMENT = 23;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference.
@@ -1425,7 +979,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getcondition()
    * @generated
    */
-  int CONDITION = 38;
+  int CONDITION = 24;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference.
@@ -1453,7 +1007,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getiteration_statement()
    * @generated
    */
-  int ITERATION_STATEMENT = 39;
+  int ITERATION_STATEMENT = 25;
 
   /**
    * The feature id for the '<em><b>C</b></em>' containment reference.
@@ -1535,7 +1089,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getunroll_modifier()
    * @generated
    */
-  int UNROLL_MODIFIER = 40;
+  int UNROLL_MODIFIER = 26;
 
   /**
    * The feature id for the '<em><b>M</b></em>' attribute.
@@ -1572,7 +1126,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfor_init_statement()
    * @generated
    */
-  int FOR_INIT_STATEMENT = 41;
+  int FOR_INIT_STATEMENT = 27;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference.
@@ -1609,7 +1163,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfor_rest_statement()
    * @generated
    */
-  int FOR_REST_STATEMENT = 42;
+  int FOR_REST_STATEMENT = 28;
 
   /**
    * The feature id for the '<em><b>C</b></em>' containment reference.
@@ -1646,7 +1200,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getjump_statement()
    * @generated
    */
-  int JUMP_STATEMENT = 43;
+  int JUMP_STATEMENT = 29;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference.
@@ -1674,7 +1228,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#gettranslation_unit()
    * @generated
    */
-  int TRANSLATION_UNIT = 44;
+  int TRANSLATION_UNIT = 30;
 
   /**
    * The feature id for the '<em><b>E</b></em>' containment reference list.
@@ -1702,7 +1256,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getexternal_declaration()
    * @generated
    */
-  int EXTERNAL_DECLARATION = 45;
+  int EXTERNAL_DECLARATION = 31;
 
   /**
    * The feature id for the '<em><b>F</b></em>' containment reference.
@@ -1748,7 +1302,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfunction_definition()
    * @generated
    */
-  int FUNCTION_DEFINITION = 46;
+  int FUNCTION_DEFINITION = 32;
 
   /**
    * The feature id for the '<em><b>P</b></em>' containment reference.
@@ -1785,7 +1339,7 @@ public interface DecoraDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getglue_block()
    * @generated
    */
-  int GLUE_BLOCK = 47;
+  int GLUE_BLOCK = 33;
 
   /**
    * The feature id for the '<em><b>G</b></em>' attribute.
@@ -1860,143 +1414,157 @@ public interface DecoraDslPackage extends EPackage
   EAttribute getfield_selection_X();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_expression <em>primary expression</em>}'.
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr <em>Expr</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>primary expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_expression
+   * @return the meta object for class '<em>Expr</em>'.
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr
    * @generated
    */
-  EClass getprimary_expression();
+  EClass getExpr();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_expression#getE <em>E</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>E</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_expression#getE()
-   * @see #getprimary_expression()
-   * @generated
-   */
-  EReference getprimary_expression_E();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call <em>primary or call</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>primary or call</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call
-   * @generated
-   */
-  EClass getprimary_or_call();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call#getE <em>E</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getE <em>E</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>E</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call#getE()
-   * @see #getprimary_or_call()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getE()
+   * @see #getExpr()
    * @generated
    */
-  EReference getprimary_or_call_E();
+  EReference getExpr_E();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call#getF <em>F</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getF <em>F</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>F</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.primary_or_call#getF()
-   * @see #getprimary_or_call()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getF()
+   * @see #getExpr()
    * @generated
    */
-  EReference getprimary_or_call_F();
+  EReference getExpr_F();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression <em>postfix expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>postfix expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression
-   * @generated
-   */
-  EClass getpostfix_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression#getE <em>E</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>E</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression#getE()
-   * @see #getpostfix_expression()
-   * @generated
-   */
-  EReference getpostfix_expression_E();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression#getAe <em>Ae</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getAe <em>Ae</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Ae</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression#getAe()
-   * @see #getpostfix_expression()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getAe()
+   * @see #getExpr()
    * @generated
    */
-  EReference getpostfix_expression_Ae();
+  EReference getExpr_Ae();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression#getFs <em>Fs</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getFs <em>Fs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Fs</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.postfix_expression#getFs()
-   * @see #getpostfix_expression()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getFs()
+   * @see #getExpr()
    * @generated
    */
-  EReference getpostfix_expression_Fs();
+  EReference getExpr_Fs();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call <em>function call</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>function call</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call
-   * @generated
-   */
-  EClass getfunction_call();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call#getId <em>Id</em>}'.
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getId <em>Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Id</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call#getId()
-   * @see #getfunction_call()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getId()
+   * @see #getExpr()
    * @generated
    */
-  EAttribute getfunction_call_Id();
+  EAttribute getExpr_Id();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call#getP <em>P</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getP <em>P</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>P</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call#getP()
-   * @see #getfunction_call()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getP()
+   * @see #getExpr()
    * @generated
    */
-  EReference getfunction_call_P();
+  EReference getExpr_P();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call#getTs <em>Ts</em>}'.
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getTs <em>Ts</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Ts</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call#getTs()
-   * @see #getfunction_call()
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getTs()
+   * @see #getExpr()
    * @generated
    */
-  EReference getfunction_call_Ts();
+  EReference getExpr_Ts();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getU <em>U</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>U</em>'.
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getU()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_U();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getA <em>A</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>A</em>'.
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getA()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_A();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getB <em>B</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>B</em>'.
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getB()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_B();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getT <em>T</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>T</em>'.
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getT()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_T();
+
+  /**
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getOp()
+   * @see #getExpr()
+   * @generated
+   */
+  EAttribute getExpr_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getC <em>C</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>C</em>'.
+   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.Expr#getC()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_C();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_call_parameter_list <em>function call parameter list</em>}'.
@@ -2020,262 +1588,6 @@ public interface DecoraDslPackage extends EPackage
   EReference getfunction_call_parameter_list_A();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression <em>unary expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>unary expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression
-   * @generated
-   */
-  EClass getunary_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression#getP <em>P</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>P</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression#getP()
-   * @see #getunary_expression()
-   * @generated
-   */
-  EReference getunary_expression_P();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression#getU <em>U</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>U</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.unary_expression#getU()
-   * @see #getunary_expression()
-   * @generated
-   */
-  EReference getunary_expression_U();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression <em>multiplicative expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>multiplicative expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression
-   * @generated
-   */
-  EClass getmultiplicative_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression#getA()
-   * @see #getmultiplicative_expression()
-   * @generated
-   */
-  EReference getmultiplicative_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.multiplicative_expression#getB()
-   * @see #getmultiplicative_expression()
-   * @generated
-   */
-  EReference getmultiplicative_expression_B();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression <em>additive expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>additive expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression
-   * @generated
-   */
-  EClass getadditive_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression#getA()
-   * @see #getadditive_expression()
-   * @generated
-   */
-  EReference getadditive_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.additive_expression#getB()
-   * @see #getadditive_expression()
-   * @generated
-   */
-  EReference getadditive_expression_B();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression <em>relational expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>relational expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression
-   * @generated
-   */
-  EClass getrelational_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression#getA()
-   * @see #getrelational_expression()
-   * @generated
-   */
-  EReference getrelational_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.relational_expression#getB()
-   * @see #getrelational_expression()
-   * @generated
-   */
-  EReference getrelational_expression_B();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression <em>equality expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>equality expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression
-   * @generated
-   */
-  EClass getequality_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression#getA()
-   * @see #getequality_expression()
-   * @generated
-   */
-  EReference getequality_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.equality_expression#getB()
-   * @see #getequality_expression()
-   * @generated
-   */
-  EReference getequality_expression_B();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression <em>logical and expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>logical and expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression
-   * @generated
-   */
-  EClass getlogical_and_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression#getA()
-   * @see #getlogical_and_expression()
-   * @generated
-   */
-  EReference getlogical_and_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_and_expression#getB()
-   * @see #getlogical_and_expression()
-   * @generated
-   */
-  EReference getlogical_and_expression_B();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression <em>logical xor expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>logical xor expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression
-   * @generated
-   */
-  EClass getlogical_xor_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression#getA()
-   * @see #getlogical_xor_expression()
-   * @generated
-   */
-  EReference getlogical_xor_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_xor_expression#getB()
-   * @see #getlogical_xor_expression()
-   * @generated
-   */
-  EReference getlogical_xor_expression_B();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression <em>logical or expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>logical or expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression
-   * @generated
-   */
-  EClass getlogical_or_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression#getA()
-   * @see #getlogical_or_expression()
-   * @generated
-   */
-  EReference getlogical_or_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.logical_or_expression#getB()
-   * @see #getlogical_or_expression()
-   * @generated
-   */
-  EReference getlogical_or_expression_B();
-
-  /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.ternary_part <em>ternary part</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2284,124 +1596,6 @@ public interface DecoraDslPackage extends EPackage
    * @generated
    */
   EClass getternary_part();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression <em>conditional expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>conditional expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression
-   * @generated
-   */
-  EClass getconditional_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression#getA()
-   * @see #getconditional_expression()
-   * @generated
-   */
-  EReference getconditional_expression_A();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression#getT <em>T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>T</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.conditional_expression#getT()
-   * @see #getconditional_expression()
-   * @generated
-   */
-  EReference getconditional_expression_T();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression <em>assignment expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>assignment expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression
-   * @generated
-   */
-  EClass getassignment_expression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getA()
-   * @see #getassignment_expression()
-   * @generated
-   */
-  EReference getassignment_expression_A();
-
-  /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getOp <em>Op</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Op</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getOp()
-   * @see #getassignment_expression()
-   * @generated
-   */
-  EAttribute getassignment_expression_Op();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getB <em>B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>B</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getB()
-   * @see #getassignment_expression()
-   * @generated
-   */
-  EReference getassignment_expression_B();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getC <em>C</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>C</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.assignment_expression#getC()
-   * @see #getassignment_expression()
-   * @generated
-   */
-  EReference getassignment_expression_C();
-
-  /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression <em>expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>expression</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression
-   * @generated
-   */
-  EClass getexpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression#getA <em>A</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>A</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression#getA()
-   * @see #getexpression()
-   * @generated
-   */
-  EReference getexpression_A();
-
-  /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression#getE <em>E</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>E</em>'.
-   * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.expression#getE()
-   * @see #getexpression()
-   * @generated
-   */
-  EReference getexpression_E();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.function_prototype <em>function prototype</em>}'.
@@ -3377,14 +2571,14 @@ public interface DecoraDslPackage extends EPackage
     EAttribute FIELD_SELECTION__X = eINSTANCE.getfield_selection_X();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_expressionImpl <em>primary expression</em>}' class.
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ExprImpl <em>Expr</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getprimary_expression()
+     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ExprImpl
+     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getExpr()
      * @generated
      */
-    EClass PRIMARY_EXPRESSION = eINSTANCE.getprimary_expression();
+    EClass EXPR = eINSTANCE.getExpr();
 
     /**
      * The meta object literal for the '<em><b>E</b></em>' containment reference feature.
@@ -3392,25 +2586,7 @@ public interface DecoraDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PRIMARY_EXPRESSION__E = eINSTANCE.getprimary_expression_E();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_or_callImpl <em>primary or call</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.primary_or_callImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getprimary_or_call()
-     * @generated
-     */
-    EClass PRIMARY_OR_CALL = eINSTANCE.getprimary_or_call();
-
-    /**
-     * The meta object literal for the '<em><b>E</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PRIMARY_OR_CALL__E = eINSTANCE.getprimary_or_call_E();
+    EReference EXPR__E = eINSTANCE.getExpr_E();
 
     /**
      * The meta object literal for the '<em><b>F</b></em>' containment reference feature.
@@ -3418,25 +2594,7 @@ public interface DecoraDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PRIMARY_OR_CALL__F = eINSTANCE.getprimary_or_call_F();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.postfix_expressionImpl <em>postfix expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.postfix_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getpostfix_expression()
-     * @generated
-     */
-    EClass POSTFIX_EXPRESSION = eINSTANCE.getpostfix_expression();
-
-    /**
-     * The meta object literal for the '<em><b>E</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference POSTFIX_EXPRESSION__E = eINSTANCE.getpostfix_expression_E();
+    EReference EXPR__F = eINSTANCE.getExpr_F();
 
     /**
      * The meta object literal for the '<em><b>Ae</b></em>' containment reference feature.
@@ -3444,7 +2602,7 @@ public interface DecoraDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference POSTFIX_EXPRESSION__AE = eINSTANCE.getpostfix_expression_Ae();
+    EReference EXPR__AE = eINSTANCE.getExpr_Ae();
 
     /**
      * The meta object literal for the '<em><b>Fs</b></em>' containment reference feature.
@@ -3452,17 +2610,7 @@ public interface DecoraDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference POSTFIX_EXPRESSION__FS = eINSTANCE.getpostfix_expression_Fs();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_callImpl <em>function call</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_callImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getfunction_call()
-     * @generated
-     */
-    EClass FUNCTION_CALL = eINSTANCE.getfunction_call();
+    EReference EXPR__FS = eINSTANCE.getExpr_Fs();
 
     /**
      * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -3470,7 +2618,7 @@ public interface DecoraDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCTION_CALL__ID = eINSTANCE.getfunction_call_Id();
+    EAttribute EXPR__ID = eINSTANCE.getExpr_Id();
 
     /**
      * The meta object literal for the '<em><b>P</b></em>' containment reference feature.
@@ -3478,7 +2626,7 @@ public interface DecoraDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_CALL__P = eINSTANCE.getfunction_call_P();
+    EReference EXPR__P = eINSTANCE.getExpr_P();
 
     /**
      * The meta object literal for the '<em><b>Ts</b></em>' containment reference feature.
@@ -3486,7 +2634,55 @@ public interface DecoraDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_CALL__TS = eINSTANCE.getfunction_call_Ts();
+    EReference EXPR__TS = eINSTANCE.getExpr_Ts();
+
+    /**
+     * The meta object literal for the '<em><b>U</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__U = eINSTANCE.getExpr_U();
+
+    /**
+     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__A = eINSTANCE.getExpr_A();
+
+    /**
+     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__B = eINSTANCE.getExpr_B();
+
+    /**
+     * The meta object literal for the '<em><b>T</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__T = eINSTANCE.getExpr_T();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR__OP = eINSTANCE.getExpr_Op();
+
+    /**
+     * The meta object literal for the '<em><b>C</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__C = eINSTANCE.getExpr_C();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_call_parameter_listImpl <em>function call parameter list</em>}' class.
@@ -3507,214 +2703,6 @@ public interface DecoraDslPackage extends EPackage
     EReference FUNCTION_CALL_PARAMETER_LIST__A = eINSTANCE.getfunction_call_parameter_list_A();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.unary_expressionImpl <em>unary expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.unary_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getunary_expression()
-     * @generated
-     */
-    EClass UNARY_EXPRESSION = eINSTANCE.getunary_expression();
-
-    /**
-     * The meta object literal for the '<em><b>P</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference UNARY_EXPRESSION__P = eINSTANCE.getunary_expression_P();
-
-    /**
-     * The meta object literal for the '<em><b>U</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference UNARY_EXPRESSION__U = eINSTANCE.getunary_expression_U();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.multiplicative_expressionImpl <em>multiplicative expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.multiplicative_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getmultiplicative_expression()
-     * @generated
-     */
-    EClass MULTIPLICATIVE_EXPRESSION = eINSTANCE.getmultiplicative_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MULTIPLICATIVE_EXPRESSION__A = eINSTANCE.getmultiplicative_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MULTIPLICATIVE_EXPRESSION__B = eINSTANCE.getmultiplicative_expression_B();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.additive_expressionImpl <em>additive expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.additive_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getadditive_expression()
-     * @generated
-     */
-    EClass ADDITIVE_EXPRESSION = eINSTANCE.getadditive_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ADDITIVE_EXPRESSION__A = eINSTANCE.getadditive_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ADDITIVE_EXPRESSION__B = eINSTANCE.getadditive_expression_B();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.relational_expressionImpl <em>relational expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.relational_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getrelational_expression()
-     * @generated
-     */
-    EClass RELATIONAL_EXPRESSION = eINSTANCE.getrelational_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RELATIONAL_EXPRESSION__A = eINSTANCE.getrelational_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RELATIONAL_EXPRESSION__B = eINSTANCE.getrelational_expression_B();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.equality_expressionImpl <em>equality expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.equality_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getequality_expression()
-     * @generated
-     */
-    EClass EQUALITY_EXPRESSION = eINSTANCE.getequality_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EQUALITY_EXPRESSION__A = eINSTANCE.getequality_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EQUALITY_EXPRESSION__B = eINSTANCE.getequality_expression_B();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_and_expressionImpl <em>logical and expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_and_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getlogical_and_expression()
-     * @generated
-     */
-    EClass LOGICAL_AND_EXPRESSION = eINSTANCE.getlogical_and_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOGICAL_AND_EXPRESSION__A = eINSTANCE.getlogical_and_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOGICAL_AND_EXPRESSION__B = eINSTANCE.getlogical_and_expression_B();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_xor_expressionImpl <em>logical xor expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_xor_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getlogical_xor_expression()
-     * @generated
-     */
-    EClass LOGICAL_XOR_EXPRESSION = eINSTANCE.getlogical_xor_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOGICAL_XOR_EXPRESSION__A = eINSTANCE.getlogical_xor_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOGICAL_XOR_EXPRESSION__B = eINSTANCE.getlogical_xor_expression_B();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_or_expressionImpl <em>logical or expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.logical_or_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getlogical_or_expression()
-     * @generated
-     */
-    EClass LOGICAL_OR_EXPRESSION = eINSTANCE.getlogical_or_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOGICAL_OR_EXPRESSION__A = eINSTANCE.getlogical_or_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOGICAL_OR_EXPRESSION__B = eINSTANCE.getlogical_or_expression_B();
-
-    /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.ternary_partImpl <em>ternary part</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3723,100 +2711,6 @@ public interface DecoraDslPackage extends EPackage
      * @generated
      */
     EClass TERNARY_PART = eINSTANCE.getternary_part();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.conditional_expressionImpl <em>conditional expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.conditional_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getconditional_expression()
-     * @generated
-     */
-    EClass CONDITIONAL_EXPRESSION = eINSTANCE.getconditional_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONDITIONAL_EXPRESSION__A = eINSTANCE.getconditional_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>T</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONDITIONAL_EXPRESSION__T = eINSTANCE.getconditional_expression_T();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.assignment_expressionImpl <em>assignment expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.assignment_expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getassignment_expression()
-     * @generated
-     */
-    EClass ASSIGNMENT_EXPRESSION = eINSTANCE.getassignment_expression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ASSIGNMENT_EXPRESSION__A = eINSTANCE.getassignment_expression_A();
-
-    /**
-     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ASSIGNMENT_EXPRESSION__OP = eINSTANCE.getassignment_expression_Op();
-
-    /**
-     * The meta object literal for the '<em><b>B</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ASSIGNMENT_EXPRESSION__B = eINSTANCE.getassignment_expression_B();
-
-    /**
-     * The meta object literal for the '<em><b>C</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ASSIGNMENT_EXPRESSION__C = eINSTANCE.getassignment_expression_C();
-
-    /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.expressionImpl <em>expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.expressionImpl
-     * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.DecoraDslPackageImpl#getexpression()
-     * @generated
-     */
-    EClass EXPRESSION = eINSTANCE.getexpression();
-
-    /**
-     * The meta object literal for the '<em><b>A</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPRESSION__A = eINSTANCE.getexpression_A();
-
-    /**
-     * The meta object literal for the '<em><b>E</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPRESSION__E = eINSTANCE.getexpression_E();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl.function_prototypeImpl <em>function prototype</em>}' class.

@@ -86,31 +86,11 @@ public class DecoraDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DecoraDslPackage.PRIMARY_EXPRESSION:
+      case DecoraDslPackage.EXPR:
       {
-        primary_expression primary_expression = (primary_expression)theEObject;
-        T result = caseprimary_expression(primary_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.PRIMARY_OR_CALL:
-      {
-        primary_or_call primary_or_call = (primary_or_call)theEObject;
-        T result = caseprimary_or_call(primary_or_call);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.POSTFIX_EXPRESSION:
-      {
-        postfix_expression postfix_expression = (postfix_expression)theEObject;
-        T result = casepostfix_expression(postfix_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.FUNCTION_CALL:
-      {
-        function_call function_call = (function_call)theEObject;
-        T result = casefunction_call(function_call);
+        Expr expr = (Expr)theEObject;
+        T result = caseExpr(expr);
+        if (result == null) result = caseternary_part(expr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -121,88 +101,10 @@ public class DecoraDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DecoraDslPackage.UNARY_EXPRESSION:
-      {
-        unary_expression unary_expression = (unary_expression)theEObject;
-        T result = caseunary_expression(unary_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.MULTIPLICATIVE_EXPRESSION:
-      {
-        multiplicative_expression multiplicative_expression = (multiplicative_expression)theEObject;
-        T result = casemultiplicative_expression(multiplicative_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.ADDITIVE_EXPRESSION:
-      {
-        additive_expression additive_expression = (additive_expression)theEObject;
-        T result = caseadditive_expression(additive_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.RELATIONAL_EXPRESSION:
-      {
-        relational_expression relational_expression = (relational_expression)theEObject;
-        T result = caserelational_expression(relational_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.EQUALITY_EXPRESSION:
-      {
-        equality_expression equality_expression = (equality_expression)theEObject;
-        T result = caseequality_expression(equality_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.LOGICAL_AND_EXPRESSION:
-      {
-        logical_and_expression logical_and_expression = (logical_and_expression)theEObject;
-        T result = caselogical_and_expression(logical_and_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.LOGICAL_XOR_EXPRESSION:
-      {
-        logical_xor_expression logical_xor_expression = (logical_xor_expression)theEObject;
-        T result = caselogical_xor_expression(logical_xor_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.LOGICAL_OR_EXPRESSION:
-      {
-        logical_or_expression logical_or_expression = (logical_or_expression)theEObject;
-        T result = caselogical_or_expression(logical_or_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DecoraDslPackage.TERNARY_PART:
       {
         ternary_part ternary_part = (ternary_part)theEObject;
         T result = caseternary_part(ternary_part);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.CONDITIONAL_EXPRESSION:
-      {
-        conditional_expression conditional_expression = (conditional_expression)theEObject;
-        T result = caseconditional_expression(conditional_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.ASSIGNMENT_EXPRESSION:
-      {
-        assignment_expression assignment_expression = (assignment_expression)theEObject;
-        T result = caseassignment_expression(assignment_expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecoraDslPackage.EXPRESSION:
-      {
-        expression expression = (expression)theEObject;
-        T result = caseexpression(expression);
-        if (result == null) result = caseternary_part(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -449,65 +351,17 @@ public class DecoraDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>primary expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Expr</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>primary expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Expr</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseprimary_expression(primary_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>primary or call</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>primary or call</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseprimary_or_call(primary_or_call object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>postfix expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>postfix expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casepostfix_expression(postfix_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>function call</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>function call</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casefunction_call(function_call object)
+  public T caseExpr(Expr object)
   {
     return null;
   }
@@ -529,134 +383,6 @@ public class DecoraDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>unary expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>unary expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseunary_expression(unary_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>multiplicative expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>multiplicative expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casemultiplicative_expression(multiplicative_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>additive expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>additive expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseadditive_expression(additive_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>relational expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>relational expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caserelational_expression(relational_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>equality expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>equality expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseequality_expression(equality_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>logical and expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>logical and expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caselogical_and_expression(logical_and_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>logical xor expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>logical xor expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caselogical_xor_expression(logical_xor_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>logical or expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>logical or expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caselogical_or_expression(logical_or_expression object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>ternary part</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -668,54 +394,6 @@ public class DecoraDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseternary_part(ternary_part object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>conditional expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>conditional expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseconditional_expression(conditional_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>assignment expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>assignment expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseassignment_expression(assignment_expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseexpression(expression object)
   {
     return null;
   }

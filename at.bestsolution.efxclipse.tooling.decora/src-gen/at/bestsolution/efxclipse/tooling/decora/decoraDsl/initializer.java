@@ -31,12 +31,12 @@ public interface initializer extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>E</em>' containment reference.
-   * @see #setE(assignment_expression)
+   * @see #setE(Expr)
    * @see at.bestsolution.efxclipse.tooling.decora.decoraDsl.DecoraDslPackage#getinitializer_E()
    * @model containment="true"
    * @generated
    */
-  assignment_expression getE();
+  Expr getE();
 
   /**
    * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.decora.decoraDsl.initializer#getE <em>E</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface initializer extends EObject
    * @see #getE()
    * @generated
    */
-  void setE(assignment_expression value);
+  void setE(Expr value);
 
 } // initializer
