@@ -23,6 +23,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PseudoClassDefinition;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -269,48 +270,65 @@ public class HTMLDocGenerator {
       List<PackageDefinition> _list = IteratorExtensions.<PackageDefinition>toList(_filter_1);
       for(final PackageDefinition j : _list) {
         _builder.append("\t\t\t\t\t\t");
-        _builder.append("<li class=\"dropdown-submenu\">");
-        _builder.newLine();
-        _builder.append("\t\t\t\t\t\t");
-        _builder.append("\t");
-        _builder.append("<a href=\"#pack_");
-        String _calcPackagename = this.calcPackagename(j);
-        _builder.append(_calcPackagename, "							");
-        _builder.append("\">");
-        String _calcPackagename_1 = this.calcPackagename(j);
-        _builder.append(_calcPackagename_1, "							");
-        _builder.append("</a>");
+        EList<ElementDefinition> _elements = ((PackageDefinition) j).getElements();
+        ArrayList<List<ElementDefinition>> splitted = this.splitUp(_elements, 15);
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t\t\t\t");
-        _builder.append("\t");
-        _builder.append("<ul class=\"dropdown-menu\">");
-        _builder.newLine();
         {
-          EList<ElementDefinition> _elements = ((PackageDefinition) j).getElements();
-          for(final ElementDefinition c : _elements) {
+          for(final List<ElementDefinition> elements : splitted) {
             _builder.append("\t\t\t\t\t\t");
-            _builder.append("\t\t");
-            _builder.append("<li><a href=\'#el_");
-            EObject _eContainer = c.eContainer();
-            String _calcPackagename_2 = this.calcPackagename(((PackageDefinition) _eContainer));
-            _builder.append(_calcPackagename_2, "								");
-            _builder.append(".");
-            String _name = c.getName();
-            _builder.append(_name, "								");
-            _builder.append("\'>");
-            String _name_1 = c.getName();
-            _builder.append(_name_1, "								");
-            _builder.append("</a></li>");
+            _builder.append("<li class=\"dropdown-submenu\">");
+            _builder.newLine();
+            _builder.append("\t\t\t\t\t\t");
+            _builder.append("\t");
+            _builder.append("<a href=\"#pack_");
+            String _calcPackagename = this.calcPackagename(j);
+            _builder.append(_calcPackagename, "							");
+            _builder.append("\">");
+            String _calcPackagename_1 = this.calcPackagename(j);
+            _builder.append(_calcPackagename_1, "							");
+            {
+              int _size = splitted.size();
+              boolean _greaterThan = (_size > 1);
+              if (_greaterThan) {
+                _builder.append(" - ");
+                int _indexOf = splitted.indexOf(elements);
+                int _plus = (_indexOf + 1);
+                _builder.append(_plus, "							");
+              }
+            }
+            _builder.append("</a>");
             _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t\t\t\t");
+            _builder.append("\t");
+            _builder.append("<ul class=\"dropdown-menu\">");
+            _builder.newLine();
+            {
+              for(final ElementDefinition c : elements) {
+                _builder.append("\t\t\t\t\t\t");
+                _builder.append("\t\t");
+                _builder.append("<li><a href=\'#el_");
+                EObject _eContainer = c.eContainer();
+                String _calcPackagename_2 = this.calcPackagename(((PackageDefinition) _eContainer));
+                _builder.append(_calcPackagename_2, "								");
+                _builder.append(".");
+                String _name = c.getName();
+                _builder.append(_name, "								");
+                _builder.append("\'>");
+                String _name_1 = c.getName();
+                _builder.append(_name_1, "								");
+                _builder.append("</a></li>");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+            _builder.append("\t\t\t\t\t\t");
+            _builder.append("\t");
+            _builder.append("</ul>");
+            _builder.newLine();
+            _builder.append("\t\t\t\t\t\t");
+            _builder.append("</li>");
+            _builder.newLine();
           }
         }
-        _builder.append("\t\t\t\t\t\t");
-        _builder.append("\t");
-        _builder.append("</ul>");
-        _builder.newLine();
-        _builder.append("\t\t\t\t\t\t");
-        _builder.append("</li>");
-        _builder.newLine();
       }
     }
     _builder.append("\t\t\t\t\t");
@@ -331,6 +349,29 @@ public class HTMLDocGenerator {
     _builder.append("</div>");
     _builder.newLine();
     return _builder;
+  }
+  
+  public ArrayList<List<ElementDefinition>> splitUp(final List<ElementDefinition> elements, final int max) {
+    ArrayList<List<ElementDefinition>> _arrayList = new ArrayList<List<ElementDefinition>>();
+    final ArrayList<List<ElementDefinition>> rv = _arrayList;
+    ArrayList<ElementDefinition> _arrayList_1 = new ArrayList<ElementDefinition>();
+    ArrayList<ElementDefinition> currentList = _arrayList_1;
+    int i = 0;
+    for (final ElementDefinition e : elements) {
+      {
+        int _modulo = (i % max);
+        boolean _equals = (_modulo == 0);
+        if (_equals) {
+          ArrayList<ElementDefinition> _arrayList_2 = new ArrayList<ElementDefinition>();
+          currentList = _arrayList_2;
+          rv.add(currentList);
+        }
+        currentList.add(e);
+        int _plus = (i + 1);
+        i = _plus;
+      }
+    }
+    return rv;
   }
   
   public CharSequence sidebar(final CssExtension cssExt) {

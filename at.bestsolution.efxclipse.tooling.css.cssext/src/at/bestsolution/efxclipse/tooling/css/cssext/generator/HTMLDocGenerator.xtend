@@ -20,6 +20,8 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSDefaultValue
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition
 import java.util.HashSet
+import java.util.List
+import java.util.ArrayList
 
 class HTMLDocGenerator {
 	def generate(Resource resource) '''
@@ -99,14 +101,17 @@ class HTMLDocGenerator {
 					</a>
 					<ul class="dropdown-menu">
 						«FOR j : cssExt.eAllContents.filter(typeof(PackageDefinition)).filter(e|!e.elements.empty).toList»
+						«var splitted = splitUp((j as PackageDefinition).elements,15)»
+						«FOR elements : splitted»
 						<li class="dropdown-submenu">
-							<a href="#pack_«j.calcPackagename»">«j.calcPackagename»</a>
+							<a href="#pack_«j.calcPackagename»">«j.calcPackagename»«IF splitted.size > 1» - «splitted.indexOf(elements)+1»«ENDIF»</a>
 							<ul class="dropdown-menu">
-								«FOR c : (j as PackageDefinition).elements»
+								«FOR c : elements»
 									<li><a href='#el_«(c.eContainer as PackageDefinition).calcPackagename».«c.name»'>«c.name»</a></li>
 								«ENDFOR»
 							</ul>
 						</li>
+						«ENDFOR»
 						«ENDFOR»
 					</ul>
 				</li>
@@ -115,6 +120,23 @@ class HTMLDocGenerator {
 	</div>
 </div>
 	'''
+	
+	def splitUp(List<ElementDefinition> elements, int max) {
+		val rv = new ArrayList<List<ElementDefinition>>
+		var currentList = new ArrayList<ElementDefinition>;
+		var i = 0;
+		
+		for( ElementDefinition e : elements ) {
+			if( i % max == 0 ) {
+				currentList = new ArrayList<ElementDefinition>;
+				rv.add(currentList);
+			}
+			currentList.add(e);
+			i=i+1;
+		}
+		
+		return rv;
+	}
 	
 	def sidebar(CssExtension cssExt) '''
 <div class="span3">
