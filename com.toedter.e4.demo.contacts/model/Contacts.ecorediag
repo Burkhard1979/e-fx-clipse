@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_Nw2AECFTEeKSeoYRF6JIFw" type="EcoreTools" name="Contacts" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_P2alcCFTEeKSeoYRF6JIFw" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_P2dBsCFTEeKSeoYRF6JIFw" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_P2ihQCFTEeKSeoYRF6JIFw" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_Z8nZYCFTEeKSeoYRF6JIFw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="Contacts.ecore#//Contact/firstName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Z8nZYSFTEeKSeoYRF6JIFw"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_P2ihQSFTEeKSeoYRF6JIFw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_P2ihQiFTEeKSeoYRF6JIFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_P2ihQyFTEeKSeoYRF6JIFw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_P2jIUCFTEeKSeoYRF6JIFw" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_P2jIUSFTEeKSeoYRF6JIFw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_P2jIUiFTEeKSeoYRF6JIFw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_P2jIUyFTEeKSeoYRF6JIFw"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_P2alcSFTEeKSeoYRF6JIFw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="Contacts.ecore#//Contact"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_P2alciFTEeKSeoYRF6JIFw" x="202" y="115"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_Nw2AESFTEeKSeoYRF6JIFw"/>
+  <element xmi:type="ecore:EPackage" href="Contacts.ecore#/"/>
+</notation:Diagram>
