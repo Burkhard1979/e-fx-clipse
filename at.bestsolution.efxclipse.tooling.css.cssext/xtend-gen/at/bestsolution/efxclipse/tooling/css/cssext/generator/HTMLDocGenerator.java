@@ -44,7 +44,9 @@ public class HTMLDocGenerator {
     CharSequence _leadin = this.leadin();
     _builder.append(_leadin, "");
     _builder.newLineIfNotEmpty();
-    CharSequence _navbar = this.navbar("JavaFX CSS");
+    EList<EObject> _contents = resource.getContents();
+    EObject _get = _contents.get(0);
+    CharSequence _navbar = this.navbar("JavaFX CSS", ((CssExtension) _get));
     _builder.append(_navbar, "");
     _builder.newLineIfNotEmpty();
     _builder.append("<div class=\"container-fluid\">");
@@ -53,15 +55,15 @@ public class HTMLDocGenerator {
     _builder.append("<div class=\"row-fluid\">");
     _builder.newLine();
     _builder.append("\t\t");
-    EList<EObject> _contents = resource.getContents();
-    EObject _get = _contents.get(0);
-    CharSequence _sidebar = this.sidebar(((CssExtension) _get));
+    EList<EObject> _contents_1 = resource.getContents();
+    EObject _get_1 = _contents_1.get(0);
+    CharSequence _sidebar = this.sidebar(((CssExtension) _get_1));
     _builder.append(_sidebar, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
-    EList<EObject> _contents_1 = resource.getContents();
-    EObject _get_1 = _contents_1.get(0);
-    CharSequence _contentArea = this.contentArea(((CssExtension) _get_1));
+    EList<EObject> _contents_2 = resource.getContents();
+    EObject _get_2 = _contents_2.get(0);
+    CharSequence _contentArea = this.contentArea(((CssExtension) _get_2));
     _builder.append(_contentArea, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -213,7 +215,7 @@ public class HTMLDocGenerator {
     return _builder;
   }
   
-  public CharSequence navbar(final String name) {
+  public CharSequence navbar(final String name, final CssExtension cssExt) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<div class=\"navbar navbar-inverse navbar-fixed-top\">");
     _builder.newLine();
@@ -235,10 +237,87 @@ public class HTMLDocGenerator {
     _builder.append("<li class=\"active\"><a href=\"#\">Home</a></li>");
     _builder.newLine();
     _builder.append("\t\t\t\t");
-    _builder.append("<!--<li><a href=\"#about\">About</a></li>");
+    _builder.append("<li class=\"dropdown\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("Elements");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("<b class=\"caret\"></b>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("</a>");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("<ul class=\"dropdown-menu\">");
+    _builder.newLine();
+    {
+      TreeIterator<EObject> _eAllContents = cssExt.eAllContents();
+      Iterator<PackageDefinition> _filter = Iterators.<PackageDefinition>filter(_eAllContents, PackageDefinition.class);
+      final Function1<PackageDefinition,Boolean> _function = new Function1<PackageDefinition,Boolean>() {
+          public Boolean apply(final PackageDefinition e) {
+            EList<ElementDefinition> _elements = e.getElements();
+            boolean _isEmpty = _elements.isEmpty();
+            boolean _not = (!_isEmpty);
+            return Boolean.valueOf(_not);
+          }
+        };
+      Iterator<PackageDefinition> _filter_1 = IteratorExtensions.<PackageDefinition>filter(_filter, _function);
+      List<PackageDefinition> _list = IteratorExtensions.<PackageDefinition>toList(_filter_1);
+      for(final PackageDefinition j : _list) {
+        _builder.append("\t\t\t\t\t\t");
+        _builder.append("<li class=\"dropdown-submenu\">");
+        _builder.newLine();
+        _builder.append("\t\t\t\t\t\t");
+        _builder.append("\t");
+        _builder.append("<a href=\"#pack_");
+        String _calcPackagename = this.calcPackagename(j);
+        _builder.append(_calcPackagename, "							");
+        _builder.append("\">");
+        String _calcPackagename_1 = this.calcPackagename(j);
+        _builder.append(_calcPackagename_1, "							");
+        _builder.append("</a>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t\t\t\t");
+        _builder.append("\t");
+        _builder.append("<ul class=\"dropdown-menu\">");
+        _builder.newLine();
+        {
+          EList<ElementDefinition> _elements = ((PackageDefinition) j).getElements();
+          for(final ElementDefinition c : _elements) {
+            _builder.append("\t\t\t\t\t\t");
+            _builder.append("\t\t");
+            _builder.append("<li><a href=\'#el_");
+            EObject _eContainer = c.eContainer();
+            String _calcPackagename_2 = this.calcPackagename(((PackageDefinition) _eContainer));
+            _builder.append(_calcPackagename_2, "								");
+            _builder.append(".");
+            String _name = c.getName();
+            _builder.append(_name, "								");
+            _builder.append("\'>");
+            String _name_1 = c.getName();
+            _builder.append(_name_1, "								");
+            _builder.append("</a></li>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t\t\t\t\t\t");
+        _builder.append("\t");
+        _builder.append("</ul>");
+        _builder.newLine();
+        _builder.append("\t\t\t\t\t\t");
+        _builder.append("</li>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t\t\t\t\t");
+    _builder.append("</ul>");
     _builder.newLine();
     _builder.append("\t\t\t\t");
-    _builder.append("<li><a href=\"#contact\">Contact</a></li>-->");
+    _builder.append("</li>");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("</ul>");
@@ -342,9 +421,12 @@ public class HTMLDocGenerator {
     _builder.append("<div class=\"page-header\">");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("<h1>");
+    _builder.append("<a name=\"pack_");
     String _calcPackagename = this.calcPackagename(p);
     _builder.append(_calcPackagename, "		");
+    _builder.append("\"></a><h1>");
+    String _calcPackagename_1 = this.calcPackagename(p);
+    _builder.append(_calcPackagename_1, "		");
     _builder.append("</h1>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -358,8 +440,8 @@ public class HTMLDocGenerator {
       for(final CSSRuleDefinition r : _rules) {
         _builder.append("\t");
         _builder.append("<a name=\"r_");
-        String _calcPackagename_1 = this.calcPackagename(p);
-        String _plus = (_calcPackagename_1 + ".");
+        String _calcPackagename_2 = this.calcPackagename(p);
+        String _plus = (_calcPackagename_2 + ".");
         CSSRuleId _name = r.getName();
         String _name_1 = _name.getName();
         String _plus_1 = (_plus + _name_1);
@@ -428,8 +510,8 @@ public class HTMLDocGenerator {
       for(final ElementDefinition e : _elements) {
         _builder.append("\t");
         _builder.append("<a name=\"el_");
-        String _calcPackagename_2 = this.calcPackagename(p);
-        String _plus_2 = (_calcPackagename_2 + ".");
+        String _calcPackagename_3 = this.calcPackagename(p);
+        String _plus_2 = (_calcPackagename_3 + ".");
         String _name_5 = e.getName();
         String _plus_3 = (_plus_2 + _name_5);
         _builder.append(_plus_3, "	");
@@ -475,8 +557,8 @@ public class HTMLDocGenerator {
         _builder.append("\t");
         _builder.append("\t");
         _builder.append("<div class=\"accordion\" id=\"ac_");
-        String _calcPackagename_3 = this.calcPackagename(p);
-        String _replace = _calcPackagename_3.replace(".", "_");
+        String _calcPackagename_4 = this.calcPackagename(p);
+        String _replace = _calcPackagename_4.replace(".", "_");
         String _plus_4 = (_replace + "_");
         String _name_7 = e.getName();
         String _plus_5 = (_plus_4 + _name_7);
@@ -494,15 +576,15 @@ public class HTMLDocGenerator {
         _builder.append("\t");
         _builder.append("\t\t\t\t");
         _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
-        String _calcPackagename_4 = this.calcPackagename(p);
-        String _replace_1 = _calcPackagename_4.replace(".", "_");
+        String _calcPackagename_5 = this.calcPackagename(p);
+        String _replace_1 = _calcPackagename_5.replace(".", "_");
         String _plus_6 = (_replace_1 + "_");
         String _name_8 = e.getName();
         String _plus_7 = (_plus_6 + _name_8);
         _builder.append(_plus_7, "					");
         _builder.append("\" href=\"#desc_");
-        String _calcPackagename_5 = this.calcPackagename(p);
-        String _replace_2 = _calcPackagename_5.replace(".", "_");
+        String _calcPackagename_6 = this.calcPackagename(p);
+        String _replace_2 = _calcPackagename_6.replace(".", "_");
         String _plus_8 = (_replace_2 + "_");
         String _name_9 = e.getName();
         String _plus_9 = (_plus_8 + _name_9);
@@ -524,8 +606,8 @@ public class HTMLDocGenerator {
         _builder.append("\t");
         _builder.append("\t\t\t");
         _builder.append("<div id=\"desc_");
-        String _calcPackagename_6 = this.calcPackagename(p);
-        String _replace_3 = _calcPackagename_6.replace(".", "_");
+        String _calcPackagename_7 = this.calcPackagename(p);
+        String _replace_3 = _calcPackagename_7.replace(".", "_");
         String _plus_10 = (_replace_3 + "_");
         String _name_10 = e.getName();
         String _plus_11 = (_plus_10 + _name_10);
@@ -573,15 +655,15 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t\t");
             _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
-            String _calcPackagename_7 = this.calcPackagename(p);
-            String _replace_4 = _calcPackagename_7.replace(".", "_");
+            String _calcPackagename_8 = this.calcPackagename(p);
+            String _replace_4 = _calcPackagename_8.replace(".", "_");
             String _plus_12 = (_replace_4 + "_");
             String _name_11 = e.getName();
             String _plus_13 = (_plus_12 + _name_11);
             _builder.append(_plus_13, "					");
             _builder.append("\" href=\"#props_");
-            String _calcPackagename_8 = this.calcPackagename(p);
-            String _replace_5 = _calcPackagename_8.replace(".", "_");
+            String _calcPackagename_9 = this.calcPackagename(p);
+            String _replace_5 = _calcPackagename_9.replace(".", "_");
             String _plus_14 = (_replace_5 + "_");
             String _name_12 = e.getName();
             String _plus_15 = (_plus_14 + _name_12);
@@ -607,8 +689,8 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("<div id=\"props_");
-            String _calcPackagename_9 = this.calcPackagename(p);
-            String _replace_6 = _calcPackagename_9.replace(".", "_");
+            String _calcPackagename_10 = this.calcPackagename(p);
+            String _replace_6 = _calcPackagename_10.replace(".", "_");
             String _plus_16 = (_replace_6 + "_");
             String _name_13 = e.getName();
             String _plus_17 = (_plus_16 + _name_13);
@@ -759,15 +841,15 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t\t");
             _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
-            String _calcPackagename_10 = this.calcPackagename(p);
-            String _replace_7 = _calcPackagename_10.replace(".", "_");
+            String _calcPackagename_11 = this.calcPackagename(p);
+            String _replace_7 = _calcPackagename_11.replace(".", "_");
             String _plus_18 = (_replace_7 + "_");
             String _name_15 = e.getName();
             String _plus_19 = (_plus_18 + _name_15);
             _builder.append(_plus_19, "					");
             _builder.append("\" href=\"#props_");
-            String _calcPackagename_11 = this.calcPackagename(p);
-            String _replace_8 = _calcPackagename_11.replace(".", "_");
+            String _calcPackagename_12 = this.calcPackagename(p);
+            String _replace_8 = _calcPackagename_12.replace(".", "_");
             String _plus_20 = (_replace_8 + "_");
             String _name_16 = e.getName();
             String _plus_21 = (_plus_20 + _name_16);
@@ -793,8 +875,8 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("<div id=\"props_");
-            String _calcPackagename_12 = this.calcPackagename(p);
-            String _replace_9 = _calcPackagename_12.replace(".", "_");
+            String _calcPackagename_13 = this.calcPackagename(p);
+            String _replace_9 = _calcPackagename_13.replace(".", "_");
             String _plus_22 = (_replace_9 + "_");
             String _name_17 = e.getName();
             String _plus_23 = (_plus_22 + _name_17);
@@ -973,15 +1055,15 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t\t");
             _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
-            String _calcPackagename_13 = this.calcPackagename(p);
-            String _replace_10 = _calcPackagename_13.replace(".", "_");
+            String _calcPackagename_14 = this.calcPackagename(p);
+            String _replace_10 = _calcPackagename_14.replace(".", "_");
             String _plus_24 = (_replace_10 + "_");
             String _name_20 = e.getName();
             String _plus_25 = (_plus_24 + _name_20);
             _builder.append(_plus_25, "					");
             _builder.append("\" href=\"#pseudo_");
-            String _calcPackagename_14 = this.calcPackagename(p);
-            String _replace_11 = _calcPackagename_14.replace(".", "_");
+            String _calcPackagename_15 = this.calcPackagename(p);
+            String _replace_11 = _calcPackagename_15.replace(".", "_");
             String _plus_26 = (_replace_11 + "_");
             String _name_21 = e.getName();
             String _plus_27 = (_plus_26 + _name_21);
@@ -1007,8 +1089,8 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("<div id=\"pseudo_");
-            String _calcPackagename_15 = this.calcPackagename(p);
-            String _replace_12 = _calcPackagename_15.replace(".", "_");
+            String _calcPackagename_16 = this.calcPackagename(p);
+            String _replace_12 = _calcPackagename_16.replace(".", "_");
             String _plus_28 = (_replace_12 + "_");
             String _name_22 = e.getName();
             String _plus_29 = (_plus_28 + _name_22);
@@ -1134,15 +1216,15 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t\t");
             _builder.append("<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#ac_");
-            String _calcPackagename_16 = this.calcPackagename(p);
-            String _replace_13 = _calcPackagename_16.replace(".", "_");
+            String _calcPackagename_17 = this.calcPackagename(p);
+            String _replace_13 = _calcPackagename_17.replace(".", "_");
             String _plus_30 = (_replace_13 + "_");
             String _name_24 = e.getName();
             String _plus_31 = (_plus_30 + _name_24);
             _builder.append(_plus_31, "					");
             _builder.append("\" href=\"#pseudo_");
-            String _calcPackagename_17 = this.calcPackagename(p);
-            String _replace_14 = _calcPackagename_17.replace(".", "_");
+            String _calcPackagename_18 = this.calcPackagename(p);
+            String _replace_14 = _calcPackagename_18.replace(".", "_");
             String _plus_32 = (_replace_14 + "_");
             String _name_25 = e.getName();
             String _plus_33 = (_plus_32 + _name_25);
@@ -1168,8 +1250,8 @@ public class HTMLDocGenerator {
             _builder.append("\t\t");
             _builder.append("\t");
             _builder.append("<div id=\"pseudo_");
-            String _calcPackagename_18 = this.calcPackagename(p);
-            String _replace_15 = _calcPackagename_18.replace(".", "_");
+            String _calcPackagename_19 = this.calcPackagename(p);
+            String _replace_15 = _calcPackagename_19.replace(".", "_");
             String _plus_34 = (_replace_15 + "_");
             String _name_26 = e.getName();
             String _plus_35 = (_plus_34 + _name_26);

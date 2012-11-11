@@ -24,7 +24,7 @@ import java.util.HashSet
 class HTMLDocGenerator {
 	def generate(Resource resource) '''
 	«leadin»
-	«navbar("JavaFX CSS")»
+	«navbar("JavaFX CSS", resource.contents.get(0) as CssExtension)»
 	<div class="container-fluid">
 		<div class="row-fluid">
 			«sidebar(resource.contents.get(0) as CssExtension)»
@@ -85,15 +85,31 @@ class HTMLDocGenerator {
     </style>
 <body>
 	'''
-	def navbar(String name) '''
+	def navbar(String name, CssExtension cssExt) '''
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
 			<a class="brand" href="#">«name»</a>
 			<ul class="nav">
 				<li class="active"><a href="#">Home</a></li>
-				<!--<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>-->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					Elements
+					<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						«FOR j : cssExt.eAllContents.filter(typeof(PackageDefinition)).filter(e|!e.elements.empty).toList»
+						<li class="dropdown-submenu">
+							<a href="#pack_«j.calcPackagename»">«j.calcPackagename»</a>
+							<ul class="dropdown-menu">
+								«FOR c : (j as PackageDefinition).elements»
+									<li><a href='#el_«(c.eContainer as PackageDefinition).calcPackagename».«c.name»'>«c.name»</a></li>
+								«ENDFOR»
+							</ul>
+						</li>
+						«ENDFOR»
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -129,7 +145,7 @@ class HTMLDocGenerator {
 	def packageContent(PackageDefinition p) '''
 	<section id="global">
 		<div class="page-header">
-			<h1>«p.calcPackagename»</h1>
+			<a name="pack_«p.calcPackagename»"></a><h1>«p.calcPackagename»</h1>
 		</div>
 		<h2>Rules</h2>
 		«FOR r : p.rules»
