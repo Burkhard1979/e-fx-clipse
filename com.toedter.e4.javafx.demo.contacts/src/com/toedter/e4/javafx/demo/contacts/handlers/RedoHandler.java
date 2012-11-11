@@ -9,7 +9,6 @@
  * Contributors:
  *     Kai Tödter - initial implementation
  ******************************************************************************/
-
 package com.toedter.e4.javafx.demo.contacts.handlers;
 
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
