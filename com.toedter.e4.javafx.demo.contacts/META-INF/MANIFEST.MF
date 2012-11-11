@@ -24,7 +24,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.ui.workbench;bundle-version="0.9.1",
  org.eclipse.core.commands;bundle-version="3.6.0",
  org.eclipse.e4.core.commands;bundle-version="0.9.0",
- at.bestsolution.efxclipse.runtime.services;bundle-version="0.0.13"
+ at.bestsolution.efxclipse.runtime.services;bundle-version="0.0.13",
+ com.toedter.e4.demo.contacts;bundle-version="1.0.0",
+ com.toedter.e4.demo.contacts.edit;bundle-version="1.0.0",
+ at.bestsolution.efxclipse.runtime.emf.databinding.edit;bundle-version="1.0.0",
+ at.bestsolution.efxclipse.runtime.emf.edit.ui;bundle-version="0.1.0"
 Import-Package: javafx.animation;version="2.0.0",
  javafx.application;version="2.0.0",
  javafx.beans;version="2.0.0",
@@ -59,5 +63,6 @@ Bundle-Vendor: Eclipse.org
 Bundle-Activator: com.toedter.e4.javafx.demo.contacts.BundleActivatorImpl
 Export-Package: com.toedter.e4.javafx.demo.contacts.model
 Bundle-Localization: plugin
+Service-Component: OSGI-INF/component.xml
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Siemens AG and others.
+ * Copyright (c) 2011 Kai Toedter and others.
  * 
  * All rights reserved. This program and the accompanying materials 
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,59 +7,61 @@
  * http://www.eclipse.org/legal/epl-v10.html.
  * 
  * Contributors:
- *     Kai Tödter - initial implementation
+ *     Kai Toedter - initial API and implementation
  ******************************************************************************/
 
 package com.toedter.e4.javafx.demo.contacts.views;
 
-import at.bestsolution.efxclipse.runtime.databinding.AdapterFactory;
-
-import com.toedter.e4.javafx.demo.contacts.model.Contact;
-import com.toedter.e4.javafx.demo.contacts.model.ContactsRepositoryFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableList;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTableCellFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
+import com.toedter.e4.demo.contacts.Contact;
+import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javax.inject.Inject;
 import org.eclipse.e4.ui.model.application.MApplication;
 
 @SuppressWarnings("restriction")
 public class ListView {
+	
 	@Inject
-	public ListView(BorderPane parent, final MApplication application) {
-		TableView<Contact> table = new TableView<Contact>();
-		TableColumn<Contact, String> firstNameCol = new TableColumn<Contact, String>("First Name");
-		firstNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("firstName"));
+	@SuppressWarnings("unchecked")
+	public ListView(BorderPane parent, final MApplication application, ContactsManager contactsManager) {
+		TableView<Contact> tableView = new TableView<>();
+		TableColumn<Contact, String> firstNameColumn = new TableColumn<>("First Name");
+		firstNameColumn.setCellValueFactory(new ProxyCellValueFactory<Contact, String>());
+		AdapterFactoryTableCellFactory<Contact, String> firstNameCellFactory = new AdapterFactoryTableCellFactory<>(contactsManager.getAdapterFactory(), 0);
+		firstNameCellFactory.addCellCreationListener(new CellDragAdapter());
+		firstNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(contactsManager.getEditingDomain()));
+		firstNameColumn.setCellFactory(firstNameCellFactory);
+		firstNameColumn.setSortable(false);
 
-		TableColumn<Contact, String> lastNameCol = new TableColumn<Contact, String>("Last Name");
-		lastNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("lastName"));
-		parent.setCenter(table);
+		TableColumn<Contact, String> lastNameColumn = new TableColumn<>("Last Name");
+		lastNameColumn.setCellValueFactory(new ProxyCellValueFactory<Contact, String>());
+		AdapterFactoryTableCellFactory<Contact, String> lastNameCellFactory = new AdapterFactoryTableCellFactory<>(contactsManager.getAdapterFactory(), 1);
+		lastNameCellFactory.addCellCreationListener(new CellDragAdapter());
+		lastNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(contactsManager.getEditingDomain()));
+		lastNameColumn.setCellFactory(lastNameCellFactory);
+		lastNameColumn.setSortable(false);
+		
+		parent.setCenter(tableView);
 
-		table.getColumns().addAll(firstNameCol, lastNameCol);
+		tableView.getColumns().addAll(firstNameColumn, lastNameColumn);
+		
+		tableView.setItems(new AdapterFactoryObservableList<Contact>(contactsManager.getAdapterFactory(), contactsManager.getResource()));
 
-		ObservableList<Contact> data = AdapterFactory.adapt(ContactsRepositoryFactory
-				.getContactsRepository().getAllContacts());
-		table.setItems(data);
+		tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
-		table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Contact>() {
-
-			public void changed(ObservableValue<? extends Contact> arg0, Contact arg1, Contact arg2) {
-				application.getContext().set(Contact.class, arg2);
+			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
+				application.getContext().set(Contact.class, (Contact)arg2);
 			}
+			
 		});
-
-		// Hack to select Kai Toedter at startup
-		int index = 0;
-		for (Contact contact : data) {
-			if ("Kai".equalsIgnoreCase(contact.getFirstName()) && "Tödter".equalsIgnoreCase(contact.getLastName())) {
-				break;
-			}
-			index++;
-		}
-		table.getSelectionModel().clearAndSelect(index);
 	}
 }

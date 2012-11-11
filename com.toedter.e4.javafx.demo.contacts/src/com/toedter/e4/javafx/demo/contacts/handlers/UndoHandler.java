@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 Siemens AG and others.
+ * Copyright (c) 2009 Siemens AG and others.
  * 
  * All rights reserved. This program and the accompanying materials 
  * are made available under the terms of the Eclipse Public License v1.0
@@ -12,37 +12,29 @@
 
 package com.toedter.e4.javafx.demo.contacts.handlers;
 
-import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import javax.inject.Inject;
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
-import org.eclipse.e4.core.di.annotations.Optional;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.common.command.CommandStack;
 
 @SuppressWarnings("restriction")
-public class DeleteContactHandler {
+public class UndoHandler {
 	
 	@Inject
 	ContactsManager contactsManager;
 	
-	Command command;
-	
 	@CanExecute
-	boolean canExecute(@Optional Contact contact) {
-		if(contact != null) {
-			command = new RemoveCommand(contactsManager.getEditingDomain(), contactsManager.getResource().getContents(), contact);
-			return command.canExecute();			
-		}
-		return false;
+	public boolean canUndo() {
+		CommandStack commandStack = contactsManager.getEditingDomain().getCommandStack();
+		return commandStack.canUndo();
 	}
 
 	@Execute
-	void execute(@Optional final Contact contact) {
-		if(command != null && command.canExecute())
-			contactsManager.getEditingDomain().getCommandStack().execute(command);
+	public void undo() {
+		CommandStack commandStack = contactsManager.getEditingDomain().getCommandStack();
+		if (commandStack.canUndo())
+			commandStack.undo();
 	}
-	
 	
 }

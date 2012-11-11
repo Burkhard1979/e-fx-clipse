@@ -7,17 +7,15 @@
  * http://www.eclipse.org/legal/epl-v10.html.
  * 
  * Contributors:
- *     Kai Tödter - initial implementation
+ *     Kai TÃ¶dter - initial implementation
  ******************************************************************************/
 
 package com.toedter.e4.javafx.demo.contacts.model.internal;
 
+import com.toedter.e4.demo.contacts.Contact;
+import com.toedter.e4.demo.contacts.ContactsFactory;
 import com.toedter.e4.javafx.demo.contacts.BundleActivatorImpl;
-import com.toedter.e4.javafx.demo.contacts.model.Contact;
-import com.toedter.e4.javafx.demo.contacts.model.IContactsRepository;
-
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,37 +24,25 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
-import javafx.scene.image.Image;
-import org.eclipse.core.databinding.observable.list.IObservableList;
-import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.osgi.internal.signedcontent.Base64;
+import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.osgi.framework.Bundle;
 
-@SuppressWarnings("restriction")
-public class VCardContactsRepository implements IContactsRepository {
-
-	private final IObservableList contacts;
+public class VCardContactsRepository extends ResourceImpl {
 
 	public VCardContactsRepository() {
-		List<Contact> contacts = new ArrayList<Contact>();
 		try {
 			for (File file : getContacts()) {
 				Contact contact = readFromVCard(file.getAbsolutePath());
-				contacts.add(contact);
+				getContents().add(contact);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		this.contacts = new WritableList(contacts, null);
 	}
 
 	private File[] getContacts() throws Exception {
@@ -106,18 +92,6 @@ public class VCardContactsRepository implements IContactsRepository {
 		return bundle.getEntryPaths("vcards"); //$NON-NLS-1$
 	}
 
-	public void addContact(final Contact contact) {
-		contacts.add(contact);
-	}
-
-	public IObservableList getAllContacts() {
-		return contacts;
-	}
-
-	public void removeContact(final Contact contact) {
-		contacts.remove(contact);
-	}
-
 	/**
 	 * Reads a Contact from a VCard. This method cannot parse a generic VCard,
 	 * but can only parse VCards created with Microsoft Outlook. The intention
@@ -129,7 +103,7 @@ public class VCardContactsRepository implements IContactsRepository {
 	 * @return the created Contact
 	 */
 	public Contact readFromVCard(String fileName) {
-		Contact contact = new Contact();
+		Contact contact = ContactsFactory.eINSTANCE.createContact();
 		contact.setSourceFile(fileName);
 		BufferedReader bufferedReader = null;
 		String charSet = "Cp1252";
@@ -246,9 +220,6 @@ public class VCardContactsRepository implements IContactsRepository {
 					}
 					String jpegString = builder.toString();
 
-					byte[] imageBytes = Base64.decode(jpegString.getBytes());
-					ByteArrayInputStream is = new ByteArrayInputStream(imageBytes);
-					contact.setImage(new Image(is));
 					contact.setJpegString(jpegString);
 					continue;
 				}

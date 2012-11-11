@@ -12,11 +12,10 @@
 
 package com.toedter.e4.javafx.demo.contacts.views;
 
-import com.toedter.e4.javafx.demo.contacts.databinding.AggregateNameObservableValue;
-import com.toedter.e4.javafx.demo.contacts.model.Contact;
-
 import at.bestsolution.efxclipse.runtime.databinding.IJFXBeanValueProperty;
 import at.bestsolution.efxclipse.runtime.databinding.JFXBeanProperties;
+import com.toedter.e4.demo.contacts.Contact;
+import com.toedter.e4.javafx.demo.contacts.databinding.AggregateNameObservableValue;
 import javafx.animation.FadeTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -150,8 +149,8 @@ public class DetailsView {
 			// fadeOutTransition.setOnFinished(new EventHandler<ActionEvent>() {
 			// public void handle(ActionEvent arg0) {
 			writableValue.setValue(contact);
-			Image image = contact.getImage();
-			imageView.setImage(contact.getImage());
+//			Image image = contact.getImage();
+//			imageView.setImage(contact.getImage());
 			// imageView.setScaleX(100.0 / image.getHeight());
 			// imageView.setScaleY(100.0 / image.getHeight());
 			// fadeOutTransition.setOnFinished(null);
