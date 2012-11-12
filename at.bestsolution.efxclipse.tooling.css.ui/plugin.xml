@@ -227,12 +227,13 @@
             extensions="css" label="%viewer.label">
      </viewer>
   </extension>
-  <extension point="org.eclipse.ui.editors.documentProviders">
+  <!-- Remove because it breaks WTP CSS editor see ticket 223 -->
+  <!--extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="at.bestsolution.efxclipse.tooling.css.CssDsl.editors.documentProviders"
-            class="at.bestsolution.efxclipse.tooling.css.ui.CssDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+            class="at.bestsolution.efxclipse.tooling.css.ui.CssDslExecutableExtensionFactory:at.bestsolution.efxclipse.tooling.css.ui.editor.WTPCompatibleDocumentProvider"
             extensions="css">
     </provider>
-  </extension>
+  </extension-->
   <extension
         point="org.eclipse.core.runtime.adapters">
      <factory
