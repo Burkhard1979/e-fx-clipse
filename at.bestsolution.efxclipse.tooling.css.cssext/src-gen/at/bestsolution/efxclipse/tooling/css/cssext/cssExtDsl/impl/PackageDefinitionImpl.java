@@ -5,8 +5,8 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 
@@ -72,7 +72,7 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected EList<CSSRuleDefinition> rules;
+  protected EList<Definition> rules;
 
   /**
    * The cached value of the '{@link #getSubpackages() <em>Subpackages</em>}' containment reference list.
@@ -143,11 +143,11 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<CSSRuleDefinition> getRules()
+  public EList<Definition> getRules()
   {
     if (rules == null)
     {
-      rules = new EObjectContainmentEList<CSSRuleDefinition>(CSSRuleDefinition.class, this, CssExtDslPackage.PACKAGE_DEFINITION__RULES);
+      rules = new EObjectContainmentEList<Definition>(Definition.class, this, CssExtDslPackage.PACKAGE_DEFINITION__RULES);
     }
     return rules;
   }
@@ -238,7 +238,7 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
         return;
       case CssExtDslPackage.PACKAGE_DEFINITION__RULES:
         getRules().clear();
-        getRules().addAll((Collection<? extends CSSRuleDefinition>)newValue);
+        getRules().addAll((Collection<? extends Definition>)newValue);
         return;
       case CssExtDslPackage.PACKAGE_DEFINITION__SUBPACKAGES:
         getSubpackages().clear();

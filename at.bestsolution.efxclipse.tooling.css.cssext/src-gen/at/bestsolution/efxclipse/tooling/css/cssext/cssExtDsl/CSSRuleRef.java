@@ -33,12 +33,12 @@ public interface CSSRuleRef extends CSSRule
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(CSSRuleId)
+   * @see #setRef(Definition)
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage#getCSSRuleRef_Ref()
    * @model
    * @generated
    */
-  CSSRuleId getRef();
+  Definition getRef();
 
   /**
    * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef#getRef <em>Ref</em>}' reference.
@@ -48,6 +48,6 @@ public interface CSSRuleRef extends CSSRule
    * @see #getRef()
    * @generated
    */
-  void setRef(CSSRuleId value);
+  void setRef(Definition value);
 
 } // CSSRuleRef

@@ -20,8 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getDoku <em>Doku</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getSuper <em>Super</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getStyleclass <em>Styleclass</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getProperties <em>Properties</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getPseudoClasses <em>Pseudo Classes</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getSubstructures <em>Substructures</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,8 +102,34 @@ public interface ElementDefinition extends EObject
   EList<ElementDefinition> getSuper();
 
   /**
+   * Returns the value of the '<em><b>Styleclass</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Styleclass</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Styleclass</em>' attribute.
+   * @see #setStyleclass(String)
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage#getElementDefinition_Styleclass()
+   * @model
+   * @generated
+   */
+  String getStyleclass();
+
+  /**
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition#getStyleclass <em>Styleclass</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Styleclass</em>' attribute.
+   * @see #getStyleclass()
+   * @generated
+   */
+  void setStyleclass(String value);
+
+  /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition}.
+   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
@@ -113,7 +141,7 @@ public interface ElementDefinition extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<PropertyDefinition> getProperties();
+  EList<Definition> getProperties();
 
   /**
    * Returns the value of the '<em><b>Pseudo Classes</b></em>' containment reference list.
@@ -130,5 +158,21 @@ public interface ElementDefinition extends EObject
    * @generated
    */
   EList<PseudoClassDefinition> getPseudoClasses();
+
+  /**
+   * Returns the value of the '<em><b>Substructures</b></em>' containment reference list.
+   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Substructure}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Substructures</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Substructures</em>' containment reference list.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage#getElementDefinition_Substructures()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Substructure> getSubstructures();
 
 } // ElementDefinition

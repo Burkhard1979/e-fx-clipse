@@ -64,10 +64,13 @@ CSSBaseType returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
 ;
 
 CSSType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
-	{CSSRangedIntType} type='int' '(' WS* from=INT WS* '->' WS* to=INT WS* ')' |
-	{CSSRangedDoubleType} type='double' '(' WS* from=DOUBLE WS* '->' WS* to=DOUBLE WS* ')' |
-	type='int' WS*|
-	type='double' WS*
+	{CSSRangedIntType} (doku=Doku WS*)? type='@INT' '(' WS* from=INT WS* '->' WS* to=INT WS* ')' |
+	{CSSRangedDoubleType} (doku=Doku WS*)? type='@NUM' '(' WS* from=DOUBLE WS* '->' WS* to=DOUBLE WS* ')' |
+	(doku=Doku WS*)? (
+	type='@INT' WS*|
+	type='@NUM' WS* |
+	type='@STRING' WS* |
+	type='@URL' WS*)
 ;
 
 //CSSRangedType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
@@ -78,20 +81,23 @@ ElementDefinition:
 	{ElementDefinition}
 	doku=Doku?
 	name=QualifiedName ('extends' super+=[ElementDefinition|QualifiedName] (',' super+=[ElementDefinition|QualifiedName])*)?
+	( 'styleclass' styleclass=ID )?
 	'{'
 		(
 			properties+=PropertyDefinition |
-			pseudoClasses+=PseudoClassDefinition
+			pseudoClasses+=PseudoClassDefinition |
+			substructures+=Substructure
 		)*
+		
 	'}'
 ;
 
 
 
-PropertyDefinition: 
+PropertyDefinition returns Definition: 
 	{PropertyDefinition}
 	doku=Doku?
-	name=ID rule=CSSRuleOr ('default:' default=CSSDefaultValue)? ';'
+	name=QualifiedName rule=CSSRuleOr ('default:' default=CSSDefaultValue)? ';'
 ;
 
 PseudoClassDefinition:
@@ -100,18 +106,15 @@ PseudoClassDefinition:
 	name=PSEUDO
 ;
 
-CSSRuleId:
-	name=QualifiedName
-;
-
 CSSRuleRef hidden():
-	'<' ref=[CSSRuleId|QualifiedName] '>'
+	(doku=Doku WS*)? '<' ref=[Definition|QualifiedName] '>'
 ;
 
 
-CSSRuleDefinition hidden(WS, SL_COMMENT, ML_COMMENT):
+CSSRuleDefinition returns Definition hidden(WS, SL_COMMENT, ML_COMMENT) :
+	{CSSRuleDefinition}
 	doku=Doku? 
-	name=CSSRuleId '='
+	name=QualifiedName '='
 	(
 		rule=CSSRuleOr | 
 		func=CSSRuleFunc
@@ -128,7 +131,11 @@ CSSRuleOr returns CSSRule hidden(WS, ML_COMMENT, SL_COMMENT):
 ;
 
 CSSRuleXor returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-	 CSSRuleConcat ({CSSRuleXor.xors+=current} ('||' xors+=CSSRuleConcat)+)?
+	 CSSRuleConcatWithoutSpace ({CSSRuleXor.xors+=current} ('||' xors+=CSSRuleConcatWithoutSpace)+)?
+;
+
+CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	CSSRuleConcat ({CSSRuleConcatWithoutSpace.conc+=current} ( '~' conc+=CSSRuleConcat)+)?
 ;
 
 CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
@@ -163,7 +170,7 @@ CSSRuleRegex returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
 ;
 
 CSSRuleLiteral returns CSSRule:
-	{CSSRuleLiteral} value=ID
+	{CSSRuleLiteral} (doku=Doku WS*)? value=ID
 ;
 
 CSSRuleSymbol returns CSSRule:
@@ -172,6 +179,22 @@ CSSRuleSymbol returns CSSRule:
 
 CSSDefaultValue:
 	{CSSDefaultValue} val=CSSRuleLiteral | ival=INT | dval=DOUBLE | sval=STRING
+;
+
+SubstructureSelector hidden():
+	{SubstructureSelector} name=ID ('[' var=ID ']')?
+;
+
+Substructure:
+	doku=Doku?
+	'substructure' name=ID '{'
+		childs+=SubstructureStyleclass+
+	'}'
+;
+
+SubstructureStyleclass:
+	doku=Doku?
+	element=[ElementDefinition|QualifiedName] 'styleclass' (selectors+=SubstructureSelector)+ ('{' childs+=SubstructureStyleclass+ '}')?
 ;
 
 terminal INT returns ecore::EInt: '-'?('0'..'9')+;

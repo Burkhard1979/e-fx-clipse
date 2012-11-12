@@ -80,13 +80,13 @@ public interface CssExtDslFactory extends EFactory
   ElementDefinition createElementDefinition();
 
   /**
-   * Returns a new object of class '<em>Property Definition</em>'.
+   * Returns a new object of class '<em>Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Definition</em>'.
+   * @return a new object of class '<em>Definition</em>'.
    * @generated
    */
-  PropertyDefinition createPropertyDefinition();
+  Definition createDefinition();
 
   /**
    * Returns a new object of class '<em>Pseudo Class Definition</em>'.
@@ -98,15 +98,6 @@ public interface CssExtDslFactory extends EFactory
   PseudoClassDefinition createPseudoClassDefinition();
 
   /**
-   * Returns a new object of class '<em>CSS Rule Id</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>CSS Rule Id</em>'.
-   * @generated
-   */
-  CSSRuleId createCSSRuleId();
-
-  /**
    * Returns a new object of class '<em>CSS Rule Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -116,15 +107,6 @@ public interface CssExtDslFactory extends EFactory
   CSSRuleRef createCSSRuleRef();
 
   /**
-   * Returns a new object of class '<em>CSS Rule Definition</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>CSS Rule Definition</em>'.
-   * @generated
-   */
-  CSSRuleDefinition createCSSRuleDefinition();
-
-  /**
    * Returns a new object of class '<em>CSS Default Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,6 +114,33 @@ public interface CssExtDslFactory extends EFactory
    * @generated
    */
   CSSDefaultValue createCSSDefaultValue();
+
+  /**
+   * Returns a new object of class '<em>Substructure Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Substructure Selector</em>'.
+   * @generated
+   */
+  SubstructureSelector createSubstructureSelector();
+
+  /**
+   * Returns a new object of class '<em>Substructure</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Substructure</em>'.
+   * @generated
+   */
+  Substructure createSubstructure();
+
+  /**
+   * Returns a new object of class '<em>Substructure Styleclass</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Substructure Styleclass</em>'.
+   * @generated
+   */
+  SubstructureStyleclass createSubstructureStyleclass();
 
   /**
    * Returns a new object of class '<em>CSS Ranged Int Type</em>'.
@@ -150,6 +159,24 @@ public interface CssExtDslFactory extends EFactory
    * @generated
    */
   CSSRangedDoubleType createCSSRangedDoubleType();
+
+  /**
+   * Returns a new object of class '<em>Property Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Definition</em>'.
+   * @generated
+   */
+  PropertyDefinition createPropertyDefinition();
+
+  /**
+   * Returns a new object of class '<em>CSS Rule Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>CSS Rule Definition</em>'.
+   * @generated
+   */
+  CSSRuleDefinition createCSSRuleDefinition();
 
   /**
    * Returns a new object of class '<em>CSS Rule Func</em>'.
@@ -177,6 +204,15 @@ public interface CssExtDslFactory extends EFactory
    * @generated
    */
   CSSRuleXor createCSSRuleXor();
+
+  /**
+   * Returns a new object of class '<em>CSS Rule Concat Without Space</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>CSS Rule Concat Without Space</em>'.
+   * @generated
+   */
+  CSSRuleConcatWithoutSpace createCSSRuleConcatWithoutSpace();
 
   /**
    * Returns a new object of class '<em>CSS Rule Concat</em>'.

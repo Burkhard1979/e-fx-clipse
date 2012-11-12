@@ -117,10 +117,10 @@ public class CssExtDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssExtDslPackage.PROPERTY_DEFINITION:
+      case CssExtDslPackage.DEFINITION:
       {
-        PropertyDefinition propertyDefinition = (PropertyDefinition)theEObject;
-        T result = casePropertyDefinition(propertyDefinition);
+        Definition definition = (Definition)theEObject;
+        T result = caseDefinition(definition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,13 +128,6 @@ public class CssExtDslSwitch<T> extends Switch<T>
       {
         PseudoClassDefinition pseudoClassDefinition = (PseudoClassDefinition)theEObject;
         T result = casePseudoClassDefinition(pseudoClassDefinition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case CssExtDslPackage.CSS_RULE_ID:
-      {
-        CSSRuleId cssRuleId = (CSSRuleId)theEObject;
-        T result = caseCSSRuleId(cssRuleId);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -146,17 +139,31 @@ public class CssExtDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssExtDslPackage.CSS_RULE_DEFINITION:
-      {
-        CSSRuleDefinition cssRuleDefinition = (CSSRuleDefinition)theEObject;
-        T result = caseCSSRuleDefinition(cssRuleDefinition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CssExtDslPackage.CSS_DEFAULT_VALUE:
       {
         CSSDefaultValue cssDefaultValue = (CSSDefaultValue)theEObject;
         T result = caseCSSDefaultValue(cssDefaultValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR:
+      {
+        SubstructureSelector substructureSelector = (SubstructureSelector)theEObject;
+        T result = caseSubstructureSelector(substructureSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssExtDslPackage.SUBSTRUCTURE:
+      {
+        Substructure substructure = (Substructure)theEObject;
+        T result = caseSubstructure(substructure);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssExtDslPackage.SUBSTRUCTURE_STYLECLASS:
+      {
+        SubstructureStyleclass substructureStyleclass = (SubstructureStyleclass)theEObject;
+        T result = caseSubstructureStyleclass(substructureStyleclass);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -173,6 +180,22 @@ public class CssExtDslSwitch<T> extends Switch<T>
         CSSRangedDoubleType cssRangedDoubleType = (CSSRangedDoubleType)theEObject;
         T result = caseCSSRangedDoubleType(cssRangedDoubleType);
         if (result == null) result = caseCSSRule(cssRangedDoubleType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssExtDslPackage.PROPERTY_DEFINITION:
+      {
+        PropertyDefinition propertyDefinition = (PropertyDefinition)theEObject;
+        T result = casePropertyDefinition(propertyDefinition);
+        if (result == null) result = caseDefinition(propertyDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssExtDslPackage.CSS_RULE_DEFINITION:
+      {
+        CSSRuleDefinition cssRuleDefinition = (CSSRuleDefinition)theEObject;
+        T result = caseCSSRuleDefinition(cssRuleDefinition);
+        if (result == null) result = caseDefinition(cssRuleDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -197,6 +220,14 @@ public class CssExtDslSwitch<T> extends Switch<T>
         CSSRuleXor cssRuleXor = (CSSRuleXor)theEObject;
         T result = caseCSSRuleXor(cssRuleXor);
         if (result == null) result = caseCSSRule(cssRuleXor);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE:
+      {
+        CSSRuleConcatWithoutSpace cssRuleConcatWithoutSpace = (CSSRuleConcatWithoutSpace)theEObject;
+        T result = caseCSSRuleConcatWithoutSpace(cssRuleConcatWithoutSpace);
+        if (result == null) result = caseCSSRule(cssRuleConcatWithoutSpace);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -357,17 +388,17 @@ public class CssExtDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Definition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Definition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Definition</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePropertyDefinition(PropertyDefinition object)
+  public T caseDefinition(Definition object)
   {
     return null;
   }
@@ -389,22 +420,6 @@ public class CssExtDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>CSS Rule Id</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>CSS Rule Id</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCSSRuleId(CSSRuleId object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>CSS Rule Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -421,22 +436,6 @@ public class CssExtDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>CSS Rule Definition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>CSS Rule Definition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCSSRuleDefinition(CSSRuleDefinition object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>CSS Default Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -448,6 +447,54 @@ public class CssExtDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCSSDefaultValue(CSSDefaultValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Substructure Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Substructure Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubstructureSelector(SubstructureSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Substructure</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Substructure</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubstructure(Substructure object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Substructure Styleclass</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Substructure Styleclass</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubstructureStyleclass(SubstructureStyleclass object)
   {
     return null;
   }
@@ -480,6 +527,38 @@ public class CssExtDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCSSRangedDoubleType(CSSRangedDoubleType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyDefinition(PropertyDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>CSS Rule Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>CSS Rule Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCSSRuleDefinition(CSSRuleDefinition object)
   {
     return null;
   }
@@ -528,6 +607,22 @@ public class CssExtDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCSSRuleXor(CSSRuleXor object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>CSS Rule Concat Without Space</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>CSS Rule Concat Without Space</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCSSRuleConcatWithoutSpace(CSSRuleConcatWithoutSpace object)
   {
     return null;
   }

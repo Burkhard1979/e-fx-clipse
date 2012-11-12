@@ -41,6 +41,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
@@ -152,7 +153,11 @@ public class Parser extends XtextSwitch<CssExtension> {
 	
 	private void recFindProperties(PackageDefinition pkg, List<PropertyDefinition> result) {
 		for (ElementDefinition el : pkg.getElements()) {
-			result.addAll(el.getProperties());
+			for (Definition def : el.getProperties()) {
+				if (def instanceof PropertyDefinition) {
+					result.add((PropertyDefinition)def);
+				}
+			}
 		}
 		for (PackageDefinition subPkg : pkg.getSubpackages()) {
 			recFindProperties(subPkg, result);

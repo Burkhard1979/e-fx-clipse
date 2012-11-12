@@ -5,12 +5,17 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Substructure;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureStyleclass;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -18,21 +23,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>CSS Rule</b></em>'.
+ * An implementation of the model object '<em><b>Substructure</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleImpl#getDoku <em>Doku</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleImpl#getType <em>Type</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.SubstructureImpl#getDoku <em>Doku</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.SubstructureImpl#getName <em>Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.SubstructureImpl#getChilds <em>Childs</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
+public class SubstructureImpl extends MinimalEObjectImpl.Container implements Substructure
 {
   /**
    * The cached value of the '{@link #getDoku() <em>Doku</em>}' containment reference.
@@ -45,31 +54,41 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
   protected Doku doku;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String type = TYPE_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getChilds() <em>Childs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getChilds()
+   * @generated
+   * @ordered
+   */
+  protected EList<SubstructureStyleclass> childs;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CSSRuleImpl()
+  protected SubstructureImpl()
   {
     super();
   }
@@ -82,7 +101,7 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
   @Override
   protected EClass eStaticClass()
   {
-    return CssExtDslPackage.Literals.CSS_RULE;
+    return CssExtDslPackage.Literals.SUBSTRUCTURE;
   }
 
   /**
@@ -106,7 +125,7 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
     doku = newDoku;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE__DOKU, oldDoku, newDoku);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssExtDslPackage.SUBSTRUCTURE__DOKU, oldDoku, newDoku);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -123,14 +142,14 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
     {
       NotificationChain msgs = null;
       if (doku != null)
-        msgs = ((InternalEObject)doku).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_RULE__DOKU, null, msgs);
+        msgs = ((InternalEObject)doku).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.SUBSTRUCTURE__DOKU, null, msgs);
       if (newDoku != null)
-        msgs = ((InternalEObject)newDoku).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_RULE__DOKU, null, msgs);
+        msgs = ((InternalEObject)newDoku).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.SUBSTRUCTURE__DOKU, null, msgs);
       msgs = basicSetDoku(newDoku, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE__DOKU, newDoku, newDoku));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.SUBSTRUCTURE__DOKU, newDoku, newDoku));
   }
 
   /**
@@ -138,9 +157,9 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public String getName()
   {
-    return type;
+    return name;
   }
 
   /**
@@ -148,12 +167,26 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public void setName(String newName)
   {
-    String oldType = type;
-    type = newType;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE__TYPE, oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.SUBSTRUCTURE__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<SubstructureStyleclass> getChilds()
+  {
+    if (childs == null)
+    {
+      childs = new EObjectContainmentEList<SubstructureStyleclass>(SubstructureStyleclass.class, this, CssExtDslPackage.SUBSTRUCTURE__CHILDS);
+    }
+    return childs;
   }
 
   /**
@@ -166,8 +199,10 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE__DOKU:
+      case CssExtDslPackage.SUBSTRUCTURE__DOKU:
         return basicSetDoku(null, msgs);
+      case CssExtDslPackage.SUBSTRUCTURE__CHILDS:
+        return ((InternalEList<?>)getChilds()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -182,10 +217,12 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE__DOKU:
+      case CssExtDslPackage.SUBSTRUCTURE__DOKU:
         return getDoku();
-      case CssExtDslPackage.CSS_RULE__TYPE:
-        return getType();
+      case CssExtDslPackage.SUBSTRUCTURE__NAME:
+        return getName();
+      case CssExtDslPackage.SUBSTRUCTURE__CHILDS:
+        return getChilds();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -195,16 +232,21 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE__DOKU:
+      case CssExtDslPackage.SUBSTRUCTURE__DOKU:
         setDoku((Doku)newValue);
         return;
-      case CssExtDslPackage.CSS_RULE__TYPE:
-        setType((String)newValue);
+      case CssExtDslPackage.SUBSTRUCTURE__NAME:
+        setName((String)newValue);
+        return;
+      case CssExtDslPackage.SUBSTRUCTURE__CHILDS:
+        getChilds().clear();
+        getChilds().addAll((Collection<? extends SubstructureStyleclass>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -220,11 +262,14 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE__DOKU:
+      case CssExtDslPackage.SUBSTRUCTURE__DOKU:
         setDoku((Doku)null);
         return;
-      case CssExtDslPackage.CSS_RULE__TYPE:
-        setType(TYPE_EDEFAULT);
+      case CssExtDslPackage.SUBSTRUCTURE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case CssExtDslPackage.SUBSTRUCTURE__CHILDS:
+        getChilds().clear();
         return;
     }
     super.eUnset(featureID);
@@ -240,10 +285,12 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE__DOKU:
+      case CssExtDslPackage.SUBSTRUCTURE__DOKU:
         return doku != null;
-      case CssExtDslPackage.CSS_RULE__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case CssExtDslPackage.SUBSTRUCTURE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case CssExtDslPackage.SUBSTRUCTURE__CHILDS:
+        return childs != null && !childs.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -259,10 +306,10 @@ public class CSSRuleImpl extends MinimalEObjectImpl.Container implements CSSRule
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
-    result.append(type);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //CSSRuleImpl
+} //SubstructureImpl

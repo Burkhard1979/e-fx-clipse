@@ -7,7 +7,6 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleBracket;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcat;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleFunc;
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleOr;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRulePostfix;
@@ -16,6 +15,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRegex;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
@@ -477,23 +477,21 @@ public class HTMLDocGenerator {
     _builder.append("<h2>Rules</h2>");
     _builder.newLine();
     {
-      EList<CSSRuleDefinition> _rules = p.getRules();
-      for(final CSSRuleDefinition r : _rules) {
+      EList<Definition> _rules = p.getRules();
+      for(final Definition r : _rules) {
         _builder.append("\t");
         _builder.append("<a name=\"r_");
         String _calcPackagename_2 = this.calcPackagename(p);
         String _plus = (_calcPackagename_2 + ".");
-        CSSRuleId _name = r.getName();
-        String _name_1 = _name.getName();
-        String _plus_1 = (_plus + _name_1);
+        String _name = r.getName();
+        String _plus_1 = (_plus + _name);
         _builder.append(_plus_1, "	");
         _builder.append("\"></a>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<h3>");
-        CSSRuleId _name_2 = r.getName();
-        String _name_3 = _name_2.getName();
-        _builder.append(_name_3, "	");
+        String _name_1 = r.getName();
+        _builder.append(_name_1, "	");
         _builder.append("</h3>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -510,11 +508,11 @@ public class HTMLDocGenerator {
             String _translateRule = this.translateRule(_rule_1);
             _builder.append(_translateRule, "		");
           } else {
-            CSSRule _func = r.getFunc();
-            String _name_4 = ((CSSRuleFunc) _func).getName();
-            _builder.append(_name_4, "		");
+            CSSRule _func = ((CSSRuleDefinition) r).getFunc();
+            String _name_2 = ((CSSRuleFunc) _func).getName();
+            _builder.append(_name_2, "		");
             _builder.append("(");
-            CSSRule _func_1 = r.getFunc();
+            CSSRule _func_1 = ((CSSRuleDefinition) r).getFunc();
             CSSRule _params = ((CSSRuleFunc) _func_1).getParams();
             String _translateRule_1 = this.translateRule(_params);
             _builder.append(_translateRule_1, "		");
@@ -553,15 +551,15 @@ public class HTMLDocGenerator {
         _builder.append("<a name=\"el_");
         String _calcPackagename_3 = this.calcPackagename(p);
         String _plus_2 = (_calcPackagename_3 + ".");
-        String _name_5 = e.getName();
-        String _plus_3 = (_plus_2 + _name_5);
+        String _name_3 = e.getName();
+        String _plus_3 = (_plus_2 + _name_3);
         _builder.append(_plus_3, "	");
         _builder.append("\"></a>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<h3>");
-        String _name_6 = e.getName();
-        _builder.append(_name_6, "	");
+        String _name_4 = e.getName();
+        _builder.append(_name_4, "	");
         {
           EList<ElementDefinition> _super = e.getSuper();
           boolean _isEmpty = _super.isEmpty();
@@ -601,8 +599,8 @@ public class HTMLDocGenerator {
         String _calcPackagename_4 = this.calcPackagename(p);
         String _replace = _calcPackagename_4.replace(".", "_");
         String _plus_4 = (_replace + "_");
-        String _name_7 = e.getName();
-        String _plus_5 = (_plus_4 + _name_7);
+        String _name_5 = e.getName();
+        String _plus_5 = (_plus_4 + _name_5);
         _builder.append(_plus_5, "		");
         _builder.append("\">");
         _builder.newLineIfNotEmpty();
@@ -620,15 +618,15 @@ public class HTMLDocGenerator {
         String _calcPackagename_5 = this.calcPackagename(p);
         String _replace_1 = _calcPackagename_5.replace(".", "_");
         String _plus_6 = (_replace_1 + "_");
-        String _name_8 = e.getName();
-        String _plus_7 = (_plus_6 + _name_8);
+        String _name_6 = e.getName();
+        String _plus_7 = (_plus_6 + _name_6);
         _builder.append(_plus_7, "					");
         _builder.append("\" href=\"#desc_");
         String _calcPackagename_6 = this.calcPackagename(p);
         String _replace_2 = _calcPackagename_6.replace(".", "_");
         String _plus_8 = (_replace_2 + "_");
-        String _name_9 = e.getName();
-        String _plus_9 = (_plus_8 + _name_9);
+        String _name_7 = e.getName();
+        String _plus_9 = (_plus_8 + _name_7);
         _builder.append(_plus_9, "					");
         _builder.append("\">");
         _builder.newLineIfNotEmpty();
@@ -650,8 +648,8 @@ public class HTMLDocGenerator {
         String _calcPackagename_7 = this.calcPackagename(p);
         String _replace_3 = _calcPackagename_7.replace(".", "_");
         String _plus_10 = (_replace_3 + "_");
-        String _name_10 = e.getName();
-        String _plus_11 = (_plus_10 + _name_10);
+        String _name_8 = e.getName();
+        String _plus_11 = (_plus_10 + _name_8);
         _builder.append(_plus_11, "				");
         _builder.append("\" class=\"accordion-body collapse\">");
         _builder.newLineIfNotEmpty();
@@ -679,7 +677,7 @@ public class HTMLDocGenerator {
         _builder.append("</div>");
         _builder.newLine();
         {
-          EList<PropertyDefinition> _properties = e.getProperties();
+          EList<Definition> _properties = e.getProperties();
           boolean _isEmpty_1 = _properties.isEmpty();
           boolean _not_1 = (!_isEmpty_1);
           if (_not_1) {
@@ -699,15 +697,15 @@ public class HTMLDocGenerator {
             String _calcPackagename_8 = this.calcPackagename(p);
             String _replace_4 = _calcPackagename_8.replace(".", "_");
             String _plus_12 = (_replace_4 + "_");
-            String _name_11 = e.getName();
-            String _plus_13 = (_plus_12 + _name_11);
+            String _name_9 = e.getName();
+            String _plus_13 = (_plus_12 + _name_9);
             _builder.append(_plus_13, "					");
             _builder.append("\" href=\"#props_");
             String _calcPackagename_9 = this.calcPackagename(p);
             String _replace_5 = _calcPackagename_9.replace(".", "_");
             String _plus_14 = (_replace_5 + "_");
-            String _name_12 = e.getName();
-            String _plus_15 = (_plus_14 + _name_12);
+            String _name_10 = e.getName();
+            String _plus_15 = (_plus_14 + _name_10);
             _builder.append(_plus_15, "					");
             _builder.append("\">");
             _builder.newLineIfNotEmpty();
@@ -733,8 +731,8 @@ public class HTMLDocGenerator {
             String _calcPackagename_10 = this.calcPackagename(p);
             String _replace_6 = _calcPackagename_10.replace(".", "_");
             String _plus_16 = (_replace_6 + "_");
-            String _name_13 = e.getName();
-            String _plus_17 = (_plus_16 + _name_13);
+            String _name_11 = e.getName();
+            String _plus_17 = (_plus_16 + _name_11);
             _builder.append(_plus_17, "				");
             _builder.append("\" class=\"accordion-body collapse\">");
             _builder.newLineIfNotEmpty();
@@ -789,8 +787,8 @@ public class HTMLDocGenerator {
             _builder.append("<tbody>");
             _builder.newLine();
             {
-              EList<PropertyDefinition> _properties_1 = e.getProperties();
-              for(final PropertyDefinition prop : _properties_1) {
+              EList<Definition> _properties_1 = e.getProperties();
+              for(final Definition prop : _properties_1) {
                 _builder.append("\t");
                 _builder.append("\t\t");
                 _builder.append("\t\t\t\t");
@@ -801,8 +799,8 @@ public class HTMLDocGenerator {
                 _builder.append("\t\t\t\t");
                 _builder.append("\t");
                 _builder.append("<td><nobr>");
-                String _name_14 = prop.getName();
-                _builder.append(_name_14, "								");
+                String _name_12 = prop.getName();
+                _builder.append(_name_12, "								");
                 _builder.append("</nobr></td>");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
@@ -820,7 +818,7 @@ public class HTMLDocGenerator {
                 _builder.append("\t\t\t\t");
                 _builder.append("\t");
                 _builder.append("<td>");
-                CSSDefaultValue _default = prop==null?(CSSDefaultValue)null:prop.getDefault();
+                CSSDefaultValue _default = ((PropertyDefinition) prop)==null?(CSSDefaultValue)null:((PropertyDefinition) prop).getDefault();
                 String _calcDefault = _default==null?(String)null:this.calcDefault(_default);
                 _builder.append(_calcDefault, "								");
                 _builder.append("</td>");
@@ -885,15 +883,15 @@ public class HTMLDocGenerator {
             String _calcPackagename_11 = this.calcPackagename(p);
             String _replace_7 = _calcPackagename_11.replace(".", "_");
             String _plus_18 = (_replace_7 + "_");
-            String _name_15 = e.getName();
-            String _plus_19 = (_plus_18 + _name_15);
+            String _name_13 = e.getName();
+            String _plus_19 = (_plus_18 + _name_13);
             _builder.append(_plus_19, "					");
             _builder.append("\" href=\"#props_");
             String _calcPackagename_12 = this.calcPackagename(p);
             String _replace_8 = _calcPackagename_12.replace(".", "_");
             String _plus_20 = (_replace_8 + "_");
-            String _name_16 = e.getName();
-            String _plus_21 = (_plus_20 + _name_16);
+            String _name_14 = e.getName();
+            String _plus_21 = (_plus_20 + _name_14);
             _builder.append(_plus_21, "					");
             _builder.append("_inherited\">");
             _builder.newLineIfNotEmpty();
@@ -919,8 +917,8 @@ public class HTMLDocGenerator {
             String _calcPackagename_13 = this.calcPackagename(p);
             String _replace_9 = _calcPackagename_13.replace(".", "_");
             String _plus_22 = (_replace_9 + "_");
-            String _name_17 = e.getName();
-            String _plus_23 = (_plus_22 + _name_17);
+            String _name_15 = e.getName();
+            String _plus_23 = (_plus_22 + _name_15);
             _builder.append(_plus_23, "				");
             _builder.append("_inherited\" class=\"accordion-body collapse\">");
             _builder.newLineIfNotEmpty();
@@ -983,8 +981,8 @@ public class HTMLDocGenerator {
               HashSet<ElementDefinition> _allSuperElements_1 = this.allSuperElements(e);
               for(final ElementDefinition su : _allSuperElements_1) {
                 {
-                  EList<PropertyDefinition> _properties_2 = ((ElementDefinition) su).getProperties();
-                  for(final PropertyDefinition prop_1 : _properties_2) {
+                  EList<Definition> _properties_2 = ((ElementDefinition) su).getProperties();
+                  for(final Definition prop_1 : _properties_2) {
                     _builder.append("\t");
                     _builder.append("\t\t");
                     _builder.append("\t\t\t\t");
@@ -996,13 +994,13 @@ public class HTMLDocGenerator {
                     _builder.append("\t");
                     _builder.append("<td>");
                     {
-                      EList<PropertyDefinition> _properties_3 = ((ElementDefinition) su).getProperties();
-                      PropertyDefinition _get = _properties_3.get(0);
+                      EList<Definition> _properties_3 = ((ElementDefinition) su).getProperties();
+                      Definition _get = _properties_3.get(0);
                       boolean _equals = Objects.equal(_get, prop_1);
                       if (_equals) {
                         _builder.append("<nobr>");
-                        String _name_18 = ((ElementDefinition) su).getName();
-                        _builder.append(_name_18, "								");
+                        String _name_16 = ((ElementDefinition) su).getName();
+                        _builder.append(_name_16, "								");
                         _builder.append("</nobr>");
                       }
                     }
@@ -1013,8 +1011,8 @@ public class HTMLDocGenerator {
                     _builder.append("\t\t\t\t");
                     _builder.append("\t");
                     _builder.append("<td><nobr>");
-                    String _name_19 = prop_1.getName();
-                    _builder.append(_name_19, "								");
+                    String _name_17 = prop_1.getName();
+                    _builder.append(_name_17, "								");
                     _builder.append("</nobr></td>");
                     _builder.newLineIfNotEmpty();
                     _builder.append("\t");
@@ -1032,7 +1030,7 @@ public class HTMLDocGenerator {
                     _builder.append("\t\t\t\t");
                     _builder.append("\t");
                     _builder.append("<td>");
-                    CSSDefaultValue _default_1 = prop_1==null?(CSSDefaultValue)null:prop_1.getDefault();
+                    CSSDefaultValue _default_1 = ((PropertyDefinition) prop_1)==null?(CSSDefaultValue)null:((PropertyDefinition) prop_1).getDefault();
                     String _calcDefault_1 = _default_1==null?(String)null:this.calcDefault(_default_1);
                     _builder.append(_calcDefault_1, "								");
                     _builder.append("</td>");
@@ -1099,15 +1097,15 @@ public class HTMLDocGenerator {
             String _calcPackagename_14 = this.calcPackagename(p);
             String _replace_10 = _calcPackagename_14.replace(".", "_");
             String _plus_24 = (_replace_10 + "_");
-            String _name_20 = e.getName();
-            String _plus_25 = (_plus_24 + _name_20);
+            String _name_18 = e.getName();
+            String _plus_25 = (_plus_24 + _name_18);
             _builder.append(_plus_25, "					");
             _builder.append("\" href=\"#pseudo_");
             String _calcPackagename_15 = this.calcPackagename(p);
             String _replace_11 = _calcPackagename_15.replace(".", "_");
             String _plus_26 = (_replace_11 + "_");
-            String _name_21 = e.getName();
-            String _plus_27 = (_plus_26 + _name_21);
+            String _name_19 = e.getName();
+            String _plus_27 = (_plus_26 + _name_19);
             _builder.append(_plus_27, "					");
             _builder.append("\">");
             _builder.newLineIfNotEmpty();
@@ -1133,8 +1131,8 @@ public class HTMLDocGenerator {
             String _calcPackagename_16 = this.calcPackagename(p);
             String _replace_12 = _calcPackagename_16.replace(".", "_");
             String _plus_28 = (_replace_12 + "_");
-            String _name_22 = e.getName();
-            String _plus_29 = (_plus_28 + _name_22);
+            String _name_20 = e.getName();
+            String _plus_29 = (_plus_28 + _name_20);
             _builder.append(_plus_29, "				");
             _builder.append("\" class=\"accordion-body collapse\">");
             _builder.newLineIfNotEmpty();
@@ -1196,8 +1194,8 @@ public class HTMLDocGenerator {
                 _builder.append("\t\t\t");
                 _builder.append("\t");
                 _builder.append("<td>");
-                String _name_23 = pseudo.getName();
-                _builder.append(_name_23, "							");
+                String _name_21 = pseudo.getName();
+                _builder.append(_name_21, "							");
                 _builder.append("</td>");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t");
@@ -1260,15 +1258,15 @@ public class HTMLDocGenerator {
             String _calcPackagename_17 = this.calcPackagename(p);
             String _replace_13 = _calcPackagename_17.replace(".", "_");
             String _plus_30 = (_replace_13 + "_");
-            String _name_24 = e.getName();
-            String _plus_31 = (_plus_30 + _name_24);
+            String _name_22 = e.getName();
+            String _plus_31 = (_plus_30 + _name_22);
             _builder.append(_plus_31, "					");
             _builder.append("\" href=\"#pseudo_");
             String _calcPackagename_18 = this.calcPackagename(p);
             String _replace_14 = _calcPackagename_18.replace(".", "_");
             String _plus_32 = (_replace_14 + "_");
-            String _name_25 = e.getName();
-            String _plus_33 = (_plus_32 + _name_25);
+            String _name_23 = e.getName();
+            String _plus_33 = (_plus_32 + _name_23);
             _builder.append(_plus_33, "					");
             _builder.append("_inherited\">");
             _builder.newLineIfNotEmpty();
@@ -1294,8 +1292,8 @@ public class HTMLDocGenerator {
             String _calcPackagename_19 = this.calcPackagename(p);
             String _replace_15 = _calcPackagename_19.replace(".", "_");
             String _plus_34 = (_replace_15 + "_");
-            String _name_26 = e.getName();
-            String _plus_35 = (_plus_34 + _name_26);
+            String _name_24 = e.getName();
+            String _plus_35 = (_plus_34 + _name_24);
             _builder.append(_plus_35, "				");
             _builder.append("_inherited\" class=\"accordion-body collapse\">");
             _builder.newLineIfNotEmpty();
@@ -1366,8 +1364,8 @@ public class HTMLDocGenerator {
                       boolean _equals_1 = Objects.equal(_get_1, pseudo_1);
                       if (_equals_1) {
                         _builder.append("<nobr>");
-                        String _name_27 = ((ElementDefinition) su_1).getName();
-                        _builder.append(_name_27, "							");
+                        String _name_25 = ((ElementDefinition) su_1).getName();
+                        _builder.append(_name_25, "							");
                         _builder.append("</nobr>");
                       }
                     }
@@ -1378,8 +1376,8 @@ public class HTMLDocGenerator {
                     _builder.append("\t\t\t");
                     _builder.append("\t");
                     _builder.append("<td>");
-                    String _name_28 = pseudo_1.getName();
-                    _builder.append(_name_28, "							");
+                    String _name_26 = pseudo_1.getName();
+                    _builder.append(_name_26, "							");
                     _builder.append("</td>");
                     _builder.newLineIfNotEmpty();
                     _builder.append("\t");
@@ -1613,16 +1611,16 @@ public class HTMLDocGenerator {
               } else {
                 if ((r instanceof CSSRuleRef)) {
                   final CSSRuleRef ref = ((CSSRuleRef) r);
-                  CSSRuleId _ref = ref.getRef();
+                  Definition _ref = ref.getRef();
                   EObject _findpackage = this.findpackage(_ref);
                   String _calcPackagename = this.calcPackagename(((PackageDefinition) _findpackage));
                   String _plus_2 = ("&lt;<a class=\'bs-href\' href=\'#r_" + _calcPackagename);
                   String _plus_3 = (_plus_2 + ".");
-                  CSSRuleId _ref_1 = ref.getRef();
+                  Definition _ref_1 = ref.getRef();
                   String _name = _ref_1.getName();
                   String _plus_4 = (_plus_3 + _name);
                   String _plus_5 = (_plus_4 + "\'>");
-                  CSSRuleId _ref_2 = ref.getRef();
+                  Definition _ref_2 = ref.getRef();
                   String _name_1 = _ref_2.getName();
                   String _plus_6 = (_plus_5 + _name_1);
                   String _plus_7 = (_plus_6 + "</a>&gt;");
@@ -1662,7 +1660,7 @@ public class HTMLDocGenerator {
     return result.toString();
   }
   
-  public EObject findpackage(final CSSRuleId rule) {
+  public EObject findpackage(final Definition rule) {
     EObject e = rule.eContainer();
     boolean _and = false;
     boolean _notEquals = (!Objects.equal(e, null));

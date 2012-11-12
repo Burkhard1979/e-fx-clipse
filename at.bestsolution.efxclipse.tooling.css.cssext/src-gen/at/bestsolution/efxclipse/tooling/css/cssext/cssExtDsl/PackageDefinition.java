@@ -58,7 +58,7 @@ public interface PackageDefinition extends EObject
 
   /**
    * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
-   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition}.
+   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Rules</em>' containment reference list isn't clear,
@@ -70,7 +70,7 @@ public interface PackageDefinition extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<CSSRuleDefinition> getRules();
+  EList<Definition> getRules();
 
   /**
    * Returns the value of the '<em><b>Subpackages</b></em>' containment reference list.

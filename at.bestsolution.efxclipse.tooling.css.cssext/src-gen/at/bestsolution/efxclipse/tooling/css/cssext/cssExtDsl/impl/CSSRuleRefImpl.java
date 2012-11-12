@@ -5,9 +5,9 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -39,7 +39,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * @generated
    * @ordered
    */
-  protected CSSRuleId ref;
+  protected Definition ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,12 +67,12 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleId getRef()
+  public Definition getRef()
   {
     if (ref != null && ref.eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (CSSRuleId)eResolveProxy(oldRef);
+      ref = (Definition)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
@@ -87,7 +87,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleId basicGetRef()
+  public Definition basicGetRef()
   {
     return ref;
   }
@@ -97,9 +97,9 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(CSSRuleId newRef)
+  public void setRef(Definition newRef)
   {
-    CSSRuleId oldRef = ref;
+    Definition oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE_REF__REF, oldRef, ref));
@@ -133,7 +133,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
     switch (featureID)
     {
       case CssExtDslPackage.CSS_RULE_REF__REF:
-        setRef((CSSRuleId)newValue);
+        setRef((Definition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -150,7 +150,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
     switch (featureID)
     {
       case CssExtDslPackage.CSS_RULE_REF__REF:
-        setRef((CSSRuleId)null);
+        setRef((Definition)null);
         return;
     }
     super.eUnset(featureID);

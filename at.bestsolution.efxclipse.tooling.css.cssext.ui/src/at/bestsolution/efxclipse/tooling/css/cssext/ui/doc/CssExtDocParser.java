@@ -140,7 +140,7 @@ public class CssExtDocParser {
 		}
 		String rule = "";
 		if (r.getRule() != null) {
-			rule = r.getName().getName()+" = " +translateRule(r.getRule());
+			rule = r.getName()+" = " +translateRule(r.getRule());
 		}
 		
 		String javadoc = prepareDoku(r.getDoku());
