@@ -2,3 +2,4 @@
 */bin/
 *.java._trace
 .settings/
+*.bak
