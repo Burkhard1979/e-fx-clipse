@@ -108,7 +108,7 @@ component DefaultTab {
 			static rowIndex : 8
 		},
 		ComboBox {
-			maxWidth : const Integer#MAX_VALUE,
+			maxWidth : 1000,
 			static hgrow : "ALWAYS",
 			static columnSpan : 2,
 			static columnIndex : 1,

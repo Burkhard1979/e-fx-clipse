@@ -84,7 +84,21 @@ public class FXMLHyperlinkDetector extends AbstractHyperlinkDetector {
 						link = new FXMLJavaElementHyperLink(element,new Region(flatNode.getStartOffset(region), region.getTextLength()), (IDOMNode)treeNode, regionType, documentOffset);	
 					}
 				} else if( regionType == DOMRegionContext.XML_PI_CONTENT ) {
-					link = new ResourceHyperLink(new Region(flatNode.getStartOffset(region), region.getTextLength()), (IDOMNode) treeNode, ((IDOMNode)treeNode).getNodeValue());
+					IDOMNode dom = (IDOMNode)treeNode;
+					String value = dom.getNodeValue();
+					
+					// Strip the ? it is part of the value
+					if( value.endsWith("?") ) {
+						value = value.substring(0,value.length()-1);
+					}
+					
+					if( value.endsWith(".css") || value.endsWith(".properties")  ) {
+						link = new ResourceHyperLink(new Region(flatNode.getStartOffset(region), region.getTextLength()), (IDOMNode) treeNode, value);	
+					} else {
+						if(!  value.endsWith("*") ) {
+							link = new FXMLJavaElementHyperLink(Util.findType(value, dom.getOwnerDocument()),new Region(flatNode.getStartOffset(region), region.getTextLength()), (IDOMNode)treeNode, regionType, documentOffset);
+						}						
+					}
 				}
 				
 				if( link != null ) {

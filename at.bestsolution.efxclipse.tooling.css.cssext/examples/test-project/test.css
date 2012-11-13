@@ -3,15 +3,14 @@ Node[no=me] {
 }
 
 Region.test {
-	-fx-blend-mode: asdf;
+	-fx-blend-mode: add;
 	-fx-padding: 12px;
-	-fx-padding: 12%;
 	-fx-arc-height: 1cm;
 	-fx-graphic-hpos: inherit;
 	-fx-padding: 1 1 1 1;
 	-fx-arc-height: 1;
 	-fx-alignment: 1px;
-	-fx-smooth: #123;
+	-fx-smooth: true;
 	asdfasd: a;
 	-fx-halignment: left;
 }
