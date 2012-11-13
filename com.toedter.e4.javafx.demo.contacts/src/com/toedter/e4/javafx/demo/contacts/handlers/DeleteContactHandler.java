@@ -12,6 +12,8 @@
 
 package com.toedter.e4.javafx.demo.contacts.handlers;
 
+import org.eclipse.emf.edit.command.DeleteCommand;
+
 import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import javax.inject.Inject;
@@ -32,7 +34,8 @@ public class DeleteContactHandler {
 	@CanExecute
 	boolean canExecute(@Optional Contact contact) {
 		if(contact != null) {
-			command = new RemoveCommand(contactsManager.getEditingDomain(), contactsManager.getResource().getContents(), contact);
+			command = DeleteCommand.create(contactsManager.getEditingDomain(), contact);
+					//new RemoveCommand(contactsManager.getEditingDomain(), contactsManager.getResource().getContents(), contact);
 			return command.canExecute();			
 		}
 		return false;

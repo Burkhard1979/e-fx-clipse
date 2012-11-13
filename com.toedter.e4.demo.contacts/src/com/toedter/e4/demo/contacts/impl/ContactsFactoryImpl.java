@@ -65,6 +65,7 @@ public class ContactsFactoryImpl extends EFactoryImpl implements ContactsFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ContactsPackage.CONTACT: return createContact();
+			case ContactsPackage.GROUP: return createGroup();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -78,6 +79,16 @@ public class ContactsFactoryImpl extends EFactoryImpl implements ContactsFactory
 	public Contact createContact() {
 		ContactImpl contact = new ContactImpl();
 		return contact;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Group createGroup() {
+		GroupImpl group = new GroupImpl();
+		return group;
 	}
 
 	/**

@@ -12,6 +12,10 @@
 
 package com.toedter.e4.javafx.demo.contacts.model.internal;
 
+import com.toedter.e4.demo.contacts.Group;
+
+import org.eclipse.emf.common.util.URI;
+
 import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.demo.contacts.ContactsFactory;
 import com.toedter.e4.javafx.demo.contacts.BundleActivatorImpl;
@@ -35,11 +39,15 @@ import org.osgi.framework.Bundle;
 public class VCardContactsRepository extends ResourceImpl {
 
 	public VCardContactsRepository() {
+		super(URI.createPlatformResourceURI("com.toedter.e4.javafx.demo.contacts/vcards", false));
+		
 		try {
+			Group rootGroup = ContactsFactory.eINSTANCE.createGroup();
 			for (File file : getContacts()) {
 				Contact contact = readFromVCard(file.getAbsolutePath());
-				getContents().add(contact);
+				rootGroup.getContacts().add(contact);
 			}
+			getContents().add(rootGroup);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

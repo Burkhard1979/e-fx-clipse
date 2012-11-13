@@ -107,6 +107,29 @@ public class ContactsItemProviderAdapterFactory extends ContactsAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.toedter.e4.demo.contacts.Group} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GroupItemProvider groupItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.toedter.e4.demo.contacts.Group}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGroupAdapter() {
+		if (groupItemProvider == null) {
+			groupItemProvider = new GroupItemProvider(this);
+		}
+
+		return groupItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,6 +229,7 @@ public class ContactsItemProviderAdapterFactory extends ContactsAdapterFactory i
 	 */
 	public void dispose() {
 		if (contactItemProvider != null) contactItemProvider.dispose();
+		if (groupItemProvider != null) groupItemProvider.dispose();
 	}
 
 }

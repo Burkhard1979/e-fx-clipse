@@ -4,7 +4,7 @@
     <tags>no-decoration#topdecoration.fxml</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_SeXUCu8EEd6FC9cDb6iV7g" elementId="_SeXUCu8EEd6FC9cDb6iV7g" horizontal="true">
       <children xsi:type="basic:PartStack" xmi:id="_SeXUC-8EEd6FC9cDb6iV7g" elementId="_SeXUC-8EEd6FC9cDb6iV7g" containerData="30">
-        <children xsi:type="basic:Part" xmi:id="_SeXUDO8EEd6FC9cDb6iV7g" elementId="ContactsView" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.views.ListView" label="%contactsList" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/folder_user.png" tooltip="%contactsTooltip"/>
+        <children xsi:type="basic:Part" xmi:id="_SeXUDO8EEd6FC9cDb6iV7g" elementId="ContactsView" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.views.ListView2" label="%contactsList" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/folder_user.png" tooltip="%contactsTooltip"/>
       </children>
       <children xsi:type="basic:PartStack" xmi:id="_SeXUDe8EEd6FC9cDb6iV7g" elementId="com.toedter.e4.javafx.demo.contacts.partstacks.second" containerData="70">
         <children xsi:type="basic:Part" xmi:id="DetailsView" elementId="DetailsView" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.views.DetailsView2" label="%partDetails" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/report_user.png" tooltip="%detailsTooltip"/>
@@ -23,6 +23,8 @@
         <children xsi:type="menu:DirectToolItem" xmi:id="_SeXUBO8EEd6FC9cDb6iV7g" elementId="_SeXUBO8EEd6FC9cDb6iV7g" label="" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/disk.png" tooltip="%toolbarSaveTooltip" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.handlers.SaveHandler"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_6RnVUE8FEeCyZoR8urPqaw" elementId="">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Y-d8MC3iEeKA67t6AqYX1w" elementId="" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/folder.png" tooltip="%menuLabelAddGroup" command="_8GIe8C3hEeKA67t6AqYX1w"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_J5b-IC3fEeKA67t6AqYX1w" elementId="" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/user_add.png" tooltip="%menuLabelAddContact" command="_k20AAC3eEeKA67t6AqYX1w"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_Vw4jUE8FEeCyZoR8urPqaw" label="" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/user_delete.png" tooltip="%menuLabelDelete" command="contacts.delete"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_SZWWYCxCEeKKgKdy48tDJg" elementId="com.toedter.e4.javafx.demo.contacts.handledtoolitems.undo" label="" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/arrow_undo.png" tooltip="%menuLabelUndo" command="_YYAtMCxCEeKKgKdy48tDJg"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_UOyGoCxFEeKKgKdy48tDJg" elementId="com.toedter.e4.javafx.demo.contacts.handledtoolitem.0" label="" iconURI="platform:/plugin/com.toedter.e4.javafx.demo.contacts/icons/silk/arrow_redo.png" tooltip="%menuLabelRedo" command="_K6SccCxFEeKKgKdy48tDJg"/>
@@ -35,6 +37,8 @@
   <handlers xmi:id="_SeXUG=8EEd6FC9cDb6iV7g" elementId="_SeXUG=8EEd6FC9cDb6iV7g" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.handlers.SwitchThemeHandler" command="contacts.switchTheme"/>
   <handlers xmi:id="_B-yL8CxDEeKKgKdy48tDJg" elementId="com.toedter.e4.javafx.demo.contacts.handlers.undo" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.handlers.UndoHandler" command="_YYAtMCxCEeKKgKdy48tDJg"/>
   <handlers xmi:id="_IDToQCxFEeKKgKdy48tDJg" elementId="com.toedter.e4.javafx.demo.contacts.handlers.redo" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.handlers.RedoHandler" command="_K6SccCxFEeKKgKdy48tDJg"/>
+  <handlers xmi:id="_8qTqYC3eEeKA67t6AqYX1w" elementId="com.toedter.e4.javafx.demo.contacts.handlers.addContact" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.handlers.AddContactHandler" command="_k20AAC3eEeKA67t6AqYX1w"/>
+  <handlers xmi:id="_EPhA4C3iEeKA67t6AqYX1w" elementId="com.toedter.e4.javafx.demo.contacts.handlers.AddGroup" contributionURI="bundleclass://com.toedter.e4.javafx.demo.contacts/com.toedter.e4.javafx.demo.contacts.handlers.AddGroupHandler" command="_8GIe8C3hEeKA67t6AqYX1w"/>
   <bindingTables xmi:id="_SeXUEO8EEd6FC9cDb6iV7x" elementId="_SeXUEO8EEd6FC9cDb6iV7x" bindingContext="_SeXUHO8EEd6FC9cDb6iV7y">
     <bindings xmi:id="_SeXUHu8EEd6FC9cDb6iV7g" elementId="_SeXUHu8EEd6FC9cDb6iV7g" keySequence="CTRL+S" command="contacts.save"/>
     <bindings xmi:id="_SeXUH-8EEd6FC9cDb6iV7g" elementId="_SeXUH-8EEd6FC9cDb6iV7g" keySequence="CTRL+D" command="contacts.delete"/>
@@ -52,6 +56,8 @@
   </commands>
   <commands xmi:id="_YYAtMCxCEeKKgKdy48tDJg" elementId="contacts.undo" commandName="%menuLabelUndo"/>
   <commands xmi:id="_K6SccCxFEeKKgKdy48tDJg" elementId="contacts.redo" commandName="%menuLabelRedo"/>
+  <commands xmi:id="_k20AAC3eEeKA67t6AqYX1w" elementId="com.toedter.e4.javafx.demo.contacts.commands.addContact" commandName="%menuLabelAddContact"/>
+  <commands xmi:id="_8GIe8C3hEeKA67t6AqYX1w" elementId="com.toedter.e4.javafx.demo.contacts.commands.AddGroup" commandName="%menuLabelAddGroup" description=""/>
   <addons xmi:id="_XGB3wPZlEd-XstlTZ6nTXg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_XGB3wPZlEd-XstlTZ6nTXh" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_ViIQQBnuEeKroetix5qA3A" elementId="com.toedter.e4.javafx.demo.contacts.addon.0" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon"/>

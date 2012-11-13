@@ -54,7 +54,7 @@ public class ListView {
 
 		tableView.getColumns().addAll(firstNameColumn, lastNameColumn);
 		
-		tableView.setItems(new AdapterFactoryObservableList<Contact>(contactsManager.getAdapterFactory(), contactsManager.getResource()));
+		tableView.setItems(new AdapterFactoryObservableList<Contact>(contactsManager.getAdapterFactory(), contactsManager.getRootGroup()));
 
 		tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 

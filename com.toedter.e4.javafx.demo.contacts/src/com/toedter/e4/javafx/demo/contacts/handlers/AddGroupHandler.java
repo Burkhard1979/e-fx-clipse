@@ -12,9 +12,9 @@
 
 package com.toedter.e4.javafx.demo.contacts.handlers;
 
-import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.demo.contacts.ContactsFactory;
 import com.toedter.e4.demo.contacts.ContactsPackage;
+import com.toedter.e4.demo.contacts.Group;
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import javax.inject.Inject;
 import org.eclipse.e4.core.di.annotations.Execute;
@@ -22,15 +22,15 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.edit.command.AddCommand;
 
 @SuppressWarnings("restriction")
-public class AddContactHandler {
+public class AddGroupHandler {
 
 	@Inject
 	ContactsManager contactsManager;
 
 	@Execute
 	void execute() {
-		Contact contact = ContactsFactory.eINSTANCE.createContact();
-		Command command = AddCommand.create(contactsManager.getEditingDomain(), contactsManager.getRootGroup(), ContactsPackage.Literals.GROUP__CONTACTS, contact); 
+		Group group = ContactsFactory.eINSTANCE.createGroup();
+		Command command = AddCommand.create(contactsManager.getEditingDomain(), contactsManager.getRootGroup(), ContactsPackage.Literals.GROUP__GROUPS, group); 
 		if (command != null && command.canExecute())
 			contactsManager.getEditingDomain().getCommandStack().execute(command);
 	}

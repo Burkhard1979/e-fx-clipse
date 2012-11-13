@@ -13,6 +13,7 @@ package com.toedter.e4.demo.contacts;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -245,6 +246,53 @@ public interface ContactsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link com.toedter.e4.demo.contacts.impl.GroupImpl <em>Group</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.toedter.e4.demo.contacts.impl.GroupImpl
+	 * @see com.toedter.e4.demo.contacts.impl.ContactsPackageImpl#getGroup()
+	 * @generated
+	 */
+	int GROUP = 1;
+
+	/**
+	 * The feature id for the '<em><b>Contacts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__CONTACTS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__GROUPS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP__NAME = 2;
+
+	/**
+	 * The number of structural features of the '<em>Group</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP_FEATURE_COUNT = 3;
+
+
+	/**
 	 * Returns the meta object for class '{@link com.toedter.e4.demo.contacts.Contact <em>Contact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -453,6 +501,49 @@ public interface ContactsPackage extends EPackage {
 	EAttribute getContact_SourceFile();
 
 	/**
+	 * Returns the meta object for class '{@link com.toedter.e4.demo.contacts.Group <em>Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Group</em>'.
+	 * @see com.toedter.e4.demo.contacts.Group
+	 * @generated
+	 */
+	EClass getGroup();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link com.toedter.e4.demo.contacts.Group#getContacts <em>Contacts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Contacts</em>'.
+	 * @see com.toedter.e4.demo.contacts.Group#getContacts()
+	 * @see #getGroup()
+	 * @generated
+	 */
+	EReference getGroup_Contacts();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link com.toedter.e4.demo.contacts.Group#getGroups <em>Groups</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Groups</em>'.
+	 * @see com.toedter.e4.demo.contacts.Group#getGroups()
+	 * @see #getGroup()
+	 * @generated
+	 */
+	EReference getGroup_Groups();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Group#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see com.toedter.e4.demo.contacts.Group#getName()
+	 * @see #getGroup()
+	 * @generated
+	 */
+	EAttribute getGroup_Name();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -627,6 +718,40 @@ public interface ContactsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTACT__SOURCE_FILE = eINSTANCE.getContact_SourceFile();
+
+		/**
+		 * The meta object literal for the '{@link com.toedter.e4.demo.contacts.impl.GroupImpl <em>Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.toedter.e4.demo.contacts.impl.GroupImpl
+		 * @see com.toedter.e4.demo.contacts.impl.ContactsPackageImpl#getGroup()
+		 * @generated
+		 */
+		EClass GROUP = eINSTANCE.getGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Contacts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GROUP__CONTACTS = eINSTANCE.getGroup_Contacts();
+
+		/**
+		 * The meta object literal for the '<em><b>Groups</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GROUP__GROUPS = eINSTANCE.getGroup_Groups();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GROUP__NAME = eINSTANCE.getGroup_Name();
 
 	}
 

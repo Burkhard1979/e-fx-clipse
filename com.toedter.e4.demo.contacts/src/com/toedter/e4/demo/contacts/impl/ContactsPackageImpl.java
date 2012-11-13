@@ -14,10 +14,12 @@ import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.demo.contacts.ContactsFactory;
 import com.toedter.e4.demo.contacts.ContactsPackage;
 
+import com.toedter.e4.demo.contacts.Group;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -33,6 +35,13 @@ public class ContactsPackageImpl extends EPackageImpl implements ContactsPackage
 	 * @generated
 	 */
 	private EClass contactEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass groupEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -271,6 +280,42 @@ public class ContactsPackageImpl extends EPackageImpl implements ContactsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGroup() {
+		return groupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGroup_Contacts() {
+		return (EReference)groupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGroup_Groups() {
+		return (EReference)groupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGroup_Name() {
+		return (EAttribute)groupEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContactsFactory getContactsFactory() {
 		return (ContactsFactory)getEFactoryInstance();
 	}
@@ -313,6 +358,11 @@ public class ContactsPackageImpl extends EPackageImpl implements ContactsPackage
 		createEAttribute(contactEClass, CONTACT__NOTE);
 		createEAttribute(contactEClass, CONTACT__JPEG_STRING);
 		createEAttribute(contactEClass, CONTACT__SOURCE_FILE);
+
+		groupEClass = createEClass(GROUP);
+		createEReference(groupEClass, GROUP__CONTACTS);
+		createEReference(groupEClass, GROUP__GROUPS);
+		createEAttribute(groupEClass, GROUP__NAME);
 	}
 
 	/**
@@ -364,6 +414,11 @@ public class ContactsPackageImpl extends EPackageImpl implements ContactsPackage
 		initEAttribute(getContact_Note(), ecorePackage.getEString(), "note", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContact_JpegString(), ecorePackage.getEString(), "jpegString", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContact_SourceFile(), ecorePackage.getEString(), "sourceFile", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGroup_Contacts(), this.getContact(), null, "contacts", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_Groups(), this.getGroup(), null, "groups", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

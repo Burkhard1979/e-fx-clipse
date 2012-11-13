@@ -10,11 +10,11 @@
  ******************************************************************************/
 package com.toedter.e4.javafx.demo.contacts.model;
 
+import com.toedter.e4.demo.contacts.Group;
 import com.toedter.e4.demo.contacts.provider.ContactsItemProviderAdapterFactory;
 import com.toedter.e4.javafx.demo.contacts.model.internal.VCardContactsRepository;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -39,9 +39,9 @@ public class ContactsManagerImpl implements ContactsManager {
 		editingDomain.getResourceSet().getResources().add(contactsResource);
 	}
 	
-	public Resource getResource() {
-		return contactsResource;
-	}
+//	public Resource getResource() {
+//		return contactsResource;
+//	}
 	
 	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
@@ -49,6 +49,11 @@ public class ContactsManagerImpl implements ContactsManager {
 	
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
+	}
+
+	@Override
+	public Group getRootGroup() {
+		return (Group) contactsResource.getContents().get(0);
 	}
 	
 }
