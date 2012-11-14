@@ -227,6 +227,7 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 
 	private String[] getImports() {
 		return new String[] {
+				"javax.annotation;version=\"1.0.0\"",
 				"javafx.animation;version=\"2.0.0\"",
 				"javafx.application;version=\"2.0.0\"",
 				"javafx.beans;version=\"2.0.0\"",
