@@ -17,7 +17,7 @@
          </property>
          <property
                name="cssTheme"
-               value="wood.theme">
+               value="default.theme">
          </property>
       </product>
    </extension>
