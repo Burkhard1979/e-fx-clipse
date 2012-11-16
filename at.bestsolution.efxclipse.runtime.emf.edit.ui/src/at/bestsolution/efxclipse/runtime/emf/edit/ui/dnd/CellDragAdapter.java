@@ -74,7 +74,8 @@ public class CellDragAdapter implements ICellCreationListener {
 			return ((ListCell<?>) cell).getListView().getSelectionModel();
 		else if (cell instanceof TableCell)
 			return ((TableCell<?, ?>) cell).getTableView().getSelectionModel();
-		return null;
+
+		throw new IllegalArgumentException("Unsupported Cell type");
 	}
 
 }
