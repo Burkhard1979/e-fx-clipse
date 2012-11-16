@@ -40,8 +40,7 @@ public abstract class AdapterFactoryCellFactory {
 	public interface ICellCreationListener {
 
 		/**
-		 * @param cell
-		 *            the newly created {@link Cell}
+		 * @param cell the newly created {@link Cell}
 		 */
 		void cellCreated(Cell<?> cell);
 
@@ -54,12 +53,9 @@ public abstract class AdapterFactoryCellFactory {
 	public interface ICellUpdateListener {
 
 		/**
-		 * @param cell
-		 *            the {@link Cell} being updated
-		 * @param item
-		 *            as defined in {@link Cell#updateItem}
-		 * @param empty
-		 *            as defined in {@link Cell#updateItem}
+		 * @param cell the {@link Cell} being updated
+		 * @param item as defined in {@link Cell#updateItem}
+		 * @param empty as defined in {@link Cell#updateItem}
 		 */
 		void updateItem(Cell<?> cell, Object item, boolean empty);
 
@@ -119,6 +115,9 @@ public abstract class AdapterFactoryCellFactory {
 			URI fontURI = (URI) object;
 			if (!"font".equals(fontURI.scheme()))
 				throw new IllegalArgumentException("Only 'font' scheme is recognized" + fontURI);
+
+			if (fontURI.segmentCount() != 2)
+				throw new IllegalArgumentException("The URI must have an authority and two segments");
 
 			// font name
 			String fontNameSpecification = fontURI.authority();
@@ -202,12 +201,10 @@ public abstract class AdapterFactoryCellFactory {
 				if (colorURI.segmentCount() != 3)
 					throw new IllegalArgumentException("Color must have 3 segments (r, g, b) " + colorURI);
 
-				int red, green, blue;
-
 				try {
-					red = Integer.parseInt(colorURI.segment(0));
-					green = Integer.parseInt(colorURI.segment(1));
-					blue = Integer.parseInt(colorURI.segment(2));
+					int red = Integer.parseInt(colorURI.segment(0));
+					int green = Integer.parseInt(colorURI.segment(1));
+					int blue = Integer.parseInt(colorURI.segment(2));
 					return Color.rgb(red, green, blue);
 				} catch (NumberFormatException e) {
 					throw new IllegalArgumentException("Cannot parse color values " + colorURI + ". " + e.getMessage());
