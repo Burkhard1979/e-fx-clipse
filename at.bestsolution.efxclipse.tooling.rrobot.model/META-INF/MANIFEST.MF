@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: at.bestsolution.efxclipse.tooling.rrobot.model;singleton:=true
+Bundle-Version: 0.1.1.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: at.bestsolution.efxclipse.tooling.rrobot.model.bundle,
+ at.bestsolution.efxclipse.tooling.rrobot.model.bundle.util,
+ at.bestsolution.efxclipse.tooling.rrobot.model.task,
+ at.bestsolution.efxclipse.tooling.rrobot.model.task.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy
