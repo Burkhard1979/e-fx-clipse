@@ -62,8 +62,8 @@ public abstract class AdapterFactoryCellFactory {
 	}
 
 	final protected AdapterFactory adapterFactory;
-	final/* package */List<ICellCreationListener> cellCreationListeners = new ArrayList<>();
-	final/* package */List<ICellUpdateListener> cellUpdateListeners = new ArrayList<>();
+	final List<ICellCreationListener> cellCreationListeners = new ArrayList<>();
+	final List<ICellUpdateListener> cellUpdateListeners = new ArrayList<>();
 
 	public AdapterFactoryCellFactory(AdapterFactory adapterFactory) {
 		super();
@@ -94,13 +94,13 @@ public abstract class AdapterFactoryCellFactory {
 		cellUpdateListeners.remove(listener);
 	}
 
-	public void applyItemProviderStyle(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyItemProviderStyle(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
 		applyItemProviderLabel(item, cell, adapterFactory);
 		applyItemProviderColor(item, cell, adapterFactory);
 		applyItemProviderFont(item, cell, adapterFactory);
 	}
 
-	public void applyItemProviderFont(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyItemProviderFont(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
 		IItemFontProvider fontProvider = (IItemFontProvider) adapterFactory.adapt(item, IItemFontProvider.class);
 		if (fontProvider != null) {
 			Font font = fontFromObject(fontProvider.getFont(item));
@@ -109,7 +109,7 @@ public abstract class AdapterFactoryCellFactory {
 		}
 	}
 
-	/* package */Font fontFromObject(Object object) {
+	Font fontFromObject(Object object) {
 
 		if (object instanceof URI) {
 			URI fontURI = (URI) object;
@@ -159,23 +159,28 @@ public abstract class AdapterFactoryCellFactory {
 		return null;
 	}
 
-	/* package */void applyItemProviderLabel(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyItemProviderLabel(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
 		IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(item, IItemLabelProvider.class);
 
 		if (labelProvider != null) {
 			cell.setText(labelProvider.getText(item));
 
 			if (item != null) {
-				Object image = labelProvider.getImage(item);
-				if (image instanceof URL) {
-					Node graphic = new ImageView(((URL) image).toExternalForm());
-					cell.setGraphic(graphic);
-				}
+				ImageView image = imageFromObject(labelProvider.getImage(item));
+				if (image != null)
+					cell.setGraphic(image);
 			}
 		}
 	}
+	
+	ImageView imageFromObject(Object object) {
+		if (object instanceof URL)
+			return new ImageView(((URL) object).toExternalForm());
+		
+		return null;
+	}
 
-	/* package */void applyItemProviderColor(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyItemProviderColor(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
 		IItemColorProvider colorProvider = (IItemColorProvider) adapterFactory.adapt(item, IItemColorProvider.class);
 		if (colorProvider != null) {
 			Color foreground = colorFromObject(colorProvider.getForeground(item));
@@ -188,35 +193,33 @@ public abstract class AdapterFactoryCellFactory {
 		}
 	}
 
-	/* package */Color colorFromObject(Object object) {
-		if (object instanceof URI) {
-			URI colorURI = (URI) object;
+	Color colorFromObject(Object object) {
+		URI colorURI = toColorURI(object);
 
-			if (!"color".equals(colorURI.scheme()))
-				throw new IllegalArgumentException("Only 'color' scheme is recognized " + colorURI);
-
-			if (!"rgb".equals(colorURI.authority())) {
-				throw new IllegalArgumentException("Only 'rgb' authority is recognized " + colorURI);
-			} else {
-				if (colorURI.segmentCount() != 3)
-					throw new IllegalArgumentException("Color must have 3 segments (r, g, b) " + colorURI);
-
-				try {
-					int red = Integer.parseInt(colorURI.segment(0));
-					int green = Integer.parseInt(colorURI.segment(1));
-					int blue = Integer.parseInt(colorURI.segment(2));
-					return Color.rgb(red, green, blue);
-				} catch (NumberFormatException e) {
-					throw new IllegalArgumentException("Cannot parse color values " + colorURI + ". " + e.getMessage());
-				}
-
+		if (colorURI != null) {
+			try {
+				int red = Integer.parseInt(colorURI.segment(0));
+				int green = Integer.parseInt(colorURI.segment(1));
+				int blue = Integer.parseInt(colorURI.segment(2));
+				return Color.rgb(red, green, blue);
+			} catch (NumberFormatException e) {
+				throw new IllegalArgumentException("Cannot parse color values " + colorURI + ". " + e.getMessage());
 			}
 		}
 
 		return null;
 	}
 
-	/* package */String cssColorFromObject(Object object) {
+	String cssColorFromObject(Object object) {
+		URI colorURI = toColorURI(object);
+
+		if (colorURI != null)
+			return "rgb(" + colorURI.segment(0) + ", " + colorURI.segment(1) + ", " + colorURI.segment(2) + ")";
+
+		return null;
+	}
+
+	URI toColorURI(Object object) {
 		if (object instanceof URI) {
 			URI colorURI = (URI) object;
 
@@ -229,7 +232,7 @@ public abstract class AdapterFactoryCellFactory {
 			if (colorURI.segmentCount() != 3)
 				throw new IllegalArgumentException("Color must have 3 segments (r, g, b) " + colorURI);
 
-			return String.format("rgb(" + colorURI.segment(0) + ", " + colorURI.segment(1) + ", " + colorURI.segment(2) + ")");
+			return colorURI;
 		}
 
 		return null;
