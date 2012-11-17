@@ -4,6 +4,7 @@
 	<property name="efx.update.sitedir" value="" />
 	<property name="efx.update.host.user" value="jenkins-deploy" />
 	<property name="efx.update.host.name" value="www.efxclipse.org" />
+	<property name="efx.update.host.port" value="53023" />
 	<property name="efx.update.scp.name" value="www.efxclipse.org" />
 	<property name="efx.update.host.htdocs" value="/virtual/efxclipse.org/httpd/htdocs" />
 	<property name="efx.distojar" value="/Users/tomschindl/git/distrobuilder/at.bestsolution.releng.distrobuilder/target/at.bestsolution.releng.distrobuilder-0.0.1-SNAPSHOT.jar" />
@@ -16,8 +17,8 @@
 
 	<target name="publish-p2">
 		<echo>Publshing p2-repo</echo>
-		<exec command="rsync -acz -e 'ssh -p 53022' ${efx.update.sitezip} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" />
-		<exec command="rsync -acz -e 'ssh -p 53022' --delete ${efx.update.sitedir} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly" />
+		<exec command="rsync -acz -e 'ssh -p ${efx.update.host.port}' ${efx.update.sitezip} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" />
+		<exec command="rsync -acz -e 'ssh -p ${efx.update.host.port}' --delete ${efx.update.sitedir} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly" />
 		<!--sshexec host="${efx.update.scp.name}" username="${efx.update.host.user}" command="rm ${efx.update.host.htdocs}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" keyfile="/var/lib/jenkins/.ssh/id_dsa"/>
 		<scp remoteToFile="${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" keyfile="/var/lib/jenkins/.ssh/id_dsa" file="${efx.update.sitezip}" />
 		
@@ -31,7 +32,7 @@
 
 	<target name="publish-distros" depends="build-distros">
 		<echo>Publishing distros</echo>
-		<exec command="rsync -acz -e 'ssh -p 53022' --delete /tmp/efx-build/dist ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/downloads/nightly" />
+		<exec command="rsync -acz -e 'ssh -p ${efx.update.host.port}' --delete /tmp/efx-build/dist ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/downloads/nightly" />
 		<!--sshexec host="${efx.update.scp.name}" username="${efx.update.host.user}" command="rm -rf ${efx.update.host.htdocs}/downloads/nightly/*" keyfile="/var/lib/jenkins/.ssh/id_dsa"/>
 		<scp keyfile="/var/lib/jenkins/.ssh/id_dsa" remoteToDir="${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/downloads/nightly">
 			<fileset dir="/tmp/efx-build/dist">
