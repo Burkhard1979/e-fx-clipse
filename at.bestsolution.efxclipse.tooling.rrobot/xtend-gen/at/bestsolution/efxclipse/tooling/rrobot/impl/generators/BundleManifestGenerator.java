@@ -1,16 +1,20 @@
 package at.bestsolution.efxclipse.tooling.rrobot.impl.generators;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage.Literals;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import com.google.common.base.Objects;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -40,12 +44,20 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
     _builder.append("Bundle-SymbolicName: ");
     String _symbolicname = file.getSymbolicname();
     _builder.append(_symbolicname, "");
+    {
+      EObject _eContainer = file.eContainer();
+      PluginXMLFile _pluginxml = ((BundleProject) _eContainer).getPluginxml();
+      boolean _notEquals = (!Objects.equal(_pluginxml, null));
+      if (_notEquals) {
+        _builder.append("; singleton:=true");
+      }
+    }
     _builder.newLineIfNotEmpty();
-    _builder.append("Bundle-Version:");
+    _builder.append("Bundle-Version: ");
     Version _version = file.getVersion();
     _builder.append(_version, "");
     _builder.newLineIfNotEmpty();
-    _builder.append("Bundle-RequiredExecutionEnvironment:");
+    _builder.append("Bundle-RequiredExecutionEnvironment: ");
     String _executionEnvironment = file.getExecutionEnvironment();
     _builder.append(_executionEnvironment, "");
     _builder.newLineIfNotEmpty();
@@ -71,7 +83,8 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
     {
       EList<ImportedPackage> _importedPackages = file.getImportedPackages();
       boolean _isEmpty_1 = _importedPackages.isEmpty();
-      if (_isEmpty_1) {
+      boolean _not_1 = (!_isEmpty_1);
+      if (_not_1) {
         _builder.append("Import-Package: ");
         EList<ImportedPackage> _importedPackages_1 = file.getImportedPackages();
         final Function1<ImportedPackage,String> _function_1 = new Function1<ImportedPackage,String>() {
@@ -89,7 +102,8 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
     {
       EList<ExportedPackage> _exportedPackages = file.getExportedPackages();
       boolean _isEmpty_2 = _exportedPackages.isEmpty();
-      if (_isEmpty_2) {
+      boolean _not_2 = (!_isEmpty_2);
+      if (_not_2) {
         _builder.append("Export-Package: ");
         EList<ExportedPackage> _exportedPackages_1 = file.getExportedPackages();
         final Function1<ExportedPackage,String> _function_2 = new Function1<ExportedPackage,String>() {

@@ -10,7 +10,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: at.bestsolution.efxclipse.tooling.rrobot.model.bundle,
  at.bestsolution.efxclipse.tooling.rrobot.model.bundle.util,
  at.bestsolution.efxclipse.tooling.rrobot.model.task,
- at.bestsolution.efxclipse.tooling.rrobot.model.task.util
+ at.bestsolution.efxclipse.tooling.rrobot.model.task.util,
+ at.bestsolution.efxclipse.tooling.rrobot.model.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

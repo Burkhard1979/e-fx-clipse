@@ -8,6 +8,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject
 
 class BundleManifestGenerator implements Generator<ManifestFile> {
 	
@@ -19,16 +20,16 @@ class BundleManifestGenerator implements Generator<ManifestFile> {
 	def generateContent(ManifestFile file, Map<String,Object> data) '''Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: «file.bundlename»
-Bundle-SymbolicName: «file.symbolicname»
-Bundle-Version:«file.version»
-Bundle-RequiredExecutionEnvironment:«file.executionEnvironment»
+Bundle-SymbolicName: «file.symbolicname»«IF (file.eContainer as BundleProject).pluginxml != null»; singleton:=true«ENDIF»
+Bundle-Version: «file.version»
+Bundle-RequiredExecutionEnvironment: «file.executionEnvironment»
 «IF !file.requiredBundles.empty»
 Require-Bundle: «file.requiredBundles.map() [ requireBundleBuilder ].join(",\r\n ")»
 «ENDIF»
-«IF file.importedPackages.empty»
+«IF !file.importedPackages.empty»
 Import-Package: «file.importedPackages.map() [ importPackageBuilder ].join(",\r\n ")»
 «ENDIF»
-«IF file.exportedPackages.empty»
+«IF !file.exportedPackages.empty»
 Export-Package: «file.exportedPackages.map() [ exportPackageBuilder ].join(",\r\n ")»
 «ENDIF»
 	'''
