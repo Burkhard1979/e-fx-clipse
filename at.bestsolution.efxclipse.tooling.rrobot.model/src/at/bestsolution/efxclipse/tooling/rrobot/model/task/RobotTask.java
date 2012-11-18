@@ -2,6 +2,7 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,29 +23,19 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface RobotTask extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Projects</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Projects</b></em>' containment reference list.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Project}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Projects</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Projects</em>' containment reference.
-	 * @see #setProjects(Project)
+	 * @return the value of the '<em>Projects</em>' containment reference list.
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getRobotTask_Projects()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Project getProjects();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getProjects <em>Projects</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Projects</em>' containment reference.
-	 * @see #getProjects()
-	 * @generated
-	 */
-	void setProjects(Project value);
+	EList<Project> getProjects();
 
 } // RobotTask

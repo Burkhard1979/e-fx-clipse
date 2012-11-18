@@ -2,18 +2,19 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.impl;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,14 +31,14 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	/**
-	 * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference.
+	 * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProjects()
 	 * @generated
 	 * @ordered
 	 */
-	protected Project projects;
+	protected EList<Project> projects;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,42 +64,11 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Project getProjects() {
+	public EList<Project> getProjects() {
+		if (projects == null) {
+			projects = new EObjectContainmentEList<Project>(Project.class, this, TaskPackage.ROBOT_TASK__PROJECTS);
+		}
 		return projects;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetProjects(Project newProjects, NotificationChain msgs) {
-		Project oldProjects = projects;
-		projects = newProjects;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TaskPackage.ROBOT_TASK__PROJECTS, oldProjects, newProjects);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setProjects(Project newProjects) {
-		if (newProjects != projects) {
-			NotificationChain msgs = null;
-			if (projects != null)
-				msgs = ((InternalEObject)projects).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TaskPackage.ROBOT_TASK__PROJECTS, null, msgs);
-			if (newProjects != null)
-				msgs = ((InternalEObject)newProjects).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TaskPackage.ROBOT_TASK__PROJECTS, null, msgs);
-			msgs = basicSetProjects(newProjects, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TaskPackage.ROBOT_TASK__PROJECTS, newProjects, newProjects));
 	}
 
 	/**
@@ -110,7 +80,7 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
-				return basicSetProjects(null, msgs);
+				return ((InternalEList<?>)getProjects()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -134,11 +104,13 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
-				setProjects((Project)newValue);
+				getProjects().clear();
+				getProjects().addAll((Collection<? extends Project>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -153,7 +125,7 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
-				setProjects((Project)null);
+				getProjects().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -168,7 +140,7 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
-				return projects != null;
+				return projects != null && !projects.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -3,11 +3,19 @@
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.util;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -98,6 +106,22 @@ public class TaskSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TaskPackage.TEMPLATED_FILE: {
+				TemplatedFile templatedFile = (TemplatedFile)theEObject;
+				T result = caseTemplatedFile(templatedFile);
+				if (result == null) result = caseFile(templatedFile);
+				if (result == null) result = caseResource(templatedFile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.STRING_CONTENT_FILE: {
+				StringContentFile stringContentFile = (StringContentFile)theEObject;
+				T result = caseStringContentFile(stringContentFile);
+				if (result == null) result = caseFile(stringContentFile);
+				if (result == null) result = caseResource(stringContentFile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -174,6 +198,36 @@ public class TaskSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFile(File object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Templated File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Templated File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTemplatedFile(TemplatedFile object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String Content File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String Content File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringContentFile(StringContentFile object) {
 		return null;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.tooling.rrobot;
+package at.bestsolution.efxclipse.tooling.rrobot.impl;
 
 import java.util.Map;
 
@@ -16,9 +16,17 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 
-public interface ProjectHandler<P extends Project> {
-	public boolean isHandled(EClass eClass);
-	public IStatus createProject(IProgressMonitor monitor, P project, Map<String, Object> additionalData);
+public class BundleProjectHandler extends DefaultProjectHandler {
+	@Override
+	public boolean isHandled(EClass eClass) {
+		return eClass == BundlePackage.Literals.BUNDLE_PROJECT;
+	}
+	
+	@Override
+	public IStatus createProject(IProgressMonitor monitor, Project project, Map<String, Object> additionalData) {
+		return super.createProject(monitor, project, additionalData);
+	}
 }
