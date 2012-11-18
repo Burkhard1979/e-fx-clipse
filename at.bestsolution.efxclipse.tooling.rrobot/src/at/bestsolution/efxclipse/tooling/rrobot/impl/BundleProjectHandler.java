@@ -68,7 +68,7 @@ public class BundleProjectHandler extends DefaultProjectHandler<BundleProject> {
 		IStatus s = super.createResources(monitor, p, model, additionalData);
 		
 		if( s.isOK() ) {
-			List<IStatus> rv = new ArrayList<>();
+			List<IStatus> rv = new ArrayList<IStatus>();
 			rv.add(s);
 			
 			if( ! p.getFolder("src").exists() ) {

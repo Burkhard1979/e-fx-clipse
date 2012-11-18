@@ -24,7 +24,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
 
 public class RRobotImpl implements RRobot {
-	private List<ProjectHandler<Project>> handlers = new ArrayList<>();
+	private List<ProjectHandler<Project>> handlers = new ArrayList<ProjectHandler<Project>>();
 
 	public void addProjectHandler(ProjectHandler<Project> handler) {
 		synchronized (handlers) {
@@ -46,7 +46,7 @@ public class RRobotImpl implements RRobot {
 			handlers = new ArrayList<ProjectHandler<Project>>(this.handlers);	
 		}
 		
-		List<IStatus> states = new ArrayList<>();
+		List<IStatus> states = new ArrayList<IStatus>();
 		for( Project p : task.getProjects() ) {
 			for( ProjectHandler<Project> handler : handlers ) {
 				if( handler.isHandled(p.eClass()) ) {
