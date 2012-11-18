@@ -2,8 +2,6 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -38,13 +36,5 @@ public interface Folder extends Resource {
 	 * @generated
 	 */
 	EList<Resource> getChildren();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void getContent(Map<String, Object> data);
 
 } // Folder

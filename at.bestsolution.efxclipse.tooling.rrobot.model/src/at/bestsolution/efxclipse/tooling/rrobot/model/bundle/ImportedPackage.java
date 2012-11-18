@@ -17,6 +17,8 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#getMinVersion <em>Min Version</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#getMaxVersion <em>Max Version</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMinExclusive <em>Min Exclusive</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMaxExclusive <em>Max Exclusive</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,5 +104,57 @@ public interface ImportedPackage extends EObject {
 	 * @generated
 	 */
 	void setMaxVersion(Version value);
+
+	/**
+	 * Returns the value of the '<em><b>Min Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Min Exclusive</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Min Exclusive</em>' attribute.
+	 * @see #setMinExclusive(boolean)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getImportedPackage_MinExclusive()
+	 * @model
+	 * @generated
+	 */
+	boolean isMinExclusive();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMinExclusive <em>Min Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Min Exclusive</em>' attribute.
+	 * @see #isMinExclusive()
+	 * @generated
+	 */
+	void setMinExclusive(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Max Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Exclusive</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Exclusive</em>' attribute.
+	 * @see #setMaxExclusive(boolean)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getImportedPackage_MaxExclusive()
+	 * @model
+	 * @generated
+	 */
+	boolean isMaxExclusive();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMaxExclusive <em>Max Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max Exclusive</em>' attribute.
+	 * @see #isMaxExclusive()
+	 * @generated
+	 */
+	void setMaxExclusive(boolean value);
 
 } // ImportedPackage

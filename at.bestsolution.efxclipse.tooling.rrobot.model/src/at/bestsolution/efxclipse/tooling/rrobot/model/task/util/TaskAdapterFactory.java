@@ -3,13 +3,20 @@
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.util;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,6 +93,14 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFile(File object) {
 				return createFileAdapter();
+			}
+			@Override
+			public Adapter caseTemplatedFile(TemplatedFile object) {
+				return createTemplatedFileAdapter();
+			}
+			@Override
+			public Adapter caseStringContentFile(StringContentFile object) {
+				return createStringContentFileAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -174,6 +189,34 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile <em>Templated File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile
+	 * @generated
+	 */
+	public Adapter createTemplatedFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile <em>String Content File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile
+	 * @generated
+	 */
+	public Adapter createStringContentFileAdapter() {
 		return null;
 	}
 

@@ -8,19 +8,27 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageI
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskFactory;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import java.io.IOException;
+import java.io.InputStream;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -64,6 +72,41 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * @generated
 	 */
 	private EClass fileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass templatedFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringContentFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType ioExceptionEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType iProgressMonitorEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType inputStreamEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -226,6 +269,69 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getIProgressMonitor() {
+		return iProgressMonitorEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTemplatedFile() {
+		return templatedFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTemplatedFile_GeneratorType() {
+		return (EAttribute)templatedFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getInputStream() {
+		return inputStreamEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStringContentFile() {
+		return stringContentFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStringContentFile_Content() {
+		return (EAttribute)stringContentFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getIOException() {
+		return ioExceptionEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TaskFactory getTaskFactory() {
 		return (TaskFactory)getEFactoryInstance();
 	}
@@ -263,6 +369,17 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		createEReference(folderEClass, FOLDER__CHILDREN);
 
 		fileEClass = createEClass(FILE);
+
+		templatedFileEClass = createEClass(TEMPLATED_FILE);
+		createEAttribute(templatedFileEClass, TEMPLATED_FILE__GENERATOR_TYPE);
+
+		stringContentFileEClass = createEClass(STRING_CONTENT_FILE);
+		createEAttribute(stringContentFileEClass, STRING_CONTENT_FILE__CONTENT);
+
+		// Create data types
+		ioExceptionEDataType = createEDataType(IO_EXCEPTION);
+		iProgressMonitorEDataType = createEDataType(IPROGRESS_MONITOR);
+		inputStreamEDataType = createEDataType(INPUT_STREAM);
 	}
 
 	/**
@@ -295,10 +412,12 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		// Add supertypes to classes
 		folderEClass.getESuperTypes().add(this.getResource());
 		fileEClass.getESuperTypes().add(this.getResource());
+		templatedFileEClass.getESuperTypes().add(this.getFile());
+		stringContentFileEClass.getESuperTypes().add(this.getFile());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(robotTaskEClass, RobotTask.class, "RobotTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRobotTask_Projects(), this.getProject(), null, "projects", null, 0, 1, RobotTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRobotTask_Projects(), this.getProject(), null, "projects", null, 0, -1, RobotTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(projectEClass, Project.class, "Project", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProject_Name(), ecorePackage.getEString(), "name", null, 1, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -310,15 +429,28 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		initEClass(folderEClass, Folder.class, "Folder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFolder_Children(), this.getResource(), null, "children", null, 0, -1, Folder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(folderEClass, null, "getContent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(fileEClass, File.class, "File", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(fileEClass, this.getInputStream(), "getContent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIProgressMonitor(), "progressMonitor", 0, 1, IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
 		EGenericType g2 = createEGenericType(ecorePackage.getEString());
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "data", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getIOException());
 
-		initEClass(fileEClass, File.class, "File", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(templatedFileEClass, TemplatedFile.class, "TemplatedFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTemplatedFile_GeneratorType(), ecorePackage.getEString(), "generatorType", null, 0, 1, TemplatedFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stringContentFileEClass, StringContentFile.class, "StringContentFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringContentFile_Content(), ecorePackage.getEByteArray(), "content", null, 0, 1, StringContentFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(ioExceptionEDataType, IOException.class, "IOException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(iProgressMonitorEDataType, IProgressMonitor.class, "IProgressMonitor", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(inputStreamEDataType, InputStream.class, "InputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

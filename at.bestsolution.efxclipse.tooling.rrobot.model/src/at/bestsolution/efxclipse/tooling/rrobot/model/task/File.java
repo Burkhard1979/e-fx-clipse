@@ -2,6 +2,11 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import org.eclipse.core.runtime.IProgressMonitor;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -14,4 +19,12 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.task;
  * @generated
  */
 public interface File extends Resource {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="at.bestsolution.efxclipse.tooling.rrobot.model.task.InputStream" exceptions="at.bestsolution.efxclipse.tooling.rrobot.model.task.IOException" progressMonitorDataType="at.bestsolution.efxclipse.tooling.rrobot.model.task.IProgressMonitor"
+	 * @generated
+	 */
+	InputStream getContent(IProgressMonitor progressMonitor, Map<String, Object> data) throws IOException;
 } // File
