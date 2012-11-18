@@ -14,6 +14,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl;
@@ -97,6 +98,13 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * @generated
 	 */
 	private EClass attributeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass requiredBundleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -266,7 +274,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getManifestFile_Version() {
+	public EAttribute getManifestFile_Symbolicname() {
 		return (EAttribute)manifestFileEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -275,8 +283,17 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getManifestFile_Version() {
+		return (EAttribute)manifestFileEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getManifestFile_ExportedPackages() {
-		return (EReference)manifestFileEClass.getEStructuralFeatures().get(2);
+		return (EReference)manifestFileEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -285,7 +302,25 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * @generated
 	 */
 	public EReference getManifestFile_ImportedPackages() {
-		return (EReference)manifestFileEClass.getEStructuralFeatures().get(3);
+		return (EReference)manifestFileEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getManifestFile_ExecutionEnvironment() {
+		return (EAttribute)manifestFileEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getManifestFile_RequiredBundles() {
+		return (EReference)manifestFileEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -302,8 +337,26 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPluginXMLFile_Extensions() {
+		return (EReference)pluginXMLFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBuildProperties() {
 		return buildPropertiesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBuildProperties_BinIncludes() {
+		return (EReference)buildPropertiesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -340,6 +393,24 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EAttribute getImportedPackage_MaxVersion() {
 		return (EAttribute)importedPackageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImportedPackage_MinExclusive() {
+		return (EAttribute)importedPackageEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImportedPackage_MaxExclusive() {
+		return (EAttribute)importedPackageEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -473,6 +544,60 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRequiredBundle() {
+		return requiredBundleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredBundle_Name() {
+		return (EAttribute)requiredBundleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredBundle_MinVersion() {
+		return (EAttribute)requiredBundleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredBundle_MaxVersion() {
+		return (EAttribute)requiredBundleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredBundle_MinExclusive() {
+		return (EAttribute)requiredBundleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredBundle_MaxExclusive() {
+		return (EAttribute)requiredBundleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getVersion() {
 		return versionEDataType;
 	}
@@ -516,18 +641,25 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 
 		manifestFileEClass = createEClass(MANIFEST_FILE);
 		createEAttribute(manifestFileEClass, MANIFEST_FILE__BUNDLENAME);
+		createEAttribute(manifestFileEClass, MANIFEST_FILE__SYMBOLICNAME);
 		createEAttribute(manifestFileEClass, MANIFEST_FILE__VERSION);
 		createEReference(manifestFileEClass, MANIFEST_FILE__EXPORTED_PACKAGES);
 		createEReference(manifestFileEClass, MANIFEST_FILE__IMPORTED_PACKAGES);
+		createEAttribute(manifestFileEClass, MANIFEST_FILE__EXECUTION_ENVIRONMENT);
+		createEReference(manifestFileEClass, MANIFEST_FILE__REQUIRED_BUNDLES);
 
 		pluginXMLFileEClass = createEClass(PLUGIN_XML_FILE);
+		createEReference(pluginXMLFileEClass, PLUGIN_XML_FILE__EXTENSIONS);
 
 		buildPropertiesEClass = createEClass(BUILD_PROPERTIES);
+		createEReference(buildPropertiesEClass, BUILD_PROPERTIES__BIN_INCLUDES);
 
 		importedPackageEClass = createEClass(IMPORTED_PACKAGE);
 		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__NAME);
 		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__MIN_VERSION);
 		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__MAX_VERSION);
+		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__MIN_EXCLUSIVE);
+		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__MAX_EXCLUSIVE);
 
 		exportedPackageEClass = createEClass(EXPORTED_PACKAGE);
 		createEAttribute(exportedPackageEClass, EXPORTED_PACKAGE__NAME);
@@ -546,6 +678,13 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		attributeEClass = createEClass(ATTRIBUTE);
 		createEAttribute(attributeEClass, ATTRIBUTE__NAME);
 		createEAttribute(attributeEClass, ATTRIBUTE__VALUE);
+
+		requiredBundleEClass = createEClass(REQUIRED_BUNDLE);
+		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__NAME);
+		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MIN_VERSION);
+		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MAX_VERSION);
+		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MIN_EXCLUSIVE);
+		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MAX_EXCLUSIVE);
 
 		// Create data types
 		versionEDataType = createEDataType(VERSION);
@@ -583,9 +722,9 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 
 		// Add supertypes to classes
 		bundleProjectEClass.getESuperTypes().add(theTaskPackage.getProject());
-		manifestFileEClass.getESuperTypes().add(theTaskPackage.getFile());
-		pluginXMLFileEClass.getESuperTypes().add(theTaskPackage.getFile());
-		buildPropertiesEClass.getESuperTypes().add(theTaskPackage.getFile());
+		manifestFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
+		pluginXMLFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
+		buildPropertiesEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bundleProjectEClass, BundleProject.class, "BundleProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -598,19 +737,26 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getBundleProject_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, BundleProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(manifestFileEClass, ManifestFile.class, "ManifestFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getManifestFile_Bundlename(), ecorePackage.getEString(), "bundlename", null, 0, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getManifestFile_Version(), this.getVersion(), "version", null, 0, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getManifestFile_Bundlename(), ecorePackage.getEString(), "bundlename", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getManifestFile_Symbolicname(), ecorePackage.getEString(), "symbolicname", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getManifestFile_Version(), this.getVersion(), "version", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getManifestFile_ExportedPackages(), this.getExportedPackage(), null, "exportedPackages", null, 0, -1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getManifestFile_ImportedPackages(), this.getImportedPackage(), null, "importedPackages", null, 0, -1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getManifestFile_ExecutionEnvironment(), ecorePackage.getEString(), "executionEnvironment", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getManifestFile_RequiredBundles(), this.getRequiredBundle(), null, "requiredBundles", null, 0, -1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pluginXMLFileEClass, PluginXMLFile.class, "PluginXMLFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPluginXMLFile_Extensions(), this.getExtension(), null, "extensions", null, 0, -1, PluginXMLFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(buildPropertiesEClass, BuildProperties.class, "BuildProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBuildProperties_BinIncludes(), theTaskPackage.getResource(), null, "binIncludes", null, 0, -1, BuildProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(importedPackageEClass, ImportedPackage.class, "ImportedPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getImportedPackage_Name(), ecorePackage.getEString(), "name", null, 1, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getImportedPackage_MinVersion(), this.getVersion(), "minVersion", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getImportedPackage_MaxVersion(), this.getVersion(), "maxVersion", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getImportedPackage_MinExclusive(), ecorePackage.getEBoolean(), "minExclusive", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getImportedPackage_MaxExclusive(), ecorePackage.getEBoolean(), "maxExclusive", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(exportedPackageEClass, ExportedPackage.class, "ExportedPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExportedPackage_Name(), ecorePackage.getEString(), "name", null, 1, 1, ExportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -629,6 +775,13 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttribute_Value(), ecorePackage.getEString(), "value", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(requiredBundleEClass, RequiredBundle.class, "RequiredBundle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRequiredBundle_Name(), ecorePackage.getEString(), "name", null, 1, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequiredBundle_MinVersion(), this.getVersion(), "minVersion", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequiredBundle_MaxVersion(), this.getVersion(), "maxVersion", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequiredBundle_MinExclusive(), ecorePackage.getEBoolean(), "minExclusive", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequiredBundle_MaxExclusive(), ecorePackage.getEBoolean(), "maxExclusive", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

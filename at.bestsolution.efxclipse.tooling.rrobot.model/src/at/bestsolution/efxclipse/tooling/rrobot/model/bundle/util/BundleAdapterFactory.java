@@ -8,6 +8,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -108,6 +109,10 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 				return createAttributeAdapter();
 			}
 			@Override
+			public Adapter caseRequiredBundle(RequiredBundle object) {
+				return createRequiredBundleAdapter();
+			}
+			@Override
 			public Adapter caseProject(Project object) {
 				return createProjectAdapter();
 			}
@@ -118,6 +123,10 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFile(File object) {
 				return createFileAdapter();
+			}
+			@Override
+			public Adapter caseTemplatedFile(TemplatedFile object) {
+				return createTemplatedFileAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -266,6 +275,20 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle <em>Required Bundle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle
+	 * @generated
+	 */
+	public Adapter createRequiredBundleAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Project <em>Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -304,6 +327,20 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile <em>Templated File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile
+	 * @generated
+	 */
+	public Adapter createTemplatedFileAdapter() {
 		return null;
 	}
 

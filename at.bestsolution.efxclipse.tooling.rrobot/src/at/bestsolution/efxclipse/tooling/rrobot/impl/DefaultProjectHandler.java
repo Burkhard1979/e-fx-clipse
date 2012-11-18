@@ -35,8 +35,8 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 
-public class DefaultProjectHandler implements ProjectHandler<Project> {
-	private static final String PLUGIN_ID = "at.bestsolution.efxclipse.tooling.rrobot";
+public class DefaultProjectHandler<P extends Project> implements ProjectHandler<P> {
+	static final String PLUGIN_ID = "at.bestsolution.efxclipse.tooling.rrobot";
 	
 	@Override
 	public boolean isHandled(EClass eClass) {
@@ -44,7 +44,7 @@ public class DefaultProjectHandler implements ProjectHandler<Project> {
 	}
 
 	@Override
-	public IStatus createProject(IProgressMonitor monitor, Project project, Map<String, Object> additionalData) {
+	public IStatus createProject(IProgressMonitor monitor, P project, Map<String, Object> additionalData) {
 		IWorkspaceRoot r = ResourcesPlugin.getWorkspace().getRoot();
 		IProject p = r.getProject(project.getName());
 		if( ! p.exists() ) {
@@ -60,7 +60,7 @@ public class DefaultProjectHandler implements ProjectHandler<Project> {
 		return createResources(monitor, p, project, additionalData);
 	}
  
-	protected IStatus createResources(IProgressMonitor monitor,IProject p, Project model, Map<String, Object> additionalData) {
+	protected IStatus createResources(IProgressMonitor monitor,IProject p, P model, Map<String, Object> additionalData) {
 		List<IStatus> l = new ArrayList<IStatus>();
 		for( Resource r : model.getResources() ) {
 			if( r instanceof Folder ) {

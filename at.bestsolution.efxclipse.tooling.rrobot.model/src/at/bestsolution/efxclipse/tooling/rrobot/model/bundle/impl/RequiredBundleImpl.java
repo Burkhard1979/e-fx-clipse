@@ -3,7 +3,7 @@
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
-import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -11,27 +11,26 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.osgi.framework.Version;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Imported Package</b></em>'.
+ * An implementation of the model object '<em><b>Required Bundle</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#getName <em>Name</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#getMinVersion <em>Min Version</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#getMaxVersion <em>Max Version</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#isMinExclusive <em>Min Exclusive</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#isMaxExclusive <em>Max Exclusive</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#getMinVersion <em>Min Version</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#getMaxVersion <em>Max Version</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#isMinExclusive <em>Min Exclusive</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#isMaxExclusive <em>Max Exclusive</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage {
+public class RequiredBundleImpl extends EObjectImpl implements RequiredBundle {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -137,7 +136,7 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ImportedPackageImpl() {
+	protected RequiredBundleImpl() {
 		super();
 	}
 
@@ -148,7 +147,7 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return BundlePackage.Literals.IMPORTED_PACKAGE;
+		return BundlePackage.Literals.REQUIRED_BUNDLE;
 	}
 
 	/**
@@ -169,7 +168,7 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.IMPORTED_PACKAGE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.REQUIRED_BUNDLE__NAME, oldName, name));
 	}
 
 	/**
@@ -190,7 +189,7 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 		Version oldMinVersion = minVersion;
 		minVersion = newMinVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.IMPORTED_PACKAGE__MIN_VERSION, oldMinVersion, minVersion));
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.REQUIRED_BUNDLE__MIN_VERSION, oldMinVersion, minVersion));
 	}
 
 	/**
@@ -211,7 +210,7 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 		Version oldMaxVersion = maxVersion;
 		maxVersion = newMaxVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.IMPORTED_PACKAGE__MAX_VERSION, oldMaxVersion, maxVersion));
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.REQUIRED_BUNDLE__MAX_VERSION, oldMaxVersion, maxVersion));
 	}
 
 	/**
@@ -232,7 +231,7 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 		boolean oldMinExclusive = minExclusive;
 		minExclusive = newMinExclusive;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE, oldMinExclusive, minExclusive));
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.REQUIRED_BUNDLE__MIN_EXCLUSIVE, oldMinExclusive, minExclusive));
 	}
 
 	/**
@@ -253,7 +252,7 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 		boolean oldMaxExclusive = maxExclusive;
 		maxExclusive = newMaxExclusive;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE, oldMaxExclusive, maxExclusive));
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE, oldMaxExclusive, maxExclusive));
 	}
 
 	/**
@@ -264,15 +263,15 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case BundlePackage.IMPORTED_PACKAGE__NAME:
+			case BundlePackage.REQUIRED_BUNDLE__NAME:
 				return getName();
-			case BundlePackage.IMPORTED_PACKAGE__MIN_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_VERSION:
 				return getMinVersion();
-			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_VERSION:
 				return getMaxVersion();
-			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_EXCLUSIVE:
 				return isMinExclusive();
-			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				return isMaxExclusive();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -286,19 +285,19 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case BundlePackage.IMPORTED_PACKAGE__NAME:
+			case BundlePackage.REQUIRED_BUNDLE__NAME:
 				setName((String)newValue);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MIN_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_VERSION:
 				setMinVersion((Version)newValue);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_VERSION:
 				setMaxVersion((Version)newValue);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_EXCLUSIVE:
 				setMinExclusive((Boolean)newValue);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				setMaxExclusive((Boolean)newValue);
 				return;
 		}
@@ -313,19 +312,19 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case BundlePackage.IMPORTED_PACKAGE__NAME:
+			case BundlePackage.REQUIRED_BUNDLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MIN_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_VERSION:
 				setMinVersion(MIN_VERSION_EDEFAULT);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_VERSION:
 				setMaxVersion(MAX_VERSION_EDEFAULT);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_EXCLUSIVE:
 				setMinExclusive(MIN_EXCLUSIVE_EDEFAULT);
 				return;
-			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				setMaxExclusive(MAX_EXCLUSIVE_EDEFAULT);
 				return;
 		}
@@ -340,15 +339,15 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case BundlePackage.IMPORTED_PACKAGE__NAME:
+			case BundlePackage.REQUIRED_BUNDLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case BundlePackage.IMPORTED_PACKAGE__MIN_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_VERSION:
 				return MIN_VERSION_EDEFAULT == null ? minVersion != null : !MIN_VERSION_EDEFAULT.equals(minVersion);
-			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_VERSION:
 				return MAX_VERSION_EDEFAULT == null ? maxVersion != null : !MAX_VERSION_EDEFAULT.equals(maxVersion);
-			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MIN_EXCLUSIVE:
 				return minExclusive != MIN_EXCLUSIVE_EDEFAULT;
-			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				return maxExclusive != MAX_EXCLUSIVE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -378,4 +377,4 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 		return result.toString();
 	}
 
-} //ImportedPackageImpl
+} //RequiredBundleImpl

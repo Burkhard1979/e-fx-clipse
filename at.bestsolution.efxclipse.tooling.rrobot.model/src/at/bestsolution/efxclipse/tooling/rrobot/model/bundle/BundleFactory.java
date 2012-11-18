@@ -103,6 +103,15 @@ public interface BundleFactory extends EFactory {
 	Attribute createAttribute();
 
 	/**
+	 * Returns a new object of class '<em>Required Bundle</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Required Bundle</em>'.
+	 * @generated
+	 */
+	RequiredBundle createRequiredBundle();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
