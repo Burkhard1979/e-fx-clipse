@@ -74,6 +74,8 @@
 		<module>../at.bestsolution.efxclipse.tooling.pde.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.e4</module>
 		<module>../at.bestsolution.efxclipse.tooling.ui.preview</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.model</module>
 		
 		
 		<module>../at.bestsolution.efxclipse.feature</module>
@@ -91,6 +93,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.e3.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		
