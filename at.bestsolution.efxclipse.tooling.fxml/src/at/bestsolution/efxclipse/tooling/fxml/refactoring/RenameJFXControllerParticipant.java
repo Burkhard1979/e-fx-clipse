@@ -10,8 +10,14 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.fxml.refactoring;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Pattern;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -36,9 +42,14 @@ import org.eclipse.search.core.text.TextSearchEngine;
 import org.eclipse.search.core.text.TextSearchMatchAccess;
 import org.eclipse.search.core.text.TextSearchRequestor;
 import org.eclipse.search.ui.text.FileTextSearchScope;
+import org.eclipse.text.edits.MalformedTreeException;
 import org.eclipse.text.edits.MultiTextEdit;
 import org.eclipse.text.edits.ReplaceEdit;
 import org.eclipse.text.edits.TextEditGroup;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
+import at.bestsolution.efxclipse.tooling.fxml.editors.Util;
 
 /**
  * This RenameParticipant does refactoring for all ICompilationUnits which
@@ -93,7 +104,8 @@ public class RenameJFXControllerParticipant extends RenameParticipant {
 	}
 
 	/**
-	 * @param an an annotation
+	 * @param an
+	 *            an annotation
 	 */
 	private boolean isFxmlAnnotation(IAnnotation a) {
 		if ("FXML".equals(a.getElementName())) {
@@ -157,9 +169,12 @@ public class RenameJFXControllerParticipant extends RenameParticipant {
 			}
 			final String oldFullyQualifiedName = pack + controllerClassName;
 			final String newFullyQualifiedName = pack
-					+ getArguments().getNewName();
+					+ getArguments().getNewName().replace(".java", "");
 			createChangesForFullyQualifiedOccurrences(pm, changes, roots,
 					oldFullyQualifiedName, newFullyQualifiedName);
+			createChangesForNotFullyQualifiedOccurrences(pm, changes, roots,
+					pack, controllerClassName, getArguments().getNewName()
+							.replace(".java", ""));
 		}
 		if (changes.isEmpty()) {
 			return null;
@@ -183,8 +198,8 @@ public class RenameJFXControllerParticipant extends RenameParticipant {
 			final String oldFullyQualifiedName,
 			final String newFullyQualifiedName) {
 		String[] fileNamePatterns = { "*.fxml", "*.fxgraph" }; //$NON-NLS-1$
-		FileTextSearchScope scope = FileTextSearchScope.newSearchScope(
-				roots, fileNamePatterns, false);
+		FileTextSearchScope scope = FileTextSearchScope.newSearchScope(roots,
+				fileNamePatterns, false);
 
 		Pattern pattern = Pattern.compile(oldFullyQualifiedName);
 
@@ -211,6 +226,84 @@ public class RenameJFXControllerParticipant extends RenameParticipant {
 				change.addEdit(edit);
 				change.addTextEditGroup(new TextEditGroup(
 						"Update type reference", edit)); //$NON-NLS-1$
+				return true;
+			}
+		};
+		TextSearchEngine.create().search(scope, collector, pattern, pm);
+	}
+
+	/**
+	 * @param pm
+	 * @param changes
+	 * @param roots
+	 * @param oldFullyQualifiedName
+	 * @param newFullyQualifiedName
+	 */
+	private void createChangesForNotFullyQualifiedOccurrences(
+			IProgressMonitor pm, final HashMap<Object, Change> changes,
+			IResource[] roots, final String pack, final String oldName,
+			final String newName) {
+		String[] fileNamePatterns = { "*.fxml" }; //$NON-NLS-1$
+		FileTextSearchScope scope = FileTextSearchScope.newSearchScope(roots,
+				fileNamePatterns, false);
+
+		Pattern pattern = Pattern.compile("\"" + oldName + "\"");
+
+		TextSearchRequestor collector = new TextSearchRequestor() {
+			@Override
+			public boolean acceptPatternMatch(
+					final TextSearchMatchAccess matchAccess)
+					throws CoreException {
+				IFile file = matchAccess.getFile();
+				boolean found = false;
+				try {
+					DocumentBuilderFactory dbf = DocumentBuilderFactory
+							.newInstance();
+					DocumentBuilder db = dbf.newDocumentBuilder();
+					Document doc = db.parse(file.getContents());
+					List<String> l = Util.getImportedTypes(doc);
+
+					for (String imp : l) {
+						if (imp.startsWith(pack + "*")
+								|| imp.startsWith(pack + oldName)) {
+							found = true;
+							break;
+						}
+					}
+				} catch (ParserConfigurationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SAXException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if (found) {
+					String content = matchAccess.getFileContent(0,
+							matchAccess.getFileContentLength());
+					TextFileChange change = (TextFileChange) changes.get(file);
+					if (change == null) {
+						// an other participant already modified that file?
+						TextChange textChange = getTextChange(file);
+						if (textChange != null) {
+							return false; // don't try to merge changes
+						}
+						change = new TextFileChange(file.getName(), file);
+						change.setEdit(new MultiTextEdit());
+						changes.put(file, change);
+					}
+
+					int index = content.indexOf("\"" + oldName + "\"");
+					if (index >= 0) {
+						ReplaceEdit edit = new ReplaceEdit(index + 1,
+								oldName.length(), newName);
+						change.addEdit(edit);
+						change.addTextEditGroup(new TextEditGroup(
+								"Update type reference", edit)); //$NON-NLS-1$
+					}
+				}
 				return true;
 			}
 		};
