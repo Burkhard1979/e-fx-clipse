@@ -17,6 +17,8 @@ import javafx.scene.layout.BorderPane;
 
 import javax.inject.Inject;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
+import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
@@ -51,15 +53,35 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 		
 		@Override
 		protected BorderPane createWidget() {
-			BorderPane p = new BorderPane();
-			p.setOnMouseReleased(new EventHandler<MouseEvent>() {
+			final BorderPane p = new BorderPane();
+			p.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 				@Override
 				public void handle(MouseEvent event) {
+					event.consume();
 					service.activate(getDomElement(),true);
+					if( !checkFocusControl() ) {
+						ContextInjectionFactory.invoke(getDomElement().getObject(), Focus.class, getDomElement().getContext());
+						if( !checkFocusControl() ) {
+							p.requestFocus();	
+						}
+					}
 				}
 			});
 			return p;
+		}
+		
+		private boolean checkFocusControl() {
+			BorderPane check = getWidget();
+			Node n = check.getScene().getFocusOwner();
+//			System.err.println("Focus at: " + n);
+			while (n.getParent() != null) {
+				if (n.getParent() == check) {
+					return true;
+				}
+				n = n.getParent();
+			}
+			return false;
 		}
 
 		@Override
