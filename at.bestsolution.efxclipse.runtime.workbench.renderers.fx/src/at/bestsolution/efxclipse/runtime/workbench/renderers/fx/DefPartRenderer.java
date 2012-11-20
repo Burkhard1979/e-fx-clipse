@@ -10,11 +10,12 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
-import javax.inject.Inject;
-
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+
+import javax.inject.Inject;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
@@ -31,6 +32,19 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 		return PartImpl.class;
 	}
 
+	@Override
+	protected boolean requiresFocus(WPart<BorderPane> widget) { 
+		Node n = (Node) widget.getWidget();
+		
+		do {
+			if( n.getUserData() == widget ) {
+				return false;
+			}
+		} while( (n = n.getParent()) != null );
+		
+		return true;
+	}
+	
 	public static class PartImpl extends WLayoutedWidgetImpl<BorderPane, BorderPane, MPart> implements WPart<BorderPane> {
 		@Inject
 		EPartService service;
