@@ -41,13 +41,8 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 			@Override
 			public Void call(Boolean param) {
 				if( param.booleanValue() ) {
-//TODO Uncertain what this code did in the past keep it commented for the next release and then remove it in > 0.2.0					
-//					boolean requiresFocus = requiresFocus(widget);
-//					if(requiresFocus) {
+						//FIXME When the activation was done through keyboard navigation this seems to fail
 						activate(element, true);
-//					} else {
-//						activate(element, false);
-//					}
 				}
 				return null;
 			}

@@ -26,7 +26,6 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 		return PartImpl.class;
 	}
 
-//TODO Uncertain what this code did in the past keep it commented for the next release and then remove it in > 0.2.0
 //	@Override
 //	protected boolean requiresFocus(WPart<BorderPane> widget) {
 //		Node n = (Node) widget.getWidget();
