@@ -20,6 +20,7 @@ import static org.mockito.Mockito.when;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javafx.scene.Node;
 import javafx.scene.control.Cell;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -248,7 +249,7 @@ public class AdapterFactoryCellFactoryTest {
 	@Test
 	public void imageFromObject() throws MalformedURLException {
 		URL imageURL = new URL("http://domain.com/image.jpg");
-		ImageView image = cellFactory.imageFromObject(imageURL);
+		Node image = cellFactory.imageFromObject(imageURL);
 		assertNotNull(image);
 	}	
 }

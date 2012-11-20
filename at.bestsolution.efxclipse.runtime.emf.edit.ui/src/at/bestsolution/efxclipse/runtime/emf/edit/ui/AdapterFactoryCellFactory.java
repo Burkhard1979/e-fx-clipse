@@ -17,6 +17,7 @@ import java.util.List;
 import javafx.scene.Node;
 import javafx.scene.control.Cell;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -24,6 +25,7 @@ import javafx.scene.text.FontWeight;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -166,17 +168,29 @@ public abstract class AdapterFactoryCellFactory {
 			cell.setText(labelProvider.getText(item));
 
 			if (item != null) {
-				ImageView image = imageFromObject(labelProvider.getImage(item));
+				Node image = imageFromObject(labelProvider.getImage(item));
 				if (image != null)
 					cell.setGraphic(image);
 			}
 		}
 	}
-	
-	ImageView imageFromObject(Object object) {
-		if (object instanceof URL)
+
+	Node imageFromObject(Object object) {
+		if (object instanceof URL) {
 			return new ImageView(((URL) object).toExternalForm());
-		
+		} else if (object instanceof ComposedImage) {
+			Pane pane = new Pane();
+			
+			for (Object image : ((ComposedImage) object).getImages()) {
+				if(image instanceof URL) {
+					ImageView imageView = new ImageView(((URL) image).toExternalForm());
+					pane.getChildren().add(imageView);					
+				}
+			}
+			
+			return pane;
+		}
+
 		return null;
 	}
 
