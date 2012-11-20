@@ -31,19 +31,6 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 		return PartImpl.class;
 	}
 
-//	@Override
-//	protected boolean requiresFocus(WPart<BorderPane> widget) {
-//		Node n = (Node) widget.getWidget();
-//		
-//		do {
-//			if( n.getUserData() == widget ) {
-//				return false;
-//			}
-//		} while( (n = n.getParent()) != null );
-//		
-//		return true;
-//	}
-
 	public static class PartImpl extends WLayoutedWidgetImpl<BorderPane, BorderPane, MPart> implements WPart<BorderPane> {
 		@Inject
 		EPartService service;
