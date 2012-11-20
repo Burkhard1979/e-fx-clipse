@@ -46,6 +46,10 @@
             class="at.bestsolution.efxclipse.tooling.fxml.editors.FXMLTextHover"
             target="org.eclipse.wst.xml.XML_DEFAULT">
       </documentationTextHover>
+      <documentationTextHover
+            class="at.bestsolution.efxclipse.tooling.fxml.editors.FXMLTextHover"
+            target="org.eclipse.wst.xml.PROCESSING_INSTRUCTION">
+      </documentationTextHover>
    </extension>
    <extension
          point="org.eclipse.ui.newWizards">

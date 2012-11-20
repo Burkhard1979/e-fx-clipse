@@ -40,7 +40,6 @@ import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextHoverExtension;
 import org.eclipse.jface.text.ITextViewer;
-import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocumentRegion;
@@ -169,6 +168,17 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 			IType type = findType(typeName, contentAssistRequest, context);
 			if (type != null) {
 				IFXClass fxClass = FXPlugin.getClassmodel().findClass(type.getJavaProject(), type);
+				
+				if( fxClass.getValueOf() != null ) {
+					FXMLCompletionProposal cp = createAttributeProposal(contentAssistRequest, context, "fx:valueOf=\"\"", new StyledString("fx:valueOf").append(" - " + fxClass.getSimpleName(), StyledString.QUALIFIER_STYLER), IconKeys.getIcon(IconKeys.FIELD_KEY), DEFAULT_PRIORITY+10, MATCHER);
+					if (cp != null) {
+						cp.setAdditionalProposalInfo(EcoreFactory.eINSTANCE.createEClass());
+						cp.setHover(new HoverImpl(fxClass.getValueOf()));
+
+						contentAssistRequest.addProposal(cp);
+					}
+				}
+				
 				for (IFXProperty property : fxClass.getAllProperties().values()) {
 					createAttributeNameProposal(contentAssistRequest, context, property);
 				}
@@ -199,6 +209,11 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 									createAttributeNameProposal(contentAssistRequest, context, property);
 								}
 							}
+						}
+					} else {
+						FXMLCompletionProposal cp = createAttributeProposal(contentAssistRequest, context, "fx:controller=\"\"", new StyledString("fx:controller").append(" - FXML built-in", StyledString.QUALIFIER_STYLER), IconKeys.getIcon(IconKeys.CLASS_KEY), DEFAULT_PRIORITY+10, MATCHER);
+						if( cp != null ) {
+							contentAssistRequest.addProposal(cp);	
 						}
 					}
 				}

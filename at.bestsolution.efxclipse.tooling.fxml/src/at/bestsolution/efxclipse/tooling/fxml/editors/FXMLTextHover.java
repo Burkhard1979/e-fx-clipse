@@ -60,6 +60,7 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 	
 	@Override
 	public IRegion getHoverRegion(ITextViewer textViewer, int offset) {
+		System.err.println("Hover:" + offset);
 		if ((textViewer == null) || (textViewer.getDocument() == null)) {
 			return null;
 		}
@@ -76,7 +77,8 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 			// only supply hoverhelp for tag name, attribute name, or
 			// attribute value
 			String regionType = region.getType();
-			if ((regionType == DOMRegionContext.XML_TAG_NAME) || (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_NAME) || (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_VALUE)) {
+			System.err.println(regionType);
+			if ((regionType == DOMRegionContext.XML_TAG_NAME) || (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_NAME) || (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_VALUE) || (regionType == DOMRegionContext.XML_PI_CONTENT)) {
 				try {
 					// check if we are at whitespace before or after line
 					IRegion line = textViewer.getDocument().getLineInformationOfOffset(offset);
@@ -316,6 +318,16 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 						element = Util.findType(fqn, dom.getOwnerDocument());
 					} else {
 						element = computeTagAttNameHelp((IDOMNode) treeNode, documentOffset);	
+					}
+				}
+				else if( regionType == DOMRegionContext.XML_PI_CONTENT) {
+					IDOMNode dom = (IDOMNode)treeNode;
+					String fqn = dom.getNodeValue();
+					if( fqn.endsWith("?") ) {
+						fqn = fqn.substring(0,fqn.length()-1);
+					}
+					if( !(fqn.endsWith(".css") || fqn.endsWith(".properties") || fqn.endsWith("*"))  ) {
+						element = Util.findType(fqn, dom.getOwnerDocument());	
 					}
 				}
 				else if (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_VALUE) {
