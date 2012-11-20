@@ -34,22 +34,25 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 	
 	@Override
 	protected void initWidget(final MPart element, final WPart<N> widget) {
-		super.initWidget(element, widget);		
-		
+		super.initWidget(element, widget);				
 		widget.registerActivationCallback(new WCallback<Boolean, Void>() {
 			
 			@Override
 			public Void call(Boolean param) {
 				if( param.booleanValue() ) {
-						//FIXME When the activation was done through keyboard navigation this seems to fail
+					boolean requiresFocus = requiresFocus(widget);
+					if(requiresFocus) {
 						activate(element, true);
+					} else {
+						activate(element, false);
+					}
 				}
 				return null;
 			}
 		});
 	}
 	
-//	protected abstract boolean requiresFocus(WPart<N> widget);
+	protected abstract boolean requiresFocus(WPart<N> widget);
 	
 	@Override
 	public void doProcessContent(MPart element) {
