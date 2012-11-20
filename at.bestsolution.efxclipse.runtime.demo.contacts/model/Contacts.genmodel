@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2012 TESIS DYNAware GmbH and others. &#xD;&#xA; All rights reserved. This program and the accompanying materials &#xD;&#xA; are made available under the terms of the Eclipse Public License v1.0 &#xD;&#xA; which accompanies this distribution, and is available at &#xD;&#xA; http://www.eclipse.org/legal/epl-v10.html &#xD;&#xA; &#xD;&#xA; Contributors: &#xD;&#xA;     Torsten Sommer &lt;torsten.sommer@tesis.de> - initial API and implementation"
-    modelDirectory="/com.toedter.e4.demo.contacts/src" modelPluginID="com.toedter.e4.demo.contacts"
+    modelDirectory="/at.bestsolution.efxclipse.runtime.demo.contacts/src" modelPluginID="at.bestsolution.efxclipse.runtime.demo.contacts"
     modelName="Contacts" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false">
   <foreignModel>Contacts.ecore</foreignModel>
-  <genPackages prefix="Contacts" basePackage="com.toedter.e4.demo" disposableProviderFactory="true"
+  <genPackages prefix="Contacts" basePackage="at.bestsolution.efxclipse.runtime.demo" disposableProviderFactory="true"
       ecorePackage="Contacts.ecore#/">
     <genClasses ecoreClass="Contacts.ecore#//Contact">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/firstName"/>
