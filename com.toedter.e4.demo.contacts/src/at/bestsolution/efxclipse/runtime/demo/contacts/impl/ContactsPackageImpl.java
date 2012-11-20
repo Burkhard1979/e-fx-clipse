@@ -8,13 +8,13 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.impl;
+package at.bestsolution.efxclipse.runtime.demo.contacts.impl;
 
-import com.toedter.e4.demo.contacts.Contact;
-import com.toedter.e4.demo.contacts.ContactsFactory;
-import com.toedter.e4.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
 
-import com.toedter.e4.demo.contacts.Group;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -54,7 +54,7 @@ public class ContactsPackageImpl extends EPackageImpl implements ContactsPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#eNS_URI
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

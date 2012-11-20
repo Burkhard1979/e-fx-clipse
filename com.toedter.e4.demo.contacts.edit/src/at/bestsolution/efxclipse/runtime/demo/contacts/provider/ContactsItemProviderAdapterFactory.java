@@ -8,9 +8,9 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.provider;
+package at.bestsolution.efxclipse.runtime.demo.contacts.provider;
 
-import com.toedter.e4.demo.contacts.util.ContactsAdapterFactory;
+import at.bestsolution.efxclipse.runtime.demo.contacts.util.ContactsAdapterFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -84,7 +84,7 @@ public class ContactsItemProviderAdapterFactory extends ContactsAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link com.toedter.e4.demo.contacts.Contact} instances.
+	 * This keeps track of the one adapter used for all {@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -92,7 +92,7 @@ public class ContactsItemProviderAdapterFactory extends ContactsAdapterFactory i
 	protected ContactItemProvider contactItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link com.toedter.e4.demo.contacts.Contact}.
+	 * This creates an adapter for a {@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -107,7 +107,7 @@ public class ContactsItemProviderAdapterFactory extends ContactsAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link com.toedter.e4.demo.contacts.Group} instances.
+	 * This keeps track of the one adapter used for all {@link at.bestsolution.efxclipse.runtime.demo.contacts.Group} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -115,7 +115,7 @@ public class ContactsItemProviderAdapterFactory extends ContactsAdapterFactory i
 	protected GroupItemProvider groupItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link com.toedter.e4.demo.contacts.Group}.
+	 * This creates an adapter for a {@link at.bestsolution.efxclipse.runtime.demo.contacts.Group}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

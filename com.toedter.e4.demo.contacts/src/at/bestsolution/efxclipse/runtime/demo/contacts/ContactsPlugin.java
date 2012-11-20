@@ -8,7 +8,7 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts;
+package at.bestsolution.efxclipse.runtime.demo.contacts;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

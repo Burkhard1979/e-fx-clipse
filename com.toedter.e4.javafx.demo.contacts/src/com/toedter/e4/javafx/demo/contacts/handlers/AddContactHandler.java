@@ -12,9 +12,10 @@
 
 package com.toedter.e4.javafx.demo.contacts.handlers;
 
-import com.toedter.e4.demo.contacts.Contact;
-import com.toedter.e4.demo.contacts.ContactsFactory;
-import com.toedter.e4.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
+
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import javax.inject.Inject;
 import org.eclipse.e4.core.di.annotations.Execute;

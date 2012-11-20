@@ -8,11 +8,11 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.provider;
+package at.bestsolution.efxclipse.runtime.demo.contacts.provider;
 
 
-import com.toedter.e4.demo.contacts.Contact;
-import com.toedter.e4.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 
 import java.util.Collection;
 import java.util.List;
@@ -35,7 +35,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link com.toedter.e4.demo.contacts.Contact} object.
+ * This is the item provider adapter for a {@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact} object.
  * <!-- begin-user-doc -->
  * @implements ITableItemLabelProvider
  * <!-- end-user-doc -->

@@ -8,9 +8,9 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.impl;
+package at.bestsolution.efxclipse.runtime.demo.contacts.impl;
 
-import com.toedter.e4.demo.contacts.*;
+import at.bestsolution.efxclipse.runtime.demo.contacts.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;

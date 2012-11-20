@@ -10,8 +10,10 @@
  ******************************************************************************/
 package com.toedter.e4.javafx.demo.contacts.model;
 
-import com.toedter.e4.demo.contacts.Group;
-import com.toedter.e4.demo.contacts.provider.ContactsItemProviderAdapterFactory;
+import at.bestsolution.efxclipse.runtime.demo.contacts.provider.ContactsItemProviderAdapterFactory;
+
+import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
+
 import com.toedter.e4.javafx.demo.contacts.model.internal.VCardContactsRepository;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;

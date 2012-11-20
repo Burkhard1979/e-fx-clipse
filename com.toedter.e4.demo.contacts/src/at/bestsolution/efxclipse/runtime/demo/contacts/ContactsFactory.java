@@ -8,7 +8,7 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts;
+package at.bestsolution.efxclipse.runtime.demo.contacts;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see com.toedter.e4.demo.contacts.ContactsPackage
+ * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage
  * @generated
  */
 public interface ContactsFactory extends EFactory {
@@ -27,7 +27,7 @@ public interface ContactsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ContactsFactory eINSTANCE = com.toedter.e4.demo.contacts.impl.ContactsFactoryImpl.init();
+	ContactsFactory eINSTANCE = at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Contact</em>'.

@@ -10,7 +10,7 @@
  ******************************************************************************/
 package com.toedter.e4.javafx.demo.contacts.model;
 
-import com.toedter.e4.demo.contacts.Group;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;

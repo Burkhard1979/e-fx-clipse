@@ -4,11 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: com.toedter.e4.demo.contacts.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: com.toedter.e4.demo.contacts.provider.ContactsEditPlugin$Implementation
+Bundle-Activator: at.bestsolution.efxclipse.runtime.demo.contacts.provider.ContactsEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: com.toedter.e4.demo.contacts.provider
+Export-Package: at.bestsolution.efxclipse.runtime.demo.contacts.provider
 Require-Bundle: org.eclipse.core.runtime,
  com.toedter.e4.demo.contacts;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport

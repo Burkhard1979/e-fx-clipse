@@ -17,7 +17,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://contacts/1.0"
-            class="com.toedter.e4.demo.contacts.provider.ContactsItemProviderAdapterFactory"
+            class="at.bestsolution.efxclipse.runtime.demo.contacts.provider.ContactsItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

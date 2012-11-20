@@ -8,15 +8,15 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.impl;
+package at.bestsolution.efxclipse.runtime.demo.contacts.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import com.toedter.e4.demo.contacts.Contact;
-import com.toedter.e4.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,24 +25,24 @@ import com.toedter.e4.demo.contacts.ContactsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getFirstName <em>First Name</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getMiddleName <em>Middle Name</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getLastName <em>Last Name</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getCompany <em>Company</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getJobTitle <em>Job Title</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getStreet <em>Street</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getCity <em>City</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getZip <em>Zip</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getState <em>State</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getCountry <em>Country</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getEmail <em>Email</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getWebPage <em>Web Page</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getPhone <em>Phone</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getMobile <em>Mobile</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getNote <em>Note</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getJpegString <em>Jpeg String</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.ContactImpl#getSourceFile <em>Source File</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getMiddleName <em>Middle Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getCompany <em>Company</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getJobTitle <em>Job Title</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getStreet <em>Street</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getCity <em>City</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getZip <em>Zip</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getState <em>State</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getCountry <em>Country</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getWebPage <em>Web Page</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getPhone <em>Phone</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getMobile <em>Mobile</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getNote <em>Note</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getJpegString <em>Jpeg String</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl#getSourceFile <em>Source File</em>}</li>
  * </ul>
  * </p>
  *

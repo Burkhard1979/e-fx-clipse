@@ -17,7 +17,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://contacts/1.0"
-            class="com.toedter.e4.demo.contacts.ContactsPackage"
+            class="at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage"
             genModel="model/Contacts.genmodel"/>
    </extension>
 

@@ -8,11 +8,11 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.impl;
+package at.bestsolution.efxclipse.runtime.demo.contacts.impl;
 
-import com.toedter.e4.demo.contacts.Contact;
-import com.toedter.e4.demo.contacts.ContactsPackage;
-import com.toedter.e4.demo.contacts.Group;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
 
 import java.util.Collection;
 
@@ -37,9 +37,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.GroupImpl#getContacts <em>Contacts</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.GroupImpl#getGroups <em>Groups</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.impl.GroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.GroupImpl#getContacts <em>Contacts</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.GroupImpl#getGroups <em>Groups</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.GroupImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *

@@ -8,9 +8,9 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.util;
+package at.bestsolution.efxclipse.runtime.demo.contacts.util;
 
-import com.toedter.e4.demo.contacts.*;
+import at.bestsolution.efxclipse.runtime.demo.contacts.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see com.toedter.e4.demo.contacts.ContactsPackage
+ * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage
  * @generated
  */
 public class ContactsAdapterFactory extends AdapterFactoryImpl {
@@ -104,13 +104,13 @@ public class ContactsAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link com.toedter.e4.demo.contacts.Contact <em>Contact</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact <em>Contact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see com.toedter.e4.demo.contacts.Contact
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact
 	 * @generated
 	 */
 	public Adapter createContactAdapter() {
@@ -118,13 +118,13 @@ public class ContactsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link com.toedter.e4.demo.contacts.Group <em>Group</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see com.toedter.e4.demo.contacts.Group
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Group
 	 * @generated
 	 */
 	public Adapter createGroupAdapter() {

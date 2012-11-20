@@ -10,9 +10,10 @@
  *******************************************************************************/
 package com.toedter.e4.javafx.demo.contacts.views;
 
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
+
 import at.bestsolution.efxclipse.runtime.emf.databinding.edit.EMFEditFXProperties;
-import com.toedter.e4.demo.contacts.Contact;
-import com.toedter.e4.demo.contacts.ContactsPackage;
 import java.io.ByteArrayInputStream;
 import javafx.beans.property.Property;
 import javafx.fxml.FXML;

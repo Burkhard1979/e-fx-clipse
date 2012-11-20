@@ -12,9 +12,10 @@
 
 package com.toedter.e4.javafx.demo.contacts.views;
 
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+
 import at.bestsolution.efxclipse.runtime.databinding.IJFXBeanValueProperty;
 import at.bestsolution.efxclipse.runtime.databinding.JFXBeanProperties;
-import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.javafx.demo.contacts.databinding.AggregateNameObservableValue;
 import javafx.animation.FadeTransition;
 import javafx.geometry.HPos;

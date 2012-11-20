@@ -12,9 +12,10 @@
 
 package com.toedter.e4.javafx.demo.contacts.handlers;
 
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+
 import org.eclipse.emf.edit.command.DeleteCommand;
 
-import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import javax.inject.Inject;
 import org.eclipse.e4.core.di.annotations.CanExecute;

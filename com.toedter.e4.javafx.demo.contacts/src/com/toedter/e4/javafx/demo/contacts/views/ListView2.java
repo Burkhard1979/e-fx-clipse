@@ -12,6 +12,8 @@
 
 package com.toedter.e4.javafx.demo.contacts.views;
 
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+
 import javafx.scene.control.TreeView;
 
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeCellFactory;
@@ -22,7 +24,6 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTableCellFact
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
-import com.toedter.e4.demo.contacts.Contact;
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

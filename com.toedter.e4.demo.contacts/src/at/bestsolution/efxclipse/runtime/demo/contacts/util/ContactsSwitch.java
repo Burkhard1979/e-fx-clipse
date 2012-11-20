@@ -8,9 +8,9 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.util;
+package at.bestsolution.efxclipse.runtime.demo.contacts.util;
 
-import com.toedter.e4.demo.contacts.*;
+import at.bestsolution.efxclipse.runtime.demo.contacts.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see com.toedter.e4.demo.contacts.ContactsPackage
+ * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage
  * @generated
  */
 public class ContactsSwitch<T> extends Switch<T> {

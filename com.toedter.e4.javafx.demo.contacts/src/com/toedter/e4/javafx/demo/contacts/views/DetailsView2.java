@@ -12,7 +12,8 @@
 
 package com.toedter.e4.javafx.demo.contacts.views;
 
-import com.toedter.e4.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+
 import com.toedter.e4.javafx.demo.contacts.model.ContactsManager;
 import java.io.IOException;
 import java.net.URL;

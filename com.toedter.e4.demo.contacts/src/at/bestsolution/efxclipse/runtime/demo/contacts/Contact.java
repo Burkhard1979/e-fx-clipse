@@ -8,7 +8,7 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts;
+package at.bestsolution.efxclipse.runtime.demo.contacts;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -20,28 +20,28 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getFirstName <em>First Name</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getMiddleName <em>Middle Name</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getLastName <em>Last Name</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getTitle <em>Title</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getCompany <em>Company</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getJobTitle <em>Job Title</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getStreet <em>Street</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getCity <em>City</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getZip <em>Zip</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getState <em>State</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getCountry <em>Country</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getEmail <em>Email</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getWebPage <em>Web Page</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getPhone <em>Phone</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getMobile <em>Mobile</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getNote <em>Note</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getJpegString <em>Jpeg String</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Contact#getSourceFile <em>Source File</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMiddleName <em>Middle Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getTitle <em>Title</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCompany <em>Company</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJobTitle <em>Job Title</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getStreet <em>Street</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCity <em>City</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getZip <em>Zip</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getState <em>State</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCountry <em>Country</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getEmail <em>Email</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getWebPage <em>Web Page</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getPhone <em>Phone</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMobile <em>Mobile</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getNote <em>Note</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJpegString <em>Jpeg String</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getSourceFile <em>Source File</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact()
+ * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact()
  * @model
  * @generated
  */
@@ -56,14 +56,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_FirstName()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_FirstName()
 	 * @model
 	 * @generated
 	 */
 	String getFirstName();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getFirstName <em>First Name</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getFirstName <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>First Name</em>' attribute.
@@ -82,14 +82,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Middle Name</em>' attribute.
 	 * @see #setMiddleName(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_MiddleName()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_MiddleName()
 	 * @model
 	 * @generated
 	 */
 	String getMiddleName();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getMiddleName <em>Middle Name</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMiddleName <em>Middle Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Middle Name</em>' attribute.
@@ -108,14 +108,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_LastName()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_LastName()
 	 * @model
 	 * @generated
 	 */
 	String getLastName();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getLastName <em>Last Name</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getLastName <em>Last Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Last Name</em>' attribute.
@@ -134,14 +134,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Title()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Title()
 	 * @model
 	 * @generated
 	 */
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getTitle <em>Title</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getTitle <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Title</em>' attribute.
@@ -160,14 +160,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Company</em>' attribute.
 	 * @see #setCompany(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Company()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Company()
 	 * @model
 	 * @generated
 	 */
 	String getCompany();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getCompany <em>Company</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCompany <em>Company</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Company</em>' attribute.
@@ -186,14 +186,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Job Title</em>' attribute.
 	 * @see #setJobTitle(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_JobTitle()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_JobTitle()
 	 * @model
 	 * @generated
 	 */
 	String getJobTitle();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getJobTitle <em>Job Title</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJobTitle <em>Job Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Job Title</em>' attribute.
@@ -212,14 +212,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Street</em>' attribute.
 	 * @see #setStreet(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Street()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Street()
 	 * @model
 	 * @generated
 	 */
 	String getStreet();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getStreet <em>Street</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getStreet <em>Street</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Street</em>' attribute.
@@ -238,14 +238,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>City</em>' attribute.
 	 * @see #setCity(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_City()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_City()
 	 * @model
 	 * @generated
 	 */
 	String getCity();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getCity <em>City</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCity <em>City</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>City</em>' attribute.
@@ -264,14 +264,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Zip</em>' attribute.
 	 * @see #setZip(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Zip()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Zip()
 	 * @model
 	 * @generated
 	 */
 	String getZip();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getZip <em>Zip</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getZip <em>Zip</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Zip</em>' attribute.
@@ -290,14 +290,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>State</em>' attribute.
 	 * @see #setState(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_State()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_State()
 	 * @model
 	 * @generated
 	 */
 	String getState();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getState <em>State</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getState <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>State</em>' attribute.
@@ -316,14 +316,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Country</em>' attribute.
 	 * @see #setCountry(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Country()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Country()
 	 * @model
 	 * @generated
 	 */
 	String getCountry();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getCountry <em>Country</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCountry <em>Country</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Country</em>' attribute.
@@ -342,14 +342,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Email</em>' attribute.
 	 * @see #setEmail(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Email()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Email()
 	 * @model
 	 * @generated
 	 */
 	String getEmail();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getEmail <em>Email</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getEmail <em>Email</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Email</em>' attribute.
@@ -368,14 +368,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Web Page</em>' attribute.
 	 * @see #setWebPage(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_WebPage()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_WebPage()
 	 * @model
 	 * @generated
 	 */
 	String getWebPage();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getWebPage <em>Web Page</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getWebPage <em>Web Page</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Web Page</em>' attribute.
@@ -394,14 +394,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Phone</em>' attribute.
 	 * @see #setPhone(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Phone()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Phone()
 	 * @model
 	 * @generated
 	 */
 	String getPhone();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getPhone <em>Phone</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getPhone <em>Phone</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Phone</em>' attribute.
@@ -420,14 +420,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mobile</em>' attribute.
 	 * @see #setMobile(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Mobile()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Mobile()
 	 * @model
 	 * @generated
 	 */
 	String getMobile();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getMobile <em>Mobile</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMobile <em>Mobile</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Mobile</em>' attribute.
@@ -446,14 +446,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Note</em>' attribute.
 	 * @see #setNote(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_Note()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_Note()
 	 * @model
 	 * @generated
 	 */
 	String getNote();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getNote <em>Note</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getNote <em>Note</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Note</em>' attribute.
@@ -472,14 +472,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jpeg String</em>' attribute.
 	 * @see #setJpegString(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_JpegString()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_JpegString()
 	 * @model
 	 * @generated
 	 */
 	String getJpegString();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getJpegString <em>Jpeg String</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJpegString <em>Jpeg String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Jpeg String</em>' attribute.
@@ -498,14 +498,14 @@ public interface Contact extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source File</em>' attribute.
 	 * @see #setSourceFile(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getContact_SourceFile()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact_SourceFile()
 	 * @model
 	 * @generated
 	 */
 	String getSourceFile();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Contact#getSourceFile <em>Source File</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getSourceFile <em>Source File</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Source File</em>' attribute.

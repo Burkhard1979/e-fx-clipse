@@ -12,7 +12,8 @@
 
 package com.toedter.e4.javafx.demo.contacts.model;
 
-import com.toedter.e4.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+
 import org.eclipse.core.databinding.observable.list.IObservableList;
 
 public interface IContactsRepository {

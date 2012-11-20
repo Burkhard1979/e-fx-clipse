@@ -12,12 +12,12 @@
 
 package com.toedter.e4.javafx.demo.contacts.model.internal;
 
-import com.toedter.e4.demo.contacts.Group;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
 
 import org.eclipse.emf.common.util.URI;
 
-import com.toedter.e4.demo.contacts.Contact;
-import com.toedter.e4.demo.contacts.ContactsFactory;
 import com.toedter.e4.javafx.demo.contacts.BundleActivatorImpl;
 import java.io.BufferedReader;
 import java.io.File;

@@ -8,7 +8,7 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts;
+package at.bestsolution.efxclipse.runtime.demo.contacts;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -22,20 +22,20 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.toedter.e4.demo.contacts.Group#getContacts <em>Contacts</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Group#getGroups <em>Groups</em>}</li>
- *   <li>{@link com.toedter.e4.demo.contacts.Group#getName <em>Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group#getContacts <em>Contacts</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group#getGroups <em>Groups</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.toedter.e4.demo.contacts.ContactsPackage#getGroup()
+ * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getGroup()
  * @model
  * @generated
  */
 public interface Group extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Contacts</b></em>' containment reference list.
-	 * The list contents are of type {@link com.toedter.e4.demo.contacts.Contact}.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contacts</em>' containment reference list isn't clear,
@@ -43,7 +43,7 @@ public interface Group extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contacts</em>' containment reference list.
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getGroup_Contacts()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getGroup_Contacts()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -51,7 +51,7 @@ public interface Group extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Groups</b></em>' containment reference list.
-	 * The list contents are of type {@link com.toedter.e4.demo.contacts.Group}.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.runtime.demo.contacts.Group}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Groups</em>' containment reference list isn't clear,
@@ -59,7 +59,7 @@ public interface Group extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Groups</em>' containment reference list.
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getGroup_Groups()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getGroup_Groups()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -75,14 +75,14 @@ public interface Group extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see com.toedter.e4.demo.contacts.ContactsPackage#getGroup_Name()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getGroup_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.toedter.e4.demo.contacts.Group#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

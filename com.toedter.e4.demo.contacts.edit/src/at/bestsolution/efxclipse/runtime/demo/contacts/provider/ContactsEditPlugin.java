@@ -8,7 +8,7 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts.provider;
+package at.bestsolution.efxclipse.runtime.demo.contacts.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 

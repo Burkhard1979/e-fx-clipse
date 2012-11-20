@@ -8,7 +8,7 @@
  *  Contributors: 
  *      Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation
  */
-package com.toedter.e4.demo.contacts;
+package at.bestsolution.efxclipse.runtime.demo.contacts;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see com.toedter.e4.demo.contacts.ContactsFactory
+ * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory
  * @model kind="package"
  * @generated
  */
@@ -61,14 +61,14 @@ public interface ContactsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ContactsPackage eINSTANCE = com.toedter.e4.demo.contacts.impl.ContactsPackageImpl.init();
+	ContactsPackage eINSTANCE = at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link com.toedter.e4.demo.contacts.impl.ContactImpl <em>Contact</em>}' class.
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl <em>Contact</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.toedter.e4.demo.contacts.impl.ContactImpl
-	 * @see com.toedter.e4.demo.contacts.impl.ContactsPackageImpl#getContact()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactsPackageImpl#getContact()
 	 * @generated
 	 */
 	int CONTACT = 0;
@@ -246,11 +246,11 @@ public interface ContactsPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link com.toedter.e4.demo.contacts.impl.GroupImpl <em>Group</em>}' class.
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.GroupImpl <em>Group</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.toedter.e4.demo.contacts.impl.GroupImpl
-	 * @see com.toedter.e4.demo.contacts.impl.ContactsPackageImpl#getGroup()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.GroupImpl
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactsPackageImpl#getGroup()
 	 * @generated
 	 */
 	int GROUP = 1;
@@ -293,251 +293,251 @@ public interface ContactsPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link com.toedter.e4.demo.contacts.Contact <em>Contact</em>}'.
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact <em>Contact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Contact</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact
 	 * @generated
 	 */
 	EClass getContact();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getFirstName <em>First Name</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getFirstName <em>First Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>First Name</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getFirstName()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getFirstName()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_FirstName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getMiddleName <em>Middle Name</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMiddleName <em>Middle Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Middle Name</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getMiddleName()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMiddleName()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_MiddleName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getLastName <em>Last Name</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getLastName <em>Last Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Last Name</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getLastName()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getLastName()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_LastName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getTitle <em>Title</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Title</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getTitle()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getTitle()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Title();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getCompany <em>Company</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCompany <em>Company</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Company</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getCompany()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCompany()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Company();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getJobTitle <em>Job Title</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJobTitle <em>Job Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Job Title</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getJobTitle()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJobTitle()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_JobTitle();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getStreet <em>Street</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getStreet <em>Street</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Street</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getStreet()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getStreet()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Street();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getCity <em>City</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCity <em>City</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>City</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getCity()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCity()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_City();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getZip <em>Zip</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getZip <em>Zip</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Zip</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getZip()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getZip()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Zip();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getState <em>State</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>State</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getState()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getState()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_State();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getCountry <em>Country</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCountry <em>Country</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Country</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getCountry()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getCountry()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Country();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getEmail <em>Email</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getEmail <em>Email</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Email</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getEmail()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getEmail()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Email();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getWebPage <em>Web Page</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getWebPage <em>Web Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Web Page</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getWebPage()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getWebPage()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_WebPage();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getPhone <em>Phone</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getPhone <em>Phone</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Phone</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getPhone()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getPhone()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Phone();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getMobile <em>Mobile</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMobile <em>Mobile</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Mobile</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getMobile()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getMobile()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Mobile();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getNote <em>Note</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getNote <em>Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Note</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getNote()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getNote()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_Note();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getJpegString <em>Jpeg String</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJpegString <em>Jpeg String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Jpeg String</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getJpegString()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getJpegString()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_JpegString();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Contact#getSourceFile <em>Source File</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getSourceFile <em>Source File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Source File</em>'.
-	 * @see com.toedter.e4.demo.contacts.Contact#getSourceFile()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Contact#getSourceFile()
 	 * @see #getContact()
 	 * @generated
 	 */
 	EAttribute getContact_SourceFile();
 
 	/**
-	 * Returns the meta object for class '{@link com.toedter.e4.demo.contacts.Group <em>Group</em>}'.
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Group</em>'.
-	 * @see com.toedter.e4.demo.contacts.Group
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Group
 	 * @generated
 	 */
 	EClass getGroup();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link com.toedter.e4.demo.contacts.Group#getContacts <em>Contacts</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group#getContacts <em>Contacts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Contacts</em>'.
-	 * @see com.toedter.e4.demo.contacts.Group#getContacts()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Group#getContacts()
 	 * @see #getGroup()
 	 * @generated
 	 */
 	EReference getGroup_Contacts();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link com.toedter.e4.demo.contacts.Group#getGroups <em>Groups</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group#getGroups <em>Groups</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Groups</em>'.
-	 * @see com.toedter.e4.demo.contacts.Group#getGroups()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Group#getGroups()
 	 * @see #getGroup()
 	 * @generated
 	 */
 	EReference getGroup_Groups();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.toedter.e4.demo.contacts.Group#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.runtime.demo.contacts.Group#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see com.toedter.e4.demo.contacts.Group#getName()
+	 * @see at.bestsolution.efxclipse.runtime.demo.contacts.Group#getName()
 	 * @see #getGroup()
 	 * @generated
 	 */
@@ -566,11 +566,11 @@ public interface ContactsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link com.toedter.e4.demo.contacts.impl.ContactImpl <em>Contact</em>}' class.
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl <em>Contact</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.toedter.e4.demo.contacts.impl.ContactImpl
-		 * @see com.toedter.e4.demo.contacts.impl.ContactsPackageImpl#getContact()
+		 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactImpl
+		 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactsPackageImpl#getContact()
 		 * @generated
 		 */
 		EClass CONTACT = eINSTANCE.getContact();
@@ -720,11 +720,11 @@ public interface ContactsPackage extends EPackage {
 		EAttribute CONTACT__SOURCE_FILE = eINSTANCE.getContact_SourceFile();
 
 		/**
-		 * The meta object literal for the '{@link com.toedter.e4.demo.contacts.impl.GroupImpl <em>Group</em>}' class.
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.runtime.demo.contacts.impl.GroupImpl <em>Group</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.toedter.e4.demo.contacts.impl.GroupImpl
-		 * @see com.toedter.e4.demo.contacts.impl.ContactsPackageImpl#getGroup()
+		 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.GroupImpl
+		 * @see at.bestsolution.efxclipse.runtime.demo.contacts.impl.ContactsPackageImpl#getGroup()
 		 * @generated
 		 */
 		EClass GROUP = eINSTANCE.getGroup();
