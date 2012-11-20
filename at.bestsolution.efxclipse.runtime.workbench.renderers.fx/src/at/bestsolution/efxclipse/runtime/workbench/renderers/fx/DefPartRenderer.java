@@ -25,11 +25,10 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 	protected Class<? extends WPart<BorderPane>> getWidgetClass(MPart part) {
 		return PartImpl.class;
 	}
-	
-	@Override
-	protected boolean requiresFocus(WPart<BorderPane> widget) {
-		return true;
-//Uncertain what this code does		
+
+//TODO Uncertain what this code did in the past keep it commented for the next release and then remove it in > 0.2.0
+//	@Override
+//	protected boolean requiresFocus(WPart<BorderPane> widget) {
 //		Node n = (Node) widget.getWidget();
 //		
 //		do {
@@ -39,7 +38,7 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 //		} while( (n = n.getParent()) != null );
 //		
 //		return true;
-	}
+//	}
 
 	public static class PartImpl extends WLayoutedWidgetImpl<BorderPane, BorderPane, MPart> implements WPart<BorderPane> {
 		

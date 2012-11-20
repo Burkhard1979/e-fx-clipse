@@ -41,19 +41,20 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 			@Override
 			public Void call(Boolean param) {
 				if( param.booleanValue() ) {
-					boolean requiresFocus = requiresFocus(widget);
-					if(requiresFocus) {
+//TODO Uncertain what this code did in the past keep it commented for the next release and then remove it in > 0.2.0					
+//					boolean requiresFocus = requiresFocus(widget);
+//					if(requiresFocus) {
 						activate(element, true);
-					} else {
-						activate(element, false);
-					}
+//					} else {
+//						activate(element, false);
+//					}
 				}
 				return null;
 			}
 		});
 	}
 	
-	protected abstract boolean requiresFocus(WPart<N> widget);
+//	protected abstract boolean requiresFocus(WPart<N> widget);
 	
 	@Override
 	public void doProcessContent(MPart element) {
