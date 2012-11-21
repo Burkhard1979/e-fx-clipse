@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.tooling.rrobot.rrobot">
+   <implementation class="at.bestsolution.efxclipse.tooling.rrobot.impl.RRobotImpl"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.tooling.rrobot.RRobot"/>
+   </service>
+   <reference bind="addProjectHandler" cardinality="0..n" interface="at.bestsolution.efxclipse.tooling.rrobot.ProjectHandler" name="ProjectHandler" policy="dynamic" unbind="removeProjectHandler"/>
+</scr:component>

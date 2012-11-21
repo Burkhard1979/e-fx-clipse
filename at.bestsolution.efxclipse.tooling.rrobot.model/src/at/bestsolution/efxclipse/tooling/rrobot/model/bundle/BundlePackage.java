@@ -175,7 +175,16 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANIFEST_FILE__NAME = TaskPackage.FILE__NAME;
+	int MANIFEST_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__GENERATOR_TYPE = TaskPackage.TEMPLATED_FILE__GENERATOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Bundlename</b></em>' attribute.
@@ -184,7 +193,16 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANIFEST_FILE__BUNDLENAME = TaskPackage.FILE_FEATURE_COUNT + 0;
+	int MANIFEST_FILE__BUNDLENAME = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Symbolicname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__SYMBOLICNAME = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -193,7 +211,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANIFEST_FILE__VERSION = TaskPackage.FILE_FEATURE_COUNT + 1;
+	int MANIFEST_FILE__VERSION = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Exported Packages</b></em>' containment reference list.
@@ -202,7 +220,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANIFEST_FILE__EXPORTED_PACKAGES = TaskPackage.FILE_FEATURE_COUNT + 2;
+	int MANIFEST_FILE__EXPORTED_PACKAGES = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Imported Packages</b></em>' containment reference list.
@@ -211,7 +229,25 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANIFEST_FILE__IMPORTED_PACKAGES = TaskPackage.FILE_FEATURE_COUNT + 3;
+	int MANIFEST_FILE__IMPORTED_PACKAGES = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Execution Environment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__EXECUTION_ENVIRONMENT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Required Bundles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__REQUIRED_BUNDLES = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Manifest File</em>' class.
@@ -220,7 +256,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANIFEST_FILE_FEATURE_COUNT = TaskPackage.FILE_FEATURE_COUNT + 4;
+	int MANIFEST_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.PluginXMLFileImpl <em>Plugin XML File</em>}' class.
@@ -239,7 +275,25 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLUGIN_XML_FILE__NAME = TaskPackage.FILE__NAME;
+	int PLUGIN_XML_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN_XML_FILE__GENERATOR_TYPE = TaskPackage.TEMPLATED_FILE__GENERATOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN_XML_FILE__EXTENSIONS = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Plugin XML File</em>' class.
@@ -248,7 +302,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLUGIN_XML_FILE_FEATURE_COUNT = TaskPackage.FILE_FEATURE_COUNT + 0;
+	int PLUGIN_XML_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BuildPropertiesImpl <em>Build Properties</em>}' class.
@@ -267,7 +321,25 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_PROPERTIES__NAME = TaskPackage.FILE__NAME;
+	int BUILD_PROPERTIES__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_PROPERTIES__GENERATOR_TYPE = TaskPackage.TEMPLATED_FILE__GENERATOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Bin Includes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_PROPERTIES__BIN_INCLUDES = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Build Properties</em>' class.
@@ -276,7 +348,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_PROPERTIES_FEATURE_COUNT = TaskPackage.FILE_FEATURE_COUNT + 0;
+	int BUILD_PROPERTIES_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl <em>Imported Package</em>}' class.
@@ -316,13 +388,31 @@ public interface BundlePackage extends EPackage {
 	int IMPORTED_PACKAGE__MAX_VERSION = 2;
 
 	/**
+	 * The feature id for the '<em><b>Min Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORTED_PACKAGE__MIN_EXCLUSIVE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Max Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORTED_PACKAGE__MAX_EXCLUSIVE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Imported Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE_FEATURE_COUNT = 3;
+	int IMPORTED_PACKAGE_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl <em>Exported Package</em>}' class.
@@ -491,6 +581,70 @@ public interface BundlePackage extends EPackage {
 	int ATTRIBUTE_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl <em>Required Bundle</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getRequiredBundle()
+	 * @generated
+	 */
+	int REQUIRED_BUNDLE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Min Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE__MIN_VERSION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Max Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE__MAX_VERSION = 2;
+
+	/**
+	 * The feature id for the '<em><b>Min Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE__MIN_EXCLUSIVE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Max Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE__MAX_EXCLUSIVE = 4;
+
+	/**
+	 * The number of structural features of the '<em>Required Bundle</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE_FEATURE_COUNT = 5;
+
+	/**
 	 * The meta object id for the '<em>Version</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -498,7 +652,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 9;
+	int VERSION = 10;
 
 
 	/**
@@ -610,6 +764,17 @@ public interface BundlePackage extends EPackage {
 	EAttribute getManifestFile_Bundlename();
 
 	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getSymbolicname <em>Symbolicname</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Symbolicname</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getSymbolicname()
+	 * @see #getManifestFile()
+	 * @generated
+	 */
+	EAttribute getManifestFile_Symbolicname();
+
+	/**
 	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getVersion <em>Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -643,6 +808,28 @@ public interface BundlePackage extends EPackage {
 	EReference getManifestFile_ImportedPackages();
 
 	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getExecutionEnvironment <em>Execution Environment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Execution Environment</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getExecutionEnvironment()
+	 * @see #getManifestFile()
+	 * @generated
+	 */
+	EAttribute getManifestFile_ExecutionEnvironment();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getRequiredBundles <em>Required Bundles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Required Bundles</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getRequiredBundles()
+	 * @see #getManifestFile()
+	 * @generated
+	 */
+	EReference getManifestFile_RequiredBundles();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile <em>Plugin XML File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -653,6 +840,17 @@ public interface BundlePackage extends EPackage {
 	EClass getPluginXMLFile();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile#getExtensions <em>Extensions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Extensions</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile#getExtensions()
+	 * @see #getPluginXMLFile()
+	 * @generated
+	 */
+	EReference getPluginXMLFile_Extensions();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BuildProperties <em>Build Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -661,6 +859,17 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBuildProperties();
+
+	/**
+	 * Returns the meta object for the reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BuildProperties#getBinIncludes <em>Bin Includes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Bin Includes</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BuildProperties#getBinIncludes()
+	 * @see #getBuildProperties()
+	 * @generated
+	 */
+	EReference getBuildProperties_BinIncludes();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage <em>Imported Package</em>}'.
@@ -704,6 +913,28 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getImportedPackage_MaxVersion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMinExclusive <em>Min Exclusive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Exclusive</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMinExclusive()
+	 * @see #getImportedPackage()
+	 * @generated
+	 */
+	EAttribute getImportedPackage_MinExclusive();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMaxExclusive <em>Max Exclusive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Exclusive</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#isMaxExclusive()
+	 * @see #getImportedPackage()
+	 * @generated
+	 */
+	EAttribute getImportedPackage_MaxExclusive();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage <em>Exported Package</em>}'.
@@ -856,6 +1087,71 @@ public interface BundlePackage extends EPackage {
 	EAttribute getAttribute_Value();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle <em>Required Bundle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Required Bundle</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle
+	 * @generated
+	 */
+	EClass getRequiredBundle();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getName()
+	 * @see #getRequiredBundle()
+	 * @generated
+	 */
+	EAttribute getRequiredBundle_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getMinVersion <em>Min Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Version</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getMinVersion()
+	 * @see #getRequiredBundle()
+	 * @generated
+	 */
+	EAttribute getRequiredBundle_MinVersion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getMaxVersion <em>Max Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Version</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getMaxVersion()
+	 * @see #getRequiredBundle()
+	 * @generated
+	 */
+	EAttribute getRequiredBundle_MaxVersion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#isMinExclusive <em>Min Exclusive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Exclusive</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#isMinExclusive()
+	 * @see #getRequiredBundle()
+	 * @generated
+	 */
+	EAttribute getRequiredBundle_MinExclusive();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#isMaxExclusive <em>Max Exclusive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Exclusive</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#isMaxExclusive()
+	 * @see #getRequiredBundle()
+	 * @generated
+	 */
+	EAttribute getRequiredBundle_MaxExclusive();
+
+	/**
 	 * Returns the meta object for data type '{@link org.osgi.framework.Version <em>Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -973,6 +1269,14 @@ public interface BundlePackage extends EPackage {
 		EAttribute MANIFEST_FILE__BUNDLENAME = eINSTANCE.getManifestFile_Bundlename();
 
 		/**
+		 * The meta object literal for the '<em><b>Symbolicname</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANIFEST_FILE__SYMBOLICNAME = eINSTANCE.getManifestFile_Symbolicname();
+
+		/**
 		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -997,6 +1301,22 @@ public interface BundlePackage extends EPackage {
 		EReference MANIFEST_FILE__IMPORTED_PACKAGES = eINSTANCE.getManifestFile_ImportedPackages();
 
 		/**
+		 * The meta object literal for the '<em><b>Execution Environment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANIFEST_FILE__EXECUTION_ENVIRONMENT = eINSTANCE.getManifestFile_ExecutionEnvironment();
+
+		/**
+		 * The meta object literal for the '<em><b>Required Bundles</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MANIFEST_FILE__REQUIRED_BUNDLES = eINSTANCE.getManifestFile_RequiredBundles();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.PluginXMLFileImpl <em>Plugin XML File</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1007,6 +1327,14 @@ public interface BundlePackage extends EPackage {
 		EClass PLUGIN_XML_FILE = eINSTANCE.getPluginXMLFile();
 
 		/**
+		 * The meta object literal for the '<em><b>Extensions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLUGIN_XML_FILE__EXTENSIONS = eINSTANCE.getPluginXMLFile_Extensions();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BuildPropertiesImpl <em>Build Properties</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1015,6 +1343,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EClass BUILD_PROPERTIES = eINSTANCE.getBuildProperties();
+
+		/**
+		 * The meta object literal for the '<em><b>Bin Includes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUILD_PROPERTIES__BIN_INCLUDES = eINSTANCE.getBuildProperties_BinIncludes();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl <em>Imported Package</em>}' class.
@@ -1049,6 +1385,22 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IMPORTED_PACKAGE__MAX_VERSION = eINSTANCE.getImportedPackage_MaxVersion();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Exclusive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMPORTED_PACKAGE__MIN_EXCLUSIVE = eINSTANCE.getImportedPackage_MinExclusive();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Exclusive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMPORTED_PACKAGE__MAX_EXCLUSIVE = eINSTANCE.getImportedPackage_MaxExclusive();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl <em>Exported Package</em>}' class.
@@ -1169,6 +1521,56 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ATTRIBUTE__VALUE = eINSTANCE.getAttribute_Value();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl <em>Required Bundle</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getRequiredBundle()
+		 * @generated
+		 */
+		EClass REQUIRED_BUNDLE = eINSTANCE.getRequiredBundle();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_BUNDLE__NAME = eINSTANCE.getRequiredBundle_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_BUNDLE__MIN_VERSION = eINSTANCE.getRequiredBundle_MinVersion();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_BUNDLE__MAX_VERSION = eINSTANCE.getRequiredBundle_MaxVersion();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Exclusive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_BUNDLE__MIN_EXCLUSIVE = eINSTANCE.getRequiredBundle_MinExclusive();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Exclusive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_BUNDLE__MAX_EXCLUSIVE = eINSTANCE.getRequiredBundle_MaxExclusive();
 
 		/**
 		 * The meta object literal for the '<em>Version</em>' data type.

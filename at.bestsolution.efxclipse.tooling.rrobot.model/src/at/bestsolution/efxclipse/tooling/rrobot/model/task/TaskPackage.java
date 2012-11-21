@@ -4,6 +4,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.task;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -66,7 +67,7 @@ public interface TaskPackage extends EPackage {
 	int ROBOT_TASK = 0;
 
 	/**
-	 * The feature id for the '<em><b>Projects</b></em>' containment reference.
+	 * The feature id for the '<em><b>Projects</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -215,6 +216,111 @@ public interface TaskPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>IProgress Monitor</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.core.runtime.IProgressMonitor
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIProgressMonitor()
+	 * @generated
+	 */
+	int IPROGRESS_MONITOR = 8;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl <em>Templated File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getTemplatedFile()
+	 * @generated
+	 */
+	int TEMPLATED_FILE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATED_FILE__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATED_FILE__GENERATOR_TYPE = FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Templated File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATED_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '<em>Input Stream</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.InputStream
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
+	 * @generated
+	 */
+	int INPUT_STREAM = 9;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl <em>String Content File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getStringContentFile()
+	 * @generated
+	 */
+	int STRING_CONTENT_FILE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_CONTENT_FILE__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_CONTENT_FILE__CONTENT = FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>String Content File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_CONTENT_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '<em>IO Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.IOException
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIOException()
+	 * @generated
+	 */
+	int IO_EXCEPTION = 7;
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask <em>Robot Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -225,10 +331,10 @@ public interface TaskPackage extends EPackage {
 	EClass getRobotTask();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getProjects <em>Projects</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getProjects <em>Projects</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Projects</em>'.
+	 * @return the meta object for the containment reference list '<em>Projects</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getProjects()
 	 * @see #getRobotTask()
 	 * @generated
@@ -320,6 +426,81 @@ public interface TaskPackage extends EPackage {
 	EClass getFile();
 
 	/**
+	 * Returns the meta object for data type '{@link org.eclipse.core.runtime.IProgressMonitor <em>IProgress Monitor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>IProgress Monitor</em>'.
+	 * @see org.eclipse.core.runtime.IProgressMonitor
+	 * @model instanceClass="org.eclipse.core.runtime.IProgressMonitor" serializeable="false"
+	 * @generated
+	 */
+	EDataType getIProgressMonitor();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile <em>Templated File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Templated File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile
+	 * @generated
+	 */
+	EClass getTemplatedFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile#getGeneratorType <em>Generator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generator Type</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile#getGeneratorType()
+	 * @see #getTemplatedFile()
+	 * @generated
+	 */
+	EAttribute getTemplatedFile_GeneratorType();
+
+	/**
+	 * Returns the meta object for data type '{@link java.io.InputStream <em>Input Stream</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Input Stream</em>'.
+	 * @see java.io.InputStream
+	 * @model instanceClass="java.io.InputStream"
+	 * @generated
+	 */
+	EDataType getInputStream();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile <em>String Content File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>String Content File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile
+	 * @generated
+	 */
+	EClass getStringContentFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile#getContent <em>Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile#getContent()
+	 * @see #getStringContentFile()
+	 * @generated
+	 */
+	EAttribute getStringContentFile_Content();
+
+	/**
+	 * Returns the meta object for data type '{@link java.io.IOException <em>IO Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>IO Exception</em>'.
+	 * @see java.io.IOException
+	 * @model instanceClass="java.io.IOException" serializeable="false"
+	 * @generated
+	 */
+	EDataType getIOException();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -352,7 +533,7 @@ public interface TaskPackage extends EPackage {
 		EClass ROBOT_TASK = eINSTANCE.getRobotTask();
 
 		/**
-		 * The meta object literal for the '<em><b>Projects</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Projects</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -430,6 +611,72 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FILE = eINSTANCE.getFile();
+
+		/**
+		 * The meta object literal for the '<em>IProgress Monitor</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.core.runtime.IProgressMonitor
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIProgressMonitor()
+		 * @generated
+		 */
+		EDataType IPROGRESS_MONITOR = eINSTANCE.getIProgressMonitor();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl <em>Templated File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getTemplatedFile()
+		 * @generated
+		 */
+		EClass TEMPLATED_FILE = eINSTANCE.getTemplatedFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Generator Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEMPLATED_FILE__GENERATOR_TYPE = eINSTANCE.getTemplatedFile_GeneratorType();
+
+		/**
+		 * The meta object literal for the '<em>Input Stream</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.io.InputStream
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
+		 * @generated
+		 */
+		EDataType INPUT_STREAM = eINSTANCE.getInputStream();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl <em>String Content File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getStringContentFile()
+		 * @generated
+		 */
+		EClass STRING_CONTENT_FILE = eINSTANCE.getStringContentFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_CONTENT_FILE__CONTENT = eINSTANCE.getStringContentFile_Content();
+
+		/**
+		 * The meta object literal for the '<em>IO Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.io.IOException
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIOException()
+		 * @generated
+		 */
+		EDataType IO_EXCEPTION = eINSTANCE.getIOException();
 
 	}
 

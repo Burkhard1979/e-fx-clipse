@@ -24,6 +24,8 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#getMinVersion <em>Min Version</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#getMaxVersion <em>Max Version</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#isMinExclusive <em>Min Exclusive</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl#isMaxExclusive <em>Max Exclusive</em>}</li>
  * </ul>
  * </p>
  *
@@ -89,6 +91,46 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	 * @ordered
 	 */
 	protected Version maxVersion = MAX_VERSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMinExclusive() <em>Min Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMinExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MIN_EXCLUSIVE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMinExclusive() <em>Min Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMinExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean minExclusive = MIN_EXCLUSIVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMaxExclusive() <em>Max Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMaxExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MAX_EXCLUSIVE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMaxExclusive() <em>Max Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMaxExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean maxExclusive = MAX_EXCLUSIVE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,6 +219,48 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMinExclusive() {
+		return minExclusive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMinExclusive(boolean newMinExclusive) {
+		boolean oldMinExclusive = minExclusive;
+		minExclusive = newMinExclusive;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE, oldMinExclusive, minExclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isMaxExclusive() {
+		return maxExclusive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaxExclusive(boolean newMaxExclusive) {
+		boolean oldMaxExclusive = maxExclusive;
+		maxExclusive = newMaxExclusive;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE, oldMaxExclusive, maxExclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -186,6 +270,10 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 				return getMinVersion();
 			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
 				return getMaxVersion();
+			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+				return isMinExclusive();
+			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+				return isMaxExclusive();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -206,6 +294,12 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 				return;
 			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
 				setMaxVersion((Version)newValue);
+				return;
+			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+				setMinExclusive((Boolean)newValue);
+				return;
+			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+				setMaxExclusive((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -228,6 +322,12 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
 				setMaxVersion(MAX_VERSION_EDEFAULT);
 				return;
+			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+				setMinExclusive(MIN_EXCLUSIVE_EDEFAULT);
+				return;
+			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+				setMaxExclusive(MAX_EXCLUSIVE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -246,6 +346,10 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 				return MIN_VERSION_EDEFAULT == null ? minVersion != null : !MIN_VERSION_EDEFAULT.equals(minVersion);
 			case BundlePackage.IMPORTED_PACKAGE__MAX_VERSION:
 				return MAX_VERSION_EDEFAULT == null ? maxVersion != null : !MAX_VERSION_EDEFAULT.equals(maxVersion);
+			case BundlePackage.IMPORTED_PACKAGE__MIN_EXCLUSIVE:
+				return minExclusive != MIN_EXCLUSIVE_EDEFAULT;
+			case BundlePackage.IMPORTED_PACKAGE__MAX_EXCLUSIVE:
+				return maxExclusive != MAX_EXCLUSIVE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -266,6 +370,10 @@ public class ImportedPackageImpl extends EObjectImpl implements ImportedPackage 
 		result.append(minVersion);
 		result.append(", maxVersion: ");
 		result.append(maxVersion);
+		result.append(", minExclusive: ");
+		result.append(minExclusive);
+		result.append(", maxExclusive: ");
+		result.append(maxExclusive);
 		result.append(')');
 		return result.toString();
 	}

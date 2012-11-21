@@ -68,6 +68,7 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 			case BundlePackage.EXTENSION: return createExtension();
 			case BundlePackage.ELEMENT: return createElement();
 			case BundlePackage.ATTRIBUTE: return createAttribute();
+			case BundlePackage.REQUIRED_BUNDLE: return createRequiredBundle();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -191,6 +192,16 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	public Attribute createAttribute() {
 		AttributeImpl attribute = new AttributeImpl();
 		return attribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RequiredBundle createRequiredBundle() {
+		RequiredBundleImpl requiredBundle = new RequiredBundleImpl();
+		return requiredBundle;
 	}
 
 	/**
