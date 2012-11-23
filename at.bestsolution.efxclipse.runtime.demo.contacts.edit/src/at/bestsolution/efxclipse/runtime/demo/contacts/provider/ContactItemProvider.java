@@ -525,7 +525,7 @@ public class ContactItemProvider
 		Contact contact = (Contact)object;
 		String firstName = contact.getFirstName();
 		String lastName = contact.getLastName();
-		return (firstName != null ? firstName : "?") + " " + (lastName != null ? lastName : "?");
+		return (firstName != null ? firstName : "") + " " + (lastName != null ? lastName : "");
 	}
 
 	/**
