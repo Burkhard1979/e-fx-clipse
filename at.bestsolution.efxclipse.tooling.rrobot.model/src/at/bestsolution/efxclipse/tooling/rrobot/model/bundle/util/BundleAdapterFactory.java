@@ -77,6 +77,10 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 				return createBundleProjectAdapter();
 			}
 			@Override
+			public Adapter caseFeatureProject(FeatureProject object) {
+				return createFeatureProjectAdapter();
+			}
+			@Override
 			public Adapter caseManifestFile(ManifestFile object) {
 				return createManifestFileAdapter();
 			}
@@ -87,6 +91,18 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseBuildProperties(BuildProperties object) {
 				return createBuildPropertiesAdapter();
+			}
+			@Override
+			public Adapter caseProductFile(ProductFile object) {
+				return createProductFileAdapter();
+			}
+			@Override
+			public Adapter caseProductFileFeaturebase(ProductFileFeaturebase object) {
+				return createProductFileFeaturebaseAdapter();
+			}
+			@Override
+			public Adapter caseFeatureFile(FeatureFile object) {
+				return createFeatureFileAdapter();
 			}
 			@Override
 			public Adapter caseImportedPackage(ImportedPackage object) {
@@ -111,6 +127,22 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRequiredBundle(RequiredBundle object) {
 				return createRequiredBundleAdapter();
+			}
+			@Override
+			public Adapter caseLinkedString(LinkedString object) {
+				return createLinkedStringAdapter();
+			}
+			@Override
+			public Adapter caseFeaturePlugin(FeaturePlugin object) {
+				return createFeaturePluginAdapter();
+			}
+			@Override
+			public Adapter caseRequiredFeature(RequiredFeature object) {
+				return createRequiredFeatureAdapter();
+			}
+			@Override
+			public Adapter caseIncludedFeature(IncludedFeature object) {
+				return createIncludedFeatureAdapter();
 			}
 			@Override
 			public Adapter caseProject(Project object) {
@@ -163,6 +195,20 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject <em>Feature Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject
+	 * @generated
+	 */
+	public Adapter createFeatureProjectAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile <em>Manifest File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -201,6 +247,48 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBuildPropertiesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile <em>Product File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile
+	 * @generated
+	 */
+	public Adapter createProductFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase <em>Product File Featurebase</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase
+	 * @generated
+	 */
+	public Adapter createProductFileFeaturebaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile <em>Feature File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile
+	 * @generated
+	 */
+	public Adapter createFeatureFileAdapter() {
 		return null;
 	}
 
@@ -285,6 +373,62 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRequiredBundleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString <em>Linked String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString
+	 * @generated
+	 */
+	public Adapter createLinkedStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin <em>Feature Plugin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin
+	 * @generated
+	 */
+	public Adapter createFeaturePluginAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature <em>Required Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature
+	 * @generated
+	 */
+	public Adapter createRequiredFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature <em>Included Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature
+	 * @generated
+	 */
+	public Adapter createIncludedFeatureAdapter() {
 		return null;
 	}
 

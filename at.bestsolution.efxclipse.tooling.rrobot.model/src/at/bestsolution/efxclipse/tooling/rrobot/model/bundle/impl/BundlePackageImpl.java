@@ -2,6 +2,15 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.osgi.framework.Version;
+
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Attribute;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BuildProperties;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleFactory;
@@ -10,24 +19,21 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Extension;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile;
-
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
-
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.osgi.framework.Version;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +48,13 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * @generated
 	 */
 	private EClass bundleProjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featureProjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,6 +76,27 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * @generated
 	 */
 	private EClass buildPropertiesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass productFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass productFileFeaturebaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featureFileEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,6 +139,41 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * @generated
 	 */
 	private EClass requiredBundleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkedStringEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featurePluginEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass requiredFeatureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass includedFeatureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum matchRuleEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,6 +325,24 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFeatureProject() {
+		return featureProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeatureProject_Feature() {
+		return (EReference)featureProjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getManifestFile() {
 		return manifestFileEClass;
 	}
@@ -357,6 +444,159 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EReference getBuildProperties_BinIncludes() {
 		return (EReference)buildPropertiesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProductFile() {
+		return productFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProductFile_VmArgs() {
+		return (EAttribute)productFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProductFile_ProgramArgs() {
+		return (EAttribute)productFileEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProductFileFeaturebase() {
+		return productFileFeaturebaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFeatureFile() {
+		return featureFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeatureFile_Version() {
+		return (EAttribute)featureFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeatureFile_Featurename() {
+		return (EAttribute)featureFileEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeatureFile_Featureid() {
+		return (EAttribute)featureFileEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeatureFile_Vendor() {
+		return (EAttribute)featureFileEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeatureFile_Description() {
+		return (EReference)featureFileEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeatureFile_Copyright() {
+		return (EReference)featureFileEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeatureFile_License() {
+		return (EReference)featureFileEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeatureFile_License_feature() {
+		return (EAttribute)featureFileEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeatureFile_License_feature_version() {
+		return (EAttribute)featureFileEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeatureFile_Plugins() {
+		return (EReference)featureFileEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeatureFile_Requiredfeatures() {
+		return (EReference)featureFileEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFeatureFile_Includedfeatures() {
+		return (EReference)featureFileEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -598,6 +838,132 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLinkedString() {
+		return linkedStringEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLinkedString_Weburl() {
+		return (EAttribute)linkedStringEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLinkedString_Value() {
+		return (EAttribute)linkedStringEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFeaturePlugin() {
+		return featurePluginEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeaturePlugin_Id() {
+		return (EAttribute)featurePluginEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFeaturePlugin_Unpack() {
+		return (EAttribute)featurePluginEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRequiredFeature() {
+		return requiredFeatureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredFeature_Id() {
+		return (EAttribute)requiredFeatureEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredFeature_Match() {
+		return (EAttribute)requiredFeatureEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRequiredFeature_Version() {
+		return (EAttribute)requiredFeatureEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIncludedFeature() {
+		return includedFeatureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIncludedFeature_Id() {
+		return (EAttribute)includedFeatureEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIncludedFeature_Version() {
+		return (EAttribute)includedFeatureEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getMatchRule() {
+		return matchRuleEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getVersion() {
 		return versionEDataType;
 	}
@@ -639,6 +1005,9 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		createEAttribute(bundleProjectEClass, BUNDLE_PROJECT__ACTIVATOR_CLASS);
 		createEAttribute(bundleProjectEClass, BUNDLE_PROJECT__VENDOR);
 
+		featureProjectEClass = createEClass(FEATURE_PROJECT);
+		createEReference(featureProjectEClass, FEATURE_PROJECT__FEATURE);
+
 		manifestFileEClass = createEClass(MANIFEST_FILE);
 		createEAttribute(manifestFileEClass, MANIFEST_FILE__BUNDLENAME);
 		createEAttribute(manifestFileEClass, MANIFEST_FILE__SYMBOLICNAME);
@@ -653,6 +1022,26 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 
 		buildPropertiesEClass = createEClass(BUILD_PROPERTIES);
 		createEReference(buildPropertiesEClass, BUILD_PROPERTIES__BIN_INCLUDES);
+
+		productFileEClass = createEClass(PRODUCT_FILE);
+		createEAttribute(productFileEClass, PRODUCT_FILE__VM_ARGS);
+		createEAttribute(productFileEClass, PRODUCT_FILE__PROGRAM_ARGS);
+
+		productFileFeaturebaseEClass = createEClass(PRODUCT_FILE_FEATUREBASE);
+
+		featureFileEClass = createEClass(FEATURE_FILE);
+		createEAttribute(featureFileEClass, FEATURE_FILE__VERSION);
+		createEAttribute(featureFileEClass, FEATURE_FILE__FEATURENAME);
+		createEAttribute(featureFileEClass, FEATURE_FILE__FEATUREID);
+		createEAttribute(featureFileEClass, FEATURE_FILE__VENDOR);
+		createEReference(featureFileEClass, FEATURE_FILE__DESCRIPTION);
+		createEReference(featureFileEClass, FEATURE_FILE__COPYRIGHT);
+		createEReference(featureFileEClass, FEATURE_FILE__LICENSE);
+		createEAttribute(featureFileEClass, FEATURE_FILE__LICENSE_FEATURE);
+		createEAttribute(featureFileEClass, FEATURE_FILE__LICENSE_FEATURE_VERSION);
+		createEReference(featureFileEClass, FEATURE_FILE__PLUGINS);
+		createEReference(featureFileEClass, FEATURE_FILE__REQUIREDFEATURES);
+		createEReference(featureFileEClass, FEATURE_FILE__INCLUDEDFEATURES);
 
 		importedPackageEClass = createEClass(IMPORTED_PACKAGE);
 		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__NAME);
@@ -685,6 +1074,26 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MAX_VERSION);
 		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MIN_EXCLUSIVE);
 		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MAX_EXCLUSIVE);
+
+		linkedStringEClass = createEClass(LINKED_STRING);
+		createEAttribute(linkedStringEClass, LINKED_STRING__WEBURL);
+		createEAttribute(linkedStringEClass, LINKED_STRING__VALUE);
+
+		featurePluginEClass = createEClass(FEATURE_PLUGIN);
+		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__ID);
+		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__UNPACK);
+
+		requiredFeatureEClass = createEClass(REQUIRED_FEATURE);
+		createEAttribute(requiredFeatureEClass, REQUIRED_FEATURE__ID);
+		createEAttribute(requiredFeatureEClass, REQUIRED_FEATURE__MATCH);
+		createEAttribute(requiredFeatureEClass, REQUIRED_FEATURE__VERSION);
+
+		includedFeatureEClass = createEClass(INCLUDED_FEATURE);
+		createEAttribute(includedFeatureEClass, INCLUDED_FEATURE__ID);
+		createEAttribute(includedFeatureEClass, INCLUDED_FEATURE__VERSION);
+
+		// Create enums
+		matchRuleEEnum = createEEnum(MATCH_RULE);
 
 		// Create data types
 		versionEDataType = createEDataType(VERSION);
@@ -722,9 +1131,13 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 
 		// Add supertypes to classes
 		bundleProjectEClass.getESuperTypes().add(theTaskPackage.getProject());
+		featureProjectEClass.getESuperTypes().add(theTaskPackage.getProject());
 		manifestFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 		pluginXMLFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 		buildPropertiesEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
+		productFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
+		productFileFeaturebaseEClass.getESuperTypes().add(this.getProductFile());
+		featureFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bundleProjectEClass, BundleProject.class, "BundleProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -735,6 +1148,9 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getBundleProject_Singleton(), ecorePackage.getEBooleanObject(), "singleton", null, 0, 1, BundleProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBundleProject_ActivatorClass(), ecorePackage.getEString(), "activatorClass", null, 0, 1, BundleProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBundleProject_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, BundleProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featureProjectEClass, FeatureProject.class, "FeatureProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFeatureProject_Feature(), this.getFeatureFile(), null, "feature", null, 0, 1, FeatureProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(manifestFileEClass, ManifestFile.class, "ManifestFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getManifestFile_Bundlename(), ecorePackage.getEString(), "bundlename", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -750,6 +1166,26 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 
 		initEClass(buildPropertiesEClass, BuildProperties.class, "BuildProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBuildProperties_BinIncludes(), theTaskPackage.getResource(), null, "binIncludes", null, 0, -1, BuildProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(productFileEClass, ProductFile.class, "ProductFile", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProductFile_VmArgs(), ecorePackage.getEString(), "vmArgs", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductFile_ProgramArgs(), ecorePackage.getEString(), "programArgs", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(productFileFeaturebaseEClass, ProductFileFeaturebase.class, "ProductFileFeaturebase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(featureFileEClass, FeatureFile.class, "FeatureFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFeatureFile_Version(), this.getVersion(), "version", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureFile_Featurename(), ecorePackage.getEString(), "featurename", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureFile_Featureid(), ecorePackage.getEString(), "featureid", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureFile_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureFile_Description(), this.getLinkedString(), null, "description", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureFile_Copyright(), this.getLinkedString(), null, "copyright", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureFile_License(), this.getLinkedString(), null, "license", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureFile_License_feature(), ecorePackage.getEString(), "license_feature", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureFile_License_feature_version(), this.getVersion(), "license_feature_version", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureFile_Plugins(), this.getFeaturePlugin(), null, "plugins", null, 0, -1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureFile_Requiredfeatures(), this.getRequiredFeature(), null, "requiredfeatures", null, 0, -1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureFile_Includedfeatures(), this.getIncludedFeature(), null, "includedfeatures", null, 0, -1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(importedPackageEClass, ImportedPackage.class, "ImportedPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getImportedPackage_Name(), ecorePackage.getEString(), "name", null, 1, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -782,6 +1218,31 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getRequiredBundle_MaxVersion(), this.getVersion(), "maxVersion", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequiredBundle_MinExclusive(), ecorePackage.getEBoolean(), "minExclusive", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequiredBundle_MaxExclusive(), ecorePackage.getEBoolean(), "maxExclusive", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkedStringEClass, LinkedString.class, "LinkedString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLinkedString_Weburl(), ecorePackage.getEString(), "weburl", null, 0, 1, LinkedString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkedString_Value(), ecorePackage.getEString(), "value", null, 0, 1, LinkedString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featurePluginEClass, FeaturePlugin.class, "FeaturePlugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFeaturePlugin_Id(), ecorePackage.getEString(), "id", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeaturePlugin_Unpack(), ecorePackage.getEBoolean(), "unpack", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(requiredFeatureEClass, RequiredFeature.class, "RequiredFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRequiredFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequiredFeature_Match(), this.getMatchRule(), "match", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequiredFeature_Version(), this.getVersion(), "version", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(includedFeatureEClass, IncludedFeature.class, "IncludedFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIncludedFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, IncludedFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIncludedFeature_Version(), this.getVersion(), "version", null, 0, 1, IncludedFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(matchRuleEEnum, MatchRule.class, "MatchRule");
+		addEEnumLiteral(matchRuleEEnum, MatchRule.NONE);
+		addEEnumLiteral(matchRuleEEnum, MatchRule.EQUIVALENT);
+		addEEnumLiteral(matchRuleEEnum, MatchRule.COMPATIBLE);
+		addEEnumLiteral(matchRuleEEnum, MatchRule.PERFECT);
+		addEEnumLiteral(matchRuleEEnum, MatchRule.GREATER_OR_EQUAL);
 
 		// Initialize data types
 		initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

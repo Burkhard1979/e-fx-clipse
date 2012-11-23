@@ -60,15 +60,22 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case BundlePackage.BUNDLE_PROJECT: return createBundleProject();
+			case BundlePackage.FEATURE_PROJECT: return createFeatureProject();
 			case BundlePackage.MANIFEST_FILE: return createManifestFile();
 			case BundlePackage.PLUGIN_XML_FILE: return createPluginXMLFile();
 			case BundlePackage.BUILD_PROPERTIES: return createBuildProperties();
+			case BundlePackage.PRODUCT_FILE_FEATUREBASE: return createProductFileFeaturebase();
+			case BundlePackage.FEATURE_FILE: return createFeatureFile();
 			case BundlePackage.IMPORTED_PACKAGE: return createImportedPackage();
 			case BundlePackage.EXPORTED_PACKAGE: return createExportedPackage();
 			case BundlePackage.EXTENSION: return createExtension();
 			case BundlePackage.ELEMENT: return createElement();
 			case BundlePackage.ATTRIBUTE: return createAttribute();
 			case BundlePackage.REQUIRED_BUNDLE: return createRequiredBundle();
+			case BundlePackage.LINKED_STRING: return createLinkedString();
+			case BundlePackage.FEATURE_PLUGIN: return createFeaturePlugin();
+			case BundlePackage.REQUIRED_FEATURE: return createRequiredFeature();
+			case BundlePackage.INCLUDED_FEATURE: return createIncludedFeature();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -82,6 +89,8 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case BundlePackage.MATCH_RULE:
+				return createMatchRuleFromString(eDataType, initialValue);
 			case BundlePackage.VERSION:
 				return createVersionFromString(eDataType, initialValue);
 			default:
@@ -97,6 +106,8 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case BundlePackage.MATCH_RULE:
+				return convertMatchRuleToString(eDataType, instanceValue);
 			case BundlePackage.VERSION:
 				return convertVersionToString(eDataType, instanceValue);
 			default:
@@ -112,6 +123,16 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	public BundleProject createBundleProject() {
 		BundleProjectImpl bundleProject = new BundleProjectImpl();
 		return bundleProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeatureProject createFeatureProject() {
+		FeatureProjectImpl featureProject = new FeatureProjectImpl();
+		return featureProject;
 	}
 
 	/**
@@ -142,6 +163,26 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	public BuildProperties createBuildProperties() {
 		BuildPropertiesImpl buildProperties = new BuildPropertiesImpl();
 		return buildProperties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductFileFeaturebase createProductFileFeaturebase() {
+		ProductFileFeaturebaseImpl productFileFeaturebase = new ProductFileFeaturebaseImpl();
+		return productFileFeaturebase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeatureFile createFeatureFile() {
+		FeatureFileImpl featureFile = new FeatureFileImpl();
+		return featureFile;
 	}
 
 	/**
@@ -202,6 +243,66 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	public RequiredBundle createRequiredBundle() {
 		RequiredBundleImpl requiredBundle = new RequiredBundleImpl();
 		return requiredBundle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkedString createLinkedString() {
+		LinkedStringImpl linkedString = new LinkedStringImpl();
+		return linkedString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeaturePlugin createFeaturePlugin() {
+		FeaturePluginImpl featurePlugin = new FeaturePluginImpl();
+		return featurePlugin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RequiredFeature createRequiredFeature() {
+		RequiredFeatureImpl requiredFeature = new RequiredFeatureImpl();
+		return requiredFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IncludedFeature createIncludedFeature() {
+		IncludedFeatureImpl includedFeature = new IncludedFeatureImpl();
+		return includedFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MatchRule createMatchRuleFromString(EDataType eDataType, String initialValue) {
+		MatchRule result = MatchRule.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMatchRuleToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

@@ -1,0 +1,77 @@
+/**
+ */
+package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Feature Plugin</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#getId <em>Id</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#isUnpack <em>Unpack</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getFeaturePlugin()
+ * @model
+ * @generated
+ */
+public interface FeaturePlugin extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getFeaturePlugin_Id()
+	 * @model
+	 * @generated
+	 */
+	String getId();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Unpack</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unpack</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unpack</em>' attribute.
+	 * @see #setUnpack(boolean)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getFeaturePlugin_Unpack()
+	 * @model
+	 * @generated
+	 */
+	boolean isUnpack();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#isUnpack <em>Unpack</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unpack</em>' attribute.
+	 * @see #isUnpack()
+	 * @generated
+	 */
+	void setUnpack(boolean value);
+
+} // FeaturePlugin

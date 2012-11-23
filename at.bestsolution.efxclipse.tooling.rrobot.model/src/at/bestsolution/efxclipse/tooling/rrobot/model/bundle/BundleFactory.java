@@ -31,6 +31,15 @@ public interface BundleFactory extends EFactory {
 	BundleProject createBundleProject();
 
 	/**
+	 * Returns a new object of class '<em>Feature Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature Project</em>'.
+	 * @generated
+	 */
+	FeatureProject createFeatureProject();
+
+	/**
 	 * Returns a new object of class '<em>Manifest File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,6 +65,24 @@ public interface BundleFactory extends EFactory {
 	 * @generated
 	 */
 	BuildProperties createBuildProperties();
+
+	/**
+	 * Returns a new object of class '<em>Product File Featurebase</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Product File Featurebase</em>'.
+	 * @generated
+	 */
+	ProductFileFeaturebase createProductFileFeaturebase();
+
+	/**
+	 * Returns a new object of class '<em>Feature File</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature File</em>'.
+	 * @generated
+	 */
+	FeatureFile createFeatureFile();
 
 	/**
 	 * Returns a new object of class '<em>Imported Package</em>'.
@@ -110,6 +137,42 @@ public interface BundleFactory extends EFactory {
 	 * @generated
 	 */
 	RequiredBundle createRequiredBundle();
+
+	/**
+	 * Returns a new object of class '<em>Linked String</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Linked String</em>'.
+	 * @generated
+	 */
+	LinkedString createLinkedString();
+
+	/**
+	 * Returns a new object of class '<em>Feature Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature Plugin</em>'.
+	 * @generated
+	 */
+	FeaturePlugin createFeaturePlugin();
+
+	/**
+	 * Returns a new object of class '<em>Required Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Required Feature</em>'.
+	 * @generated
+	 */
+	RequiredFeature createRequiredFeature();
+
+	/**
+	 * Returns a new object of class '<em>Included Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Included Feature</em>'.
+	 * @generated
+	 */
+	IncludedFeature createIncludedFeature();
 
 	/**
 	 * Returns the package supported by this factory.

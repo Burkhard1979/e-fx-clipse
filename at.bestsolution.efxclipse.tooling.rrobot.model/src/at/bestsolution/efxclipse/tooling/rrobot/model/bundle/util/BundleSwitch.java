@@ -78,6 +78,13 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case BundlePackage.FEATURE_PROJECT: {
+				FeatureProject featureProject = (FeatureProject)theEObject;
+				T result = caseFeatureProject(featureProject);
+				if (result == null) result = caseProject(featureProject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case BundlePackage.MANIFEST_FILE: {
 				ManifestFile manifestFile = (ManifestFile)theEObject;
 				T result = caseManifestFile(manifestFile);
@@ -102,6 +109,34 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemplatedFile(buildProperties);
 				if (result == null) result = caseFile(buildProperties);
 				if (result == null) result = caseResource(buildProperties);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.PRODUCT_FILE: {
+				ProductFile productFile = (ProductFile)theEObject;
+				T result = caseProductFile(productFile);
+				if (result == null) result = caseTemplatedFile(productFile);
+				if (result == null) result = caseFile(productFile);
+				if (result == null) result = caseResource(productFile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.PRODUCT_FILE_FEATUREBASE: {
+				ProductFileFeaturebase productFileFeaturebase = (ProductFileFeaturebase)theEObject;
+				T result = caseProductFileFeaturebase(productFileFeaturebase);
+				if (result == null) result = caseProductFile(productFileFeaturebase);
+				if (result == null) result = caseTemplatedFile(productFileFeaturebase);
+				if (result == null) result = caseFile(productFileFeaturebase);
+				if (result == null) result = caseResource(productFileFeaturebase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.FEATURE_FILE: {
+				FeatureFile featureFile = (FeatureFile)theEObject;
+				T result = caseFeatureFile(featureFile);
+				if (result == null) result = caseTemplatedFile(featureFile);
+				if (result == null) result = caseFile(featureFile);
+				if (result == null) result = caseResource(featureFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -141,6 +176,30 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case BundlePackage.LINKED_STRING: {
+				LinkedString linkedString = (LinkedString)theEObject;
+				T result = caseLinkedString(linkedString);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.FEATURE_PLUGIN: {
+				FeaturePlugin featurePlugin = (FeaturePlugin)theEObject;
+				T result = caseFeaturePlugin(featurePlugin);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.REQUIRED_FEATURE: {
+				RequiredFeature requiredFeature = (RequiredFeature)theEObject;
+				T result = caseRequiredFeature(requiredFeature);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.INCLUDED_FEATURE: {
+				IncludedFeature includedFeature = (IncludedFeature)theEObject;
+				T result = caseIncludedFeature(includedFeature);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -157,6 +216,21 @@ public class BundleSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBundleProject(BundleProject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Project</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureProject(FeatureProject object) {
 		return null;
 	}
 
@@ -202,6 +276,51 @@ public class BundleSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBuildProperties(BuildProperties object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductFile(ProductFile object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product File Featurebase</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product File Featurebase</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductFileFeaturebase(ProductFileFeaturebase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureFile(FeatureFile object) {
 		return null;
 	}
 
@@ -292,6 +411,66 @@ public class BundleSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRequiredBundle(RequiredBundle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Linked String</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Linked String</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinkedString(LinkedString object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Plugin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeaturePlugin(FeaturePlugin object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Required Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Required Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRequiredFeature(RequiredFeature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Included Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Included Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIncludedFeature(IncludedFeature object) {
 		return null;
 	}
 

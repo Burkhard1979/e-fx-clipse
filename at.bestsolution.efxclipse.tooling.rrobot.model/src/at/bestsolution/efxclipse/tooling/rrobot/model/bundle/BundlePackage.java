@@ -7,6 +7,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -159,6 +160,52 @@ public interface BundlePackage extends EPackage {
 	int BUNDLE_PROJECT_FEATURE_COUNT = TaskPackage.PROJECT_FEATURE_COUNT + 7;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl <em>Feature Project</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getFeatureProject()
+	 * @generated
+	 */
+	int FEATURE_PROJECT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PROJECT__NAME = TaskPackage.PROJECT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PROJECT__RESOURCES = TaskPackage.PROJECT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PROJECT__FEATURE = TaskPackage.PROJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Project</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PROJECT_FEATURE_COUNT = TaskPackage.PROJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl <em>Manifest File</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -166,7 +213,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getManifestFile()
 	 * @generated
 	 */
-	int MANIFEST_FILE = 1;
+	int MANIFEST_FILE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -266,7 +313,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getPluginXMLFile()
 	 * @generated
 	 */
-	int PLUGIN_XML_FILE = 2;
+	int PLUGIN_XML_FILE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -312,7 +359,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getBuildProperties()
 	 * @generated
 	 */
-	int BUILD_PROPERTIES = 3;
+	int BUILD_PROPERTIES = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -351,6 +398,261 @@ public interface BundlePackage extends EPackage {
 	int BUILD_PROPERTIES_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl <em>Product File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getProductFile()
+	 * @generated
+	 */
+	int PRODUCT_FILE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE__GENERATOR_TYPE = TaskPackage.TEMPLATED_FILE__GENERATOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Vm Args</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE__VM_ARGS = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Program Args</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE__PROGRAM_ARGS = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Product File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileFeaturebaseImpl <em>Product File Featurebase</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileFeaturebaseImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getProductFileFeaturebase()
+	 * @generated
+	 */
+	int PRODUCT_FILE_FEATUREBASE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE__NAME = PRODUCT_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE__GENERATOR_TYPE = PRODUCT_FILE__GENERATOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Vm Args</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE__VM_ARGS = PRODUCT_FILE__VM_ARGS;
+
+	/**
+	 * The feature id for the '<em><b>Program Args</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE__PROGRAM_ARGS = PRODUCT_FILE__PROGRAM_ARGS;
+
+	/**
+	 * The number of structural features of the '<em>Product File Featurebase</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE_FEATURE_COUNT = PRODUCT_FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureFileImpl <em>Feature File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getFeatureFile()
+	 * @generated
+	 */
+	int FEATURE_FILE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__GENERATOR_TYPE = TaskPackage.TEMPLATED_FILE__GENERATOR_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__VERSION = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Featurename</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__FEATURENAME = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Featureid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__FEATUREID = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__VENDOR = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__DESCRIPTION = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Copyright</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__COPYRIGHT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>License</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__LICENSE = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>License feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__LICENSE_FEATURE = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>License feature version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__LICENSE_FEATURE_VERSION = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Plugins</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__PLUGINS = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Requiredfeatures</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__REQUIREDFEATURES = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Includedfeatures</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__INCLUDEDFEATURES = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 11;
+
+	/**
+	 * The number of structural features of the '<em>Feature File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 12;
+
+	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl <em>Imported Package</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -358,7 +660,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getImportedPackage()
 	 * @generated
 	 */
-	int IMPORTED_PACKAGE = 4;
+	int IMPORTED_PACKAGE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -422,7 +724,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getExportedPackage()
 	 * @generated
 	 */
-	int EXPORTED_PACKAGE = 5;
+	int EXPORTED_PACKAGE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -459,7 +761,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getExtension()
 	 * @generated
 	 */
-	int EXTENSION = 6;
+	int EXTENSION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -505,7 +807,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getElement()
 	 * @generated
 	 */
-	int ELEMENT = 7;
+	int ELEMENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -551,7 +853,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getAttribute()
 	 * @generated
 	 */
-	int ATTRIBUTE = 8;
+	int ATTRIBUTE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -588,7 +890,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getRequiredBundle()
 	 * @generated
 	 */
-	int REQUIRED_BUNDLE = 9;
+	int REQUIRED_BUNDLE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -645,6 +947,173 @@ public interface BundlePackage extends EPackage {
 	int REQUIRED_BUNDLE_FEATURE_COUNT = 5;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.LinkedStringImpl <em>Linked String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.LinkedStringImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getLinkedString()
+	 * @generated
+	 */
+	int LINKED_STRING = 14;
+
+	/**
+	 * The feature id for the '<em><b>Weburl</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_STRING__WEBURL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_STRING__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Linked String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINKED_STRING_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl <em>Feature Plugin</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getFeaturePlugin()
+	 * @generated
+	 */
+	int FEATURE_PLUGIN = 15;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PLUGIN__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Unpack</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PLUGIN__UNPACK = 1;
+
+	/**
+	 * The number of structural features of the '<em>Feature Plugin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PLUGIN_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl <em>Required Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getRequiredFeature()
+	 * @generated
+	 */
+	int REQUIRED_FEATURE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_FEATURE__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Match</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_FEATURE__MATCH = 1;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_FEATURE__VERSION = 2;
+
+	/**
+	 * The number of structural features of the '<em>Required Feature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_FEATURE_FEATURE_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.IncludedFeatureImpl <em>Included Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.IncludedFeatureImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getIncludedFeature()
+	 * @generated
+	 */
+	int INCLUDED_FEATURE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDED_FEATURE__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDED_FEATURE__VERSION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Included Feature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDED_FEATURE_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getMatchRule()
+	 * @generated
+	 */
+	int MATCH_RULE = 18;
+
+	/**
 	 * The meta object id for the '<em>Version</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -652,7 +1121,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 10;
+	int VERSION = 19;
 
 
 	/**
@@ -741,6 +1210,27 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBundleProject_Vendor();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject <em>Feature Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Project</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject
+	 * @generated
+	 */
+	EClass getFeatureProject();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject#getFeature <em>Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Feature</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject#getFeature()
+	 * @see #getFeatureProject()
+	 * @generated
+	 */
+	EReference getFeatureProject_Feature();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile <em>Manifest File</em>}'.
@@ -870,6 +1360,190 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBuildProperties_BinIncludes();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile <em>Product File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Product File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile
+	 * @generated
+	 */
+	EClass getProductFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getVmArgs <em>Vm Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vm Args</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getVmArgs()
+	 * @see #getProductFile()
+	 * @generated
+	 */
+	EAttribute getProductFile_VmArgs();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getProgramArgs <em>Program Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Program Args</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getProgramArgs()
+	 * @see #getProductFile()
+	 * @generated
+	 */
+	EAttribute getProductFile_ProgramArgs();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase <em>Product File Featurebase</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Product File Featurebase</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase
+	 * @generated
+	 */
+	EClass getProductFileFeaturebase();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile <em>Feature File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile
+	 * @generated
+	 */
+	EClass getFeatureFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getVersion()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EAttribute getFeatureFile_Version();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getFeaturename <em>Featurename</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Featurename</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getFeaturename()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EAttribute getFeatureFile_Featurename();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getFeatureid <em>Featureid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Featureid</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getFeatureid()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EAttribute getFeatureFile_Featureid();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getVendor <em>Vendor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vendor</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getVendor()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EAttribute getFeatureFile_Vendor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Description</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getDescription()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EReference getFeatureFile_Description();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getCopyright <em>Copyright</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Copyright</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getCopyright()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EReference getFeatureFile_Copyright();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense <em>License</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>License</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EReference getFeatureFile_License();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense_feature <em>License feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>License feature</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense_feature()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EAttribute getFeatureFile_License_feature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense_feature_version <em>License feature version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>License feature version</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense_feature_version()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EAttribute getFeatureFile_License_feature_version();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getPlugins <em>Plugins</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Plugins</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getPlugins()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EReference getFeatureFile_Plugins();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getRequiredfeatures <em>Requiredfeatures</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Requiredfeatures</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getRequiredfeatures()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EReference getFeatureFile_Requiredfeatures();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getIncludedfeatures <em>Includedfeatures</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Includedfeatures</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getIncludedfeatures()
+	 * @see #getFeatureFile()
+	 * @generated
+	 */
+	EReference getFeatureFile_Includedfeatures();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage <em>Imported Package</em>}'.
@@ -1152,6 +1826,155 @@ public interface BundlePackage extends EPackage {
 	EAttribute getRequiredBundle_MaxExclusive();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString <em>Linked String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Linked String</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString
+	 * @generated
+	 */
+	EClass getLinkedString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString#getWeburl <em>Weburl</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Weburl</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString#getWeburl()
+	 * @see #getLinkedString()
+	 * @generated
+	 */
+	EAttribute getLinkedString_Weburl();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString#getValue()
+	 * @see #getLinkedString()
+	 * @generated
+	 */
+	EAttribute getLinkedString_Value();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin <em>Feature Plugin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Plugin</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin
+	 * @generated
+	 */
+	EClass getFeaturePlugin();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#getId()
+	 * @see #getFeaturePlugin()
+	 * @generated
+	 */
+	EAttribute getFeaturePlugin_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#isUnpack <em>Unpack</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unpack</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#isUnpack()
+	 * @see #getFeaturePlugin()
+	 * @generated
+	 */
+	EAttribute getFeaturePlugin_Unpack();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature <em>Required Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Required Feature</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature
+	 * @generated
+	 */
+	EClass getRequiredFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getId()
+	 * @see #getRequiredFeature()
+	 * @generated
+	 */
+	EAttribute getRequiredFeature_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getMatch <em>Match</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Match</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getMatch()
+	 * @see #getRequiredFeature()
+	 * @generated
+	 */
+	EAttribute getRequiredFeature_Match();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getVersion()
+	 * @see #getRequiredFeature()
+	 * @generated
+	 */
+	EAttribute getRequiredFeature_Version();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature <em>Included Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Included Feature</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature
+	 * @generated
+	 */
+	EClass getIncludedFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature#getId()
+	 * @see #getIncludedFeature()
+	 * @generated
+	 */
+	EAttribute getIncludedFeature_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature#getVersion()
+	 * @see #getIncludedFeature()
+	 * @generated
+	 */
+	EAttribute getIncludedFeature_Version();
+
+	/**
+	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Match Rule</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule
+	 * @generated
+	 */
+	EEnum getMatchRule();
+
+	/**
 	 * Returns the meta object for data type '{@link org.osgi.framework.Version <em>Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1249,6 +2072,24 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BUNDLE_PROJECT__VENDOR = eINSTANCE.getBundleProject_Vendor();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl <em>Feature Project</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getFeatureProject()
+		 * @generated
+		 */
+		EClass FEATURE_PROJECT = eINSTANCE.getFeatureProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Feature</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_PROJECT__FEATURE = eINSTANCE.getFeatureProject_Feature();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl <em>Manifest File</em>}' class.
@@ -1351,6 +2192,148 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EReference BUILD_PROPERTIES__BIN_INCLUDES = eINSTANCE.getBuildProperties_BinIncludes();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl <em>Product File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getProductFile()
+		 * @generated
+		 */
+		EClass PRODUCT_FILE = eINSTANCE.getProductFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Vm Args</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_FILE__VM_ARGS = eINSTANCE.getProductFile_VmArgs();
+
+		/**
+		 * The meta object literal for the '<em><b>Program Args</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_FILE__PROGRAM_ARGS = eINSTANCE.getProductFile_ProgramArgs();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileFeaturebaseImpl <em>Product File Featurebase</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileFeaturebaseImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getProductFileFeaturebase()
+		 * @generated
+		 */
+		EClass PRODUCT_FILE_FEATUREBASE = eINSTANCE.getProductFileFeaturebase();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureFileImpl <em>Feature File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getFeatureFile()
+		 * @generated
+		 */
+		EClass FEATURE_FILE = eINSTANCE.getFeatureFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_FILE__VERSION = eINSTANCE.getFeatureFile_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Featurename</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_FILE__FEATURENAME = eINSTANCE.getFeatureFile_Featurename();
+
+		/**
+		 * The meta object literal for the '<em><b>Featureid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_FILE__FEATUREID = eINSTANCE.getFeatureFile_Featureid();
+
+		/**
+		 * The meta object literal for the '<em><b>Vendor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_FILE__VENDOR = eINSTANCE.getFeatureFile_Vendor();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_FILE__DESCRIPTION = eINSTANCE.getFeatureFile_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Copyright</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_FILE__COPYRIGHT = eINSTANCE.getFeatureFile_Copyright();
+
+		/**
+		 * The meta object literal for the '<em><b>License</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_FILE__LICENSE = eINSTANCE.getFeatureFile_License();
+
+		/**
+		 * The meta object literal for the '<em><b>License feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_FILE__LICENSE_FEATURE = eINSTANCE.getFeatureFile_License_feature();
+
+		/**
+		 * The meta object literal for the '<em><b>License feature version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_FILE__LICENSE_FEATURE_VERSION = eINSTANCE.getFeatureFile_License_feature_version();
+
+		/**
+		 * The meta object literal for the '<em><b>Plugins</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_FILE__PLUGINS = eINSTANCE.getFeatureFile_Plugins();
+
+		/**
+		 * The meta object literal for the '<em><b>Requiredfeatures</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_FILE__REQUIREDFEATURES = eINSTANCE.getFeatureFile_Requiredfeatures();
+
+		/**
+		 * The meta object literal for the '<em><b>Includedfeatures</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_FILE__INCLUDEDFEATURES = eINSTANCE.getFeatureFile_Includedfeatures();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ImportedPackageImpl <em>Imported Package</em>}' class.
@@ -1571,6 +2554,128 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute REQUIRED_BUNDLE__MAX_EXCLUSIVE = eINSTANCE.getRequiredBundle_MaxExclusive();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.LinkedStringImpl <em>Linked String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.LinkedStringImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getLinkedString()
+		 * @generated
+		 */
+		EClass LINKED_STRING = eINSTANCE.getLinkedString();
+
+		/**
+		 * The meta object literal for the '<em><b>Weburl</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINKED_STRING__WEBURL = eINSTANCE.getLinkedString_Weburl();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINKED_STRING__VALUE = eINSTANCE.getLinkedString_Value();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl <em>Feature Plugin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getFeaturePlugin()
+		 * @generated
+		 */
+		EClass FEATURE_PLUGIN = eINSTANCE.getFeaturePlugin();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_PLUGIN__ID = eINSTANCE.getFeaturePlugin_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Unpack</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_PLUGIN__UNPACK = eINSTANCE.getFeaturePlugin_Unpack();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl <em>Required Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getRequiredFeature()
+		 * @generated
+		 */
+		EClass REQUIRED_FEATURE = eINSTANCE.getRequiredFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_FEATURE__ID = eINSTANCE.getRequiredFeature_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Match</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_FEATURE__MATCH = eINSTANCE.getRequiredFeature_Match();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIRED_FEATURE__VERSION = eINSTANCE.getRequiredFeature_Version();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.IncludedFeatureImpl <em>Included Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.IncludedFeatureImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getIncludedFeature()
+		 * @generated
+		 */
+		EClass INCLUDED_FEATURE = eINSTANCE.getIncludedFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INCLUDED_FEATURE__ID = eINSTANCE.getIncludedFeature_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INCLUDED_FEATURE__VERSION = eINSTANCE.getIncludedFeature_Version();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getMatchRule()
+		 * @generated
+		 */
+		EEnum MATCH_RULE = eINSTANCE.getMatchRule();
 
 		/**
 		 * The meta object literal for the '<em>Version</em>' data type.

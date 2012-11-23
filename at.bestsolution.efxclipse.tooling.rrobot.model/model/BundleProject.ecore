@@ -14,6 +14,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="activatorClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureProject" eSuperTypes="RobotTask.ecore#//Project">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="#//FeatureFile"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ManifestFile" eSuperTypes="RobotTask.ecore#//TemplatedFile">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bundlename" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -37,6 +41,31 @@
   <eClassifiers xsi:type="ecore:EClass" name="BuildProperties" eSuperTypes="RobotTask.ecore#//TemplatedFile">
     <eStructuralFeatures xsi:type="ecore:EReference" name="binIncludes" upperBound="-1"
         eType="ecore:EClass RobotTask.ecore#//Resource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductFile" abstract="true" eSuperTypes="RobotTask.ecore#//TemplatedFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vmArgs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="programArgs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductFileFeaturebase" eSuperTypes="#//ProductFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureFile" eSuperTypes="RobotTask.ecore#//TemplatedFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featurename" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//LinkedString"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="copyright" eType="#//LinkedString"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="license" eType="#//LinkedString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="license_feature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="license_feature_version"
+        eType="#//Version"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plugins" upperBound="-1"
+        eType="#//FeaturePlugin" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredfeatures" upperBound="-1"
+        eType="#//RequiredFeature" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includedfeatures" upperBound="-1"
+        eType="#//IncludedFeature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.osgi.framework.Version"/>
   <eClassifiers xsi:type="ecore:EClass" name="ImportedPackage">
@@ -73,5 +102,29 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkedString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weburl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturePlugin">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unpack" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="match" eType="#//MatchRule"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IncludedFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MatchRule">
+    <eLiterals name="none"/>
+    <eLiterals name="equivalent" value="1"/>
+    <eLiterals name="compatible" value="2"/>
+    <eLiterals name="perfect" value="3"/>
+    <eLiterals name="greaterOrEqual" value="4"/>
   </eClassifiers>
 </ecore:EPackage>
