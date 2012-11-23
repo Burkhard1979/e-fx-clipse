@@ -8,7 +8,7 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.runtime.core;
+package at.bestsolution.efxclipse.runtime.core.log;
 
 public interface Logger {
 	public void log(Level level, String message, Throwable... t);
