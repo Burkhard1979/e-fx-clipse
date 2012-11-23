@@ -218,25 +218,21 @@ public class FeatureGenerator implements Generator<FeatureFile> {
     {
       EList<FeaturePlugin> _plugins = file.getPlugins();
       for(final FeaturePlugin p : _plugins) {
-        _builder.append("<plugin ");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("id=\"");
+        _builder.append("   \t\t");
+        _builder.append("<plugin id=\"");
         String _id = p.getId();
-        _builder.append(_id, "	");
-        _builder.append("\"");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("install-size=\"0\"");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("version=\"0.0.0\"");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("unpack=\"");
+        _builder.append(_id, "   		");
+        _builder.append("\" install-size=\"0\" version=\"0.0.0\" unpack=\"");
         boolean _isUnpack = p.isUnpack();
-        _builder.append(_isUnpack, "	");
-        _builder.append("\"/>");
+        _builder.append(_isUnpack, "   		");
+        _builder.append("\" ");
+        {
+          boolean _isFragment = p.isFragment();
+          if (_isFragment) {
+            _builder.append("fragment=\"true\"");
+          }
+        }
+        _builder.append("/>");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -244,16 +240,17 @@ public class FeatureGenerator implements Generator<FeatureFile> {
     {
       EList<IncludedFeature> _includedfeatures = file.getIncludedfeatures();
       for(final IncludedFeature i : _includedfeatures) {
+        _builder.append("   \t\t");
         _builder.append("<includes id=\"");
         String _id_1 = i.getId();
-        _builder.append(_id_1, "");
+        _builder.append(_id_1, "   		");
         _builder.append("\" version=\"");
         {
           Version _version_1 = i.getVersion();
           boolean _notEquals_8 = (!Objects.equal(_version_1, null));
           if (_notEquals_8) {
             Version _version_2 = i.getVersion();
-            _builder.append(_version_2, "");
+            _builder.append(_version_2, "   		");
           } else {
             _builder.append("0.0.0");
           }

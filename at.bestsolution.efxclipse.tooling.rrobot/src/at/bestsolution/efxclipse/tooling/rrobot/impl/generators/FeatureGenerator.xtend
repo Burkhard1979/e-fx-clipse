@@ -51,15 +51,11 @@ class FeatureGenerator implements Generator<FeatureFile> {
    		«ENDIF»
 
    		«FOR p : file.plugins»
-		<plugin 
-			id="«p.id»"
-			install-size="0"
-			version="0.0.0"
-			unpack="«p.unpack»"/>
-   		«ENDFOR»
+   		<plugin id="«p.id»" install-size="0" version="0.0.0" unpack="«p.unpack»" «IF p.fragment»fragment="true"«ENDIF»/>
+		«ENDFOR»
 
    		«FOR i : file.includedfeatures»
-		<includes id="«i.id»" version="«IF i.version != null»«i.version»«ELSE»0.0.0«ENDIF»" />
+   		<includes id="«i.id»" version="«IF i.version != null»«i.version»«ELSE»0.0.0«ENDIF»" />
    		«ENDFOR»
 
    		«IF !file.requiredfeatures.empty»

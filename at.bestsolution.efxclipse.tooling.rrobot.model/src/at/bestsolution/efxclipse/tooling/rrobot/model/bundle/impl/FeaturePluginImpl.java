@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#isUnpack <em>Unpack</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#isFragment <em>Fragment</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,26 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 	 * @ordered
 	 */
 	protected boolean unpack = UNPACK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isFragment() <em>Fragment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isFragment()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean FRAGMENT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isFragment() <em>Fragment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isFragment()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean fragment = FRAGMENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +154,27 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isFragment() {
+		return fragment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFragment(boolean newFragment) {
+		boolean oldFragment = fragment;
+		fragment = newFragment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.FEATURE_PLUGIN__FRAGMENT, oldFragment, fragment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +182,8 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 				return getId();
 			case BundlePackage.FEATURE_PLUGIN__UNPACK:
 				return isUnpack();
+			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
+				return isFragment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +201,9 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 				return;
 			case BundlePackage.FEATURE_PLUGIN__UNPACK:
 				setUnpack((Boolean)newValue);
+				return;
+			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
+				setFragment((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +223,9 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 			case BundlePackage.FEATURE_PLUGIN__UNPACK:
 				setUnpack(UNPACK_EDEFAULT);
 				return;
+			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
+				setFragment(FRAGMENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +242,8 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.FEATURE_PLUGIN__UNPACK:
 				return unpack != UNPACK_EDEFAULT;
+			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
+				return fragment != FRAGMENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,6 +262,8 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 		result.append(id);
 		result.append(", unpack: ");
 		result.append(unpack);
+		result.append(", fragment: ");
+		result.append(fragment);
 		result.append(')');
 		return result.toString();
 	}

@@ -1012,13 +1012,22 @@ public interface BundlePackage extends EPackage {
 	int FEATURE_PLUGIN__UNPACK = 1;
 
 	/**
+	 * The feature id for the '<em><b>Fragment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PLUGIN__FRAGMENT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Feature Plugin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_PLUGIN_FEATURE_COUNT = 2;
+	int FEATURE_PLUGIN_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl <em>Required Feature</em>}' class.
@@ -1890,6 +1899,17 @@ public interface BundlePackage extends EPackage {
 	EAttribute getFeaturePlugin_Unpack();
 
 	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#isFragment <em>Fragment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fragment</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#isFragment()
+	 * @see #getFeaturePlugin()
+	 * @generated
+	 */
+	EAttribute getFeaturePlugin_Fragment();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature <em>Required Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2606,6 +2626,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FEATURE_PLUGIN__UNPACK = eINSTANCE.getFeaturePlugin_Unpack();
+
+		/**
+		 * The meta object literal for the '<em><b>Fragment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_PLUGIN__FRAGMENT = eINSTANCE.getFeaturePlugin_Fragment();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl <em>Required Feature</em>}' class.

@@ -892,6 +892,15 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFeaturePlugin_Fragment() {
+		return (EAttribute)featurePluginEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRequiredFeature() {
 		return requiredFeatureEClass;
 	}
@@ -1082,6 +1091,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		featurePluginEClass = createEClass(FEATURE_PLUGIN);
 		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__ID);
 		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__UNPACK);
+		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__FRAGMENT);
 
 		requiredFeatureEClass = createEClass(REQUIRED_FEATURE);
 		createEAttribute(requiredFeatureEClass, REQUIRED_FEATURE__ID);
@@ -1226,6 +1236,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEClass(featurePluginEClass, FeaturePlugin.class, "FeaturePlugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeaturePlugin_Id(), ecorePackage.getEString(), "id", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeaturePlugin_Unpack(), ecorePackage.getEBoolean(), "unpack", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeaturePlugin_Fragment(), ecorePackage.getEBoolean(), "fragment", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(requiredFeatureEClass, RequiredFeature.class, "RequiredFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRequiredFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

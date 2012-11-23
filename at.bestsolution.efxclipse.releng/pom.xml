@@ -29,6 +29,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.databinding</module>
 		<module>../at.bestsolution.efxclipse.runtime.application</module>
 		<module>../at.bestsolution.efxclipse.runtime.dialogs</module>
+		<module>../at.bestsolution.efxclipse.runtime.core</module>
 		<module>../at.bestsolution.efxclipse.runtime.di</module>
 		<module>../at.bestsolution.efxclipse.runtime.guice</module>
 		<module>../at.bestsolution.efxclipse.runtime.osgi.util</module>
