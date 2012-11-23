@@ -295,7 +295,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTypeURLKeyword_2_1_3_0_0 = (Keyword)cTypeAssignment_2_1_3_0.eContents().get(0);
 		private final RuleCall cWSTerminalRuleCall_2_1_3_1 = (RuleCall)cGroup_2_1_3.eContents().get(1);
 		
-		//CSSType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+		//CSSType hidden(SL_COMMENT, ML_COMMENT):
 		//	{CSSRangedIntType} (doku=Doku WS*)? type="@INT" "(" WS* from=INT WS* "->" WS* to=INT WS* ")" | {CSSRangedDoubleType}
 		//	(doku=Doku WS*)? type="@NUM" "(" WS* from=DOUBLE WS* "->" WS* to=DOUBLE WS* ")" | (doku=Doku WS*)? (type="@INT" WS* |
 		//	type="@NUM" WS* | type="@STRING" WS* | type="@URL" WS*);
@@ -1646,7 +1646,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getCSSBaseTypeAccess().getRule();
 	}
 
-	//CSSType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+	//CSSType hidden(SL_COMMENT, ML_COMMENT):
 	//	{CSSRangedIntType} (doku=Doku WS*)? type="@INT" "(" WS* from=INT WS* "->" WS* to=INT WS* ")" | {CSSRangedDoubleType}
 	//	(doku=Doku WS*)? type="@NUM" "(" WS* from=DOUBLE WS* "->" WS* to=DOUBLE WS* ")" | (doku=Doku WS*)? (type="@INT" WS* |
 	//	type="@NUM" WS* | type="@STRING" WS* | type="@URL" WS*);

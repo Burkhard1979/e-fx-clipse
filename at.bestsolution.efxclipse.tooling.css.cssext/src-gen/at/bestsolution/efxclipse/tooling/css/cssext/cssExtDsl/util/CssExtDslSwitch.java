@@ -110,6 +110,14 @@ public class CssExtDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case CssExtDslPackage.CSS_TYPE:
+      {
+        CSSType cssType = (CSSType)theEObject;
+        T result = caseCSSType(cssType);
+        if (result == null) result = caseCSSRule(cssType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case CssExtDslPackage.ELEMENT_DEFINITION:
       {
         ElementDefinition elementDefinition = (ElementDefinition)theEObject;
@@ -171,6 +179,7 @@ public class CssExtDslSwitch<T> extends Switch<T>
       {
         CSSRangedIntType cssRangedIntType = (CSSRangedIntType)theEObject;
         T result = caseCSSRangedIntType(cssRangedIntType);
+        if (result == null) result = caseCSSType(cssRangedIntType);
         if (result == null) result = caseCSSRule(cssRangedIntType);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -179,6 +188,7 @@ public class CssExtDslSwitch<T> extends Switch<T>
       {
         CSSRangedDoubleType cssRangedDoubleType = (CSSRangedDoubleType)theEObject;
         T result = caseCSSRangedDoubleType(cssRangedDoubleType);
+        if (result == null) result = caseCSSType(cssRangedDoubleType);
         if (result == null) result = caseCSSRule(cssRangedDoubleType);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -367,6 +377,22 @@ public class CssExtDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCSSRule(CSSRule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>CSS Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>CSS Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCSSType(CSSType object)
   {
     return null;
   }

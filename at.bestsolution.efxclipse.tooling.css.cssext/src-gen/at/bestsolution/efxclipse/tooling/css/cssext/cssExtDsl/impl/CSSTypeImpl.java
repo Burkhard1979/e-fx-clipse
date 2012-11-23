@@ -5,9 +5,8 @@
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -20,19 +19,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>CSS Rule Ref</b></em>'.
+ * An implementation of the model object '<em><b>CSS Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleRefImpl#getDoku <em>Doku</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleRefImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSTypeImpl#getDoku <em>Doku</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSTypeImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
+public class CSSTypeImpl extends CSSRuleImpl implements CSSType
 {
   /**
    * The cached value of the '{@link #getDoku() <em>Doku</em>}' containment reference.
@@ -45,21 +44,31 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   protected Doku doku;
 
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected Definition ref;
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CSSRuleRefImpl()
+  protected CSSTypeImpl()
   {
     super();
   }
@@ -72,7 +81,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   @Override
   protected EClass eStaticClass()
   {
-    return CssExtDslPackage.Literals.CSS_RULE_REF;
+    return CssExtDslPackage.Literals.CSS_TYPE;
   }
 
   /**
@@ -96,7 +105,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
     doku = newDoku;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE_REF__DOKU, oldDoku, newDoku);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_TYPE__DOKU, oldDoku, newDoku);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -113,14 +122,14 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
     {
       NotificationChain msgs = null;
       if (doku != null)
-        msgs = ((InternalEObject)doku).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_RULE_REF__DOKU, null, msgs);
+        msgs = ((InternalEObject)doku).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_TYPE__DOKU, null, msgs);
       if (newDoku != null)
-        msgs = ((InternalEObject)newDoku).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_RULE_REF__DOKU, null, msgs);
+        msgs = ((InternalEObject)newDoku).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_TYPE__DOKU, null, msgs);
       msgs = basicSetDoku(newDoku, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE_REF__DOKU, newDoku, newDoku));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_TYPE__DOKU, newDoku, newDoku));
   }
 
   /**
@@ -128,19 +137,9 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public Definition getRef()
+  public String getType()
   {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (Definition)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CssExtDslPackage.CSS_RULE_REF__REF, oldRef, ref));
-      }
-    }
-    return ref;
+    return type;
   }
 
   /**
@@ -148,22 +147,12 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public Definition basicGetRef()
+  public void setType(String newType)
   {
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setRef(Definition newRef)
-  {
-    Definition oldRef = ref;
-    ref = newRef;
+    String oldType = type;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE_REF__REF, oldRef, ref));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_TYPE__TYPE, oldType, type));
   }
 
   /**
@@ -176,7 +165,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+      case CssExtDslPackage.CSS_TYPE__DOKU:
         return basicSetDoku(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -192,11 +181,10 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+      case CssExtDslPackage.CSS_TYPE__DOKU:
         return getDoku();
-      case CssExtDslPackage.CSS_RULE_REF__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
+      case CssExtDslPackage.CSS_TYPE__TYPE:
+        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -211,11 +199,11 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+      case CssExtDslPackage.CSS_TYPE__DOKU:
         setDoku((Doku)newValue);
         return;
-      case CssExtDslPackage.CSS_RULE_REF__REF:
-        setRef((Definition)newValue);
+      case CssExtDslPackage.CSS_TYPE__TYPE:
+        setType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -231,11 +219,11 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+      case CssExtDslPackage.CSS_TYPE__DOKU:
         setDoku((Doku)null);
         return;
-      case CssExtDslPackage.CSS_RULE_REF__REF:
-        setRef((Definition)null);
+      case CssExtDslPackage.CSS_TYPE__TYPE:
+        setType(TYPE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -251,12 +239,29 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
-      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+      case CssExtDslPackage.CSS_TYPE__DOKU:
         return doku != null;
-      case CssExtDslPackage.CSS_RULE_REF__REF:
-        return ref != null;
+      case CssExtDslPackage.CSS_TYPE__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
     }
     return super.eIsSet(featureID);
   }
 
-} //CSSRuleRefImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (type: ");
+    result.append(type);
+    result.append(')');
+    return result.toString();
+  }
+
+} //CSSTypeImpl

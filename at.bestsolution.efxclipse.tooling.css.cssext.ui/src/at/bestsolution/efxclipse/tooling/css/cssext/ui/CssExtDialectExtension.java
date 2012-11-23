@@ -162,5 +162,10 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 	public List<Proposal> findProposals(String element, String attribute, List<CssTok> prefixToks, String prefix) {
 		return parser.findProposals(element, attribute, prefixToks, prefix);
 	}
+	
+	@Override
+	public List<ValidationResult> validateProperty(String element, String attribute, List<CssTok> tokens) {
+		return parser.validateProperty(element, attribute, tokens);
+	}
 
 }

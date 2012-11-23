@@ -10,15 +10,18 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.validation;
 
+import java.util.List;
+
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.validation.Check;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationStatus;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.internal.CssDialectExtensionComponent;
@@ -41,6 +44,29 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 //		}
 //	}
 
+	
+	@Check
+	public void checkDeclaration(css_declaration dec) {
+		css_property property = dec.getProperty();
+		List<CssTok> tokens = dec.getValueTokens();
+		
+		URI uri = dec.eResource().getURI();
+		
+		List<ValidationResult> result = extension.validateProperty(uri, null, property.getName(), tokens);
+		
+		System.err.println(result);
+		 
+		System.err.println("validation of " + property.getName());
+		
+		if (!result.isEmpty()) {
+			for (ValidationResult r : result) {
+				if (r.status == ValidationStatus.ERROR) {
+					
+					error(r.message, dec, CssDslPackage.Literals.CSS_DECLARATION__VALUE_TOKENS, r.index);
+				}
+			}
+		}
+	}
 //	@Check
 //	public void checkDeclaration(css_declaration dec) {
 //		css_property property = dec.getProperty();

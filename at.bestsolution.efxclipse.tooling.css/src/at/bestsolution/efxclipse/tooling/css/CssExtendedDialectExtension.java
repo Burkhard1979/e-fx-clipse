@@ -107,4 +107,6 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 	
 	public List<Proposal> findProposals(String element, String attribute, List<CssTok> prefixToks, String prefix);
 	
+	public List<ValidationResult> validateProperty(String element, String attribute, List<CssTok> tokens);
+	
 }

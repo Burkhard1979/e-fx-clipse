@@ -232,7 +232,6 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	
 	private void handlePropertyCompletion(URI uri, EObject model, List<CssTok> prefixToks, String prefix, String elementName, String propertyName, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		
-		
 		List<Proposal> proposals = extension.findProposals(uri, elementName, propertyName, prefixToks, prefix);
 		
 		for (Proposal p : proposals) {
@@ -307,10 +306,12 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	public void complete_CssTok(css_declaration model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		System.err.println("#reflective CssTok css_declaration");
 		
-		System.err.println("propertyName: '" + model.getProperty().getName()+"'");
+		
+		
+//		System.err.println("propertyName: '" + model.getProperty().getName()+"'");
 		// TODO find element name
-		System.err.println("elementName: '" + ((ruleset)model.eContainer()).getSelectors()+"'");
-		System.err.println("prefix: '" + context.getPrefix() + "'");
+//		System.err.println("elementName: '" + ((ruleset)model.eContainer()).getSelectors()+"'");
+//		System.err.println("prefix: '" + context.getPrefix() + "'");
 
 		URI uri = model.eResource().getURI();
 		String elementName = null; // TODO find element from selector
@@ -326,13 +327,13 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 			}
 			
 			// TEST 
-//			prefixToks.add(currentTok);
+			prefixToks.add(currentTok);
 			
-			System.err.println("currentTok = " + currentTok);
-			System.err.println("prefixToks");
-			for (CssTok tok : prefixToks) {
-				System.err.println(" * " + tok);
-			}
+//			System.err.println("currentTok = " + currentTok);
+//			System.err.println("prefixToks");
+//			for (CssTok tok : prefixToks) {
+//				System.err.println(" * " + tok);
+//			}
 			
 			handlePropertyCompletion(uri, model, prefixToks, prefixString, elementName, propertyName, context, acceptor);
 		}

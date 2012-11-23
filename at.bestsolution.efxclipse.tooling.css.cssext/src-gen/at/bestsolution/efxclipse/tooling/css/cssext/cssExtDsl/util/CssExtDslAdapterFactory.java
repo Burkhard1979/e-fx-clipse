@@ -103,6 +103,11 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
         return createCSSRuleAdapter();
       }
       @Override
+      public Adapter caseCSSType(CSSType object)
+      {
+        return createCSSTypeAdapter();
+      }
+      @Override
       public Adapter caseElementDefinition(ElementDefinition object)
       {
         return createElementDefinitionAdapter();
@@ -310,6 +315,21 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCSSRuleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType <em>CSS Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType
+   * @generated
+   */
+  public Adapter createCSSTypeAdapter()
   {
     return null;
   }

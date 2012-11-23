@@ -218,13 +218,32 @@ public interface CssExtDslPackage extends EPackage
   int CSS_RULE = 4;
 
   /**
+   * The number of structural features of the '<em>CSS Rule</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_RULE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSTypeImpl <em>CSS Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSTypeImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSType()
+   * @generated
+   */
+  int CSS_TYPE = 5;
+
+  /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CSS_RULE__DOKU = 0;
+  int CSS_TYPE__DOKU = CSS_RULE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -233,16 +252,16 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE__TYPE = 1;
+  int CSS_TYPE__TYPE = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>CSS Rule</em>' class.
+   * The number of structural features of the '<em>CSS Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CSS_RULE_FEATURE_COUNT = 2;
+  int CSS_TYPE_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.ElementDefinitionImpl <em>Element Definition</em>}' class.
@@ -252,7 +271,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getElementDefinition()
    * @generated
    */
-  int ELEMENT_DEFINITION = 5;
+  int ELEMENT_DEFINITION = 6;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -334,7 +353,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getDefinition()
    * @generated
    */
-  int DEFINITION = 6;
+  int DEFINITION = 7;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -380,7 +399,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getPseudoClassDefinition()
    * @generated
    */
-  int PSEUDO_CLASS_DEFINITION = 7;
+  int PSEUDO_CLASS_DEFINITION = 8;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -417,7 +436,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleRef()
    * @generated
    */
-  int CSS_RULE_REF = 8;
+  int CSS_RULE_REF = 9;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -426,16 +445,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE_REF__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_REF__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_REF__DOKU = CSS_RULE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -444,7 +454,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE_REF__REF = CSS_RULE_FEATURE_COUNT + 0;
+  int CSS_RULE_REF__REF = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>CSS Rule Ref</em>' class.
@@ -453,7 +463,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE_REF_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
+  int CSS_RULE_REF_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSDefaultValueImpl <em>CSS Default Value</em>}' class.
@@ -463,7 +473,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSDefaultValue()
    * @generated
    */
-  int CSS_DEFAULT_VALUE = 9;
+  int CSS_DEFAULT_VALUE = 10;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -518,7 +528,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getSubstructureSelector()
    * @generated
    */
-  int SUBSTRUCTURE_SELECTOR = 10;
+  int SUBSTRUCTURE_SELECTOR = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -555,7 +565,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getSubstructure()
    * @generated
    */
-  int SUBSTRUCTURE = 11;
+  int SUBSTRUCTURE = 12;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -601,7 +611,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getSubstructureStyleclass()
    * @generated
    */
-  int SUBSTRUCTURE_STYLECLASS = 12;
+  int SUBSTRUCTURE_STYLECLASS = 13;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -656,7 +666,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRangedIntType()
    * @generated
    */
-  int CSS_RANGED_INT_TYPE = 13;
+  int CSS_RANGED_INT_TYPE = 14;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -665,7 +675,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_INT_TYPE__DOKU = CSS_RULE__DOKU;
+  int CSS_RANGED_INT_TYPE__DOKU = CSS_TYPE__DOKU;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -674,7 +684,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_INT_TYPE__TYPE = CSS_RULE__TYPE;
+  int CSS_RANGED_INT_TYPE__TYPE = CSS_TYPE__TYPE;
 
   /**
    * The feature id for the '<em><b>From</b></em>' attribute.
@@ -683,7 +693,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_INT_TYPE__FROM = CSS_RULE_FEATURE_COUNT + 0;
+  int CSS_RANGED_INT_TYPE__FROM = CSS_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>To</b></em>' attribute.
@@ -692,7 +702,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_INT_TYPE__TO = CSS_RULE_FEATURE_COUNT + 1;
+  int CSS_RANGED_INT_TYPE__TO = CSS_TYPE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>CSS Ranged Int Type</em>' class.
@@ -701,7 +711,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_INT_TYPE_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 2;
+  int CSS_RANGED_INT_TYPE_FEATURE_COUNT = CSS_TYPE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRangedDoubleTypeImpl <em>CSS Ranged Double Type</em>}' class.
@@ -711,7 +721,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRangedDoubleType()
    * @generated
    */
-  int CSS_RANGED_DOUBLE_TYPE = 14;
+  int CSS_RANGED_DOUBLE_TYPE = 15;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -720,7 +730,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_DOUBLE_TYPE__DOKU = CSS_RULE__DOKU;
+  int CSS_RANGED_DOUBLE_TYPE__DOKU = CSS_TYPE__DOKU;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -729,7 +739,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_DOUBLE_TYPE__TYPE = CSS_RULE__TYPE;
+  int CSS_RANGED_DOUBLE_TYPE__TYPE = CSS_TYPE__TYPE;
 
   /**
    * The feature id for the '<em><b>From</b></em>' attribute.
@@ -738,7 +748,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_DOUBLE_TYPE__FROM = CSS_RULE_FEATURE_COUNT + 0;
+  int CSS_RANGED_DOUBLE_TYPE__FROM = CSS_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>To</b></em>' attribute.
@@ -747,7 +757,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_DOUBLE_TYPE__TO = CSS_RULE_FEATURE_COUNT + 1;
+  int CSS_RANGED_DOUBLE_TYPE__TO = CSS_TYPE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>CSS Ranged Double Type</em>' class.
@@ -756,7 +766,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RANGED_DOUBLE_TYPE_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 2;
+  int CSS_RANGED_DOUBLE_TYPE_FEATURE_COUNT = CSS_TYPE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.PropertyDefinitionImpl <em>Property Definition</em>}' class.
@@ -766,7 +776,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getPropertyDefinition()
    * @generated
    */
-  int PROPERTY_DEFINITION = 15;
+  int PROPERTY_DEFINITION = 16;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -821,7 +831,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleDefinition()
    * @generated
    */
-  int CSS_RULE_DEFINITION = 16;
+  int CSS_RULE_DEFINITION = 17;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -876,25 +886,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleFunc()
    * @generated
    */
-  int CSS_RULE_FUNC = 17;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_FUNC__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_FUNC__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_FUNC = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -931,25 +923,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleOr()
    * @generated
    */
-  int CSS_RULE_OR = 18;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_OR__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_OR__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_OR = 19;
 
   /**
    * The feature id for the '<em><b>Ors</b></em>' containment reference list.
@@ -977,25 +951,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleXor()
    * @generated
    */
-  int CSS_RULE_XOR = 19;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_XOR__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_XOR__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_XOR = 20;
 
   /**
    * The feature id for the '<em><b>Xors</b></em>' containment reference list.
@@ -1023,25 +979,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleConcatWithoutSpace()
    * @generated
    */
-  int CSS_RULE_CONCAT_WITHOUT_SPACE = 20;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_CONCAT_WITHOUT_SPACE__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_CONCAT_WITHOUT_SPACE__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_CONCAT_WITHOUT_SPACE = 21;
 
   /**
    * The feature id for the '<em><b>Conc</b></em>' containment reference list.
@@ -1069,25 +1007,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleConcat()
    * @generated
    */
-  int CSS_RULE_CONCAT = 21;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_CONCAT__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_CONCAT__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_CONCAT = 22;
 
   /**
    * The feature id for the '<em><b>Conc</b></em>' containment reference list.
@@ -1115,25 +1035,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRulePostfix()
    * @generated
    */
-  int CSS_RULE_POSTFIX = 22;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_POSTFIX__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_POSTFIX__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_POSTFIX = 23;
 
   /**
    * The feature id for the '<em><b>Rule</b></em>' containment reference.
@@ -1170,25 +1072,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleBracket()
    * @generated
    */
-  int CSS_RULE_BRACKET = 23;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_BRACKET__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_BRACKET__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_BRACKET = 24;
 
   /**
    * The feature id for the '<em><b>Inner</b></em>' containment reference.
@@ -1216,25 +1100,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSNumLiteral()
    * @generated
    */
-  int CSS_NUM_LITERAL = 24;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_NUM_LITERAL__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_NUM_LITERAL__TYPE = CSS_RULE__TYPE;
+  int CSS_NUM_LITERAL = 25;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1262,25 +1128,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleRegex()
    * @generated
    */
-  int CSS_RULE_REGEX = 25;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_REGEX__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_REGEX__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_REGEX = 26;
 
   /**
    * The feature id for the '<em><b>Regex</b></em>' attribute.
@@ -1308,7 +1156,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleLiteral()
    * @generated
    */
-  int CSS_RULE_LITERAL = 26;
+  int CSS_RULE_LITERAL = 27;
 
   /**
    * The feature id for the '<em><b>Doku</b></em>' containment reference.
@@ -1317,16 +1165,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE_LITERAL__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_LITERAL__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_LITERAL__DOKU = CSS_RULE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1335,7 +1174,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE_LITERAL__VALUE = CSS_RULE_FEATURE_COUNT + 0;
+  int CSS_RULE_LITERAL__VALUE = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>CSS Rule Literal</em>' class.
@@ -1344,7 +1183,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE_LITERAL_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
+  int CSS_RULE_LITERAL_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleSymbolImpl <em>CSS Rule Symbol</em>}' class.
@@ -1354,25 +1193,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleSymbol()
    * @generated
    */
-  int CSS_RULE_SYMBOL = 27;
-
-  /**
-   * The feature id for the '<em><b>Doku</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_SYMBOL__DOKU = CSS_RULE__DOKU;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_SYMBOL__TYPE = CSS_RULE__TYPE;
+  int CSS_RULE_SYMBOL = 28;
 
   /**
    * The feature id for the '<em><b>Symbol</b></em>' attribute.
@@ -1532,26 +1353,36 @@ public interface CssExtDslPackage extends EPackage
   EClass getCSSRule();
 
   /**
-   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule#getDoku <em>Doku</em>}'.
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType <em>CSS Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>CSS Type</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType
+   * @generated
+   */
+  EClass getCSSType();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType#getDoku <em>Doku</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Doku</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule#getDoku()
-   * @see #getCSSRule()
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType#getDoku()
+   * @see #getCSSType()
    * @generated
    */
-  EReference getCSSRule_Doku();
+  EReference getCSSType_Doku();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Type</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule#getType()
-   * @see #getCSSRule()
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType#getType()
+   * @see #getCSSType()
    * @generated
    */
-  EAttribute getCSSRule_Type();
+  EAttribute getCSSType_Type();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition <em>Element Definition</em>}'.
@@ -1724,6 +1555,17 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    */
   EClass getCSSRuleRef();
+
+  /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef#getDoku <em>Doku</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Doku</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef#getDoku()
+   * @see #getCSSRuleRef()
+   * @generated
+   */
+  EReference getCSSRuleRef_Doku();
 
   /**
    * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef#getRef <em>Ref</em>}'.
@@ -2247,6 +2089,17 @@ public interface CssExtDslPackage extends EPackage
   EClass getCSSRuleLiteral();
 
   /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral#getDoku <em>Doku</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Doku</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral#getDoku()
+   * @see #getCSSRuleLiteral()
+   * @generated
+   */
+  EReference getCSSRuleLiteral_Doku();
+
+  /**
    * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2416,12 +2269,22 @@ public interface CssExtDslPackage extends EPackage
     EClass CSS_RULE = eINSTANCE.getCSSRule();
 
     /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSTypeImpl <em>CSS Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSTypeImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSType()
+     * @generated
+     */
+    EClass CSS_TYPE = eINSTANCE.getCSSType();
+
+    /**
      * The meta object literal for the '<em><b>Doku</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CSS_RULE__DOKU = eINSTANCE.getCSSRule_Doku();
+    EReference CSS_TYPE__DOKU = eINSTANCE.getCSSType_Doku();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -2429,7 +2292,7 @@ public interface CssExtDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CSS_RULE__TYPE = eINSTANCE.getCSSRule_Type();
+    EAttribute CSS_TYPE__TYPE = eINSTANCE.getCSSType_Type();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.ElementDefinitionImpl <em>Element Definition</em>}' class.
@@ -2566,6 +2429,14 @@ public interface CssExtDslPackage extends EPackage
      * @generated
      */
     EClass CSS_RULE_REF = eINSTANCE.getCSSRuleRef();
+
+    /**
+     * The meta object literal for the '<em><b>Doku</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CSS_RULE_REF__DOKU = eINSTANCE.getCSSRuleRef_Doku();
 
     /**
      * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
@@ -2994,6 +2865,14 @@ public interface CssExtDslPackage extends EPackage
      * @generated
      */
     EClass CSS_RULE_LITERAL = eINSTANCE.getCSSRuleLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Doku</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CSS_RULE_LITERAL__DOKU = eINSTANCE.getCSSRuleLiteral_Doku();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.

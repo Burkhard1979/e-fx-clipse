@@ -24,6 +24,7 @@ import java.util.ArrayList
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType
 
 class HTMLDocGenerator {
 	def generate(Resource resource) '''
@@ -436,12 +437,12 @@ class HTMLDocGenerator {
 		else if (r instanceof CSSRuleSymbol) {
 			result.append((r as CSSRuleSymbol).getSymbol());
 		}
+		else if (r instanceof CSSType) {
+			return (r as CSSType).getType();
+		}
 		else {
 			if (r == null) {
 				return "null";
-			}
-			else {
-				return r.getType();
 			}
 		}
 		return result.toString;

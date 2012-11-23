@@ -699,7 +699,7 @@ protected class CSSBaseType_CSSTypeParserRuleCall extends RuleCallToken {
 
 /************ begin Rule CSSType ****************
  *
- * CSSType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+ * CSSType hidden(SL_COMMENT, ML_COMMENT):
  * 	{CSSRangedIntType} (doku=Doku WS*)? type="@INT" "(" WS* from=INT WS* "->" WS* to=INT WS* ")" | {CSSRangedDoubleType}
  * 	(doku=Doku WS*)? type="@NUM" "(" WS* from=DOUBLE WS* "->" WS* to=DOUBLE WS* ")" | (doku=Doku WS*)? (type="@INT" WS* |
  * 	type="@NUM" WS* | type="@STRING" WS* | type="@URL" WS*);
@@ -3473,7 +3473,6 @@ protected class CSSRuleOr_Group extends GroupToken {
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0().getType().getClassifier() && 
@@ -3483,7 +3482,8 @@ protected class CSSRuleOr_Group extends GroupToken {
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -3515,7 +3515,6 @@ protected class CSSRuleOr_CSSRuleXorParserRuleCall_0 extends RuleCallToken {
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0().getType().getClassifier() && 
@@ -3524,7 +3523,8 @@ protected class CSSRuleOr_CSSRuleXorParserRuleCall_0 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRuleXor_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -3726,7 +3726,6 @@ protected class CSSRuleXor_Group extends GroupToken {
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0().getType().getClassifier() && 
@@ -3735,7 +3734,8 @@ protected class CSSRuleXor_Group extends GroupToken {
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleXorAccess().getCSSRuleXorXorsAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -3767,7 +3767,6 @@ protected class CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0 extends Rul
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0().getType().getClassifier() && 
@@ -3775,7 +3774,8 @@ protected class CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0 extends Rul
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRuleConcatWithoutSpace_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -3977,7 +3977,6 @@ protected class CSSRuleConcatWithoutSpace_Group extends GroupToken {
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0().getType().getClassifier() && 
@@ -3985,7 +3984,8 @@ protected class CSSRuleConcatWithoutSpace_Group extends GroupToken {
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -4017,14 +4017,14 @@ protected class CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0 extends 
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRuleConcat_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -4226,14 +4226,14 @@ protected class CSSRuleConcat_Group extends GroupToken {
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -4265,13 +4265,13 @@ protected class CSSRuleConcat_CSSRulePostfixParserRuleCall_0 extends RuleCallTok
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRulePostfix_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -4428,13 +4428,13 @@ protected class CSSRulePostfix_Group extends GroupToken {
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -4466,12 +4466,12 @@ protected class CSSRulePostfix_CSSRulePrimaryParserRuleCall_0 extends RuleCallTo
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		if(checkForRecursion(CSSRulePrimary_Alternatives.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
@@ -4791,12 +4791,12 @@ protected class CSSRulePrimary_Alternatives extends AlternativesToken {
 		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}

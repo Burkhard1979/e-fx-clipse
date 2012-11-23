@@ -72,6 +72,7 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
       case CssExtDslPackage.PACKAGE_DEFINITION: return createPackageDefinition();
       case CssExtDslPackage.DOKU: return createDoku();
       case CssExtDslPackage.CSS_RULE: return createCSSRule();
+      case CssExtDslPackage.CSS_TYPE: return createCSSType();
       case CssExtDslPackage.ELEMENT_DEFINITION: return createElementDefinition();
       case CssExtDslPackage.DEFINITION: return createDefinition();
       case CssExtDslPackage.PSEUDO_CLASS_DEFINITION: return createPseudoClassDefinition();
@@ -153,6 +154,17 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
   {
     CSSRuleImpl cssRule = new CSSRuleImpl();
     return cssRule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CSSType createCSSType()
+  {
+    CSSTypeImpl cssType = new CSSTypeImpl();
+    return cssType;
   }
 
   /**

@@ -25,9 +25,10 @@
     <genClasses ecoreClass="CssExtDsl.ecore#//Doku">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//Doku/content"/>
     </genClasses>
-    <genClasses ecoreClass="CssExtDsl.ecore#//CSSRule">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//CSSRule/doku"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSRule/type"/>
+    <genClasses ecoreClass="CssExtDsl.ecore#//CSSRule"/>
+    <genClasses ecoreClass="CssExtDsl.ecore#//CSSType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//CSSType/doku"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSType/type"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//ElementDefinition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//ElementDefinition/doku"/>
@@ -48,6 +49,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//PseudoClassDefinition/name"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//CSSRuleRef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//CSSRuleRef/doku"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//CSSRuleRef/ref"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//CSSDefaultValue">
@@ -115,6 +117,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSRuleRegex/regex"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//CSSRuleLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//CSSRuleLiteral/doku"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSRuleLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//CSSRuleSymbol">

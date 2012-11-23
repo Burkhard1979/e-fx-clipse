@@ -23,7 +23,7 @@ package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl;
  * @model
  * @generated
  */
-public interface CSSRangedDoubleType extends CSSRule
+public interface CSSRangedDoubleType extends CSSType
 {
   /**
    * Returns the value of the '<em><b>From</b></em>' attribute.

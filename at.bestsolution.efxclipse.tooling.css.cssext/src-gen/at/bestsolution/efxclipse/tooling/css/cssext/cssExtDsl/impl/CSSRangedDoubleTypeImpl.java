@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class CSSRangedDoubleTypeImpl extends CSSRuleImpl implements CSSRangedDoubleType
+public class CSSRangedDoubleTypeImpl extends CSSTypeImpl implements CSSRangedDoubleType
 {
   /**
    * The default value of the '{@link #getFrom() <em>From</em>}' attribute.

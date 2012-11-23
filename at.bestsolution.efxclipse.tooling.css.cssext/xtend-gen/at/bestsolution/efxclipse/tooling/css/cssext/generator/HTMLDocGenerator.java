@@ -14,6 +14,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRegex;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
@@ -1641,11 +1642,13 @@ public class HTMLDocGenerator {
                         String _symbol = ((CSSRuleSymbol) r).getSymbol();
                         result.append(_symbol);
                       } else {
-                        boolean _equals = Objects.equal(r, null);
-                        if (_equals) {
-                          return "null";
+                        if ((r instanceof CSSType)) {
+                          return ((CSSType) r).getType();
                         } else {
-                          return r.getType();
+                          boolean _equals = Objects.equal(r, null);
+                          if (_equals) {
+                            return "null";
+                          }
                         }
                       }
                     }

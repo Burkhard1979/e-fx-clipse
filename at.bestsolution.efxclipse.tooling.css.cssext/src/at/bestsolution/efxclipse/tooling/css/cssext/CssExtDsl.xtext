@@ -63,7 +63,7 @@ CSSBaseType returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
 	CSSType
 ;
 
-CSSType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+CSSType returns CSSType hidden(SL_COMMENT, ML_COMMENT):
 	{CSSRangedIntType} (doku=Doku WS*)? type='@INT' '(' WS* from=INT WS* '->' WS* to=INT WS* ')' |
 	{CSSRangedDoubleType} (doku=Doku WS*)? type='@NUM' '(' WS* from=DOUBLE WS* '->' WS* to=DOUBLE WS* ')' |
 	(doku=Doku WS*)? (

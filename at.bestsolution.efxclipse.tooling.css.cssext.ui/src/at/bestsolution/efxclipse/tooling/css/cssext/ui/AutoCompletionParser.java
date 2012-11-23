@@ -10,8 +10,6 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
@@ -26,6 +24,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleOr;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 
@@ -289,18 +288,6 @@ public class AutoCompletionParser {
 			System.err.println("WARING: rule was null!");
 			return new ArrayList<CssDialectExtension.Proposal>();
 		}
-		System.err.println("findProposals for type="+rule.getType() + " rule " + rule);
-		
-		if ("double".equals(rule.getType())) {
-			result = new ArrayList<CssDialectExtension.Proposal>();
-			result.add(new Proposal(".0"));
-			return result;
-		}
-		else if ("int".equals(rule.getType())) {
-			result = new ArrayList<CssDialectExtension.Proposal>();
-			result.add(new Proposal("0"));
-			return result;
-		}
 		
 		System.err.println( CssExtDslPackage.CSS_RULE_OR + " vs " + rule.eClass().getClassifierID());
 		
@@ -311,11 +298,27 @@ public class AutoCompletionParser {
 		case CssExtDslPackage.CSS_RULE_XOR: result = findXorProposals(prefix, (CSSRuleXor) rule); break;
 		case CssExtDslPackage.CSS_RULE_CONCAT: result = findConcatProposals(prefix, (CSSRuleConcat) rule); break;
 		case CssExtDslPackage.CSS_RULE_LITERAL: result = findLiteralProposals(prefix, (CSSRuleLiteral) rule); break;
+		case CssExtDslPackage.CSS_TYPE: result = findTypeProposals(prefix, (CSSType) rule); break;
 		
 		default:
 			result = new ArrayList<CssDialectExtension.Proposal>();
 		}
 		
+		return result;
+	}
+	
+	private List<Proposal> findTypeProposals(String prefix, CSSType type) {
+		List<Proposal> result = null;
+		if ("@NUM".equals(type.getType())) {
+			result = new ArrayList<CssDialectExtension.Proposal>();
+			result.add(new Proposal(".0"));
+			return result;
+		}
+		else if ("@INT".equals(type.getType())) {
+			result = new ArrayList<CssDialectExtension.Proposal>();
+			result.add(new Proposal("0"));
+			return result;
+		}
 		return result;
 	}
 	

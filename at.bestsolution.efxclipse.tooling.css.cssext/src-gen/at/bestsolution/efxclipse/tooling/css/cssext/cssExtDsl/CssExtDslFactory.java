@@ -71,6 +71,15 @@ public interface CssExtDslFactory extends EFactory
   CSSRule createCSSRule();
 
   /**
+   * Returns a new object of class '<em>CSS Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>CSS Type</em>'.
+   * @generated
+   */
+  CSSType createCSSType();
+
+  /**
    * Returns a new object of class '<em>Element Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -36,6 +36,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRegex;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
@@ -103,9 +104,11 @@ public class CssExtDocParser {
 		else if (r instanceof CSSRuleSymbol) {
 			result += ((CSSRuleSymbol) r).getSymbol();
 		}
+		else if (r instanceof CSSType) {
+			result = ((CSSType) r).getType();
+		}
 		else {
 			if (r == null) result = "<code>null</code>";
-			else result = r.getType();
 		}
 		return result;
 	}

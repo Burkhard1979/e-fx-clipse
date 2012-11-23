@@ -19,6 +19,7 @@ import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 
 public class CssDialectExtensionComponent {
@@ -70,4 +71,15 @@ public class CssDialectExtensionComponent {
 		return rv;
 	}
 	
+	
+	public List<ValidationResult> validateProperty(URI uri, String element, String attribute, List<CssTok> tokens) {
+		List<ValidationResult> rv = new ArrayList<ValidationResult>();
+		
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				rv.addAll(((CssExtendedDialectExtension)ext).validateProperty(element, attribute, tokens));
+			}
+		}
+		return rv;
+	}
 }
