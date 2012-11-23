@@ -23,5 +23,5 @@ import javax.inject.Qualifier;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Log {
-	String name();
+	String value() default "";
 }

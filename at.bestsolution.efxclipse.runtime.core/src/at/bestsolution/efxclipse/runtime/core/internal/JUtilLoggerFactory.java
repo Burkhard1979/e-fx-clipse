@@ -10,6 +10,7 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.core.internal;
 
+import at.bestsolution.efxclipse.runtime.core.Log;
 import at.bestsolution.efxclipse.runtime.core.Logger;
 import at.bestsolution.efxclipse.runtime.core.LoggerFactory;
 
@@ -21,6 +22,7 @@ public class JUtilLoggerFactory implements LoggerFactory {
 	}
 
 	static class LoggerImpl implements Logger {
+		@Log
 		private java.util.logging.Logger logger;
 		
 		private String name;

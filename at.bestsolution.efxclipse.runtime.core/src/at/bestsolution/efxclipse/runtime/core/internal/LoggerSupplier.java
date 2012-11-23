@@ -30,7 +30,7 @@ public class LoggerSupplier extends ExtendedObjectSupplier {
 				.getPrimarySupplier();
 		final IEclipseContext context = sub.getContext();
 
-		String loggerName = descriptor.getQualifier(Log.class).name(); 
+		String loggerName = descriptor.getQualifier(Log.class).value(); 
 		
 		if( loggerName == null || loggerName.isEmpty() ) {
 			loggerName = requestor.getRequestingObjectClass().getName();
