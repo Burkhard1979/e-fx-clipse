@@ -10,10 +10,15 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.emf.edit.ui;
 
+import java.net.URL;
+
 import javafx.scene.Node;
 import javafx.scene.control.Cell;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.Callback;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -25,19 +30,22 @@ import org.eclipse.emf.edit.provider.ITableItemFontProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 
 /**
- * This list cell factory wraps an {@link AdapterFactory} and delegates calls to its {@link TableCell}s to the
- * corresponding adapter-implemented item provider interfaces.
+ * This list cell factory wraps an {@link AdapterFactory} and delegates calls to
+ * its {@link TableCell}s to the corresponding adapter-implemented item provider
+ * interfaces.
  * 
  * <ul>
- * <li>{@link Cell#setText(String)} and {@link Cell#setGraphic(Node)} are delegated to
- * {@link ITableItemLabelProvider}</li>
+ * <li>{@link Cell#setText(String)} and {@link Cell#setGraphic(Node)} are
+ * delegated to {@link ITableItemLabelProvider}</li>
  * <li>{@link Cell#setTextFill(javafx.scene.paint.Paint)} and the CSS property
- * <code>-fx-background-color</code> are delegated to {@link ITableItemColorProvider}</li>
- * <li>{@link Cell#setFont(javafx.scene.text.Font)} is delegated to {@link ITableItemFontProvider}</li>
+ * <code>-fx-background-color</code> are delegated to
+ * {@link ITableItemColorProvider}</li>
+ * <li>{@link Cell#setFont(javafx.scene.text.Font)} is delegated to
+ * {@link ITableItemFontProvider}</li>
  * </ul>
  */
-public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory implements
-		Callback<TableColumn<Object, Object>, TableCell<Object, Object>> {
+public class AdapterFactoryTableCellFactory<S, T> extends AdapterFactoryCellFactory implements
+		Callback<TableColumn<S,T>, TableCell<S, T>> {
 
 	protected int columnIndex;
 
@@ -47,7 +55,8 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 	}
 
 	@Override
-	public TableCell<Object, Object> call(TableColumn<Object, Object> arg0) {
+	@SuppressWarnings("unchecked")
+	public TableCell<S, T> call(TableColumn<S, T> arg0) {
 
 		final TableCell<Object, Object> tableCell = new TableCell<Object, Object>() {
 
@@ -66,11 +75,11 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 
 				// check if the item changed
 				if (item != currentItem) {
-					
+
 					// remove the adapter if attached
-					if(currentItem instanceof Notifier)						
+					if (currentItem instanceof Notifier)
 						((Notifier) currentItem).eAdapters().remove(adapter);
-					
+
 					// update the current item
 					currentItem = item;
 
@@ -82,12 +91,12 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 				// notify the listeners
 				for (ICellUpdateListener cellUpdateListener : cellUpdateListeners)
 					cellUpdateListener.updateItem(this, item, empty);
-				
-				update(item);				
+
+				update(item);
 			}
 
 			private void update(Object item) {
-				CellFactoryUtil.applyTableItemProviderStyle(item, columnIndex, this, adapterFactory);
+				applyTableItemProviderStyle(item, columnIndex, this, adapterFactory);
 			}
 
 		};
@@ -95,7 +104,47 @@ public class AdapterFactoryTableCellFactory extends AdapterFactoryCellFactory im
 		for (ICellCreationListener cellCreationListener : cellCreationListeners)
 			cellCreationListener.cellCreated(tableCell);
 
-		return tableCell;
+		return (TableCell<S, T>) tableCell;
+	}
+
+	/* package */void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		applyTableItemProviderLabel(item, columnIndex, cell, adapterFactory);
+		applyTableItemProviderColor(item, columnIndex, cell, adapterFactory);
+		applyTableItemProviderFont(item, columnIndex, cell, adapterFactory);
+	}
+
+	/* package */void applyTableItemProviderLabel(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		ITableItemLabelProvider labelProvider = (ITableItemLabelProvider) adapterFactory.adapt(item, ITableItemLabelProvider.class);
+		if (labelProvider != null) {
+			cell.setText(labelProvider.getColumnText(item, columnIndex));
+			Object image = labelProvider.getColumnImage(item, columnIndex);
+			if (image instanceof URL) {
+				Node graphic = new ImageView(((URL) image).toExternalForm());
+				cell.setGraphic(graphic);
+			}
+		}
+	}
+
+	/* package */void applyTableItemProviderColor(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		ITableItemColorProvider colorProvider = (ITableItemColorProvider) adapterFactory.adapt(item, ITableItemColorProvider.class);
+		if (colorProvider != null) {
+			Color foreground = colorFromObject(colorProvider.getForeground(item, columnIndex));
+			if (foreground != null)
+				cell.setTextFill(foreground);
+
+			String background = cssColorFromObject(colorProvider.getBackground(item, columnIndex));
+			if (background != null)
+				cell.setStyle("-fx-background-color: " + background);
+		}
+	}
+
+	/* package */void applyTableItemProviderFont(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		ITableItemFontProvider fontProvider = (ITableItemFontProvider) adapterFactory.adapt(item, ITableItemFontProvider.class);
+		if (fontProvider != null) {
+			Font font = fontFromObject(fontProvider.getFont(item, columnIndex));
+			if (font != null)
+				cell.setFont(font);
+		}
 	}
 
 }
