@@ -18,7 +18,7 @@ public class JUtilLoggerFactory implements LoggerFactory {
 
 	@Override
 	public Logger createLogger(String name) {
-		return null;
+		return new LoggerImpl(name);
 	}
 
 	static class LoggerImpl implements Logger {
