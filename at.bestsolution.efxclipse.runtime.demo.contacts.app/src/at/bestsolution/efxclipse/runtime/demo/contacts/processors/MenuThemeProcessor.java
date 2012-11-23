@@ -14,6 +14,7 @@ package at.bestsolution.efxclipse.runtime.demo.contacts.processors;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.MParameter;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 public class MenuThemeProcessor extends AbstractThemeProcessor {
 
 	private static final String BUNDLE_ID = "platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts"; //$NON-NLS-1$
+	private final static String PROCESSOR_ID = "at.bestsolution.efxclipse.runtime.demo.contacts.processors.theme.menu";
 
 	@Inject
 	@Named("menu:org.eclipse.ui.main.menu")
@@ -33,6 +35,9 @@ public class MenuThemeProcessor extends AbstractThemeProcessor {
 
 	@Override
 	protected boolean check() {
+		if (isAreadyProcessed(PROCESSOR_ID)) {
+			return false;
+		}
 		return menu != null;
 	}
 

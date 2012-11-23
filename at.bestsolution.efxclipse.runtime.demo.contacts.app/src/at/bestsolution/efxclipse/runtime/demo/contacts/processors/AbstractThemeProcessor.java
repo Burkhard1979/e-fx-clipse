@@ -12,9 +12,8 @@
  ******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.processors;
 
-import at.bestsolution.efxclipse.runtime.services.theme.Theme;
-import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
 import java.util.List;
+
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
@@ -29,6 +28,9 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
+
+import at.bestsolution.efxclipse.runtime.services.theme.Theme;
+import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
 
 @SuppressWarnings("restriction")
 public abstract class AbstractThemeProcessor {
@@ -102,4 +104,17 @@ public abstract class AbstractThemeProcessor {
 		}
 		return null;
 	}
+
+	protected boolean isAreadyProcessed(String processorId) {
+		MApplication application = getApplication();
+		List<String> tags = application.getTags();
+		for (String tag : tags) {
+			if (processorId.equals(tag)) {
+				return true; // already processed
+			}
+		}
+		tags.add(processorId);
+		return false;
+	}
+
 }

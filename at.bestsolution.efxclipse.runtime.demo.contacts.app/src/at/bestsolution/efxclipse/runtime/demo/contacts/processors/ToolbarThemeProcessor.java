@@ -14,6 +14,7 @@ package at.bestsolution.efxclipse.runtime.demo.contacts.processors;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
 import org.eclipse.e4.ui.model.application.commands.MParameter;
@@ -26,6 +27,8 @@ import org.eclipse.emf.ecore.EObject;
 @SuppressWarnings("restriction")
 public class ToolbarThemeProcessor extends AbstractThemeProcessor {
 
+	private final static String PROCESSOR_ID = "at.bestsolution.efxclipse.runtime.demo.contacts.processors.theme.toolbar";
+
 	@Inject
 	@Named("toolbar:org.eclipse.ui.main.toolbar")
 	private MTrimBar topBar;
@@ -33,6 +36,9 @@ public class ToolbarThemeProcessor extends AbstractThemeProcessor {
 
 	@Override
 	protected boolean check() {
+		if (isAreadyProcessed(PROCESSOR_ID)) {
+			return false;
+		}
 		return topBar != null;
 	}
 
