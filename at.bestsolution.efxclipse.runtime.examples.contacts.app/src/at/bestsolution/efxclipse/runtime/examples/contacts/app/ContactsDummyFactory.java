@@ -10,9 +10,9 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.examples.contacts.app;
 
-import at.bestsolution.efxclipse.runtime.examples.contacts.Contact;
-import at.bestsolution.efxclipse.runtime.examples.contacts.ContactsFactory;
-import at.bestsolution.efxclipse.runtime.examples.contacts.Group;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
 
 public class ContactsDummyFactory {
 
