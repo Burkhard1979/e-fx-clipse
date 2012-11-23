@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 
 public class MenuThemeProcessor extends AbstractThemeProcessor {
 
-	private static final String BUNDLE_ID = "platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts"; //$NON-NLS-1$
+	private static final String BUNDLE_ID = "platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app"; //$NON-NLS-1$
 	private final static String PROCESSOR_ID = "at.bestsolution.efxclipse.runtime.demo.contacts.processors.theme.menu";
 
 	@Inject
