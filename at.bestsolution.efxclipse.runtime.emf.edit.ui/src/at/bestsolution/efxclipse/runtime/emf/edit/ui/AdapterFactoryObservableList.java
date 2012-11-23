@@ -33,13 +33,15 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
  * adapter-implemented {@link IStructuredItemContentProvider} interface. The content of the list can only be
  * modified through changes to the underlying model.
  */
-public class AdapterFactoryObservableList implements ObservableList<Object> {
+public class AdapterFactoryObservableList<T> implements ObservableList<T> {
 
+	private static final String CHANGES_THROUGH_MODEL = "An AdapterFactoryObservableList cannot be manipulated directly. Changes must be made via the model.";
 	protected AdapterFactory adapterFactory;
 	protected Object root;
 	protected IStructuredItemContentProvider provider;
-	/* package */ObservableList<Object> elements = FXCollections.observableArrayList();
+	/* package */ObservableList<T> elements = FXCollections.observableArrayList();
 
+	@SuppressWarnings("unchecked")
 	public AdapterFactoryObservableList(AdapterFactory adapterFactory, final Object root) {
 		super();
 
@@ -48,17 +50,21 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 		this.adapterFactory = adapterFactory;
 		this.root = root;
+		Object contentProvider = adapterFactory.adapt(root, IStructuredItemContentProvider.class);
 
-		provider = getStructuredItemContentProvider();
-
-		elements.addAll(provider.getElements(root));
+		if(contentProvider instanceof IStructuredItemContentProvider)
+			provider = (IStructuredItemContentProvider) contentProvider;
+		else
+			throw new IllegalArgumentException("Provided root object cannot be adapted.");
+		
+		elements.addAll((Collection<? extends T>) provider.getElements(root));
 
 		if (root instanceof Notifier) {
 			AdapterImpl adapter = new AdapterImpl() {
 
 				@Override
 				public void notifyChanged(Notification msg) {
-					elements.setAll(provider.getElements(root));
+					elements.setAll((Collection<? extends T>) provider.getElements(root));
 				}
 
 			};
@@ -69,38 +75,37 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 				@Override
 				public void notifyChanged(Notification notification) {
-					elements.setAll(provider.getElements(root));
+					elements.setAll((Collection<? extends T>) provider.getElements(root));
 				}
+				
 			});
-		} else {
-			throw new IllegalArgumentException("Root object must be a Notifier or IChangeNotifier.");
 		}
 
 	}
 
 	@Override
 	public boolean add(Object e) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public void add(int index, Object element) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public boolean addAll(Collection<? extends Object> c) {
-		throw new UnsupportedOperationException();
+	public boolean addAll(Collection<? extends T> c) {
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public boolean addAll(int index, Collection<? extends Object> c) {
-		throw new UnsupportedOperationException();
+	public boolean addAll(int index, Collection<? extends T> c) {
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public void clear() {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
@@ -114,7 +119,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public Object get(int index) {
+	public T get(int index) {
 		return elements.get(index);
 	}
 
@@ -129,7 +134,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public Iterator<Object> iterator() {
+	public Iterator<T> iterator() {
 		return elements.iterator();
 	}
 
@@ -139,38 +144,38 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public ListIterator<Object> listIterator() {
+	public ListIterator<T> listIterator() {
 		return elements.listIterator();
 	}
 
 	@Override
-	public ListIterator<Object> listIterator(int index) {
+	public ListIterator<T> listIterator(int index) {
 		return elements.listIterator(index);
 	}
 
 	@Override
 	public boolean remove(Object o) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public Object remove(int index) {
-		throw new UnsupportedOperationException();
+	public T remove(int index) {
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public Object set(int index, Object element) {
-		throw new UnsupportedOperationException();
+	public T set(int index, Object element) {
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
@@ -178,14 +183,8 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 		return elements.size();
 	}
 
-	private IStructuredItemContentProvider getStructuredItemContentProvider() {
-		IStructuredItemContentProvider provider = (IStructuredItemContentProvider) adapterFactory.adapt(root,
-				IStructuredItemContentProvider.class);
-		return provider;
-	}
-
 	@Override
-	public List<Object> subList(int fromIndex, int toIndex) {
+	public List<T> subList(int fromIndex, int toIndex) {
 		return elements.subList(fromIndex, toIndex);
 	}
 
@@ -195,7 +194,7 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 	}
 
 	@Override
-	public <T> T[] toArray(T[] a) {
+	public <A> A[] toArray(A[] a) {
 		return elements.toArray(a);
 	}
 
@@ -211,42 +210,42 @@ public class AdapterFactoryObservableList implements ObservableList<Object> {
 
 	@Override
 	public boolean addAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public void addListener(ListChangeListener<? super Object> listener) {
+	public void addListener(ListChangeListener<? super T> listener) {
 		elements.addListener(listener);
 	}
 
 	@Override
 	public void remove(int arg0, int arg1) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean removeAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public void removeListener(ListChangeListener<? super Object> listener) {
+	public void removeListener(ListChangeListener<? super T> listener) {
 		elements.removeListener(listener);
 	}
 
 	@Override
 	public boolean retainAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
 	public boolean setAll(Object... arg0) {
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 	@Override
-	public boolean setAll(Collection<? extends Object> arg0) {
-		throw new UnsupportedOperationException();
+	public boolean setAll(Collection<? extends T> arg0) {
+		throw new UnsupportedOperationException(CHANGES_THROUGH_MODEL);
 	}
 
 }

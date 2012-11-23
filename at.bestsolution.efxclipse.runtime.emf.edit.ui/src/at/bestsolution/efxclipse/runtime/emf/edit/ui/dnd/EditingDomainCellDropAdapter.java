@@ -22,7 +22,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.edit.command.DragAndDropCommand;
 import org.eclipse.emf.edit.command.DragAndDropFeedback;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.swt.dnd.DND;
 
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellCreationListener;
@@ -56,8 +55,8 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 				Object object = LocalTransfer.INSTANCE.getObject();
 
-				Command command = DragAndDropCommand.create(editingDomain, item, position, /* DND.DROP_COPY | */DND.DROP_MOVE
-						| DND.DROP_LINK, DND.DROP_MOVE, (Collection<?>) object);
+				Command command = DragAndDropCommand.create(editingDomain, item, position, /* DragAndDropFeedback.DROP_COPY | */DragAndDropFeedback.DROP_MOVE
+						| DragAndDropFeedback.DROP_LINK, DragAndDropFeedback.DROP_MOVE, (Collection<?>) object);
 
 				if (command.canExecute()) {
 					dndCommand = command;
