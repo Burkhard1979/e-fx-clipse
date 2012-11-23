@@ -37,7 +37,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
  * </ul>
  */
 public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory implements Callback<TreeView<Object>, TreeCell<Object>> {
-
+	
 	public AdapterFactoryTreeCellFactory(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
@@ -83,7 +83,8 @@ public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory imp
 			}
 
 			private void update(Object item) {
-				CellFactoryUtil.applyItemProviderStyle(item, this, adapterFactory);
+//				setText(item == null ? "null" : item.toString());
+				applyItemProviderStyle(item, this, adapterFactory);
 			}
 
 		};

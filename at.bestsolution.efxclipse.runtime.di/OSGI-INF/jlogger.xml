@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.runtime.di.jlogger">
+   <implementation class="at.bestsolution.efxclipse.runtime.di.internal.JUtilLoggerFactory"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.runtime.core.log.LoggerFactory"/>
+   </service>
+</scr:component>

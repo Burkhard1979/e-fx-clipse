@@ -4,7 +4,7 @@
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/assets/css/docs.css">
-<title>e(fx)clipse - JavaFX 2.0 Tooling and Runtime for Eclipse</title>
+<title>e(fx)clipse - JavaFX 2 Tooling and Runtime for Eclipse</title>
 </head>
 <body>
 <div class="topbar" data-scrollspy="scrollspy" >
@@ -17,7 +17,9 @@
     <li><a href="fxgraph.html">FXGraph</a></li>
     <li><a href="tutorials.html">Tutorials</a></li>
     <li><a href="releases.html">Releases</a></li>
-    <li><a href="/trac">BugTracker</a></li>
+    <li><a href="/trac/report">BugTracker</a></li>
+    <li><a href="https://github.com/tomsontom/e-fx-clipse">Source-Code</a></li>
+    <li><a href="/trac/wiki">Wiki</a></li>
     <li><a href="https://groups.google.com/forum/?fromgroups#!forum/efxclipse">Forum</a></li>
    </ul>
   </div>
@@ -27,9 +29,9 @@
 <header class="jumbotron masthead" id="overview">
  <div class="inner">
   <div class="container">
-   <h1>e(fx)clipse, by BestSolution.at</h1>
+   <h1>e(fx)clipse by BestSolution.at</h1>
    <p class="lead">
-     JavaFX 2.0 Tooling and Runtime for Eclipse and OSGi
+     JavaFX 2 Tooling and Runtime for Eclipse and OSGi
    </p>
    </div>
  </div>
@@ -112,13 +114,13 @@
      </ul>
     </p>
     <p>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-win32-efx-0.1.1.zip">Win 32bit</a>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-win32-x86_64-efx-0.1.1.zip">Win 64bit</a>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-macosx-cocoa-x86_64-efx-0.1.1.tar.gz">OS-X 64bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-win32-efx-0.1.1.zip">Win 32bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-win32-x86_64-efx-0.1.1.zip">Win 64bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-macosx-cocoa-x86_64-efx-0.1.1.tar.gz">OS-X 64bit</a>
     </p>
     <p>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-linux-gtk-efx-0.1.1.tar.gz">Linux 32bit</a>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-linux-gtk-x86_64-efx-0.1.1.tar.gz">Linux 64bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-linux-gtk-efx-0.1.1.tar.gz">Linux 32bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-3.7.2-linux-gtk-x86_64-efx-0.1.1.tar.gz">Linux 64bit</a>
     </p>
    </div>
    <div class="span8">
@@ -135,13 +137,13 @@
      </ul>
     </p>
     <p>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-win32-efx-0.1.1.zip">Win 32bit</a>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-win32-x86_64-efx-0.1.1.zip">Win 64bit</a>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-macosx-cocoa-x86_64-efx-0.1.1.tar.gz">OS-X 64bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-win32-efx-0.1.1.zip">Win 32bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-win32-x86_64-efx-0.1.1.zip">Win 64bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-macosx-cocoa-x86_64-efx-0.1.1.tar.gz">OS-X 64bit</a>
     </p>
     <p>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-linux-gtk-efx-0.1.1.tar.gz">Linux 32bit</a>
-     <a class="btn" href="http://efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-linux-gtk-x86_64-efx-0.1.1.tar.gz">Linux 64bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-linux-gtk-efx-0.1.1.tar.gz">Linux 32bit</a>
+     <a class="btn" href="http://downloads.efxclipse.org/downloads/latest/eclipse-SDK-4.2.1-linux-gtk-x86_64-efx-0.1.1.tar.gz">Linux 64bit</a>
     </p>
    </div>
   </div>
@@ -152,10 +154,10 @@
      your JavaFX-SDK.  See this <a href="tut1.html">Setup tutorial</a> for a detail description.
     </p>
     <p>
-     For people who don't want to use Juno Eclipse 4.2 SDK but 3.8 can follow this <a href="http://efxclipse.org/downloads/latest/">URL</a> to get access to a full 3.8 SDK build. 
+     For people who don't want to use Juno Eclipse 4.2 SDK but 3.8 can follow this <a href="http://downloads.efxclipse.org/downloads/latest/">URL</a> to get access to a full 3.8 SDK build. 
     </p>
     <p>
-     If you are looking for an older release look at: <a href="downloads/archive">Archive</a>
+     If you are looking for an older release look at: <a href="http://downloads.efxclipse.org/downloads/archive">Archive</a>
     </p>
    </div>
   </div>
@@ -238,7 +240,7 @@
    <div class="span8">
     <p>
      The Eclipse SDK does not know about the location of the e(fx)clipse p2 repository so you need teach it where to find the
-     current repo which is located at <a href="http://www.efxclipse.org/p2-repos/releases/latest">http://www.efxclipse.org/p2-repos/releases/latest/</a>
+     current repo which is located at <a href="http://downloads.efxclipse.org/p2-repos/releases/latest">http://downloads.efxclipse.org/p2-repos/releases/latest/</a>
     </p>
     <p>
      Dependeing on the state of the Juno Repository you'll also have to add the Xtext release repository which is located at <a href="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/">http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</a>. 
@@ -419,7 +421,7 @@
    <div class="span8">
     <p>
      The Eclipse SDK does not know about the location of the e(fx)clipse p2 repository so you need teach it where to find the
-     current repo which is located at <a href="http://www.efxclipse.org/p2-repos/releases/latest">http://www.efxclipse.org/p2-repos/releases/latest/</a>
+     current repo which is located at <a href="http://downloads.efxclipse.org/p2-repos/releases/latest">http://downloads.efxclipse.org/p2-repos/releases/latest/</a>
     </p>
    </div>
   </div>

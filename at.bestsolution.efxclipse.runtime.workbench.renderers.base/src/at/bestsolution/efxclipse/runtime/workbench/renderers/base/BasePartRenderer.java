@@ -34,8 +34,7 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 	
 	@Override
 	protected void initWidget(final MPart element, final WPart<N> widget) {
-		super.initWidget(element, widget);		
-		
+		super.initWidget(element, widget);				
 		widget.registerActivationCallback(new WCallback<Boolean, Void>() {
 			
 			@Override

@@ -37,5 +37,4 @@ Import-Package: javafx.animation;version="2.2.0",
  javafx.util.converter;version="2.2.0"
 Require-Bundle: org.eclipse.emf.edit;bundle-version="2.8.0"
 Export-Package: at.bestsolution.efxclipse.runtime.emf.edit.ui,
- at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd,
- org.eclipse.swt.dnd
+ at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd

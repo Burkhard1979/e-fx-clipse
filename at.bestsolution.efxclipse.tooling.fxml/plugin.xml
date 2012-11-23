@@ -46,6 +46,10 @@
             class="at.bestsolution.efxclipse.tooling.fxml.editors.FXMLTextHover"
             target="org.eclipse.wst.xml.XML_DEFAULT">
       </documentationTextHover>
+      <documentationTextHover
+            class="at.bestsolution.efxclipse.tooling.fxml.editors.FXMLTextHover"
+            target="org.eclipse.wst.xml.PROCESSING_INSTRUCTION">
+      </documentationTextHover>
    </extension>
    <extension
          point="org.eclipse.ui.newWizards">
@@ -80,5 +84,22 @@
             targetId="org.eclipse.core.runtime.xml">
       </hyperlinkDetector>
    </extension>
-
+   <extension
+         point="org.eclipse.ltk.core.refactoring.renameParticipants">
+      <renameParticipant
+            class="at.bestsolution.efxclipse.tooling.fxml.refactoring.RenameJFXControllerParticipant"
+            id="at.bestsolution.efxclipse.tooling.fxml.refactoring.renameParticipant"
+            name="rename">
+            <enablement>
+              <with variable="affectedNatures">
+                <iterate operator="or">
+                  <equals value="org.eclipse.jdt.core.javanature"/>
+                </iterate>
+              </with>
+              <with variable="element">
+                <instanceof value="org.eclipse.jdt.core.ICompilationUnit"></instanceof>
+              </with>
+            </enablement>
+     </renameParticipant>
+   </extension>
 </plugin>

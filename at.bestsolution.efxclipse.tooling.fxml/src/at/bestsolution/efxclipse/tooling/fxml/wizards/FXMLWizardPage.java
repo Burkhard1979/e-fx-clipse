@@ -55,7 +55,7 @@ public class FXMLWizardPage extends AbstractJDTElementPage<FXMLElement> {
 	private IType customSelection;
 	
 	protected FXMLWizardPage(IPackageFragmentRoot froot, IPackageFragment fragment, IWorkspaceRoot fWorkspaceRoot) {
-		super("fxgraph", "FXGraph File", "Create a new FXML File", froot, fragment, fWorkspaceRoot);
+		super("fxml", "FXML File", "Create a new FXML File", froot, fragment, fWorkspaceRoot);
 	}
 
 	@Override
