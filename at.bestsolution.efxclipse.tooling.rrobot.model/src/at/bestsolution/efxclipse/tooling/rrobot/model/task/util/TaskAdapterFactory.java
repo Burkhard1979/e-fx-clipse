@@ -8,15 +8,15 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -99,8 +99,12 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 				return createTemplatedFileAdapter();
 			}
 			@Override
-			public Adapter caseStringContentFile(StringContentFile object) {
-				return createStringContentFileAdapter();
+			public Adapter caseDataFile(DataFile object) {
+				return createDataFileAdapter();
+			}
+			@Override
+			public Adapter caseURLFile(URLFile object) {
+				return createURLFileAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -207,16 +211,30 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile <em>String Content File</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile <em>Data File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile
 	 * @generated
 	 */
-	public Adapter createStringContentFileAdapter() {
+	public Adapter createDataFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile <em>URL File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile
+	 * @generated
+	 */
+	public Adapter createURLFileAdapter() {
 		return null;
 	}
 

@@ -7,15 +7,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -114,11 +114,19 @@ public class TaskSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TaskPackage.STRING_CONTENT_FILE: {
-				StringContentFile stringContentFile = (StringContentFile)theEObject;
-				T result = caseStringContentFile(stringContentFile);
-				if (result == null) result = caseFile(stringContentFile);
-				if (result == null) result = caseResource(stringContentFile);
+			case TaskPackage.DATA_FILE: {
+				DataFile dataFile = (DataFile)theEObject;
+				T result = caseDataFile(dataFile);
+				if (result == null) result = caseFile(dataFile);
+				if (result == null) result = caseResource(dataFile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.URL_FILE: {
+				URLFile urlFile = (URLFile)theEObject;
+				T result = caseURLFile(urlFile);
+				if (result == null) result = caseFile(urlFile);
+				if (result == null) result = caseResource(urlFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -217,17 +225,32 @@ public class TaskSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String Content File</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data File</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String Content File</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data File</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStringContentFile(StringContentFile object) {
+	public T caseDataFile(DataFile object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>URL File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>URL File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseURLFile(URLFile object) {
 		return null;
 	}
 

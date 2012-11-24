@@ -5,21 +5,21 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.task;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>String Content File</b></em>'.
+ * A representation of the model object '<em><b>Data File</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile#getContent <em>Content</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile#getContent <em>Content</em>}</li>
  * </ul>
  * </p>
  *
- * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getStringContentFile()
+ * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getDataFile()
  * @model
  * @generated
  */
-public interface StringContentFile extends File {
+public interface DataFile extends File {
 	/**
 	 * Returns the value of the '<em><b>Content</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -30,14 +30,14 @@ public interface StringContentFile extends File {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Content</em>' attribute.
 	 * @see #setContent(byte[])
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getStringContentFile_Content()
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getDataFile_Content()
 	 * @model
 	 * @generated
 	 */
 	byte[] getContent();
 
 	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile#getContent <em>Content</em>}' attribute.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile#getContent <em>Content</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Content</em>' attribute.
@@ -46,4 +46,4 @@ public interface StringContentFile extends File {
 	 */
 	void setContent(byte[] value);
 
-} // StringContentFile
+} // DataFile
