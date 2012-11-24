@@ -4,10 +4,10 @@
     <tags>no-decoration#topdecoration.fxml</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_SeXUCu8EEd6FC9cDb6iV7g" elementId="_SeXUCu8EEd6FC9cDb6iV7g" horizontal="true">
       <children xsi:type="basic:PartStack" xmi:id="_SeXUC-8EEd6FC9cDb6iV7g" elementId="_SeXUC-8EEd6FC9cDb6iV7g" containerData="30">
-        <children xsi:type="basic:Part" xmi:id="_SeXUDO8EEd6FC9cDb6iV7g" elementId="ContactsView" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.views.ListView2" label="%contactsList" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/folder_user.png" tooltip="%contactsTooltip"/>
+        <children xsi:type="basic:Part" xmi:id="_SeXUDO8EEd6FC9cDb6iV7g" elementId="ContactsView" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.views.ListView" label="%contactsList" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/folder_user.png" tooltip="%contactsTooltip"/>
       </children>
       <children xsi:type="basic:PartStack" xmi:id="_SeXUDe8EEd6FC9cDb6iV7g" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.partstacks.second" containerData="70">
-        <children xsi:type="basic:Part" xmi:id="DetailsView" elementId="DetailsView" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.views.DetailsView2" label="%partDetails" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/report_user.png" tooltip="%detailsTooltip"/>
+        <children xsi:type="basic:Part" xmi:id="DetailsView" elementId="DetailsView" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.views.DetailsView" label="%partDetails" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/report_user.png" tooltip="%detailsTooltip"/>
       </children>
     </children>
     <mainMenu xmi:id="menu:org.eclipse.ui.main.menu" elementId="menu:org.eclipse.ui.main.menu">
