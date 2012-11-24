@@ -29,7 +29,6 @@ import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.omg.CORBA.portable.Delegate;
 
 /**
  * Base class for the AdapterFactoryCellFactories
