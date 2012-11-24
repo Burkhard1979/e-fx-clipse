@@ -7,3 +7,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.inject;version="1.0.0"
 Export-Package: at.bestsolution.efxclipse.runtime.core.log
 Bundle-Vendor: %Bundle-Vendor
+Service-Component: OSGI-INF/jlogger.xml

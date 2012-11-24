@@ -8,14 +8,21 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.runtime.di.internal;
+package at.bestsolution.efxclipse.runtime.core.log;
+
+import javax.inject.Provider;
 
 import at.bestsolution.efxclipse.runtime.core.log.Log;
 import at.bestsolution.efxclipse.runtime.core.log.Logger;
 import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
 
-public class JUtilLoggerFactory implements LoggerFactory {
+public class JUtilLoggerFactory implements LoggerFactory, Provider<LoggerFactory> {
 
+	@Override
+	public LoggerFactory get() {
+		return this;
+	}
+	
 	@Override
 	public Logger createLogger(String name) {
 		return new LoggerImpl(name);
