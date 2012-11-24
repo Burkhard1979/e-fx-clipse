@@ -1,38 +1,22 @@
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
-import javafx.scene.image.Image;
-
-import javafx.scene.image.ImageView;
-
-import java.net.MalformedURLException;
-
-import org.eclipse.core.runtime.Platform;
-
-import java.net.URL;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.edit.command.PasteFromClipboardCommand;
-
-import org.eclipse.emf.edit.command.CopyToClipboardCommand;
-
-import org.eclipse.emf.edit.command.CutToClipboardCommand;
-
-import org.eclipse.emf.edit.domain.EditingDomain;
-
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
-import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
-import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
-import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Cell;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.CopyToClipboardCommand;
+import org.eclipse.emf.edit.command.CutToClipboardCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.PasteFromClipboardCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 public class ContextMenuProvider implements ICellUpdateListener {
 
@@ -113,12 +97,13 @@ public class ContextMenuProvider implements ICellUpdateListener {
 	}
 
 	private ImageView getImage(String path) {
-		ImageView imageView = null;
 		try {
 			URL url = new URL("platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/" + path);
-			imageView = new ImageView(new Image(url.toExternalForm()));
+			Image image = new Image(url.toExternalForm());
+			return new ImageView(image);
 		} catch (MalformedURLException e) {
+			throw new IllegalArgumentException(e);
 		}
-		return imageView;
 	}
+	
 }

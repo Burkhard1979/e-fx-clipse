@@ -12,47 +12,42 @@
 
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
-import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
-
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
-
-import javafx.scene.control.TreeView;
-
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
-
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableList;
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTableCellFactory;
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javax.inject.Inject;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 @SuppressWarnings("restriction")
 public class ListView2 {
 
 	@Inject
-	public ListView2(BorderPane parent, final MApplication application, ContactsManager contactsManager) {
+	public ListView2(BorderPane parent, final MApplication application, final ContactsManager contactsManager) {
+		EditingDomain editingDomain = contactsManager.getEditingDomain();
 
 		// TreeView
 		TreeView<Object> treeView = new TreeView<>();
 		treeView.setRoot(new AdapterFactoryTreeItem(contactsManager.getRootGroup(), contactsManager.getAdapterFactory()));
 		AdapterFactoryTreeCellFactory treeCellFactory = new AdapterFactoryTreeCellFactory(contactsManager.getAdapterFactory());
 
+		// add edit support
+		treeCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getGroup_Name(), editingDomain));
+
 		// adds drag support
 		treeCellFactory.addCellCreationListener(new CellDragAdapter());
 
 		// adds drop support
-		treeCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(contactsManager.getEditingDomain()));
-
-		// add the context menu
-		// treeCellFactory.addCellUpdateListener(contextMenuProvider);
+		treeCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
 
 		treeView.setCellFactory(treeCellFactory);
 
@@ -73,8 +68,9 @@ public class ListView2 {
 		});
 
 		// add the context menu
-		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager.getEditingDomain());
+		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
 		treeCellFactory.addCellUpdateListener(contextMenuProvider);
-		
+
+		treeView.setEditable(true);
 	}
 }

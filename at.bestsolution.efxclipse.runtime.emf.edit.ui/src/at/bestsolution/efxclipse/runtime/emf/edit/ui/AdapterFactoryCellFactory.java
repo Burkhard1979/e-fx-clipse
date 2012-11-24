@@ -63,9 +63,22 @@ public abstract class AdapterFactoryCellFactory {
 
 	}
 
+	public interface ICellEditHandler {
+
+		boolean canEdit(Cell<?> treeCell);
+
+		void startEdit(Cell<?> treeCell);
+
+		void commitEdit(Cell<?> treeCell, Object newValue);
+
+		void cancelEdit(Cell<?> treeCell);
+
+	}
+
 	final protected AdapterFactory adapterFactory;
 	final List<ICellCreationListener> cellCreationListeners = new ArrayList<>();
 	final List<ICellUpdateListener> cellUpdateListeners = new ArrayList<>();
+	final List<ICellEditHandler> cellEditHandlers = new ArrayList<>();
 
 	public AdapterFactoryCellFactory(AdapterFactory adapterFactory) {
 		super();
@@ -94,6 +107,22 @@ public abstract class AdapterFactoryCellFactory {
 
 	public void removeCellUpdateListener(ICellUpdateListener listener) {
 		cellUpdateListeners.remove(listener);
+	}
+
+	public void addCellEditHandler(ICellEditHandler cellEditHandler) {
+		cellEditHandlers.add(cellEditHandler);
+	}
+
+	public void remvoveCellEditHandler(ICellEditHandler cellEditHandler) {
+		cellEditHandlers.remove(cellEditHandler);
+	}
+
+	ICellEditHandler getCellEditHandler(Cell<?> cell) {
+		for (ICellEditHandler cellEditHandler : cellEditHandlers) {
+			if (cellEditHandler.canEdit(cell))
+				return cellEditHandler;
+		}
+		return null;
 	}
 
 	void applyItemProviderStyle(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
@@ -180,14 +209,14 @@ public abstract class AdapterFactoryCellFactory {
 			return new ImageView(((URL) object).toExternalForm());
 		} else if (object instanceof ComposedImage) {
 			Pane pane = new Pane();
-			
+
 			for (Object image : ((ComposedImage) object).getImages()) {
-				if(image instanceof URL) {
+				if (image instanceof URL) {
 					ImageView imageView = new ImageView(((URL) image).toExternalForm());
-					pane.getChildren().add(imageView);					
+					pane.getChildren().add(imageView);
 				}
 			}
-			
+
 			return pane;
 		}
 

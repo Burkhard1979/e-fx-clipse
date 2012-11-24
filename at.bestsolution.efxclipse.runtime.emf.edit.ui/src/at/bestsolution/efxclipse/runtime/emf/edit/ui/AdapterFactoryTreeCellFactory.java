@@ -25,19 +25,22 @@ import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
 /**
- * This {@link TreeCell} factory wraps an {@link AdapterFactory} and delegates calls to its {@link TreeCell}s
- * to the corresponding adapter-implemented item provider interfaces.
+ * This {@link TreeCell} factory wraps an {@link AdapterFactory} and delegates
+ * calls to its {@link TreeCell}s to the corresponding adapter-implemented item
+ * provider interfaces.
  * 
  * <ul>
- * <li>{@link Cell#setText(String)} and {@link Cell#setGraphic(Node)} are delegated to
- * {@link IItemLabelProvider}</li>
+ * <li>{@link Cell#setText(String)} and {@link Cell#setGraphic(Node)} are
+ * delegated to {@link IItemLabelProvider}</li>
  * <li>{@link Cell#setTextFill(javafx.scene.paint.Paint)} and the CSS property
- * <code>-fx-background-color</code> are delegated to {@link IItemColorProvider}</li>
- * <li>{@link Cell#setFont(javafx.scene.text.Font)} is delegated to {@link IItemFontProvider}</li>
+ * <code>-fx-background-color</code> are delegated to {@link IItemColorProvider}
+ * </li>
+ * <li>{@link Cell#setFont(javafx.scene.text.Font)} is delegated to
+ * {@link IItemFontProvider}</li>
  * </ul>
  */
 public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory implements Callback<TreeView<Object>, TreeCell<Object>> {
-	
+
 	public AdapterFactoryTreeCellFactory(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
@@ -48,7 +51,7 @@ public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory imp
 		final TreeCell<Object> treeCell = new TreeCell<Object>() {
 
 			Object currentItem = null;
-			
+
 			AdapterImpl adapter = new AdapterImpl() {
 				@Override
 				public void notifyChanged(Notification msg) {
@@ -56,17 +59,42 @@ public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory imp
 				}
 			};
 
+			private ICellEditHandler cellEditHandler;
+
+			@Override
+			public void startEdit() {
+				super.startEdit();
+				cellEditHandler = getCellEditHandler(this);
+				if(cellEditHandler != null)
+					cellEditHandler.startEdit(this);
+			}
+
+			@Override
+			public void commitEdit(Object newValue) {
+				super.commitEdit(newValue);
+				if(cellEditHandler != null)
+					cellEditHandler.commitEdit(this, newValue);
+			}
+
+			@Override
+			public void cancelEdit() {
+				super.cancelEdit();
+				if(cellEditHandler != null)
+					cellEditHandler.cancelEdit(this);
+				update(getItem());
+			}
+
 			@Override
 			protected void updateItem(Object item, boolean empty) {
 				super.updateItem(item, empty);
 
 				// check if the item changed
 				if (item != currentItem) {
-					
+
 					// remove the adapter if attached
-					if(currentItem instanceof Notifier)						
+					if (currentItem instanceof Notifier)
 						((Notifier) currentItem).eAdapters().remove(adapter);
-					
+
 					// update the current item
 					currentItem = item;
 
@@ -78,12 +106,12 @@ public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory imp
 				// notify the listeners
 				for (ICellUpdateListener cellUpdateListener : cellUpdateListeners)
 					cellUpdateListener.updateItem(this, item, empty);
-				
-				update(item);				
+
+				update(item);
 			}
 
 			private void update(Object item) {
-//				setText(item == null ? "null" : item.toString());
+				// setText(item == null ? "null" : item.toString());
 				applyItemProviderStyle(item, this, adapterFactory);
 			}
 
