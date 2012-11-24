@@ -175,6 +175,24 @@ public interface BundleFactory extends EFactory {
 	IncludedFeature createIncludedFeature();
 
 	/**
+	 * Returns a new object of class '<em>Product Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Product Plugin</em>'.
+	 * @generated
+	 */
+	ProductPlugin createProductPlugin();
+
+	/**
+	 * Returns a new object of class '<em>Product Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Product Feature</em>'.
+	 * @generated
+	 */
+	ProductFeature createProductFeature();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

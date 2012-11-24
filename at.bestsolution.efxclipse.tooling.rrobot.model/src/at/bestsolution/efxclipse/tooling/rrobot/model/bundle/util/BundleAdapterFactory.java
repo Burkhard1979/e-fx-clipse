@@ -145,6 +145,14 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 				return createIncludedFeatureAdapter();
 			}
 			@Override
+			public Adapter caseProductPlugin(ProductPlugin object) {
+				return createProductPluginAdapter();
+			}
+			@Override
+			public Adapter caseProductFeature(ProductFeature object) {
+				return createProductFeatureAdapter();
+			}
+			@Override
 			public Adapter caseProject(Project object) {
 				return createProjectAdapter();
 			}
@@ -429,6 +437,34 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIncludedFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductPlugin <em>Product Plugin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductPlugin
+	 * @generated
+	 */
+	public Adapter createProductPluginAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature <em>Product Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature
+	 * @generated
+	 */
+	public Adapter createProductFeatureAdapter() {
 		return null;
 	}
 

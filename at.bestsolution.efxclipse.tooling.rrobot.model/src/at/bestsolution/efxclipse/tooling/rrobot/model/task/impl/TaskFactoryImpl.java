@@ -12,13 +12,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskFactory;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,7 +69,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 			case TaskPackage.PROJECT: return createProject();
 			case TaskPackage.FOLDER: return createFolder();
 			case TaskPackage.TEMPLATED_FILE: return createTemplatedFile();
-			case TaskPackage.STRING_CONTENT_FILE: return createStringContentFile();
+			case TaskPackage.DATA_FILE: return createDataFile();
+			case TaskPackage.URL_FILE: return createURLFile();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -149,9 +151,19 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringContentFile createStringContentFile() {
-		StringContentFileImpl stringContentFile = new StringContentFileImpl();
-		return stringContentFile;
+	public DataFile createDataFile() {
+		DataFileImpl dataFile = new DataFileImpl();
+		return dataFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public URLFile createURLFile() {
+		URLFileImpl urlFile = new URLFileImpl();
+		return urlFile;
 	}
 
 	/**

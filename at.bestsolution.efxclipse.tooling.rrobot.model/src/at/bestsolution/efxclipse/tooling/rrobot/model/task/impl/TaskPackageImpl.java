@@ -2,23 +2,11 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.impl;
 
-import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
+import static at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage.RESOURCE;
 
-import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl;
-
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskFactory;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
-
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -27,9 +15,20 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskFactory;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,7 +84,14 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stringContentFileEClass = null;
+	private EClass dataFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass urlFileEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -296,26 +302,44 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDataFile() {
+		return dataFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataFile_Content() {
+		return (EAttribute)dataFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getURLFile() {
+		return urlFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getURLFile_Uri() {
+		return (EAttribute)urlFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getInputStream() {
 		return inputStreamEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getStringContentFile() {
-		return stringContentFileEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getStringContentFile_Content() {
-		return (EAttribute)stringContentFileEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -373,8 +397,11 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		templatedFileEClass = createEClass(TEMPLATED_FILE);
 		createEAttribute(templatedFileEClass, TEMPLATED_FILE__GENERATOR_TYPE);
 
-		stringContentFileEClass = createEClass(STRING_CONTENT_FILE);
-		createEAttribute(stringContentFileEClass, STRING_CONTENT_FILE__CONTENT);
+		dataFileEClass = createEClass(DATA_FILE);
+		createEAttribute(dataFileEClass, DATA_FILE__CONTENT);
+
+		urlFileEClass = createEClass(URL_FILE);
+		createEAttribute(urlFileEClass, URL_FILE__URI);
 
 		// Create data types
 		ioExceptionEDataType = createEDataType(IO_EXCEPTION);
@@ -413,7 +440,8 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		folderEClass.getESuperTypes().add(this.getResource());
 		fileEClass.getESuperTypes().add(this.getResource());
 		templatedFileEClass.getESuperTypes().add(this.getFile());
-		stringContentFileEClass.getESuperTypes().add(this.getFile());
+		dataFileEClass.getESuperTypes().add(this.getFile());
+		urlFileEClass.getESuperTypes().add(this.getFile());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(robotTaskEClass, RobotTask.class, "RobotTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -444,8 +472,11 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		initEClass(templatedFileEClass, TemplatedFile.class, "TemplatedFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTemplatedFile_GeneratorType(), ecorePackage.getEString(), "generatorType", null, 0, 1, TemplatedFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(stringContentFileEClass, StringContentFile.class, "StringContentFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringContentFile_Content(), ecorePackage.getEByteArray(), "content", null, 0, 1, StringContentFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataFileEClass, DataFile.class, "DataFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataFile_Content(), ecorePackage.getEByteArray(), "content", null, 0, 1, DataFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(urlFileEClass, URLFile.class, "URLFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getURLFile_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, URLFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(ioExceptionEDataType, IOException.class, "IOException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
