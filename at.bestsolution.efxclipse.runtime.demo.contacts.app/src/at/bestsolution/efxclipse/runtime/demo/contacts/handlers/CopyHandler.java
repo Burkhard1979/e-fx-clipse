@@ -19,11 +19,11 @@ import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.CopyToClipboardCommand;
 
 @SuppressWarnings("restriction")
-public class DeleteContactHandler {
-
+public class CopyHandler {
+	
 	@Inject
 	ContactsManager contactsManager;
 
@@ -32,7 +32,7 @@ public class DeleteContactHandler {
 	@CanExecute
 	boolean canExecute(@Optional List<?> selection) {
 		if (selection != null) {
-			command = DeleteCommand.create(contactsManager.getEditingDomain(), selection);
+			command = CopyToClipboardCommand.create(contactsManager.getEditingDomain(), selection);
 			return command.canExecute();
 		}
 		return false;
@@ -43,5 +43,6 @@ public class DeleteContactHandler {
 		if (command != null && command.canExecute())
 			contactsManager.getEditingDomain().getCommandStack().execute(command);
 	}
-
+	
+	
 }

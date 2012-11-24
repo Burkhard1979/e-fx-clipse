@@ -16,6 +16,11 @@
         <children xsi:type="menu:DirectMenuItem" xmi:id="_SeXUEu8EEd6FC9cDb6iV7g" elementId="_SeXUEu8EEd6FC9cDb6iV7g" label="%menuLabelDirectExit" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.ExitHandler"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_SeXUE-8EEd6FC9cDb6iV7g" elementId="_SeXUE-8EEd6FC9cDb6iV7g" label="%menuLabelExit" command="contacts.exit"/>
       </children>
+      <children xsi:type="menu:Menu" xmi:id="_0oZ9EDZ8EeKZBafm86UM9A" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.app.menus.edit" label="%editMenu">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_CQyeUDZ9EeKZBafm86UM9A" elementId="" label="%menuLabelCut" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/cut.png" command="_9rAmADZ8EeKZBafm86UM9A"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_218HcDaDEeKZBafm86UM9A" elementId="" label="%menuLabelCopy" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/page_copy.png" command="_fe4hcDaDEeKZBafm86UM9A"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_98J8MDaDEeKZBafm86UM9A" elementId="" label="%menuLabelPaste" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/page_paste.png" command="_jc-HoDaDEeKZBafm86UM9A"/>
+      </children>
     </mainMenu>
     <trimBars xmi:id="_SeXUAu8EEd6FC9cDb6iV7g" elementId="toolbar:org.eclipse.ui.main.toolbar">
       <children xsi:type="menu:ToolBar" xmi:id="_6RnVUE8FEeCyZoR8urPqaw" elementId="">
@@ -34,11 +39,14 @@
   <handlers xmi:id="_IDToQCxFEeKKgKdy48tDJg" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.handlers.redo" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.RedoHandler" command="_K6SccCxFEeKKgKdy48tDJg"/>
   <handlers xmi:id="_8qTqYC3eEeKA67t6AqYX1w" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.handlers.addContact" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.AddContactHandler" command="_k20AAC3eEeKA67t6AqYX1w"/>
   <handlers xmi:id="_EPhA4C3iEeKA67t6AqYX1w" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.handlers.AddGroup" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.AddGroupHandler" command="_8GIe8C3hEeKA67t6AqYX1w"/>
+  <handlers xmi:id="_KcZ04DZ9EeKZBafm86UM9A" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.app.handlers.Cut" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.CutHandler" command="_9rAmADZ8EeKZBafm86UM9A"/>
+  <handlers xmi:id="_o3IDMDaDEeKZBafm86UM9A" elementId="" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.CopyHandler" command="_fe4hcDaDEeKZBafm86UM9A"/>
+  <handlers xmi:id="_w-ImkDaDEeKZBafm86UM9A" elementId="" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.PasteHandler" command="_jc-HoDaDEeKZBafm86UM9A"/>
   <bindingTables xmi:id="_SeXUEO8EEd6FC9cDb6iV7x" elementId="_SeXUEO8EEd6FC9cDb6iV7x" bindingContext="_SeXUHO8EEd6FC9cDb6iV7y">
     <bindings xmi:id="_SeXUH-8EEd6FC9cDb6iV7g" elementId="_SeXUH-8EEd6FC9cDb6iV7g" keySequence="CTRL+D" command="contacts.delete"/>
     <bindings xmi:id="_SeXUIO8EEd6FC9cDb6iV7g" elementId="_SeXUIO8EEd6FC9cDb6iV7g" keySequence="CTRL+Q" command="contacts.exit"/>
-    <bindings xmi:id="_qMtB8DZ2EeKZBafm86UM9A" keySequence="CTRL + Z" command="_YYAtMCxCEeKKgKdy48tDJg"/>
-    <bindings xmi:id="_y4qsgDZ2EeKZBafm86UM9A" keySequence="CTRL + Y" command="_K6SccCxFEeKKgKdy48tDJg"/>
+    <bindings xmi:id="_qMtB8DZ2EeKZBafm86UM9A" keySequence="CTRL+Z" command="_YYAtMCxCEeKKgKdy48tDJg"/>
+    <bindings xmi:id="_y4qsgDZ2EeKZBafm86UM9A" keySequence="CTRL+Y" command="_K6SccCxFEeKKgKdy48tDJg"/>
   </bindingTables>
   <rootContext xmi:id="_SeXUHO8EEd6FC9cDb6iV7y" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_SeXUEO8EEd6FC9cDb6iV7w" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
@@ -53,6 +61,9 @@
   <commands xmi:id="_K6SccCxFEeKKgKdy48tDJg" elementId="contacts.redo" commandName="%menuLabelRedo"/>
   <commands xmi:id="_k20AAC3eEeKA67t6AqYX1w" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.commands.addContact" commandName="%menuLabelAddContact"/>
   <commands xmi:id="_8GIe8C3hEeKA67t6AqYX1w" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.commands.AddGroup" commandName="%menuLabelAddGroup" description=""/>
+  <commands xmi:id="_9rAmADZ8EeKZBafm86UM9A" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.app.commands.cut" commandName="%menuLabelCut"/>
+  <commands xmi:id="_fe4hcDaDEeKZBafm86UM9A" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.app.commands.copy" commandName="%menuLabelCopy"/>
+  <commands xmi:id="_jc-HoDaDEeKZBafm86UM9A" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.app.commands.paste" commandName="%menuLabelPaste"/>
   <addons xmi:id="_XGB3wPZlEd-XstlTZ6nTXg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_XGB3wPZlEd-XstlTZ6nTXh" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_ViIQQBnuEeKroetix5qA3A" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.addon.0" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon"/>

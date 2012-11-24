@@ -12,6 +12,14 @@
 
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
+import javafx.scene.control.SelectionMode;
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+import javafx.collections.ListChangeListener;
+
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
@@ -54,6 +62,8 @@ public class ListView {
 		parent.setCenter(treeView);
 
 		treeView.setShowRoot(false);
+		
+		treeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 		treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
@@ -66,7 +76,23 @@ public class ListView {
 			}
 
 		});
+		
+		treeView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
 
+			@Override
+			public void onChanged(Change<?> change) {
+				ArrayList<Object> selection = new ArrayList<>();
+				for (Object item : change.getList()) {
+					if (item instanceof AdapterFactoryTreeItem) {
+						Object value = ((AdapterFactoryTreeItem) item).getValue();
+						selection.add(value);
+					}
+				}
+				application.getContext().set(List.class, selection);
+			}
+			
+		});
+		
 		// add the context menu
 		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
 		treeCellFactory.addCellUpdateListener(contextMenuProvider);
