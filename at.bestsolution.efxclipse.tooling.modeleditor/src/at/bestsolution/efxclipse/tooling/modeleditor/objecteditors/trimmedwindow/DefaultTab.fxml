@@ -39,9 +39,7 @@
 	<CheckBox text="To be rendered" GridPane.columnIndex="1" GridPane.rowIndex="6"/> 
 	<CheckBox text="Visible" GridPane.columnIndex="1" GridPane.rowIndex="7"/> 
 	<Label text="Selected Element" GridPane.columnIndex="0" GridPane.rowIndex="8"/> 
-	<ComboBox GridPane.hgrow="ALWAYS" GridPane.columnSpan="2" GridPane.columnIndex="1" GridPane.rowIndex="8"> 
-		<maxWidth><Integer fx:constant="MAX_VALUE" /></maxWidth>
-	</ComboBox>
+	<ComboBox maxWidth="1000" GridPane.hgrow="ALWAYS" GridPane.columnSpan="2" GridPane.columnIndex="1" GridPane.rowIndex="8"/> 
 	<Label text="Binding Context" GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.valignment="TOP"/> 
 	<ListView GridPane.columnIndex="1" GridPane.rowIndex="9"/> 
 	<AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="9"> 

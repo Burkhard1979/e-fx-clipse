@@ -1,19 +1,13 @@
 package at.bestsolution.efxclipse.tooling.efxbean.jvmmodel
 
+import at.bestsolution.efxclipse.tooling.efxbean.fXBean.Bean
 import com.google.inject.Inject
+import org.eclipse.xtext.common.types.TypesFactory
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider$Factory
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import at.bestsolution.efxclipse.tooling.efxbean.fXBean.FXBeanUnit
-import quicktime.app.display.FullScreenWindow$QTM
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import at.bestsolution.efxclipse.tooling.efxbean.fXBean.Bean
-import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
-import org.eclipse.xtext.common.types.JvmField
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.xbase.typing.ITypeProvider
-import org.eclipse.xtext.common.types.access.IJvmTypeProvider
  
 /**
  * <p>Infers a JVM model from the source model.</p> 

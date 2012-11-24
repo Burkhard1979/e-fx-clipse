@@ -1,11 +1,13 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.*;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -72,61 +74,32 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
       case CssDslPackage.MEDIA: return createmedia();
       case CssDslPackage.RULESET: return createruleset();
       case CssDslPackage.SELECTOR: return createselector();
+      case CssDslPackage.SIMPLE_SELECTOR_FOR_NEGATION: return createSimpleSelectorForNegation();
+      case CssDslPackage.CSS_SELECTOR: return createCssSelector();
       case CssDslPackage.SIMPLE_SELECTOR: return createsimple_selector();
-      case CssDslPackage.SUB_SELECTOR: return createsub_selector();
+      case CssDslPackage.CLASS_SELECTOR: return createClassSelector();
+      case CssDslPackage.ELEMENT_SELECTOR: return createElementSelector();
+      case CssDslPackage.UNIVERSAL_SELECTOR: return createUniversalSelector();
+      case CssDslPackage.ID_SELECTOR: return createIdSelector();
       case CssDslPackage.CSS_DECLARATION: return createcss_declaration();
       case CssDslPackage.CSS_PROPERTY: return createcss_property();
-      case CssDslPackage.CSS_NEGATION: return createcss_negation();
+      case CssDslPackage.PSEUDO_CLASS_OR_FUNC: return createPseudoClassOrFunc();
+      case CssDslPackage.PSEUDO_CLASS: return createPseudoClass();
+      case CssDslPackage.PSEUDO_CLASS_NAME: return createPseudoClassName();
+      case CssDslPackage.PSEUDO_CLASS_FUNCTION: return createPseudoClassFunction();
       case CssDslPackage.CSS_TOK: return createCssTok();
-      case CssDslPackage.EXPR: return createexpr();
-      case CssDslPackage.TERM_GROUP: return createtermGroup();
-      case CssDslPackage.TERM: return createterm();
-      case CssDslPackage.FUNCTION: return createfunction();
       case CssDslPackage.URL_TYPE: return createURLType();
+      case CssDslPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
       case CssDslPackage.SYMBOL_TOK: return createSymbolTok();
       case CssDslPackage.WS_TOK: return createWSTok();
       case CssDslPackage.STRING_TOK: return createStringTok();
-      case CssDslPackage.FUNC_TOK: return createFuncTok();
       case CssDslPackage.NUMBER_TOK: return createNumberTok();
-      case CssDslPackage.IDENTIFIER_TOK: return createIdentifierTok();
       case CssDslPackage.URL_TOK: return createUrlTok();
       case CssDslPackage.COLOR_TOK: return createColorTok();
+      case CssDslPackage.IDENTIFIER_TOK: return createIdentifierTok();
+      case CssDslPackage.FUNC_TOK: return createFuncTok();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object createFromString(EDataType eDataType, String initialValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case CssDslPackage.CSS_NOT:
-        return createcss_notFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String convertToString(EDataType eDataType, Object instanceValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case CssDslPackage.CSS_NOT:
-        return convertcss_notToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -212,6 +185,28 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public SimpleSelectorForNegation createSimpleSelectorForNegation()
+  {
+    SimpleSelectorForNegationImpl simpleSelectorForNegation = new SimpleSelectorForNegationImpl();
+    return simpleSelectorForNegation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CssSelector createCssSelector()
+  {
+    CssSelectorImpl cssSelector = new CssSelectorImpl();
+    return cssSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public simple_selector createsimple_selector()
   {
     simple_selectorImpl simple_selector = new simple_selectorImpl();
@@ -223,10 +218,43 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public sub_selector createsub_selector()
+  public ClassSelector createClassSelector()
   {
-    sub_selectorImpl sub_selector = new sub_selectorImpl();
-    return sub_selector;
+    ClassSelectorImpl classSelector = new ClassSelectorImpl();
+    return classSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ElementSelector createElementSelector()
+  {
+    ElementSelectorImpl elementSelector = new ElementSelectorImpl();
+    return elementSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UniversalSelector createUniversalSelector()
+  {
+    UniversalSelectorImpl universalSelector = new UniversalSelectorImpl();
+    return universalSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IdSelector createIdSelector()
+  {
+    IdSelectorImpl idSelector = new IdSelectorImpl();
+    return idSelector;
   }
 
   /**
@@ -256,10 +284,43 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public css_negation createcss_negation()
+  public PseudoClassOrFunc createPseudoClassOrFunc()
   {
-    css_negationImpl css_negation = new css_negationImpl();
-    return css_negation;
+    PseudoClassOrFuncImpl pseudoClassOrFunc = new PseudoClassOrFuncImpl();
+    return pseudoClassOrFunc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClass createPseudoClass()
+  {
+    PseudoClassImpl pseudoClass = new PseudoClassImpl();
+    return pseudoClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClassName createPseudoClassName()
+  {
+    PseudoClassNameImpl pseudoClassName = new PseudoClassNameImpl();
+    return pseudoClassName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PseudoClassFunction createPseudoClassFunction()
+  {
+    PseudoClassFunctionImpl pseudoClassFunction = new PseudoClassFunctionImpl();
+    return pseudoClassFunction;
   }
 
   /**
@@ -278,54 +339,21 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public expr createexpr()
-  {
-    exprImpl expr = new exprImpl();
-    return expr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public termGroup createtermGroup()
-  {
-    termGroupImpl termGroup = new termGroupImpl();
-    return termGroup;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public term createterm()
-  {
-    termImpl term = new termImpl();
-    return term;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public function createfunction()
-  {
-    functionImpl function = new functionImpl();
-    return function;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public URLType createURLType()
   {
     URLTypeImpl urlType = new URLTypeImpl();
     return urlType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AttributeSelector createAttributeSelector()
+  {
+    AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
+    return attributeSelector;
   }
 
   /**
@@ -366,32 +394,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncTok createFuncTok()
-  {
-    FuncTokImpl funcTok = new FuncTokImpl();
-    return funcTok;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public NumberTok createNumberTok()
   {
     NumberTokImpl numberTok = new NumberTokImpl();
     return numberTok;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IdentifierTok createIdentifierTok()
-  {
-    IdentifierTokImpl identifierTok = new IdentifierTokImpl();
-    return identifierTok;
   }
 
   /**
@@ -421,11 +427,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public css_not createcss_notFromString(EDataType eDataType, String initialValue)
+  public IdentifierTok createIdentifierTok()
   {
-    css_not result = css_not.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
+    IdentifierTokImpl identifierTok = new IdentifierTokImpl();
+    return identifierTok;
   }
 
   /**
@@ -433,9 +438,10 @@ public class CssDslFactoryImpl extends EFactoryImpl implements CssDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertcss_notToString(EDataType eDataType, Object instanceValue)
+  public FuncTok createFuncTok()
   {
-    return instanceValue == null ? null : instanceValue.toString();
+    FuncTokImpl funcTok = new FuncTokImpl();
+    return funcTok;
   }
 
   /**

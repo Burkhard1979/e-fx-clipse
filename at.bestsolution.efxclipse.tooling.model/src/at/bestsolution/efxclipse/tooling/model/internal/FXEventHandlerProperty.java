@@ -58,17 +58,8 @@ public class FXEventHandlerProperty extends FXProperty implements IFXEventHandle
 					signature = m.getReturnType();
 				}
 				
-				String genericType = Signature.toString(signature);
-				String eType = genericType.substring(genericType.indexOf('<')+1, genericType.indexOf('>'));
-				// FIXME Is there a better way?
-				if( eType.contains("super") ) {
-					eType = eType.substring(eType.indexOf("super")+"super".length()).trim();
-				} else if( eType.contains("extends") ) {
-					eType = eType.substring(eType.indexOf("extends")+"extends".length()).trim();
-				}
-				
 				IType t = (IType) m.getParent();
-				String fqnType = Util.getFQNType(t,eType);
+				String fqnType = Util.toFQN(t,signature);
 				eventType = getFXClass().getJavaProject().findType(fqnType);
 			} catch(JavaModelException e) {
 				// TODO Auto-generated method stub

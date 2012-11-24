@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
@@ -27,60 +30,60 @@ import org.eclipse.emf.ecore.EObject;
 public interface simple_selector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Element</b></em>' attribute.
+   * Returns the value of the '<em><b>Element</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Element</em>' attribute isn't clear,
+   * If the meaning of the '<em>Element</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Element</em>' attribute.
-   * @see #setElement(String)
+   * @return the value of the '<em>Element</em>' containment reference.
+   * @see #setElement(ElementSelector)
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getsimple_selector_Element()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getElement();
+  ElementSelector getElement();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector#getElement <em>Element</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector#getElement <em>Element</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Element</em>' attribute.
+   * @param value the new value of the '<em>Element</em>' containment reference.
    * @see #getElement()
    * @generated
    */
-  void setElement(String value);
+  void setElement(ElementSelector value);
 
   /**
-   * Returns the value of the '<em><b>Universal</b></em>' attribute.
+   * Returns the value of the '<em><b>Universal</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Universal</em>' attribute isn't clear,
+   * If the meaning of the '<em>Universal</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Universal</em>' attribute.
-   * @see #setUniversal(String)
+   * @return the value of the '<em>Universal</em>' containment reference.
+   * @see #setUniversal(UniversalSelector)
    * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getsimple_selector_Universal()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getUniversal();
+  UniversalSelector getUniversal();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector#getUniversal <em>Universal</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector#getUniversal <em>Universal</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Universal</em>' attribute.
+   * @param value the new value of the '<em>Universal</em>' containment reference.
    * @see #getUniversal()
    * @generated
    */
-  void setUniversal(String value);
+  void setUniversal(UniversalSelector value);
 
   /**
    * Returns the value of the '<em><b>Sub Selectors</b></em>' containment reference list.
-   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector}.
+   * The list contents are of type {@link at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Sub Selectors</em>' containment reference list isn't clear,
@@ -92,6 +95,6 @@ public interface simple_selector extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<sub_selector> getSubSelectors();
+  EList<CssSelector> getSubSelectors();
 
 } // simple_selector

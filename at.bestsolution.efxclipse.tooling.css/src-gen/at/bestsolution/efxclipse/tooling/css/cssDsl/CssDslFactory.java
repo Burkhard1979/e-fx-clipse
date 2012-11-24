@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
@@ -86,6 +89,24 @@ public interface CssDslFactory extends EFactory
   selector createselector();
 
   /**
+   * Returns a new object of class '<em>Simple Selector For Negation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Selector For Negation</em>'.
+   * @generated
+   */
+  SimpleSelectorForNegation createSimpleSelectorForNegation();
+
+  /**
+   * Returns a new object of class '<em>Css Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Css Selector</em>'.
+   * @generated
+   */
+  CssSelector createCssSelector();
+
+  /**
    * Returns a new object of class '<em>simple selector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -95,13 +116,40 @@ public interface CssDslFactory extends EFactory
   simple_selector createsimple_selector();
 
   /**
-   * Returns a new object of class '<em>sub selector</em>'.
+   * Returns a new object of class '<em>Class Selector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>sub selector</em>'.
+   * @return a new object of class '<em>Class Selector</em>'.
    * @generated
    */
-  sub_selector createsub_selector();
+  ClassSelector createClassSelector();
+
+  /**
+   * Returns a new object of class '<em>Element Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Element Selector</em>'.
+   * @generated
+   */
+  ElementSelector createElementSelector();
+
+  /**
+   * Returns a new object of class '<em>Universal Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Universal Selector</em>'.
+   * @generated
+   */
+  UniversalSelector createUniversalSelector();
+
+  /**
+   * Returns a new object of class '<em>Id Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Id Selector</em>'.
+   * @generated
+   */
+  IdSelector createIdSelector();
 
   /**
    * Returns a new object of class '<em>css declaration</em>'.
@@ -122,13 +170,40 @@ public interface CssDslFactory extends EFactory
   css_property createcss_property();
 
   /**
-   * Returns a new object of class '<em>css negation</em>'.
+   * Returns a new object of class '<em>Pseudo Class Or Func</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>css negation</em>'.
+   * @return a new object of class '<em>Pseudo Class Or Func</em>'.
    * @generated
    */
-  css_negation createcss_negation();
+  PseudoClassOrFunc createPseudoClassOrFunc();
+
+  /**
+   * Returns a new object of class '<em>Pseudo Class</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pseudo Class</em>'.
+   * @generated
+   */
+  PseudoClass createPseudoClass();
+
+  /**
+   * Returns a new object of class '<em>Pseudo Class Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pseudo Class Name</em>'.
+   * @generated
+   */
+  PseudoClassName createPseudoClassName();
+
+  /**
+   * Returns a new object of class '<em>Pseudo Class Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pseudo Class Function</em>'.
+   * @generated
+   */
+  PseudoClassFunction createPseudoClassFunction();
 
   /**
    * Returns a new object of class '<em>Css Tok</em>'.
@@ -140,42 +215,6 @@ public interface CssDslFactory extends EFactory
   CssTok createCssTok();
 
   /**
-   * Returns a new object of class '<em>expr</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>expr</em>'.
-   * @generated
-   */
-  expr createexpr();
-
-  /**
-   * Returns a new object of class '<em>term Group</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>term Group</em>'.
-   * @generated
-   */
-  termGroup createtermGroup();
-
-  /**
-   * Returns a new object of class '<em>term</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>term</em>'.
-   * @generated
-   */
-  term createterm();
-
-  /**
-   * Returns a new object of class '<em>function</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>function</em>'.
-   * @generated
-   */
-  function createfunction();
-
-  /**
    * Returns a new object of class '<em>URL Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -183,6 +222,15 @@ public interface CssDslFactory extends EFactory
    * @generated
    */
   URLType createURLType();
+
+  /**
+   * Returns a new object of class '<em>Attribute Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Attribute Selector</em>'.
+   * @generated
+   */
+  AttributeSelector createAttributeSelector();
 
   /**
    * Returns a new object of class '<em>Symbol Tok</em>'.
@@ -212,15 +260,6 @@ public interface CssDslFactory extends EFactory
   StringTok createStringTok();
 
   /**
-   * Returns a new object of class '<em>Func Tok</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Tok</em>'.
-   * @generated
-   */
-  FuncTok createFuncTok();
-
-  /**
    * Returns a new object of class '<em>Number Tok</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -228,15 +267,6 @@ public interface CssDslFactory extends EFactory
    * @generated
    */
   NumberTok createNumberTok();
-
-  /**
-   * Returns a new object of class '<em>Identifier Tok</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Identifier Tok</em>'.
-   * @generated
-   */
-  IdentifierTok createIdentifierTok();
 
   /**
    * Returns a new object of class '<em>Url Tok</em>'.
@@ -255,6 +285,24 @@ public interface CssDslFactory extends EFactory
    * @generated
    */
   ColorTok createColorTok();
+
+  /**
+   * Returns a new object of class '<em>Identifier Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Identifier Tok</em>'.
+   * @generated
+   */
+  IdentifierTok createIdentifierTok();
+
+  /**
+   * Returns a new object of class '<em>Func Tok</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func Tok</em>'.
+   * @generated
+   */
+  FuncTok createFuncTok();
 
   /**
    * Returns the package supported by this factory.

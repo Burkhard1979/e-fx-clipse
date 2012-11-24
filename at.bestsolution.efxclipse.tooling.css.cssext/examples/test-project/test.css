@@ -1,18 +1,49 @@
+Node[no=me] {
+	-fx-alignment: a;
+}
 
 Region.test {
-	-fx-blend-mode: a;
+	-fx-blend-mode: add;
 	-fx-padding: 12px;
-	-fx-padding: 12%;
 	-fx-arc-height: 1cm;
 	-fx-graphic-hpos: inherit;
 	-fx-padding: 1 1 1 1;
 	-fx-arc-height: 1;
 	-fx-alignment: 1px;
-	-fx-smooth: #123;
+	-fx-smooth: true;
 	asdfasd: a;
 	-fx-halignment: left;
 }
 
+.a {
+	property:none;
+}
+.b {
+	eigenschaft:nice;
+}
+
+ 
 .la.li.lu {
+	lala: url(halligalliurtoo.com);
+}
+
+
+.future {
+	
+}
+
+.current {
+	
+}
+
+.ua {
+	
+}
+
+.ue {
+	
+}
+
+.ur {
 	
 }

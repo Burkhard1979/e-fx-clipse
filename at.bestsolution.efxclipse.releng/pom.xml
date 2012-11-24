@@ -29,6 +29,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.databinding</module>
 		<module>../at.bestsolution.efxclipse.runtime.application</module>
 		<module>../at.bestsolution.efxclipse.runtime.dialogs</module>
+		<module>../at.bestsolution.efxclipse.runtime.core</module>
 		<module>../at.bestsolution.efxclipse.runtime.di</module>
 		<module>../at.bestsolution.efxclipse.runtime.guice</module>
 		<module>../at.bestsolution.efxclipse.runtime.osgi.util</module>
@@ -74,6 +75,8 @@
 		<module>../at.bestsolution.efxclipse.tooling.pde.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.e4</module>
 		<module>../at.bestsolution.efxclipse.tooling.ui.preview</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.model</module>
 		
 		
 		<module>../at.bestsolution.efxclipse.feature</module>
@@ -91,6 +94,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.e3.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		

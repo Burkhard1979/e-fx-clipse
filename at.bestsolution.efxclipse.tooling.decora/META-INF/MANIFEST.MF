@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: at.bestsolution.efxclipse.tooling.decora
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: at.bestsolution.efxclipse.tooling.decora; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: at.bestsolution.efxclipse.tooling.decora,
+ at.bestsolution.efxclipse.tooling.decora.services,
+ at.bestsolution.efxclipse.tooling.decora.decoraDsl,
+ at.bestsolution.efxclipse.tooling.decora.decoraDsl.impl,
+ at.bestsolution.efxclipse.tooling.decora.decoraDsl.util,
+ at.bestsolution.efxclipse.tooling.decora.parseTreeConstruction,
+ at.bestsolution.efxclipse.tooling.decora.parser.antlr,
+ at.bestsolution.efxclipse.tooling.decora.parser.antlr.internal,
+ at.bestsolution.efxclipse.tooling.decora.validation,
+ at.bestsolution.efxclipse.tooling.decora.scoping,
+ at.bestsolution.efxclipse.tooling.decora.generator,
+ at.bestsolution.efxclipse.tooling.decora.formatting
+

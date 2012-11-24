@@ -20,8 +20,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * A {@link TreeItem} that wraps an {@link AdapterFactory} and retrieves its children from the
- * adapter-implemented {@link ITreeItemContentProvider} interface.
+ * A {@link TreeItem} that wraps an {@link AdapterFactory} and retrieves its
+ * children from the adapter-implemented {@link ITreeItemContentProvider}
+ * interface.
  */
 public class AdapterFactoryTreeItem extends TreeItem<Object> {
 
@@ -31,25 +32,23 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 	public AdapterFactoryTreeItem(Object object, AdapterFactory adapterFactory) {
 		super(object);
 		this.adapterFactory = adapterFactory;
-		
-		Object adapter = adapterFactory.adapt(object,
-				ITreeItemContentProvider.class);
-		
+
+		Object adapter = adapterFactory.adapt(object, ITreeItemContentProvider.class);
+
 		if (adapter instanceof ITreeItemContentProvider)
 			provider = (ITreeItemContentProvider) adapter;
 
-		
-		if(object instanceof Notifier){
+		if (object instanceof Notifier) {
 			((Notifier) object).eAdapters().add(new AdapterImpl() {
 				@Override
 				public void notifyChanged(Notification msg) {
-					if(msg.getFeature() instanceof EReference)
+					if (msg.getFeature() instanceof EReference)
 						updateChildren();
 				}
 
 			});
 		}
-		
+
 		updateChildren();
 	}
 
@@ -57,8 +56,8 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 		getChildren().clear();
 		if (provider != null) {
 			for (Object child : provider.getChildren(getValue()))
-				getChildren().add(new AdapterFactoryTreeItem(child, adapterFactory));			
-		}		
+				getChildren().add(new AdapterFactoryTreeItem(child, adapterFactory));
+		}
 	}
 
 }

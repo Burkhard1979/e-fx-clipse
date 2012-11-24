@@ -12,16 +12,19 @@ Require-Bundle: at.bestsolution.efxclipse.tooling.css;bundle-version="0.0.14",
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.ui.junit,
  org.junit4,
- org.eclipse.ui.workbench;resolution:=optional
-Import-Package: org.apache.log4j,
- org.apache.commons.logging,
+ org.eclipse.ui.workbench;resolution:=optional,
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j,
+ org.hamcrest;resolution:=optional,
+ org.hamcrest.core;resolution:=optional,
  org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0",
  org.junit.runner.manipulation;version="4.5.0",
  org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
- org.junit.runners.model;version="4.5.0",
- org.hamcrest,
- org.hamcrest.core
+ org.junit.runners.model;version="4.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: at.bestsolution.efxclipse.tooling.css

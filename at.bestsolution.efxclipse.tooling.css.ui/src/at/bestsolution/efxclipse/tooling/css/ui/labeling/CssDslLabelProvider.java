@@ -10,17 +10,32 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.labeling;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.AttributeSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.term;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup;
 
 import com.google.inject.Inject;
 
@@ -36,7 +51,7 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 
-	String text(ruleset value) {
+	String text(ruleset value) { 
 		StringBuilder b = new StringBuilder();
 		
 		for( selector s : value.getSelectors() ) {
@@ -63,7 +78,13 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 			b.append(" " + text(value.getSelector()));
 		}
 		
-		return b.toString();
+		String r = b.toString();
+		return r;
+	}
+	
+	
+	String image(selector s) {
+		return "selector_16x16.png";
 	}
 	
 	String image(ruleset ele) {
@@ -74,49 +95,153 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 		return "property_16x16.png";
 	}
 	
+	String image(CssSelector cssSelector) {
+		return "selector_16x16.png";
+	}
 	
-	String text(simple_selector value) {
+	String text(IdentifierTok idTok) {
+		return idTok.getName();
+	}
+	
+	String text(PseudoClassFunction pseudoFunc) {
+		StringBuilder b = new StringBuilder();
+		if (pseudoFunc.isNot()) {
+			// :not pseudo function
+			b.append("not(");
+			b.append(getText(pseudoFunc.getParamSelector()));
+			b.append(")");
+		}
+		else {
+			// normal pseudo function
+			b.append(pseudoFunc.getName());
+			b.append("(");
+			Iterator<CssTok> iterator = pseudoFunc.getParams().iterator();
+			while (iterator.hasNext()) {
+				CssTok next = iterator.next();
+				b.append(getText(next));
+			}
+			b.append(")");
+		}
+		return b.toString();
+	}
+	
+	String text(CssTok cssTok) {
+		if (cssTok instanceof IdentifierTok) {
+			return ((IdentifierTok) cssTok).getName();
+		}
+		else if (cssTok instanceof NumberTok) {
+			return String.valueOf(((NumberTok) cssTok).getVal());
+		}
+		else if (cssTok instanceof SymbolTok) {
+			return ((SymbolTok) cssTok).getSymbol();
+		}
+		else if (cssTok instanceof WSTok) {
+			return " ";
+		}
+		else if (cssTok instanceof ColorTok) {
+			return ((ColorTok) cssTok).getValue();
+		}
+		else if (cssTok instanceof FuncTok) {
+			FuncTok funcTok = (FuncTok) cssTok;
+			StringBuilder func = new StringBuilder();
+			Iterator<CssTok> iterator = funcTok.getParams().iterator();
+			while (iterator.hasNext()) {
+				CssTok next = iterator.next();
+				func.append(getText(next));
+			}
+			return getText(funcTok.getName()) + "(" + func.toString().trim()+ ")";
+		}
+		else if (cssTok instanceof UrlTok) {
+			return "url(" + ((UrlTok)cssTok).getUrl().getUrl() + ")";
+		}
+		else return cssTok.toString();
+	}
+	
+	String text(CssSelector cssSelector) {
+		if (cssSelector instanceof ElementSelector) {
+			return ((ElementSelector) cssSelector).getName();
+		}
+		else if (cssSelector instanceof ClassSelector) {
+			return "." + ((ClassSelector) cssSelector).getName();
+		}
+		else if (cssSelector instanceof IdSelector) {
+			return "#" + ((IdSelector) cssSelector).getName();
+		}
+		else if (cssSelector instanceof PseudoClassName) {
+			return ":" + ((PseudoClassName) cssSelector).getName();
+		}
+		else if (cssSelector instanceof PseudoClassFunction) {
+			return ":" + text((PseudoClassFunction)cssSelector);
+		}
+		else if (cssSelector instanceof AttributeSelector) {
+			return "[" + text((AttributeSelector)cssSelector) + "]";
+		}
+		
+		return cssSelector.toString();
+	}
+	
+	String text(AttributeSelector s) {
+		if (s.getOp() != null && s.getValue() != null) {
+			return s.getName() + s.getOp() + s.getValue();
+		}
+		else {
+			return s.getName();
+		}
+	}
+	
+	String text(ElementSelector elementSelector) {
+		return elementSelector.getName();
+	}
+	
+	String text(ClassSelector classSelector) {
+		return "." + classSelector.getName();
+	}
+	
+	String text(IdSelector idSelector) {
+		return "#" + idSelector.getName();
+	}
+	
+	String text(SimpleSelectorForNegation value) {
 		StringBuilder b = new StringBuilder(/*"si-"*/);
 		
 		if( value.getElement() != null ) {
-			b.append(value.getElement());
+			b.append(getText(value.getElement()));
+		}
+		else if (value.getUniversal() != null) {
+			b.append("*");
 		}
 		
-		for( sub_selector sub : value.getSubSelectors() ) {
-			if( sub.getId() != null ) {
-				b.append(sub.getId());
-			}
-			
-			if( sub.getClass_() != null ) {
-				b.append(sub.getClass_());
-			}
-			
-			if( sub.getPseudoclass() != null ) {
-				b.append(sub.getPseudoclass());
-			}
+		for( CssSelector sub : value.getSubSelectors() ) {
+			b.append(getText(sub));
 		}
 		
 		return b.toString();
 	}
 	
-	String text(term value) {
-		if( value.getHexColor() != null ) {
-			return value.getHexColor();
-		} else if( value.getIdentifier() != null) {
-			return value.getIdentifier();
-		} else if( value.getNumber() != null ) {
-			return value.getNumber();
-		} else if( value.getStringValue() != null ) {
-			return value.getStringValue();
-		} else if( value.getFunction() != null ) {
-			return "<function>";
+	String text(simple_selector value) {
+		StringBuilder b = new StringBuilder(/*"si-"*/);
+		
+		if( value.getElement() != null ) {
+			b.append(text(value.getElement()));
+		}
+		else if (value.getUniversal() != null) {
+			b.append("*");
 		}
 		
-		return null;
-	}
-	
-	String text(termGroup value) {
-		return "<group>";
+		for( CssSelector sub : value.getSubSelectors() ) {
+			b.append(text(sub));
+//			if (sub instanceof IdSelector) {
+//				b.append(((IdSelector) sub).getName());
+//			}
+//			else if (sub instanceof ClassSelector) {
+//				b.append(((ClassSelector) sub).getName());
+//			}
+//			else if (sub instanceof PseudoClass) {
+//				b.append(((PseudoClass) sub).getName());
+//			}
+		}
+		
+		return b.toString();
 	}
 	
 //	public String text(Object t) {

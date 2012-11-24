@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
@@ -32,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#getValueTokens <em>Value Tokens</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#getPrio <em>Prio</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.impl.css_declarationImpl#isImportant <em>Important</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,24 +64,24 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
   protected EList<CssTok> valueTokens;
 
   /**
-   * The default value of the '{@link #getPrio() <em>Prio</em>}' attribute.
+   * The default value of the '{@link #isImportant() <em>Important</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrio()
+   * @see #isImportant()
    * @generated
    * @ordered
    */
-  protected static final String PRIO_EDEFAULT = null;
+  protected static final boolean IMPORTANT_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getPrio() <em>Prio</em>}' attribute.
+   * The cached value of the '{@link #isImportant() <em>Important</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrio()
+   * @see #isImportant()
    * @generated
    * @ordered
    */
-  protected String prio = PRIO_EDEFAULT;
+  protected boolean important = IMPORTANT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -168,9 +171,9 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getPrio()
+  public boolean isImportant()
   {
-    return prio;
+    return important;
   }
 
   /**
@@ -178,12 +181,12 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPrio(String newPrio)
+  public void setImportant(boolean newImportant)
   {
-    String oldPrio = prio;
-    prio = newPrio;
+    boolean oldImportant = important;
+    important = newImportant;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.CSS_DECLARATION__PRIO, oldPrio, prio));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssDslPackage.CSS_DECLARATION__IMPORTANT, oldImportant, important));
   }
 
   /**
@@ -218,8 +221,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
         return getProperty();
       case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
         return getValueTokens();
-      case CssDslPackage.CSS_DECLARATION__PRIO:
-        return getPrio();
+      case CssDslPackage.CSS_DECLARATION__IMPORTANT:
+        return isImportant();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -242,8 +245,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
         getValueTokens().clear();
         getValueTokens().addAll((Collection<? extends CssTok>)newValue);
         return;
-      case CssDslPackage.CSS_DECLARATION__PRIO:
-        setPrio((String)newValue);
+      case CssDslPackage.CSS_DECLARATION__IMPORTANT:
+        setImportant((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -265,8 +268,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
       case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
         getValueTokens().clear();
         return;
-      case CssDslPackage.CSS_DECLARATION__PRIO:
-        setPrio(PRIO_EDEFAULT);
+      case CssDslPackage.CSS_DECLARATION__IMPORTANT:
+        setImportant(IMPORTANT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -286,8 +289,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
         return property != null;
       case CssDslPackage.CSS_DECLARATION__VALUE_TOKENS:
         return valueTokens != null && !valueTokens.isEmpty();
-      case CssDslPackage.CSS_DECLARATION__PRIO:
-        return PRIO_EDEFAULT == null ? prio != null : !PRIO_EDEFAULT.equals(prio);
+      case CssDslPackage.CSS_DECLARATION__IMPORTANT:
+        return important != IMPORTANT_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -303,8 +306,8 @@ public class css_declarationImpl extends MinimalEObjectImpl.Container implements
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (prio: ");
-    result.append(prio);
+    result.append(" (important: ");
+    result.append(important);
     result.append(')');
     return result.toString();
   }

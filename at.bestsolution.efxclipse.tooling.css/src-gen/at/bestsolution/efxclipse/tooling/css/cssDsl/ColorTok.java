@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl;
 
@@ -11,7 +14,7 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getColor <em>Color</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +25,29 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl;
 public interface ColorTok extends CssTok
 {
   /**
-   * Returns the value of the '<em><b>Color</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Color</em>' attribute isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Color</em>' attribute.
-   * @see #setColor(String)
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getColorTok_Color()
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage#getColorTok_Value()
    * @model
    * @generated
    */
-  String getColor();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getColor <em>Color</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Color</em>' attribute.
-   * @see #getColor()
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
    * @generated
    */
-  void setColor(String value);
+  void setValue(String value);
 
 } // ColorTok

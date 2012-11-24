@@ -1,3 +1,29 @@
+ElementSenlector0 {
+	property: test; 
+}
+.ClassSelector0 {}
+#IdSelector0 {}
+
+
+ElementSelector   #IdSelector {}
+ElementSelector.ClassSelector {}
+
+ElementSelector > .ClassSelector {} 
+
+.class:not(div.test#El) {
+
+}
+
+.lala:asdf(3n) {
+	
+}
+
+*:not(:link):not(:visited) {
+	
+}
+
+a .b_ {}
+
 a .b_ {
 	a:x(1p,p2,p3);
 	b:y,y ;
@@ -16,9 +42,11 @@ Debug .p0 {
 	 * <dash-style> [ phase double ]? [ centered | inside | outside ]? [ line-join [ miter double | bevel | round ] ]? [ line-cap [ square | butt | round ] ]?
 	 */
 	-fx-border-style: dotted phase 0.0 centered line-join miter 0.0 line-cap round , dotted inside line-join miter 0.0 line-cap round , dashed , dotted inside ,;
-	-fx-border-style:dashed, dashed, none ;
+	-fx-border-style:dashed, dashed, none, none;
+	-fx-border-style: dashed, dotted, solid inside line-join miter 1.2;
+	-fx-border-color: aliceblue, rgb(208,63,63), rgb(228,55,55);
 	
-	
+	-fx-border-color: rgb(245,22,22), rgb(196,41,231);
 }
 
 
@@ -26,7 +54,10 @@ Debug .p0 {
     -fx-base: #7eaacc;
     -fx-background: #7eaacc;
     -fx-control-inner-background: white;
-    asdf: s, d;
+<<<<<<< HEAD
+=======
+    asdf: s, d; 
+>>>>>>> origin/master
 }
 
 .tab {
@@ -35,7 +66,7 @@ Debug .p0 {
 
 .button {
     -fx-background-color: transparent;
-    -fx-padding: .0px .0px .0px,  .0px .0px .0px .0px 1%;
+   /* -fx-padding: .0px .0px .0px,  .0px .0px .0px .0px 1%; */
    /* [ top-left | top-center | top-right | center-left | center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right ] */
     -fx-alignment: top-right ;  
     asdf: nixda blabla #ffffff;
@@ -79,7 +110,7 @@ Debug .p0 {
 }
 
 .separator-label {
-   -fx-text-fill: derive(-fx-base,-50%) ;
+   -fx-text-fill: derive(-fx-base,-50%);
 }
 
 #window-resize-button {

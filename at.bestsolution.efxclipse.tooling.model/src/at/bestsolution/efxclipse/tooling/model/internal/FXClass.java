@@ -14,8 +14,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.Signature;
@@ -24,6 +26,7 @@ import org.osgi.service.log.LogService;
 import at.bestsolution.efxclipse.tooling.model.FXPlugin;
 import at.bestsolution.efxclipse.tooling.model.IFXClass;
 import at.bestsolution.efxclipse.tooling.model.IFXProperty;
+import at.bestsolution.efxclipse.tooling.model.internal.utils.Util;
 
 import static at.bestsolution.efxclipse.tooling.model.internal.utils.PropertiesUtil.*;
 import static at.bestsolution.efxclipse.tooling.model.internal.utils.Util.*;
@@ -38,6 +41,8 @@ public class FXClass implements IFXClass {
 	private IFXProperty defaultProperty;
 	private Map<String,IFXProperty> properties;
 	private Map<String, IFXProperty> staticProperties;
+	private boolean valueOfResolved;
+	private IMethod valueOfMethod;
 	
 	public FXClass(IJavaProject jp, IType type) {
 		this.type = type;
@@ -150,5 +155,31 @@ public class FXClass implements IFXClass {
 	public IFXProperty getStaticProperty(String name) {
 		Map<String, IFXProperty> map = getLocalStaticProperties();
 		return map.get(name);
+	}
+	
+	@Override
+	public IMethod getValueOf() {
+//		if( ! valueOfResolved ) {
+			try {
+				for( IMethod m : type.getMethods() ) {
+					if( Flags.isStatic(m.getFlags()) && Flags.isPublic(m.getFlags()) && "valueOf".equals(m.getElementName()) ) {
+						System.err.println(m.getElementName());
+						if( m.getParameterTypes().length == 1 ) {
+//							System.err.println("      " +m.getParameterTypes()[0] );
+//							String fqnType = Util.toFQN((IType) m.getParent(),m.getParameterTypes()[0]);
+//							if("java.lang.String".equals( fqnType) ) {
+								valueOfMethod = m; 
+								break;	
+//							}
+						}
+					}
+				}
+				valueOfResolved = true;
+			} catch (JavaModelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+//		}
+		return valueOfMethod;
 	}
 }

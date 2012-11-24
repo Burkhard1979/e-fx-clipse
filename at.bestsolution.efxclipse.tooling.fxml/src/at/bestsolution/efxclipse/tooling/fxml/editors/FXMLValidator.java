@@ -211,7 +211,9 @@ public class FXMLValidator extends AbstractValidator implements IValidator, ISou
 
 		if (a != null && a.getValue() != null && !a.getValue().trim().isEmpty()) {
 			IType type = Util.findType(a.getValue(), d);
-			return FXPlugin.getClassmodel().findCtrlClass(type.getJavaProject(), type);
+			if( type != null ) {
+				return FXPlugin.getClassmodel().findCtrlClass(type.getJavaProject(), type);	
+			}
 		}
 
 		return null;

@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package at.bestsolution.efxclipse.tooling.css.cssDsl.util;
 
@@ -110,14 +113,39 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
         return createselectorAdapter();
       }
       @Override
+      public Adapter caseSimpleSelectorForNegation(SimpleSelectorForNegation object)
+      {
+        return createSimpleSelectorForNegationAdapter();
+      }
+      @Override
+      public Adapter caseCssSelector(CssSelector object)
+      {
+        return createCssSelectorAdapter();
+      }
+      @Override
       public Adapter casesimple_selector(simple_selector object)
       {
         return createsimple_selectorAdapter();
       }
       @Override
-      public Adapter casesub_selector(sub_selector object)
+      public Adapter caseClassSelector(ClassSelector object)
       {
-        return createsub_selectorAdapter();
+        return createClassSelectorAdapter();
+      }
+      @Override
+      public Adapter caseElementSelector(ElementSelector object)
+      {
+        return createElementSelectorAdapter();
+      }
+      @Override
+      public Adapter caseUniversalSelector(UniversalSelector object)
+      {
+        return createUniversalSelectorAdapter();
+      }
+      @Override
+      public Adapter caseIdSelector(IdSelector object)
+      {
+        return createIdSelectorAdapter();
       }
       @Override
       public Adapter casecss_declaration(css_declaration object)
@@ -130,9 +158,24 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
         return createcss_propertyAdapter();
       }
       @Override
-      public Adapter casecss_negation(css_negation object)
+      public Adapter casePseudoClassOrFunc(PseudoClassOrFunc object)
       {
-        return createcss_negationAdapter();
+        return createPseudoClassOrFuncAdapter();
+      }
+      @Override
+      public Adapter casePseudoClass(PseudoClass object)
+      {
+        return createPseudoClassAdapter();
+      }
+      @Override
+      public Adapter casePseudoClassName(PseudoClassName object)
+      {
+        return createPseudoClassNameAdapter();
+      }
+      @Override
+      public Adapter casePseudoClassFunction(PseudoClassFunction object)
+      {
+        return createPseudoClassFunctionAdapter();
       }
       @Override
       public Adapter caseCssTok(CssTok object)
@@ -140,29 +183,14 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
         return createCssTokAdapter();
       }
       @Override
-      public Adapter caseexpr(expr object)
-      {
-        return createexprAdapter();
-      }
-      @Override
-      public Adapter casetermGroup(termGroup object)
-      {
-        return createtermGroupAdapter();
-      }
-      @Override
-      public Adapter caseterm(term object)
-      {
-        return createtermAdapter();
-      }
-      @Override
-      public Adapter casefunction(function object)
-      {
-        return createfunctionAdapter();
-      }
-      @Override
       public Adapter caseURLType(URLType object)
       {
         return createURLTypeAdapter();
+      }
+      @Override
+      public Adapter caseAttributeSelector(AttributeSelector object)
+      {
+        return createAttributeSelectorAdapter();
       }
       @Override
       public Adapter caseSymbolTok(SymbolTok object)
@@ -180,19 +208,9 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
         return createStringTokAdapter();
       }
       @Override
-      public Adapter caseFuncTok(FuncTok object)
-      {
-        return createFuncTokAdapter();
-      }
-      @Override
       public Adapter caseNumberTok(NumberTok object)
       {
         return createNumberTokAdapter();
-      }
-      @Override
-      public Adapter caseIdentifierTok(IdentifierTok object)
-      {
-        return createIdentifierTokAdapter();
       }
       @Override
       public Adapter caseUrlTok(UrlTok object)
@@ -203,6 +221,16 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseColorTok(ColorTok object)
       {
         return createColorTokAdapter();
+      }
+      @Override
+      public Adapter caseIdentifierTok(IdentifierTok object)
+      {
+        return createIdentifierTokAdapter();
+      }
+      @Override
+      public Adapter caseFuncTok(FuncTok object)
+      {
+        return createFuncTokAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -332,6 +360,36 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation <em>Simple Selector For Negation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation
+   * @generated
+   */
+  public Adapter createSimpleSelectorForNegationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector <em>Css Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector
+   * @generated
+   */
+  public Adapter createCssSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector <em>simple selector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -347,16 +405,61 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector <em>sub selector</em>}'.
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector <em>Class Selector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.sub_selector
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector
    * @generated
    */
-  public Adapter createsub_selectorAdapter()
+  public Adapter createClassSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector <em>Element Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector
+   * @generated
+   */
+  public Adapter createElementSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector <em>Universal Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.UniversalSelector
+   * @generated
+   */
+  public Adapter createUniversalSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector <em>Id Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector
+   * @generated
+   */
+  public Adapter createIdSelectorAdapter()
   {
     return null;
   }
@@ -392,16 +495,61 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation <em>css negation</em>}'.
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassOrFunc <em>Pseudo Class Or Func</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.css_negation
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassOrFunc
    * @generated
    */
-  public Adapter createcss_negationAdapter()
+  public Adapter createPseudoClassOrFuncAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass <em>Pseudo Class</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClass
+   * @generated
+   */
+  public Adapter createPseudoClassAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName <em>Pseudo Class Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName
+   * @generated
+   */
+  public Adapter createPseudoClassNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction <em>Pseudo Class Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction
+   * @generated
+   */
+  public Adapter createPseudoClassFunctionAdapter()
   {
     return null;
   }
@@ -422,66 +570,6 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.expr <em>expr</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.expr
-   * @generated
-   */
-  public Adapter createexprAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup <em>term Group</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.termGroup
-   * @generated
-   */
-  public Adapter createtermGroupAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.term <em>term</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.term
-   * @generated
-   */
-  public Adapter createtermAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.function <em>function</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.function
-   * @generated
-   */
-  public Adapter createfunctionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.URLType <em>URL Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -492,6 +580,21 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createURLTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.AttributeSelector <em>Attribute Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.AttributeSelector
+   * @generated
+   */
+  public Adapter createAttributeSelectorAdapter()
   {
     return null;
   }
@@ -542,21 +645,6 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok <em>Func Tok</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok
-   * @generated
-   */
-  public Adapter createFuncTokAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok <em>Number Tok</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -567,21 +655,6 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNumberTokAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok <em>Identifier Tok</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok
-   * @generated
-   */
-  public Adapter createIdentifierTokAdapter()
   {
     return null;
   }
@@ -612,6 +685,36 @@ public class CssDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createColorTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok <em>Identifier Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok
+   * @generated
+   */
+  public Adapter createIdentifierTokAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok <em>Func Tok</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok
+   * @generated
+   */
+  public Adapter createFuncTokAdapter()
   {
     return null;
   }
