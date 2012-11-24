@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.omg.CORBA.portable.Delegate;
 
 /**
  * Base class for the AdapterFactoryCellFactories
@@ -63,14 +64,33 @@ public abstract class AdapterFactoryCellFactory {
 
 	}
 
+	/**
+	 * An interface for providers that handle cell editing. The {@link Cell}s
+	 * created by the factory will delegate calls to their editing methods to
+	 * the first handler in {@link AdapterFactoryCellFactory#cellEditHandlers}
+	 * that returns <code>true</code> for
+	 * {@link ICellEditHandler#canEdit(Cell)}.
+	 */
 	public interface ICellEditHandler {
 
+		/**
+		 * Whether editing treeCell can be handled
+		 */
 		boolean canEdit(Cell<?> treeCell);
 
+		/**
+		 * Delegate for {@link Cell#startEdit()}
+		 */
 		void startEdit(Cell<?> treeCell);
 
+		/**
+		 * Delegate for {@link Cell#commitEdit(Object)}
+		 */
 		void commitEdit(Cell<?> treeCell, Object newValue);
 
+		/**
+		 * Delegate for {@link Cell#cancelEdit()}
+		 */
 		void cancelEdit(Cell<?> treeCell);
 
 	}
