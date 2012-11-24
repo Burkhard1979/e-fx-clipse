@@ -12,16 +12,12 @@
     </children>
     <mainMenu xmi:id="menu:org.eclipse.ui.main.menu" elementId="menu:org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_SeXUD-8EEd6FC9cDb6iV7g" elementId="_SeXUD-8EEd6FC9cDb6iV7g" label="%fileMenu">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_SeXUEO8EEd6FC9cDb6iV7g" elementId="_SeXUEO8EEd6FC9cDb6iV7g" label="%menuLabelSave" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/disk.png" command="contacts.save"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_SeXUEe8EEd6FC9cDb6iV7g" elementId="_SeXUEe8EEd6FC9cDb6iV7g" label="%menuLabelDelete" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/user_delete.png" command="contacts.delete"/>
         <children xsi:type="menu:DirectMenuItem" xmi:id="_SeXUEu8EEd6FC9cDb6iV7g" elementId="_SeXUEu8EEd6FC9cDb6iV7g" label="%menuLabelDirectExit" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.ExitHandler"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_SeXUE-8EEd6FC9cDb6iV7g" elementId="_SeXUE-8EEd6FC9cDb6iV7g" label="%menuLabelExit" command="contacts.exit"/>
       </children>
     </mainMenu>
     <trimBars xmi:id="_SeXUAu8EEd6FC9cDb6iV7g" elementId="toolbar:org.eclipse.ui.main.toolbar">
-      <children xsi:type="menu:ToolBar" xmi:id="toolbar:org.eclipse.ui.main.toolbar" elementId="">
-        <children xsi:type="menu:DirectToolItem" xmi:id="_SeXUBO8EEd6FC9cDb6iV7g" elementId="_SeXUBO8EEd6FC9cDb6iV7g" label="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/disk.png" tooltip="%toolbarSaveTooltip" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.SaveHandler"/>
-      </children>
       <children xsi:type="menu:ToolBar" xmi:id="_6RnVUE8FEeCyZoR8urPqaw" elementId="">
         <children xsi:type="menu:HandledToolItem" xmi:id="_Y-d8MC3iEeKA67t6AqYX1w" elementId="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/folder.png" tooltip="%menuLabelAddGroup" command="_8GIe8C3hEeKA67t6AqYX1w"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_J5b-IC3fEeKA67t6AqYX1w" elementId="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/user_add.png" tooltip="%menuLabelAddContact" command="_k20AAC3eEeKA67t6AqYX1w"/>
@@ -32,7 +28,6 @@
     </trimBars>
   </children>
   <handlers xmi:id="_SeXUF-8EEd6FC9cDb6iV7g" elementId="_SeXUF-8EEd6FC9cDb6iV7g" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.ExitHandler" command="contacts.exit"/>
-  <handlers xmi:id="_SeXUGO8EEd6FC9cDb6iV7g" elementId="_SeXUGO8EEd6FC9cDb6iV7g" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.SaveHandler" command="contacts.save"/>
   <handlers xmi:id="_SeXUGe8EEd6FC9cDb6iV7g" elementId="_SeXUGe8EEd6FC9cDb6iV7g" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.DeleteContactHandler" command="contacts.delete"/>
   <handlers xmi:id="_SeXUG=8EEd6FC9cDb6iV7g" elementId="_SeXUG=8EEd6FC9cDb6iV7g" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.SwitchThemeHandler" command="contacts.switchTheme"/>
   <handlers xmi:id="_B-yL8CxDEeKKgKdy48tDJg" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.handlers.undo" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.UndoHandler" command="_YYAtMCxCEeKKgKdy48tDJg"/>
@@ -40,16 +35,16 @@
   <handlers xmi:id="_8qTqYC3eEeKA67t6AqYX1w" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.handlers.addContact" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.AddContactHandler" command="_k20AAC3eEeKA67t6AqYX1w"/>
   <handlers xmi:id="_EPhA4C3iEeKA67t6AqYX1w" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.handlers.AddGroup" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.handlers.AddGroupHandler" command="_8GIe8C3hEeKA67t6AqYX1w"/>
   <bindingTables xmi:id="_SeXUEO8EEd6FC9cDb6iV7x" elementId="_SeXUEO8EEd6FC9cDb6iV7x" bindingContext="_SeXUHO8EEd6FC9cDb6iV7y">
-    <bindings xmi:id="_SeXUHu8EEd6FC9cDb6iV7g" elementId="_SeXUHu8EEd6FC9cDb6iV7g" keySequence="CTRL+S" command="contacts.save"/>
     <bindings xmi:id="_SeXUH-8EEd6FC9cDb6iV7g" elementId="_SeXUH-8EEd6FC9cDb6iV7g" keySequence="CTRL+D" command="contacts.delete"/>
     <bindings xmi:id="_SeXUIO8EEd6FC9cDb6iV7g" elementId="_SeXUIO8EEd6FC9cDb6iV7g" keySequence="CTRL+Q" command="contacts.exit"/>
+    <bindings xmi:id="_qMtB8DZ2EeKZBafm86UM9A" keySequence="CTRL + Z" command="_YYAtMCxCEeKKgKdy48tDJg"/>
+    <bindings xmi:id="_y4qsgDZ2EeKZBafm86UM9A" keySequence="CTRL + Y" command="_K6SccCxFEeKKgKdy48tDJg"/>
   </bindingTables>
   <rootContext xmi:id="_SeXUHO8EEd6FC9cDb6iV7y" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_SeXUEO8EEd6FC9cDb6iV7w" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_SeXUEO8EEd6FC9cDb6iV7x" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
   <commands xmi:id="contacts.exit" elementId="contacts.exit" commandName="%menuLabelExit" description=""/>
-  <commands xmi:id="contacts.save" elementId="contacts.save" commandName="%menuLabelSave" description=""/>
   <commands xmi:id="contacts.delete" elementId="contacts.delete" commandName="%menuLabelDelete" description=""/>
   <commands xmi:id="contacts.switchTheme" elementId="contacts.switchTheme" commandName="%menuLabelSwitchTheme" description="">
     <parameters xmi:id="contacts.commands.switchtheme.themeid" elementId="contacts.commands.switchtheme.themeid" name="Theme Id" typeId="" optional="false"/>

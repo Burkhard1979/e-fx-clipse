@@ -12,18 +12,14 @@
 
 package at.bestsolution.efxclipse.runtime.demo.contacts.handlers;
 
-import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
-
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
-
-import org.eclipse.emf.edit.command.DeleteCommand;
-
+import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 import javax.inject.Inject;
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.DeleteCommand;
 
 @SuppressWarnings("restriction")
 public class DeleteContactHandler {
