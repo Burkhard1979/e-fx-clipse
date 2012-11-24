@@ -57,19 +57,24 @@ public class ListView2 {
 		treeView.setCellFactory(treeCellFactory);
 
 		parent.setCenter(treeView);
-		
+
 		treeView.setShowRoot(false);
 
 		treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
 			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
-				if(arg2 instanceof AdapterFactoryTreeItem) {
+				if (arg2 instanceof AdapterFactoryTreeItem) {
 					Object value = ((AdapterFactoryTreeItem) arg2).getValue();
-					if(value instanceof Contact)
+					if (value instanceof Contact)
 						application.getContext().set(Contact.class, (Contact) value);
 				}
 			}
 
 		});
+
+		// add the context menu
+		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager.getEditingDomain());
+		treeCellFactory.addCellUpdateListener(contextMenuProvider);
+		
 	}
 }

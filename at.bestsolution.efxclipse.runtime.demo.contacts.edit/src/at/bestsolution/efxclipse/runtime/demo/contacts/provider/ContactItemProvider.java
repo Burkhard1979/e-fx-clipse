@@ -14,6 +14,7 @@ package at.bestsolution.efxclipse.runtime.demo.contacts.provider;
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -497,7 +499,19 @@ public class ContactItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("silk/user.png"));
+		Contact contact = (Contact) object;
+		Object baseImage = getResourceLocator().getImage("silk/user.png");
+
+		if ((contact.getFirstName() == null || "".equals(contact.getFirstName())) &&
+				(contact.getLastName() == null|| "".equals(contact.getLastName()))) {
+			Object overlayImage = getResourceLocator().getImage("silk/bullet_error.png");
+			ArrayList<Object> images = new ArrayList<>(2);
+			images.add(baseImage);
+			images.add(overlayImage);
+			return new ComposedImage(images);
+		}
+
+		return overlayImage(object, baseImage);
 	}
 
 	/**
@@ -511,7 +525,7 @@ public class ContactItemProvider
 		Contact contact = (Contact)object;
 		String firstName = contact.getFirstName();
 		String lastName = contact.getLastName();
-		return (firstName != null ? firstName : "?") + " " + (lastName != null ? lastName : "?");
+		return (firstName != null ? firstName : "") + " " + (lastName != null ? lastName : "");
 	}
 
 	/**
