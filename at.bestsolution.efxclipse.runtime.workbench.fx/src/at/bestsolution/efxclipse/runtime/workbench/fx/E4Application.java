@@ -22,7 +22,10 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.WeakHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RunnableFuture;
 
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -146,24 +149,21 @@ public class E4Application extends AbstractJFXApplication {
 				if (javafx.application.Platform.isFxApplicationThread()) {
 					runnable.run();
 				} else {
-					final AtomicBoolean lock = new AtomicBoolean(false);
-					Runnable r = new Runnable() {
+					RunnableFuture<?> task = new FutureTask<Void>(runnable, null);
+					
+					javafx.application.Platform.runLater(task);
 
-						public void run() {
-							runnable.run();
-							lock.set(true);
-						}
-					};
-
-					javafx.application.Platform.runLater(r);
-
-					while (!lock.get()) {
-						try {
-							Thread.sleep(10);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+					try {
+						// wait for task to complete
+						task.get();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} finally {
+						task.cancel(true);
 					}
 				}
 			}
