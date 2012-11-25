@@ -67,8 +67,8 @@ public abstract class AdapterFactoryCellFactory {
 	 * An interface for providers that handle cell editing. The {@link Cell}s
 	 * created by the factory will delegate calls to their editing methods to
 	 * the first handler in {@link AdapterFactoryCellFactory#cellEditHandlers}
-	 * that returns <code>true</code> for
-	 * {@link ICellEditHandler#canEdit(Cell)}.
+	 * that returns <code>true</code> for {@link ICellEditHandler#canEdit(Cell)}
+	 * .
 	 */
 	public interface ICellEditHandler {
 
@@ -216,15 +216,17 @@ public abstract class AdapterFactoryCellFactory {
 			cell.setText(labelProvider.getText(item));
 
 			if (item != null) {
-				Node image = imageFromObject(labelProvider.getImage(item));
+				Node image = graphicFromObject(labelProvider.getImage(item));
 				if (image != null)
 					cell.setGraphic(image);
 			}
 		}
 	}
 
-	Node imageFromObject(Object object) {
-		if (object instanceof URL) {
+	Node graphicFromObject(Object object) {
+		if (object instanceof Node) {
+			return (Node) object;
+		} else if (object instanceof URL) {
 			return new ImageView(((URL) object).toExternalForm());
 		} else if (object instanceof ComposedImage) {
 			Pane pane = new Pane();
