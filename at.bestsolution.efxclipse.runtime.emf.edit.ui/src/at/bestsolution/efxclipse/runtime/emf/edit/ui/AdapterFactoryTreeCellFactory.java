@@ -51,6 +51,7 @@ public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory imp
 		final TreeCell<Object> treeCell = new TreeCell<Object>() {
 
 			Object currentItem = null;
+			ICellEditHandler cellEditHandler;
 
 			AdapterImpl adapter = new AdapterImpl() {
 				@Override
@@ -59,7 +60,6 @@ public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory imp
 				}
 			};
 
-			private ICellEditHandler cellEditHandler;
 
 			@Override
 			public void startEdit() {

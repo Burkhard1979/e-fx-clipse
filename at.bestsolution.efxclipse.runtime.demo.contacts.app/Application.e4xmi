@@ -5,6 +5,7 @@
     <children xsi:type="basic:PartSashContainer" xmi:id="_SeXUCu8EEd6FC9cDb6iV7g" elementId="_SeXUCu8EEd6FC9cDb6iV7g" horizontal="true">
       <children xsi:type="basic:PartStack" xmi:id="_SeXUC-8EEd6FC9cDb6iV7g" elementId="_SeXUC-8EEd6FC9cDb6iV7g" containerData="30">
         <children xsi:type="basic:Part" xmi:id="_SeXUDO8EEd6FC9cDb6iV7g" elementId="ContactsView" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.views.ListView" label="%contactsList" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/folder_user.png" tooltip="%contactsTooltip"/>
+        <children xsi:type="basic:Part" xmi:id="_OI8-sDb3EeKZBafm86UM9A" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.app.parts.contactsTableView" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.views.ContactsTableView" label="%contactsTable" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/folder_user.png"/>
       </children>
       <children xsi:type="basic:PartStack" xmi:id="_SeXUDe8EEd6FC9cDb6iV7g" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.partstacks.second" containerData="70">
         <children xsi:type="basic:Part" xmi:id="DetailsView" elementId="DetailsView" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.demo.contacts.app/at.bestsolution.efxclipse.runtime.demo.contacts.views.DetailsView" label="%partDetails" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/report_user.png" tooltip="%detailsTooltip"/>
@@ -24,7 +25,7 @@
     </mainMenu>
     <trimBars xmi:id="_SeXUAu8EEd6FC9cDb6iV7g" elementId="toolbar:org.eclipse.ui.main.toolbar">
       <children xsi:type="menu:ToolBar" xmi:id="_6RnVUE8FEeCyZoR8urPqaw" elementId="">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_Y-d8MC3iEeKA67t6AqYX1w" elementId="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/folder.png" tooltip="%menuLabelAddGroup" command="_8GIe8C3hEeKA67t6AqYX1w"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Y-d8MC3iEeKA67t6AqYX1w" elementId="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/folder_add.png" tooltip="%menuLabelAddGroup" command="_8GIe8C3hEeKA67t6AqYX1w"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_J5b-IC3fEeKA67t6AqYX1w" elementId="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/user_add.png" tooltip="%menuLabelAddContact" command="_k20AAC3eEeKA67t6AqYX1w"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_Vw4jUE8FEeCyZoR8urPqaw" label="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/user_delete.png" tooltip="%menuLabelDelete" command="contacts.delete"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_SZWWYCxCEeKKgKdy48tDJg" elementId="at.bestsolution.efxclipse.runtime.demo.contacts.handledtoolitems.undo" label="" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.demo.contacts.app/icons/silk/arrow_undo.png" tooltip="%menuLabelUndo" command="_YYAtMCxCEeKKgKdy48tDJg"/>

@@ -12,6 +12,8 @@
 
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
+import java.util.List;
+
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
@@ -32,30 +34,33 @@ public class DetailsView {
 
 	@Inject
 	ContactsManager contactsManager;
-	
+
 	@Inject
 	public DetailsView(BorderPane parent, final MApplication application) {
-		
+
 		URL location = getClass().getResource("details.fxml");
-    	
-    	FXMLLoader fxmlLoader = new FXMLLoader(location);
-    	controller = new DetailsViewController();
+
+		FXMLLoader fxmlLoader = new FXMLLoader(location);
+		controller = new DetailsViewController();
 		fxmlLoader.setController(controller);
 
-    	Pane root = null;
-    	try {
-			root = (Pane)fxmlLoader.load();
+		Pane root = null;
+		try {
+			root = (Pane) fxmlLoader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		parent.setCenter(root);
 	}
-	
+
 	@Inject
-	public void setSelection(@Optional Contact contact) {
-		if (contact != null)
+	public void setSelection(@Optional List<?> selection) {
+		if (selection != null && selection.size() > 0) {
+			Object firstItem = selection.get(0);
+			Contact contact = firstItem instanceof Contact ? (Contact) firstItem : null;
 			controller.updateBindings(contact, contactsManager.getEditingDomain());
+		}
 	}
 
 }

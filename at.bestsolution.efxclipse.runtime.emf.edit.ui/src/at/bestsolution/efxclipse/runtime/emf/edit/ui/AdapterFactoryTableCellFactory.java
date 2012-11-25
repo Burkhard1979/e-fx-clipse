@@ -61,6 +61,7 @@ public class AdapterFactoryTableCellFactory<S, T> extends AdapterFactoryCellFact
 		final TableCell<Object, Object> tableCell = new TableCell<Object, Object>() {
 
 			Object currentItem = null;
+			ICellEditHandler cellEditHandler;
 
 			AdapterImpl adapter = new AdapterImpl() {
 				@Override
@@ -94,6 +95,29 @@ public class AdapterFactoryTableCellFactory<S, T> extends AdapterFactoryCellFact
 
 				update(item);
 			}
+			
+			@Override
+			public void startEdit() {
+				super.startEdit();
+				cellEditHandler = getCellEditHandler(this);
+				if(cellEditHandler != null)
+					cellEditHandler.startEdit(this);
+			}
+
+			@Override
+			public void commitEdit(Object newValue) {
+				super.commitEdit(newValue);
+				if(cellEditHandler != null)
+					cellEditHandler.commitEdit(this, newValue);
+			}
+
+			@Override
+			public void cancelEdit() {
+				super.cancelEdit();
+				if(cellEditHandler != null)
+					cellEditHandler.cancelEdit(this);
+				update(getItem());
+			}
 
 			private void update(Object item) {
 				applyTableItemProviderStyle(item, columnIndex, this, adapterFactory);
@@ -107,25 +131,24 @@ public class AdapterFactoryTableCellFactory<S, T> extends AdapterFactoryCellFact
 		return (TableCell<S, T>) tableCell;
 	}
 
-	/* package */void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		
 		applyTableItemProviderLabel(item, columnIndex, cell, adapterFactory);
 		applyTableItemProviderColor(item, columnIndex, cell, adapterFactory);
 		applyTableItemProviderFont(item, columnIndex, cell, adapterFactory);
 	}
 
-	/* package */void applyTableItemProviderLabel(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyTableItemProviderLabel(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
 		ITableItemLabelProvider labelProvider = (ITableItemLabelProvider) adapterFactory.adapt(item, ITableItemLabelProvider.class);
 		if (labelProvider != null) {
 			cell.setText(labelProvider.getColumnText(item, columnIndex));
-			Object image = labelProvider.getColumnImage(item, columnIndex);
-			if (image instanceof URL) {
-				Node graphic = new ImageView(((URL) image).toExternalForm());
-				cell.setGraphic(graphic);
-			}
+			Object columnImage = labelProvider.getColumnImage(item, columnIndex);
+			Node graphic = graphicFromObject(columnImage);
+			cell.setGraphic(graphic);
 		}
 	}
 
-	/* package */void applyTableItemProviderColor(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyTableItemProviderColor(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
 		ITableItemColorProvider colorProvider = (ITableItemColorProvider) adapterFactory.adapt(item, ITableItemColorProvider.class);
 		if (colorProvider != null) {
 			Color foreground = colorFromObject(colorProvider.getForeground(item, columnIndex));
@@ -138,7 +161,7 @@ public class AdapterFactoryTableCellFactory<S, T> extends AdapterFactoryCellFact
 		}
 	}
 
-	/* package */void applyTableItemProviderFont(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+	void applyTableItemProviderFont(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
 		ITableItemFontProvider fontProvider = (ITableItemFontProvider) adapterFactory.adapt(item, ITableItemFontProvider.class);
 		if (fontProvider != null) {
 			Font font = fontFromObject(fontProvider.getFont(item, columnIndex));

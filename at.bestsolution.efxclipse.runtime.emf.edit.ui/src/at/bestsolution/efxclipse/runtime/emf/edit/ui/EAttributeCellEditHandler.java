@@ -18,7 +18,6 @@ public class EAttributeCellEditHandler implements ICellEditHandler {
 	EAttribute attribute;
 	EditingDomain editingDomain;
 	TextField textField;
-	Cell<?> treeCell;
 
 	public EAttributeCellEditHandler(EAttribute attribute, EditingDomain editingDomain) {
 		this.attribute = attribute;
@@ -32,9 +31,8 @@ public class EAttributeCellEditHandler implements ICellEditHandler {
 	}
 
 	@Override
-	public void startEdit(final Cell<?> treeCell) {
-		this.treeCell = treeCell;
-		EObject item = (EObject) treeCell.getItem();
+	public void startEdit(final Cell<?> cell) {
+		EObject item = (EObject) cell.getItem();
 		String string = EcoreUtil.convertToString(attribute.getEAttributeType(), item.eGet(attribute));
 		textField = new TextField();
 		textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
@@ -42,13 +40,13 @@ public class EAttributeCellEditHandler implements ICellEditHandler {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				if (!newValue)
-					commitEdit(treeCell, textField.getText());
+					commitEdit(cell, textField.getText());
 			}
 
 		});
 		textField.setText(string);
-		treeCell.setText(null);
-		treeCell.setGraphic(textField);
+		cell.setText(null);
+		cell.setGraphic(textField);
 		textField.selectAll();
 	}
 
