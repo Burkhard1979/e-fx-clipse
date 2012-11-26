@@ -76,6 +76,15 @@ public interface TaskFactory extends EFactory {
 	URLFile createURLFile();
 
 	/**
+	 * Returns a new object of class '<em>Generator File</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generator File</em>'.
+	 * @generated
+	 */
+	GeneratorFile createGeneratorFile();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

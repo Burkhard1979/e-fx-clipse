@@ -3,6 +3,7 @@
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import org.osgi.framework.Version;
 
 /**
  * <!-- begin-user-doc -->
@@ -166,12 +167,12 @@ public interface ProductFile extends TemplatedFile {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
-	 * @see #setVersion(String)
+	 * @see #setVersion(Version)
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getProductFile_Version()
-	 * @model
+	 * @model dataType="at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Version"
 	 * @generated
 	 */
-	String getVersion();
+	Version getVersion();
 
 	/**
 	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getVersion <em>Version</em>}' attribute.
@@ -181,7 +182,7 @@ public interface ProductFile extends TemplatedFile {
 	 * @see #getVersion()
 	 * @generated
 	 */
-	void setVersion(String value);
+	void setVersion(Version value);
 
 	/**
 	 * Returns the value of the '<em><b>Include Launchers</b></em>' attribute.

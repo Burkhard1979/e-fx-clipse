@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.osgi.framework.Version;
 
 /**
  * <!-- begin-user-doc -->
@@ -141,7 +142,7 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VERSION_EDEFAULT = null;
+	protected static final Version VERSION_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -151,7 +152,7 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	 * @generated
 	 * @ordered
 	 */
-	protected String version = VERSION_EDEFAULT;
+	protected Version version = VERSION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIncludeLaunchers() <em>Include Launchers</em>}' attribute.
@@ -176,10 +177,11 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ProductFileImpl() {
 		super();
+		setGeneratorType("bundle-product");
 	}
 
 	/**
@@ -302,7 +304,7 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getVersion() {
+	public Version getVersion() {
 		return version;
 	}
 
@@ -311,8 +313,8 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVersion(String newVersion) {
-		String oldVersion = version;
+	public void setVersion(Version newVersion) {
+		Version oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_FILE__VERSION, oldVersion, version));
@@ -389,7 +391,7 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 				setApplication((String)newValue);
 				return;
 			case BundlePackage.PRODUCT_FILE__VERSION:
-				setVersion((String)newValue);
+				setVersion((Version)newValue);
 				return;
 			case BundlePackage.PRODUCT_FILE__INCLUDE_LAUNCHERS:
 				setIncludeLaunchers((Boolean)newValue);

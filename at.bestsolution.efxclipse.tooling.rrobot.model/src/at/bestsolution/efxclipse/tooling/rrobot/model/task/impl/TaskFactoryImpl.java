@@ -71,6 +71,7 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 			case TaskPackage.TEMPLATED_FILE: return createTemplatedFile();
 			case TaskPackage.DATA_FILE: return createDataFile();
 			case TaskPackage.URL_FILE: return createURLFile();
+			case TaskPackage.GENERATOR_FILE: return createGeneratorFile();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -86,6 +87,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 		switch (eDataType.getClassifierID()) {
 			case TaskPackage.INPUT_STREAM:
 				return createInputStreamFromString(eDataType, initialValue);
+			case TaskPackage.GENERATOR:
+				return createGeneratorFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -101,6 +104,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 		switch (eDataType.getClassifierID()) {
 			case TaskPackage.INPUT_STREAM:
 				return convertInputStreamToString(eDataType, instanceValue);
+			case TaskPackage.GENERATOR:
+				return convertGeneratorToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -171,6 +176,16 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GeneratorFile createGeneratorFile() {
+		GeneratorFileImpl generatorFile = new GeneratorFileImpl();
+		return generatorFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InputStream createInputStreamFromString(EDataType eDataType, String initialValue) {
 		return (InputStream)super.createFromString(eDataType, initialValue);
 	}
@@ -182,6 +197,24 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	 */
 	public String convertInputStreamToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Generator<?> createGeneratorFromString(EDataType eDataType, String initialValue) {
+		return (Generator<?>)super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGeneratorToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
 	}
 
 	/**

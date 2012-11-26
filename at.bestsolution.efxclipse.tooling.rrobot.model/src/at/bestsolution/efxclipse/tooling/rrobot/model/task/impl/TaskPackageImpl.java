@@ -22,6 +22,8 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageI
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.GeneratorFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
@@ -98,6 +100,13 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass generatorFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType ioExceptionEDataType = null;
 
 	/**
@@ -113,6 +122,13 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * @generated
 	 */
 	private EDataType inputStreamEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType generatorEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -338,8 +354,35 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGeneratorFile() {
+		return generatorFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGeneratorFile_GeneratorInstance() {
+		return (EAttribute)generatorFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getInputStream() {
 		return inputStreamEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getGenerator() {
+		return generatorEDataType;
 	}
 
 	/**
@@ -403,10 +446,14 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		urlFileEClass = createEClass(URL_FILE);
 		createEAttribute(urlFileEClass, URL_FILE__URI);
 
+		generatorFileEClass = createEClass(GENERATOR_FILE);
+		createEAttribute(generatorFileEClass, GENERATOR_FILE__GENERATOR_INSTANCE);
+
 		// Create data types
 		ioExceptionEDataType = createEDataType(IO_EXCEPTION);
 		iProgressMonitorEDataType = createEDataType(IPROGRESS_MONITOR);
 		inputStreamEDataType = createEDataType(INPUT_STREAM);
+		generatorEDataType = createEDataType(GENERATOR);
 	}
 
 	/**
@@ -433,6 +480,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		setNsURI(eNS_URI);
 
 		// Create type parameters
+		addETypeParameter(generatorEDataType, "F");
 
 		// Set bounds for type parameters
 
@@ -442,6 +490,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		templatedFileEClass.getESuperTypes().add(this.getFile());
 		dataFileEClass.getESuperTypes().add(this.getFile());
 		urlFileEClass.getESuperTypes().add(this.getFile());
+		generatorFileEClass.getESuperTypes().add(this.getFile());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(robotTaskEClass, RobotTask.class, "RobotTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -478,10 +527,17 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		initEClass(urlFileEClass, URLFile.class, "URLFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getURLFile_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, URLFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(generatorFileEClass, GeneratorFile.class, "GeneratorFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getGenerator());
+		g2 = createEGenericType(this.getGeneratorFile());
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getGeneratorFile_GeneratorInstance(), g1, "generatorInstance", null, 0, 1, GeneratorFile.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize data types
 		initEDataType(ioExceptionEDataType, IOException.class, "IOException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(iProgressMonitorEDataType, IProgressMonitor.class, "IProgressMonitor", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(inputStreamEDataType, InputStream.class, "InputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(generatorEDataType, Generator.class, "Generator", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

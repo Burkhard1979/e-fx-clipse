@@ -130,6 +130,14 @@ public class TaskSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TaskPackage.GENERATOR_FILE: {
+				GeneratorFile generatorFile = (GeneratorFile)theEObject;
+				T result = caseGeneratorFile(generatorFile);
+				if (result == null) result = caseFile(generatorFile);
+				if (result == null) result = caseResource(generatorFile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -251,6 +259,21 @@ public class TaskSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseURLFile(URLFile object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generator File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generator File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneratorFile(GeneratorFile object) {
 		return null;
 	}
 

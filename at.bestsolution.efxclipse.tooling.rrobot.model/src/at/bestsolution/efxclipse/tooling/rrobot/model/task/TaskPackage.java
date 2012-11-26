@@ -223,7 +223,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 9;
+	int IPROGRESS_MONITOR = 10;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl <em>Templated File</em>}' class.
@@ -337,6 +337,43 @@ public interface TaskPackage extends EPackage {
 	int URL_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.GeneratorFileImpl <em>Generator File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.GeneratorFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGeneratorFile()
+	 * @generated
+	 */
+	int GENERATOR_FILE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATOR_FILE__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Generator Instance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATOR_FILE__GENERATOR_INSTANCE = FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Generator File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATOR_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Input Stream</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -344,7 +381,17 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
 	 * @generated
 	 */
-	int INPUT_STREAM = 10;
+	int INPUT_STREAM = 11;
+
+	/**
+	 * The meta object id for the '<em>Generator</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGenerator()
+	 * @generated
+	 */
+	int GENERATOR = 12;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -354,7 +401,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 8;
+	int IO_EXCEPTION = 9;
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask <em>Robot Task</em>}'.
@@ -536,6 +583,27 @@ public interface TaskPackage extends EPackage {
 	EAttribute getURLFile_Uri();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.GeneratorFile <em>Generator File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generator File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.GeneratorFile
+	 * @generated
+	 */
+	EClass getGeneratorFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.GeneratorFile#getGeneratorInstance <em>Generator Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generator Instance</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.GeneratorFile#getGeneratorInstance()
+	 * @see #getGeneratorFile()
+	 * @generated
+	 */
+	EAttribute getGeneratorFile_GeneratorInstance();
+
+	/**
 	 * Returns the meta object for data type '{@link java.io.InputStream <em>Input Stream</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -545,6 +613,17 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getInputStream();
+
+	/**
+	 * Returns the meta object for data type '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator <em>Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Generator</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+	 * @model instanceClass="at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator" typeParameters="F"
+	 * @generated
+	 */
+	EDataType getGenerator();
 
 	/**
 	 * Returns the meta object for data type '{@link java.io.IOException <em>IO Exception</em>}'.
@@ -734,6 +813,24 @@ public interface TaskPackage extends EPackage {
 		EAttribute URL_FILE__URI = eINSTANCE.getURLFile_Uri();
 
 		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.GeneratorFileImpl <em>Generator File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.GeneratorFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGeneratorFile()
+		 * @generated
+		 */
+		EClass GENERATOR_FILE = eINSTANCE.getGeneratorFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Generator Instance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERATOR_FILE__GENERATOR_INSTANCE = eINSTANCE.getGeneratorFile_GeneratorInstance();
+
+		/**
 		 * The meta object literal for the '<em>Input Stream</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -742,6 +839,16 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType INPUT_STREAM = eINSTANCE.getInputStream();
+
+		/**
+		 * The meta object literal for the '<em>Generator</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGenerator()
+		 * @generated
+		 */
+		EDataType GENERATOR = eINSTANCE.getGenerator();
 
 		/**
 		 * The meta object literal for the '<em>IO Exception</em>' data type.
