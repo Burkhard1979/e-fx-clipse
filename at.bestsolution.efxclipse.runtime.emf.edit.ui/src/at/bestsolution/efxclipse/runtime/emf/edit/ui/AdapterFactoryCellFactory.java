@@ -63,9 +63,41 @@ public abstract class AdapterFactoryCellFactory {
 
 	}
 
+	/**
+	 * An interface for providers that handle cell editing. The {@link Cell}s
+	 * created by the factory will delegate calls to their editing methods to
+	 * the first handler in {@link AdapterFactoryCellFactory#cellEditHandlers}
+	 * that returns <code>true</code> for {@link ICellEditHandler#canEdit(Cell)}
+	 * .
+	 */
+	public interface ICellEditHandler {
+
+		/**
+		 * Whether editing treeCell can be handled
+		 */
+		boolean canEdit(Cell<?> treeCell);
+
+		/**
+		 * Delegate for {@link Cell#startEdit()}
+		 */
+		void startEdit(Cell<?> treeCell);
+
+		/**
+		 * Delegate for {@link Cell#commitEdit(Object)}
+		 */
+		void commitEdit(Cell<?> treeCell, Object newValue);
+
+		/**
+		 * Delegate for {@link Cell#cancelEdit()}
+		 */
+		void cancelEdit(Cell<?> treeCell);
+
+	}
+
 	final protected AdapterFactory adapterFactory;
 	final List<ICellCreationListener> cellCreationListeners = new ArrayList<>();
 	final List<ICellUpdateListener> cellUpdateListeners = new ArrayList<>();
+	final List<ICellEditHandler> cellEditHandlers = new ArrayList<>();
 
 	public AdapterFactoryCellFactory(AdapterFactory adapterFactory) {
 		super();
@@ -94,6 +126,22 @@ public abstract class AdapterFactoryCellFactory {
 
 	public void removeCellUpdateListener(ICellUpdateListener listener) {
 		cellUpdateListeners.remove(listener);
+	}
+
+	public void addCellEditHandler(ICellEditHandler cellEditHandler) {
+		cellEditHandlers.add(cellEditHandler);
+	}
+
+	public void remvoveCellEditHandler(ICellEditHandler cellEditHandler) {
+		cellEditHandlers.remove(cellEditHandler);
+	}
+
+	ICellEditHandler getCellEditHandler(Cell<?> cell) {
+		for (ICellEditHandler cellEditHandler : cellEditHandlers) {
+			if (cellEditHandler.canEdit(cell))
+				return cellEditHandler;
+		}
+		return null;
 	}
 
 	void applyItemProviderStyle(Object item, Cell<?> cell, AdapterFactory adapterFactory) {
@@ -168,26 +216,28 @@ public abstract class AdapterFactoryCellFactory {
 			cell.setText(labelProvider.getText(item));
 
 			if (item != null) {
-				Node image = imageFromObject(labelProvider.getImage(item));
+				Node image = graphicFromObject(labelProvider.getImage(item));
 				if (image != null)
 					cell.setGraphic(image);
 			}
 		}
 	}
 
-	Node imageFromObject(Object object) {
-		if (object instanceof URL) {
+	Node graphicFromObject(Object object) {
+		if (object instanceof Node) {
+			return (Node) object;
+		} else if (object instanceof URL) {
 			return new ImageView(((URL) object).toExternalForm());
 		} else if (object instanceof ComposedImage) {
 			Pane pane = new Pane();
-			
+
 			for (Object image : ((ComposedImage) object).getImages()) {
-				if(image instanceof URL) {
+				if (image instanceof URL) {
 					ImageView imageView = new ImageView(((URL) image).toExternalForm());
-					pane.getChildren().add(imageView);					
+					pane.getChildren().add(imageView);
 				}
 			}
-			
+
 			return pane;
 		}
 

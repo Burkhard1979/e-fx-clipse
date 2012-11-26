@@ -1,0 +1,105 @@
+/*******************************************************************************
+ * Copyright (c) 2011 Kai Toedter and others.
+ * 
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html.
+ * 
+ * Contributors:
+ *     Kai Toedter - initial API and implementation
+ ******************************************************************************/
+
+package at.bestsolution.efxclipse.runtime.demo.contacts.views;
+
+import javafx.event.Event;
+import javafx.event.EventType;
+
+import javafx.event.EventHandler;
+import javafx.scene.control.TableColumn.CellEditEvent;
+
+import javafx.event.EventHandler;
+import javafx.scene.control.TableColumn.CellEditEvent;
+
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
+
+import javafx.scene.control.Cell;
+
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ListChangeListener.Change;
+
+import org.eclipse.emf.common.notify.AdapterFactory;
+
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableList;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTableCellFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
+import javafx.scene.control.SelectionMode;
+
+import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
+import javax.inject.Inject;
+import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.edit.domain.EditingDomain;
+
+@SuppressWarnings("restriction")
+public class ContactsTableView {
+
+	@Inject
+	public ContactsTableView(BorderPane parent, final MApplication application, final ContactsManager contactsManager) {
+		EditingDomain editingDomain = contactsManager.getEditingDomain();
+		AdapterFactory adapterFactory = contactsManager.getAdapterFactory();
+		
+		TableView<Object> tableView = new TableView<>();
+
+		parent.setCenter(tableView);
+
+		TableColumn<Object, Object> firstNameColumn = new TableColumn<>("First Name");
+		TableColumn<Object, Object> lastNameColumn = new TableColumn<>("Last Name");
+
+		tableView.getColumns().addAll(firstNameColumn, lastNameColumn);
+
+		firstNameColumn.setCellValueFactory(new ProxyCellValueFactory<Object, Object>());
+		AdapterFactoryTableCellFactory<Object, Object> firstNameCellFactory = new AdapterFactoryTableCellFactory<>(adapterFactory, 0);
+		firstNameCellFactory.addCellCreationListener(new CellDragAdapter());
+		firstNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
+//		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
+		firstNameColumn.setCellFactory(firstNameCellFactory);
+		firstNameColumn.setSortable(false);
+		
+
+		lastNameColumn.setCellValueFactory(new ProxyCellValueFactory<Object, Object>());
+		AdapterFactoryTableCellFactory<Object, Object> lastNameCellFactory = new AdapterFactoryTableCellFactory<Object, Object>(adapterFactory, 1);
+		lastNameCellFactory.addCellCreationListener(new CellDragAdapter());
+		lastNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
+//		lastNameCellFactory.addCellUpdateListener(contextMenuProvider);
+		lastNameColumn.setCellFactory(lastNameCellFactory);
+		lastNameColumn.setSortable(false);
+
+		tableView.setItems(new AdapterFactoryObservableList<Object>(adapterFactory, contactsManager.getRootGroup()));
+		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		// add edit support
+		tableView.setEditable(true);
+		firstNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_FirstName(), editingDomain));
+		lastNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_LastName(), editingDomain));
+
+		
+		tableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
+
+			@Override
+			public void onChanged(Change<?> change) {
+				application.getContext().set(List.class, change.getList());
+			}
+			
+		});
+	}
+
+}
