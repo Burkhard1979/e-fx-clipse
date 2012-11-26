@@ -93,7 +93,7 @@ public class CssExtDocParser {
 			result += ((CSSNumLiteral)r).getValue();
 		}
 		else if (r instanceof CSSRuleRef) {
-			result += elementLinks.createLink(XtextElementLinks.XTEXTDOC_SCHEME, ((CSSRuleRef) r).getRef().eContainer(), "&lt;" + ((CSSRuleRef) r).getRef().getName() + "&gt;");
+			result += elementLinks.createLink(XtextElementLinks.XTEXTDOC_SCHEME, ((CSSRuleRef) r).getRef(), "&lt;" + ((CSSRuleRef) r).getRef().getName() + "&gt;");
 		}
 		else if (r instanceof CSSRulePostfix) {
 			result += translateRule(((CSSRulePostfix) r).getRule()) + ((CSSRulePostfix) r).getCardinality();
