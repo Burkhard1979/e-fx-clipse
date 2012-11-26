@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Queue;
 
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.ui.PlatformUI;
@@ -41,6 +42,10 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.parser.ParsePath;
+import at.bestsolution.efxclipse.tooling.css.cssext.parser.ParseStatus;
+import at.bestsolution.efxclipse.tooling.css.cssext.parser.ParserInput;
+import at.bestsolution.efxclipse.tooling.css.cssext.parser.ParserInputCursor;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
@@ -67,7 +72,7 @@ public class CssExtParser {
 	}
 	
 	private class ParseResult {
-		Input remainingInput;
+		ParserInputCursor remainingInput;
 //		Set<Input> remainingInput = new HashSet<CssExtParser.Input>();;
 		Status status;
 		
@@ -79,19 +84,16 @@ public class CssExtParser {
 		
 		@Override
 		public String toString() {
-			return status+"|"+remainingInput+"|"+proposal + "|" + partial;
+			return status+"|"+remainingInput+"|"+proposal + "|" + partial + " (" + message +")";
 		}
 	}
 	
-	private class GlobalData {
-		List<Proposal> proposals = new ArrayList<Proposal>();
-		int depth = 0;
-		int node = 0;
-	}
 	
 	private class Input {
 		
 		Queue<CssTok> input;
+		
+		CssTok lastToken;
 		
 		public boolean isConsumed() {
 			return input.isEmpty();
@@ -110,6 +112,7 @@ public class CssExtParser {
 		public CssTok getNextTok() {
 			
 			CssTok consume = input.poll();
+			lastToken = consume;
 			logf("INPUT: consuming %s", TokUtil.toString(consume));
 			return consume;
 		}
@@ -202,50 +205,50 @@ public class CssExtParser {
 				r instanceof CSSType;
 	}
 	
-	private List<ParseResult> parse(GlobalData g, Input l, CSSRule rule, boolean mayConsumeWS) {
+	private List<ParseResult> parse(ParsePath path, ParserInputCursor input, CSSRule rule, boolean mayConsumeWS) {
 		Assert.isNotNull(rule, "rule must not be null");
-		Assert.isNotNull(l, "input must not be null");
-		if (relevant(rule)) {
-			g.depth++;
-			g.node++;
-			print(g.depth, g.node, "-> " + l + " (rule = " + rule + ")");
-		}	
+		Assert.isNotNull(input, "input must not be null");
+//		if (relevant(rule)) {
+//			g.depth++;
+//			g.node++;
+//			print(g.depth, g.node, "-> " + l + " (rule = " + rule + ")");
+//		}	
 		List<ParseResult> result = null;
 		
 		switch(rule.eClass().getClassifierID()) {
-		case CssExtDslPackage.CSS_RULE_BRACKET: result = parseBracket(g, l, (CSSRuleBracket)rule, mayConsumeWS); 
+		case CssExtDslPackage.CSS_RULE_BRACKET: result = parseBracket(path, input, (CSSRuleBracket)rule, mayConsumeWS); 
 			break;
-		case CssExtDslPackage.CSS_RULE_REF: result = parseRef(g, l, (CSSRuleRef)rule, mayConsumeWS); 
+		case CssExtDslPackage.CSS_RULE_REF: result = parseRef(path, input, (CSSRuleRef)rule, mayConsumeWS); 
 			break;
-		case CssExtDslPackage.CSS_RULE_OR: result = parseOr(g, l, (CSSRuleOr) rule, mayConsumeWS); 
+		case CssExtDslPackage.CSS_RULE_OR: result = parseOr(path, input, (CSSRuleOr) rule, mayConsumeWS); 
 			break;
-		case CssExtDslPackage.CSS_RULE_XOR: result = parseConcatOr(g, l, (CSSRuleXor) rule, mayConsumeWS); 
+		case CssExtDslPackage.CSS_RULE_XOR: result = parseConcatOr(path, input, (CSSRuleXor) rule, mayConsumeWS); 
 			break;
-		case CssExtDslPackage.CSS_RULE_CONCAT: result = parseConcat(g, l, (CSSRuleConcat) rule, mayConsumeWS); 
+		case CssExtDslPackage.CSS_RULE_CONCAT: result = parseConcat(path, input, (CSSRuleConcat) rule, mayConsumeWS); 
 			break;
-		case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE: result = parseConcatWithoutSpace(g, l, (CSSRuleConcatWithoutSpace) rule, mayConsumeWS); 
+		case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE: result = parseConcatWithoutSpace(path, input, (CSSRuleConcatWithoutSpace) rule, mayConsumeWS); 
 			break;
-		case CssExtDslPackage.CSS_RULE_LITERAL: result = parseLiteral(g, l, (CSSRuleLiteral) rule, mayConsumeWS); 
+		case CssExtDslPackage.CSS_RULE_LITERAL: result = parseLiteral(path, input, (CSSRuleLiteral) rule, mayConsumeWS); 
 			break;
-		case CssExtDslPackage.CSS_RULE_SYMBOL: result = parseSymbol(g, l, (CSSRuleSymbol) rule, mayConsumeWS);
+		case CssExtDslPackage.CSS_RULE_SYMBOL: result = parseSymbol(path, input, (CSSRuleSymbol) rule, mayConsumeWS);
 			break;
-		case CssExtDslPackage.CSS_RULE_POSTFIX: result = parsePostfix(g, l, (CSSRulePostfix) rule, mayConsumeWS);
+		case CssExtDslPackage.CSS_RULE_POSTFIX: result = parsePostfix(path, input, (CSSRulePostfix) rule, mayConsumeWS);
 			break;
-		case CssExtDslPackage.CSS_RULE_REGEX: result = parseRegex(g, l, (CSSRuleRegex)rule, mayConsumeWS);
+		case CssExtDslPackage.CSS_RULE_REGEX: result = parseRegex(path, input, (CSSRuleRegex)rule, mayConsumeWS);
 			break;
 		case CssExtDslPackage.CSS_TYPE: 
 		case CssExtDslPackage.CSS_RANGED_DOUBLE_TYPE:
 		case CssExtDslPackage.CSS_RANGED_INT_TYPE:
-			result = parseType(g, l, (CSSType)rule, mayConsumeWS);
+			result = parseType(path, input, (CSSType)rule, mayConsumeWS);
 			break;
-		case CssExtDslPackage.CSS_RULE_FUNC: result = parseFunction(g, l, (CSSRuleFunc)rule, mayConsumeWS); break;
+		case CssExtDslPackage.CSS_RULE_FUNC: result = parseFunction(path, input, (CSSRuleFunc)rule, mayConsumeWS); break;
 		default:
 			System.err.println("WARINING " + rule + " not implemented! (classifierID="+rule.eClass().getClassifierID()+")");
 		}
-		if (relevant(rule)) {
-			print(g.depth, g.node, "<- " + result);
-			g.depth--;
-		}
+//		if (relevant(rule)) {
+//			print(g.depth, g.node, "<- " + result);
+//			g.depth--;
+//		}
 		return result;
 	}
 	
@@ -258,7 +261,7 @@ public class CssExtParser {
 		logf("%s%d %s", d, depth, string);
 	}
 	
-	private List<ParseResult> parseType(GlobalData g, Input l, CSSType type, boolean mayConsumeWS) {
+	private List<ParseResult> parseType(ParsePath g, ParserInputCursor l, CSSType type, boolean mayConsumeWS) {
 		List<ParseResult> result = null;
 		if ("@NUM".equals(type.getType())) {
 			result = parseNUMType(g, l, type, mayConsumeWS);
@@ -273,19 +276,20 @@ public class CssExtParser {
 		return result;
 	}
 	
-	private List<ParseResult> parseRegex(GlobalData g, Input l, CSSRuleRegex r, boolean mayConsumeWS) {
+	private List<ParseResult> parseRegex(ParsePath g, ParserInputCursor l, CSSRuleRegex r, boolean mayConsumeWS) {
 		List<ParseResult> result = new ArrayList<ParseResult>();
 		
 		String regex = r.getRegex().replaceAll("\\$", "");
 		
 		
-		Input localInput = l.copy();
+		ParserInputCursor localInput = l.copy();
 		
 		
-		CssTok tok = localInput.getNextTok();
+		CssTok tok = localInput.pollNextToken();
 		if (mayConsumeWS) {
 			while (tok instanceof WSTok) {
-				tok = localInput.getNextTok();
+				g.newSegment(ParseStatus.MATCH, tok);
+				tok = localInput.pollNextToken();
 			}
 		}
 		System.err.println("REGEX1 -> " + regex + " / / " + tok);
@@ -298,23 +302,32 @@ public class CssExtParser {
 				r1.status = Status.MATCH;
 				r1.remainingInput = localInput;
 				result.add(r1);
+				
+				g.newSegment(ParseStatus.MATCH, tok);
 			}
 			else {
 				ParseResult r1 = new ParseResult();
 				r1.status = Status.INVALID;
 				r1.remainingInput = localInput;
 				result.add(r1);
+				
+				g.newSegment(ParseStatus.INVALID, tok);
 			}
+		}
+		else {
+			
+			// expected color token
+			g.newSegment(ParseStatus.INVALID, tok, "expected color hash");
 		}
 		
 		return result;
 	}
 	
-	private List<ParseResult> parseBracket(GlobalData g, Input l, CSSRuleBracket r, boolean mayConsumeWS) {
-		return parse(g, l, r.getInner(), mayConsumeWS);
+	private List<ParseResult> parseBracket(ParsePath g, ParserInputCursor input, CSSRuleBracket r, boolean mayConsumeWS) {
+		return parse(g, input, r.getInner(), mayConsumeWS);
 	}
 	
-	private List<ParseResult> parseRef(GlobalData g, Input l, CSSRuleRef r, boolean mayConsumeWS) {
+	private List<ParseResult> parseRef(ParsePath g, ParserInputCursor l, CSSRuleRef r, boolean mayConsumeWS) {
 		CSSRule rule =  manager.resolveReference(r);
 		if (rule == null) {
 			System.err.println("resolving rule ref " + r.getRef().getName() + " returned null (maybe a function?) !!!!!");
@@ -350,19 +363,19 @@ public class CssExtParser {
 	}
 	
 	// Or
-	private List<ParseResult> parseOr(GlobalData g, Input l, CSSRuleOr r, boolean mayConsumeWS) {
+	private List<ParseResult> parseOr(ParsePath g, ParserInputCursor l, CSSRuleOr r, boolean mayConsumeWS) {
 		
 		List<ParseResult> result = new ArrayList<ParseResult>();
 		
 		for (CSSRule orRule : r.getOrs()) {
-			result.addAll(parse(g, l, orRule, mayConsumeWS));
+			result.addAll(parse(g.newSubPath(r), l, orRule, mayConsumeWS));
 		}
 		
 		return result;
 	}
 	
 	// Xor
-	private List<ParseResult> parseConcatOr(GlobalData g, Input l, CSSRuleXor r, boolean mayConsumeWS) {
+	private List<ParseResult> parseConcatOr(ParsePath g, ParserInputCursor l, CSSRuleXor r, boolean mayConsumeWS) {
 		
 		ParseResult result = new ParseResult();
 		// TODO impl this
@@ -374,10 +387,10 @@ public class CssExtParser {
 	}
 	
 	// Concat without space
-	private List<ParseResult> parseConcatWithoutSpace(GlobalData g, Input l, CSSRuleConcatWithoutSpace r, boolean mayConsumeWS) {
+	private List<ParseResult> parseConcatWithoutSpace(ParsePath g, ParserInputCursor l, CSSRuleConcatWithoutSpace r, boolean mayConsumeWS) {
 		List<ParseResult> finalResult = new ArrayList<ParseResult>();
 		
-		List<Input> currentInput = new ArrayList<Input>();
+		List<ParserInputCursor> currentInput = new ArrayList<ParserInputCursor>();
 		currentInput.add(l);
 		
 		Iterator<CSSRule> ruleIt = r.getConc().iterator();
@@ -386,7 +399,7 @@ public class CssExtParser {
 //			System.err.println("rule " + rule);
 			List<ParseResult> perRuleResult = new ArrayList<ParseResult>();
 			
-			for (Input in : currentInput) {
+			for (ParserInputCursor in : currentInput) {
 //				logf(" consuming input " + in);
 				System.err.println("going into " + rule);
 				perRuleResult.addAll(parse(g, in, rule, false));
@@ -413,10 +426,10 @@ public class CssExtParser {
 	}
 	
 	// Concat
-	private List<ParseResult> parseConcat(GlobalData g, Input l, CSSRuleConcat r, boolean mayConsumeWS) {
+	private List<ParseResult> parseConcat(ParsePath g, ParserInputCursor l, CSSRuleConcat r, boolean mayConsumeWS) {
 		List<ParseResult> finalResult = new ArrayList<ParseResult>();
 		
-		List<Input> currentInput = new ArrayList<Input>();
+		List<ParserInputCursor> currentInput = new ArrayList<ParserInputCursor>();
 		currentInput.add(l);
 		
 		Iterator<CSSRule> ruleIt = r.getConc().iterator();
@@ -425,13 +438,14 @@ public class CssExtParser {
 //			System.err.println("rule " + rule);
 			List<ParseResult> perRuleResult = new ArrayList<ParseResult>();
 			
-			for (Input in : currentInput) {
+			for (ParserInputCursor in : currentInput) {
 				
 				// consume whitespaces
-				CssTok nextTok = in.peekNextTok();
-				while (nextTok instanceof WSTok) {
-					in.getNextTok();
-					nextTok = in.peekNextTok();
+				CssTok peekTok = in.peekNextToken();
+				while (peekTok instanceof WSTok) {
+					WSTok tok = (WSTok) in.pollNextToken();
+					g.newSegment(ParseStatus.MATCH, tok);
+					peekTok = in.peekNextToken();
 				}
 				
 //				System.err.println(" in " + in);
@@ -460,7 +474,7 @@ public class CssExtParser {
 	
 	private final int n = Integer.MAX_VALUE;
 	
-//	private boolean recParsePostfix(GlobalData g, Set<Input> input, CSSRule rule, int min, int cur,  int max, Set<ParseResult> result) {
+//	private boolean recParsePostfix(ParsePath g, Set<Input> input, CSSRule rule, int min, int cur,  int max, Set<ParseResult> result) {
 //		if (cur > max) return true;
 //		
 //		print(g.depth, "recPostfix for " + input);
@@ -492,7 +506,7 @@ public class CssExtParser {
 //		return false;
 //	}
 	
-	private void parseOptional(GlobalData g, Input in, CSSRule rule, List<ParseResult> result, boolean mayConsumeWS) {
+	private void parseOptional(ParsePath g, ParserInputCursor in, CSSRule rule, List<ParseResult> result, boolean mayConsumeWS) {
 		
 		boolean maySkip = true;
 		List<ParseResult> ruleResult = parse(g, in.copy(), rule, mayConsumeWS);
@@ -528,7 +542,7 @@ public class CssExtParser {
 		return invalid;
 	}
 	
-	private void parseStar(GlobalData g, Input in, CSSRule rule, List<ParseResult> result, int count, boolean mayConsumeWS) {
+	private void parseStar(ParsePath g, ParserInputCursor in, CSSRule rule, List<ParseResult> result, int count, boolean mayConsumeWS) {
 		
 		// first iteraton
 		if (count == 0) {
@@ -568,7 +582,7 @@ public class CssExtParser {
 		
 		
 	}
-	private void parsePlus(GlobalData g, Input in, CSSRule rule, List<ParseResult> result, int count, boolean mayConsumeWS) {
+	private void parsePlus(ParsePath g, ParserInputCursor in, CSSRule rule, List<ParseResult> result, int count, boolean mayConsumeWS) {
 	
 		// first iteraton
 		if (count == 0) {
@@ -602,22 +616,23 @@ public class CssExtParser {
 		
 	}
 	
-	private List<ParseResult> parseFunction(GlobalData g, Input in, CSSRuleFunc ruleFunc, boolean mayConsumeWS) {
+	private List<ParseResult> parseFunction(ParsePath g, ParserInputCursor in, CSSRuleFunc ruleFunc, boolean mayConsumeWS) {
 		List<ParseResult> result = new ArrayList<ParseResult>();
 		
-		Input local = in.copy();
+		ParserInputCursor local = in.copy();
 		
 		ParseResult r = new ParseResult();
 		if (local.isConsumed()) {
 			r.status = Status.PROPOSE;
-			r.proposal = new Proposal("0");
+			r.proposal = new Proposal(ruleFunc.getName() + "()");
+			result.add(r);
 		}
 		else {
-			CssTok tok = local.getNextTok();
+			CssTok tok = local.pollNextToken();
 			
 			if (mayConsumeWS) {
 				while (tok instanceof WSTok) {
-					tok = local.getNextTok();
+					tok = local.pollNextToken();
 				}
 			}
 			
@@ -628,19 +643,45 @@ public class CssExtParser {
 				
 				if (funcName.equals(ruleFunc.getName())) {
 					
-					Input paramInput = new Input(fTok.getParams());
+					g.newSegment(ParseStatus.MATCH, fTok);
 					
-					List<ParseResult> paramResult = parse(g, paramInput, ruleFunc.getParams(), true);
+					ParserInput funcInput = new ParserInput(fTok.getParams());
+					
+					List<ParseResult> paramResult = parse(g, funcInput.createCursor(), ruleFunc.getParams(), true);
 					
 					System.err.println("paramResult= " + paramResult);
 					
-					r.remainingInput = local;
-					r.status = Status.MATCH;
-					
+//					boolean paramsOk = false;
+//					
+//					for (ParseResult paramR : paramResult) {
+//						if (paramR.status == Status.MATCH && paramR.remainingInput.isConsumed()) {
+//							paramsOk = true;
+//							break;
+//						}
+//					}
+//					
+//					if (paramsOk) {
+//						r.remainingInput = local;
+//						r.status = Status.MATCH;
+//						
+//						g.newSegment(ParseStatus.MATCH, fTok);
+//					}
+//					else {
+//						// function parameters wrong
+//						r.message = "recheck function params";
+//						r.status = Status.INVALID;
+//						
+//						g.newSegment(ParseStatus.INVALID, fTok, "wrong parameters");
+//					}
+					result.add(r);
 				}
 				else {
 					// invalid (wrong func)
+					r.message = "expected " + ruleFunc.getName();
 					r.status = Status.INVALID;
+					
+					g.newSegment(ParseStatus.INVALID, fTok, "expected " + ruleFunc.getName() + "()");
+					result.add(r);
 				}
 				
 				
@@ -649,6 +690,9 @@ public class CssExtParser {
 			else {
 				// invalid
 				r.status = Status.INVALID;
+				
+				g.newSegment(ParseStatus.INVALID, null);
+				result.add(r);
 			}
 		}
 		
@@ -659,7 +703,7 @@ public class CssExtParser {
 		return result;
 	}
 	
-	private List<ParseResult> parsePostfix(GlobalData g, Input in, CSSRulePostfix r, boolean mayConsumeWS) {
+	private List<ParseResult> parsePostfix(ParsePath g, ParserInputCursor in, CSSRulePostfix r, boolean mayConsumeWS) {
 		
 		List<ParseResult> result = new ArrayList<ParseResult>();
 		
@@ -684,9 +728,9 @@ public class CssExtParser {
 		return result;
 	}
 	
-	private List<ParseResult> parseINTType(GlobalData g, Input l, CSSType rule, boolean mayConsumeWS) {
+	private List<ParseResult> parseINTType(ParsePath g, ParserInputCursor l, CSSType rule, boolean mayConsumeWS) {
 		ParseResult result = new ParseResult();
-		Input local = l.copy();
+		ParserInputCursor local = l.copy();
 		
 		if (local.isConsumed()) {
 			result.status = Status.PROPOSE;
@@ -694,10 +738,10 @@ public class CssExtParser {
 		}
 		else {
 		
-				CssTok tok = local.getNextTok();
+				CssTok tok = local.pollNextToken();
 			if (mayConsumeWS) {
 				while (tok instanceof WSTok) {
-					tok = local.getNextTok();
+					tok = local.pollNextToken();
 				}
 			}
 			
@@ -715,31 +759,39 @@ public class CssExtParser {
 						// ok
 						result.remainingInput = local;
 						result.status = Status.MATCH;
+						
+						g.newSegment(ParseStatus.MATCH, numberTok);
 					}
 					else {
 						// invalid range
 						result.status = Status.INVALID;
 						result.message = "invalid range";
+						
+						g.newSegment(ParseStatus.INVALID, numberTok);
 					}
 				}
 				else {
 					// ok
 					result.remainingInput = local;
 					result.status = Status.MATCH;
+					
+					g.newSegment(ParseStatus.MATCH, numberTok);
 				}
 			}
 			else {
 				// invalid
 				result.status = Status.INVALID;
+				
+				g.newSegment(ParseStatus.INVALID, null);
 			}
 		}
 	
 		return createSingletonList(result);
 	}
 	
-	private List<ParseResult> parseNUMType(GlobalData g, Input l, CSSType rule, boolean mayConsumeWS) {
+	private List<ParseResult> parseNUMType(ParsePath g, ParserInputCursor l, CSSType rule, boolean mayConsumeWS) {
 		ParseResult result = new ParseResult();
-		Input local = l.copy();
+		ParserInputCursor local = l.copy();
 		
 		if (local.isConsumed()) {
 			result.status = Status.PROPOSE;
@@ -747,10 +799,10 @@ public class CssExtParser {
 		}
 		else {
 		
-			CssTok tok = local.getNextTok();
+			CssTok tok = local.pollNextToken();
 			if (mayConsumeWS) {
 				while (tok instanceof WSTok) {
-					tok = local.getNextTok();
+					tok = local.pollNextToken();
 				}
 			}
 			
@@ -768,22 +820,30 @@ public class CssExtParser {
 						// ok
 						result.remainingInput = local;
 						result.status = Status.MATCH;
+						
+						g.newSegment(ParseStatus.MATCH, numberTok);
 					}
 					else {
 						// invalid range
 						result.status = Status.INVALID;
 						result.message = "invalid range";
+						
+						g.newSegment(ParseStatus.INVALID, numberTok);
 					}
 				}
 				else {
 					// ok
 					result.remainingInput = local;
 					result.status = Status.MATCH;
+					
+					g.newSegment(ParseStatus.MATCH, numberTok);
 				}
 			}
 			else {
 				// invalid
 				result.status = Status.INVALID;
+				
+				g.newSegment(ParseStatus.INVALID, null);
 			}
 		}
 	
@@ -791,16 +851,17 @@ public class CssExtParser {
 	}
 
 	// Literal
-	private List<ParseResult> parseLiteral(GlobalData g, Input l, CSSRuleLiteral r, boolean mayConsumeWS) {
+	private List<ParseResult> parseLiteral(ParsePath g, ParserInputCursor l, CSSRuleLiteral r, boolean mayConsumeWS) {
 		ParseResult result = new ParseResult();
 		
-		Input local = l.copy();
+		ParserInputCursor local = l.copy();
 		
 		if (!local.isConsumed()) {
-			CssTok cur = local.getNextTok();
+			CssTok cur = local.pollNextToken();
 			if (mayConsumeWS) {
 				while (cur instanceof WSTok) {
-					cur = local.getNextTok();
+					g.newSegment(ParseStatus.MATCH, cur);
+					cur = local.pollNextToken();
 				}
 			}
 			String literal = r.getValue();
@@ -813,10 +874,14 @@ public class CssExtParser {
 //				System.err.println("  -> valid");
 				result.status = Status.MATCH;
 				result.remainingInput = local.copy();
+				
+				g.newSegment(ParseStatus.MATCH, cur);
 			}
 			else {
 //				System.err.println("  -> invalid");
 				result.status = Status.INVALID;
+				
+				g.newSegment(ParseStatus.INVALID, cur, "expected '" + literal + "'");
 			}
 		}
 		else {
@@ -828,17 +893,17 @@ public class CssExtParser {
 		
 	}
 	
-	private List<ParseResult> parseSymbol(GlobalData g, Input l, CSSRuleSymbol r, boolean mayConsumeWS) {
+	private List<ParseResult> parseSymbol(ParsePath g, ParserInputCursor l, CSSRuleSymbol r, boolean mayConsumeWS) {
 		ParseResult result = new ParseResult();
 		
-		Input local = l.copy();
+		ParserInputCursor local = l.copy();
 		
 		if (!local.isConsumed()) {
-			CssTok cur = local.getNextTok();
+			CssTok cur = local.pollNextToken();
 			
 			if (mayConsumeWS) {
 				while (cur instanceof WSTok) {
-					cur = local.getNextTok();
+					cur = local.pollNextToken();
 				}
 			}
 			String symbol = r.getSymbol();
@@ -847,9 +912,13 @@ public class CssExtParser {
 				// valid yay!
 				result.status = Status.MATCH;
 				result.remainingInput = local.copy();
+				
+				g.newSegment(ParseStatus.MATCH, cur);
 			}
 			else {
 				result.status = Status.INVALID;
+				
+				g.newSegment(ParseStatus.INVALID, cur);
 			}
 		}
 		else {
@@ -868,7 +937,7 @@ public class CssExtParser {
 		else if (tok instanceof SymbolTok) {
 			return literal.equals(((SymbolTok)tok).getSymbol());
 		}
-		System.err.println("problem matching " + tok);
+//		System.err.println("problem matching " + tok);
 		return false;
 	}
 	
@@ -890,8 +959,11 @@ public class CssExtParser {
 		
 		PropertyDefinition def = manager.findPropertyByName(propertyName);
 		if (def != null) {
-			GlobalData g = new GlobalData();
-			List<ParseResult> res = parse(g, new Input(prefixToks), def.getRule(), true);
+			ParsePath g = new ParsePath();
+			
+			ParserInput input = new ParserInput(prefixToks);
+			
+			List<ParseResult> res = parse(g, input.createCursor(), def.getRule(), true);
 			System.err.println("parse returned with " + res);
 			
 			result.addAll(mapProposals(res));
@@ -925,13 +997,18 @@ public class CssExtParser {
 		
 		PropertyDefinition def = manager.findPropertyByName(propertyName);
 		if (def != null) {
-			GlobalData g = new GlobalData();
-			List<ParseResult> res = parse(g, new Input(tokens), def.getRule(), true);
+			ParsePath g = new ParsePath();
+			
+			ParserInput input = new ParserInput(tokens);
+			
+			
+			List<ParseResult> res = parse(g, input.createCursor(), def.getRule(), true);
 			
 			boolean valid = false;
 			
 			int lastInputIndex = -1;
-			
+			EObject lastToken = null;
+			String msg = "so ned!";
 			
 			for (ParseResult p : res) {
 				if (p.status == Status.PROPOSE) continue;
@@ -945,20 +1022,36 @@ public class CssExtParser {
 						}
 					}
 					else {
-						int newlastInputIndex = tokens.size() - p.remainingInput.input.size();
+						int newlastInputIndex = p.remainingInput.getPosition();
 						lastInputIndex = Math.max(newlastInputIndex, lastInputIndex);
+						msg = p.message;
+						lastToken = p.remainingInput.peekNextToken();
 					}
 				}
 			}
+			
+			System.err.println(g);
+			
+			System.err.println("valid = " + valid);
+			System.err.println("lastToken = " + lastToken);
 			
 			if (valid) {
 				return Collections.emptyList();
 			}
 			else {
+				List<ValidationResult> results = new ArrayList<ValidationResult>();
 				System.err.println("returning validation result");
-				ValidationResult r = new ValidationResult(ValidationStatus.ERROR, "so nicht mein freund", null, null, lastInputIndex);
+				if (lastToken != null) {
+					
+					ValidationResult r = new ValidationResult(ValidationStatus.ERROR, msg, lastToken, null, 0);
+					results.add(r);
+				}
+				else {
+					ValidationResult r = new ValidationResult(ValidationStatus.ERROR, msg, null, null, lastInputIndex);
+					results.add(r);
+				}
 				
-				return Collections.singletonList(r);
+				return results;
 			}
 			
 		}

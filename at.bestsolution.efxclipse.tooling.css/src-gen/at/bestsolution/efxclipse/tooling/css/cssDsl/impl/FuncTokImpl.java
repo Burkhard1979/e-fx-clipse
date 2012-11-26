@@ -9,6 +9,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import java.util.Collection;
 
@@ -240,4 +241,9 @@ public class FuncTokImpl extends CssTokImpl implements FuncTok
     return super.eIsSet(featureID);
   }
 
+	@Override
+	public String toString() {
+		return TokUtil.toString(this);
+	}
+  
 } //FuncTokImpl

@@ -22,6 +22,7 @@ import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResul
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationStatus;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.internal.CssDialectExtensionComponent;
@@ -61,8 +62,18 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 		if (!result.isEmpty()) {
 			for (ValidationResult r : result) {
 				if (r.status == ValidationStatus.ERROR) {
-					
-					error(r.message, dec, CssDslPackage.Literals.CSS_DECLARATION__VALUE_TOKENS, r.index);
+					if (r.object != null) {
+						if (r.object instanceof FuncTok) {
+							FuncTok f = (FuncTok) r.object;
+							error(r.message, f, CssDslPackage.Literals.FUNC_TOK__NAME, -1);
+						}
+						else {
+							error(r.message, r.object, null, 0);
+						}
+					}
+					else {
+						error(r.message, dec, CssDslPackage.Literals.CSS_DECLARATION__VALUE_TOKENS, r.index);
+					}
 				}
 			}
 		}

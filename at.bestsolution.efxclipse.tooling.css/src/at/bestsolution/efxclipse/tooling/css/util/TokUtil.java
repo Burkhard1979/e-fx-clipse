@@ -29,6 +29,9 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok;
 public class TokUtil {
 
 	public static String toString(CssTok token) {
+		if (token == null) { 
+			return "<null>";
+		}
 		switch(token.eClass().getClassifierID()) {
 		case CssDslPackage.IDENTIFIER_TOK: return "IdentifierTok(" + ((IdentifierTok)token).getName() + ")";
 		case CssDslPackage.WS_TOK: return "WSTok()";
@@ -36,7 +39,7 @@ public class TokUtil {
 		case CssDslPackage.COLOR_TOK: return "ColorTok(" + ((ColorTok)token).getValue() + ")";
 		case CssDslPackage.URL_TOK: return "UrlTok(" + ((UrlTok)token).getUrl().getUrl() + ")";
 		case CssDslPackage.SYMBOL_TOK: return "SymbolTok(" + ((SymbolTok)token).getSymbol() + ")";
-		case CssDslPackage.FUNC_TOK: return "FuncTok(" + ((FuncTok)token).getName().getName() + "("+toString(((FuncTok)token).getParams(), ", ")+")"+ ")";
+		case CssDslPackage.FUNC_TOK: return "FuncTok(" + ((FuncTok)token).getName().getName() /*+ "("+toString(((FuncTok)token).getParams(), ", ")+")"*/+ ")";
 		default: return token.toString();
 		}
 	}
