@@ -51,6 +51,7 @@ public class AdapterFactoryListCellFactory extends AdapterFactoryCellFactory imp
 		final ListCell<Object> listCell = new ListCell<Object>() {
 
 			Object currentItem = null;
+			ICellEditHandler cellEditHandler;
 
 			AdapterImpl adapter = new AdapterImpl() {
 				@Override
@@ -85,6 +86,29 @@ public class AdapterFactoryListCellFactory extends AdapterFactoryCellFactory imp
 				update(item);
 			}
 
+			@Override
+			public void startEdit() {
+				super.startEdit();
+				cellEditHandler = getCellEditHandler(this);
+				if (cellEditHandler != null)
+					cellEditHandler.startEdit(this);
+			}
+
+			@Override
+			public void commitEdit(Object newValue) {
+				super.commitEdit(newValue);
+				if (cellEditHandler != null)
+					cellEditHandler.commitEdit(this, newValue);
+			}
+
+			@Override
+			public void cancelEdit() {
+				super.cancelEdit();
+				if (cellEditHandler != null)
+					cellEditHandler.cancelEdit(this);
+				update(getItem());
+			}
+
 			private void update(Object item) {
 				applyItemProviderStyle(item, this, adapterFactory);
 			}
@@ -95,7 +119,6 @@ public class AdapterFactoryListCellFactory extends AdapterFactoryCellFactory imp
 			cellCreationListener.cellCreated(listCell);
 
 		return listCell;
-
 	}
 
 }

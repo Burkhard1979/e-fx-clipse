@@ -1,52 +1,32 @@
-/*******************************************************************************
- * Copyright (c) 2011 Kai Toedter and others.
- * 
+/******************************************************************************* 
+ * Copyright (c) 2012 TESIS DYNAware GmbH and others. 
  * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html.
+ * are made available under the terms of the Eclipse Public License v1.0 
+ * which accompanies this distribution, and is available at 
+ * http://www.eclipse.org/legal/epl-v10.html 
  * 
- * Contributors:
- *     Kai Toedter - initial API and implementation
- ******************************************************************************/
-
+ * Contributors: 
+ *     Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation 
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
-import javafx.event.Event;
-import javafx.event.EventType;
-
-import javafx.event.EventHandler;
-import javafx.scene.control.TableColumn.CellEditEvent;
-
-import javafx.event.EventHandler;
-import javafx.scene.control.TableColumn.CellEditEvent;
-
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
-
-import javafx.scene.control.Cell;
-
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ListChangeListener.Change;
-
-import org.eclipse.emf.common.notify.AdapterFactory;
-
+import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableList;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTableCellFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
+import java.util.List;
+import javafx.collections.ListChangeListener;
 import javafx.scene.control.SelectionMode;
-
-import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javax.inject.Inject;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 @SuppressWarnings("restriction")

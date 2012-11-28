@@ -16,7 +16,6 @@ import at.bestsolution.efxclipse.runtime.emf.databinding.edit.EMFEditFXPropertie
 import java.io.ByteArrayInputStream;
 import javafx.beans.property.Property;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

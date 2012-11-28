@@ -1,20 +1,14 @@
+/******************************************************************************* 
+ * Copyright (c) 2012 TESIS DYNAware GmbH and others. 
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0 
+ * which accompanies this distribution, and is available at 
+ * http://www.eclipse.org/legal/epl-v10.html 
+ * 
+ * Contributors: 
+ *     Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation 
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
-
-import javafx.scene.control.TableRow;
-
-import javafx.scene.control.TreeView;
-
-import javafx.scene.control.TreeCell;
-
-import javafx.scene.control.ListView;
-
-import javafx.scene.control.ListCell;
-
-import javafx.scene.control.SelectionModel;
-
-import javafx.scene.control.TableView.TableViewSelectionModel;
-
-import javafx.scene.control.TableCell;
 
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
@@ -24,7 +18,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Cell;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SelectionModel;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.eclipse.emf.common.command.Command;
