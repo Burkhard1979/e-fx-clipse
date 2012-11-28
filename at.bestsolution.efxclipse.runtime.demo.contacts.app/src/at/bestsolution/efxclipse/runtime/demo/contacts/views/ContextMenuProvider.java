@@ -1,5 +1,21 @@
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
+import javafx.scene.control.TableRow;
+
+import javafx.scene.control.TreeView;
+
+import javafx.scene.control.TreeCell;
+
+import javafx.scene.control.ListView;
+
+import javafx.scene.control.ListCell;
+
+import javafx.scene.control.SelectionModel;
+
+import javafx.scene.control.TableView.TableViewSelectionModel;
+
+import javafx.scene.control.TableCell;
+
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
 import java.net.MalformedURLException;
@@ -27,13 +43,28 @@ public class ContextMenuProvider implements ICellUpdateListener {
 		this.editingDomain = editingDomain;
 	}
 
+	static SelectionModel<?> getSelectionModel(Cell<?> cell) {
+		if(cell instanceof ListCell<?>) {
+			return ((ListCell<?>) cell).getListView().getSelectionModel();
+		} else if(cell instanceof TreeCell<?>) {
+			return ((TreeCell<?>) cell).getTreeView().getSelectionModel();
+		} else if(cell instanceof TableCell<?,?>) {
+			return ((TableCell<?,?>) cell).getTableView().getSelectionModel();
+		} else if(cell instanceof TableRow<?>) {
+			return ((TableRow<?>) cell).getTableView().getSelectionModel();
+		}
+		return null;
+	}
+
 	@Override
 	public void updateItem(Cell<?> cell, final Object item, boolean empty) {
+
+		SelectionModel<?> selectionModel =getSelectionModel(cell);
 
 		ContextMenu contextMenu = new ContextMenu();
 
 		if (item instanceof Contact) {
-			
+
 			MenuItem deleteMenuItem = new MenuItem("Delete", getImage("icons/silk/cross.png"));
 			deleteMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -105,5 +136,5 @@ public class ContextMenuProvider implements ICellUpdateListener {
 			throw new IllegalArgumentException(e);
 		}
 	}
-	
+
 }

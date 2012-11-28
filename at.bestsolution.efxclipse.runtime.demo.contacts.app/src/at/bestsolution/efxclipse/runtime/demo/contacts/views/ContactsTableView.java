@@ -70,7 +70,6 @@ public class ContactsTableView {
 		AdapterFactoryTableCellFactory<Object, Object> firstNameCellFactory = new AdapterFactoryTableCellFactory<>(adapterFactory, 0);
 		firstNameCellFactory.addCellCreationListener(new CellDragAdapter());
 		firstNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
-//		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
 		firstNameColumn.setCellFactory(firstNameCellFactory);
 		firstNameColumn.setSortable(false);
 		
@@ -79,7 +78,6 @@ public class ContactsTableView {
 		AdapterFactoryTableCellFactory<Object, Object> lastNameCellFactory = new AdapterFactoryTableCellFactory<Object, Object>(adapterFactory, 1);
 		lastNameCellFactory.addCellCreationListener(new CellDragAdapter());
 		lastNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
-//		lastNameCellFactory.addCellUpdateListener(contextMenuProvider);
 		lastNameColumn.setCellFactory(lastNameCellFactory);
 		lastNameColumn.setSortable(false);
 
@@ -91,6 +89,10 @@ public class ContactsTableView {
 		firstNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_FirstName(), editingDomain));
 		lastNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_LastName(), editingDomain));
 
+		// add the context menu
+		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
+		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
+		lastNameCellFactory.addCellUpdateListener(contextMenuProvider);
 		
 		tableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
 
