@@ -140,6 +140,9 @@ public class DetailsViewController {
 
 		textField.setDisable(contact == null);
 
+		if(contact == null)
+			textField.clear();
+		
 		return property;
 	}
 
