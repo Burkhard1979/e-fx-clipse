@@ -392,12 +392,12 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		}
 
 		@Inject
-		public void setLabel(@Named(ATTRIBUTE_localizedLabel)String label) {
+		public void setLabel(@Named(ATTRIBUTE_localizedLabel) @Optional String label) {
 			getWidget().setText(label);
 		}
 		
 		@Inject
-		public void setCloseable(@Named(UIEvents.Part.CLOSEABLE) boolean closeable) {
+		public void setCloseable(@Named(UIEvents.Part.CLOSEABLE) @Optional boolean closeable) {
 			getWidget().setClosable(closeable);
 		}
 		
