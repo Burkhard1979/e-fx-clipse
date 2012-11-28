@@ -84,7 +84,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 				popupMenuRenderer = ContextInjectionFactory.make(getPopupMenuRendererClass(), context);
 			}
 			return (R) popupMenuRenderer;
-		} else if( areaRenderer instanceof MArea ) {
+		} else if( modelObject instanceof MArea ) {
 			if( areaRenderer == null ) {
 				areaRenderer = ContextInjectionFactory.make(getAreaRendererClass(), context);
 			}
