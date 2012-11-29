@@ -97,7 +97,7 @@
 
 			<p2repository url="http://${efx.update.host.name}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" />
 			<!--p2repository url="http://github.com/downloads/tomsontom/e4-e3theme/p2repo-1.0.0.zip" /-->			
-			<p2repository url="file:///var/lib/jenkins/efx-build/builder/eclipse-repos/m2e-1.2" />
+			<p2repository url="file:///var/lib/jenkins/efx-build/builder/eclipse-repos/m2e" />
 			
 			<installunit name="org.eclipse.emf.sdk.feature.group" />
 			<installunit name="org.eclipse.xtext.sdk.feature.group" />
