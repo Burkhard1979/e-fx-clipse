@@ -28,7 +28,7 @@ class JemmyPomGenerator {
 					<useUIHarness>false</useUIHarness>
 					<useUIThread>false</useUIThread>
 					<argLine>-Xms40m -Xmx512m -Defxclipse.osgi.hook.debug=true -Dosgi.framework.extensions=at.bestsolution.efxclipse.runtime.osgi -Dtest.jemmy.product=«data.testProductId»</argLine>
-					<appArgLine>-consoleLog -nosplash -console -noexit</appArgLine>
+					<appArgLine>-consoleLog -nosplash -console</appArgLine>
 					<application>org.eclipse.pde.junit.runtime.coretestapplication</application>
 					<dependencies>
 						<dependency>
