@@ -1,15 +1,13 @@
-/*******************************************************************************
- * Copyright (c) 2011 Kai Toedter and others.
- * 
+/******************************************************************************* 
+ * Copyright (c) 2012 TESIS DYNAware GmbH and others. 
  * All rights reserved. This program and the accompanying materials 
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html.
+ * are made available under the terms of the Eclipse Public License v1.0 
+ * which accompanies this distribution, and is available at 
+ * http://www.eclipse.org/legal/epl-v10.html 
  * 
- * Contributors:
- *     Kai Toedter - initial API and implementation
- ******************************************************************************/
-
+ * Contributors: 
+ *     Torsten Sommer <torsten.sommer@tesis.de> - initial API and implementation 
+ *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
 import javafx.scene.control.SelectionMode;
@@ -37,10 +35,10 @@ import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 @SuppressWarnings("restriction")
-public class ListView {
+public class ContactsTreeView {
 
 	@Inject
-	public ListView(BorderPane parent, final MApplication application, final ContactsManager contactsManager) {
+	public ContactsTreeView(BorderPane parent, final MApplication application, final ContactsManager contactsManager) {
 		EditingDomain editingDomain = contactsManager.getEditingDomain();
 
 		// TreeView
