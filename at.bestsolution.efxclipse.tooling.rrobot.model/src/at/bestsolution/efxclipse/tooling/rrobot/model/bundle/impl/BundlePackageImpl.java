@@ -32,6 +32,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductPlugin;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
@@ -183,6 +184,13 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * @generated
 	 */
 	private EClass productFeatureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass productStartConfigEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -532,6 +540,15 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EAttribute getProductFile_IncludeLaunchers() {
 		return (EAttribute)productFileEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProductFile_Startconfigurations() {
+		return (EReference)productFileEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1097,6 +1114,42 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getProductStartConfig() {
+		return productStartConfigEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProductStartConfig_Id() {
+		return (EAttribute)productStartConfigEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProductStartConfig_AutoStart() {
+		return (EAttribute)productStartConfigEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProductStartConfig_StartLevel() {
+		return (EAttribute)productStartConfigEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMatchRule() {
 		return matchRuleEEnum;
 	}
@@ -1173,6 +1226,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		createEAttribute(productFileEClass, PRODUCT_FILE__APPLICATION);
 		createEAttribute(productFileEClass, PRODUCT_FILE__VERSION);
 		createEAttribute(productFileEClass, PRODUCT_FILE__INCLUDE_LAUNCHERS);
+		createEReference(productFileEClass, PRODUCT_FILE__STARTCONFIGURATIONS);
 
 		productFileFeaturebaseEClass = createEClass(PRODUCT_FILE_FEATUREBASE);
 		createEReference(productFileFeaturebaseEClass, PRODUCT_FILE_FEATUREBASE__FEATURES);
@@ -1249,6 +1303,11 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		productFeatureEClass = createEClass(PRODUCT_FEATURE);
 		createEAttribute(productFeatureEClass, PRODUCT_FEATURE__ID);
 		createEAttribute(productFeatureEClass, PRODUCT_FEATURE__VERSION);
+
+		productStartConfigEClass = createEClass(PRODUCT_START_CONFIG);
+		createEAttribute(productStartConfigEClass, PRODUCT_START_CONFIG__ID);
+		createEAttribute(productStartConfigEClass, PRODUCT_START_CONFIG__AUTO_START);
+		createEAttribute(productStartConfigEClass, PRODUCT_START_CONFIG__START_LEVEL);
 
 		// Create enums
 		matchRuleEEnum = createEEnum(MATCH_RULE);
@@ -1333,6 +1392,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getProductFile_Application(), ecorePackage.getEString(), "application", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductFile_Version(), this.getVersion(), "version", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductFile_IncludeLaunchers(), ecorePackage.getEBoolean(), "includeLaunchers", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductFile_Startconfigurations(), this.getProductStartConfig(), null, "startconfigurations", null, 0, -1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productFileFeaturebaseEClass, ProductFileFeaturebase.class, "ProductFileFeaturebase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProductFileFeaturebase_Features(), this.getProductFeature(), null, "features", null, 0, -1, ProductFileFeaturebase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1409,6 +1469,11 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEClass(productFeatureEClass, ProductFeature.class, "ProductFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductFeature_Version(), this.getVersion(), "version", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(productStartConfigEClass, ProductStartConfig.class, "ProductStartConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProductStartConfig_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductStartConfig_AutoStart(), ecorePackage.getEBoolean(), "autoStart", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductStartConfig_StartLevel(), ecorePackage.getEInt(), "startLevel", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(matchRuleEEnum, MatchRule.class, "MatchRule");

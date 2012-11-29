@@ -33,6 +33,13 @@ class ProductGenerator implements Generator<ProductFile> {
 		«ENDFOR»
 	</features>
 	«ENDIF»
+	«IF !file.startconfigurations.empty»
+	<configurations>
+		«FOR c : file.startconfigurations»
+		<plugin id="«c.id»" autoStart="«c.autoStart»" startLevel="«c.startLevel»" />
+		«ENDFOR»
+	</configurations>
+	«ENDIF»
 </product>
    
 	'''

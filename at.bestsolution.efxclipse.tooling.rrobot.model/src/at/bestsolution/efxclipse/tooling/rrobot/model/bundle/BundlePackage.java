@@ -489,13 +489,22 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_FILE__INCLUDE_LAUNCHERS = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Startconfigurations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE__STARTCONFIGURATIONS = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Product File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 7;
+	int PRODUCT_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileFeaturebaseImpl <em>Product File Featurebase</em>}' class.
@@ -587,6 +596,15 @@ public interface BundlePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_FILE_FEATUREBASE__INCLUDE_LAUNCHERS = PRODUCT_FILE__INCLUDE_LAUNCHERS;
+
+	/**
+	 * The feature id for the '<em><b>Startconfigurations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE__STARTCONFIGURATIONS = PRODUCT_FILE__STARTCONFIGURATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Features</b></em>' containment reference list.
@@ -1295,6 +1313,52 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_FEATURE_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl <em>Product Start Config</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getProductStartConfig()
+	 * @generated
+	 */
+	int PRODUCT_START_CONFIG = 20;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_START_CONFIG__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Auto Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_START_CONFIG__AUTO_START = 1;
+
+	/**
+	 * The feature id for the '<em><b>Start Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_START_CONFIG__START_LEVEL = 2;
+
+	/**
+	 * The number of structural features of the '<em>Product Start Config</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_START_CONFIG_FEATURE_COUNT = 3;
+
+	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1302,7 +1366,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getMatchRule()
 	 * @generated
 	 */
-	int MATCH_RULE = 20;
+	int MATCH_RULE = 21;
 
 	/**
 	 * The meta object id for the '<em>Version</em>' data type.
@@ -1312,7 +1376,7 @@ public interface BundlePackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 21;
+	int VERSION = 22;
 
 
 	/**
@@ -1638,6 +1702,17 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProductFile_IncludeLaunchers();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getStartconfigurations <em>Startconfigurations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Startconfigurations</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getStartconfigurations()
+	 * @see #getProductFile()
+	 * @generated
+	 */
+	EReference getProductFile_Startconfigurations();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase <em>Product File Featurebase</em>}'.
@@ -2308,6 +2383,49 @@ public interface BundlePackage extends EPackage {
 	EAttribute getProductFeature_Version();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig <em>Product Start Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Product Start Config</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig
+	 * @generated
+	 */
+	EClass getProductStartConfig();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#getId()
+	 * @see #getProductStartConfig()
+	 * @generated
+	 */
+	EAttribute getProductStartConfig_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#isAutoStart <em>Auto Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Auto Start</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#isAutoStart()
+	 * @see #getProductStartConfig()
+	 * @generated
+	 */
+	EAttribute getProductStartConfig_AutoStart();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#getStartLevel <em>Start Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Level</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#getStartLevel()
+	 * @see #getProductStartConfig()
+	 * @generated
+	 */
+	EAttribute getProductStartConfig_StartLevel();
+
+	/**
 	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2601,6 +2719,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUCT_FILE__INCLUDE_LAUNCHERS = eINSTANCE.getProductFile_IncludeLaunchers();
+
+		/**
+		 * The meta object literal for the '<em><b>Startconfigurations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_FILE__STARTCONFIGURATIONS = eINSTANCE.getProductFile_Startconfigurations();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileFeaturebaseImpl <em>Product File Featurebase</em>}' class.
@@ -3125,6 +3251,40 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUCT_FEATURE__VERSION = eINSTANCE.getProductFeature_Version();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl <em>Product Start Config</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl#getProductStartConfig()
+		 * @generated
+		 */
+		EClass PRODUCT_START_CONFIG = eINSTANCE.getProductStartConfig();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_START_CONFIG__ID = eINSTANCE.getProductStartConfig_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Auto Start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_START_CONFIG__AUTO_START = eINSTANCE.getProductStartConfig_AutoStart();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_START_CONFIG__START_LEVEL = eINSTANCE.getProductStartConfig_StartLevel();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}' enum.

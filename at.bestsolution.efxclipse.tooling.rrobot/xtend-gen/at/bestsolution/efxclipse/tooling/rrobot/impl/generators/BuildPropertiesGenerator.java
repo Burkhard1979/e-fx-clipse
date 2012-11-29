@@ -60,7 +60,7 @@ public class BuildPropertiesGenerator implements Generator<BuildProperties> {
             }
           };
         List<String> _map = ListExtensions.<Resource, String>map(_binIncludes_1, _function);
-        String _join = IterableExtensions.join(_map, ",\r\n ");
+        String _join = IterableExtensions.join(_map, ",\\\r\n ");
         _builder.append(_join, "");
         _builder.newLineIfNotEmpty();
       }

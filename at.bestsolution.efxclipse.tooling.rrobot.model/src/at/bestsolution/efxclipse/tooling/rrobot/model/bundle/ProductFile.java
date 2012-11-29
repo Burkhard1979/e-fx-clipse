@@ -3,6 +3,7 @@
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import org.eclipse.emf.common.util.EList;
 import org.osgi.framework.Version;
 
 /**
@@ -20,6 +21,7 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getApplication <em>Application</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getVersion <em>Version</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#isIncludeLaunchers <em>Include Launchers</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile#getStartconfigurations <em>Startconfigurations</em>}</li>
  * </ul>
  * </p>
  *
@@ -209,5 +211,21 @@ public interface ProductFile extends TemplatedFile {
 	 * @generated
 	 */
 	void setIncludeLaunchers(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Startconfigurations</b></em>' containment reference list.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Startconfigurations</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Startconfigurations</em>' containment reference list.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getProductFile_Startconfigurations()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ProductStartConfig> getStartconfigurations();
 
 } // ProductFile

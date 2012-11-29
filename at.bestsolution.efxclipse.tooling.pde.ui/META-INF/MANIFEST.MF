@@ -20,9 +20,11 @@ Require-Bundle: org.eclipse.pde.ui;bundle-version="3.6.100",
  at.bestsolution.efxclipse.tooling.ui;bundle-version="0.1.1",
  org.eclipse.xtext.xbase.lib;bundle-version="2.3.0",
  org.eclipse.core.databinding;bundle-version="1.4.0",
- org.eclipse.jdt.launching;bundle-version="3.6.0"
+ org.eclipse.jdt.launching;bundle-version="3.6.0",
+ org.eclipse.xtend.lib;bundle-version="2.3.1"
 Bundle-Activator: at.bestsolution.efxclipse.tooling.pde.ui.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %Bundle-Vendor
 Service-Component: OSGI-INF/classpathextender.xml
-Export-Package: at.bestsolution.efxclipse.tooling.pde.ui.templates;x-friends:="at.bestsolution.efxclipse.tooling.pde.e4"
+Export-Package: at.bestsolution.efxclipse.tooling.pde.ui.templates;x-friends:="at.bestsolution.efxclipse.tooling.pde.e4",
+ at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho;x-friends:="at.bestsolution.efxclipse.tooling.pde.e4"

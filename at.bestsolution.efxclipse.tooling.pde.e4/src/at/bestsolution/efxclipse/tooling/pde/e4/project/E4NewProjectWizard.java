@@ -157,7 +157,6 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 					super.adjustManifests(monitor, project, bundle);
 					IPluginBase pluginBase = model.getPluginBase();
 					String[] dependencyId = new String[] { 
-							"javax.inject", 
 							"at.bestsolution.efxclipse.runtime.application", 
 							"at.bestsolution.efxclipse.runtime.workbench.fx",
 							"org.eclipse.e4.ui.model.workbench", 
@@ -227,6 +226,7 @@ public class E4NewProjectWizard extends NewPluginProjectWizard {
 
 	private String[] getImports() {
 		return new String[] {
+				"javax.inject;version=\"1.0.0\"",
 				"javax.annotation;version=\"1.0.0\"",
 				"javafx.animation;version=\"2.0.0\"",
 				"javafx.application;version=\"2.0.0\"",
