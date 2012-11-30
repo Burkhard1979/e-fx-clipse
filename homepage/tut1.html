@@ -40,11 +40,11 @@
 <div class="container">
  <section id="create-fx-app">
   <div class="page-header">
-   <h1>Create an Eclipse ViewPart <small>Use JavaFX for Eclipse plugins</small></h1>
+   <h1>From creation to deployment <small>Your first JavaFX app</small></h1>
   </div>
   <div class="span16">
     <p>
-     JavaFX allows you to embed JavaFX scenes into SWT UIs using the FXCanvas class. The following tutorial will guide you through the creation of a JavaFX-enabled ViewPart.
+    The following tutorial will guide you from the creation of a JavaFX project to its final export and deployment.
     </p>
   </div>
   
@@ -56,14 +56,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_02.png" />
+        <img class="thumbnail" src="tut1/img_01.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      File > New > Project ...
+      File &gt; New &gt; Project ...
      </p>
     </div>
   </div>
@@ -76,14 +76,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_03.png" />
+        <img class="thumbnail" src="tut1/img_02.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      Select "Plug-in Project" and click the "Next" button.
+      Select the "JavaFX Project" entry.
      </p>
     </div>
   </div>
@@ -96,14 +96,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_04.png" />
+        <img class="thumbnail" src="tut1/img_03.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      Enter a project name and click the "Next" button.
+      Enter a project name and click "Finish"
      </p>
     </div>
   </div>
@@ -116,14 +116,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_05.png" />
+        <img class="thumbnail" src="tut1/img_04.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      Make sure that "This plug-in will make contributions to the UI" is checked and deselect the RCP creation. Click "Next".
+      Create a Java package in your new project.
      </p>
     </div>
   </div>
@@ -136,14 +136,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_06.png" />
+        <img class="thumbnail" src="tut1/img_05.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      Select the "JavaFX Eclipse 3.x ViewPart" template and click "Next".
+      Open the context menu on your package and select New &gt; Other ...
      </p>
     </div>
   </div>
@@ -156,17 +156,38 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_07.png" />
+        <img class="thumbnail" src="tut1/img_06.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      Keep the default settings and click "Finish".
+      Select "JavaFX Main Class".
      </p>
     </div>
-  </div>  
+  </div>
+  
+  <div class="row">
+  	<div class="span1">
+  	7.
+  	</div>
+  	<div class="span7">
+     <ul class="media-grid">
+      <li>
+       <a>
+        <img class="thumbnail" src="tut1/img_07.png" />
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div class="span8">
+     <p>
+      Enter a class name and click "Finish".
+     </p>
+    </div>
+  </div>
+  
   <div class="row">
   	<div class="span1">
   	8.
@@ -175,14 +196,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_10.png" />
+        <img class="thumbnail" src="tut1/img_08.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      The result of the wizard is a new OSGi bundle with your ViewPart class.
+      Add some JavaFX code to the <i>start</i> method of your application.
      </p>
     </div>
   </div>
@@ -195,14 +216,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_11.png" />
+        <img class="thumbnail" src="tut1/img_09.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      Implement your view by adding some JavaFX code to your ViewPart class.
+      Set the selection on your application class and hit the "Run" toolbar item.
      </p>
     </div>
   </div>
@@ -215,14 +236,19 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_12.png" />
+        <img class="thumbnail" src="tut1/img_10.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-      Launch an "inner Eclipse" by bringing up the context menu on your project and select Run As &gt; Eclipse Application 
+      Open the build.fxbuild file and fill in the following fields:
+      <ul>
+       <li>Vendor name</li>
+       <li>Application version</li>
+      </ul>
+      Then, select the "Browse..." button next to the "Application class" entry.
      </p>
     </div>
   </div>
@@ -235,14 +261,14 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_13.png" />
+        <img class="thumbnail" src="tut1/img_11.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-       In the running application, bring up Quick Access (Ctrl+3) and enter "My Fx View". Select the presented choice to open your view.
+      Click on the "ant build.xml and run" link in the Build section of the editor
      </p>
     </div>
   </div>
@@ -255,165 +281,17 @@
      <ul class="media-grid">
       <li>
        <a>
-        <img class="thumbnail" src="tut2/img_14.png" />
+        <img class="thumbnail" src="tut1/img_12.png" />
        </a>
       </li>
      </ul>
     </div>
     <div class="span8">
      <p>
-       A view with your JavaFX content will be shown at the bottom.
+      Expand the folders in the "Package Explorer" and double click on "MyJavaFXApp.jar"
      </p>
     </div>
   </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	13.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut2/img_15.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Create a new feature using New &gt; Feature Project
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	14.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut2/img_16.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Enter a name for the feature click "Finish".
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	15.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut2/img_17.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Open the "Plug-ins" tab of the feature editor and add the following plug-ins:
-       <ul>
-        <li>at.bestsolution.efxclipse.runtime.javafx</li>
-        <li>at.bestsolution.efxclipse.runtime.osgi</li>
-        <li>at.bestsolution.efxclipse.runtime.workbench3</li>
-        <li>your ViewPart plugin</li>
-       </ul>
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	16.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut2/img_18.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Create an update site using New &gt; Project ... &gt; Plug-in Development / Update Site Project
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	17.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut2/img_19.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Enter a name for your update site and click "Finish".
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	18.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut2/img_20.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Create a new category with an ID and a name, add your feature, and click the "Build All" button.
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	19.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut2/img_21.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       The result of the operation should look similar to this. You'll get the exported plug-ins and some p2 repository
-       jars so that you can install it using the "Install New Software ..." wizard.
-     </p>
-    </div>
-  </div>
-  
  </section>
 </div>
 

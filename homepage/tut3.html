@@ -40,11 +40,12 @@
 <div class="container">
  <section id="create-fx-app">
   <div class="page-header">
-   <h1>Create a Eclipse-ViewPart <small>Use JavaFX for Eclipse plugins</small></h1>
+   <h1>Create an e4 application</small></h1>
   </div>
   <div class="span16">
     <p>
-     JavaFX allows you embed JavaFX scenes into SWT-Uis using FXCanvas. The following tutorial will guide you through the creation of an JavaFX enabled ViewPart.
+     Applications based on the e4 platform can use JavaFX instead of SWT as a rendering technology. This tutorial will guide
+     you through the creation of such an application.
     </p>
   </div>
   
@@ -63,11 +64,20 @@
     </div>
     <div class="span8">
      <p>
-      File > New > Project ...
+      Setup a target platform for your application development:
+      <ul>
+       <li>Open Preferences > Plugin-in Development > Target Platform</li>
+       <li>Click Add ...</li>
+       <li>Select "Current Target: Copy settings from current target platform".</li>
+       <li>Add ...</li>
+       <li>Select Software Site</li>
+       <li>Add <a href="http://downloads.efxclipse.org/p2-repos/releases/latest/">http://downloads.efxclipse.org/p2-repos/releases/latest/</a> as a site.</li>
+       <li>Select "e(fx)clipse - Composite - FX Runtime - (do not install)" and <b>uncheck</b> "Include required software"</li>
+       <li>Finish and activate the new target.</li>
+      </ul>
      </p>
     </div>
   </div>
-  
   <div class="row">
   	<div class="span1">
   	2.
@@ -82,12 +92,9 @@
      </ul>
     </div>
     <div class="span8">
-     <p>
-      Select "Plug-in Project" and hit the "Next" button
-     </p>
+     <p>Run the New > Project ... JavaFX/JavaFX Eclipse 4 Application wizard. Choose a name for your project and leave the rest of the settings on their defaults.</p>
     </div>
   </div>
-  
   <div class="row">
   	<div class="span1">
   	3.
@@ -102,360 +109,18 @@
      </ul>
     </div>
     <div class="span8">
+     <p>Open the product file of your newly created plug-in project and click on "Launch an Eclipse application".</p>
      <p>
-      Enter a project name e.g. MyFXViewPart and hit the "Next" button
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	4.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_05.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-      Check that "This plug-in will make contributions to the UI" is checked and hit the "Next" button
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	5.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_06.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-      Select the "JavaFX Eclipse 3.x ViewPart" template and hit the "Next" button
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	6.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_07.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-      Keep the default settings and hit the "Finish" button
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	7.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_08.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-      You'll be prompted if there's no repackaged JavaFX-Bundle yet found in your workspace. Hit the "Yes" button.
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	8.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_10.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-      The result of the wizard are 2 OSGi-Bundles:
+      <b>Note for OS X</b>: Eclipse PDE thinks it is clever and adds some extra flags when launching, but this leads to problems when used with JavaFX.
+      <br />
+      Open the launch configuration after the first start and:
       <ul>
-       <li><b>MyFXViewPart:</b> 
-        <p>
-       	 The bundle with your ViewPart
-       	</p>
-       </li>
-       <li><b>javafx.osgi:</b> 
-        <p>
-         This bundle holds the javafxrt.jar and dlls for the architectures you decided to deploy to.
-        </p>
-        <p>
-         The bundle is a very special one because it does <b>not</b> export any packages but is a pure deployment unit
-         for the JavaFX jar and its dlls.
-        </p>
-        <p>
-         The wiring of those jars is done by an OSGi-Extension which is part of e(fx)clipse runtime modules - nothing
-         you need to worry about.
-        </p>
-       </li>
+       <li>make program arguments hold only: -nl ${target.nl} -consoleLog -nosplash</li>
+       <li>make VM arguments hold only: -Xms40m -Xmx512m  -Dosgi.framework.extensions=at.bestsolution.efxclipse.runtime.osgi</li>
       </ul>
-     </p>
+     </p> 
     </div>
   </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	9.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_11.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-      Implement your view by adding some JavaFX code
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	10.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_12.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-      Launch an "Inner Eclipse" by bringing up the context-menu on the "MyFXViewPart" project and select Run As &gt; Eclipse Application 
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	11.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_13.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       In the launched instance bring up Quick Access (Ctrl+3) and enter "My Fx View" and select the presented choice.
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	12.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_14.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       A view with your JavaFX content will be shown in the bottom
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	13.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_15.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Create a new feature using. New &gt; Feature Project
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	14.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_16.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Enter a name for the feature e.g. "MyFXViewFeature" and hit the "Finish" button
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	15.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_17.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Open the "Plug-ins" tab or the feature editor and add the following plugins:
-       <ul>
-        <li>at.bestsolution.efxclipse.runtime.javafx</li>
-        <li>at.bestsolution.efxclipse.runtime.osgi</li>
-        <li>at.bestsolution.efxclipse.runtime.workbench3</li>
-        <li>javafx.osgi</li>
-        <li>MyFXViewPart</li>
-       </ul>
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	16.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_18.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Create an update site using New &gt; Project ... &gt; Plug-in Development / Update Site Project
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	17.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_19.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Enter a updatesite name e.g. "MyFXViewUpdate" and hit the "Finish" button
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	18.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_20.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       Create a new category e.g. with ID "myfxview" and name "My JavaFX View" and add your "MyFXViewFeature" and hit the "Build All" button
-     </p>
-    </div>
-  </div>
-  
-  <div class="row">
-  	<div class="span1">
-  	19.
-  	</div>
-  	<div class="span7">
-     <ul class="media-grid">
-      <li>
-       <a>
-        <img class="thumbnail" src="tut3/img_21.png" />
-       </a>
-      </li>
-     </ul>
-    </div>
-    <div class="span8">
-     <p>
-       The result of the operation should look similar to this. You'll get the exported plugins and some p2 repository
-       jars so that you can install it using the "Install New Software ..." wizard.
-     </p>
-    </div>
-  </div>
-  
  </section>
 </div>
 
