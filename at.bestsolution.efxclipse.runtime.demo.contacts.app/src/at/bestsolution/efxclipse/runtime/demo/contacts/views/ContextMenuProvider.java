@@ -20,7 +20,7 @@ import javafx.scene.control.Cell;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SelectionModel;
+import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TreeCell;
@@ -42,14 +42,14 @@ public class ContextMenuProvider implements ICellUpdateListener {
 		this.editingDomain = editingDomain;
 	}
 
-	static SelectionModel<?> getSelectionModel(Cell<?> cell) {
-		if(cell instanceof ListCell<?>) {
+	static MultipleSelectionModel<?> getSelectionModel(Cell<?> cell) {
+		if (cell instanceof ListCell<?>) {
 			return ((ListCell<?>) cell).getListView().getSelectionModel();
-		} else if(cell instanceof TreeCell<?>) {
+		} else if (cell instanceof TreeCell<?>) {
 			return ((TreeCell<?>) cell).getTreeView().getSelectionModel();
-		} else if(cell instanceof TableCell<?,?>) {
-			return ((TableCell<?,?>) cell).getTableView().getSelectionModel();
-		} else if(cell instanceof TableRow<?>) {
+		} else if (cell instanceof TableCell<?, ?>) {
+			return ((TableCell<?, ?>) cell).getTableView().getSelectionModel();
+		} else if (cell instanceof TableRow<?>) {
 			return ((TableRow<?>) cell).getTableView().getSelectionModel();
 		}
 		return null;
@@ -58,7 +58,7 @@ public class ContextMenuProvider implements ICellUpdateListener {
 	@Override
 	public void updateItem(Cell<?> cell, final Object item, boolean empty) {
 
-		SelectionModel<?> selectionModel =getSelectionModel(cell);
+		final MultipleSelectionModel<?> selectionModel = getSelectionModel(cell);
 
 		ContextMenu contextMenu = new ContextMenu();
 
@@ -69,7 +69,7 @@ public class ContextMenuProvider implements ICellUpdateListener {
 
 				@Override
 				public void handle(ActionEvent event) {
-					Command command = DeleteCommand.create(editingDomain, item);
+					Command command = DeleteCommand.create(editingDomain, selectionModel.getSelectedItems());
 					if (command.canExecute())
 						editingDomain.getCommandStack().execute(command);
 				}
@@ -83,7 +83,7 @@ public class ContextMenuProvider implements ICellUpdateListener {
 
 				@Override
 				public void handle(ActionEvent event) {
-					Command command = CutToClipboardCommand.create(editingDomain, item);
+					Command command = CutToClipboardCommand.create(editingDomain, selectionModel.getSelectedItems());
 					if (command.canExecute())
 						editingDomain.getCommandStack().execute(command);
 				}
@@ -97,7 +97,7 @@ public class ContextMenuProvider implements ICellUpdateListener {
 
 				@Override
 				public void handle(ActionEvent event) {
-					Command command = CopyToClipboardCommand.create(editingDomain, item);
+					Command command = CopyToClipboardCommand.create(editingDomain, selectionModel.getSelectedItems());
 					if (command.canExecute())
 						editingDomain.getCommandStack().execute(command);
 				}

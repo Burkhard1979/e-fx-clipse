@@ -10,6 +10,13 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
+import java.util.ArrayList;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener.Change;
+
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableList;
@@ -36,7 +43,7 @@ public class ContactsTableView {
 	public ContactsTableView(BorderPane parent, final MApplication application, final ContactsManager contactsManager) {
 		EditingDomain editingDomain = contactsManager.getEditingDomain();
 		AdapterFactory adapterFactory = contactsManager.getAdapterFactory();
-		
+
 		TableView<Object> tableView = new TableView<>();
 
 		parent.setCenter(tableView);
@@ -52,10 +59,10 @@ public class ContactsTableView {
 		firstNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
 		firstNameColumn.setCellFactory(firstNameCellFactory);
 		firstNameColumn.setSortable(false);
-		
 
 		lastNameColumn.setCellValueFactory(new ProxyCellValueFactory<Object, Object>());
-		AdapterFactoryTableCellFactory<Object, Object> lastNameCellFactory = new AdapterFactoryTableCellFactory<Object, Object>(adapterFactory, 1);
+		AdapterFactoryTableCellFactory<Object, Object> lastNameCellFactory = new AdapterFactoryTableCellFactory<Object, Object>(
+				adapterFactory, 1);
 		lastNameCellFactory.addCellCreationListener(new CellDragAdapter());
 		lastNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
 		lastNameColumn.setCellFactory(lastNameCellFactory);
@@ -63,25 +70,36 @@ public class ContactsTableView {
 
 		tableView.setItems(new AdapterFactoryObservableList<Object>(adapterFactory, contactsManager.getRootGroup()));
 		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
+
 		// add edit support
 		tableView.setEditable(true);
-		firstNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_FirstName(), editingDomain));
-		lastNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_LastName(), editingDomain));
+		firstNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_FirstName(),
+				editingDomain));
+		lastNameCellFactory
+				.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_LastName(), editingDomain));
 
 		// add the context menu
 		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
 		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
 		lastNameCellFactory.addCellUpdateListener(contextMenuProvider);
-		
+
 		tableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
 
 			@Override
 			public void onChanged(Change<?> change) {
 				application.getContext().set(List.class, change.getList());
 			}
-			
+
 		});
+
+		tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
+				application.getContext().set(Object.class, arg2);
+			}
+
+		});
+
 	}
 
 }

@@ -18,6 +18,8 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
 import java.util.List;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -55,13 +57,23 @@ public class ContactsListView {
 		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
 		listCellFactory.addCellUpdateListener(contextMenuProvider);
 		
+		listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
 		listView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
 
 			@Override
 			public void onChanged(Change<?> change) {
 				application.getContext().set(List.class, change.getList());
 			}
-			
+
+		});
+
+		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
+				application.getContext().set(Object.class, arg2);
+			}
+
 		});
 	}
 

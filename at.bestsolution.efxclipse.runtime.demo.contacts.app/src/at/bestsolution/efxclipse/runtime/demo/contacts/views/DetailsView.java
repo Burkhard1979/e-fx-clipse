@@ -53,12 +53,9 @@ public class DetailsView {
 	}
 
 	@Inject
-	public void setSelection(@Optional List<?> selection) {
-		if (selection != null && selection.size() > 0) {
-			Object firstItem = selection.get(0);
-			Contact contact = firstItem instanceof Contact ? (Contact) firstItem : null;
-			controller.updateBindings(contact, contactsManager.getEditingDomain());
-		}
+	public void setSelection(@Optional Object selectedItem) {
+		Contact contact = selectedItem instanceof Contact ? (Contact) selectedItem : null;
+		controller.updateBindings(contact, contactsManager.getEditingDomain());
 	}
 
 }
