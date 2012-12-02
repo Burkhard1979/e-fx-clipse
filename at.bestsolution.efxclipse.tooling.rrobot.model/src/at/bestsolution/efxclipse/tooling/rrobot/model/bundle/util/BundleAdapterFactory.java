@@ -153,6 +153,10 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 				return createProductFeatureAdapter();
 			}
 			@Override
+			public Adapter caseProductStartConfig(ProductStartConfig object) {
+				return createProductStartConfigAdapter();
+			}
+			@Override
 			public Adapter caseProject(Project object) {
 				return createProjectAdapter();
 			}
@@ -465,6 +469,20 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProductFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig <em>Product Start Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig
+	 * @generated
+	 */
+	public Adapter createProductStartConfigAdapter() {
 		return null;
 	}
 

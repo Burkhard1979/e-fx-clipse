@@ -3,6 +3,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.impl.generators;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFileFeaturebase;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -101,6 +102,37 @@ public class ProductGenerator implements Generator<ProductFile> {
         }
         _builder.append("\t");
         _builder.append("</features>");
+        _builder.newLine();
+      }
+    }
+    {
+      EList<ProductStartConfig> _startconfigurations = file.getStartconfigurations();
+      boolean _isEmpty = _startconfigurations.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        _builder.append("\t");
+        _builder.append("<configurations>");
+        _builder.newLine();
+        {
+          EList<ProductStartConfig> _startconfigurations_1 = file.getStartconfigurations();
+          for(final ProductStartConfig c : _startconfigurations_1) {
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("<plugin id=\"");
+            String _id_2 = c.getId();
+            _builder.append(_id_2, "		");
+            _builder.append("\" autoStart=\"");
+            boolean _isAutoStart = c.isAutoStart();
+            _builder.append(_isAutoStart, "		");
+            _builder.append("\" startLevel=\"");
+            int _startLevel = c.getStartLevel();
+            _builder.append(_startLevel, "		");
+            _builder.append("\" />");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t");
+        _builder.append("</configurations>");
         _builder.newLine();
       }
     }

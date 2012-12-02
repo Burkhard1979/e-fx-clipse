@@ -5,13 +5,20 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.osgi.framework.Version;
 
 /**
@@ -28,6 +35,7 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl#getApplication <em>Application</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl#isIncludeLaunchers <em>Include Launchers</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFileImpl#getStartconfigurations <em>Startconfigurations</em>}</li>
  * </ul>
  * </p>
  *
@@ -173,6 +181,16 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	 * @ordered
 	 */
 	protected boolean includeLaunchers = INCLUDE_LAUNCHERS_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getStartconfigurations() <em>Startconfigurations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStartconfigurations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProductStartConfig> startconfigurations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -346,6 +364,32 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ProductStartConfig> getStartconfigurations() {
+		if (startconfigurations == null) {
+			startconfigurations = new EObjectContainmentEList<ProductStartConfig>(ProductStartConfig.class, this, BundlePackage.PRODUCT_FILE__STARTCONFIGURATIONS);
+		}
+		return startconfigurations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case BundlePackage.PRODUCT_FILE__STARTCONFIGURATIONS:
+				return ((InternalEList<?>)getStartconfigurations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -363,6 +407,8 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 				return getVersion();
 			case BundlePackage.PRODUCT_FILE__INCLUDE_LAUNCHERS:
 				return isIncludeLaunchers();
+			case BundlePackage.PRODUCT_FILE__STARTCONFIGURATIONS:
+				return getStartconfigurations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -372,6 +418,7 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -395,6 +442,10 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 				return;
 			case BundlePackage.PRODUCT_FILE__INCLUDE_LAUNCHERS:
 				setIncludeLaunchers((Boolean)newValue);
+				return;
+			case BundlePackage.PRODUCT_FILE__STARTCONFIGURATIONS:
+				getStartconfigurations().clear();
+				getStartconfigurations().addAll((Collection<? extends ProductStartConfig>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -429,6 +480,9 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 			case BundlePackage.PRODUCT_FILE__INCLUDE_LAUNCHERS:
 				setIncludeLaunchers(INCLUDE_LAUNCHERS_EDEFAULT);
 				return;
+			case BundlePackage.PRODUCT_FILE__STARTCONFIGURATIONS:
+				getStartconfigurations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -455,6 +509,8 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case BundlePackage.PRODUCT_FILE__INCLUDE_LAUNCHERS:
 				return includeLaunchers != INCLUDE_LAUNCHERS_EDEFAULT;
+			case BundlePackage.PRODUCT_FILE__STARTCONFIGURATIONS:
+				return startconfigurations != null && !startconfigurations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
