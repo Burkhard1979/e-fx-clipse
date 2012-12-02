@@ -69,7 +69,7 @@ public class ContactsTreeView {
 				if (arg2 instanceof AdapterFactoryTreeItem) {
 					Object value = ((AdapterFactoryTreeItem) arg2).getValue();
 					if (value instanceof Contact)
-						application.getContext().set(Contact.class, (Contact) value);
+						application.getContext().set(Object.class, value);
 				}
 			}
 
@@ -92,7 +92,7 @@ public class ContactsTreeView {
 		});
 		
 		// add the context menu
-		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
+		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager);
 		treeCellFactory.addCellUpdateListener(contextMenuProvider);
 
 		treeView.setEditable(true);

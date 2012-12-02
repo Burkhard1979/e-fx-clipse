@@ -23,14 +23,17 @@ import org.eclipse.emf.edit.command.CutToClipboardCommand;
 
 @SuppressWarnings("restriction")
 public class CutHandler {
-	
-	@Inject
-	ContactsManager contactsManager;
 
+	ContactsManager contactsManager;
 	Command command;
 
+	@Inject
+	public CutHandler(ContactsManager contactsManager) {
+		this.contactsManager = contactsManager;
+	}
+
 	@CanExecute
-	boolean canExecute(@Optional List<?> selection) {
+	public boolean canExecute(@Optional List<?> selection) {
 		if (selection != null) {
 			command = CutToClipboardCommand.create(contactsManager.getEditingDomain(), selection);
 			return command.canExecute();
@@ -39,10 +42,9 @@ public class CutHandler {
 	}
 
 	@Execute
-	void execute() {
+	public void execute() {
 		if (command != null && command.canExecute())
 			contactsManager.getEditingDomain().getCommandStack().execute(command);
 	}
-	
-	
+
 }

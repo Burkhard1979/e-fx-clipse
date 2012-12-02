@@ -27,31 +27,37 @@ import org.eclipse.emf.edit.command.PasteFromClipboardCommand;
 @SuppressWarnings("restriction")
 public class PasteHandler {
 
-	@Inject
 	ContactsManager contactsManager;
 
 	Command command;
 
-	@CanExecute
-	boolean canExecute(@Optional List<?> selection) {
-		if (selection != null && selection.size() == 1) {
-			Object item = selection.get(0);
+	@Inject
+	public PasteHandler(ContactsManager contactsManager) {
+		this.contactsManager = contactsManager;
+	}
 
+	@CanExecute
+	public boolean canExecute(@Optional Object selectedItem) {
+		Group group = null;
+
+		if (selectedItem instanceof Contact)
 			// get containing Group if selection is a Contact
-			if (item instanceof Contact)
-				item = ((Contact) item).eContainer();
-			
-			if (item instanceof Group)
-				command = PasteFromClipboardCommand.create(contactsManager.getEditingDomain(), item,
-						ContactsPackage.eINSTANCE.getGroup_Contacts());
-			
+			group = (Group) ((Contact) selectedItem).eContainer();
+
+		else if (selectedItem instanceof Group)
+			group = (Group) selectedItem;
+
+		if (group != null) {
+			command = PasteFromClipboardCommand.create(contactsManager.getEditingDomain(), group,
+					ContactsPackage.eINSTANCE.getGroup_Contacts());
 			return command.canExecute();
 		}
+		
 		return false;
 	}
 
 	@Execute
-	void execute() {
+	public void execute() {
 		if (command != null && command.canExecute())
 			contactsManager.getEditingDomain().getCommandStack().execute(command);
 	}

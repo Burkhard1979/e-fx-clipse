@@ -23,14 +23,18 @@ import org.eclipse.emf.edit.command.CopyToClipboardCommand;
 
 @SuppressWarnings("restriction")
 public class CopyHandler {
-	
-	@Inject
+
 	ContactsManager contactsManager;
 
 	Command command;
 
+	@Inject
+	public CopyHandler(ContactsManager contactsManager) {
+		this.contactsManager = contactsManager;
+	}
+
 	@CanExecute
-	boolean canExecute(@Optional List<?> selection) {
+	public boolean canExecute(@Optional List<?> selection) {
 		if (selection != null) {
 			command = CopyToClipboardCommand.create(contactsManager.getEditingDomain(), selection);
 			return command.canExecute();
@@ -39,10 +43,9 @@ public class CopyHandler {
 	}
 
 	@Execute
-	void execute() {
+	public void execute() {
 		if (command != null && command.canExecute())
 			contactsManager.getEditingDomain().getCommandStack().execute(command);
 	}
-	
-	
+
 }

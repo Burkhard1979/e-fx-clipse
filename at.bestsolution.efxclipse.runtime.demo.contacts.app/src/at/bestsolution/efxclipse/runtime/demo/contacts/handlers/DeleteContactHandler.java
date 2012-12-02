@@ -24,13 +24,17 @@ import org.eclipse.emf.edit.command.DeleteCommand;
 @SuppressWarnings("restriction")
 public class DeleteContactHandler {
 
-	@Inject
 	ContactsManager contactsManager;
-
 	Command command;
 
+	@Inject
+	public DeleteContactHandler(ContactsManager contactsManager) {
+		this.contactsManager = contactsManager;
+	}
+
+
 	@CanExecute
-	boolean canExecute(@Optional List<?> selection) {
+	public boolean canExecute(@Optional List<?> selection) {
 		if (selection != null) {
 			command = DeleteCommand.create(contactsManager.getEditingDomain(), selection);
 			return command.canExecute();
@@ -39,7 +43,7 @@ public class DeleteContactHandler {
 	}
 
 	@Execute
-	void execute() {
+	public void execute() {
 		if (command != null && command.canExecute())
 			contactsManager.getEditingDomain().getCommandStack().execute(command);
 	}

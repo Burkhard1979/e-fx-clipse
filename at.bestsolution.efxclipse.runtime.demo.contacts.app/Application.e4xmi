@@ -49,6 +49,9 @@
     <bindings xmi:id="_SeXUIO8EEd6FC9cDb6iV7g" elementId="_SeXUIO8EEd6FC9cDb6iV7g" keySequence="CTRL+Q" command="contacts.exit"/>
     <bindings xmi:id="_qMtB8DZ2EeKZBafm86UM9A" keySequence="CTRL+Z" command="_YYAtMCxCEeKKgKdy48tDJg"/>
     <bindings xmi:id="_y4qsgDZ2EeKZBafm86UM9A" keySequence="CTRL+Y" command="_K6SccCxFEeKKgKdy48tDJg"/>
+    <bindings xmi:id="_tYHqADyVEeKgOtnn6QUdKw" keySequence="CTRL+X" command="_9rAmADZ8EeKZBafm86UM9A"/>
+    <bindings xmi:id="_3tYNoDyVEeKgOtnn6QUdKw" keySequence="CTRL+C" command="_fe4hcDaDEeKZBafm86UM9A"/>
+    <bindings xmi:id="_8zRJYDyVEeKgOtnn6QUdKw" keySequence="CTRL+V" command="_jc-HoDaDEeKZBafm86UM9A"/>
   </bindingTables>
   <rootContext xmi:id="_SeXUHO8EEd6FC9cDb6iV7y" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_SeXUEO8EEd6FC9cDb6iV7w" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>

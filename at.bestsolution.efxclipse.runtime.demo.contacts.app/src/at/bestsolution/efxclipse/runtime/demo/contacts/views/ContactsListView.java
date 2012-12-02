@@ -54,7 +54,7 @@ public class ContactsListView {
 		listCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getGroup_Name(), editingDomain));
 
 		// add the context menu
-		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
+		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager);
 		listCellFactory.addCellUpdateListener(contextMenuProvider);
 		
 		listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

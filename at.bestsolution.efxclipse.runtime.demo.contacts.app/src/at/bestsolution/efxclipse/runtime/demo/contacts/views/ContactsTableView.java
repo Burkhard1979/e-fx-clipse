@@ -79,7 +79,7 @@ public class ContactsTableView {
 				.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_LastName(), editingDomain));
 
 		// add the context menu
-		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(editingDomain);
+		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager);
 		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
 		lastNameCellFactory.addCellUpdateListener(contextMenuProvider);
 
