@@ -33,9 +33,16 @@
       <plugin id="at.bestsolution.efxclipse.runtime.bindings"/>
       <plugin id="at.bestsolution.efxclipse.runtime.bindings.e4"/>
       <plugin id="at.bestsolution.efxclipse.runtime.bindings.generic"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.core"/>
       <plugin id="at.bestsolution.efxclipse.runtime.databinding"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.demo.contacts"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.demo.contacts.app"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.demo.contacts.edit"/>
       <plugin id="at.bestsolution.efxclipse.runtime.di"/>
       <plugin id="at.bestsolution.efxclipse.runtime.dialogs"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.emf.databinding.edit"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.emf.edit.ui"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.emf.edit.ui.tests" fragment="true"/>
       <plugin id="at.bestsolution.efxclipse.runtime.javafx"/>
       <plugin id="at.bestsolution.efxclipse.runtime.osgi" fragment="true"/>
       <plugin id="at.bestsolution.efxclipse.runtime.osgi.util"/>
@@ -47,7 +54,6 @@
       <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.base"/>
       <plugin id="at.bestsolution.efxclipse.runtime.workbench.renderers.fx"/>
       <plugin id="com.ibm.icu"/>
-      <plugin id="at.bestsolution.efxclipse.runtime.demo.contacts"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.servlet"/>
@@ -62,6 +68,7 @@
       <plugin id="org.eclipse.core.expressions"/>
       <plugin id="org.eclipse.core.filesystem"/>
       <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.core.filesystem.win32.x86_64" fragment="true"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.resources"/>
       <plugin id="org.eclipse.core.resources.win32.x86" fragment="true"/>
@@ -81,6 +88,7 @@
       <plugin id="org.eclipse.emf.ecore"/>
       <plugin id="org.eclipse.emf.ecore.change"/>
       <plugin id="org.eclipse.emf.ecore.xmi"/>
+      <plugin id="org.eclipse.emf.edit"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.concurrent"/>
@@ -93,6 +101,11 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.swt"/>
       <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true"/>
+      <plugin id="org.hamcrest.core"/>
+      <plugin id="org.junit"/>
+      <plugin id="org.junit4"/>
+      <plugin id="org.mockito.repackaged"/>
    </plugins>
 
 
