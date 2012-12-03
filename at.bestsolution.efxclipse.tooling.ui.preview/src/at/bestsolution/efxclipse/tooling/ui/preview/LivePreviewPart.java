@@ -539,8 +539,9 @@ public class LivePreviewPart extends ViewPart {
 				// Force CSS-Reloading
 				if( isJavaFX2() ) {
 					StyleManager.getInstance().reloadStylesheets(scene);
-					swtFXContainer.setScene(scene);
 				}
+				
+				swtFXContainer.setScene(scene);
 				
 				scene.getStylesheets().removeAll(contentData.cssFiles);
 				scene.getStylesheets().addAll(contentData.cssFiles);
