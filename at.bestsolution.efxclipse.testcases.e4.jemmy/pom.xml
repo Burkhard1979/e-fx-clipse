@@ -36,12 +36,14 @@
 							<artifactId>at.bestsolution.efxclipse.testcases.e4.feature</artifactId>
 							<version>0.0.0</version>
 						</dependency>
-						<!--  dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>at.bestsolution.efxclipse.runtime.e4.feature</artifactId>
-							<version>0.1.1</version>
-						</dependency-->
 					</dependencies>
+					<frameworkExtensions>
+						<frameworkExtension>
+							<groupId>at.bestsolution.efxclipse</groupId>
+							<artifactId>at.bestsolution.efxclipse.runtime.osgi</artifactId>
+							<version>${efx.version}</version>
+						</frameworkExtension>
+					</frameworkExtensions>
 				</configuration>
 				<executions>
 					<execution>
