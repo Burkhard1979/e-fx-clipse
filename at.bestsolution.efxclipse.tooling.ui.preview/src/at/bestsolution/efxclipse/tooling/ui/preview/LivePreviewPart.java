@@ -537,9 +537,12 @@ public class LivePreviewPart extends ViewPart {
 				}
 				
 				// Force CSS-Reloading
-				StyleManager.getInstance().reloadStylesheets(scene);
-				swtFXContainer.setScene(scene);
-
+				if( isJavaFX2() ) {
+					StyleManager.getInstance().reloadStylesheets(scene);
+					swtFXContainer.setScene(scene);
+				}
+				
+				scene.getStylesheets().removeAll(contentData.cssFiles);
 				scene.getStylesheets().addAll(contentData.cssFiles);
 
 			} catch (Exception e) {
@@ -619,6 +622,10 @@ public class LivePreviewPart extends ViewPart {
 				}
 			});
 		}
+	}
+	
+	private static boolean isJavaFX2() {
+		return System.getProperty("javafx.version") != null && System.getProperty("javafx.version").startsWith("2");
 	}
 
 	public static class ContentData {
