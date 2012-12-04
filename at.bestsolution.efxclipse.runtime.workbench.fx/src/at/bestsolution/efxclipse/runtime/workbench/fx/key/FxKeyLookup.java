@@ -91,18 +91,26 @@ public final class FxKeyLookup implements KeyLookup {
 				: command);
 
 //FIXME Port to FX 
-//		final Integer arrowDown = new Integer(SWT.ARROW_DOWN);
-//		naturalKeyTable.put(ARROW_DOWN_NAME, arrowDown);
-//		nameTable.put(arrowDown, ARROW_DOWN_NAME);
-//		final Integer arrowLeft = new Integer(SWT.ARROW_LEFT);
-//		naturalKeyTable.put(ARROW_LEFT_NAME, arrowLeft);
-//		nameTable.put(arrowLeft, ARROW_LEFT_NAME);
-//		final Integer arrowRight = new Integer(SWT.ARROW_RIGHT);
-//		naturalKeyTable.put(ARROW_RIGHT_NAME, arrowRight);
-//		nameTable.put(arrowRight, ARROW_RIGHT_NAME);
-//		final Integer arrowUp = new Integer(SWT.ARROW_UP);
-//		naturalKeyTable.put(ARROW_UP_NAME, arrowUp);
-//		nameTable.put(arrowUp, ARROW_UP_NAME);
+		{
+			final Integer code = Integer.valueOf(KeyCode.DOWN.impl_getCode());
+			naturalKeyTable.put(ARROW_DOWN_NAME, code);
+			nameTable.put(code, ARROW_DOWN_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.LEFT.impl_getCode());
+			naturalKeyTable.put(ARROW_LEFT_NAME, code);
+			nameTable.put(code, ARROW_LEFT_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.RIGHT.impl_getCode());
+			naturalKeyTable.put(ARROW_RIGHT_NAME, code);
+			nameTable.put(code, ARROW_RIGHT_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.UP.impl_getCode());
+			naturalKeyTable.put(ARROW_UP_NAME, code);
+			nameTable.put(code, ARROW_UP_NAME);	
+		}
 //		final Integer breakKey = new Integer(SWT.BREAK);
 //		naturalKeyTable.put(BREAK_NAME, breakKey);
 //		nameTable.put(breakKey, BREAK_NAME);
