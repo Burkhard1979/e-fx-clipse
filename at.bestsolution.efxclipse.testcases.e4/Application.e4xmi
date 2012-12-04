@@ -119,8 +119,10 @@
   <handlers xmi:id="_H2FJYOUcEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.handler.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.Handler0" command="_FEZr8OUcEeGP-5z69KadAQ"/>
   <handlers xmi:id="_0_q1EOqiEeGrz8mV_3Gr5A" elementId="at.bestsolution.efxclipse.testcases.e4.handler.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.Handler1" command="_3PQSEOqiEeGrz8mV_3Gr5A"/>
   <handlers xmi:id="_otsOgO6yEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.handler.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.SwitchPerspectiveHandler" command="_kCbZQO6yEeG4lfn-YKJbJw"/>
+  <handlers xmi:id="__UfAcD4rEeKaHfJUGGs7Mw" elementId="at.bestsolution.efxclipse.testcases.e4.handler.1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.FunctionHandler" command="_8Tn3gD4rEeKaHfJUGGs7Mw"/>
   <bindingTables xmi:id="_A7QWm-L-EeGP-5z69KadAQ" bindingContext="_A7QWkeL-EeGP-5z69KadAQ">
     <bindings xmi:id="_XqO-oOUcEeGP-5z69KadAQ" keySequence="CTRL+I" command="_FEZr8OUcEeGP-5z69KadAQ"/>
+    <bindings xmi:id="_6h40ID4rEeKaHfJUGGs7Mw" elementId="at.bestsolution.efxclipse.testcases.e4.keybinding.0" keySequence="F2" command="_8Tn3gD4rEeKaHfJUGGs7Mw"/>
   </bindingTables>
   <rootContext xmi:id="_A7QWkeL-EeGP-5z69KadAQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_A7QWkuL-EeGP-5z69KadAQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
@@ -131,6 +133,7 @@
   <commands xmi:id="_kCbZQO6yEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.command.2" commandName="Switch Perspective">
     <parameters xmi:id="_mCIAIO6yEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" name="Perspective Id" optional="false"/>
   </commands>
+  <commands xmi:id="_8Tn3gD4rEeKaHfJUGGs7Mw" elementId="at.bestsolution.efxclipse.testcases.e4.command.3" commandName="Function Keybinding"/>
   <addons xmi:id="_A7QWlOL-EeGP-5z69KadAQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_A7QWleL-EeGP-5z69KadAQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_A7QWluL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.runtime.bindings.e4.service" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon"/>
