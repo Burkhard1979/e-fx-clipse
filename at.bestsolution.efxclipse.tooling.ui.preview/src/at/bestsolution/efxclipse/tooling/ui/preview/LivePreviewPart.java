@@ -543,7 +543,7 @@ public class LivePreviewPart extends ViewPart {
 				
 				swtFXContainer.setScene(scene);
 				
-				scene.getStylesheets().removeAll(contentData.cssFiles);
+				scene.getStylesheets().clear();
 				scene.getStylesheets().addAll(contentData.cssFiles);
 
 			} catch (Exception e) {
