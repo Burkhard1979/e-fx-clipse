@@ -353,6 +353,11 @@ public class LivePreviewPart extends ViewPart {
 
 	@Override
 	public void dispose() {
+		
+		if( swtFXContainer != null && swtFXContainer.getScene() != null ) {
+			swtFXContainer.getScene().getStylesheets().clear();
+		}
+		
 		getSite().getWorkbenchWindow().getPartService().removePartListener(synchronizer);
 		getSite().getWorkbenchWindow().getPartService().addPartListener(listener);
 
