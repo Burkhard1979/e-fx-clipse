@@ -541,11 +541,14 @@ public class LivePreviewPart extends ViewPart {
 					StyleManager.getInstance().reloadStylesheets(scene);
 				}
 				
+				// In FX8 we need to remove the stylesheets on the old scene to force reloading them
+				if( swtFXContainer.getScene() != null ) {
+					swtFXContainer.getScene() .getStylesheets().clear();	
+				}
+				
+				scene.getStylesheets().addAll(contentData.cssFiles);
 				swtFXContainer.setScene(scene);
 				
-				scene.getStylesheets().clear();
-				scene.getStylesheets().addAll(contentData.cssFiles);
-
 			} catch (Exception e) {
 				StringWriter sw = new StringWriter();
 				e.printStackTrace(new PrintWriter(sw));
