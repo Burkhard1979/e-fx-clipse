@@ -707,7 +707,7 @@ public interface BundlePackage extends EPackage {
 	int FEATURE_FILE__COPYRIGHT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>License</b></em>' reference.
+	 * The feature id for the '<em><b>License</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1812,10 +1812,10 @@ public interface BundlePackage extends EPackage {
 	EReference getFeatureFile_Copyright();
 
 	/**
-	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense <em>License</em>}'.
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense <em>License</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>License</em>'.
+	 * @return the meta object for the containment reference '<em>License</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense()
 	 * @see #getFeatureFile()
 	 * @generated
@@ -2805,7 +2805,7 @@ public interface BundlePackage extends EPackage {
 		EReference FEATURE_FILE__COPYRIGHT = eINSTANCE.getFeatureFile_Copyright();
 
 		/**
-		 * The meta object literal for the '<em><b>License</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>License</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

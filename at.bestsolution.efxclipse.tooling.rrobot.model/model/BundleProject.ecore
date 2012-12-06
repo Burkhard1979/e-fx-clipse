@@ -66,7 +66,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="copyright" eType="#//LinkedString"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="license" eType="#//LinkedString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="license" eType="#//LinkedString"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="license_feature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="license_feature_version"
         eType="#//Version"/>
