@@ -27,6 +27,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.animationutils</module>
 		<module>../at.bestsolution.efxclipse.runtime.model</module>
 		<module>../at.bestsolution.efxclipse.runtime.databinding</module>
+		<module>../at.bestsolution.efxclipse.runtime.application</module>
 		<module>../at.bestsolution.efxclipse.runtime.emf.edit.ui</module>
 		<module>../at.bestsolution.efxclipse.runtime.emf.databinding.edit</module>
 		<module>../at.bestsolution.efxclipse.runtime.dialogs</module>
