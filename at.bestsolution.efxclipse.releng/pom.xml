@@ -26,8 +26,10 @@
 		<module>../at.bestsolution.efxclipse.runtime.javafx</module>
 		<module>../at.bestsolution.efxclipse.runtime.animationutils</module>
 		<module>../at.bestsolution.efxclipse.runtime.model</module>
+		<module>../at.bestsolution.efxclipse.runtime.model</module>
 		<module>../at.bestsolution.efxclipse.runtime.databinding</module>
-		<module>../at.bestsolution.efxclipse.runtime.application</module>
+		<module>../at.bestsolution.efxclipse.runtime.emf.edit.ui</module>
+		<module>../at.bestsolution.efxclipse.runtime.emf.databinding.edit</module>
 		<module>../at.bestsolution.efxclipse.runtime.dialogs</module>
 		<module>../at.bestsolution.efxclipse.runtime.core</module>
 		<module>../at.bestsolution.efxclipse.runtime.di</module>
@@ -82,6 +84,7 @@
 		<module>../at.bestsolution.efxclipse.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.osgi.feature</module>
+		<module>../at.bestsolution.efxclipse.runtime.emf.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.jemmy.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.jemmy.junit.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.convert.feature</module>
