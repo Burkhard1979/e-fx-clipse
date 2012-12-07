@@ -15,14 +15,18 @@ import at.bestsolution.efxclipse.runtime.controls.FXTabPane;
 import at.bestsolution.efxclipse.runtime.controls.fx2.FX2MinMaxTabPaneSkin;
 import at.bestsolution.efxclipse.runtime.controls.fx2.FX2Tab;
 import at.bestsolution.efxclipse.runtime.controls.fx2.FX2TabPane;
+import at.bestsolution.efxclipse.runtime.controls.fx8.FX8Tab;
+import at.bestsolution.efxclipse.runtime.controls.fx8.FX8TabPane;
+import at.bestsolution.efxclipse.runtime.controls.fx8.FX8TabPaneSkin;
 import at.bestsolution.efxclipse.runtime.core.Util;
 
 public class FXTabFactory {
 	public static FXTab createTab() {
 		if( Util.isFX2() ) {
 			return new FX2Tab();
+		} else {
+			return new FX8Tab();
 		}
-		throw new UnsupportedOperationException();
 	}
 	
 	public static <T extends FXTab> FXTabPane<T> createTabPane() {
@@ -30,7 +34,9 @@ public class FXTabFactory {
 			FX2TabPane tab = new FX2TabPane();
 			tab.setSkin(new FX2MinMaxTabPaneSkin(tab));
 			return (FXTabPane<T>) tab;
+		} else {
+			FX8TabPane tab = new FX8TabPane();
+			return (FXTabPane<T>) tab;
 		}
-		throw new UnsupportedOperationException();
 	}
 }

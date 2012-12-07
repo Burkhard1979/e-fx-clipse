@@ -44,6 +44,7 @@ Import-Package: com.sun.javafx;version="2.2.0",
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: libs/api.jar,
  .,
- libs/fx2.jar
+ libs/fx2.jar,
+ libs/fx8.jar
 Export-Package: at.bestsolution.efxclipse.runtime.controls,
  at.bestsolution.efxclipse.runtime.workbench.fx.controls

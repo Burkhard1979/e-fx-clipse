@@ -101,6 +101,7 @@ public class FX8TabPane extends FXTabPane<FX8Tab> {
      * Constructs a new TabPane.
      */
     public FX8TabPane() {
+    	setSkin(new FX8TabPaneSkin(this));
         getStyleClass().setAll("tab-pane");
         setSelectionModel(new TabPaneSelectionModel(this));
 
