@@ -51,6 +51,7 @@ import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Tooltip;
+import javafx.util.Callback;
 import at.bestsolution.efxclipse.runtime.controls.FXTab;
 
 import com.sun.javafx.css.Styleable;
@@ -89,6 +90,16 @@ public class FX8Tab extends FXTab {
     public FX8Tab(String text) {
         setText(text);
         styleClass.addAll(DEFAULT_STYLE_CLASS);
+        setOnCloseRequests(new EventHandler<Event>() {
+			
+			@Override
+			public void handle(Event event) {
+				Callback<FXTab, Boolean> handler = getCloseVetoHandler();
+				if( handler != null && handler.call(FX8Tab.this) ) {
+					event.consume();
+				}
+			}
+		});
     }
     
 
