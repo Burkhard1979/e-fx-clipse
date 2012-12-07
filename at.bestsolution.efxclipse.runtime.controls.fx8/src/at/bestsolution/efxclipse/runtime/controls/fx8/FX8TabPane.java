@@ -42,6 +42,8 @@ import javafx.scene.control.Control;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Skin;
 
+import at.bestsolution.efxclipse.runtime.controls.FXTabPane;
+
 import com.sun.javafx.css.StyleManager;
 import com.sun.javafx.css.StyleableDoubleProperty;
 import com.sun.javafx.css.StyleableProperty;
@@ -80,7 +82,7 @@ import javafx.beans.DefaultProperty;
  * @see FX8Tab
  */
 @DefaultProperty("tabs")
-public class FX8TabPane extends Control {
+public class FX8TabPane extends FXTabPane<FX8Tab> {
     private static final double DEFAULT_TAB_MIN_WIDTH = 0;
 
     private static final double DEFAULT_TAB_MAX_WIDTH = Double.MAX_VALUE;

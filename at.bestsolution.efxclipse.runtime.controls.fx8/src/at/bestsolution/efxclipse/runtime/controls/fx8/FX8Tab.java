@@ -47,11 +47,11 @@ import javafx.collections.ObservableMap;
 import javafx.event.Event;
 import javafx.event.EventDispatchChain;
 import javafx.event.EventHandler;
-import javafx.event.EventTarget;
 import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Tooltip;
+import at.bestsolution.efxclipse.runtime.controls.FXTab;
 
 import com.sun.javafx.css.Styleable;
 import com.sun.javafx.css.StyleableProperty;
@@ -66,7 +66,7 @@ import com.sun.javafx.event.EventHandlerManager;
  * on a Tab in the TabPane the Tab content becomes visible to the user.</p>
  */
 @DefaultProperty("content")
-public class FX8Tab implements EventTarget {
+public class FX8Tab extends FXTab {
 
     /***************************************************************************
      *                                                                         *
