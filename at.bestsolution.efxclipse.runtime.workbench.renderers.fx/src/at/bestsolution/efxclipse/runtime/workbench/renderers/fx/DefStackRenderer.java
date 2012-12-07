@@ -37,10 +37,10 @@ import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.URI;
 
-import at.bestsolution.efxclipse.runtime.panels.fx.FXTab;
-import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane;
-import at.bestsolution.efxclipse.runtime.panels.fx.FXTabPane.MinMaxState;
-import at.bestsolution.efxclipse.runtime.panels.skins.MinMaxTabPaneSkin;
+import at.bestsolution.efxclipse.runtime.controls.FXTab;
+import at.bestsolution.efxclipse.runtime.controls.FXTabPane;
+import at.bestsolution.efxclipse.runtime.controls.FXTabPane.MinMaxState;
+import at.bestsolution.efxclipse.runtime.workbench.fx.controls.FXTabFactory;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WStack;
@@ -79,9 +79,10 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 			this.keySelectedItemCallback = keySelectedItemCallback;
 		}
 		
+		@SuppressWarnings("unchecked")
 		@Override
-		public FXTabPane getWidget() {
-			return (FXTabPane) super.getWidget();
+		public FXTabPane<FXTab>  getWidget() {
+			return (FXTabPane<FXTab> ) super.getWidget();
 		}
 		
 		@Override
@@ -120,9 +121,8 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		}
 		
 		@Override
-		protected FXTabPane createWidget() {
-			FXTabPane p = new FXTabPane();
-			p.setSkin(new MinMaxTabPaneSkin(p));
+		protected FXTabPane<FXTab>  createWidget() {
+			FXTabPane<FXTab>  p = FXTabFactory.createTabPane();
 			
 //			ContextMenu m = new ContextMenu();
 //			
@@ -268,7 +268,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		}
 
 		@Override
-		protected FXTabPane getWidgetNode() {
+		protected FXTabPane<FXTab> getWidgetNode() {
 			return getWidget();
 		}
 
@@ -361,7 +361,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		}
 		
 		protected FXTab createWidget() {
-			final FXTab t = new FXTab();
+			final FXTab t = FXTabFactory.createTab();
 			t.setCloseVetoHandler(new Callback<FXTab, Boolean>() {
 				
 				@Override
