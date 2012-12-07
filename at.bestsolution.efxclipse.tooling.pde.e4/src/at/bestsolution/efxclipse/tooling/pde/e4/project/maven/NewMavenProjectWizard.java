@@ -430,6 +430,7 @@ public class NewMavenProjectWizard extends NewWizard  {
 			featureFile.getPlugins().add(createFeaturePlugin("at.bestsolution.efxclipse.runtime.theme"));
 			featureFile.getPlugins().add(createFeaturePlugin("at.bestsolution.efxclipse.runtime.workbench.base"));
 			featureFile.getPlugins().add(createFeaturePlugin("at.bestsolution.efxclipse.runtime.workbench.fx"));
+			featureFile.getPlugins().add(createFeaturePlugin("at.bestsolution.efxclipse.runtime.workbench.fx.controls"));
 			featureFile.getPlugins().add(createFeaturePlugin("at.bestsolution.efxclipse.runtime.workbench.renderers.base"));
 			featureFile.getPlugins().add(createFeaturePlugin("at.bestsolution.efxclipse.runtime.workbench.renderers.fx"));
 			if( icuBase ) {
