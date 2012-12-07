@@ -22,10 +22,9 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.RegistryFactory;
 import org.osgi.framework.Bundle;
 
+import at.bestsolution.efxclipse.runtime.core.Util;
 import at.bestsolution.efxclipse.runtime.services.theme.Theme;
 import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
-
-import com.sun.javafx.css.StyleManager;
 
 public class DefaultThemeManager implements ThemeManager {
 	static final String ATT_ID = "id";
@@ -162,7 +161,14 @@ public class DefaultThemeManager implements ThemeManager {
 						}
 					}
 					
-					StyleManager.getInstance().reloadStylesheets(scene);
+					if( Util.isFX2() ) {
+						try {
+							ReflectiveInvoke.onStyleManagerClass(scene);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}
 				
 				return;
