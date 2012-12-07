@@ -28,10 +28,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundleProjectImpl#getManifest <em>Manifest</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundleProjectImpl#getBuildProperties <em>Build Properties</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundleProjectImpl#getPluginxml <em>Pluginxml</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundleProjectImpl#getLazy <em>Lazy</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundleProjectImpl#getSingleton <em>Singleton</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundleProjectImpl#getActivatorClass <em>Activator Class</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundleProjectImpl#getVendor <em>Vendor</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,86 +63,6 @@ public class BundleProjectImpl extends ProjectImpl implements BundleProject {
 	 * @ordered
 	 */
 	protected PluginXMLFile pluginxml;
-
-	/**
-	 * The default value of the '{@link #getLazy() <em>Lazy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLazy()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Boolean LAZY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getLazy() <em>Lazy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLazy()
-	 * @generated
-	 * @ordered
-	 */
-	protected Boolean lazy = LAZY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSingleton() <em>Singleton</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSingleton()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Boolean SINGLETON_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getSingleton() <em>Singleton</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSingleton()
-	 * @generated
-	 * @ordered
-	 */
-	protected Boolean singleton = SINGLETON_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getActivatorClass() <em>Activator Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActivatorClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ACTIVATOR_CLASS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getActivatorClass() <em>Activator Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActivatorClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected String activatorClass = ACTIVATOR_CLASS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVendor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VENDOR_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVendor()
-	 * @generated
-	 * @ordered
-	 */
-	protected String vendor = VENDOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -301,90 +217,6 @@ public class BundleProjectImpl extends ProjectImpl implements BundleProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Boolean getLazy() {
-		return lazy;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLazy(Boolean newLazy) {
-		Boolean oldLazy = lazy;
-		lazy = newLazy;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.BUNDLE_PROJECT__LAZY, oldLazy, lazy));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Boolean getSingleton() {
-		return singleton;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSingleton(Boolean newSingleton) {
-		Boolean oldSingleton = singleton;
-		singleton = newSingleton;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.BUNDLE_PROJECT__SINGLETON, oldSingleton, singleton));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getActivatorClass() {
-		return activatorClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setActivatorClass(String newActivatorClass) {
-		String oldActivatorClass = activatorClass;
-		activatorClass = newActivatorClass;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.BUNDLE_PROJECT__ACTIVATOR_CLASS, oldActivatorClass, activatorClass));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getVendor() {
-		return vendor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVendor(String newVendor) {
-		String oldVendor = vendor;
-		vendor = newVendor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.BUNDLE_PROJECT__VENDOR, oldVendor, vendor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -412,14 +244,6 @@ public class BundleProjectImpl extends ProjectImpl implements BundleProject {
 				return getBuildProperties();
 			case BundlePackage.BUNDLE_PROJECT__PLUGINXML:
 				return getPluginxml();
-			case BundlePackage.BUNDLE_PROJECT__LAZY:
-				return getLazy();
-			case BundlePackage.BUNDLE_PROJECT__SINGLETON:
-				return getSingleton();
-			case BundlePackage.BUNDLE_PROJECT__ACTIVATOR_CLASS:
-				return getActivatorClass();
-			case BundlePackage.BUNDLE_PROJECT__VENDOR:
-				return getVendor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -440,18 +264,6 @@ public class BundleProjectImpl extends ProjectImpl implements BundleProject {
 				return;
 			case BundlePackage.BUNDLE_PROJECT__PLUGINXML:
 				setPluginxml((PluginXMLFile)newValue);
-				return;
-			case BundlePackage.BUNDLE_PROJECT__LAZY:
-				setLazy((Boolean)newValue);
-				return;
-			case BundlePackage.BUNDLE_PROJECT__SINGLETON:
-				setSingleton((Boolean)newValue);
-				return;
-			case BundlePackage.BUNDLE_PROJECT__ACTIVATOR_CLASS:
-				setActivatorClass((String)newValue);
-				return;
-			case BundlePackage.BUNDLE_PROJECT__VENDOR:
-				setVendor((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -474,18 +286,6 @@ public class BundleProjectImpl extends ProjectImpl implements BundleProject {
 			case BundlePackage.BUNDLE_PROJECT__PLUGINXML:
 				setPluginxml((PluginXMLFile)null);
 				return;
-			case BundlePackage.BUNDLE_PROJECT__LAZY:
-				setLazy(LAZY_EDEFAULT);
-				return;
-			case BundlePackage.BUNDLE_PROJECT__SINGLETON:
-				setSingleton(SINGLETON_EDEFAULT);
-				return;
-			case BundlePackage.BUNDLE_PROJECT__ACTIVATOR_CLASS:
-				setActivatorClass(ACTIVATOR_CLASS_EDEFAULT);
-				return;
-			case BundlePackage.BUNDLE_PROJECT__VENDOR:
-				setVendor(VENDOR_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -504,38 +304,8 @@ public class BundleProjectImpl extends ProjectImpl implements BundleProject {
 				return buildProperties != null;
 			case BundlePackage.BUNDLE_PROJECT__PLUGINXML:
 				return pluginxml != null;
-			case BundlePackage.BUNDLE_PROJECT__LAZY:
-				return LAZY_EDEFAULT == null ? lazy != null : !LAZY_EDEFAULT.equals(lazy);
-			case BundlePackage.BUNDLE_PROJECT__SINGLETON:
-				return SINGLETON_EDEFAULT == null ? singleton != null : !SINGLETON_EDEFAULT.equals(singleton);
-			case BundlePackage.BUNDLE_PROJECT__ACTIVATOR_CLASS:
-				return ACTIVATOR_CLASS_EDEFAULT == null ? activatorClass != null : !ACTIVATOR_CLASS_EDEFAULT.equals(activatorClass);
-			case BundlePackage.BUNDLE_PROJECT__VENDOR:
-				return VENDOR_EDEFAULT == null ? vendor != null : !VENDOR_EDEFAULT.equals(vendor);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (lazy: ");
-		result.append(lazy);
-		result.append(", singleton: ");
-		result.append(singleton);
-		result.append(", activatorClass: ");
-		result.append(activatorClass);
-		result.append(", vendor: ");
-		result.append(vendor);
-		result.append(')');
-		return result.toString();
 	}
 
 } //BundleProjectImpl

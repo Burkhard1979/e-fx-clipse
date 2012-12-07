@@ -35,6 +35,10 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImp
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl#getImportedPackages <em>Imported Packages</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl#getExecutionEnvironment <em>Execution Environment</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl#getRequiredBundles <em>Required Bundles</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl#getLazy <em>Lazy</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl#getSingleton <em>Singleton</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl#getActivatorClass <em>Activator Class</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ManifestFileImpl#getVendor <em>Vendor</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +154,86 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 	 * @ordered
 	 */
 	protected EList<RequiredBundle> requiredBundles;
+
+	/**
+	 * The default value of the '{@link #getLazy() <em>Lazy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLazy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean LAZY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLazy() <em>Lazy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLazy()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean lazy = LAZY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSingleton() <em>Singleton</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingleton()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean SINGLETON_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSingleton() <em>Singleton</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingleton()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean singleton = SINGLETON_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getActivatorClass() <em>Activator Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActivatorClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ACTIVATOR_CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getActivatorClass() <em>Activator Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActivatorClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String activatorClass = ACTIVATOR_CLASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVendor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VENDOR_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVendor()
+	 * @generated
+	 * @ordered
+	 */
+	protected String vendor = VENDOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -296,6 +380,90 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Boolean getLazy() {
+		return lazy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLazy(Boolean newLazy) {
+		Boolean oldLazy = lazy;
+		lazy = newLazy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.MANIFEST_FILE__LAZY, oldLazy, lazy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getSingleton() {
+		return singleton;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSingleton(Boolean newSingleton) {
+		Boolean oldSingleton = singleton;
+		singleton = newSingleton;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.MANIFEST_FILE__SINGLETON, oldSingleton, singleton));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getActivatorClass() {
+		return activatorClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setActivatorClass(String newActivatorClass) {
+		String oldActivatorClass = activatorClass;
+		activatorClass = newActivatorClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.MANIFEST_FILE__ACTIVATOR_CLASS, oldActivatorClass, activatorClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVendor() {
+		return vendor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVendor(String newVendor) {
+		String oldVendor = vendor;
+		vendor = newVendor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.MANIFEST_FILE__VENDOR, oldVendor, vendor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -331,6 +499,14 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 				return getExecutionEnvironment();
 			case BundlePackage.MANIFEST_FILE__REQUIRED_BUNDLES:
 				return getRequiredBundles();
+			case BundlePackage.MANIFEST_FILE__LAZY:
+				return getLazy();
+			case BundlePackage.MANIFEST_FILE__SINGLETON:
+				return getSingleton();
+			case BundlePackage.MANIFEST_FILE__ACTIVATOR_CLASS:
+				return getActivatorClass();
+			case BundlePackage.MANIFEST_FILE__VENDOR:
+				return getVendor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -368,6 +544,18 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 				getRequiredBundles().clear();
 				getRequiredBundles().addAll((Collection<? extends RequiredBundle>)newValue);
 				return;
+			case BundlePackage.MANIFEST_FILE__LAZY:
+				setLazy((Boolean)newValue);
+				return;
+			case BundlePackage.MANIFEST_FILE__SINGLETON:
+				setSingleton((Boolean)newValue);
+				return;
+			case BundlePackage.MANIFEST_FILE__ACTIVATOR_CLASS:
+				setActivatorClass((String)newValue);
+				return;
+			case BundlePackage.MANIFEST_FILE__VENDOR:
+				setVendor((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -401,6 +589,18 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 			case BundlePackage.MANIFEST_FILE__REQUIRED_BUNDLES:
 				getRequiredBundles().clear();
 				return;
+			case BundlePackage.MANIFEST_FILE__LAZY:
+				setLazy(LAZY_EDEFAULT);
+				return;
+			case BundlePackage.MANIFEST_FILE__SINGLETON:
+				setSingleton(SINGLETON_EDEFAULT);
+				return;
+			case BundlePackage.MANIFEST_FILE__ACTIVATOR_CLASS:
+				setActivatorClass(ACTIVATOR_CLASS_EDEFAULT);
+				return;
+			case BundlePackage.MANIFEST_FILE__VENDOR:
+				setVendor(VENDOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -427,6 +627,14 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 				return EXECUTION_ENVIRONMENT_EDEFAULT == null ? executionEnvironment != null : !EXECUTION_ENVIRONMENT_EDEFAULT.equals(executionEnvironment);
 			case BundlePackage.MANIFEST_FILE__REQUIRED_BUNDLES:
 				return requiredBundles != null && !requiredBundles.isEmpty();
+			case BundlePackage.MANIFEST_FILE__LAZY:
+				return LAZY_EDEFAULT == null ? lazy != null : !LAZY_EDEFAULT.equals(lazy);
+			case BundlePackage.MANIFEST_FILE__SINGLETON:
+				return SINGLETON_EDEFAULT == null ? singleton != null : !SINGLETON_EDEFAULT.equals(singleton);
+			case BundlePackage.MANIFEST_FILE__ACTIVATOR_CLASS:
+				return ACTIVATOR_CLASS_EDEFAULT == null ? activatorClass != null : !ACTIVATOR_CLASS_EDEFAULT.equals(activatorClass);
+			case BundlePackage.MANIFEST_FILE__VENDOR:
+				return VENDOR_EDEFAULT == null ? vendor != null : !VENDOR_EDEFAULT.equals(vendor);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -449,6 +657,14 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 		result.append(version);
 		result.append(", executionEnvironment: ");
 		result.append(executionEnvironment);
+		result.append(", lazy: ");
+		result.append(lazy);
+		result.append(", singleton: ");
+		result.append(singleton);
+		result.append(", activatorClass: ");
+		result.append(activatorClass);
+		result.append(", vendor: ");
+		result.append(vendor);
 		result.append(')');
 		return result.toString();
 	}
