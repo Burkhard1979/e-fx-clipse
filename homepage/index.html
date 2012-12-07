@@ -14,11 +14,11 @@
    <ul class="nav">
     <li class="active"><a href="index.html">Home</a></li>
     <li><a href="install.html">Installation</a></li>
-    <li><a href="fxgraph.html">FXGraph</a></li>
-    <li><a href="tutorials.html">Tutorials</a></li>
+	<li><a href="/trac/wiki/FXGraph">FXGraph</a></li>
+    <li><a href="/trac/wiki/Tutorials">Tutorials</a></li>
     <li><a href="releases.html">Releases</a></li>
-    <li><a href="/trac/report">BugTracker</a></li>
-    <li><a href="https://github.com/tomsontom/e-fx-clipse">Source-Code</a></li>
+    <li><a href="/trac/report">Bug Tracker</a></li>
+    <li><a href="https://github.com/tomsontom/e-fx-clipse">Source Code</a></li>
     <li><a href="/trac/wiki">Wiki</a></li>
     <li><a href="https://groups.google.com/forum/?fromgroups#!forum/efxclipse">Forum</a></li>
    </ul>
@@ -46,11 +46,11 @@
    <div class="span-one-third">
     <h2>Tooling</h2>
     <p>
-    e(fx)clipse provides JavaFX tooling for the Eclipse IDE. We are currently supporting Eclipse 3.7.2 and the currently developed Eclipse 4.2.
+    e(fx)clipse provides JavaFX tooling for the Eclipse IDE. We support Eclipse 4.2.x, 3.8.x, and 3.7.2.
     <ul>
      <li>JDT Support</li>
      <li>PDE Support</li>
-     <li>UI DSL to author FXML</li>
+     <li>UI DSL for authoring FXML</li>
      <li>...</li>
     </ul>
     </p>
@@ -58,8 +58,7 @@
    <div class="span-one-third">
     <h2>Runtime</h2>
     <p>
-    It's not all about tooling in the e(fx)clipse project but we are also providing a runtime platform and libraries you can use in your
-    JavaFX 2.x applications.
+    It's not all about tooling in the e(fx)clipse project: we also provide a runtime platform and libraries you can use in your JavaFX 2.x applications.
     <ul>
      <li>Support for OSGi</li>
      <li>Support for the Eclipse 4 Application Platform</li>
@@ -70,8 +69,7 @@
    <div class="span-one-third">
     <h2>Platforms</h2>
     <p>
-     JavaFX 2.x is currently available on Windows (GA), Mac OS X (Beta) and Linux (Developer Preview) the tooling is currently
-     supported on all those 3 platforms as well.
+     JavaFX 2.x is currently available on Windows, Mac OS X, and Linux as part of the JDK (JDK 7u6 and above). Our tooling supports all of these three platforms.
     </p>
    </div>
   </div>
@@ -86,6 +84,18 @@
      <a class="btn" href="#about-runtime">View details</a>
     </p>
    </div>
+  </div>
+  <div>
+  <h4>Stay tuned</h4>
+  <p>
+  You can read about the latest developments on <a href="http://tomsondev.bestsolution.at/">Tom's blog</a>.
+  </p>
+  </div>
+  <div>
+  <h4>Looking for support?</h4>
+  <p>
+  Check out <a href="https://groups.google.com/forum/?fromgroups#!forum/efxclipse">e(fx)clipse on Google Groups</a> if you're looking for support on specific problems.
+  </p>
   </div>
  </section>
  <section id="about-tooling">
@@ -107,8 +117,7 @@
    </div>
    <div class="span8">
     <p>
-     By integrating into Eclipse JDT e.g. by providing a specialized classpath container, e(fx)clipse allows users to develop JavaFX applications like they develop
-     Swing and SWT applications
+     By integrating into the Eclipse JDT, e.g., by providing a specialized classpath container, e(fx)clipse allows users to develop JavaFX applications in the same fashion they develop Swing and SWT applications.
     </p>
    </div>
   </div>
@@ -127,8 +136,7 @@
    </div>
    <div class="span8">
     <p>
-     By integrating into PDE e.g. by providing an enhanced PDEClasspath container, e(fx)clipse makes developing JavaFX applications for Eclipse Equinox as easy as developing 
-     SWT/Swing applications
+     By integrating into the Eclipse PDE, e.g., by providing an enhanced PDEClasspath container, e(fx)clipse makes developing JavaFX applications for Eclipse Equinox as easy as developing  SWT/Swing applications.
     </p>
    </div>
   </div>
@@ -147,19 +155,15 @@
    </div>
    <div class="span8">
     <p>
-     JavaFX 2 allows to define the UI structure using an XML-Format named <a href="http://docs.oracle.com/javafx/2.0/api/javafx/fxml/doc-files/introduction_to_fxml.html">FXML</a> unlike other XML-Formats this one has no DTD/Schema
-     but in fact serialization for an arbitary (javafx) objectgraph which means standard XML editors are useless
-     when it comes to fxml. 
+     JavaFX 2 allows for defining the UI structure using an XML format named <a href="http://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html">FXML</a>. Unlike other XML formats, FXML has no DTD/Schema but it provides serialization for an arbitrary (JavaFX) object graph, which means standard XML editors are useless when it comes to FXML. 
     </p>
     <p>
-     e(fx)clipse is going anther route by providing a tooling for a very simple object graph definition language 
-     named <b>fxgraph</b> which gets translated into fxml in the background. So at runtime you don't need an extra library
-     because JavaFX 2 can load fxml-Files "natively".
+     e(fx)clipse is going another route by providing a tooling for a very simple object graph definition language 
+     named <b>FXGraph</b> which gets translated into FXML in the background. So you don't need an extra library at runtime
+     since JavaFX 2 can load FXML files natively.
     </p>
     <p>
-     One of the coolest feature of fxgraph is that it integrates with JDT (e.g. you get the JavaDoc for all referenced elements, autocompletion 
-     support, ...). The DSL allows the user to attach some extra information - e.g. CSS-Files - so that the integrated Live-Preview 
-     can make use of them. 
+     One of the coolest feature of FXGraph is that it integrates with the Eclipse JDT, giving you for instance the Javadoc for all referenced elements and autocompletion support. The DSL allows the user to attach some extra information (e.g. CSS files) such that the integrated live preview can make use of them. 
     </p>
    </div>
   </div>
@@ -178,13 +182,11 @@
    </div>
    <div class="span8"> 
     <p>
-     Almost all IDEs provide a CSS-Editor but this editor only knows about the attributes used inside HTML-Browser applications.
-     By providing a specialized CSS-Editor - who knows the CSS-Properties used by JavaFX 2 - authoring CSS files for your JavaFX application 
-     gets as easy as in web projects.
+     Almost all IDEs provide a CSS editor, but this editor only knows about the attributes used inside HTML browser applications.
+     By providing a specialized CSS editor, which knows the CSS properties used by JavaFX 2, authoring CSS files for your JavaFX project is as easy as in web projects.
     </p>
     <p>
-     If you define your UI using fxgraph another nice feature is that you see directly what a change in your CSS-Definition will have 
-     in your application at runtime which helps you to try out different CSS settings without having to start and stop your application.
+     When you define your UI using FXGraph, you will see immediately the effect of your CSS changes on your application at runtime. This feature helps you try out different CSS settings without having to start and stop your application.
     </p>
    </div>
   </div>
@@ -203,9 +205,7 @@
    </div>
    <div class="span8"> 
     <p>
-     <a href="http://docs.oracle.com/javafx/2.0/api/javafx/fxml/doc-files/introduction_to_fxml.html">FXML</a> is an DTD/Schemaless XML-Serialization specification to define JavaFX-UIs and Java object graphs in general. e(fx)clipse
-     provides you advanced tooling to author this file format. Because the FXML-File references Java-Elements the editor tightly
-     integrates with the JDT to e.g. show JavaDoc of Java-Elements like Classes, Methods, ... . 
+     <a href="http://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html">FXML</a> is a DTD/Schema-less XML serialization specification for the definition of JavaFX UIs and Java object graphs in general. e(fx)clipse provides you with advanced tooling for authoring this file format. As the FXML file references Java elements, the editor tightly integrates with the Eclipse JDT such that, for instance, you can see the Javadoc of Java elements like classes and methods in your FXML editor.
     </p>
    </div>    
   </div>
@@ -229,8 +229,7 @@
    </div>
    <div class="span8">
     <p>
-     The e(fx)clipse standard library provides some useful extensions when writing JavaFX. The library provides for example additional layout panels people
-     are familiar with in the SWT, using Google Guice together with FXML, Eclipse Databinding for JavaFX-Properties, ... .
+     The e(fx)clipse standard library provides some useful extensions for writing JavaFX code. The library offers, among other features, additional layout panels people are familiar with in SWT, using Google Guice together with FXML, Eclipse databinding for JavaFX properties, and much more.
     </p>
    </div>
   </div>
@@ -249,9 +248,7 @@
    </div>
    <div class="span8"> 
     <p>
-     Unfortunately JavaFX is not written with OSGi in mind so there are various places which are causing problems when running inside OSGi ranging from the fact
-     JavaFX-Binaries are located somewhere on the users system, to problems when it comes to class loading because of OSGi's visibility rules. e(fx)clipse provides
-     helper libraries to deal with all those problems and makes writing JavaFX applications ontop of Eclipse Equinox a feel as easy as it is with SWT and Swing
+     Unfortunately, JavaFX was not written with OSGi in mind so there are various sources of error when running inside OSGi. These problems include the location of the JavaFX binaries in your Java installation and class loading issues because of OSGi's visibility rules. e(fx)clipse provides helper libraries for dealing with all of those problems and makes writing JavaFX applications on top of Eclipse Equinox feel as easy as it is with SWT and Swing.
     </p>
    </div>
   </div>
@@ -270,9 +267,7 @@
    </div>
    <div class="span8"> 
     <p>
-     At the moment one wants to develop medium to big JavaFX application one immediately asks for a platform which e.g. provides a command/handler framework, a generic
-     extension API, dependency injection, ... . Fortunately such a platform has been written already for the Eclipse 4.x SDK because of the design of this platform
-     it can be used with an UI-Technology and so e(fx)clipse provides support by providing so called JavaFX-Renderers to write JavaFX RCP applications
+     Once you start developing medium-sized to big JavaFX applications, you'll ask for a platform that provides a command/handler framework, a generic extension API, dependency injection, etc. Fortunately, such a platform is offered by the Eclipse 4.x SDK which, due to its design, can be used with any UI technology. e(fx)clipse provides so called JavaFX renderers for writing JavaFX RCP applications on this platform.
     </p>
    </div>
   </div>

@@ -70,7 +70,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	protected EList<Attribute> attributes;
 
 	/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' reference list.
+	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getChildren()
@@ -138,7 +138,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 */
 	public EList<Element> getChildren() {
 		if (children == null) {
-			children = new EObjectResolvingEList<Element>(Element.class, this, BundlePackage.ELEMENT__CHILDREN);
+			children = new EObjectContainmentEList<Element>(Element.class, this, BundlePackage.ELEMENT__CHILDREN);
 		}
 		return children;
 	}
@@ -153,6 +153,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 		switch (featureID) {
 			case BundlePackage.ELEMENT__ATTRIBUTES:
 				return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+			case BundlePackage.ELEMENT__CHILDREN:
+				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

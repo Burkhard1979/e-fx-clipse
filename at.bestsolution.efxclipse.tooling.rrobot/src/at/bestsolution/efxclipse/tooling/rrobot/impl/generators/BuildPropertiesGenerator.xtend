@@ -18,7 +18,7 @@ class BuildPropertiesGenerator implements Generator<BuildProperties> {
 	def generateContent(BuildProperties file, Map<String,Object> data) '''bin.includes = .,\
  META-INF/«IF (file.eContainer as BundleProject).pluginxml != null»,\
  plugin.xml«ENDIF»«IF ! file.binIncludes.empty»,\
-«file.binIncludes.map([r|r.fullpath]).join(",\r\n ")»
+«file.binIncludes.map([r|r.fullpath]).join(",\\\r\n ")»
 «ENDIF»
 
 source.. = src/

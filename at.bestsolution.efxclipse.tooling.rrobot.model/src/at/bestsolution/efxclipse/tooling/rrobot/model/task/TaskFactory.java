@@ -58,13 +58,31 @@ public interface TaskFactory extends EFactory {
 	TemplatedFile createTemplatedFile();
 
 	/**
-	 * Returns a new object of class '<em>String Content File</em>'.
+	 * Returns a new object of class '<em>Data File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>String Content File</em>'.
+	 * @return a new object of class '<em>Data File</em>'.
 	 * @generated
 	 */
-	StringContentFile createStringContentFile();
+	DataFile createDataFile();
+
+	/**
+	 * Returns a new object of class '<em>URL File</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>URL File</em>'.
+	 * @generated
+	 */
+	URLFile createURLFile();
+
+	/**
+	 * Returns a new object of class '<em>Generator File</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generator File</em>'.
+	 * @generated
+	 */
+	GeneratorFile createGeneratorFile();
 
 	/**
 	 * Returns the package supported by this factory.

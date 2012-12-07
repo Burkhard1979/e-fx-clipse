@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
 Import-Package: javax.annotation;version="1.0.0",
  javax.inject;version="1.0.0",
  org.osgi.service.event;version="1.3.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: at.bestsolution.efxclipse.runtime.workbench.renderers.base,
  at.bestsolution.efxclipse.runtime.workbench.renderers.base.addons,
  at.bestsolution.efxclipse.runtime.workbench.renderers.base.services,

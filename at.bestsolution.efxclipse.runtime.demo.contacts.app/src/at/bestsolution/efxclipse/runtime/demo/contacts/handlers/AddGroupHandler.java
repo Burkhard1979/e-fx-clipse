@@ -32,6 +32,7 @@ public class AddGroupHandler {
 	@Execute
 	void execute() {
 		Group group = ContactsFactory.eINSTANCE.createGroup();
+		group.setName("New Group");
 		Command command = AddCommand.create(contactsManager.getEditingDomain(), contactsManager.getRootGroup(), ContactsPackage.Literals.GROUP__GROUPS, group); 
 		if (command != null && command.canExecute())
 			contactsManager.getEditingDomain().getCommandStack().execute(command);

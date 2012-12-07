@@ -31,12 +31,25 @@
   <eClassifiers xsi:type="ecore:EClass" name="TemplatedFile" eSuperTypes="#//File">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="generatorType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringContentFile" eSuperTypes="#//File">
+  <eClassifiers xsi:type="ecore:EClass" name="DataFile" eSuperTypes="#//File">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="URLFile" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneratorFile" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generatorInstance" transient="true">
+      <eGenericType eClassifier="#//Generator">
+        <eTypeArguments eClassifier="#//GeneratorFile"/>
+      </eGenericType>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="IOException" instanceClassName="java.io.IOException"
       serializable="false"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IProgressMonitor" instanceClassName="org.eclipse.core.runtime.IProgressMonitor"
       serializable="false"/>
   <eClassifiers xsi:type="ecore:EDataType" name="InputStream" instanceClassName="java.io.InputStream"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Generator" instanceClassName="at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator">
+    <eTypeParameters name="F"/>
+  </eClassifiers>
 </ecore:EPackage>

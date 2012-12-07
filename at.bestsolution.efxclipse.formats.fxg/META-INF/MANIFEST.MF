@@ -6,7 +6,7 @@ Bundle-Version: 0.1.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: at.bestsolution.efxclipse.formats.fxg.converter,
  at.bestsolution.efxclipse.formats.fxg.fxg,
  at.bestsolution.efxclipse.formats.fxg.fxg.impl,
