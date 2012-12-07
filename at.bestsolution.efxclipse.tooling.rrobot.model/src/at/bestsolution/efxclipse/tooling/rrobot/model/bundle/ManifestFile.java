@@ -24,6 +24,10 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getImportedPackages <em>Imported Packages</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getExecutionEnvironment <em>Execution Environment</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getRequiredBundles <em>Required Bundles</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getLazy <em>Lazy</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getSingleton <em>Singleton</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getActivatorClass <em>Activator Class</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getVendor <em>Vendor</em>}</li>
  * </ul>
  * </p>
  *
@@ -183,5 +187,109 @@ public interface ManifestFile extends TemplatedFile {
 	 * @generated
 	 */
 	EList<RequiredBundle> getRequiredBundles();
+
+	/**
+	 * Returns the value of the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lazy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lazy</em>' attribute.
+	 * @see #setLazy(Boolean)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getManifestFile_Lazy()
+	 * @model
+	 * @generated
+	 */
+	Boolean getLazy();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getLazy <em>Lazy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Lazy</em>' attribute.
+	 * @see #getLazy()
+	 * @generated
+	 */
+	void setLazy(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Singleton</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Singleton</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Singleton</em>' attribute.
+	 * @see #setSingleton(Boolean)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getManifestFile_Singleton()
+	 * @model
+	 * @generated
+	 */
+	Boolean getSingleton();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getSingleton <em>Singleton</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Singleton</em>' attribute.
+	 * @see #getSingleton()
+	 * @generated
+	 */
+	void setSingleton(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Activator Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Activator Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Activator Class</em>' attribute.
+	 * @see #setActivatorClass(String)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getManifestFile_ActivatorClass()
+	 * @model
+	 * @generated
+	 */
+	String getActivatorClass();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getActivatorClass <em>Activator Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Activator Class</em>' attribute.
+	 * @see #getActivatorClass()
+	 * @generated
+	 */
+	void setActivatorClass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Vendor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Vendor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Vendor</em>' attribute.
+	 * @see #setVendor(String)
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getManifestFile_Vendor()
+	 * @model
+	 * @generated
+	 */
+	String getVendor();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getVendor <em>Vendor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Vendor</em>' attribute.
+	 * @see #getVendor()
+	 * @generated
+	 */
+	void setVendor(String value);
 
 } // ManifestFile
