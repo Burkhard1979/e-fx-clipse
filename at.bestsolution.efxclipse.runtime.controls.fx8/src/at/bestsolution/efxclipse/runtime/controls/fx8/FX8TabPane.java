@@ -101,8 +101,7 @@ public class FX8TabPane extends FXTabPane<FX8Tab> {
      * Constructs a new TabPane.
      */
     public FX8TabPane() {
-    	setSkin(new FX8TabPaneSkin(this));
-        getStyleClass().setAll("tab-pane");
+    	getStyleClass().setAll("tab-pane");
         setSelectionModel(new TabPaneSelectionModel(this));
 
         tabs.addListener(new ListChangeListener<FX8Tab>() {
@@ -122,6 +121,7 @@ public class FX8TabPane extends FXTabPane<FX8Tab> {
                 }
             }
         });
+        setSkin(new FX8TabPaneSkin(this));
     }
 
     private ObservableList<FX8Tab> tabs = FXCollections.observableArrayList();

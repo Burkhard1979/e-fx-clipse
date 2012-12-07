@@ -104,7 +104,7 @@ public class FX2TabPane extends FXTabPane<FX2Tab> {
      * Constructs a new TabPane.
      */
     public FX2TabPane() {
-        getStyleClass().setAll("tab-pane");
+    	getStyleClass().setAll("tab-pane");
         setSelectionModel(new TabPaneSelectionModel(this));
 
         tabs.addListener(new ListChangeListener<FX2Tab>() {
@@ -124,6 +124,7 @@ public class FX2TabPane extends FXTabPane<FX2Tab> {
                 }
             }
         });
+        setSkin(new FX2MinMaxTabPaneSkin(this));
     }
 
     private ObservableList<FX2Tab> tabs = FXCollections.observableArrayList();

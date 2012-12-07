@@ -11,9 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <file path="/at.bestsolution.efxclipse.runtime.controls.fx2/build.fxbuild"/>
-        <javaElement handleIdentifier="=at.bestsolution.efxclipse.runtime.controls.fx2/src"/>
         <file path="/at.bestsolution.efxclipse.runtime.controls.fx2/.classpath"/>
+        <javaElement handleIdentifier="=at.bestsolution.efxclipse.runtime.controls.fx2/src"/>
         <file path="/at.bestsolution.efxclipse.runtime.controls.fx2/.project"/>
     </selectedElements>
 </jardesc>
