@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.tooling.rrobot.javafx_exec">
+   <implementation class="at.bestsolution.efxclipse.tooling.rrobot.impl.dynamic.JavaExecutor"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator"/>
+   </service>
+   <property name="executabletype" type="String" value="java"/>
+</scr:component>

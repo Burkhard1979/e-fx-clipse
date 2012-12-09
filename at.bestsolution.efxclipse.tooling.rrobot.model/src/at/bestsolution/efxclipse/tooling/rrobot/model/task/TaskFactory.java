@@ -76,13 +76,22 @@ public interface TaskFactory extends EFactory {
 	URLFile createURLFile();
 
 	/**
-	 * Returns a new object of class '<em>Generator File</em>'.
+	 * Returns a new object of class '<em>Dynamic File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Generator File</em>'.
+	 * @return a new object of class '<em>Dynamic File</em>'.
 	 * @generated
 	 */
-	GeneratorFile createGeneratorFile();
+	DynamicFile createDynamicFile();
+
+	/**
+	 * Returns a new object of class '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable</em>'.
+	 * @generated
+	 */
+	Variable createVariable();
 
 	/**
 	 * Returns the package supported by this factory.
