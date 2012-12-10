@@ -9,3 +9,4 @@ Export-Package: at.bestsolution.efxclipse.runtime.core,
  at.bestsolution.efxclipse.runtime.core.log
 Bundle-Vendor: %Bundle-Vendor
 Service-Component: OSGI-INF/jlogger.xml
+Bundle-ActivationPolicy: lazy
