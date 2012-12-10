@@ -14,10 +14,10 @@ field_selection// returns [String fields]
         ;
 
 primary_expression returns Expr// returns [Expr expr]
-        : IDENTIFIER//    { $expr = tm.variable($IDENTIFIER.text); }
-        | INTCONSTANT//   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
-        | FLOATCONSTANT// { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
-        | BOOLCONSTANT//  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
+        : {primary_expression} IDENTIFIER//    { $expr = tm.variable($IDENTIFIER.text); }
+        | {primary_expression} INTCONSTANT//   { $expr = tm.literal(Type.INT, Integer.valueOf($INTCONSTANT.text)); }
+        | {primary_expression}FLOATCONSTANT// { $expr = tm.literal(Type.FLOAT, Float.valueOf($FLOATCONSTANT.text)); }
+        | {primary_expression}BOOLCONSTANT//  { $expr = tm.literal(Type.BOOL, Boolean.valueOf($BOOLCONSTANT.text)); }
         | (LEFT_PAREN e=expression RIGHT_PAREN) //{ $expr = tm.parenExpr($e.expr); }
         ;
 

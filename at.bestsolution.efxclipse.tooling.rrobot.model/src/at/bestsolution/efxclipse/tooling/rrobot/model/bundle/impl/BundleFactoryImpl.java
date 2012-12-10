@@ -76,6 +76,9 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 			case BundlePackage.FEATURE_PLUGIN: return createFeaturePlugin();
 			case BundlePackage.REQUIRED_FEATURE: return createRequiredFeature();
 			case BundlePackage.INCLUDED_FEATURE: return createIncludedFeature();
+			case BundlePackage.PRODUCT_PLUGIN: return createProductPlugin();
+			case BundlePackage.PRODUCT_FEATURE: return createProductFeature();
+			case BundlePackage.PRODUCT_START_CONFIG: return createProductStartConfig();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -283,6 +286,36 @@ public class BundleFactoryImpl extends EFactoryImpl implements BundleFactory {
 	public IncludedFeature createIncludedFeature() {
 		IncludedFeatureImpl includedFeature = new IncludedFeatureImpl();
 		return includedFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductPlugin createProductPlugin() {
+		ProductPluginImpl productPlugin = new ProductPluginImpl();
+		return productPlugin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductFeature createProductFeature() {
+		ProductFeatureImpl productFeature = new ProductFeatureImpl();
+		return productFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductStartConfig createProductStartConfig() {
+		ProductStartConfigImpl productStartConfig = new ProductStartConfigImpl();
+		return productStartConfig;
 	}
 
 	/**

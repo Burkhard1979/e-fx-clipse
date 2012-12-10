@@ -193,26 +193,26 @@ public interface FeatureFile extends TemplatedFile {
 	void setCopyright(LinkedString value);
 
 	/**
-	 * Returns the value of the '<em><b>License</b></em>' reference.
+	 * Returns the value of the '<em><b>License</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>License</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>License</em>' reference.
+	 * @return the value of the '<em>License</em>' containment reference.
 	 * @see #setLicense(LinkedString)
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getFeatureFile_License()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	LinkedString getLicense();
 
 	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense <em>License</em>}' reference.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense <em>License</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>License</em>' reference.
+	 * @param value the new value of the '<em>License</em>' containment reference.
 	 * @see #getLicense()
 	 * @generated
 	 */

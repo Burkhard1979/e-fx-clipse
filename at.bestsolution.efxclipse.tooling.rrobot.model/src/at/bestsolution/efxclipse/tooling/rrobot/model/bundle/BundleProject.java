@@ -15,10 +15,6 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getManifest <em>Manifest</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getBuildProperties <em>Build Properties</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getPluginxml <em>Pluginxml</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getLazy <em>Lazy</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getSingleton <em>Singleton</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getActivatorClass <em>Activator Class</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getVendor <em>Vendor</em>}</li>
  * </ul>
  * </p>
  *
@@ -104,109 +100,5 @@ public interface BundleProject extends Project {
 	 * @generated
 	 */
 	void setPluginxml(PluginXMLFile value);
-
-	/**
-	 * Returns the value of the '<em><b>Lazy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Lazy</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Lazy</em>' attribute.
-	 * @see #setLazy(Boolean)
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getBundleProject_Lazy()
-	 * @model
-	 * @generated
-	 */
-	Boolean getLazy();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getLazy <em>Lazy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lazy</em>' attribute.
-	 * @see #getLazy()
-	 * @generated
-	 */
-	void setLazy(Boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Singleton</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Singleton</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Singleton</em>' attribute.
-	 * @see #setSingleton(Boolean)
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getBundleProject_Singleton()
-	 * @model
-	 * @generated
-	 */
-	Boolean getSingleton();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getSingleton <em>Singleton</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Singleton</em>' attribute.
-	 * @see #getSingleton()
-	 * @generated
-	 */
-	void setSingleton(Boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Activator Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activator Class</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activator Class</em>' attribute.
-	 * @see #setActivatorClass(String)
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getBundleProject_ActivatorClass()
-	 * @model
-	 * @generated
-	 */
-	String getActivatorClass();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getActivatorClass <em>Activator Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activator Class</em>' attribute.
-	 * @see #getActivatorClass()
-	 * @generated
-	 */
-	void setActivatorClass(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Vendor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Vendor</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Vendor</em>' attribute.
-	 * @see #setVendor(String)
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getBundleProject_Vendor()
-	 * @model
-	 * @generated
-	 */
-	String getVendor();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getVendor <em>Vendor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Vendor</em>' attribute.
-	 * @see #getVendor()
-	 * @generated
-	 */
-	void setVendor(String value);
 
 } // BundleProject

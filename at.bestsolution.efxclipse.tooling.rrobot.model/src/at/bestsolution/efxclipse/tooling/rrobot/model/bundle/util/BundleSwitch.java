@@ -200,6 +200,24 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case BundlePackage.PRODUCT_PLUGIN: {
+				ProductPlugin productPlugin = (ProductPlugin)theEObject;
+				T result = caseProductPlugin(productPlugin);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.PRODUCT_FEATURE: {
+				ProductFeature productFeature = (ProductFeature)theEObject;
+				T result = caseProductFeature(productFeature);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BundlePackage.PRODUCT_START_CONFIG: {
+				ProductStartConfig productStartConfig = (ProductStartConfig)theEObject;
+				T result = caseProductStartConfig(productStartConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -471,6 +489,51 @@ public class BundleSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIncludedFeature(IncludedFeature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product Plugin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductPlugin(ProductPlugin object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductFeature(ProductFeature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Product Start Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Product Start Config</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductStartConfig(ProductStartConfig object) {
 		return null;
 	}
 

@@ -353,6 +353,11 @@ public class LivePreviewPart extends ViewPart {
 
 	@Override
 	public void dispose() {
+		
+		if( swtFXContainer != null && swtFXContainer.getScene() != null ) {
+			swtFXContainer.getScene().getStylesheets().clear();
+		}
+		
 		getSite().getWorkbenchWindow().getPartService().removePartListener(synchronizer);
 		getSite().getWorkbenchWindow().getPartService().addPartListener(listener);
 
@@ -537,11 +542,18 @@ public class LivePreviewPart extends ViewPart {
 				}
 				
 				// Force CSS-Reloading
-				StyleManager.getInstance().reloadStylesheets(scene);
-				swtFXContainer.setScene(scene);
-
+				if( isJavaFX2() ) {
+					StyleManager.getInstance().reloadStylesheets(scene);
+				}
+				
+				// In FX8 we need to remove the stylesheets on the old scene to force reloading them
+				if( swtFXContainer.getScene() != null ) {
+					swtFXContainer.getScene() .getStylesheets().clear();	
+				}
+				
 				scene.getStylesheets().addAll(contentData.cssFiles);
-
+				swtFXContainer.setScene(scene);
+				
 			} catch (Exception e) {
 				StringWriter sw = new StringWriter();
 				e.printStackTrace(new PrintWriter(sw));
@@ -619,6 +631,10 @@ public class LivePreviewPart extends ViewPart {
 				}
 			});
 		}
+	}
+	
+	private static boolean isJavaFX2() {
+		return System.getProperty("javafx.version") != null && System.getProperty("javafx.version").startsWith("2");
 	}
 
 	public static class ContentData {

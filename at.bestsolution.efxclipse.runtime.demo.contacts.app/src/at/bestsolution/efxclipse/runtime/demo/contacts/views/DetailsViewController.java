@@ -12,7 +12,6 @@ package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
-
 import at.bestsolution.efxclipse.runtime.emf.databinding.edit.EMFEditFXProperties;
 import java.io.ByteArrayInputStream;
 import javafx.beans.property.Property;
@@ -86,10 +85,10 @@ public class DetailsViewController {
 	private TextField webPage;
 	private Property<String> webPageProperty;
 
-//	@FXML
-//	public void initialize() {
-//		
-//	}
+	// @FXML
+	// public void initialize() {
+	//
+	// }
 
 	public void updateBindings(Contact contact, EditingDomain editingDomain) {
 		// General
@@ -115,29 +114,33 @@ public class DetailsViewController {
 		webPageProperty = rebind(webPage, webPageProperty, contact, ContactsPackage.eINSTANCE.getContact_WebPage(), editingDomain);
 
 		// image
-		String jpegString = contact.getJpegString();
-		if (jpegString != null) {
-			byte[] imageBytes = Base64.decode(jpegString.getBytes());
-			ByteArrayInputStream is = new ByteArrayInputStream(imageBytes);
-			imageView.setImage(new Image(is));
-		} else {
-			imageView.setImage(null);
+		Image image = null;
+		if (contact != null) {
+			String jpegString = contact.getJpegString();
+			if (jpegString != null) {
+				byte[] imageBytes = Base64.decode(jpegString.getBytes());
+				ByteArrayInputStream is = new ByteArrayInputStream(imageBytes);
+				image = new Image(is);
+			}
 		}
-
+		imageView.setImage(image);
 	}
 
 	Property<String> rebind(TextField textField, Property<String> oldProperty, Contact contact, EStructuralFeature feature,
 			EditingDomain editingDomain) {
 		if (oldProperty != null)
 			textField.textProperty().unbindBidirectional(oldProperty);
-		
+
 		Property<String> property = null;
 		if (contact != null) {
 			property = EMFEditFXProperties.value(editingDomain, contact, feature);
-			textField.textProperty().bindBidirectional(property);	
+			textField.textProperty().bindBidirectional(property);
 		}
-		
+
 		textField.setDisable(contact == null);
+
+		if(contact == null)
+			textField.clear();
 		
 		return property;
 	}

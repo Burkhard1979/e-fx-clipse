@@ -117,9 +117,17 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 		});
 	}
 
-	MPart getPart(MStackElement element) {
+	MPart getPart(MUIElement element) {
 		if( element instanceof MPlaceholder ) {
 			return (MPart) ((MPlaceholder) element).getRef();
+		} else if (element instanceof MElementContainer<?>) {
+			@SuppressWarnings("unchecked")
+			MElementContainer<MUIElement> container = (MElementContainer<MUIElement>) element;
+			element = container.getSelectedElement();
+			if ((element == null) && !container.getChildren().isEmpty()) {
+				element = container.getChildren().get(0);
+			}
+			return getPart(element);
 		} else {
 			return (MPart) element;
 		}

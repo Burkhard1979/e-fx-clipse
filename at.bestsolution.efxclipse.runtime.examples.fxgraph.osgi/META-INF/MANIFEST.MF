@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: at.bestsolution.efxclipse.runtime.examples.fxgraph.osgi.Activator
 Require-Bundle: org.eclipse.core.runtime,
  at.bestsolution.efxclipse.runtime.application
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javafx.animation;version="2.0.0",
  javafx.application;version="2.0.0",
  javafx.beans;version="2.0.0",

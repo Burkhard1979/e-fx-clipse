@@ -76,13 +76,22 @@ public interface TaskPackage extends EPackage {
 	int ROBOT_TASK__PROJECTS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_TASK__VARIABLES = 1;
+
+	/**
 	 * The number of structural features of the '<em>Robot Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROBOT_TASK_FEATURE_COUNT = 1;
+	int ROBOT_TASK_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ProjectImpl <em>Project</em>}' class.
@@ -223,7 +232,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 8;
+	int IPROGRESS_MONITOR = 11;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl <em>Templated File</em>}' class.
@@ -263,24 +272,14 @@ public interface TaskPackage extends EPackage {
 	int TEMPLATED_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '<em>Input Stream</em>' data type.
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DataFileImpl <em>Data File</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see java.io.InputStream
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DataFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getDataFile()
 	 * @generated
 	 */
-	int INPUT_STREAM = 9;
-
-	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl <em>String Content File</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getStringContentFile()
-	 * @generated
-	 */
-	int STRING_CONTENT_FILE = 6;
+	int DATA_FILE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -289,7 +288,7 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_CONTENT_FILE__NAME = FILE__NAME;
+	int DATA_FILE__NAME = FILE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -298,17 +297,174 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_CONTENT_FILE__CONTENT = FILE_FEATURE_COUNT + 0;
+	int DATA_FILE__CONTENT = FILE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>String Content File</em>' class.
+	 * The number of structural features of the '<em>Data File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_CONTENT_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
+	int DATA_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
 
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.URLFileImpl <em>URL File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.URLFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getURLFile()
+	 * @generated
+	 */
+	int URL_FILE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int URL_FILE__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int URL_FILE__URI = FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>URL File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int URL_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DynamicFileImpl <em>Dynamic File</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DynamicFileImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getDynamicFile()
+	 * @generated
+	 */
+	int DYNAMIC_FILE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_FILE__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Execution URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_FILE__EXECUTION_URI = FILE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_FILE__TYPE = FILE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Dynamic File</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl <em>Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getVariable()
+	 * @generated
+	 */
+	int VARIABLE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__VALUE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__DEFAULT_VALUE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__DESCRIPTION = 3;
+
+	/**
+	 * The number of structural features of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_FEATURE_COUNT = 4;
+
+	/**
+	 * The meta object id for the '<em>Input Stream</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.InputStream
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
+	 * @generated
+	 */
+	int INPUT_STREAM = 12;
+
+	/**
+	 * The meta object id for the '<em>Generator</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGenerator()
+	 * @generated
+	 */
+	int GENERATOR = 13;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -318,7 +474,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 7;
+	int IO_EXCEPTION = 10;
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask <em>Robot Task</em>}'.
@@ -340,6 +496,17 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRobotTask_Projects();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getVariables()
+	 * @see #getRobotTask()
+	 * @generated
+	 */
+	EReference getRobotTask_Variables();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Project <em>Project</em>}'.
@@ -458,6 +625,134 @@ public interface TaskPackage extends EPackage {
 	EAttribute getTemplatedFile_GeneratorType();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile <em>Data File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile
+	 * @generated
+	 */
+	EClass getDataFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile#getContent <em>Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile#getContent()
+	 * @see #getDataFile()
+	 * @generated
+	 */
+	EAttribute getDataFile_Content();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile <em>URL File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>URL File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile
+	 * @generated
+	 */
+	EClass getURLFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile#getUri()
+	 * @see #getURLFile()
+	 * @generated
+	 */
+	EAttribute getURLFile_Uri();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile <em>Dynamic File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dynamic File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
+	 * @generated
+	 */
+	EClass getDynamicFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getExecutionURI <em>Execution URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Execution URI</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getExecutionURI()
+	 * @see #getDynamicFile()
+	 * @generated
+	 */
+	EAttribute getDynamicFile_ExecutionURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getType()
+	 * @see #getDynamicFile()
+	 * @generated
+	 */
+	EAttribute getDynamicFile_Type();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable
+	 * @generated
+	 */
+	EClass getVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getKey()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getValue()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getDefaultValue <em>Default Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default Value</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getDefaultValue()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_DefaultValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getDescription()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Description();
+
+	/**
 	 * Returns the meta object for data type '{@link java.io.InputStream <em>Input Stream</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -469,25 +764,15 @@ public interface TaskPackage extends EPackage {
 	EDataType getInputStream();
 
 	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile <em>String Content File</em>}'.
+	 * Returns the meta object for data type '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator <em>Generator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>String Content File</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile
+	 * @return the meta object for data type '<em>Generator</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+	 * @model instanceClass="at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator" typeParameters="F"
 	 * @generated
 	 */
-	EClass getStringContentFile();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile#getContent <em>Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Content</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile#getContent()
-	 * @see #getStringContentFile()
-	 * @generated
-	 */
-	EAttribute getStringContentFile_Content();
+	EDataType getGenerator();
 
 	/**
 	 * Returns the meta object for data type '{@link java.io.IOException <em>IO Exception</em>}'.
@@ -539,6 +824,14 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ROBOT_TASK__PROJECTS = eINSTANCE.getRobotTask_Projects();
+
+		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROBOT_TASK__VARIABLES = eINSTANCE.getRobotTask_Variables();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ProjectImpl <em>Project</em>}' class.
@@ -641,6 +934,110 @@ public interface TaskPackage extends EPackage {
 		EAttribute TEMPLATED_FILE__GENERATOR_TYPE = eINSTANCE.getTemplatedFile_GeneratorType();
 
 		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DataFileImpl <em>Data File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DataFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getDataFile()
+		 * @generated
+		 */
+		EClass DATA_FILE = eINSTANCE.getDataFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_FILE__CONTENT = eINSTANCE.getDataFile_Content();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.URLFileImpl <em>URL File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.URLFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getURLFile()
+		 * @generated
+		 */
+		EClass URL_FILE = eINSTANCE.getURLFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute URL_FILE__URI = eINSTANCE.getURLFile_Uri();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DynamicFileImpl <em>Dynamic File</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DynamicFileImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getDynamicFile()
+		 * @generated
+		 */
+		EClass DYNAMIC_FILE = eINSTANCE.getDynamicFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DYNAMIC_FILE__EXECUTION_URI = eINSTANCE.getDynamicFile_ExecutionURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DYNAMIC_FILE__TYPE = eINSTANCE.getDynamicFile_Type();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl <em>Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getVariable()
+		 * @generated
+		 */
+		EClass VARIABLE = eINSTANCE.getVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__KEY = eINSTANCE.getVariable_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__VALUE = eINSTANCE.getVariable_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__DEFAULT_VALUE = eINSTANCE.getVariable_DefaultValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__DESCRIPTION = eINSTANCE.getVariable_Description();
+
+		/**
 		 * The meta object literal for the '<em>Input Stream</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -651,22 +1048,14 @@ public interface TaskPackage extends EPackage {
 		EDataType INPUT_STREAM = eINSTANCE.getInputStream();
 
 		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl <em>String Content File</em>}' class.
+		 * The meta object literal for the '<em>Generator</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.StringContentFileImpl
-		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getStringContentFile()
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGenerator()
 		 * @generated
 		 */
-		EClass STRING_CONTENT_FILE = eINSTANCE.getStringContentFile();
-
-		/**
-		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STRING_CONTENT_FILE__CONTENT = eINSTANCE.getStringContentFile_Content();
+		EDataType GENERATOR = eINSTANCE.getGenerator();
 
 		/**
 		 * The meta object literal for the '<em>IO Exception</em>' data type.

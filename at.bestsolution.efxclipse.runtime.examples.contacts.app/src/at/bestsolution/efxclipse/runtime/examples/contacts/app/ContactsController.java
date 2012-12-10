@@ -32,6 +32,11 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
+import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
+import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
+import at.bestsolution.efxclipse.runtime.demo.contacts.provider.ContactsItemProviderAdapterFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryListCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableList;
@@ -41,11 +46,6 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
-import at.bestsolution.efxclipse.runtime.examples.contacts.Contact;
-import at.bestsolution.efxclipse.runtime.examples.contacts.ContactsFactory;
-import at.bestsolution.efxclipse.runtime.examples.contacts.ContactsPackage;
-import at.bestsolution.efxclipse.runtime.examples.contacts.Group;
-import at.bestsolution.efxclipse.runtime.examples.contacts.provider.ContactsItemProviderAdapterFactory;
 
 public class ContactsController {
 

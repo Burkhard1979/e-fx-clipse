@@ -4,7 +4,7 @@ Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.javafx;singleton:=true
 Bundle-Version: 2.2.0.qualifier
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: com.sun.glass.events;version="2.2.0";x-internal:=true,
  com.sun.glass.ui;version="2.2.0";x-internal:=true,
  com.sun.javafx;version="2.2.0";x-internal:=true,

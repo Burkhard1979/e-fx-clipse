@@ -12,13 +12,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
-import at.bestsolution.efxclipse.tooling.rrobot.model.task.StringContentFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskFactory;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,7 +69,10 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 			case TaskPackage.PROJECT: return createProject();
 			case TaskPackage.FOLDER: return createFolder();
 			case TaskPackage.TEMPLATED_FILE: return createTemplatedFile();
-			case TaskPackage.STRING_CONTENT_FILE: return createStringContentFile();
+			case TaskPackage.DATA_FILE: return createDataFile();
+			case TaskPackage.URL_FILE: return createURLFile();
+			case TaskPackage.DYNAMIC_FILE: return createDynamicFile();
+			case TaskPackage.VARIABLE: return createVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -84,6 +88,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 		switch (eDataType.getClassifierID()) {
 			case TaskPackage.INPUT_STREAM:
 				return createInputStreamFromString(eDataType, initialValue);
+			case TaskPackage.GENERATOR:
+				return createGeneratorFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -99,6 +105,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 		switch (eDataType.getClassifierID()) {
 			case TaskPackage.INPUT_STREAM:
 				return convertInputStreamToString(eDataType, instanceValue);
+			case TaskPackage.GENERATOR:
+				return convertGeneratorToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -149,9 +157,39 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringContentFile createStringContentFile() {
-		StringContentFileImpl stringContentFile = new StringContentFileImpl();
-		return stringContentFile;
+	public DataFile createDataFile() {
+		DataFileImpl dataFile = new DataFileImpl();
+		return dataFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public URLFile createURLFile() {
+		URLFileImpl urlFile = new URLFileImpl();
+		return urlFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DynamicFile createDynamicFile() {
+		DynamicFileImpl dynamicFile = new DynamicFileImpl();
+		return dynamicFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Variable createVariable() {
+		VariableImpl variable = new VariableImpl();
+		return variable;
 	}
 
 	/**
@@ -170,6 +208,24 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	 */
 	public String convertInputStreamToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Generator<?> createGeneratorFromString(EDataType eDataType, String initialValue) {
+		return (Generator<?>)super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGeneratorToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
 	}
 
 	/**

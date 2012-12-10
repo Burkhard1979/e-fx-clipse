@@ -68,7 +68,7 @@ public interface Element extends EObject {
 	EList<Attribute> getAttributes();
 
 	/**
-	 * Returns the value of the '<em><b>Children</b></em>' reference list.
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -76,9 +76,9 @@ public interface Element extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children</em>' reference list.
+	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getElement_Children()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Element> getChildren();

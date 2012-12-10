@@ -219,7 +219,7 @@ public class AdapterFactoryCellFactoryTest {
 		when(labelProvider.getText(item)).thenReturn(text);
 		when(labelProvider.getImage(item)).thenReturn(imageURI);
 		ImageView graphic = new ImageView();
-		when(cellFactory.imageFromObject(imageURI)).thenReturn(graphic);
+		when(cellFactory.graphicFromObject(imageURI)).thenReturn(graphic);
 		when(adapterFactory.adapt(item, IItemLabelProvider.class)).thenReturn(labelProvider);
 
 		Cell<?> cell = new Cell<>();
@@ -249,7 +249,7 @@ public class AdapterFactoryCellFactoryTest {
 	@Test
 	public void imageFromObject() throws MalformedURLException {
 		URL imageURL = new URL("http://domain.com/image.jpg");
-		Node image = cellFactory.imageFromObject(imageURL);
+		Node image = cellFactory.graphicFromObject(imageURL);
 		assertNotNull(image);
 	}	
 }

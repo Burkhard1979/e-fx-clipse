@@ -14,9 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.text.StrBuilder;
+import org.apache.commons.lang.text.StrSubstitutor;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import at.bestsolution.efxclipse.tooling.rrobot.ProjectHandler;
 import at.bestsolution.efxclipse.tooling.rrobot.RRobot;
@@ -44,6 +49,17 @@ public class RRobotImpl implements RRobot {
 		
 		synchronized (this.handlers) {
 			handlers = new ArrayList<ProjectHandler<Project>>(this.handlers);	
+		}
+		
+		TreeIterator<EObject> it = task.eAllContents();
+		while( it.hasNext() ) {
+			EObject eo = it.next();
+			for( EStructuralFeature f : eo.eClass().getEAllStructuralFeatures() ) {
+				Object val = eo.eGet(f);
+				if( val instanceof String ) {
+					eo.eSet(f,StrSubstitutor.replace(val, additionalData));
+				}
+			}
 		}
 		
 		List<IStatus> states = new ArrayList<IStatus>();

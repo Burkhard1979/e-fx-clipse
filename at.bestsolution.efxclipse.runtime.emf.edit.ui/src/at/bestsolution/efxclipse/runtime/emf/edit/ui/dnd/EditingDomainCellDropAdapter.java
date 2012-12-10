@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Cell;
+import javafx.scene.control.TableCell;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 
@@ -48,6 +50,8 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 			public void handle(DragEvent event) {
 				Object item = cell.getItem();
 
+				Node node = getRowNode(cell);
+				
 				double y = event.getY();
 				double height = cell.getLayoutBounds().getHeight();
 
@@ -66,11 +70,11 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 						int feedback = dndFeedback.getFeedback();
 
 						if ((feedback & DragAndDropFeedback.FEEDBACK_INSERT_BEFORE) != 0)
-							cell.setStyle("-fx-border-color: red transparent transparent transparent;");
+							node.setStyle("-fx-border-color: red transparent transparent transparent;");
 						else if ((feedback & DragAndDropFeedback.FEEDBACK_INSERT_AFTER) != 0)
-							cell.setStyle("-fx-border-color: transparent transparent red transparent;");
+							node.setStyle("-fx-border-color: transparent transparent red transparent;");
 						else
-							cell.setStyle("-fx-border-color: transparent;");
+							node.setStyle("-fx-border-color: transparent;");
 
 						ArrayList<TransferMode> modes = new ArrayList<>();
 
@@ -86,10 +90,11 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 				} else {
 					dndCommand = null;
-					cell.setStyle("-fx-border-color: transparent;");
+					node.setStyle("-fx-border-color: transparent;");
 				}
 
 			}
+
 
 		});
 
@@ -97,7 +102,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 			@Override
 			public void handle(DragEvent event) {
-				cell.setStyle("-fx-border-color: transparent;");
+				getRowNode(cell).setStyle("-fx-border-color: transparent;");
 			}
 
 		});
@@ -111,6 +116,10 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 				event.consume();
 			}
 		});
+	}
+	
+	Cell<?> getRowNode(final Cell<?> cell) {
+		return cell instanceof TableCell ? ((TableCell<?, ?>)cell).getTableRow() : cell;
 	}
 
 }

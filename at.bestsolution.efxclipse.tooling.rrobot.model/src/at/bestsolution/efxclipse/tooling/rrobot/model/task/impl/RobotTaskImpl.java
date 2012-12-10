@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +25,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.RobotTaskImpl#getProjects <em>Projects</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.RobotTaskImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +41,16 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	 * @ordered
 	 */
 	protected EList<Project> projects;
+
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> variables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,11 +88,25 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Variable> getVariables() {
+		if (variables == null) {
+			variables = new EObjectContainmentEList<Variable>(Variable.class, this, TaskPackage.ROBOT_TASK__VARIABLES);
+		}
+		return variables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
 				return ((InternalEList<?>)getProjects()).basicRemove(otherEnd, msgs);
+			case TaskPackage.ROBOT_TASK__VARIABLES:
+				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -95,6 +121,8 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 		switch (featureID) {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
 				return getProjects();
+			case TaskPackage.ROBOT_TASK__VARIABLES:
+				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,6 +140,10 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 				getProjects().clear();
 				getProjects().addAll((Collection<? extends Project>)newValue);
 				return;
+			case TaskPackage.ROBOT_TASK__VARIABLES:
+				getVariables().clear();
+				getVariables().addAll((Collection<? extends Variable>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -127,6 +159,9 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
 				getProjects().clear();
 				return;
+			case TaskPackage.ROBOT_TASK__VARIABLES:
+				getVariables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -141,6 +176,8 @@ public class RobotTaskImpl extends EObjectImpl implements RobotTask {
 		switch (featureID) {
 			case TaskPackage.ROBOT_TASK__PROJECTS:
 				return projects != null && !projects.isEmpty();
+			case TaskPackage.ROBOT_TASK__VARIABLES:
+				return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

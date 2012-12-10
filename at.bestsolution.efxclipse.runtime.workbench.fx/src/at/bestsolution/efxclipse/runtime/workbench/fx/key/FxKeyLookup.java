@@ -13,6 +13,9 @@ package at.bestsolution.efxclipse.runtime.workbench.fx.key;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
 import org.eclipse.osgi.service.environment.Constants;
 import org.osgi.framework.FrameworkUtil;
 
@@ -66,6 +69,7 @@ public final class FxKeyLookup implements KeyLookup {
 	 * 
 	 * @see KeyLookupFactory
 	 */
+	@SuppressWarnings("deprecation")
 	public FxKeyLookup() {
 		final Integer alt = new Integer(ALT);
 		final Integer command = new Integer(COMMAND);
@@ -87,158 +91,247 @@ public final class FxKeyLookup implements KeyLookup {
 				: command);
 
 //FIXME Port to FX 
-//		final Integer arrowDown = new Integer(SWT.ARROW_DOWN);
-//		naturalKeyTable.put(ARROW_DOWN_NAME, arrowDown);
-//		nameTable.put(arrowDown, ARROW_DOWN_NAME);
-//		final Integer arrowLeft = new Integer(SWT.ARROW_LEFT);
-//		naturalKeyTable.put(ARROW_LEFT_NAME, arrowLeft);
-//		nameTable.put(arrowLeft, ARROW_LEFT_NAME);
-//		final Integer arrowRight = new Integer(SWT.ARROW_RIGHT);
-//		naturalKeyTable.put(ARROW_RIGHT_NAME, arrowRight);
-//		nameTable.put(arrowRight, ARROW_RIGHT_NAME);
-//		final Integer arrowUp = new Integer(SWT.ARROW_UP);
-//		naturalKeyTable.put(ARROW_UP_NAME, arrowUp);
-//		nameTable.put(arrowUp, ARROW_UP_NAME);
+		{
+			final Integer code = Integer.valueOf(KeyCode.DOWN.impl_getCode());
+			naturalKeyTable.put(ARROW_DOWN_NAME, code);
+			nameTable.put(code, ARROW_DOWN_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.LEFT.impl_getCode());
+			naturalKeyTable.put(ARROW_LEFT_NAME, code);
+			nameTable.put(code, ARROW_LEFT_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.RIGHT.impl_getCode());
+			naturalKeyTable.put(ARROW_RIGHT_NAME, code);
+			nameTable.put(code, ARROW_RIGHT_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.UP.impl_getCode());
+			naturalKeyTable.put(ARROW_UP_NAME, code);
+			nameTable.put(code, ARROW_UP_NAME);	
+		}
 //		final Integer breakKey = new Integer(SWT.BREAK);
 //		naturalKeyTable.put(BREAK_NAME, breakKey);
 //		nameTable.put(breakKey, BREAK_NAME);
-//		final Integer bs = new Integer(SWT.BS);
-//		naturalKeyTable.put(BS_NAME, bs);
-//		nameTable.put(bs, BS_NAME);
-//		naturalKeyTable.put(BACKSPACE_NAME, bs);
-//		final Integer capsLock = new Integer(SWT.CAPS_LOCK);
-//		naturalKeyTable.put(CAPS_LOCK_NAME, capsLock);
-//		nameTable.put(capsLock, CAPS_LOCK_NAME);
-//		final Integer cr = new Integer(SWT.CR);
-//		naturalKeyTable.put(CR_NAME, cr);
-//		nameTable.put(cr, CR_NAME);
-//		naturalKeyTable.put(ENTER_NAME, cr);
-//		naturalKeyTable.put(RETURN_NAME, cr);
-//		final Integer del = new Integer(SWT.DEL);
-//		naturalKeyTable.put(DEL_NAME, del);
-//		nameTable.put(del, DEL_NAME);
-//		naturalKeyTable.put(DELETE_NAME, del);
-//		final Integer end = new Integer(SWT.END);
-//		naturalKeyTable.put(END_NAME, end);
-//		nameTable.put(end, END_NAME);
-//		final Integer esc = new Integer(SWT.ESC);
-//		naturalKeyTable.put(ESC_NAME, esc);
-//		nameTable.put(esc, ESC_NAME);
-//		naturalKeyTable.put(ESCAPE_NAME, esc);
-//		final Integer f1 = new Integer(SWT.F1);
-//		naturalKeyTable.put(F1_NAME, f1);
-//		nameTable.put(f1, F1_NAME);
-//		final Integer f2 = new Integer(SWT.F2);
-//		naturalKeyTable.put(F2_NAME, new Integer(SWT.F2));
-//		nameTable.put(f2, F2_NAME);
-//		final Integer f3 = new Integer(SWT.F3);
-//		naturalKeyTable.put(F3_NAME, new Integer(SWT.F3));
-//		nameTable.put(f3, F3_NAME);
-//		final Integer f4 = new Integer(SWT.F4);
-//		naturalKeyTable.put(F4_NAME, new Integer(SWT.F4));
-//		nameTable.put(f4, F4_NAME);
-//		final Integer f5 = new Integer(SWT.F5);
-//		naturalKeyTable.put(F5_NAME, new Integer(SWT.F5));
-//		nameTable.put(f5, F5_NAME);
-//		final Integer f6 = new Integer(SWT.F6);
-//		naturalKeyTable.put(F6_NAME, new Integer(SWT.F6));
-//		nameTable.put(f6, F6_NAME);
-//		final Integer f7 = new Integer(SWT.F7);
-//		naturalKeyTable.put(F7_NAME, new Integer(SWT.F7));
-//		nameTable.put(f7, F7_NAME);
-//		final Integer f8 = new Integer(SWT.F8);
-//		naturalKeyTable.put(F8_NAME, new Integer(SWT.F8));
-//		nameTable.put(f8, F8_NAME);
-//		final Integer f9 = new Integer(SWT.F9);
-//		naturalKeyTable.put(F9_NAME, new Integer(SWT.F9));
-//		nameTable.put(f9, F9_NAME);
-//		final Integer f10 = new Integer(SWT.F10);
-//		naturalKeyTable.put(F10_NAME, new Integer(SWT.F10));
-//		nameTable.put(f10, F10_NAME);
-//		final Integer f11 = new Integer(SWT.F11);
-//		naturalKeyTable.put(F11_NAME, new Integer(SWT.F11));
-//		nameTable.put(f11, F11_NAME);
-//		final Integer f12 = new Integer(SWT.F12);
-//		naturalKeyTable.put(F12_NAME, new Integer(SWT.F12));
-//		nameTable.put(f12, F12_NAME);
-//		final Integer f13 = new Integer(SWT.F13);
-//		naturalKeyTable.put(F13_NAME, new Integer(SWT.F13));
-//		nameTable.put(f13, F13_NAME);
-//		final Integer f14 = new Integer(SWT.F14);
-//		naturalKeyTable.put(F14_NAME, new Integer(SWT.F14));
-//		nameTable.put(f14, F14_NAME);
-//		final Integer f15 = new Integer(SWT.F15);
-//		naturalKeyTable.put(F15_NAME, new Integer(SWT.F15));
-//		nameTable.put(f15, F15_NAME);
-//		final Integer f16 = new Integer(SWT.F16);
-//		naturalKeyTable.put(F16_NAME, new Integer(SWT.F16));
-//		nameTable.put(f16, F16_NAME);
-//		final Integer f17 = new Integer(SWT.F17);
-//		naturalKeyTable.put(F17_NAME, new Integer(SWT.F17));
-//		nameTable.put(f17, F17_NAME);
-//		final Integer f18 = new Integer(SWT.F18);
-//		naturalKeyTable.put(F18_NAME, new Integer(SWT.F18));
-//		nameTable.put(f18, F18_NAME);
-//		final Integer f19 = new Integer(SWT.F19);
-//		naturalKeyTable.put(F19_NAME, new Integer(SWT.F19));
-//		nameTable.put(f19, F19_NAME);
-//		final Integer f20 = new Integer(SWT.F20);
-//		naturalKeyTable.put(F20_NAME, new Integer(SWT.F20));
-//		nameTable.put(f20, F20_NAME);
+		{
+			final Integer code = Integer.valueOf(KeyCode.BACK_SPACE.impl_getCode());
+			naturalKeyTable.put(BS_NAME, code);
+			nameTable.put(code, BS_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.CAPS.impl_getCode());
+			naturalKeyTable.put(CAPS_LOCK_NAME, code);
+			nameTable.put(code, CAPS_LOCK_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.ENTER.impl_getCode());
+			naturalKeyTable.put(CR_NAME, code);
+			nameTable.put(code, CR_NAME);	
+			naturalKeyTable.put(ENTER_NAME, code);
+			naturalKeyTable.put(RETURN_NAME, code);
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.DELETE.impl_getCode());
+			naturalKeyTable.put(DEL_NAME, code);
+			nameTable.put(code, DEL_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.END.impl_getCode());
+			naturalKeyTable.put(END_NAME, code);
+			nameTable.put(code, END_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.ESCAPE.impl_getCode());
+			naturalKeyTable.put(ESC_NAME, code);
+			nameTable.put(code, ESC_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F1.impl_getCode());
+			naturalKeyTable.put(F1_NAME, code);
+			nameTable.put(code, F1_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F2.impl_getCode());
+			naturalKeyTable.put(F2_NAME, code);
+			nameTable.put(code, F2_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F3.impl_getCode());
+			naturalKeyTable.put(F3_NAME, code);
+			nameTable.put(code, F3_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F4.impl_getCode());
+			naturalKeyTable.put(F4_NAME, code);
+			nameTable.put(code, F4_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F5.impl_getCode());
+			naturalKeyTable.put(F5_NAME, code);
+			nameTable.put(code, F5_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F6.impl_getCode());
+			naturalKeyTable.put(F6_NAME, code);
+			nameTable.put(code, F6_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F7.impl_getCode());
+			naturalKeyTable.put(F7_NAME, code);
+			nameTable.put(code, F7_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F8.impl_getCode());
+			naturalKeyTable.put(F8_NAME, code);
+			nameTable.put(code, F8_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F9.impl_getCode());
+			naturalKeyTable.put(F9_NAME, code);
+			nameTable.put(code, F9_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F10.impl_getCode());
+			naturalKeyTable.put(F10_NAME, code);
+			nameTable.put(code, F10_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F11.impl_getCode());
+			naturalKeyTable.put(F11_NAME, code);
+			nameTable.put(code, F11_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F12.impl_getCode());
+			naturalKeyTable.put(F12_NAME, code);
+			nameTable.put(code, F12_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F13.impl_getCode());
+			naturalKeyTable.put(F13_NAME, code);
+			nameTable.put(code, F13_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F14.impl_getCode());
+			naturalKeyTable.put(F14_NAME, code);
+			nameTable.put(code, F14_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F15.impl_getCode());
+			naturalKeyTable.put(F15_NAME, code);
+			nameTable.put(code, F15_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F16.impl_getCode());
+			naturalKeyTable.put(F16_NAME, code);
+			nameTable.put(code, F16_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F17.impl_getCode());
+			naturalKeyTable.put(F17_NAME, code);
+			nameTable.put(code, F17_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F18.impl_getCode());
+			naturalKeyTable.put(F18_NAME, code);
+			nameTable.put(code, F18_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F19.impl_getCode());
+			naturalKeyTable.put(F19_NAME, code);
+			nameTable.put(code, F19_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.F20.impl_getCode());
+			naturalKeyTable.put(F20_NAME, code);
+			nameTable.put(code, F20_NAME);	
+		}
 //		final Integer ff = new Integer(12); // ASCII 0x0C
 //		naturalKeyTable.put(FF_NAME, ff);
 //		nameTable.put(ff, FF_NAME);
-//		final Integer home = new Integer(SWT.HOME);
-//		naturalKeyTable.put(HOME_NAME, home);
-//		nameTable.put(home, HOME_NAME);
-//		final Integer insert = new Integer(SWT.INSERT);
-//		naturalKeyTable.put(INSERT_NAME, insert);
-//		nameTable.put(insert, INSERT_NAME);
+		
+		{
+			final Integer code = Integer.valueOf(KeyCode.HOME.impl_getCode());
+			naturalKeyTable.put(HOME_NAME, code);
+			nameTable.put(code, HOME_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.INSERT.impl_getCode());
+			naturalKeyTable.put(INSERT_NAME, code);
+			nameTable.put(code, INSERT_NAME);	
+		}
 //		final Integer lf = new Integer(SWT.LF);
 //		naturalKeyTable.put(LF_NAME, lf);
 //		nameTable.put(lf, LF_NAME);
 //		final Integer nul = new Integer(SWT.NULL);
 //		naturalKeyTable.put(NUL_NAME, nul);
 //		nameTable.put(nul, NUL_NAME);
-//		final Integer numLock = new Integer(SWT.NUM_LOCK);
-//		naturalKeyTable.put(NUM_LOCK_NAME, numLock);
-//		nameTable.put(numLock, NUM_LOCK_NAME);
-//		final Integer keypad0 = new Integer(SWT.KEYPAD_0);
-//		naturalKeyTable.put(NUMPAD_0_NAME, keypad0);
-//		nameTable.put(keypad0, NUMPAD_0_NAME);
-//		final Integer keypad1 = new Integer(SWT.KEYPAD_1);
-//		naturalKeyTable.put(NUMPAD_1_NAME, keypad1);
-//		nameTable.put(keypad1, NUMPAD_1_NAME);
-//		final Integer keypad2 = new Integer(SWT.KEYPAD_2);
-//		naturalKeyTable.put(NUMPAD_2_NAME, keypad2);
-//		nameTable.put(keypad2, NUMPAD_2_NAME);
-//		final Integer keypad3 = new Integer(SWT.KEYPAD_3);
-//		naturalKeyTable.put(NUMPAD_3_NAME, keypad3);
-//		nameTable.put(keypad3, NUMPAD_3_NAME);
-//		final Integer keypad4 = new Integer(SWT.KEYPAD_4);
-//		naturalKeyTable.put(NUMPAD_4_NAME, keypad4);
-//		nameTable.put(keypad4, NUMPAD_4_NAME);
-//		final Integer keypad5 = new Integer(SWT.KEYPAD_5);
-//		naturalKeyTable.put(NUMPAD_5_NAME, keypad5);
-//		nameTable.put(keypad5, NUMPAD_5_NAME);
-//		final Integer keypad6 = new Integer(SWT.KEYPAD_6);
-//		naturalKeyTable.put(NUMPAD_6_NAME, keypad6);
-//		nameTable.put(keypad6, NUMPAD_6_NAME);
-//		final Integer keypad7 = new Integer(SWT.KEYPAD_7);
-//		naturalKeyTable.put(NUMPAD_7_NAME, keypad7);
-//		nameTable.put(keypad7, NUMPAD_7_NAME);
-//		final Integer keypad8 = new Integer(SWT.KEYPAD_8);
-//		naturalKeyTable.put(NUMPAD_8_NAME, keypad8);
-//		nameTable.put(keypad8, NUMPAD_8_NAME);
-//		final Integer keypad9 = new Integer(SWT.KEYPAD_9);
-//		naturalKeyTable.put(NUMPAD_9_NAME, keypad9);
-//		nameTable.put(keypad9, NUMPAD_9_NAME);
-//		final Integer keypadAdd = new Integer(SWT.KEYPAD_ADD);
-//		naturalKeyTable.put(NUMPAD_ADD_NAME, keypadAdd);
-//		nameTable.put(keypadAdd, NUMPAD_ADD_NAME);
-//		final Integer keypadDecimal = new Integer(SWT.KEYPAD_DECIMAL);
-//		naturalKeyTable.put(NUMPAD_DECIMAL_NAME, keypadDecimal);
-//		nameTable.put(keypadDecimal, NUMPAD_DECIMAL_NAME);
+		
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUM_LOCK.impl_getCode());
+			naturalKeyTable.put(NUM_LOCK_NAME, code);
+			nameTable.put(code, NUM_LOCK_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD0.impl_getCode());
+			naturalKeyTable.put(NUMPAD_0_NAME, code);
+			nameTable.put(code, NUMPAD_0_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD1.impl_getCode());
+			naturalKeyTable.put(NUMPAD_1_NAME, code);
+			nameTable.put(code, NUMPAD_1_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD2.impl_getCode());
+			naturalKeyTable.put(NUMPAD_2_NAME, code);
+			nameTable.put(code, NUMPAD_2_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD3.impl_getCode());
+			naturalKeyTable.put(NUMPAD_3_NAME, code);
+			nameTable.put(code, NUMPAD_3_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD4.impl_getCode());
+			naturalKeyTable.put(NUMPAD_4_NAME, code);
+			nameTable.put(code, NUMPAD_4_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD5.impl_getCode());
+			naturalKeyTable.put(NUMPAD_5_NAME, code);
+			nameTable.put(code, NUMPAD_5_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD6.impl_getCode());
+			naturalKeyTable.put(NUMPAD_6_NAME, code);
+			nameTable.put(code, NUMPAD_6_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD7.impl_getCode());
+			naturalKeyTable.put(NUMPAD_7_NAME, code);
+			nameTable.put(code, NUMPAD_7_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD8.impl_getCode());
+			naturalKeyTable.put(NUMPAD_8_NAME, code);
+			nameTable.put(code, NUMPAD_8_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.NUMPAD9.impl_getCode());
+			naturalKeyTable.put(NUMPAD_9_NAME, code);
+			nameTable.put(code, NUMPAD_9_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.ADD.impl_getCode());
+			naturalKeyTable.put(NUMPAD_ADD_NAME, code);
+			nameTable.put(code, NUMPAD_ADD_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.DECIMAL.impl_getCode());
+			naturalKeyTable.put(NUMPAD_DECIMAL_NAME, code);
+			nameTable.put(code, NUMPAD_DECIMAL_NAME);	
+		}
 //		final Integer keypadDivide = new Integer(SWT.KEYPAD_DIVIDE);
 //		naturalKeyTable.put(NUMPAD_DIVIDE_NAME, keypadDivide);
 //		nameTable.put(keypadDivide, NUMPAD_DIVIDE_NAME);
@@ -254,27 +347,41 @@ public final class FxKeyLookup implements KeyLookup {
 //		final Integer keypadSubtract = new Integer(SWT.KEYPAD_SUBTRACT);
 //		naturalKeyTable.put(NUMPAD_SUBTRACT_NAME, keypadSubtract);
 //		nameTable.put(keypadSubtract, NUMPAD_SUBTRACT_NAME);
-//		final Integer pageDown = new Integer(SWT.PAGE_DOWN);
-//		naturalKeyTable.put(PAGE_DOWN_NAME, pageDown);
-//		nameTable.put(pageDown, PAGE_DOWN_NAME);
-//		final Integer pageUp = new Integer(SWT.PAGE_UP);
-//		naturalKeyTable.put(PAGE_UP_NAME, pageUp);
-//		nameTable.put(pageUp, PAGE_UP_NAME);
-//		final Integer pause = new Integer(SWT.PAUSE);
-//		naturalKeyTable.put(PAUSE_NAME, pause);
-//		nameTable.put(pause, PAUSE_NAME);
-//		final Integer printScreen = new Integer(SWT.PRINT_SCREEN);
-//		naturalKeyTable.put(PRINT_SCREEN_NAME, printScreen);
-//		nameTable.put(printScreen, PRINT_SCREEN_NAME);
-//		final Integer scrollLock = new Integer(SWT.SCROLL_LOCK);
-//		naturalKeyTable.put(SCROLL_LOCK_NAME, scrollLock);
-//		nameTable.put(scrollLock, SCROLL_LOCK_NAME);
-//		final Integer space = new Integer(' ');
-//		naturalKeyTable.put(SPACE_NAME, space);
-//		nameTable.put(space, SPACE_NAME);
-//		final Integer tab = new Integer(SWT.TAB);
-//		naturalKeyTable.put(TAB_NAME, tab);
-//		nameTable.put(tab, TAB_NAME);
+		{
+			final Integer code = Integer.valueOf(KeyCode.PAGE_DOWN.impl_getCode());
+			naturalKeyTable.put(PAGE_DOWN_NAME, code);
+			nameTable.put(code, PAGE_DOWN_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.PAGE_UP.impl_getCode());
+			naturalKeyTable.put(PAGE_UP_NAME, code);
+			nameTable.put(code, PAGE_UP_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.PAUSE.impl_getCode());
+			naturalKeyTable.put(PAUSE_NAME, code);
+			nameTable.put(code, PAUSE_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.PRINTSCREEN.impl_getCode());
+			naturalKeyTable.put(PRINT_SCREEN_NAME, code);
+			nameTable.put(code, PRINT_SCREEN_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.SCROLL_LOCK.impl_getCode());
+			naturalKeyTable.put(SCROLL_LOCK_NAME, code);
+			nameTable.put(code, SCROLL_LOCK_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.SPACE.impl_getCode());
+			naturalKeyTable.put(SPACE_NAME, code);
+			nameTable.put(code, SPACE_NAME);	
+		}
+		{
+			final Integer code = Integer.valueOf(KeyCode.TAB.impl_getCode());
+			naturalKeyTable.put(TAB_NAME, code);
+			nameTable.put(code, TAB_NAME);	
+		}
 //		final Integer vt = new Integer(11); // ASCII 0x0B
 //		naturalKeyTable.put(VT_NAME, vt);
 //		nameTable.put(vt, VT_NAME);
