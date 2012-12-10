@@ -73,6 +73,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 			case TaskPackage.URL_FILE: return createURLFile();
 			case TaskPackage.DYNAMIC_FILE: return createDynamicFile();
 			case TaskPackage.VARIABLE: return createVariable();
+			case TaskPackage.REFERENCING_BOOLEAN_EXPRESSION: return createReferencingBooleanExpression();
+			case TaskPackage.INLINE_BOOLEAN_EXPRESSION: return createInlineBooleanExpression();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -86,6 +88,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case TaskPackage.TYPE:
+				return createTypeFromString(eDataType, initialValue);
 			case TaskPackage.INPUT_STREAM:
 				return createInputStreamFromString(eDataType, initialValue);
 			case TaskPackage.GENERATOR:
@@ -103,6 +107,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case TaskPackage.TYPE:
+				return convertTypeToString(eDataType, instanceValue);
 			case TaskPackage.INPUT_STREAM:
 				return convertInputStreamToString(eDataType, instanceValue);
 			case TaskPackage.GENERATOR:
@@ -190,6 +196,46 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	public Variable createVariable() {
 		VariableImpl variable = new VariableImpl();
 		return variable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReferencingBooleanExpression createReferencingBooleanExpression() {
+		ReferencingBooleanExpressionImpl referencingBooleanExpression = new ReferencingBooleanExpressionImpl();
+		return referencingBooleanExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InlineBooleanExpression createInlineBooleanExpression() {
+		InlineBooleanExpressionImpl inlineBooleanExpression = new InlineBooleanExpressionImpl();
+		return inlineBooleanExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type createTypeFromString(EDataType eDataType, String initialValue) {
+		Type result = Type.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

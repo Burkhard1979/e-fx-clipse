@@ -115,6 +115,18 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 				return createVariableAdapter();
 			}
 			@Override
+			public Adapter caseBooleanExpression(BooleanExpression object) {
+				return createBooleanExpressionAdapter();
+			}
+			@Override
+			public Adapter caseReferencingBooleanExpression(ReferencingBooleanExpression object) {
+				return createReferencingBooleanExpressionAdapter();
+			}
+			@Override
+			public Adapter caseInlineBooleanExpression(InlineBooleanExpression object) {
+				return createInlineBooleanExpressionAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -271,6 +283,48 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression <em>Boolean Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression
+	 * @generated
+	 */
+	public Adapter createBooleanExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression <em>Referencing Boolean Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression
+	 * @generated
+	 */
+	public Adapter createReferencingBooleanExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression <em>Inline Boolean Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression
+	 * @generated
+	 */
+	public Adapter createInlineBooleanExpressionAdapter() {
 		return null;
 	}
 

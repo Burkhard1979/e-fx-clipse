@@ -80,7 +80,8 @@
 		<module>../at.bestsolution.efxclipse.tooling.ui.preview</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.model</module>
-		
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui</module>
 		
 		<module>../at.bestsolution.efxclipse.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.feature</module>
@@ -99,6 +100,7 @@
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		

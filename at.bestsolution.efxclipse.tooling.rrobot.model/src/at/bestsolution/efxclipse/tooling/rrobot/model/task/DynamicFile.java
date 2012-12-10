@@ -2,6 +2,8 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +15,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.task;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getExecutionURI <em>Execution URI</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getType <em>Type</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,4 +76,20 @@ public interface DynamicFile extends File {
 	 * @generated
 	 */
 	void setType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variables</em>' containment reference list.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getDynamicFile_Variables()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Variable> getVariables();
 } // DynamicFile

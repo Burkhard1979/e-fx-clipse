@@ -1,10 +1,58 @@
 package at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho;
 
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.PomData;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Map;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class PluginPomGenerator {
+public class PluginPomGenerator implements Generator<DynamicFile> {
+  public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
+    Object _get = data.get("BundleProject_projectName");
+    final String projectName = ((String) _get);
+    Object _get_1 = data.get("BundleProject_productName");
+    final String productName = ((String) _get_1);
+    Object _get_2 = data.get("BundleProject_bundleName");
+    final String bundleName = ((String) _get_2);
+    Object _get_3 = data.get("BundleProject_bundleId");
+    final String bundleId = ((String) _get_3);
+    Object _get_4 = data.get("BundleProject_bundleVersion");
+    final String bundleVersion = ((String) _get_4);
+    String _plus = (productName + " - ");
+    String _plus_1 = (_plus + bundleName);
+    String _pomGroupId = this.toPomGroupId(bundleId);
+    String _pomGroupId_1 = this.toPomGroupId(bundleId);
+    String _plus_2 = (bundleId + ".releng");
+    String _pomVersion = this.toPomVersion(bundleVersion);
+    String _plus_3 = ("../" + projectName);
+    String _plus_4 = (_plus_3 + ".releng");
+    PomData _pomData = new PomData(_plus_1, _pomGroupId, bundleId, _pomGroupId_1, _plus_2, _pomVersion, _plus_4);
+    final PomData pomData = _pomData;
+    CharSequence _generate = this.generate(pomData);
+    String _string = _generate.toString();
+    byte[] _bytes = _string.getBytes();
+    ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
+    return _byteArrayInputStream;
+  }
+  
+  public String toPomGroupId(final String bundleId) {
+    int _indexOf = bundleId.indexOf(".");
+    int _minus = (-1);
+    boolean _notEquals = (_indexOf != _minus);
+    if (_notEquals) {
+      int _lastIndexOf = bundleId.lastIndexOf(".");
+      return bundleId.substring(0, _lastIndexOf);
+    }
+    return bundleId;
+  }
+  
+  public String toPomVersion(final String version) {
+    return version.replace(".qualifier", "-SNAPSHOT");
+  }
+  
   public CharSequence generate(final PomData data) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");

@@ -9,15 +9,26 @@ RobotTask returns task::RobotTask:
 	{task::RobotTask}
 	'RobotTask'
 	'{'
+		('variables' '=' '{' variables+=Variable ( "," variables+=Variable)* '}')?
 		('projects' '=' '{' projects+=GenericProject ( "," projects+=GenericProject)* '}' )?
 	'}';
+
+Variable returns task::Variable:
+	description=SL_DOC
+	type=Type key=STRING ('default' defaultValue=STRING)? 
+;
+
+enum Type returns task::Type: 
+	BOOLEAN | DOUBLE | INT | STRING
+;
+
 
 GenericProject returns task::Project:
 	Project | BundleProject | FeatureProject
 ;
 
 Resource returns task::Resource:
-	Folder | TemplatedFile | DataFile | URLFile | GeneratorFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
+	Folder | TemplatedFile | DataFile | URLFile | DynamicFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
 
 Project returns task::Project:
 	{task::Project}
@@ -61,10 +72,25 @@ URLFile returns task::URLFile:
 		('uri' '=' uri=EString)?
 	'}';
 
-GeneratorFile returns task::GeneratorFile:
-	{task::GeneratorFile}
-	'GeneratorFile'
-	name=EString;
+DynamicFile returns task::DynamicFile: 
+	{task::DynamicFile}
+	'DynamicFile' name=EString 'generated-from' executionURI=STRING 'by' type=STRING 
+	('{' variables+=Variable (',' variables+=Variable)? '}')?
+	('excluded-if' excludeExpression=BooleanExpression)? 
+;
+
+BooleanExpression returns task::BooleanExpression: 
+	ReferencingBooleanExpression | InlineBooleanExpression
+;
+
+ReferencingBooleanExpression returns task::ReferencingBooleanExpression:
+	executionURI=STRING 'by' type=STRING 
+;
+
+InlineBooleanExpression returns task::InlineBooleanExpression:
+	type=STRING expression=INLINE_SCRIPT
+;
+
 
 EByteArray returns ecore::EByteArray:
 	EString /* TODO: implement this rule and an appropriate IValueConverter */
@@ -264,4 +290,11 @@ Version returns bundle::Version:
 
 enum MatchRule returns bundle::MatchRule:
 	none | equivalent | compatible | perfect | greaterOrEqual
+;
+
+terminal SL_DOC:
+	'##' !('\n'|'\r')* ('\r'? '\n')?;
+	
+terminal INLINE_SCRIPT:
+	'/#' -> '#/' 
 ;

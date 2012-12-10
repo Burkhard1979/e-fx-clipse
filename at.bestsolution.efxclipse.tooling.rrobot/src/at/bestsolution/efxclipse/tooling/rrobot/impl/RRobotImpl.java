@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.text.StrBuilder;
 import org.apache.commons.lang.text.StrSubstitutor;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -22,11 +21,13 @@ import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import at.bestsolution.efxclipse.tooling.rrobot.ProjectHandler;
 import at.bestsolution.efxclipse.tooling.rrobot.RRobot;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable;
 
 public class RRobotImpl implements RRobot {
 	private List<ProjectHandler<Project>> handlers = new ArrayList<ProjectHandler<Project>>();
@@ -42,9 +43,34 @@ public class RRobotImpl implements RRobot {
 			handlers.remove(handler);
 		}
 	}
+	
+	private static Object getVariableData(Variable v) {
+		switch (v.getType()) {
+		case BOOLEAN:
+			return Boolean.parseBoolean(v.getDefaultValue());
+		case DOUBLE:
+			return Double.parseDouble(v.getDefaultValue());
+		case INT:
+			return Integer.parseInt(v.getDefaultValue());
+		default:
+			return v.getDefaultValue();
+		}
+	}
 
 	@Override
 	public IStatus executeTask(IProgressMonitor monitor, RobotTask task, Map<String, Object> additionalData) {
+
+		// We'll operate on a copy because we modify the model and replace variable
+		if( ! task.getVariables().isEmpty() ) {
+			task = EcoreUtil.copy(task);	
+		}
+		
+		for( Variable v : task.getVariables() ) {
+			if( !additionalData.containsKey(v.getKey()) ) {
+				additionalData.put(v.getKey(), getVariableData(v));
+			}
+		}
+		
 		List<ProjectHandler<Project>> handlers;
 		
 		synchronized (this.handlers) {

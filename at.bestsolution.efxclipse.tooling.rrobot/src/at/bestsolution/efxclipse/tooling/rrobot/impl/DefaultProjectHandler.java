@@ -30,7 +30,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 
 import at.bestsolution.efxclipse.tooling.rrobot.ProjectHandler;
-import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
@@ -47,6 +46,12 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 
 	@Override
 	public IStatus createProject(IProgressMonitor monitor, P project, Map<String, Object> additionalData) {
+		if( project.getExcludeExpression() != null ) {
+			if( project.getExcludeExpression().execute(additionalData) ) {
+				return new Status(IStatus.OK, PLUGIN_ID, "Resource '"+project.getName()+"' is excluded");
+			}
+		}
+
 		IWorkspaceRoot r = ResourcesPlugin.getWorkspace().getRoot();
 		IProject p = r.getProject(project.getName());
 		if (!p.exists()) {
@@ -74,6 +79,12 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 	protected IStatus createResources(IProgressMonitor monitor, IProject p, P model, Map<String, Object> additionalData) {
 		List<IStatus> l = new ArrayList<IStatus>();
 		for (Resource r : model.getResources()) {
+			
+			if( exclude(r, additionalData) ) {
+				l.add(new Status(IStatus.OK, PLUGIN_ID, "Resource '" + r.getName()+ "' exluded from generation"));
+				continue;
+			}
+			
 			if (r instanceof Folder) {
 				IFolder f = p.getFolder(r.getName());
 				
@@ -100,6 +111,12 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 	protected IStatus createResources(IProgressMonitor monitor, IFolder folder, Folder model, Map<String, Object> additionalData) {
 		List<IStatus> l = new ArrayList<IStatus>();
 		for (Resource r : model.getChildren()) {
+			
+			if( exclude(r, additionalData) ) {
+				l.add(new Status(IStatus.OK, PLUGIN_ID, "Resource '" + r.getName()+ "' exluded from generation"));
+				continue;
+			}
+			
 			if (r instanceof Folder) {
 				IFolder f = folder.getFolder(r.getName());
 				if( !f.exists() ) {
@@ -122,6 +139,10 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 	}
 
 	protected IStatus createFile(IProgressMonitor monitor, IFile f, File file, Map<String, Object> additionalData) {
+		if( exclude(file, additionalData) ) {
+			return new Status(IStatus.OK, PLUGIN_ID, "Resource '" + file.getName()+ "' exluded from generation");
+		}
+		
 		InputStream source = null;
 		try {
 			source = file.getContent(monitor, additionalData);
@@ -150,5 +171,12 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 		newNatures[prevNatures.length] = natureId;
 		description.setNatureIds(newNatures);
 		proj.setDescription(description, monitor);
+	}
+	
+	protected static boolean exclude(Resource model, Map<String, Object> additionalData) {
+		if( model.getExcludeExpression() != null ) {
+			return model.getExcludeExpression().execute(additionalData);
+		}
+		return false;
 	}
 }
