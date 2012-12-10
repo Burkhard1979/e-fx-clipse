@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Fx
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.workbench.renderers.fx
 Bundle-Version: 0.1.1.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
  at.bestsolution.efxclipse.runtime.panels;bundle-version="0.1.1",
  org.eclipse.core.commands;bundle-version="3.6.0",
@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
  at.bestsolution.efxclipse.runtime.services;bundle-version="0.1.1",
  org.eclipse.osgi;bundle-version="3.7.0",
  org.eclipse.core.runtime;bundle-version="3.7.0",
- at.bestsolution.efxclipse.runtime.di;bundle-version="0.1.1"
+ at.bestsolution.efxclipse.runtime.di;bundle-version="0.1.1",
+ at.bestsolution.efxclipse.runtime.workbench.fx.controls;bundle-version="0.1.1"
 Import-Package: javafx.application,
  javafx.beans;version="2.0.0",
  javafx.beans.property,
@@ -39,3 +40,7 @@ Import-Package: javafx.application,
  javax.inject;version="1.0.0"
 Service-Component: OSGI-INF/popupfunction.xml
 Bundle-ActivationPolicy: lazy
+Export-Package: at.bestsolution.efxclipse.runtime.workbench.renderers.fx,
+ at.bestsolution.efxclipse.runtime.workbench.renderers.fx.actions,
+ at.bestsolution.efxclipse.runtime.workbench.renderers.fx.services,
+ at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget

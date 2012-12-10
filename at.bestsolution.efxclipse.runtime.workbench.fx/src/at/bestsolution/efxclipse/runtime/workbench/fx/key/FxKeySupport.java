@@ -19,7 +19,7 @@ public class FxKeySupport {
 
 	public static int convertEventToUnmodifiedAccelerator(KeyEvent event) {
 		int modifiers = getStateMask(event) & FxKeyLookup.MODIFIER_MASK;
-		return modifiers + event.getCode().impl_getChar().toUpperCase().charAt(0);
+		return modifiers + event.getCode().impl_getCode();
 	}
 	
 	public static final int convertEventToUnshiftedModifiedAccelerator(
@@ -30,14 +30,14 @@ public class FxKeySupport {
 		}
 
 		int modifiers = getStateMask(event) & (FxKeyLookup.MODIFIER_MASK ^ FxKeyLookup.SHIFT);
-		return modifiers + event.getCode().impl_getChar().toUpperCase().charAt(0);
+		return modifiers + event.getCode().impl_getCode();
 //		char character = topKey(event);
 //		return modifiers + toUpperCase(character);
 	}
 
 	public static final int convertEventToModifiedAccelerator(final KeyEvent event) {
 		int modifiers = getStateMask(event) & FxKeyLookup.MODIFIER_MASK;
-		return modifiers + event.getCode().impl_getChar().toUpperCase().charAt(0);
+		return modifiers + event.getCode().impl_getCode();
 //		char character = topKey(event);
 //		return modifiers + toUpperCase(character);
 	}

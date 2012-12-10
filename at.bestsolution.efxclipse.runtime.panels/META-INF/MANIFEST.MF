@@ -3,11 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.panels
 Bundle-Version: 0.1.1.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %Bundle-Vendor
-Export-Package: at.bestsolution.efxclipse.runtime.panels,
- at.bestsolution.efxclipse.runtime.panels.fx,
- at.bestsolution.efxclipse.runtime.panels.skins
+Export-Package: at.bestsolution.efxclipse.runtime.panels
 Import-Package: com.sun.javafx,
  com.sun.javafx.css,
  com.sun.javafx.css.converters,

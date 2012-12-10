@@ -115,49 +115,13 @@ public interface BundlePackage extends EPackage {
 	int BUNDLE_PROJECT__PLUGINXML = TaskPackage.PROJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUNDLE_PROJECT__LAZY = TaskPackage.PROJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Singleton</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUNDLE_PROJECT__SINGLETON = TaskPackage.PROJECT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Activator Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUNDLE_PROJECT__ACTIVATOR_CLASS = TaskPackage.PROJECT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUNDLE_PROJECT__VENDOR = TaskPackage.PROJECT_FEATURE_COUNT + 6;
-
-	/**
 	 * The number of structural features of the '<em>Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT_FEATURE_COUNT = TaskPackage.PROJECT_FEATURE_COUNT + 7;
+	int BUNDLE_PROJECT_FEATURE_COUNT = TaskPackage.PROJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl <em>Feature Project</em>}' class.
@@ -297,13 +261,49 @@ public interface BundlePackage extends EPackage {
 	int MANIFEST_FILE__REQUIRED_BUNDLES = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Lazy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__LAZY = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Singleton</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__SINGLETON = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Activator Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__ACTIVATOR_CLASS = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__VENDOR = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Manifest File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MANIFEST_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 7;
+	int MANIFEST_FILE_FEATURE_COUNT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.PluginXMLFileImpl <em>Plugin XML File</em>}' class.
@@ -707,7 +707,7 @@ public interface BundlePackage extends EPackage {
 	int FEATURE_FILE__COPYRIGHT = TaskPackage.TEMPLATED_FILE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>License</b></em>' reference.
+	 * The feature id for the '<em><b>License</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -945,7 +945,7 @@ public interface BundlePackage extends EPackage {
 	int ELEMENT__ATTRIBUTES = 1;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference list.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1423,50 +1423,6 @@ public interface BundlePackage extends EPackage {
 	EReference getBundleProject_Pluginxml();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getLazy <em>Lazy</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Lazy</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getLazy()
-	 * @see #getBundleProject()
-	 * @generated
-	 */
-	EAttribute getBundleProject_Lazy();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getSingleton <em>Singleton</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Singleton</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getSingleton()
-	 * @see #getBundleProject()
-	 * @generated
-	 */
-	EAttribute getBundleProject_Singleton();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getActivatorClass <em>Activator Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Activator Class</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getActivatorClass()
-	 * @see #getBundleProject()
-	 * @generated
-	 */
-	EAttribute getBundleProject_ActivatorClass();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getVendor <em>Vendor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Vendor</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject#getVendor()
-	 * @see #getBundleProject()
-	 * @generated
-	 */
-	EAttribute getBundleProject_Vendor();
-
-	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject <em>Feature Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1573,6 +1529,50 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getManifestFile_RequiredBundles();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getLazy <em>Lazy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lazy</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getLazy()
+	 * @see #getManifestFile()
+	 * @generated
+	 */
+	EAttribute getManifestFile_Lazy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getSingleton <em>Singleton</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Singleton</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getSingleton()
+	 * @see #getManifestFile()
+	 * @generated
+	 */
+	EAttribute getManifestFile_Singleton();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getActivatorClass <em>Activator Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Activator Class</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getActivatorClass()
+	 * @see #getManifestFile()
+	 * @generated
+	 */
+	EAttribute getManifestFile_ActivatorClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getVendor <em>Vendor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vendor</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getVendor()
+	 * @see #getManifestFile()
+	 * @generated
+	 */
+	EAttribute getManifestFile_Vendor();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile <em>Plugin XML File</em>}'.
@@ -1812,10 +1812,10 @@ public interface BundlePackage extends EPackage {
 	EReference getFeatureFile_Copyright();
 
 	/**
-	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense <em>License</em>}'.
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense <em>License</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>License</em>'.
+	 * @return the meta object for the containment reference '<em>License</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getLicense()
 	 * @see #getFeatureFile()
 	 * @generated
@@ -2050,10 +2050,10 @@ public interface BundlePackage extends EPackage {
 	EReference getElement_Attributes();
 
 	/**
-	 * Returns the meta object for the reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Children</em>'.
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element#getChildren()
 	 * @see #getElement()
 	 * @generated
@@ -2503,38 +2503,6 @@ public interface BundlePackage extends EPackage {
 		EReference BUNDLE_PROJECT__PLUGINXML = eINSTANCE.getBundleProject_Pluginxml();
 
 		/**
-		 * The meta object literal for the '<em><b>Lazy</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUNDLE_PROJECT__LAZY = eINSTANCE.getBundleProject_Lazy();
-
-		/**
-		 * The meta object literal for the '<em><b>Singleton</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUNDLE_PROJECT__SINGLETON = eINSTANCE.getBundleProject_Singleton();
-
-		/**
-		 * The meta object literal for the '<em><b>Activator Class</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUNDLE_PROJECT__ACTIVATOR_CLASS = eINSTANCE.getBundleProject_ActivatorClass();
-
-		/**
-		 * The meta object literal for the '<em><b>Vendor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUNDLE_PROJECT__VENDOR = eINSTANCE.getBundleProject_Vendor();
-
-		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl <em>Feature Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2617,6 +2585,38 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EReference MANIFEST_FILE__REQUIRED_BUNDLES = eINSTANCE.getManifestFile_RequiredBundles();
+
+		/**
+		 * The meta object literal for the '<em><b>Lazy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANIFEST_FILE__LAZY = eINSTANCE.getManifestFile_Lazy();
+
+		/**
+		 * The meta object literal for the '<em><b>Singleton</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANIFEST_FILE__SINGLETON = eINSTANCE.getManifestFile_Singleton();
+
+		/**
+		 * The meta object literal for the '<em><b>Activator Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANIFEST_FILE__ACTIVATOR_CLASS = eINSTANCE.getManifestFile_ActivatorClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Vendor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANIFEST_FILE__VENDOR = eINSTANCE.getManifestFile_Vendor();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.PluginXMLFileImpl <em>Plugin XML File</em>}' class.
@@ -2805,7 +2805,7 @@ public interface BundlePackage extends EPackage {
 		EReference FEATURE_FILE__COPYRIGHT = eINSTANCE.getFeatureFile_Copyright();
 
 		/**
-		 * The meta object literal for the '<em><b>License</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>License</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2989,7 +2989,7 @@ public interface BundlePackage extends EPackage {
 		EReference ELEMENT__ATTRIBUTES = eINSTANCE.getElement_Attributes();
 
 		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

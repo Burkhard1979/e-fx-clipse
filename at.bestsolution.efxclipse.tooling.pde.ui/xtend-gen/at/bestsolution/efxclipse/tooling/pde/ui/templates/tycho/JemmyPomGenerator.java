@@ -114,7 +114,7 @@ public class JemmyPomGenerator {
     _builder.append("</argLine>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t\t");
-    _builder.append("<appArgLine>-consoleLog -nosplash -console -noexit</appArgLine>");
+    _builder.append("<appArgLine>-consoleLog -nosplash -console</appArgLine>");
     _builder.newLine();
     _builder.append("\t\t\t\t\t");
     _builder.append("<application>org.eclipse.pde.junit.runtime.coretestapplication</application>");

@@ -6,7 +6,7 @@ Bundle-Version: 0.1.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: at.bestsolution.efxclipse.tooling.rrobot.model.bundle,
  at.bestsolution.efxclipse.tooling.rrobot.model.bundle.util,
  at.bestsolution.efxclipse.tooling.rrobot.model.task,

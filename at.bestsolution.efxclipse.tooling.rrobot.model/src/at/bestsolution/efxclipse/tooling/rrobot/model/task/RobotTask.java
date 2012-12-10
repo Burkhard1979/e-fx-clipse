@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getProjects <em>Projects</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,5 +38,21 @@ public interface RobotTask extends EObject {
 	 * @generated
 	 */
 	EList<Project> getProjects();
+
+	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variables</em>' containment reference list.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getRobotTask_Variables()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Variable> getVariables();
 
 } // RobotTask

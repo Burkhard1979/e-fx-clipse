@@ -4,6 +4,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="RobotTask">
     <eStructuralFeatures xsi:type="ecore:EReference" name="projects" upperBound="-1"
         eType="#//Project" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//Variable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Project">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -37,12 +39,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="URLFile" eSuperTypes="#//File">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GeneratorFile" eSuperTypes="#//File">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generatorInstance" transient="true">
-      <eGenericType eClassifier="#//Generator">
-        <eTypeArguments eClassifier="#//GeneratorFile"/>
-      </eGenericType>
-    </eStructuralFeatures>
+  <eClassifiers xsi:type="ecore:EClass" name="DynamicFile" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="IOException" instanceClassName="java.io.IOException"
       serializable="false"/>
@@ -51,5 +50,10 @@
   <eClassifiers xsi:type="ecore:EDataType" name="InputStream" instanceClassName="java.io.InputStream"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Generator" instanceClassName="at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator">
     <eTypeParameters name="F"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

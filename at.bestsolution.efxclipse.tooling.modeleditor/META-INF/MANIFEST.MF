@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.core.di;bundle-version="1.1.0",
  at.bestsolution.efxclipse.runtime.di;bundle-version="0.1.1",
  at.bestsolution.efxclipse.runtime.panels;bundle-version="0.1.1"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javafx.animation;version="2.0.0",
  javafx.application;version="2.0.0",
  javafx.beans;version="2.0.0",

@@ -17,8 +17,6 @@ import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import at.bestsolution.efxclipse.runtime.panels.FlingPane;
 
-import com.sun.javafx.scene.control.skin.SkinBase;
-
 @SuppressWarnings("restriction")
 public class FlingPaneSkin /*extends SkinBase<FlingPane, FlingPaneBehavior>*/ {
 

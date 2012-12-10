@@ -148,7 +148,7 @@ public class FeatureFileImpl extends TemplatedFileImpl implements FeatureFile {
 	protected LinkedString copyright;
 
 	/**
-	 * The cached value of the '{@link #getLicense() <em>License</em>}' reference.
+	 * The cached value of the '{@link #getLicense() <em>License</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLicense()
@@ -423,14 +423,6 @@ public class FeatureFileImpl extends TemplatedFileImpl implements FeatureFile {
 	 * @generated
 	 */
 	public LinkedString getLicense() {
-		if (license != null && license.eIsProxy()) {
-			InternalEObject oldLicense = (InternalEObject)license;
-			license = (LinkedString)eResolveProxy(oldLicense);
-			if (license != oldLicense) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BundlePackage.FEATURE_FILE__LICENSE, oldLicense, license));
-			}
-		}
 		return license;
 	}
 
@@ -439,8 +431,14 @@ public class FeatureFileImpl extends TemplatedFileImpl implements FeatureFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LinkedString basicGetLicense() {
-		return license;
+	public NotificationChain basicSetLicense(LinkedString newLicense, NotificationChain msgs) {
+		LinkedString oldLicense = license;
+		license = newLicense;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BundlePackage.FEATURE_FILE__LICENSE, oldLicense, newLicense);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -449,10 +447,17 @@ public class FeatureFileImpl extends TemplatedFileImpl implements FeatureFile {
 	 * @generated
 	 */
 	public void setLicense(LinkedString newLicense) {
-		LinkedString oldLicense = license;
-		license = newLicense;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.FEATURE_FILE__LICENSE, oldLicense, license));
+		if (newLicense != license) {
+			NotificationChain msgs = null;
+			if (license != null)
+				msgs = ((InternalEObject)license).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BundlePackage.FEATURE_FILE__LICENSE, null, msgs);
+			if (newLicense != null)
+				msgs = ((InternalEObject)newLicense).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BundlePackage.FEATURE_FILE__LICENSE, null, msgs);
+			msgs = basicSetLicense(newLicense, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.FEATURE_FILE__LICENSE, newLicense, newLicense));
 	}
 
 	/**
@@ -545,6 +550,8 @@ public class FeatureFileImpl extends TemplatedFileImpl implements FeatureFile {
 				return basicSetDescription(null, msgs);
 			case BundlePackage.FEATURE_FILE__COPYRIGHT:
 				return basicSetCopyright(null, msgs);
+			case BundlePackage.FEATURE_FILE__LICENSE:
+				return basicSetLicense(null, msgs);
 			case BundlePackage.FEATURE_FILE__PLUGINS:
 				return ((InternalEList<?>)getPlugins()).basicRemove(otherEnd, msgs);
 			case BundlePackage.FEATURE_FILE__REQUIREDFEATURES:
@@ -576,8 +583,7 @@ public class FeatureFileImpl extends TemplatedFileImpl implements FeatureFile {
 			case BundlePackage.FEATURE_FILE__COPYRIGHT:
 				return getCopyright();
 			case BundlePackage.FEATURE_FILE__LICENSE:
-				if (resolve) return getLicense();
-				return basicGetLicense();
+				return getLicense();
 			case BundlePackage.FEATURE_FILE__LICENSE_FEATURE:
 				return getLicense_feature();
 			case BundlePackage.FEATURE_FILE__LICENSE_FEATURE_VERSION:

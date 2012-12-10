@@ -71,7 +71,8 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 			case TaskPackage.TEMPLATED_FILE: return createTemplatedFile();
 			case TaskPackage.DATA_FILE: return createDataFile();
 			case TaskPackage.URL_FILE: return createURLFile();
-			case TaskPackage.GENERATOR_FILE: return createGeneratorFile();
+			case TaskPackage.DYNAMIC_FILE: return createDynamicFile();
+			case TaskPackage.VARIABLE: return createVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -176,9 +177,19 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GeneratorFile createGeneratorFile() {
-		GeneratorFileImpl generatorFile = new GeneratorFileImpl();
-		return generatorFile;
+	public DynamicFile createDynamicFile() {
+		DynamicFileImpl dynamicFile = new DynamicFileImpl();
+		return dynamicFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Variable createVariable() {
+		VariableImpl variable = new VariableImpl();
+		return variable;
 	}
 
 	/**

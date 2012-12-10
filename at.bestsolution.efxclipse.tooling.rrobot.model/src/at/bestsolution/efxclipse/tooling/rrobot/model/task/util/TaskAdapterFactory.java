@@ -107,8 +107,12 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 				return createURLFileAdapter();
 			}
 			@Override
-			public Adapter caseGeneratorFile(GeneratorFile object) {
-				return createGeneratorFileAdapter();
+			public Adapter caseDynamicFile(DynamicFile object) {
+				return createDynamicFileAdapter();
+			}
+			@Override
+			public Adapter caseVariable(Variable object) {
+				return createVariableAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -243,16 +247,30 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.GeneratorFile <em>Generator File</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile <em>Dynamic File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.GeneratorFile
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
 	 * @generated
 	 */
-	public Adapter createGeneratorFileAdapter() {
+	public Adapter createDynamicFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable
+	 * @generated
+	 */
+	public Adapter createVariableAdapter() {
 		return null;
 	}
 

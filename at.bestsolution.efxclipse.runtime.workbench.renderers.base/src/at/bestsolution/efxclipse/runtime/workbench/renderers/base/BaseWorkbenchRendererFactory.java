@@ -91,89 +91,89 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 			return (R) areaRenderer;
 		} else if( modelObject instanceof MWindow ) {
 			if( windowRenderer == null ) {
-				windowRenderer = ContextInjectionFactory.make(getWindowRendererClass(), context);
+				windowRenderer = make(getWindowRendererClass());
 			}
 			return (R) windowRenderer;
 		} else if( modelObject instanceof MPerspectiveStack ) {
 			if( perspectiveStackRenderer == null ) {
-				perspectiveStackRenderer = ContextInjectionFactory.make(getPerspectiveStackRendererClass(), context);
+				perspectiveStackRenderer = make(getPerspectiveStackRendererClass());
 			}
 			return (R) perspectiveStackRenderer;
 		} else if( modelObject instanceof MPerspective ) {
 			if( perspectiveRenderer == null ) {
-				perspectiveRenderer = ContextInjectionFactory.make(getPerspectiveRendererClass(), context);
+				perspectiveRenderer = make(getPerspectiveRendererClass());
 			}
 			return (R) perspectiveRenderer;
 		} else if( modelObject instanceof MPartSashContainer ) {
 			if( sashRenderer == null ) {
-				sashRenderer = ContextInjectionFactory.make(getSashRendererClass(), context);
+				sashRenderer = make(getSashRendererClass());
 			}
 			return (R) sashRenderer;
 		} else if( modelObject instanceof MMenu ) {
 			if( BasicPackageImpl.Literals.WINDOW__MAIN_MENU.equals(((EObject)modelObject).eContainmentFeature()) ) {
 				if( menuBarRenderer == null ) {
-					menuBarRenderer = ContextInjectionFactory.make(getMenuBarRendererClass(), context);
+					menuBarRenderer = make(getMenuBarRendererClass());
 				}
 				return (R) menuBarRenderer;
 			} else if( MenuPackageImpl.Literals.TOOL_ITEM__MENU.equals(((EObject)modelObject).eContainmentFeature()) ) {
 				if( toolItemMenuRenderer == null ) {
-					toolItemMenuRenderer = ContextInjectionFactory.make(getToolItemMenuRendererClass(), context);
+					toolItemMenuRenderer = make(getToolItemMenuRendererClass());
 				}
 				return (R) toolItemMenuRenderer;
 			} else {
 				if( menuRenderer == null ) {
-					menuRenderer = ContextInjectionFactory.make(getMenuRendererClass(), context);
+					menuRenderer = make(getMenuRendererClass());
 				}
 				return (R) menuRenderer;
 			}
 		} else if( modelObject instanceof MTrimBar ) {
 			if( trimBarRenderer == null ) {
-				trimBarRenderer = ContextInjectionFactory.make(getTrimBarRendererClass(), context);
+				trimBarRenderer = make(getTrimBarRendererClass());
 			}
 			return (R) trimBarRenderer;
 		} else if( modelObject instanceof MToolBar ) {
 			if( toolBarRenderer == null ) {
-				toolBarRenderer = ContextInjectionFactory.make(getToolBarRendererClass(), context);
+				toolBarRenderer = make(getToolBarRendererClass());
 			}
 			return (R) toolBarRenderer;
 		} else if( modelObject instanceof MToolItem ) {
 			if( toolItemRenderer == null ) {
-				toolItemRenderer = ContextInjectionFactory.make(getToolItemRendererClass(), context);
+				toolItemRenderer = make(getToolItemRendererClass());
 			}
 			return (R) toolItemRenderer;
 		} else if( modelObject instanceof MPartStack ) {
 			if( stackRenderer == null ) {
-				stackRenderer = ContextInjectionFactory.make(getStackRendererClass(), context);
+				stackRenderer = make(getStackRendererClass());
 			}
 			return (R) stackRenderer;
 		} else if( modelObject instanceof MPart ) {
 			if( partRenderer == null ) {
-				partRenderer = ContextInjectionFactory.make(getPartRendererClass(), context);
+				partRenderer = make(getPartRendererClass());
 			}
 			return (R) partRenderer;
 		} else if( modelObject instanceof MMenuItem ) {
 			if( menuItemRenderer == null ) {
-				menuItemRenderer = ContextInjectionFactory.make(getMenuItemRendererClass(), context);
+				menuItemRenderer = make(getMenuItemRendererClass());
 			}
 			return (R) menuItemRenderer;
 		} else if( modelObject instanceof MMenuSeparator ) {
 			if( menuSeperatorRenderer == null ) {
-				menuSeperatorRenderer = ContextInjectionFactory.make(getMenuSeparatorRendererClass(), context);
+				menuSeperatorRenderer = make(getMenuSeparatorRendererClass());
 			}
 			return (R) menuSeperatorRenderer;
 		} else if( modelObject instanceof MPlaceholder ) {
 			if( placeholderRenderer == null ) {
-				placeholderRenderer = ContextInjectionFactory.make(getPlaceholderRendererClass(), context);
+				placeholderRenderer = make(getPlaceholderRendererClass());
 			}
 			return (R) placeholderRenderer;
 		} else if( modelObject instanceof MToolControl ) {
 			if(toolcontrolRenderer == null) {
-				toolcontrolRenderer = ContextInjectionFactory.make(getToolcontrolRendererClass(), context);
+				toolcontrolRenderer = make(getToolcontrolRendererClass());
 			}
 			return (R) toolcontrolRenderer;
 		} else if(modelObject instanceof MToolBarSeparator) {
 			if(toolbarSeparatorRenderer == null) {
-				toolbarSeparatorRenderer = ContextInjectionFactory.make(getToolBarSeparatorRendererClass(), context);
+				toolbarSeparatorRenderer = make(getToolBarSeparatorRendererClass());
 			}
 			return (R) toolbarSeparatorRenderer;
 		}
@@ -181,6 +181,14 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 		return null;
 	}
 
+	/**
+	 * Obtain an instance of the specified renderer and inject it with the context of this factory.
+	 * @param rendererClass The renderer class to be instantiated.
+	 * @return a new instance of the given renderer class.
+	 */
+	protected <R extends AbstractRenderer<?,?>> R make(Class<R> rendererClass) {
+		return ContextInjectionFactory.make(rendererClass, context);
+	}
 	
 	protected abstract Class<? extends BaseWindowRenderer<?>> getWindowRendererClass();
 	protected abstract Class<? extends BaseSashRenderer<?>> getSashRendererClass();
