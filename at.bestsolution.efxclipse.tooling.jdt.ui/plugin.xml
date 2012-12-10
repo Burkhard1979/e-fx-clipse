@@ -252,4 +252,10 @@
          <enablement></enablement>
       </deleteParticipant>
    </extension>
+   <extension
+      point="org.eclipse.help.contexts">
+      <contexts
+         file="helpcontext.xml">
+      </contexts>
+   </extension> 
 </plugin>
