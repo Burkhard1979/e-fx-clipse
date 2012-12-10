@@ -15,10 +15,8 @@ public class OSGiLoggerFactoryProvider implements Provider<LoggerFactory> {
 	@Override
 	public LoggerFactory get() {
 		if (instance == null) {
-			BundleContext context = FrameworkUtil.getBundle(getClass())
-					.getBundleContext();
-			ServiceReference<LoggerFactory> ref = context
-					.getServiceReference(LoggerFactory.class);
+			BundleContext context = FrameworkUtil.getBundle(getClass()).getBundleContext();
+			ServiceReference<LoggerFactory> ref = context.getServiceReference(LoggerFactory.class);
 			instance = context.getService(ref);
 		}
 		return instance;
