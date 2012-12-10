@@ -810,6 +810,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		Composite composite = new Composite( getContainer(), SWT.NONE );
 		FillLayout layout = new FillLayout();
 		composite.setLayout( layout );
+		PlatformUI.getWorkbench().getHelpSystem().setHelp( composite, JavaFXUIPlugin.PLUGIN_ID + ".JFXBuildConfigurationEditor_overview" );
 
 		bean.setValue( task );
 
@@ -1114,6 +1115,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		Composite composite = new Composite( getContainer(), SWT.NONE );
 		FillLayout layout = new FillLayout();
 		composite.setLayout( layout );
+		PlatformUI.getWorkbench().getHelpSystem().setHelp( composite, JavaFXUIPlugin.PLUGIN_ID + ".JFXBuildConfigurationEditor_deploy" );
 
 		// TODO
 		final WritableValue bean = new WritableValue();
@@ -1801,6 +1803,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		Composite composite = new Composite( getContainer(), SWT.NONE );
 		FillLayout layout = new FillLayout();
 		composite.setLayout( layout );
+		PlatformUI.getWorkbench().getHelpSystem().setHelp( composite, JavaFXUIPlugin.PLUGIN_ID + ".JFXBuildConfigurationEditor_signing" );
 
 		final WritableValue bean = new WritableValue();
 		bean.setValue( task );
