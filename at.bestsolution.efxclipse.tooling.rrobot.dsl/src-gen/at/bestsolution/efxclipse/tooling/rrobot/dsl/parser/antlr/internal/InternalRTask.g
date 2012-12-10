@@ -568,7 +568,29 @@ ruleProject returns [EObject current=null]
     {
     	newLeafNode(otherlv_11, grammarAccess.getProjectAccess().getRightCurlyBracketKeyword_5());
     }
+(	otherlv_12='excluded-if' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getProjectAccess().getExcludedIfKeyword_6_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getProjectAccess().getExcludeExpressionBooleanExpressionParserRuleCall_6_1_0()); 
+	    }
+		lv_excludeExpression_13_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getProjectRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_13_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
 )
+))?)
 ;
 
 
@@ -2778,19 +2800,19 @@ ruleFeatureFile returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getFeatureFileAccess().getVersionVersionParserRuleCall_4_0_2_0()); 
-	    }
-		lv_version_7_0=ruleVersion		{
+		lv_version_7_0=RULE_STRING
+		{
+			newLeafNode(lv_version_7_0, grammarAccess.getFeatureFileAccess().getVersionSTRINGTerminalRuleCall_4_0_2_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFeatureFileRule());
+	            $current = createModelElement(grammarAccess.getFeatureFileRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"version",
         		lv_version_7_0, 
-        		"Version");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )

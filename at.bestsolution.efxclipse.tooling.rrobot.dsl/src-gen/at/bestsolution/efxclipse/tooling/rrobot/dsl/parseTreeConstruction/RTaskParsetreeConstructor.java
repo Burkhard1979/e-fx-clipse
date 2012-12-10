@@ -1425,12 +1425,12 @@ protected class Resource_PluginXMLFileParserRuleCall_7 extends RuleCallToken {
  *
  * Project returns task::Project:
  * 	{task::Project} "SimpleProject" name=EString "{" ("resources" "=" "{" resources+=Resource ("," resources+=Resource)*
- * 	"}")? "}";
+ * 	"}")? "}" ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
 // {task::Project} "SimpleProject" name=EString "{" ("resources" "=" "{" resources+=Resource ("," resources+=Resource)*
-// "}")? "}"
+// "}")? "}" ("excluded-if" excludeExpression=BooleanExpression)?
 protected class Project_Group extends GroupToken {
 	
 	public Project_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1445,7 +1445,8 @@ protected class Project_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Project_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Project_Group_6(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Project_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -1835,6 +1836,97 @@ protected class Project_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	}
 
 }
+
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class Project_Group_6 extends GroupToken {
+	
+	public Project_Group_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getProjectAccess().getGroup_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Project_ExcludeExpressionAssignment_6_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class Project_ExcludedIfKeyword_6_0 extends KeywordToken  {
+	
+	public Project_ExcludedIfKeyword_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getProjectAccess().getExcludedIfKeyword_6_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Project_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class Project_ExcludeExpressionAssignment_6_1 extends AssignmentToken  {
+	
+	public Project_ExcludeExpressionAssignment_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getProjectAccess().getExcludeExpressionAssignment_6_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getProjectAccess().getExcludeExpressionBooleanExpressionParserRuleCall_6_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Project_ExcludedIfKeyword_6_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
 
 
 /************ end Rule Project ****************/
@@ -8620,7 +8712,7 @@ protected class ProductFileFeaturebase_RightCurlyBracketKeyword_8 extends Keywor
 /************ begin Rule FeatureFile ****************
  *
  * FeatureFile returns bundle::FeatureFile:
- * 	{bundle::FeatureFile} "FeatureFile" featureid=STRING "{" ("version" "=" version=Version & "featurename" "="
+ * 	{bundle::FeatureFile} "FeatureFile" featureid=STRING "{" ("version" "=" version=STRING & "featurename" "="
  * 	featurename=STRING & "vendor" "=" vendor=STRING & "description" "=" description=LinkedString & "copyright" "="
  * 	copyright=LinkedString & "license" "=" license=LinkedString & ("license-feature" "=" license_feature=STRING &
  * 	"license-feature-version" "=" license_feature_version=Version)?) ("plugins" "=" "{" plugins+=FeaturePlugin (","
@@ -8630,7 +8722,7 @@ protected class ProductFileFeaturebase_RightCurlyBracketKeyword_8 extends Keywor
  *
  **/
 
-// {bundle::FeatureFile} "FeatureFile" featureid=STRING "{" ("version" "=" version=Version & "featurename" "="
+// {bundle::FeatureFile} "FeatureFile" featureid=STRING "{" ("version" "=" version=STRING & "featurename" "="
 // featurename=STRING & "vendor" "=" vendor=STRING & "description" "=" description=LinkedString & "copyright" "="
 // copyright=LinkedString & "license" "=" license=LinkedString & ("license-feature" "=" license_feature=STRING &
 // "license-feature-version" "=" license_feature_version=Version)?) ("plugins" "=" "{" plugins+=FeaturePlugin (","
@@ -8769,7 +8861,7 @@ protected class FeatureFile_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 
 }
 
-// "version" "=" version=Version & "featurename" "=" featurename=STRING & "vendor" "=" vendor=STRING & "description" "="
+// "version" "=" version=STRING & "featurename" "=" featurename=STRING & "vendor" "=" vendor=STRING & "description" "="
 // description=LinkedString & "copyright" "=" copyright=LinkedString & "license" "=" license=LinkedString &
 // ("license-feature" "=" license_feature=STRING & "license-feature-version" "=" license_feature_version=Version)?
 protected class FeatureFile_UnorderedGroup_4 extends UnorderedGroupToken {
@@ -8794,7 +8886,7 @@ protected class FeatureFile_UnorderedGroup_4 extends UnorderedGroupToken {
 
 }
 
-// "version" "=" version=Version
+// "version" "=" version=STRING
 protected class FeatureFile_Group_4_0 extends GroupToken {
 	
 	public FeatureFile_Group_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8860,7 +8952,7 @@ protected class FeatureFile_EqualsSignKeyword_4_0_1 extends KeywordToken  {
 
 }
 
-// version=Version
+// version=STRING
 protected class FeatureFile_VersionAssignment_4_0_2 extends AssignmentToken  {
 	
 	public FeatureFile_VersionAssignment_4_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8884,9 +8976,9 @@ protected class FeatureFile_VersionAssignment_4_0_2 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("version",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("version");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFeatureFileAccess().getVersionVersionParserRuleCall_4_0_2_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getFeatureFileAccess().getVersionVersionParserRuleCall_4_0_2_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFeatureFileAccess().getVersionSTRINGTerminalRuleCall_4_0_2_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getFeatureFileAccess().getVersionSTRINGTerminalRuleCall_4_0_2_0();
 			return obj;
 		}
 		return null;

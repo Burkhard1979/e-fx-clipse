@@ -176,7 +176,7 @@ FeatureFile returns bundle::FeatureFile:
 	{bundle::FeatureFile}
 	'FeatureFile' featureid=STRING '{'
 		(
-			'version' '=' version=Version
+			'version' '=' version=STRING
 			&
 			'featurename' '=' featurename=STRING
 			&

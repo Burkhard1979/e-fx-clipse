@@ -58,6 +58,7 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProjectAccess().getGroup(), "rule__Project__Group__0");
 					put(grammarAccess.getProjectAccess().getGroup_4(), "rule__Project__Group_4__0");
 					put(grammarAccess.getProjectAccess().getGroup_4_4(), "rule__Project__Group_4_4__0");
+					put(grammarAccess.getProjectAccess().getGroup_6(), "rule__Project__Group_6__0");
 					put(grammarAccess.getFolderAccess().getGroup(), "rule__Folder__Group__0");
 					put(grammarAccess.getFolderAccess().getGroup_4(), "rule__Folder__Group_4__0");
 					put(grammarAccess.getFolderAccess().getGroup_4_4(), "rule__Folder__Group_4_4__0");
@@ -160,6 +161,7 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProjectAccess().getNameAssignment_2(), "rule__Project__NameAssignment_2");
 					put(grammarAccess.getProjectAccess().getResourcesAssignment_4_3(), "rule__Project__ResourcesAssignment_4_3");
 					put(grammarAccess.getProjectAccess().getResourcesAssignment_4_4_1(), "rule__Project__ResourcesAssignment_4_4_1");
+					put(grammarAccess.getProjectAccess().getExcludeExpressionAssignment_6_1(), "rule__Project__ExcludeExpressionAssignment_6_1");
 					put(grammarAccess.getFolderAccess().getNameAssignment_2(), "rule__Folder__NameAssignment_2");
 					put(grammarAccess.getFolderAccess().getChildrenAssignment_4_3(), "rule__Folder__ChildrenAssignment_4_3");
 					put(grammarAccess.getFolderAccess().getChildrenAssignment_4_4_1(), "rule__Folder__ChildrenAssignment_4_4_1");
