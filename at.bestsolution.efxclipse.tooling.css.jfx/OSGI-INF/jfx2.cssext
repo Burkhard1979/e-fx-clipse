@@ -1,5 +1,16 @@
 package javafx {
 	
+	package debug {
+		
+		nice = nice( little | very );
+		bad = bla <badf>;
+		badf = bad( little | very );
+		
+		Debug {
+			test <nice> | <bad>;
+		}
+	}
+	
 	boolean = true | false;
 	string = @STRING;
 	

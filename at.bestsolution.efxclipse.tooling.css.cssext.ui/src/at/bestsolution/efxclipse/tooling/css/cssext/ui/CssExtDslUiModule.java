@@ -14,11 +14,15 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
+import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
+import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
+import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemanticHighlightingCalculator;
 
 import com.google.inject.Binder;
+import com.google.inject.matcher.Matchers;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -36,6 +40,9 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 		
 		binder.bind(ICssExtManager.class).toInstance(new CssExtManager());
 		binder.bind(CssExtDocParser.class).toInstance(new CssExtDocParser());
+		
+		binder.bind(LoggerFactory.class).toProvider(OSGiLoggerFactoryProvider.class);
+		binder.bindListener(Matchers.any(), new FXLoggerListener());
 		
 		super.configure(binder);
 	}

@@ -31,10 +31,10 @@ public class ParserInputCursor {
 	}
 	
 	public CssTok peekNextToken() {
-		if (position+1 >= input.input.size()) {
+		if (position >= input.input.size()) {
 			return null;
 		}
-		return input.input.get(position+1);
+		return input.input.get(position);
 	}
 	
 	public ParserInputCursor copy() {
