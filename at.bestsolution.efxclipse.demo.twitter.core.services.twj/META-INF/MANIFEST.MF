@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Twj
+Bundle-SymbolicName: at.bestsolution.efxclipse.demo.twitter.core.services.twj
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: BestSolution.at
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: at.bestsolution.efxclipse.demo.twitter.core.services;bundle-version="1.0.0",
+ at.bestsolution.efxclipse.demo.twitter.model;bundle-version="1.0.0"
+Bundle-ClassPath: libs/twitter4j-async-3.0.2.jar,
+ libs/twitter4j-core-3.0.2.jar,
+ .
+Service-Component: OSGI-INF/follower.xml
+Bundle-ActivationPolicy: lazy

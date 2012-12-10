@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.demo.twitter.core.services.twj.follower">
+   <implementation class="at.bestsolution.efxclipse.demo.twitter.core.services.twj.FollowerServiceImpl"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.demo.twitter.core.services.FollowerService"/>
+   </service>
+</scr:component>
