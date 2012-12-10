@@ -1,10 +1,24 @@
 package at.bestsolution.efxclipse.tooling.pde.e4.project.template;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Map;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class ApplicationE4XMI {
+public class ApplicationE4XMI implements Generator<DynamicFile> {
+  public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
+    String _generateUUID = EcoreUtil.generateUUID();
+    CharSequence _generateContent = this.generateContent(_generateUUID);
+    String _string = _generateContent.toString();
+    byte[] _bytes = _string.getBytes();
+    ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
+    return _byteArrayInputStream;
+  }
+  
   public CharSequence generateContent(final String rootContext) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");

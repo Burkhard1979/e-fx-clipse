@@ -25,10 +25,11 @@ public class JavaExecutor implements Generator<DynamicFile> {
 	@Override
 	public InputStream generate(DynamicFile file, Map<String, Object> data) {
 		URI uri = URI.createURI(file.getExecutionURI());
+		
 		if( "bundleclass".equals(uri.scheme()) ) {
-			Bundle b = Platform.getBundle(uri.segment(0));
+			Bundle b = Platform.getBundle(uri.host());
 			try {
-				Class<?> cl = b.loadClass(uri.segment(1));
+				Class<?> cl = b.loadClass(uri.segment(0));
 				Generator<DynamicFile> g = (Generator<DynamicFile>) cl.newInstance();
 				return g.generate(file, data);
 			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {

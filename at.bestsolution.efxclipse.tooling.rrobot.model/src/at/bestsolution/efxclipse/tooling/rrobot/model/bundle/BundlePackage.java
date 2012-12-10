@@ -88,6 +88,15 @@ public interface BundlePackage extends EPackage {
 	int BUNDLE_PROJECT__RESOURCES = TaskPackage.PROJECT__RESOURCES;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUNDLE_PROJECT__EXCLUDE_EXPRESSION = TaskPackage.PROJECT__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Manifest</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,6 +161,15 @@ public interface BundlePackage extends EPackage {
 	int FEATURE_PROJECT__RESOURCES = TaskPackage.PROJECT__RESOURCES;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PROJECT__EXCLUDE_EXPRESSION = TaskPackage.PROJECT__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Feature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -187,6 +205,15 @@ public interface BundlePackage extends EPackage {
 	 * @ordered
 	 */
 	int MANIFEST_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
@@ -325,6 +352,15 @@ public interface BundlePackage extends EPackage {
 	int PLUGIN_XML_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN_XML_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -371,6 +407,15 @@ public interface BundlePackage extends EPackage {
 	int BUILD_PROPERTIES__NAME = TaskPackage.TEMPLATED_FILE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_PROPERTIES__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -415,6 +460,15 @@ public interface BundlePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
@@ -524,6 +578,15 @@ public interface BundlePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_FILE_FEATUREBASE__NAME = PRODUCT_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE__EXCLUDE_EXPRESSION = PRODUCT_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
@@ -642,6 +705,15 @@ public interface BundlePackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE_FILE__NAME = TaskPackage.TEMPLATED_FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.

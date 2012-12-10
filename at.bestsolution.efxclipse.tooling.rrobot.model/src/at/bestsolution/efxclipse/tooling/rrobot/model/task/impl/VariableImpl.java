@@ -3,6 +3,7 @@
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.impl;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Type;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -20,9 +21,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl#getKey <em>Key</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl#getValue <em>Value</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,26 +49,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * @ordered
 	 */
 	protected String key = KEY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
@@ -110,6 +91,26 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Type TYPE_EDEFAULT = Type.STRING;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type = TYPE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -147,27 +148,6 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		key = newKey;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TaskPackage.VARIABLE__KEY, oldKey, key));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TaskPackage.VARIABLE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -217,17 +197,38 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Type getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(Type newType) {
+		Type oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TaskPackage.VARIABLE__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case TaskPackage.VARIABLE__KEY:
 				return getKey();
-			case TaskPackage.VARIABLE__VALUE:
-				return getValue();
 			case TaskPackage.VARIABLE__DEFAULT_VALUE:
 				return getDefaultValue();
 			case TaskPackage.VARIABLE__DESCRIPTION:
 				return getDescription();
+			case TaskPackage.VARIABLE__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -243,14 +244,14 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case TaskPackage.VARIABLE__KEY:
 				setKey((String)newValue);
 				return;
-			case TaskPackage.VARIABLE__VALUE:
-				setValue((String)newValue);
-				return;
 			case TaskPackage.VARIABLE__DEFAULT_VALUE:
 				setDefaultValue((String)newValue);
 				return;
 			case TaskPackage.VARIABLE__DESCRIPTION:
 				setDescription((String)newValue);
+				return;
+			case TaskPackage.VARIABLE__TYPE:
+				setType((Type)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -267,14 +268,14 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case TaskPackage.VARIABLE__KEY:
 				setKey(KEY_EDEFAULT);
 				return;
-			case TaskPackage.VARIABLE__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
 			case TaskPackage.VARIABLE__DEFAULT_VALUE:
 				setDefaultValue(DEFAULT_VALUE_EDEFAULT);
 				return;
 			case TaskPackage.VARIABLE__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
+				return;
+			case TaskPackage.VARIABLE__TYPE:
+				setType(TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -290,12 +291,12 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		switch (featureID) {
 			case TaskPackage.VARIABLE__KEY:
 				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
-			case TaskPackage.VARIABLE__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case TaskPackage.VARIABLE__DEFAULT_VALUE:
 				return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null : !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
 			case TaskPackage.VARIABLE__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case TaskPackage.VARIABLE__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -312,12 +313,12 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (key: ");
 		result.append(key);
-		result.append(", value: ");
-		result.append(value);
 		result.append(", defaultValue: ");
 		result.append(defaultValue);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

@@ -1,9 +1,17 @@
 package at.bestsolution.efxclipse.tooling.pde.e4.project.template
 
 import org.eclipse.emf.ecore.util.EcoreUtil
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
+import java.util.Map
+import java.io.ByteArrayInputStream
 
-class ApplicationE4XMI {
-		
+class ApplicationE4XMI implements Generator<DynamicFile> {
+	
+	override generate(DynamicFile file, Map<String,Object> data) {
+		return new ByteArrayInputStream(generateContent(EcoreUtil::generateUUID).toString.bytes);
+	}
+	
 	def generateContent(String rootContext) '''
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application 

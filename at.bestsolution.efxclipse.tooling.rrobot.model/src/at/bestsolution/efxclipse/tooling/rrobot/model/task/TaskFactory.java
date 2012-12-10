@@ -94,6 +94,24 @@ public interface TaskFactory extends EFactory {
 	Variable createVariable();
 
 	/**
+	 * Returns a new object of class '<em>Referencing Boolean Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Referencing Boolean Expression</em>'.
+	 * @generated
+	 */
+	ReferencingBooleanExpression createReferencingBooleanExpression();
+
+	/**
+	 * Returns a new object of class '<em>Inline Boolean Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inline Boolean Expression</em>'.
+	 * @generated
+	 */
+	InlineBooleanExpression createInlineBooleanExpression();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

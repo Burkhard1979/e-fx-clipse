@@ -5,6 +5,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.task;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -122,13 +123,22 @@ public interface TaskPackage extends EPackage {
 	int PROJECT__RESOURCES = 1;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT__EXCLUDE_EXPRESSION = 2;
+
+	/**
 	 * The number of structural features of the '<em>Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_FEATURE_COUNT = 2;
+	int PROJECT_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ResourceImpl <em>Resource</em>}' class.
@@ -150,13 +160,22 @@ public interface TaskPackage extends EPackage {
 	int RESOURCE__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__EXCLUDE_EXPRESSION = 1;
+
+	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 1;
+	int RESOURCE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.FolderImpl <em>Folder</em>}' class.
@@ -176,6 +195,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int FOLDER__NAME = RESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__EXCLUDE_EXPRESSION = RESOURCE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -215,6 +243,15 @@ public interface TaskPackage extends EPackage {
 	int FILE__NAME = RESOURCE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__EXCLUDE_EXPRESSION = RESOURCE__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -232,7 +269,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 11;
+	int IPROGRESS_MONITOR = 15;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl <em>Templated File</em>}' class.
@@ -252,6 +289,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPLATED_FILE__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATED_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
@@ -291,6 +337,15 @@ public interface TaskPackage extends EPackage {
 	int DATA_FILE__NAME = FILE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -326,6 +381,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int URL_FILE__NAME = FILE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int URL_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -365,6 +429,15 @@ public interface TaskPackage extends EPackage {
 	int DYNAMIC_FILE__NAME = FILE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Execution URI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -383,13 +456,22 @@ public interface TaskPackage extends EPackage {
 	int DYNAMIC_FILE__TYPE = FILE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_FILE__VARIABLES = FILE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Dynamic File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 2;
+	int DYNAMIC_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl <em>Variable</em>}' class.
@@ -411,22 +493,13 @@ public interface TaskPackage extends EPackage {
 	int VARIABLE__KEY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__VALUE = 1;
-
-	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__DEFAULT_VALUE = 2;
+	int VARIABLE__DEFAULT_VALUE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -435,7 +508,16 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__DESCRIPTION = 3;
+	int VARIABLE__DESCRIPTION = 2;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__TYPE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
@@ -447,6 +529,109 @@ public interface TaskPackage extends EPackage {
 	int VARIABLE_FEATURE_COUNT = 4;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression <em>Boolean Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getBooleanExpression()
+	 * @generated
+	 */
+	int BOOLEAN_EXPRESSION = 10;
+
+	/**
+	 * The number of structural features of the '<em>Boolean Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_EXPRESSION_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ReferencingBooleanExpressionImpl <em>Referencing Boolean Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ReferencingBooleanExpressionImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getReferencingBooleanExpression()
+	 * @generated
+	 */
+	int REFERENCING_BOOLEAN_EXPRESSION = 11;
+
+	/**
+	 * The feature id for the '<em><b>Execution URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCING_BOOLEAN_EXPRESSION__EXECUTION_URI = BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCING_BOOLEAN_EXPRESSION__TYPE = BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Referencing Boolean Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCING_BOOLEAN_EXPRESSION_FEATURE_COUNT = BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.InlineBooleanExpressionImpl <em>Inline Boolean Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.InlineBooleanExpressionImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInlineBooleanExpression()
+	 * @generated
+	 */
+	int INLINE_BOOLEAN_EXPRESSION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INLINE_BOOLEAN_EXPRESSION__TYPE = BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INLINE_BOOLEAN_EXPRESSION__EXPRESSION = BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Inline Boolean Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INLINE_BOOLEAN_EXPRESSION_FEATURE_COUNT = BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Type
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getType()
+	 * @generated
+	 */
+	int TYPE = 13;
+
+	/**
 	 * The meta object id for the '<em>Input Stream</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -454,7 +639,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
 	 * @generated
 	 */
-	int INPUT_STREAM = 12;
+	int INPUT_STREAM = 16;
 
 	/**
 	 * The meta object id for the '<em>Generator</em>' data type.
@@ -464,7 +649,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGenerator()
 	 * @generated
 	 */
-	int GENERATOR = 13;
+	int GENERATOR = 17;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -474,7 +659,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 10;
+	int IO_EXCEPTION = 14;
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask <em>Robot Task</em>}'.
@@ -541,6 +726,17 @@ public interface TaskPackage extends EPackage {
 	EReference getProject_Resources();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Project#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Project#getExcludeExpression()
+	 * @see #getProject()
+	 * @generated
+	 */
+	EReference getProject_ExcludeExpression();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,6 +756,17 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResource_Name();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource#getExcludeExpression()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder <em>Folder</em>}'.
@@ -699,6 +906,17 @@ public interface TaskPackage extends EPackage {
 	EAttribute getDynamicFile_Type();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile#getVariables()
+	 * @see #getDynamicFile()
+	 * @generated
+	 */
+	EReference getDynamicFile_Variables();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -718,17 +936,6 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVariable_Key();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getValue()
-	 * @see #getVariable()
-	 * @generated
-	 */
-	EAttribute getVariable_Value();
 
 	/**
 	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getDefaultValue <em>Default Value</em>}'.
@@ -751,6 +958,101 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVariable_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable#getType()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Type();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression <em>Boolean Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression
+	 * @generated
+	 */
+	EClass getBooleanExpression();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression <em>Referencing Boolean Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Referencing Boolean Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression
+	 * @generated
+	 */
+	EClass getReferencingBooleanExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression#getExecutionURI <em>Execution URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Execution URI</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression#getExecutionURI()
+	 * @see #getReferencingBooleanExpression()
+	 * @generated
+	 */
+	EAttribute getReferencingBooleanExpression_ExecutionURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression#getType()
+	 * @see #getReferencingBooleanExpression()
+	 * @generated
+	 */
+	EAttribute getReferencingBooleanExpression_Type();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression <em>Inline Boolean Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inline Boolean Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression
+	 * @generated
+	 */
+	EClass getInlineBooleanExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression#getType()
+	 * @see #getInlineBooleanExpression()
+	 * @generated
+	 */
+	EAttribute getInlineBooleanExpression_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression#getExpression()
+	 * @see #getInlineBooleanExpression()
+	 * @generated
+	 */
+	EAttribute getInlineBooleanExpression_Expression();
+
+	/**
+	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Type</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Type
+	 * @generated
+	 */
+	EEnum getType();
 
 	/**
 	 * Returns the meta object for data type '{@link java.io.InputStream <em>Input Stream</em>}'.
@@ -860,6 +1162,14 @@ public interface TaskPackage extends EPackage {
 		EReference PROJECT__RESOURCES = eINSTANCE.getProject_Resources();
 
 		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROJECT__EXCLUDE_EXPRESSION = eINSTANCE.getProject_ExcludeExpression();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ResourceImpl <em>Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -876,6 +1186,14 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE__NAME = eINSTANCE.getResource_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__EXCLUDE_EXPRESSION = eINSTANCE.getResource_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.FolderImpl <em>Folder</em>}' class.
@@ -996,6 +1314,14 @@ public interface TaskPackage extends EPackage {
 		EAttribute DYNAMIC_FILE__TYPE = eINSTANCE.getDynamicFile_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DYNAMIC_FILE__VARIABLES = eINSTANCE.getDynamicFile_Variables();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.VariableImpl <em>Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1014,14 +1340,6 @@ public interface TaskPackage extends EPackage {
 		EAttribute VARIABLE__KEY = eINSTANCE.getVariable_Key();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VARIABLE__VALUE = eINSTANCE.getVariable_Value();
-
-		/**
 		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1036,6 +1354,86 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__DESCRIPTION = eINSTANCE.getVariable_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__TYPE = eINSTANCE.getVariable_Type();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression <em>Boolean Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getBooleanExpression()
+		 * @generated
+		 */
+		EClass BOOLEAN_EXPRESSION = eINSTANCE.getBooleanExpression();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ReferencingBooleanExpressionImpl <em>Referencing Boolean Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ReferencingBooleanExpressionImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getReferencingBooleanExpression()
+		 * @generated
+		 */
+		EClass REFERENCING_BOOLEAN_EXPRESSION = eINSTANCE.getReferencingBooleanExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCING_BOOLEAN_EXPRESSION__EXECUTION_URI = eINSTANCE.getReferencingBooleanExpression_ExecutionURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCING_BOOLEAN_EXPRESSION__TYPE = eINSTANCE.getReferencingBooleanExpression_Type();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.InlineBooleanExpressionImpl <em>Inline Boolean Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.InlineBooleanExpressionImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInlineBooleanExpression()
+		 * @generated
+		 */
+		EClass INLINE_BOOLEAN_EXPRESSION = eINSTANCE.getInlineBooleanExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INLINE_BOOLEAN_EXPRESSION__TYPE = eINSTANCE.getInlineBooleanExpression_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INLINE_BOOLEAN_EXPRESSION__EXPRESSION = eINSTANCE.getInlineBooleanExpression_Expression();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Type
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getType()
+		 * @generated
+		 */
+		EEnum TYPE = eINSTANCE.getType();
 
 		/**
 		 * The meta object literal for the '<em>Input Stream</em>' data type.

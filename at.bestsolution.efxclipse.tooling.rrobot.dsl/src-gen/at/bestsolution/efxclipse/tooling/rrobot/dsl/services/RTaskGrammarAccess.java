@@ -26,24 +26,36 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRobotTaskKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cProjectsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cVariablesKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		private final Assignment cProjectsAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final RuleCall cProjectsGenericProjectParserRuleCall_3_3_0 = (RuleCall)cProjectsAssignment_3_3.eContents().get(0);
+		private final Assignment cVariablesAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
+		private final RuleCall cVariablesVariableParserRuleCall_3_3_0 = (RuleCall)cVariablesAssignment_3_3.eContents().get(0);
 		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
 		private final Keyword cCommaKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
-		private final Assignment cProjectsAssignment_3_4_1 = (Assignment)cGroup_3_4.eContents().get(1);
-		private final RuleCall cProjectsGenericProjectParserRuleCall_3_4_1_0 = (RuleCall)cProjectsAssignment_3_4_1.eContents().get(0);
+		private final Assignment cVariablesAssignment_3_4_1 = (Assignment)cGroup_3_4.eContents().get(1);
+		private final RuleCall cVariablesVariableParserRuleCall_3_4_1_0 = (RuleCall)cVariablesAssignment_3_4_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3_5 = (Keyword)cGroup_3.eContents().get(5);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cProjectsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Assignment cProjectsAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cProjectsGenericProjectParserRuleCall_4_3_0 = (RuleCall)cProjectsAssignment_4_3.eContents().get(0);
+		private final Group cGroup_4_4 = (Group)cGroup_4.eContents().get(4);
+		private final Keyword cCommaKeyword_4_4_0 = (Keyword)cGroup_4_4.eContents().get(0);
+		private final Assignment cProjectsAssignment_4_4_1 = (Assignment)cGroup_4_4.eContents().get(1);
+		private final RuleCall cProjectsGenericProjectParserRuleCall_4_4_1_0 = (RuleCall)cProjectsAssignment_4_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4_5 = (Keyword)cGroup_4.eContents().get(5);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//RobotTask returns task::RobotTask:
-		//	{task::RobotTask} "RobotTask" "{" ("projects" "=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")?
-		//	"}";
+		//	{task::RobotTask} "RobotTask" "{" ("variables" "=" "{" variables+=Variable ("," variables+=Variable)* "}")?
+		//	("projects" "=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{task::RobotTask} "RobotTask" "{" ("projects" "=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")? "}"
+		//{task::RobotTask} "RobotTask" "{" ("variables" "=" "{" variables+=Variable ("," variables+=Variable)* "}")? ("projects"
+		//"=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{task::RobotTask}
@@ -55,11 +67,11 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//("projects" "=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")?
+		//("variables" "=" "{" variables+=Variable ("," variables+=Variable)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"projects"
-		public Keyword getProjectsKeyword_3_0() { return cProjectsKeyword_3_0; }
+		//"variables"
+		public Keyword getVariablesKeyword_3_0() { return cVariablesKeyword_3_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_3_1() { return cEqualsSignKeyword_3_1; }
@@ -67,29 +79,114 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3_2() { return cLeftCurlyBracketKeyword_3_2; }
 
-		//projects+=GenericProject
-		public Assignment getProjectsAssignment_3_3() { return cProjectsAssignment_3_3; }
+		//variables+=Variable
+		public Assignment getVariablesAssignment_3_3() { return cVariablesAssignment_3_3; }
 
-		//GenericProject
-		public RuleCall getProjectsGenericProjectParserRuleCall_3_3_0() { return cProjectsGenericProjectParserRuleCall_3_3_0; }
+		//Variable
+		public RuleCall getVariablesVariableParserRuleCall_3_3_0() { return cVariablesVariableParserRuleCall_3_3_0; }
 
-		//("," projects+=GenericProject)*
+		//("," variables+=Variable)*
 		public Group getGroup_3_4() { return cGroup_3_4; }
 
 		//","
 		public Keyword getCommaKeyword_3_4_0() { return cCommaKeyword_3_4_0; }
 
-		//projects+=GenericProject
-		public Assignment getProjectsAssignment_3_4_1() { return cProjectsAssignment_3_4_1; }
+		//variables+=Variable
+		public Assignment getVariablesAssignment_3_4_1() { return cVariablesAssignment_3_4_1; }
 
-		//GenericProject
-		public RuleCall getProjectsGenericProjectParserRuleCall_3_4_1_0() { return cProjectsGenericProjectParserRuleCall_3_4_1_0; }
+		//Variable
+		public RuleCall getVariablesVariableParserRuleCall_3_4_1_0() { return cVariablesVariableParserRuleCall_3_4_1_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3_5() { return cRightCurlyBracketKeyword_3_5; }
 
+		//("projects" "=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"projects"
+		public Keyword getProjectsKeyword_4_0() { return cProjectsKeyword_4_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_4_1() { return cEqualsSignKeyword_4_1; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_4_2() { return cLeftCurlyBracketKeyword_4_2; }
+
+		//projects+=GenericProject
+		public Assignment getProjectsAssignment_4_3() { return cProjectsAssignment_4_3; }
+
+		//GenericProject
+		public RuleCall getProjectsGenericProjectParserRuleCall_4_3_0() { return cProjectsGenericProjectParserRuleCall_4_3_0; }
+
+		//("," projects+=GenericProject)*
+		public Group getGroup_4_4() { return cGroup_4_4; }
+
+		//","
+		public Keyword getCommaKeyword_4_4_0() { return cCommaKeyword_4_4_0; }
+
+		//projects+=GenericProject
+		public Assignment getProjectsAssignment_4_4_1() { return cProjectsAssignment_4_4_1; }
+
+		//GenericProject
+		public RuleCall getProjectsGenericProjectParserRuleCall_4_4_1_0() { return cProjectsGenericProjectParserRuleCall_4_4_1_0; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_4_5() { return cRightCurlyBracketKeyword_4_5; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class VariableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Variable");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cDescriptionAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cDescriptionSL_DOCTerminalRuleCall_0_0 = (RuleCall)cDescriptionAssignment_0.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeTypeEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cKeyAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKeySTRINGTerminalRuleCall_2_0 = (RuleCall)cKeyAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cDefaultKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cDefaultValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cDefaultValueSTRINGTerminalRuleCall_3_1_0 = (RuleCall)cDefaultValueAssignment_3_1.eContents().get(0);
+		
+		//Variable returns task::Variable:
+		//	description=SL_DOC type=Type key=STRING ("default" defaultValue=STRING)?;
+		public ParserRule getRule() { return rule; }
+
+		//description=SL_DOC type=Type key=STRING ("default" defaultValue=STRING)?
+		public Group getGroup() { return cGroup; }
+
+		//description=SL_DOC
+		public Assignment getDescriptionAssignment_0() { return cDescriptionAssignment_0; }
+
+		//SL_DOC
+		public RuleCall getDescriptionSL_DOCTerminalRuleCall_0_0() { return cDescriptionSL_DOCTerminalRuleCall_0_0; }
+
+		//type=Type
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//Type
+		public RuleCall getTypeTypeEnumRuleCall_1_0() { return cTypeTypeEnumRuleCall_1_0; }
+
+		//key=STRING
+		public Assignment getKeyAssignment_2() { return cKeyAssignment_2; }
+
+		//STRING
+		public RuleCall getKeySTRINGTerminalRuleCall_2_0() { return cKeySTRINGTerminalRuleCall_2_0; }
+
+		//("default" defaultValue=STRING)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"default"
+		public Keyword getDefaultKeyword_3_0() { return cDefaultKeyword_3_0; }
+
+		//defaultValue=STRING
+		public Assignment getDefaultValueAssignment_3_1() { return cDefaultValueAssignment_3_1; }
+
+		//STRING
+		public RuleCall getDefaultValueSTRINGTerminalRuleCall_3_1_0() { return cDefaultValueSTRINGTerminalRuleCall_3_1_0; }
 	}
 
 	public class GenericProjectElements extends AbstractParserRuleElementFinder {
@@ -123,16 +220,16 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTemplatedFileParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cDataFileParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cURLFileParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cGeneratorFileParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cDynamicFileParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cManifestFileParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		private final RuleCall cProductFileFeaturebaseParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		private final RuleCall cPluginXMLFileParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
 		
 		//Resource returns task::Resource:
-		//	Folder | TemplatedFile | DataFile | URLFile | GeneratorFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
+		//	Folder | TemplatedFile | DataFile | URLFile | DynamicFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
 		public ParserRule getRule() { return rule; }
 
-		//Folder | TemplatedFile | DataFile | URLFile | GeneratorFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile
+		//Folder | TemplatedFile | DataFile | URLFile | DynamicFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Folder
@@ -147,8 +244,8 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		//URLFile
 		public RuleCall getURLFileParserRuleCall_3() { return cURLFileParserRuleCall_3; }
 
-		//GeneratorFile
-		public RuleCall getGeneratorFileParserRuleCall_4() { return cGeneratorFileParserRuleCall_4; }
+		//DynamicFile
+		public RuleCall getDynamicFileParserRuleCall_4() { return cDynamicFileParserRuleCall_4; }
 
 		//ManifestFile
 		public RuleCall getManifestFileParserRuleCall_5() { return cManifestFileParserRuleCall_5; }
@@ -510,32 +607,190 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
-	public class GeneratorFileElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GeneratorFile");
+	public class DynamicFileElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DynamicFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cGeneratorFileAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cGeneratorFileKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cDynamicFileAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDynamicFileKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cGeneratedFromKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cExecutionURIAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cExecutionURISTRINGTerminalRuleCall_4_0 = (RuleCall)cExecutionURIAssignment_4.eContents().get(0);
+		private final Keyword cByKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cTypeAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cTypeSTRINGTerminalRuleCall_6_0 = (RuleCall)cTypeAssignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cLeftCurlyBracketKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cVariablesAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cVariablesVariableParserRuleCall_7_1_0 = (RuleCall)cVariablesAssignment_7_1.eContents().get(0);
+		private final Group cGroup_7_2 = (Group)cGroup_7.eContents().get(2);
+		private final Keyword cCommaKeyword_7_2_0 = (Keyword)cGroup_7_2.eContents().get(0);
+		private final Assignment cVariablesAssignment_7_2_1 = (Assignment)cGroup_7_2.eContents().get(1);
+		private final RuleCall cVariablesVariableParserRuleCall_7_2_1_0 = (RuleCall)cVariablesAssignment_7_2_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7_3 = (Keyword)cGroup_7.eContents().get(3);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cExcludedIfKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cExcludeExpressionAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cExcludeExpressionBooleanExpressionParserRuleCall_8_1_0 = (RuleCall)cExcludeExpressionAssignment_8_1.eContents().get(0);
 		
-		//GeneratorFile returns task::GeneratorFile:
-		//	{task::GeneratorFile} "GeneratorFile" name=EString;
+		//DynamicFile returns task::DynamicFile:
+		//	{task::DynamicFile} "DynamicFile" name=EString "generated-from" executionURI=STRING "by" type=STRING ("{"
+		//	variables+=Variable ("," variables+=Variable)? "}")? ("excluded-if" excludeExpression=BooleanExpression)?;
 		public ParserRule getRule() { return rule; }
 
-		//{task::GeneratorFile} "GeneratorFile" name=EString
+		//{task::DynamicFile} "DynamicFile" name=EString "generated-from" executionURI=STRING "by" type=STRING ("{"
+		//variables+=Variable ("," variables+=Variable)? "}")? ("excluded-if" excludeExpression=BooleanExpression)?
 		public Group getGroup() { return cGroup; }
 
-		//{task::GeneratorFile}
-		public Action getGeneratorFileAction_0() { return cGeneratorFileAction_0; }
+		//{task::DynamicFile}
+		public Action getDynamicFileAction_0() { return cDynamicFileAction_0; }
 
-		//"GeneratorFile"
-		public Keyword getGeneratorFileKeyword_1() { return cGeneratorFileKeyword_1; }
+		//"DynamicFile"
+		public Keyword getDynamicFileKeyword_1() { return cDynamicFileKeyword_1; }
 
 		//name=EString
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+
+		//"generated-from"
+		public Keyword getGeneratedFromKeyword_3() { return cGeneratedFromKeyword_3; }
+
+		//executionURI=STRING
+		public Assignment getExecutionURIAssignment_4() { return cExecutionURIAssignment_4; }
+
+		//STRING
+		public RuleCall getExecutionURISTRINGTerminalRuleCall_4_0() { return cExecutionURISTRINGTerminalRuleCall_4_0; }
+
+		//"by"
+		public Keyword getByKeyword_5() { return cByKeyword_5; }
+
+		//type=STRING
+		public Assignment getTypeAssignment_6() { return cTypeAssignment_6; }
+
+		//STRING
+		public RuleCall getTypeSTRINGTerminalRuleCall_6_0() { return cTypeSTRINGTerminalRuleCall_6_0; }
+
+		//("{" variables+=Variable ("," variables+=Variable)? "}")?
+		public Group getGroup_7() { return cGroup_7; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_7_0() { return cLeftCurlyBracketKeyword_7_0; }
+
+		//variables+=Variable
+		public Assignment getVariablesAssignment_7_1() { return cVariablesAssignment_7_1; }
+
+		//Variable
+		public RuleCall getVariablesVariableParserRuleCall_7_1_0() { return cVariablesVariableParserRuleCall_7_1_0; }
+
+		//("," variables+=Variable)?
+		public Group getGroup_7_2() { return cGroup_7_2; }
+
+		//","
+		public Keyword getCommaKeyword_7_2_0() { return cCommaKeyword_7_2_0; }
+
+		//variables+=Variable
+		public Assignment getVariablesAssignment_7_2_1() { return cVariablesAssignment_7_2_1; }
+
+		//Variable
+		public RuleCall getVariablesVariableParserRuleCall_7_2_1_0() { return cVariablesVariableParserRuleCall_7_2_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_7_3() { return cRightCurlyBracketKeyword_7_3; }
+
+		//("excluded-if" excludeExpression=BooleanExpression)?
+		public Group getGroup_8() { return cGroup_8; }
+
+		//"excluded-if"
+		public Keyword getExcludedIfKeyword_8_0() { return cExcludedIfKeyword_8_0; }
+
+		//excludeExpression=BooleanExpression
+		public Assignment getExcludeExpressionAssignment_8_1() { return cExcludeExpressionAssignment_8_1; }
+
+		//BooleanExpression
+		public RuleCall getExcludeExpressionBooleanExpressionParserRuleCall_8_1_0() { return cExcludeExpressionBooleanExpressionParserRuleCall_8_1_0; }
+	}
+
+	public class BooleanExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cReferencingBooleanExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cInlineBooleanExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//BooleanExpression returns task::BooleanExpression:
+		//	ReferencingBooleanExpression | InlineBooleanExpression;
+		public ParserRule getRule() { return rule; }
+
+		//ReferencingBooleanExpression | InlineBooleanExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ReferencingBooleanExpression
+		public RuleCall getReferencingBooleanExpressionParserRuleCall_0() { return cReferencingBooleanExpressionParserRuleCall_0; }
+
+		//InlineBooleanExpression
+		public RuleCall getInlineBooleanExpressionParserRuleCall_1() { return cInlineBooleanExpressionParserRuleCall_1; }
+	}
+
+	public class ReferencingBooleanExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ReferencingBooleanExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cExecutionURIAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cExecutionURISTRINGTerminalRuleCall_0_0 = (RuleCall)cExecutionURIAssignment_0.eContents().get(0);
+		private final Keyword cByKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeSTRINGTerminalRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		
+		//ReferencingBooleanExpression returns task::ReferencingBooleanExpression:
+		//	executionURI=STRING "by" type=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//executionURI=STRING "by" type=STRING
+		public Group getGroup() { return cGroup; }
+
+		//executionURI=STRING
+		public Assignment getExecutionURIAssignment_0() { return cExecutionURIAssignment_0; }
+
+		//STRING
+		public RuleCall getExecutionURISTRINGTerminalRuleCall_0_0() { return cExecutionURISTRINGTerminalRuleCall_0_0; }
+
+		//"by"
+		public Keyword getByKeyword_1() { return cByKeyword_1; }
+
+		//type=STRING
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+
+		//STRING
+		public RuleCall getTypeSTRINGTerminalRuleCall_2_0() { return cTypeSTRINGTerminalRuleCall_2_0; }
+	}
+
+	public class InlineBooleanExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "InlineBooleanExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeSTRINGTerminalRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExpressionINLINE_SCRIPTTerminalRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
+		
+		//InlineBooleanExpression returns task::InlineBooleanExpression:
+		//	type=STRING expression=INLINE_SCRIPT;
+		public ParserRule getRule() { return rule; }
+
+		//type=STRING expression=INLINE_SCRIPT
+		public Group getGroup() { return cGroup; }
+
+		//type=STRING
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//STRING
+		public RuleCall getTypeSTRINGTerminalRuleCall_0_0() { return cTypeSTRINGTerminalRuleCall_0_0; }
+
+		//expression=INLINE_SCRIPT
+		public Assignment getExpressionAssignment_1() { return cExpressionAssignment_1; }
+
+		//INLINE_SCRIPT
+		public RuleCall getExpressionINLINE_SCRIPTTerminalRuleCall_1_0() { return cExpressionINLINE_SCRIPTTerminalRuleCall_1_0; }
 	}
 
 	public class EByteArrayElements extends AbstractParserRuleElementFinder {
@@ -2596,6 +2851,50 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	public class TypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cBOOLEANEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cBOOLEANBOOLEANKeyword_0_0 = (Keyword)cBOOLEANEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cDOUBLEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cDOUBLEDOUBLEKeyword_1_0 = (Keyword)cDOUBLEEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cINTEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cINTINTKeyword_2_0 = (Keyword)cINTEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cSTRINGEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cSTRINGSTRINGKeyword_3_0 = (Keyword)cSTRINGEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum Type returns task::Type:
+		//	BOOLEAN | DOUBLE | INT | STRING;
+		public EnumRule getRule() { return rule; }
+
+		//BOOLEAN | DOUBLE | INT | STRING
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//BOOLEAN
+		public EnumLiteralDeclaration getBOOLEANEnumLiteralDeclaration_0() { return cBOOLEANEnumLiteralDeclaration_0; }
+
+		//"BOOLEAN"
+		public Keyword getBOOLEANBOOLEANKeyword_0_0() { return cBOOLEANBOOLEANKeyword_0_0; }
+
+		//DOUBLE
+		public EnumLiteralDeclaration getDOUBLEEnumLiteralDeclaration_1() { return cDOUBLEEnumLiteralDeclaration_1; }
+
+		//"DOUBLE"
+		public Keyword getDOUBLEDOUBLEKeyword_1_0() { return cDOUBLEDOUBLEKeyword_1_0; }
+
+		//INT
+		public EnumLiteralDeclaration getINTEnumLiteralDeclaration_2() { return cINTEnumLiteralDeclaration_2; }
+
+		//"INT"
+		public Keyword getINTINTKeyword_2_0() { return cINTINTKeyword_2_0; }
+
+		//STRING
+		public EnumLiteralDeclaration getSTRINGEnumLiteralDeclaration_3() { return cSTRINGEnumLiteralDeclaration_3; }
+
+		//"STRING"
+		public Keyword getSTRINGSTRINGKeyword_3_0() { return cSTRINGSTRINGKeyword_3_0; }
+	}
+
 	public class MatchRuleElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MatchRule");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2649,6 +2948,8 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private RobotTaskElements pRobotTask;
+	private VariableElements pVariable;
+	private TypeElements unknownRuleType;
 	private GenericProjectElements pGenericProject;
 	private ResourceElements pResource;
 	private ProjectElements pProject;
@@ -2657,7 +2958,10 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	private TemplatedFileElements pTemplatedFile;
 	private DataFileElements pDataFile;
 	private URLFileElements pURLFile;
-	private GeneratorFileElements pGeneratorFile;
+	private DynamicFileElements pDynamicFile;
+	private BooleanExpressionElements pBooleanExpression;
+	private ReferencingBooleanExpressionElements pReferencingBooleanExpression;
+	private InlineBooleanExpressionElements pInlineBooleanExpression;
 	private EByteArrayElements pEByteArray;
 	private BundleProjectElements pBundleProject;
 	private FeatureProjectElements pFeatureProject;
@@ -2680,6 +2984,8 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	private ProductStartConfigElements pProductStartConfig;
 	private VersionElements pVersion;
 	private MatchRuleElements unknownRuleMatchRule;
+	private TerminalRule tSL_DOC;
+	private TerminalRule tINLINE_SCRIPT;
 	
 	private final Grammar grammar;
 
@@ -2720,14 +3026,34 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//RobotTask returns task::RobotTask:
-	//	{task::RobotTask} "RobotTask" "{" ("projects" "=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")?
-	//	"}";
+	//	{task::RobotTask} "RobotTask" "{" ("variables" "=" "{" variables+=Variable ("," variables+=Variable)* "}")?
+	//	("projects" "=" "{" projects+=GenericProject ("," projects+=GenericProject)* "}")? "}";
 	public RobotTaskElements getRobotTaskAccess() {
 		return (pRobotTask != null) ? pRobotTask : (pRobotTask = new RobotTaskElements());
 	}
 	
 	public ParserRule getRobotTaskRule() {
 		return getRobotTaskAccess().getRule();
+	}
+
+	//Variable returns task::Variable:
+	//	description=SL_DOC type=Type key=STRING ("default" defaultValue=STRING)?;
+	public VariableElements getVariableAccess() {
+		return (pVariable != null) ? pVariable : (pVariable = new VariableElements());
+	}
+	
+	public ParserRule getVariableRule() {
+		return getVariableAccess().getRule();
+	}
+
+	//enum Type returns task::Type:
+	//	BOOLEAN | DOUBLE | INT | STRING;
+	public TypeElements getTypeAccess() {
+		return (unknownRuleType != null) ? unknownRuleType : (unknownRuleType = new TypeElements());
+	}
+	
+	public EnumRule getTypeRule() {
+		return getTypeAccess().getRule();
 	}
 
 	//GenericProject returns task::Project:
@@ -2741,7 +3067,7 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Resource returns task::Resource:
-	//	Folder | TemplatedFile | DataFile | URLFile | GeneratorFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
+	//	Folder | TemplatedFile | DataFile | URLFile | DynamicFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
 	public ResourceElements getResourceAccess() {
 		return (pResource != null) ? pResource : (pResource = new ResourceElements());
 	}
@@ -2811,14 +3137,45 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		return getURLFileAccess().getRule();
 	}
 
-	//GeneratorFile returns task::GeneratorFile:
-	//	{task::GeneratorFile} "GeneratorFile" name=EString;
-	public GeneratorFileElements getGeneratorFileAccess() {
-		return (pGeneratorFile != null) ? pGeneratorFile : (pGeneratorFile = new GeneratorFileElements());
+	//DynamicFile returns task::DynamicFile:
+	//	{task::DynamicFile} "DynamicFile" name=EString "generated-from" executionURI=STRING "by" type=STRING ("{"
+	//	variables+=Variable ("," variables+=Variable)? "}")? ("excluded-if" excludeExpression=BooleanExpression)?;
+	public DynamicFileElements getDynamicFileAccess() {
+		return (pDynamicFile != null) ? pDynamicFile : (pDynamicFile = new DynamicFileElements());
 	}
 	
-	public ParserRule getGeneratorFileRule() {
-		return getGeneratorFileAccess().getRule();
+	public ParserRule getDynamicFileRule() {
+		return getDynamicFileAccess().getRule();
+	}
+
+	//BooleanExpression returns task::BooleanExpression:
+	//	ReferencingBooleanExpression | InlineBooleanExpression;
+	public BooleanExpressionElements getBooleanExpressionAccess() {
+		return (pBooleanExpression != null) ? pBooleanExpression : (pBooleanExpression = new BooleanExpressionElements());
+	}
+	
+	public ParserRule getBooleanExpressionRule() {
+		return getBooleanExpressionAccess().getRule();
+	}
+
+	//ReferencingBooleanExpression returns task::ReferencingBooleanExpression:
+	//	executionURI=STRING "by" type=STRING;
+	public ReferencingBooleanExpressionElements getReferencingBooleanExpressionAccess() {
+		return (pReferencingBooleanExpression != null) ? pReferencingBooleanExpression : (pReferencingBooleanExpression = new ReferencingBooleanExpressionElements());
+	}
+	
+	public ParserRule getReferencingBooleanExpressionRule() {
+		return getReferencingBooleanExpressionAccess().getRule();
+	}
+
+	//InlineBooleanExpression returns task::InlineBooleanExpression:
+	//	type=STRING expression=INLINE_SCRIPT;
+	public InlineBooleanExpressionElements getInlineBooleanExpressionAccess() {
+		return (pInlineBooleanExpression != null) ? pInlineBooleanExpression : (pInlineBooleanExpression = new InlineBooleanExpressionElements());
+	}
+	
+	public ParserRule getInlineBooleanExpressionRule() {
+		return getInlineBooleanExpressionAccess().getRule();
 	}
 
 	//EByteArray returns ecore::EByteArray: / * TODO: implement this rule and an appropriate IValueConverter * / EString;
@@ -3068,6 +3425,18 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	public EnumRule getMatchRuleRule() {
 		return getMatchRuleAccess().getRule();
 	}
+
+	//terminal SL_DOC:
+	//	"##" !("\n" | "\r")* ("\r"? "\n")?;
+	public TerminalRule getSL_DOCRule() {
+		return (tSL_DOC != null) ? tSL_DOC : (tSL_DOC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL_DOC"));
+	} 
+
+	//terminal INLINE_SCRIPT:
+	//	"/#"->"#/";
+	public TerminalRule getINLINE_SCRIPTRule() {
+		return (tINLINE_SCRIPT != null) ? tINLINE_SCRIPT : (tINLINE_SCRIPT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INLINE_SCRIPT"));
+	} 
 
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
