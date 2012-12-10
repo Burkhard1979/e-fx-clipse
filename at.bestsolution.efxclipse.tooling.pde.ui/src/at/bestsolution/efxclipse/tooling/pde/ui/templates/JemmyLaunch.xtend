@@ -1,6 +1,55 @@
 package at.bestsolution.efxclipse.tooling.pde.ui.templates
 
-class JemmyLaunch {
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
+import java.util.Map
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject
+
+class JemmyLaunch implements Generator<DynamicFile> {
+	override generate(DynamicFile file, Map<String,Object> data) {
+		val bundleId = data.get("BundleProject_bundleId") as String;
+		val projectName = data.get("BundleProject_projectName") as String;
+		
+		val launchDef = new JemmyLaunchDef();
+		launchDef.setJunitClassName(bundleId+".jemmy.TestSuite");
+		launchDef.setProjectName(projectName+".jemmy");
+		launchDef.setTestProductId(bundleId+".product");
+			
+		for( FeaturePlugin fp : (file.eContainer as FeatureProject).getFeature().getPlugins() ) {
+			if(bundleId.equals(fp.getId())) {
+					
+			} else if( "org.eclipse.core.runtime.compatibility.registry".equals(fp.getId()) ) {
+				launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"default","false"));
+			} else if("org.eclipse.core.runtime".equals(fp.getId())) {
+				launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"default","true"));
+			} else if("org.eclipse.equinox.common".equals(fp.getId())) {
+				launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"2","true"));
+			} else if("org.eclipse.equinox.ds".equals(fp.getId())) {
+				launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"1","true"));
+			} else if("org.eclipse.osgi".equals(fp.getId())) {
+				launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"-1","true"));
+			} else {
+				launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId()));	
+			}
+		}
+			
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("at.bestsolution.efxclipse.runtime.jemmy"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.eclipse.jdt.junit.runtime"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.eclipse.jdt.junit4.runtime"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.eclipse.osgi.services"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.eclipse.pde.junit.runtime"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.hamcrest.core"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.jemmy.fx.repackaged"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.junit*4.10.0.v4_10_0_v20120426-0900"));
+		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.junit4"));
+			
+		launchDef.getWorkbenchPlugins().add(new PluginLaunchDef(bundleId));
+		launchDef.getWorkbenchPlugins().add(new PluginLaunchDef(bundleId+".jemmy"));
+			
+		throw new UnsupportedOperationException("Auto-generated function stub")
+	}
+	
 	def generate(JemmyLaunchDef launch) '''
 		<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 		<launchConfiguration type="org.eclipse.pde.ui.JunitLaunchConfig">
@@ -46,4 +95,7 @@ class JemmyLaunch {
 			<booleanAttribute key="useProduct" value="false"/>
 		</launchConfiguration> 
 	'''
+
+	
+	
 }

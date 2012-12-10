@@ -6,6 +6,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFile;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl;
 
 import java.util.Collection;
@@ -296,6 +297,14 @@ public abstract class ProductFileImpl extends TemplatedFileImpl implements Produ
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_FILE__ID, oldId, id));
 	}
 
+	@Override
+	public String getName() {
+		if( super.getName() == null ) {
+			return getId() + ".product";
+		}
+		return super.getName();
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

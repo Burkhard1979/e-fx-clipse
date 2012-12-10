@@ -35,7 +35,8 @@ Project returns task::Project:
 	'SimpleProject' name=EString
 	'{'
 		('resources' '=' '{' resources+=Resource ( "," resources+=Resource)* '}' )?
-	'}';
+	'}'
+	('excluded-if' excludeExpression=BooleanExpression)?;
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -67,10 +68,8 @@ DataFile returns task::DataFile:
 URLFile returns task::URLFile:
 	{task::URLFile}
 	'URLFile'
-	name=EString
-	'{'
-		('uri' '=' uri=EString)?
-	'}';
+	name=EString uri=EString
+	('excluded-if' excludeExpression=BooleanExpression)?;
 
 DynamicFile returns task::DynamicFile: 
 	{task::DynamicFile}
@@ -122,7 +121,7 @@ FeatureProject returns bundle::FeatureProject:
 
 ManifestFile returns bundle::ManifestFile:
 	{bundle::ManifestFile}
-	lazy?='lazy'? singleton?='singleton'? 'ManifestFile' symbolicname=STRING version=Version executionEnvironment=STRING '{'
+	lazy?='lazy'? singleton?='singleton'? 'ManifestFile' symbolicname=STRING version=STRING executionEnvironment=STRING '{'
 		(
 			'bundlename' '=' bundlename=STRING
 			&
@@ -253,9 +252,7 @@ LinkedString returns bundle::LinkedString:
 
 FeaturePlugin returns bundle::FeaturePlugin:
 	{bundle::FeaturePlugin}
-	unpack?='unpacked'? ^fragment?='fragment'? id=STRING '{'
-		
-	'}'
+	unpack?='unpacked'? ^fragment?='fragment'? id=STRING
 ;
 
 RequiredFeature returns bundle::RequiredFeature:
@@ -280,12 +277,11 @@ ProductFeature returns bundle::ProductFeature:
 
 ProductStartConfig returns bundle::ProductStartConfig:
 	{bundle::ProductStartConfig}
-	'ProductStartConfig' id=STRING (autoStart?='autostarted' ('at' startLevel=INT)? )?'{'
-	'}'
+	id=STRING (autoStart?='autostarted' ('at' startLevel=(SIGNED_INT|INT))? )?
 ;
 
 Version returns bundle::Version:
-	INT '.' INT '.' INT ('-' ID)? /* TODO: implement this rule and an appropriate IValueConverter */
+	INT '.' INT '.' INT ('.' ID)? /* TODO: implement this rule and an appropriate IValueConverter */
 ;
 
 enum MatchRule returns bundle::MatchRule:
@@ -297,4 +293,8 @@ terminal SL_DOC:
 	
 terminal INLINE_SCRIPT:
 	'/#' -> '#/' 
+;
+
+terminal SIGNED_INT returns ecore::EInt:
+	'-' INT
 ;

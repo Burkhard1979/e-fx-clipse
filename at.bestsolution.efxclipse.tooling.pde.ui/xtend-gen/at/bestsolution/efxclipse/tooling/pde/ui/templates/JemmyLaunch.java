@@ -2,13 +2,132 @@ package at.bestsolution.efxclipse.tooling.pde.ui.templates;
 
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.JemmyLaunchDef;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import java.io.InputStream;
+import java.util.Map;
 import java.util.Set;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public class JemmyLaunch {
+public class JemmyLaunch implements Generator<DynamicFile> {
+  public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
+    Object _get = data.get("BundleProject_bundleId");
+    final String bundleId = ((String) _get);
+    Object _get_1 = data.get("BundleProject_projectName");
+    final String projectName = ((String) _get_1);
+    JemmyLaunchDef _jemmyLaunchDef = new JemmyLaunchDef();
+    final JemmyLaunchDef launchDef = _jemmyLaunchDef;
+    String _plus = (bundleId + ".jemmy.TestSuite");
+    launchDef.setJunitClassName(_plus);
+    String _plus_1 = (projectName + ".jemmy");
+    launchDef.setProjectName(_plus_1);
+    String _plus_2 = (bundleId + ".product");
+    launchDef.setTestProductId(_plus_2);
+    EObject _eContainer = file.eContainer();
+    FeatureFile _feature = ((FeatureProject) _eContainer).getFeature();
+    EList<FeaturePlugin> _plugins = _feature.getPlugins();
+    for (final FeaturePlugin fp : _plugins) {
+      String _id = fp.getId();
+      boolean _equals = bundleId.equals(_id);
+      if (_equals) {
+      } else {
+        String _id_1 = fp.getId();
+        boolean _equals_1 = "org.eclipse.core.runtime.compatibility.registry".equals(_id_1);
+        if (_equals_1) {
+          Set<PluginLaunchDef> _targetPlugins = launchDef.getTargetPlugins();
+          String _id_2 = fp.getId();
+          PluginLaunchDef _pluginLaunchDef = new PluginLaunchDef(_id_2, "default", "false");
+          _targetPlugins.add(_pluginLaunchDef);
+        } else {
+          String _id_3 = fp.getId();
+          boolean _equals_2 = "org.eclipse.core.runtime".equals(_id_3);
+          if (_equals_2) {
+            Set<PluginLaunchDef> _targetPlugins_1 = launchDef.getTargetPlugins();
+            String _id_4 = fp.getId();
+            PluginLaunchDef _pluginLaunchDef_1 = new PluginLaunchDef(_id_4, "default", "true");
+            _targetPlugins_1.add(_pluginLaunchDef_1);
+          } else {
+            String _id_5 = fp.getId();
+            boolean _equals_3 = "org.eclipse.equinox.common".equals(_id_5);
+            if (_equals_3) {
+              Set<PluginLaunchDef> _targetPlugins_2 = launchDef.getTargetPlugins();
+              String _id_6 = fp.getId();
+              PluginLaunchDef _pluginLaunchDef_2 = new PluginLaunchDef(_id_6, "2", "true");
+              _targetPlugins_2.add(_pluginLaunchDef_2);
+            } else {
+              String _id_7 = fp.getId();
+              boolean _equals_4 = "org.eclipse.equinox.ds".equals(_id_7);
+              if (_equals_4) {
+                Set<PluginLaunchDef> _targetPlugins_3 = launchDef.getTargetPlugins();
+                String _id_8 = fp.getId();
+                PluginLaunchDef _pluginLaunchDef_3 = new PluginLaunchDef(_id_8, "1", "true");
+                _targetPlugins_3.add(_pluginLaunchDef_3);
+              } else {
+                String _id_9 = fp.getId();
+                boolean _equals_5 = "org.eclipse.osgi".equals(_id_9);
+                if (_equals_5) {
+                  Set<PluginLaunchDef> _targetPlugins_4 = launchDef.getTargetPlugins();
+                  String _id_10 = fp.getId();
+                  PluginLaunchDef _pluginLaunchDef_4 = new PluginLaunchDef(_id_10, "-1", "true");
+                  _targetPlugins_4.add(_pluginLaunchDef_4);
+                } else {
+                  Set<PluginLaunchDef> _targetPlugins_5 = launchDef.getTargetPlugins();
+                  String _id_11 = fp.getId();
+                  PluginLaunchDef _pluginLaunchDef_5 = new PluginLaunchDef(_id_11);
+                  _targetPlugins_5.add(_pluginLaunchDef_5);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    Set<PluginLaunchDef> _targetPlugins_6 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_6 = new PluginLaunchDef("at.bestsolution.efxclipse.runtime.jemmy");
+    _targetPlugins_6.add(_pluginLaunchDef_6);
+    Set<PluginLaunchDef> _targetPlugins_7 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_7 = new PluginLaunchDef("org.eclipse.jdt.junit.runtime");
+    _targetPlugins_7.add(_pluginLaunchDef_7);
+    Set<PluginLaunchDef> _targetPlugins_8 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_8 = new PluginLaunchDef("org.eclipse.jdt.junit4.runtime");
+    _targetPlugins_8.add(_pluginLaunchDef_8);
+    Set<PluginLaunchDef> _targetPlugins_9 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_9 = new PluginLaunchDef("org.eclipse.osgi.services");
+    _targetPlugins_9.add(_pluginLaunchDef_9);
+    Set<PluginLaunchDef> _targetPlugins_10 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_10 = new PluginLaunchDef("org.eclipse.pde.junit.runtime");
+    _targetPlugins_10.add(_pluginLaunchDef_10);
+    Set<PluginLaunchDef> _targetPlugins_11 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_11 = new PluginLaunchDef("org.hamcrest.core");
+    _targetPlugins_11.add(_pluginLaunchDef_11);
+    Set<PluginLaunchDef> _targetPlugins_12 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_12 = new PluginLaunchDef("org.jemmy.fx.repackaged");
+    _targetPlugins_12.add(_pluginLaunchDef_12);
+    Set<PluginLaunchDef> _targetPlugins_13 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_13 = new PluginLaunchDef("org.junit*4.10.0.v4_10_0_v20120426-0900");
+    _targetPlugins_13.add(_pluginLaunchDef_13);
+    Set<PluginLaunchDef> _targetPlugins_14 = launchDef.getTargetPlugins();
+    PluginLaunchDef _pluginLaunchDef_14 = new PluginLaunchDef("org.junit4");
+    _targetPlugins_14.add(_pluginLaunchDef_14);
+    Set<PluginLaunchDef> _workbenchPlugins = launchDef.getWorkbenchPlugins();
+    PluginLaunchDef _pluginLaunchDef_15 = new PluginLaunchDef(bundleId);
+    _workbenchPlugins.add(_pluginLaunchDef_15);
+    Set<PluginLaunchDef> _workbenchPlugins_1 = launchDef.getWorkbenchPlugins();
+    String _plus_3 = (bundleId + ".jemmy");
+    PluginLaunchDef _pluginLaunchDef_16 = new PluginLaunchDef(_plus_3);
+    _workbenchPlugins_1.add(_pluginLaunchDef_16);
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
+  }
+  
   public CharSequence generate(final JemmyLaunchDef launch) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");

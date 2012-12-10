@@ -45,7 +45,7 @@ public class FeatureGenerator implements Generator<FeatureFile> {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("version=\"");
-    Version _version = file.getVersion();
+    String _version = file.getVersion();
     _builder.append(_version, "	");
     _builder.append("\"");
     _builder.newLineIfNotEmpty();

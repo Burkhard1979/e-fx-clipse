@@ -97,12 +97,12 @@ public interface ManifestFile extends TemplatedFile {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
-	 * @see #setVersion(Version)
+	 * @see #setVersion(String)
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getManifestFile_Version()
-	 * @model dataType="at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Version" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	Version getVersion();
+	String getVersion();
 
 	/**
 	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile#getVersion <em>Version</em>}' attribute.
@@ -112,7 +112,7 @@ public interface ManifestFile extends TemplatedFile {
 	 * @see #getVersion()
 	 * @generated
 	 */
-	void setVersion(Version value);
+	void setVersion(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Exported Packages</b></em>' containment reference list.

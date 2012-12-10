@@ -19,7 +19,6 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.osgi.framework.Version;
 
 @SuppressWarnings("all")
 public class BundleManifestGenerator implements Generator<ManifestFile> {
@@ -54,7 +53,7 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
     }
     _builder.newLineIfNotEmpty();
     _builder.append("Bundle-Version: ");
-    Version _version = file.getVersion();
+    String _version = file.getVersion();
     _builder.append(_version, "");
     _builder.newLineIfNotEmpty();
     _builder.append("Bundle-RequiredExecutionEnvironment: ");

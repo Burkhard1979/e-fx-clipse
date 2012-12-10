@@ -45,12 +45,12 @@ public interface FeatureFile extends TemplatedFile {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
-	 * @see #setVersion(Version)
+	 * @see #setVersion(String)
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getFeatureFile_Version()
-	 * @model dataType="at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Version"
+	 * @model
 	 * @generated
 	 */
-	Version getVersion();
+	String getVersion();
 
 	/**
 	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile#getVersion <em>Version</em>}' attribute.
@@ -60,7 +60,7 @@ public interface FeatureFile extends TemplatedFile {
 	 * @see #getVersion()
 	 * @generated
 	 */
-	void setVersion(Version value);
+	void setVersion(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Featurename</b></em>' attribute.

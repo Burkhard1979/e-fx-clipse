@@ -45,6 +45,7 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getImportedPackageAccess().getAlternatives_2_3_1(), "rule__ImportedPackage__Alternatives_2_3_1");
 					put(grammarAccess.getRequiredBundleAccess().getAlternatives_2_0(), "rule__RequiredBundle__Alternatives_2_0");
 					put(grammarAccess.getRequiredBundleAccess().getAlternatives_2_4(), "rule__RequiredBundle__Alternatives_2_4");
+					put(grammarAccess.getProductStartConfigAccess().getStartLevelAlternatives_2_1_1_0(), "rule__ProductStartConfig__StartLevelAlternatives_2_1_1_0");
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getMatchRuleAccess().getAlternatives(), "rule__MatchRule__Alternatives");
 					put(grammarAccess.getRobotTaskAccess().getGroup(), "rule__RobotTask__Group__0");
@@ -144,8 +145,8 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIncludedFeatureAccess().getGroup(), "rule__IncludedFeature__Group__0");
 					put(grammarAccess.getProductFeatureAccess().getGroup(), "rule__ProductFeature__Group__0");
 					put(grammarAccess.getProductStartConfigAccess().getGroup(), "rule__ProductStartConfig__Group__0");
-					put(grammarAccess.getProductStartConfigAccess().getGroup_3(), "rule__ProductStartConfig__Group_3__0");
-					put(grammarAccess.getProductStartConfigAccess().getGroup_3_1(), "rule__ProductStartConfig__Group_3_1__0");
+					put(grammarAccess.getProductStartConfigAccess().getGroup_2(), "rule__ProductStartConfig__Group_2__0");
+					put(grammarAccess.getProductStartConfigAccess().getGroup_2_1(), "rule__ProductStartConfig__Group_2_1__0");
 					put(grammarAccess.getVersionAccess().getGroup(), "rule__Version__Group__0");
 					put(grammarAccess.getVersionAccess().getGroup_5(), "rule__Version__Group_5__0");
 					put(grammarAccess.getRobotTaskAccess().getVariablesAssignment_3_3(), "rule__RobotTask__VariablesAssignment_3_3");
@@ -167,7 +168,8 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDataFileAccess().getNameAssignment_2(), "rule__DataFile__NameAssignment_2");
 					put(grammarAccess.getDataFileAccess().getContentAssignment_4_2(), "rule__DataFile__ContentAssignment_4_2");
 					put(grammarAccess.getURLFileAccess().getNameAssignment_2(), "rule__URLFile__NameAssignment_2");
-					put(grammarAccess.getURLFileAccess().getUriAssignment_4_2(), "rule__URLFile__UriAssignment_4_2");
+					put(grammarAccess.getURLFileAccess().getUriAssignment_3(), "rule__URLFile__UriAssignment_3");
+					put(grammarAccess.getURLFileAccess().getExcludeExpressionAssignment_4_1(), "rule__URLFile__ExcludeExpressionAssignment_4_1");
 					put(grammarAccess.getDynamicFileAccess().getNameAssignment_2(), "rule__DynamicFile__NameAssignment_2");
 					put(grammarAccess.getDynamicFileAccess().getExecutionURIAssignment_4(), "rule__DynamicFile__ExecutionURIAssignment_4");
 					put(grammarAccess.getDynamicFileAccess().getTypeAssignment_6(), "rule__DynamicFile__TypeAssignment_6");
@@ -267,9 +269,9 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIncludedFeatureAccess().getVersionAssignment_2(), "rule__IncludedFeature__VersionAssignment_2");
 					put(grammarAccess.getProductFeatureAccess().getIdAssignment_1(), "rule__ProductFeature__IdAssignment_1");
 					put(grammarAccess.getProductFeatureAccess().getVersionAssignment_2(), "rule__ProductFeature__VersionAssignment_2");
-					put(grammarAccess.getProductStartConfigAccess().getIdAssignment_2(), "rule__ProductStartConfig__IdAssignment_2");
-					put(grammarAccess.getProductStartConfigAccess().getAutoStartAssignment_3_0(), "rule__ProductStartConfig__AutoStartAssignment_3_0");
-					put(grammarAccess.getProductStartConfigAccess().getStartLevelAssignment_3_1_1(), "rule__ProductStartConfig__StartLevelAssignment_3_1_1");
+					put(grammarAccess.getProductStartConfigAccess().getIdAssignment_1(), "rule__ProductStartConfig__IdAssignment_1");
+					put(grammarAccess.getProductStartConfigAccess().getAutoStartAssignment_2_0(), "rule__ProductStartConfig__AutoStartAssignment_2_0");
+					put(grammarAccess.getProductStartConfigAccess().getStartLevelAssignment_2_1_1(), "rule__ProductStartConfig__StartLevelAssignment_2_1_1");
 					put(grammarAccess.getBundleProjectAccess().getUnorderedGroup_4(), "rule__BundleProject__UnorderedGroup_4");
 					put(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), "rule__ManifestFile__UnorderedGroup_8");
 					put(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), "rule__ProductFileFeaturebase__UnorderedGroup_5");

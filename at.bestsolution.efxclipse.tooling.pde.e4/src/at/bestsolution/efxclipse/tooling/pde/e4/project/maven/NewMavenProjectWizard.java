@@ -269,7 +269,7 @@ public class NewMavenProjectWizard extends NewWizard  {
 			f.setBundlename("Application Bundle");
 			f.setSymbolicname(symbolicName);
 			f.setExecutionEnvironment(executionEnv);
-			f.setVersion(new Version(version));
+			f.setVersion(version);
 			
 			f.getRequiredBundles().add(createBundle("at.bestsolution.efxclipse.runtime.application",null));
 			f.getRequiredBundles().add(createBundle("at.bestsolution.efxclipse.runtime.workbench.fx",null));
@@ -585,7 +585,7 @@ public class NewMavenProjectWizard extends NewWizard  {
 			ManifestFile f = BundleFactory.eINSTANCE.createManifestFile();
 			f.getRequiredBundles().add(createBundle("at.bestsolution.efxclipse.runtime.jemmy", null));
 			f.getRequiredBundles().add(createBundle("org.junit4", null));
-			f.setVersion(new Version(version));
+			f.setVersion(version);
 			f.setSymbolicname(bundleName);
 			f.setExecutionEnvironment(environment);
 			
