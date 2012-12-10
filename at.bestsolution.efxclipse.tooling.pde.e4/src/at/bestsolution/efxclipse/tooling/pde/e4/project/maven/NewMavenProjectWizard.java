@@ -411,7 +411,7 @@ public class NewMavenProjectWizard extends NewWizard  {
 			FeatureFile featureFile = BundleFactory.eINSTANCE.createFeatureFile(); 
 			featureFile.setFeatureid(symbolicName+".feature");
 			featureFile.setFeaturename(productName+ " feature");
-			featureFile.setVersion(new Version(version));
+			featureFile.setVersion(version);
 			featureFile.setVendor(provider);
 			featureFile.getPlugins().add(createFeaturePlugin(symbolicName));
 			featureFile.getPlugins().add(createFeaturePlugin("at.bestsolution.efxclipse.runtime.application"));
