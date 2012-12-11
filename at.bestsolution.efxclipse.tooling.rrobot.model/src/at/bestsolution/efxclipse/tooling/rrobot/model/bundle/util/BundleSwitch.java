@@ -5,6 +5,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.util;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.*;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 
@@ -74,6 +75,7 @@ public class BundleSwitch<T> extends Switch<T> {
 			case BundlePackage.BUNDLE_PROJECT: {
 				BundleProject bundleProject = (BundleProject)theEObject;
 				T result = caseBundleProject(bundleProject);
+				if (result == null) result = caseJDTProject(bundleProject);
 				if (result == null) result = caseProject(bundleProject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -549,6 +551,21 @@ public class BundleSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProject(Project object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>JDT Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>JDT Project</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJDTProject(JDTProject object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bundle" nsURI="http://www.efxclipse.org/rrobot/task/bundle/1.0"
     nsPrefix="bundle">
-  <eClassifiers xsi:type="ecore:EClass" name="BundleProject" eSuperTypes="RobotTask.ecore#//Project">
+  <eClassifiers xsi:type="ecore:EClass" name="BundleProject" eSuperTypes="RobotTask.ecore#//JDTProject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="manifest" lowerBound="1"
         eType="#//ManifestFile" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="buildProperties" lowerBound="1"

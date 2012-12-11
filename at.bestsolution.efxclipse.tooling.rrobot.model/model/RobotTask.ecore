@@ -87,4 +87,17 @@
     <eLiterals name="DOUBLE" value="2"/>
     <eLiterals name="BOOLEAN" value="3"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JDTProject" eSuperTypes="#//Project">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceFragments" upperBound="-1"
+        eType="#//SourceFragment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceFragment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="folder" eType="#//Folder"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packagename" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="file" eType="#//File" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourcefragment" eType="#//SourceFragment"/>
+  </eClassifiers>
 </ecore:EPackage>

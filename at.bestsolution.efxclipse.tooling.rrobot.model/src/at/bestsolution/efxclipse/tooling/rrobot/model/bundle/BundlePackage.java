@@ -76,7 +76,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__NAME = TaskPackage.PROJECT__NAME;
+	int BUNDLE_PROJECT__NAME = TaskPackage.JDT_PROJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -85,7 +85,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__RESOURCES = TaskPackage.PROJECT__RESOURCES;
+	int BUNDLE_PROJECT__RESOURCES = TaskPackage.JDT_PROJECT__RESOURCES;
 
 	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
@@ -94,7 +94,16 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__EXCLUDE_EXPRESSION = TaskPackage.PROJECT__EXCLUDE_EXPRESSION;
+	int BUNDLE_PROJECT__EXCLUDE_EXPRESSION = TaskPackage.JDT_PROJECT__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Source Fragments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUNDLE_PROJECT__SOURCE_FRAGMENTS = TaskPackage.JDT_PROJECT__SOURCE_FRAGMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Manifest</b></em>' containment reference.
@@ -103,7 +112,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__MANIFEST = TaskPackage.PROJECT_FEATURE_COUNT + 0;
+	int BUNDLE_PROJECT__MANIFEST = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Build Properties</b></em>' containment reference.
@@ -112,7 +121,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__BUILD_PROPERTIES = TaskPackage.PROJECT_FEATURE_COUNT + 1;
+	int BUNDLE_PROJECT__BUILD_PROPERTIES = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Pluginxml</b></em>' containment reference.
@@ -121,7 +130,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__PLUGINXML = TaskPackage.PROJECT_FEATURE_COUNT + 2;
+	int BUNDLE_PROJECT__PLUGINXML = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Project</em>' class.
@@ -130,7 +139,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT_FEATURE_COUNT = TaskPackage.PROJECT_FEATURE_COUNT + 3;
+	int BUNDLE_PROJECT_FEATURE_COUNT = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl <em>Feature Project</em>}' class.

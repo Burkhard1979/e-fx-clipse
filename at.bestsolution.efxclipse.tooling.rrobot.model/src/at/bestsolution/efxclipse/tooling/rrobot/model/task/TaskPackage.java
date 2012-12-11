@@ -269,7 +269,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 15;
+	int IPROGRESS_MONITOR = 18;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl <em>Templated File</em>}' class.
@@ -622,6 +622,144 @@ public interface TaskPackage extends EPackage {
 	int INLINE_BOOLEAN_EXPRESSION_FEATURE_COUNT = BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.JDTProjectImpl <em>JDT Project</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.JDTProjectImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getJDTProject()
+	 * @generated
+	 */
+	int JDT_PROJECT = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JDT_PROJECT__NAME = PROJECT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JDT_PROJECT__RESOURCES = PROJECT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JDT_PROJECT__EXCLUDE_EXPRESSION = PROJECT__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Source Fragments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JDT_PROJECT__SOURCE_FRAGMENTS = PROJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>JDT Project</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JDT_PROJECT_FEATURE_COUNT = PROJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl <em>Source Fragment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getSourceFragment()
+	 * @generated
+	 */
+	int SOURCE_FRAGMENT = 14;
+
+	/**
+	 * The feature id for the '<em><b>Folder</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_FRAGMENT__FOLDER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_FRAGMENT__NAME = 1;
+
+	/**
+	 * The number of structural features of the '<em>Source Fragment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_FRAGMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl <em>Compilation Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getCompilationUnit()
+	 * @generated
+	 */
+	int COMPILATION_UNIT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Packagename</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILATION_UNIT__PACKAGENAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>File</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILATION_UNIT__FILE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Sourcefragment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILATION_UNIT__SOURCEFRAGMENT = 2;
+
+	/**
+	 * The number of structural features of the '<em>Compilation Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILATION_UNIT_FEATURE_COUNT = 3;
+
+	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -629,7 +767,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getType()
 	 * @generated
 	 */
-	int TYPE = 13;
+	int TYPE = 16;
 
 	/**
 	 * The meta object id for the '<em>Input Stream</em>' data type.
@@ -639,7 +777,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
 	 * @generated
 	 */
-	int INPUT_STREAM = 16;
+	int INPUT_STREAM = 19;
 
 	/**
 	 * The meta object id for the '<em>Generator</em>' data type.
@@ -649,7 +787,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGenerator()
 	 * @generated
 	 */
-	int GENERATOR = 17;
+	int GENERATOR = 20;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -659,7 +797,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 14;
+	int IO_EXCEPTION = 17;
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask <em>Robot Task</em>}'.
@@ -1045,6 +1183,102 @@ public interface TaskPackage extends EPackage {
 	EAttribute getInlineBooleanExpression_Expression();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject <em>JDT Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>JDT Project</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject
+	 * @generated
+	 */
+	EClass getJDTProject();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject#getSourceFragments <em>Source Fragments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Source Fragments</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject#getSourceFragments()
+	 * @see #getJDTProject()
+	 * @generated
+	 */
+	EReference getJDTProject_SourceFragments();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment <em>Source Fragment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Source Fragment</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment
+	 * @generated
+	 */
+	EClass getSourceFragment();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getFolder <em>Folder</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Folder</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getFolder()
+	 * @see #getSourceFragment()
+	 * @generated
+	 */
+	EReference getSourceFragment_Folder();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getName()
+	 * @see #getSourceFragment()
+	 * @generated
+	 */
+	EAttribute getSourceFragment_Name();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit <em>Compilation Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Compilation Unit</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit
+	 * @generated
+	 */
+	EClass getCompilationUnit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getPackagename <em>Packagename</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Packagename</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getPackagename()
+	 * @see #getCompilationUnit()
+	 * @generated
+	 */
+	EAttribute getCompilationUnit_Packagename();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getFile <em>File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>File</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getFile()
+	 * @see #getCompilationUnit()
+	 * @generated
+	 */
+	EReference getCompilationUnit_File();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getSourcefragment <em>Sourcefragment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Sourcefragment</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getSourcefragment()
+	 * @see #getCompilationUnit()
+	 * @generated
+	 */
+	EReference getCompilationUnit_Sourcefragment();
+
+	/**
 	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1424,6 +1658,84 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INLINE_BOOLEAN_EXPRESSION__EXPRESSION = eINSTANCE.getInlineBooleanExpression_Expression();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.JDTProjectImpl <em>JDT Project</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.JDTProjectImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getJDTProject()
+		 * @generated
+		 */
+		EClass JDT_PROJECT = eINSTANCE.getJDTProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Fragments</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JDT_PROJECT__SOURCE_FRAGMENTS = eINSTANCE.getJDTProject_SourceFragments();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl <em>Source Fragment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getSourceFragment()
+		 * @generated
+		 */
+		EClass SOURCE_FRAGMENT = eINSTANCE.getSourceFragment();
+
+		/**
+		 * The meta object literal for the '<em><b>Folder</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SOURCE_FRAGMENT__FOLDER = eINSTANCE.getSourceFragment_Folder();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOURCE_FRAGMENT__NAME = eINSTANCE.getSourceFragment_Name();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl <em>Compilation Unit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getCompilationUnit()
+		 * @generated
+		 */
+		EClass COMPILATION_UNIT = eINSTANCE.getCompilationUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Packagename</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPILATION_UNIT__PACKAGENAME = eINSTANCE.getCompilationUnit_Packagename();
+
+		/**
+		 * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPILATION_UNIT__FILE = eINSTANCE.getCompilationUnit_File();
+
+		/**
+		 * The meta object literal for the '<em><b>Sourcefragment</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPILATION_UNIT__SOURCEFRAGMENT = eINSTANCE.getCompilationUnit_Sourcefragment();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.

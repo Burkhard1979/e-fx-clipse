@@ -164,6 +164,25 @@ public class TaskSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TaskPackage.JDT_PROJECT: {
+				JDTProject jdtProject = (JDTProject)theEObject;
+				T result = caseJDTProject(jdtProject);
+				if (result == null) result = caseProject(jdtProject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.SOURCE_FRAGMENT: {
+				SourceFragment sourceFragment = (SourceFragment)theEObject;
+				T result = caseSourceFragment(sourceFragment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.COMPILATION_UNIT: {
+				CompilationUnit compilationUnit = (CompilationUnit)theEObject;
+				T result = caseCompilationUnit(compilationUnit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -360,6 +379,51 @@ public class TaskSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInlineBooleanExpression(InlineBooleanExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>JDT Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>JDT Project</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJDTProject(JDTProject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Source Fragment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Source Fragment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSourceFragment(SourceFragment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Compilation Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Compilation Unit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompilationUnit(CompilationUnit object) {
 		return null;
 	}
 

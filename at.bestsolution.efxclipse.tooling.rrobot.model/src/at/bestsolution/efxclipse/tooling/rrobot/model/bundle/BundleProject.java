@@ -2,6 +2,7 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 
 /**
@@ -22,7 +23,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
  * @model
  * @generated
  */
-public interface BundleProject extends Project {
+public interface BundleProject extends JDTProject {
 	/**
 	 * Returns the value of the '<em><b>Manifest</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

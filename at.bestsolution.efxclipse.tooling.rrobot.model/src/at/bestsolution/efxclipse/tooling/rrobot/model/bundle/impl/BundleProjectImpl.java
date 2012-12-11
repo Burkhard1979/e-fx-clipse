@@ -8,6 +8,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.JDTProjectImpl;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ProjectImpl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -33,7 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class BundleProjectImpl extends ProjectImpl implements BundleProject {
+public class BundleProjectImpl extends JDTProjectImpl implements BundleProject {
 	/**
 	 * The cached value of the '{@link #getManifest() <em>Manifest</em>}' containment reference.
 	 * <!-- begin-user-doc -->

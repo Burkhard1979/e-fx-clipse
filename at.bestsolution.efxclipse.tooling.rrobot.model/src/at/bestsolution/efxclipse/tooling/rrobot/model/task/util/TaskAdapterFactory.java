@@ -127,6 +127,18 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 				return createInlineBooleanExpressionAdapter();
 			}
 			@Override
+			public Adapter caseJDTProject(JDTProject object) {
+				return createJDTProjectAdapter();
+			}
+			@Override
+			public Adapter caseSourceFragment(SourceFragment object) {
+				return createSourceFragmentAdapter();
+			}
+			@Override
+			public Adapter caseCompilationUnit(CompilationUnit object) {
+				return createCompilationUnitAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -325,6 +337,48 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInlineBooleanExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject <em>JDT Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject
+	 * @generated
+	 */
+	public Adapter createJDTProjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment <em>Source Fragment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment
+	 * @generated
+	 */
+	public Adapter createSourceFragmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit <em>Compilation Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit
+	 * @generated
+	 */
+	public Adapter createCompilationUnitAdapter() {
 		return null;
 	}
 

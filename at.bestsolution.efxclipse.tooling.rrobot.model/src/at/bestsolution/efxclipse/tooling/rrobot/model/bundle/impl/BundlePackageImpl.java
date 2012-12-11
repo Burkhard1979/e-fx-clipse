@@ -1347,7 +1347,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		bundleProjectEClass.getESuperTypes().add(theTaskPackage.getProject());
+		bundleProjectEClass.getESuperTypes().add(theTaskPackage.getJDTProject());
 		featureProjectEClass.getESuperTypes().add(theTaskPackage.getProject());
 		manifestFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 		pluginXMLFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());

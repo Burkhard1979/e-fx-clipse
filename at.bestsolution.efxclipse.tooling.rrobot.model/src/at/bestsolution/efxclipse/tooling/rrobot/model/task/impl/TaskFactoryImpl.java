@@ -75,6 +75,9 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 			case TaskPackage.VARIABLE: return createVariable();
 			case TaskPackage.REFERENCING_BOOLEAN_EXPRESSION: return createReferencingBooleanExpression();
 			case TaskPackage.INLINE_BOOLEAN_EXPRESSION: return createInlineBooleanExpression();
+			case TaskPackage.JDT_PROJECT: return createJDTProject();
+			case TaskPackage.SOURCE_FRAGMENT: return createSourceFragment();
+			case TaskPackage.COMPILATION_UNIT: return createCompilationUnit();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -216,6 +219,36 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	public InlineBooleanExpression createInlineBooleanExpression() {
 		InlineBooleanExpressionImpl inlineBooleanExpression = new InlineBooleanExpressionImpl();
 		return inlineBooleanExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JDTProject createJDTProject() {
+		JDTProjectImpl jdtProject = new JDTProjectImpl();
+		return jdtProject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SourceFragment createSourceFragment() {
+		SourceFragmentImpl sourceFragment = new SourceFragmentImpl();
+		return sourceFragment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompilationUnit createCompilationUnit() {
+		CompilationUnitImpl compilationUnit = new CompilationUnitImpl();
+		return compilationUnit;
 	}
 
 	/**

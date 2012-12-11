@@ -112,6 +112,33 @@ public interface TaskFactory extends EFactory {
 	InlineBooleanExpression createInlineBooleanExpression();
 
 	/**
+	 * Returns a new object of class '<em>JDT Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>JDT Project</em>'.
+	 * @generated
+	 */
+	JDTProject createJDTProject();
+
+	/**
+	 * Returns a new object of class '<em>Source Fragment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Source Fragment</em>'.
+	 * @generated
+	 */
+	SourceFragment createSourceFragment();
+
+	/**
+	 * Returns a new object of class '<em>Compilation Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Compilation Unit</em>'.
+	 * @generated
+	 */
+	CompilationUnit createCompilationUnit();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
