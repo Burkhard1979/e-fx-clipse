@@ -90,6 +90,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="JDTProject" eSuperTypes="#//Project">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceFragments" upperBound="-1"
         eType="#//SourceFragment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compilationUnits" upperBound="-1"
+        eType="#//CompilationUnit" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceFragment">
     <eStructuralFeatures xsi:type="ecore:EReference" name="folder" eType="#//Folder"/>

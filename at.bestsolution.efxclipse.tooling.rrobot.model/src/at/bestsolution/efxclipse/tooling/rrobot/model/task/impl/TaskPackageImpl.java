@@ -608,6 +608,15 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getJDTProject_CompilationUnits() {
+		return (EReference)jdtProjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSourceFragment() {
 		return sourceFragmentEClass;
 	}
@@ -780,6 +789,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 
 		jdtProjectEClass = createEClass(JDT_PROJECT);
 		createEReference(jdtProjectEClass, JDT_PROJECT__SOURCE_FRAGMENTS);
+		createEReference(jdtProjectEClass, JDT_PROJECT__COMPILATION_UNITS);
 
 		sourceFragmentEClass = createEClass(SOURCE_FRAGMENT);
 		createEReference(sourceFragmentEClass, SOURCE_FRAGMENT__FOLDER);
@@ -908,6 +918,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 
 		initEClass(jdtProjectEClass, JDTProject.class, "JDTProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJDTProject_SourceFragments(), this.getSourceFragment(), null, "sourceFragments", null, 0, -1, JDTProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJDTProject_CompilationUnits(), this.getCompilationUnit(), null, "compilationUnits", null, 0, -1, JDTProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sourceFragmentEClass, SourceFragment.class, "SourceFragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSourceFragment_Folder(), this.getFolder(), null, "folder", null, 0, 1, SourceFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

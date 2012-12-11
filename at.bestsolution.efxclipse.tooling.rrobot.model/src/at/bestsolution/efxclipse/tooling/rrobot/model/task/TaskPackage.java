@@ -668,13 +668,22 @@ public interface TaskPackage extends EPackage {
 	int JDT_PROJECT__SOURCE_FRAGMENTS = PROJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Compilation Units</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JDT_PROJECT__COMPILATION_UNITS = PROJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>JDT Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JDT_PROJECT_FEATURE_COUNT = PROJECT_FEATURE_COUNT + 1;
+	int JDT_PROJECT_FEATURE_COUNT = PROJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl <em>Source Fragment</em>}' class.
@@ -1204,6 +1213,17 @@ public interface TaskPackage extends EPackage {
 	EReference getJDTProject_SourceFragments();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject#getCompilationUnits <em>Compilation Units</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Compilation Units</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject#getCompilationUnits()
+	 * @see #getJDTProject()
+	 * @generated
+	 */
+	EReference getJDTProject_CompilationUnits();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment <em>Source Fragment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1676,6 +1696,14 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JDT_PROJECT__SOURCE_FRAGMENTS = eINSTANCE.getJDTProject_SourceFragments();
+
+		/**
+		 * The meta object literal for the '<em><b>Compilation Units</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JDT_PROJECT__COMPILATION_UNITS = eINSTANCE.getJDTProject_CompilationUnits();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl <em>Source Fragment</em>}' class.

@@ -2,6 +2,7 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.impl;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.JDTProjectImpl#getSourceFragments <em>Source Fragments</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.JDTProjectImpl#getCompilationUnits <em>Compilation Units</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,6 +43,16 @@ public class JDTProjectImpl extends ProjectImpl implements JDTProject {
 	 * @ordered
 	 */
 	protected EList<SourceFragment> sourceFragments;
+
+	/**
+	 * The cached value of the '{@link #getCompilationUnits() <em>Compilation Units</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCompilationUnits()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CompilationUnit> compilationUnits;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,11 +90,25 @@ public class JDTProjectImpl extends ProjectImpl implements JDTProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<CompilationUnit> getCompilationUnits() {
+		if (compilationUnits == null) {
+			compilationUnits = new EObjectContainmentEList<CompilationUnit>(CompilationUnit.class, this, TaskPackage.JDT_PROJECT__COMPILATION_UNITS);
+		}
+		return compilationUnits;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TaskPackage.JDT_PROJECT__SOURCE_FRAGMENTS:
 				return ((InternalEList<?>)getSourceFragments()).basicRemove(otherEnd, msgs);
+			case TaskPackage.JDT_PROJECT__COMPILATION_UNITS:
+				return ((InternalEList<?>)getCompilationUnits()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -97,6 +123,8 @@ public class JDTProjectImpl extends ProjectImpl implements JDTProject {
 		switch (featureID) {
 			case TaskPackage.JDT_PROJECT__SOURCE_FRAGMENTS:
 				return getSourceFragments();
+			case TaskPackage.JDT_PROJECT__COMPILATION_UNITS:
+				return getCompilationUnits();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -114,6 +142,10 @@ public class JDTProjectImpl extends ProjectImpl implements JDTProject {
 				getSourceFragments().clear();
 				getSourceFragments().addAll((Collection<? extends SourceFragment>)newValue);
 				return;
+			case TaskPackage.JDT_PROJECT__COMPILATION_UNITS:
+				getCompilationUnits().clear();
+				getCompilationUnits().addAll((Collection<? extends CompilationUnit>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -129,6 +161,9 @@ public class JDTProjectImpl extends ProjectImpl implements JDTProject {
 			case TaskPackage.JDT_PROJECT__SOURCE_FRAGMENTS:
 				getSourceFragments().clear();
 				return;
+			case TaskPackage.JDT_PROJECT__COMPILATION_UNITS:
+				getCompilationUnits().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -143,6 +178,8 @@ public class JDTProjectImpl extends ProjectImpl implements JDTProject {
 		switch (featureID) {
 			case TaskPackage.JDT_PROJECT__SOURCE_FRAGMENTS:
 				return sourceFragments != null && !sourceFragments.isEmpty();
+			case TaskPackage.JDT_PROJECT__COMPILATION_UNITS:
+				return compilationUnits != null && !compilationUnits.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

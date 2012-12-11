@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject#getSourceFragments <em>Source Fragments</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject#getCompilationUnits <em>Compilation Units</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,5 +37,21 @@ public interface JDTProject extends Project {
 	 * @generated
 	 */
 	EList<SourceFragment> getSourceFragments();
+
+	/**
+	 * Returns the value of the '<em><b>Compilation Units</b></em>' containment reference list.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Compilation Units</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Compilation Units</em>' containment reference list.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage#getJDTProject_CompilationUnits()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<CompilationUnit> getCompilationUnits();
 
 } // JDTProject

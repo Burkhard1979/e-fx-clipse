@@ -106,6 +106,15 @@ public interface BundlePackage extends EPackage {
 	int BUNDLE_PROJECT__SOURCE_FRAGMENTS = TaskPackage.JDT_PROJECT__SOURCE_FRAGMENTS;
 
 	/**
+	 * The feature id for the '<em><b>Compilation Units</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUNDLE_PROJECT__COMPILATION_UNITS = TaskPackage.JDT_PROJECT__COMPILATION_UNITS;
+
+	/**
 	 * The feature id for the '<em><b>Manifest</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
