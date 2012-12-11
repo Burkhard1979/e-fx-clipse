@@ -451,7 +451,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSelectorAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
 		private final RuleCall cSelectorSelectorParserRuleCall_1_1_2_0 = (RuleCall)cSelectorAssignment_1_1_2.eContents().get(0);
 		
-		//selector hidden():
+		//selector hidden(ML_COMMENT):
 		//	simpleselectors+=simple_selector (combinator=combinator WS* selector=selector | WS+ (combinator=combinator WS*)?
 		//	selector=selector)?;
 		public ParserRule getRule() { return rule; }
@@ -2030,7 +2030,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getRulesetAccess().getRule();
 	}
 
-	//selector hidden():
+	//selector hidden(ML_COMMENT):
 	//	simpleselectors+=simple_selector (combinator=combinator WS* selector=selector | WS+ (combinator=combinator WS*)?
 	//	selector=selector)?;
 	public SelectorElements getSelectorAccess() {
