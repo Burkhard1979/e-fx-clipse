@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
 import at.bestsolution.efxclipse.runtime.examples.fxgraph.osgi.model.User;
 import at.bestsolution.efxclipse.runtime.examples.fxgraph.osgi.security.Authenticator;
+import at.bestsolution.efxclipse.runtime.osgi.util.OSGiFXMLLoader;
 
 /**
  * This class controls all aspects of the JavaFX OSGi application's execution
@@ -78,7 +79,7 @@ public class Application extends AbstractJFXApplication {
     }
 
     private AnchorPane replaceSceneContent(String fxml) throws Exception {
-        AnchorPane page = (AnchorPane) FXMLLoader.load(Application.class.getResource(fxml), null, new JavaFXBuilderFactory());
+    	AnchorPane page = (AnchorPane) OSGiFXMLLoader.load(getClass(), fxml, null, null);
         Scene scene = stage.getScene();
         if (scene == null) {
             scene = new Scene(page);

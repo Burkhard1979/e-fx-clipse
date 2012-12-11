@@ -29,6 +29,7 @@
       <plugin id="at.bestsolution.efxclipse.runtime.examples.fxgraph.osgi"/>
       <plugin id="at.bestsolution.efxclipse.runtime.javafx"/>
       <plugin id="at.bestsolution.efxclipse.runtime.osgi" fragment="true"/>
+      <plugin id="at.bestsolution.efxclipse.runtime.osgi.util"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.databinding"/>
