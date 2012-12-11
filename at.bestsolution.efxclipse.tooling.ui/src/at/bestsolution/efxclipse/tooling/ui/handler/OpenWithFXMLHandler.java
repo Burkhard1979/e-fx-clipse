@@ -19,6 +19,7 @@ import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.util.Util;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.program.Program;
@@ -38,7 +39,11 @@ public class OpenWithFXMLHandler extends AbstractHandler {
 				String scenebuilder = InstanceScope.INSTANCE.getNode("at.bestsolution.efxclipse.tooling.ui").get("scenebuilder.exe", null);
 				if( scenebuilder != null ) {
 					try {
-						Runtime.getRuntime().exec(scenebuilder + " " + f.getLocation().toFile().getAbsolutePath());
+						String executable = scenebuilder;
+						if( Util.isMac()  ) {
+						 executable += "/Contents/MacOS/scenebuilder-launcher.sh";	
+						}
+						Runtime.getRuntime().exec(new String[] {executable, f.getLocation().toFile().getAbsolutePath() });
 					} catch (IOException e) {
 						MessageDialog.openError(HandlerUtil.getActiveShell(event), "Launch failed", "Failed to launch SceneBuilder. The error message was: " + e.getMessage());
 					}
