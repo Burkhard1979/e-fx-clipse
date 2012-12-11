@@ -45,24 +45,15 @@
       <handler
             class="at.bestsolution.efxclipse.tooling.ui.handler.OpenWithFXMLHandler"
             commandId="at.bestsolution.efxclipse.tooling.ui.openwithsceneb">
-         <enabledWhen>
-            <with
-                  variable="efx_sceneBuilderAvailable">
-               <equals
-                     value="true">
-               </equals>
-            </with></enabledWhen>
       </handler>
    </extension>
    <extension
-         point="org.eclipse.ui.services">
-      <sourceProvider
-            provider="at.bestsolution.efxclipse.tooling.ui.handler.EfxSourceProvider">
-         <variable
-               name="efx_sceneBuilderAvailable"
-               priorityLevel="workbench">
-         </variable>
-      </sourceProvider>
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="at.bestsolution.efxclipse.tooling.ui.wizards.internal.JFXWorkbenchPreferencePage"
+            id="at.bestsolution.efxclipse.tooling.ui"
+            name="JavaFX">
+      </page>
    </extension>
 
 </plugin>
