@@ -140,6 +140,9 @@ public class E4Application extends AbstractJFXApplication {
 		args = (String[]) applicationContext.getArguments().get(IApplicationContext.APPLICATION_ARGS);
 
 		IEclipseContext appContext = createDefaultContext();
+		
+		ContextInjectionFactory.setDefault(appContext);
+		
 		appContext.set(Application.class, jfxApplication);
 		appContext.set("primaryStage", primaryStage);
 		// appContext.set(Realm.class, SWTObservables.getRealm(display));
