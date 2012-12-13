@@ -86,7 +86,6 @@ import at.bestsolution.efxclipse.tooling.ui.preview.text.XMLConfiguration;
 import at.bestsolution.efxclipse.tooling.ui.preview.text.XMLPartitionScanner;
 
 import com.google.inject.Inject;
-import com.sun.javafx.css.StyleManager;
 
 public class LivePreviewPart extends ViewPart {
 	public static final String PREF_LOAD_CONTROLLER = "PREF_LOAD_CONTROLLER";
@@ -543,12 +542,12 @@ public class LivePreviewPart extends ViewPart {
 				
 				// Force CSS-Reloading
 				if( isJavaFX2() ) {
-					StyleManager.getInstance().reloadStylesheets(scene);
+					ReflectiveInvoke.onStyleManagerClass(scene);
 				}
 				
 				// In FX8 we need to remove the stylesheets on the old scene to force reloading them
 				if( swtFXContainer.getScene() != null ) {
-					swtFXContainer.getScene() .getStylesheets().clear();	
+					swtFXContainer.getScene().getStylesheets().clear();	
 				}
 				
 				scene.getStylesheets().addAll(contentData.cssFiles);
