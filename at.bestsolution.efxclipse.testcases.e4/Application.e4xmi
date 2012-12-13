@@ -70,6 +70,7 @@
           <children xsi:type="menu:DirectMenuItem" xmi:id="_7Pm2gORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.2" label="Radio - DI 2" type="Radio" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler"/>
           <children xsi:type="menu:DirectMenuItem" xmi:id="_-21b4ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.3" label="Radio - DI 3" type="Radio" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler"/>
         </children>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_VdrD0ER8EeKso-cEr7pQbw" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.4" label="Event Sending" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.EventSender"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_d-oDwO6yEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.menu.3" label="Switch">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_jYdPMO6yEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.4" label="Perspective 0" command="_kCbZQO6yEeG4lfn-YKJbJw">
