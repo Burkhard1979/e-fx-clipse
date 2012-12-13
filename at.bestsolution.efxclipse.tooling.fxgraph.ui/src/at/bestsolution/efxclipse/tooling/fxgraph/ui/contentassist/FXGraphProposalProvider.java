@@ -125,6 +125,22 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 		}
 	}
 	
+	static class EscapePrefixMatcher extends PrefixMatcher {
+		private final PrefixMatcher original;
+		
+		public EscapePrefixMatcher(PrefixMatcher original) {
+			this.original = original;
+		}
+		
+		@Override
+		public boolean isCandidateMatchingPrefix(String name, String prefix) {
+			if( name.startsWith("^") ) {
+				name = name.substring(1);
+			}
+			return original.isCandidateMatchingPrefix(name, prefix);
+		}
+	}
+	
 	class FXClassFilter implements Filter {
 		private final IJavaProject jp;
 		
@@ -480,8 +496,14 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 		} else {
 			StyledString s = new StyledString(prop.getName() + " : " + typeName);
 			s.append(" - " + prop.getFXClass().getSimpleName(), StyledString.QUALIFIER_STYLER);
+			
+			if( proposalValue.equals("id : \"\"") ) {
+				proposalValue = "^" + proposalValue;
+			}
+			
+			context = context.copy().setMatcher(new EscapePrefixMatcher(context.getMatcher())).toContext();
 			ICompletionProposal p = createCompletionProposal(proposalValue, s, IconKeys.getIcon(IconKeys.FIELD_KEY), getPropertiesProposalsProposals(), context.getPrefix(), context);
-
+			
 			if (p instanceof ConfigurableCompletionProposal) {
 				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) p;
 				cp.setAdditionalProposalInfo(model);
