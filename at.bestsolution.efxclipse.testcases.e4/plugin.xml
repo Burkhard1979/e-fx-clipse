@@ -12,8 +12,8 @@
                name="appName">
          </property>
          <property
-               value="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/css/default.css"
-               name="applicationCSS">
+               value="default.theme"
+               name="cssTheme">
          </property>
          <property
                value="at.bestsolution.efxclipse.testcases.e4/Application.e4xmi"
