@@ -13,5 +13,17 @@
          </run>
       </application>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="at.bestsolution.efxclipse.runtime.examples.contacts.app.id1"
+            name="contactssample">
+         <property
+               name="appName"
+               value="contactssample">
+         </property>
+      </product>
+   </extension>
 
 </plugin>
