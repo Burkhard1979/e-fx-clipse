@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Cell;
@@ -29,7 +30,8 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellCreationListener;
 
 /**
- * Allows to drop items into viewers backed by an {@link AdapterFactoryCellFactory} using a {@link LocalTransfer}.
+ * Allows to drop items into viewers backed by an
+ * {@link AdapterFactoryCellFactory} using a {@link LocalTransfer}.
  */
 public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
@@ -51,7 +53,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 				Object item = cell.getItem();
 
 				Node node = getRowNode(cell);
-				
+
 				double y = event.getY();
 				double height = cell.getLayoutBounds().getHeight();
 
@@ -59,8 +61,11 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 				Object object = LocalTransfer.INSTANCE.getObject();
 
-				Command command = DragAndDropCommand.create(editingDomain, item, position, /* DragAndDropFeedback.DROP_COPY | */DragAndDropFeedback.DROP_MOVE
-						| DragAndDropFeedback.DROP_LINK, DragAndDropFeedback.DROP_MOVE, (Collection<?>) object);
+				Command command = DragAndDropCommand.create(editingDomain,
+						item, position, /* DragAndDropFeedback.DROP_COPY | */
+						DragAndDropFeedback.DROP_MOVE
+								| DragAndDropFeedback.DROP_LINK,
+						DragAndDropFeedback.DROP_MOVE, (Collection<?>) object);
 
 				if (command.canExecute()) {
 					dndCommand = command;
@@ -76,16 +81,22 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 						else
 							node.setStyle("-fx-border-color: transparent;");
 
-						ArrayList<TransferMode> modes = new ArrayList<>();
+						if (System.getProperties().getProperty("os.name").toLowerCase()
+								.contains("mac")) {
+							event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+						} else {
+							ArrayList<TransferMode> modes = new ArrayList<>();
 
-						if ((feedback & DragAndDropFeedback.DROP_COPY) != 0)
-							modes.add(TransferMode.COPY);
-						if ((feedback & DragAndDropFeedback.DROP_LINK) != 0)
-							modes.add(TransferMode.LINK);
-						if ((feedback & DragAndDropFeedback.DROP_MOVE) != 0)
-							modes.add(TransferMode.MOVE);
+							if ((feedback & DragAndDropFeedback.DROP_COPY) != 0)
+								modes.add(TransferMode.COPY);
+							if ((feedback & DragAndDropFeedback.DROP_LINK) != 0)
+								modes.add(TransferMode.LINK);
+							if ((feedback & DragAndDropFeedback.DROP_MOVE) != 0)
+								modes.add(TransferMode.MOVE);
 
-						event.acceptTransferModes(modes.toArray(new TransferMode[modes.size()]));
+							event.acceptTransferModes(modes
+									.toArray(new TransferMode[modes.size()]));
+						}
 					}
 
 				} else {
@@ -94,7 +105,6 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 				}
 
 			}
-
 
 		});
 
@@ -117,9 +127,10 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 			}
 		});
 	}
-	
+
 	Cell<?> getRowNode(final Cell<?> cell) {
-		return cell instanceof TableCell ? ((TableCell<?, ?>)cell).getTableRow() : cell;
+		return cell instanceof TableCell ? ((TableCell<?, ?>) cell)
+				.getTableRow() : cell;
 	}
 
 }
