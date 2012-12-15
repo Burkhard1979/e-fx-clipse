@@ -125,7 +125,7 @@ public abstract class AbstractBuildHandler extends AbstractAntHandler {
 
 			for ( IClasspathEntry e : project.getRawClasspath() ) {
 				String start = e.getPath().segment( 0 );
-				if ( "org.eclipse.jdt.launching.JRE_CONTAINER".equals( start ) ) {
+				if ( start.startsWith( "org.eclipse.jdt.launching.JRE_CONTAINER") ) {
 					cfg.setAttribute( IJavaLaunchConfigurationConstants.ATTR_JRE_CONTAINER_PATH, e.getPath().toString() );
 				}
 			}
