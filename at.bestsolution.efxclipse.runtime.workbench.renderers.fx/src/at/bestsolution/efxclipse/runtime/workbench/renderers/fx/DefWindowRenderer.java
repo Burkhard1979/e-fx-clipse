@@ -182,6 +182,15 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		@Override
 		protected Stage createWidget() {
 			stage = new Stage();
+			stage.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+					if( newValue.booleanValue() ) {
+						activate();
+					}
+				}
+			});
 			stage.setFullScreen(fullscreen);
 			stage.fullScreenProperty().addListener(new ChangeListener<Boolean>() {
 
