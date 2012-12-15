@@ -58,7 +58,13 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 	public void doProcessContent(MPart element) {
 		WPart<N> widget = getWidget(element);
 		
-		element.getContext().set(widget.getWidget().getClass().getName(), widget.getWidget());
+		Class<?> cl = widget.getWidget().getClass();
+		do {
+			element.getContext().set(cl.getName(), widget.getWidget());
+			cl = cl.getSuperclass();
+		} while( ! cl.getName().equals("java.lang.Object") );
+		
+		
 		IContributionFactory contributionFactory = (IContributionFactory) element.getContext().get(IContributionFactory.class
 				.getName());
 		Object newPart = contributionFactory.create(element.getContributionURI(), element.getContext());
