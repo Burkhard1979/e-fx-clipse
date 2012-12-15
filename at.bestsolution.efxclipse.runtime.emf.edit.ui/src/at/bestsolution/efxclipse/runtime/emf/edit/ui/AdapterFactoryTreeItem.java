@@ -37,7 +37,7 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 	final AdapterFactory adapterFactory;
 	final TreeView<?> treeView;
 	final ObservableList<TreeItem<Object>> children;
-	ITreeItemContentProvider provider;
+	final ITreeItemContentProvider provider;
 
 	public AdapterFactoryTreeItem(Object object, TreeView<?> treeView, AdapterFactory adapterFactory) {
 		super(object);
@@ -46,9 +46,7 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 		children = FXCollections.unmodifiableObservableList(super.getChildren());
 
 		Object adapter = adapterFactory.adapt(object, ITreeItemContentProvider.class);
-
-		if (adapter instanceof ITreeItemContentProvider)
-			provider = (ITreeItemContentProvider) adapter;
+		provider = (adapter instanceof ITreeItemContentProvider) ? (ITreeItemContentProvider) adapter : null;
 
 		if (object instanceof Notifier) {
 			((Notifier) object).eAdapters().add(new AdapterImpl() {
