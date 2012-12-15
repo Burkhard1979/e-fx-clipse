@@ -13,9 +13,7 @@ package at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.Cell;
 import javafx.scene.control.TableCell;
 import javafx.scene.input.DragEvent;
@@ -35,12 +33,39 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.I
  */
 public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
-	protected EditingDomain editingDomain;
-	protected Command dndCommand;
+	/**
+	 * Handles the feedback to Drag & Drop events by styling or otherwise
+	 * modifying the affected {@link Cell}
+	 */
+	public interface IDnDFeedbackHandler {
+
+		void onFeedbackInsertBefore(Cell<?> cell);
+
+		void onFeedbackInsertAfter(Cell<?> cell);
+
+		void onFeedbackSelect(Cell<?> cell);
+
+		void onFeedbackNone(Cell<?> cell);
+
+	}
+
+	final EditingDomain editingDomain;
+	Command dndCommand;
+	IDnDFeedbackHandler feedbackHandler = new DefaultFeedbackHandler();
 
 	public EditingDomainCellDropAdapter(EditingDomain editingDomain) {
-		super();
 		this.editingDomain = editingDomain;
+	}
+
+	public IDnDFeedbackHandler getFeedbackHandler() {
+		return feedbackHandler;
+	}
+
+	public void setFeedbackHandler(IDnDFeedbackHandler feedbackHandler) {
+		if (feedbackHandler == null)
+			throw new IllegalArgumentException("The feeback handler cannot be null");
+
+		this.feedbackHandler = feedbackHandler;
 	}
 
 	@Override
@@ -52,7 +77,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 			public void handle(DragEvent event) {
 				Object item = cell.getItem();
 
-				Node node = getRowNode(cell);
+				Cell<?> node = getRowNode(cell);
 
 				double y = event.getY();
 				double height = cell.getLayoutBounds().getHeight();
@@ -61,11 +86,14 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 				Object object = LocalTransfer.INSTANCE.getObject();
 
-				Command command = DragAndDropCommand.create(editingDomain,
-						item, position, /* DragAndDropFeedback.DROP_COPY | */
-						DragAndDropFeedback.DROP_MOVE
-								| DragAndDropFeedback.DROP_LINK,
-						DragAndDropFeedback.DROP_MOVE, (Collection<?>) object);
+				Command command = DragAndDropCommand.create(editingDomain, item, position, /*
+																							 * DragAndDropFeedback
+																							 * .
+																							 * DROP_COPY
+																							 * |
+																							 */
+						DragAndDropFeedback.DROP_MOVE | DragAndDropFeedback.DROP_LINK, DragAndDropFeedback.DROP_MOVE,
+						(Collection<?>) object);
 
 				if (command.canExecute()) {
 					dndCommand = command;
@@ -75,14 +103,15 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 						int feedback = dndFeedback.getFeedback();
 
 						if ((feedback & DragAndDropFeedback.FEEDBACK_INSERT_BEFORE) != 0)
-							node.setStyle("-fx-border-color: red transparent transparent transparent;");
+							feedbackHandler.onFeedbackInsertBefore(node);
 						else if ((feedback & DragAndDropFeedback.FEEDBACK_INSERT_AFTER) != 0)
-							node.setStyle("-fx-border-color: transparent transparent red transparent;");
+							feedbackHandler.onFeedbackInsertAfter(node);
+						else if ((feedback & DragAndDropFeedback.FEEDBACK_SELECT) != 0)
+							feedbackHandler.onFeedbackSelect(node);
 						else
-							node.setStyle("-fx-border-color: transparent;");
+							feedbackHandler.onFeedbackNone(node);
 
-						if (System.getProperties().getProperty("os.name").toLowerCase()
-								.contains("mac")) {
+						if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
 							event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 						} else {
 							ArrayList<TransferMode> modes = new ArrayList<>();
@@ -94,14 +123,13 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 							if ((feedback & DragAndDropFeedback.DROP_MOVE) != 0)
 								modes.add(TransferMode.MOVE);
 
-							event.acceptTransferModes(modes
-									.toArray(new TransferMode[modes.size()]));
+							event.acceptTransferModes(modes.toArray(new TransferMode[modes.size()]));
 						}
 					}
 
 				} else {
 					dndCommand = null;
-					node.setStyle("-fx-border-color: transparent;");
+					feedbackHandler.onFeedbackNone(node);
 				}
 
 			}
@@ -112,7 +140,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 			@Override
 			public void handle(DragEvent event) {
-				getRowNode(cell).setStyle("-fx-border-color: transparent;");
+				feedbackHandler.onFeedbackNone(getRowNode(cell));
 			}
 
 		});
@@ -129,8 +157,35 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 	}
 
 	Cell<?> getRowNode(final Cell<?> cell) {
-		return cell instanceof TableCell ? ((TableCell<?, ?>) cell)
-				.getTableRow() : cell;
+		return cell instanceof TableCell ? ((TableCell<?, ?>) cell).getTableRow() : cell;
+	}
+
+	/**
+	 * The default implementation for {@link IDnDFeedbackHandler} increases the
+	 * padding to make room for the dragged {@link Cell}
+	 */
+	public static class DefaultFeedbackHandler implements IDnDFeedbackHandler {
+
+		@Override
+		public void onFeedbackInsertBefore(Cell<?> cell) {
+			cell.setStyle("-fx-padding: 15 3 3 3;");
+		}
+
+		@Override
+		public void onFeedbackInsertAfter(Cell<?> cell) {
+			cell.setStyle("-fx-padding: 3 3 15 3;");
+		}
+
+		@Override
+		public void onFeedbackSelect(Cell<?> cell) {
+			cell.setStyle(null);
+		}
+
+		@Override
+		public void onFeedbackNone(Cell<?> cell) {
+			cell.setStyle(null);
+		}
+
 	}
 
 }
