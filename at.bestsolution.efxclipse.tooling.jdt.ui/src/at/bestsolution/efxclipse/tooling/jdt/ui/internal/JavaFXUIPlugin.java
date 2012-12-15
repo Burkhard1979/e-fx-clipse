@@ -32,6 +32,7 @@ public class JavaFXUIPlugin extends AbstractUIPlugin {
 	public static String ALPHASORT_ICON = "ALPHASORT_ICON";
 	public static String COLLAPSE_ICON = "COLLAPSE_ICON";
 	public static String HIERACHICAL_ICON = "HIERACHICAL_ICON";
+	public static String LIBRARY_ICON = "LIBRARY_ICON";
 	
 	public static final String FILEEXTENSION_HTML_TEMPLATE = ".fxtemplate";
 	
@@ -54,6 +55,7 @@ public class JavaFXUIPlugin extends AbstractUIPlugin {
 		getImageRegistry().put(ALPHASORT_ICON, ImageDescriptor.createFromURL(new URL("platform:/plugin/"+PLUGIN_ID+"/icons/alphab_sort_co.gif")));
 		getImageRegistry().put(COLLAPSE_ICON, ImageDescriptor.createFromURL(new URL("platform:/plugin/"+PLUGIN_ID+"/icons/collapseall.gif")));
 		getImageRegistry().put(HIERACHICAL_ICON, ImageDescriptor.createFromURL(new URL("platform:/plugin/"+PLUGIN_ID+"/icons/hierarchicalLayout.gif")));
+		getImageRegistry().put(LIBRARY_ICON, ImageDescriptor.createFromURL(new URL("platform:/plugin/"+PLUGIN_ID+"/icons/library_obj.gif")));
 	}
 
 	/*
