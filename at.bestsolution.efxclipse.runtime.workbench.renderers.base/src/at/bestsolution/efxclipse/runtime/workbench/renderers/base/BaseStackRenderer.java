@@ -183,6 +183,10 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 	}
 
 	private boolean shouldActivate(MPartStack stackToActivate) {
+		if (inContentProcessing(stackToActivate)) {
+			return false;
+		}
+		
 		if (application != null) {
 			IEclipseContext applicationContext = application.getContext();
 			IEclipseContext activeChild = applicationContext
