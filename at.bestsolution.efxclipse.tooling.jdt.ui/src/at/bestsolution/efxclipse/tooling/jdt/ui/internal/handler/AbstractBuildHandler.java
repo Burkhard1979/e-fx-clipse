@@ -154,8 +154,6 @@ public abstract class AbstractBuildHandler extends AbstractAntHandler {
 			cfg.setAttribute( IAntLaunchConstants.ATTR_DEFAULT_VM_INSTALL, false );
 			cfg.setAttribute( "org.eclipse.jdt.launching.MAIN_TYPE", "org.eclipse.ant.internal.launching.remote.InternalAntRunner" );
 			cfg.setAttribute( "process_factory_id", "org.eclipse.ant.ui.remoteAntProcessFactory" );
-//			<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
-//			<stringAttribute key="process_factory_id" value="org.eclipse.ant.ui.remoteAntProcessFactory"/>
 			
 			IVMInstall install = null;
 			for ( IClasspathEntry e : project.getRawClasspath() ) {
