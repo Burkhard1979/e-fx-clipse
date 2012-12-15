@@ -62,7 +62,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 	}
 
 	public void setFeedbackHandler(IDnDFeedbackHandler feedbackHandler) {
-		if (feedbackHandler == null)
+		if(feedbackHandler == null)
 			throw new IllegalArgumentException("The feeback handler cannot be null");
 
 		this.feedbackHandler = feedbackHandler;
