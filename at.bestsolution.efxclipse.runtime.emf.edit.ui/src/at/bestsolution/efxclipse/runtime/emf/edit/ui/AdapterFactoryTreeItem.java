@@ -67,7 +67,14 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 		List<?> selection = selectionModel.getSelectedItems();
 		ArrayList<Object> selectedItems = new ArrayList<>();
 		ArrayList<TreeItem<?>> selectedTreeItems = new ArrayList<>();
-
+		ArrayList<Object> expandedItems = new ArrayList<>();
+		
+		// remember the expanded items
+		for (TreeItem<Object> childTreeItem : childTreeItems) {
+			if(childTreeItem.isExpanded())
+				expandedItems.add(childTreeItem.getValue());
+		}
+		
 		// remember the selected items
 		for (Object selectedTreeItem : selection) {
 			for (TreeItem<Object> childTreeItem : childTreeItems) {
@@ -85,18 +92,23 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 			selectionModel.clearSelection(selectionIndex);
 		}
 
+		// remove the old tree items
 		childTreeItems.clear();
 
 		if (provider == null)
 			return;
 
-		// add the new children
+		// add the new tree items
 		for (Object child : provider.getChildren(getValue())) {
 			AdapterFactoryTreeItem treeItem = new AdapterFactoryTreeItem(child, treeView, adapterFactory);
 
 			childTreeItems.add(treeItem);
+			
+			// expand the new tree items
+			if(expandedItems.contains(child))
+				treeItem.setExpanded(true);
 
-			// try to restore the selection
+			// restore the selection
 			if (selectedItems.contains(child)
 					&& "javafx.scene.control.TreeView$TreeViewBitSetSelectionModel".equals(selectionModel.getClass().getName())) {
 				try {
