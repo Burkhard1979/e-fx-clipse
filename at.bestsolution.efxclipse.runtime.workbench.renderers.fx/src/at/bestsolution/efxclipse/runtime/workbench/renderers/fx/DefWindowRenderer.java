@@ -232,7 +232,8 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 			s.focusOwnerProperty().addListener(new ChangeListener<Node>() {
 				List<WWidget<?>> lastActivationTree = new ArrayList<WWidget<?>>();
-
+				List<WWidget<?>> queuedTree = new ArrayList<WWidget<?>>();
+				
 				@Override
 				public void changed(ObservableValue<? extends Node> observable, Node oldValue, Node newValue) {
 					if (newValue != null) {
@@ -267,7 +268,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 							Collections.reverse(oldTreeReversed);
 							Collections.reverse(newTreeReversed);
 
-							lastActivationTree = activationTree;
+							queuedTree = activationTree;
 
 							// Delay the execution maybe there's an intermediate
 							// state we are not interested in
@@ -276,7 +277,8 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 								@Override
 								public void run() {
-									if (lastActivationTree == activationTree) {
+									if (queuedTree == activationTree) {
+										lastActivationTree = activationTree;
 										for (WWidget<?> w : oldTreeReversed) {
 											w.deactivate();
 										}
