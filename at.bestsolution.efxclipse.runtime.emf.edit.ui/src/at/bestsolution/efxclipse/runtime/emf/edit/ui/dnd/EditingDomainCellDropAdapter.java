@@ -162,7 +162,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 	/**
 	 * The default implementation for {@link IDnDFeedbackHandler} increases the
-	 * padding to make room for the dragged {@link Cell}
+	 * padding to make room for the dragged {@link Cell}.
 	 */
 	public static class DefaultFeedbackHandler implements IDnDFeedbackHandler {
 
