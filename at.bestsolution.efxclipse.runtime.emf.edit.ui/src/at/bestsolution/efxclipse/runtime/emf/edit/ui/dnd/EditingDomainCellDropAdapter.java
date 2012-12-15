@@ -62,7 +62,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 	}
 
 	public void setFeedbackHandler(IDnDFeedbackHandler feedbackHandler) {
-		if(feedbackHandler == null)
+		if (feedbackHandler == null)
 			throw new IllegalArgumentException("The feeback handler cannot be null");
 
 		this.feedbackHandler = feedbackHandler;
@@ -86,14 +86,8 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 				Object object = LocalTransfer.INSTANCE.getObject();
 
-				Command command = DragAndDropCommand.create(editingDomain, item, position, /*
-																							 * DragAndDropFeedback
-																							 * .
-																							 * DROP_COPY
-																							 * |
-																							 */
-						DragAndDropFeedback.DROP_MOVE | DragAndDropFeedback.DROP_LINK, DragAndDropFeedback.DROP_MOVE,
-						(Collection<?>) object);
+				Command command = DragAndDropCommand.create(editingDomain, item, position, DragAndDropFeedback.DROP_MOVE
+						| DragAndDropFeedback.DROP_LINK, DragAndDropFeedback.DROP_MOVE, (Collection<?>) object);
 
 				if (command.canExecute()) {
 					dndCommand = command;
