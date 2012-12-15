@@ -10,13 +10,9 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.emf.edit.ui;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
-import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.MultipleSelectionModel;
@@ -65,51 +61,54 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 		updateChildren();
 	}
 
-	private void updateChildren() {
+	void updateChildren() {
 		ObservableList<TreeItem<Object>> childTreeItems = getChildren();
-		List<?> selection = treeView.getSelectionModel().getSelectedItems();
-		ArrayList<Object> removedItems = new ArrayList<>();
+		MultipleSelectionModel<?> selectionModel = treeView.getSelectionModel();
+		List<?> selection = selectionModel.getSelectedItems();
+		ArrayList<Object> selectedItems = new ArrayList<>();
+		ArrayList<TreeItem<?>> selectedTreeItems = new ArrayList<>();
 
+		// remember the selected items
 		for (Object selectedTreeItem : selection) {
 			for (TreeItem<Object> childTreeItem : childTreeItems) {
-				if (selectedTreeItem == childTreeItem)
-					removedItems.add(childTreeItem.getValue());
-			}
-		}
-
-		for (Object removedItem : removedItems) {
-			treeView.getSelectionModel().clearSelection(indexForItem(removedItem));
-		}
-
-		Collection<?> newChildren = provider.getChildren(getValue());
-
-		childTreeItems.clear();
-
-		if (provider != null) {
-			for (Object child : newChildren) {
-				AdapterFactoryTreeItem treeItem = new AdapterFactoryTreeItem(child, treeView, adapterFactory);
-				childTreeItems.add(treeItem);
-				if (removedItems.contains(child)) {
-					MultipleSelectionModel<?> selectionModel = treeView.getSelectionModel();
-					Method m;
-					try {
-						m = selectionModel.getClass().getDeclaredMethod("select", new Class[] { TreeItem.class });
-						m.setAccessible(true);
-						m.invoke(selectionModel, treeItem);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				if (selectedTreeItem == childTreeItem) {
+					selectedTreeItems.add(childTreeItem);
+					selectedItems.add(childTreeItem.getValue());
 				}
 			}
 		}
-	}
 
-	private int indexForItem(Object item) {
-		MultipleSelectionModel<?> selectionModel = treeView.getSelectionModel();
-		ObservableList<?> selectedItems = selectionModel.getSelectedItems();
-		ObservableList<Integer> selectedIndices = selectionModel.getSelectedIndices();
-		return selectedIndices.get(selectedItems.indexOf(item));
+		// clear the selection
+		for (TreeItem<?> selectedTreeItem : selectedTreeItems) {
+			int treeItemIndex = selectionModel.getSelectedItems().indexOf(selectedTreeItem);
+			int selectionIndex = selectionModel.getSelectedIndices().get(treeItemIndex);
+			selectionModel.clearSelection(selectionIndex);
+		}
+
+		childTreeItems.clear();
+
+		if (provider == null)
+			return;
+
+		// add the new children
+		for (Object child : provider.getChildren(getValue())) {
+			AdapterFactoryTreeItem treeItem = new AdapterFactoryTreeItem(child, treeView, adapterFactory);
+
+			childTreeItems.add(treeItem);
+
+			// try to restore the selection
+			if (selectedItems.contains(child)
+					&& "javafx.scene.control.TreeView$TreeViewBitSetSelectionModel".equals(selectionModel.getClass().getName())) {
+				try {
+					Method m = selectionModel.getClass().getDeclaredMethod("select", new Class[] { TreeItem.class });
+					m.setAccessible(true);
+					m.invoke(selectionModel, treeItem);
+				} catch (Exception e) {
+					// do nothing
+				}
+			}
+		}
+
 	}
 
 }
