@@ -250,16 +250,20 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 								}
 							});
 						} else {
-							// Delay if the subcontrol just got created
-							// isVisible() reports true while it is not really
-							Platform.runLater(new Runnable() {
-								
-								@Override
-								public void run() {
-									cb.call(w);
-								}
-							});
-							
+							if( w.tab.getContent() == null || w.tab.getContent().getScene() != null ) {
+								// Delay if the subcontrol just got created
+								// isVisible() reports true while it is not really
+								Platform.runLater(new Runnable() {
+									
+									@Override
+									public void run() {
+										cb.call(w);
+									}
+								});	
+							} else {
+								// We are in the init phase
+								cb.call(w);
+							}
 						}
 					}
 				}
