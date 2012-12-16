@@ -155,29 +155,29 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 	}
 
 	/**
-	 * The default implementation for {@link IDnDFeedbackHandler} increases the
-	 * padding to make room for the dragged {@link Cell}.
+	 * This default implementation of {@link IDnDFeedbackHandler} adds a red
+	 * line where the dragged {@link Cell} can be dropped.
 	 */
 	public static class DefaultFeedbackHandler implements IDnDFeedbackHandler {
 
 		@Override
 		public void onFeedbackInsertBefore(Cell<?> cell) {
-			cell.setStyle("-fx-padding: 15 3 3 3;");
+			cell.setStyle("-fx-border-color: red transparent transparent transparent;");
 		}
 
 		@Override
 		public void onFeedbackInsertAfter(Cell<?> cell) {
-			cell.setStyle("-fx-padding: 3 3 15 3;");
+			cell.setStyle("-fx-border-color: transparent transparent red transparent;");
 		}
 
 		@Override
 		public void onFeedbackSelect(Cell<?> cell) {
-			cell.setStyle(null);
+			cell.setStyle("-fx-border-color: transparent;");
 		}
 
 		@Override
 		public void onFeedbackNone(Cell<?> cell) {
-			cell.setStyle(null);
+			cell.setStyle("-fx-border-color: transparent;");
 		}
 
 	}

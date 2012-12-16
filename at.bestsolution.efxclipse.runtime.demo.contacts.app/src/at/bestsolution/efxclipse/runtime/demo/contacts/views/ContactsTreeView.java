@@ -53,7 +53,9 @@ public class ContactsTreeView {
 		treeCellFactory.addCellCreationListener(new CellDragAdapter());
 
 		// adds drop support
-		treeCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
+		EditingDomainCellDropAdapter dropAdapter = new EditingDomainCellDropAdapter(editingDomain);
+		dropAdapter.setFeedbackHandler(new CustomFeedbackHandler());
+		treeCellFactory.addCellCreationListener(dropAdapter);
 
 		treeView.setCellFactory(treeCellFactory);
 
