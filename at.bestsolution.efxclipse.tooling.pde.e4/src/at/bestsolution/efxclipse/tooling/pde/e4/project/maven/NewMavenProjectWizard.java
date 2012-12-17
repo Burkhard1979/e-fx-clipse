@@ -4,11 +4,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.pde.internal.ui.wizards.IProjectProvider;
@@ -21,6 +23,9 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.Version;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import at.bestsolution.efxclipse.tooling.pde.e4.project.PluginContentPage;
 import at.bestsolution.efxclipse.tooling.pde.e4.project.template.ApplicationE4XMI;
@@ -43,6 +48,8 @@ import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.Repository;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomData;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomGenerator;
 import at.bestsolution.efxclipse.tooling.rrobot.RRobot;
+import at.bestsolution.efxclipse.tooling.rrobot.dsl.FileLoader;
+import at.bestsolution.efxclipse.tooling.rrobot.dsl.RTaskRuntimeModule;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BuildProperties;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleFactory;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
@@ -114,78 +121,110 @@ public class NewMavenProjectWizard extends NewWizard  {
 				contentPage.saveSettings(settings);
 			}
 			
+			
 			Bundle b = FrameworkUtil.getBundle(getClass());
 			BundleContext ctx = b.getBundleContext();
 			ServiceReference<RRobot> ref = ctx.getServiceReference(RRobot.class);
 			final RRobot r = ctx.getService(ref);
+
+			FileLoader loader = FileLoader.createLoader();
+			final RobotTask task = loader.loadTask(URI.createPlatformPluginURI("/at.bestsolution.efxclipse.tooling.pde.e4/generator-tasks/e4App.rtask", true));
+
 			
-			final RobotTask task = TaskFactory.eINSTANCE.createRobotTask();
+//			
+//			final RobotTask task = TaskFactory.eINSTANCE.createRobotTask();
+//			
+//			task.getProjects().add(
+//					createBundleProject(
+//							projectPage.getProjectName(),
+//							contentPage.getData().getId(),
+//							((AbstractFieldData)contentPage.getData()).getExecutionEnvironment(),
+//							contentPage.getData().getVersion(),
+//							configPage.getProductName(),
+//							configPage.isMavenTycho()
+//					)
+//			);
+//			
+//			FeatureProject featureProject = createFeatureProject(
+//					projectPage.getProjectName(),
+//					contentPage.getData().getId(),
+//					configPage.getProductName(),
+//					contentPage.getData().getVersion(),
+//					contentPage.getData().getProvider(),
+//					configPage.useIcuBase(),
+//					configPage.hasConsoleSupport(),
+//					configPage.isJemmyTest()
+//			);
+//			task.getProjects().add(featureProject);
+//			
+//			task.getProjects().add(
+//					createProductProject(
+//							projectPage.getProjectName(),
+//							contentPage.getId(),
+//							featureProject,
+//							configPage.getProductName(),
+//							contentPage.getData().getVersion(),
+//							configPage.isMavenTycho()
+//					)
+//			);
+//			
+//			if(configPage.isJemmyTest()) {
+//				task.getProjects().add(
+//						createJemmyProject(
+//								projectPage.getProjectName(),
+//								configPage.getProductName(),
+//								contentPage.getData().getId(),
+//								contentPage.getData().getVersion(),
+//								((AbstractFieldData)contentPage.getData()).getExecutionEnvironment(),
+//								featureProject,
+//								configPage.isMavenTycho()
+//						)
+//				);
+//			}
+//			
+//			if(configPage.isMavenTycho()) {
+//				task.getProjects().add(
+//						createRelengProject(
+//								configPage.getProductName(), 
+//								contentPage.getData().getId(), 
+//								projectPage.getProjectName(),
+//								contentPage.getData().getVersion(),
+//								((AbstractFieldData)contentPage.getData()).getProvider(),
+//								configPage.isNativePackageing())
+//				);
+//			}
 			
-			task.getProjects().add(
-					createBundleProject(
-							projectPage.getProjectName(),
-							contentPage.getData().getId(),
-							((AbstractFieldData)contentPage.getData()).getExecutionEnvironment(),
-							contentPage.getData().getVersion(),
-							configPage.getProductName(),
-							configPage.isMavenTycho()
-					)
-			);
+//			## Name of the project
+//			STRING "BundleProject_projectName" default "my.app.sample",  
+//			## Symbolic id of the bundle
+//			STRING "BundleProject_bundleId" default "my.app.sample",
+//			## Name of the Bundle
+//			STRING "BundleProject_bundleName" default "My Sample App",
+//			## Vendor of the Bundle
+//			STRING "BundleProject_bundleVendor" default "My Company",
+//			## Product name
+//			STRING "BundleProject_productName" default "My Sample Application",
+//			## Bundle Version
+//			STRING "BundleProject_bundleVersion" default "1.0.0.qualifier",
+//			## Tycho integration
+//			BOOLEAN "TychoIntegration" default "true",
+//			## Native export integration
+//			BOOLEAN "NativeExport" default "true"
 			
-			FeatureProject featureProject = createFeatureProject(
-					projectPage.getProjectName(),
-					contentPage.getData().getId(),
-					configPage.getProductName(),
-					contentPage.getData().getVersion(),
-					contentPage.getData().getProvider(),
-					configPage.useIcuBase(),
-					configPage.hasConsoleSupport(),
-					configPage.isJemmyTest()
-			);
-			task.getProjects().add(featureProject);
-			
-			task.getProjects().add(
-					createProductProject(
-							projectPage.getProjectName(),
-							contentPage.getId(),
-							featureProject,
-							configPage.getProductName(),
-							contentPage.getData().getVersion(),
-							configPage.isMavenTycho()
-					)
-			);
-			
-			if(configPage.isJemmyTest()) {
-				task.getProjects().add(
-						createJemmyProject(
-								projectPage.getProjectName(),
-								configPage.getProductName(),
-								contentPage.getData().getId(),
-								contentPage.getData().getVersion(),
-								((AbstractFieldData)contentPage.getData()).getExecutionEnvironment(),
-								featureProject,
-								configPage.isMavenTycho()
-						)
-				);
-			}
-			
-			if(configPage.isMavenTycho()) {
-				task.getProjects().add(
-						createRelengProject(
-								configPage.getProductName(), 
-								contentPage.getData().getId(), 
-								projectPage.getProjectName(),
-								contentPage.getData().getVersion(),
-								((AbstractFieldData)contentPage.getData()).getProvider(),
-								configPage.isNativePackageing())
-				);
-			}
+			final Map<String,Object> additionalData = new HashMap<>();
+			additionalData.put("BundleProject_projectName", projectPage.getProjectName());
+			additionalData.put("BundleProject_bundleId", contentPage.getData().getId());
+			additionalData.put("BundleProject_bundleVendor", ((AbstractFieldData)contentPage.getData()).getProvider());
+			additionalData.put("BundleProject_productName", configPage.getProductName());
+			additionalData.put("BundleProject_bundleVersion", contentPage.getData().getVersion());
+			additionalData.put("TychoIntegration", configPage.isMavenTycho());
+			additionalData.put("NativeExport", configPage.isNativePackageing());
 			
 			WorkspaceModifyOperation w = new WorkspaceModifyOperation() {
 				
 				@Override
 				protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
-					r.executeTask(monitor, task, new HashMap<String, Object>());
+					r.executeTask(monitor, task, additionalData);
 				}
 			};
 			
