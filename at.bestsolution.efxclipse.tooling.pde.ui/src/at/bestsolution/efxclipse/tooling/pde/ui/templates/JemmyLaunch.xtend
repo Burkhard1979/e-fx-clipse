@@ -5,19 +5,38 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
 import java.util.Map
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject
+import org.eclipse.emf.ecore.EObject
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject
+import java.io.ByteArrayInputStream
 
 class JemmyLaunch implements Generator<DynamicFile> {
+	def findRoot(EObject file) {
+		var tmp = file;
+		while( true ) {
+			if( tmp.eContainer instanceof RobotTask ) {
+				return tmp.eContainer as RobotTask;
+			}
+			tmp = tmp.eContainer;
+		}
+		return null;
+	}
+	
 	override generate(DynamicFile file, Map<String,Object> data) {
-		val bundleId = data.get("BundleProject_bundleId") as String;
-		val projectName = data.get("BundleProject_projectName") as String;
+		val robotTask = findRoot(file) as RobotTask;
+		
+		val plugin = robotTask.projects.findFirst([e | e instanceof FeatureProject]) as FeatureProject;
+		val bundleProject = robotTask.projects.findFirst([e | e instanceof BundleProject]) as BundleProject;
+		
+		val symbolicName = bundleProject.manifest.symbolicname;
 		
 		val launchDef = new JemmyLaunchDef();
-		launchDef.setJunitClassName(bundleId+".jemmy.TestSuite");
-		launchDef.setProjectName(projectName+".jemmy");
-		launchDef.setTestProductId(bundleId+".product");
+		launchDef.setJunitClassName(symbolicName+".jemmy.TestSuite");
+		launchDef.setProjectName(bundleProject.name+".jemmy");
+		launchDef.setTestProductId(symbolicName+".product");
 			
-		for( FeaturePlugin fp : (file.eContainer as FeatureProject).getFeature().getPlugins() ) {
-			if(bundleId.equals(fp.getId())) {
+		for( FeaturePlugin fp : plugin.getFeature().getPlugins() ) {
+			if(symbolicName.equals(fp.getId())) {
 					
 			} else if( "org.eclipse.core.runtime.compatibility.registry".equals(fp.getId()) ) {
 				launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"default","false"));
@@ -44,10 +63,10 @@ class JemmyLaunch implements Generator<DynamicFile> {
 		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.junit*4.10.0.v4_10_0_v20120426-0900"));
 		launchDef.getTargetPlugins().add(new PluginLaunchDef("org.junit4"));
 			
-		launchDef.getWorkbenchPlugins().add(new PluginLaunchDef(bundleId));
-		launchDef.getWorkbenchPlugins().add(new PluginLaunchDef(bundleId+".jemmy"));
+		launchDef.getWorkbenchPlugins().add(new PluginLaunchDef(symbolicName));
+		launchDef.getWorkbenchPlugins().add(new PluginLaunchDef(symbolicName+".jemmy"));
 			
-		throw new UnsupportedOperationException("Auto-generated function stub")
+		return new ByteArrayInputStream(generate(launchDef).toString.bytes);
 	}
 	
 	def generate(JemmyLaunchDef launch) '''

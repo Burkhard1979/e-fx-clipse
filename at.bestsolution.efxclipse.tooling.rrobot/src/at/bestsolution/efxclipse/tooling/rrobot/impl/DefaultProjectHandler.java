@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.impl;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 
@@ -171,6 +173,24 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 		newNatures[prevNatures.length] = natureId;
 		description.setNatureIds(newNatures);
 		proj.setDescription(description, monitor);
+	}
+	
+	protected static IFolder getProjectFolder(IProject proj, Folder folder) {
+		List<Folder> parentHierarchy = new ArrayList<>();
+		parentHierarchy.add(folder);
+		while( folder.eContainer() instanceof Folder ) {
+			folder = (Folder) folder.eContainer();
+			parentHierarchy.add( folder);
+		}
+		
+		Collections.reverse(parentHierarchy);
+		
+		Path p = new Path(parentHierarchy.get(0).getName());
+		for( int i = 1; i < parentHierarchy.size(); i++ ) {
+			p.append(parentHierarchy.get(i).getName());
+		}
+		
+		return proj.getFolder(p);
 	}
 	
 	protected static boolean exclude(Resource model, Map<String, Object> additionalData) {

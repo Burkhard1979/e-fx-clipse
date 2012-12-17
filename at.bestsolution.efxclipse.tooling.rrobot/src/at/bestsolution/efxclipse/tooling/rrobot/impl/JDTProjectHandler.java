@@ -12,6 +12,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.impl;
 
 import java.util.Map;
 
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -22,6 +23,7 @@ import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment;
@@ -72,6 +74,31 @@ public class JDTProjectHandler<P extends JDTProject> extends DefaultProjectHandl
 	
 	protected IStatus createResources(IProgressMonitor monitor, IProject p, P model, Map<String, Object> additionalData) {
 		IStatus s = super.createResources(monitor, p, model, additionalData);
+		
+		if( !s.isOK() ) {
+			return s;
+		}
+		
+		for( CompilationUnit c : model.getCompilationUnits() ) {
+			Folder mFolder = c.getSourcefragment().getFolder();
+			IFolder folder = getProjectFolder(p, mFolder);
+			
+			if( c.getPackagename().trim().length()  == 0) {
+				createFile(monitor, folder.getFile(c.getFile().getName()), c.getFile(), additionalData);
+			} else {
+				String[] packs = c.getPackagename().split("\\.");
+				for( String pack: packs ) {
+					folder = folder.getFolder(pack);
+					try {
+						folder.create(true, true, monitor);
+					} catch (CoreException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				createFile(monitor, folder.getFile(c.getFile().getName()), c.getFile(), additionalData);
+			}
+		}
 		
 //		if( ! p.getFolder("src").exists() ) {
 //			try {

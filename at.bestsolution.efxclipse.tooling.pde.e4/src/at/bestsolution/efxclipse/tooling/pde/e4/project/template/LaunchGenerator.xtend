@@ -1,6 +1,63 @@
 package at.bestsolution.efxclipse.tooling.pde.e4.project.template
 
-class LaunchGenerator {
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
+import java.util.Map
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef
+import java.io.ByteArrayInputStream
+import org.eclipse.emf.ecore.EObject
+
+class LaunchGenerator implements Generator<DynamicFile> {
+	
+	def findRoot(EObject file) {
+		var tmp = file;
+		while( true ) {
+			if( tmp.eContainer instanceof RobotTask ) {
+				return tmp.eContainer as RobotTask;
+			}
+			tmp = tmp.eContainer;
+		}
+		return null;
+	}
+	
+	override generate(DynamicFile file, Map<String,Object> data) {
+		val robotTask = findRoot(file) as RobotTask;
+		val launchDef = new E4LaunchDef();
+		val plugin = robotTask.projects.findFirst([e | e instanceof FeatureProject]) as FeatureProject;
+		val bundleProject = robotTask.projects.findFirst([e | e instanceof BundleProject]) as BundleProject;
+		
+		val symbolicName = bundleProject.manifest.symbolicname;
+		
+		launchDef.setProjectName(bundleProject.name);
+		
+		if( plugin != null ) {
+			for( fp : plugin.feature.plugins ) {
+				if(symbolicName.equals(fp.getId())) {
+					// Skip it
+				} else if( "org.eclipse.core.runtime.compatibility.registry".equals(fp.getId()) ) {
+					launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"default","false"));
+				} else if("org.eclipse.core.runtime".equals(fp.getId())) {
+					launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"default","true"));
+				} else if("org.eclipse.equinox.common".equals(fp.getId())) {
+					launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"2","true"));
+				} else if("org.eclipse.equinox.ds".equals(fp.getId())) {
+					launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"1","true"));
+				} else if("org.eclipse.osgi".equals(fp.getId())) {
+					launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId(),"-1","true"));
+				} else {
+					launchDef.getTargetPlugins().add(new PluginLaunchDef(fp.getId()));	
+				}
+			}
+			
+			launchDef.getWorkbenchPlugins().add(new PluginLaunchDef(symbolicName));
+			
+		}
+		return new ByteArrayInputStream(generate(launchDef).toString.bytes);
+	}
+	
 	def generate(E4LaunchDef launch) '''
 	<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 	<launchConfiguration type="org.eclipse.pde.ui.RuntimeWorkbench">

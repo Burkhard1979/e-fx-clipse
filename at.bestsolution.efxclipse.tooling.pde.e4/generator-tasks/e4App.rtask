@@ -139,6 +139,7 @@ RobotTask {
 						}
 					}
 				},
+				Folder "src",
 				// Add  dynamic generated file
 				DynamicFile "Application.e4xmi" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.ApplicationE4XMI" 
@@ -148,6 +149,9 @@ RobotTask {
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.PluginPomGenerator" 
 					by "java" 
 					excluded-if "javascript" /# !TychoIntegration; #/
+			}
+			rootfragments = {
+				fragment "default-src" "src"
 			}
 		},
 		FeatureProject "${BundleProject_projectName}.feature" {
@@ -245,7 +249,7 @@ RobotTask {
 		},
 		SimpleProject "${BundleProject_projectName}.product" {
 			resources = {
-//FIXME				DynamicFile "${BundleProject_bundleId}.product.launch" generated-from "executionURI" by "Type"
+				DynamicFile "${BundleProject_bundleId}.product.launch" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.LaunchGenerator" by "java",
 				ProductFileFeaturebase "${BundleProject_bundleId}.product" {
 					productName = "${BundleProject_productName}"
 					application = "at.bestsolution.efxclipse.runtime.workbench.fx.application"
@@ -268,68 +272,80 @@ RobotTask {
 					excluded-if "javascript" /# !TychoIntegration; #/
 			}
 		},
-//		BundleProject "${BundleProject_projectName}.jemmy" {
-//			manifest = ManifestFile "${BundleProject_bundleId}.jemmy" 1.0.0.qualifier "JavaSE-1.7" {
-//				bundlename = "${BundleProject_bundleName} Jemmy UI Tests"
-//				vendor = "${BundleProject_bundleVendor}"
-//				importedPackages = {
-//					"javax.inject" 				[1.0.0,],
-//					"javax.annotation" 			[1.0.0,],
-//					"javafx.animation" 			[2.0.0,],
-//					"javafx.application" 		[2.0.0,],
-//					"javafx.beans" 				[2.0.0,],
-//					"javafx.beans.binding" 		[2.0.0,],
-//					"javafx.beans.property" 	[2.0.0,],
-//					"javafx.beans.value" 		[2.0.0,],
-//					"javafx.collections" 		[2.0.0,],
-//					"javafx.concurrent" 		[2.0.0,],
-//					"javafx.event" 				[2.0.0,],
-//					"javafx.fxml" 				[2.0.0,],
-//					"javafx.geometry" 			[2.0.0,],
-//					"javafx.scene" 				[2.0.0,],
-//					"javafx.scene.chart" 		[2.0.0,],
-//					"javafx.scene.control" 		[2.0.0,],
-//					"javafx.scene.control.cell" [2.0.0,],
-//					"javafx.scene.effect" 		[2.0.0,],
-//					"javafx.scene.image" 		[2.0.0,],
-//					"javafx.scene.input" 		[2.0.0,],
-//					"javafx.scene.layout" 		[2.0.0,],
-//					"javafx.scene.media" 		[2.0.0,],
-//					"javafx.scene.paint" 		[2.0.0,],
-//					"javafx.scene.shape" 		[2.0.0,],
-//					"javafx.scene.text" 		[2.0.0,],
-//					"javafx.scene.transform" 	[2.0.0,],
-//					"javafx.scene.web" 			[2.0.0,],
-//					"javafx.stage"	 			[2.0.0,],
-//					"javafx.util" 				[2.0.0,],
-//					// The Jemmy Stuff
-//					"org.jemmy.action" 				[3.0.0,],
-//					"org.jemmy.browser" 			[3.0.0,],
-//					"org.jemmy.control" 			[3.0.0,],
-//					"org.jemmy.dock" 				[3.0.0,],
-//					"org.jemmy.env" 				[3.0.0,],
-//					"org.jemmy.fx" 					[3.0.0,],
-//					"org.jemmy.fx.control" 			[3.0.0,],
-//					"org.jemmy.fx.control.caspian"	[3.0.0,],
-//					"org.jemmy.image" 				[3.0.0,],
-//					"org.jemmy.image.pixel" 		[3.0.0,],
-//					"org.jemmy.input" 				[3.0.0,],
-//					"org.jemmy.input.glass" 		[3.0.0,],
-//					"org.jemmy.interfaces" 			[3.0.0,],
-//					"org.jemmy.lookup" 				[3.0.0,],
-//					"org.jemmy.operators" 			[3.0.0,],
-//					"org.jemmy.resources" 			[3.0.0,],
-//					"org.jemmy.support" 			[3.0.0,],
-//					"org.jemmy.timing" 				[3.0.0,]
-//				}
-//			}
-//			build = BuildProperties {
-//				
-//			}
-//			resources = {
-//				DynamicFile "${BundleProject_bundleId}.product.launch" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.JemmyLaunch" by "java"
-//			}
-//		},
+		BundleProject "${BundleProject_projectName}.jemmy" {
+			manifest = ManifestFile "${BundleProject_bundleId}.jemmy" "1.0.0.qualifier" "JavaSE-1.7" {
+				bundlename = "${BundleProject_bundleName} Jemmy UI Tests"
+				vendor = "${BundleProject_bundleVendor}"
+				importedPackages = {
+					"javax.inject" 				[1.0.0,],
+					"javax.annotation" 			[1.0.0,],
+					"javafx.animation" 			[2.0.0,],
+					"javafx.application" 		[2.0.0,],
+					"javafx.beans" 				[2.0.0,],
+					"javafx.beans.binding" 		[2.0.0,],
+					"javafx.beans.property" 	[2.0.0,],
+					"javafx.beans.value" 		[2.0.0,],
+					"javafx.collections" 		[2.0.0,],
+					"javafx.concurrent" 		[2.0.0,],
+					"javafx.event" 				[2.0.0,],
+					"javafx.fxml" 				[2.0.0,],
+					"javafx.geometry" 			[2.0.0,],
+					"javafx.scene" 				[2.0.0,],
+					"javafx.scene.chart" 		[2.0.0,],
+					"javafx.scene.control" 		[2.0.0,],
+					"javafx.scene.control.cell" [2.0.0,],
+					"javafx.scene.effect" 		[2.0.0,],
+					"javafx.scene.image" 		[2.0.0,],
+					"javafx.scene.input" 		[2.0.0,],
+					"javafx.scene.layout" 		[2.0.0,],
+					"javafx.scene.media" 		[2.0.0,],
+					"javafx.scene.paint" 		[2.0.0,],
+					"javafx.scene.shape" 		[2.0.0,],
+					"javafx.scene.text" 		[2.0.0,],
+					"javafx.scene.transform" 	[2.0.0,],
+					"javafx.scene.web" 			[2.0.0,],
+					"javafx.stage"	 			[2.0.0,],
+					"javafx.util" 				[2.0.0,],
+					// The Jemmy Stuff
+					"org.jemmy.action" 				[3.0.0,],
+					"org.jemmy.browser" 			[3.0.0,],
+					"org.jemmy.control" 			[3.0.0,],
+					"org.jemmy.dock" 				[3.0.0,],
+					"org.jemmy.env" 				[3.0.0,],
+					"org.jemmy.fx" 					[3.0.0,],
+					"org.jemmy.fx.control" 			[3.0.0,],
+					"org.jemmy.fx.control.caspian"	[3.0.0,],
+					"org.jemmy.image" 				[3.0.0,],
+					"org.jemmy.image.pixel" 		[3.0.0,],
+					"org.jemmy.input" 				[3.0.0,],
+					"org.jemmy.input.glass" 		[3.0.0,],
+					"org.jemmy.interfaces" 			[3.0.0,],
+					"org.jemmy.lookup" 				[3.0.0,],
+					"org.jemmy.operators" 			[3.0.0,],
+					"org.jemmy.resources" 			[3.0.0,],
+					"org.jemmy.support" 			[3.0.0,],
+					"org.jemmy.timing" 				[3.0.0,]
+				}
+				requiredBundles = {
+					"org.junit4",
+					"at.bestsolution.efxclipse.runtime.jemmy"
+				}
+			}
+			build = BuildProperties {
+				
+			}
+			resources = {
+				Folder "src",
+				DynamicFile "${BundleProject_bundleId}.product.launch" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.JemmyLaunch" by "java"
+			}
+			rootfragments = {
+				fragment "default-src" "src"
+			}
+			compilation-units = {
+				"${BundleProject_bundleId}.jemmy" in "default-src" DynamicFile "SampleTestCase.java" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.SampleTestCaseGenerator" by "java",
+				"${BundleProject_bundleId}.jemmy" in "default-src" DynamicFile "TestSuite.java" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.TestSuiteGenerator" by "java"
+			}
+		},
 		SimpleProject "${BundleProject_projectName}.releng" { 
 			resources = {
 				DynamicFile "pom.xml" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomGenerator" by "java",

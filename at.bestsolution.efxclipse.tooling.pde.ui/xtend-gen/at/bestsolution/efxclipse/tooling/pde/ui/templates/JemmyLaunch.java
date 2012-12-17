@@ -2,11 +2,16 @@ package at.bestsolution.efxclipse.tooling.pde.ui.templates;
 
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.JemmyLaunchDef;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.PluginLaunchDef;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeatureProject;
+import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
@@ -18,25 +23,59 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class JemmyLaunch implements Generator<DynamicFile> {
+  public RobotTask findRoot(final EObject file) {
+    EObject tmp = file;
+    boolean _while = true;
+    while (_while) {
+      {
+        EObject _eContainer = tmp.eContainer();
+        if ((_eContainer instanceof RobotTask)) {
+          EObject _eContainer_1 = tmp.eContainer();
+          return ((RobotTask) _eContainer_1);
+        }
+        EObject _eContainer_2 = tmp.eContainer();
+        tmp = _eContainer_2;
+      }
+      _while = true;
+    }
+    return null;
+  }
+  
   public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
-    Object _get = data.get("BundleProject_bundleId");
-    final String bundleId = ((String) _get);
-    Object _get_1 = data.get("BundleProject_projectName");
-    final String projectName = ((String) _get_1);
+    RobotTask _findRoot = this.findRoot(file);
+    final RobotTask robotTask = ((RobotTask) _findRoot);
+    EList<Project> _projects = robotTask.getProjects();
+    final Function1<Project,Boolean> _function = new Function1<Project,Boolean>() {
+        public Boolean apply(final Project e) {
+          return Boolean.valueOf((e instanceof FeatureProject));
+        }
+      };
+    Project _findFirst = IterableExtensions.<Project>findFirst(_projects, _function);
+    final FeatureProject plugin = ((FeatureProject) _findFirst);
+    EList<Project> _projects_1 = robotTask.getProjects();
+    final Function1<Project,Boolean> _function_1 = new Function1<Project,Boolean>() {
+        public Boolean apply(final Project e) {
+          return Boolean.valueOf((e instanceof BundleProject));
+        }
+      };
+    Project _findFirst_1 = IterableExtensions.<Project>findFirst(_projects_1, _function_1);
+    final BundleProject bundleProject = ((BundleProject) _findFirst_1);
+    ManifestFile _manifest = bundleProject.getManifest();
+    final String symbolicName = _manifest.getSymbolicname();
     JemmyLaunchDef _jemmyLaunchDef = new JemmyLaunchDef();
     final JemmyLaunchDef launchDef = _jemmyLaunchDef;
-    String _plus = (bundleId + ".jemmy.TestSuite");
+    String _plus = (symbolicName + ".jemmy.TestSuite");
     launchDef.setJunitClassName(_plus);
-    String _plus_1 = (projectName + ".jemmy");
+    String _name = bundleProject.getName();
+    String _plus_1 = (_name + ".jemmy");
     launchDef.setProjectName(_plus_1);
-    String _plus_2 = (bundleId + ".product");
+    String _plus_2 = (symbolicName + ".product");
     launchDef.setTestProductId(_plus_2);
-    EObject _eContainer = file.eContainer();
-    FeatureFile _feature = ((FeatureProject) _eContainer).getFeature();
+    FeatureFile _feature = plugin.getFeature();
     EList<FeaturePlugin> _plugins = _feature.getPlugins();
     for (final FeaturePlugin fp : _plugins) {
       String _id = fp.getId();
-      boolean _equals = bundleId.equals(_id);
+      boolean _equals = symbolicName.equals(_id);
       if (_equals) {
       } else {
         String _id_1 = fp.getId();
@@ -118,14 +157,17 @@ public class JemmyLaunch implements Generator<DynamicFile> {
     PluginLaunchDef _pluginLaunchDef_14 = new PluginLaunchDef("org.junit4");
     _targetPlugins_14.add(_pluginLaunchDef_14);
     Set<PluginLaunchDef> _workbenchPlugins = launchDef.getWorkbenchPlugins();
-    PluginLaunchDef _pluginLaunchDef_15 = new PluginLaunchDef(bundleId);
+    PluginLaunchDef _pluginLaunchDef_15 = new PluginLaunchDef(symbolicName);
     _workbenchPlugins.add(_pluginLaunchDef_15);
     Set<PluginLaunchDef> _workbenchPlugins_1 = launchDef.getWorkbenchPlugins();
-    String _plus_3 = (bundleId + ".jemmy");
+    String _plus_3 = (symbolicName + ".jemmy");
     PluginLaunchDef _pluginLaunchDef_16 = new PluginLaunchDef(_plus_3);
     _workbenchPlugins_1.add(_pluginLaunchDef_16);
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+    CharSequence _generate = this.generate(launchDef);
+    String _string = _generate.toString();
+    byte[] _bytes = _string.getBytes();
+    ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
+    return _byteArrayInputStream;
   }
   
   public CharSequence generate(final JemmyLaunchDef launch) {
