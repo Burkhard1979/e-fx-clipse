@@ -43,7 +43,7 @@ public class ContactsTreeView {
 
 		// TreeView
 		TreeView<Object> treeView = new TreeView<>();
-		treeView.setRoot(new AdapterFactoryTreeItem(contactsManager.getRootGroup(), contactsManager.getAdapterFactory()));
+		treeView.setRoot(new AdapterFactoryTreeItem(contactsManager.getRootGroup(), treeView, contactsManager.getAdapterFactory()));
 		AdapterFactoryTreeCellFactory treeCellFactory = new AdapterFactoryTreeCellFactory(contactsManager.getAdapterFactory());
 
 		// add edit support
@@ -53,7 +53,9 @@ public class ContactsTreeView {
 		treeCellFactory.addCellCreationListener(new CellDragAdapter());
 
 		// adds drop support
-		treeCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
+		EditingDomainCellDropAdapter dropAdapter = new EditingDomainCellDropAdapter(editingDomain);
+		dropAdapter.setFeedbackHandler(new CustomFeedbackHandler());
+		treeCellFactory.addCellCreationListener(dropAdapter);
 
 		treeView.setCellFactory(treeCellFactory);
 
@@ -79,7 +81,7 @@ public class ContactsTreeView {
 
 			@Override
 			public void onChanged(Change<?> change) {
-				ArrayList<Object> selection = new ArrayList<>();
+				ArrayList<Object> selection = new ArrayList<Object>();
 				for (Object item : change.getList()) {
 					if (item instanceof AdapterFactoryTreeItem) {
 						Object value = ((AdapterFactoryTreeItem) item).getValue();

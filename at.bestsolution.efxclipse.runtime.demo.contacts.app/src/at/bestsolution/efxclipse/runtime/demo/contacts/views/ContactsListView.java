@@ -46,7 +46,9 @@ public class ContactsListView {
 		
 		AdapterFactoryListCellFactory listCellFactory = new AdapterFactoryListCellFactory(adapterFactory);
 		listCellFactory.addCellCreationListener(new CellDragAdapter());
-		listCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
+		EditingDomainCellDropAdapter dropAdapter = new EditingDomainCellDropAdapter(editingDomain);
+		dropAdapter.setFeedbackHandler(new CustomFeedbackHandler());
+		listCellFactory.addCellCreationListener(dropAdapter);
 		listView.setCellFactory(listCellFactory);
 		
 		// add edit support
