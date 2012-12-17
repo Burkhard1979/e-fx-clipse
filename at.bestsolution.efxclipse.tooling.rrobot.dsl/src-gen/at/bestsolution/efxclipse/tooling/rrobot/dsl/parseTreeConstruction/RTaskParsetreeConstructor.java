@@ -45,24 +45,26 @@ protected class ThisRootNode extends RootToken {
 			case 11: return new ReferencingBooleanExpression_Group(this, this, 11, inst);
 			case 12: return new InlineBooleanExpression_Group(this, this, 12, inst);
 			case 13: return new BundleProject_Group(this, this, 13, inst);
-			case 14: return new FeatureProject_Group(this, this, 14, inst);
-			case 15: return new ManifestFile_Group(this, this, 15, inst);
-			case 16: return new PluginXMLFile_Group(this, this, 16, inst);
-			case 17: return new BuildProperties_Group(this, this, 17, inst);
-			case 18: return new ProductFileFeaturebase_Group(this, this, 18, inst);
-			case 19: return new FeatureFile_Group(this, this, 19, inst);
-			case 20: return new ImportedPackage_Group(this, this, 20, inst);
-			case 21: return new ExportedPackage_Group(this, this, 21, inst);
-			case 22: return new Extension_Group(this, this, 22, inst);
-			case 23: return new Element_Group(this, this, 23, inst);
-			case 24: return new Attribute_Group(this, this, 24, inst);
-			case 25: return new RequiredBundle_Group(this, this, 25, inst);
-			case 26: return new LinkedString_Group(this, this, 26, inst);
-			case 27: return new FeaturePlugin_Group(this, this, 27, inst);
-			case 28: return new RequiredFeature_Group(this, this, 28, inst);
-			case 29: return new IncludedFeature_Group(this, this, 29, inst);
-			case 30: return new ProductFeature_Group(this, this, 30, inst);
-			case 31: return new ProductStartConfig_Group(this, this, 31, inst);
+			case 14: return new SourceFragment_Group(this, this, 14, inst);
+			case 15: return new CompilationUnit_Group(this, this, 15, inst);
+			case 16: return new FeatureProject_Group(this, this, 16, inst);
+			case 17: return new ManifestFile_Group(this, this, 17, inst);
+			case 18: return new PluginXMLFile_Group(this, this, 18, inst);
+			case 19: return new BuildProperties_Group(this, this, 19, inst);
+			case 20: return new ProductFileFeaturebase_Group(this, this, 20, inst);
+			case 21: return new FeatureFile_Group(this, this, 21, inst);
+			case 22: return new ImportedPackage_Group(this, this, 22, inst);
+			case 23: return new ExportedPackage_Group(this, this, 23, inst);
+			case 24: return new Extension_Group(this, this, 24, inst);
+			case 25: return new Element_Group(this, this, 25, inst);
+			case 26: return new Attribute_Group(this, this, 26, inst);
+			case 27: return new RequiredBundle_Group(this, this, 27, inst);
+			case 28: return new LinkedString_Group(this, this, 28, inst);
+			case 29: return new FeaturePlugin_Group(this, this, 29, inst);
+			case 30: return new RequiredFeature_Group(this, this, 30, inst);
+			case 31: return new IncludedFeature_Group(this, this, 31, inst);
+			case 32: return new ProductFeature_Group(this, this, 32, inst);
+			case 33: return new ProductStartConfig_Group(this, this, 33, inst);
 			default: return null;
 		}	
 	}	
@@ -1936,11 +1938,11 @@ protected class Project_ExcludeExpressionAssignment_6_1 extends AssignmentToken 
 /************ begin Rule Folder ****************
  *
  * Folder returns task::Folder:
- * 	{task::Folder} "Folder" name=EString "{" ("children" "=" "{" children+=Resource ("," children+=Resource)* "}")? "}";
+ * 	{task::Folder} "Folder" name=EString ("{" "children" "=" "{" children+=Resource ("," children+=Resource)* "}" "}")?;
  *
  **/
 
-// {task::Folder} "Folder" name=EString "{" ("children" "=" "{" children+=Resource ("," children+=Resource)* "}")? "}"
+// {task::Folder} "Folder" name=EString ("{" "children" "=" "{" children+=Resource ("," children+=Resource)* "}" "}")?
 protected class Folder_Group extends GroupToken {
 	
 	public Folder_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1955,7 +1957,8 @@ protected class Folder_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Folder_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Folder_NameAssignment_2(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -2051,16 +2054,38 @@ protected class Folder_NameAssignment_2 extends AssignmentToken  {
 
 }
 
-// "{"
-protected class Folder_LeftCurlyBracketKeyword_3 extends KeywordToken  {
+// ("{" "children" "=" "{" children+=Resource ("," children+=Resource)* "}" "}")?
+protected class Folder_Group_3 extends GroupToken {
 	
-	public Folder_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getFolderAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Folder_RightCurlyBracketKeyword_3_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "{"
+protected class Folder_LeftCurlyBracketKeyword_3_0 extends KeywordToken  {
+	
+	public Folder_LeftCurlyBracketKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_3();
+		return grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_3_0();
 	}
 
     @Override
@@ -2073,44 +2098,22 @@ protected class Folder_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 
 }
 
-// ("children" "=" "{" children+=Resource ("," children+=Resource)* "}")?
-protected class Folder_Group_4 extends GroupToken {
-	
-	public Folder_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getFolderAccess().getGroup_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new Folder_RightCurlyBracketKeyword_4_5(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
 // "children"
-protected class Folder_ChildrenKeyword_4_0 extends KeywordToken  {
+protected class Folder_ChildrenKeyword_3_1 extends KeywordToken  {
 	
-	public Folder_ChildrenKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_ChildrenKeyword_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFolderAccess().getChildrenKeyword_4_0();
+		return grammarAccess.getFolderAccess().getChildrenKeyword_3_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_LeftCurlyBracketKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Folder_LeftCurlyBracketKeyword_3_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2118,21 +2121,21 @@ protected class Folder_ChildrenKeyword_4_0 extends KeywordToken  {
 }
 
 // "="
-protected class Folder_EqualsSignKeyword_4_1 extends KeywordToken  {
+protected class Folder_EqualsSignKeyword_3_2 extends KeywordToken  {
 	
-	public Folder_EqualsSignKeyword_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_EqualsSignKeyword_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFolderAccess().getEqualsSignKeyword_4_1();
+		return grammarAccess.getFolderAccess().getEqualsSignKeyword_3_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_ChildrenKeyword_4_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Folder_ChildrenKeyword_3_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2140,21 +2143,21 @@ protected class Folder_EqualsSignKeyword_4_1 extends KeywordToken  {
 }
 
 // "{"
-protected class Folder_LeftCurlyBracketKeyword_4_2 extends KeywordToken  {
+protected class Folder_LeftCurlyBracketKeyword_3_3 extends KeywordToken  {
 	
-	public Folder_LeftCurlyBracketKeyword_4_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_LeftCurlyBracketKeyword_3_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_4_2();
+		return grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_3_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_EqualsSignKeyword_4_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Folder_EqualsSignKeyword_3_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2162,15 +2165,15 @@ protected class Folder_LeftCurlyBracketKeyword_4_2 extends KeywordToken  {
 }
 
 // children+=Resource
-protected class Folder_ChildrenAssignment_4_3 extends AssignmentToken  {
+protected class Folder_ChildrenAssignment_3_4 extends AssignmentToken  {
 	
-	public Folder_ChildrenAssignment_4_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_ChildrenAssignment_3_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getFolderAccess().getChildrenAssignment_4_3();
+		return grammarAccess.getFolderAccess().getChildrenAssignment_3_4();
 	}
 
     @Override
@@ -2189,7 +2192,7 @@ protected class Folder_ChildrenAssignment_4_3 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getResourceRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_4_3_0(); 
+				element = grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_3_4_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -2201,28 +2204,28 @@ protected class Folder_ChildrenAssignment_4_3 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new Folder_LeftCurlyBracketKeyword_4_2(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new Folder_LeftCurlyBracketKeyword_3_3(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 // ("," children+=Resource)*
-protected class Folder_Group_4_4 extends GroupToken {
+protected class Folder_Group_3_5 extends GroupToken {
 	
-	public Folder_Group_4_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_Group_3_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getFolderAccess().getGroup_4_4();
+		return grammarAccess.getFolderAccess().getGroup_3_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_ChildrenAssignment_4_4_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Folder_ChildrenAssignment_3_5_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2230,22 +2233,22 @@ protected class Folder_Group_4_4 extends GroupToken {
 }
 
 // ","
-protected class Folder_CommaKeyword_4_4_0 extends KeywordToken  {
+protected class Folder_CommaKeyword_3_5_0 extends KeywordToken  {
 	
-	public Folder_CommaKeyword_4_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_CommaKeyword_3_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFolderAccess().getCommaKeyword_4_4_0();
+		return grammarAccess.getFolderAccess().getCommaKeyword_3_5_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_Group_4_4(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Folder_ChildrenAssignment_4_3(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new Folder_Group_3_5(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Folder_ChildrenAssignment_3_4(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -2253,15 +2256,15 @@ protected class Folder_CommaKeyword_4_4_0 extends KeywordToken  {
 }
 
 // children+=Resource
-protected class Folder_ChildrenAssignment_4_4_1 extends AssignmentToken  {
+protected class Folder_ChildrenAssignment_3_5_1 extends AssignmentToken  {
 	
-	public Folder_ChildrenAssignment_4_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_ChildrenAssignment_3_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getFolderAccess().getChildrenAssignment_4_4_1();
+		return grammarAccess.getFolderAccess().getChildrenAssignment_3_5_1();
 	}
 
     @Override
@@ -2280,7 +2283,7 @@ protected class Folder_ChildrenAssignment_4_4_1 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getResourceRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_4_4_1_0(); 
+				element = grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_3_5_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -2292,7 +2295,7 @@ protected class Folder_ChildrenAssignment_4_4_1 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new Folder_CommaKeyword_4_4_0(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new Folder_CommaKeyword_3_5_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -2300,51 +2303,50 @@ protected class Folder_ChildrenAssignment_4_4_1 extends AssignmentToken  {
 
 
 // "}"
-protected class Folder_RightCurlyBracketKeyword_4_5 extends KeywordToken  {
+protected class Folder_RightCurlyBracketKeyword_3_6 extends KeywordToken  {
 	
-	public Folder_RightCurlyBracketKeyword_4_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_RightCurlyBracketKeyword_3_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_4_5();
+		return grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_3_6();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_Group_4_4(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Folder_ChildrenAssignment_4_3(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new Folder_Group_3_5(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Folder_ChildrenAssignment_3_4(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
 
 }
-
 
 // "}"
-protected class Folder_RightCurlyBracketKeyword_5 extends KeywordToken  {
+protected class Folder_RightCurlyBracketKeyword_3_7 extends KeywordToken  {
 	
-	public Folder_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Folder_RightCurlyBracketKeyword_3_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_5();
+		return grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_3_7();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Folder_Group_4(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Folder_LeftCurlyBracketKeyword_3(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new Folder_RightCurlyBracketKeyword_3_6(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
+
 
 
 /************ end Rule Folder ****************/
@@ -4025,13 +4027,17 @@ protected class InlineBooleanExpression_ExpressionAssignment_1 extends Assignmen
  * BundleProject returns bundle::BundleProject:
  * 	{bundle::BundleProject} "BundleProject" name=EString "{" ("manifest" "=" manifest=ManifestFile & "build" "="
  * 	buildProperties=BuildProperties & ("pluginxml" "=" pluginxml=PluginXMLFile)?) ("resources" "=" "{" resources+=Resource
- * 	("," resources+=Resource)* "}")? "}";
+ * 	("," resources+=Resource)* "}")? "rootfragments" "=" "{" sourceFragments+=SourceFragment (","
+ * 	sourceFragments+=SourceFragment)* "}" ("compilation-units" "=" "{" compilationUnits+=CompilationUnit (","
+ * 	compilationUnits+=CompilationUnit)* "}")? "}";
  *
  **/
 
 // {bundle::BundleProject} "BundleProject" name=EString "{" ("manifest" "=" manifest=ManifestFile & "build" "="
 // buildProperties=BuildProperties & ("pluginxml" "=" pluginxml=PluginXMLFile)?) ("resources" "=" "{" resources+=Resource
-// ("," resources+=Resource)* "}")? "}"
+// ("," resources+=Resource)* "}")? "rootfragments" "=" "{" sourceFragments+=SourceFragment (","
+// sourceFragments+=SourceFragment)* "}" ("compilation-units" "=" "{" compilationUnits+=CompilationUnit (","
+// compilationUnits+=CompilationUnit)* "}")? "}"
 protected class BundleProject_Group extends GroupToken {
 	
 	public BundleProject_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4046,7 +4052,7 @@ protected class BundleProject_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new BundleProject_RightCurlyBracketKeyword_6(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new BundleProject_RightCurlyBracketKeyword_13(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4778,16 +4784,16 @@ protected class BundleProject_RightCurlyBracketKeyword_5_5 extends KeywordToken 
 }
 
 
-// "}"
-protected class BundleProject_RightCurlyBracketKeyword_6 extends KeywordToken  {
+// "rootfragments"
+protected class BundleProject_RootfragmentsKeyword_6 extends KeywordToken  {
 	
-	public BundleProject_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BundleProject_RootfragmentsKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_6();
+		return grammarAccess.getBundleProjectAccess().getRootfragmentsKeyword_6();
 	}
 
     @Override
@@ -4801,8 +4807,828 @@ protected class BundleProject_RightCurlyBracketKeyword_6 extends KeywordToken  {
 
 }
 
+// "="
+protected class BundleProject_EqualsSignKeyword_7 extends KeywordToken  {
+	
+	public BundleProject_EqualsSignKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getEqualsSignKeyword_7();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_RootfragmentsKeyword_6(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "{"
+protected class BundleProject_LeftCurlyBracketKeyword_8 extends KeywordToken  {
+	
+	public BundleProject_LeftCurlyBracketKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getLeftCurlyBracketKeyword_8();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_EqualsSignKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// sourceFragments+=SourceFragment
+protected class BundleProject_SourceFragmentsAssignment_9 extends AssignmentToken  {
+	
+	public BundleProject_SourceFragmentsAssignment_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getSourceFragmentsAssignment_9();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new SourceFragment_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("sourceFragments",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("sourceFragments");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getSourceFragmentRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getBundleProjectAccess().getSourceFragmentsSourceFragmentParserRuleCall_9_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new BundleProject_LeftCurlyBracketKeyword_8(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// ("," sourceFragments+=SourceFragment)*
+protected class BundleProject_Group_10 extends GroupToken {
+	
+	public BundleProject_Group_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getGroup_10();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_SourceFragmentsAssignment_10_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ","
+protected class BundleProject_CommaKeyword_10_0 extends KeywordToken  {
+	
+	public BundleProject_CommaKeyword_10_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getCommaKeyword_10_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_Group_10(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new BundleProject_SourceFragmentsAssignment_9(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// sourceFragments+=SourceFragment
+protected class BundleProject_SourceFragmentsAssignment_10_1 extends AssignmentToken  {
+	
+	public BundleProject_SourceFragmentsAssignment_10_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getSourceFragmentsAssignment_10_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new SourceFragment_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("sourceFragments",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("sourceFragments");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getSourceFragmentRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getBundleProjectAccess().getSourceFragmentsSourceFragmentParserRuleCall_10_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new BundleProject_CommaKeyword_10_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+// "}"
+protected class BundleProject_RightCurlyBracketKeyword_11 extends KeywordToken  {
+	
+	public BundleProject_RightCurlyBracketKeyword_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_11();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_Group_10(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new BundleProject_SourceFragmentsAssignment_9(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("compilation-units" "=" "{" compilationUnits+=CompilationUnit ("," compilationUnits+=CompilationUnit)* "}")?
+protected class BundleProject_Group_12 extends GroupToken {
+	
+	public BundleProject_Group_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getGroup_12();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_RightCurlyBracketKeyword_12_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "compilation-units"
+protected class BundleProject_CompilationUnitsKeyword_12_0 extends KeywordToken  {
+	
+	public BundleProject_CompilationUnitsKeyword_12_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getCompilationUnitsKeyword_12_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_RightCurlyBracketKeyword_11(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "="
+protected class BundleProject_EqualsSignKeyword_12_1 extends KeywordToken  {
+	
+	public BundleProject_EqualsSignKeyword_12_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getEqualsSignKeyword_12_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_CompilationUnitsKeyword_12_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "{"
+protected class BundleProject_LeftCurlyBracketKeyword_12_2 extends KeywordToken  {
+	
+	public BundleProject_LeftCurlyBracketKeyword_12_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getLeftCurlyBracketKeyword_12_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_EqualsSignKeyword_12_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// compilationUnits+=CompilationUnit
+protected class BundleProject_CompilationUnitsAssignment_12_3 extends AssignmentToken  {
+	
+	public BundleProject_CompilationUnitsAssignment_12_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getCompilationUnitsAssignment_12_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("compilationUnits",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("compilationUnits");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getCompilationUnitRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getBundleProjectAccess().getCompilationUnitsCompilationUnitParserRuleCall_12_3_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new BundleProject_LeftCurlyBracketKeyword_12_2(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// ("," compilationUnits+=CompilationUnit)*
+protected class BundleProject_Group_12_4 extends GroupToken {
+	
+	public BundleProject_Group_12_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getGroup_12_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_CompilationUnitsAssignment_12_4_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ","
+protected class BundleProject_CommaKeyword_12_4_0 extends KeywordToken  {
+	
+	public BundleProject_CommaKeyword_12_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getCommaKeyword_12_4_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_Group_12_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new BundleProject_CompilationUnitsAssignment_12_3(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// compilationUnits+=CompilationUnit
+protected class BundleProject_CompilationUnitsAssignment_12_4_1 extends AssignmentToken  {
+	
+	public BundleProject_CompilationUnitsAssignment_12_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getCompilationUnitsAssignment_12_4_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("compilationUnits",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("compilationUnits");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getCompilationUnitRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getBundleProjectAccess().getCompilationUnitsCompilationUnitParserRuleCall_12_4_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new BundleProject_CommaKeyword_12_4_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+// "}"
+protected class BundleProject_RightCurlyBracketKeyword_12_5 extends KeywordToken  {
+	
+	public BundleProject_RightCurlyBracketKeyword_12_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_12_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_Group_12_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new BundleProject_CompilationUnitsAssignment_12_3(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+// "}"
+protected class BundleProject_RightCurlyBracketKeyword_13 extends KeywordToken  {
+	
+	public BundleProject_RightCurlyBracketKeyword_13(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_13();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BundleProject_Group_12(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new BundleProject_RightCurlyBracketKeyword_11(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
 
 /************ end Rule BundleProject ****************/
+
+
+/************ begin Rule SourceFragment ****************
+ *
+ * SourceFragment returns task::SourceFragment:
+ * 	"fragment" name=EString folder=[task::Folder|STRING];
+ *
+ **/
+
+// "fragment" name=EString folder=[task::Folder|STRING]
+protected class SourceFragment_Group extends GroupToken {
+	
+	public SourceFragment_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getSourceFragmentAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new SourceFragment_FolderAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getSourceFragmentRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "fragment"
+protected class SourceFragment_FragmentKeyword_0 extends KeywordToken  {
+	
+	public SourceFragment_FragmentKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getSourceFragmentAccess().getFragmentKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// name=EString
+protected class SourceFragment_NameAssignment_1 extends AssignmentToken  {
+	
+	public SourceFragment_NameAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getSourceFragmentAccess().getNameAssignment_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new SourceFragment_FragmentKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getSourceFragmentAccess().getNameEStringParserRuleCall_1_0(), value, null)) {
+			type = AssignmentType.DATATYPE_RULE_CALL;
+			element = grammarAccess.getSourceFragmentAccess().getNameEStringParserRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// folder=[task::Folder|STRING]
+protected class SourceFragment_FolderAssignment_2 extends AssignmentToken  {
+	
+	public SourceFragment_FolderAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getSourceFragmentAccess().getFolderAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new SourceFragment_NameAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("folder",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("folder");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getSourceFragmentAccess().getFolderFolderCrossReference_2_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getSourceFragmentAccess().getFolderFolderCrossReference_2_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+
+/************ end Rule SourceFragment ****************/
+
+
+/************ begin Rule CompilationUnit ****************
+ *
+ * CompilationUnit returns task::CompilationUnit:
+ * 	packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile |
+ * 	DynamicFile);
+ *
+ **/
+
+// packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile |
+// DynamicFile)
+protected class CompilationUnit_Group extends GroupToken {
+	
+	public CompilationUnit_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_FileAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getCompilationUnitRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// packagename=STRING
+protected class CompilationUnit_PackagenameAssignment_0 extends AssignmentToken  {
+	
+	public CompilationUnit_PackagenameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getPackagenameAssignment_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("packagename",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("packagename");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getCompilationUnitAccess().getPackagenameSTRINGTerminalRuleCall_0_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getCompilationUnitAccess().getPackagenameSTRINGTerminalRuleCall_0_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "in"
+protected class CompilationUnit_InKeyword_1 extends KeywordToken  {
+	
+	public CompilationUnit_InKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getInKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_PackagenameAssignment_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// sourcefragment=[task::SourceFragment|STRING]
+protected class CompilationUnit_SourcefragmentAssignment_2 extends AssignmentToken  {
+	
+	public CompilationUnit_SourcefragmentAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getSourcefragmentAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_InKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("sourcefragment",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("sourcefragment");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getCompilationUnitAccess().getSourcefragmentSourceFragmentCrossReference_2_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getCompilationUnitAccess().getSourcefragmentSourceFragmentCrossReference_2_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// file=(TemplatedFile | DataFile | URLFile | DynamicFile)
+protected class CompilationUnit_FileAssignment_3 extends AssignmentToken  {
+	
+	public CompilationUnit_FileAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getFileAssignment_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new TemplatedFile_Group(this, this, 0, inst);
+			case 1: return new DataFile_Group(this, this, 1, inst);
+			case 2: return new URLFile_Group(this, this, 2, inst);
+			case 3: return new DynamicFile_Group(this, this, 3, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("file",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("file");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getTemplatedFileRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getCompilationUnitAccess().getFileTemplatedFileParserRuleCall_3_0_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getDataFileRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getCompilationUnitAccess().getFileDataFileParserRuleCall_3_0_1(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getURLFileRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getCompilationUnitAccess().getFileURLFileParserRuleCall_3_0_2(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getDynamicFileRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getCompilationUnitAccess().getFileDynamicFileParserRuleCall_3_0_3(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new CompilationUnit_SourcefragmentAssignment_2(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+/************ end Rule CompilationUnit ****************/
 
 
 /************ begin Rule FeatureProject ****************

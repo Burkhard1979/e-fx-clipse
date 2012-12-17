@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalRTaskParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SL_DOC", "RULE_STRING", "RULE_ID", "RULE_INLINE_SCRIPT", "RULE_SIGNED_INT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'RobotTask'", "'{'", "'variables'", "'='", "','", "'}'", "'projects'", "'default'", "'SimpleProject'", "'resources'", "'excluded-if'", "'Folder'", "'children'", "'TemplatedFile'", "'generatorType'", "'DataFile'", "'content'", "'URLFile'", "'DynamicFile'", "'generated-from'", "'by'", "'BundleProject'", "'manifest'", "'build'", "'pluginxml'", "'FeatureProject'", "'feature'", "'lazy'", "'singleton'", "'ManifestFile'", "'bundlename'", "'vendor'", "'activatorClass'", "'exportedPackages'", "'importedPackages'", "'requiredBundles'", "'PluginXMLFile'", "'extensions'", "'BuildProperties'", "'binIncludes'", "'launchable'", "'ProductFileFeaturebase'", "'vmArgs'", "'programArgs'", "'productName'", "'application'", "'version'", "'startconfigurations'", "'features'", "'FeatureFile'", "'featurename'", "'description'", "'copyright'", "'license'", "'license-feature'", "'license-feature-version'", "'plugins'", "'required'", "'included'", "'('", "'['", "')'", "']'", "'id'", "'elements'", "'attributes'", "'LinkedString'", "'unpacked'", "'fragment'", "'autostarted'", "'at'", "'.'", "'BOOLEAN'", "'DOUBLE'", "'INT'", "'STRING'", "'none'", "'equivalent'", "'compatible'", "'perfect'", "'greaterOrEqual'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_SL_DOC", "RULE_STRING", "RULE_ID", "RULE_INLINE_SCRIPT", "RULE_SIGNED_INT", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'RobotTask'", "'{'", "'variables'", "'='", "','", "'}'", "'projects'", "'default'", "'SimpleProject'", "'resources'", "'excluded-if'", "'Folder'", "'children'", "'TemplatedFile'", "'generatorType'", "'DataFile'", "'content'", "'URLFile'", "'DynamicFile'", "'generated-from'", "'by'", "'BundleProject'", "'manifest'", "'build'", "'pluginxml'", "'rootfragments'", "'compilation-units'", "'fragment'", "'in'", "'FeatureProject'", "'feature'", "'lazy'", "'singleton'", "'ManifestFile'", "'bundlename'", "'vendor'", "'activatorClass'", "'exportedPackages'", "'importedPackages'", "'requiredBundles'", "'PluginXMLFile'", "'extensions'", "'BuildProperties'", "'binIncludes'", "'launchable'", "'ProductFileFeaturebase'", "'vmArgs'", "'programArgs'", "'productName'", "'application'", "'version'", "'startconfigurations'", "'features'", "'FeatureFile'", "'featurename'", "'description'", "'copyright'", "'license'", "'license-feature'", "'license-feature-version'", "'plugins'", "'required'", "'included'", "'('", "'['", "')'", "']'", "'id'", "'elements'", "'attributes'", "'LinkedString'", "'unpacked'", "'autostarted'", "'at'", "'.'", "'BOOLEAN'", "'DOUBLE'", "'INT'", "'STRING'", "'none'", "'equivalent'", "'compatible'", "'perfect'", "'greaterOrEqual'"
     };
     public static final int RULE_ID=6;
     public static final int T__29=29;
@@ -37,8 +37,8 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
     public static final int T__21=21;
     public static final int T__20=20;
     public static final int RULE_SL_DOC=4;
-    public static final int EOF=-1;
     public static final int RULE_INLINE_SCRIPT=7;
+    public static final int EOF=-1;
     public static final int T__93=93;
     public static final int T__19=19;
     public static final int T__94=94;
@@ -50,6 +50,9 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
     public static final int T__18=18;
     public static final int T__17=17;
     public static final int T__14=14;
+    public static final int T__97=97;
+    public static final int T__96=96;
+    public static final int T__95=95;
     public static final int T__80=80;
     public static final int T__81=81;
     public static final int T__82=82;
@@ -790,7 +793,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                 alt6=2;
                 }
                 break;
-            case 39:
+            case 43:
                 {
                 alt6=3;
                 }
@@ -969,20 +972,20 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                 alt7=5;
                 }
                 break;
-            case 41:
-            case 42:
-            case 43:
+            case 45:
+            case 46:
+            case 47:
                 {
                 alt7=6;
                 }
                 break;
-            case 54:
-            case 55:
+            case 58:
+            case 59:
                 {
                 alt7=7;
                 }
                 break;
-            case 50:
+            case 54:
                 {
                 alt7=8;
                 }
@@ -1626,7 +1629,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFolder"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:646:1: ruleFolder returns [EObject current=null] : ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' (otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' )? otherlv_11= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:646:1: ruleFolder returns [EObject current=null] : ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) (otherlv_3= '{' otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' otherlv_11= '}' )? ) ;
     public final EObject ruleFolder() throws RecognitionException {
         EObject current = null;
 
@@ -1648,11 +1651,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:649:28: ( ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' (otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' )? otherlv_11= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:650:1: ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' (otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' )? otherlv_11= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:649:28: ( ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) (otherlv_3= '{' otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' otherlv_11= '}' )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:650:1: ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) (otherlv_3= '{' otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' otherlv_11= '}' )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:650:1: ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' (otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' )? otherlv_11= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:650:2: () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' (otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' )? otherlv_11= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:650:1: ( () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) (otherlv_3= '{' otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' otherlv_11= '}' )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:650:2: () otherlv_1= 'Folder' ( (lv_name_2_0= ruleEString ) ) (otherlv_3= '{' otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' otherlv_11= '}' )?
             {
             // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:650:2: ()
             // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:651:5: 
@@ -1700,32 +1703,32 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFolder1500); 
-
-                	newLeafNode(otherlv_3, grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_3());
-                
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:682:1: (otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:678:2: (otherlv_3= '{' otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' otherlv_11= '}' )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==26) ) {
+            if ( (LA13_0==15) ) {
                 alt13=1;
             }
             switch (alt13) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:682:3: otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:678:4: otherlv_3= '{' otherlv_4= 'children' otherlv_5= '=' otherlv_6= '{' ( (lv_children_7_0= ruleResource ) ) (otherlv_8= ',' ( (lv_children_9_0= ruleResource ) ) )* otherlv_10= '}' otherlv_11= '}'
                     {
+                    otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFolder1501); 
+
+                        	newLeafNode(otherlv_3, grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_3_0());
+                        
                     otherlv_4=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleFolder1513); 
 
-                        	newLeafNode(otherlv_4, grammarAccess.getFolderAccess().getChildrenKeyword_4_0());
+                        	newLeafNode(otherlv_4, grammarAccess.getFolderAccess().getChildrenKeyword_3_1());
                         
                     otherlv_5=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFolder1525); 
 
-                        	newLeafNode(otherlv_5, grammarAccess.getFolderAccess().getEqualsSignKeyword_4_1());
+                        	newLeafNode(otherlv_5, grammarAccess.getFolderAccess().getEqualsSignKeyword_3_2());
                         
                     otherlv_6=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFolder1537); 
 
-                        	newLeafNode(otherlv_6, grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_4_2());
+                        	newLeafNode(otherlv_6, grammarAccess.getFolderAccess().getLeftCurlyBracketKeyword_3_3());
                         
                     // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:694:1: ( (lv_children_7_0= ruleResource ) )
                     // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:695:1: (lv_children_7_0= ruleResource )
@@ -1734,7 +1737,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:696:3: lv_children_7_0= ruleResource
                     {
                      
-                    	        newCompositeNode(grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_4_3_0()); 
+                    	        newCompositeNode(grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_3_4_0()); 
                     	    
                     pushFollow(FollowSets000.FOLLOW_ruleResource_in_ruleFolder1558);
                     lv_children_7_0=ruleResource();
@@ -1775,7 +1778,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    {
                     	    otherlv_8=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFolder1571); 
 
-                    	        	newLeafNode(otherlv_8, grammarAccess.getFolderAccess().getCommaKeyword_4_4_0());
+                    	        	newLeafNode(otherlv_8, grammarAccess.getFolderAccess().getCommaKeyword_3_5_0());
                     	        
                     	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:716:1: ( (lv_children_9_0= ruleResource ) )
                     	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:717:1: (lv_children_9_0= ruleResource )
@@ -1784,7 +1787,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:718:3: lv_children_9_0= ruleResource
                     	    {
                     	     
-                    	    	        newCompositeNode(grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_4_4_1_0()); 
+                    	    	        newCompositeNode(grammarAccess.getFolderAccess().getChildrenResourceParserRuleCall_3_5_1_0()); 
                     	    	    
                     	    pushFollow(FollowSets000.FOLLOW_ruleResource_in_ruleFolder1592);
                     	    lv_children_9_0=ruleResource();
@@ -1819,7 +1822,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     otherlv_10=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFolder1606); 
 
-                        	newLeafNode(otherlv_10, grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_4_5());
+                        	newLeafNode(otherlv_10, grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_3_6());
+                        
+                    otherlv_11=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFolder1618); 
+
+                        	newLeafNode(otherlv_11, grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_3_7());
                         
 
                     }
@@ -1827,10 +1834,6 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_11=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFolder1620); 
-
-                	newLeafNode(otherlv_11, grammarAccess.getFolderAccess().getRightCurlyBracketKeyword_5());
-                
 
             }
 
@@ -3301,7 +3304,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBundleProject"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1367:1: ruleBundleProject returns [EObject current=null] : ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1367:1: ruleBundleProject returns [EObject current=null] : ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= 'rootfragments' otherlv_22= '=' otherlv_23= '{' ( (lv_sourceFragments_24_0= ruleSourceFragment ) ) (otherlv_25= ',' ( (lv_sourceFragments_26_0= ruleSourceFragment ) ) )* otherlv_27= '}' (otherlv_28= 'compilation-units' otherlv_29= '=' otherlv_30= '{' ( (lv_compilationUnits_31_0= ruleCompilationUnit ) ) (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )* otherlv_34= '}' )? otherlv_35= '}' ) ;
     public final EObject ruleBundleProject() throws RecognitionException {
         EObject current = null;
 
@@ -3319,6 +3322,16 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
         Token otherlv_18=null;
         Token otherlv_20=null;
         Token otherlv_21=null;
+        Token otherlv_22=null;
+        Token otherlv_23=null;
+        Token otherlv_25=null;
+        Token otherlv_27=null;
+        Token otherlv_28=null;
+        Token otherlv_29=null;
+        Token otherlv_30=null;
+        Token otherlv_32=null;
+        Token otherlv_34=null;
+        Token otherlv_35=null;
         AntlrDatatypeRuleToken lv_name_2_0 = null;
 
         EObject lv_manifest_7_0 = null;
@@ -3331,15 +3344,23 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
         EObject lv_resources_19_0 = null;
 
+        EObject lv_sourceFragments_24_0 = null;
+
+        EObject lv_sourceFragments_26_0 = null;
+
+        EObject lv_compilationUnits_31_0 = null;
+
+        EObject lv_compilationUnits_33_0 = null;
+
 
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1370:28: ( ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1371:1: ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1370:28: ( ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= 'rootfragments' otherlv_22= '=' otherlv_23= '{' ( (lv_sourceFragments_24_0= ruleSourceFragment ) ) (otherlv_25= ',' ( (lv_sourceFragments_26_0= ruleSourceFragment ) ) )* otherlv_27= '}' (otherlv_28= 'compilation-units' otherlv_29= '=' otherlv_30= '{' ( (lv_compilationUnits_31_0= ruleCompilationUnit ) ) (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )* otherlv_34= '}' )? otherlv_35= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1371:1: ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= 'rootfragments' otherlv_22= '=' otherlv_23= '{' ( (lv_sourceFragments_24_0= ruleSourceFragment ) ) (otherlv_25= ',' ( (lv_sourceFragments_26_0= ruleSourceFragment ) ) )* otherlv_27= '}' (otherlv_28= 'compilation-units' otherlv_29= '=' otherlv_30= '{' ( (lv_compilationUnits_31_0= ruleCompilationUnit ) ) (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )* otherlv_34= '}' )? otherlv_35= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1371:1: ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1371:2: () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1371:1: ( () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= 'rootfragments' otherlv_22= '=' otherlv_23= '{' ( (lv_sourceFragments_24_0= ruleSourceFragment ) ) (otherlv_25= ',' ( (lv_sourceFragments_26_0= ruleSourceFragment ) ) )* otherlv_27= '}' (otherlv_28= 'compilation-units' otherlv_29= '=' otherlv_30= '{' ( (lv_compilationUnits_31_0= ruleCompilationUnit ) ) (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )* otherlv_34= '}' )? otherlv_35= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1371:2: () otherlv_1= 'BundleProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'manifest' otherlv_6= '=' ( (lv_manifest_7_0= ruleManifestFile ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'build' otherlv_9= '=' ( (lv_buildProperties_10_0= ruleBuildProperties ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'pluginxml' otherlv_12= '=' ( (lv_pluginxml_13_0= rulePluginXMLFile ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_14= 'resources' otherlv_15= '=' otherlv_16= '{' ( (lv_resources_17_0= ruleResource ) ) (otherlv_18= ',' ( (lv_resources_19_0= ruleResource ) ) )* otherlv_20= '}' )? otherlv_21= 'rootfragments' otherlv_22= '=' otherlv_23= '{' ( (lv_sourceFragments_24_0= ruleSourceFragment ) ) (otherlv_25= ',' ( (lv_sourceFragments_26_0= ruleSourceFragment ) ) )* otherlv_27= '}' (otherlv_28= 'compilation-units' otherlv_29= '=' otherlv_30= '{' ( (lv_compilationUnits_31_0= ruleCompilationUnit ) ) (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )* otherlv_34= '}' )? otherlv_35= '}'
             {
             // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1371:2: ()
             // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1372:5: 
@@ -3813,9 +3834,238 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_21=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBundleProject3509); 
+            otherlv_21=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleBundleProject3509); 
 
-                	newLeafNode(otherlv_21, grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_6());
+                	newLeafNode(otherlv_21, grammarAccess.getBundleProjectAccess().getRootfragmentsKeyword_6());
+                
+            otherlv_22=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleBundleProject3521); 
+
+                	newLeafNode(otherlv_22, grammarAccess.getBundleProjectAccess().getEqualsSignKeyword_7());
+                
+            otherlv_23=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleBundleProject3533); 
+
+                	newLeafNode(otherlv_23, grammarAccess.getBundleProjectAccess().getLeftCurlyBracketKeyword_8());
+                
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1602:1: ( (lv_sourceFragments_24_0= ruleSourceFragment ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1603:1: (lv_sourceFragments_24_0= ruleSourceFragment )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1603:1: (lv_sourceFragments_24_0= ruleSourceFragment )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1604:3: lv_sourceFragments_24_0= ruleSourceFragment
+            {
+             
+            	        newCompositeNode(grammarAccess.getBundleProjectAccess().getSourceFragmentsSourceFragmentParserRuleCall_9_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleSourceFragment_in_ruleBundleProject3554);
+            lv_sourceFragments_24_0=ruleSourceFragment();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getBundleProjectRule());
+            	        }
+                   		add(
+                   			current, 
+                   			"sourceFragments",
+                    		lv_sourceFragments_24_0, 
+                    		"SourceFragment");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1620:2: (otherlv_25= ',' ( (lv_sourceFragments_26_0= ruleSourceFragment ) ) )*
+            loop24:
+            do {
+                int alt24=2;
+                int LA24_0 = input.LA(1);
+
+                if ( (LA24_0==18) ) {
+                    alt24=1;
+                }
+
+
+                switch (alt24) {
+            	case 1 :
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1620:4: otherlv_25= ',' ( (lv_sourceFragments_26_0= ruleSourceFragment ) )
+            	    {
+            	    otherlv_25=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleBundleProject3567); 
+
+            	        	newLeafNode(otherlv_25, grammarAccess.getBundleProjectAccess().getCommaKeyword_10_0());
+            	        
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1624:1: ( (lv_sourceFragments_26_0= ruleSourceFragment ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1625:1: (lv_sourceFragments_26_0= ruleSourceFragment )
+            	    {
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1625:1: (lv_sourceFragments_26_0= ruleSourceFragment )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1626:3: lv_sourceFragments_26_0= ruleSourceFragment
+            	    {
+            	     
+            	    	        newCompositeNode(grammarAccess.getBundleProjectAccess().getSourceFragmentsSourceFragmentParserRuleCall_10_1_0()); 
+            	    	    
+            	    pushFollow(FollowSets000.FOLLOW_ruleSourceFragment_in_ruleBundleProject3588);
+            	    lv_sourceFragments_26_0=ruleSourceFragment();
+
+            	    state._fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = createModelElementForParent(grammarAccess.getBundleProjectRule());
+            	    	        }
+            	           		add(
+            	           			current, 
+            	           			"sourceFragments",
+            	            		lv_sourceFragments_26_0, 
+            	            		"SourceFragment");
+            	    	        afterParserOrEnumRuleCall();
+            	    	    
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop24;
+                }
+            } while (true);
+
+            otherlv_27=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBundleProject3602); 
+
+                	newLeafNode(otherlv_27, grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_11());
+                
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1646:1: (otherlv_28= 'compilation-units' otherlv_29= '=' otherlv_30= '{' ( (lv_compilationUnits_31_0= ruleCompilationUnit ) ) (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )* otherlv_34= '}' )?
+            int alt26=2;
+            int LA26_0 = input.LA(1);
+
+            if ( (LA26_0==40) ) {
+                alt26=1;
+            }
+            switch (alt26) {
+                case 1 :
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1646:3: otherlv_28= 'compilation-units' otherlv_29= '=' otherlv_30= '{' ( (lv_compilationUnits_31_0= ruleCompilationUnit ) ) (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )* otherlv_34= '}'
+                    {
+                    otherlv_28=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleBundleProject3615); 
+
+                        	newLeafNode(otherlv_28, grammarAccess.getBundleProjectAccess().getCompilationUnitsKeyword_12_0());
+                        
+                    otherlv_29=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleBundleProject3627); 
+
+                        	newLeafNode(otherlv_29, grammarAccess.getBundleProjectAccess().getEqualsSignKeyword_12_1());
+                        
+                    otherlv_30=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleBundleProject3639); 
+
+                        	newLeafNode(otherlv_30, grammarAccess.getBundleProjectAccess().getLeftCurlyBracketKeyword_12_2());
+                        
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1658:1: ( (lv_compilationUnits_31_0= ruleCompilationUnit ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1659:1: (lv_compilationUnits_31_0= ruleCompilationUnit )
+                    {
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1659:1: (lv_compilationUnits_31_0= ruleCompilationUnit )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1660:3: lv_compilationUnits_31_0= ruleCompilationUnit
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getBundleProjectAccess().getCompilationUnitsCompilationUnitParserRuleCall_12_3_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleCompilationUnit_in_ruleBundleProject3660);
+                    lv_compilationUnits_31_0=ruleCompilationUnit();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getBundleProjectRule());
+                    	        }
+                           		add(
+                           			current, 
+                           			"compilationUnits",
+                            		lv_compilationUnits_31_0, 
+                            		"CompilationUnit");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1676:2: (otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) ) )*
+                    loop25:
+                    do {
+                        int alt25=2;
+                        int LA25_0 = input.LA(1);
+
+                        if ( (LA25_0==18) ) {
+                            alt25=1;
+                        }
+
+
+                        switch (alt25) {
+                    	case 1 :
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1676:4: otherlv_32= ',' ( (lv_compilationUnits_33_0= ruleCompilationUnit ) )
+                    	    {
+                    	    otherlv_32=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleBundleProject3673); 
+
+                    	        	newLeafNode(otherlv_32, grammarAccess.getBundleProjectAccess().getCommaKeyword_12_4_0());
+                    	        
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1680:1: ( (lv_compilationUnits_33_0= ruleCompilationUnit ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1681:1: (lv_compilationUnits_33_0= ruleCompilationUnit )
+                    	    {
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1681:1: (lv_compilationUnits_33_0= ruleCompilationUnit )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1682:3: lv_compilationUnits_33_0= ruleCompilationUnit
+                    	    {
+                    	     
+                    	    	        newCompositeNode(grammarAccess.getBundleProjectAccess().getCompilationUnitsCompilationUnitParserRuleCall_12_4_1_0()); 
+                    	    	    
+                    	    pushFollow(FollowSets000.FOLLOW_ruleCompilationUnit_in_ruleBundleProject3694);
+                    	    lv_compilationUnits_33_0=ruleCompilationUnit();
+
+                    	    state._fsp--;
+
+
+                    	    	        if (current==null) {
+                    	    	            current = createModelElementForParent(grammarAccess.getBundleProjectRule());
+                    	    	        }
+                    	           		add(
+                    	           			current, 
+                    	           			"compilationUnits",
+                    	            		lv_compilationUnits_33_0, 
+                    	            		"CompilationUnit");
+                    	    	        afterParserOrEnumRuleCall();
+                    	    	    
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop25;
+                        }
+                    } while (true);
+
+                    otherlv_34=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBundleProject3708); 
+
+                        	newLeafNode(otherlv_34, grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_12_5());
+                        
+
+                    }
+                    break;
+
+            }
+
+            otherlv_35=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBundleProject3722); 
+
+                	newLeafNode(otherlv_35, grammarAccess.getBundleProjectAccess().getRightCurlyBracketKeyword_13());
                 
 
             }
@@ -3837,8 +4087,418 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleBundleProject"
 
 
+    // $ANTLR start "entryRuleSourceFragment"
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1714:1: entryRuleSourceFragment returns [EObject current=null] : iv_ruleSourceFragment= ruleSourceFragment EOF ;
+    public final EObject entryRuleSourceFragment() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleSourceFragment = null;
+
+
+        try {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1715:2: (iv_ruleSourceFragment= ruleSourceFragment EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1716:2: iv_ruleSourceFragment= ruleSourceFragment EOF
+            {
+             newCompositeNode(grammarAccess.getSourceFragmentRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleSourceFragment_in_entryRuleSourceFragment3758);
+            iv_ruleSourceFragment=ruleSourceFragment();
+
+            state._fsp--;
+
+             current =iv_ruleSourceFragment; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleSourceFragment3768); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSourceFragment"
+
+
+    // $ANTLR start "ruleSourceFragment"
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1723:1: ruleSourceFragment returns [EObject current=null] : (otherlv_0= 'fragment' ( (lv_name_1_0= ruleEString ) ) ( (otherlv_2= RULE_STRING ) ) ) ;
+    public final EObject ruleSourceFragment() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_2=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1726:28: ( (otherlv_0= 'fragment' ( (lv_name_1_0= ruleEString ) ) ( (otherlv_2= RULE_STRING ) ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1727:1: (otherlv_0= 'fragment' ( (lv_name_1_0= ruleEString ) ) ( (otherlv_2= RULE_STRING ) ) )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1727:1: (otherlv_0= 'fragment' ( (lv_name_1_0= ruleEString ) ) ( (otherlv_2= RULE_STRING ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1727:3: otherlv_0= 'fragment' ( (lv_name_1_0= ruleEString ) ) ( (otherlv_2= RULE_STRING ) )
+            {
+            otherlv_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleSourceFragment3805); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getSourceFragmentAccess().getFragmentKeyword_0());
+                
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1731:1: ( (lv_name_1_0= ruleEString ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1732:1: (lv_name_1_0= ruleEString )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1732:1: (lv_name_1_0= ruleEString )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1733:3: lv_name_1_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getSourceFragmentAccess().getNameEStringParserRuleCall_1_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSourceFragment3826);
+            lv_name_1_0=ruleEString();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getSourceFragmentRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"name",
+                    		lv_name_1_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1749:2: ( (otherlv_2= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1750:1: (otherlv_2= RULE_STRING )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1750:1: (otherlv_2= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1751:3: otherlv_2= RULE_STRING
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getSourceFragmentRule());
+            	        }
+                    
+            otherlv_2=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleSourceFragment3846); 
+
+            		newLeafNode(otherlv_2, grammarAccess.getSourceFragmentAccess().getFolderFolderCrossReference_2_0()); 
+            	
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSourceFragment"
+
+
+    // $ANTLR start "entryRuleCompilationUnit"
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1770:1: entryRuleCompilationUnit returns [EObject current=null] : iv_ruleCompilationUnit= ruleCompilationUnit EOF ;
+    public final EObject entryRuleCompilationUnit() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleCompilationUnit = null;
+
+
+        try {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1771:2: (iv_ruleCompilationUnit= ruleCompilationUnit EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1772:2: iv_ruleCompilationUnit= ruleCompilationUnit EOF
+            {
+             newCompositeNode(grammarAccess.getCompilationUnitRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleCompilationUnit_in_entryRuleCompilationUnit3882);
+            iv_ruleCompilationUnit=ruleCompilationUnit();
+
+            state._fsp--;
+
+             current =iv_ruleCompilationUnit; 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCompilationUnit3892); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleCompilationUnit"
+
+
+    // $ANTLR start "ruleCompilationUnit"
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1779:1: ruleCompilationUnit returns [EObject current=null] : ( ( (lv_packagename_0_0= RULE_STRING ) ) otherlv_1= 'in' ( (otherlv_2= RULE_STRING ) ) ( ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) ) ) ) ;
+    public final EObject ruleCompilationUnit() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_packagename_0_0=null;
+        Token otherlv_1=null;
+        Token otherlv_2=null;
+        EObject lv_file_3_1 = null;
+
+        EObject lv_file_3_2 = null;
+
+        EObject lv_file_3_3 = null;
+
+        EObject lv_file_3_4 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1782:28: ( ( ( (lv_packagename_0_0= RULE_STRING ) ) otherlv_1= 'in' ( (otherlv_2= RULE_STRING ) ) ( ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) ) ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1783:1: ( ( (lv_packagename_0_0= RULE_STRING ) ) otherlv_1= 'in' ( (otherlv_2= RULE_STRING ) ) ( ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) ) ) )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1783:1: ( ( (lv_packagename_0_0= RULE_STRING ) ) otherlv_1= 'in' ( (otherlv_2= RULE_STRING ) ) ( ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1783:2: ( (lv_packagename_0_0= RULE_STRING ) ) otherlv_1= 'in' ( (otherlv_2= RULE_STRING ) ) ( ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) ) )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1783:2: ( (lv_packagename_0_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1784:1: (lv_packagename_0_0= RULE_STRING )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1784:1: (lv_packagename_0_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1785:3: lv_packagename_0_0= RULE_STRING
+            {
+            lv_packagename_0_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleCompilationUnit3934); 
+
+            			newLeafNode(lv_packagename_0_0, grammarAccess.getCompilationUnitAccess().getPackagenameSTRINGTerminalRuleCall_0_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getCompilationUnitRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"packagename",
+                    		lv_packagename_0_0, 
+                    		"STRING");
+            	    
+
+            }
+
+
+            }
+
+            otherlv_1=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleCompilationUnit3951); 
+
+                	newLeafNode(otherlv_1, grammarAccess.getCompilationUnitAccess().getInKeyword_1());
+                
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1805:1: ( (otherlv_2= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1806:1: (otherlv_2= RULE_STRING )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1806:1: (otherlv_2= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1807:3: otherlv_2= RULE_STRING
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getCompilationUnitRule());
+            	        }
+                    
+            otherlv_2=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleCompilationUnit3971); 
+
+            		newLeafNode(otherlv_2, grammarAccess.getCompilationUnitAccess().getSourcefragmentSourceFragmentCrossReference_2_0()); 
+            	
+
+            }
+
+
+            }
+
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1818:2: ( ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1819:1: ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1819:1: ( (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1820:1: (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile )
+            {
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1820:1: (lv_file_3_1= ruleTemplatedFile | lv_file_3_2= ruleDataFile | lv_file_3_3= ruleURLFile | lv_file_3_4= ruleDynamicFile )
+            int alt27=4;
+            switch ( input.LA(1) ) {
+            case 27:
+                {
+                alt27=1;
+                }
+                break;
+            case 29:
+                {
+                alt27=2;
+                }
+                break;
+            case 31:
+                {
+                alt27=3;
+                }
+                break;
+            case 32:
+                {
+                alt27=4;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 27, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt27) {
+                case 1 :
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1821:3: lv_file_3_1= ruleTemplatedFile
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileTemplatedFileParserRuleCall_3_0_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleTemplatedFile_in_ruleCompilationUnit3994);
+                    lv_file_3_1=ruleTemplatedFile();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"file",
+                            		lv_file_3_1, 
+                            		"TemplatedFile");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+                    break;
+                case 2 :
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1836:8: lv_file_3_2= ruleDataFile
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileDataFileParserRuleCall_3_0_1()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleDataFile_in_ruleCompilationUnit4013);
+                    lv_file_3_2=ruleDataFile();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"file",
+                            		lv_file_3_2, 
+                            		"DataFile");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+                    break;
+                case 3 :
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1851:8: lv_file_3_3= ruleURLFile
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileURLFileParserRuleCall_3_0_2()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleURLFile_in_ruleCompilationUnit4032);
+                    lv_file_3_3=ruleURLFile();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"file",
+                            		lv_file_3_3, 
+                            		"URLFile");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+                    break;
+                case 4 :
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1866:8: lv_file_3_4= ruleDynamicFile
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileDynamicFileParserRuleCall_3_0_3()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleDynamicFile_in_ruleCompilationUnit4051);
+                    lv_file_3_4=ruleDynamicFile();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"file",
+                            		lv_file_3_4, 
+                            		"DynamicFile");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleCompilationUnit"
+
+
     // $ANTLR start "entryRuleFeatureProject"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1602:1: entryRuleFeatureProject returns [EObject current=null] : iv_ruleFeatureProject= ruleFeatureProject EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1892:1: entryRuleFeatureProject returns [EObject current=null] : iv_ruleFeatureProject= ruleFeatureProject EOF ;
     public final EObject entryRuleFeatureProject() throws RecognitionException {
         EObject current = null;
 
@@ -3846,17 +4506,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1603:2: (iv_ruleFeatureProject= ruleFeatureProject EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1604:2: iv_ruleFeatureProject= ruleFeatureProject EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1893:2: (iv_ruleFeatureProject= ruleFeatureProject EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1894:2: iv_ruleFeatureProject= ruleFeatureProject EOF
             {
              newCompositeNode(grammarAccess.getFeatureProjectRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleFeatureProject_in_entryRuleFeatureProject3545);
+            pushFollow(FollowSets000.FOLLOW_ruleFeatureProject_in_entryRuleFeatureProject4090);
             iv_ruleFeatureProject=ruleFeatureProject();
 
             state._fsp--;
 
              current =iv_ruleFeatureProject; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFeatureProject3555); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFeatureProject4100); 
 
             }
 
@@ -3874,7 +4534,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeatureProject"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1611:1: ruleFeatureProject returns [EObject current=null] : ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1901:1: ruleFeatureProject returns [EObject current=null] : ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' ) ;
     public final EObject ruleFeatureProject() throws RecognitionException {
         EObject current = null;
 
@@ -3900,14 +4560,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1614:28: ( ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1615:1: ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1904:28: ( ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1905:1: ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1615:1: ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1615:2: () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1905:1: ( () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1905:2: () otherlv_1= 'FeatureProject' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '{' otherlv_4= 'feature' otherlv_5= '=' ( (lv_feature_6_0= ruleFeatureFile ) ) (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )? otherlv_14= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1615:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1616:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1905:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1906:5: 
             {
 
                     current = forceCreateModelElement(
@@ -3917,20 +4577,20 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,39,FollowSets000.FOLLOW_39_in_ruleFeatureProject3601); 
+            otherlv_1=(Token)match(input,43,FollowSets000.FOLLOW_43_in_ruleFeatureProject4146); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFeatureProjectAccess().getFeatureProjectKeyword_1());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1625:1: ( (lv_name_2_0= ruleEString ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1626:1: (lv_name_2_0= ruleEString )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1915:1: ( (lv_name_2_0= ruleEString ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1916:1: (lv_name_2_0= ruleEString )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1626:1: (lv_name_2_0= ruleEString )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1627:3: lv_name_2_0= ruleEString
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1916:1: (lv_name_2_0= ruleEString )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1917:3: lv_name_2_0= ruleEString
             {
              
             	        newCompositeNode(grammarAccess.getFeatureProjectAccess().getNameEStringParserRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleFeatureProject3622);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleFeatureProject4167);
             lv_name_2_0=ruleEString();
 
             state._fsp--;
@@ -3952,28 +4612,28 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureProject3634); 
+            otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureProject4179); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getFeatureProjectAccess().getLeftCurlyBracketKeyword_3());
                 
-            otherlv_4=(Token)match(input,40,FollowSets000.FOLLOW_40_in_ruleFeatureProject3646); 
+            otherlv_4=(Token)match(input,44,FollowSets000.FOLLOW_44_in_ruleFeatureProject4191); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getFeatureProjectAccess().getFeatureKeyword_4());
                 
-            otherlv_5=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureProject3658); 
+            otherlv_5=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureProject4203); 
 
                 	newLeafNode(otherlv_5, grammarAccess.getFeatureProjectAccess().getEqualsSignKeyword_5());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1655:1: ( (lv_feature_6_0= ruleFeatureFile ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1656:1: (lv_feature_6_0= ruleFeatureFile )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1945:1: ( (lv_feature_6_0= ruleFeatureFile ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1946:1: (lv_feature_6_0= ruleFeatureFile )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1656:1: (lv_feature_6_0= ruleFeatureFile )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1657:3: lv_feature_6_0= ruleFeatureFile
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1946:1: (lv_feature_6_0= ruleFeatureFile )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1947:3: lv_feature_6_0= ruleFeatureFile
             {
              
             	        newCompositeNode(grammarAccess.getFeatureProjectAccess().getFeatureFeatureFileParserRuleCall_6_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleFeatureFile_in_ruleFeatureProject3679);
+            pushFollow(FollowSets000.FOLLOW_ruleFeatureFile_in_ruleFeatureProject4224);
             lv_feature_6_0=ruleFeatureFile();
 
             state._fsp--;
@@ -3995,39 +4655,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1673:2: (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )?
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1963:2: (otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}' )?
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA25_0==23) ) {
-                alt25=1;
+            if ( (LA29_0==23) ) {
+                alt29=1;
             }
-            switch (alt25) {
+            switch (alt29) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1673:4: otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1963:4: otherlv_7= 'resources' otherlv_8= '=' otherlv_9= '{' ( (lv_resources_10_0= ruleResource ) ) (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )* otherlv_13= '}'
                     {
-                    otherlv_7=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleFeatureProject3692); 
+                    otherlv_7=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleFeatureProject4237); 
 
                         	newLeafNode(otherlv_7, grammarAccess.getFeatureProjectAccess().getResourcesKeyword_7_0());
                         
-                    otherlv_8=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureProject3704); 
+                    otherlv_8=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureProject4249); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getFeatureProjectAccess().getEqualsSignKeyword_7_1());
                         
-                    otherlv_9=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureProject3716); 
+                    otherlv_9=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureProject4261); 
 
                         	newLeafNode(otherlv_9, grammarAccess.getFeatureProjectAccess().getLeftCurlyBracketKeyword_7_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1685:1: ( (lv_resources_10_0= ruleResource ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1686:1: (lv_resources_10_0= ruleResource )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1975:1: ( (lv_resources_10_0= ruleResource ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1976:1: (lv_resources_10_0= ruleResource )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1686:1: (lv_resources_10_0= ruleResource )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1687:3: lv_resources_10_0= ruleResource
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1976:1: (lv_resources_10_0= ruleResource )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1977:3: lv_resources_10_0= ruleResource
                     {
                      
                     	        newCompositeNode(grammarAccess.getFeatureProjectAccess().getResourcesResourceParserRuleCall_7_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleResource_in_ruleFeatureProject3737);
+                    pushFollow(FollowSets000.FOLLOW_ruleResource_in_ruleFeatureProject4282);
                     lv_resources_10_0=ruleResource();
 
                     state._fsp--;
@@ -4049,35 +4709,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1703:2: (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )*
-                    loop24:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1993:2: (otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) ) )*
+                    loop28:
                     do {
-                        int alt24=2;
-                        int LA24_0 = input.LA(1);
+                        int alt28=2;
+                        int LA28_0 = input.LA(1);
 
-                        if ( (LA24_0==18) ) {
-                            alt24=1;
+                        if ( (LA28_0==18) ) {
+                            alt28=1;
                         }
 
 
-                        switch (alt24) {
+                        switch (alt28) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1703:4: otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1993:4: otherlv_11= ',' ( (lv_resources_12_0= ruleResource ) )
                     	    {
-                    	    otherlv_11=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureProject3750); 
+                    	    otherlv_11=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureProject4295); 
 
                     	        	newLeafNode(otherlv_11, grammarAccess.getFeatureProjectAccess().getCommaKeyword_7_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1707:1: ( (lv_resources_12_0= ruleResource ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1708:1: (lv_resources_12_0= ruleResource )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1997:1: ( (lv_resources_12_0= ruleResource ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1998:1: (lv_resources_12_0= ruleResource )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1708:1: (lv_resources_12_0= ruleResource )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1709:3: lv_resources_12_0= ruleResource
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1998:1: (lv_resources_12_0= ruleResource )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1999:3: lv_resources_12_0= ruleResource
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getFeatureProjectAccess().getResourcesResourceParserRuleCall_7_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleResource_in_ruleFeatureProject3771);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleResource_in_ruleFeatureProject4316);
                     	    lv_resources_12_0=ruleResource();
 
                     	    state._fsp--;
@@ -4104,11 +4764,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop24;
+                    	    break loop28;
                         }
                     } while (true);
 
-                    otherlv_13=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureProject3785); 
+                    otherlv_13=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureProject4330); 
 
                         	newLeafNode(otherlv_13, grammarAccess.getFeatureProjectAccess().getRightCurlyBracketKeyword_7_5());
                         
@@ -4118,7 +4778,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_14=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureProject3799); 
+            otherlv_14=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureProject4344); 
 
                 	newLeafNode(otherlv_14, grammarAccess.getFeatureProjectAccess().getRightCurlyBracketKeyword_8());
                 
@@ -4143,7 +4803,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleManifestFile"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1741:1: entryRuleManifestFile returns [EObject current=null] : iv_ruleManifestFile= ruleManifestFile EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2031:1: entryRuleManifestFile returns [EObject current=null] : iv_ruleManifestFile= ruleManifestFile EOF ;
     public final EObject entryRuleManifestFile() throws RecognitionException {
         EObject current = null;
 
@@ -4151,17 +4811,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1742:2: (iv_ruleManifestFile= ruleManifestFile EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1743:2: iv_ruleManifestFile= ruleManifestFile EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2032:2: (iv_ruleManifestFile= ruleManifestFile EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2033:2: iv_ruleManifestFile= ruleManifestFile EOF
             {
              newCompositeNode(grammarAccess.getManifestFileRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleManifestFile_in_entryRuleManifestFile3835);
+            pushFollow(FollowSets000.FOLLOW_ruleManifestFile_in_entryRuleManifestFile4380);
             iv_ruleManifestFile=ruleManifestFile();
 
             state._fsp--;
 
              current =iv_ruleManifestFile; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleManifestFile3845); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleManifestFile4390); 
 
             }
 
@@ -4179,7 +4839,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleManifestFile"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1750:1: ruleManifestFile returns [EObject current=null] : ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2040:1: ruleManifestFile returns [EObject current=null] : ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' ) ;
     public final EObject ruleManifestFile() throws RecognitionException {
         EObject current = null;
 
@@ -4231,14 +4891,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1753:28: ( ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1754:1: ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2043:28: ( ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2044:1: ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1754:1: ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1754:2: () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2044:1: ( () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2044:2: () ( (lv_lazy_1_0= 'lazy' ) )? ( (lv_singleton_2_0= 'singleton' ) )? otherlv_3= 'ManifestFile' ( (lv_symbolicname_4_0= RULE_STRING ) ) ( (lv_version_5_0= RULE_STRING ) ) ( (lv_executionEnvironment_6_0= RULE_STRING ) ) otherlv_7= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )? (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )? (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )? otherlv_39= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1754:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1755:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2044:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2045:5: 
             {
 
                     current = forceCreateModelElement(
@@ -4248,21 +4908,21 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1760:2: ( (lv_lazy_1_0= 'lazy' ) )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2050:2: ( (lv_lazy_1_0= 'lazy' ) )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA26_0==41) ) {
-                alt26=1;
+            if ( (LA30_0==45) ) {
+                alt30=1;
             }
-            switch (alt26) {
+            switch (alt30) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1761:1: (lv_lazy_1_0= 'lazy' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2051:1: (lv_lazy_1_0= 'lazy' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1761:1: (lv_lazy_1_0= 'lazy' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1762:3: lv_lazy_1_0= 'lazy'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2051:1: (lv_lazy_1_0= 'lazy' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2052:3: lv_lazy_1_0= 'lazy'
                     {
-                    lv_lazy_1_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleManifestFile3897); 
+                    lv_lazy_1_0=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleManifestFile4442); 
 
                             newLeafNode(lv_lazy_1_0, grammarAccess.getManifestFileAccess().getLazyLazyKeyword_1_0());
                         
@@ -4281,21 +4941,21 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1775:3: ( (lv_singleton_2_0= 'singleton' ) )?
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2065:3: ( (lv_singleton_2_0= 'singleton' ) )?
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( (LA27_0==42) ) {
-                alt27=1;
+            if ( (LA31_0==46) ) {
+                alt31=1;
             }
-            switch (alt27) {
+            switch (alt31) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1776:1: (lv_singleton_2_0= 'singleton' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2066:1: (lv_singleton_2_0= 'singleton' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1776:1: (lv_singleton_2_0= 'singleton' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1777:3: lv_singleton_2_0= 'singleton'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2066:1: (lv_singleton_2_0= 'singleton' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2067:3: lv_singleton_2_0= 'singleton'
                     {
-                    lv_singleton_2_0=(Token)match(input,42,FollowSets000.FOLLOW_42_in_ruleManifestFile3929); 
+                    lv_singleton_2_0=(Token)match(input,46,FollowSets000.FOLLOW_46_in_ruleManifestFile4474); 
 
                             newLeafNode(lv_singleton_2_0, grammarAccess.getManifestFileAccess().getSingletonSingletonKeyword_2_0());
                         
@@ -4314,17 +4974,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,43,FollowSets000.FOLLOW_43_in_ruleManifestFile3955); 
+            otherlv_3=(Token)match(input,47,FollowSets000.FOLLOW_47_in_ruleManifestFile4500); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getManifestFileAccess().getManifestFileKeyword_3());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1794:1: ( (lv_symbolicname_4_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1795:1: (lv_symbolicname_4_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2084:1: ( (lv_symbolicname_4_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2085:1: (lv_symbolicname_4_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1795:1: (lv_symbolicname_4_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1796:3: lv_symbolicname_4_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2085:1: (lv_symbolicname_4_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2086:3: lv_symbolicname_4_0= RULE_STRING
             {
-            lv_symbolicname_4_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile3972); 
+            lv_symbolicname_4_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4517); 
 
             			newLeafNode(lv_symbolicname_4_0, grammarAccess.getManifestFileAccess().getSymbolicnameSTRINGTerminalRuleCall_4_0()); 
             		
@@ -4344,13 +5004,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1812:2: ( (lv_version_5_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1813:1: (lv_version_5_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2102:2: ( (lv_version_5_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2103:1: (lv_version_5_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1813:1: (lv_version_5_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1814:3: lv_version_5_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2103:1: (lv_version_5_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2104:3: lv_version_5_0= RULE_STRING
             {
-            lv_version_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile3994); 
+            lv_version_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4539); 
 
             			newLeafNode(lv_version_5_0, grammarAccess.getManifestFileAccess().getVersionSTRINGTerminalRuleCall_5_0()); 
             		
@@ -4370,13 +5030,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1830:2: ( (lv_executionEnvironment_6_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1831:1: (lv_executionEnvironment_6_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2120:2: ( (lv_executionEnvironment_6_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2121:1: (lv_executionEnvironment_6_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1831:1: (lv_executionEnvironment_6_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1832:3: lv_executionEnvironment_6_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2121:1: (lv_executionEnvironment_6_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2122:3: lv_executionEnvironment_6_0= RULE_STRING
             {
-            lv_executionEnvironment_6_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4016); 
+            lv_executionEnvironment_6_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4561); 
 
             			newLeafNode(lv_executionEnvironment_6_0, grammarAccess.getManifestFileAccess().getExecutionEnvironmentSTRINGTerminalRuleCall_6_0()); 
             		
@@ -4396,80 +5056,80 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile4033); 
+            otherlv_7=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile4578); 
 
                 	newLeafNode(otherlv_7, grammarAccess.getManifestFileAccess().getLeftCurlyBracketKeyword_7());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1852:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1854:1: ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2142:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2144:1: ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1854:1: ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1855:2: ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?)
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2144:1: ( ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2145:2: ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?)
             {
              
             	  getUnorderedGroupHelper().enter(grammarAccess.getManifestFileAccess().getUnorderedGroup_8());
             	
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1858:2: ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?)
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1859:3: ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2148:2: ( ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?)
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2149:3: ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+ {...}?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1859:3: ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+
-            int cnt28=0;
-            loop28:
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2149:3: ( ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) ) )+
+            int cnt32=0;
+            loop32:
             do {
-                int alt28=4;
-                int LA28_0 = input.LA(1);
+                int alt32=4;
+                int LA32_0 = input.LA(1);
 
-                if ( LA28_0 ==44 && getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 0) ) {
-                    alt28=1;
+                if ( LA32_0 ==48 && getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 0) ) {
+                    alt32=1;
                 }
-                else if ( LA28_0 ==45 && getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 1) ) {
-                    alt28=2;
+                else if ( LA32_0 ==49 && getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 1) ) {
+                    alt32=2;
                 }
-                else if ( LA28_0 ==46 && getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 2) ) {
-                    alt28=3;
+                else if ( LA32_0 ==50 && getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 2) ) {
+                    alt32=3;
                 }
 
 
-                switch (alt28) {
+                switch (alt32) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1861:4: ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2151:4: ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1861:4: ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1862:5: {...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2151:4: ({...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2152:5: {...}? => ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 0) ) {
             	        throw new FailedPredicateException(input, "ruleManifestFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 0)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1862:109: ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1863:6: ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2152:109: ( ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2153:6: ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 0);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1866:6: ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1866:7: {...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2156:6: ({...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2156:7: {...}? => (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleManifestFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1866:16: (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1866:18: otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2156:16: (otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2156:18: otherlv_9= 'bundlename' otherlv_10= '=' ( (lv_bundlename_11_0= RULE_STRING ) )
             	    {
-            	    otherlv_9=(Token)match(input,44,FollowSets000.FOLLOW_44_in_ruleManifestFile4091); 
+            	    otherlv_9=(Token)match(input,48,FollowSets000.FOLLOW_48_in_ruleManifestFile4636); 
 
             	        	newLeafNode(otherlv_9, grammarAccess.getManifestFileAccess().getBundlenameKeyword_8_0_0());
             	        
-            	    otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4103); 
+            	    otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4648); 
 
             	        	newLeafNode(otherlv_10, grammarAccess.getManifestFileAccess().getEqualsSignKeyword_8_0_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1874:1: ( (lv_bundlename_11_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1875:1: (lv_bundlename_11_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2164:1: ( (lv_bundlename_11_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2165:1: (lv_bundlename_11_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1875:1: (lv_bundlename_11_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1876:3: lv_bundlename_11_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2165:1: (lv_bundlename_11_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2166:3: lv_bundlename_11_0= RULE_STRING
             	    {
-            	    lv_bundlename_11_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4120); 
+            	    lv_bundlename_11_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4665); 
 
             	    			newLeafNode(lv_bundlename_11_0, grammarAccess.getManifestFileAccess().getBundlenameSTRINGTerminalRuleCall_8_0_2_0()); 
             	    		
@@ -4508,44 +5168,44 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1899:4: ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2189:4: ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1899:4: ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1900:5: {...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2189:4: ({...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2190:5: {...}? => ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 1) ) {
             	        throw new FailedPredicateException(input, "ruleManifestFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 1)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1900:109: ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1901:6: ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2190:109: ( ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2191:6: ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 1);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1904:6: ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1904:7: {...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2194:6: ({...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2194:7: {...}? => (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleManifestFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1904:16: (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1904:18: otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2194:16: (otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2194:18: otherlv_12= 'vendor' otherlv_13= '=' ( (lv_vendor_14_0= RULE_STRING ) )
             	    {
-            	    otherlv_12=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleManifestFile4193); 
+            	    otherlv_12=(Token)match(input,49,FollowSets000.FOLLOW_49_in_ruleManifestFile4738); 
 
             	        	newLeafNode(otherlv_12, grammarAccess.getManifestFileAccess().getVendorKeyword_8_1_0());
             	        
-            	    otherlv_13=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4205); 
+            	    otherlv_13=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4750); 
 
             	        	newLeafNode(otherlv_13, grammarAccess.getManifestFileAccess().getEqualsSignKeyword_8_1_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1912:1: ( (lv_vendor_14_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1913:1: (lv_vendor_14_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2202:1: ( (lv_vendor_14_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2203:1: (lv_vendor_14_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1913:1: (lv_vendor_14_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1914:3: lv_vendor_14_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2203:1: (lv_vendor_14_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2204:3: lv_vendor_14_0= RULE_STRING
             	    {
-            	    lv_vendor_14_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4222); 
+            	    lv_vendor_14_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4767); 
 
             	    			newLeafNode(lv_vendor_14_0, grammarAccess.getManifestFileAccess().getVendorSTRINGTerminalRuleCall_8_1_2_0()); 
             	    		
@@ -4584,44 +5244,44 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1937:4: ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2227:4: ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1937:4: ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1938:5: {...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2227:4: ({...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2228:5: {...}? => ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 2) ) {
             	        throw new FailedPredicateException(input, "ruleManifestFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 2)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1938:109: ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1939:6: ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2228:109: ( ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2229:6: ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getManifestFileAccess().getUnorderedGroup_8(), 2);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1942:6: ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1942:7: {...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2232:6: ({...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2232:7: {...}? => (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleManifestFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1942:16: (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1942:18: otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2232:16: (otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2232:18: otherlv_15= 'activatorClass' otherlv_16= '=' ( (lv_activatorClass_17_0= RULE_STRING ) )
             	    {
-            	    otherlv_15=(Token)match(input,46,FollowSets000.FOLLOW_46_in_ruleManifestFile4295); 
+            	    otherlv_15=(Token)match(input,50,FollowSets000.FOLLOW_50_in_ruleManifestFile4840); 
 
             	        	newLeafNode(otherlv_15, grammarAccess.getManifestFileAccess().getActivatorClassKeyword_8_2_0());
             	        
-            	    otherlv_16=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4307); 
+            	    otherlv_16=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4852); 
 
             	        	newLeafNode(otherlv_16, grammarAccess.getManifestFileAccess().getEqualsSignKeyword_8_2_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1950:1: ( (lv_activatorClass_17_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1951:1: (lv_activatorClass_17_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2240:1: ( (lv_activatorClass_17_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2241:1: (lv_activatorClass_17_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1951:1: (lv_activatorClass_17_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1952:3: lv_activatorClass_17_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2241:1: (lv_activatorClass_17_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2242:3: lv_activatorClass_17_0= RULE_STRING
             	    {
-            	    lv_activatorClass_17_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4324); 
+            	    lv_activatorClass_17_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleManifestFile4869); 
 
             	    			newLeafNode(lv_activatorClass_17_0, grammarAccess.getManifestFileAccess().getActivatorClassSTRINGTerminalRuleCall_8_2_2_0()); 
             	    		
@@ -4661,12 +5321,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt28 >= 1 ) break loop28;
+            	    if ( cnt32 >= 1 ) break loop32;
                         EarlyExitException eee =
-                            new EarlyExitException(28, input);
+                            new EarlyExitException(32, input);
                         throw eee;
                 }
-                cnt28++;
+                cnt32++;
             } while (true);
 
             if ( ! getUnorderedGroupHelper().canLeave(grammarAccess.getManifestFileAccess().getUnorderedGroup_8()) ) {
@@ -4684,39 +5344,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1983:2: (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )?
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2273:2: (otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}' )?
+            int alt34=2;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA30_0==47) ) {
-                alt30=1;
+            if ( (LA34_0==51) ) {
+                alt34=1;
             }
-            switch (alt30) {
+            switch (alt34) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1983:4: otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2273:4: otherlv_18= 'exportedPackages' otherlv_19= '=' otherlv_20= '{' ( (lv_exportedPackages_21_0= ruleExportedPackage ) ) (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )* otherlv_24= '}'
                     {
-                    otherlv_18=(Token)match(input,47,FollowSets000.FOLLOW_47_in_ruleManifestFile4389); 
+                    otherlv_18=(Token)match(input,51,FollowSets000.FOLLOW_51_in_ruleManifestFile4934); 
 
                         	newLeafNode(otherlv_18, grammarAccess.getManifestFileAccess().getExportedPackagesKeyword_9_0());
                         
-                    otherlv_19=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4401); 
+                    otherlv_19=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4946); 
 
                         	newLeafNode(otherlv_19, grammarAccess.getManifestFileAccess().getEqualsSignKeyword_9_1());
                         
-                    otherlv_20=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile4413); 
+                    otherlv_20=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile4958); 
 
                         	newLeafNode(otherlv_20, grammarAccess.getManifestFileAccess().getLeftCurlyBracketKeyword_9_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1995:1: ( (lv_exportedPackages_21_0= ruleExportedPackage ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1996:1: (lv_exportedPackages_21_0= ruleExportedPackage )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2285:1: ( (lv_exportedPackages_21_0= ruleExportedPackage ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2286:1: (lv_exportedPackages_21_0= ruleExportedPackage )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1996:1: (lv_exportedPackages_21_0= ruleExportedPackage )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:1997:3: lv_exportedPackages_21_0= ruleExportedPackage
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2286:1: (lv_exportedPackages_21_0= ruleExportedPackage )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2287:3: lv_exportedPackages_21_0= ruleExportedPackage
                     {
                      
                     	        newCompositeNode(grammarAccess.getManifestFileAccess().getExportedPackagesExportedPackageParserRuleCall_9_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleExportedPackage_in_ruleManifestFile4434);
+                    pushFollow(FollowSets000.FOLLOW_ruleExportedPackage_in_ruleManifestFile4979);
                     lv_exportedPackages_21_0=ruleExportedPackage();
 
                     state._fsp--;
@@ -4738,35 +5398,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2013:2: (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )*
-                    loop29:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2303:2: (otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) ) )*
+                    loop33:
                     do {
-                        int alt29=2;
-                        int LA29_0 = input.LA(1);
+                        int alt33=2;
+                        int LA33_0 = input.LA(1);
 
-                        if ( (LA29_0==18) ) {
-                            alt29=1;
+                        if ( (LA33_0==18) ) {
+                            alt33=1;
                         }
 
 
-                        switch (alt29) {
+                        switch (alt33) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2013:4: otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2303:4: otherlv_22= ',' ( (lv_exportedPackages_23_0= ruleExportedPackage ) )
                     	    {
-                    	    otherlv_22=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleManifestFile4447); 
+                    	    otherlv_22=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleManifestFile4992); 
 
                     	        	newLeafNode(otherlv_22, grammarAccess.getManifestFileAccess().getCommaKeyword_9_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2017:1: ( (lv_exportedPackages_23_0= ruleExportedPackage ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2018:1: (lv_exportedPackages_23_0= ruleExportedPackage )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2307:1: ( (lv_exportedPackages_23_0= ruleExportedPackage ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2308:1: (lv_exportedPackages_23_0= ruleExportedPackage )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2018:1: (lv_exportedPackages_23_0= ruleExportedPackage )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2019:3: lv_exportedPackages_23_0= ruleExportedPackage
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2308:1: (lv_exportedPackages_23_0= ruleExportedPackage )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2309:3: lv_exportedPackages_23_0= ruleExportedPackage
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getManifestFileAccess().getExportedPackagesExportedPackageParserRuleCall_9_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleExportedPackage_in_ruleManifestFile4468);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleExportedPackage_in_ruleManifestFile5013);
                     	    lv_exportedPackages_23_0=ruleExportedPackage();
 
                     	    state._fsp--;
@@ -4793,11 +5453,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop29;
+                    	    break loop33;
                         }
                     } while (true);
 
-                    otherlv_24=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile4482); 
+                    otherlv_24=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile5027); 
 
                         	newLeafNode(otherlv_24, grammarAccess.getManifestFileAccess().getRightCurlyBracketKeyword_9_5());
                         
@@ -4807,39 +5467,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2039:3: (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2329:3: (otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}' )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA32_0==48) ) {
-                alt32=1;
+            if ( (LA36_0==52) ) {
+                alt36=1;
             }
-            switch (alt32) {
+            switch (alt36) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2039:5: otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2329:5: otherlv_25= 'importedPackages' otherlv_26= '=' otherlv_27= '{' ( (lv_importedPackages_28_0= ruleImportedPackage ) ) (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )* otherlv_31= '}'
                     {
-                    otherlv_25=(Token)match(input,48,FollowSets000.FOLLOW_48_in_ruleManifestFile4497); 
+                    otherlv_25=(Token)match(input,52,FollowSets000.FOLLOW_52_in_ruleManifestFile5042); 
 
                         	newLeafNode(otherlv_25, grammarAccess.getManifestFileAccess().getImportedPackagesKeyword_10_0());
                         
-                    otherlv_26=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4509); 
+                    otherlv_26=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile5054); 
 
                         	newLeafNode(otherlv_26, grammarAccess.getManifestFileAccess().getEqualsSignKeyword_10_1());
                         
-                    otherlv_27=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile4521); 
+                    otherlv_27=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile5066); 
 
                         	newLeafNode(otherlv_27, grammarAccess.getManifestFileAccess().getLeftCurlyBracketKeyword_10_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2051:1: ( (lv_importedPackages_28_0= ruleImportedPackage ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2052:1: (lv_importedPackages_28_0= ruleImportedPackage )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2341:1: ( (lv_importedPackages_28_0= ruleImportedPackage ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2342:1: (lv_importedPackages_28_0= ruleImportedPackage )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2052:1: (lv_importedPackages_28_0= ruleImportedPackage )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2053:3: lv_importedPackages_28_0= ruleImportedPackage
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2342:1: (lv_importedPackages_28_0= ruleImportedPackage )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2343:3: lv_importedPackages_28_0= ruleImportedPackage
                     {
                      
                     	        newCompositeNode(grammarAccess.getManifestFileAccess().getImportedPackagesImportedPackageParserRuleCall_10_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleImportedPackage_in_ruleManifestFile4542);
+                    pushFollow(FollowSets000.FOLLOW_ruleImportedPackage_in_ruleManifestFile5087);
                     lv_importedPackages_28_0=ruleImportedPackage();
 
                     state._fsp--;
@@ -4861,35 +5521,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2069:2: (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )*
-                    loop31:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2359:2: (otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) ) )*
+                    loop35:
                     do {
-                        int alt31=2;
-                        int LA31_0 = input.LA(1);
+                        int alt35=2;
+                        int LA35_0 = input.LA(1);
 
-                        if ( (LA31_0==18) ) {
-                            alt31=1;
+                        if ( (LA35_0==18) ) {
+                            alt35=1;
                         }
 
 
-                        switch (alt31) {
+                        switch (alt35) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2069:4: otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2359:4: otherlv_29= ',' ( (lv_importedPackages_30_0= ruleImportedPackage ) )
                     	    {
-                    	    otherlv_29=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleManifestFile4555); 
+                    	    otherlv_29=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleManifestFile5100); 
 
                     	        	newLeafNode(otherlv_29, grammarAccess.getManifestFileAccess().getCommaKeyword_10_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2073:1: ( (lv_importedPackages_30_0= ruleImportedPackage ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2074:1: (lv_importedPackages_30_0= ruleImportedPackage )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2363:1: ( (lv_importedPackages_30_0= ruleImportedPackage ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2364:1: (lv_importedPackages_30_0= ruleImportedPackage )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2074:1: (lv_importedPackages_30_0= ruleImportedPackage )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2075:3: lv_importedPackages_30_0= ruleImportedPackage
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2364:1: (lv_importedPackages_30_0= ruleImportedPackage )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2365:3: lv_importedPackages_30_0= ruleImportedPackage
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getManifestFileAccess().getImportedPackagesImportedPackageParserRuleCall_10_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleImportedPackage_in_ruleManifestFile4576);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleImportedPackage_in_ruleManifestFile5121);
                     	    lv_importedPackages_30_0=ruleImportedPackage();
 
                     	    state._fsp--;
@@ -4916,11 +5576,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop31;
+                    	    break loop35;
                         }
                     } while (true);
 
-                    otherlv_31=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile4590); 
+                    otherlv_31=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile5135); 
 
                         	newLeafNode(otherlv_31, grammarAccess.getManifestFileAccess().getRightCurlyBracketKeyword_10_5());
                         
@@ -4930,39 +5590,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2095:3: (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2385:3: (otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}' )?
+            int alt38=2;
+            int LA38_0 = input.LA(1);
 
-            if ( (LA34_0==49) ) {
-                alt34=1;
+            if ( (LA38_0==53) ) {
+                alt38=1;
             }
-            switch (alt34) {
+            switch (alt38) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2095:5: otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2385:5: otherlv_32= 'requiredBundles' otherlv_33= '=' otherlv_34= '{' ( (lv_requiredBundles_35_0= ruleRequiredBundle ) ) (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )* otherlv_38= '}'
                     {
-                    otherlv_32=(Token)match(input,49,FollowSets000.FOLLOW_49_in_ruleManifestFile4605); 
+                    otherlv_32=(Token)match(input,53,FollowSets000.FOLLOW_53_in_ruleManifestFile5150); 
 
                         	newLeafNode(otherlv_32, grammarAccess.getManifestFileAccess().getRequiredBundlesKeyword_11_0());
                         
-                    otherlv_33=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile4617); 
+                    otherlv_33=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleManifestFile5162); 
 
                         	newLeafNode(otherlv_33, grammarAccess.getManifestFileAccess().getEqualsSignKeyword_11_1());
                         
-                    otherlv_34=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile4629); 
+                    otherlv_34=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleManifestFile5174); 
 
                         	newLeafNode(otherlv_34, grammarAccess.getManifestFileAccess().getLeftCurlyBracketKeyword_11_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2107:1: ( (lv_requiredBundles_35_0= ruleRequiredBundle ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2108:1: (lv_requiredBundles_35_0= ruleRequiredBundle )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2397:1: ( (lv_requiredBundles_35_0= ruleRequiredBundle ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2398:1: (lv_requiredBundles_35_0= ruleRequiredBundle )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2108:1: (lv_requiredBundles_35_0= ruleRequiredBundle )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2109:3: lv_requiredBundles_35_0= ruleRequiredBundle
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2398:1: (lv_requiredBundles_35_0= ruleRequiredBundle )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2399:3: lv_requiredBundles_35_0= ruleRequiredBundle
                     {
                      
                     	        newCompositeNode(grammarAccess.getManifestFileAccess().getRequiredBundlesRequiredBundleParserRuleCall_11_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleRequiredBundle_in_ruleManifestFile4650);
+                    pushFollow(FollowSets000.FOLLOW_ruleRequiredBundle_in_ruleManifestFile5195);
                     lv_requiredBundles_35_0=ruleRequiredBundle();
 
                     state._fsp--;
@@ -4984,35 +5644,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2125:2: (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )*
-                    loop33:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2415:2: (otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) ) )*
+                    loop37:
                     do {
-                        int alt33=2;
-                        int LA33_0 = input.LA(1);
+                        int alt37=2;
+                        int LA37_0 = input.LA(1);
 
-                        if ( (LA33_0==18) ) {
-                            alt33=1;
+                        if ( (LA37_0==18) ) {
+                            alt37=1;
                         }
 
 
-                        switch (alt33) {
+                        switch (alt37) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2125:4: otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2415:4: otherlv_36= ',' ( (lv_requiredBundles_37_0= ruleRequiredBundle ) )
                     	    {
-                    	    otherlv_36=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleManifestFile4663); 
+                    	    otherlv_36=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleManifestFile5208); 
 
                     	        	newLeafNode(otherlv_36, grammarAccess.getManifestFileAccess().getCommaKeyword_11_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2129:1: ( (lv_requiredBundles_37_0= ruleRequiredBundle ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2130:1: (lv_requiredBundles_37_0= ruleRequiredBundle )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2419:1: ( (lv_requiredBundles_37_0= ruleRequiredBundle ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2420:1: (lv_requiredBundles_37_0= ruleRequiredBundle )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2130:1: (lv_requiredBundles_37_0= ruleRequiredBundle )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2131:3: lv_requiredBundles_37_0= ruleRequiredBundle
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2420:1: (lv_requiredBundles_37_0= ruleRequiredBundle )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2421:3: lv_requiredBundles_37_0= ruleRequiredBundle
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getManifestFileAccess().getRequiredBundlesRequiredBundleParserRuleCall_11_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleRequiredBundle_in_ruleManifestFile4684);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleRequiredBundle_in_ruleManifestFile5229);
                     	    lv_requiredBundles_37_0=ruleRequiredBundle();
 
                     	    state._fsp--;
@@ -5039,11 +5699,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop33;
+                    	    break loop37;
                         }
                     } while (true);
 
-                    otherlv_38=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile4698); 
+                    otherlv_38=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile5243); 
 
                         	newLeafNode(otherlv_38, grammarAccess.getManifestFileAccess().getRightCurlyBracketKeyword_11_5());
                         
@@ -5053,7 +5713,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_39=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile4712); 
+            otherlv_39=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleManifestFile5257); 
 
                 	newLeafNode(otherlv_39, grammarAccess.getManifestFileAccess().getRightCurlyBracketKeyword_12());
                 
@@ -5078,7 +5738,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePluginXMLFile"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2163:1: entryRulePluginXMLFile returns [EObject current=null] : iv_rulePluginXMLFile= rulePluginXMLFile EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2453:1: entryRulePluginXMLFile returns [EObject current=null] : iv_rulePluginXMLFile= rulePluginXMLFile EOF ;
     public final EObject entryRulePluginXMLFile() throws RecognitionException {
         EObject current = null;
 
@@ -5086,17 +5746,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2164:2: (iv_rulePluginXMLFile= rulePluginXMLFile EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2165:2: iv_rulePluginXMLFile= rulePluginXMLFile EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2454:2: (iv_rulePluginXMLFile= rulePluginXMLFile EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2455:2: iv_rulePluginXMLFile= rulePluginXMLFile EOF
             {
              newCompositeNode(grammarAccess.getPluginXMLFileRule()); 
-            pushFollow(FollowSets000.FOLLOW_rulePluginXMLFile_in_entryRulePluginXMLFile4748);
+            pushFollow(FollowSets000.FOLLOW_rulePluginXMLFile_in_entryRulePluginXMLFile5293);
             iv_rulePluginXMLFile=rulePluginXMLFile();
 
             state._fsp--;
 
              current =iv_rulePluginXMLFile; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePluginXMLFile4758); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRulePluginXMLFile5303); 
 
             }
 
@@ -5114,7 +5774,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePluginXMLFile"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2172:1: rulePluginXMLFile returns [EObject current=null] : ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2462:1: rulePluginXMLFile returns [EObject current=null] : ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) ;
     public final EObject rulePluginXMLFile() throws RecognitionException {
         EObject current = null;
 
@@ -5134,14 +5794,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2175:28: ( ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2176:1: ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2465:28: ( ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2466:1: ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2176:1: ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2176:2: () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2466:1: ( () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2466:2: () otherlv_1= 'PluginXMLFile' otherlv_2= '{' (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )? otherlv_10= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2176:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2177:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2466:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2467:5: 
             {
 
                     current = forceCreateModelElement(
@@ -5151,47 +5811,47 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,50,FollowSets000.FOLLOW_50_in_rulePluginXMLFile4804); 
+            otherlv_1=(Token)match(input,54,FollowSets000.FOLLOW_54_in_rulePluginXMLFile5349); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getPluginXMLFileAccess().getPluginXMLFileKeyword_1());
                 
-            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePluginXMLFile4816); 
+            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePluginXMLFile5361); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getPluginXMLFileAccess().getLeftCurlyBracketKeyword_2());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2190:1: (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )?
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2480:1: (otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}' )?
+            int alt40=2;
+            int LA40_0 = input.LA(1);
 
-            if ( (LA36_0==51) ) {
-                alt36=1;
+            if ( (LA40_0==55) ) {
+                alt40=1;
             }
-            switch (alt36) {
+            switch (alt40) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2190:3: otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2480:3: otherlv_3= 'extensions' otherlv_4= '=' otherlv_5= '{' ( (lv_extensions_6_0= ruleExtension ) ) (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )* otherlv_9= '}'
                     {
-                    otherlv_3=(Token)match(input,51,FollowSets000.FOLLOW_51_in_rulePluginXMLFile4829); 
+                    otherlv_3=(Token)match(input,55,FollowSets000.FOLLOW_55_in_rulePluginXMLFile5374); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getPluginXMLFileAccess().getExtensionsKeyword_3_0());
                         
-                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_rulePluginXMLFile4841); 
+                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_rulePluginXMLFile5386); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getPluginXMLFileAccess().getEqualsSignKeyword_3_1());
                         
-                    otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePluginXMLFile4853); 
+                    otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_rulePluginXMLFile5398); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getPluginXMLFileAccess().getLeftCurlyBracketKeyword_3_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2202:1: ( (lv_extensions_6_0= ruleExtension ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2203:1: (lv_extensions_6_0= ruleExtension )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2492:1: ( (lv_extensions_6_0= ruleExtension ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2493:1: (lv_extensions_6_0= ruleExtension )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2203:1: (lv_extensions_6_0= ruleExtension )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2204:3: lv_extensions_6_0= ruleExtension
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2493:1: (lv_extensions_6_0= ruleExtension )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2494:3: lv_extensions_6_0= ruleExtension
                     {
                      
                     	        newCompositeNode(grammarAccess.getPluginXMLFileAccess().getExtensionsExtensionParserRuleCall_3_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleExtension_in_rulePluginXMLFile4874);
+                    pushFollow(FollowSets000.FOLLOW_ruleExtension_in_rulePluginXMLFile5419);
                     lv_extensions_6_0=ruleExtension();
 
                     state._fsp--;
@@ -5213,35 +5873,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2220:2: (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )*
-                    loop35:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2510:2: (otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) ) )*
+                    loop39:
                     do {
-                        int alt35=2;
-                        int LA35_0 = input.LA(1);
+                        int alt39=2;
+                        int LA39_0 = input.LA(1);
 
-                        if ( (LA35_0==18) ) {
-                            alt35=1;
+                        if ( (LA39_0==18) ) {
+                            alt39=1;
                         }
 
 
-                        switch (alt35) {
+                        switch (alt39) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2220:4: otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2510:4: otherlv_7= ',' ( (lv_extensions_8_0= ruleExtension ) )
                     	    {
-                    	    otherlv_7=(Token)match(input,18,FollowSets000.FOLLOW_18_in_rulePluginXMLFile4887); 
+                    	    otherlv_7=(Token)match(input,18,FollowSets000.FOLLOW_18_in_rulePluginXMLFile5432); 
 
                     	        	newLeafNode(otherlv_7, grammarAccess.getPluginXMLFileAccess().getCommaKeyword_3_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2224:1: ( (lv_extensions_8_0= ruleExtension ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2225:1: (lv_extensions_8_0= ruleExtension )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2514:1: ( (lv_extensions_8_0= ruleExtension ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2515:1: (lv_extensions_8_0= ruleExtension )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2225:1: (lv_extensions_8_0= ruleExtension )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2226:3: lv_extensions_8_0= ruleExtension
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2515:1: (lv_extensions_8_0= ruleExtension )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2516:3: lv_extensions_8_0= ruleExtension
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getPluginXMLFileAccess().getExtensionsExtensionParserRuleCall_3_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleExtension_in_rulePluginXMLFile4908);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleExtension_in_rulePluginXMLFile5453);
                     	    lv_extensions_8_0=ruleExtension();
 
                     	    state._fsp--;
@@ -5268,11 +5928,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop35;
+                    	    break loop39;
                         }
                     } while (true);
 
-                    otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_rulePluginXMLFile4922); 
+                    otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_rulePluginXMLFile5467); 
 
                         	newLeafNode(otherlv_9, grammarAccess.getPluginXMLFileAccess().getRightCurlyBracketKeyword_3_5());
                         
@@ -5282,7 +5942,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,19,FollowSets000.FOLLOW_19_in_rulePluginXMLFile4936); 
+            otherlv_10=(Token)match(input,19,FollowSets000.FOLLOW_19_in_rulePluginXMLFile5481); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getPluginXMLFileAccess().getRightCurlyBracketKeyword_4());
                 
@@ -5307,7 +5967,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBuildProperties"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2258:1: entryRuleBuildProperties returns [EObject current=null] : iv_ruleBuildProperties= ruleBuildProperties EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2548:1: entryRuleBuildProperties returns [EObject current=null] : iv_ruleBuildProperties= ruleBuildProperties EOF ;
     public final EObject entryRuleBuildProperties() throws RecognitionException {
         EObject current = null;
 
@@ -5315,17 +5975,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2259:2: (iv_ruleBuildProperties= ruleBuildProperties EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2260:2: iv_ruleBuildProperties= ruleBuildProperties EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2549:2: (iv_ruleBuildProperties= ruleBuildProperties EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2550:2: iv_ruleBuildProperties= ruleBuildProperties EOF
             {
              newCompositeNode(grammarAccess.getBuildPropertiesRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleBuildProperties_in_entryRuleBuildProperties4972);
+            pushFollow(FollowSets000.FOLLOW_ruleBuildProperties_in_entryRuleBuildProperties5517);
             iv_ruleBuildProperties=ruleBuildProperties();
 
             state._fsp--;
 
              current =iv_ruleBuildProperties; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleBuildProperties4982); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleBuildProperties5527); 
 
             }
 
@@ -5343,7 +6003,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBuildProperties"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2267:1: ruleBuildProperties returns [EObject current=null] : ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2557:1: ruleBuildProperties returns [EObject current=null] : ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) ;
     public final EObject ruleBuildProperties() throws RecognitionException {
         EObject current = null;
 
@@ -5361,14 +6021,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2270:28: ( ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2271:1: ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2560:28: ( ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2561:1: ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2271:1: ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2271:2: () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2561:1: ( () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2561:2: () otherlv_1= 'BuildProperties' otherlv_2= '{' (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )? otherlv_10= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2271:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2272:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2561:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2562:5: 
             {
 
                     current = forceCreateModelElement(
@@ -5378,49 +6038,49 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,52,FollowSets000.FOLLOW_52_in_ruleBuildProperties5028); 
+            otherlv_1=(Token)match(input,56,FollowSets000.FOLLOW_56_in_ruleBuildProperties5573); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getBuildPropertiesAccess().getBuildPropertiesKeyword_1());
                 
-            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleBuildProperties5040); 
+            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleBuildProperties5585); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getBuildPropertiesAccess().getLeftCurlyBracketKeyword_2());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2285:1: (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )?
-            int alt38=2;
-            int LA38_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2575:1: (otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}' )?
+            int alt42=2;
+            int LA42_0 = input.LA(1);
 
-            if ( (LA38_0==53) ) {
-                alt38=1;
+            if ( (LA42_0==57) ) {
+                alt42=1;
             }
-            switch (alt38) {
+            switch (alt42) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2285:3: otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2575:3: otherlv_3= 'binIncludes' otherlv_4= '=' otherlv_5= '{' ( (otherlv_6= RULE_STRING ) ) (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )* otherlv_9= '}'
                     {
-                    otherlv_3=(Token)match(input,53,FollowSets000.FOLLOW_53_in_ruleBuildProperties5053); 
+                    otherlv_3=(Token)match(input,57,FollowSets000.FOLLOW_57_in_ruleBuildProperties5598); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getBuildPropertiesAccess().getBinIncludesKeyword_3_0());
                         
-                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleBuildProperties5065); 
+                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleBuildProperties5610); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getBuildPropertiesAccess().getEqualsSignKeyword_3_1());
                         
-                    otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleBuildProperties5077); 
+                    otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleBuildProperties5622); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getBuildPropertiesAccess().getLeftCurlyBracketKeyword_3_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2297:1: ( (otherlv_6= RULE_STRING ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2298:1: (otherlv_6= RULE_STRING )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2587:1: ( (otherlv_6= RULE_STRING ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2588:1: (otherlv_6= RULE_STRING )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2298:1: (otherlv_6= RULE_STRING )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2299:3: otherlv_6= RULE_STRING
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2588:1: (otherlv_6= RULE_STRING )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2589:3: otherlv_6= RULE_STRING
                     {
 
                     			if (current==null) {
                     	            current = createModelElement(grammarAccess.getBuildPropertiesRule());
                     	        }
                             
-                    otherlv_6=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleBuildProperties5097); 
+                    otherlv_6=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleBuildProperties5642); 
 
                     		newLeafNode(otherlv_6, grammarAccess.getBuildPropertiesAccess().getBinIncludesResourceCrossReference_3_3_0()); 
                     	
@@ -5430,37 +6090,37 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2310:2: (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )*
-                    loop37:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2600:2: (otherlv_7= ',' ( (otherlv_8= RULE_STRING ) ) )*
+                    loop41:
                     do {
-                        int alt37=2;
-                        int LA37_0 = input.LA(1);
+                        int alt41=2;
+                        int LA41_0 = input.LA(1);
 
-                        if ( (LA37_0==18) ) {
-                            alt37=1;
+                        if ( (LA41_0==18) ) {
+                            alt41=1;
                         }
 
 
-                        switch (alt37) {
+                        switch (alt41) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2310:4: otherlv_7= ',' ( (otherlv_8= RULE_STRING ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2600:4: otherlv_7= ',' ( (otherlv_8= RULE_STRING ) )
                     	    {
-                    	    otherlv_7=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleBuildProperties5110); 
+                    	    otherlv_7=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleBuildProperties5655); 
 
                     	        	newLeafNode(otherlv_7, grammarAccess.getBuildPropertiesAccess().getCommaKeyword_3_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2314:1: ( (otherlv_8= RULE_STRING ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2315:1: (otherlv_8= RULE_STRING )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2604:1: ( (otherlv_8= RULE_STRING ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2605:1: (otherlv_8= RULE_STRING )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2315:1: (otherlv_8= RULE_STRING )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2316:3: otherlv_8= RULE_STRING
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2605:1: (otherlv_8= RULE_STRING )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2606:3: otherlv_8= RULE_STRING
                     	    {
 
                     	    			if (current==null) {
                     	    	            current = createModelElement(grammarAccess.getBuildPropertiesRule());
                     	    	        }
                     	            
-                    	    otherlv_8=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleBuildProperties5130); 
+                    	    otherlv_8=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleBuildProperties5675); 
 
                     	    		newLeafNode(otherlv_8, grammarAccess.getBuildPropertiesAccess().getBinIncludesResourceCrossReference_3_4_1_0()); 
                     	    	
@@ -5475,11 +6135,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop37;
+                    	    break loop41;
                         }
                     } while (true);
 
-                    otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBuildProperties5144); 
+                    otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBuildProperties5689); 
 
                         	newLeafNode(otherlv_9, grammarAccess.getBuildPropertiesAccess().getRightCurlyBracketKeyword_3_5());
                         
@@ -5489,7 +6149,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBuildProperties5158); 
+            otherlv_10=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleBuildProperties5703); 
 
                 	newLeafNode(otherlv_10, grammarAccess.getBuildPropertiesAccess().getRightCurlyBracketKeyword_4());
                 
@@ -5514,7 +6174,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProductFileFeaturebase"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2343:1: entryRuleProductFileFeaturebase returns [EObject current=null] : iv_ruleProductFileFeaturebase= ruleProductFileFeaturebase EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2633:1: entryRuleProductFileFeaturebase returns [EObject current=null] : iv_ruleProductFileFeaturebase= ruleProductFileFeaturebase EOF ;
     public final EObject entryRuleProductFileFeaturebase() throws RecognitionException {
         EObject current = null;
 
@@ -5522,17 +6182,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2344:2: (iv_ruleProductFileFeaturebase= ruleProductFileFeaturebase EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2345:2: iv_ruleProductFileFeaturebase= ruleProductFileFeaturebase EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2634:2: (iv_ruleProductFileFeaturebase= ruleProductFileFeaturebase EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2635:2: iv_ruleProductFileFeaturebase= ruleProductFileFeaturebase EOF
             {
              newCompositeNode(grammarAccess.getProductFileFeaturebaseRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleProductFileFeaturebase_in_entryRuleProductFileFeaturebase5194);
+            pushFollow(FollowSets000.FOLLOW_ruleProductFileFeaturebase_in_entryRuleProductFileFeaturebase5739);
             iv_ruleProductFileFeaturebase=ruleProductFileFeaturebase();
 
             state._fsp--;
 
              current =iv_ruleProductFileFeaturebase; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleProductFileFeaturebase5204); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleProductFileFeaturebase5749); 
 
             }
 
@@ -5550,7 +6210,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProductFileFeaturebase"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2352:1: ruleProductFileFeaturebase returns [EObject current=null] : ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2642:1: ruleProductFileFeaturebase returns [EObject current=null] : ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' ) ;
     public final EObject ruleProductFileFeaturebase() throws RecognitionException {
         EObject current = null;
 
@@ -5597,14 +6257,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2355:28: ( ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2356:1: ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2645:28: ( ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2646:1: ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2356:1: ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2356:2: () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2646:1: ( () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2646:2: () ( (lv_includeLaunchers_1_0= 'launchable' ) )? otherlv_2= 'ProductFileFeaturebase' ( (lv_id_3_0= RULE_STRING ) ) otherlv_4= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )? (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )? otherlv_35= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2356:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2357:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2646:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2647:5: 
             {
 
                     current = forceCreateModelElement(
@@ -5614,21 +6274,21 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2362:2: ( (lv_includeLaunchers_1_0= 'launchable' ) )?
-            int alt39=2;
-            int LA39_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2652:2: ( (lv_includeLaunchers_1_0= 'launchable' ) )?
+            int alt43=2;
+            int LA43_0 = input.LA(1);
 
-            if ( (LA39_0==54) ) {
-                alt39=1;
+            if ( (LA43_0==58) ) {
+                alt43=1;
             }
-            switch (alt39) {
+            switch (alt43) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2363:1: (lv_includeLaunchers_1_0= 'launchable' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2653:1: (lv_includeLaunchers_1_0= 'launchable' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2363:1: (lv_includeLaunchers_1_0= 'launchable' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2364:3: lv_includeLaunchers_1_0= 'launchable'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2653:1: (lv_includeLaunchers_1_0= 'launchable' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2654:3: lv_includeLaunchers_1_0= 'launchable'
                     {
-                    lv_includeLaunchers_1_0=(Token)match(input,54,FollowSets000.FOLLOW_54_in_ruleProductFileFeaturebase5256); 
+                    lv_includeLaunchers_1_0=(Token)match(input,58,FollowSets000.FOLLOW_58_in_ruleProductFileFeaturebase5801); 
 
                             newLeafNode(lv_includeLaunchers_1_0, grammarAccess.getProductFileFeaturebaseAccess().getIncludeLaunchersLaunchableKeyword_1_0());
                         
@@ -5647,17 +6307,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,55,FollowSets000.FOLLOW_55_in_ruleProductFileFeaturebase5282); 
+            otherlv_2=(Token)match(input,59,FollowSets000.FOLLOW_59_in_ruleProductFileFeaturebase5827); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getProductFileFeaturebaseAccess().getProductFileFeaturebaseKeyword_2());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2381:1: ( (lv_id_3_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2382:1: (lv_id_3_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2671:1: ( (lv_id_3_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2672:1: (lv_id_3_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2382:1: (lv_id_3_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2383:3: lv_id_3_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2672:1: (lv_id_3_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2673:3: lv_id_3_0= RULE_STRING
             {
-            lv_id_3_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5299); 
+            lv_id_3_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5844); 
 
             			newLeafNode(lv_id_3_0, grammarAccess.getProductFileFeaturebaseAccess().getIdSTRINGTerminalRuleCall_3_0()); 
             		
@@ -5677,86 +6337,86 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleProductFileFeaturebase5316); 
+            otherlv_4=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleProductFileFeaturebase5861); 
 
                 	newLeafNode(otherlv_4, grammarAccess.getProductFileFeaturebaseAccess().getLeftCurlyBracketKeyword_4());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2403:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2405:1: ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2693:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2695:1: ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2405:1: ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2406:2: ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2695:1: ( ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2696:2: ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
             {
              
             	  getUnorderedGroupHelper().enter(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5());
             	
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2409:2: ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2410:3: ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2699:2: ( ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2700:3: ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+ {...}?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2410:3: ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+
-            int cnt40=0;
-            loop40:
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2700:3: ( ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) ) )+
+            int cnt44=0;
+            loop44:
             do {
-                int alt40=6;
-                int LA40_0 = input.LA(1);
+                int alt44=6;
+                int LA44_0 = input.LA(1);
 
-                if ( LA40_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 0) ) {
-                    alt40=1;
+                if ( LA44_0 ==60 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 0) ) {
+                    alt44=1;
                 }
-                else if ( LA40_0 ==57 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 1) ) {
-                    alt40=2;
+                else if ( LA44_0 ==61 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 1) ) {
+                    alt44=2;
                 }
-                else if ( LA40_0 ==58 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 2) ) {
-                    alt40=3;
+                else if ( LA44_0 ==62 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 2) ) {
+                    alt44=3;
                 }
-                else if ( LA40_0 ==59 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 3) ) {
-                    alt40=4;
+                else if ( LA44_0 ==63 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 3) ) {
+                    alt44=4;
                 }
-                else if ( LA40_0 ==60 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 4) ) {
-                    alt40=5;
+                else if ( LA44_0 ==64 && getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 4) ) {
+                    alt44=5;
                 }
 
 
-                switch (alt40) {
+                switch (alt44) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2412:4: ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2702:4: ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2412:4: ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2413:5: {...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2702:4: ({...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2703:5: {...}? => ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 0) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 0)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2413:119: ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2414:6: ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2703:119: ( ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2704:6: ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 0);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2417:6: ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2417:7: {...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2707:6: ({...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2707:7: {...}? => (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2417:16: (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2417:18: otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2707:16: (otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2707:18: otherlv_6= 'vmArgs' otherlv_7= '=' ( (lv_vmArgs_8_0= RULE_STRING ) )
             	    {
-            	    otherlv_6=(Token)match(input,56,FollowSets000.FOLLOW_56_in_ruleProductFileFeaturebase5374); 
+            	    otherlv_6=(Token)match(input,60,FollowSets000.FOLLOW_60_in_ruleProductFileFeaturebase5919); 
 
             	        	newLeafNode(otherlv_6, grammarAccess.getProductFileFeaturebaseAccess().getVmArgsKeyword_5_0_0());
             	        
-            	    otherlv_7=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5386); 
+            	    otherlv_7=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5931); 
 
             	        	newLeafNode(otherlv_7, grammarAccess.getProductFileFeaturebaseAccess().getEqualsSignKeyword_5_0_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2425:1: ( (lv_vmArgs_8_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2426:1: (lv_vmArgs_8_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2715:1: ( (lv_vmArgs_8_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2716:1: (lv_vmArgs_8_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2426:1: (lv_vmArgs_8_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2427:3: lv_vmArgs_8_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2716:1: (lv_vmArgs_8_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2717:3: lv_vmArgs_8_0= RULE_STRING
             	    {
-            	    lv_vmArgs_8_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5403); 
+            	    lv_vmArgs_8_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5948); 
 
             	    			newLeafNode(lv_vmArgs_8_0, grammarAccess.getProductFileFeaturebaseAccess().getVmArgsSTRINGTerminalRuleCall_5_0_2_0()); 
             	    		
@@ -5795,44 +6455,44 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2450:4: ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2740:4: ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2450:4: ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2451:5: {...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2740:4: ({...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2741:5: {...}? => ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 1) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 1)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2451:119: ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2452:6: ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2741:119: ( ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2742:6: ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 1);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2455:6: ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2455:7: {...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2745:6: ({...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2745:7: {...}? => (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2455:16: (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2455:18: otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2745:16: (otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2745:18: otherlv_9= 'programArgs' otherlv_10= '=' ( (lv_programArgs_11_0= RULE_STRING ) )
             	    {
-            	    otherlv_9=(Token)match(input,57,FollowSets000.FOLLOW_57_in_ruleProductFileFeaturebase5476); 
+            	    otherlv_9=(Token)match(input,61,FollowSets000.FOLLOW_61_in_ruleProductFileFeaturebase6021); 
 
             	        	newLeafNode(otherlv_9, grammarAccess.getProductFileFeaturebaseAccess().getProgramArgsKeyword_5_1_0());
             	        
-            	    otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5488); 
+            	    otherlv_10=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase6033); 
 
             	        	newLeafNode(otherlv_10, grammarAccess.getProductFileFeaturebaseAccess().getEqualsSignKeyword_5_1_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2463:1: ( (lv_programArgs_11_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2464:1: (lv_programArgs_11_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2753:1: ( (lv_programArgs_11_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2754:1: (lv_programArgs_11_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2464:1: (lv_programArgs_11_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2465:3: lv_programArgs_11_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2754:1: (lv_programArgs_11_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2755:3: lv_programArgs_11_0= RULE_STRING
             	    {
-            	    lv_programArgs_11_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5505); 
+            	    lv_programArgs_11_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase6050); 
 
             	    			newLeafNode(lv_programArgs_11_0, grammarAccess.getProductFileFeaturebaseAccess().getProgramArgsSTRINGTerminalRuleCall_5_1_2_0()); 
             	    		
@@ -5871,44 +6531,44 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2488:4: ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2778:4: ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2488:4: ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2489:5: {...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2778:4: ({...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2779:5: {...}? => ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 2) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 2)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2489:119: ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2490:6: ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2779:119: ( ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2780:6: ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 2);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2493:6: ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2493:7: {...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2783:6: ({...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2783:7: {...}? => (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2493:16: (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2493:18: otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2783:16: (otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2783:18: otherlv_12= 'productName' otherlv_13= '=' ( (lv_productName_14_0= RULE_STRING ) )
             	    {
-            	    otherlv_12=(Token)match(input,58,FollowSets000.FOLLOW_58_in_ruleProductFileFeaturebase5578); 
+            	    otherlv_12=(Token)match(input,62,FollowSets000.FOLLOW_62_in_ruleProductFileFeaturebase6123); 
 
             	        	newLeafNode(otherlv_12, grammarAccess.getProductFileFeaturebaseAccess().getProductNameKeyword_5_2_0());
             	        
-            	    otherlv_13=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5590); 
+            	    otherlv_13=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase6135); 
 
             	        	newLeafNode(otherlv_13, grammarAccess.getProductFileFeaturebaseAccess().getEqualsSignKeyword_5_2_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2501:1: ( (lv_productName_14_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2502:1: (lv_productName_14_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2791:1: ( (lv_productName_14_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2792:1: (lv_productName_14_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2502:1: (lv_productName_14_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2503:3: lv_productName_14_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2792:1: (lv_productName_14_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2793:3: lv_productName_14_0= RULE_STRING
             	    {
-            	    lv_productName_14_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5607); 
+            	    lv_productName_14_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase6152); 
 
             	    			newLeafNode(lv_productName_14_0, grammarAccess.getProductFileFeaturebaseAccess().getProductNameSTRINGTerminalRuleCall_5_2_2_0()); 
             	    		
@@ -5947,44 +6607,44 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2526:4: ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2816:4: ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2526:4: ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2527:5: {...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2816:4: ({...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2817:5: {...}? => ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 3) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 3)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2527:119: ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2528:6: ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2817:119: ( ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2818:6: ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 3);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2531:6: ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2531:7: {...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2821:6: ({...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2821:7: {...}? => (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2531:16: (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2531:18: otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2821:16: (otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2821:18: otherlv_15= 'application' otherlv_16= '=' ( (lv_application_17_0= RULE_STRING ) )
             	    {
-            	    otherlv_15=(Token)match(input,59,FollowSets000.FOLLOW_59_in_ruleProductFileFeaturebase5680); 
+            	    otherlv_15=(Token)match(input,63,FollowSets000.FOLLOW_63_in_ruleProductFileFeaturebase6225); 
 
             	        	newLeafNode(otherlv_15, grammarAccess.getProductFileFeaturebaseAccess().getApplicationKeyword_5_3_0());
             	        
-            	    otherlv_16=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5692); 
+            	    otherlv_16=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase6237); 
 
             	        	newLeafNode(otherlv_16, grammarAccess.getProductFileFeaturebaseAccess().getEqualsSignKeyword_5_3_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2539:1: ( (lv_application_17_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2540:1: (lv_application_17_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2829:1: ( (lv_application_17_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2830:1: (lv_application_17_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2540:1: (lv_application_17_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2541:3: lv_application_17_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2830:1: (lv_application_17_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2831:3: lv_application_17_0= RULE_STRING
             	    {
-            	    lv_application_17_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5709); 
+            	    lv_application_17_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase6254); 
 
             	    			newLeafNode(lv_application_17_0, grammarAccess.getProductFileFeaturebaseAccess().getApplicationSTRINGTerminalRuleCall_5_3_2_0()); 
             	    		
@@ -6023,47 +6683,47 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 5 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2564:4: ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2854:4: ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2564:4: ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2565:5: {...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2854:4: ({...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2855:5: {...}? => ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 4) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "getUnorderedGroupHelper().canSelect(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 4)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2565:119: ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2566:6: ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2855:119: ( ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2856:6: ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5(), 4);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2569:6: ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2569:7: {...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2859:6: ({...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2859:7: {...}? => (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleProductFileFeaturebase", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2569:16: (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2569:18: otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2859:16: (otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2859:18: otherlv_18= 'version' otherlv_19= '=' ( (lv_version_20_0= ruleVersion ) )
             	    {
-            	    otherlv_18=(Token)match(input,60,FollowSets000.FOLLOW_60_in_ruleProductFileFeaturebase5782); 
+            	    otherlv_18=(Token)match(input,64,FollowSets000.FOLLOW_64_in_ruleProductFileFeaturebase6327); 
 
             	        	newLeafNode(otherlv_18, grammarAccess.getProductFileFeaturebaseAccess().getVersionKeyword_5_4_0());
             	        
-            	    otherlv_19=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5794); 
+            	    otherlv_19=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase6339); 
 
             	        	newLeafNode(otherlv_19, grammarAccess.getProductFileFeaturebaseAccess().getEqualsSignKeyword_5_4_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2577:1: ( (lv_version_20_0= ruleVersion ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2578:1: (lv_version_20_0= ruleVersion )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2867:1: ( (lv_version_20_0= ruleVersion ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2868:1: (lv_version_20_0= ruleVersion )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2578:1: (lv_version_20_0= ruleVersion )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2579:3: lv_version_20_0= ruleVersion
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2868:1: (lv_version_20_0= ruleVersion )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2869:3: lv_version_20_0= ruleVersion
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getProductFileFeaturebaseAccess().getVersionVersionParserRuleCall_5_4_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleProductFileFeaturebase5815);
+            	    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleProductFileFeaturebase6360);
             	    lv_version_20_0=ruleVersion();
 
             	    state._fsp--;
@@ -6105,12 +6765,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt40 >= 1 ) break loop40;
+            	    if ( cnt44 >= 1 ) break loop44;
                         EarlyExitException eee =
-                            new EarlyExitException(40, input);
+                            new EarlyExitException(44, input);
                         throw eee;
                 }
-                cnt40++;
+                cnt44++;
             } while (true);
 
             if ( ! getUnorderedGroupHelper().canLeave(grammarAccess.getProductFileFeaturebaseAccess().getUnorderedGroup_5()) ) {
@@ -6128,39 +6788,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2610:2: (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )?
-            int alt42=2;
-            int LA42_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2900:2: (otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}' )?
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA42_0==61) ) {
-                alt42=1;
+            if ( (LA46_0==65) ) {
+                alt46=1;
             }
-            switch (alt42) {
+            switch (alt46) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2610:4: otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2900:4: otherlv_21= 'startconfigurations' otherlv_22= '=' otherlv_23= '{' ( (lv_startconfigurations_24_0= ruleProductStartConfig ) ) (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )* otherlv_27= '}'
                     {
-                    otherlv_21=(Token)match(input,61,FollowSets000.FOLLOW_61_in_ruleProductFileFeaturebase5875); 
+                    otherlv_21=(Token)match(input,65,FollowSets000.FOLLOW_65_in_ruleProductFileFeaturebase6420); 
 
                         	newLeafNode(otherlv_21, grammarAccess.getProductFileFeaturebaseAccess().getStartconfigurationsKeyword_6_0());
                         
-                    otherlv_22=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5887); 
+                    otherlv_22=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase6432); 
 
                         	newLeafNode(otherlv_22, grammarAccess.getProductFileFeaturebaseAccess().getEqualsSignKeyword_6_1());
                         
-                    otherlv_23=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleProductFileFeaturebase5899); 
+                    otherlv_23=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleProductFileFeaturebase6444); 
 
                         	newLeafNode(otherlv_23, grammarAccess.getProductFileFeaturebaseAccess().getLeftCurlyBracketKeyword_6_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2622:1: ( (lv_startconfigurations_24_0= ruleProductStartConfig ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2623:1: (lv_startconfigurations_24_0= ruleProductStartConfig )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2912:1: ( (lv_startconfigurations_24_0= ruleProductStartConfig ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2913:1: (lv_startconfigurations_24_0= ruleProductStartConfig )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2623:1: (lv_startconfigurations_24_0= ruleProductStartConfig )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2624:3: lv_startconfigurations_24_0= ruleProductStartConfig
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2913:1: (lv_startconfigurations_24_0= ruleProductStartConfig )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2914:3: lv_startconfigurations_24_0= ruleProductStartConfig
                     {
                      
                     	        newCompositeNode(grammarAccess.getProductFileFeaturebaseAccess().getStartconfigurationsProductStartConfigParserRuleCall_6_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase5920);
+                    pushFollow(FollowSets000.FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase6465);
                     lv_startconfigurations_24_0=ruleProductStartConfig();
 
                     state._fsp--;
@@ -6182,35 +6842,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2640:2: (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )*
-                    loop41:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2930:2: (otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) ) )*
+                    loop45:
                     do {
-                        int alt41=2;
-                        int LA41_0 = input.LA(1);
+                        int alt45=2;
+                        int LA45_0 = input.LA(1);
 
-                        if ( (LA41_0==18) ) {
-                            alt41=1;
+                        if ( (LA45_0==18) ) {
+                            alt45=1;
                         }
 
 
-                        switch (alt41) {
+                        switch (alt45) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2640:4: otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2930:4: otherlv_25= ',' ( (lv_startconfigurations_26_0= ruleProductStartConfig ) )
                     	    {
-                    	    otherlv_25=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleProductFileFeaturebase5933); 
+                    	    otherlv_25=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleProductFileFeaturebase6478); 
 
                     	        	newLeafNode(otherlv_25, grammarAccess.getProductFileFeaturebaseAccess().getCommaKeyword_6_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2644:1: ( (lv_startconfigurations_26_0= ruleProductStartConfig ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2645:1: (lv_startconfigurations_26_0= ruleProductStartConfig )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2934:1: ( (lv_startconfigurations_26_0= ruleProductStartConfig ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2935:1: (lv_startconfigurations_26_0= ruleProductStartConfig )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2645:1: (lv_startconfigurations_26_0= ruleProductStartConfig )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2646:3: lv_startconfigurations_26_0= ruleProductStartConfig
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2935:1: (lv_startconfigurations_26_0= ruleProductStartConfig )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2936:3: lv_startconfigurations_26_0= ruleProductStartConfig
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getProductFileFeaturebaseAccess().getStartconfigurationsProductStartConfigParserRuleCall_6_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase5954);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase6499);
                     	    lv_startconfigurations_26_0=ruleProductStartConfig();
 
                     	    state._fsp--;
@@ -6237,11 +6897,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop41;
+                    	    break loop45;
                         }
                     } while (true);
 
-                    otherlv_27=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleProductFileFeaturebase5968); 
+                    otherlv_27=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleProductFileFeaturebase6513); 
 
                         	newLeafNode(otherlv_27, grammarAccess.getProductFileFeaturebaseAccess().getRightCurlyBracketKeyword_6_5());
                         
@@ -6251,39 +6911,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2666:3: (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )?
-            int alt44=2;
-            int LA44_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2956:3: (otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}' )?
+            int alt48=2;
+            int LA48_0 = input.LA(1);
 
-            if ( (LA44_0==62) ) {
-                alt44=1;
+            if ( (LA48_0==66) ) {
+                alt48=1;
             }
-            switch (alt44) {
+            switch (alt48) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2666:5: otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2956:5: otherlv_28= 'features' otherlv_29= '=' otherlv_30= '{' ( (lv_features_31_0= ruleProductFeature ) ) (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )* otherlv_34= '}'
                     {
-                    otherlv_28=(Token)match(input,62,FollowSets000.FOLLOW_62_in_ruleProductFileFeaturebase5983); 
+                    otherlv_28=(Token)match(input,66,FollowSets000.FOLLOW_66_in_ruleProductFileFeaturebase6528); 
 
                         	newLeafNode(otherlv_28, grammarAccess.getProductFileFeaturebaseAccess().getFeaturesKeyword_7_0());
                         
-                    otherlv_29=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase5995); 
+                    otherlv_29=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleProductFileFeaturebase6540); 
 
                         	newLeafNode(otherlv_29, grammarAccess.getProductFileFeaturebaseAccess().getEqualsSignKeyword_7_1());
                         
-                    otherlv_30=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleProductFileFeaturebase6007); 
+                    otherlv_30=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleProductFileFeaturebase6552); 
 
                         	newLeafNode(otherlv_30, grammarAccess.getProductFileFeaturebaseAccess().getLeftCurlyBracketKeyword_7_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2678:1: ( (lv_features_31_0= ruleProductFeature ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2679:1: (lv_features_31_0= ruleProductFeature )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2968:1: ( (lv_features_31_0= ruleProductFeature ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2969:1: (lv_features_31_0= ruleProductFeature )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2679:1: (lv_features_31_0= ruleProductFeature )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2680:3: lv_features_31_0= ruleProductFeature
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2969:1: (lv_features_31_0= ruleProductFeature )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2970:3: lv_features_31_0= ruleProductFeature
                     {
                      
                     	        newCompositeNode(grammarAccess.getProductFileFeaturebaseAccess().getFeaturesProductFeatureParserRuleCall_7_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6028);
+                    pushFollow(FollowSets000.FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6573);
                     lv_features_31_0=ruleProductFeature();
 
                     state._fsp--;
@@ -6305,35 +6965,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2696:2: (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )*
-                    loop43:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2986:2: (otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) ) )*
+                    loop47:
                     do {
-                        int alt43=2;
-                        int LA43_0 = input.LA(1);
+                        int alt47=2;
+                        int LA47_0 = input.LA(1);
 
-                        if ( (LA43_0==18) ) {
-                            alt43=1;
+                        if ( (LA47_0==18) ) {
+                            alt47=1;
                         }
 
 
-                        switch (alt43) {
+                        switch (alt47) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2696:4: otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2986:4: otherlv_32= ',' ( (lv_features_33_0= ruleProductFeature ) )
                     	    {
-                    	    otherlv_32=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleProductFileFeaturebase6041); 
+                    	    otherlv_32=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleProductFileFeaturebase6586); 
 
                     	        	newLeafNode(otherlv_32, grammarAccess.getProductFileFeaturebaseAccess().getCommaKeyword_7_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2700:1: ( (lv_features_33_0= ruleProductFeature ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2701:1: (lv_features_33_0= ruleProductFeature )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2990:1: ( (lv_features_33_0= ruleProductFeature ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2991:1: (lv_features_33_0= ruleProductFeature )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2701:1: (lv_features_33_0= ruleProductFeature )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2702:3: lv_features_33_0= ruleProductFeature
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2991:1: (lv_features_33_0= ruleProductFeature )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2992:3: lv_features_33_0= ruleProductFeature
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getProductFileFeaturebaseAccess().getFeaturesProductFeatureParserRuleCall_7_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6062);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6607);
                     	    lv_features_33_0=ruleProductFeature();
 
                     	    state._fsp--;
@@ -6360,11 +7020,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop43;
+                    	    break loop47;
                         }
                     } while (true);
 
-                    otherlv_34=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleProductFileFeaturebase6076); 
+                    otherlv_34=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleProductFileFeaturebase6621); 
 
                         	newLeafNode(otherlv_34, grammarAccess.getProductFileFeaturebaseAccess().getRightCurlyBracketKeyword_7_5());
                         
@@ -6374,7 +7034,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_35=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleProductFileFeaturebase6090); 
+            otherlv_35=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleProductFileFeaturebase6635); 
 
                 	newLeafNode(otherlv_35, grammarAccess.getProductFileFeaturebaseAccess().getRightCurlyBracketKeyword_8());
                 
@@ -6399,7 +7059,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFeatureFile"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2734:1: entryRuleFeatureFile returns [EObject current=null] : iv_ruleFeatureFile= ruleFeatureFile EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3024:1: entryRuleFeatureFile returns [EObject current=null] : iv_ruleFeatureFile= ruleFeatureFile EOF ;
     public final EObject entryRuleFeatureFile() throws RecognitionException {
         EObject current = null;
 
@@ -6407,17 +7067,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2735:2: (iv_ruleFeatureFile= ruleFeatureFile EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2736:2: iv_ruleFeatureFile= ruleFeatureFile EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3025:2: (iv_ruleFeatureFile= ruleFeatureFile EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3026:2: iv_ruleFeatureFile= ruleFeatureFile EOF
             {
              newCompositeNode(grammarAccess.getFeatureFileRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleFeatureFile_in_entryRuleFeatureFile6126);
+            pushFollow(FollowSets000.FOLLOW_ruleFeatureFile_in_entryRuleFeatureFile6671);
             iv_ruleFeatureFile=ruleFeatureFile();
 
             state._fsp--;
 
              current =iv_ruleFeatureFile; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFeatureFile6136); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFeatureFile6681); 
 
             }
 
@@ -6435,7 +7095,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeatureFile"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2743:1: ruleFeatureFile returns [EObject current=null] : ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3033:1: ruleFeatureFile returns [EObject current=null] : ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' ) ;
     public final EObject ruleFeatureFile() throws RecognitionException {
         EObject current = null;
 
@@ -6502,14 +7162,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2746:28: ( ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2747:1: ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3036:28: ( ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3037:1: ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2747:1: ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2747:2: () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3037:1: ( () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3037:2: () otherlv_1= 'FeatureFile' ( (lv_featureid_2_0= RULE_STRING ) ) otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) ) (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )? (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )? (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )? otherlv_51= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2747:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2748:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3037:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3038:5: 
             {
 
                     current = forceCreateModelElement(
@@ -6519,17 +7179,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,63,FollowSets000.FOLLOW_63_in_ruleFeatureFile6182); 
+            otherlv_1=(Token)match(input,67,FollowSets000.FOLLOW_67_in_ruleFeatureFile6727); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getFeatureFileAccess().getFeatureFileKeyword_1());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2757:1: ( (lv_featureid_2_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2758:1: (lv_featureid_2_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3047:1: ( (lv_featureid_2_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3048:1: (lv_featureid_2_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2758:1: (lv_featureid_2_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2759:3: lv_featureid_2_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3048:1: (lv_featureid_2_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3049:3: lv_featureid_2_0= RULE_STRING
             {
-            lv_featureid_2_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6199); 
+            lv_featureid_2_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6744); 
 
             			newLeafNode(lv_featureid_2_0, grammarAccess.getFeatureFileAccess().getFeatureidSTRINGTerminalRuleCall_2_0()); 
             		
@@ -6549,92 +7209,92 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile6216); 
+            otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile6761); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getFeatureFileAccess().getLeftCurlyBracketKeyword_3());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2779:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2781:1: ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3069:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3071:1: ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2781:1: ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2782:2: ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?)
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3071:1: ( ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3072:2: ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?)
             {
              
             	  getUnorderedGroupHelper().enter(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4());
             	
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2785:2: ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?)
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2786:3: ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3075:2: ( ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?)
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3076:3: ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+ {...}?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2786:3: ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+
-            int cnt46=0;
-            loop46:
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3076:3: ( ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) ) | ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) ) )+
+            int cnt50=0;
+            loop50:
             do {
-                int alt46=8;
-                int LA46_0 = input.LA(1);
+                int alt50=8;
+                int LA50_0 = input.LA(1);
 
-                if ( LA46_0 ==60 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 0) ) {
-                    alt46=1;
+                if ( LA50_0 ==64 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 0) ) {
+                    alt50=1;
                 }
-                else if ( LA46_0 ==64 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 1) ) {
-                    alt46=2;
+                else if ( LA50_0 ==68 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 1) ) {
+                    alt50=2;
                 }
-                else if ( LA46_0 ==45 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 2) ) {
-                    alt46=3;
+                else if ( LA50_0 ==49 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 2) ) {
+                    alt50=3;
                 }
-                else if ( LA46_0 ==65 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 3) ) {
-                    alt46=4;
+                else if ( LA50_0 ==69 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 3) ) {
+                    alt50=4;
                 }
-                else if ( LA46_0 ==66 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 4) ) {
-                    alt46=5;
+                else if ( LA50_0 ==70 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 4) ) {
+                    alt50=5;
                 }
-                else if ( LA46_0 ==67 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 5) ) {
-                    alt46=6;
+                else if ( LA50_0 ==71 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 5) ) {
+                    alt50=6;
                 }
-                else if ( LA46_0 >=68 && LA46_0<=69 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 6) ) {
-                    alt46=7;
+                else if ( LA50_0 >=72 && LA50_0<=73 && getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 6) ) {
+                    alt50=7;
                 }
 
 
-                switch (alt46) {
+                switch (alt50) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2788:4: ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3078:4: ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2788:4: ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2789:5: {...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3078:4: ({...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3079:5: {...}? => ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 0) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 0)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2789:108: ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2790:6: ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3079:108: ( ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3080:6: ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 0);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2793:6: ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2793:7: {...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3083:6: ({...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3083:7: {...}? => (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2793:16: (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2793:18: otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3083:16: (otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3083:18: otherlv_5= 'version' otherlv_6= '=' ( (lv_version_7_0= RULE_STRING ) )
             	    {
-            	    otherlv_5=(Token)match(input,60,FollowSets000.FOLLOW_60_in_ruleFeatureFile6274); 
+            	    otherlv_5=(Token)match(input,64,FollowSets000.FOLLOW_64_in_ruleFeatureFile6819); 
 
             	        	newLeafNode(otherlv_5, grammarAccess.getFeatureFileAccess().getVersionKeyword_4_0_0());
             	        
-            	    otherlv_6=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6286); 
+            	    otherlv_6=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6831); 
 
             	        	newLeafNode(otherlv_6, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_0_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2801:1: ( (lv_version_7_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2802:1: (lv_version_7_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3091:1: ( (lv_version_7_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3092:1: (lv_version_7_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2802:1: (lv_version_7_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2803:3: lv_version_7_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3092:1: (lv_version_7_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3093:3: lv_version_7_0= RULE_STRING
             	    {
-            	    lv_version_7_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6303); 
+            	    lv_version_7_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6848); 
 
             	    			newLeafNode(lv_version_7_0, grammarAccess.getFeatureFileAccess().getVersionSTRINGTerminalRuleCall_4_0_2_0()); 
             	    		
@@ -6673,44 +7333,44 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2826:4: ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3116:4: ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2826:4: ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2827:5: {...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3116:4: ({...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3117:5: {...}? => ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 1) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 1)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2827:108: ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2828:6: ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3117:108: ( ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3118:6: ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 1);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2831:6: ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2831:7: {...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3121:6: ({...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3121:7: {...}? => (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2831:16: (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2831:18: otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3121:16: (otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3121:18: otherlv_8= 'featurename' otherlv_9= '=' ( (lv_featurename_10_0= RULE_STRING ) )
             	    {
-            	    otherlv_8=(Token)match(input,64,FollowSets000.FOLLOW_64_in_ruleFeatureFile6376); 
+            	    otherlv_8=(Token)match(input,68,FollowSets000.FOLLOW_68_in_ruleFeatureFile6921); 
 
             	        	newLeafNode(otherlv_8, grammarAccess.getFeatureFileAccess().getFeaturenameKeyword_4_1_0());
             	        
-            	    otherlv_9=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6388); 
+            	    otherlv_9=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6933); 
 
             	        	newLeafNode(otherlv_9, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_1_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2839:1: ( (lv_featurename_10_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2840:1: (lv_featurename_10_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3129:1: ( (lv_featurename_10_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3130:1: (lv_featurename_10_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2840:1: (lv_featurename_10_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2841:3: lv_featurename_10_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3130:1: (lv_featurename_10_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3131:3: lv_featurename_10_0= RULE_STRING
             	    {
-            	    lv_featurename_10_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6405); 
+            	    lv_featurename_10_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6950); 
 
             	    			newLeafNode(lv_featurename_10_0, grammarAccess.getFeatureFileAccess().getFeaturenameSTRINGTerminalRuleCall_4_1_2_0()); 
             	    		
@@ -6749,44 +7409,44 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2864:4: ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3154:4: ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2864:4: ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2865:5: {...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3154:4: ({...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3155:5: {...}? => ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 2) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 2)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2865:108: ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2866:6: ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3155:108: ( ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3156:6: ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 2);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2869:6: ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2869:7: {...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3159:6: ({...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3159:7: {...}? => (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2869:16: (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2869:18: otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3159:16: (otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3159:18: otherlv_11= 'vendor' otherlv_12= '=' ( (lv_vendor_13_0= RULE_STRING ) )
             	    {
-            	    otherlv_11=(Token)match(input,45,FollowSets000.FOLLOW_45_in_ruleFeatureFile6478); 
+            	    otherlv_11=(Token)match(input,49,FollowSets000.FOLLOW_49_in_ruleFeatureFile7023); 
 
             	        	newLeafNode(otherlv_11, grammarAccess.getFeatureFileAccess().getVendorKeyword_4_2_0());
             	        
-            	    otherlv_12=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6490); 
+            	    otherlv_12=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7035); 
 
             	        	newLeafNode(otherlv_12, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_2_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2877:1: ( (lv_vendor_13_0= RULE_STRING ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2878:1: (lv_vendor_13_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3167:1: ( (lv_vendor_13_0= RULE_STRING ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3168:1: (lv_vendor_13_0= RULE_STRING )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2878:1: (lv_vendor_13_0= RULE_STRING )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2879:3: lv_vendor_13_0= RULE_STRING
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3168:1: (lv_vendor_13_0= RULE_STRING )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3169:3: lv_vendor_13_0= RULE_STRING
             	    {
-            	    lv_vendor_13_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6507); 
+            	    lv_vendor_13_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile7052); 
 
             	    			newLeafNode(lv_vendor_13_0, grammarAccess.getFeatureFileAccess().getVendorSTRINGTerminalRuleCall_4_2_2_0()); 
             	    		
@@ -6825,47 +7485,47 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2902:4: ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3192:4: ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2902:4: ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2903:5: {...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3192:4: ({...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3193:5: {...}? => ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 3) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 3)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2903:108: ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2904:6: ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3193:108: ( ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3194:6: ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 3);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2907:6: ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2907:7: {...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3197:6: ({...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3197:7: {...}? => (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2907:16: (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2907:18: otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3197:16: (otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3197:18: otherlv_14= 'description' otherlv_15= '=' ( (lv_description_16_0= ruleLinkedString ) )
             	    {
-            	    otherlv_14=(Token)match(input,65,FollowSets000.FOLLOW_65_in_ruleFeatureFile6580); 
+            	    otherlv_14=(Token)match(input,69,FollowSets000.FOLLOW_69_in_ruleFeatureFile7125); 
 
             	        	newLeafNode(otherlv_14, grammarAccess.getFeatureFileAccess().getDescriptionKeyword_4_3_0());
             	        
-            	    otherlv_15=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6592); 
+            	    otherlv_15=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7137); 
 
             	        	newLeafNode(otherlv_15, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_3_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2915:1: ( (lv_description_16_0= ruleLinkedString ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2916:1: (lv_description_16_0= ruleLinkedString )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3205:1: ( (lv_description_16_0= ruleLinkedString ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3206:1: (lv_description_16_0= ruleLinkedString )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2916:1: (lv_description_16_0= ruleLinkedString )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2917:3: lv_description_16_0= ruleLinkedString
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3206:1: (lv_description_16_0= ruleLinkedString )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3207:3: lv_description_16_0= ruleLinkedString
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getFeatureFileAccess().getDescriptionLinkedStringParserRuleCall_4_3_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_ruleFeatureFile6613);
+            	    pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_ruleFeatureFile7158);
             	    lv_description_16_0=ruleLinkedString();
 
             	    state._fsp--;
@@ -6906,47 +7566,47 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 5 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2940:4: ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3230:4: ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2940:4: ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2941:5: {...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3230:4: ({...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3231:5: {...}? => ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 4) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 4)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2941:108: ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2942:6: ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3231:108: ( ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3232:6: ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 4);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2945:6: ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2945:7: {...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3235:6: ({...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3235:7: {...}? => (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2945:16: (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2945:18: otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3235:16: (otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3235:18: otherlv_17= 'copyright' otherlv_18= '=' ( (lv_copyright_19_0= ruleLinkedString ) )
             	    {
-            	    otherlv_17=(Token)match(input,66,FollowSets000.FOLLOW_66_in_ruleFeatureFile6681); 
+            	    otherlv_17=(Token)match(input,70,FollowSets000.FOLLOW_70_in_ruleFeatureFile7226); 
 
             	        	newLeafNode(otherlv_17, grammarAccess.getFeatureFileAccess().getCopyrightKeyword_4_4_0());
             	        
-            	    otherlv_18=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6693); 
+            	    otherlv_18=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7238); 
 
             	        	newLeafNode(otherlv_18, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_4_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2953:1: ( (lv_copyright_19_0= ruleLinkedString ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2954:1: (lv_copyright_19_0= ruleLinkedString )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3243:1: ( (lv_copyright_19_0= ruleLinkedString ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3244:1: (lv_copyright_19_0= ruleLinkedString )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2954:1: (lv_copyright_19_0= ruleLinkedString )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2955:3: lv_copyright_19_0= ruleLinkedString
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3244:1: (lv_copyright_19_0= ruleLinkedString )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3245:3: lv_copyright_19_0= ruleLinkedString
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getFeatureFileAccess().getCopyrightLinkedStringParserRuleCall_4_4_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_ruleFeatureFile6714);
+            	    pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_ruleFeatureFile7259);
             	    lv_copyright_19_0=ruleLinkedString();
 
             	    state._fsp--;
@@ -6987,47 +7647,47 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 6 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2978:4: ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3268:4: ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2978:4: ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2979:5: {...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3268:4: ({...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3269:5: {...}? => ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 5) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 5)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2979:108: ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2980:6: ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3269:108: ( ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3270:6: ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 5);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2983:6: ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2983:7: {...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3273:6: ({...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3273:7: {...}? => (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2983:16: (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2983:18: otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3273:16: (otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3273:18: otherlv_20= 'license' otherlv_21= '=' ( (lv_license_22_0= ruleLinkedString ) )
             	    {
-            	    otherlv_20=(Token)match(input,67,FollowSets000.FOLLOW_67_in_ruleFeatureFile6782); 
+            	    otherlv_20=(Token)match(input,71,FollowSets000.FOLLOW_71_in_ruleFeatureFile7327); 
 
             	        	newLeafNode(otherlv_20, grammarAccess.getFeatureFileAccess().getLicenseKeyword_4_5_0());
             	        
-            	    otherlv_21=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6794); 
+            	    otherlv_21=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7339); 
 
             	        	newLeafNode(otherlv_21, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_5_1());
             	        
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2991:1: ( (lv_license_22_0= ruleLinkedString ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2992:1: (lv_license_22_0= ruleLinkedString )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3281:1: ( (lv_license_22_0= ruleLinkedString ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3282:1: (lv_license_22_0= ruleLinkedString )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2992:1: (lv_license_22_0= ruleLinkedString )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:2993:3: lv_license_22_0= ruleLinkedString
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3282:1: (lv_license_22_0= ruleLinkedString )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3283:3: lv_license_22_0= ruleLinkedString
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getFeatureFileAccess().getLicenseLinkedStringParserRuleCall_4_5_2_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_ruleFeatureFile6815);
+            	    pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_ruleFeatureFile7360);
             	    lv_license_22_0=ruleLinkedString();
 
             	    state._fsp--;
@@ -7068,105 +7728,105 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 7 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3016:4: ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3306:4: ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3016:4: ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3017:5: {...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3306:4: ({...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3307:5: {...}? => ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 6) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 6)");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3017:108: ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3018:6: ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3307:108: ( ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3308:6: ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) )
             	    {
             	     
             	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4(), 6);
             	    	 				
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3021:6: ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3021:7: {...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3311:6: ({...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3311:7: {...}? => ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) )
             	    {
             	    if ( !((true)) ) {
             	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    }
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3021:16: ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3023:1: ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3311:16: ( ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3313:1: ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3023:1: ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3024:2: ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3313:1: ( ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3314:2: ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
             	    {
             	     
             	    	  getUnorderedGroupHelper().enter(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6());
             	    	
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3027:2: ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3028:3: ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3317:2: ( ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?)
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3318:3: ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+ {...}?
             	    {
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3028:3: ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+
-            	    int cnt45=0;
-            	    loop45:
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3318:3: ( ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) ) )+
+            	    int cnt49=0;
+            	    loop49:
             	    do {
-            	        int alt45=3;
-            	        int LA45_0 = input.LA(1);
+            	        int alt49=3;
+            	        int LA49_0 = input.LA(1);
 
-            	        if ( (LA45_0==68) ) {
-            	            int LA45_2 = input.LA(2);
+            	        if ( (LA49_0==72) ) {
+            	            int LA49_2 = input.LA(2);
 
             	            if ( getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 0) ) {
-            	                alt45=1;
+            	                alt49=1;
             	            }
 
 
             	        }
-            	        else if ( (LA45_0==69) ) {
-            	            int LA45_3 = input.LA(2);
+            	        else if ( (LA49_0==73) ) {
+            	            int LA49_3 = input.LA(2);
 
             	            if ( getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 1) ) {
-            	                alt45=2;
+            	                alt49=2;
             	            }
 
 
             	        }
 
 
-            	        switch (alt45) {
+            	        switch (alt49) {
             	    	case 1 :
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3030:4: ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3320:4: ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) )
             	    	    {
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3030:4: ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3031:5: {...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3320:4: ({...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3321:5: {...}? => ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) )
             	    	    {
             	    	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 0) ) {
             	    	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 0)");
             	    	    }
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3031:110: ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3032:6: ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3321:110: ( ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3322:6: ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) )
             	    	    {
             	    	     
             	    	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 0);
             	    	    	 				
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3035:6: ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3035:7: {...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3325:6: ({...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3325:7: {...}? => (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) )
             	    	    {
             	    	    if ( !((true)) ) {
             	    	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    	    }
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3035:16: (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3035:18: otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3325:16: (otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3325:18: otherlv_24= 'license-feature' otherlv_25= '=' ( (lv_license_feature_26_0= RULE_STRING ) )
             	    	    {
-            	    	    otherlv_24=(Token)match(input,68,FollowSets000.FOLLOW_68_in_ruleFeatureFile6928); 
+            	    	    otherlv_24=(Token)match(input,72,FollowSets000.FOLLOW_72_in_ruleFeatureFile7473); 
 
             	    	        	newLeafNode(otherlv_24, grammarAccess.getFeatureFileAccess().getLicenseFeatureKeyword_4_6_0_0());
             	    	        
-            	    	    otherlv_25=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile6940); 
+            	    	    otherlv_25=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7485); 
 
             	    	        	newLeafNode(otherlv_25, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_6_0_1());
             	    	        
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3043:1: ( (lv_license_feature_26_0= RULE_STRING ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3044:1: (lv_license_feature_26_0= RULE_STRING )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3333:1: ( (lv_license_feature_26_0= RULE_STRING ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3334:1: (lv_license_feature_26_0= RULE_STRING )
             	    	    {
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3044:1: (lv_license_feature_26_0= RULE_STRING )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3045:3: lv_license_feature_26_0= RULE_STRING
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3334:1: (lv_license_feature_26_0= RULE_STRING )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3335:3: lv_license_feature_26_0= RULE_STRING
             	    	    {
-            	    	    lv_license_feature_26_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile6957); 
+            	    	    lv_license_feature_26_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeatureFile7502); 
 
             	    	    			newLeafNode(lv_license_feature_26_0, grammarAccess.getFeatureFileAccess().getLicense_featureSTRINGTerminalRuleCall_4_6_0_2_0()); 
             	    	    		
@@ -7205,47 +7865,47 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    	    }
             	    	    break;
             	    	case 2 :
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3068:4: ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3358:4: ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) )
             	    	    {
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3068:4: ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3069:5: {...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3358:4: ({...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3359:5: {...}? => ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) )
             	    	    {
             	    	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 1) ) {
             	    	        throw new FailedPredicateException(input, "ruleFeatureFile", "getUnorderedGroupHelper().canSelect(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 1)");
             	    	    }
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3069:110: ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3070:6: ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3359:110: ( ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3360:6: ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) )
             	    	    {
             	    	     
             	    	    	 				  getUnorderedGroupHelper().select(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6(), 1);
             	    	    	 				
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3073:6: ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3073:7: {...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3363:6: ({...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3363:7: {...}? => (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) )
             	    	    {
             	    	    if ( !((true)) ) {
             	    	        throw new FailedPredicateException(input, "ruleFeatureFile", "true");
             	    	    }
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3073:16: (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3073:18: otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3363:16: (otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3363:18: otherlv_27= 'license-feature-version' otherlv_28= '=' ( (lv_license_feature_version_29_0= ruleVersion ) )
             	    	    {
-            	    	    otherlv_27=(Token)match(input,69,FollowSets000.FOLLOW_69_in_ruleFeatureFile7030); 
+            	    	    otherlv_27=(Token)match(input,73,FollowSets000.FOLLOW_73_in_ruleFeatureFile7575); 
 
             	    	        	newLeafNode(otherlv_27, grammarAccess.getFeatureFileAccess().getLicenseFeatureVersionKeyword_4_6_1_0());
             	    	        
-            	    	    otherlv_28=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7042); 
+            	    	    otherlv_28=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7587); 
 
             	    	        	newLeafNode(otherlv_28, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_4_6_1_1());
             	    	        
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3081:1: ( (lv_license_feature_version_29_0= ruleVersion ) )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3082:1: (lv_license_feature_version_29_0= ruleVersion )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3371:1: ( (lv_license_feature_version_29_0= ruleVersion ) )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3372:1: (lv_license_feature_version_29_0= ruleVersion )
             	    	    {
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3082:1: (lv_license_feature_version_29_0= ruleVersion )
-            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3083:3: lv_license_feature_version_29_0= ruleVersion
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3372:1: (lv_license_feature_version_29_0= ruleVersion )
+            	    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3373:3: lv_license_feature_version_29_0= ruleVersion
             	    	    {
             	    	     
             	    	    	        newCompositeNode(grammarAccess.getFeatureFileAccess().getLicense_feature_versionVersionParserRuleCall_4_6_1_2_0()); 
             	    	    	    
-            	    	    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleFeatureFile7063);
+            	    	    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleFeatureFile7608);
             	    	    lv_license_feature_version_29_0=ruleVersion();
 
             	    	    state._fsp--;
@@ -7287,12 +7947,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    	    break;
 
             	    	default :
-            	    	    if ( cnt45 >= 1 ) break loop45;
+            	    	    if ( cnt49 >= 1 ) break loop49;
             	                EarlyExitException eee =
-            	                    new EarlyExitException(45, input);
+            	                    new EarlyExitException(49, input);
             	                throw eee;
             	        }
-            	        cnt45++;
+            	        cnt49++;
             	    } while (true);
 
             	    if ( ! getUnorderedGroupHelper().canLeave(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4_6()) ) {
@@ -7327,12 +7987,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt46 >= 1 ) break loop46;
+            	    if ( cnt50 >= 1 ) break loop50;
                         EarlyExitException eee =
-                            new EarlyExitException(46, input);
+                            new EarlyExitException(50, input);
                         throw eee;
                 }
-                cnt46++;
+                cnt50++;
             } while (true);
 
             if ( ! getUnorderedGroupHelper().canLeave(grammarAccess.getFeatureFileAccess().getUnorderedGroup_4()) ) {
@@ -7350,39 +8010,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3129:2: (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )?
-            int alt48=2;
-            int LA48_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3419:2: (otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}' )?
+            int alt52=2;
+            int LA52_0 = input.LA(1);
 
-            if ( (LA48_0==70) ) {
-                alt48=1;
+            if ( (LA52_0==74) ) {
+                alt52=1;
             }
-            switch (alt48) {
+            switch (alt52) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3129:4: otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3419:4: otherlv_30= 'plugins' otherlv_31= '=' otherlv_32= '{' ( (lv_plugins_33_0= ruleFeaturePlugin ) ) (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )* otherlv_36= '}'
                     {
-                    otherlv_30=(Token)match(input,70,FollowSets000.FOLLOW_70_in_ruleFeatureFile7169); 
+                    otherlv_30=(Token)match(input,74,FollowSets000.FOLLOW_74_in_ruleFeatureFile7714); 
 
                         	newLeafNode(otherlv_30, grammarAccess.getFeatureFileAccess().getPluginsKeyword_5_0());
                         
-                    otherlv_31=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7181); 
+                    otherlv_31=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7726); 
 
                         	newLeafNode(otherlv_31, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_5_1());
                         
-                    otherlv_32=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile7193); 
+                    otherlv_32=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile7738); 
 
                         	newLeafNode(otherlv_32, grammarAccess.getFeatureFileAccess().getLeftCurlyBracketKeyword_5_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3141:1: ( (lv_plugins_33_0= ruleFeaturePlugin ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3142:1: (lv_plugins_33_0= ruleFeaturePlugin )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3431:1: ( (lv_plugins_33_0= ruleFeaturePlugin ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3432:1: (lv_plugins_33_0= ruleFeaturePlugin )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3142:1: (lv_plugins_33_0= ruleFeaturePlugin )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3143:3: lv_plugins_33_0= ruleFeaturePlugin
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3432:1: (lv_plugins_33_0= ruleFeaturePlugin )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3433:3: lv_plugins_33_0= ruleFeaturePlugin
                     {
                      
                     	        newCompositeNode(grammarAccess.getFeatureFileAccess().getPluginsFeaturePluginParserRuleCall_5_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7214);
+                    pushFollow(FollowSets000.FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7759);
                     lv_plugins_33_0=ruleFeaturePlugin();
 
                     state._fsp--;
@@ -7404,35 +8064,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3159:2: (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )*
-                    loop47:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3449:2: (otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) ) )*
+                    loop51:
                     do {
-                        int alt47=2;
-                        int LA47_0 = input.LA(1);
+                        int alt51=2;
+                        int LA51_0 = input.LA(1);
 
-                        if ( (LA47_0==18) ) {
-                            alt47=1;
+                        if ( (LA51_0==18) ) {
+                            alt51=1;
                         }
 
 
-                        switch (alt47) {
+                        switch (alt51) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3159:4: otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3449:4: otherlv_34= ',' ( (lv_plugins_35_0= ruleFeaturePlugin ) )
                     	    {
-                    	    otherlv_34=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureFile7227); 
+                    	    otherlv_34=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureFile7772); 
 
                     	        	newLeafNode(otherlv_34, grammarAccess.getFeatureFileAccess().getCommaKeyword_5_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3163:1: ( (lv_plugins_35_0= ruleFeaturePlugin ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3164:1: (lv_plugins_35_0= ruleFeaturePlugin )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3453:1: ( (lv_plugins_35_0= ruleFeaturePlugin ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3454:1: (lv_plugins_35_0= ruleFeaturePlugin )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3164:1: (lv_plugins_35_0= ruleFeaturePlugin )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3165:3: lv_plugins_35_0= ruleFeaturePlugin
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3454:1: (lv_plugins_35_0= ruleFeaturePlugin )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3455:3: lv_plugins_35_0= ruleFeaturePlugin
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getFeatureFileAccess().getPluginsFeaturePluginParserRuleCall_5_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7248);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7793);
                     	    lv_plugins_35_0=ruleFeaturePlugin();
 
                     	    state._fsp--;
@@ -7459,11 +8119,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop47;
+                    	    break loop51;
                         }
                     } while (true);
 
-                    otherlv_36=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile7262); 
+                    otherlv_36=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile7807); 
 
                         	newLeafNode(otherlv_36, grammarAccess.getFeatureFileAccess().getRightCurlyBracketKeyword_5_5());
                         
@@ -7473,39 +8133,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3185:3: (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )?
-            int alt50=2;
-            int LA50_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3475:3: (otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}' )?
+            int alt54=2;
+            int LA54_0 = input.LA(1);
 
-            if ( (LA50_0==71) ) {
-                alt50=1;
+            if ( (LA54_0==75) ) {
+                alt54=1;
             }
-            switch (alt50) {
+            switch (alt54) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3185:5: otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3475:5: otherlv_37= 'required' otherlv_38= '=' otherlv_39= '{' ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) ) (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )* otherlv_43= '}'
                     {
-                    otherlv_37=(Token)match(input,71,FollowSets000.FOLLOW_71_in_ruleFeatureFile7277); 
+                    otherlv_37=(Token)match(input,75,FollowSets000.FOLLOW_75_in_ruleFeatureFile7822); 
 
                         	newLeafNode(otherlv_37, grammarAccess.getFeatureFileAccess().getRequiredKeyword_6_0());
                         
-                    otherlv_38=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7289); 
+                    otherlv_38=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7834); 
 
                         	newLeafNode(otherlv_38, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_6_1());
                         
-                    otherlv_39=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile7301); 
+                    otherlv_39=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile7846); 
 
                         	newLeafNode(otherlv_39, grammarAccess.getFeatureFileAccess().getLeftCurlyBracketKeyword_6_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3197:1: ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3198:1: (lv_requiredfeatures_40_0= ruleRequiredFeature )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3487:1: ( (lv_requiredfeatures_40_0= ruleRequiredFeature ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3488:1: (lv_requiredfeatures_40_0= ruleRequiredFeature )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3198:1: (lv_requiredfeatures_40_0= ruleRequiredFeature )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3199:3: lv_requiredfeatures_40_0= ruleRequiredFeature
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3488:1: (lv_requiredfeatures_40_0= ruleRequiredFeature )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3489:3: lv_requiredfeatures_40_0= ruleRequiredFeature
                     {
                      
                     	        newCompositeNode(grammarAccess.getFeatureFileAccess().getRequiredfeaturesRequiredFeatureParserRuleCall_6_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7322);
+                    pushFollow(FollowSets000.FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7867);
                     lv_requiredfeatures_40_0=ruleRequiredFeature();
 
                     state._fsp--;
@@ -7527,35 +8187,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3215:2: (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )*
-                    loop49:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3505:2: (otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) ) )*
+                    loop53:
                     do {
-                        int alt49=2;
-                        int LA49_0 = input.LA(1);
+                        int alt53=2;
+                        int LA53_0 = input.LA(1);
 
-                        if ( (LA49_0==18) ) {
-                            alt49=1;
+                        if ( (LA53_0==18) ) {
+                            alt53=1;
                         }
 
 
-                        switch (alt49) {
+                        switch (alt53) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3215:4: otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3505:4: otherlv_41= ',' ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) )
                     	    {
-                    	    otherlv_41=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureFile7335); 
+                    	    otherlv_41=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureFile7880); 
 
                     	        	newLeafNode(otherlv_41, grammarAccess.getFeatureFileAccess().getCommaKeyword_6_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3219:1: ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3220:1: (lv_requiredfeatures_42_0= ruleRequiredFeature )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3509:1: ( (lv_requiredfeatures_42_0= ruleRequiredFeature ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3510:1: (lv_requiredfeatures_42_0= ruleRequiredFeature )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3220:1: (lv_requiredfeatures_42_0= ruleRequiredFeature )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3221:3: lv_requiredfeatures_42_0= ruleRequiredFeature
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3510:1: (lv_requiredfeatures_42_0= ruleRequiredFeature )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3511:3: lv_requiredfeatures_42_0= ruleRequiredFeature
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getFeatureFileAccess().getRequiredfeaturesRequiredFeatureParserRuleCall_6_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7356);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7901);
                     	    lv_requiredfeatures_42_0=ruleRequiredFeature();
 
                     	    state._fsp--;
@@ -7582,11 +8242,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop49;
+                    	    break loop53;
                         }
                     } while (true);
 
-                    otherlv_43=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile7370); 
+                    otherlv_43=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile7915); 
 
                         	newLeafNode(otherlv_43, grammarAccess.getFeatureFileAccess().getRightCurlyBracketKeyword_6_5());
                         
@@ -7596,39 +8256,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3241:3: (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )?
-            int alt52=2;
-            int LA52_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3531:3: (otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}' )?
+            int alt56=2;
+            int LA56_0 = input.LA(1);
 
-            if ( (LA52_0==72) ) {
-                alt52=1;
+            if ( (LA56_0==76) ) {
+                alt56=1;
             }
-            switch (alt52) {
+            switch (alt56) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3241:5: otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3531:5: otherlv_44= 'included' otherlv_45= '=' otherlv_46= '{' ( (lv_includedfeatures_47_0= ruleIncludedFeature ) ) (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )* otherlv_50= '}'
                     {
-                    otherlv_44=(Token)match(input,72,FollowSets000.FOLLOW_72_in_ruleFeatureFile7385); 
+                    otherlv_44=(Token)match(input,76,FollowSets000.FOLLOW_76_in_ruleFeatureFile7930); 
 
                         	newLeafNode(otherlv_44, grammarAccess.getFeatureFileAccess().getIncludedKeyword_7_0());
                         
-                    otherlv_45=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7397); 
+                    otherlv_45=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleFeatureFile7942); 
 
                         	newLeafNode(otherlv_45, grammarAccess.getFeatureFileAccess().getEqualsSignKeyword_7_1());
                         
-                    otherlv_46=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile7409); 
+                    otherlv_46=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleFeatureFile7954); 
 
                         	newLeafNode(otherlv_46, grammarAccess.getFeatureFileAccess().getLeftCurlyBracketKeyword_7_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3253:1: ( (lv_includedfeatures_47_0= ruleIncludedFeature ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3254:1: (lv_includedfeatures_47_0= ruleIncludedFeature )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3543:1: ( (lv_includedfeatures_47_0= ruleIncludedFeature ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3544:1: (lv_includedfeatures_47_0= ruleIncludedFeature )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3254:1: (lv_includedfeatures_47_0= ruleIncludedFeature )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3255:3: lv_includedfeatures_47_0= ruleIncludedFeature
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3544:1: (lv_includedfeatures_47_0= ruleIncludedFeature )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3545:3: lv_includedfeatures_47_0= ruleIncludedFeature
                     {
                      
                     	        newCompositeNode(grammarAccess.getFeatureFileAccess().getIncludedfeaturesIncludedFeatureParserRuleCall_7_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleIncludedFeature_in_ruleFeatureFile7430);
+                    pushFollow(FollowSets000.FOLLOW_ruleIncludedFeature_in_ruleFeatureFile7975);
                     lv_includedfeatures_47_0=ruleIncludedFeature();
 
                     state._fsp--;
@@ -7650,35 +8310,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3271:2: (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )*
-                    loop51:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3561:2: (otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) ) )*
+                    loop55:
                     do {
-                        int alt51=2;
-                        int LA51_0 = input.LA(1);
+                        int alt55=2;
+                        int LA55_0 = input.LA(1);
 
-                        if ( (LA51_0==18) ) {
-                            alt51=1;
+                        if ( (LA55_0==18) ) {
+                            alt55=1;
                         }
 
 
-                        switch (alt51) {
+                        switch (alt55) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3271:4: otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3561:4: otherlv_48= ',' ( (lv_includedfeatures_49_0= ruleIncludedFeature ) )
                     	    {
-                    	    otherlv_48=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureFile7443); 
+                    	    otherlv_48=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleFeatureFile7988); 
 
                     	        	newLeafNode(otherlv_48, grammarAccess.getFeatureFileAccess().getCommaKeyword_7_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3275:1: ( (lv_includedfeatures_49_0= ruleIncludedFeature ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3276:1: (lv_includedfeatures_49_0= ruleIncludedFeature )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3565:1: ( (lv_includedfeatures_49_0= ruleIncludedFeature ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3566:1: (lv_includedfeatures_49_0= ruleIncludedFeature )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3276:1: (lv_includedfeatures_49_0= ruleIncludedFeature )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3277:3: lv_includedfeatures_49_0= ruleIncludedFeature
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3566:1: (lv_includedfeatures_49_0= ruleIncludedFeature )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3567:3: lv_includedfeatures_49_0= ruleIncludedFeature
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getFeatureFileAccess().getIncludedfeaturesIncludedFeatureParserRuleCall_7_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleIncludedFeature_in_ruleFeatureFile7464);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleIncludedFeature_in_ruleFeatureFile8009);
                     	    lv_includedfeatures_49_0=ruleIncludedFeature();
 
                     	    state._fsp--;
@@ -7705,11 +8365,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop51;
+                    	    break loop55;
                         }
                     } while (true);
 
-                    otherlv_50=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile7478); 
+                    otherlv_50=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile8023); 
 
                         	newLeafNode(otherlv_50, grammarAccess.getFeatureFileAccess().getRightCurlyBracketKeyword_7_5());
                         
@@ -7719,7 +8379,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_51=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile7492); 
+            otherlv_51=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleFeatureFile8037); 
 
                 	newLeafNode(otherlv_51, grammarAccess.getFeatureFileAccess().getRightCurlyBracketKeyword_8());
                 
@@ -7744,7 +8404,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleImportedPackage"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3309:1: entryRuleImportedPackage returns [EObject current=null] : iv_ruleImportedPackage= ruleImportedPackage EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3599:1: entryRuleImportedPackage returns [EObject current=null] : iv_ruleImportedPackage= ruleImportedPackage EOF ;
     public final EObject entryRuleImportedPackage() throws RecognitionException {
         EObject current = null;
 
@@ -7752,17 +8412,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3310:2: (iv_ruleImportedPackage= ruleImportedPackage EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3311:2: iv_ruleImportedPackage= ruleImportedPackage EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3600:2: (iv_ruleImportedPackage= ruleImportedPackage EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3601:2: iv_ruleImportedPackage= ruleImportedPackage EOF
             {
              newCompositeNode(grammarAccess.getImportedPackageRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleImportedPackage_in_entryRuleImportedPackage7528);
+            pushFollow(FollowSets000.FOLLOW_ruleImportedPackage_in_entryRuleImportedPackage8073);
             iv_ruleImportedPackage=ruleImportedPackage();
 
             state._fsp--;
 
              current =iv_ruleImportedPackage; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleImportedPackage7538); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleImportedPackage8083); 
 
             }
 
@@ -7780,7 +8440,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImportedPackage"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3318:1: ruleImportedPackage returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3608:1: ruleImportedPackage returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? ) ;
     public final EObject ruleImportedPackage() throws RecognitionException {
         EObject current = null;
 
@@ -7798,14 +8458,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3321:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3322:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3611:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3612:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3322:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3322:2: () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3612:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3612:2: () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3322:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3323:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3612:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3613:5: 
             {
 
                     current = forceCreateModelElement(
@@ -7815,13 +8475,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3328:2: ( (lv_name_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3329:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3618:2: ( (lv_name_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3619:1: (lv_name_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3329:1: (lv_name_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3330:3: lv_name_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3619:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3620:3: lv_name_1_0= RULE_STRING
             {
-            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleImportedPackage7589); 
+            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleImportedPackage8134); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getImportedPackageAccess().getNameSTRINGTerminalRuleCall_1_0()); 
             		
@@ -7841,59 +8501,59 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3346:2: ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )?
-            int alt59=2;
-            int LA59_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3636:2: ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) ) )?
+            int alt63=2;
+            int LA63_0 = input.LA(1);
 
-            if ( (LA59_0==RULE_INT||(LA59_0>=73 && LA59_0<=74)) ) {
-                alt59=1;
+            if ( (LA63_0==RULE_INT||(LA63_0>=77 && LA63_0<=78)) ) {
+                alt63=1;
             }
-            else if ( (LA59_0==18) ) {
-                int LA59_2 = input.LA(2);
+            else if ( (LA63_0==18) ) {
+                int LA63_2 = input.LA(2);
 
-                if ( (LA59_2==EOF||LA59_2==RULE_INT||(LA59_2>=18 && LA59_2<=19)||(LA59_2>=75 && LA59_2<=76)) ) {
-                    alt59=1;
+                if ( (LA63_2==EOF||LA63_2==RULE_INT||(LA63_2>=18 && LA63_2<=19)||(LA63_2>=79 && LA63_2<=80)) ) {
+                    alt63=1;
                 }
             }
-            switch (alt59) {
+            switch (alt63) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3346:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3636:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3346:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' )
-                    int alt54=2;
-                    int LA54_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3636:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' )
+                    int alt58=2;
+                    int LA58_0 = input.LA(1);
 
-                    if ( (LA54_0==RULE_INT||LA54_0==18||LA54_0==73) ) {
-                        alt54=1;
+                    if ( (LA58_0==RULE_INT||LA58_0==18||LA58_0==77) ) {
+                        alt58=1;
                     }
-                    else if ( (LA54_0==74) ) {
-                        alt54=2;
+                    else if ( (LA58_0==78) ) {
+                        alt58=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 54, 0, input);
+                            new NoViableAltException("", 58, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt54) {
+                    switch (alt58) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3346:4: ( (lv_minExclusive_2_0= '(' ) )?
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3636:4: ( (lv_minExclusive_2_0= '(' ) )?
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3346:4: ( (lv_minExclusive_2_0= '(' ) )?
-                            int alt53=2;
-                            int LA53_0 = input.LA(1);
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3636:4: ( (lv_minExclusive_2_0= '(' ) )?
+                            int alt57=2;
+                            int LA57_0 = input.LA(1);
 
-                            if ( (LA53_0==73) ) {
-                                alt53=1;
+                            if ( (LA57_0==77) ) {
+                                alt57=1;
                             }
-                            switch (alt53) {
+                            switch (alt57) {
                                 case 1 :
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3347:1: (lv_minExclusive_2_0= '(' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3637:1: (lv_minExclusive_2_0= '(' )
                                     {
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3347:1: (lv_minExclusive_2_0= '(' )
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3348:3: lv_minExclusive_2_0= '('
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3637:1: (lv_minExclusive_2_0= '(' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3638:3: lv_minExclusive_2_0= '('
                                     {
-                                    lv_minExclusive_2_0=(Token)match(input,73,FollowSets000.FOLLOW_73_in_ruleImportedPackage7614); 
+                                    lv_minExclusive_2_0=(Token)match(input,77,FollowSets000.FOLLOW_77_in_ruleImportedPackage8159); 
 
                                             newLeafNode(lv_minExclusive_2_0, grammarAccess.getImportedPackageAccess().getMinExclusiveLeftParenthesisKeyword_2_0_0_0());
                                         
@@ -7916,9 +8576,9 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3362:7: otherlv_3= '['
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3652:7: otherlv_3= '['
                             {
-                            otherlv_3=(Token)match(input,74,FollowSets000.FOLLOW_74_in_ruleImportedPackage7646); 
+                            otherlv_3=(Token)match(input,78,FollowSets000.FOLLOW_78_in_ruleImportedPackage8191); 
 
                                 	newLeafNode(otherlv_3, grammarAccess.getImportedPackageAccess().getLeftSquareBracketKeyword_2_0_1());
                                 
@@ -7928,24 +8588,24 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3366:2: ( (lv_minVersion_4_0= ruleVersion ) )?
-                    int alt55=2;
-                    int LA55_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3656:2: ( (lv_minVersion_4_0= ruleVersion ) )?
+                    int alt59=2;
+                    int LA59_0 = input.LA(1);
 
-                    if ( (LA55_0==RULE_INT) ) {
-                        alt55=1;
+                    if ( (LA59_0==RULE_INT) ) {
+                        alt59=1;
                     }
-                    switch (alt55) {
+                    switch (alt59) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3367:1: (lv_minVersion_4_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3657:1: (lv_minVersion_4_0= ruleVersion )
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3367:1: (lv_minVersion_4_0= ruleVersion )
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3368:3: lv_minVersion_4_0= ruleVersion
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3657:1: (lv_minVersion_4_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3658:3: lv_minVersion_4_0= ruleVersion
                             {
                              
                             	        newCompositeNode(grammarAccess.getImportedPackageAccess().getMinVersionVersionParserRuleCall_2_1_0()); 
                             	    
-                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleImportedPackage7668);
+                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleImportedPackage8213);
                             lv_minVersion_4_0=ruleVersion();
 
                             state._fsp--;
@@ -7970,31 +8630,31 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleImportedPackage7681); 
+                    otherlv_5=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleImportedPackage8226); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getImportedPackageAccess().getCommaKeyword_2_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3388:1: ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3388:2: ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3678:1: ( ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3678:2: ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3388:2: ( (lv_maxVersion_6_0= ruleVersion ) )?
-                    int alt56=2;
-                    int LA56_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3678:2: ( (lv_maxVersion_6_0= ruleVersion ) )?
+                    int alt60=2;
+                    int LA60_0 = input.LA(1);
 
-                    if ( (LA56_0==RULE_INT) ) {
-                        alt56=1;
+                    if ( (LA60_0==RULE_INT) ) {
+                        alt60=1;
                     }
-                    switch (alt56) {
+                    switch (alt60) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3389:1: (lv_maxVersion_6_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3679:1: (lv_maxVersion_6_0= ruleVersion )
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3389:1: (lv_maxVersion_6_0= ruleVersion )
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3390:3: lv_maxVersion_6_0= ruleVersion
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3679:1: (lv_maxVersion_6_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3680:3: lv_maxVersion_6_0= ruleVersion
                             {
                              
                             	        newCompositeNode(grammarAccess.getImportedPackageAccess().getMaxVersionVersionParserRuleCall_2_3_0_0()); 
                             	    
-                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleImportedPackage7703);
+                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleImportedPackage8248);
                             lv_maxVersion_6_0=ruleVersion();
 
                             state._fsp--;
@@ -8019,41 +8679,41 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3406:3: ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
-                    int alt58=2;
-                    int LA58_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3696:3: ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
+                    int alt62=2;
+                    int LA62_0 = input.LA(1);
 
-                    if ( (LA58_0==EOF||(LA58_0>=18 && LA58_0<=19)||LA58_0==75) ) {
-                        alt58=1;
+                    if ( (LA62_0==EOF||(LA62_0>=18 && LA62_0<=19)||LA62_0==79) ) {
+                        alt62=1;
                     }
-                    else if ( (LA58_0==76) ) {
-                        alt58=2;
+                    else if ( (LA62_0==80) ) {
+                        alt62=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 58, 0, input);
+                            new NoViableAltException("", 62, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt58) {
+                    switch (alt62) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3406:4: ( (lv_maxExclusive_7_0= ')' ) )?
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3696:4: ( (lv_maxExclusive_7_0= ')' ) )?
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3406:4: ( (lv_maxExclusive_7_0= ')' ) )?
-                            int alt57=2;
-                            int LA57_0 = input.LA(1);
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3696:4: ( (lv_maxExclusive_7_0= ')' ) )?
+                            int alt61=2;
+                            int LA61_0 = input.LA(1);
 
-                            if ( (LA57_0==75) ) {
-                                alt57=1;
+                            if ( (LA61_0==79) ) {
+                                alt61=1;
                             }
-                            switch (alt57) {
+                            switch (alt61) {
                                 case 1 :
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3407:1: (lv_maxExclusive_7_0= ')' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3697:1: (lv_maxExclusive_7_0= ')' )
                                     {
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3407:1: (lv_maxExclusive_7_0= ')' )
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3408:3: lv_maxExclusive_7_0= ')'
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3697:1: (lv_maxExclusive_7_0= ')' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3698:3: lv_maxExclusive_7_0= ')'
                                     {
-                                    lv_maxExclusive_7_0=(Token)match(input,75,FollowSets000.FOLLOW_75_in_ruleImportedPackage7723); 
+                                    lv_maxExclusive_7_0=(Token)match(input,79,FollowSets000.FOLLOW_79_in_ruleImportedPackage8268); 
 
                                             newLeafNode(lv_maxExclusive_7_0, grammarAccess.getImportedPackageAccess().getMaxExclusiveRightParenthesisKeyword_2_3_1_0_0());
                                         
@@ -8076,9 +8736,9 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3422:7: otherlv_8= ']'
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3712:7: otherlv_8= ']'
                             {
-                            otherlv_8=(Token)match(input,76,FollowSets000.FOLLOW_76_in_ruleImportedPackage7755); 
+                            otherlv_8=(Token)match(input,80,FollowSets000.FOLLOW_80_in_ruleImportedPackage8300); 
 
                                 	newLeafNode(otherlv_8, grammarAccess.getImportedPackageAccess().getRightSquareBracketKeyword_2_3_1_1());
                                 
@@ -8118,7 +8778,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExportedPackage"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3434:1: entryRuleExportedPackage returns [EObject current=null] : iv_ruleExportedPackage= ruleExportedPackage EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3724:1: entryRuleExportedPackage returns [EObject current=null] : iv_ruleExportedPackage= ruleExportedPackage EOF ;
     public final EObject entryRuleExportedPackage() throws RecognitionException {
         EObject current = null;
 
@@ -8126,17 +8786,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3435:2: (iv_ruleExportedPackage= ruleExportedPackage EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3436:2: iv_ruleExportedPackage= ruleExportedPackage EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3725:2: (iv_ruleExportedPackage= ruleExportedPackage EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3726:2: iv_ruleExportedPackage= ruleExportedPackage EOF
             {
              newCompositeNode(grammarAccess.getExportedPackageRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleExportedPackage_in_entryRuleExportedPackage7795);
+            pushFollow(FollowSets000.FOLLOW_ruleExportedPackage_in_entryRuleExportedPackage8340);
             iv_ruleExportedPackage=ruleExportedPackage();
 
             state._fsp--;
 
              current =iv_ruleExportedPackage; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleExportedPackage7805); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleExportedPackage8350); 
 
             }
 
@@ -8154,7 +8814,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExportedPackage"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3443:1: ruleExportedPackage returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3733:1: ruleExportedPackage returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) ;
     public final EObject ruleExportedPackage() throws RecognitionException {
         EObject current = null;
 
@@ -8165,14 +8825,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3446:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3447:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3736:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3737:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3447:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3447:2: () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3737:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3737:2: () ( (lv_name_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3447:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3448:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3737:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3738:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8182,13 +8842,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3453:2: ( (lv_name_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3454:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3743:2: ( (lv_name_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3744:1: (lv_name_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3454:1: (lv_name_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3455:3: lv_name_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3744:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3745:3: lv_name_1_0= RULE_STRING
             {
-            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExportedPackage7856); 
+            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExportedPackage8401); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getExportedPackageAccess().getNameSTRINGTerminalRuleCall_1_0()); 
             		
@@ -8208,24 +8868,24 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3471:2: ( (lv_version_2_0= ruleVersion ) )?
-            int alt60=2;
-            int LA60_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3761:2: ( (lv_version_2_0= ruleVersion ) )?
+            int alt64=2;
+            int LA64_0 = input.LA(1);
 
-            if ( (LA60_0==RULE_INT) ) {
-                alt60=1;
+            if ( (LA64_0==RULE_INT) ) {
+                alt64=1;
             }
-            switch (alt60) {
+            switch (alt64) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3472:1: (lv_version_2_0= ruleVersion )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3762:1: (lv_version_2_0= ruleVersion )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3472:1: (lv_version_2_0= ruleVersion )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3473:3: lv_version_2_0= ruleVersion
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3762:1: (lv_version_2_0= ruleVersion )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3763:3: lv_version_2_0= ruleVersion
                     {
                      
                     	        newCompositeNode(grammarAccess.getExportedPackageAccess().getVersionVersionParserRuleCall_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleExportedPackage7882);
+                    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleExportedPackage8427);
                     lv_version_2_0=ruleVersion();
 
                     state._fsp--;
@@ -8271,7 +8931,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExtension"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3497:1: entryRuleExtension returns [EObject current=null] : iv_ruleExtension= ruleExtension EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3787:1: entryRuleExtension returns [EObject current=null] : iv_ruleExtension= ruleExtension EOF ;
     public final EObject entryRuleExtension() throws RecognitionException {
         EObject current = null;
 
@@ -8279,17 +8939,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3498:2: (iv_ruleExtension= ruleExtension EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3499:2: iv_ruleExtension= ruleExtension EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3788:2: (iv_ruleExtension= ruleExtension EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3789:2: iv_ruleExtension= ruleExtension EOF
             {
              newCompositeNode(grammarAccess.getExtensionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleExtension_in_entryRuleExtension7919);
+            pushFollow(FollowSets000.FOLLOW_ruleExtension_in_entryRuleExtension8464);
             iv_ruleExtension=ruleExtension();
 
             state._fsp--;
 
              current =iv_ruleExtension; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleExtension7929); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleExtension8474); 
 
             }
 
@@ -8307,7 +8967,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExtension"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3506:1: ruleExtension returns [EObject current=null] : ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3796:1: ruleExtension returns [EObject current=null] : ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' ) ;
     public final EObject ruleExtension() throws RecognitionException {
         EObject current = null;
 
@@ -8330,14 +8990,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3509:28: ( ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3510:1: ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3799:28: ( ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3800:1: ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3510:1: ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3510:2: () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3800:1: ( () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3800:2: () ( (lv_point_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )? (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )? otherlv_13= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3510:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3511:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3800:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3801:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8347,13 +9007,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3516:2: ( (lv_point_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3517:1: (lv_point_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3806:2: ( (lv_point_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3807:1: (lv_point_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3517:1: (lv_point_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3518:3: lv_point_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3807:1: (lv_point_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3808:3: lv_point_1_0= RULE_STRING
             {
-            lv_point_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExtension7980); 
+            lv_point_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExtension8525); 
 
             			newLeafNode(lv_point_1_0, grammarAccess.getExtensionAccess().getPointSTRINGTerminalRuleCall_1_0()); 
             		
@@ -8373,36 +9033,36 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleExtension7997); 
+            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleExtension8542); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getExtensionAccess().getLeftCurlyBracketKeyword_2());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3538:1: (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )?
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3828:1: (otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) ) )?
+            int alt65=2;
+            int LA65_0 = input.LA(1);
 
-            if ( (LA61_0==77) ) {
-                alt61=1;
+            if ( (LA65_0==81) ) {
+                alt65=1;
             }
-            switch (alt61) {
+            switch (alt65) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3538:3: otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3828:3: otherlv_3= 'id' otherlv_4= '=' ( (lv_id_5_0= RULE_STRING ) )
                     {
-                    otherlv_3=(Token)match(input,77,FollowSets000.FOLLOW_77_in_ruleExtension8010); 
+                    otherlv_3=(Token)match(input,81,FollowSets000.FOLLOW_81_in_ruleExtension8555); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getExtensionAccess().getIdKeyword_3_0());
                         
-                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleExtension8022); 
+                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleExtension8567); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getExtensionAccess().getEqualsSignKeyword_3_1());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3546:1: ( (lv_id_5_0= RULE_STRING ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3547:1: (lv_id_5_0= RULE_STRING )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3836:1: ( (lv_id_5_0= RULE_STRING ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3837:1: (lv_id_5_0= RULE_STRING )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3547:1: (lv_id_5_0= RULE_STRING )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3548:3: lv_id_5_0= RULE_STRING
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3837:1: (lv_id_5_0= RULE_STRING )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3838:3: lv_id_5_0= RULE_STRING
                     {
-                    lv_id_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExtension8039); 
+                    lv_id_5_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleExtension8584); 
 
                     			newLeafNode(lv_id_5_0, grammarAccess.getExtensionAccess().getIdSTRINGTerminalRuleCall_3_2_0()); 
                     		
@@ -8428,39 +9088,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3564:4: (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )?
-            int alt63=2;
-            int LA63_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3854:4: (otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}' )?
+            int alt67=2;
+            int LA67_0 = input.LA(1);
 
-            if ( (LA63_0==78) ) {
-                alt63=1;
+            if ( (LA67_0==82) ) {
+                alt67=1;
             }
-            switch (alt63) {
+            switch (alt67) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3564:6: otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3854:6: otherlv_6= 'elements' otherlv_7= '=' otherlv_8= '{' ( (lv_elements_9_0= ruleElement ) ) (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )* otherlv_12= '}'
                     {
-                    otherlv_6=(Token)match(input,78,FollowSets000.FOLLOW_78_in_ruleExtension8059); 
+                    otherlv_6=(Token)match(input,82,FollowSets000.FOLLOW_82_in_ruleExtension8604); 
 
                         	newLeafNode(otherlv_6, grammarAccess.getExtensionAccess().getElementsKeyword_4_0());
                         
-                    otherlv_7=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleExtension8071); 
+                    otherlv_7=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleExtension8616); 
 
                         	newLeafNode(otherlv_7, grammarAccess.getExtensionAccess().getEqualsSignKeyword_4_1());
                         
-                    otherlv_8=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleExtension8083); 
+                    otherlv_8=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleExtension8628); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getExtensionAccess().getLeftCurlyBracketKeyword_4_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3576:1: ( (lv_elements_9_0= ruleElement ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3577:1: (lv_elements_9_0= ruleElement )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3866:1: ( (lv_elements_9_0= ruleElement ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3867:1: (lv_elements_9_0= ruleElement )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3577:1: (lv_elements_9_0= ruleElement )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3578:3: lv_elements_9_0= ruleElement
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3867:1: (lv_elements_9_0= ruleElement )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3868:3: lv_elements_9_0= ruleElement
                     {
                      
                     	        newCompositeNode(grammarAccess.getExtensionAccess().getElementsElementParserRuleCall_4_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleExtension8104);
+                    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleExtension8649);
                     lv_elements_9_0=ruleElement();
 
                     state._fsp--;
@@ -8482,35 +9142,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3594:2: (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )*
-                    loop62:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3884:2: (otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) ) )*
+                    loop66:
                     do {
-                        int alt62=2;
-                        int LA62_0 = input.LA(1);
+                        int alt66=2;
+                        int LA66_0 = input.LA(1);
 
-                        if ( (LA62_0==18) ) {
-                            alt62=1;
+                        if ( (LA66_0==18) ) {
+                            alt66=1;
                         }
 
 
-                        switch (alt62) {
+                        switch (alt66) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3594:4: otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3884:4: otherlv_10= ',' ( (lv_elements_11_0= ruleElement ) )
                     	    {
-                    	    otherlv_10=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleExtension8117); 
+                    	    otherlv_10=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleExtension8662); 
 
                     	        	newLeafNode(otherlv_10, grammarAccess.getExtensionAccess().getCommaKeyword_4_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3598:1: ( (lv_elements_11_0= ruleElement ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3599:1: (lv_elements_11_0= ruleElement )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3888:1: ( (lv_elements_11_0= ruleElement ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3889:1: (lv_elements_11_0= ruleElement )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3599:1: (lv_elements_11_0= ruleElement )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3600:3: lv_elements_11_0= ruleElement
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3889:1: (lv_elements_11_0= ruleElement )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3890:3: lv_elements_11_0= ruleElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getExtensionAccess().getElementsElementParserRuleCall_4_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleExtension8138);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleExtension8683);
                     	    lv_elements_11_0=ruleElement();
 
                     	    state._fsp--;
@@ -8537,11 +9197,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop62;
+                    	    break loop66;
                         }
                     } while (true);
 
-                    otherlv_12=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleExtension8152); 
+                    otherlv_12=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleExtension8697); 
 
                         	newLeafNode(otherlv_12, grammarAccess.getExtensionAccess().getRightCurlyBracketKeyword_4_5());
                         
@@ -8551,7 +9211,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_13=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleExtension8166); 
+            otherlv_13=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleExtension8711); 
 
                 	newLeafNode(otherlv_13, grammarAccess.getExtensionAccess().getRightCurlyBracketKeyword_5());
                 
@@ -8576,7 +9236,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleElement"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3632:1: entryRuleElement returns [EObject current=null] : iv_ruleElement= ruleElement EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3922:1: entryRuleElement returns [EObject current=null] : iv_ruleElement= ruleElement EOF ;
     public final EObject entryRuleElement() throws RecognitionException {
         EObject current = null;
 
@@ -8584,17 +9244,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3633:2: (iv_ruleElement= ruleElement EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3634:2: iv_ruleElement= ruleElement EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3923:2: (iv_ruleElement= ruleElement EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3924:2: iv_ruleElement= ruleElement EOF
             {
              newCompositeNode(grammarAccess.getElementRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleElement_in_entryRuleElement8202);
+            pushFollow(FollowSets000.FOLLOW_ruleElement_in_entryRuleElement8747);
             iv_ruleElement=ruleElement();
 
             state._fsp--;
 
              current =iv_ruleElement; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleElement8212); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleElement8757); 
 
             }
 
@@ -8612,7 +9272,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleElement"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3641:1: ruleElement returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3931:1: ruleElement returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' ) ;
     public final EObject ruleElement() throws RecognitionException {
         EObject current = null;
 
@@ -8641,14 +9301,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3644:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3645:1: ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3934:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3935:1: ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3645:1: ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3645:2: () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3935:1: ( () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3935:2: () ( (lv_name_1_0= RULE_STRING ) ) otherlv_2= '{' (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )? (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )? otherlv_17= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3645:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3646:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3935:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3936:5: 
             {
 
                     current = forceCreateModelElement(
@@ -8658,13 +9318,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3651:2: ( (lv_name_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3652:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3941:2: ( (lv_name_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3942:1: (lv_name_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3652:1: (lv_name_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3653:3: lv_name_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3942:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3943:3: lv_name_1_0= RULE_STRING
             {
-            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleElement8263); 
+            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleElement8808); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getElementAccess().getNameSTRINGTerminalRuleCall_1_0()); 
             		
@@ -8684,43 +9344,43 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleElement8280); 
+            otherlv_2=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleElement8825); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getElementAccess().getLeftCurlyBracketKeyword_2());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3673:1: (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )?
-            int alt65=2;
-            int LA65_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3963:1: (otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}' )?
+            int alt69=2;
+            int LA69_0 = input.LA(1);
 
-            if ( (LA65_0==79) ) {
-                alt65=1;
+            if ( (LA69_0==83) ) {
+                alt69=1;
             }
-            switch (alt65) {
+            switch (alt69) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3673:3: otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3963:3: otherlv_3= 'attributes' otherlv_4= '=' otherlv_5= '{' ( (lv_attributes_6_0= ruleAttribute ) ) (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )* otherlv_9= '}'
                     {
-                    otherlv_3=(Token)match(input,79,FollowSets000.FOLLOW_79_in_ruleElement8293); 
+                    otherlv_3=(Token)match(input,83,FollowSets000.FOLLOW_83_in_ruleElement8838); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getElementAccess().getAttributesKeyword_3_0());
                         
-                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleElement8305); 
+                    otherlv_4=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleElement8850); 
 
                         	newLeafNode(otherlv_4, grammarAccess.getElementAccess().getEqualsSignKeyword_3_1());
                         
-                    otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleElement8317); 
+                    otherlv_5=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleElement8862); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getElementAccess().getLeftCurlyBracketKeyword_3_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3685:1: ( (lv_attributes_6_0= ruleAttribute ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3686:1: (lv_attributes_6_0= ruleAttribute )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3975:1: ( (lv_attributes_6_0= ruleAttribute ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3976:1: (lv_attributes_6_0= ruleAttribute )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3686:1: (lv_attributes_6_0= ruleAttribute )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3687:3: lv_attributes_6_0= ruleAttribute
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3976:1: (lv_attributes_6_0= ruleAttribute )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3977:3: lv_attributes_6_0= ruleAttribute
                     {
                      
                     	        newCompositeNode(grammarAccess.getElementAccess().getAttributesAttributeParserRuleCall_3_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_ruleElement8338);
+                    pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_ruleElement8883);
                     lv_attributes_6_0=ruleAttribute();
 
                     state._fsp--;
@@ -8742,35 +9402,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3703:2: (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )*
-                    loop64:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3993:2: (otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) ) )*
+                    loop68:
                     do {
-                        int alt64=2;
-                        int LA64_0 = input.LA(1);
+                        int alt68=2;
+                        int LA68_0 = input.LA(1);
 
-                        if ( (LA64_0==18) ) {
-                            alt64=1;
+                        if ( (LA68_0==18) ) {
+                            alt68=1;
                         }
 
 
-                        switch (alt64) {
+                        switch (alt68) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3703:4: otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3993:4: otherlv_7= ',' ( (lv_attributes_8_0= ruleAttribute ) )
                     	    {
-                    	    otherlv_7=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleElement8351); 
+                    	    otherlv_7=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleElement8896); 
 
                     	        	newLeafNode(otherlv_7, grammarAccess.getElementAccess().getCommaKeyword_3_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3707:1: ( (lv_attributes_8_0= ruleAttribute ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3708:1: (lv_attributes_8_0= ruleAttribute )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3997:1: ( (lv_attributes_8_0= ruleAttribute ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3998:1: (lv_attributes_8_0= ruleAttribute )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3708:1: (lv_attributes_8_0= ruleAttribute )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3709:3: lv_attributes_8_0= ruleAttribute
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3998:1: (lv_attributes_8_0= ruleAttribute )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3999:3: lv_attributes_8_0= ruleAttribute
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getElementAccess().getAttributesAttributeParserRuleCall_3_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_ruleElement8372);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_ruleElement8917);
                     	    lv_attributes_8_0=ruleAttribute();
 
                     	    state._fsp--;
@@ -8797,11 +9457,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop64;
+                    	    break loop68;
                         }
                     } while (true);
 
-                    otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleElement8386); 
+                    otherlv_9=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleElement8931); 
 
                         	newLeafNode(otherlv_9, grammarAccess.getElementAccess().getRightCurlyBracketKeyword_3_5());
                         
@@ -8811,39 +9471,39 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3729:3: (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )?
-            int alt67=2;
-            int LA67_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4019:3: (otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}' )?
+            int alt71=2;
+            int LA71_0 = input.LA(1);
 
-            if ( (LA67_0==26) ) {
-                alt67=1;
+            if ( (LA71_0==26) ) {
+                alt71=1;
             }
-            switch (alt67) {
+            switch (alt71) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3729:5: otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4019:5: otherlv_10= 'children' otherlv_11= '=' otherlv_12= '{' ( (lv_children_13_0= ruleElement ) ) (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )* otherlv_16= '}'
                     {
-                    otherlv_10=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleElement8401); 
+                    otherlv_10=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleElement8946); 
 
                         	newLeafNode(otherlv_10, grammarAccess.getElementAccess().getChildrenKeyword_4_0());
                         
-                    otherlv_11=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleElement8413); 
+                    otherlv_11=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleElement8958); 
 
                         	newLeafNode(otherlv_11, grammarAccess.getElementAccess().getEqualsSignKeyword_4_1());
                         
-                    otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleElement8425); 
+                    otherlv_12=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleElement8970); 
 
                         	newLeafNode(otherlv_12, grammarAccess.getElementAccess().getLeftCurlyBracketKeyword_4_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3741:1: ( (lv_children_13_0= ruleElement ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3742:1: (lv_children_13_0= ruleElement )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4031:1: ( (lv_children_13_0= ruleElement ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4032:1: (lv_children_13_0= ruleElement )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3742:1: (lv_children_13_0= ruleElement )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3743:3: lv_children_13_0= ruleElement
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4032:1: (lv_children_13_0= ruleElement )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4033:3: lv_children_13_0= ruleElement
                     {
                      
                     	        newCompositeNode(grammarAccess.getElementAccess().getChildrenElementParserRuleCall_4_3_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleElement8446);
+                    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleElement8991);
                     lv_children_13_0=ruleElement();
 
                     state._fsp--;
@@ -8865,35 +9525,35 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3759:2: (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )*
-                    loop66:
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4049:2: (otherlv_14= ',' ( (lv_children_15_0= ruleElement ) ) )*
+                    loop70:
                     do {
-                        int alt66=2;
-                        int LA66_0 = input.LA(1);
+                        int alt70=2;
+                        int LA70_0 = input.LA(1);
 
-                        if ( (LA66_0==18) ) {
-                            alt66=1;
+                        if ( (LA70_0==18) ) {
+                            alt70=1;
                         }
 
 
-                        switch (alt66) {
+                        switch (alt70) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3759:4: otherlv_14= ',' ( (lv_children_15_0= ruleElement ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4049:4: otherlv_14= ',' ( (lv_children_15_0= ruleElement ) )
                     	    {
-                    	    otherlv_14=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleElement8459); 
+                    	    otherlv_14=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleElement9004); 
 
                     	        	newLeafNode(otherlv_14, grammarAccess.getElementAccess().getCommaKeyword_4_4_0());
                     	        
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3763:1: ( (lv_children_15_0= ruleElement ) )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3764:1: (lv_children_15_0= ruleElement )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4053:1: ( (lv_children_15_0= ruleElement ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4054:1: (lv_children_15_0= ruleElement )
                     	    {
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3764:1: (lv_children_15_0= ruleElement )
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3765:3: lv_children_15_0= ruleElement
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4054:1: (lv_children_15_0= ruleElement )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4055:3: lv_children_15_0= ruleElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getElementAccess().getChildrenElementParserRuleCall_4_4_1_0()); 
                     	    	    
-                    	    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleElement8480);
+                    	    pushFollow(FollowSets000.FOLLOW_ruleElement_in_ruleElement9025);
                     	    lv_children_15_0=ruleElement();
 
                     	    state._fsp--;
@@ -8920,11 +9580,11 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop66;
+                    	    break loop70;
                         }
                     } while (true);
 
-                    otherlv_16=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleElement8494); 
+                    otherlv_16=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleElement9039); 
 
                         	newLeafNode(otherlv_16, grammarAccess.getElementAccess().getRightCurlyBracketKeyword_4_5());
                         
@@ -8934,7 +9594,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_17=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleElement8508); 
+            otherlv_17=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleElement9053); 
 
                 	newLeafNode(otherlv_17, grammarAccess.getElementAccess().getRightCurlyBracketKeyword_5());
                 
@@ -8959,7 +9619,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAttribute"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3797:1: entryRuleAttribute returns [EObject current=null] : iv_ruleAttribute= ruleAttribute EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4087:1: entryRuleAttribute returns [EObject current=null] : iv_ruleAttribute= ruleAttribute EOF ;
     public final EObject entryRuleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -8967,17 +9627,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3798:2: (iv_ruleAttribute= ruleAttribute EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3799:2: iv_ruleAttribute= ruleAttribute EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4088:2: (iv_ruleAttribute= ruleAttribute EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4089:2: iv_ruleAttribute= ruleAttribute EOF
             {
              newCompositeNode(grammarAccess.getAttributeRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_entryRuleAttribute8544);
+            pushFollow(FollowSets000.FOLLOW_ruleAttribute_in_entryRuleAttribute9089);
             iv_ruleAttribute=ruleAttribute();
 
             state._fsp--;
 
              current =iv_ruleAttribute; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAttribute8554); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAttribute9099); 
 
             }
 
@@ -8995,7 +9655,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttribute"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3806:1: ruleAttribute returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4096:1: ruleAttribute returns [EObject current=null] : ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) ;
     public final EObject ruleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -9008,14 +9668,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3809:28: ( ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3810:1: ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4099:28: ( ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4100:1: ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3810:1: ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3810:2: () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4100:1: ( () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4100:2: () otherlv_1= '{' ( (lv_name_2_0= RULE_STRING ) ) otherlv_3= ',' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3810:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3811:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4100:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4101:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9025,17 +9685,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleAttribute8600); 
+            otherlv_1=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleAttribute9145); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getAttributeAccess().getLeftCurlyBracketKeyword_1());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3820:1: ( (lv_name_2_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3821:1: (lv_name_2_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4110:1: ( (lv_name_2_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4111:1: (lv_name_2_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3821:1: (lv_name_2_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3822:3: lv_name_2_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4111:1: (lv_name_2_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4112:3: lv_name_2_0= RULE_STRING
             {
-            lv_name_2_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttribute8617); 
+            lv_name_2_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttribute9162); 
 
             			newLeafNode(lv_name_2_0, grammarAccess.getAttributeAccess().getNameSTRINGTerminalRuleCall_2_0()); 
             		
@@ -9055,17 +9715,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleAttribute8634); 
+            otherlv_3=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleAttribute9179); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getAttributeAccess().getCommaKeyword_3());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3842:1: ( (lv_value_4_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3843:1: (lv_value_4_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4132:1: ( (lv_value_4_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4133:1: (lv_value_4_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3843:1: (lv_value_4_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3844:3: lv_value_4_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4133:1: (lv_value_4_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4134:3: lv_value_4_0= RULE_STRING
             {
-            lv_value_4_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttribute8651); 
+            lv_value_4_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleAttribute9196); 
 
             			newLeafNode(lv_value_4_0, grammarAccess.getAttributeAccess().getValueSTRINGTerminalRuleCall_4_0()); 
             		
@@ -9085,7 +9745,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAttribute8668); 
+            otherlv_5=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAttribute9213); 
 
                 	newLeafNode(otherlv_5, grammarAccess.getAttributeAccess().getRightCurlyBracketKeyword_5());
                 
@@ -9110,7 +9770,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRequiredBundle"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3872:1: entryRuleRequiredBundle returns [EObject current=null] : iv_ruleRequiredBundle= ruleRequiredBundle EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4162:1: entryRuleRequiredBundle returns [EObject current=null] : iv_ruleRequiredBundle= ruleRequiredBundle EOF ;
     public final EObject entryRuleRequiredBundle() throws RecognitionException {
         EObject current = null;
 
@@ -9118,17 +9778,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3873:2: (iv_ruleRequiredBundle= ruleRequiredBundle EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3874:2: iv_ruleRequiredBundle= ruleRequiredBundle EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4163:2: (iv_ruleRequiredBundle= ruleRequiredBundle EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4164:2: iv_ruleRequiredBundle= ruleRequiredBundle EOF
             {
              newCompositeNode(grammarAccess.getRequiredBundleRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleRequiredBundle_in_entryRuleRequiredBundle8704);
+            pushFollow(FollowSets000.FOLLOW_ruleRequiredBundle_in_entryRuleRequiredBundle9249);
             iv_ruleRequiredBundle=ruleRequiredBundle();
 
             state._fsp--;
 
              current =iv_ruleRequiredBundle; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRequiredBundle8714); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRequiredBundle9259); 
 
             }
 
@@ -9146,7 +9806,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRequiredBundle"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3881:1: ruleRequiredBundle returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4171:1: ruleRequiredBundle returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? ) ;
     public final EObject ruleRequiredBundle() throws RecognitionException {
         EObject current = null;
 
@@ -9164,14 +9824,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3884:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3885:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4174:28: ( ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4175:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3885:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3885:2: () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4175:1: ( () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4175:2: () ( (lv_name_1_0= RULE_STRING ) ) ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3885:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3886:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4175:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4176:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9181,13 +9841,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3891:2: ( (lv_name_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3892:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4181:2: ( (lv_name_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4182:1: (lv_name_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3892:1: (lv_name_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3893:3: lv_name_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4182:1: (lv_name_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4183:3: lv_name_1_0= RULE_STRING
             {
-            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleRequiredBundle8765); 
+            lv_name_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleRequiredBundle9310); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getRequiredBundleAccess().getNameSTRINGTerminalRuleCall_1_0()); 
             		
@@ -9207,59 +9867,59 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3909:2: ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )?
-            int alt74=2;
-            int LA74_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4199:2: ( ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' ) )?
+            int alt78=2;
+            int LA78_0 = input.LA(1);
 
-            if ( (LA74_0==RULE_INT||(LA74_0>=73 && LA74_0<=74)) ) {
-                alt74=1;
+            if ( (LA78_0==RULE_INT||(LA78_0>=77 && LA78_0<=78)) ) {
+                alt78=1;
             }
-            else if ( (LA74_0==18) ) {
-                int LA74_2 = input.LA(2);
+            else if ( (LA78_0==18) ) {
+                int LA78_2 = input.LA(2);
 
-                if ( (LA74_2==EOF||LA74_2==RULE_INT||(LA74_2>=18 && LA74_2<=19)||(LA74_2>=75 && LA74_2<=76)) ) {
-                    alt74=1;
+                if ( (LA78_2==EOF||LA78_2==RULE_INT||(LA78_2>=18 && LA78_2<=19)||(LA78_2>=79 && LA78_2<=80)) ) {
+                    alt78=1;
                 }
             }
-            switch (alt74) {
+            switch (alt78) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3909:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4199:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' ) ( (lv_minVersion_4_0= ruleVersion ) )? otherlv_5= ',' ( (lv_maxVersion_6_0= ruleVersion ) )? ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3909:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' )
-                    int alt69=2;
-                    int LA69_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4199:3: ( ( (lv_minExclusive_2_0= '(' ) )? | otherlv_3= '[' )
+                    int alt73=2;
+                    int LA73_0 = input.LA(1);
 
-                    if ( (LA69_0==RULE_INT||LA69_0==18||LA69_0==73) ) {
-                        alt69=1;
+                    if ( (LA73_0==RULE_INT||LA73_0==18||LA73_0==77) ) {
+                        alt73=1;
                     }
-                    else if ( (LA69_0==74) ) {
-                        alt69=2;
+                    else if ( (LA73_0==78) ) {
+                        alt73=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 69, 0, input);
+                            new NoViableAltException("", 73, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt69) {
+                    switch (alt73) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3909:4: ( (lv_minExclusive_2_0= '(' ) )?
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4199:4: ( (lv_minExclusive_2_0= '(' ) )?
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3909:4: ( (lv_minExclusive_2_0= '(' ) )?
-                            int alt68=2;
-                            int LA68_0 = input.LA(1);
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4199:4: ( (lv_minExclusive_2_0= '(' ) )?
+                            int alt72=2;
+                            int LA72_0 = input.LA(1);
 
-                            if ( (LA68_0==73) ) {
-                                alt68=1;
+                            if ( (LA72_0==77) ) {
+                                alt72=1;
                             }
-                            switch (alt68) {
+                            switch (alt72) {
                                 case 1 :
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3910:1: (lv_minExclusive_2_0= '(' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4200:1: (lv_minExclusive_2_0= '(' )
                                     {
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3910:1: (lv_minExclusive_2_0= '(' )
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3911:3: lv_minExclusive_2_0= '('
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4200:1: (lv_minExclusive_2_0= '(' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4201:3: lv_minExclusive_2_0= '('
                                     {
-                                    lv_minExclusive_2_0=(Token)match(input,73,FollowSets000.FOLLOW_73_in_ruleRequiredBundle8790); 
+                                    lv_minExclusive_2_0=(Token)match(input,77,FollowSets000.FOLLOW_77_in_ruleRequiredBundle9335); 
 
                                             newLeafNode(lv_minExclusive_2_0, grammarAccess.getRequiredBundleAccess().getMinExclusiveLeftParenthesisKeyword_2_0_0_0());
                                         
@@ -9282,9 +9942,9 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3925:7: otherlv_3= '['
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4215:7: otherlv_3= '['
                             {
-                            otherlv_3=(Token)match(input,74,FollowSets000.FOLLOW_74_in_ruleRequiredBundle8822); 
+                            otherlv_3=(Token)match(input,78,FollowSets000.FOLLOW_78_in_ruleRequiredBundle9367); 
 
                                 	newLeafNode(otherlv_3, grammarAccess.getRequiredBundleAccess().getLeftSquareBracketKeyword_2_0_1());
                                 
@@ -9294,24 +9954,24 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3929:2: ( (lv_minVersion_4_0= ruleVersion ) )?
-                    int alt70=2;
-                    int LA70_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4219:2: ( (lv_minVersion_4_0= ruleVersion ) )?
+                    int alt74=2;
+                    int LA74_0 = input.LA(1);
 
-                    if ( (LA70_0==RULE_INT) ) {
-                        alt70=1;
+                    if ( (LA74_0==RULE_INT) ) {
+                        alt74=1;
                     }
-                    switch (alt70) {
+                    switch (alt74) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3930:1: (lv_minVersion_4_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4220:1: (lv_minVersion_4_0= ruleVersion )
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3930:1: (lv_minVersion_4_0= ruleVersion )
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3931:3: lv_minVersion_4_0= ruleVersion
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4220:1: (lv_minVersion_4_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4221:3: lv_minVersion_4_0= ruleVersion
                             {
                              
                             	        newCompositeNode(grammarAccess.getRequiredBundleAccess().getMinVersionVersionParserRuleCall_2_1_0()); 
                             	    
-                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleRequiredBundle8844);
+                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleRequiredBundle9389);
                             lv_minVersion_4_0=ruleVersion();
 
                             state._fsp--;
@@ -9336,28 +9996,28 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleRequiredBundle8857); 
+                    otherlv_5=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleRequiredBundle9402); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getRequiredBundleAccess().getCommaKeyword_2_2());
                         
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3951:1: ( (lv_maxVersion_6_0= ruleVersion ) )?
-                    int alt71=2;
-                    int LA71_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4241:1: ( (lv_maxVersion_6_0= ruleVersion ) )?
+                    int alt75=2;
+                    int LA75_0 = input.LA(1);
 
-                    if ( (LA71_0==RULE_INT) ) {
-                        alt71=1;
+                    if ( (LA75_0==RULE_INT) ) {
+                        alt75=1;
                     }
-                    switch (alt71) {
+                    switch (alt75) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3952:1: (lv_maxVersion_6_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4242:1: (lv_maxVersion_6_0= ruleVersion )
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3952:1: (lv_maxVersion_6_0= ruleVersion )
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3953:3: lv_maxVersion_6_0= ruleVersion
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4242:1: (lv_maxVersion_6_0= ruleVersion )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4243:3: lv_maxVersion_6_0= ruleVersion
                             {
                              
                             	        newCompositeNode(grammarAccess.getRequiredBundleAccess().getMaxVersionVersionParserRuleCall_2_3_0()); 
                             	    
-                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleRequiredBundle8878);
+                            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleRequiredBundle9423);
                             lv_maxVersion_6_0=ruleVersion();
 
                             state._fsp--;
@@ -9382,41 +10042,41 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3969:3: ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
-                    int alt73=2;
-                    int LA73_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4259:3: ( ( (lv_maxExclusive_7_0= ')' ) )? | otherlv_8= ']' )
+                    int alt77=2;
+                    int LA77_0 = input.LA(1);
 
-                    if ( (LA73_0==EOF||(LA73_0>=18 && LA73_0<=19)||LA73_0==75) ) {
-                        alt73=1;
+                    if ( (LA77_0==EOF||(LA77_0>=18 && LA77_0<=19)||LA77_0==79) ) {
+                        alt77=1;
                     }
-                    else if ( (LA73_0==76) ) {
-                        alt73=2;
+                    else if ( (LA77_0==80) ) {
+                        alt77=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 73, 0, input);
+                            new NoViableAltException("", 77, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt73) {
+                    switch (alt77) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3969:4: ( (lv_maxExclusive_7_0= ')' ) )?
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4259:4: ( (lv_maxExclusive_7_0= ')' ) )?
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3969:4: ( (lv_maxExclusive_7_0= ')' ) )?
-                            int alt72=2;
-                            int LA72_0 = input.LA(1);
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4259:4: ( (lv_maxExclusive_7_0= ')' ) )?
+                            int alt76=2;
+                            int LA76_0 = input.LA(1);
 
-                            if ( (LA72_0==75) ) {
-                                alt72=1;
+                            if ( (LA76_0==79) ) {
+                                alt76=1;
                             }
-                            switch (alt72) {
+                            switch (alt76) {
                                 case 1 :
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3970:1: (lv_maxExclusive_7_0= ')' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4260:1: (lv_maxExclusive_7_0= ')' )
                                     {
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3970:1: (lv_maxExclusive_7_0= ')' )
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3971:3: lv_maxExclusive_7_0= ')'
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4260:1: (lv_maxExclusive_7_0= ')' )
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4261:3: lv_maxExclusive_7_0= ')'
                                     {
-                                    lv_maxExclusive_7_0=(Token)match(input,75,FollowSets000.FOLLOW_75_in_ruleRequiredBundle8898); 
+                                    lv_maxExclusive_7_0=(Token)match(input,79,FollowSets000.FOLLOW_79_in_ruleRequiredBundle9443); 
 
                                             newLeafNode(lv_maxExclusive_7_0, grammarAccess.getRequiredBundleAccess().getMaxExclusiveRightParenthesisKeyword_2_4_0_0());
                                         
@@ -9439,9 +10099,9 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3985:7: otherlv_8= ']'
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4275:7: otherlv_8= ']'
                             {
-                            otherlv_8=(Token)match(input,76,FollowSets000.FOLLOW_76_in_ruleRequiredBundle8930); 
+                            otherlv_8=(Token)match(input,80,FollowSets000.FOLLOW_80_in_ruleRequiredBundle9475); 
 
                                 	newLeafNode(otherlv_8, grammarAccess.getRequiredBundleAccess().getRightSquareBracketKeyword_2_4_1());
                                 
@@ -9478,7 +10138,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLinkedString"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3997:1: entryRuleLinkedString returns [EObject current=null] : iv_ruleLinkedString= ruleLinkedString EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4287:1: entryRuleLinkedString returns [EObject current=null] : iv_ruleLinkedString= ruleLinkedString EOF ;
     public final EObject entryRuleLinkedString() throws RecognitionException {
         EObject current = null;
 
@@ -9486,17 +10146,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3998:2: (iv_ruleLinkedString= ruleLinkedString EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:3999:2: iv_ruleLinkedString= ruleLinkedString EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4288:2: (iv_ruleLinkedString= ruleLinkedString EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4289:2: iv_ruleLinkedString= ruleLinkedString EOF
             {
              newCompositeNode(grammarAccess.getLinkedStringRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_entryRuleLinkedString8969);
+            pushFollow(FollowSets000.FOLLOW_ruleLinkedString_in_entryRuleLinkedString9514);
             iv_ruleLinkedString=ruleLinkedString();
 
             state._fsp--;
 
              current =iv_ruleLinkedString; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLinkedString8979); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleLinkedString9524); 
 
             }
 
@@ -9514,7 +10174,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLinkedString"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4006:1: ruleLinkedString returns [EObject current=null] : ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4296:1: ruleLinkedString returns [EObject current=null] : ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) ;
     public final EObject ruleLinkedString() throws RecognitionException {
         EObject current = null;
 
@@ -9527,14 +10187,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4009:28: ( ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4010:1: ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4299:28: ( ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4300:1: ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4010:1: ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4010:2: () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4300:1: ( () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4300:2: () otherlv_1= 'LinkedString' ( (lv_weburl_2_0= RULE_STRING ) ) otherlv_3= '{' ( (lv_value_4_0= RULE_STRING ) ) otherlv_5= '}'
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4010:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4011:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4300:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4301:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9544,17 +10204,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,80,FollowSets000.FOLLOW_80_in_ruleLinkedString9025); 
+            otherlv_1=(Token)match(input,84,FollowSets000.FOLLOW_84_in_ruleLinkedString9570); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getLinkedStringAccess().getLinkedStringKeyword_1());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4020:1: ( (lv_weburl_2_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4021:1: (lv_weburl_2_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4310:1: ( (lv_weburl_2_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4311:1: (lv_weburl_2_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4021:1: (lv_weburl_2_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4022:3: lv_weburl_2_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4311:1: (lv_weburl_2_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4312:3: lv_weburl_2_0= RULE_STRING
             {
-            lv_weburl_2_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleLinkedString9042); 
+            lv_weburl_2_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleLinkedString9587); 
 
             			newLeafNode(lv_weburl_2_0, grammarAccess.getLinkedStringAccess().getWeburlSTRINGTerminalRuleCall_2_0()); 
             		
@@ -9574,17 +10234,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleLinkedString9059); 
+            otherlv_3=(Token)match(input,15,FollowSets000.FOLLOW_15_in_ruleLinkedString9604); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getLinkedStringAccess().getLeftCurlyBracketKeyword_3());
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4042:1: ( (lv_value_4_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4043:1: (lv_value_4_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4332:1: ( (lv_value_4_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4333:1: (lv_value_4_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4043:1: (lv_value_4_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4044:3: lv_value_4_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4333:1: (lv_value_4_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4334:3: lv_value_4_0= RULE_STRING
             {
-            lv_value_4_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleLinkedString9076); 
+            lv_value_4_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleLinkedString9621); 
 
             			newLeafNode(lv_value_4_0, grammarAccess.getLinkedStringAccess().getValueSTRINGTerminalRuleCall_4_0()); 
             		
@@ -9604,7 +10264,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleLinkedString9093); 
+            otherlv_5=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleLinkedString9638); 
 
                 	newLeafNode(otherlv_5, grammarAccess.getLinkedStringAccess().getRightCurlyBracketKeyword_5());
                 
@@ -9629,7 +10289,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFeaturePlugin"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4072:1: entryRuleFeaturePlugin returns [EObject current=null] : iv_ruleFeaturePlugin= ruleFeaturePlugin EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4362:1: entryRuleFeaturePlugin returns [EObject current=null] : iv_ruleFeaturePlugin= ruleFeaturePlugin EOF ;
     public final EObject entryRuleFeaturePlugin() throws RecognitionException {
         EObject current = null;
 
@@ -9637,17 +10297,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4073:2: (iv_ruleFeaturePlugin= ruleFeaturePlugin EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4074:2: iv_ruleFeaturePlugin= ruleFeaturePlugin EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4363:2: (iv_ruleFeaturePlugin= ruleFeaturePlugin EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4364:2: iv_ruleFeaturePlugin= ruleFeaturePlugin EOF
             {
              newCompositeNode(grammarAccess.getFeaturePluginRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleFeaturePlugin_in_entryRuleFeaturePlugin9129);
+            pushFollow(FollowSets000.FOLLOW_ruleFeaturePlugin_in_entryRuleFeaturePlugin9674);
             iv_ruleFeaturePlugin=ruleFeaturePlugin();
 
             state._fsp--;
 
              current =iv_ruleFeaturePlugin; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFeaturePlugin9139); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleFeaturePlugin9684); 
 
             }
 
@@ -9665,7 +10325,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeaturePlugin"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4081:1: ruleFeaturePlugin returns [EObject current=null] : ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4371:1: ruleFeaturePlugin returns [EObject current=null] : ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) ) ;
     public final EObject ruleFeaturePlugin() throws RecognitionException {
         EObject current = null;
 
@@ -9676,14 +10336,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4084:28: ( ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4085:1: ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4374:28: ( ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4375:1: ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4085:1: ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4085:2: () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4375:1: ( () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4375:2: () ( (lv_unpack_1_0= 'unpacked' ) )? ( (lv_fragment_2_0= 'fragment' ) )? ( (lv_id_3_0= RULE_STRING ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4085:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4086:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4375:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4376:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9693,21 +10353,21 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4091:2: ( (lv_unpack_1_0= 'unpacked' ) )?
-            int alt75=2;
-            int LA75_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4381:2: ( (lv_unpack_1_0= 'unpacked' ) )?
+            int alt79=2;
+            int LA79_0 = input.LA(1);
 
-            if ( (LA75_0==81) ) {
-                alt75=1;
+            if ( (LA79_0==85) ) {
+                alt79=1;
             }
-            switch (alt75) {
+            switch (alt79) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4092:1: (lv_unpack_1_0= 'unpacked' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4382:1: (lv_unpack_1_0= 'unpacked' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4092:1: (lv_unpack_1_0= 'unpacked' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4093:3: lv_unpack_1_0= 'unpacked'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4382:1: (lv_unpack_1_0= 'unpacked' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4383:3: lv_unpack_1_0= 'unpacked'
                     {
-                    lv_unpack_1_0=(Token)match(input,81,FollowSets000.FOLLOW_81_in_ruleFeaturePlugin9191); 
+                    lv_unpack_1_0=(Token)match(input,85,FollowSets000.FOLLOW_85_in_ruleFeaturePlugin9736); 
 
                             newLeafNode(lv_unpack_1_0, grammarAccess.getFeaturePluginAccess().getUnpackUnpackedKeyword_1_0());
                         
@@ -9726,21 +10386,21 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4106:3: ( (lv_fragment_2_0= 'fragment' ) )?
-            int alt76=2;
-            int LA76_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4396:3: ( (lv_fragment_2_0= 'fragment' ) )?
+            int alt80=2;
+            int LA80_0 = input.LA(1);
 
-            if ( (LA76_0==82) ) {
-                alt76=1;
+            if ( (LA80_0==41) ) {
+                alt80=1;
             }
-            switch (alt76) {
+            switch (alt80) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4107:1: (lv_fragment_2_0= 'fragment' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4397:1: (lv_fragment_2_0= 'fragment' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4107:1: (lv_fragment_2_0= 'fragment' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4108:3: lv_fragment_2_0= 'fragment'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4397:1: (lv_fragment_2_0= 'fragment' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4398:3: lv_fragment_2_0= 'fragment'
                     {
-                    lv_fragment_2_0=(Token)match(input,82,FollowSets000.FOLLOW_82_in_ruleFeaturePlugin9223); 
+                    lv_fragment_2_0=(Token)match(input,41,FollowSets000.FOLLOW_41_in_ruleFeaturePlugin9768); 
 
                             newLeafNode(lv_fragment_2_0, grammarAccess.getFeaturePluginAccess().getFragmentFragmentKeyword_2_0());
                         
@@ -9759,13 +10419,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4121:3: ( (lv_id_3_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4122:1: (lv_id_3_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4411:3: ( (lv_id_3_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4412:1: (lv_id_3_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4122:1: (lv_id_3_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4123:3: lv_id_3_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4412:1: (lv_id_3_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4413:3: lv_id_3_0= RULE_STRING
             {
-            lv_id_3_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeaturePlugin9254); 
+            lv_id_3_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleFeaturePlugin9799); 
 
             			newLeafNode(lv_id_3_0, grammarAccess.getFeaturePluginAccess().getIdSTRINGTerminalRuleCall_3_0()); 
             		
@@ -9806,7 +10466,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRequiredFeature"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4147:1: entryRuleRequiredFeature returns [EObject current=null] : iv_ruleRequiredFeature= ruleRequiredFeature EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4437:1: entryRuleRequiredFeature returns [EObject current=null] : iv_ruleRequiredFeature= ruleRequiredFeature EOF ;
     public final EObject entryRuleRequiredFeature() throws RecognitionException {
         EObject current = null;
 
@@ -9814,17 +10474,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4148:2: (iv_ruleRequiredFeature= ruleRequiredFeature EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4149:2: iv_ruleRequiredFeature= ruleRequiredFeature EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4438:2: (iv_ruleRequiredFeature= ruleRequiredFeature EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4439:2: iv_ruleRequiredFeature= ruleRequiredFeature EOF
             {
              newCompositeNode(grammarAccess.getRequiredFeatureRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleRequiredFeature_in_entryRuleRequiredFeature9295);
+            pushFollow(FollowSets000.FOLLOW_ruleRequiredFeature_in_entryRuleRequiredFeature9840);
             iv_ruleRequiredFeature=ruleRequiredFeature();
 
             state._fsp--;
 
              current =iv_ruleRequiredFeature; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRequiredFeature9305); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleRequiredFeature9850); 
 
             }
 
@@ -9842,7 +10502,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRequiredFeature"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4156:1: ruleRequiredFeature returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4446:1: ruleRequiredFeature returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) ) ;
     public final EObject ruleRequiredFeature() throws RecognitionException {
         EObject current = null;
 
@@ -9855,14 +10515,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4159:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4160:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4449:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4450:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4160:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4160:2: () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4450:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4450:2: () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_match_2_0= ruleMatchRule ) ) ( (lv_version_3_0= ruleVersion ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4160:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4161:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4450:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4451:5: 
             {
 
                     current = forceCreateModelElement(
@@ -9872,13 +10532,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4166:2: ( (lv_id_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4167:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4456:2: ( (lv_id_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4457:1: (lv_id_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4167:1: (lv_id_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4168:3: lv_id_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4457:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4458:3: lv_id_1_0= RULE_STRING
             {
-            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleRequiredFeature9356); 
+            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleRequiredFeature9901); 
 
             			newLeafNode(lv_id_1_0, grammarAccess.getRequiredFeatureAccess().getIdSTRINGTerminalRuleCall_1_0()); 
             		
@@ -9898,16 +10558,16 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4184:2: ( (lv_match_2_0= ruleMatchRule ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4185:1: (lv_match_2_0= ruleMatchRule )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4474:2: ( (lv_match_2_0= ruleMatchRule ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4475:1: (lv_match_2_0= ruleMatchRule )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4185:1: (lv_match_2_0= ruleMatchRule )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4186:3: lv_match_2_0= ruleMatchRule
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4475:1: (lv_match_2_0= ruleMatchRule )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4476:3: lv_match_2_0= ruleMatchRule
             {
              
             	        newCompositeNode(grammarAccess.getRequiredFeatureAccess().getMatchMatchRuleEnumRuleCall_2_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleMatchRule_in_ruleRequiredFeature9382);
+            pushFollow(FollowSets000.FOLLOW_ruleMatchRule_in_ruleRequiredFeature9927);
             lv_match_2_0=ruleMatchRule();
 
             state._fsp--;
@@ -9929,16 +10589,16 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4202:2: ( (lv_version_3_0= ruleVersion ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4203:1: (lv_version_3_0= ruleVersion )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4492:2: ( (lv_version_3_0= ruleVersion ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4493:1: (lv_version_3_0= ruleVersion )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4203:1: (lv_version_3_0= ruleVersion )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4204:3: lv_version_3_0= ruleVersion
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4493:1: (lv_version_3_0= ruleVersion )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4494:3: lv_version_3_0= ruleVersion
             {
              
             	        newCompositeNode(grammarAccess.getRequiredFeatureAccess().getVersionVersionParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleRequiredFeature9403);
+            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleRequiredFeature9948);
             lv_version_3_0=ruleVersion();
 
             state._fsp--;
@@ -9981,7 +10641,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIncludedFeature"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4228:1: entryRuleIncludedFeature returns [EObject current=null] : iv_ruleIncludedFeature= ruleIncludedFeature EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4518:1: entryRuleIncludedFeature returns [EObject current=null] : iv_ruleIncludedFeature= ruleIncludedFeature EOF ;
     public final EObject entryRuleIncludedFeature() throws RecognitionException {
         EObject current = null;
 
@@ -9989,17 +10649,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4229:2: (iv_ruleIncludedFeature= ruleIncludedFeature EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4230:2: iv_ruleIncludedFeature= ruleIncludedFeature EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4519:2: (iv_ruleIncludedFeature= ruleIncludedFeature EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4520:2: iv_ruleIncludedFeature= ruleIncludedFeature EOF
             {
              newCompositeNode(grammarAccess.getIncludedFeatureRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleIncludedFeature_in_entryRuleIncludedFeature9439);
+            pushFollow(FollowSets000.FOLLOW_ruleIncludedFeature_in_entryRuleIncludedFeature9984);
             iv_ruleIncludedFeature=ruleIncludedFeature();
 
             state._fsp--;
 
              current =iv_ruleIncludedFeature; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleIncludedFeature9449); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleIncludedFeature9994); 
 
             }
 
@@ -10017,7 +10677,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIncludedFeature"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4237:1: ruleIncludedFeature returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4527:1: ruleIncludedFeature returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) ;
     public final EObject ruleIncludedFeature() throws RecognitionException {
         EObject current = null;
 
@@ -10028,14 +10688,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4240:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4241:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4530:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4531:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4241:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4241:2: () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4531:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4531:2: () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4241:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4242:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4531:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4532:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10045,13 +10705,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4247:2: ( (lv_id_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4248:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4537:2: ( (lv_id_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4538:1: (lv_id_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4248:1: (lv_id_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4249:3: lv_id_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4538:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4539:3: lv_id_1_0= RULE_STRING
             {
-            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleIncludedFeature9500); 
+            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleIncludedFeature10045); 
 
             			newLeafNode(lv_id_1_0, grammarAccess.getIncludedFeatureAccess().getIdSTRINGTerminalRuleCall_1_0()); 
             		
@@ -10071,24 +10731,24 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4265:2: ( (lv_version_2_0= ruleVersion ) )?
-            int alt77=2;
-            int LA77_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4555:2: ( (lv_version_2_0= ruleVersion ) )?
+            int alt81=2;
+            int LA81_0 = input.LA(1);
 
-            if ( (LA77_0==RULE_INT) ) {
-                alt77=1;
+            if ( (LA81_0==RULE_INT) ) {
+                alt81=1;
             }
-            switch (alt77) {
+            switch (alt81) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4266:1: (lv_version_2_0= ruleVersion )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4556:1: (lv_version_2_0= ruleVersion )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4266:1: (lv_version_2_0= ruleVersion )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4267:3: lv_version_2_0= ruleVersion
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4556:1: (lv_version_2_0= ruleVersion )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4557:3: lv_version_2_0= ruleVersion
                     {
                      
                     	        newCompositeNode(grammarAccess.getIncludedFeatureAccess().getVersionVersionParserRuleCall_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleIncludedFeature9526);
+                    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleIncludedFeature10071);
                     lv_version_2_0=ruleVersion();
 
                     state._fsp--;
@@ -10134,7 +10794,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProductFeature"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4291:1: entryRuleProductFeature returns [EObject current=null] : iv_ruleProductFeature= ruleProductFeature EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4581:1: entryRuleProductFeature returns [EObject current=null] : iv_ruleProductFeature= ruleProductFeature EOF ;
     public final EObject entryRuleProductFeature() throws RecognitionException {
         EObject current = null;
 
@@ -10142,17 +10802,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4292:2: (iv_ruleProductFeature= ruleProductFeature EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4293:2: iv_ruleProductFeature= ruleProductFeature EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4582:2: (iv_ruleProductFeature= ruleProductFeature EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4583:2: iv_ruleProductFeature= ruleProductFeature EOF
             {
              newCompositeNode(grammarAccess.getProductFeatureRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleProductFeature_in_entryRuleProductFeature9563);
+            pushFollow(FollowSets000.FOLLOW_ruleProductFeature_in_entryRuleProductFeature10108);
             iv_ruleProductFeature=ruleProductFeature();
 
             state._fsp--;
 
              current =iv_ruleProductFeature; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleProductFeature9573); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleProductFeature10118); 
 
             }
 
@@ -10170,7 +10830,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProductFeature"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4300:1: ruleProductFeature returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4590:1: ruleProductFeature returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) ;
     public final EObject ruleProductFeature() throws RecognitionException {
         EObject current = null;
 
@@ -10181,14 +10841,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4303:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4304:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4593:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4594:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4304:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4304:2: () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4594:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4594:2: () ( (lv_id_1_0= RULE_STRING ) ) ( (lv_version_2_0= ruleVersion ) )?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4304:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4305:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4594:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4595:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10198,13 +10858,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4310:2: ( (lv_id_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4311:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4600:2: ( (lv_id_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4601:1: (lv_id_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4311:1: (lv_id_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4312:3: lv_id_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4601:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4602:3: lv_id_1_0= RULE_STRING
             {
-            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFeature9624); 
+            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductFeature10169); 
 
             			newLeafNode(lv_id_1_0, grammarAccess.getProductFeatureAccess().getIdSTRINGTerminalRuleCall_1_0()); 
             		
@@ -10224,24 +10884,24 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4328:2: ( (lv_version_2_0= ruleVersion ) )?
-            int alt78=2;
-            int LA78_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4618:2: ( (lv_version_2_0= ruleVersion ) )?
+            int alt82=2;
+            int LA82_0 = input.LA(1);
 
-            if ( (LA78_0==RULE_INT) ) {
-                alt78=1;
+            if ( (LA82_0==RULE_INT) ) {
+                alt82=1;
             }
-            switch (alt78) {
+            switch (alt82) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4329:1: (lv_version_2_0= ruleVersion )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4619:1: (lv_version_2_0= ruleVersion )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4329:1: (lv_version_2_0= ruleVersion )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4330:3: lv_version_2_0= ruleVersion
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4619:1: (lv_version_2_0= ruleVersion )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4620:3: lv_version_2_0= ruleVersion
                     {
                      
                     	        newCompositeNode(grammarAccess.getProductFeatureAccess().getVersionVersionParserRuleCall_2_0()); 
                     	    
-                    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleProductFeature9650);
+                    pushFollow(FollowSets000.FOLLOW_ruleVersion_in_ruleProductFeature10195);
                     lv_version_2_0=ruleVersion();
 
                     state._fsp--;
@@ -10287,7 +10947,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProductStartConfig"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4354:1: entryRuleProductStartConfig returns [EObject current=null] : iv_ruleProductStartConfig= ruleProductStartConfig EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4644:1: entryRuleProductStartConfig returns [EObject current=null] : iv_ruleProductStartConfig= ruleProductStartConfig EOF ;
     public final EObject entryRuleProductStartConfig() throws RecognitionException {
         EObject current = null;
 
@@ -10295,17 +10955,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4355:2: (iv_ruleProductStartConfig= ruleProductStartConfig EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4356:2: iv_ruleProductStartConfig= ruleProductStartConfig EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4645:2: (iv_ruleProductStartConfig= ruleProductStartConfig EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4646:2: iv_ruleProductStartConfig= ruleProductStartConfig EOF
             {
              newCompositeNode(grammarAccess.getProductStartConfigRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleProductStartConfig_in_entryRuleProductStartConfig9687);
+            pushFollow(FollowSets000.FOLLOW_ruleProductStartConfig_in_entryRuleProductStartConfig10232);
             iv_ruleProductStartConfig=ruleProductStartConfig();
 
             state._fsp--;
 
              current =iv_ruleProductStartConfig; 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleProductStartConfig9697); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleProductStartConfig10242); 
 
             }
 
@@ -10323,7 +10983,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProductStartConfig"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4363:1: ruleProductStartConfig returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4653:1: ruleProductStartConfig returns [EObject current=null] : ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? ) ;
     public final EObject ruleProductStartConfig() throws RecognitionException {
         EObject current = null;
 
@@ -10336,14 +10996,14 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4366:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4367:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4656:28: ( ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4657:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4367:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4367:2: () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4657:1: ( () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4657:2: () ( (lv_id_1_0= RULE_STRING ) ) ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )?
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4367:2: ()
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4368:5: 
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4657:2: ()
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4658:5: 
             {
 
                     current = forceCreateModelElement(
@@ -10353,13 +11013,13 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4373:2: ( (lv_id_1_0= RULE_STRING ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4374:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4663:2: ( (lv_id_1_0= RULE_STRING ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4664:1: (lv_id_1_0= RULE_STRING )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4374:1: (lv_id_1_0= RULE_STRING )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4375:3: lv_id_1_0= RULE_STRING
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4664:1: (lv_id_1_0= RULE_STRING )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4665:3: lv_id_1_0= RULE_STRING
             {
-            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductStartConfig9748); 
+            lv_id_1_0=(Token)match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_ruleProductStartConfig10293); 
 
             			newLeafNode(lv_id_1_0, grammarAccess.getProductStartConfigAccess().getIdSTRINGTerminalRuleCall_1_0()); 
             		
@@ -10379,24 +11039,24 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4391:2: ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )?
-            int alt81=2;
-            int LA81_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4681:2: ( ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )? )?
+            int alt85=2;
+            int LA85_0 = input.LA(1);
 
-            if ( (LA81_0==83) ) {
-                alt81=1;
+            if ( (LA85_0==86) ) {
+                alt85=1;
             }
-            switch (alt81) {
+            switch (alt85) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4391:3: ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )?
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4681:3: ( (lv_autoStart_2_0= 'autostarted' ) ) (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )?
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4391:3: ( (lv_autoStart_2_0= 'autostarted' ) )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4392:1: (lv_autoStart_2_0= 'autostarted' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4681:3: ( (lv_autoStart_2_0= 'autostarted' ) )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4682:1: (lv_autoStart_2_0= 'autostarted' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4392:1: (lv_autoStart_2_0= 'autostarted' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4393:3: lv_autoStart_2_0= 'autostarted'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4682:1: (lv_autoStart_2_0= 'autostarted' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4683:3: lv_autoStart_2_0= 'autostarted'
                     {
-                    lv_autoStart_2_0=(Token)match(input,83,FollowSets000.FOLLOW_83_in_ruleProductStartConfig9772); 
+                    lv_autoStart_2_0=(Token)match(input,86,FollowSets000.FOLLOW_86_in_ruleProductStartConfig10317); 
 
                             newLeafNode(lv_autoStart_2_0, grammarAccess.getProductStartConfigAccess().getAutoStartAutostartedKeyword_2_0_0());
                         
@@ -10412,48 +11072,48 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4406:2: (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )?
-                    int alt80=2;
-                    int LA80_0 = input.LA(1);
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4696:2: (otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) ) )?
+                    int alt84=2;
+                    int LA84_0 = input.LA(1);
 
-                    if ( (LA80_0==84) ) {
-                        alt80=1;
+                    if ( (LA84_0==87) ) {
+                        alt84=1;
                     }
-                    switch (alt80) {
+                    switch (alt84) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4406:4: otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4696:4: otherlv_3= 'at' ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) )
                             {
-                            otherlv_3=(Token)match(input,84,FollowSets000.FOLLOW_84_in_ruleProductStartConfig9798); 
+                            otherlv_3=(Token)match(input,87,FollowSets000.FOLLOW_87_in_ruleProductStartConfig10343); 
 
                                 	newLeafNode(otherlv_3, grammarAccess.getProductStartConfigAccess().getAtKeyword_2_1_0());
                                 
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4410:1: ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) )
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4411:1: ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4700:1: ( ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) ) )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4701:1: ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) )
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4411:1: ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) )
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4412:1: (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4701:1: ( (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT ) )
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4702:1: (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT )
                             {
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4412:1: (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT )
-                            int alt79=2;
-                            int LA79_0 = input.LA(1);
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4702:1: (lv_startLevel_4_1= RULE_SIGNED_INT | lv_startLevel_4_2= RULE_INT )
+                            int alt83=2;
+                            int LA83_0 = input.LA(1);
 
-                            if ( (LA79_0==RULE_SIGNED_INT) ) {
-                                alt79=1;
+                            if ( (LA83_0==RULE_SIGNED_INT) ) {
+                                alt83=1;
                             }
-                            else if ( (LA79_0==RULE_INT) ) {
-                                alt79=2;
+                            else if ( (LA83_0==RULE_INT) ) {
+                                alt83=2;
                             }
                             else {
                                 NoViableAltException nvae =
-                                    new NoViableAltException("", 79, 0, input);
+                                    new NoViableAltException("", 83, 0, input);
 
                                 throw nvae;
                             }
-                            switch (alt79) {
+                            switch (alt83) {
                                 case 1 :
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4413:3: lv_startLevel_4_1= RULE_SIGNED_INT
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4703:3: lv_startLevel_4_1= RULE_SIGNED_INT
                                     {
-                                    lv_startLevel_4_1=(Token)match(input,RULE_SIGNED_INT,FollowSets000.FOLLOW_RULE_SIGNED_INT_in_ruleProductStartConfig9817); 
+                                    lv_startLevel_4_1=(Token)match(input,RULE_SIGNED_INT,FollowSets000.FOLLOW_RULE_SIGNED_INT_in_ruleProductStartConfig10362); 
 
                                     			newLeafNode(lv_startLevel_4_1, grammarAccess.getProductStartConfigAccess().getStartLevelSIGNED_INTTerminalRuleCall_2_1_1_0_0()); 
                                     		
@@ -10471,9 +11131,9 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                                     }
                                     break;
                                 case 2 :
-                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4428:8: lv_startLevel_4_2= RULE_INT
+                                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4718:8: lv_startLevel_4_2= RULE_INT
                                     {
-                                    lv_startLevel_4_2=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleProductStartConfig9837); 
+                                    lv_startLevel_4_2=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleProductStartConfig10382); 
 
                                     			newLeafNode(lv_startLevel_4_2, grammarAccess.getProductStartConfigAccess().getStartLevelINTTerminalRuleCall_2_1_1_0_1()); 
                                     		
@@ -10532,7 +11192,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVersion"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4454:1: entryRuleVersion returns [String current=null] : iv_ruleVersion= ruleVersion EOF ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4744:1: entryRuleVersion returns [String current=null] : iv_ruleVersion= ruleVersion EOF ;
     public final String entryRuleVersion() throws RecognitionException {
         String current = null;
 
@@ -10540,17 +11200,17 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4455:2: (iv_ruleVersion= ruleVersion EOF )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4456:2: iv_ruleVersion= ruleVersion EOF
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4745:2: (iv_ruleVersion= ruleVersion EOF )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4746:2: iv_ruleVersion= ruleVersion EOF
             {
              newCompositeNode(grammarAccess.getVersionRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_entryRuleVersion9886);
+            pushFollow(FollowSets000.FOLLOW_ruleVersion_in_entryRuleVersion10431);
             iv_ruleVersion=ruleVersion();
 
             state._fsp--;
 
              current =iv_ruleVersion.getText(); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleVersion9897); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleVersion10442); 
 
             }
 
@@ -10568,7 +11228,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVersion"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4463:1: ruleVersion returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4753:1: ruleVersion returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? ) ;
     public final AntlrDatatypeRuleToken ruleVersion() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -10581,60 +11241,60 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4466:28: ( (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4467:1: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4756:28: ( (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4757:1: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4467:1: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4467:6: this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4757:1: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4757:6: this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT kw= '.' this_INT_4= RULE_INT (kw= '.' this_ID_6= RULE_ID )?
             {
-            this_INT_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleVersion9937); 
+            this_INT_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleVersion10482); 
 
             		current.merge(this_INT_0);
                 
              
                 newLeafNode(this_INT_0, grammarAccess.getVersionAccess().getINTTerminalRuleCall_0()); 
                 
-            kw=(Token)match(input,85,FollowSets000.FOLLOW_85_in_ruleVersion9955); 
+            kw=(Token)match(input,88,FollowSets000.FOLLOW_88_in_ruleVersion10500); 
 
                     current.merge(kw);
                     newLeafNode(kw, grammarAccess.getVersionAccess().getFullStopKeyword_1()); 
                 
-            this_INT_2=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleVersion9970); 
+            this_INT_2=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleVersion10515); 
 
             		current.merge(this_INT_2);
                 
              
                 newLeafNode(this_INT_2, grammarAccess.getVersionAccess().getINTTerminalRuleCall_2()); 
                 
-            kw=(Token)match(input,85,FollowSets000.FOLLOW_85_in_ruleVersion9988); 
+            kw=(Token)match(input,88,FollowSets000.FOLLOW_88_in_ruleVersion10533); 
 
                     current.merge(kw);
                     newLeafNode(kw, grammarAccess.getVersionAccess().getFullStopKeyword_3()); 
                 
-            this_INT_4=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleVersion10003); 
+            this_INT_4=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_ruleVersion10548); 
 
             		current.merge(this_INT_4);
                 
              
                 newLeafNode(this_INT_4, grammarAccess.getVersionAccess().getINTTerminalRuleCall_4()); 
                 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4500:1: (kw= '.' this_ID_6= RULE_ID )?
-            int alt82=2;
-            int LA82_0 = input.LA(1);
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4790:1: (kw= '.' this_ID_6= RULE_ID )?
+            int alt86=2;
+            int LA86_0 = input.LA(1);
 
-            if ( (LA82_0==85) ) {
-                alt82=1;
+            if ( (LA86_0==88) ) {
+                alt86=1;
             }
-            switch (alt82) {
+            switch (alt86) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4501:2: kw= '.' this_ID_6= RULE_ID
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4791:2: kw= '.' this_ID_6= RULE_ID
                     {
-                    kw=(Token)match(input,85,FollowSets000.FOLLOW_85_in_ruleVersion10022); 
+                    kw=(Token)match(input,88,FollowSets000.FOLLOW_88_in_ruleVersion10567); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getVersionAccess().getFullStopKeyword_5_0()); 
                         
-                    this_ID_6=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleVersion10037); 
+                    this_ID_6=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleVersion10582); 
 
                     		current.merge(this_ID_6);
                         
@@ -10668,7 +11328,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4521:1: ruleType returns [Enumerator current=null] : ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4811:1: ruleType returns [Enumerator current=null] : ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) ) ;
     public final Enumerator ruleType() throws RecognitionException {
         Enumerator current = null;
 
@@ -10679,47 +11339,47 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4523:28: ( ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4524:1: ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4813:28: ( ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4814:1: ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4524:1: ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) )
-            int alt83=4;
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4814:1: ( (enumLiteral_0= 'BOOLEAN' ) | (enumLiteral_1= 'DOUBLE' ) | (enumLiteral_2= 'INT' ) | (enumLiteral_3= 'STRING' ) )
+            int alt87=4;
             switch ( input.LA(1) ) {
-            case 86:
-                {
-                alt83=1;
-                }
-                break;
-            case 87:
-                {
-                alt83=2;
-                }
-                break;
-            case 88:
-                {
-                alt83=3;
-                }
-                break;
             case 89:
                 {
-                alt83=4;
+                alt87=1;
+                }
+                break;
+            case 90:
+                {
+                alt87=2;
+                }
+                break;
+            case 91:
+                {
+                alt87=3;
+                }
+                break;
+            case 92:
+                {
+                alt87=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 83, 0, input);
+                    new NoViableAltException("", 87, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt83) {
+            switch (alt87) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4524:2: (enumLiteral_0= 'BOOLEAN' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4814:2: (enumLiteral_0= 'BOOLEAN' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4524:2: (enumLiteral_0= 'BOOLEAN' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4524:4: enumLiteral_0= 'BOOLEAN'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4814:2: (enumLiteral_0= 'BOOLEAN' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4814:4: enumLiteral_0= 'BOOLEAN'
                     {
-                    enumLiteral_0=(Token)match(input,86,FollowSets000.FOLLOW_86_in_ruleType10098); 
+                    enumLiteral_0=(Token)match(input,89,FollowSets000.FOLLOW_89_in_ruleType10643); 
 
                             current = grammarAccess.getTypeAccess().getBOOLEANEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getTypeAccess().getBOOLEANEnumLiteralDeclaration_0()); 
@@ -10731,12 +11391,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4530:6: (enumLiteral_1= 'DOUBLE' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4820:6: (enumLiteral_1= 'DOUBLE' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4530:6: (enumLiteral_1= 'DOUBLE' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4530:8: enumLiteral_1= 'DOUBLE'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4820:6: (enumLiteral_1= 'DOUBLE' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4820:8: enumLiteral_1= 'DOUBLE'
                     {
-                    enumLiteral_1=(Token)match(input,87,FollowSets000.FOLLOW_87_in_ruleType10115); 
+                    enumLiteral_1=(Token)match(input,90,FollowSets000.FOLLOW_90_in_ruleType10660); 
 
                             current = grammarAccess.getTypeAccess().getDOUBLEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getTypeAccess().getDOUBLEEnumLiteralDeclaration_1()); 
@@ -10748,12 +11408,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4536:6: (enumLiteral_2= 'INT' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4826:6: (enumLiteral_2= 'INT' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4536:6: (enumLiteral_2= 'INT' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4536:8: enumLiteral_2= 'INT'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4826:6: (enumLiteral_2= 'INT' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4826:8: enumLiteral_2= 'INT'
                     {
-                    enumLiteral_2=(Token)match(input,88,FollowSets000.FOLLOW_88_in_ruleType10132); 
+                    enumLiteral_2=(Token)match(input,91,FollowSets000.FOLLOW_91_in_ruleType10677); 
 
                             current = grammarAccess.getTypeAccess().getINTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getTypeAccess().getINTEnumLiteralDeclaration_2()); 
@@ -10765,12 +11425,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4542:6: (enumLiteral_3= 'STRING' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4832:6: (enumLiteral_3= 'STRING' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4542:6: (enumLiteral_3= 'STRING' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4542:8: enumLiteral_3= 'STRING'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4832:6: (enumLiteral_3= 'STRING' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4832:8: enumLiteral_3= 'STRING'
                     {
-                    enumLiteral_3=(Token)match(input,89,FollowSets000.FOLLOW_89_in_ruleType10149); 
+                    enumLiteral_3=(Token)match(input,92,FollowSets000.FOLLOW_92_in_ruleType10694); 
 
                             current = grammarAccess.getTypeAccess().getSTRINGEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getTypeAccess().getSTRINGEnumLiteralDeclaration_3()); 
@@ -10802,7 +11462,7 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMatchRule"
-    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4552:1: ruleMatchRule returns [Enumerator current=null] : ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4842:1: ruleMatchRule returns [Enumerator current=null] : ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) ) ;
     public final Enumerator ruleMatchRule() throws RecognitionException {
         Enumerator current = null;
 
@@ -10814,52 +11474,52 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4554:28: ( ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4555:1: ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4844:28: ( ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4845:1: ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4555:1: ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) )
-            int alt84=5;
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4845:1: ( (enumLiteral_0= 'none' ) | (enumLiteral_1= 'equivalent' ) | (enumLiteral_2= 'compatible' ) | (enumLiteral_3= 'perfect' ) | (enumLiteral_4= 'greaterOrEqual' ) )
+            int alt88=5;
             switch ( input.LA(1) ) {
-            case 90:
-                {
-                alt84=1;
-                }
-                break;
-            case 91:
-                {
-                alt84=2;
-                }
-                break;
-            case 92:
-                {
-                alt84=3;
-                }
-                break;
             case 93:
                 {
-                alt84=4;
+                alt88=1;
                 }
                 break;
             case 94:
                 {
-                alt84=5;
+                alt88=2;
+                }
+                break;
+            case 95:
+                {
+                alt88=3;
+                }
+                break;
+            case 96:
+                {
+                alt88=4;
+                }
+                break;
+            case 97:
+                {
+                alt88=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 84, 0, input);
+                    new NoViableAltException("", 88, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt84) {
+            switch (alt88) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4555:2: (enumLiteral_0= 'none' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4845:2: (enumLiteral_0= 'none' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4555:2: (enumLiteral_0= 'none' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4555:4: enumLiteral_0= 'none'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4845:2: (enumLiteral_0= 'none' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4845:4: enumLiteral_0= 'none'
                     {
-                    enumLiteral_0=(Token)match(input,90,FollowSets000.FOLLOW_90_in_ruleMatchRule10194); 
+                    enumLiteral_0=(Token)match(input,93,FollowSets000.FOLLOW_93_in_ruleMatchRule10739); 
 
                             current = grammarAccess.getMatchRuleAccess().getNoneEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getMatchRuleAccess().getNoneEnumLiteralDeclaration_0()); 
@@ -10871,12 +11531,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4561:6: (enumLiteral_1= 'equivalent' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4851:6: (enumLiteral_1= 'equivalent' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4561:6: (enumLiteral_1= 'equivalent' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4561:8: enumLiteral_1= 'equivalent'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4851:6: (enumLiteral_1= 'equivalent' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4851:8: enumLiteral_1= 'equivalent'
                     {
-                    enumLiteral_1=(Token)match(input,91,FollowSets000.FOLLOW_91_in_ruleMatchRule10211); 
+                    enumLiteral_1=(Token)match(input,94,FollowSets000.FOLLOW_94_in_ruleMatchRule10756); 
 
                             current = grammarAccess.getMatchRuleAccess().getEquivalentEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getMatchRuleAccess().getEquivalentEnumLiteralDeclaration_1()); 
@@ -10888,12 +11548,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4567:6: (enumLiteral_2= 'compatible' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4857:6: (enumLiteral_2= 'compatible' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4567:6: (enumLiteral_2= 'compatible' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4567:8: enumLiteral_2= 'compatible'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4857:6: (enumLiteral_2= 'compatible' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4857:8: enumLiteral_2= 'compatible'
                     {
-                    enumLiteral_2=(Token)match(input,92,FollowSets000.FOLLOW_92_in_ruleMatchRule10228); 
+                    enumLiteral_2=(Token)match(input,95,FollowSets000.FOLLOW_95_in_ruleMatchRule10773); 
 
                             current = grammarAccess.getMatchRuleAccess().getCompatibleEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getMatchRuleAccess().getCompatibleEnumLiteralDeclaration_2()); 
@@ -10905,12 +11565,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4573:6: (enumLiteral_3= 'perfect' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4863:6: (enumLiteral_3= 'perfect' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4573:6: (enumLiteral_3= 'perfect' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4573:8: enumLiteral_3= 'perfect'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4863:6: (enumLiteral_3= 'perfect' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4863:8: enumLiteral_3= 'perfect'
                     {
-                    enumLiteral_3=(Token)match(input,93,FollowSets000.FOLLOW_93_in_ruleMatchRule10245); 
+                    enumLiteral_3=(Token)match(input,96,FollowSets000.FOLLOW_96_in_ruleMatchRule10790); 
 
                             current = grammarAccess.getMatchRuleAccess().getPerfectEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getMatchRuleAccess().getPerfectEnumLiteralDeclaration_3()); 
@@ -10922,12 +11582,12 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4579:6: (enumLiteral_4= 'greaterOrEqual' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4869:6: (enumLiteral_4= 'greaterOrEqual' )
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4579:6: (enumLiteral_4= 'greaterOrEqual' )
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4579:8: enumLiteral_4= 'greaterOrEqual'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4869:6: (enumLiteral_4= 'greaterOrEqual' )
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/parser/antlr/internal/InternalRTask.g:4869:8: enumLiteral_4= 'greaterOrEqual'
                     {
-                    enumLiteral_4=(Token)match(input,94,FollowSets000.FOLLOW_94_in_ruleMatchRule10262); 
+                    enumLiteral_4=(Token)match(input,97,FollowSets000.FOLLOW_97_in_ruleMatchRule10807); 
 
                             current = grammarAccess.getMatchRuleAccess().getGreaterOrEqualEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_4, grammarAccess.getMatchRuleAccess().getGreaterOrEqualEnumLiteralDeclaration_4()); 
@@ -10977,15 +11637,15 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_19_in_ruleRobotTask249 = new BitSet(new long[]{0x0000000000180000L});
         public static final BitSet FOLLOW_20_in_ruleRobotTask264 = new BitSet(new long[]{0x0000000000020000L});
         public static final BitSet FOLLOW_17_in_ruleRobotTask276 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleRobotTask288 = new BitSet(new long[]{0x0000008800400000L});
+        public static final BitSet FOLLOW_15_in_ruleRobotTask288 = new BitSet(new long[]{0x0000080800400000L});
         public static final BitSet FOLLOW_ruleGenericProject_in_ruleRobotTask309 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleRobotTask322 = new BitSet(new long[]{0x0000008800400000L});
+        public static final BitSet FOLLOW_18_in_ruleRobotTask322 = new BitSet(new long[]{0x0000080800400000L});
         public static final BitSet FOLLOW_ruleGenericProject_in_ruleRobotTask343 = new BitSet(new long[]{0x00000000000C0000L});
         public static final BitSet FOLLOW_19_in_ruleRobotTask357 = new BitSet(new long[]{0x0000000000080000L});
         public static final BitSet FOLLOW_19_in_ruleRobotTask371 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleVariable_in_entryRuleVariable407 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleVariable417 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_SL_DOC_in_ruleVariable459 = new BitSet(new long[]{0x0000000000000000L,0x0000000003C00000L});
+        public static final BitSet FOLLOW_RULE_SL_DOC_in_ruleVariable459 = new BitSet(new long[]{0x0000000000000000L,0x000000001E000000L});
         public static final BitSet FOLLOW_ruleType_in_ruleVariable485 = new BitSet(new long[]{0x0000000000000020L});
         public static final BitSet FOLLOW_RULE_STRING_in_ruleVariable502 = new BitSet(new long[]{0x0000000000200002L});
         public static final BitSet FOLLOW_21_in_ruleVariable520 = new BitSet(new long[]{0x0000000000000020L});
@@ -11012,9 +11672,9 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_15_in_ruleProject1096 = new BitSet(new long[]{0x0000000000880000L});
         public static final BitSet FOLLOW_23_in_ruleProject1109 = new BitSet(new long[]{0x0000000000020000L});
         public static final BitSet FOLLOW_17_in_ruleProject1121 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleProject1133 = new BitSet(new long[]{0x00C40E01AA000000L});
+        public static final BitSet FOLLOW_15_in_ruleProject1133 = new BitSet(new long[]{0x0C40E001AA000000L});
         public static final BitSet FOLLOW_ruleResource_in_ruleProject1154 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleProject1167 = new BitSet(new long[]{0x00C40E01AA000000L});
+        public static final BitSet FOLLOW_18_in_ruleProject1167 = new BitSet(new long[]{0x0C40E001AA000000L});
         public static final BitSet FOLLOW_ruleResource_in_ruleProject1188 = new BitSet(new long[]{0x00000000000C0000L});
         public static final BitSet FOLLOW_19_in_ruleProject1202 = new BitSet(new long[]{0x0000000000080000L});
         public static final BitSet FOLLOW_19_in_ruleProject1216 = new BitSet(new long[]{0x0000000001000002L});
@@ -11027,16 +11687,16 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleFolder_in_entryRuleFolder1411 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleFolder1421 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_25_in_ruleFolder1467 = new BitSet(new long[]{0x0000000000000060L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleFolder1488 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFolder1500 = new BitSet(new long[]{0x0000000004080000L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleFolder1488 = new BitSet(new long[]{0x0000000000008002L});
+        public static final BitSet FOLLOW_15_in_ruleFolder1501 = new BitSet(new long[]{0x0000000004000000L});
         public static final BitSet FOLLOW_26_in_ruleFolder1513 = new BitSet(new long[]{0x0000000000020000L});
         public static final BitSet FOLLOW_17_in_ruleFolder1525 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFolder1537 = new BitSet(new long[]{0x00C40E01AA000000L});
+        public static final BitSet FOLLOW_15_in_ruleFolder1537 = new BitSet(new long[]{0x0C40E001AA000000L});
         public static final BitSet FOLLOW_ruleResource_in_ruleFolder1558 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleFolder1571 = new BitSet(new long[]{0x00C40E01AA000000L});
+        public static final BitSet FOLLOW_18_in_ruleFolder1571 = new BitSet(new long[]{0x0C40E001AA000000L});
         public static final BitSet FOLLOW_ruleResource_in_ruleFolder1592 = new BitSet(new long[]{0x00000000000C0000L});
         public static final BitSet FOLLOW_19_in_ruleFolder1606 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleFolder1620 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_ruleFolder1618 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleTemplatedFile_in_entryRuleTemplatedFile1656 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleTemplatedFile1666 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_27_in_ruleTemplatedFile1712 = new BitSet(new long[]{0x0000000000000060L});
@@ -11099,304 +11759,332 @@ public class InternalRTaskParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleEString_in_ruleBundleProject3037 = new BitSet(new long[]{0x0000000000008000L});
         public static final BitSet FOLLOW_15_in_ruleBundleProject3049 = new BitSet(new long[]{0x0000007000000000L});
         public static final BitSet FOLLOW_36_in_ruleBundleProject3107 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleBundleProject3119 = new BitSet(new long[]{0x00000E0000000000L});
-        public static final BitSet FOLLOW_ruleManifestFile_in_ruleBundleProject3140 = new BitSet(new long[]{0x0000007000880000L});
+        public static final BitSet FOLLOW_17_in_ruleBundleProject3119 = new BitSet(new long[]{0x0000E00000000000L});
+        public static final BitSet FOLLOW_ruleManifestFile_in_ruleBundleProject3140 = new BitSet(new long[]{0x000000F000800000L});
         public static final BitSet FOLLOW_37_in_ruleBundleProject3208 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleBundleProject3220 = new BitSet(new long[]{0x0010000000000000L});
-        public static final BitSet FOLLOW_ruleBuildProperties_in_ruleBundleProject3241 = new BitSet(new long[]{0x0000007000880000L});
+        public static final BitSet FOLLOW_17_in_ruleBundleProject3220 = new BitSet(new long[]{0x0100000000000000L});
+        public static final BitSet FOLLOW_ruleBuildProperties_in_ruleBundleProject3241 = new BitSet(new long[]{0x000000F000800000L});
         public static final BitSet FOLLOW_38_in_ruleBundleProject3309 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleBundleProject3321 = new BitSet(new long[]{0x00C40E01AA000000L});
-        public static final BitSet FOLLOW_rulePluginXMLFile_in_ruleBundleProject3342 = new BitSet(new long[]{0x0000007000880000L});
+        public static final BitSet FOLLOW_17_in_ruleBundleProject3321 = new BitSet(new long[]{0x0C40E001AA000000L});
+        public static final BitSet FOLLOW_rulePluginXMLFile_in_ruleBundleProject3342 = new BitSet(new long[]{0x000000F000800000L});
         public static final BitSet FOLLOW_23_in_ruleBundleProject3402 = new BitSet(new long[]{0x0000000000020000L});
         public static final BitSet FOLLOW_17_in_ruleBundleProject3414 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleBundleProject3426 = new BitSet(new long[]{0x00C40E01AA000000L});
+        public static final BitSet FOLLOW_15_in_ruleBundleProject3426 = new BitSet(new long[]{0x0C40E001AA000000L});
         public static final BitSet FOLLOW_ruleResource_in_ruleBundleProject3447 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleBundleProject3460 = new BitSet(new long[]{0x00C40E01AA000000L});
+        public static final BitSet FOLLOW_18_in_ruleBundleProject3460 = new BitSet(new long[]{0x0C40E001AA000000L});
         public static final BitSet FOLLOW_ruleResource_in_ruleBundleProject3481 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleBundleProject3495 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleBundleProject3509 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleFeatureProject_in_entryRuleFeatureProject3545 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleFeatureProject3555 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_39_in_ruleFeatureProject3601 = new BitSet(new long[]{0x0000000000000060L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleFeatureProject3622 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFeatureProject3634 = new BitSet(new long[]{0x0000010000000000L});
-        public static final BitSet FOLLOW_40_in_ruleFeatureProject3646 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureProject3658 = new BitSet(new long[]{0x8000000000000000L});
-        public static final BitSet FOLLOW_ruleFeatureFile_in_ruleFeatureProject3679 = new BitSet(new long[]{0x0000000000880000L});
-        public static final BitSet FOLLOW_23_in_ruleFeatureProject3692 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureProject3704 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFeatureProject3716 = new BitSet(new long[]{0x00C40E01AA000000L});
-        public static final BitSet FOLLOW_ruleResource_in_ruleFeatureProject3737 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleFeatureProject3750 = new BitSet(new long[]{0x00C40E01AA000000L});
-        public static final BitSet FOLLOW_ruleResource_in_ruleFeatureProject3771 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleFeatureProject3785 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleFeatureProject3799 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleManifestFile_in_entryRuleManifestFile3835 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleManifestFile3845 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_41_in_ruleManifestFile3897 = new BitSet(new long[]{0x00000C0000000000L});
-        public static final BitSet FOLLOW_42_in_ruleManifestFile3929 = new BitSet(new long[]{0x0000080000000000L});
-        public static final BitSet FOLLOW_43_in_ruleManifestFile3955 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile3972 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile3994 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4016 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleManifestFile4033 = new BitSet(new long[]{0x0000700000000000L});
-        public static final BitSet FOLLOW_44_in_ruleManifestFile4091 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleManifestFile4103 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4120 = new BitSet(new long[]{0x0003F00000080000L});
-        public static final BitSet FOLLOW_45_in_ruleManifestFile4193 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleManifestFile4205 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4222 = new BitSet(new long[]{0x0003F00000080000L});
-        public static final BitSet FOLLOW_46_in_ruleManifestFile4295 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleManifestFile4307 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4324 = new BitSet(new long[]{0x0003F00000080000L});
-        public static final BitSet FOLLOW_47_in_ruleManifestFile4389 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleManifestFile4401 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleManifestFile4413 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleExportedPackage_in_ruleManifestFile4434 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleManifestFile4447 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleExportedPackage_in_ruleManifestFile4468 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleManifestFile4482 = new BitSet(new long[]{0x0003000000080000L});
-        public static final BitSet FOLLOW_48_in_ruleManifestFile4497 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleManifestFile4509 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleManifestFile4521 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleImportedPackage_in_ruleManifestFile4542 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleManifestFile4555 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleImportedPackage_in_ruleManifestFile4576 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleManifestFile4590 = new BitSet(new long[]{0x0002000000080000L});
-        public static final BitSet FOLLOW_49_in_ruleManifestFile4605 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleManifestFile4617 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleManifestFile4629 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleRequiredBundle_in_ruleManifestFile4650 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleManifestFile4663 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleRequiredBundle_in_ruleManifestFile4684 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleManifestFile4698 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleManifestFile4712 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePluginXMLFile_in_entryRulePluginXMLFile4748 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRulePluginXMLFile4758 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_50_in_rulePluginXMLFile4804 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_rulePluginXMLFile4816 = new BitSet(new long[]{0x0008000000080000L});
-        public static final BitSet FOLLOW_51_in_rulePluginXMLFile4829 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_rulePluginXMLFile4841 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_rulePluginXMLFile4853 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleExtension_in_rulePluginXMLFile4874 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_rulePluginXMLFile4887 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleExtension_in_rulePluginXMLFile4908 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_rulePluginXMLFile4922 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_rulePluginXMLFile4936 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleBuildProperties_in_entryRuleBuildProperties4972 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleBuildProperties4982 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_52_in_ruleBuildProperties5028 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleBuildProperties5040 = new BitSet(new long[]{0x0020000000080000L});
-        public static final BitSet FOLLOW_53_in_ruleBuildProperties5053 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleBuildProperties5065 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleBuildProperties5077 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleBuildProperties5097 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleBuildProperties5110 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleBuildProperties5130 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleBuildProperties5144 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleBuildProperties5158 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleProductFileFeaturebase_in_entryRuleProductFileFeaturebase5194 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleProductFileFeaturebase5204 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_54_in_ruleProductFileFeaturebase5256 = new BitSet(new long[]{0x0080000000000000L});
-        public static final BitSet FOLLOW_55_in_ruleProductFileFeaturebase5282 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5299 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleProductFileFeaturebase5316 = new BitSet(new long[]{0x1F00000000000000L});
-        public static final BitSet FOLLOW_56_in_ruleProductFileFeaturebase5374 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5386 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5403 = new BitSet(new long[]{0x7F00000000080000L});
-        public static final BitSet FOLLOW_57_in_ruleProductFileFeaturebase5476 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5488 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5505 = new BitSet(new long[]{0x7F00000000080000L});
-        public static final BitSet FOLLOW_58_in_ruleProductFileFeaturebase5578 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5590 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5607 = new BitSet(new long[]{0x7F00000000080000L});
-        public static final BitSet FOLLOW_59_in_ruleProductFileFeaturebase5680 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5692 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5709 = new BitSet(new long[]{0x7F00000000080000L});
-        public static final BitSet FOLLOW_60_in_ruleProductFileFeaturebase5782 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5794 = new BitSet(new long[]{0x0000000000000200L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleProductFileFeaturebase5815 = new BitSet(new long[]{0x7F00000000080000L});
-        public static final BitSet FOLLOW_61_in_ruleProductFileFeaturebase5875 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5887 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleProductFileFeaturebase5899 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase5920 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleProductFileFeaturebase5933 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase5954 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleProductFileFeaturebase5968 = new BitSet(new long[]{0x4000000000080000L});
-        public static final BitSet FOLLOW_62_in_ruleProductFileFeaturebase5983 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5995 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleProductFileFeaturebase6007 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6028 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleProductFileFeaturebase6041 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6062 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleProductFileFeaturebase6076 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleProductFileFeaturebase6090 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleFeatureFile_in_entryRuleFeatureFile6126 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleFeatureFile6136 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_63_in_ruleFeatureFile6182 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6199 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFeatureFile6216 = new BitSet(new long[]{0x1000200000000000L,0x000000000000003FL});
-        public static final BitSet FOLLOW_60_in_ruleFeatureFile6274 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile6286 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6303 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_64_in_ruleFeatureFile6376 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile6388 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6405 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_45_in_ruleFeatureFile6478 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile6490 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6507 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_65_in_ruleFeatureFile6580 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile6592 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-        public static final BitSet FOLLOW_ruleLinkedString_in_ruleFeatureFile6613 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_66_in_ruleFeatureFile6681 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile6693 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-        public static final BitSet FOLLOW_ruleLinkedString_in_ruleFeatureFile6714 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_67_in_ruleFeatureFile6782 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile6794 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-        public static final BitSet FOLLOW_ruleLinkedString_in_ruleFeatureFile6815 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_68_in_ruleFeatureFile6928 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile6940 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6957 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_69_in_ruleFeatureFile7030 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile7042 = new BitSet(new long[]{0x0000000000000200L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleFeatureFile7063 = new BitSet(new long[]{0x1000200000080000L,0x00000000000001FFL});
-        public static final BitSet FOLLOW_70_in_ruleFeatureFile7169 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile7181 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFeatureFile7193 = new BitSet(new long[]{0x0000000000000020L,0x0000000000060000L});
-        public static final BitSet FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7214 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleFeatureFile7227 = new BitSet(new long[]{0x0000000000000020L,0x0000000000060000L});
-        public static final BitSet FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7248 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleFeatureFile7262 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000180L});
-        public static final BitSet FOLLOW_71_in_ruleFeatureFile7277 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile7289 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFeatureFile7301 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7322 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleFeatureFile7335 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7356 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleFeatureFile7370 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000100L});
-        public static final BitSet FOLLOW_72_in_ruleFeatureFile7385 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleFeatureFile7397 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleFeatureFile7409 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleIncludedFeature_in_ruleFeatureFile7430 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleFeatureFile7443 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleIncludedFeature_in_ruleFeatureFile7464 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleFeatureFile7478 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleFeatureFile7492 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleImportedPackage_in_entryRuleImportedPackage7528 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleImportedPackage7538 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleImportedPackage7589 = new BitSet(new long[]{0x0000000000040202L,0x0000000000000600L});
-        public static final BitSet FOLLOW_73_in_ruleImportedPackage7614 = new BitSet(new long[]{0x0000000000040200L});
-        public static final BitSet FOLLOW_74_in_ruleImportedPackage7646 = new BitSet(new long[]{0x0000000000040200L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleImportedPackage7668 = new BitSet(new long[]{0x0000000000040000L});
-        public static final BitSet FOLLOW_18_in_ruleImportedPackage7681 = new BitSet(new long[]{0x0000000000000202L,0x0000000000001800L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleImportedPackage7703 = new BitSet(new long[]{0x0000000000000002L,0x0000000000001800L});
-        public static final BitSet FOLLOW_75_in_ruleImportedPackage7723 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_76_in_ruleImportedPackage7755 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleExportedPackage_in_entryRuleExportedPackage7795 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleExportedPackage7805 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleExportedPackage7856 = new BitSet(new long[]{0x0000000000000202L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleExportedPackage7882 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleExtension_in_entryRuleExtension7919 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleExtension7929 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleExtension7980 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleExtension7997 = new BitSet(new long[]{0x0000000000080000L,0x0000000000006000L});
-        public static final BitSet FOLLOW_77_in_ruleExtension8010 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleExtension8022 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleExtension8039 = new BitSet(new long[]{0x0000000000080000L,0x0000000000004000L});
-        public static final BitSet FOLLOW_78_in_ruleExtension8059 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleExtension8071 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleExtension8083 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleElement_in_ruleExtension8104 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleExtension8117 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleElement_in_ruleExtension8138 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleExtension8152 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleExtension8166 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleElement_in_entryRuleElement8202 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleElement8212 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleElement8263 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleElement8280 = new BitSet(new long[]{0x0000000004080000L,0x0000000000008000L});
-        public static final BitSet FOLLOW_79_in_ruleElement8293 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleElement8305 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleElement8317 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_ruleAttribute_in_ruleElement8338 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleElement8351 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_ruleAttribute_in_ruleElement8372 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleElement8386 = new BitSet(new long[]{0x0000000004080000L});
-        public static final BitSet FOLLOW_26_in_ruleElement8401 = new BitSet(new long[]{0x0000000000020000L});
-        public static final BitSet FOLLOW_17_in_ruleElement8413 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleElement8425 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleElement_in_ruleElement8446 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_18_in_ruleElement8459 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_ruleElement_in_ruleElement8480 = new BitSet(new long[]{0x00000000000C0000L});
-        public static final BitSet FOLLOW_19_in_ruleElement8494 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleElement8508 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute8544 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleAttribute8554 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_15_in_ruleAttribute8600 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute8617 = new BitSet(new long[]{0x0000000000040000L});
-        public static final BitSet FOLLOW_18_in_ruleAttribute8634 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute8651 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleAttribute8668 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleRequiredBundle_in_entryRuleRequiredBundle8704 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleRequiredBundle8714 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleRequiredBundle8765 = new BitSet(new long[]{0x0000000000040202L,0x0000000000000600L});
-        public static final BitSet FOLLOW_73_in_ruleRequiredBundle8790 = new BitSet(new long[]{0x0000000000040200L});
-        public static final BitSet FOLLOW_74_in_ruleRequiredBundle8822 = new BitSet(new long[]{0x0000000000040200L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleRequiredBundle8844 = new BitSet(new long[]{0x0000000000040000L});
-        public static final BitSet FOLLOW_18_in_ruleRequiredBundle8857 = new BitSet(new long[]{0x0000000000000202L,0x0000000000001800L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleRequiredBundle8878 = new BitSet(new long[]{0x0000000000000002L,0x0000000000001800L});
-        public static final BitSet FOLLOW_75_in_ruleRequiredBundle8898 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_76_in_ruleRequiredBundle8930 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLinkedString_in_entryRuleLinkedString8969 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleLinkedString8979 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_80_in_ruleLinkedString9025 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleLinkedString9042 = new BitSet(new long[]{0x0000000000008000L});
-        public static final BitSet FOLLOW_15_in_ruleLinkedString9059 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleLinkedString9076 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleLinkedString9093 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleFeaturePlugin_in_entryRuleFeaturePlugin9129 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleFeaturePlugin9139 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_81_in_ruleFeaturePlugin9191 = new BitSet(new long[]{0x0000000000000020L,0x0000000000040000L});
-        public static final BitSet FOLLOW_82_in_ruleFeaturePlugin9223 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeaturePlugin9254 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleRequiredFeature_in_entryRuleRequiredFeature9295 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleRequiredFeature9305 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleRequiredFeature9356 = new BitSet(new long[]{0x0000000000000000L,0x000000007C000000L});
-        public static final BitSet FOLLOW_ruleMatchRule_in_ruleRequiredFeature9382 = new BitSet(new long[]{0x0000000000000200L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleRequiredFeature9403 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleIncludedFeature_in_entryRuleIncludedFeature9439 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleIncludedFeature9449 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleIncludedFeature9500 = new BitSet(new long[]{0x0000000000000202L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleIncludedFeature9526 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleProductFeature_in_entryRuleProductFeature9563 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleProductFeature9573 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFeature9624 = new BitSet(new long[]{0x0000000000000202L});
-        public static final BitSet FOLLOW_ruleVersion_in_ruleProductFeature9650 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleProductStartConfig_in_entryRuleProductStartConfig9687 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleProductStartConfig9697 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductStartConfig9748 = new BitSet(new long[]{0x0000000000000002L,0x0000000000080000L});
-        public static final BitSet FOLLOW_83_in_ruleProductStartConfig9772 = new BitSet(new long[]{0x0000000000000002L,0x0000000000100000L});
-        public static final BitSet FOLLOW_84_in_ruleProductStartConfig9798 = new BitSet(new long[]{0x0000000000000300L});
-        public static final BitSet FOLLOW_RULE_SIGNED_INT_in_ruleProductStartConfig9817 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_INT_in_ruleProductStartConfig9837 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleVersion_in_entryRuleVersion9886 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleVersion9897 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_INT_in_ruleVersion9937 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-        public static final BitSet FOLLOW_85_in_ruleVersion9955 = new BitSet(new long[]{0x0000000000000200L});
-        public static final BitSet FOLLOW_RULE_INT_in_ruleVersion9970 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-        public static final BitSet FOLLOW_85_in_ruleVersion9988 = new BitSet(new long[]{0x0000000000000200L});
-        public static final BitSet FOLLOW_RULE_INT_in_ruleVersion10003 = new BitSet(new long[]{0x0000000000000002L,0x0000000000200000L});
-        public static final BitSet FOLLOW_85_in_ruleVersion10022 = new BitSet(new long[]{0x0000000000000040L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleVersion10037 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_86_in_ruleType10098 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_87_in_ruleType10115 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_88_in_ruleType10132 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_89_in_ruleType10149 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_90_in_ruleMatchRule10194 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_91_in_ruleMatchRule10211 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_92_in_ruleMatchRule10228 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_93_in_ruleMatchRule10245 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_94_in_ruleMatchRule10262 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_ruleBundleProject3495 = new BitSet(new long[]{0x0000008000000000L});
+        public static final BitSet FOLLOW_39_in_ruleBundleProject3509 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleBundleProject3521 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleBundleProject3533 = new BitSet(new long[]{0x0000020000000000L});
+        public static final BitSet FOLLOW_ruleSourceFragment_in_ruleBundleProject3554 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleBundleProject3567 = new BitSet(new long[]{0x0000020000000000L});
+        public static final BitSet FOLLOW_ruleSourceFragment_in_ruleBundleProject3588 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleBundleProject3602 = new BitSet(new long[]{0x0000010000080000L});
+        public static final BitSet FOLLOW_40_in_ruleBundleProject3615 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleBundleProject3627 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleBundleProject3639 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleCompilationUnit_in_ruleBundleProject3660 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleBundleProject3673 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleCompilationUnit_in_ruleBundleProject3694 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleBundleProject3708 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleBundleProject3722 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleSourceFragment_in_entryRuleSourceFragment3758 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleSourceFragment3768 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_41_in_ruleSourceFragment3805 = new BitSet(new long[]{0x0000000000000060L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSourceFragment3826 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleSourceFragment3846 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCompilationUnit_in_entryRuleCompilationUnit3882 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleCompilationUnit3892 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleCompilationUnit3934 = new BitSet(new long[]{0x0000040000000000L});
+        public static final BitSet FOLLOW_42_in_ruleCompilationUnit3951 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleCompilationUnit3971 = new BitSet(new long[]{0x00000001A8000000L});
+        public static final BitSet FOLLOW_ruleTemplatedFile_in_ruleCompilationUnit3994 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDataFile_in_ruleCompilationUnit4013 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleURLFile_in_ruleCompilationUnit4032 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDynamicFile_in_ruleCompilationUnit4051 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleFeatureProject_in_entryRuleFeatureProject4090 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleFeatureProject4100 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_43_in_ruleFeatureProject4146 = new BitSet(new long[]{0x0000000000000060L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleFeatureProject4167 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleFeatureProject4179 = new BitSet(new long[]{0x0000100000000000L});
+        public static final BitSet FOLLOW_44_in_ruleFeatureProject4191 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureProject4203 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+        public static final BitSet FOLLOW_ruleFeatureFile_in_ruleFeatureProject4224 = new BitSet(new long[]{0x0000000000880000L});
+        public static final BitSet FOLLOW_23_in_ruleFeatureProject4237 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureProject4249 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleFeatureProject4261 = new BitSet(new long[]{0x0C40E001AA000000L});
+        public static final BitSet FOLLOW_ruleResource_in_ruleFeatureProject4282 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleFeatureProject4295 = new BitSet(new long[]{0x0C40E001AA000000L});
+        public static final BitSet FOLLOW_ruleResource_in_ruleFeatureProject4316 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleFeatureProject4330 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleFeatureProject4344 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleManifestFile_in_entryRuleManifestFile4380 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleManifestFile4390 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_45_in_ruleManifestFile4442 = new BitSet(new long[]{0x0000C00000000000L});
+        public static final BitSet FOLLOW_46_in_ruleManifestFile4474 = new BitSet(new long[]{0x0000800000000000L});
+        public static final BitSet FOLLOW_47_in_ruleManifestFile4500 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4517 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4539 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4561 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleManifestFile4578 = new BitSet(new long[]{0x0007000000000000L});
+        public static final BitSet FOLLOW_48_in_ruleManifestFile4636 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleManifestFile4648 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4665 = new BitSet(new long[]{0x003F000000080000L});
+        public static final BitSet FOLLOW_49_in_ruleManifestFile4738 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleManifestFile4750 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4767 = new BitSet(new long[]{0x003F000000080000L});
+        public static final BitSet FOLLOW_50_in_ruleManifestFile4840 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleManifestFile4852 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleManifestFile4869 = new BitSet(new long[]{0x003F000000080000L});
+        public static final BitSet FOLLOW_51_in_ruleManifestFile4934 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleManifestFile4946 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleManifestFile4958 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleExportedPackage_in_ruleManifestFile4979 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleManifestFile4992 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleExportedPackage_in_ruleManifestFile5013 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleManifestFile5027 = new BitSet(new long[]{0x0030000000080000L});
+        public static final BitSet FOLLOW_52_in_ruleManifestFile5042 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleManifestFile5054 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleManifestFile5066 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleImportedPackage_in_ruleManifestFile5087 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleManifestFile5100 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleImportedPackage_in_ruleManifestFile5121 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleManifestFile5135 = new BitSet(new long[]{0x0020000000080000L});
+        public static final BitSet FOLLOW_53_in_ruleManifestFile5150 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleManifestFile5162 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleManifestFile5174 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleRequiredBundle_in_ruleManifestFile5195 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleManifestFile5208 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleRequiredBundle_in_ruleManifestFile5229 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleManifestFile5243 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleManifestFile5257 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePluginXMLFile_in_entryRulePluginXMLFile5293 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRulePluginXMLFile5303 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_54_in_rulePluginXMLFile5349 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_rulePluginXMLFile5361 = new BitSet(new long[]{0x0080000000080000L});
+        public static final BitSet FOLLOW_55_in_rulePluginXMLFile5374 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_rulePluginXMLFile5386 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_rulePluginXMLFile5398 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleExtension_in_rulePluginXMLFile5419 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_rulePluginXMLFile5432 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleExtension_in_rulePluginXMLFile5453 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_rulePluginXMLFile5467 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_rulePluginXMLFile5481 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleBuildProperties_in_entryRuleBuildProperties5517 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleBuildProperties5527 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_56_in_ruleBuildProperties5573 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleBuildProperties5585 = new BitSet(new long[]{0x0200000000080000L});
+        public static final BitSet FOLLOW_57_in_ruleBuildProperties5598 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleBuildProperties5610 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleBuildProperties5622 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleBuildProperties5642 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleBuildProperties5655 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleBuildProperties5675 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleBuildProperties5689 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleBuildProperties5703 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleProductFileFeaturebase_in_entryRuleProductFileFeaturebase5739 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleProductFileFeaturebase5749 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_58_in_ruleProductFileFeaturebase5801 = new BitSet(new long[]{0x0800000000000000L});
+        public static final BitSet FOLLOW_59_in_ruleProductFileFeaturebase5827 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5844 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleProductFileFeaturebase5861 = new BitSet(new long[]{0xF000000000000000L,0x0000000000000001L});
+        public static final BitSet FOLLOW_60_in_ruleProductFileFeaturebase5919 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase5931 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase5948 = new BitSet(new long[]{0xF000000000080000L,0x0000000000000007L});
+        public static final BitSet FOLLOW_61_in_ruleProductFileFeaturebase6021 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase6033 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase6050 = new BitSet(new long[]{0xF000000000080000L,0x0000000000000007L});
+        public static final BitSet FOLLOW_62_in_ruleProductFileFeaturebase6123 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase6135 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase6152 = new BitSet(new long[]{0xF000000000080000L,0x0000000000000007L});
+        public static final BitSet FOLLOW_63_in_ruleProductFileFeaturebase6225 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase6237 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFileFeaturebase6254 = new BitSet(new long[]{0xF000000000080000L,0x0000000000000007L});
+        public static final BitSet FOLLOW_64_in_ruleProductFileFeaturebase6327 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase6339 = new BitSet(new long[]{0x0000000000000200L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleProductFileFeaturebase6360 = new BitSet(new long[]{0xF000000000080000L,0x0000000000000007L});
+        public static final BitSet FOLLOW_65_in_ruleProductFileFeaturebase6420 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase6432 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleProductFileFeaturebase6444 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase6465 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleProductFileFeaturebase6478 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleProductStartConfig_in_ruleProductFileFeaturebase6499 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleProductFileFeaturebase6513 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000004L});
+        public static final BitSet FOLLOW_66_in_ruleProductFileFeaturebase6528 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleProductFileFeaturebase6540 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleProductFileFeaturebase6552 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6573 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleProductFileFeaturebase6586 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleProductFeature_in_ruleProductFileFeaturebase6607 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleProductFileFeaturebase6621 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleProductFileFeaturebase6635 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleFeatureFile_in_entryRuleFeatureFile6671 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleFeatureFile6681 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_67_in_ruleFeatureFile6727 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6744 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleFeatureFile6761 = new BitSet(new long[]{0x0002000000000000L,0x00000000000003F1L});
+        public static final BitSet FOLLOW_64_in_ruleFeatureFile6819 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile6831 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6848 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_68_in_ruleFeatureFile6921 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile6933 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile6950 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_49_in_ruleFeatureFile7023 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7035 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile7052 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_69_in_ruleFeatureFile7125 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7137 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+        public static final BitSet FOLLOW_ruleLinkedString_in_ruleFeatureFile7158 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_70_in_ruleFeatureFile7226 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7238 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+        public static final BitSet FOLLOW_ruleLinkedString_in_ruleFeatureFile7259 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_71_in_ruleFeatureFile7327 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7339 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+        public static final BitSet FOLLOW_ruleLinkedString_in_ruleFeatureFile7360 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_72_in_ruleFeatureFile7473 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7485 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeatureFile7502 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_73_in_ruleFeatureFile7575 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7587 = new BitSet(new long[]{0x0000000000000200L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleFeatureFile7608 = new BitSet(new long[]{0x0002000000080000L,0x0000000000001FF1L});
+        public static final BitSet FOLLOW_74_in_ruleFeatureFile7714 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7726 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleFeatureFile7738 = new BitSet(new long[]{0x0000020000000020L,0x0000000000200000L});
+        public static final BitSet FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7759 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleFeatureFile7772 = new BitSet(new long[]{0x0000020000000020L,0x0000000000200000L});
+        public static final BitSet FOLLOW_ruleFeaturePlugin_in_ruleFeatureFile7793 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleFeatureFile7807 = new BitSet(new long[]{0x0000000000080000L,0x0000000000001800L});
+        public static final BitSet FOLLOW_75_in_ruleFeatureFile7822 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7834 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleFeatureFile7846 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7867 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleFeatureFile7880 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleRequiredFeature_in_ruleFeatureFile7901 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleFeatureFile7915 = new BitSet(new long[]{0x0000000000080000L,0x0000000000001000L});
+        public static final BitSet FOLLOW_76_in_ruleFeatureFile7930 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleFeatureFile7942 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleFeatureFile7954 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleIncludedFeature_in_ruleFeatureFile7975 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleFeatureFile7988 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleIncludedFeature_in_ruleFeatureFile8009 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleFeatureFile8023 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleFeatureFile8037 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleImportedPackage_in_entryRuleImportedPackage8073 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleImportedPackage8083 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleImportedPackage8134 = new BitSet(new long[]{0x0000000000040202L,0x0000000000006000L});
+        public static final BitSet FOLLOW_77_in_ruleImportedPackage8159 = new BitSet(new long[]{0x0000000000040200L});
+        public static final BitSet FOLLOW_78_in_ruleImportedPackage8191 = new BitSet(new long[]{0x0000000000040200L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleImportedPackage8213 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_18_in_ruleImportedPackage8226 = new BitSet(new long[]{0x0000000000000202L,0x0000000000018000L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleImportedPackage8248 = new BitSet(new long[]{0x0000000000000002L,0x0000000000018000L});
+        public static final BitSet FOLLOW_79_in_ruleImportedPackage8268 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_80_in_ruleImportedPackage8300 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleExportedPackage_in_entryRuleExportedPackage8340 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleExportedPackage8350 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleExportedPackage8401 = new BitSet(new long[]{0x0000000000000202L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleExportedPackage8427 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleExtension_in_entryRuleExtension8464 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleExtension8474 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleExtension8525 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleExtension8542 = new BitSet(new long[]{0x0000000000080000L,0x0000000000060000L});
+        public static final BitSet FOLLOW_81_in_ruleExtension8555 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleExtension8567 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleExtension8584 = new BitSet(new long[]{0x0000000000080000L,0x0000000000040000L});
+        public static final BitSet FOLLOW_82_in_ruleExtension8604 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleExtension8616 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleExtension8628 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleElement_in_ruleExtension8649 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleExtension8662 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleElement_in_ruleExtension8683 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleExtension8697 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleExtension8711 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleElement_in_entryRuleElement8747 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleElement8757 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleElement8808 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleElement8825 = new BitSet(new long[]{0x0000000004080000L,0x0000000000080000L});
+        public static final BitSet FOLLOW_83_in_ruleElement8838 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleElement8850 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleElement8862 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_ruleAttribute_in_ruleElement8883 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleElement8896 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_ruleAttribute_in_ruleElement8917 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleElement8931 = new BitSet(new long[]{0x0000000004080000L});
+        public static final BitSet FOLLOW_26_in_ruleElement8946 = new BitSet(new long[]{0x0000000000020000L});
+        public static final BitSet FOLLOW_17_in_ruleElement8958 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleElement8970 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleElement_in_ruleElement8991 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_18_in_ruleElement9004 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_ruleElement_in_ruleElement9025 = new BitSet(new long[]{0x00000000000C0000L});
+        public static final BitSet FOLLOW_19_in_ruleElement9039 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleElement9053 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute9089 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAttribute9099 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_15_in_ruleAttribute9145 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute9162 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_18_in_ruleAttribute9179 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleAttribute9196 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleAttribute9213 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleRequiredBundle_in_entryRuleRequiredBundle9249 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleRequiredBundle9259 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleRequiredBundle9310 = new BitSet(new long[]{0x0000000000040202L,0x0000000000006000L});
+        public static final BitSet FOLLOW_77_in_ruleRequiredBundle9335 = new BitSet(new long[]{0x0000000000040200L});
+        public static final BitSet FOLLOW_78_in_ruleRequiredBundle9367 = new BitSet(new long[]{0x0000000000040200L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleRequiredBundle9389 = new BitSet(new long[]{0x0000000000040000L});
+        public static final BitSet FOLLOW_18_in_ruleRequiredBundle9402 = new BitSet(new long[]{0x0000000000000202L,0x0000000000018000L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleRequiredBundle9423 = new BitSet(new long[]{0x0000000000000002L,0x0000000000018000L});
+        public static final BitSet FOLLOW_79_in_ruleRequiredBundle9443 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_80_in_ruleRequiredBundle9475 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLinkedString_in_entryRuleLinkedString9514 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleLinkedString9524 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_84_in_ruleLinkedString9570 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleLinkedString9587 = new BitSet(new long[]{0x0000000000008000L});
+        public static final BitSet FOLLOW_15_in_ruleLinkedString9604 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleLinkedString9621 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_19_in_ruleLinkedString9638 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleFeaturePlugin_in_entryRuleFeaturePlugin9674 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleFeaturePlugin9684 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_85_in_ruleFeaturePlugin9736 = new BitSet(new long[]{0x0000020000000020L});
+        public static final BitSet FOLLOW_41_in_ruleFeaturePlugin9768 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleFeaturePlugin9799 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleRequiredFeature_in_entryRuleRequiredFeature9840 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleRequiredFeature9850 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleRequiredFeature9901 = new BitSet(new long[]{0x0000000000000000L,0x00000003E0000000L});
+        public static final BitSet FOLLOW_ruleMatchRule_in_ruleRequiredFeature9927 = new BitSet(new long[]{0x0000000000000200L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleRequiredFeature9948 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleIncludedFeature_in_entryRuleIncludedFeature9984 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleIncludedFeature9994 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleIncludedFeature10045 = new BitSet(new long[]{0x0000000000000202L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleIncludedFeature10071 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleProductFeature_in_entryRuleProductFeature10108 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleProductFeature10118 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductFeature10169 = new BitSet(new long[]{0x0000000000000202L});
+        public static final BitSet FOLLOW_ruleVersion_in_ruleProductFeature10195 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleProductStartConfig_in_entryRuleProductStartConfig10232 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleProductStartConfig10242 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_ruleProductStartConfig10293 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
+        public static final BitSet FOLLOW_86_in_ruleProductStartConfig10317 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800000L});
+        public static final BitSet FOLLOW_87_in_ruleProductStartConfig10343 = new BitSet(new long[]{0x0000000000000300L});
+        public static final BitSet FOLLOW_RULE_SIGNED_INT_in_ruleProductStartConfig10362 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_INT_in_ruleProductStartConfig10382 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleVersion_in_entryRuleVersion10431 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleVersion10442 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_INT_in_ruleVersion10482 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+        public static final BitSet FOLLOW_88_in_ruleVersion10500 = new BitSet(new long[]{0x0000000000000200L});
+        public static final BitSet FOLLOW_RULE_INT_in_ruleVersion10515 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+        public static final BitSet FOLLOW_88_in_ruleVersion10533 = new BitSet(new long[]{0x0000000000000200L});
+        public static final BitSet FOLLOW_RULE_INT_in_ruleVersion10548 = new BitSet(new long[]{0x0000000000000002L,0x0000000001000000L});
+        public static final BitSet FOLLOW_88_in_ruleVersion10567 = new BitSet(new long[]{0x0000000000000040L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleVersion10582 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_89_in_ruleType10643 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_90_in_ruleType10660 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_91_in_ruleType10677 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_92_in_ruleType10694 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_93_in_ruleMatchRule10739 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_94_in_ruleMatchRule10756 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_95_in_ruleMatchRule10773 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_96_in_ruleMatchRule10790 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_97_in_ruleMatchRule10807 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

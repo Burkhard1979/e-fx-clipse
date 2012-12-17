@@ -58,7 +58,7 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 			try {
 				p.create(monitor);
 				p.open(monitor);
-				IStatus s = customizeProject(monitor,p, project);
+				IStatus s = createResources(monitor, p, project, additionalData);
 				if(! s.isOK() ) {
 					return s;
 				}
@@ -69,7 +69,7 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 			return new Status(IStatus.ERROR, PLUGIN_ID, "Project '" + project.getName() + "' already exists.");
 		}
 
-		return createResources(monitor, p, project, additionalData);
+		return customizeProject(monitor,p, project);
 	}
 
 	protected IStatus customizeProject(IProgressMonitor monitor,IProject project, P model) {

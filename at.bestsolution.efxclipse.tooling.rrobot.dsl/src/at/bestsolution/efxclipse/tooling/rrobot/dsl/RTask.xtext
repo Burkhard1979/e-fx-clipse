@@ -45,9 +45,9 @@ Folder returns task::Folder:
 	{task::Folder}
 	'Folder'
 	name=EString
-	'{'
-		('children' '=' '{' children+=Resource ( "," children+=Resource)* '}' )?
-	'}';
+	('{'
+		'children' '=' '{' children+=Resource ( "," children+=Resource)* '}'
+	'}')?;
 
 TemplatedFile returns task::TemplatedFile:
 	{task::TemplatedFile}
@@ -107,8 +107,19 @@ BundleProject returns bundle::BundleProject:
 			('pluginxml' '=' pluginxml=PluginXMLFile)?
 		)
 		('resources' '=' '{' resources+=Resource ( "," resources+=Resource)* '}' )?
+		'rootfragments' '=' '{' sourceFragments+=SourceFragment ( "," sourceFragments+=SourceFragment)* '}'
+		('compilation-units' '=' '{' compilationUnits+=CompilationUnit (',' compilationUnits+=CompilationUnit)* '}')?
 	'}'
 ;
+
+SourceFragment returns task::SourceFragment: 
+	'fragment' name=EString folder=[task::Folder|STRING] 
+;
+
+CompilationUnit returns task::CompilationUnit: 
+	packagename=STRING 'in' sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile | DynamicFile)
+;
+
 
 FeatureProject returns bundle::FeatureProject:
 	{bundle::FeatureProject}

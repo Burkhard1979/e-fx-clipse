@@ -41,6 +41,7 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getResourceAccess().getAlternatives(), "rule__Resource__Alternatives");
 					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 					put(grammarAccess.getBooleanExpressionAccess().getAlternatives(), "rule__BooleanExpression__Alternatives");
+					put(grammarAccess.getCompilationUnitAccess().getFileAlternatives_3_0(), "rule__CompilationUnit__FileAlternatives_3_0");
 					put(grammarAccess.getImportedPackageAccess().getAlternatives_2_0(), "rule__ImportedPackage__Alternatives_2_0");
 					put(grammarAccess.getImportedPackageAccess().getAlternatives_2_3_1(), "rule__ImportedPackage__Alternatives_2_3_1");
 					put(grammarAccess.getRequiredBundleAccess().getAlternatives_2_0(), "rule__RequiredBundle__Alternatives_2_0");
@@ -60,8 +61,8 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProjectAccess().getGroup_4_4(), "rule__Project__Group_4_4__0");
 					put(grammarAccess.getProjectAccess().getGroup_6(), "rule__Project__Group_6__0");
 					put(grammarAccess.getFolderAccess().getGroup(), "rule__Folder__Group__0");
-					put(grammarAccess.getFolderAccess().getGroup_4(), "rule__Folder__Group_4__0");
-					put(grammarAccess.getFolderAccess().getGroup_4_4(), "rule__Folder__Group_4_4__0");
+					put(grammarAccess.getFolderAccess().getGroup_3(), "rule__Folder__Group_3__0");
+					put(grammarAccess.getFolderAccess().getGroup_3_5(), "rule__Folder__Group_3_5__0");
 					put(grammarAccess.getTemplatedFileAccess().getGroup(), "rule__TemplatedFile__Group__0");
 					put(grammarAccess.getTemplatedFileAccess().getGroup_4(), "rule__TemplatedFile__Group_4__0");
 					put(grammarAccess.getDataFileAccess().getGroup(), "rule__DataFile__Group__0");
@@ -80,6 +81,11 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBundleProjectAccess().getGroup_4_2(), "rule__BundleProject__Group_4_2__0");
 					put(grammarAccess.getBundleProjectAccess().getGroup_5(), "rule__BundleProject__Group_5__0");
 					put(grammarAccess.getBundleProjectAccess().getGroup_5_4(), "rule__BundleProject__Group_5_4__0");
+					put(grammarAccess.getBundleProjectAccess().getGroup_10(), "rule__BundleProject__Group_10__0");
+					put(grammarAccess.getBundleProjectAccess().getGroup_12(), "rule__BundleProject__Group_12__0");
+					put(grammarAccess.getBundleProjectAccess().getGroup_12_4(), "rule__BundleProject__Group_12_4__0");
+					put(grammarAccess.getSourceFragmentAccess().getGroup(), "rule__SourceFragment__Group__0");
+					put(grammarAccess.getCompilationUnitAccess().getGroup(), "rule__CompilationUnit__Group__0");
 					put(grammarAccess.getFeatureProjectAccess().getGroup(), "rule__FeatureProject__Group__0");
 					put(grammarAccess.getFeatureProjectAccess().getGroup_7(), "rule__FeatureProject__Group_7__0");
 					put(grammarAccess.getFeatureProjectAccess().getGroup_7_4(), "rule__FeatureProject__Group_7_4__0");
@@ -163,8 +169,8 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProjectAccess().getResourcesAssignment_4_4_1(), "rule__Project__ResourcesAssignment_4_4_1");
 					put(grammarAccess.getProjectAccess().getExcludeExpressionAssignment_6_1(), "rule__Project__ExcludeExpressionAssignment_6_1");
 					put(grammarAccess.getFolderAccess().getNameAssignment_2(), "rule__Folder__NameAssignment_2");
-					put(grammarAccess.getFolderAccess().getChildrenAssignment_4_3(), "rule__Folder__ChildrenAssignment_4_3");
-					put(grammarAccess.getFolderAccess().getChildrenAssignment_4_4_1(), "rule__Folder__ChildrenAssignment_4_4_1");
+					put(grammarAccess.getFolderAccess().getChildrenAssignment_3_4(), "rule__Folder__ChildrenAssignment_3_4");
+					put(grammarAccess.getFolderAccess().getChildrenAssignment_3_5_1(), "rule__Folder__ChildrenAssignment_3_5_1");
 					put(grammarAccess.getTemplatedFileAccess().getNameAssignment_2(), "rule__TemplatedFile__NameAssignment_2");
 					put(grammarAccess.getTemplatedFileAccess().getGeneratorTypeAssignment_4_2(), "rule__TemplatedFile__GeneratorTypeAssignment_4_2");
 					put(grammarAccess.getDataFileAccess().getNameAssignment_2(), "rule__DataFile__NameAssignment_2");
@@ -188,6 +194,15 @@ public class RTaskParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBundleProjectAccess().getPluginxmlAssignment_4_2_2(), "rule__BundleProject__PluginxmlAssignment_4_2_2");
 					put(grammarAccess.getBundleProjectAccess().getResourcesAssignment_5_3(), "rule__BundleProject__ResourcesAssignment_5_3");
 					put(grammarAccess.getBundleProjectAccess().getResourcesAssignment_5_4_1(), "rule__BundleProject__ResourcesAssignment_5_4_1");
+					put(grammarAccess.getBundleProjectAccess().getSourceFragmentsAssignment_9(), "rule__BundleProject__SourceFragmentsAssignment_9");
+					put(grammarAccess.getBundleProjectAccess().getSourceFragmentsAssignment_10_1(), "rule__BundleProject__SourceFragmentsAssignment_10_1");
+					put(grammarAccess.getBundleProjectAccess().getCompilationUnitsAssignment_12_3(), "rule__BundleProject__CompilationUnitsAssignment_12_3");
+					put(grammarAccess.getBundleProjectAccess().getCompilationUnitsAssignment_12_4_1(), "rule__BundleProject__CompilationUnitsAssignment_12_4_1");
+					put(grammarAccess.getSourceFragmentAccess().getNameAssignment_1(), "rule__SourceFragment__NameAssignment_1");
+					put(grammarAccess.getSourceFragmentAccess().getFolderAssignment_2(), "rule__SourceFragment__FolderAssignment_2");
+					put(grammarAccess.getCompilationUnitAccess().getPackagenameAssignment_0(), "rule__CompilationUnit__PackagenameAssignment_0");
+					put(grammarAccess.getCompilationUnitAccess().getSourcefragmentAssignment_2(), "rule__CompilationUnit__SourcefragmentAssignment_2");
+					put(grammarAccess.getCompilationUnitAccess().getFileAssignment_3(), "rule__CompilationUnit__FileAssignment_3");
 					put(grammarAccess.getFeatureProjectAccess().getNameAssignment_2(), "rule__FeatureProject__NameAssignment_2");
 					put(grammarAccess.getFeatureProjectAccess().getFeatureAssignment_6(), "rule__FeatureProject__FeatureAssignment_6");
 					put(grammarAccess.getFeatureProjectAccess().getResourcesAssignment_7_3(), "rule__FeatureProject__ResourcesAssignment_7_3");

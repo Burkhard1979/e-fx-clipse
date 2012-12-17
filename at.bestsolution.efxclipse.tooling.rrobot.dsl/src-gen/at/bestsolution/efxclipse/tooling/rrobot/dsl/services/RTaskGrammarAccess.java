@@ -382,25 +382,25 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFolderKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cChildrenKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
-		private final Assignment cChildrenAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
-		private final RuleCall cChildrenResourceParserRuleCall_4_3_0 = (RuleCall)cChildrenAssignment_4_3.eContents().get(0);
-		private final Group cGroup_4_4 = (Group)cGroup_4.eContents().get(4);
-		private final Keyword cCommaKeyword_4_4_0 = (Keyword)cGroup_4_4.eContents().get(0);
-		private final Assignment cChildrenAssignment_4_4_1 = (Assignment)cGroup_4_4.eContents().get(1);
-		private final RuleCall cChildrenResourceParserRuleCall_4_4_1_0 = (RuleCall)cChildrenAssignment_4_4_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_5 = (Keyword)cGroup_4.eContents().get(5);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cChildrenKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
+		private final Assignment cChildrenAssignment_3_4 = (Assignment)cGroup_3.eContents().get(4);
+		private final RuleCall cChildrenResourceParserRuleCall_3_4_0 = (RuleCall)cChildrenAssignment_3_4.eContents().get(0);
+		private final Group cGroup_3_5 = (Group)cGroup_3.eContents().get(5);
+		private final Keyword cCommaKeyword_3_5_0 = (Keyword)cGroup_3_5.eContents().get(0);
+		private final Assignment cChildrenAssignment_3_5_1 = (Assignment)cGroup_3_5.eContents().get(1);
+		private final RuleCall cChildrenResourceParserRuleCall_3_5_1_0 = (RuleCall)cChildrenAssignment_3_5_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_6 = (Keyword)cGroup_3.eContents().get(6);
+		private final Keyword cRightCurlyBracketKeyword_3_7 = (Keyword)cGroup_3.eContents().get(7);
 		
 		//Folder returns task::Folder:
-		//	{task::Folder} "Folder" name=EString "{" ("children" "=" "{" children+=Resource ("," children+=Resource)* "}")? "}";
+		//	{task::Folder} "Folder" name=EString ("{" "children" "=" "{" children+=Resource ("," children+=Resource)* "}" "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//{task::Folder} "Folder" name=EString "{" ("children" "=" "{" children+=Resource ("," children+=Resource)* "}")? "}"
+		//{task::Folder} "Folder" name=EString ("{" "children" "=" "{" children+=Resource ("," children+=Resource)* "}" "}")?
 		public Group getGroup() { return cGroup; }
 
 		//{task::Folder}
@@ -415,44 +415,44 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		//("{" "children" "=" "{" children+=Resource ("," children+=Resource)* "}" "}")?
+		public Group getGroup_3() { return cGroup_3; }
 
-		//("children" "=" "{" children+=Resource ("," children+=Resource)* "}")?
-		public Group getGroup_4() { return cGroup_4; }
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
 
 		//"children"
-		public Keyword getChildrenKeyword_4_0() { return cChildrenKeyword_4_0; }
+		public Keyword getChildrenKeyword_3_1() { return cChildrenKeyword_3_1; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_4_1() { return cEqualsSignKeyword_4_1; }
+		public Keyword getEqualsSignKeyword_3_2() { return cEqualsSignKeyword_3_2; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_4_2() { return cLeftCurlyBracketKeyword_4_2; }
+		public Keyword getLeftCurlyBracketKeyword_3_3() { return cLeftCurlyBracketKeyword_3_3; }
 
 		//children+=Resource
-		public Assignment getChildrenAssignment_4_3() { return cChildrenAssignment_4_3; }
+		public Assignment getChildrenAssignment_3_4() { return cChildrenAssignment_3_4; }
 
 		//Resource
-		public RuleCall getChildrenResourceParserRuleCall_4_3_0() { return cChildrenResourceParserRuleCall_4_3_0; }
+		public RuleCall getChildrenResourceParserRuleCall_3_4_0() { return cChildrenResourceParserRuleCall_3_4_0; }
 
 		//("," children+=Resource)*
-		public Group getGroup_4_4() { return cGroup_4_4; }
+		public Group getGroup_3_5() { return cGroup_3_5; }
 
 		//","
-		public Keyword getCommaKeyword_4_4_0() { return cCommaKeyword_4_4_0; }
+		public Keyword getCommaKeyword_3_5_0() { return cCommaKeyword_3_5_0; }
 
 		//children+=Resource
-		public Assignment getChildrenAssignment_4_4_1() { return cChildrenAssignment_4_4_1; }
+		public Assignment getChildrenAssignment_3_5_1() { return cChildrenAssignment_3_5_1; }
 
 		//Resource
-		public RuleCall getChildrenResourceParserRuleCall_4_4_1_0() { return cChildrenResourceParserRuleCall_4_4_1_0; }
+		public RuleCall getChildrenResourceParserRuleCall_3_5_1_0() { return cChildrenResourceParserRuleCall_3_5_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4_5() { return cRightCurlyBracketKeyword_4_5; }
+		public Keyword getRightCurlyBracketKeyword_3_6() { return cRightCurlyBracketKeyword_3_6; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_3_7() { return cRightCurlyBracketKeyword_3_7; }
 	}
 
 	public class TemplatedFileElements extends AbstractParserRuleElementFinder {
@@ -851,17 +851,42 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cResourcesAssignment_5_4_1 = (Assignment)cGroup_5_4.eContents().get(1);
 		private final RuleCall cResourcesResourceParserRuleCall_5_4_1_0 = (RuleCall)cResourcesAssignment_5_4_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5_5 = (Keyword)cGroup_5.eContents().get(5);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cRootfragmentsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cEqualsSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cLeftCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cSourceFragmentsAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cSourceFragmentsSourceFragmentParserRuleCall_9_0 = (RuleCall)cSourceFragmentsAssignment_9.eContents().get(0);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cCommaKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cSourceFragmentsAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cSourceFragmentsSourceFragmentParserRuleCall_10_1_0 = (RuleCall)cSourceFragmentsAssignment_10_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cCompilationUnitsKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_12_2 = (Keyword)cGroup_12.eContents().get(2);
+		private final Assignment cCompilationUnitsAssignment_12_3 = (Assignment)cGroup_12.eContents().get(3);
+		private final RuleCall cCompilationUnitsCompilationUnitParserRuleCall_12_3_0 = (RuleCall)cCompilationUnitsAssignment_12_3.eContents().get(0);
+		private final Group cGroup_12_4 = (Group)cGroup_12.eContents().get(4);
+		private final Keyword cCommaKeyword_12_4_0 = (Keyword)cGroup_12_4.eContents().get(0);
+		private final Assignment cCompilationUnitsAssignment_12_4_1 = (Assignment)cGroup_12_4.eContents().get(1);
+		private final RuleCall cCompilationUnitsCompilationUnitParserRuleCall_12_4_1_0 = (RuleCall)cCompilationUnitsAssignment_12_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12_5 = (Keyword)cGroup_12.eContents().get(5);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
 		//BundleProject returns bundle::BundleProject:
 		//	{bundle::BundleProject} "BundleProject" name=EString "{" ("manifest" "=" manifest=ManifestFile & "build" "="
 		//	buildProperties=BuildProperties & ("pluginxml" "=" pluginxml=PluginXMLFile)?) ("resources" "=" "{" resources+=Resource
-		//	("," resources+=Resource)* "}")? "}";
+		//	("," resources+=Resource)* "}")? "rootfragments" "=" "{" sourceFragments+=SourceFragment (","
+		//	sourceFragments+=SourceFragment)* "}" ("compilation-units" "=" "{" compilationUnits+=CompilationUnit (","
+		//	compilationUnits+=CompilationUnit)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{bundle::BundleProject} "BundleProject" name=EString "{" ("manifest" "=" manifest=ManifestFile & "build" "="
 		//buildProperties=BuildProperties & ("pluginxml" "=" pluginxml=PluginXMLFile)?) ("resources" "=" "{" resources+=Resource
-		//("," resources+=Resource)* "}")? "}"
+		//("," resources+=Resource)* "}")? "rootfragments" "=" "{" sourceFragments+=SourceFragment (","
+		//sourceFragments+=SourceFragment)* "}" ("compilation-units" "=" "{" compilationUnits+=CompilationUnit (","
+		//compilationUnits+=CompilationUnit)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{bundle::BundleProject}
@@ -961,8 +986,169 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5_5() { return cRightCurlyBracketKeyword_5_5; }
 
+		//"rootfragments"
+		public Keyword getRootfragmentsKeyword_6() { return cRootfragmentsKeyword_6; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_7() { return cEqualsSignKeyword_7; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_8() { return cLeftCurlyBracketKeyword_8; }
+
+		//sourceFragments+=SourceFragment
+		public Assignment getSourceFragmentsAssignment_9() { return cSourceFragmentsAssignment_9; }
+
+		//SourceFragment
+		public RuleCall getSourceFragmentsSourceFragmentParserRuleCall_9_0() { return cSourceFragmentsSourceFragmentParserRuleCall_9_0; }
+
+		//("," sourceFragments+=SourceFragment)*
+		public Group getGroup_10() { return cGroup_10; }
+
+		//","
+		public Keyword getCommaKeyword_10_0() { return cCommaKeyword_10_0; }
+
+		//sourceFragments+=SourceFragment
+		public Assignment getSourceFragmentsAssignment_10_1() { return cSourceFragmentsAssignment_10_1; }
+
+		//SourceFragment
+		public RuleCall getSourceFragmentsSourceFragmentParserRuleCall_10_1_0() { return cSourceFragmentsSourceFragmentParserRuleCall_10_1_0; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+
+		//("compilation-units" "=" "{" compilationUnits+=CompilationUnit ("," compilationUnits+=CompilationUnit)* "}")?
+		public Group getGroup_12() { return cGroup_12; }
+
+		//"compilation-units"
+		public Keyword getCompilationUnitsKeyword_12_0() { return cCompilationUnitsKeyword_12_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_12_1() { return cEqualsSignKeyword_12_1; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_12_2() { return cLeftCurlyBracketKeyword_12_2; }
+
+		//compilationUnits+=CompilationUnit
+		public Assignment getCompilationUnitsAssignment_12_3() { return cCompilationUnitsAssignment_12_3; }
+
+		//CompilationUnit
+		public RuleCall getCompilationUnitsCompilationUnitParserRuleCall_12_3_0() { return cCompilationUnitsCompilationUnitParserRuleCall_12_3_0; }
+
+		//("," compilationUnits+=CompilationUnit)*
+		public Group getGroup_12_4() { return cGroup_12_4; }
+
+		//","
+		public Keyword getCommaKeyword_12_4_0() { return cCommaKeyword_12_4_0; }
+
+		//compilationUnits+=CompilationUnit
+		public Assignment getCompilationUnitsAssignment_12_4_1() { return cCompilationUnitsAssignment_12_4_1; }
+
+		//CompilationUnit
+		public RuleCall getCompilationUnitsCompilationUnitParserRuleCall_12_4_1_0() { return cCompilationUnitsCompilationUnitParserRuleCall_12_4_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_12_5() { return cRightCurlyBracketKeyword_12_5; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+	}
+
+	public class SourceFragmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SourceFragment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFragmentKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cFolderAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cFolderFolderCrossReference_2_0 = (CrossReference)cFolderAssignment_2.eContents().get(0);
+		private final RuleCall cFolderFolderSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cFolderFolderCrossReference_2_0.eContents().get(1);
+		
+		//SourceFragment returns task::SourceFragment:
+		//	"fragment" name=EString folder=[task::Folder|STRING];
+		public ParserRule getRule() { return rule; }
+
+		//"fragment" name=EString folder=[task::Folder|STRING]
+		public Group getGroup() { return cGroup; }
+
+		//"fragment"
+		public Keyword getFragmentKeyword_0() { return cFragmentKeyword_0; }
+
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+
+		//folder=[task::Folder|STRING]
+		public Assignment getFolderAssignment_2() { return cFolderAssignment_2; }
+
+		//[task::Folder|STRING]
+		public CrossReference getFolderFolderCrossReference_2_0() { return cFolderFolderCrossReference_2_0; }
+
+		//STRING
+		public RuleCall getFolderFolderSTRINGTerminalRuleCall_2_0_1() { return cFolderFolderSTRINGTerminalRuleCall_2_0_1; }
+	}
+
+	public class CompilationUnitElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CompilationUnit");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cPackagenameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cPackagenameSTRINGTerminalRuleCall_0_0 = (RuleCall)cPackagenameAssignment_0.eContents().get(0);
+		private final Keyword cInKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cSourcefragmentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cSourcefragmentSourceFragmentCrossReference_2_0 = (CrossReference)cSourcefragmentAssignment_2.eContents().get(0);
+		private final RuleCall cSourcefragmentSourceFragmentSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cSourcefragmentSourceFragmentCrossReference_2_0.eContents().get(1);
+		private final Assignment cFileAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Alternatives cFileAlternatives_3_0 = (Alternatives)cFileAssignment_3.eContents().get(0);
+		private final RuleCall cFileTemplatedFileParserRuleCall_3_0_0 = (RuleCall)cFileAlternatives_3_0.eContents().get(0);
+		private final RuleCall cFileDataFileParserRuleCall_3_0_1 = (RuleCall)cFileAlternatives_3_0.eContents().get(1);
+		private final RuleCall cFileURLFileParserRuleCall_3_0_2 = (RuleCall)cFileAlternatives_3_0.eContents().get(2);
+		private final RuleCall cFileDynamicFileParserRuleCall_3_0_3 = (RuleCall)cFileAlternatives_3_0.eContents().get(3);
+		
+		//CompilationUnit returns task::CompilationUnit:
+		//	packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile |
+		//	DynamicFile);
+		public ParserRule getRule() { return rule; }
+
+		//packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile |
+		//DynamicFile)
+		public Group getGroup() { return cGroup; }
+
+		//packagename=STRING
+		public Assignment getPackagenameAssignment_0() { return cPackagenameAssignment_0; }
+
+		//STRING
+		public RuleCall getPackagenameSTRINGTerminalRuleCall_0_0() { return cPackagenameSTRINGTerminalRuleCall_0_0; }
+
+		//"in"
+		public Keyword getInKeyword_1() { return cInKeyword_1; }
+
+		//sourcefragment=[task::SourceFragment|STRING]
+		public Assignment getSourcefragmentAssignment_2() { return cSourcefragmentAssignment_2; }
+
+		//[task::SourceFragment|STRING]
+		public CrossReference getSourcefragmentSourceFragmentCrossReference_2_0() { return cSourcefragmentSourceFragmentCrossReference_2_0; }
+
+		//STRING
+		public RuleCall getSourcefragmentSourceFragmentSTRINGTerminalRuleCall_2_0_1() { return cSourcefragmentSourceFragmentSTRINGTerminalRuleCall_2_0_1; }
+
+		//file=(TemplatedFile | DataFile | URLFile | DynamicFile)
+		public Assignment getFileAssignment_3() { return cFileAssignment_3; }
+
+		//TemplatedFile | DataFile | URLFile | DynamicFile
+		public Alternatives getFileAlternatives_3_0() { return cFileAlternatives_3_0; }
+
+		//TemplatedFile
+		public RuleCall getFileTemplatedFileParserRuleCall_3_0_0() { return cFileTemplatedFileParserRuleCall_3_0_0; }
+
+		//DataFile
+		public RuleCall getFileDataFileParserRuleCall_3_0_1() { return cFileDataFileParserRuleCall_3_0_1; }
+
+		//URLFile
+		public RuleCall getFileURLFileParserRuleCall_3_0_2() { return cFileURLFileParserRuleCall_3_0_2; }
+
+		//DynamicFile
+		public RuleCall getFileDynamicFileParserRuleCall_3_0_3() { return cFileDynamicFileParserRuleCall_3_0_3; }
 	}
 
 	public class FeatureProjectElements extends AbstractParserRuleElementFinder {
@@ -2963,6 +3149,8 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	private InlineBooleanExpressionElements pInlineBooleanExpression;
 	private EByteArrayElements pEByteArray;
 	private BundleProjectElements pBundleProject;
+	private SourceFragmentElements pSourceFragment;
+	private CompilationUnitElements pCompilationUnit;
 	private FeatureProjectElements pFeatureProject;
 	private ManifestFileElements pManifestFile;
 	private PluginXMLFileElements pPluginXMLFile;
@@ -3098,7 +3286,7 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Folder returns task::Folder:
-	//	{task::Folder} "Folder" name=EString "{" ("children" "=" "{" children+=Resource ("," children+=Resource)* "}")? "}";
+	//	{task::Folder} "Folder" name=EString ("{" "children" "=" "{" children+=Resource ("," children+=Resource)* "}" "}")?;
 	public FolderElements getFolderAccess() {
 		return (pFolder != null) ? pFolder : (pFolder = new FolderElements());
 	}
@@ -3190,13 +3378,36 @@ public class RTaskGrammarAccess extends AbstractGrammarElementFinder {
 	//BundleProject returns bundle::BundleProject:
 	//	{bundle::BundleProject} "BundleProject" name=EString "{" ("manifest" "=" manifest=ManifestFile & "build" "="
 	//	buildProperties=BuildProperties & ("pluginxml" "=" pluginxml=PluginXMLFile)?) ("resources" "=" "{" resources+=Resource
-	//	("," resources+=Resource)* "}")? "}";
+	//	("," resources+=Resource)* "}")? "rootfragments" "=" "{" sourceFragments+=SourceFragment (","
+	//	sourceFragments+=SourceFragment)* "}" ("compilation-units" "=" "{" compilationUnits+=CompilationUnit (","
+	//	compilationUnits+=CompilationUnit)* "}")? "}";
 	public BundleProjectElements getBundleProjectAccess() {
 		return (pBundleProject != null) ? pBundleProject : (pBundleProject = new BundleProjectElements());
 	}
 	
 	public ParserRule getBundleProjectRule() {
 		return getBundleProjectAccess().getRule();
+	}
+
+	//SourceFragment returns task::SourceFragment:
+	//	"fragment" name=EString folder=[task::Folder|STRING];
+	public SourceFragmentElements getSourceFragmentAccess() {
+		return (pSourceFragment != null) ? pSourceFragment : (pSourceFragment = new SourceFragmentElements());
+	}
+	
+	public ParserRule getSourceFragmentRule() {
+		return getSourceFragmentAccess().getRule();
+	}
+
+	//CompilationUnit returns task::CompilationUnit:
+	//	packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile |
+	//	DynamicFile);
+	public CompilationUnitElements getCompilationUnitAccess() {
+		return (pCompilationUnit != null) ? pCompilationUnit : (pCompilationUnit = new CompilationUnitElements());
+	}
+	
+	public ParserRule getCompilationUnitRule() {
+		return getCompilationUnitAccess().getRule();
 	}
 
 	//FeatureProject returns bundle::FeatureProject:
