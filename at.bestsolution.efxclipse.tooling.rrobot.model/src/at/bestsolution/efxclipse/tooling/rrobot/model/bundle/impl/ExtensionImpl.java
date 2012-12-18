@@ -6,6 +6,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Extension;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getPoint <em>Point</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +89,16 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	 * @ordered
 	 */
 	protected EList<Element> elements;
+
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,11 +178,56 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case BundlePackage.EXTENSION__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -189,6 +246,8 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 				return getPoint();
 			case BundlePackage.EXTENSION__ELEMENTS:
 				return getElements();
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,6 +271,9 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 				getElements().clear();
 				getElements().addAll((Collection<? extends Element>)newValue);
 				return;
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -233,6 +295,9 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 			case BundlePackage.EXTENSION__ELEMENTS:
 				getElements().clear();
 				return;
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -251,6 +316,8 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 				return POINT_EDEFAULT == null ? point != null : !POINT_EDEFAULT.equals(point);
 			case BundlePackage.EXTENSION__ELEMENTS:
 				return elements != null && !elements.isEmpty();
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -5,10 +5,13 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -22,6 +25,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#isAutoStart <em>Auto Start</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#getStartLevel <em>Start Level</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +91,16 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 	 * @ordered
 	 */
 	protected int startLevel = START_LEVEL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,6 +189,63 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -184,6 +255,8 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 				return isAutoStart();
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				return getStartLevel();
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -204,6 +277,9 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 				return;
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				setStartLevel((Integer)newValue);
+				return;
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -226,6 +302,9 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				setStartLevel(START_LEVEL_EDEFAULT);
 				return;
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -244,6 +323,8 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 				return autoStart != AUTO_START_EDEFAULT;
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				return startLevel != START_LEVEL_EDEFAULT;
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -1016,13 +1016,22 @@ public interface BundlePackage extends EPackage {
 	int EXTENSION__ELEMENTS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__EXCLUDE_EXPRESSION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Extension</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION_FEATURE_COUNT = 3;
+	int EXTENSION_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ElementImpl <em>Element</em>}' class.
@@ -1255,13 +1264,22 @@ public interface BundlePackage extends EPackage {
 	int FEATURE_PLUGIN__FRAGMENT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PLUGIN__EXCLUDE_EXPRESSION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Feature Plugin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_PLUGIN_FEATURE_COUNT = 3;
+	int FEATURE_PLUGIN_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl <em>Required Feature</em>}' class.
@@ -1301,13 +1319,22 @@ public interface BundlePackage extends EPackage {
 	int REQUIRED_FEATURE__VERSION = 2;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_FEATURE__EXCLUDE_EXPRESSION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Required Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_FEATURE_FEATURE_COUNT = 3;
+	int REQUIRED_FEATURE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.IncludedFeatureImpl <em>Included Feature</em>}' class.
@@ -1338,13 +1365,22 @@ public interface BundlePackage extends EPackage {
 	int INCLUDED_FEATURE__VERSION = 1;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDED_FEATURE__EXCLUDE_EXPRESSION = 2;
+
+	/**
 	 * The number of structural features of the '<em>Included Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCLUDED_FEATURE_FEATURE_COUNT = 2;
+	int INCLUDED_FEATURE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl <em>Product Plugin</em>}' class.
@@ -1384,13 +1420,22 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_PLUGIN__FRAGMENT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_PLUGIN__EXCLUDE_EXPRESSION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Product Plugin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_PLUGIN_FEATURE_COUNT = 3;
+	int PRODUCT_PLUGIN_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFeatureImpl <em>Product Feature</em>}' class.
@@ -1421,13 +1466,22 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_FEATURE__VERSION = 1;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FEATURE__EXCLUDE_EXPRESSION = 2;
+
+	/**
 	 * The number of structural features of the '<em>Product Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FEATURE_FEATURE_COUNT = 2;
+	int PRODUCT_FEATURE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl <em>Product Start Config</em>}' class.
@@ -1467,13 +1521,22 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_START_CONFIG__START_LEVEL = 2;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Product Start Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_START_CONFIG_FEATURE_COUNT = 3;
+	int PRODUCT_START_CONFIG_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}' enum.
@@ -2157,6 +2220,17 @@ public interface BundlePackage extends EPackage {
 	EReference getExtension_Elements();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Extension#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Extension#getExcludeExpression()
+	 * @see #getExtension()
+	 * @generated
+	 */
+	EReference getExtension_ExcludeExpression();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2383,6 +2457,17 @@ public interface BundlePackage extends EPackage {
 	EAttribute getFeaturePlugin_Fragment();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.FeaturePlugin#getExcludeExpression()
+	 * @see #getFeaturePlugin()
+	 * @generated
+	 */
+	EReference getFeaturePlugin_ExcludeExpression();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature <em>Required Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2426,6 +2511,17 @@ public interface BundlePackage extends EPackage {
 	EAttribute getRequiredFeature_Version();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getExcludeExpression()
+	 * @see #getRequiredFeature()
+	 * @generated
+	 */
+	EReference getRequiredFeature_ExcludeExpression();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature <em>Included Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2456,6 +2552,17 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIncludedFeature_Version();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature#getExcludeExpression()
+	 * @see #getIncludedFeature()
+	 * @generated
+	 */
+	EReference getIncludedFeature_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductPlugin <em>Product Plugin</em>}'.
@@ -2501,6 +2608,17 @@ public interface BundlePackage extends EPackage {
 	EAttribute getProductPlugin_Fragment();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductPlugin#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductPlugin#getExcludeExpression()
+	 * @see #getProductPlugin()
+	 * @generated
+	 */
+	EReference getProductPlugin_ExcludeExpression();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature <em>Product Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2531,6 +2649,17 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProductFeature_Version();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature#getExcludeExpression()
+	 * @see #getProductFeature()
+	 * @generated
+	 */
+	EReference getProductFeature_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig <em>Product Start Config</em>}'.
@@ -2574,6 +2703,17 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProductStartConfig_StartLevel();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductStartConfig#getExcludeExpression()
+	 * @see #getProductStartConfig()
+	 * @generated
+	 */
+	EReference getProductStartConfig_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}'.
@@ -3129,6 +3269,14 @@ public interface BundlePackage extends EPackage {
 		EReference EXTENSION__ELEMENTS = eINSTANCE.getExtension_Elements();
 
 		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTENSION__EXCLUDE_EXPRESSION = eINSTANCE.getExtension_ExcludeExpression();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ElementImpl <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3307,6 +3455,14 @@ public interface BundlePackage extends EPackage {
 		EAttribute FEATURE_PLUGIN__FRAGMENT = eINSTANCE.getFeaturePlugin_Fragment();
 
 		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE_PLUGIN__EXCLUDE_EXPRESSION = eINSTANCE.getFeaturePlugin_ExcludeExpression();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl <em>Required Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3341,6 +3497,14 @@ public interface BundlePackage extends EPackage {
 		EAttribute REQUIRED_FEATURE__VERSION = eINSTANCE.getRequiredFeature_Version();
 
 		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REQUIRED_FEATURE__EXCLUDE_EXPRESSION = eINSTANCE.getRequiredFeature_ExcludeExpression();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.IncludedFeatureImpl <em>Included Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3365,6 +3529,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INCLUDED_FEATURE__VERSION = eINSTANCE.getIncludedFeature_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INCLUDED_FEATURE__EXCLUDE_EXPRESSION = eINSTANCE.getIncludedFeature_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl <em>Product Plugin</em>}' class.
@@ -3401,6 +3573,14 @@ public interface BundlePackage extends EPackage {
 		EAttribute PRODUCT_PLUGIN__FRAGMENT = eINSTANCE.getProductPlugin_Fragment();
 
 		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_PLUGIN__EXCLUDE_EXPRESSION = eINSTANCE.getProductPlugin_ExcludeExpression();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFeatureImpl <em>Product Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3425,6 +3605,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUCT_FEATURE__VERSION = eINSTANCE.getProductFeature_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_FEATURE__EXCLUDE_EXPRESSION = eINSTANCE.getProductFeature_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl <em>Product Start Config</em>}' class.
@@ -3459,6 +3647,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUCT_START_CONFIG__START_LEVEL = eINSTANCE.getProductStartConfig_StartLevel();
+
+		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION = eINSTANCE.getProductStartConfig_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}' enum.
