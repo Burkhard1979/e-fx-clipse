@@ -5,10 +5,13 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.osgi.framework.Version;
@@ -25,6 +28,7 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#getMaxVersion <em>Max Version</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#isMinExclusive <em>Min Exclusive</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#isMaxExclusive <em>Max Exclusive</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredBundleImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +134,16 @@ public class RequiredBundleImpl extends EObjectImpl implements RequiredBundle {
 	 * @ordered
 	 */
 	protected boolean maxExclusive = MAX_EXCLUSIVE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,6 +274,63 @@ public class RequiredBundleImpl extends EObjectImpl implements RequiredBundle {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -273,6 +344,8 @@ public class RequiredBundleImpl extends EObjectImpl implements RequiredBundle {
 				return isMinExclusive();
 			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				return isMaxExclusive();
+			case BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,6 +372,9 @@ public class RequiredBundleImpl extends EObjectImpl implements RequiredBundle {
 				return;
 			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				setMaxExclusive((Boolean)newValue);
+				return;
+			case BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,6 +403,9 @@ public class RequiredBundleImpl extends EObjectImpl implements RequiredBundle {
 			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				setMaxExclusive(MAX_EXCLUSIVE_EDEFAULT);
 				return;
+			case BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -349,6 +428,8 @@ public class RequiredBundleImpl extends EObjectImpl implements RequiredBundle {
 				return minExclusive != MIN_EXCLUSIVE_EDEFAULT;
 			case BundlePackage.REQUIRED_BUNDLE__MAX_EXCLUSIVE:
 				return maxExclusive != MAX_EXCLUSIVE_EDEFAULT;
+			case BundlePackage.REQUIRED_BUNDLE__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

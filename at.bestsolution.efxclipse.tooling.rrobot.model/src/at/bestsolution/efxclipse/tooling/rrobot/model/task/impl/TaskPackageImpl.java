@@ -644,6 +644,15 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSourceFragment_ExcludeExpression() {
+		return (EReference)sourceFragmentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCompilationUnit() {
 		return compilationUnitEClass;
 	}
@@ -673,6 +682,15 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 */
 	public EReference getCompilationUnit_Sourcefragment() {
 		return (EReference)compilationUnitEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompilationUnit_ExcludeExpression() {
+		return (EReference)compilationUnitEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -794,11 +812,13 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		sourceFragmentEClass = createEClass(SOURCE_FRAGMENT);
 		createEReference(sourceFragmentEClass, SOURCE_FRAGMENT__FOLDER);
 		createEAttribute(sourceFragmentEClass, SOURCE_FRAGMENT__NAME);
+		createEReference(sourceFragmentEClass, SOURCE_FRAGMENT__EXCLUDE_EXPRESSION);
 
 		compilationUnitEClass = createEClass(COMPILATION_UNIT);
 		createEAttribute(compilationUnitEClass, COMPILATION_UNIT__PACKAGENAME);
 		createEReference(compilationUnitEClass, COMPILATION_UNIT__FILE);
 		createEReference(compilationUnitEClass, COMPILATION_UNIT__SOURCEFRAGMENT);
+		createEReference(compilationUnitEClass, COMPILATION_UNIT__EXCLUDE_EXPRESSION);
 
 		// Create enums
 		typeEEnum = createEEnum(TYPE);
@@ -923,11 +943,13 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		initEClass(sourceFragmentEClass, SourceFragment.class, "SourceFragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSourceFragment_Folder(), this.getFolder(), null, "folder", null, 0, 1, SourceFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSourceFragment_Name(), ecorePackage.getEString(), "name", null, 0, 1, SourceFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSourceFragment_ExcludeExpression(), this.getBooleanExpression(), null, "excludeExpression", null, 0, 1, SourceFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compilationUnitEClass, CompilationUnit.class, "CompilationUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompilationUnit_Packagename(), ecorePackage.getEString(), "packagename", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompilationUnit_File(), this.getFile(), null, "file", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompilationUnit_Sourcefragment(), this.getSourceFragment(), null, "sourcefragment", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompilationUnit_ExcludeExpression(), this.getBooleanExpression(), null, "excludeExpression", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(typeEEnum, Type.class, "Type");

@@ -915,13 +915,22 @@ public interface BundlePackage extends EPackage {
 	int IMPORTED_PACKAGE__MAX_EXCLUSIVE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORTED_PACKAGE__EXCLUDE_EXPRESSION = 5;
+
+	/**
 	 * The number of structural features of the '<em>Imported Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE_FEATURE_COUNT = 5;
+	int IMPORTED_PACKAGE_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl <em>Exported Package</em>}' class.
@@ -952,13 +961,22 @@ public interface BundlePackage extends EPackage {
 	int EXPORTED_PACKAGE__VERSION = 1;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPORTED_PACKAGE__EXCLUDE_EXPRESSION = 2;
+
+	/**
 	 * The number of structural features of the '<em>Exported Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPORTED_PACKAGE_FEATURE_COUNT = 2;
+	int EXPORTED_PACKAGE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -1145,13 +1163,22 @@ public interface BundlePackage extends EPackage {
 	int REQUIRED_BUNDLE__MAX_EXCLUSIVE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE__EXCLUDE_EXPRESSION = 5;
+
+	/**
 	 * The number of structural features of the '<em>Required Bundle</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_BUNDLE_FEATURE_COUNT = 5;
+	int REQUIRED_BUNDLE_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.LinkedStringImpl <em>Linked String</em>}' class.
@@ -2033,6 +2060,17 @@ public interface BundlePackage extends EPackage {
 	EAttribute getImportedPackage_MaxExclusive();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage#getExcludeExpression()
+	 * @see #getImportedPackage()
+	 * @generated
+	 */
+	EReference getImportedPackage_ExcludeExpression();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage <em>Exported Package</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2063,6 +2101,17 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getExportedPackage_Version();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage#getExcludeExpression()
+	 * @see #getExportedPackage()
+	 * @generated
+	 */
+	EReference getExportedPackage_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Extension <em>Extension</em>}'.
@@ -2246,6 +2295,17 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getRequiredBundle_MaxExclusive();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getExcludeExpression()
+	 * @see #getRequiredBundle()
+	 * @generated
+	 */
+	EReference getRequiredBundle_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString <em>Linked String</em>}'.
@@ -2993,6 +3053,14 @@ public interface BundlePackage extends EPackage {
 		EAttribute IMPORTED_PACKAGE__MAX_EXCLUSIVE = eINSTANCE.getImportedPackage_MaxExclusive();
 
 		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IMPORTED_PACKAGE__EXCLUDE_EXPRESSION = eINSTANCE.getImportedPackage_ExcludeExpression();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl <em>Exported Package</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3017,6 +3085,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXPORTED_PACKAGE__VERSION = eINSTANCE.getExportedPackage_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPORTED_PACKAGE__EXCLUDE_EXPRESSION = eINSTANCE.getExportedPackage_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -3161,6 +3237,14 @@ public interface BundlePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute REQUIRED_BUNDLE__MAX_EXCLUSIVE = eINSTANCE.getRequiredBundle_MaxExclusive();
+
+		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REQUIRED_BUNDLE__EXCLUDE_EXPRESSION = eINSTANCE.getRequiredBundle_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.LinkedStringImpl <em>Linked String</em>}' class.

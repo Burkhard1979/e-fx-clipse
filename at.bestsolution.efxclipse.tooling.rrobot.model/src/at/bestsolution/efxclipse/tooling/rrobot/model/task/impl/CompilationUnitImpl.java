@@ -2,6 +2,7 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.impl;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getPackagename <em>Packagename</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getFile <em>File</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getSourcefragment <em>Sourcefragment</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,6 +73,16 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	 * @ordered
 	 */
 	protected SourceFragment sourcefragment;
+
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,11 +210,56 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TaskPackage.COMPILATION_UNIT__FILE:
 				return basicSetFile(null, msgs);
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -222,6 +279,8 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				if (resolve) return getSourcefragment();
 				return basicGetSourcefragment();
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -242,6 +301,9 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 				return;
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				setSourcefragment((SourceFragment)newValue);
+				return;
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -264,6 +326,9 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				setSourcefragment((SourceFragment)null);
 				return;
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -282,6 +347,8 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 				return file != null;
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				return sourcefragment != null;
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

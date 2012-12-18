@@ -714,13 +714,22 @@ public interface TaskPackage extends EPackage {
 	int SOURCE_FRAGMENT__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_FRAGMENT__EXCLUDE_EXPRESSION = 2;
+
+	/**
 	 * The number of structural features of the '<em>Source Fragment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FRAGMENT_FEATURE_COUNT = 2;
+	int SOURCE_FRAGMENT_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl <em>Compilation Unit</em>}' class.
@@ -760,13 +769,22 @@ public interface TaskPackage extends EPackage {
 	int COMPILATION_UNIT__SOURCEFRAGMENT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILATION_UNIT__EXCLUDE_EXPRESSION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Compilation Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILATION_UNIT_FEATURE_COUNT = 3;
+	int COMPILATION_UNIT_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.
@@ -1256,6 +1274,17 @@ public interface TaskPackage extends EPackage {
 	EAttribute getSourceFragment_Name();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getExcludeExpression()
+	 * @see #getSourceFragment()
+	 * @generated
+	 */
+	EReference getSourceFragment_ExcludeExpression();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit <em>Compilation Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1297,6 +1326,17 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCompilationUnit_Sourcefragment();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getExcludeExpression()
+	 * @see #getCompilationUnit()
+	 * @generated
+	 */
+	EReference getCompilationUnit_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}'.
@@ -1732,6 +1772,14 @@ public interface TaskPackage extends EPackage {
 		EAttribute SOURCE_FRAGMENT__NAME = eINSTANCE.getSourceFragment_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SOURCE_FRAGMENT__EXCLUDE_EXPRESSION = eINSTANCE.getSourceFragment_ExcludeExpression();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl <em>Compilation Unit</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1764,6 +1812,14 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPILATION_UNIT__SOURCEFRAGMENT = eINSTANCE.getCompilationUnit_Sourcefragment();
+
+		/**
+		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPILATION_UNIT__EXCLUDE_EXPRESSION = eINSTANCE.getCompilationUnit_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.
