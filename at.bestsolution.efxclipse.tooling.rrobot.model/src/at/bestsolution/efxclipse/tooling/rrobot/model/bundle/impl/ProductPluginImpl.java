@@ -24,16 +24,26 @@ import org.osgi.framework.Version;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl#isFragment <em>Fragment</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,16 +103,6 @@ public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
 	 * @ordered
 	 */
 	protected boolean fragment = FRAGMENT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,14 +251,14 @@ public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.PRODUCT_PLUGIN__ID:
 				return getId();
 			case BundlePackage.PRODUCT_PLUGIN__VERSION:
 				return getVersion();
 			case BundlePackage.PRODUCT_PLUGIN__FRAGMENT:
 				return isFragment();
-			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -271,6 +271,9 @@ public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.PRODUCT_PLUGIN__ID:
 				setId((String)newValue);
 				return;
@@ -279,9 +282,6 @@ public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
 				return;
 			case BundlePackage.PRODUCT_PLUGIN__FRAGMENT:
 				setFragment((Boolean)newValue);
-				return;
-			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -295,6 +295,9 @@ public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.PRODUCT_PLUGIN__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -303,9 +306,6 @@ public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
 				return;
 			case BundlePackage.PRODUCT_PLUGIN__FRAGMENT:
 				setFragment(FRAGMENT_EDEFAULT);
-				return;
-			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -319,14 +319,14 @@ public class ProductPluginImpl extends EObjectImpl implements ProductPlugin {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.PRODUCT_PLUGIN__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.PRODUCT_PLUGIN__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case BundlePackage.PRODUCT_PLUGIN__FRAGMENT:
 				return fragment != FRAGMENT_EDEFAULT;
-			case BundlePackage.PRODUCT_PLUGIN__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

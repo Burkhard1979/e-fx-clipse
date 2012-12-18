@@ -30,16 +30,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getPoint <em>Point</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getElements <em>Elements</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ExtensionImpl extends EObjectImpl implements Extension {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -89,16 +99,6 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	 * @ordered
 	 */
 	protected EList<Element> elements;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,10 +224,10 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case BundlePackage.EXTENSION__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
 				return basicSetExcludeExpression(null, msgs);
+			case BundlePackage.EXTENSION__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -240,14 +240,14 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.EXTENSION__ID:
 				return getId();
 			case BundlePackage.EXTENSION__POINT:
 				return getPoint();
 			case BundlePackage.EXTENSION__ELEMENTS:
 				return getElements();
-			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -261,6 +261,9 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.EXTENSION__ID:
 				setId((String)newValue);
 				return;
@@ -270,9 +273,6 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 			case BundlePackage.EXTENSION__ELEMENTS:
 				getElements().clear();
 				getElements().addAll((Collection<? extends Element>)newValue);
-				return;
-			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -286,6 +286,9 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.EXTENSION__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -294,9 +297,6 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 				return;
 			case BundlePackage.EXTENSION__ELEMENTS:
 				getElements().clear();
-				return;
-			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -310,14 +310,14 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.EXTENSION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.EXTENSION__POINT:
 				return POINT_EDEFAULT == null ? point != null : !POINT_EDEFAULT.equals(point);
 			case BundlePackage.EXTENSION__ELEMENTS:
 				return elements != null && !elements.isEmpty();
-			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

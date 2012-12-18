@@ -24,16 +24,26 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getPackagename <em>Packagename</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getFile <em>File</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getSourcefragment <em>Sourcefragment</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getPackagename() <em>Packagename</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -73,16 +83,6 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	 * @ordered
 	 */
 	protected SourceFragment sourcefragment;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,10 +256,10 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case TaskPackage.COMPILATION_UNIT__FILE:
-				return basicSetFile(null, msgs);
 			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
 				return basicSetExcludeExpression(null, msgs);
+			case TaskPackage.COMPILATION_UNIT__FILE:
+				return basicSetFile(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -272,6 +272,8 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case TaskPackage.COMPILATION_UNIT__PACKAGENAME:
 				return getPackagename();
 			case TaskPackage.COMPILATION_UNIT__FILE:
@@ -279,8 +281,6 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				if (resolve) return getSourcefragment();
 				return basicGetSourcefragment();
-			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,6 +293,9 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case TaskPackage.COMPILATION_UNIT__PACKAGENAME:
 				setPackagename((String)newValue);
 				return;
@@ -301,9 +304,6 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 				return;
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				setSourcefragment((SourceFragment)newValue);
-				return;
-			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -317,6 +317,9 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case TaskPackage.COMPILATION_UNIT__PACKAGENAME:
 				setPackagename(PACKAGENAME_EDEFAULT);
 				return;
@@ -325,9 +328,6 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 				return;
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				setSourcefragment((SourceFragment)null);
-				return;
-			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -341,14 +341,14 @@ public class CompilationUnitImpl extends EObjectImpl implements CompilationUnit 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case TaskPackage.COMPILATION_UNIT__PACKAGENAME:
 				return PACKAGENAME_EDEFAULT == null ? packagename != null : !PACKAGENAME_EDEFAULT.equals(packagename);
 			case TaskPackage.COMPILATION_UNIT__FILE:
 				return file != null;
 			case TaskPackage.COMPILATION_UNIT__SOURCEFRAGMENT:
 				return sourcefragment != null;
-			case TaskPackage.COMPILATION_UNIT__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

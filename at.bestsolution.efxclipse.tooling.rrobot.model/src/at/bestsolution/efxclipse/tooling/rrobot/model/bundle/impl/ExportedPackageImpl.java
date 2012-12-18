@@ -24,15 +24,25 @@ import org.osgi.framework.Version;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,16 +82,6 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	 * @ordered
 	 */
 	protected Version version = VERSION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,12 +209,12 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				return getName();
 			case BundlePackage.EXPORTED_PACKAGE__VERSION:
 				return getVersion();
-			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -227,14 +227,14 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				setName((String)newValue);
 				return;
 			case BundlePackage.EXPORTED_PACKAGE__VERSION:
 				setVersion((Version)newValue);
-				return;
-			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -248,14 +248,14 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 			case BundlePackage.EXPORTED_PACKAGE__VERSION:
 				setVersion(VERSION_EDEFAULT);
-				return;
-			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -269,12 +269,12 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case BundlePackage.EXPORTED_PACKAGE__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

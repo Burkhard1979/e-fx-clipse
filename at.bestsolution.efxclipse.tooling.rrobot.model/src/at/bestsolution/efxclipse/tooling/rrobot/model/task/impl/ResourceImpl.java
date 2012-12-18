@@ -22,14 +22,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ResourceImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ResourceImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public abstract class ResourceImpl extends EObjectImpl implements Resource {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -49,16 +59,6 @@ public abstract class ResourceImpl extends EObjectImpl implements Resource {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,10 +165,10 @@ public abstract class ResourceImpl extends EObjectImpl implements Resource {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TaskPackage.RESOURCE__NAME:
-				return getName();
 			case TaskPackage.RESOURCE__EXCLUDE_EXPRESSION:
 				return getExcludeExpression();
+			case TaskPackage.RESOURCE__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -181,11 +181,11 @@ public abstract class ResourceImpl extends EObjectImpl implements Resource {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TaskPackage.RESOURCE__NAME:
-				setName((String)newValue);
-				return;
 			case TaskPackage.RESOURCE__EXCLUDE_EXPRESSION:
 				setExcludeExpression((BooleanExpression)newValue);
+				return;
+			case TaskPackage.RESOURCE__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -199,11 +199,11 @@ public abstract class ResourceImpl extends EObjectImpl implements Resource {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TaskPackage.RESOURCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case TaskPackage.RESOURCE__EXCLUDE_EXPRESSION:
 				setExcludeExpression((BooleanExpression)null);
+				return;
+			case TaskPackage.RESOURCE__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -217,10 +217,10 @@ public abstract class ResourceImpl extends EObjectImpl implements Resource {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TaskPackage.RESOURCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TaskPackage.RESOURCE__EXCLUDE_EXPRESSION:
 				return excludeExpression != null;
+			case TaskPackage.RESOURCE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}

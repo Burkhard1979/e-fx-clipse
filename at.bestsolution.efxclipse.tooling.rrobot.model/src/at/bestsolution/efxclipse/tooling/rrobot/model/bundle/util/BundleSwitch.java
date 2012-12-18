@@ -4,6 +4,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.util;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.*;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
@@ -93,6 +94,7 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemplatedFile(manifestFile);
 				if (result == null) result = caseFile(manifestFile);
 				if (result == null) result = caseResource(manifestFile);
+				if (result == null) result = caseExcludeableElementMixin(manifestFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -102,6 +104,7 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemplatedFile(pluginXMLFile);
 				if (result == null) result = caseFile(pluginXMLFile);
 				if (result == null) result = caseResource(pluginXMLFile);
+				if (result == null) result = caseExcludeableElementMixin(pluginXMLFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -111,6 +114,7 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemplatedFile(buildProperties);
 				if (result == null) result = caseFile(buildProperties);
 				if (result == null) result = caseResource(buildProperties);
+				if (result == null) result = caseExcludeableElementMixin(buildProperties);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,6 +124,7 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemplatedFile(productFile);
 				if (result == null) result = caseFile(productFile);
 				if (result == null) result = caseResource(productFile);
+				if (result == null) result = caseExcludeableElementMixin(productFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -130,6 +135,7 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemplatedFile(productFileFeaturebase);
 				if (result == null) result = caseFile(productFileFeaturebase);
 				if (result == null) result = caseResource(productFileFeaturebase);
+				if (result == null) result = caseExcludeableElementMixin(productFileFeaturebase);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -139,24 +145,28 @@ public class BundleSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTemplatedFile(featureFile);
 				if (result == null) result = caseFile(featureFile);
 				if (result == null) result = caseResource(featureFile);
+				if (result == null) result = caseExcludeableElementMixin(featureFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.IMPORTED_PACKAGE: {
 				ImportedPackage importedPackage = (ImportedPackage)theEObject;
 				T result = caseImportedPackage(importedPackage);
+				if (result == null) result = caseExcludeableElementMixin(importedPackage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.EXPORTED_PACKAGE: {
 				ExportedPackage exportedPackage = (ExportedPackage)theEObject;
 				T result = caseExportedPackage(exportedPackage);
+				if (result == null) result = caseExcludeableElementMixin(exportedPackage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.EXTENSION: {
 				Extension extension = (Extension)theEObject;
 				T result = caseExtension(extension);
+				if (result == null) result = caseExcludeableElementMixin(extension);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -175,6 +185,7 @@ public class BundleSwitch<T> extends Switch<T> {
 			case BundlePackage.REQUIRED_BUNDLE: {
 				RequiredBundle requiredBundle = (RequiredBundle)theEObject;
 				T result = caseRequiredBundle(requiredBundle);
+				if (result == null) result = caseExcludeableElementMixin(requiredBundle);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -187,36 +198,42 @@ public class BundleSwitch<T> extends Switch<T> {
 			case BundlePackage.FEATURE_PLUGIN: {
 				FeaturePlugin featurePlugin = (FeaturePlugin)theEObject;
 				T result = caseFeaturePlugin(featurePlugin);
+				if (result == null) result = caseExcludeableElementMixin(featurePlugin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.REQUIRED_FEATURE: {
 				RequiredFeature requiredFeature = (RequiredFeature)theEObject;
 				T result = caseRequiredFeature(requiredFeature);
+				if (result == null) result = caseExcludeableElementMixin(requiredFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.INCLUDED_FEATURE: {
 				IncludedFeature includedFeature = (IncludedFeature)theEObject;
 				T result = caseIncludedFeature(includedFeature);
+				if (result == null) result = caseExcludeableElementMixin(includedFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.PRODUCT_PLUGIN: {
 				ProductPlugin productPlugin = (ProductPlugin)theEObject;
 				T result = caseProductPlugin(productPlugin);
+				if (result == null) result = caseExcludeableElementMixin(productPlugin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.PRODUCT_FEATURE: {
 				ProductFeature productFeature = (ProductFeature)theEObject;
 				T result = caseProductFeature(productFeature);
+				if (result == null) result = caseExcludeableElementMixin(productFeature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlePackage.PRODUCT_START_CONFIG: {
 				ProductStartConfig productStartConfig = (ProductStartConfig)theEObject;
 				T result = caseProductStartConfig(productStartConfig);
+				if (result == null) result = caseExcludeableElementMixin(productStartConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -566,6 +583,21 @@ public class BundleSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJDTProject(JDTProject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Excludeable Element Mixin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Excludeable Element Mixin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExcludeableElementMixin(ExcludeableElementMixin object) {
 		return null;
 	}
 

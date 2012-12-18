@@ -23,15 +23,25 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl#getFolder <em>Folder</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl#getName <em>Name</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.SourceFragmentImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class SourceFragmentImpl extends EObjectImpl implements SourceFragment {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The cached value of the '{@link #getFolder() <em>Folder</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -61,16 +71,6 @@ public class SourceFragmentImpl extends EObjectImpl implements SourceFragment {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,13 +215,13 @@ public class SourceFragmentImpl extends EObjectImpl implements SourceFragment {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case TaskPackage.SOURCE_FRAGMENT__FOLDER:
 				if (resolve) return getFolder();
 				return basicGetFolder();
 			case TaskPackage.SOURCE_FRAGMENT__NAME:
 				return getName();
-			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -234,14 +234,14 @@ public class SourceFragmentImpl extends EObjectImpl implements SourceFragment {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case TaskPackage.SOURCE_FRAGMENT__FOLDER:
 				setFolder((Folder)newValue);
 				return;
 			case TaskPackage.SOURCE_FRAGMENT__NAME:
 				setName((String)newValue);
-				return;
-			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -255,14 +255,14 @@ public class SourceFragmentImpl extends EObjectImpl implements SourceFragment {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case TaskPackage.SOURCE_FRAGMENT__FOLDER:
 				setFolder((Folder)null);
 				return;
 			case TaskPackage.SOURCE_FRAGMENT__NAME:
 				setName(NAME_EDEFAULT);
-				return;
-			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -276,12 +276,12 @@ public class SourceFragmentImpl extends EObjectImpl implements SourceFragment {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case TaskPackage.SOURCE_FRAGMENT__FOLDER:
 				return folder != null;
 			case TaskPackage.SOURCE_FRAGMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case TaskPackage.SOURCE_FRAGMENT__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -2,6 +2,7 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.Version;
@@ -19,7 +20,6 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getMaxVersion <em>Max Version</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#isMinExclusive <em>Min Exclusive</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#isMaxExclusive <em>Max Exclusive</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,7 +27,7 @@ import org.osgi.framework.Version;
  * @model
  * @generated
  */
-public interface RequiredBundle extends EObject {
+public interface RequiredBundle extends ExcludeableElementMixin {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -157,31 +157,5 @@ public interface RequiredBundle extends EObject {
 	 * @generated
 	 */
 	void setMaxExclusive(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Exclude Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exclude Expression</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exclude Expression</em>' containment reference.
-	 * @see #setExcludeExpression(BooleanExpression)
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getRequiredBundle_ExcludeExpression()
-	 * @model containment="true"
-	 * @generated
-	 */
-	BooleanExpression getExcludeExpression();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle#getExcludeExpression <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exclude Expression</em>' containment reference.
-	 * @see #getExcludeExpression()
-	 * @generated
-	 */
-	void setExcludeExpression(BooleanExpression value);
 
 } // RequiredBundle

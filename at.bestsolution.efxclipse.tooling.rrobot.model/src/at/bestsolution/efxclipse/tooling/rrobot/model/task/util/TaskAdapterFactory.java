@@ -139,6 +139,10 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 				return createCompilationUnitAdapter();
 			}
 			@Override
+			public Adapter caseExcludeableElementMixin(ExcludeableElementMixin object) {
+				return createExcludeableElementMixinAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -379,6 +383,20 @@ public class TaskAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCompilationUnitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin <em>Excludeable Element Mixin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
+	 * @generated
+	 */
+	public Adapter createExcludeableElementMixinAdapter() {
 		return null;
 	}
 

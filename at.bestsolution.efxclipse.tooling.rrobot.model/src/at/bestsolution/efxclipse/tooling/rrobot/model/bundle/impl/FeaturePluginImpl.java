@@ -22,16 +22,26 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#isUnpack <em>Unpack</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#isFragment <em>Fragment</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeaturePluginImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -91,16 +101,6 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 	 * @ordered
 	 */
 	protected boolean fragment = FRAGMENT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,14 +249,14 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.FEATURE_PLUGIN__ID:
 				return getId();
 			case BundlePackage.FEATURE_PLUGIN__UNPACK:
 				return isUnpack();
 			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
 				return isFragment();
-			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,6 +269,9 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.FEATURE_PLUGIN__ID:
 				setId((String)newValue);
 				return;
@@ -277,9 +280,6 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 				return;
 			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
 				setFragment((Boolean)newValue);
-				return;
-			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -293,6 +293,9 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.FEATURE_PLUGIN__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -301,9 +304,6 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 				return;
 			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
 				setFragment(FRAGMENT_EDEFAULT);
-				return;
-			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -317,14 +317,14 @@ public class FeaturePluginImpl extends EObjectImpl implements FeaturePlugin {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.FEATURE_PLUGIN__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.FEATURE_PLUGIN__UNPACK:
 				return unpack != UNPACK_EDEFAULT;
 			case BundlePackage.FEATURE_PLUGIN__FRAGMENT:
 				return fragment != FRAGMENT_EDEFAULT;
-			case BundlePackage.FEATURE_PLUGIN__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

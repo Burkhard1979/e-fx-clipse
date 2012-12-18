@@ -2,6 +2,7 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.Version;
@@ -17,7 +18,6 @@ import org.osgi.framework.Version;
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getMatch <em>Match</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getVersion <em>Version</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,7 +25,7 @@ import org.osgi.framework.Version;
  * @model
  * @generated
  */
-public interface RequiredFeature extends EObject {
+public interface RequiredFeature extends ExcludeableElementMixin {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -106,31 +106,5 @@ public interface RequiredFeature extends EObject {
 	 * @generated
 	 */
 	void setVersion(Version value);
-
-	/**
-	 * Returns the value of the '<em><b>Exclude Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exclude Expression</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exclude Expression</em>' containment reference.
-	 * @see #setExcludeExpression(BooleanExpression)
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getRequiredFeature_ExcludeExpression()
-	 * @model containment="true"
-	 * @generated
-	 */
-	BooleanExpression getExcludeExpression();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature#getExcludeExpression <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exclude Expression</em>' containment reference.
-	 * @see #getExcludeExpression()
-	 * @generated
-	 */
-	void setExcludeExpression(BooleanExpression value);
 
 } // RequiredFeature

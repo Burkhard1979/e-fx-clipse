@@ -79,28 +79,22 @@
         eType="#//IncludedFeature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.osgi.framework.Version"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ImportedPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="ImportedPackage" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExportedPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="ExportedPackage" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Extension">
+  <eClassifiers xsi:type="ecore:EClass" name="Extension" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="point" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Element" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -113,38 +107,30 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RequiredBundle">
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredBundle" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LinkedString">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weburl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FeaturePlugin">
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturePlugin" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unpack" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fragment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RequiredFeature">
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredFeature" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="match" eType="#//MatchRule"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IncludedFeature">
+  <eClassifiers xsi:type="ecore:EClass" name="IncludedFeature" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MatchRule">
     <eLiterals name="none"/>
@@ -153,24 +139,18 @@
     <eLiterals name="perfect" value="3"/>
     <eLiterals name="greaterOrEqual" value="4"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductPlugin">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductPlugin" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fragment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductFeature">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductFeature" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductStartConfig">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductStartConfig" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludeExpression" eType="ecore:EClass RobotTask.ecore#//BooleanExpression"
-        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

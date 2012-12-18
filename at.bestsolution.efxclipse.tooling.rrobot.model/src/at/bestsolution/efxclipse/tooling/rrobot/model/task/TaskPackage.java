@@ -141,6 +141,34 @@ public interface TaskPackage extends EPackage {
 	int PROJECT_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin <em>Excludeable Element Mixin</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getExcludeableElementMixin()
+	 * @generated
+	 */
+	int EXCLUDEABLE_ELEMENT_MIXIN = 16;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Excludeable Element Mixin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ResourceImpl <em>Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -151,22 +179,22 @@ public interface TaskPackage extends EPackage {
 	int RESOURCE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE__NAME = 0;
-
-	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__EXCLUDE_EXPRESSION = 1;
+	int RESOURCE__EXCLUDE_EXPRESSION = EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__NAME = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -175,7 +203,7 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 2;
+	int RESOURCE_FEATURE_COUNT = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.FolderImpl <em>Folder</em>}' class.
@@ -188,15 +216,6 @@ public interface TaskPackage extends EPackage {
 	int FOLDER = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER__NAME = RESOURCE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -204,6 +223,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int FOLDER__EXCLUDE_EXPRESSION = RESOURCE__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOLDER__NAME = RESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -234,15 +262,6 @@ public interface TaskPackage extends EPackage {
 	int FILE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FILE__NAME = RESOURCE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -250,6 +269,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int FILE__EXCLUDE_EXPRESSION = RESOURCE__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__NAME = RESOURCE__NAME;
 
 	/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -269,7 +297,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIProgressMonitor()
 	 * @generated
 	 */
-	int IPROGRESS_MONITOR = 18;
+	int IPROGRESS_MONITOR = 19;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TemplatedFileImpl <em>Templated File</em>}' class.
@@ -282,15 +310,6 @@ public interface TaskPackage extends EPackage {
 	int TEMPLATED_FILE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPLATED_FILE__NAME = FILE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -298,6 +317,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPLATED_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATED_FILE__NAME = FILE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Generator Type</b></em>' attribute.
@@ -328,15 +356,6 @@ public interface TaskPackage extends EPackage {
 	int DATA_FILE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_FILE__NAME = FILE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -344,6 +363,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_FILE__NAME = FILE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -374,15 +402,6 @@ public interface TaskPackage extends EPackage {
 	int URL_FILE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int URL_FILE__NAME = FILE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -390,6 +409,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int URL_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int URL_FILE__NAME = FILE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -420,15 +448,6 @@ public interface TaskPackage extends EPackage {
 	int DYNAMIC_FILE = 8;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_FILE__NAME = FILE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -436,6 +455,15 @@ public interface TaskPackage extends EPackage {
 	 * @ordered
 	 */
 	int DYNAMIC_FILE__EXCLUDE_EXPRESSION = FILE__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_FILE__NAME = FILE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Execution URI</b></em>' attribute.
@@ -696,13 +724,22 @@ public interface TaskPackage extends EPackage {
 	int SOURCE_FRAGMENT = 14;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_FRAGMENT__EXCLUDE_EXPRESSION = EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Folder</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FRAGMENT__FOLDER = 0;
+	int SOURCE_FRAGMENT__FOLDER = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -711,16 +748,7 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FRAGMENT__NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOURCE_FRAGMENT__EXCLUDE_EXPRESSION = 2;
+	int SOURCE_FRAGMENT__NAME = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Source Fragment</em>' class.
@@ -729,7 +757,7 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FRAGMENT_FEATURE_COUNT = 3;
+	int SOURCE_FRAGMENT_FEATURE_COUNT = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl <em>Compilation Unit</em>}' class.
@@ -742,13 +770,22 @@ public interface TaskPackage extends EPackage {
 	int COMPILATION_UNIT = 15;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILATION_UNIT__EXCLUDE_EXPRESSION = EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Packagename</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILATION_UNIT__PACKAGENAME = 0;
+	int COMPILATION_UNIT__PACKAGENAME = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference.
@@ -757,7 +794,7 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILATION_UNIT__FILE = 1;
+	int COMPILATION_UNIT__FILE = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Sourcefragment</b></em>' reference.
@@ -766,16 +803,7 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILATION_UNIT__SOURCEFRAGMENT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPILATION_UNIT__EXCLUDE_EXPRESSION = 3;
+	int COMPILATION_UNIT__SOURCEFRAGMENT = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Compilation Unit</em>' class.
@@ -784,7 +812,7 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILATION_UNIT_FEATURE_COUNT = 4;
+	int COMPILATION_UNIT_FEATURE_COUNT = EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.
@@ -794,7 +822,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getType()
 	 * @generated
 	 */
-	int TYPE = 16;
+	int TYPE = 17;
 
 	/**
 	 * The meta object id for the '<em>Input Stream</em>' data type.
@@ -804,7 +832,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getInputStream()
 	 * @generated
 	 */
-	int INPUT_STREAM = 19;
+	int INPUT_STREAM = 20;
 
 	/**
 	 * The meta object id for the '<em>Generator</em>' data type.
@@ -814,7 +842,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getGenerator()
 	 * @generated
 	 */
-	int GENERATOR = 20;
+	int GENERATOR = 21;
 
 	/**
 	 * The meta object id for the '<em>IO Exception</em>' data type.
@@ -824,7 +852,7 @@ public interface TaskPackage extends EPackage {
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getIOException()
 	 * @generated
 	 */
-	int IO_EXCEPTION = 17;
+	int IO_EXCEPTION = 18;
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask <em>Robot Task</em>}'.
@@ -921,17 +949,6 @@ public interface TaskPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResource_Name();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource#getExcludeExpression <em>Exclude Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource#getExcludeExpression()
-	 * @see #getResource()
-	 * @generated
-	 */
-	EReference getResource_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder <em>Folder</em>}'.
@@ -1274,17 +1291,6 @@ public interface TaskPackage extends EPackage {
 	EAttribute getSourceFragment_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getExcludeExpression <em>Exclude Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment#getExcludeExpression()
-	 * @see #getSourceFragment()
-	 * @generated
-	 */
-	EReference getSourceFragment_ExcludeExpression();
-
-	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit <em>Compilation Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1328,15 +1334,25 @@ public interface TaskPackage extends EPackage {
 	EReference getCompilationUnit_Sourcefragment();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getExcludeExpression <em>Exclude Expression</em>}'.
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin <em>Excludeable Element Mixin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Excludeable Element Mixin</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
+	 * @generated
+	 */
+	EClass getExcludeableElementMixin();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin#getExcludeExpression <em>Exclude Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Exclude Expression</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit#getExcludeExpression()
-	 * @see #getCompilationUnit()
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin#getExcludeExpression()
+	 * @see #getExcludeableElementMixin()
 	 * @generated
 	 */
-	EReference getCompilationUnit_ExcludeExpression();
+	EReference getExcludeableElementMixin_ExcludeExpression();
 
 	/**
 	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}'.
@@ -1480,14 +1496,6 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE__NAME = eINSTANCE.getResource_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE__EXCLUDE_EXPRESSION = eINSTANCE.getResource_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.FolderImpl <em>Folder</em>}' class.
@@ -1772,14 +1780,6 @@ public interface TaskPackage extends EPackage {
 		EAttribute SOURCE_FRAGMENT__NAME = eINSTANCE.getSourceFragment_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SOURCE_FRAGMENT__EXCLUDE_EXPRESSION = eINSTANCE.getSourceFragment_ExcludeExpression();
-
-		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.CompilationUnitImpl <em>Compilation Unit</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1814,12 +1814,22 @@ public interface TaskPackage extends EPackage {
 		EReference COMPILATION_UNIT__SOURCEFRAGMENT = eINSTANCE.getCompilationUnit_Sourcefragment();
 
 		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin <em>Excludeable Element Mixin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
+		 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.TaskPackageImpl#getExcludeableElementMixin()
+		 * @generated
+		 */
+		EClass EXCLUDEABLE_ELEMENT_MIXIN = eINSTANCE.getExcludeableElementMixin();
+
+		/**
 		 * The meta object literal for the '<em><b>Exclude Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPILATION_UNIT__EXCLUDE_EXPRESSION = eINSTANCE.getCompilationUnit_ExcludeExpression();
+		EReference EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION = eINSTANCE.getExcludeableElementMixin_ExcludeExpression();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.Type <em>Type</em>}' enum.

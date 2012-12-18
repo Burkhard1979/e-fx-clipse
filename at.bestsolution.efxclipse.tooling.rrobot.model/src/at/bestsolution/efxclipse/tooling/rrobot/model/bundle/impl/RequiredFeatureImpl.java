@@ -24,16 +24,26 @@ import org.osgi.framework.Version;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl#getMatch <em>Match</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,16 +103,6 @@ public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature 
 	 * @ordered
 	 */
 	protected Version version = VERSION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,14 +251,14 @@ public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.REQUIRED_FEATURE__ID:
 				return getId();
 			case BundlePackage.REQUIRED_FEATURE__MATCH:
 				return getMatch();
 			case BundlePackage.REQUIRED_FEATURE__VERSION:
 				return getVersion();
-			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -271,6 +271,9 @@ public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.REQUIRED_FEATURE__ID:
 				setId((String)newValue);
 				return;
@@ -279,9 +282,6 @@ public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature 
 				return;
 			case BundlePackage.REQUIRED_FEATURE__VERSION:
 				setVersion((Version)newValue);
-				return;
-			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -295,6 +295,9 @@ public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.REQUIRED_FEATURE__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -303,9 +306,6 @@ public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature 
 				return;
 			case BundlePackage.REQUIRED_FEATURE__VERSION:
 				setVersion(VERSION_EDEFAULT);
-				return;
-			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -319,14 +319,14 @@ public class RequiredFeatureImpl extends EObjectImpl implements RequiredFeature 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.REQUIRED_FEATURE__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.REQUIRED_FEATURE__MATCH:
 				return match != MATCH_EDEFAULT;
 			case BundlePackage.REQUIRED_FEATURE__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case BundlePackage.REQUIRED_FEATURE__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -745,15 +745,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getImportedPackage_ExcludeExpression() {
-		return (EReference)importedPackageEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getExportedPackage() {
 		return exportedPackageEClass;
 	}
@@ -774,15 +765,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EAttribute getExportedPackage_Version() {
 		return (EAttribute)exportedPackageEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExportedPackage_ExcludeExpression() {
-		return (EReference)exportedPackageEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -819,15 +801,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EReference getExtension_Elements() {
 		return (EReference)extensionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getExtension_ExcludeExpression() {
-		return (EReference)extensionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -952,15 +925,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRequiredBundle_ExcludeExpression() {
-		return (EReference)requiredBundleEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLinkedString() {
 		return linkedStringEClass;
 	}
@@ -1024,15 +988,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFeaturePlugin_ExcludeExpression() {
-		return (EReference)featurePluginEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getRequiredFeature() {
 		return requiredFeatureEClass;
 	}
@@ -1069,15 +1024,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRequiredFeature_ExcludeExpression() {
-		return (EReference)requiredFeatureEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getIncludedFeature() {
 		return includedFeatureEClass;
 	}
@@ -1098,15 +1044,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EAttribute getIncludedFeature_Version() {
 		return (EAttribute)includedFeatureEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getIncludedFeature_ExcludeExpression() {
-		return (EReference)includedFeatureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1150,15 +1087,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProductPlugin_ExcludeExpression() {
-		return (EReference)productPluginEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getProductFeature() {
 		return productFeatureEClass;
 	}
@@ -1179,15 +1107,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EAttribute getProductFeature_Version() {
 		return (EAttribute)productFeatureEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProductFeature_ExcludeExpression() {
-		return (EReference)productFeatureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1224,15 +1143,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 	 */
 	public EAttribute getProductStartConfig_StartLevel() {
 		return (EAttribute)productStartConfigEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProductStartConfig_ExcludeExpression() {
-		return (EReference)productStartConfigEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1341,18 +1251,15 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__MAX_VERSION);
 		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__MIN_EXCLUSIVE);
 		createEAttribute(importedPackageEClass, IMPORTED_PACKAGE__MAX_EXCLUSIVE);
-		createEReference(importedPackageEClass, IMPORTED_PACKAGE__EXCLUDE_EXPRESSION);
 
 		exportedPackageEClass = createEClass(EXPORTED_PACKAGE);
 		createEAttribute(exportedPackageEClass, EXPORTED_PACKAGE__NAME);
 		createEAttribute(exportedPackageEClass, EXPORTED_PACKAGE__VERSION);
-		createEReference(exportedPackageEClass, EXPORTED_PACKAGE__EXCLUDE_EXPRESSION);
 
 		extensionEClass = createEClass(EXTENSION);
 		createEAttribute(extensionEClass, EXTENSION__ID);
 		createEAttribute(extensionEClass, EXTENSION__POINT);
 		createEReference(extensionEClass, EXTENSION__ELEMENTS);
-		createEReference(extensionEClass, EXTENSION__EXCLUDE_EXPRESSION);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__NAME);
@@ -1369,7 +1276,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MAX_VERSION);
 		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MIN_EXCLUSIVE);
 		createEAttribute(requiredBundleEClass, REQUIRED_BUNDLE__MAX_EXCLUSIVE);
-		createEReference(requiredBundleEClass, REQUIRED_BUNDLE__EXCLUDE_EXPRESSION);
 
 		linkedStringEClass = createEClass(LINKED_STRING);
 		createEAttribute(linkedStringEClass, LINKED_STRING__WEBURL);
@@ -1379,35 +1285,29 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__ID);
 		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__UNPACK);
 		createEAttribute(featurePluginEClass, FEATURE_PLUGIN__FRAGMENT);
-		createEReference(featurePluginEClass, FEATURE_PLUGIN__EXCLUDE_EXPRESSION);
 
 		requiredFeatureEClass = createEClass(REQUIRED_FEATURE);
 		createEAttribute(requiredFeatureEClass, REQUIRED_FEATURE__ID);
 		createEAttribute(requiredFeatureEClass, REQUIRED_FEATURE__MATCH);
 		createEAttribute(requiredFeatureEClass, REQUIRED_FEATURE__VERSION);
-		createEReference(requiredFeatureEClass, REQUIRED_FEATURE__EXCLUDE_EXPRESSION);
 
 		includedFeatureEClass = createEClass(INCLUDED_FEATURE);
 		createEAttribute(includedFeatureEClass, INCLUDED_FEATURE__ID);
 		createEAttribute(includedFeatureEClass, INCLUDED_FEATURE__VERSION);
-		createEReference(includedFeatureEClass, INCLUDED_FEATURE__EXCLUDE_EXPRESSION);
 
 		productPluginEClass = createEClass(PRODUCT_PLUGIN);
 		createEAttribute(productPluginEClass, PRODUCT_PLUGIN__ID);
 		createEAttribute(productPluginEClass, PRODUCT_PLUGIN__VERSION);
 		createEAttribute(productPluginEClass, PRODUCT_PLUGIN__FRAGMENT);
-		createEReference(productPluginEClass, PRODUCT_PLUGIN__EXCLUDE_EXPRESSION);
 
 		productFeatureEClass = createEClass(PRODUCT_FEATURE);
 		createEAttribute(productFeatureEClass, PRODUCT_FEATURE__ID);
 		createEAttribute(productFeatureEClass, PRODUCT_FEATURE__VERSION);
-		createEReference(productFeatureEClass, PRODUCT_FEATURE__EXCLUDE_EXPRESSION);
 
 		productStartConfigEClass = createEClass(PRODUCT_START_CONFIG);
 		createEAttribute(productStartConfigEClass, PRODUCT_START_CONFIG__ID);
 		createEAttribute(productStartConfigEClass, PRODUCT_START_CONFIG__AUTO_START);
 		createEAttribute(productStartConfigEClass, PRODUCT_START_CONFIG__START_LEVEL);
-		createEReference(productStartConfigEClass, PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION);
 
 		// Create enums
 		matchRuleEEnum = createEEnum(MATCH_RULE);
@@ -1455,6 +1355,16 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		productFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 		productFileFeaturebaseEClass.getESuperTypes().add(this.getProductFile());
 		featureFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
+		importedPackageEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		exportedPackageEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		extensionEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		requiredBundleEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		featurePluginEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		requiredFeatureEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		includedFeatureEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		productPluginEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		productFeatureEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		productStartConfigEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bundleProjectEClass, BundleProject.class, "BundleProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1517,18 +1427,15 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getImportedPackage_MaxVersion(), this.getVersion(), "maxVersion", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getImportedPackage_MinExclusive(), ecorePackage.getEBoolean(), "minExclusive", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getImportedPackage_MaxExclusive(), ecorePackage.getEBoolean(), "maxExclusive", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getImportedPackage_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, ImportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(exportedPackageEClass, ExportedPackage.class, "ExportedPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExportedPackage_Name(), ecorePackage.getEString(), "name", null, 1, 1, ExportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExportedPackage_Version(), this.getVersion(), "version", null, 0, 1, ExportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExportedPackage_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, ExportedPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(extensionEClass, Extension.class, "Extension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExtension_Id(), ecorePackage.getEString(), "id", null, 0, 1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExtension_Point(), ecorePackage.getEString(), "point", null, 1, 1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExtension_Elements(), this.getElement(), null, "elements", null, 0, -1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExtension_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, Extension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1545,7 +1452,6 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getRequiredBundle_MaxVersion(), this.getVersion(), "maxVersion", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequiredBundle_MinExclusive(), ecorePackage.getEBoolean(), "minExclusive", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequiredBundle_MaxExclusive(), ecorePackage.getEBoolean(), "maxExclusive", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRequiredBundle_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, RequiredBundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(linkedStringEClass, LinkedString.class, "LinkedString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLinkedString_Weburl(), ecorePackage.getEString(), "weburl", null, 0, 1, LinkedString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1555,35 +1461,29 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getFeaturePlugin_Id(), ecorePackage.getEString(), "id", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeaturePlugin_Unpack(), ecorePackage.getEBoolean(), "unpack", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeaturePlugin_Fragment(), ecorePackage.getEBoolean(), "fragment", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeaturePlugin_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, FeaturePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(requiredFeatureEClass, RequiredFeature.class, "RequiredFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRequiredFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequiredFeature_Match(), this.getMatchRule(), "match", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequiredFeature_Version(), this.getVersion(), "version", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRequiredFeature_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, RequiredFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(includedFeatureEClass, IncludedFeature.class, "IncludedFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIncludedFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, IncludedFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIncludedFeature_Version(), this.getVersion(), "version", null, 0, 1, IncludedFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIncludedFeature_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, IncludedFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productPluginEClass, ProductPlugin.class, "ProductPlugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductPlugin_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductPlugin_Version(), this.getVersion(), "version", null, 0, 1, ProductPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductPlugin_Fragment(), ecorePackage.getEBoolean(), "fragment", null, 0, 1, ProductPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProductPlugin_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, ProductPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productFeatureEClass, ProductFeature.class, "ProductFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductFeature_Version(), this.getVersion(), "version", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProductFeature_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productStartConfigEClass, ProductStartConfig.class, "ProductStartConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductStartConfig_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductStartConfig_AutoStart(), ecorePackage.getEBoolean(), "autoStart", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductStartConfig_StartLevel(), ecorePackage.getEInt(), "startLevel", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProductStartConfig_ExcludeExpression(), theTaskPackage.getBooleanExpression(), null, "excludeExpression", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(matchRuleEEnum, MatchRule.class, "MatchRule");

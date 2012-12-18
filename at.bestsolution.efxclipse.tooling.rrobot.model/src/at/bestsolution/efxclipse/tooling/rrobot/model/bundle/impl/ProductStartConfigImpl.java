@@ -22,16 +22,26 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#isAutoStart <em>Auto Start</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#getStartLevel <em>Start Level</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ProductStartConfigImpl extends EObjectImpl implements ProductStartConfig {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -91,16 +101,6 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 	 * @ordered
 	 */
 	protected int startLevel = START_LEVEL_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExcludeExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,14 +249,14 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.PRODUCT_START_CONFIG__ID:
 				return getId();
 			case BundlePackage.PRODUCT_START_CONFIG__AUTO_START:
 				return isAutoStart();
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				return getStartLevel();
-			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
-				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,6 +269,9 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.PRODUCT_START_CONFIG__ID:
 				setId((String)newValue);
 				return;
@@ -277,9 +280,6 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 				return;
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				setStartLevel((Integer)newValue);
-				return;
-			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -293,6 +293,9 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.PRODUCT_START_CONFIG__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -301,9 +304,6 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 				return;
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				setStartLevel(START_LEVEL_EDEFAULT);
-				return;
-			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
-				setExcludeExpression((BooleanExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -317,14 +317,14 @@ public class ProductStartConfigImpl extends EObjectImpl implements ProductStartC
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.PRODUCT_START_CONFIG__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.PRODUCT_START_CONFIG__AUTO_START:
 				return autoStart != AUTO_START_EDEFAULT;
 			case BundlePackage.PRODUCT_START_CONFIG__START_LEVEL:
 				return startLevel != START_LEVEL_EDEFAULT;
-			case BundlePackage.PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION:
-				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}
