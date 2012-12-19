@@ -9,6 +9,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
 
 class BundleManifestGenerator implements Generator<ManifestFile> {
 	
@@ -24,15 +25,21 @@ Bundle-SymbolicName: «file.symbolicname»«IF (file.eContainer as BundleProject
 Bundle-Version: «file.version»
 Bundle-RequiredExecutionEnvironment: «file.executionEnvironment»
 «IF !file.requiredBundles.empty»
-Require-Bundle: «file.requiredBundles.map() [ requireBundleBuilder ].join(",\r\n ")»
+Require-Bundle: «file.requiredBundles.filter([e | e.excludeExpression(data)]).map() [ requireBundleBuilder ].join(",\r\n ")»
 «ENDIF»
 «IF !file.importedPackages.empty»
-Import-Package: «file.importedPackages.map() [ importPackageBuilder ].join(",\r\n ")»
+Import-Package: «file.importedPackages.filter([e | e.excludeExpression(data)]).map() [ importPackageBuilder ].join(",\r\n ")»
 «ENDIF»
 «IF !file.exportedPackages.empty»
-Export-Package: «file.exportedPackages.map() [ exportPackageBuilder ].join(",\r\n ")»
+Export-Package: «file.exportedPackages.filter([e | e.excludeExpression(data)]).map() [ exportPackageBuilder ].join(",\r\n ")»
 «ENDIF»
 	'''
+	def excludeExpression(ExcludeableElementMixin mixin, Map<String,Object> data) {
+		if( mixin.excludeExpression != null ) {
+			return ! mixin.excludeExpression.execute(data)
+		}
+		return true;
+	}
 	
 	def exportPackageBuilder(ExportedPackage e) {
 		var rv = e.name;

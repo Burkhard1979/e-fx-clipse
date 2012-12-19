@@ -3140,12 +3140,12 @@ protected class URLFile_ExcludeExpressionAssignment_4_1 extends AssignmentToken 
  *
  * DynamicFile returns task::DynamicFile:
  * 	{task::DynamicFile} "DynamicFile" name=EString "generated-from" executionURI=STRING "by" type=STRING ("{"
- * 	variables+=Variable ("," variables+=Variable)? "}")? ("excluded-if" excludeExpression=BooleanExpression)?;
+ * 	variables+=Variable ("," variables+=Variable)* "}")? ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
 // {task::DynamicFile} "DynamicFile" name=EString "generated-from" executionURI=STRING "by" type=STRING ("{"
-// variables+=Variable ("," variables+=Variable)? "}")? ("excluded-if" excludeExpression=BooleanExpression)?
+// variables+=Variable ("," variables+=Variable)* "}")? ("excluded-if" excludeExpression=BooleanExpression)?
 protected class DynamicFile_Group extends GroupToken {
 	
 	public DynamicFile_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3370,7 +3370,7 @@ protected class DynamicFile_TypeAssignment_6 extends AssignmentToken  {
 
 }
 
-// ("{" variables+=Variable ("," variables+=Variable)? "}")?
+// ("{" variables+=Variable ("," variables+=Variable)* "}")?
 protected class DynamicFile_Group_7 extends GroupToken {
 	
 	public DynamicFile_Group_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3460,7 +3460,7 @@ protected class DynamicFile_VariablesAssignment_7_1 extends AssignmentToken  {
 	}	
 }
 
-// ("," variables+=Variable)?
+// ("," variables+=Variable)*
 protected class DynamicFile_Group_7_2 extends GroupToken {
 	
 	public DynamicFile_Group_7_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3497,7 +3497,8 @@ protected class DynamicFile_CommaKeyword_7_2_0 extends KeywordToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new DynamicFile_VariablesAssignment_7_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new DynamicFile_Group_7_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new DynamicFile_VariablesAssignment_7_1(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -5424,13 +5425,13 @@ protected class SourceFragment_FolderAssignment_2 extends AssignmentToken  {
 /************ begin Rule CompilationUnit ****************
  *
  * CompilationUnit returns task::CompilationUnit:
- * 	packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile |
- * 	DynamicFile);
+ * 	packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] "{" file=(TemplatedFile | DataFile | URLFile |
+ * 	DynamicFile) "}" ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
-// packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile |
-// DynamicFile)
+// packagename=STRING "in" sourcefragment=[task::SourceFragment|STRING] "{" file=(TemplatedFile | DataFile | URLFile |
+// DynamicFile) "}" ("excluded-if" excludeExpression=BooleanExpression)?
 protected class CompilationUnit_Group extends GroupToken {
 	
 	public CompilationUnit_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5445,7 +5446,8 @@ protected class CompilationUnit_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CompilationUnit_FileAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new CompilationUnit_Group_6(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new CompilationUnit_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -5551,16 +5553,38 @@ protected class CompilationUnit_SourcefragmentAssignment_2 extends AssignmentTok
 
 }
 
-// file=(TemplatedFile | DataFile | URLFile | DynamicFile)
-protected class CompilationUnit_FileAssignment_3 extends AssignmentToken  {
+// "{"
+protected class CompilationUnit_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
-	public CompilationUnit_FileAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public CompilationUnit_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getLeftCurlyBracketKeyword_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_SourcefragmentAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// file=(TemplatedFile | DataFile | URLFile | DynamicFile)
+protected class CompilationUnit_FileAssignment_4 extends AssignmentToken  {
+	
+	public CompilationUnit_FileAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getCompilationUnitAccess().getFileAssignment_3();
+		return grammarAccess.getCompilationUnitAccess().getFileAssignment_4();
 	}
 
     @Override
@@ -5582,7 +5606,7 @@ protected class CompilationUnit_FileAssignment_3 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getTemplatedFileRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getCompilationUnitAccess().getFileTemplatedFileParserRuleCall_3_0_0(); 
+				element = grammarAccess.getCompilationUnitAccess().getFileTemplatedFileParserRuleCall_4_0_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -5591,7 +5615,7 @@ protected class CompilationUnit_FileAssignment_3 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getDataFileRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getCompilationUnitAccess().getFileDataFileParserRuleCall_3_0_1(); 
+				element = grammarAccess.getCompilationUnitAccess().getFileDataFileParserRuleCall_4_0_1(); 
 				consumed = obj;
 				return param;
 			}
@@ -5600,7 +5624,7 @@ protected class CompilationUnit_FileAssignment_3 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getURLFileRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getCompilationUnitAccess().getFileURLFileParserRuleCall_3_0_2(); 
+				element = grammarAccess.getCompilationUnitAccess().getFileURLFileParserRuleCall_4_0_2(); 
 				consumed = obj;
 				return param;
 			}
@@ -5609,7 +5633,7 @@ protected class CompilationUnit_FileAssignment_3 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getDynamicFileRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getCompilationUnitAccess().getFileDynamicFileParserRuleCall_3_0_3(); 
+				element = grammarAccess.getCompilationUnitAccess().getFileDynamicFileParserRuleCall_4_0_3(); 
 				consumed = obj;
 				return param;
 			}
@@ -5621,11 +5645,124 @@ protected class CompilationUnit_FileAssignment_3 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new CompilationUnit_SourcefragmentAssignment_2(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new CompilationUnit_LeftCurlyBracketKeyword_3(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
+
+// "}"
+protected class CompilationUnit_RightCurlyBracketKeyword_5 extends KeywordToken  {
+	
+	public CompilationUnit_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getRightCurlyBracketKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_FileAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class CompilationUnit_Group_6 extends GroupToken {
+	
+	public CompilationUnit_Group_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getGroup_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_ExcludeExpressionAssignment_6_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class CompilationUnit_ExcludedIfKeyword_6_0 extends KeywordToken  {
+	
+	public CompilationUnit_ExcludedIfKeyword_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getExcludedIfKeyword_6_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CompilationUnit_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class CompilationUnit_ExcludeExpressionAssignment_6_1 extends AssignmentToken  {
+	
+	public CompilationUnit_ExcludeExpressionAssignment_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getCompilationUnitAccess().getExcludeExpressionAssignment_6_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getCompilationUnitAccess().getExcludeExpressionBooleanExpressionParserRuleCall_6_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new CompilationUnit_ExcludedIfKeyword_6_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
 
 
 /************ end Rule CompilationUnit ****************/
@@ -8295,7 +8432,7 @@ protected class BuildProperties_RightCurlyBracketKeyword_4 extends KeywordToken 
  * ProductFileFeaturebase returns bundle::ProductFileFeaturebase:
  * 	{bundle::ProductFileFeaturebase} includeLaunchers?="launchable"? "ProductFileFeaturebase" id=STRING "{" (("vmArgs" "="
  * 	vmArgs=STRING)? & ("programArgs" "=" programArgs=STRING)? & "productName" "=" productName=STRING & "application" "="
- * 	application=STRING & "version" "=" version=Version) ("startconfigurations" "=" "{"
+ * 	application=STRING & "version" "=" version=STRING) ("startconfigurations" "=" "{"
  * 	startconfigurations+=ProductStartConfig ("," startconfigurations+=ProductStartConfig)* "}")? ("features" "=" "{"
  * 	features+=ProductFeature ("," features+=ProductFeature)* "}")? "}";
  *
@@ -8303,7 +8440,7 @@ protected class BuildProperties_RightCurlyBracketKeyword_4 extends KeywordToken 
 
 // {bundle::ProductFileFeaturebase} includeLaunchers?="launchable"? "ProductFileFeaturebase" id=STRING "{" (("vmArgs" "="
 // vmArgs=STRING)? & ("programArgs" "=" programArgs=STRING)? & "productName" "=" productName=STRING & "application" "="
-// application=STRING & "version" "=" version=Version) ("startconfigurations" "=" "{"
+// application=STRING & "version" "=" version=STRING) ("startconfigurations" "=" "{"
 // startconfigurations+=ProductStartConfig ("," startconfigurations+=ProductStartConfig)* "}")? ("features" "=" "{"
 // features+=ProductFeature ("," features+=ProductFeature)* "}")? "}"
 protected class ProductFileFeaturebase_Group extends GroupToken {
@@ -8474,7 +8611,7 @@ protected class ProductFileFeaturebase_LeftCurlyBracketKeyword_4 extends Keyword
 }
 
 // ("vmArgs" "=" vmArgs=STRING)? & ("programArgs" "=" programArgs=STRING)? & "productName" "=" productName=STRING &
-// "application" "=" application=STRING & "version" "=" version=Version
+// "application" "=" application=STRING & "version" "=" version=STRING
 protected class ProductFileFeaturebase_UnorderedGroup_5 extends UnorderedGroupToken {
 	
 	public ProductFileFeaturebase_UnorderedGroup_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8903,7 +9040,7 @@ protected class ProductFileFeaturebase_ApplicationAssignment_5_3_2 extends Assig
 }
 
 
-// "version" "=" version=Version
+// "version" "=" version=STRING
 protected class ProductFileFeaturebase_Group_5_4 extends GroupToken {
 	
 	public ProductFileFeaturebase_Group_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8969,7 +9106,7 @@ protected class ProductFileFeaturebase_EqualsSignKeyword_5_4_1 extends KeywordTo
 
 }
 
-// version=Version
+// version=STRING
 protected class ProductFileFeaturebase_VersionAssignment_5_4_2 extends AssignmentToken  {
 	
 	public ProductFileFeaturebase_VersionAssignment_5_4_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8993,9 +9130,9 @@ protected class ProductFileFeaturebase_VersionAssignment_5_4_2 extends Assignmen
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("version",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("version");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getProductFileFeaturebaseAccess().getVersionVersionParserRuleCall_5_4_2_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getProductFileFeaturebaseAccess().getVersionVersionParserRuleCall_5_4_2_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getProductFileFeaturebaseAccess().getVersionSTRINGTerminalRuleCall_5_4_2_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getProductFileFeaturebaseAccess().getVersionSTRINGTerminalRuleCall_5_4_2_0();
 			return obj;
 		}
 		return null;
@@ -11366,12 +11503,12 @@ protected class FeatureFile_RightCurlyBracketKeyword_8 extends KeywordToken  {
  *
  * ImportedPackage returns bundle::ImportedPackage:
  * 	{bundle::ImportedPackage} name=STRING ((minExclusive?="("? | "[") minVersion=Version? "," (maxVersion=Version?
- * 	(maxExclusive?=")"? | "]")))?;
+ * 	(maxExclusive?=")"? | "]")))? ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
 // {bundle::ImportedPackage} name=STRING ((minExclusive?="("? | "[") minVersion=Version? "," (maxVersion=Version?
-// (maxExclusive?=")"? | "]")))?
+// (maxExclusive?=")"? | "]")))? ("excluded-if" excludeExpression=BooleanExpression)?
 protected class ImportedPackage_Group extends GroupToken {
 	
 	public ImportedPackage_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11386,8 +11523,9 @@ protected class ImportedPackage_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new ImportedPackage_Group_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new ImportedPackage_NameAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new ImportedPackage_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ImportedPackage_Group_2(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new ImportedPackage_NameAssignment_1(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -11716,6 +11854,98 @@ protected class ImportedPackage_MaxExclusiveAssignment_2_3_1_0 extends Assignmen
 
 
 
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class ImportedPackage_Group_3 extends GroupToken {
+	
+	public ImportedPackage_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getImportedPackageAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ImportedPackage_ExcludeExpressionAssignment_3_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class ImportedPackage_ExcludedIfKeyword_3_0 extends KeywordToken  {
+	
+	public ImportedPackage_ExcludedIfKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getImportedPackageAccess().getExcludedIfKeyword_3_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ImportedPackage_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ImportedPackage_NameAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class ImportedPackage_ExcludeExpressionAssignment_3_1 extends AssignmentToken  {
+	
+	public ImportedPackage_ExcludeExpressionAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getImportedPackageAccess().getExcludeExpressionAssignment_3_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getImportedPackageAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new ImportedPackage_ExcludedIfKeyword_3_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
 
 /************ end Rule ImportedPackage ****************/
 
@@ -11723,11 +11953,11 @@ protected class ImportedPackage_MaxExclusiveAssignment_2_3_1_0 extends Assignmen
 /************ begin Rule ExportedPackage ****************
  *
  * ExportedPackage returns bundle::ExportedPackage:
- * 	{bundle::ExportedPackage} name=STRING version=Version?;
+ * 	{bundle::ExportedPackage} name=STRING version=Version? ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
-// {bundle::ExportedPackage} name=STRING version=Version?
+// {bundle::ExportedPackage} name=STRING version=Version? ("excluded-if" excludeExpression=BooleanExpression)?
 protected class ExportedPackage_Group extends GroupToken {
 	
 	public ExportedPackage_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11742,8 +11972,9 @@ protected class ExportedPackage_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new ExportedPackage_VersionAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new ExportedPackage_NameAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new ExportedPackage_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ExportedPackage_VersionAssignment_2(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new ExportedPackage_NameAssignment_1(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -11851,6 +12082,98 @@ protected class ExportedPackage_VersionAssignment_2 extends AssignmentToken  {
 
 }
 
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class ExportedPackage_Group_3 extends GroupToken {
+	
+	public ExportedPackage_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getExportedPackageAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ExportedPackage_ExcludeExpressionAssignment_3_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class ExportedPackage_ExcludedIfKeyword_3_0 extends KeywordToken  {
+	
+	public ExportedPackage_ExcludedIfKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getExportedPackageAccess().getExcludedIfKeyword_3_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ExportedPackage_VersionAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ExportedPackage_NameAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class ExportedPackage_ExcludeExpressionAssignment_3_1 extends AssignmentToken  {
+	
+	public ExportedPackage_ExcludeExpressionAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getExportedPackageAccess().getExcludeExpressionAssignment_3_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getExportedPackageAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new ExportedPackage_ExcludedIfKeyword_3_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
 
 /************ end Rule ExportedPackage ****************/
 
@@ -11859,12 +12182,12 @@ protected class ExportedPackage_VersionAssignment_2 extends AssignmentToken  {
  *
  * Extension returns bundle::Extension:
  * 	{bundle::Extension} point=STRING "{" ("id" "=" id=STRING)? ("elements" "=" "{" elements+=Element (","
- * 	elements+=Element)* "}")? "}";
+ * 	elements+=Element)* "}")? "}" ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
 // {bundle::Extension} point=STRING "{" ("id" "=" id=STRING)? ("elements" "=" "{" elements+=Element (","
-// elements+=Element)* "}")? "}"
+// elements+=Element)* "}")? "}" ("excluded-if" excludeExpression=BooleanExpression)?
 protected class Extension_Group extends GroupToken {
 	
 	public Extension_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11879,7 +12202,8 @@ protected class Extension_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Extension_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Extension_Group_6(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Extension_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -12350,6 +12674,97 @@ protected class Extension_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	}
 
 }
+
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class Extension_Group_6 extends GroupToken {
+	
+	public Extension_Group_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getExtensionAccess().getGroup_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Extension_ExcludeExpressionAssignment_6_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class Extension_ExcludedIfKeyword_6_0 extends KeywordToken  {
+	
+	public Extension_ExcludedIfKeyword_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getExtensionAccess().getExcludedIfKeyword_6_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Extension_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class Extension_ExcludeExpressionAssignment_6_1 extends AssignmentToken  {
+	
+	public Extension_ExcludeExpressionAssignment_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getExtensionAccess().getExcludeExpressionAssignment_6_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getExtensionAccess().getExcludeExpressionBooleanExpressionParserRuleCall_6_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Extension_ExcludedIfKeyword_6_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
 
 
 /************ end Rule Extension ****************/
@@ -13208,12 +13623,12 @@ protected class Attribute_RightCurlyBracketKeyword_5 extends KeywordToken  {
  *
  * RequiredBundle returns bundle::RequiredBundle:
  * 	{bundle::RequiredBundle} name=STRING ((minExclusive?="("? | "[") minVersion=Version? "," maxVersion=Version?
- * 	(maxExclusive?=")"? | "]"))?;
+ * 	(maxExclusive?=")"? | "]"))? ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
 // {bundle::RequiredBundle} name=STRING ((minExclusive?="("? | "[") minVersion=Version? "," maxVersion=Version?
-// (maxExclusive?=")"? | "]"))?
+// (maxExclusive?=")"? | "]"))? ("excluded-if" excludeExpression=BooleanExpression)?
 protected class RequiredBundle_Group extends GroupToken {
 	
 	public RequiredBundle_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13228,8 +13643,9 @@ protected class RequiredBundle_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new RequiredBundle_Group_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new RequiredBundle_NameAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new RequiredBundle_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RequiredBundle_Group_2(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new RequiredBundle_NameAssignment_1(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -13535,6 +13951,98 @@ protected class RequiredBundle_MaxExclusiveAssignment_2_4_0 extends AssignmentTo
 
 
 
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class RequiredBundle_Group_3 extends GroupToken {
+	
+	public RequiredBundle_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRequiredBundleAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RequiredBundle_ExcludeExpressionAssignment_3_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class RequiredBundle_ExcludedIfKeyword_3_0 extends KeywordToken  {
+	
+	public RequiredBundle_ExcludedIfKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRequiredBundleAccess().getExcludedIfKeyword_3_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RequiredBundle_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RequiredBundle_NameAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class RequiredBundle_ExcludeExpressionAssignment_3_1 extends AssignmentToken  {
+	
+	public RequiredBundle_ExcludeExpressionAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRequiredBundleAccess().getExcludeExpressionAssignment_3_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRequiredBundleAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RequiredBundle_ExcludedIfKeyword_3_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
 
 /************ end Rule RequiredBundle ****************/
 
@@ -13742,11 +14250,13 @@ protected class LinkedString_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule FeaturePlugin ****************
  *
  * FeaturePlugin returns bundle::FeaturePlugin:
- * 	{bundle::FeaturePlugin} unpack?="unpacked"? ^fragment?="fragment"? id=STRING;
+ * 	{bundle::FeaturePlugin} unpack?="unpacked"? ^fragment?="fragment"? id=STRING ("excluded-if"
+ * 	excludeExpression=BooleanExpression)?;
  *
  **/
 
-// {bundle::FeaturePlugin} unpack?="unpacked"? ^fragment?="fragment"? id=STRING
+// {bundle::FeaturePlugin} unpack?="unpacked"? ^fragment?="fragment"? id=STRING ("excluded-if"
+// excludeExpression=BooleanExpression)?
 protected class FeaturePlugin_Group extends GroupToken {
 	
 	public FeaturePlugin_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13761,7 +14271,8 @@ protected class FeaturePlugin_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new FeaturePlugin_IdAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new FeaturePlugin_Group_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new FeaturePlugin_IdAssignment_3(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -13906,6 +14417,97 @@ protected class FeaturePlugin_IdAssignment_3 extends AssignmentToken  {
 
 }
 
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class FeaturePlugin_Group_4 extends GroupToken {
+	
+	public FeaturePlugin_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getFeaturePluginAccess().getGroup_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new FeaturePlugin_ExcludeExpressionAssignment_4_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class FeaturePlugin_ExcludedIfKeyword_4_0 extends KeywordToken  {
+	
+	public FeaturePlugin_ExcludedIfKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getFeaturePluginAccess().getExcludedIfKeyword_4_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new FeaturePlugin_IdAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class FeaturePlugin_ExcludeExpressionAssignment_4_1 extends AssignmentToken  {
+	
+	public FeaturePlugin_ExcludeExpressionAssignment_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getFeaturePluginAccess().getExcludeExpressionAssignment_4_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getFeaturePluginAccess().getExcludeExpressionBooleanExpressionParserRuleCall_4_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new FeaturePlugin_ExcludedIfKeyword_4_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
 
 /************ end Rule FeaturePlugin ****************/
 
@@ -13913,11 +14515,12 @@ protected class FeaturePlugin_IdAssignment_3 extends AssignmentToken  {
 /************ begin Rule RequiredFeature ****************
  *
  * RequiredFeature returns bundle::RequiredFeature:
- * 	{bundle::RequiredFeature} id=STRING match=MatchRule version=Version;
+ * 	{bundle::RequiredFeature} id=STRING match=MatchRule version=Version ("excluded-if"
+ * 	excludeExpression=BooleanExpression)?;
  *
  **/
 
-// {bundle::RequiredFeature} id=STRING match=MatchRule version=Version
+// {bundle::RequiredFeature} id=STRING match=MatchRule version=Version ("excluded-if" excludeExpression=BooleanExpression)?
 protected class RequiredFeature_Group extends GroupToken {
 	
 	public RequiredFeature_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13932,7 +14535,8 @@ protected class RequiredFeature_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new RequiredFeature_VersionAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new RequiredFeature_Group_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new RequiredFeature_VersionAssignment_3(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -14074,6 +14678,97 @@ protected class RequiredFeature_VersionAssignment_3 extends AssignmentToken  {
 
 }
 
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class RequiredFeature_Group_4 extends GroupToken {
+	
+	public RequiredFeature_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getRequiredFeatureAccess().getGroup_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RequiredFeature_ExcludeExpressionAssignment_4_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class RequiredFeature_ExcludedIfKeyword_4_0 extends KeywordToken  {
+	
+	public RequiredFeature_ExcludedIfKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getRequiredFeatureAccess().getExcludedIfKeyword_4_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new RequiredFeature_VersionAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class RequiredFeature_ExcludeExpressionAssignment_4_1 extends AssignmentToken  {
+	
+	public RequiredFeature_ExcludeExpressionAssignment_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getRequiredFeatureAccess().getExcludeExpressionAssignment_4_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getRequiredFeatureAccess().getExcludeExpressionBooleanExpressionParserRuleCall_4_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new RequiredFeature_ExcludedIfKeyword_4_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
 
 /************ end Rule RequiredFeature ****************/
 
@@ -14081,11 +14776,11 @@ protected class RequiredFeature_VersionAssignment_3 extends AssignmentToken  {
 /************ begin Rule IncludedFeature ****************
  *
  * IncludedFeature returns bundle::IncludedFeature:
- * 	{bundle::IncludedFeature} id=STRING version=Version?;
+ * 	{bundle::IncludedFeature} id=STRING version=Version? ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
-// {bundle::IncludedFeature} id=STRING version=Version?
+// {bundle::IncludedFeature} id=STRING version=Version? ("excluded-if" excludeExpression=BooleanExpression)?
 protected class IncludedFeature_Group extends GroupToken {
 	
 	public IncludedFeature_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14100,8 +14795,9 @@ protected class IncludedFeature_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IncludedFeature_VersionAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new IncludedFeature_IdAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new IncludedFeature_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new IncludedFeature_VersionAssignment_2(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new IncludedFeature_IdAssignment_1(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -14209,6 +14905,98 @@ protected class IncludedFeature_VersionAssignment_2 extends AssignmentToken  {
 
 }
 
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class IncludedFeature_Group_3 extends GroupToken {
+	
+	public IncludedFeature_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getIncludedFeatureAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IncludedFeature_ExcludeExpressionAssignment_3_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class IncludedFeature_ExcludedIfKeyword_3_0 extends KeywordToken  {
+	
+	public IncludedFeature_ExcludedIfKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getIncludedFeatureAccess().getExcludedIfKeyword_3_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IncludedFeature_VersionAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new IncludedFeature_IdAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class IncludedFeature_ExcludeExpressionAssignment_3_1 extends AssignmentToken  {
+	
+	public IncludedFeature_ExcludeExpressionAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getIncludedFeatureAccess().getExcludeExpressionAssignment_3_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getIncludedFeatureAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new IncludedFeature_ExcludedIfKeyword_3_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
 
 /************ end Rule IncludedFeature ****************/
 
@@ -14220,11 +15008,11 @@ protected class IncludedFeature_VersionAssignment_2 extends AssignmentToken  {
  * //	id=STRING version=Version?
  * //;
  * ProductFeature returns bundle::ProductFeature:
- * 	{bundle::ProductFeature} id=STRING version=Version?;
+ * 	{bundle::ProductFeature} id=STRING version=STRING? ("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
-// {bundle::ProductFeature} id=STRING version=Version?
+// {bundle::ProductFeature} id=STRING version=STRING? ("excluded-if" excludeExpression=BooleanExpression)?
 protected class ProductFeature_Group extends GroupToken {
 	
 	public ProductFeature_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14239,8 +15027,9 @@ protected class ProductFeature_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new ProductFeature_VersionAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new ProductFeature_IdAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new ProductFeature_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ProductFeature_VersionAssignment_2(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new ProductFeature_IdAssignment_1(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -14314,7 +15103,7 @@ protected class ProductFeature_IdAssignment_1 extends AssignmentToken  {
 
 }
 
-// version=Version?
+// version=STRING?
 protected class ProductFeature_VersionAssignment_2 extends AssignmentToken  {
 	
 	public ProductFeature_VersionAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14338,15 +15127,107 @@ protected class ProductFeature_VersionAssignment_2 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("version",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("version");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getProductFeatureAccess().getVersionVersionParserRuleCall_2_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getProductFeatureAccess().getVersionVersionParserRuleCall_2_0();
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getProductFeatureAccess().getVersionSTRINGTerminalRuleCall_2_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getProductFeatureAccess().getVersionSTRINGTerminalRuleCall_2_0();
 			return obj;
 		}
 		return null;
 	}
 
 }
+
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class ProductFeature_Group_3 extends GroupToken {
+	
+	public ProductFeature_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getProductFeatureAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ProductFeature_ExcludeExpressionAssignment_3_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class ProductFeature_ExcludedIfKeyword_3_0 extends KeywordToken  {
+	
+	public ProductFeature_ExcludedIfKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getProductFeatureAccess().getExcludedIfKeyword_3_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ProductFeature_VersionAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ProductFeature_IdAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class ProductFeature_ExcludeExpressionAssignment_3_1 extends AssignmentToken  {
+	
+	public ProductFeature_ExcludeExpressionAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getProductFeatureAccess().getExcludeExpressionAssignment_3_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getProductFeatureAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new ProductFeature_ExcludedIfKeyword_3_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
 
 
 /************ end Rule ProductFeature ****************/
@@ -14355,11 +15236,13 @@ protected class ProductFeature_VersionAssignment_2 extends AssignmentToken  {
 /************ begin Rule ProductStartConfig ****************
  *
  * ProductStartConfig returns bundle::ProductStartConfig:
- * 	{bundle::ProductStartConfig} id=STRING (autoStart?="autostarted" ("at" startLevel=(SIGNED_INT | INT))?)?;
+ * 	{bundle::ProductStartConfig} id=STRING (autoStart?="autostarted" ("at" startLevel=(SIGNED_INT | INT))?)?
+ * 	("excluded-if" excludeExpression=BooleanExpression)?;
  *
  **/
 
-// {bundle::ProductStartConfig} id=STRING (autoStart?="autostarted" ("at" startLevel=(SIGNED_INT | INT))?)?
+// {bundle::ProductStartConfig} id=STRING (autoStart?="autostarted" ("at" startLevel=(SIGNED_INT | INT))?)? ("excluded-if"
+// excludeExpression=BooleanExpression)?
 protected class ProductStartConfig_Group extends GroupToken {
 	
 	public ProductStartConfig_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14374,8 +15257,9 @@ protected class ProductStartConfig_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new ProductStartConfig_Group_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new ProductStartConfig_IdAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new ProductStartConfig_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ProductStartConfig_Group_2(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new ProductStartConfig_IdAssignment_1(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -14589,6 +15473,98 @@ protected class ProductStartConfig_StartLevelAssignment_2_1_1 extends Assignment
 
 }
 
+
+
+// ("excluded-if" excludeExpression=BooleanExpression)?
+protected class ProductStartConfig_Group_3 extends GroupToken {
+	
+	public ProductStartConfig_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getProductStartConfigAccess().getGroup_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ProductStartConfig_ExcludeExpressionAssignment_3_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "excluded-if"
+protected class ProductStartConfig_ExcludedIfKeyword_3_0 extends KeywordToken  {
+	
+	public ProductStartConfig_ExcludedIfKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getProductStartConfigAccess().getExcludedIfKeyword_3_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ProductStartConfig_Group_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new ProductStartConfig_IdAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// excludeExpression=BooleanExpression
+protected class ProductStartConfig_ExcludeExpressionAssignment_3_1 extends AssignmentToken  {
+	
+	public ProductStartConfig_ExcludeExpressionAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getProductStartConfigAccess().getExcludeExpressionAssignment_3_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BooleanExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("excludeExpression",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("excludeExpression");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBooleanExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getProductStartConfigAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new ProductStartConfig_ExcludedIfKeyword_3_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
 
 
 

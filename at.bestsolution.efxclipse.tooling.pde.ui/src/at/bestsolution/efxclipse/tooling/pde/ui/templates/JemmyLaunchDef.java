@@ -14,10 +14,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author tomschindl
- *
- */
 public class JemmyLaunchDef extends BasicLaunchDef {
 	private String junitClassName;
 	private String testProductId;

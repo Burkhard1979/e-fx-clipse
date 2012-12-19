@@ -74,7 +74,7 @@ URLFile returns task::URLFile:
 DynamicFile returns task::DynamicFile: 
 	{task::DynamicFile}
 	'DynamicFile' name=EString 'generated-from' executionURI=STRING 'by' type=STRING 
-	('{' variables+=Variable (',' variables+=Variable)? '}')?
+	('{' variables+=Variable (',' variables+=Variable)* '}')?
 	('excluded-if' excludeExpression=BooleanExpression)? 
 ;
 
@@ -117,7 +117,8 @@ SourceFragment returns task::SourceFragment:
 ;
 
 CompilationUnit returns task::CompilationUnit: 
-	packagename=STRING 'in' sourcefragment=[task::SourceFragment|STRING] file=(TemplatedFile | DataFile | URLFile | DynamicFile)
+	packagename=STRING 'in' sourcefragment=[task::SourceFragment|STRING] '{' file=(TemplatedFile | DataFile | URLFile | DynamicFile) '}'
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 
@@ -172,7 +173,7 @@ ProductFileFeaturebase returns bundle::ProductFileFeaturebase:
 			&
 			'application' '=' application=STRING
 			&
-			'version' '=' version=Version
+			'version' '=' version=STRING
 		)
 		('startconfigurations' '=' '{' 
 			startconfigurations+=ProductStartConfig ( ',' startconfigurations+=ProductStartConfig )* 
@@ -214,11 +215,13 @@ FeatureFile returns bundle::FeatureFile:
 ImportedPackage returns bundle::ImportedPackage:
 	{bundle::ImportedPackage}
 	name=STRING ((minExclusive?='('? | '[') minVersion=Version? ',' (maxVersion=Version? (maxExclusive?=')'? | ']')))?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 ExportedPackage returns bundle::ExportedPackage:
 	{bundle::ExportedPackage}
 	name=STRING version=Version?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 Extension returns bundle::Extension:
@@ -229,6 +232,7 @@ Extension returns bundle::Extension:
 			elements+=Element (',' elements+=Element)*
 		'}')?
 	'}'
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 Element returns bundle::Element:
@@ -252,6 +256,7 @@ Attribute returns bundle::Attribute:
 RequiredBundle returns bundle::RequiredBundle:
 	{bundle::RequiredBundle}
 	name=STRING ((minExclusive?='('? | '[') minVersion=Version? ',' maxVersion=Version? (maxExclusive?=')'? | ']'))?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 LinkedString returns bundle::LinkedString:
@@ -264,16 +269,19 @@ LinkedString returns bundle::LinkedString:
 FeaturePlugin returns bundle::FeaturePlugin:
 	{bundle::FeaturePlugin}
 	unpack?='unpacked'? ^fragment?='fragment'? id=STRING
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 RequiredFeature returns bundle::RequiredFeature:
 	{bundle::RequiredFeature}
 	id=STRING match=MatchRule version=Version
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 IncludedFeature returns bundle::IncludedFeature:
 	{bundle::IncludedFeature}
 	id=STRING version=Version?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 //ProductPlugin returns bundle::ProductPlugin:
@@ -283,12 +291,14 @@ IncludedFeature returns bundle::IncludedFeature:
 
 ProductFeature returns bundle::ProductFeature:
 	{bundle::ProductFeature}
-	id=STRING version=Version?
+	id=STRING version=STRING?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 ProductStartConfig returns bundle::ProductStartConfig:
 	{bundle::ProductStartConfig}
 	id=STRING (autoStart?='autostarted' ('at' startLevel=(SIGNED_INT|INT))? )?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 Version returns bundle::Version:
@@ -309,3 +319,6 @@ terminal INLINE_SCRIPT:
 terminal SIGNED_INT returns ecore::EInt:
 	'-' INT
 ;
+
+//QualifiedName:
+//  ID (=>'.' ID)*;

@@ -4,6 +4,8 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Attribute;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Extension;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import com.google.common.base.Objects;
 import java.io.ByteArrayInputStream;
@@ -36,7 +38,14 @@ public class PluginXMLGenerator implements Generator<PluginXMLFile> {
     _builder.newLine();
     {
       EList<Extension> _extensions = file.getExtensions();
-      for(final Extension ext : _extensions) {
+      final Function1<Extension,Boolean> _function = new Function1<Extension,Boolean>() {
+          public Boolean apply(final Extension e) {
+            boolean _excludeExpression = PluginXMLGenerator.this.excludeExpression(e, data);
+            return Boolean.valueOf(_excludeExpression);
+          }
+        };
+      Iterable<Extension> _filter = IterableExtensions.<Extension>filter(_extensions, _function);
+      for(final Extension ext : _filter) {
         _builder.append("<extension ");
         {
           String _id = ext.getId();
@@ -68,8 +77,18 @@ public class PluginXMLGenerator implements Generator<PluginXMLFile> {
     }
     _builder.append("</plugin>");
     _builder.newLine();
-    _builder.newLine();
     return _builder;
+  }
+  
+  public boolean excludeExpression(final ExcludeableElementMixin mixin, final Map<String,Object> data) {
+    BooleanExpression _excludeExpression = mixin.getExcludeExpression();
+    boolean _notEquals = (!Objects.equal(_excludeExpression, null));
+    if (_notEquals) {
+      BooleanExpression _excludeExpression_1 = mixin.getExcludeExpression();
+      boolean _execute = _excludeExpression_1.execute(data);
+      return (!_execute);
+    }
+    return true;
   }
   
   public CharSequence elementBuilder(final Element el) {

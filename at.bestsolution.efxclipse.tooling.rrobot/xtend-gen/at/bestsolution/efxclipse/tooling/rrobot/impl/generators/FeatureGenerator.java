@@ -6,6 +6,8 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.IncludedFeature;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.LinkedString;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredFeature;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import com.google.common.base.Objects;
 import java.io.ByteArrayInputStream;
@@ -13,6 +15,8 @@ import java.io.InputStream;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.osgi.framework.Version;
 
 @SuppressWarnings("all")
@@ -217,7 +221,14 @@ public class FeatureGenerator implements Generator<FeatureFile> {
     _builder.newLine();
     {
       EList<FeaturePlugin> _plugins = file.getPlugins();
-      for(final FeaturePlugin p : _plugins) {
+      final Function1<FeaturePlugin,Boolean> _function = new Function1<FeaturePlugin,Boolean>() {
+          public Boolean apply(final FeaturePlugin e) {
+            boolean _excludeExpression = FeatureGenerator.this.excludeExpression(e, data);
+            return Boolean.valueOf(_excludeExpression);
+          }
+        };
+      Iterable<FeaturePlugin> _filter = IterableExtensions.<FeaturePlugin>filter(_plugins, _function);
+      for(final FeaturePlugin p : _filter) {
         _builder.append("   \t\t");
         _builder.append("<plugin id=\"");
         String _id = p.getId();
@@ -239,7 +250,14 @@ public class FeatureGenerator implements Generator<FeatureFile> {
     _builder.newLine();
     {
       EList<IncludedFeature> _includedfeatures = file.getIncludedfeatures();
-      for(final IncludedFeature i : _includedfeatures) {
+      final Function1<IncludedFeature,Boolean> _function_1 = new Function1<IncludedFeature,Boolean>() {
+          public Boolean apply(final IncludedFeature e) {
+            boolean _excludeExpression = FeatureGenerator.this.excludeExpression(e, data);
+            return Boolean.valueOf(_excludeExpression);
+          }
+        };
+      Iterable<IncludedFeature> _filter_1 = IterableExtensions.<IncludedFeature>filter(_includedfeatures, _function_1);
+      for(final IncludedFeature i : _filter_1) {
         _builder.append("   \t\t");
         _builder.append("<includes id=\"");
         String _id_1 = i.getId();
@@ -262,7 +280,14 @@ public class FeatureGenerator implements Generator<FeatureFile> {
     _builder.newLine();
     {
       EList<RequiredFeature> _requiredfeatures = file.getRequiredfeatures();
-      boolean _isEmpty = _requiredfeatures.isEmpty();
+      final Function1<RequiredFeature,Boolean> _function_2 = new Function1<RequiredFeature,Boolean>() {
+          public Boolean apply(final RequiredFeature e) {
+            boolean _excludeExpression = FeatureGenerator.this.excludeExpression(e, data);
+            return Boolean.valueOf(_excludeExpression);
+          }
+        };
+      Iterable<RequiredFeature> _filter_2 = IterableExtensions.<RequiredFeature>filter(_requiredfeatures, _function_2);
+      boolean _isEmpty = IterableExtensions.isEmpty(_filter_2);
       boolean _not = (!_isEmpty);
       if (_not) {
         _builder.append("   \t\t");
@@ -270,7 +295,14 @@ public class FeatureGenerator implements Generator<FeatureFile> {
         _builder.newLine();
         {
           EList<RequiredFeature> _requiredfeatures_1 = file.getRequiredfeatures();
-          for(final RequiredFeature rf : _requiredfeatures_1) {
+          final Function1<RequiredFeature,Boolean> _function_3 = new Function1<RequiredFeature,Boolean>() {
+              public Boolean apply(final RequiredFeature e) {
+                boolean _excludeExpression = FeatureGenerator.this.excludeExpression(e, data);
+                return Boolean.valueOf(_excludeExpression);
+              }
+            };
+          Iterable<RequiredFeature> _filter_3 = IterableExtensions.<RequiredFeature>filter(_requiredfeatures_1, _function_3);
+          for(final RequiredFeature rf : _filter_3) {
             _builder.append("   \t\t");
             _builder.append("\t");
             _builder.append("<import feature=\"");
@@ -310,5 +342,16 @@ public class FeatureGenerator implements Generator<FeatureFile> {
     _builder.append("</feature>");
     _builder.newLine();
     return _builder;
+  }
+  
+  public boolean excludeExpression(final ExcludeableElementMixin mixin, final Map<String,Object> data) {
+    BooleanExpression _excludeExpression = mixin.getExcludeExpression();
+    boolean _notEquals = (!Objects.equal(_excludeExpression, null));
+    if (_notEquals) {
+      BooleanExpression _excludeExpression_1 = mixin.getExcludeExpression();
+      boolean _execute = _excludeExpression_1.execute(data);
+      return (!_execute);
+    }
+    return true;
   }
 }

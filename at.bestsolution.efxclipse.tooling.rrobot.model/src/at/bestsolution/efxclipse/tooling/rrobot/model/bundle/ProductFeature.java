@@ -61,12 +61,12 @@ public interface ProductFeature extends ExcludeableElementMixin {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
-	 * @see #setVersion(Version)
+	 * @see #setVersion(String)
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getProductFeature_Version()
-	 * @model dataType="at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Version"
+	 * @model
 	 * @generated
 	 */
-	Version getVersion();
+	String getVersion();
 
 	/**
 	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature#getVersion <em>Version</em>}' attribute.
@@ -76,6 +76,6 @@ public interface ProductFeature extends ExcludeableElementMixin {
 	 * @see #getVersion()
 	 * @generated
 	 */
-	void setVersion(Version value);
+	void setVersion(String value);
 
 } // ProductFeature

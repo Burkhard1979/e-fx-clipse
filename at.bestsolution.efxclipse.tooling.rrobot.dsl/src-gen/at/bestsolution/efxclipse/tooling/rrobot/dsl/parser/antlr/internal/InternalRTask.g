@@ -1131,7 +1131,7 @@ ruleDynamicFile returns [EObject current=null]
 	    }
 
 )
-))?	otherlv_11='}' 
+))*	otherlv_11='}' 
     {
     	newLeafNode(otherlv_11, grammarAccess.getDynamicFileAccess().getRightCurlyBracketKeyword_7_3());
     }
@@ -1815,65 +1815,69 @@ ruleCompilationUnit returns [EObject current=null]
 	}
 
 )
-)(
+)	otherlv_3='{' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getCompilationUnitAccess().getLeftCurlyBracketKeyword_3());
+    }
+(
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileTemplatedFileParserRuleCall_3_0_0()); 
+	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileTemplatedFileParserRuleCall_4_0_0()); 
 	    }
-		lv_file_3_1=ruleTemplatedFile		{
+		lv_file_4_1=ruleTemplatedFile		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
 	        }
        		set(
        			$current, 
        			"file",
-        		lv_file_3_1, 
+        		lv_file_4_1, 
         		"TemplatedFile");
 	        afterParserOrEnumRuleCall();
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileDataFileParserRuleCall_3_0_1()); 
+	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileDataFileParserRuleCall_4_0_1()); 
 	    }
-		lv_file_3_2=ruleDataFile		{
+		lv_file_4_2=ruleDataFile		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
 	        }
        		set(
        			$current, 
        			"file",
-        		lv_file_3_2, 
+        		lv_file_4_2, 
         		"DataFile");
 	        afterParserOrEnumRuleCall();
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileURLFileParserRuleCall_3_0_2()); 
+	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileURLFileParserRuleCall_4_0_2()); 
 	    }
-		lv_file_3_3=ruleURLFile		{
+		lv_file_4_3=ruleURLFile		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
 	        }
        		set(
        			$current, 
        			"file",
-        		lv_file_3_3, 
+        		lv_file_4_3, 
         		"URLFile");
 	        afterParserOrEnumRuleCall();
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileDynamicFileParserRuleCall_3_0_3()); 
+	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getFileDynamicFileParserRuleCall_4_0_3()); 
 	    }
-		lv_file_3_4=ruleDynamicFile		{
+		lv_file_4_4=ruleDynamicFile		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
 	        }
        		set(
        			$current, 
        			"file",
-        		lv_file_3_4, 
+        		lv_file_4_4, 
         		"DynamicFile");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1881,7 +1885,33 @@ ruleCompilationUnit returns [EObject current=null]
 )
 
 )
-))
+)	otherlv_5='}' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getCompilationUnitAccess().getRightCurlyBracketKeyword_5());
+    }
+(	otherlv_6='excluded-if' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getCompilationUnitAccess().getExcludedIfKeyword_6_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCompilationUnitAccess().getExcludeExpressionBooleanExpressionParserRuleCall_6_1_0()); 
+	    }
+		lv_excludeExpression_7_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCompilationUnitRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_7_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
@@ -2866,19 +2896,19 @@ ruleProductFileFeaturebase returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getProductFileFeaturebaseAccess().getVersionVersionParserRuleCall_5_4_2_0()); 
-	    }
-		lv_version_20_0=ruleVersion		{
+		lv_version_20_0=RULE_STRING
+		{
+			newLeafNode(lv_version_20_0, grammarAccess.getProductFileFeaturebaseAccess().getVersionSTRINGTerminalRuleCall_5_4_2_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getProductFileFeaturebaseRule());
+	            $current = createModelElement(grammarAccess.getProductFileFeaturebaseRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"version",
         		lv_version_20_0, 
-        		"Version");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -3713,7 +3743,29 @@ ruleImportedPackage returns [EObject current=null]
     {
     	newLeafNode(otherlv_8, grammarAccess.getImportedPackageAccess().getRightSquareBracketKeyword_2_3_1_1());
     }
-)))?)
+)))?(	otherlv_9='excluded-if' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getImportedPackageAccess().getExcludedIfKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getImportedPackageAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0()); 
+	    }
+		lv_excludeExpression_10_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getImportedPackageRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_10_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
@@ -3776,7 +3828,29 @@ ruleExportedPackage returns [EObject current=null]
 	    }
 
 )
-)?)
+)?(	otherlv_3='excluded-if' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getExportedPackageAccess().getExcludedIfKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getExportedPackageAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0()); 
+	    }
+		lv_excludeExpression_4_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getExportedPackageRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_4_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
@@ -3911,7 +3985,29 @@ ruleExtension returns [EObject current=null]
     {
     	newLeafNode(otherlv_13, grammarAccess.getExtensionAccess().getRightCurlyBracketKeyword_5());
     }
+(	otherlv_14='excluded-if' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getExtensionAccess().getExcludedIfKeyword_6_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getExtensionAccess().getExcludeExpressionBooleanExpressionParserRuleCall_6_1_0()); 
+	    }
+		lv_excludeExpression_15_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getExtensionRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_15_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
 )
+))?)
 ;
 
 
@@ -4276,6 +4372,28 @@ ruleRequiredBundle returns [EObject current=null]
     {
     	newLeafNode(otherlv_8, grammarAccess.getRequiredBundleAccess().getRightSquareBracketKeyword_2_4_1());
     }
+))?(	otherlv_9='excluded-if' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getRequiredBundleAccess().getExcludedIfKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getRequiredBundleAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0()); 
+	    }
+		lv_excludeExpression_10_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getRequiredBundleRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_10_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 ))?)
 ;
 
@@ -4426,7 +4544,29 @@ ruleFeaturePlugin returns [EObject current=null]
 	    }
 
 )
-))
+)(	otherlv_4='excluded-if' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getFeaturePluginAccess().getExcludedIfKeyword_4_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFeaturePluginAccess().getExcludeExpressionBooleanExpressionParserRuleCall_4_1_0()); 
+	    }
+		lv_excludeExpression_5_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFeaturePluginRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_5_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
@@ -4507,7 +4647,29 @@ ruleRequiredFeature returns [EObject current=null]
 	    }
 
 )
-))
+)(	otherlv_4='excluded-if' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getRequiredFeatureAccess().getExcludedIfKeyword_4_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getRequiredFeatureAccess().getExcludeExpressionBooleanExpressionParserRuleCall_4_1_0()); 
+	    }
+		lv_excludeExpression_5_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getRequiredFeatureRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_5_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
@@ -4570,7 +4732,29 @@ ruleIncludedFeature returns [EObject current=null]
 	    }
 
 )
-)?)
+)?(	otherlv_3='excluded-if' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getIncludedFeatureAccess().getExcludedIfKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getIncludedFeatureAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0()); 
+	    }
+		lv_excludeExpression_4_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getIncludedFeatureRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_4_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
@@ -4617,23 +4801,45 @@ ruleProductFeature returns [EObject current=null]
 )
 )(
 (
-		{ 
-	        newCompositeNode(grammarAccess.getProductFeatureAccess().getVersionVersionParserRuleCall_2_0()); 
+		lv_version_2_0=RULE_STRING
+		{
+			newLeafNode(lv_version_2_0, grammarAccess.getProductFeatureAccess().getVersionSTRINGTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getProductFeatureRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"version",
+        		lv_version_2_0, 
+        		"STRING");
 	    }
-		lv_version_2_0=ruleVersion		{
+
+)
+)?(	otherlv_3='excluded-if' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getProductFeatureAccess().getExcludedIfKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getProductFeatureAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0()); 
+	    }
+		lv_excludeExpression_4_0=ruleBooleanExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getProductFeatureRule());
 	        }
        		set(
        			$current, 
-       			"version",
-        		lv_version_2_0, 
-        		"Version");
+       			"excludeExpression",
+        		lv_excludeExpression_4_0, 
+        		"BooleanExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)?)
+))?)
 ;
 
 
@@ -4733,7 +4939,29 @@ ruleProductStartConfig returns [EObject current=null]
 )
 
 )
-))?)?)
+))?)?(	otherlv_5='excluded-if' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getProductStartConfigAccess().getExcludedIfKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getProductStartConfigAccess().getExcludeExpressionBooleanExpressionParserRuleCall_3_1_0()); 
+	    }
+		lv_excludeExpression_6_0=ruleBooleanExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getProductStartConfigRule());
+	        }
+       		set(
+       			$current, 
+       			"excludeExpression",
+        		lv_excludeExpression_6_0, 
+        		"BooleanExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 

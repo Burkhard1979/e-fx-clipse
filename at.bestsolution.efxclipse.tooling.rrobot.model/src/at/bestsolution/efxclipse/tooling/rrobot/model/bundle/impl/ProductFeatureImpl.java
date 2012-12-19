@@ -71,7 +71,7 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Version VERSION_EDEFAULT = null;
+	protected static final String VERSION_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -81,7 +81,7 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * @generated
 	 * @ordered
 	 */
-	protected Version version = VERSION_EDEFAULT;
+	protected String version = VERSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,7 +128,7 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Version getVersion() {
+	public String getVersion() {
 		return version;
 	}
 
@@ -137,8 +137,8 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVersion(Version newVersion) {
-		Version oldVersion = version;
+	public void setVersion(String newVersion) {
+		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_FEATURE__VERSION, oldVersion, version));
@@ -234,7 +234,7 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 				setId((String)newValue);
 				return;
 			case BundlePackage.PRODUCT_FEATURE__VERSION:
-				setVersion((Version)newValue);
+				setVersion((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

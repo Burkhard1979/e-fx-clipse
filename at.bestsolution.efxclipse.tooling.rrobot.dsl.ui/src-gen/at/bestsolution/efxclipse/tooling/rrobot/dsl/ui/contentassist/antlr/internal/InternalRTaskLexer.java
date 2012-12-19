@@ -1881,12 +1881,12 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_SL_DOC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:13: ( '##' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:15: '##' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:13: ( '##' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:15: '##' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("##"); 
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:20: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:20: (~ ( ( '\\n' | '\\r' ) ) )*
             loop1:
             do {
                 int alt1=2;
@@ -1899,7 +1899,7 @@ public class InternalRTaskLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:20: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:20: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1919,7 +1919,7 @@ public class InternalRTaskLexer extends Lexer {
                 }
             } while (true);
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:36: ( ( '\\r' )? '\\n' )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:36: ( ( '\\r' )? '\\n' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -1928,9 +1928,9 @@ public class InternalRTaskLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:37: ( '\\r' )? '\\n'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:37: ( '\\r' )? '\\n'
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:37: ( '\\r' )?
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:37: ( '\\r' )?
                     int alt2=2;
                     int LA2_0 = input.LA(1);
 
@@ -1939,7 +1939,7 @@ public class InternalRTaskLexer extends Lexer {
                     }
                     switch (alt2) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18420:37: '\\r'
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19576:37: '\\r'
                             {
                             match('\r'); 
 
@@ -1971,12 +1971,12 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_INLINE_SCRIPT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18422:20: ( '/#' ( options {greedy=false; } : . )* '#/' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18422:22: '/#' ( options {greedy=false; } : . )* '#/'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19578:20: ( '/#' ( options {greedy=false; } : . )* '#/' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19578:22: '/#' ( options {greedy=false; } : . )* '#/'
             {
             match("/#"); 
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18422:27: ( options {greedy=false; } : . )*
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19578:27: ( options {greedy=false; } : . )*
             loop4:
             do {
                 int alt4=2;
@@ -2001,7 +2001,7 @@ public class InternalRTaskLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18422:55: .
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19578:55: .
             	    {
             	    matchAny(); 
 
@@ -2031,8 +2031,8 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_SIGNED_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18424:17: ( '-' RULE_INT )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18424:19: '-' RULE_INT
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19580:17: ( '-' RULE_INT )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19580:19: '-' RULE_INT
             {
             match('-'); 
             mRULE_INT(); 
@@ -2052,10 +2052,10 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18426:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18426:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19582:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19582:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18426:11: ( '^' )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19582:11: ( '^' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -2064,7 +2064,7 @@ public class InternalRTaskLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18426:11: '^'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19582:11: '^'
                     {
                     match('^'); 
 
@@ -2082,7 +2082,7 @@ public class InternalRTaskLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18426:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19582:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop6:
             do {
                 int alt6=2;
@@ -2131,10 +2131,10 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18428:10: ( ( '0' .. '9' )+ )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18428:12: ( '0' .. '9' )+
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19584:10: ( ( '0' .. '9' )+ )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19584:12: ( '0' .. '9' )+
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18428:12: ( '0' .. '9' )+
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19584:12: ( '0' .. '9' )+
             int cnt7=0;
             loop7:
             do {
@@ -2148,7 +2148,7 @@ public class InternalRTaskLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18428:13: '0' .. '9'
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19584:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2180,10 +2180,10 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2201,10 +2201,10 @@ public class InternalRTaskLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop8:
                     do {
                         int alt8=3;
@@ -2220,7 +2220,7 @@ public class InternalRTaskLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2236,7 +2236,7 @@ public class InternalRTaskLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2261,10 +2261,10 @@ public class InternalRTaskLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop9:
                     do {
                         int alt9=3;
@@ -2280,7 +2280,7 @@ public class InternalRTaskLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2296,7 +2296,7 @@ public class InternalRTaskLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18430:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19586:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2339,12 +2339,12 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18432:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18432:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19588:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19588:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18432:24: ( options {greedy=false; } : . )*
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19588:24: ( options {greedy=false; } : . )*
             loop11:
             do {
                 int alt11=2;
@@ -2369,7 +2369,7 @@ public class InternalRTaskLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18432:52: .
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19588:52: .
             	    {
             	    matchAny(); 
 
@@ -2399,12 +2399,12 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop12:
             do {
                 int alt12=2;
@@ -2417,7 +2417,7 @@ public class InternalRTaskLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2437,7 +2437,7 @@ public class InternalRTaskLexer extends Lexer {
                 }
             } while (true);
 
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:40: ( ( '\\r' )? '\\n' )?
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:40: ( ( '\\r' )? '\\n' )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -2446,9 +2446,9 @@ public class InternalRTaskLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:41: ( '\\r' )? '\\n'
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:41: ( '\\r' )? '\\n'
                     {
-                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:41: ( '\\r' )?
+                    // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:41: ( '\\r' )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -2457,7 +2457,7 @@ public class InternalRTaskLexer extends Lexer {
                     }
                     switch (alt13) {
                         case 1 :
-                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18434:41: '\\r'
+                            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19590:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2489,10 +2489,10 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18436:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18436:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19592:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19592:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18436:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19592:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt15=0;
             loop15:
             do {
@@ -2546,8 +2546,8 @@ public class InternalRTaskLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18438:16: ( . )
-            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:18438:18: .
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19594:16: ( . )
+            // ../at.bestsolution.efxclipse.tooling.rrobot.dsl.ui/src-gen/at/bestsolution/efxclipse/tooling/rrobot/dsl/ui/contentassist/antlr/internal/InternalRTask.g:19594:18: .
             {
             matchAny(); 
 

@@ -80,6 +80,11 @@ public class JDTProjectHandler<P extends JDTProject> extends DefaultProjectHandl
 		}
 		
 		for( CompilationUnit c : model.getCompilationUnits() ) {
+			if( c.getExcludeExpression() != null ) {
+				if( c.getExcludeExpression().execute(additionalData) ) {
+					continue;
+				}
+			}
 			Folder mFolder = c.getSourcefragment().getFolder();
 			IFolder folder = getProjectFolder(p, mFolder);
 			
@@ -90,7 +95,9 @@ public class JDTProjectHandler<P extends JDTProject> extends DefaultProjectHandl
 				for( String pack: packs ) {
 					folder = folder.getFolder(pack);
 					try {
-						folder.create(true, true, monitor);
+						if( ! folder.exists() ) {
+							folder.create(true, true, monitor);	
+						}
 					} catch (CoreException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

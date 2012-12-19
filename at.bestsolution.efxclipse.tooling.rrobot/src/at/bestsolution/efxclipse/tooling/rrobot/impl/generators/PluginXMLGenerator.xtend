@@ -5,6 +5,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
 import java.io.ByteArrayInputStream
 import java.util.Map
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
 
 class PluginXMLGenerator implements Generator<PluginXMLFile> {
 	
@@ -16,7 +17,7 @@ class PluginXMLGenerator implements Generator<PluginXMLFile> {
 	def generateContent(PluginXMLFile file, Map<String,Object> data) '''<?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
-«FOR ext : file.extensions»
+«FOR ext : file.extensions.filter([e | e.excludeExpression(data)])»
 	<extension «IF ext.id != null»id="«ext.id»"«ENDIF» point="«ext.point»">
 		«FOR el : ext.elements»
 			«el.elementBuilder»
@@ -24,8 +25,14 @@ class PluginXMLGenerator implements Generator<PluginXMLFile> {
 	</extension>
 «ENDFOR»
 </plugin>
-
 	'''
+	
+	def excludeExpression(ExcludeableElementMixin mixin, Map<String,Object> data) {
+		if( mixin.excludeExpression != null ) {
+			return ! mixin.excludeExpression.execute(data)
+		}
+		return true;
+	}
 	
 	def elementBuilder(Element el) '''
 	<«el.name» «el.attributes.map([a|a.name+"=\""+a.value+"\""]).join(" ")» «IF el.children.empty»/«ENDIF»>

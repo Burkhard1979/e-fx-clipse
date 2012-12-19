@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.osgi.framework.Version;
 
 @SuppressWarnings("all")
 public class ProductGenerator implements Generator<ProductFile> {
@@ -39,7 +38,7 @@ public class ProductGenerator implements Generator<ProductFile> {
     String _application = file.getApplication();
     _builder.append(_application, "");
     _builder.append("\" version=\"");
-    Version _version = file.getVersion();
+    String _version = file.getVersion();
     _builder.append(_version, "");
     _builder.append("\" useFeatures=\"");
     _builder.append((file instanceof ProductFileFeaturebase), "");
@@ -94,7 +93,7 @@ public class ProductGenerator implements Generator<ProductFile> {
             String _id_1 = pf.getId();
             _builder.append(_id_1, "		");
             _builder.append("\" version=\"");
-            Version _version_1 = pf.getVersion();
+            String _version_1 = pf.getVersion();
             _builder.append(_version_1, "		");
             _builder.append("\"/>");
             _builder.newLineIfNotEmpty();
