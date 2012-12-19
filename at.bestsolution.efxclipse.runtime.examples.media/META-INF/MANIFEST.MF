@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Media
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.examples.media; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: at.bestsolution.efxclipse.runtime.examples.media.Activator
