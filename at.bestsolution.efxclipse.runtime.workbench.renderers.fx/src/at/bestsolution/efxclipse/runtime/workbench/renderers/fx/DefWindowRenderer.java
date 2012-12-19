@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import javafx.application.ConditionalFeature;
 import javafx.application.Platform;
@@ -60,6 +61,7 @@ import javax.inject.Named;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.services.translation.TranslationService;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
@@ -69,6 +71,7 @@ import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler.Save;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.osgi.service.localization.BundleLocalization;
 import org.osgi.framework.Bundle;
 
 import at.bestsolution.efxclipse.runtime.di.InjectingFXMLLoader;
@@ -155,7 +158,13 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		IEclipseContext modelContext;
 		
 		MWindow mWindow;
+		
+		@Inject
+		TranslationService translationService;
 
+		@Inject
+		BundleLocalization localizationService; //FIXME We should get rid of this
+		
 		boolean initDone;
 		
 		@Inject
@@ -344,7 +353,29 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 							}
 							sb.append(uri.segment(i));
 						}
-						return (Node) InjectingFXMLLoader.create(context, b, sb.toString()).load();
+						
+						InjectingFXMLLoader<Node> loader = InjectingFXMLLoader.create(context, b, sb.toString());
+						loader.resourceBundle(localizationService.getLocalization(b, Locale.getDefault().toString()));
+						
+//FIXME We should make the localization service smarter						
+//						final String contributorURI = URI.createPlatformPluginURI(uri.segment(1), true).toString();
+//						loader = loader.resourceBundle(new ResourceBundle() {
+//
+//							@Override
+//							protected Object handleGetObject(String key) {
+//								System.err.println("LOADING OBJECT DATA");
+//								return translationService.translate("%" + key, contributorURI);
+//							}
+//
+//							@Override
+//							public Enumeration<String> getKeys() {
+//								System.err.println("REQUESTING");
+//								// TODO Can we do this???
+//								return Collections.emptyEnumeration();
+//							}
+//						});
+						
+						return (Node) loader.load();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
