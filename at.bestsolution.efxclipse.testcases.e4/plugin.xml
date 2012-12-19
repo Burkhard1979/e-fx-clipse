@@ -5,7 +5,7 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            name="at.bestsolution.efxclipse.testcases.e4"
+            name="%product.name"
             application="at.bestsolution.efxclipse.runtime.workbench.fx.application">
          <property
                value="at.bestsolution.efxclipse.testcases.e4"
