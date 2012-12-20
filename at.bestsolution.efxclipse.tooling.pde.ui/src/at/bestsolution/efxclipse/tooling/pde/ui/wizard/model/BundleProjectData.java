@@ -16,6 +16,7 @@ public class BundleProjectData {
 	private String projectname;
 	private Path projectPath;
 	private String symbolicname;
+	private String bundleDescription;
 	private String version;
 	private String vendor;
 	private String EEnv;
@@ -55,5 +56,11 @@ public class BundleProjectData {
 	}
 	public Path getProjectPath() {
 		return projectPath;
+	}
+	public void setBundleDescription(String bundleDescription) {
+		this.bundleDescription = bundleDescription;
+	}
+	public String getBundleDescription() {
+		return bundleDescription;
 	}
 }

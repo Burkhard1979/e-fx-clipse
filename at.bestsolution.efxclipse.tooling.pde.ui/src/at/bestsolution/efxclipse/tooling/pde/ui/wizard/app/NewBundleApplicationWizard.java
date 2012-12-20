@@ -26,6 +26,8 @@ public class NewBundleApplicationWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.selection = selection;
 		this.data = new AppBundleProjectData();
+		this.data.setJemmyTest(true);
+		this.data.setTychoIntegration(true);
 	}
 
 	@Override

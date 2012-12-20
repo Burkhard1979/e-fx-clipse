@@ -32,17 +32,20 @@ public class RootPomGenerator implements Generator<DynamicFile> {
     String _plus_3 = ("../" + projectName);
     String _plus_4 = (_plus_3 + ".product");
     modules.add(_plus_4);
+    String _plus_5 = ("../" + projectName);
+    String _plus_6 = (_plus_5 + ".jemmy");
+    modules.add(_plus_6);
     ArrayList<Repository> _arrayList_1 = new ArrayList<Repository>();
     final ArrayList<Repository> repos = _arrayList_1;
     Repository _repository = new Repository("juno", "http://download.eclipse.org/releases/juno");
     repos.add(_repository);
     Repository _repository_1 = new Repository("efxclipse-repo", "http://www.efxclipse.org/p2-repos/nightly/site/");
     repos.add(_repository_1);
-    String _plus_5 = (productName + " - releng");
+    String _plus_7 = (productName + " - releng");
     String _pomGroupId = this.toPomGroupId(bundleId);
-    String _plus_6 = (bundleId + ".releng");
+    String _plus_8 = (bundleId + ".releng");
     String _pomVersion = this.toPomVersion(bundleVersion);
-    RootPomData _rootPomData = new RootPomData(_plus_5, _pomGroupId, _plus_6, 
+    RootPomData _rootPomData = new RootPomData(_plus_7, _pomGroupId, _plus_8, 
       null, null, null, null, _pomVersion, "0.16.0", "4.8.1", "1.8.4", "4.2", "0.1.1", "2.2.0-SNAPSHOT", modules, repos);
     final RootPomData pomdata = _rootPomData;
     CharSequence _generate = this.generate(pomdata);

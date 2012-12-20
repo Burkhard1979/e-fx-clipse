@@ -58,6 +58,7 @@ public class BundleConfigurationPage extends WizardPage {
 	public BundleConfigurationPage(BundleProjectData data, String pageName, String title) {
 		super(pageName, title, null);
 		this.data = data;
+		setPageComplete(false);
 	}
 
 	@Override
@@ -94,6 +95,7 @@ public class BundleConfigurationPage extends WizardPage {
 		}
 		
 		data.setSymbolicname(idText.getText().trim());
+		data.setBundleDescription(nameText.getText());
 		data.setVersion(versionText.getText());
 		data.setVendor(vendorText.getText().trim().isEmpty() ? null : vendorText.getText());
 		data.setEEnv(eeChoice.getText());
@@ -114,6 +116,7 @@ public class BundleConfigurationPage extends WizardPage {
 	private void createPluginPropertiesGroup(Composite container) {
 		Group propertiesGroup = new Group(container, SWT.NONE);
 		propertiesGroup.setText("Properties");
+		propertiesGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		propertiesGroup.setLayout(new GridLayout(3, false));
 
 		{
@@ -129,11 +132,13 @@ public class BundleConfigurationPage extends WizardPage {
 		{
 			createLabel(propertiesGroup, "Name:");
 			nameText = createText(propertiesGroup, propertiesListener, 2);
+			nameText.setMessage("Enter a short description");
 		}
 
 		{
 			createLabel(propertiesGroup, "Vendor:");
 			vendorText = createText(propertiesGroup, propertiesListener, 2);
+			vendorText.setMessage("Enter the vendor of the bundle");
 		}
 
 		createExecutionEnvironmentControls(propertiesGroup);

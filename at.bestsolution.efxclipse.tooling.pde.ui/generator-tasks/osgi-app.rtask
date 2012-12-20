@@ -1,5 +1,7 @@
 RobotTask {
 	variables = {
+		## Maven Group Id
+		STRING "Maven_GroupId" default "my.app",
 		## Name of the project
 		STRING "BundleProject_projectName" default "my.app.sample",  
 		## Symbolic id of the bundle
@@ -306,6 +308,33 @@ RobotTask {
 						STRING "testSuite" default "${BundleProject_bundleId}.jemmy.TestSuite",
 						## Test Product Id
 						STRING "testProductId" default "${BundleProject_bundleId}.product"
+					},
+				DynamicFile "pom.xml" 
+					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.JemmyPomGenerator" 
+					by "java" 
+					{
+						## releng group id
+						STRING "relengGroupId" default "${Maven_GroupId}",
+						## releng artifact id
+						STRING "relengArtifactId" default "${BundleProject_bundleId}.releng",
+						## releng releng path
+						STRING "relengPath" default "../${BundleProject_bundleId}.releng",
+						## group id
+						STRING "groupId" default "${Maven_GroupId}",
+						## artifactId
+						STRING "artifactId" default "${BundleProject_bundleId}.jemmy",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## name
+						STRING "name" default "${BundleProject_bundleName} - jemmy tests",
+						## testBundleId
+						STRING "testBundleId" default "${BundleProject_bundleId}.jemmy",
+						## testSuite
+						STRING "testSuite" default "${BundleProject_bundleId}.jemmy.TestSuite",
+						## testProductId
+						STRING "testProductId" default "${BundleProject_bundleId}.product",
+						## testProductFeature
+						STRING "testProductFeature" default "${BundleProject_bundleId}.feature"
 					}
 			}
 			rootfragments = {

@@ -1,6 +1,8 @@
 RobotTask {
 	// Variables to be used later on
 	variables = {
+		## Maven_GroupId
+		STRING "Maven_GroupId" default "my.app",
 		## Name of the project
 		STRING "BundleProject_projectName" default "my.app.sample",  
 		## Symbolic id of the bundle
@@ -249,7 +251,6 @@ RobotTask {
 		},
 		SimpleProject "${BundleProject_projectName}.product" {
 			resources = {
-				DynamicFile "${BundleProject_bundleId}.product.launch" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.LaunchGenerator" by "java",
 				ProductFileFeaturebase "${BundleProject_bundleId}.product" {
 					productName = "${BundleProject_productName}"
 					application = "at.bestsolution.efxclipse.runtime.workbench.fx.application"
@@ -266,7 +267,7 @@ RobotTask {
 						"${BundleProject_bundleId}.feature" "${BundleProject_bundleVersion}"
 					}
 				},
-				DynamicFile "pom.xml" 
+				DynamicFile "${BundleProject_bundleId}.product.product.launch" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.FeatureLaunchGenerator"
 					by "java" 
 					{
@@ -274,7 +275,11 @@ RobotTask {
 						STRING "projectName" default "${BundleProject_bundleId}.product",
 						## Launch feature
 						STRING "feature" default "${BundleProject_projectName}.feature"
-					}
+					},
+				DynamicFile "pom.xml" 
+					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.ProductPomGenerator" 
+					by "java"
+					excluded-if "javascript" /# !TychoIntegration; #/
 			}
 		},
 		BundleProject "${BundleProject_projectName}.jemmy" {
@@ -353,6 +358,33 @@ RobotTask {
 						STRING "testSuite" default "${BundleProject_bundleId}.jemmy.TestSuite",
 						## Test Product Id
 						STRING "testProductId" default "${BundleProject_bundleId}.product"
+					},
+				DynamicFile "pom.xml" 
+					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.JemmyPomGenerator" 
+					by "java" 
+					{
+						## releng group id
+						STRING "relengGroupId" default "${Maven_GroupId}",
+						## releng artifact id
+						STRING "relengArtifactId" default "${BundleProject_bundleId}.releng",
+						## releng releng path
+						STRING "relengPath" default "../${BundleProject_bundleId}.releng",
+						## group id
+						STRING "groupId" default "${Maven_GroupId}",
+						## artifactId
+						STRING "artifactId" default "${BundleProject_bundleId}.jemmy",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## name
+						STRING "name" default "${BundleProject_bundleName} - jemmy tests",
+						## testBundleId
+						STRING "testBundleId" default "${BundleProject_bundleId}.jemmy",
+						## testSuite
+						STRING "testSuite" default "${BundleProject_bundleId}.jemmy.TestSuite",
+						## testProductId
+						STRING "testProductId" default "${BundleProject_bundleId}.product",
+						## testProductFeature
+						STRING "testProductFeature" default "${BundleProject_bundleId}.feature"
 					}
 			}
 			rootfragments = {

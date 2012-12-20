@@ -17,7 +17,7 @@ class RootPomGenerator implements Generator<DynamicFile> {
 		modules.add("../"+projectName);
 		modules.add("../"+projectName+".feature");
 		modules.add("../"+projectName+".product");
-//		modules.add("../"+projectName+".jemmy");
+		modules.add("../"+projectName+".jemmy");
 			
 		val repos = new ArrayList<Repository>();
 		repos.add(new Repository("juno", "http://download.eclipse.org/releases/juno"));

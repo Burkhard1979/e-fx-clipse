@@ -40,8 +40,6 @@ class GeneratorConfigurationPage extends WizardPage {
 	public GeneratorConfigurationPage(AppBundleProjectData data, String pageName, String title) {
 		super(pageName,title,null);
 		this.data = data;
-		data.setJemmyTest(true);
-		data.setTychoIntegration(true);
 	}
 	
 	@Override
@@ -57,18 +55,19 @@ class GeneratorConfigurationPage extends WizardPage {
 		{
 			createLabel(group, "Jemmy Unittest stubs:");
 			jemmyButton = createCheckbox(group, listener);
-			jemmyButton.setSelection(true);
+			jemmyButton.setSelection(data.isJemmyTest());
 		}
 		
 		{
 			createLabel(group, "Tycho Build Stubs:");
 			tychoButton = createCheckbox(group, listener);
-			tychoButton.setSelection(true);
+			tychoButton.setSelection(data.isTychoIntegration());
 		}
 		
 		{
 			createLabel(group, "Eclipse DI:");
 			diButton = createCheckbox(group, listener);
+			diButton.setSelection(data.isDiApp());
 		}
 		
 		setControl(container);
