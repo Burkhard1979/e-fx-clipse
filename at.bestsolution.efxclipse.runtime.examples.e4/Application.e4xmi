@@ -10,10 +10,16 @@
     </children>
     <trimBars xmi:id="_VGEc4PaXEeCklfymhgw39w">
       <children xsi:type="menu:ToolBar" xmi:id="_WRBNEPaXEeCklfymhgw39w">
-        <children xsi:type="menu:DirectToolItem" xmi:id="_aBhDMPaXEeCklfymhgw39w" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/icons/list-add-user.png" contributionURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/at.bestsolution.efxclipse.runtime.examples.e4.actions.NewPersonAction"/>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_FKEg8PacEeCklfymhgw39w" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/icons/list-remove-user.png" contributionURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/at.bestsolution.efxclipse.runtime.examples.e4.actions.DeletePersonAction"/>
-        <children xsi:type="menu:DirectToolItem" xmi:id="_JZH7UPacEeCklfymhgw39w" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/icons/document-save.png" contributionURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/at.bestsolution.efxclipse.runtime.examples.e4.actions.SaveAction"/>
+        <children xsi:type="menu:DirectToolItem" xmi:id="_aBhDMPaXEeCklfymhgw39w" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/icons/list-add-user.png" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.examples.e4/at.bestsolution.efxclipse.runtime.examples.e4.actions.NewPersonAction"/>
+        <children xsi:type="menu:DirectToolItem" xmi:id="_FKEg8PacEeCklfymhgw39w" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/icons/list-remove-user.png" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.examples.e4/at.bestsolution.efxclipse.runtime.examples.e4.actions.DeletePersonAction"/>
+        <children xsi:type="menu:DirectToolItem" xmi:id="_JZH7UPacEeCklfymhgw39w" iconURI="platform:/plugin/at.bestsolution.efxclipse.runtime.examples.e4/icons/document-save.png" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.examples.e4/at.bestsolution.efxclipse.runtime.examples.e4.actions.SaveAction"/>
       </children>
     </trimBars>
   </children>
+  <addons xmi:id="_GyGBhEMOEeKso-cEr7pQbw" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_GyGBhUMOEeKso-cEr7pQbw" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_GyGBhkMOEeKso-cEr7pQbw" elementId="at.bestsolution.efxclipse.runtime.bindings.e4.service" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon"/>
+  <addons xmi:id="_GyGBh0MOEeKso-cEr7pQbw" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_GyGBiEMOEeKso-cEr7pQbw" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_GyGBiUMOEeKso-cEr7pQbw" elementId="at.bestsolution.efxclipse.runtime.bindings.e4.model" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingProcessingAddon"/>
 </application:Application>

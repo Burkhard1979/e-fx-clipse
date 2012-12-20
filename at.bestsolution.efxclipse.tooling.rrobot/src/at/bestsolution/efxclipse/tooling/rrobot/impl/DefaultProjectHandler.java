@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.impl;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -26,11 +27,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 
 import at.bestsolution.efxclipse.tooling.rrobot.ProjectHandler;
-import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
@@ -47,13 +48,19 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 
 	@Override
 	public IStatus createProject(IProgressMonitor monitor, P project, Map<String, Object> additionalData) {
+		if( project.getExcludeExpression() != null ) {
+			if( project.getExcludeExpression().execute(additionalData) ) {
+				return new Status(IStatus.OK, PLUGIN_ID, "Resource '"+project.getName()+"' is excluded");
+			}
+		}
+
 		IWorkspaceRoot r = ResourcesPlugin.getWorkspace().getRoot();
 		IProject p = r.getProject(project.getName());
 		if (!p.exists()) {
 			try {
 				p.create(monitor);
 				p.open(monitor);
-				IStatus s = customizeProject(monitor,p, project);
+				IStatus s = createResources(monitor, p, project, additionalData);
 				if(! s.isOK() ) {
 					return s;
 				}
@@ -64,7 +71,7 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 			return new Status(IStatus.ERROR, PLUGIN_ID, "Project '" + project.getName() + "' already exists.");
 		}
 
-		return createResources(monitor, p, project, additionalData);
+		return customizeProject(monitor,p, project);
 	}
 
 	protected IStatus customizeProject(IProgressMonitor monitor,IProject project, P model) {
@@ -74,6 +81,12 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 	protected IStatus createResources(IProgressMonitor monitor, IProject p, P model, Map<String, Object> additionalData) {
 		List<IStatus> l = new ArrayList<IStatus>();
 		for (Resource r : model.getResources()) {
+			
+			if( exclude(r, additionalData) ) {
+				l.add(new Status(IStatus.OK, PLUGIN_ID, "Resource '" + r.getName()+ "' exluded from generation"));
+				continue;
+			}
+			
 			if (r instanceof Folder) {
 				IFolder f = p.getFolder(r.getName());
 				
@@ -100,6 +113,12 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 	protected IStatus createResources(IProgressMonitor monitor, IFolder folder, Folder model, Map<String, Object> additionalData) {
 		List<IStatus> l = new ArrayList<IStatus>();
 		for (Resource r : model.getChildren()) {
+			
+			if( exclude(r, additionalData) ) {
+				l.add(new Status(IStatus.OK, PLUGIN_ID, "Resource '" + r.getName()+ "' exluded from generation"));
+				continue;
+			}
+			
 			if (r instanceof Folder) {
 				IFolder f = folder.getFolder(r.getName());
 				if( !f.exists() ) {
@@ -122,6 +141,10 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 	}
 
 	protected IStatus createFile(IProgressMonitor monitor, IFile f, File file, Map<String, Object> additionalData) {
+		if( exclude(file, additionalData) ) {
+			return new Status(IStatus.OK, PLUGIN_ID, "Resource '" + file.getName()+ "' exluded from generation");
+		}
+		
 		InputStream source = null;
 		try {
 			source = file.getContent(monitor, additionalData);
@@ -150,5 +173,30 @@ public class DefaultProjectHandler<P extends Project> implements ProjectHandler<
 		newNatures[prevNatures.length] = natureId;
 		description.setNatureIds(newNatures);
 		proj.setDescription(description, monitor);
+	}
+	
+	protected static IFolder getProjectFolder(IProject proj, Folder folder) {
+		List<Folder> parentHierarchy = new ArrayList<>();
+		parentHierarchy.add(folder);
+		while( folder.eContainer() instanceof Folder ) {
+			folder = (Folder) folder.eContainer();
+			parentHierarchy.add( folder);
+		}
+		
+		Collections.reverse(parentHierarchy);
+		
+		Path p = new Path(parentHierarchy.get(0).getName());
+		for( int i = 1; i < parentHierarchy.size(); i++ ) {
+			p.append(parentHierarchy.get(i).getName());
+		}
+		
+		return proj.getFolder(p);
+	}
+	
+	protected static boolean exclude(Resource model, Map<String, Object> additionalData) {
+		if( model.getExcludeExpression() != null ) {
+			return model.getExcludeExpression().execute(additionalData);
+		}
+		return false;
 	}
 }

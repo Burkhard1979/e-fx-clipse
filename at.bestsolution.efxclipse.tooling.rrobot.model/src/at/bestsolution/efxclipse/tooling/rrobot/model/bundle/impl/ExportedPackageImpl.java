@@ -5,10 +5,13 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ExportedPackage;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -21,6 +24,7 @@ import org.osgi.framework.Version;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl#getVersion <em>Version</em>}</li>
  * </ul>
@@ -29,6 +33,16 @@ import org.osgi.framework.Version;
  * @generated
  */
 public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -135,9 +149,68 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				return getName();
 			case BundlePackage.EXPORTED_PACKAGE__VERSION:
@@ -154,6 +227,9 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				setName((String)newValue);
 				return;
@@ -172,6 +248,9 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -190,6 +269,8 @@ public class ExportedPackageImpl extends EObjectImpl implements ExportedPackage 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXPORTED_PACKAGE__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.EXPORTED_PACKAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case BundlePackage.EXPORTED_PACKAGE__VERSION:

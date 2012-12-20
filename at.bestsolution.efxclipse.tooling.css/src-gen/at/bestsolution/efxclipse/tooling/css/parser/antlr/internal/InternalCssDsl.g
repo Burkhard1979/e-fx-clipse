@@ -729,7 +729,7 @@ ruleruleset returns [EObject current=null]
 // Entry rule entryRuleselector
 entryRuleselector returns [EObject current=null] 
 	@init { 
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 	}
 	:
 	{ newCompositeNode(grammarAccess.getSelectorRule()); }
@@ -744,7 +744,7 @@ finally {
 // Rule selector
 ruleselector returns [EObject current=null] 
     @init { enterRule(); 
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
     }
     @after { leaveRule(); }:
 ((

@@ -2,6 +2,8 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.ecore.EObject;
 
 import org.osgi.framework.Version;
@@ -26,7 +28,7 @@ import org.osgi.framework.Version;
  * @model
  * @generated
  */
-public interface ImportedPackage extends EObject {
+public interface ImportedPackage extends ExcludeableElementMixin {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -50,7 +50,7 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-              category="at.bestsolution.efxclipse.tooling.jdt.ui.javafx"
+              category="at.bestsolution.efxclipse.tooling.ui"
               class="at.bestsolution.efxclipse.tooling.efxbean.ui.FXBeanExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
               id="at.bestsolution.efxclipse.tooling.efxbean.FXBean"
               name="%page.name">

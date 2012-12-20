@@ -4,7 +4,9 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.util;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.*;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 
@@ -159,6 +161,14 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseProject(Project object) {
 				return createProjectAdapter();
+			}
+			@Override
+			public Adapter caseJDTProject(JDTProject object) {
+				return createJDTProjectAdapter();
+			}
+			@Override
+			public Adapter caseExcludeableElementMixin(ExcludeableElementMixin object) {
+				return createExcludeableElementMixinAdapter();
 			}
 			@Override
 			public Adapter caseResource(Resource object) {
@@ -497,6 +507,34 @@ public class BundleAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject <em>JDT Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject
+	 * @generated
+	 */
+	public Adapter createJDTProjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin <em>Excludeable Element Mixin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
+	 * @generated
+	 */
+	public Adapter createExcludeableElementMixinAdapter() {
 		return null;
 	}
 

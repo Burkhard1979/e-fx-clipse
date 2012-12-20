@@ -505,7 +505,7 @@ public class ContactItemProvider
 		if ((contact.getFirstName() == null || "".equals(contact.getFirstName())) &&
 				(contact.getLastName() == null|| "".equals(contact.getLastName()))) {
 			Object overlayImage = getResourceLocator().getImage("silk/bullet_error.png");
-			ArrayList<Object> images = new ArrayList<>(2);
+			ArrayList<Object> images = new ArrayList<Object>(2);
 			images.add(baseImage);
 			images.add(overlayImage);
 			return new ComposedImage(images);

@@ -1,10 +1,44 @@
 package at.bestsolution.efxclipse.tooling.pde.e4.project.template;
 
 import at.bestsolution.efxclipse.tooling.pde.e4.project.template.NativeLaunchData;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Map;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class NativeLaunchGenerator {
+public class NativeLaunchGenerator implements Generator<DynamicFile> {
+  public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
+    Object _get = data.get("BundleProject_projectName");
+    final String projectName = ((String) _get);
+    Object _get_1 = data.get("BundleProject_productName");
+    final String productName = ((String) _get_1);
+    Object _get_2 = data.get("BundleProject_bundleVendor");
+    final String vendorName = ((String) _get_2);
+    String _property = System.getProperty("osgi.os");
+    String _plus = (_property + ".");
+    String _property_1 = System.getProperty("osgi.ws");
+    String _plus_1 = (_plus + _property_1);
+    String _plus_2 = (_plus_1 + ".");
+    String _property_2 = System.getProperty("osgi.arch");
+    final String osArch = (_plus_2 + _property_2);
+    String _plus_3 = ("../" + projectName);
+    String _plus_4 = (_plus_3 + ".product/target/");
+    String _plus_5 = (_plus_4 + osArch);
+    String _plus_6 = (_plus_5 + "/eclipse");
+    NativeLaunchData _nativeLaunchData = new NativeLaunchData(_plus_6, productName, vendorName);
+    final NativeLaunchData launcherdata = _nativeLaunchData;
+    NativeLaunchGenerator _nativeLaunchGenerator = new NativeLaunchGenerator();
+    final NativeLaunchGenerator gen = _nativeLaunchGenerator;
+    CharSequence _generate = gen.generate(launcherdata);
+    String _string = _generate.toString();
+    byte[] _bytes = _string.getBytes();
+    ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
+    return _byteArrayInputStream;
+  }
+  
   public CharSequence generate(final NativeLaunchData data) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<project name=\"native-build\" default=\"do-deploy\" basedir=\".\"  xmlns:fx=\"javafx:com.sun.javafx.tools.ant\">");

@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.MContext;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
@@ -27,6 +28,7 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.osgi.service.event.Event;
@@ -46,6 +48,9 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 	
 	@Inject
 	RendererFactory factory;
+	
+	@Inject
+	MApplication application;
 	
 	boolean inLazyInit;
 	
@@ -141,7 +146,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob(getPart(param.getDomElement()),true);
+					activatationJob(element,getPart(param.getDomElement()),true);
 				}
 
 				return null;
@@ -152,7 +157,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			@Override
 			public Void call(WStackItem<I, IC> param) {
 				if (param.getDomElement() != null) {
-					activatationJob(getPart(param.getDomElement()),false);
+					activatationJob(element,getPart(param.getDomElement()),false);
 				}
 
 				return null;
@@ -164,17 +169,39 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			@Override
 			public Void call(Boolean param) {
 				if( param.booleanValue() && element.getSelectedElement() != null ) {
-					activatationJob(getPart(element.getSelectedElement()), true);
+					activatationJob(element,getPart(element.getSelectedElement()), true);
 				}
 				return null;
 			}
 		});
 	}
 	
-	private void activatationJob(final MPart p, final boolean focus) {
-		activate(p, focus);
+	private void activatationJob(MPartStack stackToActivate, final MPart p, final boolean focus) {
+		if( shouldActivate(stackToActivate) ) {
+			activate(p, focus);	
+		}
 	}
 
+	private boolean shouldActivate(MPartStack stackToActivate) {
+		if (inContentProcessing(stackToActivate)) {
+			return false;
+		}
+		
+		if (application != null) {
+			IEclipseContext applicationContext = application.getContext();
+			IEclipseContext activeChild = applicationContext
+					.getActiveChild();
+			if (activeChild == null
+					|| activeChild.get(MWindow.class) != application
+							.getSelectedElement()
+					|| application.getSelectedElement() != modelService
+							.getTopLevelWindowFor(stackToActivate)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	@Override
 	public void doProcessContent(MPartStack element) {
 		WStack<N, I, IC> stack = getWidget(element);

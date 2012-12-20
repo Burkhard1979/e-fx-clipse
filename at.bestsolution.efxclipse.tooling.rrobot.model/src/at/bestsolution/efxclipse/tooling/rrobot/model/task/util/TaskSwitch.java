@@ -89,6 +89,7 @@ public class TaskSwitch<T> extends Switch<T> {
 			case TaskPackage.RESOURCE: {
 				Resource resource = (Resource)theEObject;
 				T result = caseResource(resource);
+				if (result == null) result = caseExcludeableElementMixin(resource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -96,6 +97,7 @@ public class TaskSwitch<T> extends Switch<T> {
 				Folder folder = (Folder)theEObject;
 				T result = caseFolder(folder);
 				if (result == null) result = caseResource(folder);
+				if (result == null) result = caseExcludeableElementMixin(folder);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -103,6 +105,7 @@ public class TaskSwitch<T> extends Switch<T> {
 				File file = (File)theEObject;
 				T result = caseFile(file);
 				if (result == null) result = caseResource(file);
+				if (result == null) result = caseExcludeableElementMixin(file);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -111,6 +114,7 @@ public class TaskSwitch<T> extends Switch<T> {
 				T result = caseTemplatedFile(templatedFile);
 				if (result == null) result = caseFile(templatedFile);
 				if (result == null) result = caseResource(templatedFile);
+				if (result == null) result = caseExcludeableElementMixin(templatedFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -119,6 +123,7 @@ public class TaskSwitch<T> extends Switch<T> {
 				T result = caseDataFile(dataFile);
 				if (result == null) result = caseFile(dataFile);
 				if (result == null) result = caseResource(dataFile);
+				if (result == null) result = caseExcludeableElementMixin(dataFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -127,6 +132,7 @@ public class TaskSwitch<T> extends Switch<T> {
 				T result = caseURLFile(urlFile);
 				if (result == null) result = caseFile(urlFile);
 				if (result == null) result = caseResource(urlFile);
+				if (result == null) result = caseExcludeableElementMixin(urlFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,12 +141,60 @@ public class TaskSwitch<T> extends Switch<T> {
 				T result = caseDynamicFile(dynamicFile);
 				if (result == null) result = caseFile(dynamicFile);
 				if (result == null) result = caseResource(dynamicFile);
+				if (result == null) result = caseExcludeableElementMixin(dynamicFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TaskPackage.VARIABLE: {
 				Variable variable = (Variable)theEObject;
 				T result = caseVariable(variable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.BOOLEAN_EXPRESSION: {
+				BooleanExpression booleanExpression = (BooleanExpression)theEObject;
+				T result = caseBooleanExpression(booleanExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.REFERENCING_BOOLEAN_EXPRESSION: {
+				ReferencingBooleanExpression referencingBooleanExpression = (ReferencingBooleanExpression)theEObject;
+				T result = caseReferencingBooleanExpression(referencingBooleanExpression);
+				if (result == null) result = caseBooleanExpression(referencingBooleanExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.INLINE_BOOLEAN_EXPRESSION: {
+				InlineBooleanExpression inlineBooleanExpression = (InlineBooleanExpression)theEObject;
+				T result = caseInlineBooleanExpression(inlineBooleanExpression);
+				if (result == null) result = caseBooleanExpression(inlineBooleanExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.JDT_PROJECT: {
+				JDTProject jdtProject = (JDTProject)theEObject;
+				T result = caseJDTProject(jdtProject);
+				if (result == null) result = caseProject(jdtProject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.SOURCE_FRAGMENT: {
+				SourceFragment sourceFragment = (SourceFragment)theEObject;
+				T result = caseSourceFragment(sourceFragment);
+				if (result == null) result = caseExcludeableElementMixin(sourceFragment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.COMPILATION_UNIT: {
+				CompilationUnit compilationUnit = (CompilationUnit)theEObject;
+				T result = caseCompilationUnit(compilationUnit);
+				if (result == null) result = caseExcludeableElementMixin(compilationUnit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN: {
+				ExcludeableElementMixin excludeableElementMixin = (ExcludeableElementMixin)theEObject;
+				T result = caseExcludeableElementMixin(excludeableElementMixin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -295,6 +349,111 @@ public class TaskSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariable(Variable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBooleanExpression(BooleanExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Referencing Boolean Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Referencing Boolean Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferencingBooleanExpression(ReferencingBooleanExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inline Boolean Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inline Boolean Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInlineBooleanExpression(InlineBooleanExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>JDT Project</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>JDT Project</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJDTProject(JDTProject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Source Fragment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Source Fragment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSourceFragment(SourceFragment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Compilation Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Compilation Unit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompilationUnit(CompilationUnit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Excludeable Element Mixin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Excludeable Element Mixin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExcludeableElementMixin(ExcludeableElementMixin object) {
 		return null;
 	}
 

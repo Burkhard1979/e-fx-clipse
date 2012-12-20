@@ -5,6 +5,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
 import java.util.Map
 import java.io.ByteArrayInputStream
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin
 
 class FeatureGenerator implements Generator<FeatureFile> {
 	
@@ -50,21 +51,28 @@ class FeatureGenerator implements Generator<FeatureFile> {
 		</license>
    		«ENDIF»
 
-   		«FOR p : file.plugins»
+   		«FOR p : file.plugins.filter([e|e.excludeExpression(data)])»
    		<plugin id="«p.id»" install-size="0" version="0.0.0" unpack="«p.unpack»" «IF p.fragment»fragment="true"«ENDIF»/>
 		«ENDFOR»
 
-   		«FOR i : file.includedfeatures»
+   		«FOR i : file.includedfeatures.filter([e|e.excludeExpression(data)])»
    		<includes id="«i.id»" version="«IF i.version != null»«i.version»«ELSE»0.0.0«ENDIF»" />
    		«ENDFOR»
 
-   		«IF !file.requiredfeatures.empty»
+   		«IF !file.requiredfeatures.filter([e|e.excludeExpression(data)]).empty»
    		<requires>
-   			«FOR rf : file.requiredfeatures»
+   			«FOR rf : file.requiredfeatures.filter([e|e.excludeExpression(data)])»
    			<import feature="«rf.id»" «IF rf.version != null»version="«rf.version»" «IF rf.match != MatchRule::NONE»match="«rf.match.literal»"«ENDIF»«ENDIF» />
    			«ENDFOR»
    		</requires>
    		«ENDIF»
 </feature>
 	'''
+	
+	def excludeExpression(ExcludeableElementMixin mixin, Map<String,Object> data) {
+		if( mixin.excludeExpression != null ) {
+			return ! mixin.excludeExpression.execute(data)
+		}
+		return true;
+	}
 }

@@ -61,7 +61,7 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 					event.consume();
 					service.activate(getDomElement(),true);
 					if( !checkFocusControl() ) {
-						ContextInjectionFactory.invoke(getDomElement().getObject(), Focus.class, getDomElement().getContext());
+						ContextInjectionFactory.invoke(getDomElement().getObject(), Focus.class, getDomElement().getContext(),null);
 						if( !checkFocusControl() ) {
 							p.requestFocus();	
 						}

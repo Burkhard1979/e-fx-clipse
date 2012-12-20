@@ -11,6 +11,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,17 +20,25 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.BundlePackageImpl;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DataFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.File;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Folder;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.InlineBooleanExpression;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.JDTProject;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ReferencingBooleanExpression;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.SourceFragment;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskFactory;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TemplatedFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Type;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.URLFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable;
 
@@ -109,6 +118,62 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * @generated
 	 */
 	private EClass variableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass booleanExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass referencingBooleanExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inlineBooleanExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jdtProjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sourceFragmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compilationUnitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass excludeableElementMixinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum typeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,6 +328,15 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProject_ExcludeExpression() {
+		return (EReference)projectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getResource() {
 		return resourceEClass;
 	}
@@ -398,6 +472,15 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDynamicFile_Variables() {
+		return (EReference)dynamicFileEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVariable() {
 		return variableEClass;
 	}
@@ -416,7 +499,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariable_Value() {
+	public EAttribute getVariable_DefaultValue() {
 		return (EAttribute)variableEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -425,7 +508,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariable_DefaultValue() {
+	public EAttribute getVariable_Description() {
 		return (EAttribute)variableEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -434,8 +517,188 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariable_Description() {
+	public EAttribute getVariable_Type() {
 		return (EAttribute)variableEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBooleanExpression() {
+		return booleanExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReferencingBooleanExpression() {
+		return referencingBooleanExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReferencingBooleanExpression_ExecutionURI() {
+		return (EAttribute)referencingBooleanExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReferencingBooleanExpression_Type() {
+		return (EAttribute)referencingBooleanExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInlineBooleanExpression() {
+		return inlineBooleanExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInlineBooleanExpression_Type() {
+		return (EAttribute)inlineBooleanExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInlineBooleanExpression_Expression() {
+		return (EAttribute)inlineBooleanExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJDTProject() {
+		return jdtProjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJDTProject_SourceFragments() {
+		return (EReference)jdtProjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJDTProject_CompilationUnits() {
+		return (EReference)jdtProjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSourceFragment() {
+		return sourceFragmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSourceFragment_Folder() {
+		return (EReference)sourceFragmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSourceFragment_Name() {
+		return (EAttribute)sourceFragmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCompilationUnit() {
+		return compilationUnitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompilationUnit_Packagename() {
+		return (EAttribute)compilationUnitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompilationUnit_File() {
+		return (EReference)compilationUnitEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompilationUnit_Sourcefragment() {
+		return (EReference)compilationUnitEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExcludeableElementMixin() {
+		return excludeableElementMixinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExcludeableElementMixin_ExcludeExpression() {
+		return (EReference)excludeableElementMixinEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getType() {
+		return typeEEnum;
 	}
 
 	/**
@@ -500,6 +763,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		projectEClass = createEClass(PROJECT);
 		createEAttribute(projectEClass, PROJECT__NAME);
 		createEReference(projectEClass, PROJECT__RESOURCES);
+		createEReference(projectEClass, PROJECT__EXCLUDE_EXPRESSION);
 
 		resourceEClass = createEClass(RESOURCE);
 		createEAttribute(resourceEClass, RESOURCE__NAME);
@@ -521,12 +785,42 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		dynamicFileEClass = createEClass(DYNAMIC_FILE);
 		createEAttribute(dynamicFileEClass, DYNAMIC_FILE__EXECUTION_URI);
 		createEAttribute(dynamicFileEClass, DYNAMIC_FILE__TYPE);
+		createEReference(dynamicFileEClass, DYNAMIC_FILE__VARIABLES);
 
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__KEY);
-		createEAttribute(variableEClass, VARIABLE__VALUE);
 		createEAttribute(variableEClass, VARIABLE__DEFAULT_VALUE);
 		createEAttribute(variableEClass, VARIABLE__DESCRIPTION);
+		createEAttribute(variableEClass, VARIABLE__TYPE);
+
+		booleanExpressionEClass = createEClass(BOOLEAN_EXPRESSION);
+
+		referencingBooleanExpressionEClass = createEClass(REFERENCING_BOOLEAN_EXPRESSION);
+		createEAttribute(referencingBooleanExpressionEClass, REFERENCING_BOOLEAN_EXPRESSION__EXECUTION_URI);
+		createEAttribute(referencingBooleanExpressionEClass, REFERENCING_BOOLEAN_EXPRESSION__TYPE);
+
+		inlineBooleanExpressionEClass = createEClass(INLINE_BOOLEAN_EXPRESSION);
+		createEAttribute(inlineBooleanExpressionEClass, INLINE_BOOLEAN_EXPRESSION__TYPE);
+		createEAttribute(inlineBooleanExpressionEClass, INLINE_BOOLEAN_EXPRESSION__EXPRESSION);
+
+		jdtProjectEClass = createEClass(JDT_PROJECT);
+		createEReference(jdtProjectEClass, JDT_PROJECT__SOURCE_FRAGMENTS);
+		createEReference(jdtProjectEClass, JDT_PROJECT__COMPILATION_UNITS);
+
+		sourceFragmentEClass = createEClass(SOURCE_FRAGMENT);
+		createEReference(sourceFragmentEClass, SOURCE_FRAGMENT__FOLDER);
+		createEAttribute(sourceFragmentEClass, SOURCE_FRAGMENT__NAME);
+
+		compilationUnitEClass = createEClass(COMPILATION_UNIT);
+		createEAttribute(compilationUnitEClass, COMPILATION_UNIT__PACKAGENAME);
+		createEReference(compilationUnitEClass, COMPILATION_UNIT__FILE);
+		createEReference(compilationUnitEClass, COMPILATION_UNIT__SOURCEFRAGMENT);
+
+		excludeableElementMixinEClass = createEClass(EXCLUDEABLE_ELEMENT_MIXIN);
+		createEReference(excludeableElementMixinEClass, EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION);
+
+		// Create enums
+		typeEEnum = createEEnum(TYPE);
 
 		// Create data types
 		ioExceptionEDataType = createEDataType(IO_EXCEPTION);
@@ -564,12 +858,18 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		resourceEClass.getESuperTypes().add(this.getExcludeableElementMixin());
 		folderEClass.getESuperTypes().add(this.getResource());
 		fileEClass.getESuperTypes().add(this.getResource());
 		templatedFileEClass.getESuperTypes().add(this.getFile());
 		dataFileEClass.getESuperTypes().add(this.getFile());
 		urlFileEClass.getESuperTypes().add(this.getFile());
 		dynamicFileEClass.getESuperTypes().add(this.getFile());
+		referencingBooleanExpressionEClass.getESuperTypes().add(this.getBooleanExpression());
+		inlineBooleanExpressionEClass.getESuperTypes().add(this.getBooleanExpression());
+		jdtProjectEClass.getESuperTypes().add(this.getProject());
+		sourceFragmentEClass.getESuperTypes().add(this.getExcludeableElementMixin());
+		compilationUnitEClass.getESuperTypes().add(this.getExcludeableElementMixin());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(robotTaskEClass, RobotTask.class, "RobotTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -579,6 +879,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		initEClass(projectEClass, Project.class, "Project", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProject_Name(), ecorePackage.getEString(), "name", null, 1, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProject_Resources(), this.getResource(), null, "resources", null, 0, -1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProject_ExcludeExpression(), this.getBooleanExpression(), null, "excludeExpression", null, 0, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceEClass, Resource.class, "Resource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResource_Name(), ecorePackage.getEString(), "name", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -610,12 +911,54 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		initEClass(dynamicFileEClass, DynamicFile.class, "DynamicFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDynamicFile_ExecutionURI(), ecorePackage.getEString(), "executionURI", null, 0, 1, DynamicFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDynamicFile_Type(), ecorePackage.getEString(), "type", null, 0, 1, DynamicFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDynamicFile_Variables(), this.getVariable(), null, "variables", null, 0, -1, DynamicFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Key(), ecorePackage.getEString(), "key", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_Description(), ecorePackage.getEString(), "description", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Type(), this.getType(), "type", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(booleanExpressionEClass, BooleanExpression.class, "BooleanExpression", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(booleanExpressionEClass, ecorePackage.getEBoolean(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "data", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(referencingBooleanExpressionEClass, ReferencingBooleanExpression.class, "ReferencingBooleanExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReferencingBooleanExpression_ExecutionURI(), ecorePackage.getEString(), "executionURI", null, 0, 1, ReferencingBooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReferencingBooleanExpression_Type(), ecorePackage.getEString(), "type", null, 0, 1, ReferencingBooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(inlineBooleanExpressionEClass, InlineBooleanExpression.class, "InlineBooleanExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInlineBooleanExpression_Type(), ecorePackage.getEString(), "type", null, 0, 1, InlineBooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInlineBooleanExpression_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, InlineBooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(jdtProjectEClass, JDTProject.class, "JDTProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJDTProject_SourceFragments(), this.getSourceFragment(), null, "sourceFragments", null, 0, -1, JDTProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJDTProject_CompilationUnits(), this.getCompilationUnit(), null, "compilationUnits", null, 0, -1, JDTProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sourceFragmentEClass, SourceFragment.class, "SourceFragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSourceFragment_Folder(), this.getFolder(), null, "folder", null, 0, 1, SourceFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSourceFragment_Name(), ecorePackage.getEString(), "name", null, 0, 1, SourceFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compilationUnitEClass, CompilationUnit.class, "CompilationUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCompilationUnit_Packagename(), ecorePackage.getEString(), "packagename", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompilationUnit_File(), this.getFile(), null, "file", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompilationUnit_Sourcefragment(), this.getSourceFragment(), null, "sourcefragment", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(excludeableElementMixinEClass, ExcludeableElementMixin.class, "ExcludeableElementMixin", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExcludeableElementMixin_ExcludeExpression(), this.getBooleanExpression(), null, "excludeExpression", null, 0, 1, ExcludeableElementMixin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(typeEEnum, Type.class, "Type");
+		addEEnumLiteral(typeEEnum, Type.STRING);
+		addEEnumLiteral(typeEEnum, Type.INT);
+		addEEnumLiteral(typeEEnum, Type.DOUBLE);
+		addEEnumLiteral(typeEEnum, Type.BOOLEAN);
 
 		// Initialize data types
 		initEDataType(ioExceptionEDataType, IOException.class, "IOException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

@@ -31,7 +31,7 @@ import org.eclipse.pde.internal.core.natures.PDE;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundleProject;
 
-public class BundleProjectHandler extends DefaultProjectHandler<BundleProject> {
+public class BundleProjectHandler extends JDTProjectHandler<BundleProject> {
 	@Override
 	public boolean isHandled(EClass eClass) {
 		return eClass == BundlePackage.Literals.BUNDLE_PROJECT;
@@ -45,22 +45,26 @@ public class BundleProjectHandler extends DefaultProjectHandler<BundleProject> {
 	@SuppressWarnings("restriction")
 	@Override
 	protected IStatus customizeProject(IProgressMonitor monitor,IProject project, BundleProject model) {
+		IStatus s = super.customizeProject(monitor, project, model);
+		
+		if( ! s.isOK()) {
+			return s;
+		}
+		
 		try {
 			addNatureToProject(project, PDE.PLUGIN_NATURE, monitor);
-			addNatureToProject(project, JavaCore.NATURE_ID, monitor);
-			
-			IJavaProject javaProject = JavaCore.create(project);
-			javaProject.setOutputLocation(project.getFullPath().append("bin"), monitor); //FIXME has to come from model
-			
-			IClasspathEntry[] entries = new IClasspathEntry[3];
-			entries[0] = JavaCore.newSourceEntry(project.getProject().getFullPath().append("src"));//FIXME has to come from model
-			entries[1] = ClasspathComputer.createJREEntry(model.getManifest().getExecutionEnvironment());
-			entries[2] = ClasspathComputer.createContainerEntry();
-			javaProject.setRawClasspath(entries, monitor);
 		} catch (CoreException e) {
 			return new Status(IStatus.ERROR, PLUGIN_ID, "Unable to add nature", e);
 		}
 		return Status.OK_STATUS;
+	}
+	
+	@Override
+	protected IClasspathEntry[] createClasspathEntries(BundleProject model) {
+		IClasspathEntry[] entries = new IClasspathEntry[2];
+		entries[0] = ClasspathComputer.createJREEntry(model.getManifest().getExecutionEnvironment());
+		entries[1] = ClasspathComputer.createContainerEntry();
+		return entries;
 	}
 	
 	@Override
@@ -70,24 +74,6 @@ public class BundleProjectHandler extends DefaultProjectHandler<BundleProject> {
 		if( s.isOK() ) {
 			List<IStatus> rv = new ArrayList<IStatus>();
 			rv.add(s);
-			
-			if( ! p.getFolder("src").exists() ) {
-				try {
-					p.getFolder("src").create(true, true, monitor);
-				} catch (CoreException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			if( ! p.getFolder("bin").exists() ) {
-				try {
-					p.getFolder("bin").create(true, true, monitor);
-				} catch (CoreException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 			
 			{
 				IFolder f = p.getFolder("META-INF");

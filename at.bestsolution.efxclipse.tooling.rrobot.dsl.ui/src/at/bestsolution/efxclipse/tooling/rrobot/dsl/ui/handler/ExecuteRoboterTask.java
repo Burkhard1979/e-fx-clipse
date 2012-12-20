@@ -13,7 +13,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -24,11 +23,11 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-
 import at.bestsolution.efxclipse.tooling.rrobot.RRobot;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
+
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 public class ExecuteRoboterTask extends AbstractHandler {
 	@Inject 
@@ -50,8 +49,8 @@ public class ExecuteRoboterTask extends AbstractHandler {
 		URI uri = URI.createPlatformResourceURI(f.getProject().getName()+"/"+f.getProjectRelativePath().toString(),true);
 		ResourceSet set = resourceSetProvider.get();
 		Resource resource = set.getResource(uri, true);
-		final RobotTask task = (RobotTask) resource.getContents().get(0); 
 		
+		final RobotTask task = (RobotTask) resource.getContents().get(0); 
 		WorkspaceModifyOperation w = new WorkspaceModifyOperation() {
 			
 			@Override

@@ -1347,7 +1347,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		bundleProjectEClass.getESuperTypes().add(theTaskPackage.getProject());
+		bundleProjectEClass.getESuperTypes().add(theTaskPackage.getJDTProject());
 		featureProjectEClass.getESuperTypes().add(theTaskPackage.getProject());
 		manifestFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 		pluginXMLFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
@@ -1355,6 +1355,16 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		productFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
 		productFileFeaturebaseEClass.getESuperTypes().add(this.getProductFile());
 		featureFileEClass.getESuperTypes().add(theTaskPackage.getTemplatedFile());
+		importedPackageEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		exportedPackageEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		extensionEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		requiredBundleEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		featurePluginEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		requiredFeatureEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		includedFeatureEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		productPluginEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		productFeatureEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
+		productStartConfigEClass.getESuperTypes().add(theTaskPackage.getExcludeableElementMixin());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bundleProjectEClass, BundleProject.class, "BundleProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1368,7 +1378,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEClass(manifestFileEClass, ManifestFile.class, "ManifestFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getManifestFile_Bundlename(), ecorePackage.getEString(), "bundlename", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getManifestFile_Symbolicname(), ecorePackage.getEString(), "symbolicname", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getManifestFile_Version(), this.getVersion(), "version", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getManifestFile_Version(), ecorePackage.getEString(), "version", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getManifestFile_ExportedPackages(), this.getExportedPackage(), null, "exportedPackages", null, 0, -1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getManifestFile_ImportedPackages(), this.getImportedPackage(), null, "importedPackages", null, 0, -1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getManifestFile_ExecutionEnvironment(), ecorePackage.getEString(), "executionEnvironment", null, 1, 1, ManifestFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1390,7 +1400,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEAttribute(getProductFile_ProductName(), ecorePackage.getEString(), "productName", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductFile_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductFile_Application(), ecorePackage.getEString(), "application", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProductFile_Version(), this.getVersion(), "version", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductFile_Version(), ecorePackage.getEString(), "version", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductFile_IncludeLaunchers(), ecorePackage.getEBoolean(), "includeLaunchers", null, 0, 1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProductFile_Startconfigurations(), this.getProductStartConfig(), null, "startconfigurations", null, 0, -1, ProductFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1398,7 +1408,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 		initEReference(getProductFileFeaturebase_Features(), this.getProductFeature(), null, "features", null, 0, -1, ProductFileFeaturebase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureFileEClass, FeatureFile.class, "FeatureFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFeatureFile_Version(), this.getVersion(), "version", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeatureFile_Version(), ecorePackage.getEString(), "version", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeatureFile_Featurename(), ecorePackage.getEString(), "featurename", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeatureFile_Featureid(), ecorePackage.getEString(), "featureid", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeatureFile_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, FeatureFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1468,7 +1478,7 @@ public class BundlePackageImpl extends EPackageImpl implements BundlePackage {
 
 		initEClass(productFeatureEClass, ProductFeature.class, "ProductFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductFeature_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProductFeature_Version(), this.getVersion(), "version", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductFeature_Version(), ecorePackage.getEString(), "version", null, 0, 1, ProductFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productStartConfigEClass, ProductStartConfig.class, "ProductStartConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductStartConfig_Id(), ecorePackage.getEString(), "id", null, 0, 1, ProductStartConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

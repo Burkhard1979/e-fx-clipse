@@ -93,7 +93,7 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Version VERSION_EDEFAULT = null;
+	protected static final String VERSION_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -103,7 +103,7 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 	 * @generated
 	 * @ordered
 	 */
-	protected Version version = VERSION_EDEFAULT;
+	protected String version = VERSION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getExportedPackages() <em>Exported Packages</em>}' containment reference list.
@@ -302,7 +302,7 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Version getVersion() {
+	public String getVersion() {
 		return version;
 	}
 
@@ -311,8 +311,8 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVersion(Version newVersion) {
-		Version oldVersion = version;
+	public void setVersion(String newVersion) {
+		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.MANIFEST_FILE__VERSION, oldVersion, version));
@@ -527,7 +527,7 @@ public class ManifestFileImpl extends TemplatedFileImpl implements ManifestFile 
 				setSymbolicname((String)newValue);
 				return;
 			case BundlePackage.MANIFEST_FILE__VERSION:
-				setVersion((Version)newValue);
+				setVersion((String)newValue);
 				return;
 			case BundlePackage.MANIFEST_FILE__EXPORTED_PACKAGES:
 				getExportedPackages().clear();

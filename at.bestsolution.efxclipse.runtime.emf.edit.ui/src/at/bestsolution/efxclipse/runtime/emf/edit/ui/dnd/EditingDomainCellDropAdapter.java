@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.Cell;
 import javafx.scene.control.TableCell;
 import javafx.scene.input.DragEvent;
@@ -29,16 +28,44 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellCreationListener;
 
 /**
- * Allows to drop items into viewers backed by an {@link AdapterFactoryCellFactory} using a {@link LocalTransfer}.
+ * Allows to drop items into viewers backed by an
+ * {@link AdapterFactoryCellFactory} using a {@link LocalTransfer}.
  */
 public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
-	protected EditingDomain editingDomain;
-	protected Command dndCommand;
+	/**
+	 * Handles the feedback to Drag & Drop events by styling or otherwise
+	 * modifying the affected {@link Cell}
+	 */
+	public interface IDnDFeedbackHandler {
+
+		void onFeedbackInsertBefore(Cell<?> cell);
+
+		void onFeedbackInsertAfter(Cell<?> cell);
+
+		void onFeedbackSelect(Cell<?> cell);
+
+		void onFeedbackNone(Cell<?> cell);
+
+	}
+
+	final EditingDomain editingDomain;
+	Command dndCommand;
+	IDnDFeedbackHandler feedbackHandler = new DefaultFeedbackHandler();
 
 	public EditingDomainCellDropAdapter(EditingDomain editingDomain) {
-		super();
 		this.editingDomain = editingDomain;
+	}
+
+	public IDnDFeedbackHandler getFeedbackHandler() {
+		return feedbackHandler;
+	}
+
+	public void setFeedbackHandler(IDnDFeedbackHandler feedbackHandler) {
+		if (feedbackHandler == null)
+			throw new IllegalArgumentException("The feeback handler cannot be null");
+
+		this.feedbackHandler = feedbackHandler;
 	}
 
 	@Override
@@ -50,8 +77,8 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 			public void handle(DragEvent event) {
 				Object item = cell.getItem();
 
-				Node node = getRowNode(cell);
-				
+				Cell<?> node = getRowNode(cell);
+
 				double y = event.getY();
 				double height = cell.getLayoutBounds().getHeight();
 
@@ -59,7 +86,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 				Object object = LocalTransfer.INSTANCE.getObject();
 
-				Command command = DragAndDropCommand.create(editingDomain, item, position, /* DragAndDropFeedback.DROP_COPY | */DragAndDropFeedback.DROP_MOVE
+				Command command = DragAndDropCommand.create(editingDomain, item, position, DragAndDropFeedback.DROP_MOVE
 						| DragAndDropFeedback.DROP_LINK, DragAndDropFeedback.DROP_MOVE, (Collection<?>) object);
 
 				if (command.canExecute()) {
@@ -70,31 +97,36 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 						int feedback = dndFeedback.getFeedback();
 
 						if ((feedback & DragAndDropFeedback.FEEDBACK_INSERT_BEFORE) != 0)
-							node.setStyle("-fx-border-color: red transparent transparent transparent;");
+							feedbackHandler.onFeedbackInsertBefore(node);
 						else if ((feedback & DragAndDropFeedback.FEEDBACK_INSERT_AFTER) != 0)
-							node.setStyle("-fx-border-color: transparent transparent red transparent;");
+							feedbackHandler.onFeedbackInsertAfter(node);
+						else if ((feedback & DragAndDropFeedback.FEEDBACK_SELECT) != 0)
+							feedbackHandler.onFeedbackSelect(node);
 						else
-							node.setStyle("-fx-border-color: transparent;");
+							feedbackHandler.onFeedbackNone(node);
 
-						ArrayList<TransferMode> modes = new ArrayList<>();
+						if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
+							event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+						} else {
+							ArrayList<TransferMode> modes = new ArrayList<>();
 
-						if ((feedback & DragAndDropFeedback.DROP_COPY) != 0)
-							modes.add(TransferMode.COPY);
-						if ((feedback & DragAndDropFeedback.DROP_LINK) != 0)
-							modes.add(TransferMode.LINK);
-						if ((feedback & DragAndDropFeedback.DROP_MOVE) != 0)
-							modes.add(TransferMode.MOVE);
+							if ((feedback & DragAndDropFeedback.DROP_COPY) != 0)
+								modes.add(TransferMode.COPY);
+							if ((feedback & DragAndDropFeedback.DROP_LINK) != 0)
+								modes.add(TransferMode.LINK);
+							if ((feedback & DragAndDropFeedback.DROP_MOVE) != 0)
+								modes.add(TransferMode.MOVE);
 
-						event.acceptTransferModes(modes.toArray(new TransferMode[modes.size()]));
+							event.acceptTransferModes(modes.toArray(new TransferMode[modes.size()]));
+						}
 					}
 
 				} else {
 					dndCommand = null;
-					node.setStyle("-fx-border-color: transparent;");
+					feedbackHandler.onFeedbackNone(node);
 				}
 
 			}
-
 
 		});
 
@@ -102,7 +134,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 			@Override
 			public void handle(DragEvent event) {
-				getRowNode(cell).setStyle("-fx-border-color: transparent;");
+				feedbackHandler.onFeedbackNone(getRowNode(cell));
 			}
 
 		});
@@ -117,9 +149,37 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 			}
 		});
 	}
-	
+
 	Cell<?> getRowNode(final Cell<?> cell) {
-		return cell instanceof TableCell ? ((TableCell<?, ?>)cell).getTableRow() : cell;
+		return cell instanceof TableCell ? ((TableCell<?, ?>) cell).getTableRow() : cell;
+	}
+
+	/**
+	 * This default implementation of {@link IDnDFeedbackHandler} adds a red
+	 * line where the dragged {@link Cell} can be dropped.
+	 */
+	public static class DefaultFeedbackHandler implements IDnDFeedbackHandler {
+
+		@Override
+		public void onFeedbackInsertBefore(Cell<?> cell) {
+			cell.setStyle("-fx-border-color: red transparent transparent transparent;");
+		}
+
+		@Override
+		public void onFeedbackInsertAfter(Cell<?> cell) {
+			cell.setStyle("-fx-border-color: transparent transparent red transparent;");
+		}
+
+		@Override
+		public void onFeedbackSelect(Cell<?> cell) {
+			cell.setStyle("-fx-border-color: transparent;");
+		}
+
+		@Override
+		public void onFeedbackNone(Cell<?> cell) {
+			cell.setStyle("-fx-border-color: transparent;");
+		}
+
 	}
 
 }

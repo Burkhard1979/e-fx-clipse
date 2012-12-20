@@ -17,6 +17,7 @@ public abstract class BasicLaunchDef {
 	private String projectName;
 	private Set<PluginLaunchDef> workbenchPlugins = new HashSet<PluginLaunchDef>();
 	private Set<PluginLaunchDef> targetPlugins = new HashSet<PluginLaunchDef>();
+	private Set<LaunchFeature> features = new HashSet<>();
 
 	public Set<PluginLaunchDef> getWorkbenchPlugins() {
 		return workbenchPlugins;
@@ -24,6 +25,10 @@ public abstract class BasicLaunchDef {
 	
 	public Set<PluginLaunchDef> getTargetPlugins() {
 		return targetPlugins;
+	}
+	
+	public Set<LaunchFeature> getFeatures() {
+		return features;
 	}
 
 	public String getProjectName() {

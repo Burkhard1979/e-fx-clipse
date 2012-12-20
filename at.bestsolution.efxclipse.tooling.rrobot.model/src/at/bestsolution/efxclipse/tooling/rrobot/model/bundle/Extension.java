@@ -2,6 +2,8 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Extension extends EObject {
+public interface Extension extends ExcludeableElementMixin {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

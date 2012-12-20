@@ -58,6 +58,7 @@ import org.osgi.framework.Version;
 /**
  * Content wizard page for the New Plugin Project wizard (page 2)
  */
+@SuppressWarnings("restriction")
 public class PluginContentPage extends ContentPage {
 	private Text fClassText;
 	protected Button fGenerateActivator;

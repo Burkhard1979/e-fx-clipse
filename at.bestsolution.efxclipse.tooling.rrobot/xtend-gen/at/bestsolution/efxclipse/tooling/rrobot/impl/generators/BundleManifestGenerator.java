@@ -7,19 +7,18 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ImportedPackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ManifestFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.PluginXMLFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.RequiredBundle;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import com.google.common.base.Objects;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.osgi.framework.Version;
 
 @SuppressWarnings("all")
 public class BundleManifestGenerator implements Generator<ManifestFile> {
@@ -54,7 +53,7 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
     }
     _builder.newLineIfNotEmpty();
     _builder.append("Bundle-Version: ");
-    Version _version = file.getVersion();
+    String _version = file.getVersion();
     _builder.append(_version, "");
     _builder.newLineIfNotEmpty();
     _builder.append("Bundle-RequiredExecutionEnvironment: ");
@@ -68,13 +67,20 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
       if (_not) {
         _builder.append("Require-Bundle: ");
         EList<RequiredBundle> _requiredBundles_1 = file.getRequiredBundles();
-        final Function1<RequiredBundle,String> _function = new Function1<RequiredBundle,String>() {
+        final Function1<RequiredBundle,Boolean> _function = new Function1<RequiredBundle,Boolean>() {
+            public Boolean apply(final RequiredBundle e) {
+              boolean _excludeExpression = BundleManifestGenerator.this.excludeExpression(e, data);
+              return Boolean.valueOf(_excludeExpression);
+            }
+          };
+        Iterable<RequiredBundle> _filter = IterableExtensions.<RequiredBundle>filter(_requiredBundles_1, _function);
+        final Function1<RequiredBundle,String> _function_1 = new Function1<RequiredBundle,String>() {
             public String apply(final RequiredBundle it) {
               String _requireBundleBuilder = BundleManifestGenerator.this.requireBundleBuilder(it);
               return _requireBundleBuilder;
             }
           };
-        List<String> _map = ListExtensions.<RequiredBundle, String>map(_requiredBundles_1, _function);
+        Iterable<String> _map = IterableExtensions.<RequiredBundle, String>map(_filter, _function_1);
         String _join = IterableExtensions.join(_map, ",\r\n ");
         _builder.append(_join, "");
         _builder.newLineIfNotEmpty();
@@ -87,13 +93,20 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
       if (_not_1) {
         _builder.append("Import-Package: ");
         EList<ImportedPackage> _importedPackages_1 = file.getImportedPackages();
-        final Function1<ImportedPackage,String> _function_1 = new Function1<ImportedPackage,String>() {
+        final Function1<ImportedPackage,Boolean> _function_2 = new Function1<ImportedPackage,Boolean>() {
+            public Boolean apply(final ImportedPackage e) {
+              boolean _excludeExpression = BundleManifestGenerator.this.excludeExpression(e, data);
+              return Boolean.valueOf(_excludeExpression);
+            }
+          };
+        Iterable<ImportedPackage> _filter_1 = IterableExtensions.<ImportedPackage>filter(_importedPackages_1, _function_2);
+        final Function1<ImportedPackage,String> _function_3 = new Function1<ImportedPackage,String>() {
             public String apply(final ImportedPackage it) {
               String _importPackageBuilder = BundleManifestGenerator.this.importPackageBuilder(it);
               return _importPackageBuilder;
             }
           };
-        List<String> _map_1 = ListExtensions.<ImportedPackage, String>map(_importedPackages_1, _function_1);
+        Iterable<String> _map_1 = IterableExtensions.<ImportedPackage, String>map(_filter_1, _function_3);
         String _join_1 = IterableExtensions.join(_map_1, ",\r\n ");
         _builder.append(_join_1, "");
         _builder.newLineIfNotEmpty();
@@ -106,19 +119,37 @@ public class BundleManifestGenerator implements Generator<ManifestFile> {
       if (_not_2) {
         _builder.append("Export-Package: ");
         EList<ExportedPackage> _exportedPackages_1 = file.getExportedPackages();
-        final Function1<ExportedPackage,String> _function_2 = new Function1<ExportedPackage,String>() {
+        final Function1<ExportedPackage,Boolean> _function_4 = new Function1<ExportedPackage,Boolean>() {
+            public Boolean apply(final ExportedPackage e) {
+              boolean _excludeExpression = BundleManifestGenerator.this.excludeExpression(e, data);
+              return Boolean.valueOf(_excludeExpression);
+            }
+          };
+        Iterable<ExportedPackage> _filter_2 = IterableExtensions.<ExportedPackage>filter(_exportedPackages_1, _function_4);
+        final Function1<ExportedPackage,String> _function_5 = new Function1<ExportedPackage,String>() {
             public String apply(final ExportedPackage it) {
               String _exportPackageBuilder = BundleManifestGenerator.this.exportPackageBuilder(it);
               return _exportPackageBuilder;
             }
           };
-        List<String> _map_2 = ListExtensions.<ExportedPackage, String>map(_exportedPackages_1, _function_2);
+        Iterable<String> _map_2 = IterableExtensions.<ExportedPackage, String>map(_filter_2, _function_5);
         String _join_2 = IterableExtensions.join(_map_2, ",\r\n ");
         _builder.append(_join_2, "");
         _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
+  }
+  
+  public boolean excludeExpression(final ExcludeableElementMixin mixin, final Map<String,Object> data) {
+    BooleanExpression _excludeExpression = mixin.getExcludeExpression();
+    boolean _notEquals = (!Objects.equal(_excludeExpression, null));
+    if (_notEquals) {
+      BooleanExpression _excludeExpression_1 = mixin.getExcludeExpression();
+      boolean _execute = _excludeExpression_1.execute(data);
+      return (!_execute);
+    }
+    return true;
   }
   
   public String exportPackageBuilder(final ExportedPackage e) {

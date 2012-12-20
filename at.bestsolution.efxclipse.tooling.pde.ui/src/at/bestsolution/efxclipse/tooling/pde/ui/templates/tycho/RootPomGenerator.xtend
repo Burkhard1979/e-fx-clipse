@@ -1,6 +1,48 @@
 package at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho
 
-class RootPomGenerator {
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
+import java.util.Map
+import java.util.ArrayList
+import java.io.ByteArrayInputStream
+
+class RootPomGenerator implements Generator<DynamicFile> {
+	override generate(DynamicFile file, Map<String,Object> data) {
+		val projectName = data.get("BundleProject_projectName") as String;
+		val productName = data.get("BundleProject_productName") as String;
+		val bundleId = data.get("BundleProject_bundleId") as String;
+		val bundleVersion = data.get("BundleProject_bundleVersion") as String;
+		
+		val modules = new ArrayList<String>();
+		modules.add("../"+projectName);
+		modules.add("../"+projectName+".feature");
+		modules.add("../"+projectName+".product");
+//		modules.add("../"+projectName+".jemmy");
+			
+		val repos = new ArrayList<Repository>();
+		repos.add(new Repository("juno", "http://download.eclipse.org/releases/juno"));
+		repos.add(new Repository("efxclipse-repo", "http://www.efxclipse.org/p2-repos/nightly/site/"));
+			
+		val pomdata = new RootPomData(
+					productName + " - releng",
+					toPomGroupId(bundleId), 
+					bundleId+".releng", 
+					null, null, null, null,toPomVersion(bundleVersion),"0.16.0","4.8.1","1.8.4","4.2","0.1.1","2.2.0-SNAPSHOT",modules,repos); //FIXME Versions based on release!!!
+			
+		return new ByteArrayInputStream(generate(pomdata).toString.bytes);
+	}
+	
+	def toPomGroupId(String bundleId) {
+		if( bundleId.indexOf('.') != -1 ) {
+			return bundleId.substring(0,bundleId.lastIndexOf('.'));
+		}
+		return bundleId;
+	}
+	
+	def String toPomVersion(String version) {
+		return version.replace(".qualifier", "-SNAPSHOT");
+	}
+	
 	def generate(RootPomData data) '''<?xml version="1.0" encoding="UTF-8"?>
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"

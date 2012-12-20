@@ -5,10 +5,13 @@ package at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -21,6 +24,7 @@ import org.osgi.framework.Version;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFeatureImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFeatureImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFeatureImpl#getVersion <em>Version</em>}</li>
  * </ul>
@@ -29,6 +33,16 @@ import org.osgi.framework.Version;
  * @generated
  */
 public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,7 +71,7 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Version VERSION_EDEFAULT = null;
+	protected static final String VERSION_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -67,7 +81,7 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * @generated
 	 * @ordered
 	 */
-	protected Version version = VERSION_EDEFAULT;
+	protected String version = VERSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,7 +128,7 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Version getVersion() {
+	public String getVersion() {
 		return version;
 	}
 
@@ -123,8 +137,8 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVersion(Version newVersion) {
-		Version oldVersion = version;
+	public void setVersion(String newVersion) {
+		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_FEATURE__VERSION, oldVersion, version));
@@ -135,9 +149,68 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.PRODUCT_FEATURE__ID:
 				return getId();
 			case BundlePackage.PRODUCT_FEATURE__VERSION:
@@ -154,11 +227,14 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.PRODUCT_FEATURE__ID:
 				setId((String)newValue);
 				return;
 			case BundlePackage.PRODUCT_FEATURE__VERSION:
-				setVersion((Version)newValue);
+				setVersion((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -172,6 +248,9 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.PRODUCT_FEATURE__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -190,6 +269,8 @@ public class ProductFeatureImpl extends EObjectImpl implements ProductFeature {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.PRODUCT_FEATURE__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.PRODUCT_FEATURE__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.PRODUCT_FEATURE__VERSION:

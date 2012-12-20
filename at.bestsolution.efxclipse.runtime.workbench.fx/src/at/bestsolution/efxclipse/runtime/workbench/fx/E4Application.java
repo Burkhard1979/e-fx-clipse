@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
@@ -140,6 +142,18 @@ public class E4Application extends AbstractJFXApplication {
 		args = (String[]) applicationContext.getArguments().get(IApplicationContext.APPLICATION_ARGS);
 
 		IEclipseContext appContext = createDefaultContext();
+		
+		//FIXME We need to fix this later on see ticket 256
+//		ContextInjectionFactory.setDefault(appContext);
+		try {
+			Method m = ContextInjectionFactory.class.getMethod("setDefault", IEclipseContext.class);
+			m.invoke(null, appContext);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e1) {
+			System.err.println("WARNING: You are running on an old and buggy DI container which is fixed in 4.2.2 builds. Consider upgradeing.");
+		}
+		
+
+		
 		appContext.set(Application.class, jfxApplication);
 		appContext.set("primaryStage", primaryStage);
 		// appContext.set(Realm.class, SWTObservables.getRealm(display));

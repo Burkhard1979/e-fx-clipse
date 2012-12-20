@@ -72,6 +72,14 @@
             name="Eclipse 3.x ViewPart"
             project="false">
       </wizard>
+      <!--wizard
+            category="at.bestsolution.efxclipse.tooling"
+            class="at.bestsolution.efxclipse.tooling.pde.ui.wizard.app.NewBundleApplicationWizard"
+            icon="icons/application_lightning.png"
+            id="at.bestsolution.efxclipse.tooling.pde.ui.osgi.app"
+            name="OSGi Application"
+            project="true">
+      </wizard-->
    </extension>
 
 </plugin>

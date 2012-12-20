@@ -15,6 +15,8 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.MContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -26,9 +28,11 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler;
 import org.eclipse.e4.ui.workbench.modeling.ISaveHandler.Save;
+import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWindow;
 
@@ -96,6 +100,26 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 	
 	@Override
 	protected void initWidget(final MWindow element, final WWindow<N> widget) {
+		widget.registerActivationCallback(new WCallback<Boolean, Void>() {
+			
+			@Override
+			public Void call(Boolean param) {
+				if( param.booleanValue() ) {
+					MUIElement parentME = element.getParent();
+					if (parentME instanceof MApplication) {
+						MApplication app = (MApplication) parentME;
+						app.setSelectedElement(element);
+						element.getContext().activate();
+					} else if (parentME == null) {
+						parentME = (MUIElement) ((EObject) element).eContainer();
+						if (parentME instanceof MContext) {
+							element.getContext().activate();
+						}
+					}	
+				}
+				return null;
+			}
+		});
 		getModelContext(element).set(ISaveHandler.class, new ISaveHandler() {
 			
 			@Override

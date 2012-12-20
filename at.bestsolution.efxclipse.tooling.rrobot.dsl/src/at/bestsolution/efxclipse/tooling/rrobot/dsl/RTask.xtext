@@ -9,22 +9,34 @@ RobotTask returns task::RobotTask:
 	{task::RobotTask}
 	'RobotTask'
 	'{'
+		('variables' '=' '{' variables+=Variable ( "," variables+=Variable)* '}')?
 		('projects' '=' '{' projects+=GenericProject ( "," projects+=GenericProject)* '}' )?
 	'}';
+
+Variable returns task::Variable:
+	description=SL_DOC
+	type=Type key=STRING ('default' defaultValue=STRING)? 
+;
+
+enum Type returns task::Type: 
+	BOOLEAN | DOUBLE | INT | STRING
+;
+
 
 GenericProject returns task::Project:
 	Project | BundleProject | FeatureProject
 ;
 
 Resource returns task::Resource:
-	Folder | TemplatedFile | DataFile | URLFile | GeneratorFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
+	Folder | TemplatedFile | DataFile | URLFile | DynamicFile | ManifestFile | ProductFileFeaturebase | PluginXMLFile;
 
 Project returns task::Project:
 	{task::Project}
 	'SimpleProject' name=EString
 	'{'
 		('resources' '=' '{' resources+=Resource ( "," resources+=Resource)* '}' )?
-	'}';
+	'}'
+	('excluded-if' excludeExpression=BooleanExpression)?;
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -33,9 +45,9 @@ Folder returns task::Folder:
 	{task::Folder}
 	'Folder'
 	name=EString
-	'{'
-		('children' '=' '{' children+=Resource ( "," children+=Resource)* '}' )?
-	'}';
+	('{'
+		'children' '=' '{' children+=Resource ( "," children+=Resource)* '}'
+	'}')?;
 
 TemplatedFile returns task::TemplatedFile:
 	{task::TemplatedFile}
@@ -56,15 +68,28 @@ DataFile returns task::DataFile:
 URLFile returns task::URLFile:
 	{task::URLFile}
 	'URLFile'
-	name=EString
-	'{'
-		('uri' '=' uri=EString)?
-	'}';
+	name=EString uri=EString
+	('excluded-if' excludeExpression=BooleanExpression)?;
 
-GeneratorFile returns task::GeneratorFile:
-	{task::GeneratorFile}
-	'GeneratorFile'
-	name=EString;
+DynamicFile returns task::DynamicFile: 
+	{task::DynamicFile}
+	'DynamicFile' name=EString 'generated-from' executionURI=STRING 'by' type=STRING 
+	('{' variables+=Variable (',' variables+=Variable)* '}')?
+	('excluded-if' excludeExpression=BooleanExpression)? 
+;
+
+BooleanExpression returns task::BooleanExpression: 
+	ReferencingBooleanExpression | InlineBooleanExpression
+;
+
+ReferencingBooleanExpression returns task::ReferencingBooleanExpression:
+	executionURI=STRING 'by' type=STRING 
+;
+
+InlineBooleanExpression returns task::InlineBooleanExpression:
+	type=STRING expression=INLINE_SCRIPT
+;
+
 
 EByteArray returns ecore::EByteArray:
 	EString /* TODO: implement this rule and an appropriate IValueConverter */
@@ -82,8 +107,20 @@ BundleProject returns bundle::BundleProject:
 			('pluginxml' '=' pluginxml=PluginXMLFile)?
 		)
 		('resources' '=' '{' resources+=Resource ( "," resources+=Resource)* '}' )?
+		'rootfragments' '=' '{' sourceFragments+=SourceFragment ( "," sourceFragments+=SourceFragment)* '}'
+		('compilation-units' '=' '{' compilationUnits+=CompilationUnit (',' compilationUnits+=CompilationUnit)* '}')?
 	'}'
 ;
+
+SourceFragment returns task::SourceFragment: 
+	'fragment' name=EString folder=[task::Folder|STRING] 
+;
+
+CompilationUnit returns task::CompilationUnit: 
+	packagename=STRING 'in' sourcefragment=[task::SourceFragment|STRING] '{' file=(TemplatedFile | DataFile | URLFile | DynamicFile) '}'
+	('excluded-if' excludeExpression=BooleanExpression)?
+;
+
 
 FeatureProject returns bundle::FeatureProject:
 	{bundle::FeatureProject}
@@ -96,7 +133,7 @@ FeatureProject returns bundle::FeatureProject:
 
 ManifestFile returns bundle::ManifestFile:
 	{bundle::ManifestFile}
-	lazy?='lazy'? singleton?='singleton'? 'ManifestFile' symbolicname=STRING version=Version executionEnvironment=STRING '{'
+	lazy?='lazy'? singleton?='singleton'? 'ManifestFile' symbolicname=STRING version=STRING executionEnvironment=STRING '{'
 		(
 			'bundlename' '=' bundlename=STRING
 			&
@@ -136,7 +173,7 @@ ProductFileFeaturebase returns bundle::ProductFileFeaturebase:
 			&
 			'application' '=' application=STRING
 			&
-			'version' '=' version=Version
+			'version' '=' version=STRING
 		)
 		('startconfigurations' '=' '{' 
 			startconfigurations+=ProductStartConfig ( ',' startconfigurations+=ProductStartConfig )* 
@@ -151,7 +188,7 @@ FeatureFile returns bundle::FeatureFile:
 	{bundle::FeatureFile}
 	'FeatureFile' featureid=STRING '{'
 		(
-			'version' '=' version=Version
+			'version' '=' version=STRING
 			&
 			'featurename' '=' featurename=STRING
 			&
@@ -178,11 +215,13 @@ FeatureFile returns bundle::FeatureFile:
 ImportedPackage returns bundle::ImportedPackage:
 	{bundle::ImportedPackage}
 	name=STRING ((minExclusive?='('? | '[') minVersion=Version? ',' (maxVersion=Version? (maxExclusive?=')'? | ']')))?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 ExportedPackage returns bundle::ExportedPackage:
 	{bundle::ExportedPackage}
 	name=STRING version=Version?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 Extension returns bundle::Extension:
@@ -193,6 +232,7 @@ Extension returns bundle::Extension:
 			elements+=Element (',' elements+=Element)*
 		'}')?
 	'}'
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 Element returns bundle::Element:
@@ -216,6 +256,7 @@ Attribute returns bundle::Attribute:
 RequiredBundle returns bundle::RequiredBundle:
 	{bundle::RequiredBundle}
 	name=STRING ((minExclusive?='('? | '[') minVersion=Version? ',' maxVersion=Version? (maxExclusive?=')'? | ']'))?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 LinkedString returns bundle::LinkedString:
@@ -227,19 +268,20 @@ LinkedString returns bundle::LinkedString:
 
 FeaturePlugin returns bundle::FeaturePlugin:
 	{bundle::FeaturePlugin}
-	unpack?='unpacked'? ^fragment?='fragment'? id=STRING '{'
-		
-	'}'
+	unpack?='unpacked'? ^fragment?='fragment'? id=STRING
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 RequiredFeature returns bundle::RequiredFeature:
 	{bundle::RequiredFeature}
 	id=STRING match=MatchRule version=Version
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 IncludedFeature returns bundle::IncludedFeature:
 	{bundle::IncludedFeature}
 	id=STRING version=Version?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 //ProductPlugin returns bundle::ProductPlugin:
@@ -249,19 +291,34 @@ IncludedFeature returns bundle::IncludedFeature:
 
 ProductFeature returns bundle::ProductFeature:
 	{bundle::ProductFeature}
-	id=STRING version=Version?
+	id=STRING version=STRING?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 ProductStartConfig returns bundle::ProductStartConfig:
 	{bundle::ProductStartConfig}
-	'ProductStartConfig' id=STRING (autoStart?='autostarted' ('at' startLevel=INT)? )?'{'
-	'}'
+	id=STRING (autoStart?='autostarted' ('at' startLevel=(SIGNED_INT|INT))? )?
+	('excluded-if' excludeExpression=BooleanExpression)?
 ;
 
 Version returns bundle::Version:
-	INT '.' INT '.' INT ('-' ID)? /* TODO: implement this rule and an appropriate IValueConverter */
+	INT '.' INT '.' INT ('.' ID)? /* TODO: implement this rule and an appropriate IValueConverter */
 ;
 
 enum MatchRule returns bundle::MatchRule:
 	none | equivalent | compatible | perfect | greaterOrEqual
 ;
+
+terminal SL_DOC:
+	'##' !('\n'|'\r')* ('\r'? '\n')?;
+	
+terminal INLINE_SCRIPT:
+	'/#' -> '#/' 
+;
+
+terminal SIGNED_INT returns ecore::EInt:
+	'-' INT
+;
+
+//QualifiedName:
+//  ID (=>'.' ID)*;

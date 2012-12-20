@@ -2,6 +2,7 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.task.impl;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Project;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Resource;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ProjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ProjectImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.ProjectImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +68,16 @@ public class ProjectImpl extends EObjectImpl implements Project {
 	 * @ordered
 	 */
 	protected EList<Resource> resources;
+
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,11 +136,56 @@ public class ProjectImpl extends EObjectImpl implements Project {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TaskPackage.PROJECT__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TaskPackage.PROJECT__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TaskPackage.PROJECT__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TaskPackage.PROJECT__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TaskPackage.PROJECT__RESOURCES:
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
+			case TaskPackage.PROJECT__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -145,6 +202,8 @@ public class ProjectImpl extends EObjectImpl implements Project {
 				return getName();
 			case TaskPackage.PROJECT__RESOURCES:
 				return getResources();
+			case TaskPackage.PROJECT__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +224,9 @@ public class ProjectImpl extends EObjectImpl implements Project {
 				getResources().clear();
 				getResources().addAll((Collection<? extends Resource>)newValue);
 				return;
+			case TaskPackage.PROJECT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -183,6 +245,9 @@ public class ProjectImpl extends EObjectImpl implements Project {
 			case TaskPackage.PROJECT__RESOURCES:
 				getResources().clear();
 				return;
+			case TaskPackage.PROJECT__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,6 +264,8 @@ public class ProjectImpl extends EObjectImpl implements Project {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TaskPackage.PROJECT__RESOURCES:
 				return resources != null && !resources.isEmpty();
+			case TaskPackage.PROJECT__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 		}
 		return super.eIsSet(featureID);
 	}

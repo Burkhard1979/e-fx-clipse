@@ -76,7 +76,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__NAME = TaskPackage.PROJECT__NAME;
+	int BUNDLE_PROJECT__NAME = TaskPackage.JDT_PROJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -85,7 +85,34 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__RESOURCES = TaskPackage.PROJECT__RESOURCES;
+	int BUNDLE_PROJECT__RESOURCES = TaskPackage.JDT_PROJECT__RESOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUNDLE_PROJECT__EXCLUDE_EXPRESSION = TaskPackage.JDT_PROJECT__EXCLUDE_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Source Fragments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUNDLE_PROJECT__SOURCE_FRAGMENTS = TaskPackage.JDT_PROJECT__SOURCE_FRAGMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Compilation Units</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUNDLE_PROJECT__COMPILATION_UNITS = TaskPackage.JDT_PROJECT__COMPILATION_UNITS;
 
 	/**
 	 * The feature id for the '<em><b>Manifest</b></em>' containment reference.
@@ -94,7 +121,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__MANIFEST = TaskPackage.PROJECT_FEATURE_COUNT + 0;
+	int BUNDLE_PROJECT__MANIFEST = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Build Properties</b></em>' containment reference.
@@ -103,7 +130,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__BUILD_PROPERTIES = TaskPackage.PROJECT_FEATURE_COUNT + 1;
+	int BUNDLE_PROJECT__BUILD_PROPERTIES = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Pluginxml</b></em>' containment reference.
@@ -112,7 +139,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT__PLUGINXML = TaskPackage.PROJECT_FEATURE_COUNT + 2;
+	int BUNDLE_PROJECT__PLUGINXML = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Project</em>' class.
@@ -121,7 +148,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BUNDLE_PROJECT_FEATURE_COUNT = TaskPackage.PROJECT_FEATURE_COUNT + 3;
+	int BUNDLE_PROJECT_FEATURE_COUNT = TaskPackage.JDT_PROJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.FeatureProjectImpl <em>Feature Project</em>}' class.
@@ -152,6 +179,15 @@ public interface BundlePackage extends EPackage {
 	int FEATURE_PROJECT__RESOURCES = TaskPackage.PROJECT__RESOURCES;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PROJECT__EXCLUDE_EXPRESSION = TaskPackage.PROJECT__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Feature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,6 +214,15 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	int MANIFEST_FILE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANIFEST_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -316,6 +361,15 @@ public interface BundlePackage extends EPackage {
 	int PLUGIN_XML_FILE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN_XML_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -362,6 +416,15 @@ public interface BundlePackage extends EPackage {
 	int BUILD_PROPERTIES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILD_PROPERTIES__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -406,6 +469,15 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	int PRODUCT_FILE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -515,6 +587,15 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	int PRODUCT_FILE_FEATUREBASE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FILE_FEATUREBASE__EXCLUDE_EXPRESSION = PRODUCT_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -633,6 +714,15 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 */
 	int FEATURE_FILE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FILE__EXCLUDE_EXPRESSION = TaskPackage.TEMPLATED_FILE__EXCLUDE_EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -780,13 +870,22 @@ public interface BundlePackage extends EPackage {
 	int IMPORTED_PACKAGE = 8;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORTED_PACKAGE__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE__NAME = 0;
+	int IMPORTED_PACKAGE__NAME = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Min Version</b></em>' attribute.
@@ -795,7 +894,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE__MIN_VERSION = 1;
+	int IMPORTED_PACKAGE__MIN_VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Max Version</b></em>' attribute.
@@ -804,7 +903,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE__MAX_VERSION = 2;
+	int IMPORTED_PACKAGE__MAX_VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Min Exclusive</b></em>' attribute.
@@ -813,7 +912,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE__MIN_EXCLUSIVE = 3;
+	int IMPORTED_PACKAGE__MIN_EXCLUSIVE = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Max Exclusive</b></em>' attribute.
@@ -822,7 +921,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE__MAX_EXCLUSIVE = 4;
+	int IMPORTED_PACKAGE__MAX_EXCLUSIVE = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Imported Package</em>' class.
@@ -831,7 +930,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMPORTED_PACKAGE_FEATURE_COUNT = 5;
+	int IMPORTED_PACKAGE_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExportedPackageImpl <em>Exported Package</em>}' class.
@@ -844,13 +943,22 @@ public interface BundlePackage extends EPackage {
 	int EXPORTED_PACKAGE = 9;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPORTED_PACKAGE__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPORTED_PACKAGE__NAME = 0;
+	int EXPORTED_PACKAGE__NAME = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -859,7 +967,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPORTED_PACKAGE__VERSION = 1;
+	int EXPORTED_PACKAGE__VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Exported Package</em>' class.
@@ -868,7 +976,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPORTED_PACKAGE_FEATURE_COUNT = 2;
+	int EXPORTED_PACKAGE_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -881,13 +989,22 @@ public interface BundlePackage extends EPackage {
 	int EXTENSION = 10;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION__ID = 0;
+	int EXTENSION__ID = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Point</b></em>' attribute.
@@ -896,7 +1013,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION__POINT = 1;
+	int EXTENSION__POINT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -905,7 +1022,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION__ELEMENTS = 2;
+	int EXTENSION__ELEMENTS = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Extension</em>' class.
@@ -914,7 +1031,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION_FEATURE_COUNT = 3;
+	int EXTENSION_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ElementImpl <em>Element</em>}' class.
@@ -1010,13 +1127,22 @@ public interface BundlePackage extends EPackage {
 	int REQUIRED_BUNDLE = 13;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_BUNDLE__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_BUNDLE__NAME = 0;
+	int REQUIRED_BUNDLE__NAME = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Min Version</b></em>' attribute.
@@ -1025,7 +1151,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_BUNDLE__MIN_VERSION = 1;
+	int REQUIRED_BUNDLE__MIN_VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Max Version</b></em>' attribute.
@@ -1034,7 +1160,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_BUNDLE__MAX_VERSION = 2;
+	int REQUIRED_BUNDLE__MAX_VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Min Exclusive</b></em>' attribute.
@@ -1043,7 +1169,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_BUNDLE__MIN_EXCLUSIVE = 3;
+	int REQUIRED_BUNDLE__MIN_EXCLUSIVE = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Max Exclusive</b></em>' attribute.
@@ -1052,7 +1178,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_BUNDLE__MAX_EXCLUSIVE = 4;
+	int REQUIRED_BUNDLE__MAX_EXCLUSIVE = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Required Bundle</em>' class.
@@ -1061,7 +1187,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_BUNDLE_FEATURE_COUNT = 5;
+	int REQUIRED_BUNDLE_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.LinkedStringImpl <em>Linked String</em>}' class.
@@ -1111,13 +1237,22 @@ public interface BundlePackage extends EPackage {
 	int FEATURE_PLUGIN = 15;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_PLUGIN__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_PLUGIN__ID = 0;
+	int FEATURE_PLUGIN__ID = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Unpack</b></em>' attribute.
@@ -1126,7 +1261,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_PLUGIN__UNPACK = 1;
+	int FEATURE_PLUGIN__UNPACK = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Fragment</b></em>' attribute.
@@ -1135,7 +1270,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_PLUGIN__FRAGMENT = 2;
+	int FEATURE_PLUGIN__FRAGMENT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Feature Plugin</em>' class.
@@ -1144,7 +1279,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_PLUGIN_FEATURE_COUNT = 3;
+	int FEATURE_PLUGIN_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.RequiredFeatureImpl <em>Required Feature</em>}' class.
@@ -1157,13 +1292,22 @@ public interface BundlePackage extends EPackage {
 	int REQUIRED_FEATURE = 16;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_FEATURE__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_FEATURE__ID = 0;
+	int REQUIRED_FEATURE__ID = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Match</b></em>' attribute.
@@ -1172,7 +1316,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_FEATURE__MATCH = 1;
+	int REQUIRED_FEATURE__MATCH = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1181,7 +1325,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_FEATURE__VERSION = 2;
+	int REQUIRED_FEATURE__VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Required Feature</em>' class.
@@ -1190,7 +1334,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIRED_FEATURE_FEATURE_COUNT = 3;
+	int REQUIRED_FEATURE_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.IncludedFeatureImpl <em>Included Feature</em>}' class.
@@ -1203,13 +1347,22 @@ public interface BundlePackage extends EPackage {
 	int INCLUDED_FEATURE = 17;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDED_FEATURE__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INCLUDED_FEATURE__ID = 0;
+	int INCLUDED_FEATURE__ID = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1218,7 +1371,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCLUDED_FEATURE__VERSION = 1;
+	int INCLUDED_FEATURE__VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Included Feature</em>' class.
@@ -1227,7 +1380,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INCLUDED_FEATURE_FEATURE_COUNT = 2;
+	int INCLUDED_FEATURE_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductPluginImpl <em>Product Plugin</em>}' class.
@@ -1240,13 +1393,22 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_PLUGIN = 18;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_PLUGIN__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_PLUGIN__ID = 0;
+	int PRODUCT_PLUGIN__ID = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1255,7 +1417,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_PLUGIN__VERSION = 1;
+	int PRODUCT_PLUGIN__VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Fragment</b></em>' attribute.
@@ -1264,7 +1426,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_PLUGIN__FRAGMENT = 2;
+	int PRODUCT_PLUGIN__FRAGMENT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Product Plugin</em>' class.
@@ -1273,7 +1435,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_PLUGIN_FEATURE_COUNT = 3;
+	int PRODUCT_PLUGIN_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductFeatureImpl <em>Product Feature</em>}' class.
@@ -1286,13 +1448,22 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_FEATURE = 19;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_FEATURE__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FEATURE__ID = 0;
+	int PRODUCT_FEATURE__ID = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1301,7 +1472,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FEATURE__VERSION = 1;
+	int PRODUCT_FEATURE__VERSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Product Feature</em>' class.
@@ -1310,7 +1481,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FEATURE_FEATURE_COUNT = 2;
+	int PRODUCT_FEATURE_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ProductStartConfigImpl <em>Product Start Config</em>}' class.
@@ -1323,13 +1494,22 @@ public interface BundlePackage extends EPackage {
 	int PRODUCT_START_CONFIG = 20;
 
 	/**
+	 * The feature id for the '<em><b>Exclude Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_START_CONFIG__EXCLUDE_EXPRESSION = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN__EXCLUDE_EXPRESSION;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_START_CONFIG__ID = 0;
+	int PRODUCT_START_CONFIG__ID = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Auto Start</b></em>' attribute.
@@ -1338,7 +1518,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_START_CONFIG__AUTO_START = 1;
+	int PRODUCT_START_CONFIG__AUTO_START = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Start Level</b></em>' attribute.
@@ -1347,7 +1527,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_START_CONFIG__START_LEVEL = 2;
+	int PRODUCT_START_CONFIG__START_LEVEL = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Product Start Config</em>' class.
@@ -1356,7 +1536,7 @@ public interface BundlePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_START_CONFIG_FEATURE_COUNT = 3;
+	int PRODUCT_START_CONFIG_FEATURE_COUNT = TaskPackage.EXCLUDEABLE_ELEMENT_MIXIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.MatchRule <em>Match Rule</em>}' enum.

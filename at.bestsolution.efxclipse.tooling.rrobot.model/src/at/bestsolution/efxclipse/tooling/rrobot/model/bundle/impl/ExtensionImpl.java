@@ -6,6 +6,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Element;
 import at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Extension;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getExcludeExpression <em>Exclude Expression</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getId <em>Id</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getPoint <em>Point</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.impl.ExtensionImpl#getElements <em>Elements</em>}</li>
@@ -38,6 +40,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class ExtensionImpl extends EObjectImpl implements Extension {
+	/**
+	 * The cached value of the '{@link #getExcludeExpression() <em>Exclude Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExcludeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected BooleanExpression excludeExpression;
+
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -166,9 +178,54 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BooleanExpression getExcludeExpression() {
+		return excludeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExcludeExpression(BooleanExpression newExcludeExpression, NotificationChain msgs) {
+		BooleanExpression oldExcludeExpression = excludeExpression;
+		excludeExpression = newExcludeExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, oldExcludeExpression, newExcludeExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeExpression(BooleanExpression newExcludeExpression) {
+		if (newExcludeExpression != excludeExpression) {
+			NotificationChain msgs = null;
+			if (excludeExpression != null)
+				msgs = ((InternalEObject)excludeExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, null, msgs);
+			if (newExcludeExpression != null)
+				msgs = ((InternalEObject)newExcludeExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, null, msgs);
+			msgs = basicSetExcludeExpression(newExcludeExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BundlePackage.EXTENSION__EXCLUDE_EXPRESSION, newExcludeExpression, newExcludeExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return basicSetExcludeExpression(null, msgs);
 			case BundlePackage.EXTENSION__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
@@ -183,6 +240,8 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return getExcludeExpression();
 			case BundlePackage.EXTENSION__ID:
 				return getId();
 			case BundlePackage.EXTENSION__POINT:
@@ -202,6 +261,9 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)newValue);
+				return;
 			case BundlePackage.EXTENSION__ID:
 				setId((String)newValue);
 				return;
@@ -224,6 +286,9 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				setExcludeExpression((BooleanExpression)null);
+				return;
 			case BundlePackage.EXTENSION__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -245,6 +310,8 @@ public class ExtensionImpl extends EObjectImpl implements Extension {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BundlePackage.EXTENSION__EXCLUDE_EXPRESSION:
+				return excludeExpression != null;
 			case BundlePackage.EXTENSION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BundlePackage.EXTENSION__POINT:

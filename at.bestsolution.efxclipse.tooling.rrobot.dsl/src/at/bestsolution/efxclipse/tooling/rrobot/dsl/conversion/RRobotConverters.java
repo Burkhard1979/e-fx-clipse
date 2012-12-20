@@ -46,7 +46,7 @@ public class RRobotConverters extends Ecore2XtextTerminalConverters {
 
 			@Override
 			protected byte[] internalToValue(String string, INode node) throws ValueConverterException {
-				return string.getBytes();
+				return string.substring(1, string.length()-1).getBytes();
 			}
 		};
 	}

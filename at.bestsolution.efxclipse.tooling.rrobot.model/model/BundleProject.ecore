@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bundle" nsURI="http://www.efxclipse.org/rrobot/task/bundle/1.0"
     nsPrefix="bundle">
-  <eClassifiers xsi:type="ecore:EClass" name="BundleProject" eSuperTypes="RobotTask.ecore#//Project">
+  <eClassifiers xsi:type="ecore:EClass" name="BundleProject" eSuperTypes="RobotTask.ecore#//JDTProject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="manifest" lowerBound="1"
         eType="#//ManifestFile" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="buildProperties" lowerBound="1"
@@ -20,7 +20,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbolicname" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
-        eType="#//Version"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exportedPackages" upperBound="-1"
         eType="#//ExportedPackage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importedPackages" upperBound="-1"
@@ -48,7 +48,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="application" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeLaunchers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startconfigurations" upperBound="-1"
         eType="#//ProductStartConfig" containment="true"/>
@@ -58,7 +58,7 @@
         eType="#//ProductFeature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureFile" eSuperTypes="RobotTask.ecore#//TemplatedFile">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="featurename" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -79,18 +79,18 @@
         eType="#//IncludedFeature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.osgi.framework.Version"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ImportedPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="ImportedPackage" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExportedPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="ExportedPackage" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Extension">
+  <eClassifiers xsi:type="ecore:EClass" name="Extension" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="point" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
@@ -107,7 +107,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RequiredBundle">
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredBundle" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minVersion" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxVersion" eType="#//Version"/>
@@ -118,17 +118,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weburl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FeaturePlugin">
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturePlugin" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unpack" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fragment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RequiredFeature">
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredFeature" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="match" eType="#//MatchRule"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IncludedFeature">
+  <eClassifiers xsi:type="ecore:EClass" name="IncludedFeature" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
   </eClassifiers>
@@ -139,16 +139,16 @@
     <eLiterals name="perfect" value="3"/>
     <eLiterals name="greaterOrEqual" value="4"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductPlugin">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductPlugin" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fragment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductFeature">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductFeature" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="#//Version"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductStartConfig">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductStartConfig" eSuperTypes="RobotTask.ecore#//ExcludeableElementMixin">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

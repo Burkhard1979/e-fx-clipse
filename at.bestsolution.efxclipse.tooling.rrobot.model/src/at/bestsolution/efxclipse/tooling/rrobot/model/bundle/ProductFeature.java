@@ -2,6 +2,8 @@
  */
 package at.bestsolution.efxclipse.tooling.rrobot.model.bundle;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.ExcludeableElementMixin;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.BooleanExpression;
 import org.eclipse.emf.ecore.EObject;
 
 import org.osgi.framework.Version;
@@ -23,7 +25,7 @@ import org.osgi.framework.Version;
  * @model
  * @generated
  */
-public interface ProductFeature extends EObject {
+public interface ProductFeature extends ExcludeableElementMixin {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -59,12 +61,12 @@ public interface ProductFeature extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
-	 * @see #setVersion(Version)
+	 * @see #setVersion(String)
 	 * @see at.bestsolution.efxclipse.tooling.rrobot.model.bundle.BundlePackage#getProductFeature_Version()
-	 * @model dataType="at.bestsolution.efxclipse.tooling.rrobot.model.bundle.Version"
+	 * @model
 	 * @generated
 	 */
-	Version getVersion();
+	String getVersion();
 
 	/**
 	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.rrobot.model.bundle.ProductFeature#getVersion <em>Version</em>}' attribute.
@@ -74,6 +76,6 @@ public interface ProductFeature extends EObject {
 	 * @see #getVersion()
 	 * @generated
 	 */
-	void setVersion(Version value);
+	void setVersion(String value);
 
 } // ProductFeature

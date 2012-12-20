@@ -1,6 +1,22 @@
 package at.bestsolution.efxclipse.tooling.pde.e4.project.template
 
-class NativeLaunchGenerator {
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
+import java.util.Map
+import java.io.ByteArrayInputStream
+
+class NativeLaunchGenerator implements Generator<DynamicFile> {
+	
+	override generate(DynamicFile file, Map<String,Object> data) {
+		val projectName = data.get("BundleProject_projectName") as String;
+		val productName = data.get("BundleProject_productName") as String;
+		val vendorName = data.get("BundleProject_bundleVendor") as String;
+		val osArch = System::getProperty("osgi.os")+"."+System::getProperty("osgi.ws")+"."+System::getProperty("osgi.arch");
+		val launcherdata = new NativeLaunchData("../"+projectName+".product/target/"+osArch+"/eclipse", productName, vendorName);
+		val gen = new NativeLaunchGenerator();
+		return new ByteArrayInputStream(gen.generate(launcherdata).toString.bytes);
+	}
+	
 	def generate(NativeLaunchData data) '''<project name="native-build" default="do-deploy" basedir="."  xmlns:fx="javafx:com.sun.javafx.tools.ant">
 	<property name="eclipse-app-dir" value="«data.tychoOutDir»" />
 	

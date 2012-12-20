@@ -5,15 +5,15 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            name="at.bestsolution.efxclipse.testcases.e4"
+            name="%product.name"
             application="at.bestsolution.efxclipse.runtime.workbench.fx.application">
          <property
                value="at.bestsolution.efxclipse.testcases.e4"
                name="appName">
          </property>
          <property
-               value="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/css/default.css"
-               name="applicationCSS">
+               value="default.theme"
+               name="cssTheme">
          </property>
          <property
                value="at.bestsolution.efxclipse.testcases.e4/Application.e4xmi"

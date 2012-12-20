@@ -11,11 +11,17 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.TaskPackage;
 
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
@@ -30,6 +36,7 @@ import org.osgi.framework.ServiceReference;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DynamicFileImpl#getExecutionURI <em>Execution URI</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DynamicFileImpl#getType <em>Type</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.rrobot.model.task.impl.DynamicFileImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,6 +79,15 @@ public class DynamicFileImpl extends FileImpl implements DynamicFile {
 	 * @ordered
 	 */
 	protected String type = TYPE_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> variables;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,6 +154,32 @@ public class DynamicFileImpl extends FileImpl implements DynamicFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Variable> getVariables() {
+		if (variables == null) {
+			variables = new EObjectContainmentEList<Variable>(Variable.class, this, TaskPackage.DYNAMIC_FILE__VARIABLES);
+		}
+		return variables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TaskPackage.DYNAMIC_FILE__VARIABLES:
+				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -145,6 +187,8 @@ public class DynamicFileImpl extends FileImpl implements DynamicFile {
 				return getExecutionURI();
 			case TaskPackage.DYNAMIC_FILE__TYPE:
 				return getType();
+			case TaskPackage.DYNAMIC_FILE__VARIABLES:
+				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,6 +198,7 @@ public class DynamicFileImpl extends FileImpl implements DynamicFile {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -162,6 +207,10 @@ public class DynamicFileImpl extends FileImpl implements DynamicFile {
 				return;
 			case TaskPackage.DYNAMIC_FILE__TYPE:
 				setType((String)newValue);
+				return;
+			case TaskPackage.DYNAMIC_FILE__VARIABLES:
+				getVariables().clear();
+				getVariables().addAll((Collection<? extends Variable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,6 +230,9 @@ public class DynamicFileImpl extends FileImpl implements DynamicFile {
 			case TaskPackage.DYNAMIC_FILE__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
+			case TaskPackage.DYNAMIC_FILE__VARIABLES:
+				getVariables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,6 +249,8 @@ public class DynamicFileImpl extends FileImpl implements DynamicFile {
 				return EXECUTION_URI_EDEFAULT == null ? executionURI != null : !EXECUTION_URI_EDEFAULT.equals(executionURI);
 			case TaskPackage.DYNAMIC_FILE__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case TaskPackage.DYNAMIC_FILE__VARIABLES:
+				return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
