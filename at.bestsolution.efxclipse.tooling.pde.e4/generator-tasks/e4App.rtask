@@ -376,7 +376,7 @@ RobotTask {
 						## baseVersion
 						STRING "baseVersion" default "${BundleProject_bundleVersion}",
 						## name
-						STRING "name" default "${BundleProject_bundleName} - jemmy tests",
+						STRING "name" default "${BundleProject_productName} - jemmy tests",
 						## testBundleId
 						STRING "testBundleId" default "${BundleProject_bundleId}.jemmy",
 						## testSuite
@@ -425,7 +425,23 @@ RobotTask {
 		},
 		SimpleProject "${BundleProject_projectName}.releng" { 
 			resources = {
-				DynamicFile "pom.xml" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomGenerator" by "java",
+				DynamicFile "pom.xml" 
+					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomGenerator" 
+					by "java"
+					{
+						## groupId
+						STRING "groupId" default "${Maven_GroupId}",
+						## groupId
+						STRING "artifactId" default "${Maven_GroupId}.releng",
+						## description
+						STRING "name" default "${BundleProject_productName} - releng",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## modules
+						STRING "modules" default "../${BundleProject_projectName};../${BundleProject_projectName}.feature;../${BundleProject_projectName}.product;../${BundleProject_projectName}.jemmy",
+						## repos
+						STRING "repos" default "juno@http://download.eclipse.org/releases/juno;efxclipse-repo@http://www.efxclipse.org/p2-repos/nightly/site/"
+					},
 				DynamicFile "build.xml" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.NativeLaunchGenerator" by "java"
 					excluded-if "javascript" /# !NativeExport #/,

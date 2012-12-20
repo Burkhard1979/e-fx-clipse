@@ -4,48 +4,117 @@ import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.Repository;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomData;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class RootPomGenerator implements Generator<DynamicFile> {
   public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
-    Object _get = data.get("BundleProject_projectName");
-    final String projectName = ((String) _get);
-    Object _get_1 = data.get("BundleProject_productName");
-    final String productName = ((String) _get_1);
-    Object _get_2 = data.get("BundleProject_bundleId");
-    final String bundleId = ((String) _get_2);
-    Object _get_3 = data.get("BundleProject_bundleVersion");
-    final String bundleVersion = ((String) _get_3);
+    EList<Variable> _variables = file.getVariables();
+    final Function1<Variable,Boolean> _function = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("groupId");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst = IterableExtensions.<Variable>findFirst(_variables, _function);
+    final String groupId = _findFirst.getDefaultValue();
+    EList<Variable> _variables_1 = file.getVariables();
+    final Function1<Variable,Boolean> _function_1 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("artifactId");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_1 = IterableExtensions.<Variable>findFirst(_variables_1, _function_1);
+    final String artifactId = _findFirst_1.getDefaultValue();
+    EList<Variable> _variables_2 = file.getVariables();
+    final Function1<Variable,Boolean> _function_2 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("baseVersion");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_2 = IterableExtensions.<Variable>findFirst(_variables_2, _function_2);
+    String _defaultValue = _findFirst_2.getDefaultValue();
+    final String version = this.toPomVersion(_defaultValue);
+    EList<Variable> _variables_3 = file.getVariables();
+    final Function1<Variable,Boolean> _function_3 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("name");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_3 = IterableExtensions.<Variable>findFirst(_variables_3, _function_3);
+    final String name = _findFirst_3.getDefaultValue();
     ArrayList<String> _arrayList = new ArrayList<String>();
     final ArrayList<String> modules = _arrayList;
-    String _plus = ("../" + projectName);
-    modules.add(_plus);
-    String _plus_1 = ("../" + projectName);
-    String _plus_2 = (_plus_1 + ".feature");
-    modules.add(_plus_2);
-    String _plus_3 = ("../" + projectName);
-    String _plus_4 = (_plus_3 + ".product");
-    modules.add(_plus_4);
-    String _plus_5 = ("../" + projectName);
-    String _plus_6 = (_plus_5 + ".jemmy");
-    modules.add(_plus_6);
+    EList<Variable> _variables_4 = file.getVariables();
+    final Function1<Variable,Boolean> _function_4 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("modules");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_4 = IterableExtensions.<Variable>findFirst(_variables_4, _function_4);
+    String _defaultValue_1 = _findFirst_4.getDefaultValue();
+    String[] _split = _defaultValue_1.split(";");
+    final Procedure1<String> _function_5 = new Procedure1<String>() {
+        public void apply(final String it) {
+          modules.add(it);
+        }
+      };
+    IterableExtensions.<String>forEach(((Iterable<String>)Conversions.doWrapArray(_split)), _function_5);
     ArrayList<Repository> _arrayList_1 = new ArrayList<Repository>();
     final ArrayList<Repository> repos = _arrayList_1;
-    Repository _repository = new Repository("juno", "http://download.eclipse.org/releases/juno");
-    repos.add(_repository);
-    Repository _repository_1 = new Repository("efxclipse-repo", "http://www.efxclipse.org/p2-repos/nightly/site/");
-    repos.add(_repository_1);
-    String _plus_7 = (productName + " - releng");
-    String _pomGroupId = this.toPomGroupId(bundleId);
-    String _plus_8 = (bundleId + ".releng");
-    String _pomVersion = this.toPomVersion(bundleVersion);
-    RootPomData _rootPomData = new RootPomData(_plus_7, _pomGroupId, _plus_8, 
+    EList<Variable> _variables_5 = file.getVariables();
+    final Function1<Variable,Boolean> _function_6 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("repos");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_5 = IterableExtensions.<Variable>findFirst(_variables_5, _function_6);
+    String _defaultValue_2 = _findFirst_5.getDefaultValue();
+    String[] _split_1 = _defaultValue_2.split(";");
+    final Function1<String,Repository> _function_7 = new Function1<String,Repository>() {
+        public Repository apply(final String it) {
+          int _indexOf = it.indexOf("@");
+          String _substring = it.substring(0, _indexOf);
+          int _indexOf_1 = it.indexOf("@");
+          int _plus = (_indexOf_1 + 1);
+          int _length = it.length();
+          String _substring_1 = it.substring(_plus, _length);
+          Repository _repository = new Repository(_substring, _substring_1);
+          return _repository;
+        }
+      };
+    List<Repository> _map = ListExtensions.<String, Repository>map(((List<String>)Conversions.doWrapArray(_split_1)), _function_7);
+    final Procedure1<Repository> _function_8 = new Procedure1<Repository>() {
+        public void apply(final Repository it) {
+          repos.add(it);
+        }
+      };
+    IterableExtensions.<Repository>forEach(_map, _function_8);
+    String _pomVersion = this.toPomVersion(version);
+    RootPomData _rootPomData = new RootPomData(name, groupId, artifactId, 
       null, null, null, null, _pomVersion, "0.16.0", "4.8.1", "1.8.4", "4.2", "0.1.1", "2.2.0-SNAPSHOT", modules, repos);
     final RootPomData pomdata = _rootPomData;
     CharSequence _generate = this.generate(pomdata);
