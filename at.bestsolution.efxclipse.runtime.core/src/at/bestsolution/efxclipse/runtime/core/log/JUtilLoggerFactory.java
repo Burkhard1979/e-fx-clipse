@@ -64,51 +64,268 @@ public class JUtilLoggerFactory implements LoggerFactory, Provider<LoggerFactory
 			}
 		}
 		
-		@Override
-		public void log(Level level, String message, Throwable... t) {
+		private void logInternal(Level level, String message, Throwable t) {
+			
 			java.util.logging.Level jlevel = toLogLevel(level);
-			if( t == null || t.length == 0 ) {
-				getLogger().log(jlevel, message);
-			} else if( t.length == 1 ) {
-				getLogger().log(jlevel, message, t);
-			} else {
-				java.util.logging.Logger l = getLogger();
-				for( Throwable th : t ) {
-					l.log(jlevel, message, th);
+			
+			StackTraceElement frame = null;
+			StackTraceElement[] e  = Thread.currentThread().getStackTrace();
+			if (e.length > 2) {
+				for (int i = 2; i < e.length; i++) {
+					if (getClass().getName().equals(e[i].getClassName())) {
+						continue;
+					}
+					else {
+						frame = e[i];
+						break;
+					}
 				}
 			}
+			
+			if (t == null) {
+				if (frame != null) {
+					getLogger().logp(jlevel, frame.getClassName(), frame.getMethodName(), message);
+				}
+				else {
+					getLogger().log(jlevel, message);
+				}
+			} else {
+				if (frame != null) {
+					getLogger().logp(jlevel, frame.getClassName(), frame.getMethodName(), message, t);
+				}
+				else {
+					getLogger().log(jlevel, message, t);
+				}
+			}
+			
+		}
+		
+		@Override
+		public void log(Level level, String message) {
+			if (!isEnabled(level)) {
+				return;
+			}
+			logInternal(level, message, null);
+		}
+		
+		@Override
+		public void logf(Level level, String pattern, Throwable t, Object... args) {
+			if (!isEnabled(level)) {
+				return;
+			}
+			logInternal(level, String.format(pattern, args), t);
+		}
+		
+		@Override
+		public void logf(Level level, String pattern, Object... args) {
+			if (!isEnabled(level)) {
+				return;
+			}
+			logInternal(level, String.format(pattern, args), null);
+		}
+		
+		@Override
+		public void log(Level level, String message, Throwable t) {
+			if (!isEnabled(level)) {
+				return;
+			}
+			logInternal(level, message, t);
 		}
 
 		@Override
-		public void trace(String message, Throwable... t) {
-			log(Level.TRACE,message,t);
+		public void trace(String message) {
+			if (!isEnabled(Level.TRACE)) {
+				return;
+			}
+			logInternal(Level.TRACE, message, null);
+		}
+		
+		@Override
+		public void trace(String message, Throwable t) {
+			if (!isEnabled(Level.TRACE)) {
+				return;
+			}
+			logInternal(Level.TRACE, message, t);
 		}
 
 		@Override
-		public void debug(String message, Throwable... t) {
-			log(Level.DEBUG,message,t);
+		public void debug(String message) {
+			if (!isEnabled(Level.DEBUG)) {
+				return;
+			}
+			logInternal(Level.DEBUG, message, null);
+		}
+		
+		@Override
+		public void debug(String message, Throwable t) {
+			if (!isEnabled(Level.DEBUG)) {
+				return;
+			}
+			log(Level.DEBUG, message, t);
 		}
 
 		@Override
-		public void info(String message, Throwable... t) {
-			log(Level.INFO,message,t);
+		public void info(String message) {
+			if (!isEnabled(Level.INFO)) {
+				return;
+			}
+			logInternal(Level.INFO, message, null);
+		}
+
+		
+		@Override
+		public void info(String message, Throwable t) {
+			if (!isEnabled(Level.INFO)) {
+				return;
+			}
+			logInternal(Level.INFO, message, t);
 		}
 
 		@Override
-		public void warning(String message, Throwable... t) {
-			log(Level.WARNING,message,t);
+		public void warning(String message) {
+			if (!isEnabled(Level.WARNING)) {
+				return;
+			}
+			logInternal(Level.WARNING, message, null);
+		}
+		
+		@Override
+		public void warning(String message, Throwable t) {
+			if (!isEnabled(Level.WARNING)) {
+				return;
+			}
+			logInternal(Level.WARNING, message, t);
 		}
 
 		@Override
-		public void error(String message, Throwable... t) {
-			log(Level.ERROR,message,t);
+		public void error(String message) {
+			if (!isEnabled(Level.ERROR)) {
+				return;
+			}
+			logInternal(Level.ERROR, message, null);
+		}
+
+		
+		@Override
+		public void error(String message, Throwable t) {
+			if (!isEnabled(Level.ERROR)) {
+				return;
+			}
+			logInternal(Level.ERROR, message, t);
 		}
 
 		@Override
-		public void fatal(String message, Throwable... t) {
-			log(Level.FATAL,message,t);
+		public void fatal(String message) {
+			if (!isEnabled(Level.FATAL)) {
+				return;
+			}
+			logInternal(Level.FATAL, message, null);
+		}
+		
+		@Override
+		public void fatal(String message, Throwable t) {
+			if (!isEnabled(Level.FATAL)) {
+				return;
+			}
+			logInternal(Level.FATAL, message, t);
 		}
 
+		@Override
+		public void tracef(String pattern, Object... args) {
+			if (!isEnabled(Level.TRACE)) {
+				return;
+			}
+			logInternal(Level.TRACE, String.format(pattern, args), null);
+		}
+		
+		@Override
+		public void tracef(String pattern, Throwable t, Object... args) {
+			if (!isEnabled(Level.TRACE)) {
+				return;
+			}
+			logInternal(Level.TRACE, String.format(pattern, args), t);
+		}
+		
+		@Override
+		public void debugf(String pattern, Object... args) {
+			if (!isEnabled(Level.DEBUG)) {
+				return;
+			}
+			logInternal(Level.DEBUG, String.format(pattern, args), null);
+		}
+		
+		@Override
+		public void debugf(String pattern, Throwable t, Object... args) {
+			if (!isEnabled(Level.DEBUG)) {
+				return;
+			}
+			logInternal(Level.DEBUG, String.format(pattern, args), t);
+		}
+		
+		@Override
+		public void infof(String pattern, Object... args) {
+			if (!isEnabled(Level.INFO)) {
+				return;
+			}
+			logInternal(Level.INFO, String.format(pattern, args), null);
+		}
+		
+		@Override
+		public void infof(String pattern, Throwable t, Object... args) {
+			if (!isEnabled(Level.INFO)) {
+				return;
+			}
+			logInternal(Level.INFO, String.format(pattern, args), t);
+		}
+		
+		@Override
+		public void warningf(String pattern, Object... args) {
+			if (!isEnabled(Level.WARNING)) {
+				return;
+			}
+			logInternal(Level.WARNING, String.format(pattern, args), null);
+		}
+		
+		@Override
+		public void warningf(String pattern, Throwable t, Object... args) {
+			if (!isEnabled(Level.WARNING)) {
+				return;
+			}
+			logInternal(Level.WARNING, String.format(pattern, args), t);
+		}
+		
+		@Override
+		public void errorf(String pattern, Object... args) {
+			if (!isEnabled(Level.ERROR)) {
+				return;
+			}
+			logInternal(Level.ERROR, String.format(pattern, args), null);
+		}
+		
+		@Override
+		public void errorf(String pattern, Throwable t, Object... args) {
+			if (!isEnabled(Level.ERROR)) {
+				return;
+			}
+			logInternal(Level.ERROR, String.format(pattern, args), t);
+		}
+		
+		@Override
+		public void fatalf(String pattern, Object... args) {
+			if (!isEnabled(Level.FATAL)) {
+				return;
+			}
+			logInternal(Level.FATAL, String.format(pattern, args), null);
+		}
+		
+		@Override
+		public void fatalf(String pattern, Throwable t, Object... args) {
+			if (!isEnabled(Level.FATAL)) {
+				return;
+			}
+			logInternal(Level.FATAL, String.format(pattern, args), t);
+		}
+		
 		@Override
 		public boolean isEnabled(Level level) {
 			return getLogger().isLoggable(toLogLevel(level));
