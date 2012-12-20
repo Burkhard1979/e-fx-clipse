@@ -4,14 +4,29 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
 import java.util.Map
 import java.io.ByteArrayInputStream
+import static extension at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.MavenUtils.*
 
 class ProductPomGenerator implements Generator<DynamicFile> {
 	override generate(DynamicFile file, Map<String,Object> data) {
-		val projectName = data.get("BundleProject_projectName") as String;
-		val productName = data.get("BundleProject_productName") as String;
-		val bundleId = data.get("BundleProject_bundleId") as String;
-		val bundleVersion = data.get("BundleProject_bundleVersion") as String;
-		val pomData = new PomData(productName + " - product feature", toPomGroupId(bundleId), bundleId +".product", toPomGroupId(bundleId), bundleId+".releng", toPomVersion(bundleVersion), "../"+projectName+".releng")
+		val relengGroupId = file.variables.findFirst([e| e.key.equals("relengGroupId")]).defaultValue;
+		val relengArtifactId = file.variables.findFirst([e| e.key.equals("relengArtifactId")]).defaultValue;
+		val relengVersion    = file.variables.findFirst([e| e.key.equals("baseVersion")]).defaultValue.toPomVersion;
+		val relengPath       = file.variables.findFirst([e| e.key.equals("relengPath")]).defaultValue;
+		
+		val groupId = file.variables.findFirst([e| e.key.equals("groupId")]).defaultValue;
+		val artifactId	= file.variables.findFirst([e| e.key.equals("artifactId")]).defaultValue;
+		val name = file.variables.findFirst([e| e.key.equals("name")]).defaultValue;
+		
+		val pomData = new PomData(
+			name, 
+			groupId, 
+			artifactId, 
+			relengGroupId, 
+			relengArtifactId, 
+			relengVersion, 
+			relengPath
+		)
+		
 		return new ByteArrayInputStream(generate(pomData).toString.bytes);
 	}
 	
