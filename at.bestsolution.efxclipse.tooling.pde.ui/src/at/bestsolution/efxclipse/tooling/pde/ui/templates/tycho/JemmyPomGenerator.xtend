@@ -25,8 +25,7 @@ class JemmyPomGenerator implements Generator<DynamicFile> {
 		
 		val groupId = file.variables.findFirst([e| e.key.equals("groupId")]).defaultValue;
 		val artifactId	= file.variables.findFirst([e| e.key.equals("artifactId")]).defaultValue;
-		
-		val description = file.variables.findFirst([e| e.key.equals("name")]).defaultValue;
+		val name = file.variables.findFirst([e| e.key.equals("name")]).defaultValue;
 	
 		val testSuiteBundle = file.variables.findFirst([e| e.key.equals("testBundleId")]).defaultValue;
 		val testSuiteClass = file.variables.findFirst([e| e.key.equals("testSuite")]).defaultValue;
@@ -34,7 +33,7 @@ class JemmyPomGenerator implements Generator<DynamicFile> {
 		val applicationFeature = file.variables.findFirst([e| e.key.equals("testProductFeature")]).defaultValue;
 		
 		val pomData = new JemmyPomData(
-			description,
+			name,
 			groupId,
 			artifactId,
 			relengGroupId,

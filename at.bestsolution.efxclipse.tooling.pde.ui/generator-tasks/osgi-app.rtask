@@ -229,6 +229,22 @@ RobotTask {
 				DynamicFile "pom.xml" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.FeaturePomGenerator" 
 					by "java"
+					{
+						## releng group id
+						STRING "relengGroupId" default "${Maven_GroupId}",
+						## releng artifact id
+						STRING "relengArtifactId" default "${BundleProject_bundleId}.releng",
+						## releng releng path
+						STRING "relengPath" default "../${BundleProject_bundleId}.releng",
+						## group id
+						STRING "groupId" default "${Maven_GroupId}",
+						## artifactId
+						STRING "artifactId" default "${BundleProject_bundleId}.jemmy",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## pom name
+						STRING "name" default "${BundleProject_productName} - application feature"
+					}
 					excluded-if "javascript" /# !TychoIntegration; #/
 			}
 		},

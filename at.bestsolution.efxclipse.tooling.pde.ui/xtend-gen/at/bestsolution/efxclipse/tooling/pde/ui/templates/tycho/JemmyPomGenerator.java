@@ -100,7 +100,7 @@ public class JemmyPomGenerator implements Generator<DynamicFile> {
         }
       };
     Variable _findFirst_6 = IterableExtensions.<Variable>findFirst(_variables_6, _function_6);
-    final String description = _findFirst_6.getDefaultValue();
+    final String name = _findFirst_6.getDefaultValue();
     EList<Variable> _variables_7 = file.getVariables();
     final Function1<Variable,Boolean> _function_7 = new Function1<Variable,Boolean>() {
         public Boolean apply(final Variable e) {
@@ -141,7 +141,7 @@ public class JemmyPomGenerator implements Generator<DynamicFile> {
       };
     Variable _findFirst_10 = IterableExtensions.<Variable>findFirst(_variables_10, _function_10);
     final String applicationFeature = _findFirst_10.getDefaultValue();
-    JemmyPomData _jemmyPomData = new JemmyPomData(description, groupId, artifactId, relengGroupId, relengArtifactId, relengVersion, relengPath, testSuiteBundle, testSuiteClass, testProductId, applicationFeature);
+    JemmyPomData _jemmyPomData = new JemmyPomData(name, groupId, artifactId, relengGroupId, relengArtifactId, relengVersion, relengPath, testSuiteBundle, testSuiteClass, testProductId, applicationFeature);
     final JemmyPomData pomData = _jemmyPomData;
     CharSequence _generate = this.generate(pomData);
     String _string = _generate.toString();
