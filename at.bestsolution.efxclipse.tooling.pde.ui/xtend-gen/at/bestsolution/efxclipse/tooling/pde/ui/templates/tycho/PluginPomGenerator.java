@@ -3,33 +3,90 @@ package at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.PomData;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Variable;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class PluginPomGenerator implements Generator<DynamicFile> {
   public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
-    Object _get = data.get("BundleProject_projectName");
-    final String projectName = ((String) _get);
-    Object _get_1 = data.get("BundleProject_productName");
-    final String productName = ((String) _get_1);
-    Object _get_2 = data.get("BundleProject_bundleName");
-    final String bundleName = ((String) _get_2);
-    Object _get_3 = data.get("BundleProject_bundleId");
-    final String bundleId = ((String) _get_3);
-    Object _get_4 = data.get("BundleProject_bundleVersion");
-    final String bundleVersion = ((String) _get_4);
-    String _plus = (productName + " - ");
-    String _plus_1 = (_plus + bundleName);
-    String _pomGroupId = this.toPomGroupId(bundleId);
-    String _pomGroupId_1 = this.toPomGroupId(bundleId);
-    String _plus_2 = (bundleId + ".releng");
-    String _pomVersion = this.toPomVersion(bundleVersion);
-    String _plus_3 = ("../" + projectName);
-    String _plus_4 = (_plus_3 + ".releng");
-    PomData _pomData = new PomData(_plus_1, _pomGroupId, bundleId, _pomGroupId_1, _plus_2, _pomVersion, _plus_4);
+    EList<Variable> _variables = file.getVariables();
+    final Function1<Variable,Boolean> _function = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("relengGroupId");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst = IterableExtensions.<Variable>findFirst(_variables, _function);
+    final String relengGroupId = _findFirst.getDefaultValue();
+    EList<Variable> _variables_1 = file.getVariables();
+    final Function1<Variable,Boolean> _function_1 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("relengArtifactId");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_1 = IterableExtensions.<Variable>findFirst(_variables_1, _function_1);
+    final String relengArtifactId = _findFirst_1.getDefaultValue();
+    EList<Variable> _variables_2 = file.getVariables();
+    final Function1<Variable,Boolean> _function_2 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("baseVersion");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_2 = IterableExtensions.<Variable>findFirst(_variables_2, _function_2);
+    String _defaultValue = _findFirst_2.getDefaultValue();
+    final String relengVersion = this.toPomVersion(_defaultValue);
+    EList<Variable> _variables_3 = file.getVariables();
+    final Function1<Variable,Boolean> _function_3 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("relengPath");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_3 = IterableExtensions.<Variable>findFirst(_variables_3, _function_3);
+    final String relengPath = _findFirst_3.getDefaultValue();
+    EList<Variable> _variables_4 = file.getVariables();
+    final Function1<Variable,Boolean> _function_4 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("groupId");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_4 = IterableExtensions.<Variable>findFirst(_variables_4, _function_4);
+    final String groupId = _findFirst_4.getDefaultValue();
+    EList<Variable> _variables_5 = file.getVariables();
+    final Function1<Variable,Boolean> _function_5 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("artifactId");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_5 = IterableExtensions.<Variable>findFirst(_variables_5, _function_5);
+    final String artifactId = _findFirst_5.getDefaultValue();
+    EList<Variable> _variables_6 = file.getVariables();
+    final Function1<Variable,Boolean> _function_6 = new Function1<Variable,Boolean>() {
+        public Boolean apply(final Variable e) {
+          String _key = e.getKey();
+          boolean _equals = _key.equals("name");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Variable _findFirst_6 = IterableExtensions.<Variable>findFirst(_variables_6, _function_6);
+    final String name = _findFirst_6.getDefaultValue();
+    PomData _pomData = new PomData(name, groupId, artifactId, relengGroupId, relengArtifactId, relengVersion, relengPath);
     final PomData pomData = _pomData;
     CharSequence _generate = this.generate(pomData);
     String _string = _generate.toString();
