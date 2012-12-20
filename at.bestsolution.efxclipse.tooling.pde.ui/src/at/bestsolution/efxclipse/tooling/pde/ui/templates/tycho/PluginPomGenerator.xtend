@@ -4,6 +4,7 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
 import java.util.Map
 import java.io.ByteArrayInputStream
+import static extension at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.MavenUtils.*
 
 class PluginPomGenerator implements Generator<DynamicFile> {
 	override generate(DynamicFile file, Map<String,Object> data) {
@@ -26,17 +27,6 @@ class PluginPomGenerator implements Generator<DynamicFile> {
 			relengPath
 		)
 		return new ByteArrayInputStream(generate(pomData).toString.bytes);
-	}
-	
-	def toPomGroupId(String bundleId) {
-		if( bundleId.indexOf('.') != -1 ) {
-			return bundleId.substring(0,bundleId.lastIndexOf('.'));
-		}
-		return bundleId;
-	}
-	
-	def String toPomVersion(String version) {
-		return version.replace(".qualifier", "-SNAPSHOT");
 	}
 	
 	def generate(PomData data) '''<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

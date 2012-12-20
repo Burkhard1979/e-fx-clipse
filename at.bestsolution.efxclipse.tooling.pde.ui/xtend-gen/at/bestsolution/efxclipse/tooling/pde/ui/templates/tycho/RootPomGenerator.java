@@ -1,5 +1,6 @@
 package at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho;
 
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.MavenUtils;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.Repository;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomData;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
@@ -51,7 +52,7 @@ public class RootPomGenerator implements Generator<DynamicFile> {
       };
     Variable _findFirst_2 = IterableExtensions.<Variable>findFirst(_variables_2, _function_2);
     String _defaultValue = _findFirst_2.getDefaultValue();
-    final String version = this.toPomVersion(_defaultValue);
+    final String version = MavenUtils.toPomVersion(_defaultValue);
     EList<Variable> _variables_3 = file.getVariables();
     final Function1<Variable,Boolean> _function_3 = new Function1<Variable,Boolean>() {
         public Boolean apply(final Variable e) {
@@ -113,7 +114,7 @@ public class RootPomGenerator implements Generator<DynamicFile> {
         }
       };
     IterableExtensions.<Repository>forEach(_map, _function_8);
-    String _pomVersion = this.toPomVersion(version);
+    String _pomVersion = MavenUtils.toPomVersion(version);
     RootPomData _rootPomData = new RootPomData(name, groupId, artifactId, 
       null, null, null, null, _pomVersion, "0.16.0", "4.8.1", "1.8.4", "4.2", "0.1.1", "2.2.0-SNAPSHOT", modules, repos);
     final RootPomData pomdata = _rootPomData;
@@ -122,21 +123,6 @@ public class RootPomGenerator implements Generator<DynamicFile> {
     byte[] _bytes = _string.getBytes();
     ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
     return _byteArrayInputStream;
-  }
-  
-  public String toPomGroupId(final String bundleId) {
-    int _indexOf = bundleId.indexOf(".");
-    int _minus = (-1);
-    boolean _notEquals = (_indexOf != _minus);
-    if (_notEquals) {
-      int _lastIndexOf = bundleId.lastIndexOf(".");
-      return bundleId.substring(0, _lastIndexOf);
-    }
-    return bundleId;
-  }
-  
-  public String toPomVersion(final String version) {
-    return version.replace(".qualifier", "-SNAPSHOT");
   }
   
   public CharSequence generate(final RootPomData data) {

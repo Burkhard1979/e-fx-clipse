@@ -1,5 +1,6 @@
 package at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho;
 
+import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.MavenUtils;
 import at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.PomData;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
@@ -45,7 +46,7 @@ public class PluginPomGenerator implements Generator<DynamicFile> {
       };
     Variable _findFirst_2 = IterableExtensions.<Variable>findFirst(_variables_2, _function_2);
     String _defaultValue = _findFirst_2.getDefaultValue();
-    final String relengVersion = this.toPomVersion(_defaultValue);
+    final String relengVersion = MavenUtils.toPomVersion(_defaultValue);
     EList<Variable> _variables_3 = file.getVariables();
     final Function1<Variable,Boolean> _function_3 = new Function1<Variable,Boolean>() {
         public Boolean apply(final Variable e) {
@@ -93,21 +94,6 @@ public class PluginPomGenerator implements Generator<DynamicFile> {
     byte[] _bytes = _string.getBytes();
     ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
     return _byteArrayInputStream;
-  }
-  
-  public String toPomGroupId(final String bundleId) {
-    int _indexOf = bundleId.indexOf(".");
-    int _minus = (-1);
-    boolean _notEquals = (_indexOf != _minus);
-    if (_notEquals) {
-      int _lastIndexOf = bundleId.lastIndexOf(".");
-      return bundleId.substring(0, _lastIndexOf);
-    }
-    return bundleId;
-  }
-  
-  public String toPomVersion(final String version) {
-    return version.replace(".qualifier", "-SNAPSHOT");
   }
   
   public CharSequence generate(final PomData data) {

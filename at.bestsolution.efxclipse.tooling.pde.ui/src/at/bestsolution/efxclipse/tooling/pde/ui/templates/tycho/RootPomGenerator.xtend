@@ -5,12 +5,13 @@ import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile
 import java.util.Map
 import java.util.ArrayList
 import java.io.ByteArrayInputStream
+import static extension at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.MavenUtils.*
 
 class RootPomGenerator implements Generator<DynamicFile> {
 	override generate(DynamicFile file, Map<String,Object> data) {
 		val groupId = file.variables.findFirst([e| e.key.equals("groupId")]).defaultValue;
 		val artifactId	= file.variables.findFirst([e| e.key.equals("artifactId")]).defaultValue;
-		val version    = toPomVersion(file.variables.findFirst([e| e.key.equals("baseVersion")]).defaultValue);
+		val version    = file.variables.findFirst([e| e.key.equals("baseVersion")]).defaultValue.toPomVersion;
 		
 		val name = file.variables.findFirst([e| e.key.equals("name")]).defaultValue;
 		
@@ -34,17 +35,6 @@ class RootPomGenerator implements Generator<DynamicFile> {
 					null, null, null, null,toPomVersion(version),"0.16.0","4.8.1","1.8.4","4.2","0.1.1","2.2.0-SNAPSHOT",modules,repos); //FIXME Versions based on release!!!
 			
 		return new ByteArrayInputStream(generate(pomdata).toString.bytes);
-	}
-	
-	def toPomGroupId(String bundleId) {
-		if( bundleId.indexOf('.') != -1 ) {
-			return bundleId.substring(0,bundleId.lastIndexOf('.'));
-		}
-		return bundleId;
-	}
-	
-	def String toPomVersion(String version) {
-		return version.replace(".qualifier", "-SNAPSHOT");
 	}
 	
 	def generate(RootPomData data) '''<?xml version="1.0" encoding="UTF-8"?>

@@ -30,18 +30,6 @@ class FeaturePomGenerator implements Generator<DynamicFile> {
 		return new ByteArrayInputStream(generate(pomData).toString.bytes);
 	}
 	
-//	def toPomGroupId(String bundleId) {
-//		if( bundleId.indexOf('.') != -1 ) {
-//			return bundleId.substring(0,bundleId.lastIndexOf('.'));
-//		}
-//		return bundleId;
-//	}
-//	
-//	def String toPomVersion(String version) {
-//		return version.replace(".qualifier", "-SNAPSHOT");
-//	}
-//	
-	
 	def generate(PomData data) '''<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
