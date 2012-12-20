@@ -480,7 +480,7 @@ RobotTask {
 						## groupId
 						STRING "groupId" default "${Maven_GroupId}",
 						## groupId
-						STRING "artifactId" default "${Maven_GroupId}.releng",
+						STRING "artifactId" default "${BundleProject_bundleId}.releng",
 						## description
 						STRING "name" default "${BundleProject_productName} - releng",
 						## baseVersion
