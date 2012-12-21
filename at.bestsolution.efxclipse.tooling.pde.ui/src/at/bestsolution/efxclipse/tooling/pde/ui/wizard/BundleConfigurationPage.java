@@ -37,18 +37,14 @@ import org.osgi.framework.Version;
 import at.bestsolution.efxclipse.tooling.pde.ui.wizard.model.BundleProjectData;
 
 public class BundleConfigurationPage extends WizardPage {
-	private boolean propertiesModified;
-	private boolean initialized;
 	private BundleProjectData data;
 	
 	private ModifyListener propertiesListener = new ModifyListener() {
 		public void modifyText(ModifyEvent e) {
-			if( initialized ) {
-				propertiesModified = true;
-			}
 			setPageComplete(validate());
 		}
 	};
+	
 	private Text idText;
 	private Text versionText;
 	private Text nameText;
@@ -60,27 +56,11 @@ public class BundleConfigurationPage extends WizardPage {
 		this.data = data;
 		setPageComplete(false);
 	}
-
-	@Override
-	public void setVisible(boolean visible) {
-		if( visible )  {
-			if( ! propertiesModified ) {
-				try {
-					initialized = false;
-					idText.setText(Util.getValidId(data.getProjectname()));
-					versionText.setText("1.0.0.qualifier");	
-				} finally {
-					initialized = true;
-				}
-			}
-		}
-		super.setVisible(visible);
-	}
 	
 	protected boolean validate() {
 		setErrorMessage(null);
 		if( idText.getText().trim().isEmpty() ) {
-			setErrorMessage("ID is required");
+			setErrorMessage( getBundleIdLabel() + " is required");
 			return false;	
 		} else if( versionText.getText().trim().isEmpty() ) {
 			setErrorMessage("Version is required");
@@ -120,13 +100,14 @@ public class BundleConfigurationPage extends WizardPage {
 		propertiesGroup.setLayout(new GridLayout(3, false));
 
 		{
-			createLabel(propertiesGroup, "ID:");
+			createLabel(propertiesGroup, getBundleIdLabel()+":");
 			idText = createText(propertiesGroup, propertiesListener, 2);
 		}
 
 		{
 			createLabel(propertiesGroup, "Version:");
 			versionText = createText(propertiesGroup, propertiesListener, 2);
+			versionText.setText(data.getVersion());
 		}
 
 		{
@@ -142,6 +123,10 @@ public class BundleConfigurationPage extends WizardPage {
 		}
 
 		createExecutionEnvironmentControls(propertiesGroup);
+	}
+	
+	protected String getBundleIdLabel() {
+		return "ID";
 	}
 
 	private Label createLabel(Composite container, String text) {

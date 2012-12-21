@@ -8,7 +8,7 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.tooling.pde.ui.wizard.app;
+package at.bestsolution.efxclipse.tooling.pde.ui.wizard.bundle;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -28,31 +28,27 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.tooling.pde.ui.wizard.BundleConfigurationPage;
+import at.bestsolution.efxclipse.tooling.pde.ui.wizard.TychoConfigurationPage;
+import at.bestsolution.efxclipse.tooling.pde.ui.wizard.model.BundleProjectData;
 import at.bestsolution.efxclipse.tooling.rrobot.RRobot;
 import at.bestsolution.efxclipse.tooling.rrobot.dsl.FileLoader;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
 
-public class NewBundleApplicationWizard extends Wizard implements INewWizard {
-	private AppBundleProjectData data;
+public class NewBundleWizard extends Wizard implements INewWizard {
+	private BundleProjectData data;
 	
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		this.data = new AppBundleProjectData();
-		this.data.setJemmyTest(true);
-		this.data.setTychoIntegration(true);
-		this.data.setVersion("1.0.0.qualifier");
+		data = new BundleProjectData();
+		data.setTychoIntegration(true);
+		data.setVersion("1.0.0.qualifier");
 	}
 
 	@Override
 	public void addPages() {
 		super.addPages();
-		addPage(new BundleConfigurationPage(data,"bundle.page","New FX-OSGi application") {
-			@Override
-			protected String getBundleIdLabel() {
-				return "Bundle-ID-Prefix";
-			}
-		});
-		addPage(new GeneratorConfigurationPage(data, "generator.page","New FX-OSGi application"));
+		addPage(new BundleConfigurationPage(data,"bundle.page","New FX-OSGi Bundle"));
+		addPage(new TychoConfigurationPage(data,"bundle.page","New FX-OSGi Bundle",null));
 	}
 	
 	@Override
@@ -63,17 +59,20 @@ public class NewBundleApplicationWizard extends Wizard implements INewWizard {
 		final RRobot r = ctx.getService(ref);
 
 		FileLoader loader = FileLoader.createLoader();
-		final RobotTask task = loader.loadTask(URI.createPlatformPluginURI("/at.bestsolution.efxclipse.tooling.pde.ui/generator-tasks/osgi-app.rtask", true));
+		final RobotTask task = loader.loadTask(URI.createPlatformPluginURI("/at.bestsolution.efxclipse.tooling.pde.ui/generator-tasks/osgi-bundle.rtask", true));
 
 		final Map<String,Object> additionalData = new HashMap<>();
-		additionalData.put("Maven_GroupId", data.getSymbolicname());
+		additionalData.put("Maven_GroupId", data.getTychoGroupId());
+		additionalData.put("Maven_RelengArtifactId", data.getTychoRelengArtifactId());
+		additionalData.put("Maven_RelengArtifactVersion", data.getTychoRelengArtifactVersion());
+		additionalData.put("Maven_RelengArtifactPath", data.getTychoRelengArtifactPath());
+		additionalData.put("BundleProject_bundleId",data.getSymbolicname());
+		additionalData.put("BundleProject_projectName",data.getSymbolicname());
+		additionalData.put("BundleProject_bundleName",data.getBundleDescription());
 		additionalData.put("BundleProject_bundleVendor", data.getVendor());
-		additionalData.put("BundleProject_productName", data.getProductName());
 		additionalData.put("BundleProject_bundleVersion", data.getVersion());
 		additionalData.put("BundleProject_EE", data.getEEnv());
 		additionalData.put("TychoIntegration", data.isTychoIntegration());
-		additionalData.put("NativeExport", data.isNativeExport());
-		additionalData.put("EclipseDI", data.isDiApp());
 		
 		WorkspaceModifyOperation w = new WorkspaceModifyOperation() {
 			

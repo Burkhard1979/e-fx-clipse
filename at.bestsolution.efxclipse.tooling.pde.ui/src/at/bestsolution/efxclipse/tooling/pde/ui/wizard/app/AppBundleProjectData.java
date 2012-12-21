@@ -14,8 +14,9 @@ import at.bestsolution.efxclipse.tooling.pde.ui.wizard.model.BundleProjectData;
 
 class AppBundleProjectData extends BundleProjectData {
 	private boolean jemmyTest;
-	private boolean tychoIntegration;
 	private boolean diApp;
+	private boolean nativeExport;
+	private String productName;
 	
 	public boolean isJemmyTest() {
 		return jemmyTest;
@@ -23,16 +24,22 @@ class AppBundleProjectData extends BundleProjectData {
 	public void setJemmyTest(boolean jemmyTest) {
 		this.jemmyTest = jemmyTest;
 	}
-	public boolean isTychoIntegration() {
-		return tychoIntegration;
-	}
-	public void setTychoIntegration(boolean tychoIntegration) {
-		this.tychoIntegration = tychoIntegration;
-	}
 	public boolean isDiApp() {
 		return diApp;
 	}
 	public void setDiApp(boolean diApp) {
 		this.diApp = diApp;
 	}
+	public boolean isNativeExport() {
+		return nativeExport;
+	}
+	public void setNativeExport(boolean nativeExport) {
+		this.nativeExport = nativeExport;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}	
 }

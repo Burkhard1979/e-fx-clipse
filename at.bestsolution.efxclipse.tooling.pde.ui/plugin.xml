@@ -4,17 +4,6 @@
    <extension
          point="org.eclipse.pde.ui.pluginContent">
       <wizard
-            class="at.bestsolution.efxclipse.tooling.pde.ui.FXOSGiAppWizard"
-            icon="icons/application_lightning.png"
-            id="at.bestsolution.efxclipse.tooling.pde.ui.osgiapp"
-            java="true"
-            name="%wizard.name"
-            pureOSGi="false"
-            rcp="true"
-            requiresActivator="false"
-            ui-content="false">
-      </wizard>
-      <wizard
             class="at.bestsolution.efxclipse.tooling.pde.ui.FXOSGiBundleWizard"
             icon="icons/application_lightning.png"
             id="at.bestsolution.efxclipse.tooling.pde.ui.bundle"
@@ -43,17 +32,6 @@
             name="JavaFX Eclipse 3.x RCP"
             rcp="true">
       </wizard>
-      <wizard
-            class="at.bestsolution.efxclipse.tooling.pde.ui.JemmyJUnitTestProjectWizard"
-            icon="icons/application_lightning.png"
-            id="at.bestsolution.efxclipse.tooling.pde.ui.newjemmy"
-            java="true"
-            name="JemmyFX Testproject"
-            pureOSGi="false"
-            rcp="false"
-            requiresActivator="false"
-            ui-content="false">
-      </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.newWizards">
@@ -73,11 +51,24 @@
             project="false">
       </wizard>
       <wizard
-            category="at.bestsolution.efxclipse.tooling"
+            category="at.bestsolution.efxclipse.tooling/at.bestsolution.efxclipse.tooling.pde.ui.osgi"
             class="at.bestsolution.efxclipse.tooling.pde.ui.wizard.app.NewBundleApplicationWizard"
             icon="icons/application_lightning.png"
             id="at.bestsolution.efxclipse.tooling.pde.ui.osgi.app"
             name="OSGi Application"
+            project="true">
+      </wizard>
+      <category
+            id="at.bestsolution.efxclipse.tooling.pde.ui.osgi"
+            name="OSGI"
+            parentCategory="at.bestsolution.efxclipse.tooling">
+      </category>
+      <wizard
+            category="at.bestsolution.efxclipse.tooling/at.bestsolution.efxclipse.tooling.pde.ui.osgi"
+            class="at.bestsolution.efxclipse.tooling.pde.ui.wizard.bundle.NewBundleWizard"
+            icon="icons/application_lightning.png"
+            id="at.bestsolution.efxclipse.tooling.pde.ui.osgi.bundle"
+            name="OSGi Bundle"
             project="true">
       </wizard>
    </extension>

@@ -10,23 +10,20 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.pde.ui.wizard.model;
 
-import org.eclipse.core.runtime.Path;
 
 public class BundleProjectData {
-	private String projectname;
-	private Path projectPath;
 	private String symbolicname;
 	private String bundleDescription;
 	private String version;
 	private String vendor;
 	private String EEnv;
 	
-	public String getProjectname() {
-		return projectname;
-	}
-	public void setProjectname(String projectname) {
-		this.projectname = projectname;
-	}
+	private boolean tychoIntegration;
+	private String tychoGroupId;
+	private String tychoRelengArtifactId;
+	private String tychoRelengArtifactVersion;
+	private String tychoRelengArtifactPath;
+	
 	public String getSymbolicname() {
 		return symbolicname;
 	}
@@ -51,16 +48,41 @@ public class BundleProjectData {
 	public void setEEnv(String eEnv) {
 		EEnv = eEnv;
 	}
-	public void setProjectPath(Path projectPath) {
-		this.projectPath = projectPath;
-	}
-	public Path getProjectPath() {
-		return projectPath;
-	}
 	public void setBundleDescription(String bundleDescription) {
 		this.bundleDescription = bundleDescription;
 	}
 	public String getBundleDescription() {
 		return bundleDescription;
+	}
+	
+	public boolean isTychoIntegration() {
+		return tychoIntegration;
+	}
+	public void setTychoIntegration(boolean tychoIntegration) {
+		this.tychoIntegration = tychoIntegration;
+	}
+	public String getTychoGroupId() {
+		return tychoGroupId;
+	}
+	public void setTychoGroupId(String tychoGroupId) {
+		this.tychoGroupId = tychoGroupId;
+	}
+	public String getTychoRelengArtifactId() {
+		return tychoRelengArtifactId;
+	}
+	public void setTychoRelengArtifactId(String tychoRelengArtifactId) {
+		this.tychoRelengArtifactId = tychoRelengArtifactId;
+	}
+	public String getTychoRelengArtifactVersion() {
+		return tychoRelengArtifactVersion;
+	}
+	public void setTychoRelengArtifactVersion(String tychoRelengArtifactVersion) {
+		this.tychoRelengArtifactVersion = tychoRelengArtifactVersion;
+	}
+	public String getTychoRelengArtifactPath() {
+		return tychoRelengArtifactPath;
+	}
+	public void setTychoRelengArtifactPath(String tychoRelengArtifactPath) {
+		this.tychoRelengArtifactPath = tychoRelengArtifactPath;
 	}
 }

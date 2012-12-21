@@ -1,11 +1,11 @@
 RobotTask {
 	variables = {
 		## Maven Group Id
-		STRING "Maven_GroupId" default "my.app",
+		STRING "Maven_GroupId" default "my.sample.osgi",
 		## Name of the project
-		STRING "BundleProject_projectName" default "my.app.sample",  
+		STRING "BundleProject_projectName" default "${Maven_GroupId}.app",  
 		## Symbolic id of the bundle
-		STRING "BundleProject_bundleId" default "my.app.sample",
+		STRING "BundleProject_bundleId" default "${Maven_GroupId}.app",
 		## Name of the Bundle
 		STRING "BundleProject_bundleName" default "My Sample App",
 		## Vendor of the Bundle
@@ -265,7 +265,7 @@ RobotTask {
 			}
 		},
 		BundleProject "${BundleProject_projectName}.jemmy" {
-			manifest = ManifestFile "${BundleProject_bundleId}.jemmy" "1.0.0.qualifier" "JavaSE-1.7" {
+			manifest = ManifestFile "${BundleProject_bundleId}.jemmy" "1.0.0.qualifier" "${BundleProject_EE}" {
 				bundlename = "${BundleProject_bundleName} Jemmy UI Tests"
 				vendor = "${BundleProject_bundleVendor}"
 				importedPackages = {
