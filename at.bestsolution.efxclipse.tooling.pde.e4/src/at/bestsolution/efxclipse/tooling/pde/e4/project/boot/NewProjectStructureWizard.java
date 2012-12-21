@@ -64,7 +64,7 @@ public class NewProjectStructureWizard extends Wizard implements INewWizard {
 		final RRobot r = ctx.getService(ref);
 
 		FileLoader loader = FileLoader.createLoader();
-		final RobotTask task = loader.loadTask(URI.createPlatformPluginURI("/at.bestsolution.efxclipse.tooling.pde.ui/generator-tasks/osgi-app.rtask", true));
+		final RobotTask task = loader.loadTask(URI.createPlatformPluginURI("/at.bestsolution.efxclipse.tooling.pde.e4/generator-tasks/e4App.rtask", true));
 
 		final Map<String,Object> additionalData = new HashMap<>();
 		additionalData.put("Maven_GroupId", data.getSymbolicname());
