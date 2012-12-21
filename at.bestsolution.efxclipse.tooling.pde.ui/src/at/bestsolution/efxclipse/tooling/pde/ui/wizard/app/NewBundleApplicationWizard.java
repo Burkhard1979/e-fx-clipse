@@ -40,6 +40,7 @@ public class NewBundleApplicationWizard extends Wizard implements INewWizard {
 		this.data = new AppBundleProjectData();
 		this.data.setJemmyTest(true);
 		this.data.setTychoIntegration(true);
+		this.data.setNativeExport(true);
 		this.data.setVersion("1.0.0.qualifier");
 	}
 

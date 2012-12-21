@@ -2,10 +2,14 @@ RobotTask {
 	variables = {
 		## Maven Group Id
 		STRING "Maven_GroupId" default "my.sample",
+		## Bundle Version
+		STRING "BundleProject_bundleVersion" default "1.0.0.qualifier",
 		## Releng Maven Artifact Id
 		STRING "Maven_RelengArtifactId" default "my.sample.osgi.releng",
 		## Releng Maven Artifact Version
 		STRING "Maven_RelengArtifactVersion" default "${BundleProject_bundleVersion}",
+		## Releng Maven Artifact Path
+		STRING "Maven_RelengArtifactPath" default "../${Maven_RelengArtifactId}",
 		## Name of the project
 		STRING "BundleProject_projectName" default "${Maven_GroupId}.osgi",  
 		## Symbolic id of the bundle
@@ -14,8 +18,6 @@ RobotTask {
 		STRING "BundleProject_bundleName" default "My Sample App",
 		## Vendor of the Bundle
 		STRING "BundleProject_bundleVendor" default "My Company",
-		## Bundle Version
-		STRING "BundleProject_bundleVersion" default "1.0.0.qualifier",
 		## Bundle Execution Environment
 		STRING "BundleProject_EE" default "JavaSE-1.7",
 		## Tycho integration
@@ -69,8 +71,10 @@ RobotTask {
 						STRING "relengGroupId" default "${Maven_GroupId}",
 						## releng artifact id
 						STRING "relengArtifactId" default "${Maven_RelengArtifactId}",
+						## releng releng version
+						STRING "relengArtifactVersion" default "${Maven_RelengArtifactVersion}",
 						## releng releng path
-						STRING "relengPath" default "../${Maven_RelengArtifactId}",
+						STRING "relengPath" default "${Maven_RelengArtifactPath}",
 						## group id
 						STRING "groupId" default "${Maven_GroupId}",
 						## artifactId
