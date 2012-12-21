@@ -78,7 +78,7 @@ public class DIApplicationClassTpl implements Generator<DynamicFile> {
     _builder.append("primaryStage.setHeight(400);");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("primaryStage.setTitle(\"$windowTitle$\");");
+    _builder.append("primaryStage.setTitle(\"Hello World\");");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("primaryStage.show();");

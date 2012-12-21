@@ -36,7 +36,7 @@ public class MainApplication {
 		primaryStage.setScene(s);
 		primaryStage.setWidth(300);
 		primaryStage.setHeight(400);
-		primaryStage.setTitle("$windowTitle$");
+		primaryStage.setTitle("Hello World");
 		primaryStage.show();
 	}
 }
