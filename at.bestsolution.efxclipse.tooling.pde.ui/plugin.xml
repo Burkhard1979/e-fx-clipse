@@ -4,17 +4,6 @@
    <extension
          point="org.eclipse.pde.ui.pluginContent">
       <wizard
-            class="at.bestsolution.efxclipse.tooling.pde.ui.FXOSGiBundleWizard"
-            icon="icons/application_lightning.png"
-            id="at.bestsolution.efxclipse.tooling.pde.ui.bundle"
-            java="true"
-            name="%wizard.name.0"
-            pureOSGi="false"
-            rcp="false"
-            requiresActivator="false"
-            ui-content="false">
-      </wizard>
-      <wizard
             class="at.bestsolution.efxclipse.tooling.pde.ui.E3PluginWizard"
             icon="icons/application_lightning.png"
             id="at.bestsolution.efxclipse.tooling.pde.ui.3xpart"
