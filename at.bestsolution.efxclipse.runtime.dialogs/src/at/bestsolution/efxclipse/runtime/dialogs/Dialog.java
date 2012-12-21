@@ -11,6 +11,7 @@
 package at.bestsolution.efxclipse.runtime.dialogs;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javafx.beans.value.ChangeListener;
@@ -138,13 +139,22 @@ public abstract class Dialog {
 		stage.close();
 	}
 	
+	protected List<String> getStylesheets() {
+		if( parent != null ) {
+			return Collections.unmodifiableList(parent.getScene().getStylesheets());
+		}
+		return Collections.emptyList();
+	}
+	
 	protected Stage create() {
 		Stage stage = new Stage(StageStyle.UTILITY);
 		stage.setTitle(title);
 // Causes problems when embedded in SWT		
 		stage.initOwner(parent);
 		Parent content = createContents();
-		stage.setScene(new Scene(content));
+		Scene s = new Scene(content);
+		s.getStylesheets().addAll(getStylesheets());
+		stage.setScene(s);
 		return stage;
 	}
 	
