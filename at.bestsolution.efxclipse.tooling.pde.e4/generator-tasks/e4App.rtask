@@ -15,6 +15,8 @@ RobotTask {
 		STRING "BundleProject_productName" default "My Sample Application",
 		## Bundle Version
 		STRING "BundleProject_bundleVersion" default "1.0.0.qualifier",
+		## Bundle Execution Environment
+		STRING "BundleProject_EE" default "JavaSE-1.7",
 		## Tycho integration
 		BOOLEAN "TychoIntegration" default "true",
 		## Native export integration
