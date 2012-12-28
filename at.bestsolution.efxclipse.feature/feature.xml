@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.bestsolution.efxclipse.feature"
-      label="e(fx)clipse - All in One - (do not install)"
-      version="0.1.1.qualifier"
+      label="e(fx)clipse - All in One"
+      version="0.8.0.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">

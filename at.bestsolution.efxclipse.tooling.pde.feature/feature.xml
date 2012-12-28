@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.tooling.pde.feature"
       label="e(fx)clipse - Single - PDE support"
-      version="0.1.1.qualifier"
+      version="0.8.0.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
