@@ -66,17 +66,26 @@ public class BundleConfigurationPage extends WizardPage {
 			setErrorMessage("Version is required");
 			return false;
 		} else {
-			try {
-				new Version(versionText.getText());	
-			} catch( IllegalArgumentException e ) {
-				setErrorMessage("Invalid version definition");
-				return false;
+			if(versionText != null ) {
+				try {
+					new Version(versionText.getText());	
+				} catch( IllegalArgumentException e ) {
+					setErrorMessage("Invalid version definition");
+					return false;
+				}	
 			}
 		}
 		
 		data.setSymbolicname(idText.getText().trim());
-		data.setBundleDescription(nameText.getText());
-		data.setVersion(versionText.getText());
+		
+		if( nameText != null ) {
+			data.setBundleDescription(nameText.getText());	
+		}
+		
+		if( versionText != null ) {
+			data.setVersion(versionText.getText());	
+		}
+		
 		data.setVendor(vendorText.getText().trim().isEmpty() ? null : vendorText.getText());
 		data.setEEnv(eeChoice.getText());
 		
@@ -104,12 +113,14 @@ public class BundleConfigurationPage extends WizardPage {
 			idText = createText(propertiesGroup, propertiesListener, 2);
 		}
 
+		if( withBundleVersion() )
 		{
 			createLabel(propertiesGroup, "Version:");
 			versionText = createText(propertiesGroup, propertiesListener, 2);
 			versionText.setText(data.getVersion());
 		}
 
+		if( withBundleDescription() )
 		{
 			createLabel(propertiesGroup, "Name:");
 			nameText = createText(propertiesGroup, propertiesListener, 2);
@@ -129,6 +140,14 @@ public class BundleConfigurationPage extends WizardPage {
 		return "ID";
 	}
 
+	protected boolean withBundleDescription() {
+		return true;
+	}
+	
+	protected boolean withBundleVersion() {
+		return true;
+	}
+	
 	private Label createLabel(Composite container, String text) {
 		Label label = new Label(container, SWT.NONE);
 		label.setText(text);
