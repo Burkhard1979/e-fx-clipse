@@ -62,7 +62,7 @@ public class BundleConfigurationPage extends WizardPage {
 		if( idText.getText().trim().isEmpty() ) {
 			setErrorMessage( getBundleIdLabel() + " is required");
 			return false;	
-		} else if( versionText.getText().trim().isEmpty() ) {
+		} else if( versionText != null && versionText.getText().trim().isEmpty() ) {
 			setErrorMessage("Version is required");
 			return false;
 		} else {
