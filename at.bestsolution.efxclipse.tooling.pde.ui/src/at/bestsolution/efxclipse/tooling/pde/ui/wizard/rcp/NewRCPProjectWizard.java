@@ -8,10 +8,8 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.tooling.pde.ui.wizard;
+package at.bestsolution.efxclipse.tooling.pde.ui.wizard.rcp;
 
-public class Util {
-	public static String getValidId(String projectName) {
-		return projectName.replaceAll("[^a-zA-Z0-9\\._-]", "_"); //$NON-NLS-1$ //$NON-NLS-2$
-	}
+public class NewRCPProjectWizard {
+
 }

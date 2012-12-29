@@ -1,0 +1,118 @@
+package at.bestsolution.efxclipse.tooling.pde.ui.wizard.rcp.tpl;
+
+import at.bestsolution.efxclipse.tooling.pde.ui.wizard.Util;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
+import java.io.InputStream;
+import java.util.Map;
+import org.eclipse.xtend2.lib.StringConcatenation;
+
+@SuppressWarnings("all")
+public class ApplicationTpl implements Generator<DynamicFile> {
+  public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
+    final String packageName = Util.getCuPackagename(file);
+    CharSequence _generate = this.generate(packageName);
+    return Util.toStream(_generate);
+  }
+  
+  public CharSequence generate(final String packageName) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    _builder.append(packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("import org.eclipse.equinox.app.IApplication;");
+    _builder.newLine();
+    _builder.append("import org.eclipse.equinox.app.IApplicationContext;");
+    _builder.newLine();
+    _builder.append("import org.eclipse.swt.widgets.Display;");
+    _builder.newLine();
+    _builder.append("import org.eclipse.ui.IWorkbench;");
+    _builder.newLine();
+    _builder.append("import org.eclipse.ui.PlatformUI;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class $applicationClass$ implements IApplication {");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public Object start(IApplicationContext context) throws Exception {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("Display display = PlatformUI.createDisplay();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("try {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("if (returnCode == PlatformUI.RETURN_RESTART)");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("return IApplication.EXIT_RESTART;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("else");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("return IApplication.EXIT_OK;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("} finally {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("display.dispose();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public void stop() {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("if (!PlatformUI.isWorkbenchRunning())");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("return;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("final IWorkbench workbench = PlatformUI.getWorkbench();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("final Display display = workbench.getDisplay();");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("display.syncExec(new Runnable() {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("public void run() {");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("if (!display.isDisposed())");
+    _builder.newLine();
+    _builder.append("\t\t\t\t\t");
+    _builder.append("workbench.close();");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("});");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+}

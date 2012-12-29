@@ -8,7 +8,7 @@
             icon="icons/application_lightning.png"
             id="at.bestsolution.efxclipse.tooling.pde.ui.3xpart"
             java="true"
-            name="JavaFX Eclipse 3.x ViewPart"
+            name="JavaFX Eclipse 3.x Project"
             pureOSGi="false"
             rcp="false"
             requiresActivator="false"
@@ -36,7 +36,7 @@
             class="at.bestsolution.efxclipse.tooling.pde.ui.E3ViewPartClassWizard"
             icon="icons/application_lightning.png"
             id="at.bestsolution.efxclipse.tooling.pde.ui.fxviewpart"
-            name="Eclipse 3.x ViewPart"
+            name="Eclipse 3.x ViewPart Class"
             project="false">
       </wizard>
       <wizard
@@ -44,7 +44,7 @@
             class="at.bestsolution.efxclipse.tooling.pde.ui.wizard.app.NewBundleApplicationWizard"
             icon="icons/application_lightning.png"
             id="at.bestsolution.efxclipse.tooling.pde.ui.osgi.app"
-            name="OSGi Application"
+            name="OSGi Application Project"
             project="true">
       </wizard>
       <category
@@ -57,7 +57,7 @@
             class="at.bestsolution.efxclipse.tooling.pde.ui.wizard.bundle.NewBundleWizard"
             icon="icons/application_lightning.png"
             id="at.bestsolution.efxclipse.tooling.pde.ui.osgi.bundle"
-            name="OSGi Bundle"
+            name="OSGi Bundle Project"
             project="true">
       </wizard>
    </extension>
