@@ -34,12 +34,12 @@ public class ViewPartTpl implements Generator<DynamicFile> {
     _builder.newLine();
     _builder.newLine();
     _builder.newLine();
-    _builder.append("public class MainViewPart extends FXViewPart {");
+    _builder.append("public class ViewPart extends FXViewPart {");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public static final String ID = \"");
     _builder.append(bundleId, "	");
-    _builder.append(".MainViewPart\";");
+    _builder.append(".ViewPart\";");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();

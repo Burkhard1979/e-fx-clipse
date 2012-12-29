@@ -22,8 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 
-public class MainViewPart extends FXViewPart {
-	public static final String ID = "«bundleId».MainViewPart";
+public class ViewPart extends FXViewPart {
+	public static final String ID = "«bundleId».ViewPart";
 	
 	private Button button;
 	

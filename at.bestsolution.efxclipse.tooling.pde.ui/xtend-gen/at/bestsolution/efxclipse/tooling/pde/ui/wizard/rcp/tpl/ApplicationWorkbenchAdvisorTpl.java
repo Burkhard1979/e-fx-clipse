@@ -10,12 +10,13 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 @SuppressWarnings("all")
 public class ApplicationWorkbenchAdvisorTpl implements Generator<DynamicFile> {
   public InputStream generate(final DynamicFile file, final Map<String,Object> data) {
+    final String bundleId = Util.getVariableValue(file, "bundleId");
     final String packageName = Util.getCuPackagename(file);
-    CharSequence _generate = this.generate(packageName);
+    CharSequence _generate = this.generate(bundleId, packageName);
     return Util.toStream(_generate);
   }
   
-  public CharSequence generate(final String packageName) {
+  public CharSequence generate(final String bundleId, final String packageName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     _builder.append(packageName, "");
@@ -32,8 +33,10 @@ public class ApplicationWorkbenchAdvisorTpl implements Generator<DynamicFile> {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("private static final String PERSPECTIVE_ID = \"$pluginId$.perspective\"; //$$NON-NLS-1$$");
-    _builder.newLine();
+    _builder.append("private static final String PERSPECTIVE_ID = \"");
+    _builder.append(bundleId, "	");
+    _builder.append(".perspective\"; //$$NON-NLS-1$$");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("    ");
     _builder.append("public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {");

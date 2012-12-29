@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
-public class $applicationClass$ implements IApplication {
+public class Application implements IApplication {
 
 	public Object start(IApplicationContext context) throws Exception {
 		Display display = PlatformUI.createDisplay();

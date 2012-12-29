@@ -33,7 +33,7 @@ public class ApplicationTpl implements Generator<DynamicFile> {
     _builder.append("import org.eclipse.ui.PlatformUI;");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("public class $applicationClass$ implements IApplication {");
+    _builder.append("public class Application implements IApplication {");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
