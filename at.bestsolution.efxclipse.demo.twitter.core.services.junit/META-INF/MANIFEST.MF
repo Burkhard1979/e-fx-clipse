@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Junit
-Bundle-SymbolicName: at.bestsolution.efxclipse.demo.twitter.core.services.junit
-Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: BestSolution.at
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
