@@ -3912,8 +3912,9 @@ public class FXMLConverter {
   }
   
   public String validateId(final String value) {
-    String _replace = value.replace(".", "_dot");
-    return _replace.replace("-", "_dash");
+    String _replaceAll = value.replaceAll("\\.", "_dot");
+    String _replaceAll_1 = _replaceAll.replaceAll(" ", "_space");
+    return _replaceAll_1.replaceAll(":", "_colon");
   }
   
   public CharSequence handle(final EObject element) {

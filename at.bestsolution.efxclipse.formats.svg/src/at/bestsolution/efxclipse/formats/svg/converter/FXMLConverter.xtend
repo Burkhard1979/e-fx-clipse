@@ -1071,6 +1071,7 @@ class FXMLConverter {
 	}
 	
 	def validateId(String value) {
-		return value.replace(".","_dot").replace("-","_dash");
+		// TODO replace http://www.w3.org/TR/2008/REC-xml-20081126/#NT-Name vs http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
+		return value.replaceAll("\\.","_dot").replaceAll(" ","_space").replaceAll(":","_colon");
 	}
 }
