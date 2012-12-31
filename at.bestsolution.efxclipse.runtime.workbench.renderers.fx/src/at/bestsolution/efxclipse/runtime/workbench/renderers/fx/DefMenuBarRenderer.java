@@ -10,6 +10,9 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 
@@ -17,6 +20,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuBarRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuBar;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuElement;
@@ -31,10 +35,17 @@ public class DefMenuBarRenderer extends BaseMenuBarRenderer<MenuBar> {
 	}
 	
 	public static class WMenuBarImpl extends WLayoutedWidgetImpl<MenuBar, MenuBar, MMenu> implements WMenuBar<MenuBar> {
-
+		private boolean nativeMenu;
+		
+		@Inject
+		public WMenuBarImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MMenu menu) {
+			this.nativeMenu = menu.getPersistedState().get("fx.menubar.native") != null ? Boolean.parseBoolean(menu.getPersistedState().get("fx.menubar.native")) : false;
+		}
+		
 		@Override
 		protected MenuBar createWidget() {
 			MenuBar b = new MenuBar();
+			b.setUseSystemMenuBar(nativeMenu);
 			return b;
 		}
 
