@@ -447,7 +447,7 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		}
 
 		@Inject
-		public void setPersistedDate(@Named(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + BaseWindowRenderer.KEY_FULL_SCREEN) @Optional String fullScreen) {
+		public void setFullscreen(@Named(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + BaseWindowRenderer.KEY_FULL_SCREEN) @Optional String fullScreen) {
 			if( fullScreen != null ) {
 				this.fullscreen = Boolean.parseBoolean(fullScreen);
 				if( stage != null ) {
