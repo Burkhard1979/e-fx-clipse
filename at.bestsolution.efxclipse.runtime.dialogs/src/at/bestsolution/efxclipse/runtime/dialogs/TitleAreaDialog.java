@@ -43,8 +43,19 @@ public abstract class TitleAreaDialog extends Dialog {
 		
 		VBox messageArea = new VBox();
 		messageArea.setPadding(new Insets(10, 0, 0, 0));
-		messageArea.getChildren().add(new Label(title));
-		messageArea.getChildren().add(new Label(message));
+		messageArea.getStyleClass().add("titleDialog_MessageArea");
+		
+		{
+			Label l = new Label(title);
+			l.getStyleClass().add("titleDialog_Title");
+			messageArea.getChildren().add(l);
+		}
+		
+		{
+			Label l = new Label(message);
+			l.getStyleClass().add("titleDialog_Message");
+			messageArea.getChildren().add(l);
+		}
 		
 		titleArea.setCenter(messageArea);
 		try {
