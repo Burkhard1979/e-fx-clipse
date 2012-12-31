@@ -24,7 +24,6 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.WeakHashMap;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.RunnableFuture;
@@ -101,20 +100,22 @@ public class E4Application extends AbstractJFXApplication {
 	@Override
 	protected void jfxStart(IApplicationContext applicationContext, Application jfxApplication, Stage primaryStage) {
 		workbench = createE4Workbench(applicationContext, jfxApplication, primaryStage);
-		instanceLocation = (Location) workbench.getContext().get(E4Workbench.INSTANCE_LOCATION);
+		if( workbench != null ) {
+			instanceLocation = (Location) workbench.getContext().get(E4Workbench.INSTANCE_LOCATION);
 
-		try {
-			if (!checkInstanceLocation(instanceLocation))
+			try {
+				if (!checkInstanceLocation(instanceLocation))
+					return;
+
+				workbenchContext = workbench.getContext();
+
+				// Create and run the UI (if any)
+				workbench.createAndRunUI(workbench.getApplication());
+
 				return;
-
-			workbenchContext = workbench.getContext();
-
-			// Create and run the UI (if any)
-			workbench.createAndRunUI(workbench.getApplication());
-
-			return;
-		} finally {
-			
+			} finally {
+				
+			}
 		}
 	}
 
@@ -232,7 +233,10 @@ public class E4Application extends AbstractJFXApplication {
 			lcManager = factory.create(lifeCycleURI, appContext);
 			if (lcManager != null) {
 				// Let the manager manipulate the appContext if desired
-				ContextInjectionFactory.invoke(lcManager, PostContextCreate.class, appContext, null);
+				Boolean rv = (Boolean) ContextInjectionFactory.invoke(lcManager, PostContextCreate.class, appContext, Boolean.TRUE);
+				if( rv != null && ! rv.booleanValue() ) {
+					return null;
+				}
 			}
 		}
 		// Create the app model and its context
