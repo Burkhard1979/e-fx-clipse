@@ -25,7 +25,7 @@ public class FXGraphOutputConfigurationProvider extends
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		OutputConfiguration defaultOutput = new OutputConfiguration(
 				IFileSystemAccess.DEFAULT_OUTPUT);
-		defaultOutput.setDescription("Output folder for generated Java files");
+		defaultOutput.setDescription("Output folder for generated FXML files");
 		defaultOutput.setOutputDirectory("src");
 		defaultOutput.setOverrideExistingResources(true);
 		defaultOutput.setCreateOutputDirectory(true);

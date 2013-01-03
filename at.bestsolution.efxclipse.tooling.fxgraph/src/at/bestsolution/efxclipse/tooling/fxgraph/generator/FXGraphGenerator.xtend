@@ -30,8 +30,6 @@ import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.SimpleValueProperty
 import java.util.List
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.jdt.core.IClasspathEntry
-import org.eclipse.jdt.core.JavaCore
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -60,7 +58,7 @@ class FXGraphGenerator implements IGenerator {
 //				
 				var i = 0;
 			
-				var jproject = JavaCore::create(project);
+//				var jproject = JavaCore::create(project);
 				
 				for( seg : uri.segments ) {
 					if( i >= 1 ) {
@@ -69,22 +67,27 @@ class FXGraphGenerator implements IGenerator {
 					i = i + 1;
 				}
 			
-				var inSourceFound = false;
-			
-				for( packroot: jproject.rawClasspath ) {
-					if( packroot.entryKind == IClasspathEntry::CPE_SOURCE ) {
-						if( projectRelativePath.startsWith(packroot.path.toString) ) {
-							projectRelativePath = projectRelativePath.substring(packroot.path.toString.length);
-							inSourceFound = true;
-						}
-					}
-				}
-				
-				if( inSourceFound ) {
+				projectRelativePath = "../" + projectRelativePath.substring(project.name.length+2);
+//				System::err.println("PRE-PATH: " + projectRelativePath);
+				// projectRelativePath = projectRelativePath
+//				var inSourceFound = false;
+//			
+//				for( packroot: jproject.rawClasspath ) {
+//					if( packroot.entryKind == IClasspathEntry::CPE_SOURCE ) {
+//						if( projectRelativePath.startsWith(packroot.path.toString) ) {
+//							projectRelativePath = projectRelativePath.substring(packroot.path.toString.length);
+//							inSourceFound = true;
+//						}
+//					}
+//				}
+//				
+//				System::err.println("POST-PATH: " + projectRelativePath);
+//				
+//				if( inSourceFound ) {
 					return projectRelativePath;
-				}
+//				}
 				
-				return null;		
+//				return null;		
 			} else {
 				return null;
 			}
