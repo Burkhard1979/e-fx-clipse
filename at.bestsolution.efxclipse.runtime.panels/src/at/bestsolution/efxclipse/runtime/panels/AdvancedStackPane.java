@@ -88,7 +88,7 @@ public class AdvancedStackPane extends Region {
 									@Override
 									public void handle(MouseEvent event) {
 										if( event.isStillSincePress() ) {
-											System.err.println("Item clicked");
+											
 										}
 									}
 								};

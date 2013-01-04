@@ -44,6 +44,8 @@ import at.bestsolution.efxclipse.runtime.bindings.Binding;
 import at.bestsolution.efxclipse.runtime.bindings.TriggerSequence;
 import at.bestsolution.efxclipse.runtime.bindings.e4.internal.BindingTable;
 import at.bestsolution.efxclipse.runtime.bindings.e4.internal.BindingTableManager;
+import at.bestsolution.efxclipse.runtime.core.log.Log;
+import at.bestsolution.efxclipse.runtime.core.log.Logger;
 
 /**
  * Process contexts in the model, feeding them into the command service.
@@ -68,6 +70,10 @@ public class BindingProcessingAddon {
 
 	@Inject
 	private EBindingService bindingService;
+	
+	@Inject
+	@Log
+	private Logger logger;
 
 	private EventHandler additionHandler;
 
@@ -177,10 +183,9 @@ public class BindingProcessingAddon {
 		sequence = bindingService.createSequence(keySequence);
 
 		if (cmd == null) {
-			System.err
-					.println("Failed to find command for binding: " + binding); //$NON-NLS-1$
+			logger.error("Failed to find command for binding: " + binding); //$NON-NLS-1$
 		} else if (sequence == null) {
-			System.err.println("Failed to map binding: " + binding); //$NON-NLS-1$
+			logger.error("Failed to map binding: " + binding); //$NON-NLS-1$
 		} else {
 			try {
 				String schemeId = null;
@@ -209,9 +214,7 @@ public class BindingProcessingAddon {
 				keyBinding = bindingService.createBinding(sequence, cmd,
 						bindingContext.getId(), attrs);
 			} catch (IllegalArgumentException e) {
-				System.err.println(
-						"failed to create: " + binding); //$NON-NLS-1$
-				e.printStackTrace();
+				logger.error("failed to create: " + binding, e); //$NON-NLS-1$
 				return null;
 			}
 
@@ -237,8 +240,8 @@ public class BindingProcessingAddon {
 				.getBindingContext().getElementId());
 		BindingTable table = bindingTables.getTable(bindingContext.getId());
 		if (table == null) {
-			System.err.println("Trying to create \'" + binding //$NON-NLS-1$
-					+ "\' without binding table " + bindingContext.getId()); //$NON-NLS-1$
+			logger.error("Trying to create \'" + binding //$NON-NLS-1$
+					+ "\' without binding table " + bindingContext.getId());//$NON-NLS-1$
 			return;
 		}
 		Binding keyBinding = createBinding(bindingContext,

@@ -55,8 +55,6 @@ public class FXBeanPropertyHelper {
 			throw new RuntimeException(e.getCause());
 		} catch (Exception e) {
 //TODO Problems with primitive values			
-//			System.err.println("Failed to set value: " + value + " on " + propertyDescriptor.getName());
-//			e.printStackTrace();
 			/*if (BeansObservables.DEBUG) {
 				Policy
 						.getLog()

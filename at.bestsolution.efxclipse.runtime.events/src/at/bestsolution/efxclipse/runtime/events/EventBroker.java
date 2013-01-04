@@ -21,6 +21,9 @@ import org.osgi.service.event.EventAdmin;
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.core.log.Log;
+import at.bestsolution.efxclipse.runtime.core.log.Logger;
+
 @SuppressWarnings("restriction")
 public class EventBroker implements IEventBroker {
 	
@@ -30,6 +33,10 @@ public class EventBroker implements IEventBroker {
 	@Inject
 	@Optional
 	UISynchronize uiSync;
+	
+	@Inject
+	@Log
+	Logger logger;
 	
 	// This is a temporary code to ensure that bundle containing
 	// EventAdmin implementation is started. This code it to be removed once
@@ -59,7 +66,7 @@ public class EventBroker implements IEventBroker {
 		Event event = constructEvent(topic, data);
 		EventAdmin eventAdmin = Activator.getEventAdmin();
 		if (eventAdmin == null) {
-			System.err.println("No event admin found");
+			logger.error("No event admin found");
 			return false;
 		}
 		eventAdmin.sendEvent(event);
@@ -70,7 +77,7 @@ public class EventBroker implements IEventBroker {
 		Event event = constructEvent(topic, data);
 		EventAdmin eventAdmin = Activator.getEventAdmin();
 		if (eventAdmin == null) {
-			System.err.println("No event admin found");
+			logger.error("No event admin found");
 			return false;
 		}
 		eventAdmin.postEvent(event);
@@ -101,7 +108,7 @@ public class EventBroker implements IEventBroker {
 	public boolean subscribe(String topic, String filter, EventHandler eventHandler, boolean headless) {
 		BundleContext bundleContext = Activator.getContext();
 		if (bundleContext == null) {
-			System.err.println("No bundle context");
+			logger.error("No bundle context");
 			return false;
 		}
 		String[] topics = new String[] {topic};

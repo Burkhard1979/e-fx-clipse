@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
@@ -24,11 +25,16 @@ import org.eclipse.e4.ui.workbench.UIEvents;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
+import at.bestsolution.efxclipse.runtime.core.log.Log;
+import at.bestsolution.efxclipse.runtime.core.log.Logger;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPerspective;
 
 @SuppressWarnings("restriction")
 public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspective, WPerspective<N>> {
+	@Inject
+	@Log
+	Logger logger;
 	
 	@PostConstruct
 	void init(IEventBroker eventBroker) {
@@ -48,7 +54,7 @@ public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspecti
 							} else if( element instanceof MPartSashContainerElement ) {
 								handleChildAdd((MPartSashContainerElement) element);
 							} else {
-								System.err.println("ERROR: Unhandled child addition: " + element);
+								logger.error("ERROR: Unhandled child addition: " + element);
 							}
 						} else if( UIEvents.EventTypes.REMOVE.equals(eventType) ) {
 							MUIElement element = (MUIElement) event.getProperty(UIEvents.EventTags.OLD_VALUE);
@@ -57,7 +63,7 @@ public abstract class BasePerspectiveRenderer<N> extends BaseRenderer<MPerspecti
 							} else if( element instanceof MPartSashContainerElement ) {
 								handleChildRemove((MPartSashContainerElement) element);
 							} else {
-								System.err.println("ERROR: Unhandled child removal: " + element);
+								logger.error("ERROR: Unhandled child removal: " + element);
 							}
 						}
 					}

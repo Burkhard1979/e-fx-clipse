@@ -75,6 +75,7 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
+import at.bestsolution.efxclipse.runtime.di.LoggerCreator;
 import at.bestsolution.efxclipse.runtime.workbench.fx.internal.WorkbenchJFXActivator;
 
 @SuppressWarnings("restriction")
@@ -97,6 +98,8 @@ public class E4Application extends AbstractJFXApplication {
 
 	private Location instanceLocation;
 
+	at.bestsolution.efxclipse.runtime.core.log.Logger logger = LoggerCreator.createLogger(getClass());
+	
 	@Override
 	protected void jfxStart(IApplicationContext applicationContext, Application jfxApplication, Stage primaryStage) {
 		workbench = createE4Workbench(applicationContext, jfxApplication, primaryStage);
@@ -208,9 +211,7 @@ public class E4Application extends AbstractJFXApplication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						System.err.println("could not find icon at: " + iconPath);
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						logger.warning("could not find icon at: " + iconPath,e);
 					}
 				}
 				

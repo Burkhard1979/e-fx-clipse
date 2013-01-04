@@ -55,7 +55,7 @@ public class DIApplication extends AbstractJFXApplication implements IExecutable
 				e.printStackTrace();
 			}
 		} else {
-			System.err.println("Unable to locate bundle: " + bundleName);
+			LoggerCreator.createLogger(getClass()).error("Unable to locate bundle: " + bundleName);
 		}
 	}
 
