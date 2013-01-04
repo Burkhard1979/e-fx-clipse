@@ -73,6 +73,10 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 		
 		private boolean checkFocusControl() {
 			BorderPane check = getWidget();
+			if( check == null || check.getScene() == null ) {
+				return false;
+			}
+			
 			Node n = check.getScene().getFocusOwner();
 			
 			if( n == null ) {
