@@ -318,8 +318,6 @@ public class BindingProcessingAddon {
 					String attrName = (String) event
 							.getProperty(UIEvents.EventTags.ATTNAME);
 
-					// System.out.println("MKeyBinding." + attrName + ": "
-					// + event.getProperty(UIEvents.EventTags.TYPE));
 					if (UIEvents.EventTypes.SET.equals(event
 							.getProperty(UIEvents.EventTags.TYPE))) {
 						Object oldObj = event
