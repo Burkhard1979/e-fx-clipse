@@ -363,13 +363,11 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 //
 //							@Override
 //							protected Object handleGetObject(String key) {
-//								System.err.println("LOADING OBJECT DATA");
 //								return translationService.translate("%" + key, contributorURI);
 //							}
 //
 //							@Override
 //							public Enumeration<String> getKeys() {
-//								System.err.println("REQUESTING");
 //								// TODO Can we do this???
 //								return Collections.emptyEnumeration();
 //							}
@@ -437,8 +435,6 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 				return;
 			}
 			
-			System.err.println("Hello world");
-			
 			if( visible ) {
 				getWidget().show();
 			} else {
@@ -502,7 +498,6 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Override
 		public void addChild(WLayoutedWidget<MWindowElement> widget) {
-			System.err.println("CALLED: " + contentPane + " => " + widget + " => " + widget.getStaticLayoutNode());
 			contentPane.getChildren().add((Node) widget.getStaticLayoutNode());
 		}
 		
