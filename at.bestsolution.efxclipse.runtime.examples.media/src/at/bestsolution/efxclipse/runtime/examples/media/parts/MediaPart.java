@@ -130,7 +130,6 @@ public class MediaPart {
 			if( activePart == part ) {
 				mediaPlayer.play();
 			} else {
-				System.err.println("Stop");
 				mediaPlayer.pause();
 			}
 		}
