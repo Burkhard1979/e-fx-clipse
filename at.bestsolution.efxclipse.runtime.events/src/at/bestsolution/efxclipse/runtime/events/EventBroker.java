@@ -136,7 +136,6 @@ public class EventBroker implements IEventBroker {
 		ServiceRegistration[] array = values.toArray(new ServiceRegistration[values.size()]);
 		registrations.clear();
 		for (int i = 0; i < array.length; i++) {
-			//System.out.println("EventBroker dispose:" + array[i] + ")");
 			array[i].unregister();
 		}
 	}
