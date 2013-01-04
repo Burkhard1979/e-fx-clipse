@@ -94,8 +94,10 @@
 
 			<updatesite url="http://cbes.javaforge.com/update" os="win32" />
 			<updatesite url="http://download.eclipse.org/eclipse/updates/4.2" version="4.2.1" />
-			<!--updatesite url="http://download.eclipse.org/technology/m2e/releases" /-->
-			<!--updatesite url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" /-->
+			<updatesite url="http://download.eclipse.org/technology/m2e/releases" />
+			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/releases/juno/" version="4.2.1" />
+			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/releases/juno/" version="3.8.1" />
+			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/releases/indigo/" version="3.7.1" />
 
 			<p2repository url="http://${efx.update.host.name}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" />
 			<!--p2repository url="http://github.com/downloads/tomsontom/e4-e3theme/p2repo-1.0.0.zip" /-->			
@@ -113,7 +115,7 @@
 			<installunit name="org.tigris.subversion.clientadapter.svnkit.feature.feature.group" />
 			<installunit name="org.eclipse.e4.core.tools.feature.feature.group" />
 			
-			<!--installunit name="org.eclipse.m2e.feature.feature.group"/-->
+			<installunit name="org.eclipse.m2e.feature.feature.group"/>
 			
 			<installunit name="org.tigris.subversion.clientadapter.javahl.feature.feature.group" os="win32" arch="x86" />
 			<installunit name="mercurialeclipse.feature.group" os="win32" />
