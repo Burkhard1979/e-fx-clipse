@@ -51,7 +51,6 @@ public class PersonDetailPartController implements Initializable {
 	private FadeTransition fadeInTransition;
 	
 	public void initialize(URL location, ResourceBundle resources) {
-		System.err.println(personroot);
 		IJFXBeanValueProperty uiProp = JFXBeanProperties.value("text");
 		
 		DataBindingContext ctx = new DataBindingContext();

@@ -34,9 +34,6 @@ public class PersonListPart {
 		view.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Person>() {
 
 			public void changed(ObservableValue<? extends Person> arg0, Person arg1, Person arg2) {
-//				System.err.println("new value: " + arg2);
-//				System.err.println(application.getContext().hashCode());
-				
 				application.getContext().set(Person.class, arg2);
 			}
 		});
