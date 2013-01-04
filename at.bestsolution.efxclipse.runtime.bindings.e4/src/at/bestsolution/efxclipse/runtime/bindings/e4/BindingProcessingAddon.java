@@ -162,7 +162,6 @@ public class BindingProcessingAddon {
 		}
 
 		if (cmdModel == null) {
-			System.err.println("binding with no command: " + binding); //$NON-NLS-1$
 			return null;
 		}
 		Map<String, Object> parameters = null;
