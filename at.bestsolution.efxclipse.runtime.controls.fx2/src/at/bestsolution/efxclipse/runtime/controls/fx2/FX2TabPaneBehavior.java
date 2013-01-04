@@ -29,19 +29,18 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import javafx.event.Event;
-import javafx.scene.Parent;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-
-
+import javafx.util.Callback;
 import at.bestsolution.efxclipse.runtime.controls.FXTab;
-import at.bestsolution.efxclipse.runtime.controls.FXTabPane.MinMaxState;
 
 import com.sun.javafx.scene.control.behavior.BehaviorBase;
 import com.sun.javafx.scene.control.behavior.KeyBinding;
-import javafx.scene.control.SingleSelectionModel;
-import javafx.util.Callback;
 
 public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
 
@@ -82,7 +81,7 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
                 selectNextTab();
             }
         } else if ("TraverseNext".equals(name)) {
-            FX2TabPane tp = getControl();
+            TabPane tp = getControl();
             FX2TabPaneSkin tps = (FX2TabPaneSkin)tp.getSkin();
             if (tps.getSelectedTabContentRegion() != null) {
                 tps.getSelectedTabContentRegion().getImpl_traversalEngine().getTopLeftFocusableNode();
@@ -112,7 +111,7 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
                 super.callAction(name);
             }
         } else if (CTRL_TAB.equals(name) || CTRL_PAGE_DOWN.equals(name)) {
-            FX2TabPane tp = getControl();
+            TabPane tp = getControl();
             if (tp.getSelectionModel().getSelectedIndex() == (tp.getTabs().size() - 1)) {
                 tp.getSelectionModel().selectFirst();
             } else {
@@ -120,7 +119,7 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
             }
             tp.requestFocus();
         } else if (CTRL_SHIFT_TAB.equals(name) || CTRL_PAGE_UP.equals(name)) {
-            FX2TabPane tp = getControl();
+            TabPane tp = getControl();
             if (tp.getSelectionModel().getSelectedIndex() == 0) {
                 tp.getSelectionModel().selectLast();
             } else {
@@ -169,7 +168,7 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
 
     @Override public void mousePressed(MouseEvent e) {
         super.mousePressed(e);
-        FX2TabPane tp = getControl();
+        TabPane tp = getControl();
         tp.requestFocus();
     }
 
@@ -181,20 +180,20 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
         super(tabPane);
     }
 
-    public void selectTab(FX2Tab tab) {
+    public void selectTab(Tab tab) {
         getControl().getSelectionModel().select(tab);
     }
 
-    public boolean canCloseTab(FX2Tab tab) {
-    	Callback<FXTab, Boolean> cb = tab.getCloseVetoHandler();
+    public boolean canCloseTab(Tab tab) {
+    	Callback<Tab, Boolean> cb = ((FXTab)tab).getCloseVetoHandler();
     	if( cb != null ) {
     		return ! Boolean.TRUE.equals(cb.call(tab));
     	}
     	return true;
     }
     
-    public void closeTab(FX2Tab tab) {
-        FX2TabPane tabPane = getControl();
+    public void closeTab(Tab tab) {
+        TabPane tabPane = getControl();
         // only switch to another tab if the selected tab is the one we're closing
         int index = tabPane.getTabs().indexOf(tab);
         if (tab.isSelected()) {
@@ -210,13 +209,13 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
             tabPane.getTabs().remove(index);
         }                
         if (tab.getOnClosed() != null) {
-            Event.fireEvent(tab, new Event(FX2Tab.CLOSED_EVENT));
+            Event.fireEvent(tab, new Event(Tab.CLOSED_EVENT));
         }
     }
 
     // Find a tab after the currently selected that is not disabled.
     public void selectNextTab() {
-        SingleSelectionModel<FX2Tab> selectionModel = getControl().getSelectionModel();
+        SingleSelectionModel<Tab> selectionModel = getControl().getSelectionModel();
         int current = selectionModel.getSelectedIndex();
         int index = current;
         while (index < getControl().getTabs().size()) {
@@ -231,7 +230,7 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
 
     // Find a tab before the currently selected that is not disabled.
     public void selectPreviousTab() {       
-        SingleSelectionModel<FX2Tab> selectionModel = getControl().getSelectionModel();
+        SingleSelectionModel<Tab> selectionModel = getControl().getSelectionModel();
         int current = selectionModel.getSelectedIndex();
         int index = current;
         while (index > 0) {
@@ -244,15 +243,15 @@ public class FX2TabPaneBehavior extends BehaviorBase<FX2TabPane> {
         selectionModel.select(current);
     }
 
-	public void maximize() {
-		getControl().setMinMaxState(MinMaxState.MAXIMIZED);
-	}
-
-	public void minimize() {
-		getControl().setMinMaxState(MinMaxState.MINIMIZED);
-	}
-
-	public void restore() {
-		getControl().setMinMaxState(MinMaxState.RESTORED);
-	}
+//	public void maximize() {
+//		((FXTabPane)getControl()).setMinMaxState(MinMaxState.MAXIMIZED);
+//	}
+//
+//	public void minimize() {
+//		((FXTabPane)getControl()).setMinMaxState(MinMaxState.MINIMIZED);
+//	}
+//
+//	public void restore() {
+//		((FXTabPane)getControl()).setMinMaxState(MinMaxState.RESTORED);
+//	}
 }

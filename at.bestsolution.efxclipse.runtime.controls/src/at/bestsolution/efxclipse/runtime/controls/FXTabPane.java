@@ -10,35 +10,6 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.controls;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.ObservableList;
-import javafx.scene.control.Control;
-import javafx.scene.control.SingleSelectionModel;
+public interface FXTabPane {
 
-public abstract class FXTabPane<T extends FXTab> extends Control {
-    public enum MinMaxState {
-    	NONE,
-		RESTORED,
-		MINIMIZED,
-		MAXIMIZED
-	}
-
-	public abstract ObservableList<T> getTabs();
-	
-	private ObjectProperty<MinMaxState> minMaxState = new SimpleObjectProperty<MinMaxState>(MinMaxState.NONE);
-
-	public void setMinMaxState(MinMaxState minMaxState) {
-		this.minMaxState.set(minMaxState);
-	}
-	
-	public MinMaxState getMinMaxState() {
-		return this.minMaxState.get();
-	}
-	
-	public ObjectProperty<MinMaxState> minMaxStateProperty() {
-		return minMaxState;
-	}
-
-	public abstract SingleSelectionModel<T> getSelectionModel();
 }
