@@ -107,7 +107,6 @@ public class PropertiesUtil {
 		for( Entry<String, IMethod> e : builderProperties.entrySet() ) {
 			IFXProperty p = rv.get(e.getKey());
 			if( p == null ) {
-				System.err.println("Unable to find getter for: " + e.getKey());
 				continue;
 			}
 			

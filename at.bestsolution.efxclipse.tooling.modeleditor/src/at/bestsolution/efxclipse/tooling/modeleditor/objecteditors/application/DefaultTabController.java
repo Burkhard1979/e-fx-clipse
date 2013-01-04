@@ -138,7 +138,6 @@ public class DefaultTabController implements Initializable {
 			super.updateItem(item, empty);
 			if( item != null ) {
 				setText("BindingContext - " + item.getName());
-				System.err.println(pool.getImageUnchecked(ResourceProvider.Model_BindingContext));
 				setGraphic(new ImageView(pool.getImageUnchecked(ResourceProvider.Model_BindingContext)));
 			}
 		}

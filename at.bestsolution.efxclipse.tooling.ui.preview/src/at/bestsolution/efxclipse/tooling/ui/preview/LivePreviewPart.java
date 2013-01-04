@@ -463,7 +463,6 @@ public class LivePreviewPart extends ViewPart {
 				document.set(contentData.contents);
 				ByteArrayInputStream out = new ByteArrayInputStream(contentData.contents.getBytes());
 				Object root = loader.load(out);
-				System.err.println("ROOT: " + root);
 				out.close();
 
 				Scene scene = null;

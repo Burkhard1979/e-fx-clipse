@@ -128,9 +128,6 @@ public class PropertiesToModelTransformer {
 		task.getSignjar().setAlias( properties.getProperty( MAPPING.get( SIGN_ALIAS ) ) );
 		task.getSignjar().setKeypass( properties.getProperty( MAPPING.get( SIGN_KEYPASSWOARD ) ) );
 
-		for ( Object o : properties.keySet() ) {
-			System.err.println( o + "|" + properties.get( o ) );
-		}
 		return task;
 	}
 }

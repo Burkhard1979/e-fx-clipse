@@ -148,7 +148,6 @@ public class InlineBooleanExpressionImpl extends EObjectImpl implements InlineBo
 			} else {
 				String expr = getExpression().substring(2,getExpression().length()-2); 
 				try {
-					System.err.println("Expression: " + expr);
 					return b.getBundleContext().getService(references.iterator().next()).execute(expr, data);	
 				} catch(Throwable t) {
 					t.printStackTrace();

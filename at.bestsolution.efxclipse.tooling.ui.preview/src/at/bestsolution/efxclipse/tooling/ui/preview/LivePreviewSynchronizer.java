@@ -186,8 +186,6 @@ public class LivePreviewSynchronizer implements IPartListener, IPropertyListener
 			}
 		}
 		
-		System.err.println("Classpath: " + rv);
-
 		return rv;
 	}
 
