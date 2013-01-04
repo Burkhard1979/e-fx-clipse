@@ -60,7 +60,6 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 	
 	@Override
 	public IRegion getHoverRegion(ITextViewer textViewer, int offset) {
-		System.err.println("Hover:" + offset);
 		if ((textViewer == null) || (textViewer.getDocument() == null)) {
 			return null;
 		}
@@ -77,7 +76,6 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 			// only supply hoverhelp for tag name, attribute name, or
 			// attribute value
 			String regionType = region.getType();
-			System.err.println(regionType);
 			if ((regionType == DOMRegionContext.XML_TAG_NAME) || (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_NAME) || (regionType == DOMRegionContext.XML_TAG_ATTRIBUTE_VALUE) || (regionType == DOMRegionContext.XML_PI_CONTENT)) {
 				try {
 					// check if we are at whitespace before or after line
@@ -271,7 +269,6 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 	
 	@Override
 	public IInformationControlCreator getHoverControlCreator() {
-//		System.err.println("getHoverControlCreator(): " + element);
 		if( element != null ) {
 			javadocWrapper.setJavaElement(element);
 			return javadocWrapper.getHoverControlCreator();
@@ -281,7 +278,6 @@ public class FXMLTextHover implements ITextHover, ITextHoverExtension, ITextHove
 
 	@Override
 	public Object getHoverInfo2(ITextViewer textViewer, IRegion hoverRegion) {
-		System.err.println("getHoverInfo2()");
 		if ((hoverRegion == null) || (textViewer == null) || (textViewer.getDocument() == null)) {
 			return null;
 		}

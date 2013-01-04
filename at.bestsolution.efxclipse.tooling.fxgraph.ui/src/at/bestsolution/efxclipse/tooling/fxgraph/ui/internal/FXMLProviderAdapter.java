@@ -124,7 +124,6 @@ public class FXMLProviderAdapter implements IFXMLProviderAdapter {
 
 			@Override
 			public String exec(XtextResource resource) throws Exception {
-				System.err.println(resource.getURI()); 
 				EList<EObject> contents = resource.getContents();
 				if (!contents.isEmpty()) {
 					URI uri = resource.getURI();

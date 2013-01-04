@@ -58,8 +58,6 @@ public class FXMLHyperlinkDetector extends AbstractHyperlinkDetector {
 				
 				IHyperlink link = null;
 				
-				System.err.println(regionType);
-				
 				if (regionType == DOMRegionContext.XML_TAG_NAME) {
 					IDOMNode dom = (IDOMNode)treeNode;
 					if( !(dom instanceof ProcessingInstruction) ) {
@@ -107,8 +105,6 @@ public class FXMLHyperlinkDetector extends AbstractHyperlinkDetector {
 			}
 		}
 		
-		System.err.println("================> Detecting hyperlinks");
-		// TODO Auto-generated method stub
 		return null;
 	}
 
