@@ -12,6 +12,8 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 
 import at.bestsolution.efxclipse.testcases.e4.handlers.EventSender;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
@@ -24,8 +26,15 @@ public class ContentPanel {
 	protected UISynchronize uiSync;
 
 	@Inject
-	public ContentPanel(BorderPane p, MPart part) {
+	public ContentPanel(BorderPane p, final MPart part) {
 		f = new TextField(part.getLocalizedLabel());
+		f.setOnKeyPressed(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				part.setDirty(true);
+			}
+		});
 		p.setTop(f);
 	}
 	
