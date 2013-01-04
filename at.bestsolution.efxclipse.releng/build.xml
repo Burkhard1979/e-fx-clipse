@@ -97,7 +97,7 @@
 			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/m2e/releases/" />
 			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/releases/juno/" version="4.2.1" />
 			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/releases/juno/" version="3.8.1" />
-			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/releases/indigo/" version="3.7.1" />
+			<updatesite url="http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/releases/indigo/" version="3.7.2" />
 
 			<p2repository url="http://${efx.update.host.name}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" />
 			<!--p2repository url="http://github.com/downloads/tomsontom/e4-e3theme/p2repo-1.0.0.zip" /-->			
