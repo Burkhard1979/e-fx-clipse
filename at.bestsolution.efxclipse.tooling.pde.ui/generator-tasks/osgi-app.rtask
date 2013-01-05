@@ -471,7 +471,7 @@ RobotTask {
 						## modules
 						STRING "modules" default "../${BundleProject_projectName};../${BundleProject_projectName}.feature;../${BundleProject_projectName}.product;../${BundleProject_projectName}.jemmy",
 						## repos
-						STRING "repos" default "juno@http://download.eclipse.org/releases/juno;efxclipse-repo@http://www.efxclipse.org/p2-repos/nightly/site/"
+						STRING "repos" default "juno@http://download.eclipse.org/releases/juno;efxclipse-repo@releases/juno;efxclipse-repo@http://www.efxclipse.org/p2-repos/releases/latest"
 					},
 				DynamicFile "build.xml" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.NativeLaunchGenerator" by "java"
