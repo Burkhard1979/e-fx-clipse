@@ -92,8 +92,8 @@
 		<echo>Building distros</echo>
 		<builder builddirectory="/tmp/efx-build" p2directorexecutable="/var/lib/jenkins/efx-build/builder/eclipse" targetdirectory="/var/lib/jenkins/efx-build/targets" staticreposdirectory="/var/lib/jenkins/efx-build/repos" distdirectory="/tmp/efx-build/dist" version="${efx.version}">
 
-			<updatesite url="http://cbes.javaforge.com/update" os="win32" />
-			<updatesite url="http://download.eclipse.org/eclipse/updates/4.2" version="4.2.1" />
+			<!--updatesite url="http://cbes.javaforge.com/update" os="win32" /-->
+			<!--updatesite url="http://download.eclipse.org/eclipse/updates/4.2" version="4.2.1" /-->
 			
 			<p2repository url="http://${efx.update.host.name}/p2-repos/nightly/at.bestsolution.efxclipse.tooling.updatesite-${efx.version}.zip" />
 			<!--p2repository url="http://github.com/downloads/tomsontom/e4-e3theme/p2repo-1.0.0.zip" /-->			
