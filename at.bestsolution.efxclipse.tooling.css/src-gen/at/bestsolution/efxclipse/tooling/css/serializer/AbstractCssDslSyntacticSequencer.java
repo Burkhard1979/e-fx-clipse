@@ -179,7 +179,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     '@CHARSET' | '@charset'
+	 *     '@charset' | '@CHARSET'
 	 */
 	protected void emit_charset_CHARSETKeyword_0_1_or_CharsetKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -203,7 +203,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     '@IMPORT' | '@import'
+	 *     '@import' | '@IMPORT'
 	 */
 	protected void emit_importExpression_IMPORTKeyword_0_1_or_ImportKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -219,7 +219,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     '@PAGE' | '@page'
+	 *     '@page' | '@PAGE'
 	 */
 	protected void emit_page_PAGEKeyword_1_1_or_PageKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

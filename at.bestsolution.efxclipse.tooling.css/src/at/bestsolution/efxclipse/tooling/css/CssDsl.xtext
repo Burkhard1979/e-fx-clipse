@@ -20,11 +20,11 @@ stylesheet:
 ;
 
 charset:
-	('@charset'|'@CHARSET') charset=STRING ';'
+	('@charset'|'@CHARSET') charset=CSSSTRING ';'
 ;
 
 importExpression:
-	('@import'|'@IMPORT') (value=STRING | URLType mediaList=media_list?) ';'
+	('@import'|'@IMPORT') (value=CSSSTRING | URLType mediaList=media_list?) ';'
 ;
 
 page:
@@ -84,7 +84,7 @@ SubSelector returns CssSelector:
 ;
 
 AttributeSelector returns CssSelector:
-	{AttributeSelector} '[' name=Identifier ( op=( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) value=( Identifier | STRING ) )? ']'
+	{AttributeSelector} '[' name=Identifier ( op=( '^=' | '$=' | '*=' | '=' | INCLUDES | DASHMATCH ) value=( Identifier | CSSSTRING ) )? ']'
 ;
 
 ClassSelector:
@@ -166,7 +166,7 @@ WSTok returns CssTok:
 ;
 
 StringTok returns CssTok: 
-	{StringTok} value=STRING
+	{StringTok} value=CSSSTRING
 ;
 
 
@@ -225,7 +225,7 @@ KeywordHack:
 ;
 
 ValidURL returns ecore::EString hidden():
-	STRING |
+	CSSSTRING |
 	( ValidURLSymbol |
 	  KeywordHack |
 	  ONE_HEX_LETTER | 
@@ -304,9 +304,9 @@ terminal WS			: (' '|'\t'|'\r'|'\n')+;
 
 
 
-terminal STRING	: 
-			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
+terminal CSSSTRING	: 
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'0'..'9'|'a'..'f'|'A'..'F'|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'0'..'9'|'a'..'f'|'A'..'F'|'\\') | !('\\'|"'") )* "'";
 
 			
 terminal INCLUDES: "~=";

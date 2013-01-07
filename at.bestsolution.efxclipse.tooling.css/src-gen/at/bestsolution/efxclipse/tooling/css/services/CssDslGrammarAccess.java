@@ -81,14 +81,14 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCharsetKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
 		private final Keyword cCHARSETKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
 		private final Assignment cCharsetAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cCharsetSTRINGTerminalRuleCall_1_0 = (RuleCall)cCharsetAssignment_1.eContents().get(0);
+		private final RuleCall cCharsetCSSSTRINGTerminalRuleCall_1_0 = (RuleCall)cCharsetAssignment_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//charset:
-		//	("@charset" | "@CHARSET") charset=STRING ";";
+		//	("@charset" | "@CHARSET") charset=CSSSTRING ";";
 		public ParserRule getRule() { return rule; }
 
-		//("@charset" | "@CHARSET") charset=STRING ";"
+		//("@charset" | "@CHARSET") charset=CSSSTRING ";"
 		public Group getGroup() { return cGroup; }
 
 		//"@charset" | "@CHARSET"
@@ -100,11 +100,11 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"@CHARSET"
 		public Keyword getCHARSETKeyword_0_1() { return cCHARSETKeyword_0_1; }
 
-		//charset=STRING
+		//charset=CSSSTRING
 		public Assignment getCharsetAssignment_1() { return cCharsetAssignment_1; }
 
-		//STRING
-		public RuleCall getCharsetSTRINGTerminalRuleCall_1_0() { return cCharsetSTRINGTerminalRuleCall_1_0; }
+		//CSSSTRING
+		public RuleCall getCharsetCSSSTRINGTerminalRuleCall_1_0() { return cCharsetCSSSTRINGTerminalRuleCall_1_0; }
 
 		//";"
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
@@ -118,7 +118,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIMPORTKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final RuleCall cValueSTRINGTerminalRuleCall_1_0_0 = (RuleCall)cValueAssignment_1_0.eContents().get(0);
+		private final RuleCall cValueCSSSTRINGTerminalRuleCall_1_0_0 = (RuleCall)cValueAssignment_1_0.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
 		private final RuleCall cURLTypeParserRuleCall_1_1_0 = (RuleCall)cGroup_1_1.eContents().get(0);
 		private final Assignment cMediaListAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
@@ -126,10 +126,10 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//importExpression:
-		//	("@import" | "@IMPORT") (value=STRING | URLType mediaList=media_list?) ";";
+		//	("@import" | "@IMPORT") (value=CSSSTRING | URLType mediaList=media_list?) ";";
 		public ParserRule getRule() { return rule; }
 
-		//("@import" | "@IMPORT") (value=STRING | URLType mediaList=media_list?) ";"
+		//("@import" | "@IMPORT") (value=CSSSTRING | URLType mediaList=media_list?) ";"
 		public Group getGroup() { return cGroup; }
 
 		//"@import" | "@IMPORT"
@@ -141,14 +141,14 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"@IMPORT"
 		public Keyword getIMPORTKeyword_0_1() { return cIMPORTKeyword_0_1; }
 
-		//value=STRING | URLType mediaList=media_list?
+		//value=CSSSTRING | URLType mediaList=media_list?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
-		//value=STRING
+		//value=CSSSTRING
 		public Assignment getValueAssignment_1_0() { return cValueAssignment_1_0; }
 
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_1_0_0() { return cValueSTRINGTerminalRuleCall_1_0_0; }
+		//CSSSTRING
+		public RuleCall getValueCSSSTRINGTerminalRuleCall_1_0_0() { return cValueCSSSTRINGTerminalRuleCall_1_0_0; }
 
 		//URLType mediaList=media_list?
 		public Group getGroup_1_1() { return cGroup_1_1; }
@@ -693,16 +693,16 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final Alternatives cValueAlternatives_3_1_0 = (Alternatives)cValueAssignment_3_1.eContents().get(0);
 		private final RuleCall cValueIdentifierParserRuleCall_3_1_0_0 = (RuleCall)cValueAlternatives_3_1_0.eContents().get(0);
-		private final RuleCall cValueSTRINGTerminalRuleCall_3_1_0_1 = (RuleCall)cValueAlternatives_3_1_0.eContents().get(1);
+		private final RuleCall cValueCSSSTRINGTerminalRuleCall_3_1_0_1 = (RuleCall)cValueAlternatives_3_1_0.eContents().get(1);
 		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//AttributeSelector returns CssSelector:
 		//	{AttributeSelector} "[" name=Identifier (op=("^=" | "$=" | "*=" | "=" | INCLUDES | DASHMATCH) value=(Identifier |
-		//	STRING))? "]";
+		//	CSSSTRING))? "]";
 		public ParserRule getRule() { return rule; }
 
 		//{AttributeSelector} "[" name=Identifier (op=("^=" | "$=" | "*=" | "=" | INCLUDES | DASHMATCH) value=(Identifier |
-		//STRING))? "]"
+		//CSSSTRING))? "]"
 		public Group getGroup() { return cGroup; }
 
 		//{AttributeSelector}
@@ -717,7 +717,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Identifier
 		public RuleCall getNameIdentifierParserRuleCall_2_0() { return cNameIdentifierParserRuleCall_2_0; }
 
-		//(op=("^=" | "$=" | "*=" | "=" | INCLUDES | DASHMATCH) value=(Identifier | STRING))?
+		//(op=("^=" | "$=" | "*=" | "=" | INCLUDES | DASHMATCH) value=(Identifier | CSSSTRING))?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//op=("^=" | "$=" | "*=" | "=" | INCLUDES | DASHMATCH)
@@ -744,17 +744,17 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//DASHMATCH
 		public RuleCall getOpDASHMATCHTerminalRuleCall_3_0_0_5() { return cOpDASHMATCHTerminalRuleCall_3_0_0_5; }
 
-		//value=(Identifier | STRING)
+		//value=(Identifier | CSSSTRING)
 		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
 
-		//Identifier | STRING
+		//Identifier | CSSSTRING
 		public Alternatives getValueAlternatives_3_1_0() { return cValueAlternatives_3_1_0; }
 
 		//Identifier
 		public RuleCall getValueIdentifierParserRuleCall_3_1_0_0() { return cValueIdentifierParserRuleCall_3_1_0_0; }
 
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_3_1_0_1() { return cValueSTRINGTerminalRuleCall_3_1_0_1; }
+		//CSSSTRING
+		public RuleCall getValueCSSSTRINGTerminalRuleCall_3_1_0_1() { return cValueCSSSTRINGTerminalRuleCall_3_1_0_1; }
 
 		//"]"
 		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
@@ -1249,23 +1249,23 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cStringTokAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final RuleCall cValueCSSSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//StringTok returns CssTok:
-		//	{StringTok} value=STRING;
+		//	{StringTok} value=CSSSTRING;
 		public ParserRule getRule() { return rule; }
 
-		//{StringTok} value=STRING
+		//{StringTok} value=CSSSTRING
 		public Group getGroup() { return cGroup; }
 
 		//{StringTok}
 		public Action getStringTokAction_0() { return cStringTokAction_0; }
 
-		//value=STRING
+		//value=CSSSTRING
 		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+		//CSSSTRING
+		public RuleCall getValueCSSSTRINGTerminalRuleCall_1_0() { return cValueCSSSTRINGTerminalRuleCall_1_0; }
 	}
 
 	public class NumberTokElements extends AbstractParserRuleElementFinder {
@@ -1590,7 +1590,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class ValidURLElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidURL");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCSSSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
 		private final RuleCall cValidURLSymbolParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
 		private final RuleCall cKeywordHackParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
@@ -1612,16 +1612,16 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cONE_HEX_LETTERTerminalRuleCall_1_10_2_1 = (RuleCall)cAlternatives_1_10_2.eContents().get(1);
 		
 		//ValidURL returns ecore::EString hidden():
-		//	STRING | (ValidURLSymbol | KeywordHack | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" |
+		//	CSSSTRING | (ValidURLSymbol | KeywordHack | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" |
 		//	"\\\'" | "\\\"" | PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+;
 		public ParserRule getRule() { return rule; }
 
-		//STRING | (ValidURLSymbol | KeywordHack | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" | "\\\'"
-		//| "\\\"" | PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+
+		//CSSSTRING | (ValidURLSymbol | KeywordHack | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" |
+		//"\\\'" | "\\\"" | PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+		//CSSSTRING
+		public RuleCall getCSSSTRINGTerminalRuleCall_0() { return cCSSSTRINGTerminalRuleCall_0; }
 
 		//(ValidURLSymbol | KeywordHack | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" | "\\\'" | "\\\""
 		//| PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+
@@ -1903,7 +1903,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tPERCENT;
 	private TerminalRule tML_COMMENT;
 	private TerminalRule tWS;
-	private TerminalRule tSTRING;
+	private TerminalRule tCSSSTRING;
 	private TerminalRule tINCLUDES;
 	private TerminalRule tDASHMATCH;
 	private TerminalRule tCOLON;
@@ -1949,7 +1949,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//charset:
-	//	("@charset" | "@CHARSET") charset=STRING ";";
+	//	("@charset" | "@CHARSET") charset=CSSSTRING ";";
 	public CharsetElements getCharsetAccess() {
 		return (pCharset != null) ? pCharset : (pCharset = new CharsetElements());
 	}
@@ -1959,7 +1959,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//importExpression:
-	//	("@import" | "@IMPORT") (value=STRING | URLType mediaList=media_list?) ";";
+	//	("@import" | "@IMPORT") (value=CSSSTRING | URLType mediaList=media_list?) ";";
 	public ImportExpressionElements getImportExpressionAccess() {
 		return (pImportExpression != null) ? pImportExpression : (pImportExpression = new ImportExpressionElements());
 	}
@@ -2084,7 +2084,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	//AttributeSelector returns CssSelector:
 	//	{AttributeSelector} "[" name=Identifier (op=("^=" | "$=" | "*=" | "=" | INCLUDES | DASHMATCH) value=(Identifier |
-	//	STRING))? "]";
+	//	CSSSTRING))? "]";
 	public AttributeSelectorElements getAttributeSelectorAccess() {
 		return (pAttributeSelector != null) ? pAttributeSelector : (pAttributeSelector = new AttributeSelectorElements());
 	}
@@ -2274,7 +2274,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringTok returns CssTok:
-	//	{StringTok} value=STRING;
+	//	{StringTok} value=CSSSTRING;
 	public StringTokElements getStringTokAccess() {
 		return (pStringTok != null) ? pStringTok : (pStringTok = new StringTokElements());
 	}
@@ -2368,7 +2368,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ValidURL returns ecore::EString hidden():
-	//	STRING | (ValidURLSymbol | KeywordHack | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" |
+	//	CSSSTRING | (ValidURLSymbol | KeywordHack | ONE_HEX_LETTER | ONE_NON_HEX_LETTER | ONE_INT | "\\ " | "\\(" | "\\)" |
 	//	"\\\'" | "\\\"" | PERCENT (ONE_INT | ONE_HEX_LETTER) (ONE_INT | ONE_HEX_LETTER))+;
 	public ValidURLElements getValidURLAccess() {
 		return (pValidURL != null) ? pValidURL : (pValidURL = new ValidURLElements());
@@ -2499,11 +2499,12 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
 	} 
 
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
-	public TerminalRule getSTRINGRule() {
-		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
+	//terminal CSSSTRING:
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "0".."9" | "a".."f" | "A".."F" | "\\") | !("\\" |
+	//	"\""))* "\"" | "\'" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "0".."9" | "a".."f" | "A".."F" | "\\") |
+	//	!("\\" | "\'"))* "\'";
+	public TerminalRule getCSSSTRINGRule() {
+		return (tCSSSTRING != null) ? tCSSSTRING : (tCSSSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "CSSSTRING"));
 	} 
 
 	//terminal INCLUDES:

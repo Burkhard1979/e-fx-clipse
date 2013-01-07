@@ -159,14 +159,15 @@ public class NumberTokImpl extends CssTokImpl implements NumberTok
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer();
-    result.append("NumberTok(");
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (val: ");
     result.append(val);
     result.append(')');
     return result.toString();

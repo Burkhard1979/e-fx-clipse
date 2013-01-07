@@ -159,14 +159,15 @@ public class SymbolTokImpl extends CssTokImpl implements SymbolTok
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer();
-    result.append("SymbolTok(");
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (symbol: ");
     result.append(symbol);
     result.append(')');
     return result.toString();

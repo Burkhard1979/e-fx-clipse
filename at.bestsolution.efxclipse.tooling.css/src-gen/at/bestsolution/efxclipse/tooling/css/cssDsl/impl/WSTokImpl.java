@@ -4,7 +4,6 @@ package at.bestsolution.efxclipse.tooling.css.cssDsl.impl;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
-import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -40,10 +39,4 @@ public class WSTokImpl extends CssTokImpl implements WSTok
     return CssDslPackage.Literals.WS_TOK;
   }
 
-  
-	@Override
-	public String toString() {
-		return TokUtil.toString(this);
-	}
-	
 } //WSTokImpl

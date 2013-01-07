@@ -201,9 +201,9 @@ rulecharset returns [EObject current=null]
     }
 )(
 (
-		lv_charset_2_0=RULE_STRING
+		lv_charset_2_0=RULE_CSSSTRING
 		{
-			newLeafNode(lv_charset_2_0, grammarAccess.getCharsetAccess().getCharsetSTRINGTerminalRuleCall_1_0()); 
+			newLeafNode(lv_charset_2_0, grammarAccess.getCharsetAccess().getCharsetCSSSTRINGTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -213,7 +213,7 @@ rulecharset returns [EObject current=null]
        			$current, 
        			"charset",
         		lv_charset_2_0, 
-        		"STRING");
+        		"CSSSTRING");
 	    }
 
 )
@@ -253,9 +253,9 @@ ruleimportExpression returns [EObject current=null]
     }
 )((
 (
-		lv_value_2_0=RULE_STRING
+		lv_value_2_0=RULE_CSSSTRING
 		{
-			newLeafNode(lv_value_2_0, grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0()); 
+			newLeafNode(lv_value_2_0, grammarAccess.getImportExpressionAccess().getValueCSSSTRINGTerminalRuleCall_1_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -265,7 +265,7 @@ ruleimportExpression returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_2_0, 
-        		"STRING");
+        		"CSSSTRING");
 	    }
 
 )
@@ -1322,9 +1322,9 @@ ruleAttributeSelector returns [EObject current=null]
 	        afterParserOrEnumRuleCall();
 	    }
 
-    |		lv_value_4_2=RULE_STRING
+    |		lv_value_4_2=RULE_CSSSTRING
 		{
-			newLeafNode(lv_value_4_2, grammarAccess.getAttributeSelectorAccess().getValueSTRINGTerminalRuleCall_3_1_0_1()); 
+			newLeafNode(lv_value_4_2, grammarAccess.getAttributeSelectorAccess().getValueCSSSTRINGTerminalRuleCall_3_1_0_1()); 
 		}
 		{
 	        if ($current==null) {
@@ -1334,7 +1334,7 @@ ruleAttributeSelector returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_4_2, 
-        		"STRING");
+        		"CSSSTRING");
 	    }
 
 )
@@ -2195,9 +2195,9 @@ ruleStringTok returns [EObject current=null]
     }
 )(
 (
-		lv_value_1_0=RULE_STRING
+		lv_value_1_0=RULE_CSSSTRING
 		{
-			newLeafNode(lv_value_1_0, grammarAccess.getStringTokAccess().getValueSTRINGTerminalRuleCall_1_0()); 
+			newLeafNode(lv_value_1_0, grammarAccess.getStringTokAccess().getValueCSSSTRINGTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2207,7 +2207,7 @@ ruleStringTok returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_1_0, 
-        		"STRING");
+        		"CSSSTRING");
 	    }
 
 )
@@ -2856,12 +2856,12 @@ ruleValidURL returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
     }
     @after { leaveRule(); }:
-(    this_STRING_0=RULE_STRING    {
-		$current.merge(this_STRING_0);
+(    this_CSSSTRING_0=RULE_CSSSTRING    {
+		$current.merge(this_CSSSTRING_0);
     }
 
     { 
-    newLeafNode(this_STRING_0, grammarAccess.getValidURLAccess().getSTRINGTerminalRuleCall_0()); 
+    newLeafNode(this_CSSSTRING_0, grammarAccess.getValidURLAccess().getCSSSTRINGTerminalRuleCall_0()); 
     }
 
     |(
@@ -3273,7 +3273,7 @@ RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_CSSSTRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'0'..'9'|'a'..'f'|'A'..'F'|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'0'..'9'|'a'..'f'|'A'..'F'|'\\')|~(('\\'|'\'')))* '\'');
 
 RULE_INCLUDES : '~=';
 
