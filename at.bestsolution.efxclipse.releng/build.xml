@@ -102,6 +102,7 @@
 			<installunit name="org.eclipse.emf.sdk.feature.group" />
 			<installunit name="org.eclipse.xtext.sdk.feature.group" />
 			<installunit name="org.eclipse.emf.mwe2.runtime.sdk.feature.group" />
+			<installunit name="org.eclipse.emf.mwe2.language.sdk.feature.group" />
 			<installunit name="at.bestsolution.efxclipse.tooling.feature.feature.group" />
 			<installunit name="at.bestsolution.efxclipse.runtime.e3.feature.feature.group" />
 			<installunit name="org.eclipse.wst.xml_ui.feature.feature.group" />
