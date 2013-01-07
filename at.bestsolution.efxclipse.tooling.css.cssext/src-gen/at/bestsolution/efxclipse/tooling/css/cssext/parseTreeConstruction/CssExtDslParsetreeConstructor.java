@@ -45,8 +45,8 @@ protected class ThisRootNode extends RootToken {
 			case 11: return new CSSRuleFunc_Group(this, this, 11, inst);
 			case 12: return new CSSRuleOr_Group(this, this, 12, inst);
 			case 13: return new CSSRuleXor_Group(this, this, 13, inst);
-			case 14: return new CSSRuleConcatWithoutSpace_Group(this, this, 14, inst);
-			case 15: return new CSSRuleConcat_Group(this, this, 15, inst);
+			case 14: return new CSSRuleConcat_Group(this, this, 14, inst);
+			case 15: return new CSSRuleConcatWithoutSpace_Group(this, this, 15, inst);
 			case 16: return new CSSRulePostfix_Group(this, this, 16, inst);
 			case 17: return new CSSRuleBracket_Group(this, this, 17, inst);
 			case 18: return new CSSRulePrimary_Alternatives(this, this, 18, inst);
@@ -3696,11 +3696,11 @@ protected class CSSRuleOr_OrsAssignment_1_1_1 extends AssignmentToken  {
 /************ begin Rule CSSRuleXor ****************
  *
  * CSSRuleXor returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
- * 	CSSRuleConcatWithoutSpace ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcatWithoutSpace)+)?;
+ * 	CSSRuleConcat ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?;
  *
  **/
 
-// CSSRuleConcatWithoutSpace ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcatWithoutSpace)+)?
+// CSSRuleConcat ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?
 protected class CSSRuleXor_Group extends GroupToken {
 	
 	public CSSRuleXor_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3716,7 +3716,7 @@ protected class CSSRuleXor_Group extends GroupToken {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new CSSRuleXor_Group_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
+			case 1: return new CSSRuleXor_CSSRuleConcatParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -3742,22 +3742,22 @@ protected class CSSRuleXor_Group extends GroupToken {
 
 }
 
-// CSSRuleConcatWithoutSpace
-protected class CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0 extends RuleCallToken {
+// CSSRuleConcat
+protected class CSSRuleXor_CSSRuleConcatParserRuleCall_0 extends RuleCallToken {
 	
-	public CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public CSSRuleXor_CSSRuleConcatParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getCSSRuleXorAccess().getCSSRuleConcatWithoutSpaceParserRuleCall_0();
+		return grammarAccess.getCSSRuleXorAccess().getCSSRuleConcatParserRuleCall_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleConcatWithoutSpace_Group(this, this, 0, inst);
+			case 0: return new CSSRuleConcat_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -3777,7 +3777,7 @@ protected class CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0 extends Rul
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
-		if(checkForRecursion(CSSRuleConcatWithoutSpace_Group.class, eObjectConsumer)) return null;
+		if(checkForRecursion(CSSRuleConcat_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
 	}
 	
@@ -3789,7 +3789,7 @@ protected class CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0 extends Rul
 	}	
 }
 
-// ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcatWithoutSpace)+)?
+// ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?
 protected class CSSRuleXor_Group_1 extends GroupToken {
 	
 	public CSSRuleXor_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3833,7 +3833,7 @@ protected class CSSRuleXor_CSSRuleXorXorsAction_1_0 extends ActionToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleXor_CSSRuleConcatWithoutSpaceParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new CSSRuleXor_CSSRuleConcatParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -3847,7 +3847,7 @@ protected class CSSRuleXor_CSSRuleXorXorsAction_1_0 extends ActionToken  {
 	}
 }
 
-// ("||" xors+=CSSRuleConcatWithoutSpace)+
+// ("||" xors+=CSSRuleConcat)+
 protected class CSSRuleXor_Group_1_1 extends GroupToken {
 	
 	public CSSRuleXor_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3892,7 +3892,7 @@ protected class CSSRuleXor_VerticalLineVerticalLineKeyword_1_1_0 extends Keyword
 
 }
 
-// xors+=CSSRuleConcatWithoutSpace
+// xors+=CSSRuleConcat
 protected class CSSRuleXor_XorsAssignment_1_1_1 extends AssignmentToken  {
 	
 	public CSSRuleXor_XorsAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3907,7 +3907,7 @@ protected class CSSRuleXor_XorsAssignment_1_1_1 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleConcatWithoutSpace_Group(this, this, 0, inst);
+			case 0: return new CSSRuleConcat_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -3918,9 +3918,9 @@ protected class CSSRuleXor_XorsAssignment_1_1_1 extends AssignmentToken  {
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("xors");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getCSSRuleConcatWithoutSpaceRule().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getCSSRuleConcatRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getCSSRuleXorAccess().getXorsCSSRuleConcatWithoutSpaceParserRuleCall_1_1_1_0(); 
+				element = grammarAccess.getCSSRuleXorAccess().getXorsCSSRuleConcatParserRuleCall_1_1_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -3944,30 +3944,30 @@ protected class CSSRuleXor_XorsAssignment_1_1_1 extends AssignmentToken  {
 /************ end Rule CSSRuleXor ****************/
 
 
-/************ begin Rule CSSRuleConcatWithoutSpace ****************
+/************ begin Rule CSSRuleConcat ****************
  *
- * CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
- * 	CSSRuleConcat ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRuleConcat)+)?;
+ * CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 	CSSRuleConcatWithoutSpace ({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?;
  *
  **/
 
-// CSSRuleConcat ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRuleConcat)+)?
-protected class CSSRuleConcatWithoutSpace_Group extends GroupToken {
+// CSSRuleConcatWithoutSpace ({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?
+protected class CSSRuleConcat_Group extends GroupToken {
 	
-	public CSSRuleConcatWithoutSpace_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public CSSRuleConcat_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getGroup();
+		return grammarAccess.getCSSRuleConcatAccess().getGroup();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleConcatWithoutSpace_Group_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new CSSRuleConcat_Group_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new CSSRuleConcat_CSSRuleConcatWithoutSpaceParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -3992,22 +3992,22 @@ protected class CSSRuleConcatWithoutSpace_Group extends GroupToken {
 
 }
 
-// CSSRuleConcat
-protected class CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0 extends RuleCallToken {
+// CSSRuleConcatWithoutSpace
+protected class CSSRuleConcat_CSSRuleConcatWithoutSpaceParserRuleCall_0 extends RuleCallToken {
 	
-	public CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public CSSRuleConcat_CSSRuleConcatWithoutSpaceParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatParserRuleCall_0();
+		return grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatWithoutSpaceParserRuleCall_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleConcat_Group(this, this, 0, inst);
+			case 0: return new CSSRuleConcatWithoutSpace_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4018,7 +4018,7 @@ protected class CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0 extends 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
@@ -4026,7 +4026,7 @@ protected class CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0 extends 
 		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
 			return null;
-		if(checkForRecursion(CSSRuleConcat_Group.class, eObjectConsumer)) return null;
+		if(checkForRecursion(CSSRuleConcatWithoutSpace_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
 	}
 	
@@ -4038,7 +4038,209 @@ protected class CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0 extends 
 	}	
 }
 
-// ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRuleConcat)+)?
+// ({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?
+protected class CSSRuleConcat_Group_1 extends GroupToken {
+	
+	public CSSRuleConcat_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getCSSRuleConcatAccess().getGroup_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CSSRuleConcat_ConcAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// {CSSRuleConcat.conc+=current}
+protected class CSSRuleConcat_CSSRuleConcatConcAction_1_0 extends ActionToken  {
+
+	public CSSRuleConcat_CSSRuleConcatConcAction_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Action getGrammarElement() {
+		return grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CSSRuleConcat_CSSRuleConcatWithoutSpaceParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		Object val = eObjectConsumer.getConsumable("conc", false);
+		if(val == null) return null;
+		if(!eObjectConsumer.isConsumedWithLastConsumtion("conc")) return null;
+		return createEObjectConsumer((EObject) val);
+	}
+}
+
+// conc+=CSSRuleConcatWithoutSpace+
+protected class CSSRuleConcat_ConcAssignment_1_1 extends AssignmentToken  {
+	
+	public CSSRuleConcat_ConcAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getCSSRuleConcatAccess().getConcAssignment_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CSSRuleConcatWithoutSpace_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("conc",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("conc");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getCSSRuleConcatWithoutSpaceRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getCSSRuleConcatAccess().getConcCSSRuleConcatWithoutSpaceParserRuleCall_1_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new CSSRuleConcat_ConcAssignment_1_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new CSSRuleConcat_CSSRuleConcatConcAction_1_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+
+/************ end Rule CSSRuleConcat ****************/
+
+
+/************ begin Rule CSSRuleConcatWithoutSpace ****************
+ *
+ * CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 	CSSRulePostfix ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?;
+ *
+ **/
+
+// CSSRulePostfix ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?
+protected class CSSRuleConcatWithoutSpace_Group extends GroupToken {
+	
+	public CSSRuleConcatWithoutSpace_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CSSRuleConcatWithoutSpace_Group_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new CSSRuleConcatWithoutSpace_CSSRulePostfixParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// CSSRulePostfix
+protected class CSSRuleConcatWithoutSpace_CSSRulePostfixParserRuleCall_0 extends RuleCallToken {
+	
+	public CSSRuleConcatWithoutSpace_CSSRulePostfixParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRulePostfixParserRuleCall_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CSSRulePostfix_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(CSSRulePostfix_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?
 protected class CSSRuleConcatWithoutSpace_Group_1 extends GroupToken {
 	
 	public CSSRuleConcatWithoutSpace_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4082,7 +4284,7 @@ protected class CSSRuleConcatWithoutSpace_CSSRuleConcatWithoutSpaceConcAction_1_
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleConcatWithoutSpace_CSSRuleConcatParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new CSSRuleConcatWithoutSpace_CSSRulePostfixParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4096,7 +4298,7 @@ protected class CSSRuleConcatWithoutSpace_CSSRuleConcatWithoutSpaceConcAction_1_
 	}
 }
 
-// ("~" conc+=CSSRuleConcat)+
+// ("~" conc+=CSSRulePostfix)+
 protected class CSSRuleConcatWithoutSpace_Group_1_1 extends GroupToken {
 	
 	public CSSRuleConcatWithoutSpace_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4141,7 +4343,7 @@ protected class CSSRuleConcatWithoutSpace_TildeKeyword_1_1_0 extends KeywordToke
 
 }
 
-// conc+=CSSRuleConcat
+// conc+=CSSRulePostfix
 protected class CSSRuleConcatWithoutSpace_ConcAssignment_1_1_1 extends AssignmentToken  {
 	
 	public CSSRuleConcatWithoutSpace_ConcAssignment_1_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4156,7 +4358,7 @@ protected class CSSRuleConcatWithoutSpace_ConcAssignment_1_1_1 extends Assignmen
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleConcat_Group(this, this, 0, inst);
+			case 0: return new CSSRulePostfix_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4167,9 +4369,9 @@ protected class CSSRuleConcatWithoutSpace_ConcAssignment_1_1_1 extends Assignmen
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("conc");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getCSSRuleConcatRule().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getCSSRulePostfixRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getConcCSSRuleConcatParserRuleCall_1_1_1_0(); 
+				element = grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getConcCSSRulePostfixParserRuleCall_1_1_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -4191,208 +4393,6 @@ protected class CSSRuleConcatWithoutSpace_ConcAssignment_1_1_1 extends Assignmen
 
 
 /************ end Rule CSSRuleConcatWithoutSpace ****************/
-
-
-/************ begin Rule CSSRuleConcat ****************
- *
- * CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
- * 	CSSRulePostfix ({CSSRuleConcat.conc+=current} conc+=CSSRulePostfix+)?;
- *
- **/
-
-// CSSRulePostfix ({CSSRuleConcat.conc+=current} conc+=CSSRulePostfix+)?
-protected class CSSRuleConcat_Group extends GroupToken {
-	
-	public CSSRuleConcat_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getCSSRuleConcatAccess().getGroup();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new CSSRuleConcat_Group_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new CSSRuleConcat_CSSRulePostfixParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// CSSRulePostfix
-protected class CSSRuleConcat_CSSRulePostfixParserRuleCall_0 extends RuleCallToken {
-	
-	public CSSRuleConcat_CSSRulePostfixParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getCSSRuleConcatAccess().getCSSRulePostfixParserRuleCall_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new CSSRulePostfix_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSRulePrimaryAccess().getCSSNumLiteralAction_6_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedDoubleTypeAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeAccess().getCSSRangedIntTypeAction_0_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleBracketAccess().getCSSRuleBracketAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleLiteralAccess().getCSSRuleLiteralAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRulePostfixAccess().getCSSRulePostfixRuleAction_1_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleRefRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleRegexAccess().getCSSRuleRegexAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getCSSTypeRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(CSSRulePostfix_Group.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
-// ({CSSRuleConcat.conc+=current} conc+=CSSRulePostfix+)?
-protected class CSSRuleConcat_Group_1 extends GroupToken {
-	
-	public CSSRuleConcat_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getCSSRuleConcatAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new CSSRuleConcat_ConcAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// {CSSRuleConcat.conc+=current}
-protected class CSSRuleConcat_CSSRuleConcatConcAction_1_0 extends ActionToken  {
-
-	public CSSRuleConcat_CSSRuleConcatConcAction_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Action getGrammarElement() {
-		return grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatConcAction_1_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new CSSRuleConcat_CSSRulePostfixParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		Object val = eObjectConsumer.getConsumable("conc", false);
-		if(val == null) return null;
-		if(!eObjectConsumer.isConsumedWithLastConsumtion("conc")) return null;
-		return createEObjectConsumer((EObject) val);
-	}
-}
-
-// conc+=CSSRulePostfix+
-protected class CSSRuleConcat_ConcAssignment_1_1 extends AssignmentToken  {
-	
-	public CSSRuleConcat_ConcAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getCSSRuleConcatAccess().getConcAssignment_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new CSSRulePostfix_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("conc",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("conc");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getCSSRulePostfixRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getCSSRuleConcatAccess().getConcCSSRulePostfixParserRuleCall_1_1_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new CSSRuleConcat_ConcAssignment_1_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new CSSRuleConcat_CSSRuleConcatConcAction_1_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-
-
-/************ end Rule CSSRuleConcat ****************/
 
 
 /************ begin Rule CSSRulePostfix ****************

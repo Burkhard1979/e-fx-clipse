@@ -80,11 +80,11 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCSSRuleXorAccess().getGroup(), "rule__CSSRuleXor__Group__0");
 					put(grammarAccess.getCSSRuleXorAccess().getGroup_1(), "rule__CSSRuleXor__Group_1__0");
 					put(grammarAccess.getCSSRuleXorAccess().getGroup_1_1(), "rule__CSSRuleXor__Group_1_1__0");
+					put(grammarAccess.getCSSRuleConcatAccess().getGroup(), "rule__CSSRuleConcat__Group__0");
+					put(grammarAccess.getCSSRuleConcatAccess().getGroup_1(), "rule__CSSRuleConcat__Group_1__0");
 					put(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getGroup(), "rule__CSSRuleConcatWithoutSpace__Group__0");
 					put(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getGroup_1(), "rule__CSSRuleConcatWithoutSpace__Group_1__0");
 					put(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getGroup_1_1(), "rule__CSSRuleConcatWithoutSpace__Group_1_1__0");
-					put(grammarAccess.getCSSRuleConcatAccess().getGroup(), "rule__CSSRuleConcat__Group__0");
-					put(grammarAccess.getCSSRuleConcatAccess().getGroup_1(), "rule__CSSRuleConcat__Group_1__0");
 					put(grammarAccess.getCSSRulePostfixAccess().getGroup(), "rule__CSSRulePostfix__Group__0");
 					put(grammarAccess.getCSSRulePostfixAccess().getGroup_1(), "rule__CSSRulePostfix__Group_1__0");
 					put(grammarAccess.getCSSRuleBracketAccess().getGroup(), "rule__CSSRuleBracket__Group__0");
@@ -144,8 +144,8 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCSSRuleFuncAccess().getParamsAssignment_4(), "rule__CSSRuleFunc__ParamsAssignment_4");
 					put(grammarAccess.getCSSRuleOrAccess().getOrsAssignment_1_1_1(), "rule__CSSRuleOr__OrsAssignment_1_1_1");
 					put(grammarAccess.getCSSRuleXorAccess().getXorsAssignment_1_1_1(), "rule__CSSRuleXor__XorsAssignment_1_1_1");
-					put(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getConcAssignment_1_1_1(), "rule__CSSRuleConcatWithoutSpace__ConcAssignment_1_1_1");
 					put(grammarAccess.getCSSRuleConcatAccess().getConcAssignment_1_1(), "rule__CSSRuleConcat__ConcAssignment_1_1");
+					put(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getConcAssignment_1_1_1(), "rule__CSSRuleConcatWithoutSpace__ConcAssignment_1_1_1");
 					put(grammarAccess.getCSSRulePostfixAccess().getCardinalityAssignment_1_1(), "rule__CSSRulePostfix__CardinalityAssignment_1_1");
 					put(grammarAccess.getCSSRuleBracketAccess().getInnerAssignment_2(), "rule__CSSRuleBracket__InnerAssignment_2");
 					put(grammarAccess.getCSSRulePrimaryAccess().getValueAssignment_6_1(), "rule__CSSRulePrimary__ValueAssignment_6_1");

@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.util;
 
@@ -183,14 +180,14 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
         return createCSSRuleXorAdapter();
       }
       @Override
-      public Adapter caseCSSRuleConcatWithoutSpace(CSSRuleConcatWithoutSpace object)
-      {
-        return createCSSRuleConcatWithoutSpaceAdapter();
-      }
-      @Override
       public Adapter caseCSSRuleConcat(CSSRuleConcat object)
       {
         return createCSSRuleConcatAdapter();
+      }
+      @Override
+      public Adapter caseCSSRuleConcatWithoutSpace(CSSRuleConcatWithoutSpace object)
+      {
+        return createCSSRuleConcatWithoutSpaceAdapter();
       }
       @Override
       public Adapter caseCSSRulePostfix(CSSRulePostfix object)
@@ -560,21 +557,6 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace <em>CSS Rule Concat Without Space</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace
-   * @generated
-   */
-  public Adapter createCSSRuleConcatWithoutSpaceAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcat <em>CSS Rule Concat</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -585,6 +567,21 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCSSRuleConcatAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace <em>CSS Rule Concat Without Space</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace
+   * @generated
+   */
+  public Adapter createCSSRuleConcatWithoutSpaceAdapter()
   {
     return null;
   }

@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
@@ -204,14 +201,14 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass cssRuleConcatWithoutSpaceEClass = null;
+  private EClass cssRuleConcatEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass cssRuleConcatEClass = null;
+  private EClass cssRuleConcatWithoutSpaceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1003,26 +1000,6 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCSSRuleConcatWithoutSpace()
-  {
-    return cssRuleConcatWithoutSpaceEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCSSRuleConcatWithoutSpace_Conc()
-  {
-    return (EReference)cssRuleConcatWithoutSpaceEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getCSSRuleConcat()
   {
     return cssRuleConcatEClass;
@@ -1036,6 +1013,26 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
   public EReference getCSSRuleConcat_Conc()
   {
     return (EReference)cssRuleConcatEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCSSRuleConcatWithoutSpace()
+  {
+    return cssRuleConcatWithoutSpaceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCSSRuleConcatWithoutSpace_Conc()
+  {
+    return (EReference)cssRuleConcatWithoutSpaceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1297,11 +1294,11 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     cssRuleXorEClass = createEClass(CSS_RULE_XOR);
     createEReference(cssRuleXorEClass, CSS_RULE_XOR__XORS);
 
-    cssRuleConcatWithoutSpaceEClass = createEClass(CSS_RULE_CONCAT_WITHOUT_SPACE);
-    createEReference(cssRuleConcatWithoutSpaceEClass, CSS_RULE_CONCAT_WITHOUT_SPACE__CONC);
-
     cssRuleConcatEClass = createEClass(CSS_RULE_CONCAT);
     createEReference(cssRuleConcatEClass, CSS_RULE_CONCAT__CONC);
+
+    cssRuleConcatWithoutSpaceEClass = createEClass(CSS_RULE_CONCAT_WITHOUT_SPACE);
+    createEReference(cssRuleConcatWithoutSpaceEClass, CSS_RULE_CONCAT_WITHOUT_SPACE__CONC);
 
     cssRulePostfixEClass = createEClass(CSS_RULE_POSTFIX);
     createEReference(cssRulePostfixEClass, CSS_RULE_POSTFIX__RULE);
@@ -1362,8 +1359,8 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     cssRuleFuncEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleOrEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleXorEClass.getESuperTypes().add(this.getCSSRule());
-    cssRuleConcatWithoutSpaceEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleConcatEClass.getESuperTypes().add(this.getCSSRule());
+    cssRuleConcatWithoutSpaceEClass.getESuperTypes().add(this.getCSSRule());
     cssRulePostfixEClass.getESuperTypes().add(this.getCSSRule());
     cssRuleBracketEClass.getESuperTypes().add(this.getCSSRule());
     cssNumLiteralEClass.getESuperTypes().add(this.getCSSRule());
@@ -1461,11 +1458,11 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     initEClass(cssRuleXorEClass, CSSRuleXor.class, "CSSRuleXor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCSSRuleXor_Xors(), this.getCSSRule(), null, "xors", null, 0, -1, CSSRuleXor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(cssRuleConcatWithoutSpaceEClass, CSSRuleConcatWithoutSpace.class, "CSSRuleConcatWithoutSpace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCSSRuleConcatWithoutSpace_Conc(), this.getCSSRule(), null, "conc", null, 0, -1, CSSRuleConcatWithoutSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(cssRuleConcatEClass, CSSRuleConcat.class, "CSSRuleConcat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCSSRuleConcat_Conc(), this.getCSSRule(), null, "conc", null, 0, -1, CSSRuleConcat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cssRuleConcatWithoutSpaceEClass, CSSRuleConcatWithoutSpace.class, "CSSRuleConcatWithoutSpace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCSSRuleConcatWithoutSpace_Conc(), this.getCSSRule(), null, "conc", null, 0, -1, CSSRuleConcatWithoutSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cssRulePostfixEClass, CSSRulePostfix.class, "CSSRulePostfix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCSSRulePostfix_Rule(), this.getCSSRule(), null, "rule", null, 0, 1, CSSRulePostfix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -28,4 +28,8 @@ public class ParsePathTerminal extends ParsePathSegment {
 		return getStatus().toString() + " " + TokUtil.toString(inputToken) + (message==null?"":" -> " + message);
 	}
 	
+	@Override
+	public void skip() {
+	}
+	
 }

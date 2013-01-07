@@ -81,6 +81,7 @@ Debug .p0 {
     -fx-padding: 2 0 2 0;
 }
 
+
 .table-view {
     -fx-table-cell-border-color:derive(-fx-base,+10%);
     -fx-table-header-border-color:derive(-fx-base,+20%);   

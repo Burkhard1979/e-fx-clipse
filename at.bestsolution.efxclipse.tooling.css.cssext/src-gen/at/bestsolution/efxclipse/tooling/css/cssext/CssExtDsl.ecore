@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cssExtDsl"
-    nsURI="http://www.bestsolution.at/efxclipse/tooling/css/cssext/CssExtDsl" nsPrefix="cssExtDsl">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cssExtDsl" nsURI="http://www.bestsolution.at/efxclipse/tooling/css/cssext/CssExtDsl"
+    nsPrefix="cssExtDsl">
   <eClassifiers xsi:type="ecore:EClass" name="CssExtension">
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true"/>
@@ -110,11 +109,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="xors" upperBound="-1" eType="#//CSSRule"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CSSRuleConcatWithoutSpace" eSuperTypes="#//CSSRule">
+  <eClassifiers xsi:type="ecore:EClass" name="CSSRuleConcat" eSuperTypes="#//CSSRule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="conc" upperBound="-1" eType="#//CSSRule"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CSSRuleConcat" eSuperTypes="#//CSSRule">
+  <eClassifiers xsi:type="ecore:EClass" name="CSSRuleConcatWithoutSpace" eSuperTypes="#//CSSRule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="conc" upperBound="-1" eType="#//CSSRule"
         containment="true"/>
   </eClassifiers>

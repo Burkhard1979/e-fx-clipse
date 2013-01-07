@@ -18,6 +18,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
 
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationStatus;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
@@ -47,32 +48,54 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 
 	
 	@Check
+	public void checkProperty(css_property property) {
+		
+	
+		
+	}
+	
+	@Check
 	public void checkDeclaration(css_declaration dec) {
 		css_property property = dec.getProperty();
 		List<CssTok> tokens = dec.getValueTokens();
 		
 		URI uri = dec.eResource().getURI();
 		
-		List<ValidationResult> result = extension.validateProperty(uri, null, property.getName(), tokens);
+		List<Property> properties = extension.getProperties(uri);
 		
-		System.err.println(result);
-		 
-		System.err.println("validation of " + property.getName());
+		boolean known = false;
+		for (Property p : properties) {
+			if (p.getName().equals(property.getName())) {
+				known = true;
+				break;
+			}
+		}
 		
-		if (!result.isEmpty()) {
-			for (ValidationResult r : result) {
-				if (r.status == ValidationStatus.ERROR) {
-					if (r.object != null) {
-						if (r.object instanceof FuncTok) {
-							FuncTok f = (FuncTok) r.object;
-							error(r.message, f, CssDslPackage.Literals.FUNC_TOK__NAME, -1);
+		if (!known) {
+			warning("Unknown property: \""+property.getName()+"\"", CssDslPackage.Literals.CSS_DECLARATION__PROPERTY);
+		}
+		else {
+			List<ValidationResult> result = extension.validateProperty(uri, null, property.getName(), tokens);
+			
+			System.err.println(result);
+			 
+			System.err.println("validation of " + property.getName());
+			
+			if (!result.isEmpty()) {
+				for (ValidationResult r : result) {
+					if (r.status == ValidationStatus.ERROR) {
+						if (r.object != null) {
+							if (r.object instanceof FuncTok) {
+								FuncTok f = (FuncTok) r.object;
+								error(r.message, f, CssDslPackage.Literals.FUNC_TOK__NAME, -1);
+							}
+							else {
+								error(r.message, r.object, null, 0);
+							}
 						}
 						else {
-							error(r.message, r.object, null, 0);
+							error(r.message, dec, CssDslPackage.Literals.CSS_DECLARATION__VALUE_TOKENS, r.index);
 						}
-					}
-					else {
-						error(r.message, dec, CssDslPackage.Literals.CSS_DECLARATION__VALUE_TOKENS, r.index);
 					}
 				}
 			}

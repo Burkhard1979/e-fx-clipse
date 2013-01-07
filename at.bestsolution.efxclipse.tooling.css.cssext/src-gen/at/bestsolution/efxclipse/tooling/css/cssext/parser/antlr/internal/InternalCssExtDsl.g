@@ -1547,11 +1547,11 @@ ruleCSSRuleXor returns [EObject current=null]
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getCSSRuleXorAccess().getCSSRuleConcatWithoutSpaceParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getCSSRuleXorAccess().getCSSRuleConcatParserRuleCall_0()); 
     }
-    this_CSSRuleConcatWithoutSpace_0=ruleCSSRuleConcatWithoutSpace
+    this_CSSRuleConcat_0=ruleCSSRuleConcat
     { 
-        $current = $this_CSSRuleConcatWithoutSpace_0.current; 
+        $current = $this_CSSRuleConcat_0.current; 
         afterParserOrEnumRuleCall();
     }
 ((
@@ -1567,9 +1567,9 @@ ruleCSSRuleXor returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCSSRuleXorAccess().getXorsCSSRuleConcatWithoutSpaceParserRuleCall_1_1_1_0()); 
+	        newCompositeNode(grammarAccess.getCSSRuleXorAccess().getXorsCSSRuleConcatParserRuleCall_1_1_1_0()); 
 	    }
-		lv_xors_3_0=ruleCSSRuleConcatWithoutSpace		{
+		lv_xors_3_0=ruleCSSRuleConcat		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCSSRuleXorRule());
 	        }
@@ -1577,74 +1577,6 @@ ruleCSSRuleXor returns [EObject current=null]
        			$current, 
        			"xors",
         		lv_xors_3_0, 
-        		"CSSRuleConcatWithoutSpace");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))+)?)
-;
-finally {
-	myHiddenTokenState.restore();
-}
-
-
-
-
-
-// Entry rule entryRuleCSSRuleConcatWithoutSpace
-entryRuleCSSRuleConcatWithoutSpace returns [EObject current=null] 
-	@init { 
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
-	}
-	:
-	{ newCompositeNode(grammarAccess.getCSSRuleConcatWithoutSpaceRule()); }
-	 iv_ruleCSSRuleConcatWithoutSpace=ruleCSSRuleConcatWithoutSpace 
-	 { $current=$iv_ruleCSSRuleConcatWithoutSpace.current; } 
-	 EOF 
-;
-finally {
-	myHiddenTokenState.restore();
-}
-
-// Rule CSSRuleConcatWithoutSpace
-ruleCSSRuleConcatWithoutSpace returns [EObject current=null] 
-    @init { enterRule(); 
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatParserRuleCall_0()); 
-    }
-    this_CSSRuleConcat_0=ruleCSSRuleConcat
-    { 
-        $current = $this_CSSRuleConcat_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-((
-    {
-        $current = forceCreateModelElementAndAdd(
-            grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0(),
-            $current);
-    }
-)(	otherlv_2='~' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getTildeKeyword_1_1_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getConcCSSRuleConcatParserRuleCall_1_1_1_0()); 
-	    }
-		lv_conc_3_0=ruleCSSRuleConcat		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getCSSRuleConcatWithoutSpaceRule());
-	        }
-       		add(
-       			$current, 
-       			"conc",
-        		lv_conc_3_0, 
         		"CSSRuleConcat");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1683,11 +1615,11 @@ ruleCSSRuleConcat returns [EObject current=null]
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getCSSRuleConcatAccess().getCSSRulePostfixParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getCSSRuleConcatAccess().getCSSRuleConcatWithoutSpaceParserRuleCall_0()); 
     }
-    this_CSSRulePostfix_0=ruleCSSRulePostfix
+    this_CSSRuleConcatWithoutSpace_0=ruleCSSRuleConcatWithoutSpace
     { 
-        $current = $this_CSSRulePostfix_0.current; 
+        $current = $this_CSSRuleConcatWithoutSpace_0.current; 
         afterParserOrEnumRuleCall();
     }
 ((
@@ -1699,9 +1631,9 @@ ruleCSSRuleConcat returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCSSRuleConcatAccess().getConcCSSRulePostfixParserRuleCall_1_1_0()); 
+	        newCompositeNode(grammarAccess.getCSSRuleConcatAccess().getConcCSSRuleConcatWithoutSpaceParserRuleCall_1_1_0()); 
 	    }
-		lv_conc_2_0=ruleCSSRulePostfix		{
+		lv_conc_2_0=ruleCSSRuleConcatWithoutSpace		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCSSRuleConcatRule());
 	        }
@@ -1709,12 +1641,80 @@ ruleCSSRuleConcat returns [EObject current=null]
        			$current, 
        			"conc",
         		lv_conc_2_0, 
-        		"CSSRulePostfix");
+        		"CSSRuleConcatWithoutSpace");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )+)?)
+;
+finally {
+	myHiddenTokenState.restore();
+}
+
+
+
+
+
+// Entry rule entryRuleCSSRuleConcatWithoutSpace
+entryRuleCSSRuleConcatWithoutSpace returns [EObject current=null] 
+	@init { 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
+	}
+	:
+	{ newCompositeNode(grammarAccess.getCSSRuleConcatWithoutSpaceRule()); }
+	 iv_ruleCSSRuleConcatWithoutSpace=ruleCSSRuleConcatWithoutSpace 
+	 { $current=$iv_ruleCSSRuleConcatWithoutSpace.current; } 
+	 EOF 
+;
+finally {
+	myHiddenTokenState.restore();
+}
+
+// Rule CSSRuleConcatWithoutSpace
+ruleCSSRuleConcatWithoutSpace returns [EObject current=null] 
+    @init { enterRule(); 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRulePostfixParserRuleCall_0()); 
+    }
+    this_CSSRulePostfix_0=ruleCSSRulePostfix
+    { 
+        $current = $this_CSSRulePostfix_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+((
+    {
+        $current = forceCreateModelElementAndAdd(
+            grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getCSSRuleConcatWithoutSpaceConcAction_1_0(),
+            $current);
+    }
+)(	otherlv_2='~' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getTildeKeyword_1_1_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCSSRuleConcatWithoutSpaceAccess().getConcCSSRulePostfixParserRuleCall_1_1_1_0()); 
+	    }
+		lv_conc_3_0=ruleCSSRulePostfix		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCSSRuleConcatWithoutSpaceRule());
+	        }
+       		add(
+       			$current, 
+       			"conc",
+        		lv_conc_3_0, 
+        		"CSSRulePostfix");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))+)?)
 ;
 finally {
 	myHiddenTokenState.restore();

@@ -25,6 +25,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
@@ -175,6 +176,7 @@ public class CssExtManager implements ICssExtManager {
 		
 	}
 	
+	@Override
 	public CSSRule resolveReference(final CSSRuleRef ref) {
 		final Definition definition = ref.getRef();
 		CSSRule result =  definition.getRule();

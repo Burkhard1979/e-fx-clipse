@@ -102,9 +102,19 @@ public class ParsePath {
 //		return newPath;
 //	}
 	
-	@Override
-	public String toString() {
+	private String lv(int level) {
+		String r = "";
+		for (int i = 0; i < level; i++) {
+			r += " ";
+		}
+		return r;
+	}
+	
+	public String toString(int level) {
 		StringBuilder b = new StringBuilder();
+		b.append(lv(level));
+		b.append(level);
+		b.append(" ");
 		b.append("ParsePath("+segments.size()+"):");
 		
 		List<ParsePath> subPaths = new ArrayList<ParsePath>();
@@ -123,12 +133,16 @@ public class ParsePath {
 		
 		for (ParsePath s : subPaths) {
 			b.append("\n");
-			String space = "";
-			b.append(space);
-			b.append(s.toString());
+			b.append(lv(level));
+			b.append(s.toString(level + 1));
 		}
 		
 		return b.toString();
+	}
+	
+	@Override
+	public String toString() {
+		return toString(0);
 	}
 
 
@@ -146,7 +160,7 @@ public class ParsePath {
 		ParseStatus result = ParseStatus.MATCH;
 		
 		for (ParsePathSegment s : segments) {
-			if (s.getStatus() == ParseStatus.MATCH) {
+			if (s.getStatus() == ParseStatus.MATCH || s.getStatus() == ParseStatus.SKIP) {
 				continue;
 			}
 			else {
@@ -157,5 +171,10 @@ public class ParsePath {
 		
 		return result;
 		
+	}
+	
+	public void skipLastSegment() {
+		ParsePathSegment last = getLastSegment();
+		last.skip();
 	}
 }

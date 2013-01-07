@@ -312,7 +312,7 @@ finally {
 // Entry rule entryRuleselector
 entryRuleselector 
 @init {
-	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 }
 :
 { before(grammarAccess.getSelectorRule()); }
@@ -327,7 +327,7 @@ finally {
 // Rule selector
 ruleselector
     @init {
-		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 		int stackSize = keepStackSize();
     }
 	:
@@ -1794,9 +1794,9 @@ rule__AttributeSelector__ValueAlternatives_3_1_0
 )
 
     |(
-{ before(grammarAccess.getAttributeSelectorAccess().getValueSTRINGTerminalRuleCall_3_1_0_1()); }
-	RULE_STRING
-{ after(grammarAccess.getAttributeSelectorAccess().getValueSTRINGTerminalRuleCall_3_1_0_1()); }
+{ before(grammarAccess.getAttributeSelectorAccess().getValueCSSSTRINGTerminalRuleCall_3_1_0_1()); }
+	RULE_CSSSTRING
+{ after(grammarAccess.getAttributeSelectorAccess().getValueCSSSTRINGTerminalRuleCall_3_1_0_1()); }
 )
 
 ;
@@ -2176,9 +2176,9 @@ rule__ValidURL__Alternatives
     }
 :
 (
-{ before(grammarAccess.getValidURLAccess().getSTRINGTerminalRuleCall_0()); }
-	RULE_STRING
-{ after(grammarAccess.getValidURLAccess().getSTRINGTerminalRuleCall_0()); }
+{ before(grammarAccess.getValidURLAccess().getCSSSTRINGTerminalRuleCall_0()); }
+	RULE_CSSSTRING
+{ after(grammarAccess.getValidURLAccess().getCSSSTRINGTerminalRuleCall_0()); }
 )
 
     |(
@@ -7042,8 +7042,8 @@ rule__Charset__CharsetAssignment_1
     }
 :
 (
-{ before(grammarAccess.getCharsetAccess().getCharsetSTRINGTerminalRuleCall_1_0()); }
-	RULE_STRING{ after(grammarAccess.getCharsetAccess().getCharsetSTRINGTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getCharsetAccess().getCharsetCSSSTRINGTerminalRuleCall_1_0()); }
+	RULE_CSSSTRING{ after(grammarAccess.getCharsetAccess().getCharsetCSSSTRINGTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -7057,8 +7057,8 @@ rule__ImportExpression__ValueAssignment_1_0
     }
 :
 (
-{ before(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0()); }
-	RULE_STRING{ after(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0()); }
+{ before(grammarAccess.getImportExpressionAccess().getValueCSSSTRINGTerminalRuleCall_1_0_0()); }
+	RULE_CSSSTRING{ after(grammarAccess.getImportExpressionAccess().getValueCSSSTRINGTerminalRuleCall_1_0_0()); }
 )
 
 ;
@@ -7675,8 +7675,8 @@ rule__StringTok__ValueAssignment_1
     }
 :
 (
-{ before(grammarAccess.getStringTokAccess().getValueSTRINGTerminalRuleCall_1_0()); }
-	RULE_STRING{ after(grammarAccess.getStringTokAccess().getValueSTRINGTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getStringTokAccess().getValueCSSSTRINGTerminalRuleCall_1_0()); }
+	RULE_CSSSTRING{ after(grammarAccess.getStringTokAccess().getValueCSSSTRINGTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -7799,7 +7799,7 @@ RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_CSSSTRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'0'..'9'|'a'..'f'|'A'..'F'|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'0'..'9'|'a'..'f'|'A'..'F'|'\\')|~(('\\'|'\'')))* '\'');
 
 RULE_INCLUDES : '~=';
 

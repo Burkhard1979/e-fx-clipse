@@ -131,16 +131,18 @@ CSSRuleOr returns CSSRule hidden(WS, ML_COMMENT, SL_COMMENT):
 ;
 
 CSSRuleXor returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-	 CSSRuleConcatWithoutSpace ({CSSRuleXor.xors+=current} ('||' xors+=CSSRuleConcatWithoutSpace)+)?
+	 CSSRuleConcat ({CSSRuleXor.xors+=current} ('||' xors+=CSSRuleConcat)+)?
+;
+
+
+CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	CSSRuleConcatWithoutSpace ({CSSRuleConcat.conc+=current} (conc+=CSSRuleConcatWithoutSpace)+)?
 ;
 
 CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-	CSSRuleConcat ({CSSRuleConcatWithoutSpace.conc+=current} ( '~' conc+=CSSRuleConcat)+)?
+	CSSRulePostfix ({CSSRuleConcatWithoutSpace.conc+=current} ( '~' conc+=CSSRulePostfix)+)?
 ;
 
-CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-	 CSSRulePostfix ({CSSRuleConcat.conc+=current} (conc+=CSSRulePostfix)+)?
-;
 
 CSSRulePostfix returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
 	 CSSRulePrimary ({CSSRulePostfix.rule=current} cardinality=('*' |'+' | '?'))?

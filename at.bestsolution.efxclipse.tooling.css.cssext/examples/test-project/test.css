@@ -5,11 +5,11 @@ Node[no=me] {
 Region.test {
 	-fx-blend-mode: add;
 	-fx-padding: 12px;
-	-fx-arc-height: 1cm;
+	-fx-arc-height: 1cm; 
 	-fx-graphic-hpos: inherit;
 	-fx-padding: 1 1 1 1;
 	-fx-arc-height: 1;
-	-fx-alignment: 1px;
+	-fx-alignment: baseline-center;
 	-fx-smooth: true;
 	asdfasd: a;
 	-fx-halignment: left;
@@ -29,7 +29,8 @@ Region.test {
 
 
 .future {
-	
+	width: 20;
+	-fx-opacity: width;	
 }
 
 .current {

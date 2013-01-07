@@ -20,6 +20,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;

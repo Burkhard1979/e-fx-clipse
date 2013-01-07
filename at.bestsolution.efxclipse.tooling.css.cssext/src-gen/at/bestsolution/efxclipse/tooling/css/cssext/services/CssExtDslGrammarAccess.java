@@ -907,113 +907,113 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class CSSRuleXorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CSSRuleXor");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cCSSRuleConcatWithoutSpaceParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cCSSRuleConcatParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cCSSRuleXorXorsAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
 		private final Keyword cVerticalLineVerticalLineKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
 		private final Assignment cXorsAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cXorsCSSRuleConcatWithoutSpaceParserRuleCall_1_1_1_0 = (RuleCall)cXorsAssignment_1_1_1.eContents().get(0);
+		private final RuleCall cXorsCSSRuleConcatParserRuleCall_1_1_1_0 = (RuleCall)cXorsAssignment_1_1_1.eContents().get(0);
 		
 		//CSSRuleXor returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-		//	CSSRuleConcatWithoutSpace ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcatWithoutSpace)+)?;
+		//	CSSRuleConcat ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?;
 		public ParserRule getRule() { return rule; }
 
-		//CSSRuleConcatWithoutSpace ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcatWithoutSpace)+)?
-		public Group getGroup() { return cGroup; }
-
-		//CSSRuleConcatWithoutSpace
-		public RuleCall getCSSRuleConcatWithoutSpaceParserRuleCall_0() { return cCSSRuleConcatWithoutSpaceParserRuleCall_0; }
-
-		//({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcatWithoutSpace)+)?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//{CSSRuleXor.xors+=current}
-		public Action getCSSRuleXorXorsAction_1_0() { return cCSSRuleXorXorsAction_1_0; }
-
-		//("||" xors+=CSSRuleConcatWithoutSpace)+
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"||"
-		public Keyword getVerticalLineVerticalLineKeyword_1_1_0() { return cVerticalLineVerticalLineKeyword_1_1_0; }
-
-		//xors+=CSSRuleConcatWithoutSpace
-		public Assignment getXorsAssignment_1_1_1() { return cXorsAssignment_1_1_1; }
-
-		//CSSRuleConcatWithoutSpace
-		public RuleCall getXorsCSSRuleConcatWithoutSpaceParserRuleCall_1_1_1_0() { return cXorsCSSRuleConcatWithoutSpaceParserRuleCall_1_1_1_0; }
-	}
-
-	public class CSSRuleConcatWithoutSpaceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CSSRuleConcatWithoutSpace");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cCSSRuleConcatParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cCSSRuleConcatWithoutSpaceConcAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cTildeKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cConcAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cConcCSSRuleConcatParserRuleCall_1_1_1_0 = (RuleCall)cConcAssignment_1_1_1.eContents().get(0);
-		
-		//CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-		//	CSSRuleConcat ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRuleConcat)+)?;
-		public ParserRule getRule() { return rule; }
-
-		//CSSRuleConcat ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRuleConcat)+)?
+		//CSSRuleConcat ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?
 		public Group getGroup() { return cGroup; }
 
 		//CSSRuleConcat
 		public RuleCall getCSSRuleConcatParserRuleCall_0() { return cCSSRuleConcatParserRuleCall_0; }
 
-		//({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRuleConcat)+)?
+		//({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?
 		public Group getGroup_1() { return cGroup_1; }
 
-		//{CSSRuleConcatWithoutSpace.conc+=current}
-		public Action getCSSRuleConcatWithoutSpaceConcAction_1_0() { return cCSSRuleConcatWithoutSpaceConcAction_1_0; }
+		//{CSSRuleXor.xors+=current}
+		public Action getCSSRuleXorXorsAction_1_0() { return cCSSRuleXorXorsAction_1_0; }
 
-		//("~" conc+=CSSRuleConcat)+
+		//("||" xors+=CSSRuleConcat)+
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//"~"
-		public Keyword getTildeKeyword_1_1_0() { return cTildeKeyword_1_1_0; }
+		//"||"
+		public Keyword getVerticalLineVerticalLineKeyword_1_1_0() { return cVerticalLineVerticalLineKeyword_1_1_0; }
 
-		//conc+=CSSRuleConcat
-		public Assignment getConcAssignment_1_1_1() { return cConcAssignment_1_1_1; }
+		//xors+=CSSRuleConcat
+		public Assignment getXorsAssignment_1_1_1() { return cXorsAssignment_1_1_1; }
 
 		//CSSRuleConcat
-		public RuleCall getConcCSSRuleConcatParserRuleCall_1_1_1_0() { return cConcCSSRuleConcatParserRuleCall_1_1_1_0; }
+		public RuleCall getXorsCSSRuleConcatParserRuleCall_1_1_1_0() { return cXorsCSSRuleConcatParserRuleCall_1_1_1_0; }
 	}
 
 	public class CSSRuleConcatElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CSSRuleConcat");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cCSSRulePostfixParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cCSSRuleConcatWithoutSpaceParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cCSSRuleConcatConcAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cConcAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cConcCSSRulePostfixParserRuleCall_1_1_0 = (RuleCall)cConcAssignment_1_1.eContents().get(0);
+		private final RuleCall cConcCSSRuleConcatWithoutSpaceParserRuleCall_1_1_0 = (RuleCall)cConcAssignment_1_1.eContents().get(0);
 		
 		//CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-		//	CSSRulePostfix ({CSSRuleConcat.conc+=current} conc+=CSSRulePostfix+)?;
+		//	CSSRuleConcatWithoutSpace ({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?;
 		public ParserRule getRule() { return rule; }
 
-		//CSSRulePostfix ({CSSRuleConcat.conc+=current} conc+=CSSRulePostfix+)?
+		//CSSRuleConcatWithoutSpace ({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?
 		public Group getGroup() { return cGroup; }
 
-		//CSSRulePostfix
-		public RuleCall getCSSRulePostfixParserRuleCall_0() { return cCSSRulePostfixParserRuleCall_0; }
+		//CSSRuleConcatWithoutSpace
+		public RuleCall getCSSRuleConcatWithoutSpaceParserRuleCall_0() { return cCSSRuleConcatWithoutSpaceParserRuleCall_0; }
 
-		//({CSSRuleConcat.conc+=current} conc+=CSSRulePostfix+)?
+		//({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{CSSRuleConcat.conc+=current}
 		public Action getCSSRuleConcatConcAction_1_0() { return cCSSRuleConcatConcAction_1_0; }
 
-		//conc+=CSSRulePostfix+
+		//conc+=CSSRuleConcatWithoutSpace+
 		public Assignment getConcAssignment_1_1() { return cConcAssignment_1_1; }
 
+		//CSSRuleConcatWithoutSpace
+		public RuleCall getConcCSSRuleConcatWithoutSpaceParserRuleCall_1_1_0() { return cConcCSSRuleConcatWithoutSpaceParserRuleCall_1_1_0; }
+	}
+
+	public class CSSRuleConcatWithoutSpaceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CSSRuleConcatWithoutSpace");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cCSSRulePostfixParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cCSSRuleConcatWithoutSpaceConcAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
+		private final Keyword cTildeKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cConcAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cConcCSSRulePostfixParserRuleCall_1_1_1_0 = (RuleCall)cConcAssignment_1_1_1.eContents().get(0);
+		
+		//CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+		//	CSSRulePostfix ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?;
+		public ParserRule getRule() { return rule; }
+
+		//CSSRulePostfix ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?
+		public Group getGroup() { return cGroup; }
+
 		//CSSRulePostfix
-		public RuleCall getConcCSSRulePostfixParserRuleCall_1_1_0() { return cConcCSSRulePostfixParserRuleCall_1_1_0; }
+		public RuleCall getCSSRulePostfixParserRuleCall_0() { return cCSSRulePostfixParserRuleCall_0; }
+
+		//({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{CSSRuleConcatWithoutSpace.conc+=current}
+		public Action getCSSRuleConcatWithoutSpaceConcAction_1_0() { return cCSSRuleConcatWithoutSpaceConcAction_1_0; }
+
+		//("~" conc+=CSSRulePostfix)+
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//"~"
+		public Keyword getTildeKeyword_1_1_0() { return cTildeKeyword_1_1_0; }
+
+		//conc+=CSSRulePostfix
+		public Assignment getConcAssignment_1_1_1() { return cConcAssignment_1_1_1; }
+
+		//CSSRulePostfix
+		public RuleCall getConcCSSRulePostfixParserRuleCall_1_1_1_0() { return cConcCSSRulePostfixParserRuleCall_1_1_1_0; }
 	}
 
 	public class CSSRulePostfixElements extends AbstractParserRuleElementFinder {
@@ -1479,8 +1479,8 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	private CSSRuleFuncElements pCSSRuleFunc;
 	private CSSRuleOrElements pCSSRuleOr;
 	private CSSRuleXorElements pCSSRuleXor;
-	private CSSRuleConcatWithoutSpaceElements pCSSRuleConcatWithoutSpace;
 	private CSSRuleConcatElements pCSSRuleConcat;
+	private CSSRuleConcatWithoutSpaceElements pCSSRuleConcatWithoutSpace;
 	private CSSRulePostfixElements pCSSRulePostfix;
 	private CSSRuleBracketElements pCSSRuleBracket;
 	private CSSRulePrimaryElements pCSSRulePrimary;
@@ -1734,7 +1734,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CSSRuleXor returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-	//	CSSRuleConcatWithoutSpace ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcatWithoutSpace)+)?;
+	//	CSSRuleConcat ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?;
 	public CSSRuleXorElements getCSSRuleXorAccess() {
 		return (pCSSRuleXor != null) ? pCSSRuleXor : (pCSSRuleXor = new CSSRuleXorElements());
 	}
@@ -1743,24 +1743,24 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getCSSRuleXorAccess().getRule();
 	}
 
-	//CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-	//	CSSRuleConcat ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRuleConcat)+)?;
-	public CSSRuleConcatWithoutSpaceElements getCSSRuleConcatWithoutSpaceAccess() {
-		return (pCSSRuleConcatWithoutSpace != null) ? pCSSRuleConcatWithoutSpace : (pCSSRuleConcatWithoutSpace = new CSSRuleConcatWithoutSpaceElements());
-	}
-	
-	public ParserRule getCSSRuleConcatWithoutSpaceRule() {
-		return getCSSRuleConcatWithoutSpaceAccess().getRule();
-	}
-
 	//CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
-	//	CSSRulePostfix ({CSSRuleConcat.conc+=current} conc+=CSSRulePostfix+)?;
+	//	CSSRuleConcatWithoutSpace ({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?;
 	public CSSRuleConcatElements getCSSRuleConcatAccess() {
 		return (pCSSRuleConcat != null) ? pCSSRuleConcat : (pCSSRuleConcat = new CSSRuleConcatElements());
 	}
 	
 	public ParserRule getCSSRuleConcatRule() {
 		return getCSSRuleConcatAccess().getRule();
+	}
+
+	//CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+	//	CSSRulePostfix ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?;
+	public CSSRuleConcatWithoutSpaceElements getCSSRuleConcatWithoutSpaceAccess() {
+		return (pCSSRuleConcatWithoutSpace != null) ? pCSSRuleConcatWithoutSpace : (pCSSRuleConcatWithoutSpace = new CSSRuleConcatWithoutSpaceElements());
+	}
+	
+	public ParserRule getCSSRuleConcatWithoutSpaceRule() {
+		return getCSSRuleConcatWithoutSpaceAccess().getRule();
 	}
 
 	//CSSRulePostfix returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):

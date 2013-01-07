@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.util;
 
@@ -233,19 +230,19 @@ public class CssExtDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE:
-      {
-        CSSRuleConcatWithoutSpace cssRuleConcatWithoutSpace = (CSSRuleConcatWithoutSpace)theEObject;
-        T result = caseCSSRuleConcatWithoutSpace(cssRuleConcatWithoutSpace);
-        if (result == null) result = caseCSSRule(cssRuleConcatWithoutSpace);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case CssExtDslPackage.CSS_RULE_CONCAT:
       {
         CSSRuleConcat cssRuleConcat = (CSSRuleConcat)theEObject;
         T result = caseCSSRuleConcat(cssRuleConcat);
         if (result == null) result = caseCSSRule(cssRuleConcat);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE:
+      {
+        CSSRuleConcatWithoutSpace cssRuleConcatWithoutSpace = (CSSRuleConcatWithoutSpace)theEObject;
+        T result = caseCSSRuleConcatWithoutSpace(cssRuleConcatWithoutSpace);
+        if (result == null) result = caseCSSRule(cssRuleConcatWithoutSpace);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -638,22 +635,6 @@ public class CssExtDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>CSS Rule Concat Without Space</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>CSS Rule Concat Without Space</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCSSRuleConcatWithoutSpace(CSSRuleConcatWithoutSpace object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>CSS Rule Concat</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -665,6 +646,22 @@ public class CssExtDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCSSRuleConcat(CSSRuleConcat object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>CSS Rule Concat Without Space</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>CSS Rule Concat Without Space</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCSSRuleConcatWithoutSpace(CSSRuleConcatWithoutSpace object)
   {
     return null;
   }

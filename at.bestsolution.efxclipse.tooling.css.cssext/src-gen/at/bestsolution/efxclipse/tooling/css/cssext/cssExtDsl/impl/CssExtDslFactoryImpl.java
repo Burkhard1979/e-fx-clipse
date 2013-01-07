@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
@@ -88,8 +85,8 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
       case CssExtDslPackage.CSS_RULE_FUNC: return createCSSRuleFunc();
       case CssExtDslPackage.CSS_RULE_OR: return createCSSRuleOr();
       case CssExtDslPackage.CSS_RULE_XOR: return createCSSRuleXor();
-      case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE: return createCSSRuleConcatWithoutSpace();
       case CssExtDslPackage.CSS_RULE_CONCAT: return createCSSRuleConcat();
+      case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE: return createCSSRuleConcatWithoutSpace();
       case CssExtDslPackage.CSS_RULE_POSTFIX: return createCSSRulePostfix();
       case CssExtDslPackage.CSS_RULE_BRACKET: return createCSSRuleBracket();
       case CssExtDslPackage.CSS_NUM_LITERAL: return createCSSNumLiteral();
@@ -337,10 +334,10 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleConcatWithoutSpace createCSSRuleConcatWithoutSpace()
+  public CSSRuleConcat createCSSRuleConcat()
   {
-    CSSRuleConcatWithoutSpaceImpl cssRuleConcatWithoutSpace = new CSSRuleConcatWithoutSpaceImpl();
-    return cssRuleConcatWithoutSpace;
+    CSSRuleConcatImpl cssRuleConcat = new CSSRuleConcatImpl();
+    return cssRuleConcat;
   }
 
   /**
@@ -348,10 +345,10 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleConcat createCSSRuleConcat()
+  public CSSRuleConcatWithoutSpace createCSSRuleConcatWithoutSpace()
   {
-    CSSRuleConcatImpl cssRuleConcat = new CSSRuleConcatImpl();
-    return cssRuleConcat;
+    CSSRuleConcatWithoutSpaceImpl cssRuleConcatWithoutSpace = new CSSRuleConcatWithoutSpaceImpl();
+    return cssRuleConcatWithoutSpace;
   }
 
   /**

@@ -23,6 +23,7 @@ import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks;
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleBracket;
@@ -41,7 +42,6 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
-import at.bestsolution.efxclipse.tooling.css.cssext.ui.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.JavaDocParser;
 
 import com.google.inject.Inject;

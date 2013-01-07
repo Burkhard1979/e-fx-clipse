@@ -9,4 +9,6 @@ public abstract class ParsePathSegment {
 	public String toString() {
 		return getStatus().toString();
 	}
+	
+	public abstract void skip();
 }

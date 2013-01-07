@@ -8,10 +8,12 @@
  * Contributors:
  *     Christoph Caks<ccaks@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.tooling.css.cssext.ui;
+package at.bestsolution.efxclipse.tooling.css.cssext;
 
 import java.util.List;
 
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 
@@ -20,4 +22,5 @@ public interface ICssExtManager {
 	public abstract PropertyDefinition findPropertyByName(String propertyName);
 	public abstract ElementDefinition findElementByName(String elName);
 	public abstract List<PropertyDefinition> findAllProperties();
+	public abstract CSSRule resolveReference(final CSSRuleRef ref);
 }

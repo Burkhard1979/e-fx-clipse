@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl;
 
@@ -215,15 +212,6 @@ public interface CssExtDslFactory extends EFactory
   CSSRuleXor createCSSRuleXor();
 
   /**
-   * Returns a new object of class '<em>CSS Rule Concat Without Space</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>CSS Rule Concat Without Space</em>'.
-   * @generated
-   */
-  CSSRuleConcatWithoutSpace createCSSRuleConcatWithoutSpace();
-
-  /**
    * Returns a new object of class '<em>CSS Rule Concat</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -231,6 +219,15 @@ public interface CssExtDslFactory extends EFactory
    * @generated
    */
   CSSRuleConcat createCSSRuleConcat();
+
+  /**
+   * Returns a new object of class '<em>CSS Rule Concat Without Space</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>CSS Rule Concat Without Space</em>'.
+   * @generated
+   */
+  CSSRuleConcatWithoutSpace createCSSRuleConcatWithoutSpace();
 
   /**
    * Returns a new object of class '<em>CSS Rule Postfix</em>'.

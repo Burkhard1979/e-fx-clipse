@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl;
 
@@ -972,34 +969,6 @@ public interface CssExtDslPackage extends EPackage
   int CSS_RULE_XOR_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl <em>CSS Rule Concat Without Space</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleConcatWithoutSpace()
-   * @generated
-   */
-  int CSS_RULE_CONCAT_WITHOUT_SPACE = 21;
-
-  /**
-   * The feature id for the '<em><b>Conc</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_CONCAT_WITHOUT_SPACE__CONC = CSS_RULE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>CSS Rule Concat Without Space</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CSS_RULE_CONCAT_WITHOUT_SPACE_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatImpl <em>CSS Rule Concat</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1007,7 +976,7 @@ public interface CssExtDslPackage extends EPackage
    * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleConcat()
    * @generated
    */
-  int CSS_RULE_CONCAT = 22;
+  int CSS_RULE_CONCAT = 21;
 
   /**
    * The feature id for the '<em><b>Conc</b></em>' containment reference list.
@@ -1026,6 +995,34 @@ public interface CssExtDslPackage extends EPackage
    * @ordered
    */
   int CSS_RULE_CONCAT_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl <em>CSS Rule Concat Without Space</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleConcatWithoutSpace()
+   * @generated
+   */
+  int CSS_RULE_CONCAT_WITHOUT_SPACE = 22;
+
+  /**
+   * The feature id for the '<em><b>Conc</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_RULE_CONCAT_WITHOUT_SPACE__CONC = CSS_RULE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>CSS Rule Concat Without Space</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_RULE_CONCAT_WITHOUT_SPACE_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRulePostfixImpl <em>CSS Rule Postfix</em>}' class.
@@ -1942,27 +1939,6 @@ public interface CssExtDslPackage extends EPackage
   EReference getCSSRuleXor_Xors();
 
   /**
-   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace <em>CSS Rule Concat Without Space</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>CSS Rule Concat Without Space</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace
-   * @generated
-   */
-  EClass getCSSRuleConcatWithoutSpace();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace#getConc <em>Conc</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Conc</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace#getConc()
-   * @see #getCSSRuleConcatWithoutSpace()
-   * @generated
-   */
-  EReference getCSSRuleConcatWithoutSpace_Conc();
-
-  /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcat <em>CSS Rule Concat</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1982,6 +1958,27 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    */
   EReference getCSSRuleConcat_Conc();
+
+  /**
+   * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace <em>CSS Rule Concat Without Space</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>CSS Rule Concat Without Space</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace
+   * @generated
+   */
+  EClass getCSSRuleConcatWithoutSpace();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace#getConc <em>Conc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Conc</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace#getConc()
+   * @see #getCSSRuleConcatWithoutSpace()
+   * @generated
+   */
+  EReference getCSSRuleConcatWithoutSpace_Conc();
 
   /**
    * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRulePostfix <em>CSS Rule Postfix</em>}'.
@@ -2741,24 +2738,6 @@ public interface CssExtDslPackage extends EPackage
     EReference CSS_RULE_XOR__XORS = eINSTANCE.getCSSRuleXor_Xors();
 
     /**
-     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl <em>CSS Rule Concat Without Space</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl
-     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleConcatWithoutSpace()
-     * @generated
-     */
-    EClass CSS_RULE_CONCAT_WITHOUT_SPACE = eINSTANCE.getCSSRuleConcatWithoutSpace();
-
-    /**
-     * The meta object literal for the '<em><b>Conc</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CSS_RULE_CONCAT_WITHOUT_SPACE__CONC = eINSTANCE.getCSSRuleConcatWithoutSpace_Conc();
-
-    /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatImpl <em>CSS Rule Concat</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2775,6 +2754,24 @@ public interface CssExtDslPackage extends EPackage
      * @generated
      */
     EReference CSS_RULE_CONCAT__CONC = eINSTANCE.getCSSRuleConcat_Conc();
+
+    /**
+     * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl <em>CSS Rule Concat Without Space</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleConcatWithoutSpaceImpl
+     * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CssExtDslPackageImpl#getCSSRuleConcatWithoutSpace()
+     * @generated
+     */
+    EClass CSS_RULE_CONCAT_WITHOUT_SPACE = eINSTANCE.getCSSRuleConcatWithoutSpace();
+
+    /**
+     * The meta object literal for the '<em><b>Conc</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CSS_RULE_CONCAT_WITHOUT_SPACE__CONC = eINSTANCE.getCSSRuleConcatWithoutSpace_Conc();
 
     /**
      * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRulePostfixImpl <em>CSS Rule Postfix</em>}' class.
