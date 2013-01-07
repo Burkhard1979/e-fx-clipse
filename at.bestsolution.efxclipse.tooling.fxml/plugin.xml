@@ -102,4 +102,13 @@
             </enablement>
      </renameParticipant>
    </extension>
+   <extension
+         point="org.eclipse.jdt.core.compilationParticipant">
+      <compilationParticipant
+            class="at.bestsolution.efxclipse.tooling.fxml.compile.FxmlAnnotationCompilationParticipant"
+            createsProblems="true"
+            id="at.bestsolution.efxclipse.tooling.fxml.compilationParticipant1">
+         <managedMarker markerType="org.eclipse.jdt.apt.core.compile.problem"/>
+      </compilationParticipant>
+   </extension>
 </plugin>
