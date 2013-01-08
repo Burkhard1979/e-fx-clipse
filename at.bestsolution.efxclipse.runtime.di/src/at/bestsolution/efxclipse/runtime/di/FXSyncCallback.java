@@ -15,7 +15,7 @@ import at.bestsolution.efxclipse.runtime.core.Callback;
 
 public abstract class FXSyncCallback<T> implements Callback<T> {
 	
-	public FXSyncCallback<T> wrap(final Callback<T> callback) {
+	public static <T> FXSyncCallback<T> onFX(final Callback<T> callback) {
 		if( callback instanceof FXSyncCallback<?> ) {
 			return (FXSyncCallback<T>) callback;
 		}
