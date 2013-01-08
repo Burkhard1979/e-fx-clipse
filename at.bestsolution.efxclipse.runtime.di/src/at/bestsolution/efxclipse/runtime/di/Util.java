@@ -13,13 +13,13 @@ package at.bestsolution.efxclipse.runtime.di;
 import javafx.application.Platform;
 import at.bestsolution.efxclipse.runtime.core.Callback;
 
-public abstract class FXSyncCallback<T> implements Callback<T> {
+public abstract class Util<T> implements Callback<T> {
 	
-	public static <T> FXSyncCallback<T> onFX(final Callback<T> callback) {
-		if( callback instanceof FXSyncCallback<?> ) {
-			return (FXSyncCallback<T>) callback;
+	public static <T> Util<T> onFX(final Callback<T> callback) {
+		if( callback instanceof Util<?> ) {
+			return (Util<T>) callback;
 		}
-		return new FXSyncCallback<T>() {
+		return new Util<T>() {
 
 			@Override
 			public void call(final T value) {
