@@ -13,6 +13,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.SplashMode;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Template;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.AbstractAntHandler.BuildConfiguration;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.CreateAntHandler;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.handler.SetupDirectory;
 import com.google.common.base.Objects;
 import java.io.File;
@@ -666,8 +667,10 @@ public class AntTemplate {
           _builder.append("\t");
           String _key_3 = f_1.getKey();
           List<String> _get = map.get(_key_3);
+          CreateAntHandler _createAntHandler = new CreateAntHandler();
           String _value_1 = f_1.getValue();
-          final boolean nix = _get.add(_value_1);
+          String _resolvePath = _createAntHandler.resolvePath(_value_1, null);
+          final boolean nix = _get.add(_resolvePath);
           _builder.newLineIfNotEmpty();
         }
       }
