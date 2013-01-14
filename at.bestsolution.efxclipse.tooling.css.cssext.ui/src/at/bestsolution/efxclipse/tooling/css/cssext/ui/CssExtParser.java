@@ -54,6 +54,10 @@ import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
 
+/**
+ * @deprecated replaced with {@link at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser}
+ */
+@Deprecated
 public class CssExtParser {
 
 	private @Inject CssExtManager manager;
@@ -518,6 +522,7 @@ public class CssExtParser {
 			skip.status = Status.SKIP;
 			skip.remainingInput = in.copy();
 			result.add(skip);
+			
 		}
 		
 		result.addAll(ruleResult);

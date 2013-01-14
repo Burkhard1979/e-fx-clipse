@@ -20,7 +20,7 @@ public class ParserInputCursor {
 	}
 	
 	public boolean isConsumed() {
-		return position >= input.input.size()-1;
+		return position > input.input.size()-1;
 	}
 	
 	public CssTok pollNextToken() {
@@ -44,11 +44,11 @@ public class ParserInputCursor {
 	@Override
 	public String toString() {
 		if (isConsumed()) {
-			return "EMPTY";
+			return "{}";
 		}
 		
 		StringBuffer out = new StringBuffer();
-		
+		out.append("{");
 		for (int x = position; x < input.input.size(); x++) {
 			CssTok tok = input.input.get(x);
 			
@@ -69,6 +69,7 @@ public class ParserInputCursor {
 			}
 			
 		}
+		out.append("}");
 		return out.toString();
 	}
 

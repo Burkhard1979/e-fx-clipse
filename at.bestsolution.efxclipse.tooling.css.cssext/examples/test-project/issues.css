@@ -1,11 +1,13 @@
 Issues {
 	/*-fx-border-width: 4 px 4px 1px 2px;*/
 	
-	-fx-border-width: 1;
+	-fx-border-width:0.0  ;
 	
 	pp:0.0a ;
 	
+	t0:a b  ; 
+	t1: a x y ;
 	
 	
-	/*-fx-background-position:right 1px bottom 1px;*/
+	-fx-background-position:right 1px bottom 1px;
 }
