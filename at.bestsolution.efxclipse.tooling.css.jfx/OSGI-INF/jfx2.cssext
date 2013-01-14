@@ -98,7 +98,7 @@ package javafx {
 	/**
 	 * The string name of the font family. An actual font family name available on the system can be used, or one of the following generic family names can be used:
 	 */
-	font-family = string | serif | sans-serif | cursive | fantasy | monospace;
+	font-family = <string> | serif | sans-serif | cursive | fantasy | monospace;
 	/**
 	 * The size of the font, using the <size> syntax.
 	 */
@@ -1587,6 +1587,10 @@ package javafx {
 				 * Defines the font of text.
 				 */
 				-fx-font <font> default: DEFAULT;
+				-fx-font-family <font-family> default: null; 	/* INHERITED */
+				-fx-font-size <font-size> default: null;  		/* INHERITED */
+				-fx-font-style <font-style> default: null;  	/* INHERITED */
+				-fx-font-weight <font-weight> default: null;  	/* INHERITED */
 				/**
 				 * <p>
 				 * Specifies a requested font smoothing type : gray or LCD.
@@ -1732,6 +1736,11 @@ package javafx {
      			 * font is required, this font will be used.
         		 */
         		-fx-font <font> default: null;
+        		-fx-font-family <font-family> default: null; 	/* INHERITED */
+				-fx-font-size <font-size> default: null;  		/* INHERITED */
+				-fx-font-style <font-style> default: null;  	/* INHERITED */
+				-fx-font-weight <font-weight> default: null;  	/* INHERITED */
+        		
         		/**
         		 * Whether all text should be underlined.
         		 */
@@ -2439,6 +2448,10 @@ package javafx {
         	 */
         	TextInputControl {
         		-fx-font <font> default: null;
+        		-fx-font-family <font-family> default: null; 	/* INHERITED */
+				-fx-font-size <font-size> default: null;  		/* INHERITED */
+				-fx-font-style <font-style> default: null;  	/* INHERITED */
+				-fx-font-weight <font-weight> default: null;  	/* INHERITED */
         		-fx-text-fill <paint> default: black;
         		-fx-prompt-text-fill <paint> default: gray;
         		-fx-highlight-fill <paint> default: dodgerblue;
@@ -2552,6 +2565,10 @@ package javafx {
         		 * The default font to use for text in the Tooltip.
         		 */
         		-fx-font <font> default: null;
+        		-fx-font-family <font-family> default: null; 	/* INHERITED */
+				-fx-font-size <font-size> default: null;  		/* INHERITED */
+				-fx-font-style <font-style> default: null;  	/* INHERITED */
+				-fx-font-weight <font-weight> default: null;  	/* INHERITED */
         		// TODO SUPPORT STYLE_CLASS
         		// TODO SUPPORT SUBSTRUCTURE
         	}
@@ -2716,6 +2733,11 @@ package javafx {
 				 * The font for all tick labels 
 				 */
 				-fx-tick-label-font <font> default: 8;
+				-fx-tick-label-font-family <font-family> default: system; 	/* INHERITED */
+				-fx-tick-label-font-size <font-size> default: 8;  			/* INHERITED */
+				-fx-tick-label-font-style <font-style> default: null;  		/* INHERITED */
+				-fx-tick-label-font-weight <font-weight> default: null;  	/* INHERITED */
+				
 				/**
 				 * The fill for all tick labels 
 				 */
