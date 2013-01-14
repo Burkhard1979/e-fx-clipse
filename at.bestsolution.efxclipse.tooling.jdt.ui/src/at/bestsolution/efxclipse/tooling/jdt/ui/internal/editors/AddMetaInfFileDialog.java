@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
@@ -139,7 +140,7 @@ public class AddMetaInfFileDialog extends AddDialog<KeyValuePair> {
 				public void widgetSelected( final SelectionEvent e ) {
 					FilteredResourcesSelectionDialog d = new FilteredResourcesSelectionDialog( getShell(), false, resourceContainer, IResource.FILE ) {
 						@Override
-						protected IStatus validateItem( Object item ) {
+						protected IStatus validateItem( final Object item ) {
 							IFile f = (IFile) item;
 							if ( f.getParent() instanceof IProject ) {
 								return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "The selected resource has to be part of the source folder" );
@@ -151,18 +152,7 @@ public class AddMetaInfFileDialog extends AddDialog<KeyValuePair> {
 						Object[] rv = d.getResult();
 						if ( rv.length == 1 ) {
 							IFile f = (IFile) rv[0];
-							IJavaElement j = JavaCore.create( f.getParent() );
-							if ( j instanceof IPackageFragment ) {
-								IPackageFragment p = (IPackageFragment) j;
-								tFile.setText( "${workspace}/" + p.getElementName().replace( '.', '/' ) + "/" + f.getName() );
-							}
-							else if ( j instanceof IPackageFragmentRoot ) {
-								IPackageFragmentRoot p = (IPackageFragmentRoot) j;
-								tFile.setText( "${workspace}/" + f.getName() );
-							}
-							else {
-								MessageDialog.openInformation( getShell(), "Not valid", "The selected resource has to be part of the source folder" );
-							}
+							tFile.setText( "${workspace}/" + f.getProject().getName() + "/" + f.getProjectRelativePath().toString() );
 						}
 					}
 				}

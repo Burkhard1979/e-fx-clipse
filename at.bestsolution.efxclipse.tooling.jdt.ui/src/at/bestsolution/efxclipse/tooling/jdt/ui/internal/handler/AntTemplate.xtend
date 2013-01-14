@@ -239,7 +239,7 @@ class AntTemplate {
 					«map.put(f.getKey(), new ArrayList<String>())»
 				«ENDIF»
 				«/*val nix is necessary to suppress the return value of add(...)*/»
-				«val nix = map.get(f.getKey()).add(f.getValue())»
+				«val nix = map.get(f.getKey()).add(new CreateAntHandler().resolvePath(f.getValue(), null))»
 			«ENDFOR»
 			
 			«FOR folderName : map.keySet()»

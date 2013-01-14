@@ -228,11 +228,11 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 	/**
 	 * Resources that have been removed since last activation.
 	 */
-	protected Collection<Resource> removedResources = new ArrayList<Resource>();
+	private Collection<Resource> removedResources = new ArrayList<Resource>();
 	/**
 	 * Resources that have been changed since last activation.
 	 */
-	protected Collection<Resource> changedResources = new ArrayList<Resource>();
+	private Collection<Resource> changedResources = new ArrayList<Resource>();
 	/**
 	 * Resources that have been saved.
 	 */
@@ -847,7 +847,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 				t.setLayoutData( new GridData( GridData.FILL_HORIZONTAL ) );
 				toolkit.createButton( sectionClient, "Filesystem ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
 					@Override
-					public void widgetSelected( SelectionEvent e ) {
+					public void widgetSelected( final SelectionEvent e ) {
 						String dir = handleBuildFilesystemDirectorySelection( t.getShell() );
 						if ( dir != null ) {
 							t.setText( dir );
@@ -856,7 +856,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 				} );
 				toolkit.createButton( sectionClient, "Workspace ...", SWT.PUSH ).addSelectionListener( new SelectionAdapter() {
 					@Override
-					public void widgetSelected( SelectionEvent e ) {
+					public void widgetSelected( final SelectionEvent e ) {
 						String dir = handleBuildWorkbenchDirectorySelection( t.getShell() );
 						if ( dir != null ) {
 							t.setText( dir );
@@ -1783,7 +1783,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 	 */
 	private boolean handleAddMetaInfFile() {
 		AddMetaInfFileDialog d = new AddMetaInfFileDialog( getSite().getShell(), editingDomain, getTask(), ( (IFileEditorInput) getEditorInput() ).getFile()
-				.getProject() );
+				.getProject().getWorkspace().getRoot() );
 		return d.open() == TitleAreaDialog.OK;
 	}
 
@@ -2040,7 +2040,12 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		dialog.setInput( ResourcesPlugin.getWorkspace().getRoot() );
 		if ( dialog.open() == Window.OK ) {
 			IContainer c = (IContainer) dialog.getFirstResult();
-			return "${workspace}/" + c.getProject().getName() + "/" + c.getProjectRelativePath().toString();
+			if ( c.getProject() == ( (IFileEditorInput) getEditorInput() ).getFile().getProject() ) {
+				return "${project}/" + c.getProjectRelativePath().toString();
+			}
+			else {
+				return "${workspace}/" + c.getProject().getName() + "/" + c.getProjectRelativePath().toString();
+			}
 		}
 		return null;
 	}
@@ -2127,7 +2132,7 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		dialog.setValidator( new ISelectionStatusValidator() {
 
 			@Override
-			public IStatus validate( Object[] selection ) {
+			public IStatus validate( final Object[] selection ) {
 				if ( selection.length > 1 ) {
 					return new Status( IStatus.ERROR, JavaFXUIPlugin.PLUGIN_ID, "Only one file allowed." );
 				}
@@ -2145,10 +2150,14 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		if ( dialog.open() == Window.OK ) {
 			IFile f = (IFile) dialog.getFirstResult();
 			if ( f != null ) {
-				return "${workspace}/" + f.getProject().getName() + "/" + f.getProjectRelativePath().toString();
+				if ( f.getProject() == ( (IFileEditorInput) getEditorInput() ).getFile().getProject() ) {
+					return "${project}/" + f.getProjectRelativePath().toString();
+				}
+				else {
+					return "${workspace}/" + f.getProject().getName() + "/" + f.getProjectRelativePath().toString();
+				}
 			}
 		}
-
 		return null;
 	}
 
