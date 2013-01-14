@@ -141,6 +141,8 @@ public class LivePreviewPart extends ViewPart {
 	private IDocument document;
 	
 	private ContentData currentData;
+	
+	private Scene currentScene;
 
 	static {
 		JFaceResources.getImageRegistry().put(IMAGE_OK, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/security-high.png"));
@@ -233,6 +235,7 @@ public class LivePreviewPart extends ViewPart {
 
 					rootPane_new = new BorderPane();
 					Scene scene = new Scene((Parent) rootPane_new, 1000, 1000);
+					currentScene = scene;
 					swtFXContainer.setScene(scene);
 				}
 
@@ -353,10 +356,10 @@ public class LivePreviewPart extends ViewPart {
 	@Override
 	public void dispose() {
 		
-		if( swtFXContainer != null && swtFXContainer.getScene() != null ) {
-			swtFXContainer.getScene().getStylesheets().clear();
+		if( currentScene != null ) {
+			currentScene.getStylesheets().clear();
 		}
-		
+				
 		getSite().getWorkbenchWindow().getPartService().removePartListener(synchronizer);
 		getSite().getWorkbenchWindow().getPartService().addPartListener(listener);
 
@@ -550,6 +553,7 @@ public class LivePreviewPart extends ViewPart {
 				}
 				
 				scene.getStylesheets().addAll(contentData.cssFiles);
+				currentScene = scene;
 				swtFXContainer.setScene(scene);
 				
 			} catch (Exception e) {
