@@ -388,14 +388,13 @@ public class LivePreviewPart extends ViewPart {
 		}
 	}
 
-	@SuppressWarnings("restriction")
 	private void saveRefreshContent(final ContentData contentData) {
 		folder.setVisible(true);
 
 		ClassLoader cl = null;
 
 		FXMLLoader loader;
-		if (contentData.extraJarPath != null && !contentData.extraJarPath.isEmpty()) {
+		if (contentData.extraJarPath != null && !contentData.extraJarPath.isEmpty() && swtFXContainer != null) {
 			final URLClassLoader previewClassLoader = new PreviewURLClassloader(contentData.extraJarPath.toArray(new URL[0]), swtFXContainer.getClass().getClassLoader());
 
 			cl = Thread.currentThread().getContextClassLoader();
