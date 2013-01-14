@@ -1065,6 +1065,13 @@ package javafx {
 				 * series applies to the corresponding background color.
 				 */
 				-fx-background-insets <helper-background-insets> default: null;
+				/**
+				 * A series of radius values or sets of four radius values, separated by commas. A single radius 
+				 * value means the radius of all four corners is the same. Otherwise, the four values in the set 
+				 * determine the radii of the top-left, top-right, bottom-right, and bottom-left corners, in that order. 
+				 * Each comma-separated value or set of values in the series applies to the corresponding background color.
+				 */
+				-fx-background-radius <size> | <size> <size> <size> <size> [ , [<size> | <size> <size> <size> <size>] ]* default: null;
 				// BACKGROUND IMAGES (see CSS Backgrounds and Borders Module Level 3: Background Image)
 				/**
 				 * A series of image URIs separated by commas.
