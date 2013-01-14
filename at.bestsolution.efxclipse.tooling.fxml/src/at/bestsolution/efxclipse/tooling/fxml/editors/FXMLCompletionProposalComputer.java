@@ -170,7 +170,7 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				IFXClass fxClass = FXPlugin.getClassmodel().findClass(type.getJavaProject(), type);
 				
 				if( fxClass.getValueOf() != null ) {
-					FXMLCompletionProposal cp = createAttributeProposal(contentAssistRequest, context, "fx:valueOf=\"\"", new StyledString("fx:valueOf").append(" - " + fxClass.getSimpleName(), StyledString.QUALIFIER_STYLER), IconKeys.getIcon(IconKeys.FIELD_KEY), DEFAULT_PRIORITY+10, MATCHER);
+					FXMLCompletionProposal cp = createAttributeProposal(contentAssistRequest, context, "fx:value=\"\"", new StyledString("fx:valueOf").append(" - " + fxClass.getSimpleName(), StyledString.QUALIFIER_STYLER), IconKeys.getIcon(IconKeys.FIELD_KEY), DEFAULT_PRIORITY+10, MATCHER);
 					if (cp != null) {
 						cp.setAdditionalProposalInfo(EcoreFactory.eINSTANCE.createEClass());
 						cp.setHover(new HoverImpl(fxClass.getValueOf()));
