@@ -18,6 +18,7 @@ import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
 import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
 import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
+import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemanticHighlightingCalculator;
@@ -39,11 +40,15 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 		binder.bind(ISemanticHighlightingCalculator.class).to(CssExtSemanticHighlightingCalculator.class);
 		binder.bind(IHighlightingConfiguration.class).to(CssExtHighlightingConfiguration.class);
 		
+		binder.bind(CssExtParser.class).toInstance(new CssExtParser());
+		
 		binder.bind(ICssExtManager.class).toInstance(new CssExtManager());
 		binder.bind(CssExtDocParser.class).toInstance(new CssExtDocParser());
 		
 		binder.bind(LoggerFactory.class).toProvider(OSGiLoggerFactoryProvider.class);
 		binder.bindListener(Matchers.any(), new FXLoggerListener());
+		
+		
 		
 		super.configure(binder);
 	}

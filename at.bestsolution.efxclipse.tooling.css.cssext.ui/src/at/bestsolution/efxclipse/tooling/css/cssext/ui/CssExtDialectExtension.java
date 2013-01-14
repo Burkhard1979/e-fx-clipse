@@ -34,7 +34,7 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 
 	private @Inject ICssExtManager cssExtManager;
 	private @Inject CssExtDocParser docParser;
-	private @Inject CssExtParser parser;
+	private @Inject at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser parser;
 	private @Inject IQualifiedNameProvider nameProvider;
 	
 	public CssExtDialectExtension() {
