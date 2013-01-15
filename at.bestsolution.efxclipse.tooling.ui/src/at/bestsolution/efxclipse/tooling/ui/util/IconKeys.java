@@ -47,6 +47,8 @@ public class IconKeys {
 	public static final String DEFINES_KEY = IconKeys.class.getName() + ".DEFINES_KEY";
 	public static final String SCRIPTS_KEY = IconKeys.class.getName() + ".SCRIPTS_KEY";
 	
+	public static final String VALUE_OF_KEY = IconKeys.class.getName()+".VALUE_OF_KEY"; 
+	
 
 	static {
 		JFaceResources.getImageRegistry().put(FIELD_KEY, Activator.imageDescriptorFromPlugin(Activator.ID, "/icons/field_public_obj.gif"));
@@ -76,6 +78,9 @@ public class IconKeys {
 		JFaceResources.getImageRegistry().put(DEFINES_KEY, Activator.imageDescriptorFromPlugin(Activator.ID, "/icons/correction_cast.gif"));
 		JFaceResources.getImageRegistry().put(SCRIPTS_KEY, Activator.imageDescriptorFromPlugin(Activator.ID, "/icons/classf_generate.gif"));
 		JFaceResources.getImageRegistry().put(ENUM_KEY, Activator.imageDescriptorFromPlugin(Activator.ID, "/icons/enum_obj.gif"));
+		
+		JFaceResources.getImageRegistry().put(VALUE_OF_KEY, Activator.imageDescriptorFromPlugin(Activator.ID, "/icons/jtypeassist_co.gif"));
+		
 	}
 	
 	public static Image getIcon(String id) {

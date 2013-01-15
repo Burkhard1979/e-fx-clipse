@@ -14,10 +14,16 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.formatting.IWhitespaceInformationProvider;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+import com.google.inject.Binder;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.ui.contentassist.ImportingTypesProposalProvider;
 import at.bestsolution.efxclipse.tooling.fxgraph.ui.formatting.FXGraphWhitespaceInformationProvider;
 import at.bestsolution.efxclipse.tooling.fxgraph.ui.hover.FXHoverProvider;
+import at.bestsolution.efxclipse.tooling.fxgraph.ui.internal.FXGraphActivator;
+import at.bestsolution.efxclipse.tooling.ui.editor.ValueOfContributionCollector;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -25,6 +31,14 @@ import at.bestsolution.efxclipse.tooling.fxgraph.ui.hover.FXHoverProvider;
 public class FXGraphUiModule extends at.bestsolution.efxclipse.tooling.fxgraph.ui.AbstractFXGraphUiModule {
 	public FXGraphUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		BundleContext ctx = FXGraphActivator.getInstance().getBundle().getBundleContext();
+		ServiceReference<ValueOfContributionCollector> ref = ctx.getServiceReference(ValueOfContributionCollector.class);
+		binder.bind(ValueOfContributionCollector.class).toInstance(ctx.getService(ref));
 	}
 	
 	@Override

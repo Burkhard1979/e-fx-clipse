@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.tooling.ui.valuecontributorcollector">
+   <implementation class="at.bestsolution.efxclipse.tooling.ui.editor.ValueOfContributionCollector"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.tooling.ui.editor.ValueOfContributionCollector"/>
+   </service>
+   <reference bind="addValueOfContributor" cardinality="0..n" interface="at.bestsolution.efxclipse.tooling.ui.editor.IValueOfContributor" name="IValueOfContributor" policy="dynamic" unbind="removeValueOfContributor"/>
+</scr:component>

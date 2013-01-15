@@ -23,3 +23,5 @@ Export-Package: at.bestsolution.efxclipse.tooling.ui.editor,
  at.bestsolution.efxclipse.tooling.ui.wizards,
  at.bestsolution.efxclipse.tooling.ui.wizards.template
 Bundle-Vendor: %Bundle-Vendor
+Service-Component: OSGI-INF/colorvaluecontributor.xml,
+ OSGI-INF/valuecontributorcollector.xml
