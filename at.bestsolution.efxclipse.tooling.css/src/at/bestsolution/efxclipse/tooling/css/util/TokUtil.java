@@ -33,13 +33,13 @@ public class TokUtil {
 			return "<null>";
 		}
 		switch(token.eClass().getClassifierID()) {
-		case CssDslPackage.IDENTIFIER_TOK: return "IdentifierTok(" + ((IdentifierTok)token).getName() + ")";
-		case CssDslPackage.WS_TOK: return "WSTok()";
-		case CssDslPackage.NUMBER_TOK: return "NumberTok(" + ((NumberTok)token).getVal() + ")";
-		case CssDslPackage.COLOR_TOK: return "ColorTok(" + ((ColorTok)token).getValue() + ")";
-		case CssDslPackage.URL_TOK: return "UrlTok(" + ((UrlTok)token).getUrl().getUrl() + ")";
-		case CssDslPackage.SYMBOL_TOK: return "SymbolTok(" + ((SymbolTok)token).getSymbol() + ")";
-		case CssDslPackage.FUNC_TOK: return "FuncTok(" + ((FuncTok)token).getName().getName() /*+ "("+toString(((FuncTok)token).getParams(), ", ")+")"*/+ ")";
+		case CssDslPackage.IDENTIFIER_TOK: return "'" + ((IdentifierTok)token).getName() + "'";
+		case CssDslPackage.WS_TOK: return "WS";
+		case CssDslPackage.NUMBER_TOK: return "" + ((NumberTok)token).getVal() + "";
+		case CssDslPackage.COLOR_TOK: return "color(" + ((ColorTok)token).getValue() + ")";
+		case CssDslPackage.URL_TOK: return "url(" + ((UrlTok)token).getUrl().getUrl() + ")";
+		case CssDslPackage.SYMBOL_TOK: return "[" + ((SymbolTok)token).getSymbol() + "]";
+		case CssDslPackage.FUNC_TOK: return "f(" + ((FuncTok)token).getName().getName() /*+ "("+toString(((FuncTok)token).getParams(), ", ")+")"*/+ ")";
 		default: return token.toString();
 		}
 	}

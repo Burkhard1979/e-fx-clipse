@@ -3,6 +3,7 @@ package at.bestsolution.efxclipse.tooling.css.cssext.parser;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
+import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 public class ParserInputCursor {
 
@@ -52,20 +53,22 @@ public class ParserInputCursor {
 		for (int x = position; x < input.input.size(); x++) {
 			CssTok tok = input.input.get(x);
 			
-			if (tok instanceof WSTok) {
-				out.append("WS");
-			}
-			else if (tok instanceof IdentifierTok) {
-				out.append("'");
-				out.append(((IdentifierTok) tok).getName());
-				out.append("'");
-			}
-			else {
-				out.append(tok.getClass().getSimpleName());
-			}
+			out.append(TokUtil.toString(tok));
+			
+//			if (tok instanceof WSTok) {
+//				out.append("WS");
+//			}
+//			else if (tok instanceof IdentifierTok) {
+//				out.append("'");
+//				out.append(((IdentifierTok) tok).getName());
+//				out.append("'");
+//			}
+//			else {
+//				out.append(tok.getClass().getSimpleName());
+//			}
 			
 			if (x < input.input.size()-1) {
-				out.append(" / ");
+				out.append(", ");
 			}
 			
 		}

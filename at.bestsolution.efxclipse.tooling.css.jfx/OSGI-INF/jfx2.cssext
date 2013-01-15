@@ -80,7 +80,7 @@ package javafx {
 	 * url("http://example.com")
 	 * or it can be relative to the location of the CSS file.
 	 */
-	uri = url( @URL ); // TODO
+	uri = @URL;
 	
 	/**
 	 * JavaFX CSS currently supports the DropShadow and InnerShadow effects from the JavaFX platform. See the class documentation in javafx.scene.effect for further details about the semantics of the various effect parameters.

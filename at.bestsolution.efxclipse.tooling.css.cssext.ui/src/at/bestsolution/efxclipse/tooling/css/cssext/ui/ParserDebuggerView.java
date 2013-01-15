@@ -1,5 +1,6 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -9,6 +10,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -33,6 +35,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser.ParseResultListener;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.ResultNode;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
+import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
 
@@ -66,18 +69,45 @@ public class ParserDebuggerView extends ViewPart {
 	};
 	
 	private GraphNode dbg(ResultNode cur, ResultNode parent, GraphViewer g) {
-		String tmp = cur.nodeName + "\n";
+//		System.err.println(System.identityHashCode(cur) + ": " + cur.status + " " + cur.matched);
+		String tmp = cur.nodeType + "\n";
 		switch (cur.status) {
 		case PROPOSE: tmp += "Proposal: " + cur.proposal;
 		break;
 		case INVALID: tmp += "Message: " + cur.message;
 		break;
 		default: 
-			tmp += "Status: " + cur.status + "\nInput: " + cur.remainingInput;
+			tmp += "Status: " + cur.status + (cur.matched==null?"":" " + TokUtil.toString(cur.matched)) + 
+			"\nInput: " + cur.remainingInput;
 		}
-		String lbl = "("+cur.nodeSymbol+")" + (cur.status == State.PROPOSE?" " + cur.proposal:"");
+		String lbl = (cur.status == State.PROPOSE?" " + cur.proposal:"");
 		
-		GraphNode node = new GraphNode(g.getGraphControl(), SWT.NONE, lbl);
+		final Display d = g.getGraphControl().getDisplay();
+		
+		String imgname = "";
+		switch (cur.nodeType) {
+		case LITERAL: imgname = "literal"; break;
+		case SYMBOL: imgname = "symbol"; break;
+		case OPTIONAL: imgname = "optional"; break;
+		case STAR: imgname = "star"; break;
+		case PLUS: imgname = "plus"; break;
+		case CONCAT: imgname = "concat"; break;
+		case CONCAT_WITHOUT_SPACE: imgname = "concat_no_space"; break;
+		case CONCAT_OR: imgname = "concat_or"; break;
+		case OR: imgname = "or"; break;
+		case TYPE_NUM: imgname = "num"; break;
+		case TYPE_INT: imgname = "int"; break;
+		case FUNCTION: imgname = "func"; break;
+		default: imgname = "unknown"; break;
+		}
+		String imgpath = "/icons/debug/" + imgname + ".png";
+		InputStream stream = getClass().getClassLoader().getResourceAsStream(imgpath);
+		if (stream == null) {
+			System.err.println("ERROR: " + imgpath);
+		}
+		Image img = new Image(d, stream);
+		
+		GraphNode node = new GraphNode(g.getGraphControl(), SWT.NONE, lbl, img, cur);
 		
 		node.setTooltip(new Label(tmp));
 		
@@ -85,26 +115,31 @@ public class ParserDebuggerView extends ViewPart {
 //			node.setText("");
 //			node.setNodeStyle(ZestStyles.NODES_HIDE_TEXT);
 		}
-		Display d = node.getDisplay();
 		if (cur.status == State.INVALID) {
 			node.setBackgroundColor(d.getSystemColor(SWT.COLOR_RED));
+			node.setHighlightColor(d.getSystemColor(SWT.COLOR_DARK_RED));
 			node.setForegroundColor(d.getSystemColor(SWT.COLOR_WHITE));
 		}
 		else if (cur.status == State.MATCH) {
-			node.setBackgroundColor(node.getDisplay().getSystemColor(SWT.COLOR_GREEN));
+			node.setBackgroundColor(d.getSystemColor(SWT.COLOR_GREEN));
+			node.setHighlightColor(d.getSystemColor(SWT.COLOR_DARK_GREEN));
 		}
 		else if (cur.status == State.SKIP) {
-			node.setBackgroundColor(node.getDisplay().getSystemColor(SWT.COLOR_YELLOW));
+			node.setBackgroundColor(d.getSystemColor(SWT.COLOR_YELLOW));
+			node.setHighlightColor(d.getSystemColor(SWT.COLOR_DARK_YELLOW));
 		}
 		else if (cur.status == State.PROPOSE) {
-			node.setBackgroundColor(d.getSystemColor(SWT.COLOR_DARK_GREEN));
+			node.setBackgroundColor(d.getSystemColor(SWT.COLOR_BLUE));
+			node.setHighlightColor(d.getSystemColor(SWT.COLOR_DARK_BLUE));
 			node.setForegroundColor(d.getSystemColor(SWT.COLOR_WHITE));
 		}
-		node.setHighlightColor(node.getDisplay().getSystemColor(SWT.COLOR_CYAN));
+		else {
+			node.setBackgroundColor(d.getSystemColor(SWT.COLOR_GRAY));
+			node.setHighlightColor(d.getSystemColor(SWT.COLOR_DARK_GRAY));
+		}
 		
 		nodes.add(node);
 		
-		System.err.println("added node " + lbl);
 		for (ResultNode n : cur.next) {
 			GraphNode child = dbg(n, cur, g);
 			new GraphConnection(g.getGraphControl(), ZestStyles.CONNECTIONS_DIRECTED, node, child);

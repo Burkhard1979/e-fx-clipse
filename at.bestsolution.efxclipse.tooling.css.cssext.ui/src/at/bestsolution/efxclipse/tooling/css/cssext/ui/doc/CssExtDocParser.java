@@ -23,6 +23,7 @@ import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks;
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
@@ -109,6 +110,7 @@ public class CssExtDocParser {
 		}
 		else {
 			if (r == null) result = "<code>null</code>";
+			else result = "UNKNOWN: " + r;
 		}
 		return result;
 	}
@@ -132,6 +134,9 @@ public class CssExtDocParser {
 		if (o instanceof CSSRuleDefinition) {
 			return getDocumentationForRule((CSSRuleDefinition) o);
 		}
+		else if (o instanceof PropertyDefinition) {
+			return getDocumentationForRule((PropertyDefinition)o);
+		}
 		return "no documentation found";
 	}
 	
@@ -148,6 +153,15 @@ public class CssExtDocParser {
 		
 		String javadoc = prepareDoku(r.getDoku());
 		return "<p style=\"background:rgba(255,255,255,0.7);\">" + func +  rule + "</p>" + javadoc;
+	}
+	
+	private String getDocumentationForRule(PropertyDefinition r) {
+		String rule = "";
+		if (r.getRule() != null) {
+			rule = r.getName()+" = " +translateRule(r.getRule());
+		}
+		String javadoc = prepareDoku(r.getDoku());
+		return "<p style=\"background:rgba(255,255,255,0.7);\">" + rule + "</p>" + javadoc;
 	}
 
 	public String getDocForElement(String elName) {

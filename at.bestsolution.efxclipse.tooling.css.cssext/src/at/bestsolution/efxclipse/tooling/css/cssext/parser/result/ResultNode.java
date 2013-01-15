@@ -1,13 +1,12 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.parser.result;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.ParserInputCursor;
 
 public class ResultNode {
@@ -15,15 +14,19 @@ public class ResultNode {
 	public ParserInputCursor remainingInput;
 	public State status;
 	
+	final public NodeType nodeType;
 	
-	public List<ResultNode> next = new ArrayList<>();
+	public CssTok matched;
 	
-	public String nodeName;
-	public String nodeSymbol;
+	final public List<ResultNode> next = new ArrayList<>();
 	
 	public Proposal proposal;
 	public String message;
 	public boolean partial = false;
+	
+	public ResultNode(NodeType nodeType) {
+		this.nodeType = nodeType;
+	}
 	
 	@Override
 	public String toString() {
@@ -49,14 +52,13 @@ public class ResultNode {
 	}
 	
 	public boolean isValid() {
-		return status != State.INVALID && status != State.PROPOSE;
+		return status != null && status != State.INVALID && status != State.PROPOSE;
 	}
 	
 	public static ResultNode createSkipNode(ResultNode src) {
-		ResultNode r = new ResultNode();
+		ResultNode r = new ResultNode(src.nodeType);
 		r.status = State.SKIP;
 		r.remainingInput = src.remainingInput.copy();
-		r.nodeSymbol = src.nodeSymbol + "s";
 		return r;
 	}
 	
@@ -80,9 +82,8 @@ public class ResultNode {
 			}
 		}
 		s.append("(");
-		s.append(cur.nodeSymbol);
+		s.append(cur.nodeType);
 		s.append(") ");
-		s.append(cur.nodeName);
 		s.append(" ");
 		s.append(cur.status);
 		s.append(" ");

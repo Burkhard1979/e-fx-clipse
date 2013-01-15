@@ -46,7 +46,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 
-
+@Deprecated
 public class Parser extends XtextSwitch<CssExtension> {
 
 	private CssExtension model;

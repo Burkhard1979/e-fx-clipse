@@ -22,6 +22,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRangedDoubleType;
@@ -41,6 +42,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.NodeType;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.ResultNode;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
@@ -129,10 +131,7 @@ public class CssExtParser {
 	
 	
 	private ResultNode parseOr(ParserInputCursor input, CSSRuleOr or, ConsumeWS consumeWS) {
-		
-		ResultNode orResult = new ResultNode();
-		orResult.nodeSymbol = "|";
-		orResult.nodeName = "Or";
+		ResultNode orResult = new ResultNode(NodeType.OR);
 		orResult.remainingInput = input.copy();
 		orResult.status = State.FORWARD;
 		
@@ -146,9 +145,7 @@ public class CssExtParser {
 	
 	// Concat
 	private ResultNode parseConcat(ParserInputCursor l, CSSRuleConcat r, ConsumeWS consumeWS) {
-		ResultNode concatResult = new ResultNode();
-		concatResult.nodeSymbol = " ";
-		concatResult.nodeName = "concat";
+		ResultNode concatResult = new ResultNode(NodeType.CONCAT);
 		concatResult.remainingInput = l.copy();
 		concatResult.status = State.FORWARD;
 		
@@ -158,7 +155,6 @@ public class CssExtParser {
 			final boolean isFirstRule = r.getConc().indexOf(rule) == 0;
 			for (ResultNode last : concatResult.findLast()) {
 				if (last.isValid()) {
-					
 					last.next.add(parse(last.remainingInput, rule, isFirstRule?consumeWS:ConsumeWS.MUST_CONSUME));
 					
 				}
@@ -172,9 +168,7 @@ public class CssExtParser {
 	
 	// Concat without space
 	private ResultNode parseConcatWithoutSpace(ParserInputCursor l, CSSRuleConcatWithoutSpace r, ConsumeWS consumeWS) {
-		ResultNode concatResult = new ResultNode();
-		concatResult.nodeSymbol = "~";
-		concatResult.nodeName = "concat no space";
+		ResultNode concatResult = new ResultNode(NodeType.CONCAT_WITHOUT_SPACE);
 		concatResult.remainingInput = l.copy();
 		concatResult.status = State.FORWARD;
 		
@@ -224,9 +218,7 @@ public class CssExtParser {
 	}
 	
 	private ResultNode parseOptional(ParserInputCursor in, CSSRule rule, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
-		result.nodeName = "Optional";
-		result.nodeSymbol = "?";
+		ResultNode result = new ResultNode(NodeType.OPTIONAL);
 		result.remainingInput = in.copy();
 		result.status = State.FORWARD;
 		
@@ -237,10 +229,8 @@ public class CssExtParser {
 	}
 	
 	private ResultNode parseStar(ParserInputCursor in, CSSRule rule, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
+		ResultNode result = new ResultNode(NodeType.STAR);
 		result.status = State.FORWARD;
-		result.nodeName = "Star";
-		result.nodeSymbol = "*";
 		result.remainingInput = in.copy();
 		
 		Queue<ResultNode> last = new LinkedList<>();
@@ -264,10 +254,8 @@ public class CssExtParser {
 	
 	
 	private ResultNode parsePlus(ParserInputCursor in, CSSRule rule, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
+		ResultNode result = new ResultNode(NodeType.PLUS);
 		result.status = State.FORWARD;
-		result.nodeName = "Plus";
-		result.nodeSymbol = "+";
 		result.remainingInput = in.copy();
 		
 		// 1 - n
@@ -302,22 +290,24 @@ public class CssExtParser {
 		else if ("@INT".equals(type.getType())) {
 			result = parseINTType(l, type, consumeWS);
 		}
+		else if ("@URL".equals(type.getType())) {
+			result = parseURLType(l, type, consumeWS);
+		}
 		else {
 			logger.error("type " + type + " not supported");
+			throw new UnsupportedOperationException("type " + type + " not supported");
 		}
 		
 		return result;
 	}
 	
 	private ResultNode parseRegex(ParserInputCursor l, CSSRuleRegex r, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
+		ResultNode result = new ResultNode(NodeType.REGEX);
 		
 		String regex = r.getRegex().replaceAll("\\$", "");
 		
 		
 		ParserInputCursor localInput = l.copy();
-		
-		
 
 		CssTok tok = localInput.pollNextToken();
 		int wsConsumed = 0;
@@ -348,6 +338,7 @@ public class CssExtParser {
 			logger.debug("REGEX2 -> " + regex + " / / " + s);
 			if (s.matches(regex)) {
 				result.status = State.MATCH;
+				result.matched = tok;
 				result.remainingInput = localInput;
 			}
 			else {
@@ -356,8 +347,8 @@ public class CssExtParser {
 			}
 		}
 		else {
-			
-			// expected color token
+			result.status = State.INVALID;
+			result.message = "expected color token";
 		}
 		
 		return result;
@@ -367,7 +358,7 @@ public class CssExtParser {
 		CSSRule rule =  manager.resolveReference(r);
 		if (rule == null) {
 			logger.debug("resolving rule ref " + r.getRef().getName() + " returned null (maybe a function?) !!!!!");
-			ResultNode inv = new ResultNode();
+			ResultNode inv = new ResultNode(NodeType.REF);
 			inv.status = State.INVALID;
 			return inv;
 		}
@@ -403,13 +394,63 @@ public class CssExtParser {
 	// TODO check rule
 	private ResultNode parseConcatOr(ParserInputCursor l, CSSRuleXor r, ConsumeWS consumeWS) {
 		
-		ResultNode result = new ResultNode();
-		// TODO impl this
-		for (CSSRule rule : r.getXors()) {
-			parse(l, rule, consumeWS);
+//		ResultNode result = new ResultNode(NodeType.CONCAT_OR);
+//		result.status = State.INVALID;
+//		
+//		// TODO impl this
+//		for (CSSRule rule : r.getXors()) {
+//			parse(l, rule, consumeWS);
+//		}
+//				
+//		return result;
+		
+		ResultNode concatOrResult = new ResultNode(NodeType.CONCAT_OR);
+		concatOrResult.remainingInput = l.copy();
+		concatOrResult.status = State.FORWARD;
+		
+		Queue<CSSRule> rulesLeft = new LinkedList<>(r.getXors());
+		
+		int maxTests = rulesLeft.size();
+		int testNo = 1;
+		
+		while (!rulesLeft.isEmpty() && testNo <= maxTests) {
+			System.err.println(testNo + " <= " + maxTests);
+			// pick rule
+			final CSSRule rule = rulesLeft.poll();
+			
+			boolean match = false;
+			//try on all
+			for (ResultNode last : concatOrResult.findLast()) {
+				if (last.isValid()) {
+					ResultNode path = parse(last.remainingInput, rule, consumeWS);
+					for (ResultNode pathEnd : path.findLast()) {
+						if (pathEnd.isValid()) {
+							match = true;
+						}
+					}
+					last.next.add(path);
+					if (!rulesLeft.isEmpty()) {
+						// special skip node
+						ResultNode skippy = new ResultNode(NodeType.CONCAT_OR);
+						skippy.status = State.SKIP;
+						skippy.remainingInput = last.remainingInput.copy();
+						last.next.add(skippy);
+					}
+				}
+			}
+
+			if (!match) {
+				// put the rule back
+				rulesLeft.offer(rule);
+				testNo++;
+			}
+			else {
+				testNo = 1;
+				maxTests = rulesLeft.size();
+			}
 		}
-				
-		return result;
+		
+		return concatOrResult;
 	}
 	
 
@@ -467,97 +508,113 @@ public class CssExtParser {
 	
 	
 	private ResultNode parseFunction(ParserInputCursor in, CSSRuleFunc ruleFunc, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
+		ResultNode result = new ResultNode(NodeType.FUNCTION);
 		
 		ParserInputCursor local = in.copy();
 		
-		if (local.isConsumed()) {
-			result.status = State.PROPOSE;
-			result.proposal = new Proposal(ruleFunc.getName() + "()");
-		}
-		else {
-
-			CssTok tok = local.pollNextToken();
-			int wsConsumed = 0;
-			if (consumeWS == ConsumeWS.MAY_CONSUME) {
-				while (tok instanceof WSTok) {
-					tok = local.pollNextToken();
-					wsConsumed++;
-				}
-			}
+		CssTok tok;
+		try {
+			tok = consumeWS(local, consumeWS);
 			
-			if (consumeWS == ConsumeWS.MUST_CONSUME) {
-				if (wsConsumed > 0) {
+			if (tok == null) {
+				result.status = State.PROPOSE;
+				result.proposal = new Proposal(ruleFunc.getName() + "()");
+			}
+			else {
+				if (tok instanceof FuncTok) {
 					// ok
+					FuncTok fTok = (FuncTok) tok;
+					String funcName = fTok.getName().getName();
+					
+					if (funcName.equals(ruleFunc.getName())) {
+						result.status = State.MATCH; // func name ok, still need to match params
+						result.matched = tok;
+						ParserInput funcInput = new ParserInput(fTok.getParams());
+						
+//						List<ParseResult> paramResult = parse(g, funcInput.createCursor(), ruleFunc.getParams(), true);
+						
+//						logger.debug("paramResult= " + paramResult);
+						
+//						boolean paramsOk = false;
+//						
+//						for (ParseResult paramR : paramResult) {
+//							if (paramR.status == Status.MATCH && paramR.remainingInput.isConsumed()) {
+//								paramsOk = true;
+//								break;
+//							}
+//						}
+//						
+//						if (paramsOk) {
+//							r.remainingInput = local;
+//							r.status = Status.MATCH;
+//							
+//							g.newSegment(ParseStatus.MATCH, fTok);
+//						}
+//						else {
+//							// function parameters wrong
+//							r.message = "recheck function params";
+//							r.status = Status.INVALID;
+//							
+//							g.newSegment(ParseStatus.INVALID, fTok, "wrong parameters");
+//						}
+					}
+					else {
+						// invalid (wrong func)
+						result.message = "expected " + ruleFunc.getName();
+						result.status = State.INVALID;
+					}
+					
+					
+					
 				}
 				else {
 					// invalid
 					result.status = State.INVALID;
-					
-					return result;
+					result.message = "expected function";
 				}
-				
 			}
 			
-			if (tok instanceof FuncTok) {
-				// ok
-				FuncTok fTok = (FuncTok) tok;
-				String funcName = fTok.getName().getName();
-				
-				if (funcName.equals(ruleFunc.getName())) {
-					result.status = State.MATCH; // func name ok, still need to match params
-					
-					ParserInput funcInput = new ParserInput(fTok.getParams());
-					
-//					List<ParseResult> paramResult = parse(g, funcInput.createCursor(), ruleFunc.getParams(), true);
-					
-//					logger.debug("paramResult= " + paramResult);
-					
-//					boolean paramsOk = false;
-//					
-//					for (ParseResult paramR : paramResult) {
-//						if (paramR.status == Status.MATCH && paramR.remainingInput.isConsumed()) {
-//							paramsOk = true;
-//							break;
-//						}
-//					}
-//					
-//					if (paramsOk) {
-//						r.remainingInput = local;
-//						r.status = Status.MATCH;
-//						
-//						g.newSegment(ParseStatus.MATCH, fTok);
-//					}
-//					else {
-//						// function parameters wrong
-//						r.message = "recheck function params";
-//						r.status = Status.INVALID;
-//						
-//						g.newSegment(ParseStatus.INVALID, fTok, "wrong parameters");
-//					}
+		} catch (Exception e) {
+			result.status = State.INVALID;
+			result.message = "expected WS";
+		}
+		
+		
+		return result;
+	}
+	
+	private ResultNode parseURLType(ParserInputCursor input, CSSType rule, ConsumeWS consumeWS) {
+		final ResultNode result = new ResultNode(NodeType.TYPE_URL);
+		ParserInputCursor local = input.copy();
+		try {
+			CssTok tok = consumeWS(local, consumeWS);
+			if (tok != null) {
+				if (tok instanceof UrlTok) {
+					result.status = State.MATCH;
+					result.matched = tok;
+					result.remainingInput = local.copy();
 				}
 				else {
-					// invalid (wrong func)
-					result.message = "expected " + ruleFunc.getName();
 					result.status = State.INVALID;
+					result.message = "expected url";
 				}
-				
-				
-				
 			}
 			else {
-				// invalid
-				result.status = State.INVALID;
+				result.status = State.PROPOSE;
+				result.proposal = new Proposal("url(http://efxclipse.org/)");
 			}
+		}
+		catch (Exception e) {
+			result.status = State.INVALID;
+			result.message = "expected WS";
 		}
 		
 		return result;
 	}
 	
 	private ResultNode parseINTType(ParserInputCursor l, CSSType rule, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
-		result.nodeSymbol = "@INT";
-		result.nodeName = "int";
+		final ResultNode result = new ResultNode(NodeType.TYPE_INT);
+
 		ParserInputCursor local = l.copy();
 		try {
 			CssTok tok = consumeWS(local, consumeWS);
@@ -576,7 +633,7 @@ public class CssExtParser {
 							// ok
 							result.remainingInput = local;
 							result.status = State.MATCH;
-							
+							result.matched = tok;
 						}
 						else {
 							// invalid range
@@ -589,7 +646,7 @@ public class CssExtParser {
 						// ok
 						result.remainingInput = local;
 						result.status = State.MATCH;
-						
+						result.matched = tok;
 					}
 				}
 				else {
@@ -612,9 +669,7 @@ public class CssExtParser {
 	}
 	
 	private ResultNode parseNUMType(ParserInputCursor l, CSSType rule, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
-		result.nodeSymbol = "@NUM";
-		result.nodeName = "number";
+		ResultNode result = new ResultNode(NodeType.TYPE_NUM);
 		
 		ParserInputCursor local = l.copy();
 		
@@ -635,20 +690,19 @@ public class CssExtParser {
 							// ok
 							result.remainingInput = local;
 							result.status = State.MATCH;
-							
+							result.matched = tok;
 						}
 						else {
 							// invalid range
 							result.status = State.INVALID;
 							result.message = "invalid range";
-							
 						}
 					}
 					else {
 						// ok
 						result.remainingInput = local;
 						result.status = State.MATCH;
-						
+						result.matched = tok;
 					}
 				}
 				else {
@@ -698,9 +752,7 @@ public class CssExtParser {
 
 	// Literal
 	private ResultNode parseLiteral(ParserInputCursor input, CSSRuleLiteral r, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
-		result.nodeSymbol = "a";
-		result.nodeName = "literal";
+		ResultNode result = new ResultNode(NodeType.LITERAL);
 		
 		ParserInputCursor local = input.copy();
 		
@@ -712,6 +764,8 @@ public class CssExtParser {
 				
 				if (matchCssTok(tok, literal)) {
 					result.status = State.MATCH;
+					System.err.println("setting matched on " + System.identityHashCode(result));
+					result.matched = tok;
 					result.remainingInput = local.copy();
 					
 				}
@@ -739,11 +793,14 @@ public class CssExtParser {
 	}
 	
 	private ResultNode parseSymbol(ParserInputCursor l, CSSRuleSymbol r, ConsumeWS consumeWS) {
-		ResultNode result = new ResultNode();
-		result.nodeSymbol = "§";
-		result.nodeName = "symbol";
+		final ResultNode result = new ResultNode(NodeType.SYMBOL);
 		
-		ParserInputCursor local = l.copy();
+		// This workaround allows symbol concatenation without whitespace
+		if (consumeWS == ConsumeWS.MUST_CONSUME) {
+			consumeWS = ConsumeWS.MAY_CONSUME;
+		}
+		
+		final ParserInputCursor local = l.copy();
 		
 		try {
 			CssTok tok = consumeWS(local, consumeWS);
@@ -752,6 +809,7 @@ public class CssExtParser {
 				if (matchCssTok(tok, symbol)) {
 					// valid yay!
 					result.status = State.MATCH;
+					result.matched = tok;
 					result.remainingInput = local.copy();
 					
 				}
@@ -815,15 +873,16 @@ public class CssExtParser {
 			
 			
 			System.err.println("starting with input: " + input.createCursor());
-			
-			ResultNode res = parse(input.createCursor(), def.getRule(), ConsumeWS.MAY_CONSUME);
-			logger.debug("parse returned with " + res);
+			final long parseBegin = System.nanoTime();
+			final ResultNode res = parse(input.createCursor(), def.getRule(), ConsumeWS.MAY_CONSUME);
+			final long parseDuration = System.nanoTime() - parseBegin;
+			logger.debug("parse needed " + String.format("%2.3f", parseDuration*10e-6) + "ms returned with " + res);
 			
 			for (ParseResultListener l : resultListener) {
 				l.parseFinished(res);
 			}
 			
-			ResultNode.dbg(res);
+			//ResultNode.dbg(res);
 			
 			result.addAll(mapProposals(res));
 //			result.addAll(findProposals(new LinkedList<CssTok>(prefixToks), prefix, def.getRule()));
