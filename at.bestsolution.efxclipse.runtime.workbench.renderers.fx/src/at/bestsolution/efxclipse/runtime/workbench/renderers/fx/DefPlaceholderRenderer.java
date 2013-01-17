@@ -48,7 +48,6 @@ public class DefPlaceholderRenderer extends BasePlaceholderRenderer<FillLayoutPa
 		@Override
 		protected FillLayoutPane createWidget() {
 			FillLayoutPane pane = new FillLayoutPane();
-			pane.setStyle("-fx-background-color: blue; -fx-padding: 10px;");
 			return pane;
 		}
 		
