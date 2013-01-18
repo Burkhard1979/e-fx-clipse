@@ -59,16 +59,6 @@ public abstract class AbstractLayoutPane<D> extends Pane {
     }
 	
 	@Override
-	protected double computeMaxHeight(double width) {
-		return computeSize(Double.MAX_VALUE, Double.MAX_VALUE, true).height;
-	}
-	
-	@Override
-	protected double computeMaxWidth(double height) {
-		return computeSize(Double.MAX_VALUE, Double.MAX_VALUE, true).width;
-	}
-	
-	@Override
 	protected double computeMinHeight(double width) {
 		return 0;
 	}
