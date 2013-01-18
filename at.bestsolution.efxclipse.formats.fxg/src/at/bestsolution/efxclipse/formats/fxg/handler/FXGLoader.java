@@ -170,8 +170,6 @@ public class FXGLoader {
 		public void characters(char[] ch, int start, int length) throws SAXException {
 			if (inRichTextContent) {
 				richtTextContent.append(new String(ch, start, length));
-				// System.err.println("Text-Content: " + new
-				// String(ch,start,length));
 			}
 		}
 

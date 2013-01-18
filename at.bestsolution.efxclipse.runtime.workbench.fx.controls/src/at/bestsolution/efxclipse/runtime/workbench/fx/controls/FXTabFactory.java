@@ -10,16 +10,17 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.workbench.fx.controls;
 
-import at.bestsolution.efxclipse.runtime.controls.FXTab;
-import at.bestsolution.efxclipse.runtime.controls.FXTabPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import at.bestsolution.efxclipse.runtime.controls.fx2.FX2Tab;
 import at.bestsolution.efxclipse.runtime.controls.fx2.FX2TabPane;
+import at.bestsolution.efxclipse.runtime.controls.fx2.FX2TabPaneSkin;
 import at.bestsolution.efxclipse.runtime.controls.fx8.FX8Tab;
 import at.bestsolution.efxclipse.runtime.controls.fx8.FX8TabPane;
 import at.bestsolution.efxclipse.runtime.core.Util;
 
 public class FXTabFactory {
-	public static FXTab createTab() {
+	public static Tab createTab() {
 		if( Util.isFX2() ) {
 			return new FX2Tab();
 		} else {
@@ -27,13 +28,14 @@ public class FXTabFactory {
 		}
 	}
 	
-	public static <T extends FXTab> FXTabPane<T> createTabPane() {
+	public static TabPane createTabPane() {
 		if( Util.isFX2() ) {
 			FX2TabPane tab = new FX2TabPane();
-			return (FXTabPane<T>) tab;
+			tab.setSkin(new FX2TabPaneSkin(tab));
+			return  tab;
 		} else {
 			FX8TabPane tab = new FX8TabPane();
-			return (FXTabPane<T>) tab;
+			return tab;
 		}
 	}
 }

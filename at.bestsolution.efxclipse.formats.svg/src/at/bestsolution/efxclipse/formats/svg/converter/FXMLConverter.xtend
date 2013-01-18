@@ -79,7 +79,7 @@ class FXMLConverter {
 	}
 	
 	def dispatch handle(SvgSvgElement element) '''
-	<Group fx:id='_root' xmlns:fx="http://javafx.com/fxml" xmlns:fxsvg="http://efxclipse.org/fxml-svg">
+	<Group id='_root' xmlns:fx="http://javafx.com/fxml" xmlns:fxsvg="http://efxclipse.org/fxml-svg">
 		«handleStyleClassAttributes(element.class_)»
 «««		«IF element.styleSheet != null»
 «««			<stylesheets>
@@ -115,7 +115,7 @@ class FXMLConverter {
 		«IF element.x2 != null»endX="«t.transform( new Point2D$Double(x2,y2), null).x»"«ENDIF»
 		«IF element.y2 != null»endY="«t.transform( new Point2D$Double(x2,y2), null).y»"«ENDIF»
 		«IF element.spreadMethod != SpreadMethod::PAD»cycleMethod="«element.spreadMethod.toFx»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		proportional="false">
 		«val owner = resolveGradientStopElement(element)»
 		«IF owner != null»
@@ -144,7 +144,7 @@ class FXMLConverter {
 ««« Is the Focus Radius calculation really correct???
 		«IF element.fx != null || element.fy != null»focusAngle="«calculateFocusAngle(t,cx,cy,fx,fy)»"«ENDIF»
 		«IF element.spreadMethod != SpreadMethod::PAD»cycleMethod="«element.spreadMethod.toFx»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		proportional="false">
 		«val owner = resolveGradientStopElement(element)» 
 		«IF owner != null»
@@ -375,7 +375,7 @@ class FXMLConverter {
 		«IF element.rx != null»arcWidth="«element.rx.parseLength * Double::valueOf("2.0")»"«ENDIF»
 		«IF element.ry != null»arcHeight="«element.ry.parseLength * Double::valueOf("2.0")»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
@@ -425,7 +425,7 @@ class FXMLConverter {
 		«IF element.x != null»translateX="«element.x.parseCoordinate»"«ENDIF»
 		«IF element.y != null»translateY="«element.y.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		>
 		«handleStyleClassAttributes(element.class_)»
 		<children>
@@ -476,7 +476,7 @@ class FXMLConverter {
 		«IF element.x != null»translateX="«element.x.parseCoordinate»"«ENDIF»
 		«IF element.y != null»translateY="«element.y.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity.parseDouble * element.fill_opacity.parseDouble»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		>
 		«handleStyleClassAttributes(element.class_)»
 		
@@ -562,7 +562,7 @@ class FXMLConverter {
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
 		«IF element.fill_rule != Fill_rule::NONZERO»fillRule="EVEN_ODD"«ENDIF»
 		«handleShapePresentationAttributes(element)»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 		«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
@@ -639,7 +639,7 @@ class FXMLConverter {
 		«IF element.cx != null»centerX="«element.cx.parseCoordinate»"«ENDIF»
 		«IF element.cy != null»centerY="«element.cy.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
@@ -690,7 +690,7 @@ class FXMLConverter {
 		«IF element.cx != null»centerX="«element.cx.parseCoordinate»"«ENDIF»
 		«IF element.cy != null»centerY="«element.cy.parseCoordinate»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
 		>
 		«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
@@ -740,7 +740,7 @@ class FXMLConverter {
 		«IF element.points != null»points="«element.points.replaceAll("\\s+",",")»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 		>
 	«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 	«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
@@ -789,7 +789,7 @@ class FXMLConverter {
 		«IF element.points != null»points="«element.points.replaceAll("\\s+",",")»"«ENDIF»
 		«IF element.opacity != null»opacity="«element.opacity»"«ENDIF»
 		«handleShapePresentationAttributes(element)»
-		«IF element.id != null»fx:id="«element.id.validateId»"«ENDIF»
+		«IF element.id != null»id="«element.id.validateId»"«ENDIF»
 	>
 	«handlePaint("fill", lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__FILL_OPACITY,element) as String)»
 	«handlePaint("stroke",lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE,element) as String,lookupFeature(SvgPackage$Literals::PRESENTATION_ATTRIBUTES__STROKE_OPACITY,element) as String)»
@@ -1071,6 +1071,7 @@ class FXMLConverter {
 	}
 	
 	def validateId(String value) {
-		return value.replace(".","_dot").replace("-","_dash");
+		// TODO replace http://www.w3.org/TR/2008/REC-xml-20081126/#NT-Name vs http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
+		return value.replaceAll("\\.","_dot").replaceAll(" ","_space").replaceAll(":","_colon");
 	}
 }

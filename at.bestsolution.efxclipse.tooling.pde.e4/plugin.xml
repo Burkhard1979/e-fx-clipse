@@ -5,7 +5,7 @@
          point="org.eclipse.ui.newWizards">
       <wizard
             category="at.bestsolution.efxclipse.tooling/at.bestsolution.efxclipse.tooling.samples"
-            class="at.bestsolution.efxclipse.tooling.pde.e4.project.E4NewProjectWizard"
+            class="at.bestsolution.efxclipse.tooling.pde.e4.project.media.NewMediaProjectWizard"
             icon="platform:/plugin/org.eclipse.pde.ui/icons/etool16/newpprj_wiz.gif"
             id="at.bestsolution.efxclipse.tooling.pde.e4.media.app"
             name="e4 Media Application"
@@ -17,8 +17,8 @@
             parentCategory="at.bestsolution.efxclipse.tooling">
       </category>
       <wizard
-            category="at.bestsolution.efxclipse.tooling"
-            class="at.bestsolution.efxclipse.tooling.pde.e4.project.maven.NewMavenProjectWizard"
+            category="at.bestsolution.efxclipse.tooling/at.bestsolution.efxclipse.tooling.pde.ui.osgi"
+            class="at.bestsolution.efxclipse.tooling.pde.e4.project.boot.NewProjectStructureWizard"
             icon="platform:/plugin/org.eclipse.pde.ui/icons/etool16/newpprj_wiz.gif"
             id="at.bestsolution.efxclipse.tooling.pde.e4.maven.app"
             name="e4 Application projects"

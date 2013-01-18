@@ -542,7 +542,6 @@ public class JDTHelper {
 						}
 
 						if (type == null) {
-							System.err.println("Could not detect type for '" + propName + "': " + returnSignature);
 							continue;
 						}
 

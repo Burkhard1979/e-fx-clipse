@@ -111,7 +111,6 @@ public class KeyBindingDispatcher {
 	}
 	
 	private void filterKeySequenceBindings(KeyEvent event) {
-//		System.err.println("Processing: " +event);
 		/*
 		 * Only process key strokes containing natural keys to trigger key bindings.
 		 */
@@ -119,12 +118,8 @@ public class KeyBindingDispatcher {
 			return;
 		}
 
-//		System.err.println("Generate possible strokes");
-		
 		// Allow special key out-of-order processing.
 		List<KeyStroke> keyStrokes = generatePossibleKeyStrokes(event);
-		
-//		System.err.println(keyStrokes);
 		
 //		if (isOutOfOrderKey(keyStrokes)) {
 ////			Widget widget = event.widget;
@@ -234,16 +229,12 @@ public class KeyBindingDispatcher {
 		KeySequence errorSequence = null;
 		Collection<Binding> errorMatch = null;
 		
-		System.err.println("Press: " + potentialKeyStrokes);
-
 		KeySequence sequenceBeforeKeyStroke = state;
 		for (Iterator<KeyStroke> iterator = potentialKeyStrokes.iterator(); iterator.hasNext();) {
 			KeySequence sequenceAfterKeyStroke = factory.getKeySequenceInstance(sequenceBeforeKeyStroke,
 					iterator.next());
-			System.err.println(sequenceAfterKeyStroke);
 			
 			if (isPartialMatch(sequenceAfterKeyStroke)) {
-				System.err.println("========> Partial match");
 				incrementState(sequenceAfterKeyStroke);
 				return true;
 
@@ -282,17 +273,14 @@ public class KeyBindingDispatcher {
 	
 	private ParameterizedCommand getPerfectMatch(KeySequence keySequence) {
 		Binding perfectMatch = getBindingService().getPerfectMatch(keySequence);
-		System.err.println("Match: " + perfectMatch);
 		return perfectMatch == null ? null : perfectMatch.getParameterizedCommand();
 	}
 	
 	private boolean isPartialMatch(KeySequence keySequence) {
-		System.err.println("Match partial");
 		return getBindingService().isPartialMatch(keySequence);
 	}
 	
 	private boolean isPerfectMatch(KeySequence keySequence) {
-		System.err.println("Match perfect");
 		return getBindingService().isPerfectMatch(keySequence);
 	}
 	

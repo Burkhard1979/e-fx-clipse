@@ -32,6 +32,9 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 		for( String e : desc.getExecutionEnvironments() ) {
 			IExecutionEnvironment env = EnvironmentsManager.getDefault().getEnvironment(e);
 			IPath[] paths = null;
+			if( env == null ) {
+				continue;
+			}
 			
 			if( env.getDefaultVM() != null ) {
 				paths = BuildPathSupport.getFxJarPath(env.getDefaultVM());

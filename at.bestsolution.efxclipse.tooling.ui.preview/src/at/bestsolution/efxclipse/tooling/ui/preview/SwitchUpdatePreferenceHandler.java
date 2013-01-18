@@ -22,7 +22,6 @@ public class SwitchUpdatePreferenceHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Command command = event.getCommand();
 		HandlerUtil.toggleCommandState(command);
-//		System.err.println("executed .... ");
 	     
 //		IEclipsePreferences p = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID); 
 //		boolean b = p.getBoolean(LivePreviewSynchronizer.PREF_REFRESH_WHILE_TYPE, false);

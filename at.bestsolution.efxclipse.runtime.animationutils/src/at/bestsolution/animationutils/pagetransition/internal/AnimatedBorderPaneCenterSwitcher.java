@@ -82,14 +82,12 @@ public class AnimatedBorderPaneCenterSwitcher {
 	public void nextAnim() {
 		animations.offerLast(anim);
 		anim = animations.pollFirst();
-		System.err.println("current anim is " + anim);
 		showCurrentAnimation();
 	}
 	
 	public void prevAnim() {
 		animations.offerFirst(anim);
 		anim = animations.pollLast();
-		System.err.println("current anim is " + anim);
 		showCurrentAnimation();
 	}
 	

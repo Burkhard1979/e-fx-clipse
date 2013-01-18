@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Rrobot
 Bundle-SymbolicName: at.bestsolution.efxclipse.tooling.rrobot
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.equinox.common;bundle-version="3.6.0",
- at.bestsolution.efxclipse.tooling.rrobot.model;bundle-version="0.1.1";visibility:=reexport,
+ at.bestsolution.efxclipse.tooling.rrobot.model;bundle-version="0.8.0";visibility:=reexport,
  org.eclipse.core.resources;bundle-version="3.7.0",
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,

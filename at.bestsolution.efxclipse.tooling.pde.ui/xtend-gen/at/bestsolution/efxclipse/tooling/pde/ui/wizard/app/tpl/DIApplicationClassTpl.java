@@ -1,9 +1,9 @@
 package at.bestsolution.efxclipse.tooling.pde.ui.wizard.app.tpl;
 
+import at.bestsolution.efxclipse.tooling.pde.ui.wizard.Util;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.CompilationUnit;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.DynamicFile;
 import at.bestsolution.efxclipse.tooling.rrobot.model.task.Generator;
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
@@ -16,10 +16,7 @@ public class DIApplicationClassTpl implements Generator<DynamicFile> {
     final CompilationUnit cu = ((CompilationUnit) _eContainer);
     String _packagename = cu.getPackagename();
     CharSequence _generate = this.generate(_packagename);
-    String _string = _generate.toString();
-    byte[] _bytes = _string.getBytes();
-    ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
-    return _byteArrayInputStream;
+    return Util.toStream(_generate);
   }
   
   public CharSequence generate(final String packageName) {
@@ -78,7 +75,7 @@ public class DIApplicationClassTpl implements Generator<DynamicFile> {
     _builder.append("primaryStage.setHeight(400);");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("primaryStage.setTitle(\"$windowTitle$\");");
+    _builder.append("primaryStage.setTitle(\"Hello World\");");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("primaryStage.show();");

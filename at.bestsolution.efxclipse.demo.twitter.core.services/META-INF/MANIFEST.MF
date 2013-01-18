@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Services
-Bundle-SymbolicName: at.bestsolution.efxclipse.demo.twitter.core.services
-Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: BestSolution.at
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: at.bestsolution.efxclipse.demo.twitter.model;bundle-version="1.0.0"
-Export-Package: at.bestsolution.efxclipse.demo.twitter.core.services

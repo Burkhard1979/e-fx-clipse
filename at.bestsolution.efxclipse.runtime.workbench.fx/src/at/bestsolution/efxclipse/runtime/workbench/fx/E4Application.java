@@ -24,7 +24,6 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.WeakHashMap;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.RunnableFuture;
@@ -50,14 +49,12 @@ import org.eclipse.e4.core.services.translation.TranslationService;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.internal.workbench.ActiveChildLookupFunction;
 import org.eclipse.e4.ui.internal.workbench.ActivePartLookupFunction;
-import org.eclipse.e4.ui.internal.workbench.DefaultLoggerProvider;
 import org.eclipse.e4.ui.internal.workbench.E4Workbench;
 import org.eclipse.e4.ui.internal.workbench.ExceptionHandler;
 import org.eclipse.e4.ui.internal.workbench.ModelServiceImpl;
 import org.eclipse.e4.ui.internal.workbench.PlaceholderResolver;
 import org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory;
 import org.eclipse.e4.ui.internal.workbench.ResourceHandler;
-import org.eclipse.e4.ui.internal.workbench.WorkbenchLogger;
 import org.eclipse.e4.ui.model.application.MAddon;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.services.IServiceConstants;
@@ -76,13 +73,13 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
+import at.bestsolution.efxclipse.runtime.di.LoggerCreator;
+import at.bestsolution.efxclipse.runtime.workbench.fx.internal.LoggerProviderImpl;
 import at.bestsolution.efxclipse.runtime.workbench.fx.internal.WorkbenchJFXActivator;
 
 @SuppressWarnings("restriction")
 public class E4Application extends AbstractJFXApplication {
 	public static final String THEME_ID = "cssTheme";
-
-	private static final String PLUGIN_ID = "at.bestsolution.efxclipse.runtime.workbench"; //$NON-NLS-1$
 
 	public static final String METADATA_FOLDER = ".metadata"; //$NON-NLS-1$
 	private static final String VERSION_FILENAME = "version.ini"; //$NON-NLS-1$
@@ -98,23 +95,27 @@ public class E4Application extends AbstractJFXApplication {
 
 	private Location instanceLocation;
 
+	at.bestsolution.efxclipse.runtime.core.log.Logger logger = LoggerCreator.createLogger(getClass());
+	
 	@Override
 	protected void jfxStart(IApplicationContext applicationContext, Application jfxApplication, Stage primaryStage) {
 		workbench = createE4Workbench(applicationContext, jfxApplication, primaryStage);
-		instanceLocation = (Location) workbench.getContext().get(E4Workbench.INSTANCE_LOCATION);
+		if( workbench != null ) {
+			instanceLocation = (Location) workbench.getContext().get(E4Workbench.INSTANCE_LOCATION);
 
-		try {
-			if (!checkInstanceLocation(instanceLocation))
+			try {
+				if (!checkInstanceLocation(instanceLocation))
+					return;
+
+				workbenchContext = workbench.getContext();
+
+				// Create and run the UI (if any)
+				workbench.createAndRunUI(workbench.getApplication());
+
 				return;
-
-			workbenchContext = workbench.getContext();
-
-			// Create and run the UI (if any)
-			workbench.createAndRunUI(workbench.getApplication());
-
-			return;
-		} finally {
-			
+			} finally {
+				
+			}
 		}
 	}
 
@@ -207,9 +208,7 @@ public class E4Application extends AbstractJFXApplication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						System.err.println("could not find icon at: " + iconPath);
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						logger.warning("could not find icon at: " + iconPath,e);
 					}
 				}
 				
@@ -232,7 +231,10 @@ public class E4Application extends AbstractJFXApplication {
 			lcManager = factory.create(lifeCycleURI, appContext);
 			if (lcManager != null) {
 				// Let the manager manipulate the appContext if desired
-				ContextInjectionFactory.invoke(lcManager, PostContextCreate.class, appContext, null);
+				Boolean rv = (Boolean) ContextInjectionFactory.invoke(lcManager, PostContextCreate.class, appContext, Boolean.TRUE);
+				if( rv != null && ! rv.booleanValue() ) {
+					return null;
+				}
 			}
 		}
 		// Create the app model and its context
@@ -370,8 +372,7 @@ public class E4Application extends AbstractJFXApplication {
 
 			// No default log provider available
 			if (serviceContext.get(ILoggerProvider.class) == null) {
-				serviceContext.set(ILoggerProvider.class, ContextInjectionFactory
-						.make(DefaultLoggerProvider.class, serviceContext));
+				serviceContext.set(ILoggerProvider.class, ContextInjectionFactory.make(LoggerProviderImpl.class, serviceContext));
 			}
 
 			return serviceContext;
@@ -385,7 +386,12 @@ public class E4Application extends AbstractJFXApplication {
 		ReflectionContributionFactory contributionFactory = new ReflectionContributionFactory(registry);
 		appContext.set(IContributionFactory.class.getName(), contributionFactory);
 
-		appContext.set(Logger.class.getName(), ContextInjectionFactory.make(WorkbenchLogger.class, appContext));
+		// No default log provider available
+		if (appContext.get(ILoggerProvider.class) == null) {
+			serviceContext.set(ILoggerProvider.class, ContextInjectionFactory.make(LoggerProviderImpl.class, serviceContext));
+		}
+		
+		appContext.set(Logger.class.getName(), serviceContext.get(ILoggerProvider.class).getClassLogger(E4Workbench.class));
 
 		appContext.set(EModelService.class, new ModelServiceImpl(appContext));
 		appContext.set(EPlaceholderResolver.class, new PlaceholderResolver());
@@ -398,10 +404,6 @@ public class E4Application extends AbstractJFXApplication {
 
 		appContext.set(Adapter.class.getName(), ContextInjectionFactory.make(EclipseAdapter.class, appContext));
 
-		// No default log provider available
-		if (appContext.get(ILoggerProvider.class) == null) {
-			appContext.set(ILoggerProvider.class, ContextInjectionFactory.make(DefaultLoggerProvider.class, appContext));
-		}
 
 		appContext.set(IServiceConstants.ACTIVE_PART, new ActivePartLookupFunction());
 		appContext.set(IExceptionHandler.class.getName(), exceptionHandler);
@@ -460,8 +462,7 @@ public class E4Application extends AbstractJFXApplication {
 					// WorkbenchSWTMessages.IDEApplication_workspaceCannotBeSetMessage);
 				}
 			} catch (IOException e) {
-				Logger logger = new WorkbenchLogger(PLUGIN_ID);
-				logger.error(e);
+				logger.error("Could not create instance location", e);
 				// MessageDialog.openError(shell,
 				// WorkbenchSWTMessages.InternalError, e.getMessage());
 			}
@@ -531,8 +532,7 @@ public class E4Application extends AbstractJFXApplication {
 
 			return props.getProperty(WORKSPACE_VERSION_KEY);
 		} catch (IOException e) {
-			Logger logger = new WorkbenchLogger(PLUGIN_ID);
-			logger.error(e);
+			LoggerCreator.createLogger(E4Application.class).error("Unable to create workspace", e);
 			return null;
 		}
 	}
@@ -580,8 +580,7 @@ public class E4Application extends AbstractJFXApplication {
 			output = new FileOutputStream(versionFile);
 			output.write(versionLine.getBytes("UTF-8")); //$NON-NLS-1$
 		} catch (IOException e) {
-			Logger logger = new WorkbenchLogger(PLUGIN_ID);
-			logger.error(e);
+			LoggerCreator.createLogger(E4Application.class).error("Unable to write workspace version", e);
 		} finally {
 			try {
 				if (output != null) {

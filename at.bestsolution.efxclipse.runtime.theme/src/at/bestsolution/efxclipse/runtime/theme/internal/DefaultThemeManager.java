@@ -10,19 +10,24 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.theme.internal;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.Scene;
 
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.RegistryFactory;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.runtime.core.Util;
+import at.bestsolution.efxclipse.runtime.core.log.Logger;
+import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
 import at.bestsolution.efxclipse.runtime.services.theme.Theme;
 import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager;
 
@@ -65,7 +70,7 @@ public class DefaultThemeManager implements ThemeManager {
 				if (url != null) {
 					resolvedUrls.add(url);
 				} else {
-					// TODO Log an error
+					getLogger().error("Unable to load base stylesheet '"+element.getAttribute(ATT_BASETYLESHEET)+"'");
 				}
 
 				for (IConfigurationElement e : stylesheetElements) {
@@ -73,7 +78,7 @@ public class DefaultThemeManager implements ThemeManager {
 					if (url != null) {
 						resolvedUrls.add(url);
 					} else {
-						// TODO Log an error
+						getLogger().error("Unable to load stylesheet '"+e.getAttribute(ATT_RESOURCE)+"'");
 					}
 				}
 
@@ -84,8 +89,18 @@ public class DefaultThemeManager implements ThemeManager {
 		private URL getUrl(IConfigurationElement e, String attributeName) {
 			String resource = e.getAttribute(attributeName);
 			String contributer = e.getDeclaringExtension().getContributor().getName();
-			Bundle b = Platform.getBundle(contributer);
-			return b.getResource(resource);
+			
+			if( resource.startsWith("platform:") ) {
+				try {
+					return FileLocator.find(new URL(resource));
+				} catch (MalformedURLException e1) {
+					getLogger().error("Unable to find css stylesheet file "+resource+"", e1);
+				}
+				return null;
+			} else {
+				Bundle b = Platform.getBundle(contributer);
+				return b.getResource(resource);
+			}
 		}
 	}
 
@@ -139,7 +154,6 @@ public class DefaultThemeManager implements ThemeManager {
 		return themes;
 	}
 
-	@SuppressWarnings("restriction")
 	@Override
 	public void setCurrentThemeId(String id) {
 		for (Theme t : themes) {
@@ -165,8 +179,7 @@ public class DefaultThemeManager implements ThemeManager {
 						try {
 							ReflectiveInvoke.onStyleManagerClass(scene);
 						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							getLogger().error("Unable to reload styles", e);
 						}
 					}
 				}
@@ -179,6 +192,16 @@ public class DefaultThemeManager implements ThemeManager {
 
 	private String getCurrentThemeId() {
 		return currentThemeId;
+	}
+	
+	private static Logger LOGGER;
+	
+	static Logger getLogger() {
+		if( LOGGER == null ) {
+			ServiceReference<LoggerFactory> ref = Activator.getContext().getServiceReference(LoggerFactory.class);
+			LOGGER = Activator.getContext().getService(ref).createLogger(DefaultThemeManager.class.getName());
+		}
+		return LOGGER;
 	}
 	
 	@Override

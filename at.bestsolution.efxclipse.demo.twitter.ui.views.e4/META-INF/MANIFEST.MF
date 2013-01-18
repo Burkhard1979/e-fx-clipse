@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: E4
-Bundle-SymbolicName: at.bestsolution.efxclipse.demo.twitter.ui.views.e4;singleton:=true
-Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.eclipse.e4.ui.workbench;bundle-version="0.10.3",
- at.bestsolution.efxclipse.demo.twitter.ui.views;bundle-version="1.0.0"

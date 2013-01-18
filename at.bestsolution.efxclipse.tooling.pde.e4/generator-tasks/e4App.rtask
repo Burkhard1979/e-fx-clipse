@@ -1,10 +1,12 @@
 RobotTask {
 	// Variables to be used later on
 	variables = {
+		## Maven_GroupId
+		STRING "Maven_GroupId" default "my.sample.e4",
 		## Name of the project
-		STRING "BundleProject_projectName" default "my.app.sample",  
+		STRING "BundleProject_projectName" default "${Maven_GroupId}.app",  
 		## Symbolic id of the bundle
-		STRING "BundleProject_bundleId" default "my.app.sample",
+		STRING "BundleProject_bundleId" default "${Maven_GroupId}.app",
 		## Name of the Bundle
 		STRING "BundleProject_bundleName" default "My Sample App",
 		## Vendor of the Bundle
@@ -13,6 +15,8 @@ RobotTask {
 		STRING "BundleProject_productName" default "My Sample Application",
 		## Bundle Version
 		STRING "BundleProject_bundleVersion" default "1.0.0.qualifier",
+		## Bundle Execution Environment
+		STRING "BundleProject_EE" default "JavaSE-1.7",
 		## Tycho integration
 		BOOLEAN "TychoIntegration" default "true",
 		## Native export integration
@@ -21,7 +25,7 @@ RobotTask {
 	projects = {
 		// Create an Bundle Project (this will add the PDE-Nature and the required builders to it!)
 		BundleProject "${BundleProject_projectName}" {
-			manifest = ManifestFile "${BundleProject_bundleId}" "${BundleProject_bundleVersion}" "JavaSE-1.7" {
+			manifest = ManifestFile "${BundleProject_bundleId}" "${BundleProject_bundleVersion}" "${BundleProject_EE}" {
 				bundlename = "${BundleProject_bundleName}"		// The name of the bundle
 				vendor = "${BundleProject_bundleVendor}"		// The vendor developing the bundle
 				// Add some import package definitions
@@ -148,6 +152,22 @@ RobotTask {
 				DynamicFile "pom.xml" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.PluginPomGenerator" 
 					by "java" 
+					{
+						## releng group id
+						STRING "relengGroupId" default "${Maven_GroupId}",
+						## releng artifact id
+						STRING "relengArtifactId" default "${BundleProject_bundleId}.releng",
+						## releng releng path
+						STRING "relengPath" default "../${BundleProject_bundleId}.releng",
+						## group id
+						STRING "groupId" default "${Maven_GroupId}",
+						## artifactId
+						STRING "artifactId" default "${BundleProject_bundleId}",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## pom name
+						STRING "name" default "${BundleProject_productName} - application bundle"
+					} 
 					excluded-if "javascript" /# !TychoIntegration; #/
 			}
 			rootfragments = {
@@ -244,12 +264,27 @@ RobotTask {
 				DynamicFile "pom.xml" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.FeaturePomGenerator" 
 					by "java"
+					{
+						## releng group id
+						STRING "relengGroupId" default "${Maven_GroupId}",
+						## releng artifact id
+						STRING "relengArtifactId" default "${BundleProject_bundleId}.releng",
+						## releng releng path
+						STRING "relengPath" default "../${BundleProject_bundleId}.releng",
+						## group id
+						STRING "groupId" default "${Maven_GroupId}",
+						## artifactId
+						STRING "artifactId" default "${BundleProject_bundleId}.feature",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## pom name
+						STRING "name" default "${BundleProject_productName} - application feature"
+					}
 					excluded-if "javascript" /# !TychoIntegration; #/
 			}
 		},
 		SimpleProject "${BundleProject_projectName}.product" {
 			resources = {
-				DynamicFile "${BundleProject_bundleId}.product.launch" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.LaunchGenerator" by "java",
 				ProductFileFeaturebase "${BundleProject_bundleId}.product" {
 					productName = "${BundleProject_productName}"
 					application = "at.bestsolution.efxclipse.runtime.workbench.fx.application"
@@ -266,7 +301,7 @@ RobotTask {
 						"${BundleProject_bundleId}.feature" "${BundleProject_bundleVersion}"
 					}
 				},
-				DynamicFile "pom.xml" 
+				DynamicFile "${BundleProject_bundleId}.product.product.launch" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.FeatureLaunchGenerator"
 					by "java" 
 					{
@@ -274,11 +309,31 @@ RobotTask {
 						STRING "projectName" default "${BundleProject_bundleId}.product",
 						## Launch feature
 						STRING "feature" default "${BundleProject_projectName}.feature"
-					}
+					},
+				DynamicFile "pom.xml" 
+					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.ProductPomGenerator" 
+					by "java"
+					{
+						## releng group id
+						STRING "relengGroupId" default "${Maven_GroupId}",
+						## releng artifact id
+						STRING "relengArtifactId" default "${BundleProject_bundleId}.releng",
+						## releng releng path
+						STRING "relengPath" default "../${BundleProject_bundleId}.releng",
+						## group id
+						STRING "groupId" default "${Maven_GroupId}",
+						## artifactId
+						STRING "artifactId" default "${BundleProject_bundleId}.product",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## pom name
+						STRING "name" default "${BundleProject_productName} - application product"
+					} 
+					excluded-if "javascript" /# !TychoIntegration; #/
 			}
 		},
 		BundleProject "${BundleProject_projectName}.jemmy" {
-			manifest = ManifestFile "${BundleProject_bundleId}.jemmy" "1.0.0.qualifier" "JavaSE-1.7" {
+			manifest = ManifestFile "${BundleProject_bundleId}.jemmy" "1.0.0.qualifier" "${BundleProject_EE}" {
 				bundlename = "${BundleProject_bundleName} Jemmy UI Tests"
 				vendor = "${BundleProject_bundleVendor}"
 				importedPackages = {
@@ -353,6 +408,33 @@ RobotTask {
 						STRING "testSuite" default "${BundleProject_bundleId}.jemmy.TestSuite",
 						## Test Product Id
 						STRING "testProductId" default "${BundleProject_bundleId}.product"
+					},
+				DynamicFile "pom.xml" 
+					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.JemmyPomGenerator" 
+					by "java" 
+					{
+						## releng group id
+						STRING "relengGroupId" default "${Maven_GroupId}",
+						## releng artifact id
+						STRING "relengArtifactId" default "${BundleProject_bundleId}.releng",
+						## releng releng path
+						STRING "relengPath" default "../${BundleProject_bundleId}.releng",
+						## group id
+						STRING "groupId" default "${Maven_GroupId}",
+						## artifactId
+						STRING "artifactId" default "${BundleProject_bundleId}.jemmy",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## name
+						STRING "name" default "${BundleProject_productName} - jemmy tests",
+						## testBundleId
+						STRING "testBundleId" default "${BundleProject_bundleId}.jemmy",
+						## testSuite
+						STRING "testSuite" default "${BundleProject_bundleId}.jemmy.TestSuite",
+						## testProductId
+						STRING "testProductId" default "${BundleProject_bundleId}.product",
+						## testProductFeature
+						STRING "testProductFeature" default "${BundleProject_bundleId}.feature"
 					}
 			}
 			rootfragments = {
@@ -393,7 +475,23 @@ RobotTask {
 		},
 		SimpleProject "${BundleProject_projectName}.releng" { 
 			resources = {
-				DynamicFile "pom.xml" generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomGenerator" by "java",
+				DynamicFile "pom.xml" 
+					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.ui/at.bestsolution.efxclipse.tooling.pde.ui.templates.tycho.RootPomGenerator" 
+					by "java"
+					{
+						## groupId
+						STRING "groupId" default "${Maven_GroupId}",
+						## groupId
+						STRING "artifactId" default "${BundleProject_bundleId}.releng",
+						## description
+						STRING "name" default "${BundleProject_productName} - releng",
+						## baseVersion
+						STRING "baseVersion" default "${BundleProject_bundleVersion}",
+						## modules
+						STRING "modules" default "../${BundleProject_projectName};../${BundleProject_projectName}.feature;../${BundleProject_projectName}.product;../${BundleProject_projectName}.jemmy",
+						## repos
+						STRING "repos" default "juno@http://download.eclipse.org/releases/juno;efxclipse-repo@http://www.efxclipse.org/p2-repos/releases/latest"
+					},
 				DynamicFile "build.xml" 
 					generated-from "bundleclass://at.bestsolution.efxclipse.tooling.pde.e4/at.bestsolution.efxclipse.tooling.pde.e4.project.template.NativeLaunchGenerator" by "java"
 					excluded-if "javascript" /# !NativeExport #/,

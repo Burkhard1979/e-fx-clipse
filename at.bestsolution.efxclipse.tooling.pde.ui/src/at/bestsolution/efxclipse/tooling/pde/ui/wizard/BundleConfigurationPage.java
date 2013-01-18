@@ -37,18 +37,14 @@ import org.osgi.framework.Version;
 import at.bestsolution.efxclipse.tooling.pde.ui.wizard.model.BundleProjectData;
 
 public class BundleConfigurationPage extends WizardPage {
-	private boolean propertiesModified;
-	private boolean initialized;
 	private BundleProjectData data;
 	
 	private ModifyListener propertiesListener = new ModifyListener() {
 		public void modifyText(ModifyEvent e) {
-			if( initialized ) {
-				propertiesModified = true;
-			}
 			setPageComplete(validate());
 		}
 	};
+	
 	private Text idText;
 	private Text versionText;
 	private Text nameText;
@@ -58,43 +54,38 @@ public class BundleConfigurationPage extends WizardPage {
 	public BundleConfigurationPage(BundleProjectData data, String pageName, String title) {
 		super(pageName, title, null);
 		this.data = data;
-	}
-
-	@Override
-	public void setVisible(boolean visible) {
-		if( visible )  {
-			if( ! propertiesModified ) {
-				try {
-					initialized = false;
-					idText.setText(Util.getValidId(data.getProjectname()));
-					versionText.setText("1.0.0.qualifier");	
-				} finally {
-					initialized = true;
-				}
-			}
-		}
-		super.setVisible(visible);
+		setPageComplete(false);
 	}
 	
 	protected boolean validate() {
 		setErrorMessage(null);
 		if( idText.getText().trim().isEmpty() ) {
-			setErrorMessage("ID is required");
+			setErrorMessage( getBundleIdLabel() + " is required");
 			return false;	
-		} else if( versionText.getText().trim().isEmpty() ) {
+		} else if( versionText != null && versionText.getText().trim().isEmpty() ) {
 			setErrorMessage("Version is required");
 			return false;
 		} else {
-			try {
-				new Version(versionText.getText());	
-			} catch( IllegalArgumentException e ) {
-				setErrorMessage("Invalid version definition");
-				return false;
+			if(versionText != null ) {
+				try {
+					new Version(versionText.getText());	
+				} catch( IllegalArgumentException e ) {
+					setErrorMessage("Invalid version definition");
+					return false;
+				}	
 			}
 		}
 		
 		data.setSymbolicname(idText.getText().trim());
-		data.setVersion(versionText.getText());
+		
+		if( nameText != null ) {
+			data.setBundleDescription(nameText.getText());	
+		}
+		
+		if( versionText != null ) {
+			data.setVersion(versionText.getText());	
+		}
+		
 		data.setVendor(vendorText.getText().trim().isEmpty() ? null : vendorText.getText());
 		data.setEEnv(eeChoice.getText());
 		
@@ -114,31 +105,49 @@ public class BundleConfigurationPage extends WizardPage {
 	private void createPluginPropertiesGroup(Composite container) {
 		Group propertiesGroup = new Group(container, SWT.NONE);
 		propertiesGroup.setText("Properties");
+		propertiesGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		propertiesGroup.setLayout(new GridLayout(3, false));
 
 		{
-			createLabel(propertiesGroup, "ID:");
+			createLabel(propertiesGroup, getBundleIdLabel()+":");
 			idText = createText(propertiesGroup, propertiesListener, 2);
 		}
 
+		if( withBundleVersion() )
 		{
 			createLabel(propertiesGroup, "Version:");
 			versionText = createText(propertiesGroup, propertiesListener, 2);
+			versionText.setText(data.getVersion());
 		}
 
+		if( withBundleDescription() )
 		{
 			createLabel(propertiesGroup, "Name:");
 			nameText = createText(propertiesGroup, propertiesListener, 2);
+			nameText.setMessage("Enter a short description");
 		}
 
 		{
 			createLabel(propertiesGroup, "Vendor:");
 			vendorText = createText(propertiesGroup, propertiesListener, 2);
+			vendorText.setMessage("Enter the vendor of the bundle");
 		}
 
 		createExecutionEnvironmentControls(propertiesGroup);
 	}
+	
+	protected String getBundleIdLabel() {
+		return "ID";
+	}
 
+	protected boolean withBundleDescription() {
+		return true;
+	}
+	
+	protected boolean withBundleVersion() {
+		return true;
+	}
+	
 	private Label createLabel(Composite container, String text) {
 		Label label = new Label(container, SWT.NONE);
 		label.setText(text);

@@ -134,8 +134,6 @@ public class FXGraphLabelProvider extends DefaultEObjectLabelProvider {
 			return IconKeys.getIcon(IconKeys.FIELD_KEY);
 		}
 		
-		System.err.println("Unknown for: " + element.getValue());
-		
 		return null;
 	}
 	

@@ -26,7 +26,6 @@ public class DecorationController implements Initializable {
 	private Rectangle2D backupWindowBounds;
 	
 	public DecorationController() {
-		System.err.println("Creating controller ....");
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {

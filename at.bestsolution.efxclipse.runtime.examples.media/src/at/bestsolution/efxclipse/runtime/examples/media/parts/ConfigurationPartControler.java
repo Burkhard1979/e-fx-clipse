@@ -71,10 +71,8 @@ public class ConfigurationPartControler implements Initializable {
 			themeId.setItems(items);
 			
 			for( int i = 0; i < items.size(); i++ ) {
-				System.err.println(items.get(i) + " vs " + manager.getCurrentTheme().getName());
 				if( items.get(i).equals(manager.getCurrentTheme().getName()) ) {
 					themeId.getSelectionModel().select(i);
-					System.err.println("SELECTING " + i);
 					break;
 				}
 			}
@@ -108,13 +106,11 @@ public class ConfigurationPartControler implements Initializable {
 			switchPreview.setCenter(view1);
 			switchPreview.setClip(new Rectangle(200, 150));
 			if( transition == null ) {
-				System.err.println("SELECTING FIRST");
 				switchType.getSelectionModel().select(0);
 			} else {
 				for( int i = 0; i < items.size(); i++ ) {
 					if( items.get(i).equals(transition) ) {
 						switchType.getSelectionModel().select(i);
-						System.err.println("SELECTING " + i);
 						break;
 					}
 				}

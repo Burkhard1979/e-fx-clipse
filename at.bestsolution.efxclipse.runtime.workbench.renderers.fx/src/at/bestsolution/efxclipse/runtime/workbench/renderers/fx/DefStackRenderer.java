@@ -20,6 +20,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -38,8 +40,6 @@ import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.common.util.URI;
 
 import at.bestsolution.efxclipse.runtime.controls.FXTab;
-import at.bestsolution.efxclipse.runtime.controls.FXTabPane;
-import at.bestsolution.efxclipse.runtime.controls.FXTabPane.MinMaxState;
 import at.bestsolution.efxclipse.runtime.workbench.fx.controls.FXTabFactory;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseStackRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
@@ -65,7 +65,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		
 		private WCallback<WStackItem<Object, Node>, Void> mouseSelectedItemCallback;
 		private WCallback<WStackItem<Object, Node>, Void> keySelectedItemCallback;
-		private WCallback<WMinMaxState, Void> minMaxCallback;
+//		private WCallback<WMinMaxState, Void> minMaxCallback;
 		private boolean inKeyTraversal;
 		
 		@Inject
@@ -79,10 +79,9 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 			this.keySelectedItemCallback = keySelectedItemCallback;
 		}
 		
-		@SuppressWarnings("unchecked")
 		@Override
-		public FXTabPane<FXTab>  getWidget() {
-			return (FXTabPane<FXTab> ) super.getWidget();
+		public TabPane  getWidget() {
+			return (TabPane) super.getWidget();
 		}
 		
 		@Override
@@ -97,32 +96,32 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		
 		@Override
 		public void setMinMaxCallback(WCallback<WMinMaxState, Void> minMaxCallback) {
-			this.minMaxCallback = minMaxCallback;
+//			this.minMaxCallback = minMaxCallback;
 		}
 		
 		@Override
 		public void setMinMaxState(WMinMaxState state) {
-			MinMaxState t = MinMaxState.RESTORED;
-			switch (state) {
-			case MAXIMIZED:
-				t = MinMaxState.MAXIMIZED;
-				break;
-			case MINIMIZED:
-				t = MinMaxState.MINIMIZED;
-				break;
-			case RESTORED:
-				t = MinMaxState.RESTORED;
-				break;
-			case NONE:
-				t = MinMaxState.NONE;
-				break;
-			}
-			getWidget().setMinMaxState(t);
+//			MinMaxState t = MinMaxState.RESTORED;
+//			switch (state) {
+//			case MAXIMIZED:
+//				t = MinMaxState.MAXIMIZED;
+//				break;
+//			case MINIMIZED:
+//				t = MinMaxState.MINIMIZED;
+//				break;
+//			case RESTORED:
+//				t = MinMaxState.RESTORED;
+//				break;
+//			case NONE:
+//				t = MinMaxState.NONE;
+//				break;
+//			}
+//			getWidget().setMinMaxState(t);
 		}
 		
 		@Override
-		protected FXTabPane<FXTab>  createWidget() {
-			FXTabPane<FXTab>  p = FXTabFactory.createTabPane();
+		protected TabPane  createWidget() {
+			TabPane  p = FXTabFactory.createTabPane();
 			
 //			ContextMenu m = new ContextMenu();
 //			
@@ -179,28 +178,28 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 //			}
 //			
 //			p.setContextMenu(m);
-			p.minMaxStateProperty().addListener(new ChangeListener<MinMaxState>() {
-
-				@Override
-				public void changed(ObservableValue<? extends MinMaxState> observable, MinMaxState oldValue, MinMaxState newValue) {
-					if( minMaxCallback != null ) {
-						switch (newValue) {
-						case RESTORED:
-							minMaxCallback.call(WMinMaxState.RESTORED);
-							break;
-						case MAXIMIZED:
-							minMaxCallback.call(WMinMaxState.MAXIMIZED);
-							break;
-						case MINIMIZED:
-							minMaxCallback.call(WMinMaxState.MINIMIZED);
-							break;
-						case NONE:
-							// Nothing to do
-							break;
-						}	
-					}
-				}
-			});
+//			(FXTabPane)p.minMaxStateProperty().addListener(new ChangeListener<MinMaxState>() {
+//
+//				@Override
+//				public void changed(ObservableValue<? extends MinMaxState> observable, MinMaxState oldValue, MinMaxState newValue) {
+//					if( minMaxCallback != null ) {
+//						switch (newValue) {
+//						case RESTORED:
+//							minMaxCallback.call(WMinMaxState.RESTORED);
+//							break;
+//						case MAXIMIZED:
+//							minMaxCallback.call(WMinMaxState.MAXIMIZED);
+//							break;
+//						case MINIMIZED:
+//							minMaxCallback.call(WMinMaxState.MINIMIZED);
+//							break;
+//						case NONE:
+//							// Nothing to do
+//							break;
+//						}	
+//					}
+//				}
+//			});
 			p.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
 
 				@Override
@@ -218,10 +217,10 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 				
 			});
 
-			p.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FXTab>() {
+			p.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
 
 				@Override
-				public void changed(ObservableValue<? extends FXTab> observable, FXTab oldValue, FXTab newValue) {
+				public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
 					if( newValue == null ) {
 						return;
 					}
@@ -272,7 +271,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		}
 
 		@Override
-		protected FXTabPane<FXTab> getWidgetNode() {
+		protected TabPane getWidgetNode() {
 			return getWidget();
 		}
 
@@ -296,10 +295,10 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 			getWidget().getTabs().addAll(index, extractTabs(items));
 		}
 		
-		private static final List<FXTab> extractTabs(List<WStackItem<Object, Node>> items) {
-			List<FXTab> tabs = new ArrayList<FXTab>(items.size());
+		private static final List<Tab> extractTabs(List<WStackItem<Object, Node>> items) {
+			List<Tab> tabs = new ArrayList<Tab>(items.size());
 			for( WStackItem<Object, Node> t : items ) {
-				tabs.add((FXTab) t.getNativeItem());
+				tabs.add((Tab) t.getNativeItem());
 			}
 			return tabs;
 		}
@@ -312,7 +311,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		@Override
 		public List<WStackItem<Object, Node>> getItems() {
 			List<WStackItem<Object, Node>> rv = new ArrayList<WStackItem<Object, Node>>();
-			for( FXTab t : getWidget().getTabs() ) {
+			for( Tab t : getWidget().getTabs() ) {
 				@SuppressWarnings("unchecked")
 				WStackItem<Object, Node> i = (WStackItem<Object, Node>) t.getUserData();
 				if( i != null ) {
@@ -333,7 +332,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 	}
 	
 	public static class StackItemImpl implements WStackItem<Object, Node> {
-		private FXTab tab;
+		private Tab tab;
 		private WCallback<WStackItem<Object, Node>, Node> initCallback;
 		private WCallback<WStackItem<Object, Node>, Boolean> closeCallback;
 		private MStackElement domElement;
@@ -356,7 +355,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 			return domElement;
 		}
 
-		protected FXTab getWidget() {
+		protected Tab getWidget() {
 			if( tab == null ) {
 				tab = createWidget();
 			}
@@ -364,12 +363,12 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 			return tab;
 		}
 		
-		protected FXTab createWidget() {
-			final FXTab t = FXTabFactory.createTab();
-			t.setCloseVetoHandler(new Callback<FXTab, Boolean>() {
+		protected Tab createWidget() {
+			final Tab t = FXTabFactory.createTab();
+			((FXTab)t).setCloseVetoHandler(new Callback<Tab, Boolean>() {
 				
 				@Override
-				public Boolean call(FXTab param) {
+				public Boolean call(Tab param) {
 					if( closeCallback != null ) {
 						return closeCallback.call(StackItemImpl.this);
 					}
@@ -391,7 +390,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		}
 
 		@Override
-		public FXTab getNativeItem() {
+		public Tab getNativeItem() {
 			return getWidget();
 		}
 

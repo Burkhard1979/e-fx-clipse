@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.e4.core.commands.ECommandService;
 import org.eclipse.e4.core.commands.EHandlerService;
@@ -29,19 +31,26 @@ import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 
+import at.bestsolution.efxclipse.runtime.core.log.Log;
+import at.bestsolution.efxclipse.runtime.core.log.Logger;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
 
 @SuppressWarnings("restriction")
 public abstract class BaseItemRenderer<M extends MUIElement, W extends WWidget<M>> extends BaseRenderer<M, W> {
+	
+	@Inject
+	@Log
+	Logger logger;
+	
 	private ParameterizedCommand generateParameterizedCommand(
 			final MHandledItem item, final IEclipseContext lclContext) {
 		if( item.getCommand() == null ) {
-			System.err.println("No command assigned to " + item);
+			logger.error("No command assigned to " + item);
 			return null;
 		}
 		
 		if( item.getCommand().getElementId() == null || item.getCommand().getElementId().trim().isEmpty() ) {
-			System.err.println("No command id assigned to " + item.getCommand().getElementId());
+			logger.error("No command id assigned to " + item.getCommand().getElementId());
 			return null;
 		}
 		
@@ -129,7 +138,7 @@ public abstract class BaseItemRenderer<M extends MUIElement, W extends WWidget<M
 				handledItem.setWbCommand(cmd);
 			}
 			if (cmd == null) {
-				System.err.println("Failed to execute: " + handledItem.getCommand());
+				logger.error("Failed to execute: " + handledItem.getCommand());
 				return;
 			}
 			final IEclipseContext runContext = context.createChild("HI-ToolItem");
@@ -146,7 +155,7 @@ public abstract class BaseItemRenderer<M extends MUIElement, W extends WWidget<M
 		Object rv = contribution.getObject();
 		if( rv == null ) {
 			if( contribution.getContributionURI() == null ) {
-				System.err.println("No contribution uri defined");
+				logger.error("No contribution uri defined");
 				return null;
 			}
 			

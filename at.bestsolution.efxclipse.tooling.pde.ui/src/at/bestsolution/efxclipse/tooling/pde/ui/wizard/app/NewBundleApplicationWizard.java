@@ -10,36 +10,90 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.pde.ui.wizard.app;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.tooling.pde.ui.wizard.BundleConfigurationPage;
-import at.bestsolution.efxclipse.tooling.pde.ui.wizard.BundleProjectPage;
+import at.bestsolution.efxclipse.tooling.rrobot.RRobot;
+import at.bestsolution.efxclipse.tooling.rrobot.dsl.FileLoader;
+import at.bestsolution.efxclipse.tooling.rrobot.model.task.RobotTask;
 
 public class NewBundleApplicationWizard extends Wizard implements INewWizard {
-	private IStructuredSelection selection;
 	private AppBundleProjectData data;
 	
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		this.selection = selection;
 		this.data = new AppBundleProjectData();
+		this.data.setJemmyTest(true);
+		this.data.setTychoIntegration(true);
+		this.data.setNativeExport(true);
+		this.data.setVersion("1.0.0.qualifier");
 	}
 
 	@Override
 	public void addPages() {
 		super.addPages();
-		addPage(new BundleProjectPage(data,"project.page", selection,"New FX-OSGi application"));
-		addPage(new BundleConfigurationPage(data,"bundle.page","New FX-OSGi application"));
+		addPage(new BundleConfigurationPage(data,"bundle.page","New FX-OSGi application") {
+			@Override
+			protected String getBundleIdLabel() {
+				return "Bundle-ID-Prefix";
+			}
+		});
 		addPage(new GeneratorConfigurationPage(data, "generator.page","New FX-OSGi application"));
 	}
 	
 	@Override
 	public boolean performFinish() {
-		// TODO Auto-generated method stub
-		return false;
+		Bundle b = FrameworkUtil.getBundle(getClass());
+		BundleContext ctx = b.getBundleContext();
+		ServiceReference<RRobot> ref = ctx.getServiceReference(RRobot.class);
+		final RRobot r = ctx.getService(ref);
+
+		FileLoader loader = FileLoader.createLoader();
+		final RobotTask task = loader.loadTask(URI.createPlatformPluginURI("/at.bestsolution.efxclipse.tooling.pde.ui/generator-tasks/osgi-app.rtask", true));
+
+		final Map<String,Object> additionalData = new HashMap<>();
+		additionalData.put("Maven_GroupId", data.getSymbolicname());
+		additionalData.put("BundleProject_bundleVendor", data.getVendor());
+		additionalData.put("BundleProject_productName", data.getProductName());
+		additionalData.put("BundleProject_bundleVersion", data.getVersion());
+		additionalData.put("BundleProject_EE", data.getEEnv());
+		additionalData.put("TychoIntegration", data.isTychoIntegration());
+		additionalData.put("NativeExport", data.isNativeExport());
+		additionalData.put("EclipseDI", data.isDiApp());
+		
+		WorkspaceModifyOperation w = new WorkspaceModifyOperation() {
+			
+			@Override
+			protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
+				r.executeTask(monitor, task, additionalData);
+			}
+		};
+		
+		try {
+			getContainer().run(true, true,w);
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 }

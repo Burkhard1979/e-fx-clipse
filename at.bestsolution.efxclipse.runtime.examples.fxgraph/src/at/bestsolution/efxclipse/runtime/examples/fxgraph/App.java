@@ -82,8 +82,6 @@ public class App extends Application {
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        System.err.println("Start is done");
     }
     
     public User getLoggedUser() {

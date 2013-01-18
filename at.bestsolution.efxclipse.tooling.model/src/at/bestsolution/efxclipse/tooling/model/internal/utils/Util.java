@@ -52,7 +52,6 @@ public class Util {
 			return toFQN(parts[0]);
 		} else {
 			//FIXME Log it
-			System.err.println("No type for: " + name);
 		}
 		return null;
 	}
@@ -86,7 +85,6 @@ public class Util {
 		}
 		
 		String fqn = getFQNType(owner,eType); 
-		System.err.println(fqn);
 		return fqn;
 	}
 }

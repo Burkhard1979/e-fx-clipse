@@ -25,8 +25,6 @@
 package at.bestsolution.efxclipse.runtime.controls.fx2;
 
 
-import at.bestsolution.efxclipse.runtime.controls.fx2.FX2TabPane.TabClosingPolicy;
-
 import com.sun.javafx.PlatformUtil;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -53,6 +51,9 @@ import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -129,8 +130,8 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
     private Rectangle clipRect;
     private Rectangle tabHeaderAreaClipRect;
     boolean focusTraversable = true;
-    private FX2Tab selectedTab;
-    private FX2Tab previousSelectedTab;
+    private Tab selectedTab;
+    private Tab previousSelectedTab;
     private boolean isSelectingTab;
 
     public FX2TabPaneSkin(FX2TabPane tabPane) {
@@ -141,7 +142,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
 
         tabContentRegions = FXCollections.<TabContentRegion>observableArrayList();
 
-        for (FX2Tab tab : getSkinnable().getTabs()) {
+        for (Tab tab : getSkinnable().getTabs()) {
             addTabContent(tab);
         }
 
@@ -196,13 +197,13 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         }
     }
 
-    private Map<FX2Tab, Timeline> closedTab = new HashMap();
+    private Map<Tab, Timeline> closedTab = new HashMap();
 
     private void initializeTabListener() {
-        getSkinnable().getTabs().addListener(new ListChangeListener<FX2Tab>() {
-            @Override public void onChanged(final Change<? extends FX2Tab> c) {      
+        getSkinnable().getTabs().addListener(new ListChangeListener<Tab>() {
+            @Override public void onChanged(final Change<? extends Tab> c) {      
                 while (c.next()) {
-                    for (final FX2Tab tab : c.getRemoved()) {
+                    for (final Tab tab : c.getRemoved()) {
                         // Animate the tab removal
                         final TabHeaderSkin tabRegion = tabHeaderArea.getTabHeaderSkin(tab);
                         Timeline closedTabTimeline = null;
@@ -225,14 +226,14 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
                     }
 
                     int i = 0;
-                    for (final FX2Tab tab : c.getAddedSubList()) {
+                    for (final Tab tab : c.getAddedSubList()) {
                         // Handle the case where we are removing and adding the same tab.
                         Timeline closedTabTimeline = closedTab.get(tab);
                         if (closedTabTimeline != null) {
                             closedTabTimeline.stop();
-                            Iterator<FX2Tab> keys = closedTab.keySet().iterator();
+                            Iterator<Tab> keys = closedTab.keySet().iterator();
                             while (keys.hasNext()) {
-                                FX2Tab key = keys.next();
+                                Tab key = keys.next();
                                 if (tab.equals(key)) {
                                     removeTab(key);
                                     keys.remove();                                    
@@ -273,7 +274,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         });
     }
 
-    private void addTabContent(FX2Tab tab) {
+    private void addTabContent(Tab tab) {
         TabContentRegion tabContentRegion = new TabContentRegion(tab);
         tabContentRegion.setClip(new Rectangle());
         tabContentRegions.add(tabContentRegion);
@@ -281,7 +282,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         getChildren().add(0, tabContentRegion);
     }
 
-    private void removeTabContent(FX2Tab tab) {
+    private void removeTabContent(Tab tab) {
         for (TabContentRegion contentRegion : tabContentRegions) {
             if (contentRegion.getTab().equals(tab)) {
                 contentRegion.removeListeners(tab);
@@ -292,7 +293,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         }
     }
 
-    private void removeTab(FX2Tab tab) {
+    private void removeTab(Tab tab) {
         final TabHeaderSkin tabRegion = tabHeaderArea.getTabHeaderSkin(tab);
         tabHeaderArea.removeTab(tab);
         removeTabContent(tab);
@@ -341,7 +342,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
     
     //TODO need to cache this.
     private boolean isFloatingStyleClass() {
-        return getSkinnable().getStyleClass().contains(FX2TabPane.STYLE_CLASS_FLOATING);
+        return getSkinnable().getStyleClass().contains(TabPane.STYLE_CLASS_FLOATING);
     }
 
     @Override protected void setWidth(double value) {
@@ -381,7 +382,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
     }
 
     @Override protected void layoutChildren() {
-        FX2TabPane tabPane = getSkinnable();
+        TabPane tabPane = getSkinnable();
         Side tabPosition = tabPane.getSide();
         Insets padding = getInsets();
 
@@ -509,7 +510,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         public TabHeaderArea() {
             getStyleClass().setAll("tab-header-area");
             setManaged(false);
-            final FX2TabPane tabPane = getSkinnable();
+            final TabPane tabPane = getSkinnable();
 
             headerClip = new Rectangle();
 
@@ -625,7 +626,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             headerBackground.getStyleClass().setAll("tab-header-background");
 
             int i = 0;
-            for (FX2Tab tab: tabPane.getTabs()) {
+            for (Tab tab: tabPane.getTabs()) {
                 addTab(tab, i++, true);
             }
 
@@ -684,14 +685,14 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             headerClip.setHeight(clipHeight);
         }
 
-        private void addTab(FX2Tab tab, int addToIndex, boolean visible) {
+        private void addTab(Tab tab, int addToIndex, boolean visible) {
             TabHeaderSkin tabHeaderSkin = new TabHeaderSkin(tab);
             tabHeaderSkin.setVisible(visible);
             headersRegion.getChildren().add(addToIndex, tabHeaderSkin);
         }
 
         private List<TabHeaderSkin> removeTab = new ArrayList();
-        private void removeTab(FX2Tab tab) {
+        private void removeTab(Tab tab) {
             TabHeaderSkin tabHeaderSkin = getTabHeaderSkin(tab);
             if (tabHeaderSkin != null) {
                 if (tabsFit()) {
@@ -705,7 +706,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             }
         }
 
-        private TabHeaderSkin getTabHeaderSkin(FX2Tab tab) {
+        private TabHeaderSkin getTabHeaderSkin(Tab tab) {
             for (Node child: headersRegion.getChildren()) {
                 TabHeaderSkin tabHeaderSkin = (TabHeaderSkin)child;
                 if (tabHeaderSkin.getTab().equals(tab)) {
@@ -801,7 +802,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         }
 
         @Override protected void layoutChildren() {
-            FX2TabPane tabPane = getSkinnable();
+            TabPane tabPane = getSkinnable();
             Insets padding = getInsets();
             double w = snapSize(getWidth()) - (isHorizontal() ?
                 snapSize(padding.getLeft()) + snapSize(padding.getRight()) : snapSize(padding.getTop()) + snapSize(padding.getBottom()));
@@ -878,8 +879,8 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
      **************************************************************************/
 
     class TabHeaderSkin extends StackPane {
-        private final FX2Tab tab;
-        public FX2Tab getTab() {
+        private final Tab tab;
+        public Tab getTab() {
             return tab;
         }
         private Label label;
@@ -890,7 +891,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         private InvalidationListener tabListener;
         private InvalidationListener controlListener;
 
-        public TabHeaderSkin(final FX2Tab tab) {
+        public TabHeaderSkin(final Tab tab) {
             getStyleClass().setAll(tab.getStyleClass());
             setId(tab.getId());
             setStyle(tab.getStyle());
@@ -913,7 +914,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             closeBtn.getStyleClass().setAll("tab-close-button");
             closeBtn.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override public void handle(MouseEvent me) {
-                	FX2Tab t = getTab();
+                	Tab t = getTab();
                 	
                 	if( getBehavior().canCloseTab(t) ) {
                 		removeListeners(t);
@@ -1069,7 +1070,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             getSkinnable().tabMaxWidthProperty().addListener(controlListener);
             getSkinnable().tabMinHeightProperty().addListener(controlListener);
             getSkinnable().tabMaxHeightProperty().addListener(controlListener);
-            getProperties().put(FX2Tab.class, tab);
+            getProperties().put(Tab.class, tab);
             getProperties().put(ContextMenu.class, tab.getContextMenu());
 
             setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
@@ -1087,7 +1088,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
                     }
                     if (me.getButton().equals(MouseButton.MIDDLE)) {
                         if (showCloseButton()) {
-                        	FX2Tab t = getTab();
+                        	Tab t = getTab();
                         	if( getBehavior().canCloseTab(t) ) {
                         		removeListeners(t);
                                 getBehavior().closeTab(t);	
@@ -1131,7 +1132,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             }
         };
 
-        private void removeListeners(FX2Tab tab) {
+        private void removeListeners(Tab tab) {
             tab.selectedProperty().removeListener(tabListener);
             tab.textProperty().removeListener(tabListener);
             tab.graphicProperty().removeListener(tabListener);
@@ -1274,14 +1275,14 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
 
         private TraversalEngine engine;
         private Direction direction;
-        private FX2Tab tab;
+        private Tab tab;
         private InvalidationListener tabListener;
 
-        public FX2Tab getTab() {
+        public Tab getTab() {
             return tab;
         }
 
-        public TabContentRegion(FX2Tab tab) {
+        public TabContentRegion(Tab tab) {
             getStyleClass().setAll("tab-content-area");
             setManaged(false);
             this.tab = tab;
@@ -1329,7 +1330,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             }
         }
 
-        private void removeListeners(FX2Tab tab) {
+        private void removeListeners(Tab tab) {
             tab.selectedProperty().removeListener(tabListener);
             tab.contentProperty().removeListener(tabListener);
             engine.removeTraverseListener(this);
@@ -1364,7 +1365,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
         public TabControlButtons() {            
             getStyleClass().setAll("control-buttons-tab");
 
-            FX2TabPane tabPane = getSkinnable();
+            TabPane tabPane = getSkinnable();
 
             downArrowBtn = new Pane();
             downArrowBtn.getStyleClass().setAll("tab-down-button");
@@ -1470,8 +1471,8 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
                     downArrow.setRotate(tabPosition.equals(Side.BOTTOM)? 180.0F : 0.0F);
                 }
             });
-            tabPane.getTabs().addListener(new ListChangeListener<FX2Tab>() {
-                @Override public void onChanged(Change<? extends FX2Tab> c) {
+            tabPane.getTabs().addListener(new ListChangeListener<Tab>() {
+                @Override public void onChanged(Change<? extends Tab> c) {
                     setupPopupMenu();
                 }
             });
@@ -1626,7 +1627,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             popup.getItems().clear();
             ToggleGroup group = new ToggleGroup();
             ObservableList<RadioMenuItem> menuitems = FXCollections.<RadioMenuItem>observableArrayList();
-            for (final FX2Tab tab : getSkinnable().getTabs()) {
+            for (final Tab tab : getSkinnable().getTabs()) {
                 TabMenuItem item = new TabMenuItem(tab);                
                 item.setToggleGroup(group);
                 item.setOnAction(new EventHandler<ActionEvent>() {
@@ -1652,8 +1653,8 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
     } /* End TabControlButtons*/
 
     class TabMenuItem extends RadioMenuItem {
-        FX2Tab tab;
-        public TabMenuItem(final FX2Tab tab) {
+        Tab tab;
+        public TabMenuItem(final Tab tab) {
             super(tab.getText(), FX2TabPaneSkin.clone(tab.getGraphic()));                        
             this.tab = tab;
             setDisable(tab.isDisable());
@@ -1665,7 +1666,7 @@ public class FX2TabPaneSkin extends SkinBase<FX2TabPane, FX2TabPaneBehavior> {
             });                   
         }
 
-        public FX2Tab getTab() {
+        public Tab getTab() {
             return tab;
         }
     }

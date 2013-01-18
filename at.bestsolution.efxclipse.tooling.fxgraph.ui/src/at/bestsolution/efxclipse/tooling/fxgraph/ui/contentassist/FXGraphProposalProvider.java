@@ -206,7 +206,6 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 				if (fxClazz != null) {
 					IFXProperty prop = fxClazz.getDefaultProperty();
 					if (prop != null) {
-						System.err.println("The property: " + prop);
 						completeElement_DefaultChildrenProposals(prop, el, context, FXGraphPackage.Literals.ELEMENT__DEFAULT_CHILDREN, acceptor);
 					}
 				}
@@ -225,7 +224,6 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 	private void createCollectionClassProposals(IFXCollectionProperty prop, final EObject model, ContentAssistContext context, EReference typeReference, ICompletionProposalAcceptor acceptor) {
 		IType jdtSuperType = prop.getElementType();
 		if (jdtSuperType != null) {
-			System.err.println("===============> Type provider");
 			JvmType superType = jdtTypeProvider.findOrCreateTypeProvider(model.eResource().getResourceSet()).findTypeByName(jdtSuperType.getFullyQualifiedName());
 			Filter f = new FXClassFilter(projectProvider.getJavaProject(model.eResource().getResourceSet()));
 			typeProposalProviders.createSubTypeProposals(superType, this, context, typeReference, f, acceptor);
@@ -327,7 +325,6 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 			s.append(" - " + prop.getFXClass().getSimpleName(), StyledString.QUALIFIER_STYLER);
 			p = createCompletionProposal(prop.getName() + " : ", s, IconKeys.getIcon(IconKeys.LIST_KEY), getPropertiesProposalsProposals(), context.getPrefix(), context);
 		} else {
-//			System.err.println("EXec: " + prop.getName() + " => " + prop.getElementType());
 			StyledString s = new StyledString(prop.getName() + " : [" + (prop.getElementType() != null ? prop.getElementType().getElementName() : "?") + "]");
 			s.append(" - " + prop.getFXClass().getSimpleName(), StyledString.QUALIFIER_STYLER);
 			p = createCompletionProposal(prop.getName() + " : []", s, IconKeys.getIcon(IconKeys.LIST_KEY), getPropertiesProposalsProposals(), context.getPrefix(), context);
@@ -526,9 +523,6 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 		} else if( model instanceof Element ) {
 			prop = (Property) model.eContainer();
 		} else {
-			// Unknown structure
-			//TODO Needs logging
-			System.err.println("This is an unknown structure");
 			return;
 		}
 		
@@ -877,13 +871,6 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 	
 	@Override
 	public void completeElement_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-//		System.err.println("Complete type");
-//		// TODO Auto-generated method stub
-//		super.completeElement_Type(model, assignment, context, acceptor);
-//		Element e = (Element) model;
-//		if( e.eContainer() instanceof ListValueProperty ) {
-//			System.err.println("Completing List Type");
-//		}
 	}
 	
 	@Override

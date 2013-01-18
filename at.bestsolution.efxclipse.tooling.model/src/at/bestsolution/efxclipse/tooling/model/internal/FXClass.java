@@ -84,7 +84,6 @@ public class FXClass implements IFXClass {
 			if( annotation.exists() ) {
 				try {
 					String v = getAnnotationMemberValue(annotation, "value");
-					System.err.println(v);
 					if( v != null ) {
 						defaultProperty = getProperty(v);	
 					}
@@ -163,9 +162,7 @@ public class FXClass implements IFXClass {
 			try {
 				for( IMethod m : type.getMethods() ) {
 					if( Flags.isStatic(m.getFlags()) && Flags.isPublic(m.getFlags()) && "valueOf".equals(m.getElementName()) ) {
-						System.err.println(m.getElementName());
 						if( m.getParameterTypes().length == 1 ) {
-//							System.err.println("      " +m.getParameterTypes()[0] );
 //							String fqnType = Util.toFQN((IType) m.getParent(),m.getParameterTypes()[0]);
 //							if("java.lang.String".equals( fqnType) ) {
 								valueOfMethod = m; 

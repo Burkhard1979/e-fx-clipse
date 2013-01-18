@@ -80,7 +80,6 @@ public abstract class TriggerSequenceImpl implements TriggerSequence {
 	}
 	
 	public final boolean equals(final Object object) {
-		System.err.println("RUNNING EQUALS CHECK");
 		// Check if they're the same.
 		if (object == this) {
 			return true;

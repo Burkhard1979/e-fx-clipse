@@ -19,6 +19,8 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -37,11 +39,11 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 	protected IJavaProject project;
 
 	protected BuildConfiguration prepareBuild( IFile f, AntTask task ) {
+		final IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		BuildConfiguration config = new BuildConfiguration();
 		config.task = task;
-		String workbench = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
-
 		project = JavaCore.create( f.getProject() );
+
 		IPath[] paths = BuildPathSupport.getFxJarPath( project );
 		if ( paths != null ) {
 			config.jfxjar = paths[0].toFile().getAbsolutePath();
@@ -58,18 +60,18 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 			config.buildDirectory = directory;
 		}
 		else {
-			config.buildDirectory = task.getBuildDirectory().replace( "${workspace}", workbench );
+			config.buildDirectory = resolvePath( task.getBuildDirectory(), project.getProject() );
 		}
 
 		// TODO uncomment
-//		config.builderName = properties.getProperty( "jfx.eclipse.buildername" );
+		// config.builderName = properties.getProperty( "jfx.eclipse.buildername" );
 		if ( task.getDeploy().getApplication().getName() != null ) {
 			config.projectName = task.getDeploy().getApplication().getName();
 		}
 		else {
 			config.projectName = f.getProject().getName();
 		}
-		config.keyStore = task.getSignjar().getKeystore() != null ? task.getSignjar().getKeystore().replace( "${workspace}", workbench ) : null;
+		config.keyStore = task.getSignjar().getKeystore() != null ? resolvePath( task.getSignjar().getKeystore(), project.getProject() ) : null;
 
 		try {
 			config.projectEncoding = f.getProject().getDefaultCharset();
@@ -92,7 +94,7 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 			Set<File> set2 = new HashSet<File>();
 			for ( IPath p : listRefLibraries ) {
 				set.add( p.lastSegment() );
-				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile( p );
+				IFile file = root.getFile( p );
 				if ( file != null && file.exists() ) {
 					p = file.getLocation();
 				}
@@ -106,7 +108,7 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 			Set<String> set = new HashSet<String>();
 			Set<SetupDirectory> set2 = new HashSet<SetupDirectory>();
 			for ( IPath p : listProjectSourceDirs ) {
-				IFolder t = ResourcesPlugin.getWorkspace().getRoot().getFolder( p );
+				IFolder t = root.getFolder( p );
 				set.add( t.getProjectRelativePath().toString() );
 				set2.add( new SetupDirectory( t.getLocation().toFile().getParentFile(), new File( t.getProjectRelativePath().toString() ) ) );
 			}
@@ -118,7 +120,7 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 			Set<String> set = new HashSet<String>();
 			Set<SetupDirectory> set2 = new HashSet<SetupDirectory>();
 			for ( IPath p : listRefProjectSourceDirs ) {
-				IFolder t = ResourcesPlugin.getWorkspace().getRoot().getFolder( p );
+				IFolder t = root.getFolder( p );
 				set.add( t.getProject().getName() + "/" + t.getProjectRelativePath() );
 				set2.add( new SetupDirectory( t.getProject().getLocation().toFile().getParentFile(), new File( t.getProject().getName() + "/"
 						+ t.getProjectRelativePath().toString() ) ) );
@@ -128,6 +130,38 @@ public abstract class AbstractAntHandler extends AbstractHandler {
 			config.origProjectRefSourceDirs = set2;
 		}
 		return config;
+	}
+
+	/**
+	 * resolve an absolute path from a workspace or project relative path.
+	 * 
+	 * @param basePath
+	 *            base path containing ${workspace} or ${project} optionally
+	 * @param project
+	 *            current project (optional)
+	 * @return absolute path when resolvable, basePath otherwise.
+	 */
+	public final String resolvePath( final String basePath, final IProject project ) {
+		final String path;
+		if ( basePath.contains( "${workspace}" ) ) { 
+			// Try to resolve a project path
+			final IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+			IResource res = root.findMember( basePath.replace( "${workspace}", "" ) );
+			if ( res != null ) {
+				path = res.getLocation().makeAbsolute().toString();
+			}
+			else {
+				final String workbench = root.getLocation().toString();
+				path = basePath.replace( "${workspace}", workbench );
+			}
+		}
+		else if ( project != null && basePath.contains( "${project}" ) ) {
+			path = basePath.replace( "${project}", project.getLocation().toString() );
+		}
+		else {
+			path = basePath;
+		}
+		return path;
 	}
 
 	private void resolveDataProject( IJavaProject project, Set<IPath> listProjectSourceDirs, Set<IPath> listRefProjectSourceDirs, Set<IPath> listRefLibraries ) {

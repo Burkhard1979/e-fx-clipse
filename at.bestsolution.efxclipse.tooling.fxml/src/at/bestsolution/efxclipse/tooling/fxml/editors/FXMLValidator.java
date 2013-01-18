@@ -117,8 +117,6 @@ public class FXMLValidator extends AbstractValidator implements IValidator, ISou
 			return;
 		}
 
-		// System.err.println("======");
-		// System.err.println(structuredDocumentRegion);
 		if (isStartTag(structuredDocumentRegion)) {
 			checkControllerAttributes(structuredDocumentRegion, reporter);
 		}

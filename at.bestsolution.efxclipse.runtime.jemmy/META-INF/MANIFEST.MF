@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Jemmy
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.jemmy
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: at.bestsolution.efxclipse.runtime.jemmy.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.junit4;bundle-version="4.8.1",

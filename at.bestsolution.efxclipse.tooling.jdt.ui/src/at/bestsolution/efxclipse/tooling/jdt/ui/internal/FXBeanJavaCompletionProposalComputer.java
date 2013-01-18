@@ -138,9 +138,7 @@ public class FXBeanJavaCompletionProposalComputer implements IJavaCompletionProp
 				}
 			}
 			return l;
-//			System.err.println(enclosingElement);
 		}
-//		return super.computeCompletionProposals(context, monitor);
 		return Collections.emptyList();
 	}
 	
@@ -265,7 +263,6 @@ public class FXBeanJavaCompletionProposalComputer implements IJavaCompletionProp
 
 		@Override
 		public String getDisplayString() {
-			System.err.println("STYLED: " + styledString.getString());
 			return styledString.getString();
 		}
 

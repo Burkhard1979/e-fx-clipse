@@ -58,19 +58,6 @@ public class FXMLLoader {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			factory.setNamespaceAware(true);
 			SAXParser parser = factory.newSAXParser();
-			// try {
-			// URL location = getClass().getResource("example.fxml");
-			// OSGiFXMLLoader loader = new OSGiFXMLLoader();
-			// //javafx.fxml.FXMLLoader loader = new
-			// javafx.fxml.FXMLLoader(location);
-			//
-			// Object o = loader.load(getClass(),
-			// "../composites/ExtendedToggleButton.fxml", null, null);
-			// System.err.println("loaded");
-			// } catch (Exception e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
 			FXMLHandler handler = new FXMLHandler(file);
 			parser.parse(file.getContents(), handler);
 			return handler.model;

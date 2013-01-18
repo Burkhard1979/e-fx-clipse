@@ -85,6 +85,8 @@ import at.bestsolution.efxclipse.runtime.services.theme.ThemeManager.Registratio
 import at.bestsolution.efxclipse.runtime.workbench.fx.key.KeyBindingDispatcher;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseWindowRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.services.WindowTransitionService;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.services.WindowTransitionService.AnimationDelegate;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWindow;
@@ -164,6 +166,10 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Inject
 		BundleLocalization localizationService; //FIXME We should get rid of this
+		
+		@Inject
+		@Optional
+		WindowTransitionService<Stage> windowTransitionService;
 		
 		boolean initDone;
 		
@@ -363,13 +369,11 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 //
 //							@Override
 //							protected Object handleGetObject(String key) {
-//								System.err.println("LOADING OBJECT DATA");
 //								return translationService.translate("%" + key, contributorURI);
 //							}
 //
 //							@Override
 //							public Enumeration<String> getKeys() {
-//								System.err.println("REQUESTING");
 //								// TODO Can we do this???
 //								return Collections.emptyEnumeration();
 //							}
@@ -437,17 +441,15 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 				return;
 			}
 			
-			System.err.println("Hello world");
-			
 			if( visible ) {
-				getWidget().show();
+				internalShow();
 			} else {
-				getWidget().hide();
+				internalHide();
 			}
 		}
 
 		@Inject
-		public void setPersistedDate(@Named(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + BaseWindowRenderer.KEY_FULL_SCREEN) @Optional String fullScreen) {
+		public void setFullscreen(@Named(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + BaseWindowRenderer.KEY_FULL_SCREEN) @Optional String fullScreen) {
 			if( fullScreen != null ) {
 				this.fullscreen = Boolean.parseBoolean(fullScreen);
 				if( stage != null ) {
@@ -470,8 +472,34 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Override
 		public void show() {
+			internalShow();
 			getWidget().toFront();
-			getWidget().show();
+		}
+		
+		private void internalShow() {
+			if( windowTransitionService != null ) {
+				AnimationDelegate<Stage> delegate = windowTransitionService.getShowDelegate(mWindow);
+				if( delegate != null ) {
+					delegate.animate(stage);
+				} else {
+					getWidget().show();
+				}
+			} else {
+				getWidget().show();	
+			}
+		}
+		
+		private void internalHide() {
+			if( windowTransitionService != null ) {
+				AnimationDelegate<Stage> delegate = windowTransitionService.getShowDelegate(mWindow);
+				if( delegate != null ) {
+					delegate.animate(stage);
+				} else {
+					getWidget().hide();
+				}
+			} else {
+				getWidget().hide();
+			}
 		}
 
 		@Inject
@@ -502,7 +530,6 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 
 		@Override
 		public void addChild(WLayoutedWidget<MWindowElement> widget) {
-			System.err.println("CALLED: " + contentPane + " => " + widget + " => " + widget.getStaticLayoutNode());
 			contentPane.getChildren().add((Node) widget.getStaticLayoutNode());
 		}
 		

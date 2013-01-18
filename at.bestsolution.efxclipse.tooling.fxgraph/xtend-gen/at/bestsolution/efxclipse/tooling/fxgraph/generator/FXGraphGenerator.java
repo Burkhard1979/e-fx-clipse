@@ -37,14 +37,10 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jdt.core.IClasspathEntry;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -58,60 +54,39 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @SuppressWarnings("all")
 public class FXGraphGenerator implements IGenerator {
   public String calculateRelativePath(final Resource resource) {
-    try {
-      URI _uRI = resource.getURI();
-      boolean _isPlatformResource = _uRI.isPlatformResource();
-      if (_isPlatformResource) {
-        URI uri = resource.getURI();
-        IWorkspace _workspace = ResourcesPlugin.getWorkspace();
-        IWorkspaceRoot root = _workspace.getRoot();
-        String _segment = uri.segment(1);
-        IProject project = root.getProject(_segment);
-        String projectRelativePath = "";
-        int i = 0;
-        IJavaProject jproject = JavaCore.create(project);
-        String[] _segments = uri.segments();
-        for (final String seg : _segments) {
-          {
-            boolean _greaterEqualsThan = (i >= 1);
-            if (_greaterEqualsThan) {
-              String _plus = (projectRelativePath + "/");
-              String _segment_1 = uri.segment(i);
-              String _plus_1 = (_plus + _segment_1);
-              projectRelativePath = _plus_1;
-            }
-            int _plus_2 = (i + 1);
-            i = _plus_2;
+    URI _uRI = resource.getURI();
+    boolean _isPlatformResource = _uRI.isPlatformResource();
+    if (_isPlatformResource) {
+      URI uri = resource.getURI();
+      IWorkspace _workspace = ResourcesPlugin.getWorkspace();
+      IWorkspaceRoot root = _workspace.getRoot();
+      String _segment = uri.segment(1);
+      IProject project = root.getProject(_segment);
+      String projectRelativePath = "";
+      int i = 0;
+      String[] _segments = uri.segments();
+      for (final String seg : _segments) {
+        {
+          boolean _greaterEqualsThan = (i >= 1);
+          if (_greaterEqualsThan) {
+            String _plus = (projectRelativePath + "/");
+            String _segment_1 = uri.segment(i);
+            String _plus_1 = (_plus + _segment_1);
+            projectRelativePath = _plus_1;
           }
+          int _plus_2 = (i + 1);
+          i = _plus_2;
         }
-        boolean inSourceFound = false;
-        IClasspathEntry[] _rawClasspath = jproject.getRawClasspath();
-        for (final IClasspathEntry packroot : _rawClasspath) {
-          int _entryKind = packroot.getEntryKind();
-          boolean _equals = (_entryKind == IClasspathEntry.CPE_SOURCE);
-          if (_equals) {
-            IPath _path = packroot.getPath();
-            String _string = _path.toString();
-            boolean _startsWith = projectRelativePath.startsWith(_string);
-            if (_startsWith) {
-              IPath _path_1 = packroot.getPath();
-              String _string_1 = _path_1.toString();
-              int _length = _string_1.length();
-              String _substring = projectRelativePath.substring(_length);
-              projectRelativePath = _substring;
-              inSourceFound = true;
-            }
-          }
-        }
-        if (inSourceFound) {
-          return projectRelativePath;
-        }
-        return null;
-      } else {
-        return null;
       }
-    } catch (Exception _e) {
-      throw Exceptions.sneakyThrow(_e);
+      String _name = project.getName();
+      int _length = _name.length();
+      int _plus = (_length + 2);
+      String _substring = projectRelativePath.substring(_plus);
+      String _plus_1 = ("../" + _substring);
+      projectRelativePath = _plus_1;
+      return projectRelativePath;
+    } else {
+      return null;
     }
   }
   

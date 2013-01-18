@@ -103,7 +103,7 @@ public class FXMLConverter {
   
   protected CharSequence _handle(final SvgSvgElement element) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<Group fx:id=\'_root\' xmlns:fx=\"http://javafx.com/fxml\" xmlns:fxsvg=\"http://efxclipse.org/fxml-svg\">");
+    _builder.append("<Group id=\'_root\' xmlns:fx=\"http://javafx.com/fxml\" xmlns:fxsvg=\"http://efxclipse.org/fxml-svg\">");
     _builder.newLine();
     _builder.append("\t");
     String _class_ = element.getClass_();
@@ -249,7 +249,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_5 = (!Objects.equal(_id, null));
       if (_notEquals_5) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -417,7 +417,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_8 = (!Objects.equal(_id, null));
       if (_notEquals_8) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -1105,7 +1105,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_7 = (!Objects.equal(_id, null));
       if (_notEquals_7) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -1371,7 +1371,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_3 = (!Objects.equal(_id, null));
       if (_notEquals_3) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -1634,7 +1634,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_3 = (!Objects.equal(_id, null));
       if (_notEquals_3) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -2010,7 +2010,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_3 = (!Objects.equal(_id, null));
       if (_notEquals_3) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -2375,7 +2375,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_5 = (!Objects.equal(_id, null));
       if (_notEquals_5) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -2650,7 +2650,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_4 = (!Objects.equal(_id, null));
       if (_notEquals_4) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -2903,7 +2903,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_2 = (!Objects.equal(_id, null));
       if (_notEquals_2) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -3134,7 +3134,7 @@ public class FXMLConverter {
       String _id = element.getId();
       boolean _notEquals_2 = (!Objects.equal(_id, null));
       if (_notEquals_2) {
-        _builder.append("fx:id=\"");
+        _builder.append("id=\"");
         String _id_1 = element.getId();
         String _validateId = this.validateId(_id_1);
         _builder.append(_validateId, "	");
@@ -3912,8 +3912,9 @@ public class FXMLConverter {
   }
   
   public String validateId(final String value) {
-    String _replace = value.replace(".", "_dot");
-    return _replace.replace("-", "_dash");
+    String _replaceAll = value.replaceAll("\\.", "_dot");
+    String _replaceAll_1 = _replaceAll.replaceAll(" ", "_space");
+    return _replaceAll_1.replaceAll(":", "_colon");
   }
   
   public CharSequence handle(final EObject element) {

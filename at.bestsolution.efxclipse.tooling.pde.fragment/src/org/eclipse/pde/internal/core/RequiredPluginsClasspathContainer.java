@@ -164,7 +164,6 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 						Rule r = new Rule();
 						r.path = c.rules[i].path;
 						r.discouraged = c.rules[i].discouraged;
-						System.err.println(r.path);
 						rs[i] = r;
 					}
 					
@@ -325,8 +324,6 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 			return false;
 		IResource resource = model.getUnderlyingResource();
 		Rule[] rules = useInclusions ? getInclusions(map, model) : null;
-		
-//		System.err.println("Adding: " + desc.getName());
 		
 		for( IClasspathContributor cp : contributors ) {
 			if( cp.isActiveFor(desc) ) {

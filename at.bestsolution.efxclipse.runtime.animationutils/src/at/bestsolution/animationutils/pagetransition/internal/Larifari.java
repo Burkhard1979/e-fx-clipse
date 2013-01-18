@@ -35,8 +35,6 @@ public class Larifari extends Application {
 	Rectangle rect;
 	
 	private void doIt() {
-		System.err.println("done");
-		
 		Bounds leftBounds = left.getBoundsInParent();
 		
 		Bounds rightBounds = right.getBoundsInParent();
