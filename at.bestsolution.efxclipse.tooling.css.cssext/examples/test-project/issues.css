@@ -1,3 +1,15 @@
+.something > Gurke.Test.gamml#id.gammlfisch {
+	
+}
+
+CheckBox {
+	/* CheckBox element autocomplete */
+}
+
+.check-box {
+	/* CheckBox element autocomplete (by styleclass) */
+}
+
 Issues {
 	-fx-border-width: 4px 4px 1px 2px, url(http://some)  ;
 	
@@ -6,11 +18,13 @@ Issues {
 	-fx-background-position: top 1px right 1px ;
 	
 	
+	
 	-fx-background-image: url(http://efxclipse.org/);
 	-fx-background-position: right 1px top 1px;
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: stretch;
 	
-	-fx-background-images: url(http://efxclipse.org/)    ;
+	-fx-background-images: url(http://efxclipse.org/) right 1px top 1px repeat-x stretch, auto, cover ;
 	
 }
+

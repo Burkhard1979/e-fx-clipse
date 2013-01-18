@@ -403,16 +403,23 @@ finally {
 
 // Entry rule entryRulesimple_selector
 entryRulesimple_selector 
+@init {
+	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+}
 :
 { before(grammarAccess.getSimple_selectorRule()); }
 	 rulesimple_selector
 { after(grammarAccess.getSimple_selectorRule()); } 
 	 EOF 
 ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 // Rule simple_selector
 rulesimple_selector
     @init {
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
 		int stackSize = keepStackSize();
     }
 	:
@@ -425,6 +432,7 @@ rulesimple_selector
 ;
 finally {
 	restoreStackSize(stackSize);
+	myHiddenTokenState.restore();
 }
 
 

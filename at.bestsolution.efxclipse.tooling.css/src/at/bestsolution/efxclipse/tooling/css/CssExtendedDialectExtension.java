@@ -15,6 +15,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 
 /**
  * @author ccaks
@@ -58,6 +60,7 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 	
 	public List<CssProperty> getAllProperties();
 	
+	public List<CssProperty> getPropertiesForSelector(selector selector);
 	
 	public List<CssProperty> getPropertiesForSelector(String selector);
 	

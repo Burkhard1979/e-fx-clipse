@@ -267,17 +267,4 @@
             </attribute>
         </markerResolutionGenerator>
     </extension>
-    <extension
-          point="org.eclipse.ui.views">
-       <view
-             allowMultiple="false"
-             category="org.eclipse.ui"
-             class="at.bestsolution.efxclipse.tooling.css.cssext.ui.CssExtDslExecutableExtensionFactory:at.bestsolution.efxclipse.tooling.css.cssext.ui.ParserDebuggerView"
-             icon="icons/element.gif"
-             id="at.bestsolution.efxclipse.tooling.css.cssext.ui.ParserDebuggerView"
-             name="Parser Debug View"
-             restorable="true">
-       </view>
-    </extension>
-
 </plugin>

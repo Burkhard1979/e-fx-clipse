@@ -16,7 +16,9 @@ Require-Bundle: at.bestsolution.efxclipse.tooling.css;bundle-version="0.1.1";vis
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- at.bestsolution.efxclipse.tooling.ui;bundle-version="0.1.1"
+ at.bestsolution.efxclipse.tooling.ui;bundle-version="0.1.1",
+ at.bestsolution.efxclipse.runtime.guice;bundle-version="0.1.1",
+ at.bestsolution.efxclipse.runtime.core;bundle-version="0.1.1"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -608,11 +608,11 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSubSelectorsAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cSubSelectorsSubSelectorParserRuleCall_1_0 = (RuleCall)cSubSelectorsAssignment_1.eContents().get(0);
 		
-		//simple_selector:
-		//	(element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector* | => subSelectors+=SubSelector+;
+		//simple_selector hidden(ML_COMMENT):
+		//	(element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector* | subSelectors+=SubSelector+;
 		public ParserRule getRule() { return rule; }
 
-		//(element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector* | => subSelectors+=SubSelector+
+		//(element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector* | subSelectors+=SubSelector+
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//(element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector*
@@ -639,7 +639,7 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		//SubSelector
 		public RuleCall getSubSelectorsSubSelectorParserRuleCall_0_1_0() { return cSubSelectorsSubSelectorParserRuleCall_0_1_0; }
 
-		//=> subSelectors+=SubSelector+
+		//subSelectors+=SubSelector+
 		public Assignment getSubSelectorsAssignment_1() { return cSubSelectorsAssignment_1; }
 
 		//SubSelector
@@ -2062,8 +2062,8 @@ public class CssDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getSubSelectorForNegationAccess().getRule();
 	}
 
-	//simple_selector:
-	//	(element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector* | => subSelectors+=SubSelector+;
+	//simple_selector hidden(ML_COMMENT):
+	//	(element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector* | subSelectors+=SubSelector+;
 	public Simple_selectorElements getSimple_selectorAccess() {
 		return (pSimple_selector != null) ? pSimple_selector : (pSimple_selector = new Simple_selectorElements());
 	}

@@ -1,4 +1,4 @@
-package at.bestsolution.efxclipse.tooling.css.cssext.ui;
+package at.bestsolution.efxclipse.tooling.css.cssext.ui.debug;
 
 import java.io.InputStream;
 import java.util.HashSet;
@@ -35,6 +35,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser.ParseResultListener;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.ResultNode;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
+import at.bestsolution.efxclipse.tooling.css.cssext.ui.CssExtDslUiModule;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
@@ -101,7 +102,7 @@ public class ParserDebuggerView extends ViewPart {
 		default: imgname = "unknown"; break;
 		}
 		String imgpath = "/icons/debug/" + imgname + ".png";
-		InputStream stream = getClass().getClassLoader().getResourceAsStream(imgpath);
+		InputStream stream = CssExtDslUiModule.class.getClassLoader().getResourceAsStream(imgpath);
 		if (stream == null) {
 			System.err.println("ERROR: " + imgpath);
 		}

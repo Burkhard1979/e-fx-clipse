@@ -11,6 +11,7 @@
 package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,14 +43,20 @@ import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+import at.bestsolution.efxclipse.runtime.core.log.Log;
+import at.bestsolution.efxclipse.runtime.core.log.Logger;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.DialogProposal;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslFactory;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 
@@ -58,6 +65,9 @@ import com.google.inject.Inject;
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvider {
+	
+	private @Log("css.ProposalProvider") Logger logger;
+	
 	private CssDialectExtensionComponent extension;
 	
 	private @Inject ILabelProvider labelProvider;
@@ -91,11 +101,49 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 		super.complete_ColorTok(model, ruleCall, context, acceptor);
 	}
 	
+	
+	private List<CssProperty> checkSelector(selector s) {
+		
+		// first we need to find the last selector
+		logger.debug("searching for last selector");
+		selector lastSelector = s;
+		while (lastSelector.getSelector() != null) {
+			lastSelector = lastSelector.getSelector();
+		}
+		logger.debug("lastSelector = " + lastSelector);	
+		
+		for (simple_selector ss : lastSelector.getSimpleselectors()) {
+			if (ss.getElement() != null) {
+				logger.debug(" - found element selector: " + ss.getElement().getName());
+				
+				// TODO find properties for element selector
+				
+			}
+			for (CssSelector subs : ss.getSubSelectors()) {
+				if (subs instanceof ClassSelector) {
+					logger.debug(" - found class selector: ." + ((ClassSelector)subs).getName());
+					
+					// TODO find properties for class selector
+				}
+			}
+		}
+		
+		return Collections.emptyList();
+	}
+	
 	// TODO implement support for filtering by element name
 	public void complete_css_property(ruleset model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		URI uri = model.eResource().getURI();
 		
-		List<CssProperty> properties = extension.getAllProperties(uri);
+		List<CssProperty> properties = null;
+		
+		for (selector s : model.getSelectors())
+			checkSelector(s);
+		
+		
+		if (properties == null) {
+//			properties = extension.getAllProperties(uri);
+		}
 		if (properties != null) {
 			
 			Map<Integer, String> alternateSource = new HashMap<Integer, String>();

@@ -1021,16 +1021,23 @@ ruleSubSelectorForNegation returns [EObject current=null]
 
 // Entry rule entryRulesimple_selector
 entryRulesimple_selector returns [EObject current=null] 
+	@init { 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
+	}
 	:
 	{ newCompositeNode(grammarAccess.getSimple_selectorRule()); }
 	 iv_rulesimple_selector=rulesimple_selector 
 	 { $current=$iv_rulesimple_selector.current; } 
 	 EOF 
 ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 // Rule simple_selector
 rulesimple_selector returns [EObject current=null] 
     @init { enterRule(); 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT");
     }
     @after { leaveRule(); }:
 ((((
@@ -1089,11 +1096,7 @@ rulesimple_selector returns [EObject current=null]
 
 )
 )*)
-    |((
-(
-ruleSubSelector
-)
-)=>
+    |(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getSimple_selectorAccess().getSubSelectorsSubSelectorParserRuleCall_1_0()); 
@@ -1113,6 +1116,9 @@ ruleSubSelector
 )
 )+)
 ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 
 

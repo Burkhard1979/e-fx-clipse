@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
+@Deprecated
 public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 //	private CssDialectExtensionComponent extension;
 //	

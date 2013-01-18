@@ -20,6 +20,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
@@ -167,6 +168,12 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 	@Override
 	public List<ValidationResult> validateProperty(String element, String attribute, List<CssTok> tokens) {
 		return parser.validateProperty(element, attribute, tokens);
+	}
+
+	@Override
+	public List<CssProperty> getPropertiesForSelector(selector selector) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

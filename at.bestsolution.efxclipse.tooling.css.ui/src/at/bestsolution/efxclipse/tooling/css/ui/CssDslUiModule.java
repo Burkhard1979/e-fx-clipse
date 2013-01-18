@@ -24,6 +24,9 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
+import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
+import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
+import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.contentassist.TemplateProposalProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.doubleclicking.CssGrammarAwareStrategy;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingCalculator;
@@ -37,6 +40,7 @@ import at.bestsolution.efxclipse.tooling.css.ui.occurrences.CssDslOccurenceCompu
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
+import com.google.inject.matcher.Matchers;
 import com.google.inject.name.Names;
 
 /**
@@ -87,6 +91,9 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		
 		binder.bind(IOccurrenceComputer.class).to(CssDslOccurenceComputer.class);
 		
+		// setup efxclipse logger
+		binder.bind(LoggerFactory.class).toProvider(OSGiLoggerFactoryProvider.class);
+		binder.bindListener(Matchers.any(), new FXLoggerListener());
 	}
 	
 	@Override

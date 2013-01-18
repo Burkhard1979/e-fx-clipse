@@ -77,9 +77,9 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 		else {
 			List<ValidationResult> result = extension.validateProperty(uri, null, property.getName(), tokens);
 			
-			System.err.println(result);
-			 
-			System.err.println("validation of " + property.getName());
+//			System.err.println(result);
+//			 
+//			System.err.println("validation of " + property.getName());
 			
 			if (!result.isEmpty()) {
 				for (ValidationResult r : result) {

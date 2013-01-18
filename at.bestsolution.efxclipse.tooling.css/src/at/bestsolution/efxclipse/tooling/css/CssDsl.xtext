@@ -71,9 +71,9 @@ SubSelectorForNegation returns CssSelector:
 	PseudoClass
 ;
 
-simple_selector:
+simple_selector hidden(ML_COMMENT):
 	((element=ElementSelector | universal=UniversalSelector) subSelectors+=SubSelector*) |
-	=> subSelectors+=SubSelector+
+	subSelectors+=SubSelector+
 ;
 
 SubSelector returns CssSelector:
