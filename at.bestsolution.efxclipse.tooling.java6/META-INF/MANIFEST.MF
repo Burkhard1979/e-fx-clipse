@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Java6
+Bundle-Name: JavaFX Tooling Java Check
 Bundle-SymbolicName: at.bestsolution.efxclipse.tooling.java6;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: BestSolution.at
