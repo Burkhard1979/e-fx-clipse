@@ -8,7 +8,7 @@
  * Contributors:
  *     Martin Bluehweis<martin.bluehweis@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.formats.fxg.handler;
+package at.bestsolution.efxclipse.tooling.fxgraph.converter;
 
 import java.util.HashMap;
 import java.util.Map;
