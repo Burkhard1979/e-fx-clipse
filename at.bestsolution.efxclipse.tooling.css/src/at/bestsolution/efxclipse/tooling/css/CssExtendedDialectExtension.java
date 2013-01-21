@@ -30,13 +30,16 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 		public final CssElement parent;
 		public final int eqHash;
 		
+		public final EObject obj;
+		
 		private String doc;
 		
-		public CssProperty(String name, String fQName, CssElement parent, int eqHash) {
+		public CssProperty(String name, String fQName, CssElement parent, int eqHash, EObject obj) {
 			this.name = name;
 			this.fQName = fQName;
 			this.parent = parent;
 			this.eqHash = eqHash;
+			this.obj = obj;
 		}
 		
 		public String getDoc() {

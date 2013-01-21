@@ -23,12 +23,17 @@ import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks;
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSNumLiteral;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleBracket;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcat;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleFunc;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral;
@@ -72,6 +77,15 @@ public class CssExtDocParser {
 				result += translateRule(it.next());
 				if (it.hasNext()) {
 					result +=" ";
+				}
+			}
+		}
+		else if (r instanceof CSSRuleConcatWithoutSpace) {
+			Iterator<CSSRule> it =((CSSRuleConcatWithoutSpace) r).getConc().iterator();
+			while (it.hasNext()) {
+				result += translateRule(it.next());
+				if (it.hasNext()) {
+					result +=" ~ ";
 				}
 			}
 		}
@@ -121,7 +135,7 @@ public class CssExtDocParser {
 			String javadoc =  prepareDoku(property.getDoku());
 			String defaultVal = property.getDefault()==null?"":"default = " + property.getDefault() + "<br>";
 			// TODO complete defaultvalue at language level and add here
-			return "<p style=\"background:rgba(255,255,255,0.7);\">" + rule + "</p>"  + javadoc;
+			return formatRule(rule)  + javadoc;
 		}
 		return "no documentation found";
 	}
@@ -137,7 +151,15 @@ public class CssExtDocParser {
 		else if (o instanceof PropertyDefinition) {
 			return getDocumentationForRule((PropertyDefinition)o);
 		}
+		else if (o instanceof ClassSelector) {
+			// TODO impl this
+			return "need to test if this is a style-class and show the appropriate doc";
+		}
 		return "no documentation found";
+	}
+	
+	private String formatRule(String rule) {
+		return "<p class=\"rule\">"+rule+"</p>";
 	}
 	
 	private String getDocumentationForRule(CSSRuleDefinition r) {
@@ -152,7 +174,7 @@ public class CssExtDocParser {
 		}
 		
 		String javadoc = prepareDoku(r.getDoku());
-		return "<p style=\"background:rgba(255,255,255,0.7);\">" + func +  rule + "</p>" + javadoc;
+		return formatRule(func +  rule) + javadoc;
 	}
 	
 	private String getDocumentationForRule(PropertyDefinition r) {
@@ -161,7 +183,7 @@ public class CssExtDocParser {
 			rule = r.getName()+" = " +translateRule(r.getRule());
 		}
 		String javadoc = prepareDoku(r.getDoku());
-		return "<p style=\"background:rgba(255,255,255,0.7);\">" + rule + "</p>" + javadoc;
+		return formatRule(rule) + javadoc;
 	}
 
 	public String getDocForElement(String elName) {
@@ -279,11 +301,35 @@ public class CssExtDocParser {
 	}
 
 	public String getDocHead(EObject o) {
+		
+		// css ext lang elements
 		if (o instanceof ElementDefinition) {
 			return getDocHeadForElement((ElementDefinition)o);
 		}
 		else if (o instanceof PropertyDefinition) {
 			return getDocHeadForProperty((PropertyDefinition)o);
+		}
+		
+		// css lang elements
+		if (o instanceof ClassSelector) {
+			return "<b>."+((ClassSelector)o).getName()+"</b>";
+		}
+		if (o instanceof IdSelector) {
+			return "<b>#"+((ClassSelector)o).getName()+"</b>";
+		}
+		if (o instanceof ElementSelector) {
+			return getDocHeadForElement(((ElementSelector) o).getName());
+		}
+		if (o instanceof css_property) {
+			return getDocHeadForProperty(((css_property) o).getName());
+		}
+		if (o instanceof simple_selector) {
+			simple_selector s = ((simple_selector)o);
+			String elementName = null;
+			if (s.getElement() instanceof ElementSelector) {
+				elementName = ((ElementSelector)s.getElement()).getName();
+			}
+			return getDocHeadForElement(elementName);
 		}
 		
 		return null;

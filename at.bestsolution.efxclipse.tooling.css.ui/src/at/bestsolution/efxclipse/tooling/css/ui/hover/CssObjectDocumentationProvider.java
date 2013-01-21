@@ -45,6 +45,11 @@ public class CssObjectDocumentationProvider implements
 			return extension.getDocForProperty(o.eResource().getURI(), ((css_property) o).getName());
 		}
 		
+		if (o instanceof ElementSelector) {
+			String elementName = ((ElementSelector) o).getName();
+			return extension.getDocForElement(o.eResource().getURI(), elementName);
+		}
+		
 		if (o instanceof simple_selector) {
 			simple_selector s = ((simple_selector)o);
 			String elementName = null;

@@ -44,16 +44,16 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 	}
 	
 	private CssProperty wrap(final PropertyDefinition def) {
-		System.err.println("eqHash for " + def.getName());
+//		System.err.println("eqHash for " + def.getName());
 		int eqHash = def.getName().hashCode();
-		System.err.println(" - " + eqHash);
+//		System.err.println(" - " + eqHash);
 		if (def.getDoku() != null && def.getDoku().getClass() != null) {
 			eqHash += def.getDoku().getContent().hashCode();
 		}
-		System.err.println(" - " + eqHash);
+//		System.err.println(" - " + eqHash);
 		eqHash += docParser.translateRule(def.getRule()).hashCode();
-		System.err.println(" - " + eqHash);
-		return new CssProperty(def.getName(), nameProvider.getFullyQualifiedName(def).toString(), wrap((ElementDefinition)def.eContainer()), eqHash) {
+//		System.err.println(" - " + eqHash);
+		return new CssProperty(def.getName(), nameProvider.getFullyQualifiedName(def).toString(), wrap((ElementDefinition)def.eContainer()), eqHash, (EObject) def) {
 			@Override
 			protected String doGetDoc() {
 				return docParser.getDocForProperty(def);
@@ -172,8 +172,15 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 
 	@Override
 	public List<CssProperty> getPropertiesForSelector(selector selector) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<CssProperty> result = new ArrayList<CssProperty>();
+		
+		List<PropertyDefinition> defs = cssExtManager.findPropertiesBySelector(selector);
+		
+		for (PropertyDefinition def : defs) {
+			result.add(wrap(def));
+		}
+		
+		return result;
 	}
 
 }

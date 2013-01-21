@@ -22,6 +22,7 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
@@ -33,6 +34,7 @@ import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComp
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import com.google.inject.spi.Elements;
 
 public class CssHoverProvider extends DefaultEObjectHoverProvider {
 
@@ -161,19 +163,6 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 		
 		//if (1-1==0) return o.toString();
 		
-		if (o instanceof css_property) {
-			// Properties
-			return extension.getDocHeadForProperty(o.eResource().getURI(), ((css_property) o).getName());
-		}
-		
-		if (o instanceof simple_selector) {
-			simple_selector s = ((simple_selector)o);
-			String elementName = null;
-			if (s.getElement() instanceof ElementSelector) {
-				elementName = ((ElementSelector)s.getElement()).getName();
-			}
-			return extension.getDocForHeadElement(o.eResource().getURI(), elementName);
-		}
 		
 		String firstLine =  extension.getDocHead(o.eResource().getURI(), o);
 		

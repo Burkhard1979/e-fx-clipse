@@ -30,6 +30,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition
 
 import com.google.inject.Inject;
 
+@Deprecated
 public class AutoCompletionParser {
 
 	private @Inject CssExtManager manager;

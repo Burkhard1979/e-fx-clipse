@@ -54,7 +54,7 @@ ruleset:
 	'}'
 ;
 
-
+// check simple_selctor cardinality
 selector hidden(ML_COMMENT):
 	simpleselectors+=simple_selector ( combinator=combinator WS* selector=selector | WS+ (combinator=combinator WS*)? selector=selector )?
 ;

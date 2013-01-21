@@ -39,6 +39,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.hover.AbstractEObjectHover;
+import org.eclipse.xtext.ui.editor.hover.DispatchingEObjectTextHover;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -74,6 +75,8 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	
 	private @Inject ITemplateProposalProvider templateProposalProvider;
 	
+	private @Inject DispatchingEObjectTextHover hoverDispatcher;
+	
 	public CssDslRealtimeProposalProvider() {
 		BundleContext context = CssDslActivator.getInstance().getBundle().getBundleContext();
 		ServiceReference<CssDialectExtensionComponent> ref = context.getServiceReference(CssDialectExtensionComponent.class);
@@ -102,49 +105,22 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	}
 	
 	
-	private List<CssProperty> checkSelector(selector s) {
-		
-		// first we need to find the last selector
-		logger.debug("searching for last selector");
-		selector lastSelector = s;
-		while (lastSelector.getSelector() != null) {
-			lastSelector = lastSelector.getSelector();
-		}
-		logger.debug("lastSelector = " + lastSelector);	
-		
-		for (simple_selector ss : lastSelector.getSimpleselectors()) {
-			if (ss.getElement() != null) {
-				logger.debug(" - found element selector: " + ss.getElement().getName());
-				
-				// TODO find properties for element selector
-				
-			}
-			for (CssSelector subs : ss.getSubSelectors()) {
-				if (subs instanceof ClassSelector) {
-					logger.debug(" - found class selector: ." + ((ClassSelector)subs).getName());
-					
-					// TODO find properties for class selector
-				}
-			}
-		}
-		
-		return Collections.emptyList();
-	}
-	
 	// TODO implement support for filtering by element name
 	public void complete_css_property(ruleset model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		URI uri = model.eResource().getURI();
 		
-		List<CssProperty> properties = null;
+		List<CssProperty> properties = new ArrayList<>();
 		
-		for (selector s : model.getSelectors())
-			checkSelector(s);
-		
-		
-		if (properties == null) {
-//			properties = extension.getAllProperties(uri);
+		for (selector s : model.getSelectors()) {
+			properties.addAll(extension.getPropertiesForSelector(uri, s));
 		}
-		if (properties != null) {
+		
+		if (properties.isEmpty()) {
+			properties.addAll(extension.getAllProperties(uri));
+		}
+					
+		if (!properties.isEmpty()) {
+			// do some filtering
 			
 			Map<Integer, String> alternateSource = new HashMap<Integer, String>();
 			Map<Integer, CssProperty> filterMap = new HashMap<Integer, CssProperty>();
@@ -190,8 +166,11 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(property.name, displayString, img, context);
 				
 				if (cp != null) {
-					cp.setAdditionalProposalInfo(model);
-					cp.setHover(new PropertyHover(property));
+					cp.setAdditionalProposalInfo(property.obj);
+					
+					cp.setHover(hoverDispatcher);
+					//cp.setHover(new PropertyHover(property.obj));
+					
 					cp.setTriggerCharacters(new char[] { ' ' });
 					cp.setTextApplier(new IReplacementTextApplier() {
 						
@@ -583,15 +562,15 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	
 	public class PropertyHover extends AbstractEObjectHover {
 
-		private CssProperty property;
+		private EObject property;
 		
-		public PropertyHover(CssProperty property) {
+		public PropertyHover(EObject property) {
 			this.property = property;
 		}
 			
 		@Override
 		public Object getHoverInfo(EObject eObject, ITextViewer textViewer, IRegion hoverRegion) {
-			return property.getDoc();
+			return hoverDispatcher.getHoverInfo(property, textViewer, hoverRegion);
 		}
 
 		

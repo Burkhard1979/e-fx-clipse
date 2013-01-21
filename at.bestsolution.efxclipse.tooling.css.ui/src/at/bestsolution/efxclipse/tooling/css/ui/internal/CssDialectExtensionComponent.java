@@ -22,6 +22,7 @@ import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 
 public class CssDialectExtensionComponent {
 	private List<CssDialectExtension> extensions = new ArrayList<CssDialectExtension>();
@@ -43,6 +44,16 @@ public class CssDialectExtensionComponent {
 		for( CssDialectExtension ext : getExtensions(uri) ) {
 			if (ext instanceof CssExtendedDialectExtension) {
 				rv.addAll(((CssExtendedDialectExtension)ext).getAllProperties());
+			}
+		}
+		return rv;
+	}
+	
+	public List<CssProperty> getPropertiesForSelector(URI uri, selector selector) {
+		List<CssProperty> rv = new ArrayList<CssProperty>();
+		for( CssDialectExtension ext : getExtensions(uri) ) {
+			if (ext instanceof CssExtendedDialectExtension) {
+				rv.addAll(((CssExtendedDialectExtension)ext).getPropertiesForSelector(selector));
 			}
 		}
 		return rv;

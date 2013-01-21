@@ -2484,7 +2484,7 @@ package javafx {
         		 */
         		-fx-alignment [ 
         			top-left | top-center | top-right | center-left | 
-        			center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right
+        			center | center-right | bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right
         		] default: center-left;
         	}
         	/**
