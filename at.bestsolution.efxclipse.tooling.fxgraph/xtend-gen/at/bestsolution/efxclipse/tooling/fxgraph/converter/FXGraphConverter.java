@@ -1,7 +1,7 @@
-package at.bestsolution.efxclipse.formats.fxg.converter;
+package at.bestsolution.efxclipse.tooling.fxgraph.converter;
 
-import at.bestsolution.efxclipse.formats.fxg.converter.CastHelper;
-import at.bestsolution.efxclipse.formats.fxg.converter.ValuePropertyFormatter;
+import at.bestsolution.efxclipse.tooling.fxgraph.converter.CastHelper;
+import at.bestsolution.efxclipse.tooling.fxgraph.converter.ValuePropertyFormatter;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ComponentDefinition;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element;

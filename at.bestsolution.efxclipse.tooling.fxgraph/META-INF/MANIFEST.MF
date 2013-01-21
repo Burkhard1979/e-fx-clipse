@@ -31,6 +31,7 @@ Import-Package: org.apache.commons.logging,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: at.bestsolution.efxclipse.tooling.fxgraph,
  at.bestsolution.efxclipse.tooling.fxgraph.compiler,
+ at.bestsolution.efxclipse.tooling.fxgraph.converter,
  at.bestsolution.efxclipse.tooling.fxgraph.fXGraph,
  at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.impl,
  at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.util,
