@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: P2
+Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.p2
+Bundle-Version: 0.8.0.qualifier
+Bundle-Activator: at.bestsolution.efxclipse.runtime.p2.internal.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.osgi.framework;version="1.3.0"
+Require-Bundle: at.bestsolution.efxclipse.runtime.core;bundle-version="0.8.0",
+ org.eclipse.equinox.p2.core;bundle-version="2.2.0",
+ org.eclipse.equinox.p2.metadata;bundle-version="2.1.0",
+ org.eclipse.equinox.p2.operations;bundle-version="2.2.0",
+ org.eclipse.equinox.p2.repository;bundle-version="2.2.0",
+ org.eclipse.equinox.common;bundle-version="3.6.100",
+ org.eclipse.core.jobs;bundle-version="3.5.300"

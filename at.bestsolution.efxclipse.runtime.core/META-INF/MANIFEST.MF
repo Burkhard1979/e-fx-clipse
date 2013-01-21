@@ -6,7 +6,8 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javax.inject;version="1.0.0"
 Export-Package: at.bestsolution.efxclipse.runtime.core,
- at.bestsolution.efxclipse.runtime.core.log
+ at.bestsolution.efxclipse.runtime.core.log,
+ at.bestsolution.efxclipse.runtime.core.update
 Bundle-Vendor: %Bundle-Vendor
 Service-Component: OSGI-INF/jlogger.xml
 Bundle-ActivationPolicy: lazy
