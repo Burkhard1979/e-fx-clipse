@@ -104,6 +104,7 @@
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
+		<module>../at.bestsolution.efxclipse.runtime.p2.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		
 	</modules>
