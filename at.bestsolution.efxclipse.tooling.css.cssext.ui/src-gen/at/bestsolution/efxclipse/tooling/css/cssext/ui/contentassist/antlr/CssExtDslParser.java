@@ -37,7 +37,7 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getPackageDefinitionAccess().getAlternatives_3(), "rule__PackageDefinition__Alternatives_3");
+					put(grammarAccess.getPackageDefinitionAccess().getAlternatives_4(), "rule__PackageDefinition__Alternatives_4");
 					put(grammarAccess.getCSSTypeAccess().getAlternatives(), "rule__CSSType__Alternatives");
 					put(grammarAccess.getCSSTypeAccess().getAlternatives_2_1(), "rule__CSSType__Alternatives_2_1");
 					put(grammarAccess.getElementDefinitionAccess().getAlternatives_6(), "rule__ElementDefinition__Alternatives_6");
@@ -53,6 +53,7 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup(), "rule__QualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup_1(), "rule__QualifiedNameWithWildCard__Group_1__0");
 					put(grammarAccess.getPackageDefinitionAccess().getGroup(), "rule__PackageDefinition__Group__0");
+					put(grammarAccess.getPackageDefinitionAccess().getGroup_0(), "rule__PackageDefinition__Group_0__0");
 					put(grammarAccess.getCSSTypeAccess().getGroup_0(), "rule__CSSType__Group_0__0");
 					put(grammarAccess.getCSSTypeAccess().getGroup_0_1(), "rule__CSSType__Group_0_1__0");
 					put(grammarAccess.getCSSTypeAccess().getGroup_1(), "rule__CSSType__Group_1__0");
@@ -102,10 +103,11 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCssExtensionAccess().getImportsAssignment_0(), "rule__CssExtension__ImportsAssignment_0");
 					put(grammarAccess.getCssExtensionAccess().getPackageDefAssignment_1(), "rule__CssExtension__PackageDefAssignment_1");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
-					put(grammarAccess.getPackageDefinitionAccess().getNameAssignment_1(), "rule__PackageDefinition__NameAssignment_1");
-					put(grammarAccess.getPackageDefinitionAccess().getRulesAssignment_3_0(), "rule__PackageDefinition__RulesAssignment_3_0");
-					put(grammarAccess.getPackageDefinitionAccess().getSubpackagesAssignment_3_1(), "rule__PackageDefinition__SubpackagesAssignment_3_1");
-					put(grammarAccess.getPackageDefinitionAccess().getElementsAssignment_3_2(), "rule__PackageDefinition__ElementsAssignment_3_2");
+					put(grammarAccess.getPackageDefinitionAccess().getDokuAssignment_0_0(), "rule__PackageDefinition__DokuAssignment_0_0");
+					put(grammarAccess.getPackageDefinitionAccess().getNameAssignment_2(), "rule__PackageDefinition__NameAssignment_2");
+					put(grammarAccess.getPackageDefinitionAccess().getRulesAssignment_4_0(), "rule__PackageDefinition__RulesAssignment_4_0");
+					put(grammarAccess.getPackageDefinitionAccess().getSubpackagesAssignment_4_1(), "rule__PackageDefinition__SubpackagesAssignment_4_1");
+					put(grammarAccess.getPackageDefinitionAccess().getElementsAssignment_4_2(), "rule__PackageDefinition__ElementsAssignment_4_2");
 					put(grammarAccess.getDokuAccess().getContentAssignment(), "rule__Doku__ContentAssignment");
 					put(grammarAccess.getCSSTypeAccess().getDokuAssignment_0_1_0(), "rule__CSSType__DokuAssignment_0_1_0");
 					put(grammarAccess.getCSSTypeAccess().getTypeAssignment_0_2(), "rule__CSSType__TypeAssignment_0_2");

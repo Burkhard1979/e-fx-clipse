@@ -144,63 +144,79 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class PackageDefinitionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PackageDefinition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
-		private final Assignment cRulesAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
-		private final RuleCall cRulesCSSRuleDefinitionParserRuleCall_3_0_0 = (RuleCall)cRulesAssignment_3_0.eContents().get(0);
-		private final Assignment cSubpackagesAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
-		private final RuleCall cSubpackagesPackageDefinitionParserRuleCall_3_1_0 = (RuleCall)cSubpackagesAssignment_3_1.eContents().get(0);
-		private final Assignment cElementsAssignment_3_2 = (Assignment)cAlternatives_3.eContents().get(2);
-		private final RuleCall cElementsElementDefinitionParserRuleCall_3_2_0 = (RuleCall)cElementsAssignment_3_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Assignment cDokuAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cDokuDokuParserRuleCall_0_0_0 = (RuleCall)cDokuAssignment_0_0.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cPackageKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameQualifiedNameParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Assignment cRulesAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
+		private final RuleCall cRulesCSSRuleDefinitionParserRuleCall_4_0_0 = (RuleCall)cRulesAssignment_4_0.eContents().get(0);
+		private final Assignment cSubpackagesAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
+		private final RuleCall cSubpackagesPackageDefinitionParserRuleCall_4_1_0 = (RuleCall)cSubpackagesAssignment_4_1.eContents().get(0);
+		private final Assignment cElementsAssignment_4_2 = (Assignment)cAlternatives_4.eContents().get(2);
+		private final RuleCall cElementsElementDefinitionParserRuleCall_4_2_0 = (RuleCall)cElementsAssignment_4_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//PackageDefinition:
-		//	"package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
+		//	(doku=Doku WS*)? "package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
 		//	elements+=ElementDefinition)* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
+		//(doku=Doku WS*)? "package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
 		//elements+=ElementDefinition)* "}"
 		public Group getGroup() { return cGroup; }
 
+		//(doku=Doku WS*)?
+		public Group getGroup_0() { return cGroup_0; }
+
+		//doku=Doku
+		public Assignment getDokuAssignment_0_0() { return cDokuAssignment_0_0; }
+
+		//Doku
+		public RuleCall getDokuDokuParserRuleCall_0_0_0() { return cDokuDokuParserRuleCall_0_0_0; }
+
+		//WS*
+		public RuleCall getWSTerminalRuleCall_0_1() { return cWSTerminalRuleCall_0_1; }
+
 		//"package"
-		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
+		public Keyword getPackageKeyword_1() { return cPackageKeyword_1; }
 
 		//name=QualifiedName
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//QualifiedName
-		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
+		public RuleCall getNameQualifiedNameParserRuleCall_2_0() { return cNameQualifiedNameParserRuleCall_2_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//(rules+=CSSRuleDefinition | subpackages+=PackageDefinition | elements+=ElementDefinition)*
-		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//rules+=CSSRuleDefinition
-		public Assignment getRulesAssignment_3_0() { return cRulesAssignment_3_0; }
+		public Assignment getRulesAssignment_4_0() { return cRulesAssignment_4_0; }
 
 		//CSSRuleDefinition
-		public RuleCall getRulesCSSRuleDefinitionParserRuleCall_3_0_0() { return cRulesCSSRuleDefinitionParserRuleCall_3_0_0; }
+		public RuleCall getRulesCSSRuleDefinitionParserRuleCall_4_0_0() { return cRulesCSSRuleDefinitionParserRuleCall_4_0_0; }
 
 		//subpackages+=PackageDefinition
-		public Assignment getSubpackagesAssignment_3_1() { return cSubpackagesAssignment_3_1; }
+		public Assignment getSubpackagesAssignment_4_1() { return cSubpackagesAssignment_4_1; }
 
 		//PackageDefinition
-		public RuleCall getSubpackagesPackageDefinitionParserRuleCall_3_1_0() { return cSubpackagesPackageDefinitionParserRuleCall_3_1_0; }
+		public RuleCall getSubpackagesPackageDefinitionParserRuleCall_4_1_0() { return cSubpackagesPackageDefinitionParserRuleCall_4_1_0; }
 
 		//elements+=ElementDefinition
-		public Assignment getElementsAssignment_3_2() { return cElementsAssignment_3_2; }
+		public Assignment getElementsAssignment_4_2() { return cElementsAssignment_4_2; }
 
 		//ElementDefinition
-		public RuleCall getElementsElementDefinitionParserRuleCall_3_2_0() { return cElementsElementDefinitionParserRuleCall_3_2_0; }
+		public RuleCall getElementsElementDefinitionParserRuleCall_4_2_0() { return cElementsElementDefinitionParserRuleCall_4_2_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class DokuElements extends AbstractParserRuleElementFinder {
@@ -1616,7 +1632,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PackageDefinition:
-	//	"package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
+	//	(doku=Doku WS*)? "package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
 	//	elements+=ElementDefinition)* "}";
 	public PackageDefinitionElements getPackageDefinitionAccess() {
 		return (pPackageDefinition != null) ? pPackageDefinition : (pPackageDefinition = new PackageDefinitionElements());

@@ -45,6 +45,7 @@ QualifiedNameWithWildCard :
 	
 
 PackageDefinition:
+	(doku=Doku WS*)?
 	'package' name=QualifiedName 
 	'{'
 		(

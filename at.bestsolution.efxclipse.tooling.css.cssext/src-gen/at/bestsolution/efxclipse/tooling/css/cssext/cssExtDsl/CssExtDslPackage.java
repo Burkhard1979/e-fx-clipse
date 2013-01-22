@@ -132,13 +132,22 @@ public interface CssExtDslPackage extends EPackage
   int PACKAGE_DEFINITION = 2;
 
   /**
+   * The feature id for the '<em><b>Doku</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PACKAGE_DEFINITION__DOKU = 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PACKAGE_DEFINITION__NAME = 0;
+  int PACKAGE_DEFINITION__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Rules</b></em>' containment reference list.
@@ -147,7 +156,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PACKAGE_DEFINITION__RULES = 1;
+  int PACKAGE_DEFINITION__RULES = 2;
 
   /**
    * The feature id for the '<em><b>Subpackages</b></em>' containment reference list.
@@ -156,7 +165,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PACKAGE_DEFINITION__SUBPACKAGES = 2;
+  int PACKAGE_DEFINITION__SUBPACKAGES = 3;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -165,7 +174,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PACKAGE_DEFINITION__ELEMENTS = 3;
+  int PACKAGE_DEFINITION__ELEMENTS = 4;
 
   /**
    * The number of structural features of the '<em>Package Definition</em>' class.
@@ -174,7 +183,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PACKAGE_DEFINITION_FEATURE_COUNT = 4;
+  int PACKAGE_DEFINITION_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.DokuImpl <em>Doku</em>}' class.
@@ -1275,6 +1284,17 @@ public interface CssExtDslPackage extends EPackage
   EClass getPackageDefinition();
 
   /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition#getDoku <em>Doku</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Doku</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition#getDoku()
+   * @see #getPackageDefinition()
+   * @generated
+   */
+  EReference getPackageDefinition_Doku();
+
+  /**
    * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2204,6 +2224,14 @@ public interface CssExtDslPackage extends EPackage
      * @generated
      */
     EClass PACKAGE_DEFINITION = eINSTANCE.getPackageDefinition();
+
+    /**
+     * The meta object literal for the '<em><b>Doku</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PACKAGE_DEFINITION__DOKU = eINSTANCE.getPackageDefinition_Doku();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

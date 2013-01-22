@@ -380,9 +380,19 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getPackageDefinition_Doku()
+  {
+    return (EReference)packageDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getPackageDefinition_Name()
   {
-    return (EAttribute)packageDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)packageDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -392,7 +402,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    */
   public EReference getPackageDefinition_Rules()
   {
-    return (EReference)packageDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)packageDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -402,7 +412,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    */
   public EReference getPackageDefinition_Subpackages()
   {
-    return (EReference)packageDefinitionEClass.getEStructuralFeatures().get(2);
+    return (EReference)packageDefinitionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -412,7 +422,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    */
   public EReference getPackageDefinition_Elements()
   {
-    return (EReference)packageDefinitionEClass.getEStructuralFeatures().get(3);
+    return (EReference)packageDefinitionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1213,6 +1223,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
     packageDefinitionEClass = createEClass(PACKAGE_DEFINITION);
+    createEReference(packageDefinitionEClass, PACKAGE_DEFINITION__DOKU);
     createEAttribute(packageDefinitionEClass, PACKAGE_DEFINITION__NAME);
     createEReference(packageDefinitionEClass, PACKAGE_DEFINITION__RULES);
     createEReference(packageDefinitionEClass, PACKAGE_DEFINITION__SUBPACKAGES);
@@ -1377,6 +1388,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(packageDefinitionEClass, PackageDefinition.class, "PackageDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPackageDefinition_Doku(), this.getDoku(), null, "doku", null, 0, 1, PackageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPackageDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, PackageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPackageDefinition_Rules(), this.getDefinition(), null, "rules", null, 0, -1, PackageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPackageDefinition_Subpackages(), this.getPackageDefinition(), null, "subpackages", null, 0, -1, PackageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

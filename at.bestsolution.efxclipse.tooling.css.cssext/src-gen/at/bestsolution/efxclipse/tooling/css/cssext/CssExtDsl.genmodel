@@ -16,6 +16,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//Import/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//PackageDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//PackageDefinition/doku"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//PackageDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//PackageDefinition/rules"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//PackageDefinition/subpackages"/>
