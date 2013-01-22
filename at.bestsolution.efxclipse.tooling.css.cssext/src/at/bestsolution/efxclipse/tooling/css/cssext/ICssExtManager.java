@@ -26,4 +26,5 @@ public interface ICssExtManager {
 	public abstract ElementDefinition findElementByName(String elName);
 	public abstract List<PropertyDefinition> findAllProperties();
 	public abstract CSSRule resolveReference(final CSSRuleRef ref);
+	public abstract ElementDefinition findElementByStyleClass(String styleClass);
 }

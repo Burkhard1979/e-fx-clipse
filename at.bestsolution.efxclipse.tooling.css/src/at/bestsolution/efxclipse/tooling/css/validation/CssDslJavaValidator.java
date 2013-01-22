@@ -10,35 +10,32 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.validation;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.validation.Check;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationStatus;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
+import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
-import at.bestsolution.efxclipse.tooling.css.internal.CssDialectExtensionComponent;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
+
+import com.google.inject.Inject;
  
 
 public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
-	private CssDialectExtensionComponent extension;
+	private @Inject CssDialectExtensionRegistry extension;
 	
-	public CssDslJavaValidator() {
-		BundleContext context = FrameworkUtil.getBundle(CssDslJavaValidator.class).getBundleContext();
-		ServiceReference<CssDialectExtensionComponent> ref = context.getServiceReference(CssDialectExtensionComponent.class);
-		if( ref != null ) {
-			extension = context.getService(ref);	
-		}
-	}
+	
 //	@Check
 //	public void checkGreetingStartsWithCapital(Greeting greeting) {
 //		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
@@ -49,9 +46,6 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 	
 	@Check
 	public void checkProperty(css_property property) {
-		
-	
-		
 	}
 	
 	@Check
@@ -61,11 +55,11 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 		
 		URI uri = dec.eResource().getURI();
 		
-		List<Property> properties = extension.getProperties(uri);
+		List<CssProperty> properties = extension.getAllProperties(uri);
 		
 		boolean known = false;
-		for (Property p : properties) {
-			if (p.getName().equals(property.getName())) {
+		for (CssProperty p : properties) {
+			if (p.name.equals(property.getName())) {
 				known = true;
 				break;
 			}
@@ -75,6 +69,28 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 			warning("Unknown property: \""+property.getName()+"\"", CssDslPackage.Literals.CSS_DECLARATION__PROPERTY);
 		}
 		else {
+			
+			ruleset rs = (ruleset) dec.eContainer();
+			List<selector> selectors = rs.getSelectors();
+			Set<CssProperty> selectorProps = new HashSet<>();
+			for (selector selector : selectors) {
+				selectorProps.addAll(extension.getPropertiesForSelector(uri, selector));
+			}
+			
+			if (selectorProps.size() > 0) {
+				boolean supported = false;
+				for (CssProperty p : selectorProps) {
+					if (p.name.equals(property.getName())) {
+						supported = true;
+						break;
+					}
+				}
+				
+				if (!supported) {
+					warning("\""+property.getName()+"\" is not supported by the given selectors", CssDslPackage.Literals.CSS_DECLARATION__PROPERTY);
+				}
+			}
+			
 			List<ValidationResult> result = extension.validateProperty(uri, null, property.getName(), tokens);
 			
 //			System.err.println(result);

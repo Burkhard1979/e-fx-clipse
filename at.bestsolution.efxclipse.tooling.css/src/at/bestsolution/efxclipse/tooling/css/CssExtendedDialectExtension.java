@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 
 /**
@@ -24,15 +23,13 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
  */
 public interface CssExtendedDialectExtension extends CssDialectExtension {
 
-	public abstract static class CssProperty {
+	public static class CssProperty {
 		public final String name;
 		public final String fQName;
 		public final CssElement parent;
 		public final int eqHash;
 		
 		public final EObject obj;
-		
-		private String doc;
 		
 		public CssProperty(String name, String fQName, CssElement parent, int eqHash, EObject obj) {
 			this.name = name;
@@ -41,14 +38,6 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 			this.eqHash = eqHash;
 			this.obj = obj;
 		}
-		
-		public String getDoc() {
-			if (doc == null) {
-				doc = doGetDoc();
-			}
-			return doc;
-		}
-		protected abstract String doGetDoc();
 	}
 	
 	public static class CssElement {
@@ -83,28 +72,12 @@ public interface CssExtendedDialectExtension extends CssDialectExtension {
 	public List<CssProperty> getValuesForProperty(String propertyName);
 	public List<CssProperty> getValuesForProperty(String propertyName, String... preceedingValueParts);
 	
-	public String getDocForProperty(String propertyName);
-	
 	/**
 	 * @param o
 	 * @return
 	 */
 	public String getDocumentation(EObject o);
-	/**
-	 * @param element
-	 * @return
-	 */
-	public String getDocForElement(String element);
-	/**
-	 * @param name
-	 * @return
-	 */
-	public String getDocHeadForProperty(String name);
-	/**
-	 * @param element
-	 * @return
-	 */
-	public String getDocHeadForElement(String element);
+
 	/**
 	 * @param o
 	 * @return

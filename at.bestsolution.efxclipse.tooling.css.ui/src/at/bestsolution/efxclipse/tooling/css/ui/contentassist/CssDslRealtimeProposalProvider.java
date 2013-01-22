@@ -11,7 +11,6 @@
 package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,6 @@ import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
-import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.StyledString.Styler;
@@ -41,25 +39,19 @@ import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.hover.AbstractEObjectHover;
 import org.eclipse.xtext.ui.editor.hover.DispatchingEObjectTextHover;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.runtime.core.log.Log;
 import at.bestsolution.efxclipse.runtime.core.log.Logger;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.DialogProposal;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Property;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
 import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslFactory;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 
 import com.google.inject.Inject;
 /**
@@ -69,19 +61,13 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 	
 	private @Log("css.ProposalProvider") Logger logger;
 	
-	private CssDialectExtensionComponent extension;
+	private @Inject CssDialectExtensionRegistry extension;
 	
 	private @Inject ILabelProvider labelProvider;
 	
 	private @Inject ITemplateProposalProvider templateProposalProvider;
 	
 	private @Inject DispatchingEObjectTextHover hoverDispatcher;
-	
-	public CssDslRealtimeProposalProvider() {
-		BundleContext context = CssDslActivator.getInstance().getBundle().getBundleContext();
-		ServiceReference<CssDialectExtensionComponent> ref = context.getServiceReference(CssDialectExtensionComponent.class);
-		extension = context.getService(ref);
-	}
 	
 	public void complete_ColorTok(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 //		ConfigurableCompletionProposal dialogProposal = (ConfigurableCompletionProposal) createCompletionProposal("Pick color ...",context);

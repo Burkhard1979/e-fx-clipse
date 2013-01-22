@@ -1,8 +1,16 @@
+/**
+ * This is Package Doc
+ */
 package javafx {
-	uri = TODO; //uri( STRING ); // <- wie zum teufel definier ma so was !?
-	unit-type = px | mm | cm | in | pt | pc | ex;
+	/**
+	 * This is Rule Doc
+	 */
+	uri = @URL;
+	
+	unit-type = /** This is Literal Doc */ px | mm | cm | in | pt | pc | ex;
+	percent = /** This is Symbol Doc */ %;
 	angle_symbols = deg | rad | grad | turn;
-	length = DOUBLE <unit-type>?;
+	length = @NUM ~ <unit-type>?;
 	
 	package scene {
 		fx-cursor = null | crosshair | default | hand | move | e-resize | h-resize | ne-resize | nw-resize | n-resize | se-resize | sw-resize | s-resize | w-resize | v-resize | text | wait;
@@ -17,7 +25,7 @@ package javafx {
 			-fx-blend-mode add | blue | color-burn | colordodge;
 			-fx-cursor <fx-cursor> | <uri> default: null;
 			-fx-focus-traversable BOOLEAN default: false;
-			-fx-opacity double(.0 -> 1.0) default: 0; // range: 0 -> 1;
+			-fx-opacity @NUM(.0 -> 1.0) default: 0; // range: 0 -> 1;
 			/**
 			 * This is the angle of the rotation in degrees.
 			 * Zero degrees is at 3 o'clock (directly to the right).

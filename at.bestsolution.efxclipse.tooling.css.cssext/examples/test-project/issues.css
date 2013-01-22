@@ -1,9 +1,13 @@
 .something > Gurke.Test.gamml#id.gammlfisch.check-box {
-	
+	 
 }
 
 Node {
 	
+}
+
+Circle {
+	-fx-stroke-width: 
 }
 
 CheckBox {
@@ -11,16 +15,28 @@ CheckBox {
 	
 }
 
-.check-box {
-	/* CheckBox element autocomplete (by styleclass) */
-	
+Invalid , lala {
+	-fx-border-width: asdf xc 1px;
+	lala: dada a b c, d;
+	-fx-background-image: x;
 }
 
+.check-box {
+	/* CheckBox element autocomplete (by styleclass) */
+	/*visibility: inherit ;*/
+	
+	
+	-fx-border-width: 0.0px;
+	
+}
+/*
 Issues {
 	-fx-border-width: 4px 4px 1px 2px;
+	laladadagaga: asdf;
+	
+	asdfasdfasdf:x;
 	
 	-fx-border-width: 1.23   ;
-	/*  [ center | [ left | right ] <size>? ]  ||   [ center | [ top | bottom ] <size>? ] */
 	-fx-background-position: top 1px right 1px ;
 	
 	
@@ -34,3 +50,4 @@ Issues {
 	
 }
 
+ */

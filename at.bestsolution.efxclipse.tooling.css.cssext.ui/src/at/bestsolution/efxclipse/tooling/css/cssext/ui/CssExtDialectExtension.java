@@ -53,12 +53,7 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 //		System.err.println(" - " + eqHash);
 		eqHash += docParser.translateRule(def.getRule()).hashCode();
 //		System.err.println(" - " + eqHash);
-		return new CssProperty(def.getName(), nameProvider.getFullyQualifiedName(def).toString(), wrap((ElementDefinition)def.eContainer()), eqHash, (EObject) def) {
-			@Override
-			protected String doGetDoc() {
-				return docParser.getDocForProperty(def);
-			}
-		};
+		return new CssProperty(def.getName(), nameProvider.getFullyQualifiedName(def).toString(), wrap((ElementDefinition)def.eContainer()), eqHash, (EObject) def);
 	}
 	
 	private CssElement wrap(ElementDefinition def) {
@@ -130,29 +125,8 @@ public class CssExtDialectExtension implements CssDialectExtension, CssExtendedD
 	}
 
 	@Override
-	public String getDocForProperty(String propertyName) {
-		
-		return docParser.getDocForProperty(propertyName);
-	}
-
-	@Override
 	public String getDocumentation(EObject o) {
 		return docParser.getDocumentation(o);
-	}
-
-	@Override
-	public String getDocForElement(String element) {
-		return docParser.getDocForElement(element);
-	}
-
-	@Override
-	public String getDocHeadForProperty(String name) {
-		return docParser.getDocHeadForProperty(name);
-	}
-
-	@Override
-	public String getDocHeadForElement(String element) {
-		return docParser.getDocHeadForElement(element);
 	}
 
 	@Override

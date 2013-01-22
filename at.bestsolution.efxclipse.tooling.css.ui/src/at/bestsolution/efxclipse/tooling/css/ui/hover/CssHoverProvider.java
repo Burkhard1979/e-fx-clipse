@@ -22,24 +22,19 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 
-import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import com.google.inject.spi.Elements;
 
 public class CssHoverProvider extends DefaultEObjectHoverProvider {
 
 	@Inject
-	private CssDialectExtensionComponent extension;
+	private CssDialectExtensionRegistry extension;
 	
 	@Inject(optional = true)
 	@Named("at.bestsolution.efxclipse.tooling.css.ui.styleSheetFileName")
@@ -51,6 +46,9 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	private String fontSymbolicName = "org.eclipse.jdt.ui.javadocfont"; //$NON-NLS-1$ 
 
 	protected String getStyleSheet() {
+		
+		// This is a development hack to enable stylesheet reloading
+		// TODO add some kind of debug flag to disable this at runtime
 		String css = loadStyleSheet();
 	
 		if (css != null) {
@@ -160,10 +158,6 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	 */
 	@Override
 	protected String getFirstLine(EObject o) {
-		
-		//if (1-1==0) return o.toString();
-		
-		
 		String firstLine =  extension.getDocHead(o.eResource().getURI(), o);
 		
 		if (firstLine==null) {
@@ -173,18 +167,7 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	}
 	
 	protected boolean hasHover(EObject o) {
-		return true;
-//		if( o instanceof function ) {
-//			function f = (function) o;
-//			if( "rgb".equals(f.getName()) ) {
-//				return true;
-//			}
-//		} else if( o instanceof term ) {
-//			term t = (term) o;
-//			if( t.getHexColor() != null ) {
-//				return true;
-//			}
-//		}
-//		return super.hasHover(o);
+		String firstLine = extension.getDocHead(o.eResource().getURI(), o);
+		return firstLine != null;
 	}
 }

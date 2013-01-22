@@ -11,6 +11,7 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
@@ -18,12 +19,16 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
 import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
 import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry.OsgiCssDialectExtensionRegistryProvider;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemanticHighlightingCalculator;
+import at.bestsolution.efxclipse.tooling.css.ui.CssDslUiModule;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
+import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.matcher.Matchers;
@@ -51,7 +56,9 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 		binder.bindListener(Matchers.any(), new FXLoggerListener());
 		
 		// bind hovering to css provider
+		binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
+		binder.bind(IEObjectDocumentationProvider.class).to(CssObjectDocumentationProvider.class);
 		
 		super.configure(binder);
 	}

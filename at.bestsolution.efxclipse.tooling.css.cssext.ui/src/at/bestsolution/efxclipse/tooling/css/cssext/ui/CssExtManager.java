@@ -239,7 +239,33 @@ public class CssExtManager implements ICssExtManager {
 		else return search.get(0);
 	}
 	
-	
+	@Override
+	public ElementDefinition findElementByStyleClass(final String styleClass) {
+		load();
+		
+		List<ElementDefinition> r = new SearchHelper(model).findObjects(new SearchFilter<ElementDefinition>() {
+			@Override
+			public Class<ElementDefinition> getSearchClass() {
+				return ElementDefinition.class;
+			}
+
+			@Override
+			public boolean filter(ElementDefinition obj) {
+				return obj.getStyleclass() != null && obj.getStyleclass().equals(styleClass);
+			}
+
+			@Override
+			public boolean returnOnFirstHit() {
+				return true;
+			}
+		});
+		if (!r.isEmpty()) {
+			return r.get(0);
+		}
+		else {
+			return null;
+		}
+	}
 	
 	
 	public IJavaProject getJavaprojectFromPlatformURI(URI uri) {

@@ -16,7 +16,6 @@ import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.doubleClicking.LexerTokenAndCharacterPairAwareStrategy;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
-import org.eclipse.xtext.ui.editor.model.TokenTypeToStringMapper;
 import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -27,6 +26,8 @@ import org.osgi.framework.ServiceReference;
 import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
 import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
 import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
+import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry.OsgiCssDialectExtensionRegistryProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.contentassist.TemplateProposalProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.doubleclicking.CssGrammarAwareStrategy;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingCalculator;
@@ -34,7 +35,6 @@ import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingC
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.TokenMapper;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 import at.bestsolution.efxclipse.tooling.css.ui.occurrences.CssDslOccurenceComputer;
 
@@ -48,23 +48,6 @@ import com.google.inject.name.Names;
  */
 public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.AbstractCssDslUiModule {
 	
-	static class OsgiCssDialectExtensionComponentProvider implements Provider<CssDialectExtensionComponent> {
-
-		private CssDialectExtensionComponent instance = null;
-		
-		@Override
-		public CssDialectExtensionComponent get() {
-			if (instance == null) {
-				BundleContext context = CssDslActivator.getInstance().getBundle().getBundleContext();
-				ServiceReference<CssDialectExtensionComponent> ref = context.getServiceReference(CssDialectExtensionComponent.class);
-				instance = context.getService(ref);
-			}
-			return instance;
-		}
-		
-	}
-	
-	
 	public CssDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
@@ -74,10 +57,12 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		super.configure(binder);
 		binder.bind(ISemanticHighlightingCalculator.class).to(CssDslHighlightingCalculator.class);
 		binder.bind(IHighlightingConfiguration.class).to(CssDslHighlightingConfiguration.class);
+		
+		// hovering
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
 		binder.bind(IEObjectDocumentationProvider.class).to(CssObjectDocumentationProvider.class);
 		
-		binder.bind(CssDialectExtensionComponent.class).toProvider(OsgiCssDialectExtensionComponentProvider.class);
+		binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
 		
 //		binder.bind(IFormatter.class).to(DefaultFormatter.class);
 		
