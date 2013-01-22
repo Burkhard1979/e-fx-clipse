@@ -5458,11 +5458,11 @@ protected class CSSRuleLiteral_ValueAssignment_2 extends AssignmentToken  {
 /************ begin Rule CSSRuleSymbol ****************
  *
  * CSSRuleSymbol returns CSSRule:
- * 	{CSSRuleSymbol} symbol=("," | "%");
+ * 	{CSSRuleSymbol} (doku=Doku WS*)? symbol=("," | "%");
  *
  **/
 
-// {CSSRuleSymbol} symbol=("," | "%")
+// {CSSRuleSymbol} (doku=Doku WS*)? symbol=("," | "%")
 protected class CSSRuleSymbol_Group extends GroupToken {
 	
 	public CSSRuleSymbol_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5477,7 +5477,7 @@ protected class CSSRuleSymbol_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleSymbol_SymbolAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new CSSRuleSymbol_SymbolAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -5517,22 +5517,92 @@ protected class CSSRuleSymbol_CSSRuleSymbolAction_0 extends ActionToken  {
 	}
 }
 
-// symbol=("," | "%")
-protected class CSSRuleSymbol_SymbolAssignment_1 extends AssignmentToken  {
+// (doku=Doku WS*)?
+protected class CSSRuleSymbol_Group_1 extends GroupToken {
 	
-	public CSSRuleSymbol_SymbolAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public CSSRuleSymbol_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_1();
+	public Group getGrammarElement() {
+		return grammarAccess.getCSSRuleSymbolAccess().getGroup_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new CSSRuleSymbol_CSSRuleSymbolAction_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new CSSRuleSymbol_DokuAssignment_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// doku=Doku
+protected class CSSRuleSymbol_DokuAssignment_1_0 extends AssignmentToken  {
+	
+	public CSSRuleSymbol_DokuAssignment_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getCSSRuleSymbolAccess().getDokuAssignment_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Doku_ContentAssignment(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("doku",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("doku");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getDokuRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getCSSRuleSymbolAccess().getDokuDokuParserRuleCall_1_0_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new CSSRuleSymbol_CSSRuleSymbolAction_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+// symbol=("," | "%")
+protected class CSSRuleSymbol_SymbolAssignment_2 extends AssignmentToken  {
+	
+	public CSSRuleSymbol_SymbolAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new CSSRuleSymbol_Group_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new CSSRuleSymbol_CSSRuleSymbolAction_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -5541,14 +5611,14 @@ protected class CSSRuleSymbol_SymbolAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("symbol",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("symbol");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_2_0_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0();
+			element = grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_2_0_0();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_2_0_1(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1();
+			element = grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_2_0_1();
 			return obj;
 		}
 		return null;

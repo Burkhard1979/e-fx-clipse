@@ -177,7 +177,7 @@ CSSRuleLiteral returns CSSRule:
 ;
 
 CSSRuleSymbol returns CSSRule:
-	{CSSRuleSymbol} symbol=(','|'%')
+	{CSSRuleSymbol} (doku=Doku WS*)? symbol=(','|'%')
 ;
 
 CSSDefaultValue:

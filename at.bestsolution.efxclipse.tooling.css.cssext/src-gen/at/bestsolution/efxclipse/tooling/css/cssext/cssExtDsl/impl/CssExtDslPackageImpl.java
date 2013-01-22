@@ -1180,9 +1180,19 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getCSSRuleSymbol_Doku()
+  {
+    return (EReference)cssRuleSymbolEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getCSSRuleSymbol_Symbol()
   {
-    return (EAttribute)cssRuleSymbolEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)cssRuleSymbolEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1329,6 +1339,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     createEAttribute(cssRuleLiteralEClass, CSS_RULE_LITERAL__VALUE);
 
     cssRuleSymbolEClass = createEClass(CSS_RULE_SYMBOL);
+    createEReference(cssRuleSymbolEClass, CSS_RULE_SYMBOL__DOKU);
     createEAttribute(cssRuleSymbolEClass, CSS_RULE_SYMBOL__SYMBOL);
   }
 
@@ -1494,6 +1505,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     initEAttribute(getCSSRuleLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, CSSRuleLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cssRuleSymbolEClass, CSSRuleSymbol.class, "CSSRuleSymbol", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCSSRuleSymbol_Doku(), this.getDoku(), null, "doku", null, 0, 1, CSSRuleSymbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCSSRuleSymbol_Symbol(), ecorePackage.getEString(), "symbol", null, 0, 1, CSSRuleSymbol.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource

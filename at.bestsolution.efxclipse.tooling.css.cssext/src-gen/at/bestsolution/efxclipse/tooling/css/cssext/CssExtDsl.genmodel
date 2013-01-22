@@ -121,6 +121,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSRuleLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//CSSRuleSymbol">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CssExtDsl.ecore#//CSSRuleSymbol/doku"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSRuleSymbol/symbol"/>
     </genClasses>
   </genPackages>

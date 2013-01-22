@@ -44,7 +44,7 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCSSRuleDefinitionAccess().getAlternatives_4(), "rule__CSSRuleDefinition__Alternatives_4");
 					put(grammarAccess.getCSSRulePostfixAccess().getCardinalityAlternatives_1_1_0(), "rule__CSSRulePostfix__CardinalityAlternatives_1_1_0");
 					put(grammarAccess.getCSSRulePrimaryAccess().getAlternatives(), "rule__CSSRulePrimary__Alternatives");
-					put(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0(), "rule__CSSRuleSymbol__SymbolAlternatives_1_0");
+					put(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_2_0(), "rule__CSSRuleSymbol__SymbolAlternatives_2_0");
 					put(grammarAccess.getCSSDefaultValueAccess().getAlternatives(), "rule__CSSDefaultValue__Alternatives");
 					put(grammarAccess.getCssExtensionAccess().getGroup(), "rule__CssExtension__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
@@ -94,6 +94,7 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCSSRuleLiteralAccess().getGroup(), "rule__CSSRuleLiteral__Group__0");
 					put(grammarAccess.getCSSRuleLiteralAccess().getGroup_1(), "rule__CSSRuleLiteral__Group_1__0");
 					put(grammarAccess.getCSSRuleSymbolAccess().getGroup(), "rule__CSSRuleSymbol__Group__0");
+					put(grammarAccess.getCSSRuleSymbolAccess().getGroup_1(), "rule__CSSRuleSymbol__Group_1__0");
 					put(grammarAccess.getCSSDefaultValueAccess().getGroup_0(), "rule__CSSDefaultValue__Group_0__0");
 					put(grammarAccess.getSubstructureSelectorAccess().getGroup(), "rule__SubstructureSelector__Group__0");
 					put(grammarAccess.getSubstructureSelectorAccess().getGroup_2(), "rule__SubstructureSelector__Group_2__0");
@@ -154,7 +155,8 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCSSRuleRegexAccess().getRegexAssignment_1(), "rule__CSSRuleRegex__RegexAssignment_1");
 					put(grammarAccess.getCSSRuleLiteralAccess().getDokuAssignment_1_0(), "rule__CSSRuleLiteral__DokuAssignment_1_0");
 					put(grammarAccess.getCSSRuleLiteralAccess().getValueAssignment_2(), "rule__CSSRuleLiteral__ValueAssignment_2");
-					put(grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_1(), "rule__CSSRuleSymbol__SymbolAssignment_1");
+					put(grammarAccess.getCSSRuleSymbolAccess().getDokuAssignment_1_0(), "rule__CSSRuleSymbol__DokuAssignment_1_0");
+					put(grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_2(), "rule__CSSRuleSymbol__SymbolAssignment_2");
 					put(grammarAccess.getCSSDefaultValueAccess().getValAssignment_0_1(), "rule__CSSDefaultValue__ValAssignment_0_1");
 					put(grammarAccess.getCSSDefaultValueAccess().getIvalAssignment_1(), "rule__CSSDefaultValue__IvalAssignment_1");
 					put(grammarAccess.getCSSDefaultValueAccess().getDvalAssignment_2(), "rule__CSSDefaultValue__DvalAssignment_2");

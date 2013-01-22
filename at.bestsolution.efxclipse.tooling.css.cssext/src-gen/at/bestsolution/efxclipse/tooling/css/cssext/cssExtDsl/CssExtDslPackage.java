@@ -1202,13 +1202,22 @@ public interface CssExtDslPackage extends EPackage
   int CSS_RULE_SYMBOL = 28;
 
   /**
+   * The feature id for the '<em><b>Doku</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CSS_RULE_SYMBOL__DOKU = CSS_RULE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Symbol</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CSS_RULE_SYMBOL__SYMBOL = CSS_RULE_FEATURE_COUNT + 0;
+  int CSS_RULE_SYMBOL__SYMBOL = CSS_RULE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>CSS Rule Symbol</em>' class.
@@ -1217,7 +1226,7 @@ public interface CssExtDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CSS_RULE_SYMBOL_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 1;
+  int CSS_RULE_SYMBOL_FEATURE_COUNT = CSS_RULE_FEATURE_COUNT + 2;
 
 
   /**
@@ -2138,6 +2147,17 @@ public interface CssExtDslPackage extends EPackage
   EClass getCSSRuleSymbol();
 
   /**
+   * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol#getDoku <em>Doku</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Doku</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol#getDoku()
+   * @see #getCSSRuleSymbol()
+   * @generated
+   */
+  EReference getCSSRuleSymbol_Doku();
+
+  /**
    * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol#getSymbol <em>Symbol</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2916,6 +2936,14 @@ public interface CssExtDslPackage extends EPackage
      * @generated
      */
     EClass CSS_RULE_SYMBOL = eINSTANCE.getCSSRuleSymbol();
+
+    /**
+     * The meta object literal for the '<em><b>Doku</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CSS_RULE_SYMBOL__DOKU = eINSTANCE.getCSSRuleSymbol_Doku();
 
     /**
      * The meta object literal for the '<em><b>Symbol</b></em>' attribute feature.

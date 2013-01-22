@@ -1234,32 +1234,48 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CSSRuleSymbol");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cCSSRuleSymbolAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cSymbolAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cSymbolAlternatives_1_0 = (Alternatives)cSymbolAssignment_1.eContents().get(0);
-		private final Keyword cSymbolCommaKeyword_1_0_0 = (Keyword)cSymbolAlternatives_1_0.eContents().get(0);
-		private final Keyword cSymbolPercentSignKeyword_1_0_1 = (Keyword)cSymbolAlternatives_1_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cDokuAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cDokuDokuParserRuleCall_1_0_0 = (RuleCall)cDokuAssignment_1_0.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Assignment cSymbolAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cSymbolAlternatives_2_0 = (Alternatives)cSymbolAssignment_2.eContents().get(0);
+		private final Keyword cSymbolCommaKeyword_2_0_0 = (Keyword)cSymbolAlternatives_2_0.eContents().get(0);
+		private final Keyword cSymbolPercentSignKeyword_2_0_1 = (Keyword)cSymbolAlternatives_2_0.eContents().get(1);
 		
 		//CSSRuleSymbol returns CSSRule:
-		//	{CSSRuleSymbol} symbol=("," | "%");
+		//	{CSSRuleSymbol} (doku=Doku WS*)? symbol=("," | "%");
 		public ParserRule getRule() { return rule; }
 
-		//{CSSRuleSymbol} symbol=("," | "%")
+		//{CSSRuleSymbol} (doku=Doku WS*)? symbol=("," | "%")
 		public Group getGroup() { return cGroup; }
 
 		//{CSSRuleSymbol}
 		public Action getCSSRuleSymbolAction_0() { return cCSSRuleSymbolAction_0; }
 
+		//(doku=Doku WS*)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//doku=Doku
+		public Assignment getDokuAssignment_1_0() { return cDokuAssignment_1_0; }
+
+		//Doku
+		public RuleCall getDokuDokuParserRuleCall_1_0_0() { return cDokuDokuParserRuleCall_1_0_0; }
+
+		//WS*
+		public RuleCall getWSTerminalRuleCall_1_1() { return cWSTerminalRuleCall_1_1; }
+
 		//symbol=("," | "%")
-		public Assignment getSymbolAssignment_1() { return cSymbolAssignment_1; }
+		public Assignment getSymbolAssignment_2() { return cSymbolAssignment_2; }
 
 		//"," | "%"
-		public Alternatives getSymbolAlternatives_1_0() { return cSymbolAlternatives_1_0; }
+		public Alternatives getSymbolAlternatives_2_0() { return cSymbolAlternatives_2_0; }
 
 		//","
-		public Keyword getSymbolCommaKeyword_1_0_0() { return cSymbolCommaKeyword_1_0_0; }
+		public Keyword getSymbolCommaKeyword_2_0_0() { return cSymbolCommaKeyword_2_0_0; }
 
 		//"%"
-		public Keyword getSymbolPercentSignKeyword_1_0_1() { return cSymbolPercentSignKeyword_1_0_1; }
+		public Keyword getSymbolPercentSignKeyword_2_0_1() { return cSymbolPercentSignKeyword_2_0_1; }
 	}
 
 	public class CSSDefaultValueElements extends AbstractParserRuleElementFinder {
@@ -1834,7 +1850,7 @@ public class CssExtDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CSSRuleSymbol returns CSSRule:
-	//	{CSSRuleSymbol} symbol=("," | "%");
+	//	{CSSRuleSymbol} (doku=Doku WS*)? symbol=("," | "%");
 	public CSSRuleSymbolElements getCSSRuleSymbolAccess() {
 		return (pCSSRuleSymbol != null) ? pCSSRuleSymbol : (pCSSRuleSymbol = new CSSRuleSymbolElements());
 	}

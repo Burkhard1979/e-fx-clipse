@@ -2154,31 +2154,53 @@ ruleCSSRuleSymbol returns [EObject current=null]
             grammarAccess.getCSSRuleSymbolAccess().getCSSRuleSymbolAction_0(),
             $current);
     }
-)(
+)((
 (
-(
-		lv_symbol_1_1=	',' 
-    {
-        newLeafNode(lv_symbol_1_1, grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0());
-    }
- 
-	    {
+		{ 
+	        newCompositeNode(grammarAccess.getCSSRuleSymbolAccess().getDokuDokuParserRuleCall_1_0_0()); 
+	    }
+		lv_doku_1_0=ruleDoku		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getCSSRuleSymbolRule());
+	            $current = createModelElementForParent(grammarAccess.getCSSRuleSymbolRule());
 	        }
-       		setWithLastConsumed($current, "symbol", lv_symbol_1_1, null);
+       		set(
+       			$current, 
+       			"doku",
+        		lv_doku_1_0, 
+        		"Doku");
+	        afterParserOrEnumRuleCall();
 	    }
 
-    |		lv_symbol_1_2=	'%' 
+)
+)(this_WS_2=RULE_WS
+    { 
+    newLeafNode(this_WS_2, grammarAccess.getCSSRuleSymbolAccess().getWSTerminalRuleCall_1_1()); 
+    }
+)*)?(
+(
+(
+		lv_symbol_3_1=	',' 
     {
-        newLeafNode(lv_symbol_1_2, grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1());
+        newLeafNode(lv_symbol_3_1, grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_2_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getCSSRuleSymbolRule());
 	        }
-       		setWithLastConsumed($current, "symbol", lv_symbol_1_2, null);
+       		setWithLastConsumed($current, "symbol", lv_symbol_3_1, null);
+	    }
+
+    |		lv_symbol_3_2=	'%' 
+    {
+        newLeafNode(lv_symbol_3_2, grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_2_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCSSRuleSymbolRule());
+	        }
+       		setWithLastConsumed($current, "symbol", lv_symbol_3_2, null);
 	    }
 
 )

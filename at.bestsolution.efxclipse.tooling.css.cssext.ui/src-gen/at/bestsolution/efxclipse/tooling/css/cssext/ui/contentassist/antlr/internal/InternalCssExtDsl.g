@@ -1208,25 +1208,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__CSSRuleSymbol__SymbolAlternatives_1_0
+rule__CSSRuleSymbol__SymbolAlternatives_2_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0()); }
+{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_2_0_0()); }
 
 	',' 
 
-{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_1_0_0()); }
+{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolCommaKeyword_2_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1()); }
+{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_2_0_1()); }
 
 	'%' 
 
-{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_1_0_1()); }
+{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolPercentSignKeyword_2_0_1()); }
 )
 
 ;
@@ -5815,6 +5815,7 @@ rule__CSSRuleSymbol__Group__1
     }
 :
 	rule__CSSRuleSymbol__Group__1__Impl
+	rule__CSSRuleSymbol__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -5826,9 +5827,100 @@ rule__CSSRuleSymbol__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_1()); }
-(rule__CSSRuleSymbol__SymbolAssignment_1)
-{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_1()); }
+{ before(grammarAccess.getCSSRuleSymbolAccess().getGroup_1()); }
+(rule__CSSRuleSymbol__Group_1__0)?
+{ after(grammarAccess.getCSSRuleSymbolAccess().getGroup_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CSSRuleSymbol__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CSSRuleSymbol__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CSSRuleSymbol__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_2()); }
+(rule__CSSRuleSymbol__SymbolAssignment_2)
+{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolAssignment_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CSSRuleSymbol__Group_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CSSRuleSymbol__Group_1__0__Impl
+	rule__CSSRuleSymbol__Group_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CSSRuleSymbol__Group_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCSSRuleSymbolAccess().getDokuAssignment_1_0()); }
+(rule__CSSRuleSymbol__DokuAssignment_1_0)
+{ after(grammarAccess.getCSSRuleSymbolAccess().getDokuAssignment_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CSSRuleSymbol__Group_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CSSRuleSymbol__Group_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CSSRuleSymbol__Group_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCSSRuleSymbolAccess().getWSTerminalRuleCall_1_1()); }
+(	RULE_WS)*
+{ after(grammarAccess.getCSSRuleSymbolAccess().getWSTerminalRuleCall_1_1()); }
 )
 
 ;
@@ -7430,15 +7522,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__CSSRuleSymbol__SymbolAssignment_1
+rule__CSSRuleSymbol__DokuAssignment_1_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0()); }
-(rule__CSSRuleSymbol__SymbolAlternatives_1_0)
-{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_1_0()); }
+{ before(grammarAccess.getCSSRuleSymbolAccess().getDokuDokuParserRuleCall_1_0_0()); }
+	ruleDoku{ after(grammarAccess.getCSSRuleSymbolAccess().getDokuDokuParserRuleCall_1_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CSSRuleSymbol__SymbolAssignment_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_2_0()); }
+(rule__CSSRuleSymbol__SymbolAlternatives_2_0)
+{ after(grammarAccess.getCSSRuleSymbolAccess().getSymbolAlternatives_2_0()); }
 )
 
 ;
