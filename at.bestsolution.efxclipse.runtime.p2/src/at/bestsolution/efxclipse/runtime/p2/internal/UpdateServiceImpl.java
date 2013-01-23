@@ -78,31 +78,28 @@ public class UpdateServiceImpl implements UpdateService {
 			@Override
 			public void done(IJobChangeEvent event) {
 				IStatus s = event.getResult();
-				State state = State.OK;
-				
-				switch (s.getSeverity()) {
-				case IStatus.CANCEL:
-					state = State.CANCEL;
-					break;
-				case IStatus.ERROR:
-					state = State.ERROR;
-					break;
-				case IStatus.WARNING:
-					state = State.WARNING;
-					break;
-				default:
-					state = State.OK;
-					break;
-				}
-				
+				State state = fromStatus(s);
 				callback.call(new P2UpdateRV(state, s.getMessage(), State.OK == state, s.getException()));
 			}
 		});
 		job.schedule();
 	}
+	
+	private State fromStatus(IStatus s) {
+		switch (s.getSeverity()) {
+		case IStatus.CANCEL:
+			return State.CANCEL;
+		case IStatus.ERROR:
+			return State.ERROR;
+		case IStatus.WARNING:
+			return State.WARNING;
+		default:
+			return State.OK;
+		}
+	}
 
 	@Override
-	public void checkUpdate(Callback<UpdateCheckData> callback) {
+	public void checkUpdate(final Callback<UpdateCheckData> callback) {
 		try {
 			IProvisioningAgent agent = getProvisioningAgent();
 			final ProvisioningSession session = new ProvisioningSession(agent);
@@ -111,12 +108,15 @@ public class UpdateServiceImpl implements UpdateService {
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					UpdateOperation o = new UpdateOperation(session);
-					o.resolveModal(monitor);
+					IStatus s = o.resolveModal(monitor);
+					State state = fromStatus(s);
+					callback.call(new P2UpdateCheckRV(o, state, s.getMessage(), state == State.OK,s.getException()));
 					return Status.OK_STATUS;
 				}
 			};
 			o.schedule();
 		} catch (ProvisionException e) {
+			getLogger().error(e.getMessage(), e);
 			callback.call(new P2UpdateCheckRV(null, State.ERROR,"Failure while try to collect updateable units", null, e));
 		}
 	}
