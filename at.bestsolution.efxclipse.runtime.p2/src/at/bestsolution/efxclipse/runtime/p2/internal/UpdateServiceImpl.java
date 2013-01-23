@@ -271,4 +271,12 @@ public class UpdateServiceImpl implements UpdateService {
 //			return QueryUtil.compoundQueryable(metadataReposList);
 //		}
 //	}
+//	private Collection<IInstallableUnit> getInstalledIUs() {
+//		IProfile profile = session.getProfileRegistry().getProfile(profileId);
+//		if (profile == null)
+//			return CollectionUtils.emptyList();
+//		IQuery<IInstallableUnit> query = new UserVisibleRootQuery();
+//		IQueryResult<IInstallableUnit> queryResult = profile.query(query, null);
+//		return queryResult.toUnmodifiableSet();
+//	}
 }
