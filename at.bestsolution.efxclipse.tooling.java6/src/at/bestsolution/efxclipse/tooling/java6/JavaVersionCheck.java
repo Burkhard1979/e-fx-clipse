@@ -10,7 +10,7 @@ public class JavaVersionCheck implements IStartup {
 
 	@Override
 	public void earlyStartup() {
-		Version minVersion = new Version("1.8.0");
+		Version minVersion = new Version("1.7.0");
 		Version realVersion = new Version(System.getProperty("org.osgi.framework.version")); 
 		
 		if(minVersion.compareTo(realVersion) == 1 ) {
