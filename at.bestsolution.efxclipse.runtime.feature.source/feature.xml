@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.bestsolution.efxclipse.runtime.feature.source"
-      label="Source"
+      label="e(fx)clipse - Composite - FX Runtime - Source - (do not install)"
       version="0.8.0.qualifier"
       provider-name="BestSolution.at">
 
@@ -16,7 +16,7 @@
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
-   
+
    <requires>
       <import feature="at.bestsolution.efxclipse.runtime.osgi.feature"/>
    </requires>
