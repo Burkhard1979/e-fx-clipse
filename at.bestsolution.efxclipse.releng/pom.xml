@@ -105,6 +105,9 @@
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.p2.feature</module>
+		
+		<module>../at.bestsolution.efxclipse.runtime.feature.source</module>
+		
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		
 	</modules>
@@ -225,7 +228,7 @@
 				<plugin>
 					<groupId>org.eclipse.tycho.extras</groupId>
 					<artifactId>tycho-source-feature-plugin</artifactId>
-					<version>${tycho-version}</version>
+					<!--  version>${tycho-version}</version-->
 					<executions>
 						<execution>
 							<id>source-feature</id>
