@@ -29,6 +29,7 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.packageadmin.PackageAdmin;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
+import at.bestsolution.efxclipse.runtime.osgi.util.LoggerCreator;
 
 @SuppressWarnings({ "restriction", "deprecation" })
 public class DIApplication extends AbstractJFXApplication implements IExecutableExtension {

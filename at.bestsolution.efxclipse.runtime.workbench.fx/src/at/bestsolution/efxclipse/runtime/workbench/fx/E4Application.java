@@ -73,7 +73,7 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
-import at.bestsolution.efxclipse.runtime.di.LoggerCreator;
+import at.bestsolution.efxclipse.runtime.osgi.util.LoggerCreator;
 import at.bestsolution.efxclipse.runtime.workbench.fx.internal.LoggerProviderImpl;
 import at.bestsolution.efxclipse.runtime.workbench.fx.internal.WorkbenchJFXActivator;
 

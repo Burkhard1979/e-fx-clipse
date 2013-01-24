@@ -8,7 +8,7 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.runtime.di;
+package at.bestsolution.efxclipse.runtime.osgi.util;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
