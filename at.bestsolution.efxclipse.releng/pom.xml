@@ -216,7 +216,6 @@
 					<executions>
 						<execution>
 							<id>plugin-source</id>
-							<phase>package</phase>
 							<goals>
 								<goal>plugin-source</goal>
 							</goals>
@@ -224,7 +223,7 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
+					<groupId>org.eclipse.tycho.extras</groupId>
 					<artifactId>tycho-source-feature-plugin</artifactId>
 					<version>${tycho-version}</version>
 					<executions>
