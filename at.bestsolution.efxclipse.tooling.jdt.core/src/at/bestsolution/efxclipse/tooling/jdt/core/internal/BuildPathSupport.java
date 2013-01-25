@@ -107,7 +107,13 @@ public class BuildPathSupport {
 		}
 		
 		antJarLocationPath = new Path(installDir.getParent()).append("lib").append("ant-javafx.jar");
-
+		
+		sourceLocationPath = new Path(installDir.getAbsolutePath()).append("javafx-src.zip");
+		
+		if( ! sourceLocationPath.toFile().exists() ) {
+			sourceLocationPath = null;
+		}
+		
 		return new IPath[] { jarLocationPath, javadocLocation, antJarLocationPath, sourceLocationPath };
 	}
 }
