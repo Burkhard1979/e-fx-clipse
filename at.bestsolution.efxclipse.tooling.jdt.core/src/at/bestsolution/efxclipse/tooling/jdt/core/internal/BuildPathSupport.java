@@ -76,25 +76,37 @@ public class BuildPathSupport {
 		IPath antJarLocationPath = null;
 		IPath sourceLocationPath = null;
 		
-			File installDir = i.getInstallLocation();
+		File installDir = i.getInstallLocation();
 			
-			jarLocationPath = new Path(installDir.getAbsolutePath()).append("jre").append("lib").append("jfxrt.jar");
-			// Could be a simple JRE => we don't look into the jre-folder
-			if( ! jarLocationPath.toFile().exists() ) {
-				IPath p = new Path(installDir.getAbsolutePath()).append("lib").append("jfxrt.jar");
-				if( p.toFile().exists() ) {
-					jarLocationPath = p;
-				}
-			}
-			javadocLocation = new Path(installDir.getParentFile().getAbsolutePath()).append("docs").append("api"); //TODO Not shipped yet
-			if( ! javadocLocation.toFile().exists() ) {
-				IPath p = new Path(System.getProperty("user.home")).append("javafx-api-"+ i.getName()).append("docs").append("api");
-				if( p.toFile().exists() ) {
-					javadocLocation = p;
-				}
-			}
+		IPath[] checkPaths = {
+			// Java 8 (maybe Java7 one day)
+			new Path(installDir.getAbsolutePath()).append("jre").append("lib").append("ext").append("jfxrt.jar"),
+			new Path(installDir.getAbsolutePath()).append("lib").append("ext").append("jfxrt.jar"), // JRE
 			
-			antJarLocationPath = new Path(installDir.getParent()).append("lib").append("ant-javafx.jar");
+			// Java 7
+			new Path(installDir.getAbsolutePath()).append("jre").append("lib").append("jfxrt.jar"),
+			new Path(installDir.getAbsolutePath()).append("lib").append("jfxrt.jar") // JRE
+			
+		};
+		
+		jarLocationPath = checkPaths[0];
+		
+		for( IPath p : checkPaths ) {
+			if( p.toFile().exists() ) {
+				jarLocationPath = p;
+				break;
+			}
+		}
+		
+		javadocLocation = new Path(installDir.getParentFile().getAbsolutePath()).append("docs").append("api"); //TODO Not shipped yet
+		if( ! javadocLocation.toFile().exists() ) {
+			IPath p = new Path(System.getProperty("user.home")).append("javafx-api-"+ i.getName()).append("docs").append("api");
+			if( p.toFile().exists() ) {
+				javadocLocation = p;
+			}
+		}
+		
+		antJarLocationPath = new Path(installDir.getParent()).append("lib").append("ant-javafx.jar");
 
 		return new IPath[] { jarLocationPath, javadocLocation, antJarLocationPath, sourceLocationPath };
 	}
