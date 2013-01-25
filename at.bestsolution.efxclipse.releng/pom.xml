@@ -106,6 +106,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.p2.feature</module>
 		
+		<module>../at.bestsolution.efxclipse.runtime.osgi.feature.source</module>
 		<module>../at.bestsolution.efxclipse.runtime.feature.source</module>
 		
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>

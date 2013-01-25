@@ -18,7 +18,7 @@
    </license>
 
    <requires>
-      <import feature="at.bestsolution.efxclipse.runtime.osgi.feature"/>
+      <import feature="at.bestsolution.efxclipse.runtime.osgi.feature.source"/>
    </requires>
 
    <plugin

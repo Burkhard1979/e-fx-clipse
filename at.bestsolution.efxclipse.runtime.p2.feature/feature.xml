@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="at.bestsolution.efxclipse.runtime.p2.feature"
-      label="P2 Update Feature"
+      label="e(fx)clipse - Single - p2 update"
       version="0.8.0.qualifier">
 
    <description url="http://www.example.com/description">
