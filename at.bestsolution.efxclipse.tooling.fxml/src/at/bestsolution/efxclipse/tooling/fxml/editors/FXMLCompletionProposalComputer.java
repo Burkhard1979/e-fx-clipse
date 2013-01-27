@@ -11,8 +11,10 @@
 package at.bestsolution.efxclipse.tooling.fxml.editors;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.Vector;
 
 import org.eclipse.core.internal.registry.osgi.Activator;
@@ -164,9 +166,16 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 	protected void addAttributeNameProposals(ContentAssistRequest contentAssistRequest, CompletionProposalInvocationContext context) {
 		String typeName = null;
 		Node parent = contentAssistRequest.getParent();
+		Set<String> existingAttributes = new HashSet<>();
 		if (parent.getNodeType() == Node.ELEMENT_NODE) {
 			typeName = parent.getNodeName();
+			Element e = (Element) parent;
+			for( int i = 0; i < e.getAttributes().getLength(); i++ ) {
+				existingAttributes.add(e.getAttributes().item(i).getNodeName());
+			}
 		}
+		
+		System.err.println(existingAttributes);
 
 		if( "fx:root".equals(typeName) ) {
 			typeName = parent.getAttributes().getNamedItem("type").getNodeValue();
@@ -194,7 +203,9 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				}
 				
 				for (IFXProperty property : fxClass.getAllProperties().values()) {
-					createAttributeNameProposal(contentAssistRequest, context, property);
+					if( ! existingAttributes.contains(property.getName()) ) {
+						createAttributeNameProposal(contentAssistRequest, context, property);	
+					}
 				}
 
 				if (parent.getParentNode() != null) {
@@ -220,7 +231,9 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							IFXClass fxclass = FXPlugin.getClassmodel().findClass(type.getJavaProject(), containerType);
 							if (fxclass != null) {
 								for (IFXProperty property : fxclass.getAllStaticProperties().values()) {
-									createAttributeNameProposal(contentAssistRequest, context, property);
+									if( ! existingAttributes.contains(property.getFXClass().getSimpleName() + "." +property.getName()) ) {
+										createAttributeNameProposal(contentAssistRequest, context, property);	
+									}
 								}
 							}
 						}
