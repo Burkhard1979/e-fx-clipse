@@ -24,8 +24,8 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
  */
 public interface CssExt {
 
-	public List<Proposal> getPropertyProposalsForSelector(selector selector);
-	public List<Proposal> getValueProposalsForProperty(selector selector, css_property property, List<CssTok> prefixTok, String prefixString);
+	public List<Proposal> getPropertyProposalsForSelector(List<selector> selector);
+	public List<Proposal> getValueProposalsForProperty(List<selector> selector, css_property property, List<CssTok> prefixTok, String prefixString);
 	
 	public String getDocumentationHeader(EObject obj);
 	public String getDocumentation(EObject obj);
