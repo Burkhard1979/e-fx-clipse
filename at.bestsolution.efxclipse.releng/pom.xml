@@ -108,8 +108,8 @@
 		<module>../at.bestsolution.efxclipse.runtime.osgi.feature.source</module>
 		<module>../at.bestsolution.efxclipse.runtime.feature.source</module>
 		<module>../at.bestsolution.efxclipse.runtime.e3.feature.source</module>
-		<module>../at.bestsolution.efxclipse.runtime.emf.feature</module>
-		<module>../at.bestsolution.efxclipse.runtime.jemmy.junit.feature</module>
+		<module>../at.bestsolution.efxclipse.runtime.emf.feature.source</module>
+		<module>../at.bestsolution.efxclipse.runtime.jemmy.junit.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.convert.feature.source</module>
 		
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
