@@ -214,10 +214,10 @@ public class ColorValueOfContributor implements IValueOfContributor {
 	private static List<Proposal> FUNCTION_COLOR = new ArrayList<>();
 	
 	{
-		FUNCTION_COLOR.add(new SimpleValueProposal("rgb(red,green,blue)"));
-		FUNCTION_COLOR.add(new SimpleValueProposal("rgba(red,green,blue,alpha)"));
-		FUNCTION_COLOR.add(new SimpleValueProposal("hsb(hue,saturation,brightness)"));
-		FUNCTION_COLOR.add(new SimpleValueProposal("hsba(hue,saturation,brightness,alpha)"));
+		FUNCTION_COLOR.add(new SimpleValueProposal("rgb(red,green,blue)",1));
+		FUNCTION_COLOR.add(new SimpleValueProposal("rgba(red,green,blue,alpha)",1));
+		FUNCTION_COLOR.add(new SimpleValueProposal("hsb(hue,saturation,brightness)",1));
+		FUNCTION_COLOR.add(new SimpleValueProposal("hsba(hue,saturation,brightness,alpha)",1));
 	}
 	
 	@Override
@@ -228,6 +228,11 @@ public class ColorValueOfContributor implements IValueOfContributor {
 			@Override
 			public String getValue() {
 				return "Pick color ...";
+			}
+			
+			@Override
+			public int getPriority() {
+				return 2;
 			}
 			
 			@Override

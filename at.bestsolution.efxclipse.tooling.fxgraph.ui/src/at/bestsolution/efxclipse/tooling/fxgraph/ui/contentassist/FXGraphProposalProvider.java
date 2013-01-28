@@ -737,10 +737,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 				
 				for( IValueOfContributor contrib : valueOfCollector.getContributors(prop.getElementTypeAsString(true)) ) {
 					for( Proposal vProp : contrib.getProposals() ) {
-						int prio = getPriorityHelper().getDefaultPriority() + 2;
-						if( vProp instanceof DialogProposal ) {
-							prio += 1;
-						}
+						int prio = getPriorityHelper().getDefaultPriority()  + vProp.getPriority() + 2;
 						p = createCompletionProposal("\""+vProp.getValue()+"\"", new StyledString(vProp.getValue()), IconKeys.getIcon(IconKeys.VALUE_OF_KEY),prio , "\""+context.getPrefix(), context);
 						
 						if( p instanceof ConfigurableCompletionProposal ) {

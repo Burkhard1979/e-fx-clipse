@@ -1039,7 +1039,7 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				for( Proposal vProp : c.getProposals() ) {
 					FXMLCompletionProposal cp = createProposal(contentAssistRequest, context, "\"" +vProp.getValue(), new StyledString(vProp.getValue()), IconKeys.getIcon(IconKeys.VALUE_OF_KEY), ATTRIBUTE_MATCHER);
 					if (cp != null) {
-						cp.setPriority(cp.getPriority()+1);
+						cp.setPriority(cp.getPriority() + vProp.getPriority() + 1);
 						if( vProp instanceof DialogProposal ) {
 							final DialogProposal dProp = (DialogProposal) vProp;
 							cp.setTextApplier(new ReplacementTextApplier() {
