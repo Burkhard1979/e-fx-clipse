@@ -116,13 +116,6 @@
          unpack="false"/>
 
    <plugin
-         id="at.bestsolution.efxclipse.runtime.events"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="at.bestsolution.efxclipse.runtime.guice"
          download-size="0"
          install-size="0"
@@ -326,13 +319,6 @@
 
    <plugin
          id="at.bestsolution.efxclipse.runtime.emf.edit.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.runtime.events.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
