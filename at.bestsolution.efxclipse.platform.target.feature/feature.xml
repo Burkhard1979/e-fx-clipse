@@ -67,27 +67,6 @@
          unpack="false"/>
 
    <plugin
-         id="at.bestsolution.efxclipse.runtime.demo.contacts"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.runtime.demo.contacts.app"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.runtime.demo.contacts.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="at.bestsolution.efxclipse.runtime.di"
          download-size="0"
          install-size="0"
@@ -263,27 +242,6 @@
 
    <plugin
          id="at.bestsolution.efxclipse.runtime.databinding.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.runtime.demo.contacts.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.runtime.demo.contacts.app.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.runtime.demo.contacts.edit.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
