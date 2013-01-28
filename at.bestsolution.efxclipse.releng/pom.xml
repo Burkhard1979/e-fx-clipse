@@ -115,6 +115,7 @@
 		<module>../at.bestsolution.efxclipse.tooling.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxgraph.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxml.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.jdt.feature.source</module>
 		
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		
