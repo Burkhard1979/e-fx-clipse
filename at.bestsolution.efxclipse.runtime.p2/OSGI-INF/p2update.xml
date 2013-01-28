@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.runtime.p2.p2update">
+   <implementation class="at.bestsolution.efxclipse.runtime.p2.internal.UpdateServiceImpl"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.runtime.core.update.UpdateService"/>
+   </service>
+   <reference bind="setLoggerFactory" cardinality="0..1" interface="at.bestsolution.efxclipse.runtime.core.log.LoggerFactory" name="LoggerFactory" policy="static" unbind="unsetLoggerFactory"/>
+</scr:component>

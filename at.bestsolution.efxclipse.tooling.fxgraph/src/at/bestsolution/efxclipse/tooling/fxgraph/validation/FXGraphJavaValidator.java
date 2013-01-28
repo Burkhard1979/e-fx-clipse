@@ -31,6 +31,7 @@ import org.eclipse.xtext.validation.Check;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ComponentDefinition;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.ControllerHandledValueProperty;
+import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Define;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Element;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.FXGraphPackage;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Import;
@@ -137,7 +138,10 @@ public class FXGraphJavaValidator extends AbstractFXGraphJavaValidator {
 				if( fxClazz != null ) {
 					IFXCtrlField f = fxClazz.getAllFields().get(element.getName());
 					if( f == null ) {
-						warning("The controller '"+type.getElementName()+"' has no field '"+element.getName()+"'", FXGraphPackage.Literals.ELEMENT__NAME, UNKNOWN_CONTROLLER_FIELD, element.getName(), controller.getQualifiedName(), element.getType().getQualifiedName());
+						// Defines should not lead to a warning because it is referenced later on
+						if( !(element.eContainer() instanceof Define) ) {
+							warning("The controller '"+type.getElementName()+"' has no field '"+element.getName()+"'", FXGraphPackage.Literals.ELEMENT__NAME, UNKNOWN_CONTROLLER_FIELD, element.getName(), controller.getQualifiedName(), element.getType().getQualifiedName());							
+						}
 					} else {
 						IType fromType = javaProject.findType(element.getType().getQualifiedName());
 						IType toType = f.getType();

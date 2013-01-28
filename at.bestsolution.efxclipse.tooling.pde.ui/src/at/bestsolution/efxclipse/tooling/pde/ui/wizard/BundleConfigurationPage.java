@@ -183,7 +183,7 @@ public class BundleConfigurationPage extends WizardPage {
 		eeChoice.setItems((String[]) availableEEs.toArray(new String[availableEEs.size() - 1]));
 		eeChoice.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				// validatePage();
+				validate();
 			}
 		});
 
@@ -193,6 +193,7 @@ public class BundleConfigurationPage extends WizardPage {
 		for (int i = 0; i < EEChoices.length; i++) {
 			if (JavaRuntime.getExecutionEnvironmentsManager().getEnvironment(EEChoices[i]).isStrictlyCompatible(defaultVM)) {
 				eeChoice.select(i);
+				validate();
 				break;
 			}
 		}

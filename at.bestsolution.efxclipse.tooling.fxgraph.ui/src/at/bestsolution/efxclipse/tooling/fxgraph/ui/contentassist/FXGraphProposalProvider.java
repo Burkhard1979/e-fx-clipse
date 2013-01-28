@@ -57,6 +57,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
+import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
 
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.BindValueProperty;
@@ -84,6 +85,10 @@ import at.bestsolution.efxclipse.tooling.model.IFXPrimitiveProperty;
 import at.bestsolution.efxclipse.tooling.model.IFXPrimitiveProperty.Type;
 import at.bestsolution.efxclipse.tooling.model.IFXProperty;
 import at.bestsolution.efxclipse.tooling.model.Util;
+import at.bestsolution.efxclipse.tooling.ui.editor.IValueOfContributor;
+import at.bestsolution.efxclipse.tooling.ui.editor.IValueOfContributor.DialogProposal;
+import at.bestsolution.efxclipse.tooling.ui.editor.IValueOfContributor.Proposal;
+import at.bestsolution.efxclipse.tooling.ui.editor.ValueOfContributionCollector;
 import at.bestsolution.efxclipse.tooling.ui.util.IconKeys;
 import at.bestsolution.efxclipse.tooling.ui.util.RelativeFileLocator;
 
@@ -109,6 +114,9 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 
 	@Inject
 	private IJavaProjectProvider projectProvider;
+	
+	@Inject
+	private ValueOfContributionCollector valueOfCollector;
 	
 	static class StaticPrefixMatcher extends PrefixMatcher {
 		private final PrefixMatcher original;
@@ -726,6 +734,29 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 				}
 				
 				acceptor.accept(p);
+				
+				for( IValueOfContributor contrib : valueOfCollector.getContributors(prop.getElementTypeAsString(true)) ) {
+					for( Proposal vProp : contrib.getProposals() ) {
+						int prio = getPriorityHelper().getDefaultPriority()  + vProp.getPriority() + 2;
+						p = createCompletionProposal("\""+vProp.getValue()+"\"", new StyledString(vProp.getValue()), IconKeys.getIcon(IconKeys.VALUE_OF_KEY),prio , "\""+context.getPrefix(), context);
+						
+						if( p instanceof ConfigurableCompletionProposal ) {
+							if( vProp instanceof DialogProposal ) {
+								ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) p;
+								final DialogProposal dProp = (DialogProposal) vProp;
+								cp.setTextApplier(new ReplacementTextApplier() {
+									@Override
+									public String getActualReplacementString(
+											ConfigurableCompletionProposal proposal) {
+										return "\"" + dProp.openDialogValue() + "\"";
+									}
+								});
+							}
+						}
+						acceptor.accept(p);
+					}
+				}
+				
 			}
 
 			IType jdtSuperType = prop.getElementType();

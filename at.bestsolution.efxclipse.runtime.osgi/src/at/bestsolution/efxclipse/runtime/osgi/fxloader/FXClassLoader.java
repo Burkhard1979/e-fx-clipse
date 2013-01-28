@@ -217,9 +217,21 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 					throw new IllegalStateException("The java home '"+javaHome.getAbsolutePath()+"' does not exits");
 				}
 				
-				File jarFile = new File(new File(javaHome.getAbsolutePath(),"lib"),"jfxrt.jar");
+				// Java 8 and maybe one day Java 7
+				File jarFile = new File(new File(new File(javaHome.getAbsolutePath(),"lib"),"ext"),"jfxrt.jar");
 				if( FXClassLoadingConfigurator.DEBUG ) {
-					System.err.println("MyBundleClassLoader#createJREBundledClassloader - Assumed location: " + jarFile.getAbsolutePath());
+					System.err.println("MyBundleClassLoader#createJREBundledClassloader - Assumed location (Java 8/Java 7): " + jarFile.getAbsolutePath());
+				}
+				
+				if( jarFile.exists() ) {
+					URL url = jarFile.getCanonicalFile().toURI().toURL();
+					return new URLClassLoader(new URL[] { url }, parent);
+				} 
+				
+				// Java 7
+				jarFile = new File(new File(javaHome.getAbsolutePath(),"lib"),"jfxrt.jar");
+				if( FXClassLoadingConfigurator.DEBUG ) {
+					System.err.println("MyBundleClassLoader#createJREBundledClassloader - Assumed location (Java 7): " + jarFile.getAbsolutePath());
 				}
 				
 				if( jarFile.exists() ) {

@@ -11,10 +11,13 @@
 package at.bestsolution.efxclipse.tooling.fxml.editors;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.Vector;
 
+import org.eclipse.core.internal.registry.osgi.Activator;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -54,8 +57,10 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.FQNPrefixMatcher;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
+import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher.CamelCase;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover;
+import org.osgi.framework.ServiceReference;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -74,6 +79,10 @@ import at.bestsolution.efxclipse.tooling.model.IFXObjectProperty;
 import at.bestsolution.efxclipse.tooling.model.IFXPrimitiveProperty;
 import at.bestsolution.efxclipse.tooling.model.IFXPrimitiveProperty.Type;
 import at.bestsolution.efxclipse.tooling.model.IFXProperty;
+import at.bestsolution.efxclipse.tooling.ui.editor.IValueOfContributor;
+import at.bestsolution.efxclipse.tooling.ui.editor.IValueOfContributor.DialogProposal;
+import at.bestsolution.efxclipse.tooling.ui.editor.IValueOfContributor.Proposal;
+import at.bestsolution.efxclipse.tooling.ui.editor.ValueOfContributionCollector;
 import at.bestsolution.efxclipse.tooling.ui.util.IconKeys;
 
 @SuppressWarnings("restriction")
@@ -133,6 +142,13 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 	private static final int PRIORITY_LOWER_1 = 100;
 	private static final int PRIORITY_HIGHER_1 = 300;
 
+	private ValueOfContributionCollector valueOfCollector;
+	
+	public FXMLCompletionProposalComputer() {
+		ServiceReference<ValueOfContributionCollector> ref = Activator.getContext().getServiceReference(ValueOfContributionCollector.class);
+		valueOfCollector = Activator.getContext().getService(ref);
+	}
+	
 	@Override
 	public void sessionStarted() {
 	}
@@ -150,9 +166,16 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 	protected void addAttributeNameProposals(ContentAssistRequest contentAssistRequest, CompletionProposalInvocationContext context) {
 		String typeName = null;
 		Node parent = contentAssistRequest.getParent();
+		Set<String> existingAttributes = new HashSet<>();
 		if (parent.getNodeType() == Node.ELEMENT_NODE) {
 			typeName = parent.getNodeName();
+			Element e = (Element) parent;
+			for( int i = 0; i < e.getAttributes().getLength(); i++ ) {
+				existingAttributes.add(e.getAttributes().item(i).getNodeName());
+			}
 		}
+		
+		System.err.println(existingAttributes);
 
 		if( "fx:root".equals(typeName) ) {
 			typeName = parent.getAttributes().getNamedItem("type").getNodeValue();
@@ -170,7 +193,7 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				IFXClass fxClass = FXPlugin.getClassmodel().findClass(type.getJavaProject(), type);
 				
 				if( fxClass.getValueOf() != null ) {
-					FXMLCompletionProposal cp = createAttributeProposal(contentAssistRequest, context, "fx:valueOf=\"\"", new StyledString("fx:valueOf").append(" - " + fxClass.getSimpleName(), StyledString.QUALIFIER_STYLER), IconKeys.getIcon(IconKeys.FIELD_KEY), DEFAULT_PRIORITY+10, MATCHER);
+					FXMLCompletionProposal cp = createAttributeProposal(contentAssistRequest, context, "fx:value=\"\"", new StyledString("fx:valueOf").append(" - " + fxClass.getSimpleName(), StyledString.QUALIFIER_STYLER), IconKeys.getIcon(IconKeys.FIELD_KEY), DEFAULT_PRIORITY+10, MATCHER);
 					if (cp != null) {
 						cp.setAdditionalProposalInfo(EcoreFactory.eINSTANCE.createEClass());
 						cp.setHover(new HoverImpl(fxClass.getValueOf()));
@@ -180,7 +203,9 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 				}
 				
 				for (IFXProperty property : fxClass.getAllProperties().values()) {
-					createAttributeNameProposal(contentAssistRequest, context, property);
+					if( ! existingAttributes.contains(property.getName()) ) {
+						createAttributeNameProposal(contentAssistRequest, context, property);	
+					}
 				}
 
 				if (parent.getParentNode() != null) {
@@ -206,7 +231,9 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 							IFXClass fxclass = FXPlugin.getClassmodel().findClass(type.getJavaProject(), containerType);
 							if (fxclass != null) {
 								for (IFXProperty property : fxclass.getAllStaticProperties().values()) {
-									createAttributeNameProposal(contentAssistRequest, context, property);
+									if( ! existingAttributes.contains(property.getFXClass().getSimpleName() + "." +property.getName()) ) {
+										createAttributeNameProposal(contentAssistRequest, context, property);	
+									}
 								}
 							}
 						}
@@ -1007,7 +1034,29 @@ public class FXMLCompletionProposalComputer extends AbstractXMLCompletionProposa
 	}
 
 	private void createAttributeValueObjectProposals(ContentAssistRequest contentAssistRequest, CompletionProposalInvocationContext context, IFXObjectProperty p) {
-
+		if( p.hasValueOf() ) {
+			for( IValueOfContributor c : valueOfCollector.getContributors(p.getElementTypeAsString(true)) ) {
+				for( Proposal vProp : c.getProposals() ) {
+					FXMLCompletionProposal cp = createProposal(contentAssistRequest, context, "\"" +vProp.getValue(), new StyledString(vProp.getValue()), IconKeys.getIcon(IconKeys.VALUE_OF_KEY), ATTRIBUTE_MATCHER);
+					if (cp != null) {
+						cp.setPriority(cp.getPriority() + vProp.getPriority() + 1);
+						if( vProp instanceof DialogProposal ) {
+							final DialogProposal dProp = (DialogProposal) vProp;
+							cp.setTextApplier(new ReplacementTextApplier() {
+								@Override
+								public String getActualReplacementString(
+										ConfigurableCompletionProposal proposal) {
+									return "\"" + dProp.openDialogValue();
+								}
+							});
+						}
+						contentAssistRequest.addProposal(cp);
+					}
+					
+				}
+			}
+			
+		}
 	}
 
 	private static boolean isIntegerType(String fqnType) {

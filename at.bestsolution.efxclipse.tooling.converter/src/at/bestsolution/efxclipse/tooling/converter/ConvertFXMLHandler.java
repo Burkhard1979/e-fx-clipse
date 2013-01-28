@@ -17,8 +17,8 @@ import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.text.edits.TextEdit;
 
-import at.bestsolution.efxclipse.formats.fxg.converter.FXGraphConverter;
-import at.bestsolution.efxclipse.formats.fxg.handler.FXMLLoader;
+import at.bestsolution.efxclipse.tooling.fxgraph.converter.FXGraphConverter;
+import at.bestsolution.efxclipse.tooling.fxgraph.converter.FXMLLoader;
 import at.bestsolution.efxclipse.tooling.fxgraph.fXGraph.Model;
 
 public class ConvertFXMLHandler extends AbstractConverterHandler {
