@@ -118,6 +118,8 @@
 		<module>../at.bestsolution.efxclipse.tooling.jdt.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature.source</module>
 		
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		
