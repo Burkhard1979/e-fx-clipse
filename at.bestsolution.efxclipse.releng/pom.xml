@@ -121,6 +121,7 @@
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature.source</module>
 		<module>../at.bestsolution.efxclipse.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.efxbean.feature.source</module>
 		
 		<module>../at.bestsolution.efxclipse.updatesite</module>
 		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
