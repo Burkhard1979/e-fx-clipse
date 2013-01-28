@@ -35,6 +35,11 @@
 			<url>http://download.eclipse.org/releases/juno</url>
 		</repository>
 		<repository>
+			<id>juno-42-update</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/eclipse/updates/4.2</url>
+		</repository>
+		<repository>
 			<id>efx-nightly</id>
 			<layout>p2</layout>
 			<url>http://downloads.efxclipse.org/p2-repos/nightly/site</url>
