@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/at.bestsolution.efxclipse.runtime.osgi.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.osgi.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.osgi.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.convert.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.convert.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.convert.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.convert.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.css.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.css.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.css.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.css.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.fxgraph.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.fxgraph.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.fxgraph.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.fxgraph.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.fxml.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.fxml.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.fxml.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.fxml.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.jdt.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.jdt.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.jdt.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.jdt.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.pde.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.pde.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.pde.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.pde.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - total"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - total"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.e3.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.e3.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.e3.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.e3.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.pde4.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.pde4.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.pde4.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.pde4.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.jemmy.feature_3.0.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.jemmy.feature" version="3.0.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.jemmy.junit.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.jemmy.junit.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.jemmy.junit.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.jemmy.junit.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.efxbean.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.efxbean.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.efxbean.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.efxbean.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.rrobot.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.rrobot.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.rrobot.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.rrobot.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.emf.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.emf.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.emf.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.emf.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.rrobot.dsl.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.rrobot.dsl.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - tooling"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.runtime.p2.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.runtime.p2.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - runtime"/>
+   </feature>
+   <category-def name="e(fx)clipse - total" label="e(fx)clipse - total"/>
+   <category-def name="e(fx)clipse - tooling" label="e(fx)clipse - tooling"/>
+   <category-def name="e(fx)clipse - runtime" label="e(fx)clipse - runtime"/>
+</site>
