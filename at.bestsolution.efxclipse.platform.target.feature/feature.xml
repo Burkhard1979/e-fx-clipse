@@ -180,13 +180,6 @@
          unpack="false"/>
 
    <plugin
-         id="at.bestsolution.efxclipse.runtime.swt"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="at.bestsolution.efxclipse.runtime.theme"
          download-size="0"
          install-size="0"
@@ -383,13 +376,6 @@
 
    <plugin
          id="at.bestsolution.efxclipse.runtime.services.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.runtime.swt.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
