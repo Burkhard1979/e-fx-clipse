@@ -18,6 +18,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.internal.launching.environments.EnvironmentsManager;
 import org.eclipse.jdt.launching.IVMInstall;
+import org.eclipse.jdt.launching.JavaRuntime;
+import org.eclipse.jdt.launching.LibraryLocation;
 import org.eclipse.jdt.launching.environments.IExecutionEnvironment;
 import org.eclipse.osgi.service.resolver.BundleDescription;
 import org.eclipse.osgi.service.resolver.ImportPackageSpecification;
@@ -27,6 +29,24 @@ import at.bestsolution.efxclipse.tooling.pde.adaptor.IClasspathContributor;
 
 @SuppressWarnings("restriction")
 public class JavaFXClassPathExtender implements IClasspathContributor {
+	private boolean onExtPath(IVMInstall i) {
+		LibraryLocation[] libLocs = i.getLibraryLocations();
+		if( libLocs == null ) {
+			libLocs = JavaRuntime.getLibraryLocations(i);
+		}
+		
+		if( libLocs != null ) {
+			for( LibraryLocation l : libLocs ) {
+				if( "jfxrt.jar".equals(l.getSystemLibraryPath().lastSegment()) ) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	
 	@Override
 	public List<Contribution> getDynamicContributions(BundleDescription desc) {
 		for( String e : desc.getExecutionEnvironments() ) {
@@ -37,11 +57,22 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 			}
 			
 			if( env.getDefaultVM() != null ) {
+				IVMInstall i = env.getDefaultVM();
+				
+				if( onExtPath(i) ) {
+					return Collections.emptyList();
+				}
+				
 				paths = BuildPathSupport.getFxJarPath(env.getDefaultVM());
 			}
 			
 			if( paths == null || paths[0] == null && ! paths[0].toFile().exists() ) {
 				for( IVMInstall i : env.getCompatibleVMs() ) {
+					
+					if( onExtPath(i) ) {
+						return Collections.emptyList();
+					}
+					
 					paths = BuildPathSupport.getFxJarPath(i);
 					if( paths != null &&  paths[0] != null && paths[0].toFile().exists() ) {
 						break;
