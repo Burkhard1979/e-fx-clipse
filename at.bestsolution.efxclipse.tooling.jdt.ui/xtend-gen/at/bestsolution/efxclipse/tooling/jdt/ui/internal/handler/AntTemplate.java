@@ -132,8 +132,8 @@ public class AntTemplate {
         _builder.append("\t");
         _builder.append("\t\t");
         _builder.append("<include name=\"");
-        String _name_1 = d.relativePath.getName();
-        _builder.append(_name_1, "			");
+        String _path = d.relativePath.getPath();
+        _builder.append(_path, "			");
         _builder.append("/**\" />");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -165,8 +165,8 @@ public class AntTemplate {
         _builder.append("\t");
         _builder.append("\t\t");
         _builder.append("<include name=\"");
-        String _path = d_1.relativePath.getPath();
-        _builder.append(_path, "			");
+        String _path_1 = d_1.relativePath.getPath();
+        _builder.append(_path_1, "			");
         _builder.append("/**\" />");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
