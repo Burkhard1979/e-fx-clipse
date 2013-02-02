@@ -2,6 +2,13 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.jdt.core.classpathContainerInitializer">
+      <classpathContainerInitializer
+            class="at.bestsolution.efxclipse.tooling.jdt.core.internal.JavaFXClasspathContainerInitializer"
+            id="at.bestsolution.efxclipse.tooling.jdt.core.JAVAFX_CONTAINER">
+      </classpathContainerInitializer>
+   </extension>
+   <extension
          point="org.eclipse.jdt.launching.executionEnvironments">
       <ruleParticipant
             class="at.bestsolution.efxclipse.tooling.jdt.core.internal.FXAccessRuleParticipant"
