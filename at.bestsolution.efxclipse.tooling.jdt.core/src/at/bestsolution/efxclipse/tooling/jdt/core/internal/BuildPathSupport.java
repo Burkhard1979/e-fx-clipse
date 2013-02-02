@@ -22,6 +22,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.launching.IVMInstall;
 import org.eclipse.jdt.launching.JavaRuntime;
+import org.eclipse.jdt.launching.LibraryLocation;
 
 public class BuildPathSupport {
 	public static final String WEB_JAVADOC_LOCATION = "http://docs.oracle.com/javafx/2/api/";
@@ -71,6 +72,13 @@ public class BuildPathSupport {
 	}
 	
 	public static IPath[] getFxJarPath(IVMInstall i) {
+//TODO Once we figured out how to set the JavaDoc and source return null		
+//		for( LibraryLocation l : JavaRuntime.getLibraryLocations(i) ) {
+//			if( "jfxrt.jar".equals(l.getSystemLibraryPath().lastSegment()) ) {
+//				return null;
+//			}
+//		}
+		
 		IPath jarLocationPath = null;
 		IPath javadocLocation = null;
 		IPath antJarLocationPath = null;
