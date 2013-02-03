@@ -72,12 +72,11 @@ public class BuildPathSupport {
 	}
 	
 	public static IPath[] getFxJarPath(IVMInstall i) {
-//TODO Once we figured out how to set the JavaDoc and source return null		
-//		for( LibraryLocation l : JavaRuntime.getLibraryLocations(i) ) {
-//			if( "jfxrt.jar".equals(l.getSystemLibraryPath().lastSegment()) ) {
-//				return null;
-//			}
-//		}
+		for( LibraryLocation l : JavaRuntime.getLibraryLocations(i) ) {
+			if( "jfxrt.jar".equals(l.getSystemLibraryPath().lastSegment()) ) {
+				return null;
+			}
+		}
 		
 		IPath jarLocationPath = null;
 		IPath javadocLocation = null;
