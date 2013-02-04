@@ -105,6 +105,12 @@
    <feature url="features/at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source" version="0.8.0.qualifier">
       <category name="e(fx)clipse - tooling"/>
    </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.pde.juno.feature_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.pde.juno.feature" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - install"/>
+   </feature>
+   <feature url="features/at.bestsolution.efxclipse.tooling.pde.juno.feature.source_0.8.0.qualifier.jar" id="at.bestsolution.efxclipse.tooling.pde.juno.feature.source" version="0.8.0.qualifier">
+      <category name="e(fx)clipse - install"/>
+   </feature>
    <category-def name="e(fx)clipse - install" label="e(fx)clipse - install"/>
    <category-def name="e(fx)clipse - total" label="e(fx)clipse - total"/>
    <category-def name="e(fx)clipse - tooling" label="e(fx)clipse - tooling"/>

@@ -102,6 +102,7 @@
 		<module>../at.bestsolution.efxclipse.runtime.e3.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde.juno.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.p2.feature</module>
@@ -119,6 +120,7 @@
 		<module>../at.bestsolution.efxclipse.tooling.jdt.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde.juno.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature.source</module>
 		<module>../at.bestsolution.efxclipse.feature.source</module>
