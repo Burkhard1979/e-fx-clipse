@@ -86,10 +86,6 @@ public class BuildPathSupport {
 		File installDir = i.getInstallLocation();
 			
 		IPath[] checkPaths = {
-			// Java 8 (maybe Java7 one day)
-			new Path(installDir.getAbsolutePath()).append("jre").append("lib").append("ext").append("jfxrt.jar"),
-			new Path(installDir.getAbsolutePath()).append("lib").append("ext").append("jfxrt.jar"), // JRE
-			
 			// Java 7
 			new Path(installDir.getAbsolutePath()).append("jre").append("lib").append("jfxrt.jar"),
 			new Path(installDir.getAbsolutePath()).append("lib").append("jfxrt.jar") // JRE
