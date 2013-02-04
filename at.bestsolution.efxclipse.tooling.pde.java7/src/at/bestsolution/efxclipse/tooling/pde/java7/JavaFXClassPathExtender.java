@@ -21,7 +21,6 @@ import org.eclipse.jdt.core.IClasspathAttribute;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.launching.IVMInstall;
-import org.eclipse.jdt.launching.IVMInstall2;
 import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.jdt.launching.LibraryLocation;
 import org.eclipse.jdt.launching.environments.IExecutionEnvironment;
@@ -42,7 +41,6 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 		if( libLocs != null ) {
 			for( LibraryLocation l : libLocs ) {
 				if( "jfxrt.jar".equals(l.getSystemLibraryPath().lastSegment()) ) {
-					System.err.println("FOUND ON CLASSPATH");
 					return true;
 				}
 			}
@@ -76,7 +74,6 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 			// Check compatible VMs
 			for( IVMInstall vm : env.getCompatibleVMs() ) {
 				if( env.isStrictlyCompatible(vm) ) {
-					System.err.println("IS COMPATIBLE");
 					if( onExtPath(vm) ) {
 						return Collections.emptyList();
 					} else {
