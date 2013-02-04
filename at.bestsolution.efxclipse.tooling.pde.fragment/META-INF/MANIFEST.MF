@@ -9,3 +9,4 @@ Equinox-BundleType: fxpatch.fragment
 Require-Bundle: at.bestsolution.efxclipse.tooling.jdt.core;bundle-version="0.8.0",
  at.bestsolution.efxclipse.tooling.pde.adaptor;bundle-version="0.8.0"
 Bundle-Vendor: %Bundle-Vendor
+Export-Package: org.eclipse.pde.core

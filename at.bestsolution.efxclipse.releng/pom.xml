@@ -76,6 +76,7 @@
 		<module>../at.bestsolution.efxclipse.tooling.fxgraph</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxgraph.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.adaptor</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde.java7</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.fragment</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.e4</module>
