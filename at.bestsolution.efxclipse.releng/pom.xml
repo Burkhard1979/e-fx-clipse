@@ -125,7 +125,6 @@
 		<module>../at.bestsolution.efxclipse.tooling.efxbean.feature.source</module>
 		
 		<module>../at.bestsolution.efxclipse.updatesite</module>
-		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
 		
 	</modules>
 
