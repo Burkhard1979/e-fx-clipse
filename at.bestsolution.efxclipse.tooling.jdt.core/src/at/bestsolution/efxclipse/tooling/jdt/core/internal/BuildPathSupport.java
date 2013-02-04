@@ -94,11 +94,17 @@ public class BuildPathSupport {
 		
 		jarLocationPath = checkPaths[0];
 		
-		for( IPath p : checkPaths ) {
-			if( p.toFile().exists() ) {
-				jarLocationPath = p;
-				break;
-			}
+		if( ! jarLocationPath.toFile().exists() ) {
+			for( IPath p : checkPaths ) {
+				if( p.toFile().exists() ) {
+					jarLocationPath = p;
+					break;
+				}
+			}	
+		}
+		
+		if( ! jarLocationPath.toFile().exists() ) {
+			return null;
 		}
 		
 		javadocLocation = new Path(installDir.getParentFile().getAbsolutePath()).append("docs").append("api"); //TODO Not shipped yet
