@@ -119,7 +119,6 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 				if (classpathEntries == null || classpathEntries.isEmpty()) {
 					continue;
 				}
-				System.err.println("Adding: " + classpathEntries);
 				entries.addAll(classpathEntries);
 			}
 
