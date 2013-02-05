@@ -25,7 +25,7 @@ import at.bestsolution.efxclipse.tooling.css.services.CssDslGrammarAccess;
 import com.google.inject.Inject;
 
 /**
- * @author Caksi
+ * @author ccaks
  *
  */
 public class TemplateProposalProvider extends DefaultTemplateProposalProvider {

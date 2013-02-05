@@ -51,6 +51,26 @@ public class ResultNode {
 		return last;
 	}
 	
+	public List<ResultNode> findByState(State state) {
+		List<ResultNode> found = new ArrayList<>();
+		Queue<ResultNode> toCheck = new LinkedList<>();
+		toCheck.add(this);
+		while (!toCheck.isEmpty()) {
+			ResultNode check = toCheck.poll();
+			if (!check.next.isEmpty()) {
+				toCheck.addAll(check.next);
+			}
+			
+			if (check.status == state) {
+				found.add(check);
+			}
+		}
+		
+//		System.err.println("findLast returns : " + last);
+		return found;
+	}
+	
+	
 	public boolean isValid() {
 		return status != null && status != State.INVALID && status != State.PROPOSE;
 	}

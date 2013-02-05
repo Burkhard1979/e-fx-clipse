@@ -17,6 +17,8 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.proposal.CssExtProposalContributor;
+import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 
 public interface ICssExtManager {
 
@@ -27,4 +29,10 @@ public interface ICssExtManager {
 	public abstract List<PropertyDefinition> findAllProperties();
 	public abstract CSSRule resolveReference(final CSSRuleRef ref);
 	public abstract ElementDefinition findElementByStyleClass(String styleClass);
+	
+	
+	public abstract void addCssExtProposalContributer(CssExtProposalContributor c);
+	public abstract void removeCssExtProposalContributer(CssExtProposalContributor c);
+	
+	public List<Proposal> getContributedProposalsForRule(String fqRuleName);
 }

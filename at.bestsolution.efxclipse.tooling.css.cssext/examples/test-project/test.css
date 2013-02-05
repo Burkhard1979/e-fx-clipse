@@ -1,10 +1,25 @@
 Node[no=me] {
 	-fx-alignment: a;
+	
 }
+.classname {
+	
+	-fx-background-color: rgb(0,0,0), rgb(0,0,0), rgb(192,192,192);
+	
+}
+.classname {} 
 
+ 
 Region.test {
+	-fx-background-insets: 0.0%, 0.0%;
+	-fx-snap-to-pixel: true;
+	-fx-background-fills: rgb(0,0,0);
+	-fx-blend-mode: color-dodge;
+	-fx-background-color: aliceblue;
+	-fx-background-color: anitquewhite, aquamarine, aqua, azure, rgb(10,10,10);
+	 
 	-fx-blend-mode: add;
-	-fx-padding: 12.0px;
+	-fx-padding: 15em;
 	-fx-arc-height: 1.0cm; 
 	-fx-graphic-hpos: inherit;
 	-fx-padding: 1.0 1.0 1.0 1.0;
@@ -13,10 +28,12 @@ Region.test {
 	-fx-smooth: true;
 	asdfasd: a;
 	-fx-halignment: left;
+	
 }
 
 .a {
 	property:none;
+	-fx-alignment: baseline-center;
 }
 .b {
 	eigenschaft:nice;

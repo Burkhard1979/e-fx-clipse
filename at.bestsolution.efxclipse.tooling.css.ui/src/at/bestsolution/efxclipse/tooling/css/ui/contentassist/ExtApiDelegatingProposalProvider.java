@@ -13,6 +13,8 @@ package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
@@ -28,6 +30,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
+import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.hover.DispatchingEObjectTextHover;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslFactory;
@@ -39,6 +42,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
 import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal.Type;
+import at.bestsolution.efxclipse.tooling.css.ui.extapi.UIProposal;
 
 import com.google.inject.Inject;
 
@@ -64,30 +68,96 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 			
 			Image img = labelProvider.getImage(CssDslFactory.eINSTANCE.createcss_property());
 			
-			ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(p.getProposal(), p.getLabel(), img, context);
 			
-			if (cp != null) {
-				cp.setAdditionalProposalInfo(p.getAdditionalInfo());
-				cp.setHover(hoverDispatcher);
-				
-				cp.setTriggerCharacters(new char[] { ' ' });
-				
-				if (p.getType() == Type.Property) {
-					// add ": " to proposal
-					cp.setTextApplier(new IReplacementTextApplier() {
-						
-						@Override
-						public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
-							document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + ": ");
-							proposal.setCursorPosition(proposal.getCursorPosition()+2);
+			if (p instanceof UIProposal) {
+				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(p.getLabel(), p.getLabel(), img, context);
+				System.err.println("PREPARING UI PROPOSAL");
+				final UIProposal uiP = (UIProposal)p;
+				cp.setTextApplier(new ReplacementTextApplier() {
+					@Override
+					public String getActualReplacementString(ConfigurableCompletionProposal proposal) {
+						if (uiP.show()) {
+							return uiP.getProposal();
 						}
-					});
-				}
-				if (p.getType() == Type.Value) {
-					
-				}
+						return "";
+					}
+				});
+				
+				
+				cp.setPriority(p.getPriority());
 				
 				acceptor.accept(cp);
+			}
+			else {
+				
+				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(p.getProposal(), p.getLabel(), img, context);
+				if (cp != null) {
+					cp.setAdditionalProposalInfo(p.getAdditionalInfo());
+					cp.setHover(hoverDispatcher);
+					
+					cp.setTriggerCharacters(new char[] { ' ' });
+					
+					if (p.getType() == Type.Property) {
+						// add ": " to proposal
+						cp.setTextApplier(new IReplacementTextApplier() {
+							
+							@Override
+							public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
+								document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + ": ");
+								proposal.setCursorPosition(proposal.getCursorPosition()+2);
+							}
+						});
+					}
+					if (p.getType() == Type.Value) {
+						cp.setTextApplier(new IReplacementTextApplier() {
+						
+							private int findWSCountBeforeProposal(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
+								// remove spaces " " before proposal
+								int offset = 0;
+								
+								int amount = 10;
+								if (proposal.getReplacementOffset() - amount < 0) {
+									amount = proposal.getReplacementOffset();
+								}
+								String beforeChars = document.get(proposal.getReplacementOffset() - amount, amount);
+								Pattern spaces = Pattern.compile("(.*)[ ]+$");
+								Matcher m = spaces.matcher(beforeChars);
+								if (m.matches()) {
+									System.err.println("REDUCE!! " + m.end(1));
+									offset = amount - m.end(1);
+								}
+								return offset;
+							}
+							
+							@Override
+							public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
+								if (proposal.getReplacementString().equals(";")) {
+									int wsCount = findWSCountBeforeProposal(document, proposal);
+									
+									document.replace(proposal.getReplacementOffset()-wsCount, proposal.getReplacementLength()+wsCount, proposal.getReplacementString());
+									proposal.setCursorPosition(proposal.getCursorPosition()-wsCount);
+								}
+								else if (proposal.getReplacementString().equals(",")) {
+									int wsCount = findWSCountBeforeProposal(document, proposal);
+									
+									document.replace(proposal.getReplacementOffset()-wsCount, proposal.getReplacementLength()+wsCount, proposal.getReplacementString() + " ");
+									proposal.setCursorPosition(proposal.getCursorPosition()+1-wsCount);
+								}
+								else {
+									// add " " to proposal
+									document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + " ");
+									proposal.setCursorPosition(proposal.getCursorPosition()+1);
+								}
+							}
+						});
+					}
+					cp.setPriority(p.getPriority());
+					
+					acceptor.accept(cp);
+				}
+				else {
+					System.err.println("cound not create proposal for " + p);
+				}
 			}
 		}
 	}

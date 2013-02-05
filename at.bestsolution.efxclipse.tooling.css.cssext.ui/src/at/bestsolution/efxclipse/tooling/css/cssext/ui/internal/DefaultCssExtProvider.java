@@ -12,6 +12,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser;
+import at.bestsolution.efxclipse.tooling.css.cssext.proposal.CssExtProposalContributor;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
 import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
@@ -114,6 +115,14 @@ public class DefaultCssExtProvider implements CssExt {
 		
 		return parser.findProposals(null, property.getName(), prefixTok, prefixString);
 		
+	}
+	
+	public void bindCssExtProposalContributor(CssExtProposalContributor c) {
+		cssExtManager.addCssExtProposalContributer(c);
+	}
+	
+	public void unbindCssExtProposalContributor(CssExtProposalContributor c) {
+		cssExtManager.removeCssExtProposalContributer(c);
 	}
 
 }

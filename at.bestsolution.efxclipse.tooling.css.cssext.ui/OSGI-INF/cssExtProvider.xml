@@ -4,4 +4,5 @@
    <service>
       <provide interface="at.bestsolution.efxclipse.tooling.css.extapi.CssExt"/>
    </service>
+   <reference bind="bindCssExtProposalContributor" cardinality="0..n" interface="at.bestsolution.efxclipse.tooling.css.cssext.proposal.CssExtProposalContributor" name="CssExtProposalContributor" policy="dynamic" unbind="unbindCssExtProposalContributor"/>
 </scr:component>

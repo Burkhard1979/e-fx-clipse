@@ -25,8 +25,12 @@ import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks;
 import org.eclipse.xtext.ui.label.DeclarativeLabelProvider;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdSelector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
 import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
@@ -407,6 +411,19 @@ public class CssExtDocParser {
 			}
 			return getDocHeadForElement(elementName);
 		}
+		// TODO add some color support here
+		// we may need some kind of type info before
+//		if (o instanceof ColorTok) {
+//			// TODO implement color here
+//			return null;
+//		}
+//		if (o instanceof IdentifierTok) {
+//			css_declaration decl = (css_declaration) ((EObject)o).eContainer();
+//			if (decl.getProperty().getName().contains("color")) {
+//				// asume color
+//				return "COLOR";
+//			}
+//		}
 		
 		return null;
 	}

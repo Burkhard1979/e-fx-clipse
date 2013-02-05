@@ -36,7 +36,7 @@ import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingC
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.TokenMapper;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
-import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
+import at.bestsolution.efxclipse.tooling.css.ui.hover.ExtApiDelegatingDocumentationProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 import at.bestsolution.efxclipse.tooling.css.ui.occurrences.CssDslOccurenceComputer;
 
@@ -63,7 +63,7 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		
 		// hovering
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
-		binder.bind(IEObjectDocumentationProvider.class).to(CssObjectDocumentationProvider.class);
+		binder.bind(IEObjectDocumentationProvider.class).to(ExtApiDelegatingDocumentationProvider.class);
 		
 
 		

@@ -66,8 +66,9 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule CssExtension ****************
  *
  * //	packageDef=PackageDefinition?
- * //	rule=CSSRuleSet
- * CssExtension:
+ *  //	rule=CSSRuleSet
+ *  CssExtension:
+ * 
  * 	imports+=Import* packageDef=PackageDefinition?;
  *
  **/
@@ -201,6 +202,7 @@ protected class CssExtension_PackageDefAssignment_1 extends AssignmentToken  {
 /************ begin Rule Import ****************
  *
  * Import:
+ * 
  * 	"import" importedNamespace=QualifiedNameWithWildCard;
  *
  **/
@@ -299,12 +301,15 @@ protected class Import_ImportedNamespaceAssignment_1 extends AssignmentToken  {
 /************ begin Rule PackageDefinition ****************
  *
  * PackageDefinition:
+ * 
  * 	(doku=Doku WS*)? "package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
+ * 
  * 	elements+=ElementDefinition)* "}";
  *
  **/
 
 // (doku=Doku WS*)? "package" name=QualifiedName "{" (rules+=CSSRuleDefinition | subpackages+=PackageDefinition |
+// 
 // elements+=ElementDefinition)* "}"
 protected class PackageDefinition_Group extends GroupToken {
 	
@@ -676,6 +681,7 @@ protected class PackageDefinition_RightCurlyBracketKeyword_5 extends KeywordToke
 /************ begin Rule Doku ****************
  *
  * Doku:
+ * 
  * 	content=JDOC;
  *
  **/
@@ -721,6 +727,7 @@ protected class Doku_ContentAssignment extends AssignmentToken  {
 /************ begin Rule CSSBaseType ****************
  *
  * CSSBaseType returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	CSSType;
  *
  **/
@@ -769,14 +776,19 @@ protected class CSSBaseType_CSSTypeParserRuleCall extends RuleCallToken {
 /************ begin Rule CSSType ****************
  *
  * CSSType hidden(SL_COMMENT, ML_COMMENT):
+ * 
  * 	{CSSRangedIntType} (doku=Doku WS*)? type="@INT" "(" WS* from=INT WS* "->" WS* to=INT WS* ")" | {CSSRangedDoubleType}
+ * 
  * 	(doku=Doku WS*)? type="@NUM" "(" WS* from=DOUBLE WS* "->" WS* to=DOUBLE WS* ")" | (doku=Doku WS*)? (type="@INT" WS* |
+ * 
  * 	type="@NUM" WS* | type="@STRING" WS* | type="@URL" WS*);
  *
  **/
 
 // {CSSRangedIntType} (doku=Doku WS*)? type="@INT" "(" WS* from=INT WS* "->" WS* to=INT WS* ")" | {CSSRangedDoubleType}
+// 
 // (doku=Doku WS*)? type="@NUM" "(" WS* from=DOUBLE WS* "->" WS* to=DOUBLE WS* ")" | (doku=Doku WS*)? (type="@INT" WS* |
+// 
 // type="@NUM" WS* | type="@STRING" WS* | type="@URL" WS*)
 protected class CSSType_Alternatives extends AlternativesToken {
 
@@ -1757,17 +1769,22 @@ protected class CSSType_TypeAssignment_2_1_3_0 extends AssignmentToken  {
 /************ begin Rule ElementDefinition ****************
  *
  * //CSSRangedType returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
- * //	
- * //;
- * ElementDefinition:
+ *  //	
+ *  //;
+ *  ElementDefinition:
+ * 
  * 	{ElementDefinition} doku=Doku? name=QualifiedName ("extends" super+=[ElementDefinition|QualifiedName] (","
+ * 
  * 	super+=[ElementDefinition|QualifiedName])*)? ("styleclass" styleclass=ID)? "{" (properties+=PropertyDefinition |
+ * 
  * 	pseudoClasses+=PseudoClassDefinition | substructures+=Substructure)* "}";
  *
  **/
 
 // {ElementDefinition} doku=Doku? name=QualifiedName ("extends" super+=[ElementDefinition|QualifiedName] (","
+// 
 // super+=[ElementDefinition|QualifiedName])*)? ("styleclass" styleclass=ID)? "{" (properties+=PropertyDefinition |
+// 
 // pseudoClasses+=PseudoClassDefinition | substructures+=Substructure)* "}"
 protected class ElementDefinition_Group extends GroupToken {
 	
@@ -2370,6 +2387,7 @@ protected class ElementDefinition_RightCurlyBracketKeyword_7 extends KeywordToke
 /************ begin Rule PropertyDefinition ****************
  *
  * PropertyDefinition returns Definition:
+ * 
  * 	{PropertyDefinition} doku=Doku? name=QualifiedName rule=CSSRuleOr ("default:" default=CSSDefaultValue)? ";";
  *
  **/
@@ -2677,6 +2695,7 @@ protected class PropertyDefinition_SemicolonKeyword_5 extends KeywordToken  {
 /************ begin Rule PseudoClassDefinition ****************
  *
  * PseudoClassDefinition:
+ * 
  * 	{PseudoClassDefinition} doku=Doku? name=PSEUDO;
  *
  **/
@@ -2824,6 +2843,7 @@ protected class PseudoClassDefinition_NameAssignment_2 extends AssignmentToken  
 /************ begin Rule CSSRuleRef ****************
  *
  * CSSRuleRef hidden():
+ * 
  * 	(doku=Doku WS*)? "<" ref=[Definition|QualifiedName] ">";
  *
  **/
@@ -3013,6 +3033,7 @@ protected class CSSRuleRef_GreaterThanSignKeyword_3 extends KeywordToken  {
 /************ begin Rule CSSRuleDefinition ****************
  *
  * CSSRuleDefinition returns Definition hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	{CSSRuleDefinition} doku=Doku? name=QualifiedName "=" (rule=CSSRuleOr | func=CSSRuleFunc) ";";
  *
  **/
@@ -3319,12 +3340,18 @@ protected class CSSRuleDefinition_SemicolonKeyword_5 extends KeywordToken  {
 
 /************ begin Rule CSSRuleFunc ****************
  *
- * CSSRuleFunc returns CSSRule hidden(ML_COMMENT, SL_COMMENT): //{CSSRuleFunc} name=ValidID '(' WS* params+=CSSRuleOr ( ',' WS* params+=CSSRuleOr)* ')' // PARAMS disabled in favor of ',' as literal
+ * CSSRuleFunc returns CSSRule hidden(ML_COMMENT, SL_COMMENT):
+ * 
+ * //{CSSRuleFunc} name=ValidID '(' WS* params+=CSSRuleOr ( ',' WS* params+=CSSRuleOr)* ')' // PARAMS disabled in favor of ',' as literal
+ * 
+ * 
  * 	{CSSRuleFunc} name=ValidID "(" WS* params=CSSRuleOr ")";
  *
  **/
 
 // //{CSSRuleFunc} name=ValidID '(' WS* params+=CSSRuleOr ( ',' WS* params+=CSSRuleOr)* ')' // PARAMS disabled in favor of ',' as literal
+// 
+// 
 // {CSSRuleFunc} name=ValidID "(" WS* params=CSSRuleOr ")"
 protected class CSSRuleFunc_Group extends GroupToken {
 	
@@ -3355,6 +3382,8 @@ protected class CSSRuleFunc_Group extends GroupToken {
 }
 
 // //{CSSRuleFunc} name=ValidID '(' WS* params+=CSSRuleOr ( ',' WS* params+=CSSRuleOr)* ')' // PARAMS disabled in favor of ',' as literal
+// 
+// 
 // {CSSRuleFunc}
 protected class CSSRuleFunc_CSSRuleFuncAction_0 extends ActionToken  {
 
@@ -3512,6 +3541,7 @@ protected class CSSRuleFunc_RightParenthesisKeyword_5 extends KeywordToken  {
 /************ begin Rule CSSRuleOr ****************
  *
  * CSSRuleOr returns CSSRule hidden(WS, ML_COMMENT, SL_COMMENT):
+ * 
  * 	CSSRuleXor ({CSSRuleOr.ors+=current} ("|" ors+=CSSRuleXor)+)?;
  *
  **/
@@ -3765,6 +3795,7 @@ protected class CSSRuleOr_OrsAssignment_1_1_1 extends AssignmentToken  {
 /************ begin Rule CSSRuleXor ****************
  *
  * CSSRuleXor returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	CSSRuleConcat ({CSSRuleXor.xors+=current} ("||" xors+=CSSRuleConcat)+)?;
  *
  **/
@@ -4016,6 +4047,7 @@ protected class CSSRuleXor_XorsAssignment_1_1_1 extends AssignmentToken  {
 /************ begin Rule CSSRuleConcat ****************
  *
  * CSSRuleConcat returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	CSSRuleConcatWithoutSpace ({CSSRuleConcat.conc+=current} conc+=CSSRuleConcatWithoutSpace+)?;
  *
  **/
@@ -4220,6 +4252,7 @@ protected class CSSRuleConcat_ConcAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule CSSRuleConcatWithoutSpace ****************
  *
  * CSSRuleConcatWithoutSpace returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	CSSRulePostfix ({CSSRuleConcatWithoutSpace.conc+=current} ("~" conc+=CSSRulePostfix)+)?;
  *
  **/
@@ -4467,6 +4500,7 @@ protected class CSSRuleConcatWithoutSpace_ConcAssignment_1_1_1 extends Assignmen
 /************ begin Rule CSSRulePostfix ****************
  *
  * CSSRulePostfix returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	CSSRulePrimary ({CSSRulePostfix.rule=current} cardinality=("*" | "+" | "?"))?;
  *
  **/
@@ -4664,6 +4698,7 @@ protected class CSSRulePostfix_CardinalityAssignment_1_1 extends AssignmentToken
 /************ begin Rule CSSRuleBracket ****************
  *
  * CSSRuleBracket returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	{CSSRuleBracket} "[" inner=CSSRuleOr "]";
  *
  **/
@@ -4820,16 +4855,23 @@ protected class CSSRuleBracket_RightSquareBracketKeyword_3 extends KeywordToken 
 /************ begin Rule CSSRulePrimary ****************
  *
  * //CSSRuleParenthesis returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
+ * 
  * //	{CSSRuleParanthesis} '(' inner=CSSRuleOr ')'
- * //;
- * CSSRulePrimary returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+ *  //;
+ *  CSSRulePrimary returns CSSRule hidden(SL_COMMENT, ML_COMMENT):
+ * 
  * 	CSSRuleRef | CSSRuleBracket | //	CSSRuleParenthesis |
- * 	CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {CSSNumLiteral} value=INT;
+ *  CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex |
+ * 
+ * 	{CSSNumLiteral} value=INT;
  *
  **/
 
 // CSSRuleRef | CSSRuleBracket | //	CSSRuleParenthesis |
-// CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex | {CSSNumLiteral} value=INT
+//  CSSRuleLiteral | CSSRuleSymbol | CSSBaseType | CSSRuleRegex |
+// 
+// {CSSNumLiteral} value=INT
 protected class CSSRulePrimary_Alternatives extends AlternativesToken {
 
 	public CSSRulePrimary_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4945,7 +4987,7 @@ protected class CSSRulePrimary_CSSRuleBracketParserRuleCall_1 extends RuleCallTo
 }
 
 // //	CSSRuleParenthesis |
-// CSSRuleLiteral
+//  CSSRuleLiteral
 protected class CSSRulePrimary_CSSRuleLiteralParserRuleCall_2 extends RuleCallToken {
 	
 	public CSSRulePrimary_CSSRuleLiteralParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5188,6 +5230,7 @@ protected class CSSRulePrimary_ValueAssignment_6_1 extends AssignmentToken  {
 /************ begin Rule CSSRuleRegex ****************
  *
  * CSSRuleRegex returns CSSRule hidden(WS, SL_COMMENT, ML_COMMENT):
+ * 
  * 	{CSSRuleRegex} regex=REGEX;
  *
  **/
@@ -5288,6 +5331,7 @@ protected class CSSRuleRegex_RegexAssignment_1 extends AssignmentToken  {
 /************ begin Rule CSSRuleLiteral ****************
  *
  * CSSRuleLiteral returns CSSRule:
+ * 
  * 	{CSSRuleLiteral} (doku=Doku WS*)? value=ID;
  *
  **/
@@ -5458,6 +5502,7 @@ protected class CSSRuleLiteral_ValueAssignment_2 extends AssignmentToken  {
 /************ begin Rule CSSRuleSymbol ****************
  *
  * CSSRuleSymbol returns CSSRule:
+ * 
  * 	{CSSRuleSymbol} (doku=Doku WS*)? symbol=("," | "%");
  *
  **/
@@ -5633,6 +5678,7 @@ protected class CSSRuleSymbol_SymbolAssignment_2 extends AssignmentToken  {
 /************ begin Rule CSSDefaultValue ****************
  *
  * CSSDefaultValue:
+ * 
  * 	{CSSDefaultValue} val=CSSRuleLiteral | ival=INT | dval=DOUBLE | sval=STRING;
  *
  **/
@@ -5870,6 +5916,7 @@ protected class CSSDefaultValue_SvalAssignment_3 extends AssignmentToken  {
 /************ begin Rule SubstructureSelector ****************
  *
  * SubstructureSelector hidden():
+ * 
  * 	{SubstructureSelector} name=ID ("[" var=ID "]")?;
  *
  **/
@@ -6072,6 +6119,7 @@ protected class SubstructureSelector_RightSquareBracketKeyword_2_2 extends Keywo
 /************ begin Rule Substructure ****************
  *
  * Substructure:
+ * 
  * 	doku=Doku? "substructure" name=ID "{" childs+=SubstructureStyleclass+ "}";
  *
  **/
@@ -6304,12 +6352,15 @@ protected class Substructure_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule SubstructureStyleclass ****************
  *
  * SubstructureStyleclass:
+ * 
  * 	doku=Doku? element=[ElementDefinition|QualifiedName] "styleclass" selectors+=SubstructureSelector+ ("{"
+ * 
  * 	childs+=SubstructureStyleclass+ "}")?;
  *
  **/
 
 // doku=Doku? element=[ElementDefinition|QualifiedName] "styleclass" selectors+=SubstructureSelector+ ("{"
+// 
 // childs+=SubstructureStyleclass+ "}")?
 protected class SubstructureStyleclass_Group extends GroupToken {
 	

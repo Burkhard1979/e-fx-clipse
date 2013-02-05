@@ -19,9 +19,11 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
@@ -75,6 +77,15 @@ public class CssDslHighlightingCalculator implements ISemanticHighlightingCalcul
 				
 				int nameLength = funcTok.getName().getName().length();
 				acceptor.addPosition(n.getOffset(), nameLength + 1, CssDslHighlightingConfiguration.FUNCTION);
+				
+				for (CssTok tok : ((FuncTok) o).getParams()) {
+					if (tok instanceof SymbolTok) {
+						if (",".equals(((SymbolTok) tok).getSymbol())) {
+							ICompositeNode colonNode = NodeModelUtils.getNode(tok);
+							acceptor.addPosition(colonNode.getOffset(), colonNode.getLength(), CssDslHighlightingConfiguration.FUNCTION);
+						}
+					}
+				}
 				
 				acceptor.addPosition(n.getOffset() + n.getLength() - 1, 1, CssDslHighlightingConfiguration.FUNCTION);
 			}

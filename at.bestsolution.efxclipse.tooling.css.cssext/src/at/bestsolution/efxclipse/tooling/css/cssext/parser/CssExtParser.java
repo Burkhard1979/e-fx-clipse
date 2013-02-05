@@ -11,6 +11,8 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.naming.QualifiedName;
 
 import at.bestsolution.efxclipse.runtime.core.log.Log;
 import at.bestsolution.efxclipse.runtime.core.log.Logger;
@@ -40,11 +42,15 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleXor;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.NodeType;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.ResultNode;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
+import at.bestsolution.efxclipse.tooling.css.extapi.MultiProposal;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
+import at.bestsolution.efxclipse.tooling.css.extapi.Proposal.Type;
+import at.bestsolution.efxclipse.tooling.css.extapi.SimpleProposal;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
@@ -55,6 +61,7 @@ import com.google.inject.Inject;
 public class CssExtParser {
 
 	private @Inject ICssExtManager manager;
+	private @Inject IQualifiedNameProvider nameProvider;
 	
 	private @Log("cssext.parser") Logger logger;
 	
@@ -180,6 +187,16 @@ public class CssExtParser {
 				if (last.isValid()) {
 					last.next.add(parse(last.remainingInput, rule, isFirstRule?consumeWS:ConsumeWS.NO_CONSUME));
 				}
+				else if (!isFirstRule && last.status == State.PROPOSE) {
+//					// if the last was a proposal we go on with empty input to get multiple proposals in sequence
+					ResultNode node = parse(ParserInputCursor.emptyParserInputCursor(), rule, ConsumeWS.NO_CONSUME);
+					node.findByState(State.PROPOSE);
+					for (ResultNode n : node.findLast()) {
+						n.proposal = wrapMultiProposal(last.proposal, n.proposal);
+					}
+					last.next.add(node);
+				}
+				
 			}
 		}
 		
@@ -236,6 +253,8 @@ public class CssExtParser {
 		Queue<ResultNode> last = new LinkedList<>();
 		last.addAll(result.findLast());
 		
+		boolean first = true;
+		
 		while (!last.isEmpty()) {
 			ResultNode cur = last.poll();
 			if (cur.isValid()) {
@@ -243,8 +262,33 @@ public class CssExtParser {
 				
 				last.addAll(n.findLast());
 				
-				cur.next.add(n);
-				cur.next.add(ResultNode.createSkipNode(cur));
+				if (first) {
+					cur.next.add(n);
+					
+					ResultNode skipStarNode = new ResultNode(NodeType.STAR);
+					skipStarNode.status = State.SKIP;
+					skipStarNode.remainingInput = cur.remainingInput.copy();
+					
+					cur.next.add(skipStarNode);
+					
+					first = false;
+				}
+				else {
+					ResultNode starNode = new ResultNode(NodeType.STAR);
+					starNode.status = State.FORWARD;
+					starNode.remainingInput = cur.remainingInput.copy();
+					starNode.next.add(n);
+					cur.next.add(starNode);
+					
+					ResultNode skipStarNode = new ResultNode(NodeType.STAR);
+					skipStarNode.status = State.SKIP;
+					skipStarNode.remainingInput = cur.remainingInput.copy();
+					
+					starNode.next.add(skipStarNode);
+				}
+				
+				
+				//cur.next.add(ResultNode.createSkipNode(cur));
 			}
 			
 		}
@@ -365,27 +409,18 @@ public class CssExtParser {
 		
 		ResultNode rv = parse(l, rule, consumeWS);
 		
-		//FIXME QnD for getting colors in
-//		if( r.getRef() != null && "color".equals(r.getRef().getName())) {
-//			ParseResult c = new ParseResult();
-//			c.status = Status.PROPOSE;
-//			c.remainingInput = l.copy();
-//			DialogProposal p = new DialogProposal("Pick color ...") {
-//				
-//				@Override
-//				public String openProposal() {
-//					// needs to stay in gui bundle
-////					ColorDialog dialog = new ColorDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
-////					RGB rgb = dialog.open();
-////					if( rgb != null ) {
-////						return "rgb("+rgb.red+","+rgb.green+","+rgb.blue+")";
-////					}
-//					return null;
-//				}
-//			};
-//			c.proposal = p;
-//			rv.add(c);
-//		}
+		Definition ref = r.getRef();
+		QualifiedName fqn = nameProvider.getFullyQualifiedName(ref);
+		
+		if (l.isConsumedOrOnlyWSLeft()) {
+			List<Proposal> contributedProposalsForRule = manager.getContributedProposalsForRule(fqn.toString());
+			for (Proposal c : contributedProposalsForRule) {
+				ResultNode e = new ResultNode(NodeType.REF);
+				e.status = State.PROPOSE;
+				e.proposal = c;
+				rv.next.add(e);
+			}
+		}
 		
 		return rv;
 	}
@@ -537,6 +572,56 @@ public class CssExtParser {
 			public Type getType() {
 				return Type.Value;
 			}
+			
+			@Override
+			public String toString() {
+				return proposal;
+			}
+		};
+	}
+	
+	private Proposal wrapMultiProposal(final Proposal previous, final Proposal proposal) {
+		return new MultiProposal() {
+			
+			@Override
+			public Type getType() {
+				return proposal.getType();
+			}
+			
+			@Override
+			public String getProposal() {
+				return previous.getProposal() + proposal.getProposal();
+			}
+			
+			@Override
+			public int getPriority() {
+				return proposal.getPriority();
+			}
+			
+			@Override
+			public String getLabel() {
+				return previous.getLabel() + proposal.getLabel();
+			}
+			
+			@Override
+			public String getImageUrl() {
+				return proposal.getImageUrl();
+			}
+			
+			@Override
+			public Object getAdditionalInfo() {
+				return proposal.getAdditionalInfo();
+			}
+			
+			@Override
+			public Proposal getPrevious() {
+				return previous;
+			}
+			
+			@Override
+			public String toString() {
+				return previous.toString() + " + " + proposal.toString();
+			}
 		};
 	}
 	
@@ -612,7 +697,7 @@ public class CssExtParser {
 			result.message = "expected WS";
 		}
 		
-		
+		result.remainingInput = local.copy();
 		return result;
 	}
 	
@@ -898,8 +983,6 @@ public class CssExtParser {
 
 		List<Proposal> result = new ArrayList<Proposal>();
 
-		
-		
 		PropertyDefinition def = manager.findPropertyByName(propertyName);
 		if (def != null) {
 			ParserInput input = new ParserInput(prefixToks);
@@ -917,7 +1000,19 @@ public class CssExtParser {
 			
 			//ResultNode.dbg(res);
 			
+			
+			// add semicolon if input was successfully parsed
+			// THIS IS SIMPLY WRONG!!!!
+			for (ResultNode x : res.findByState(State.MATCH)) {
+				if (x.remainingInput.isConsumedOrOnlyWSLeft()) {
+					result.add(new SimpleProposal(";"));
+					break;
+				}
+			}
+			
 			result.addAll(mapProposals(res));
+			
+			
 //			result.addAll(findProposals(new LinkedList<CssTok>(prefixToks), prefix, def.getRule()));
 		}
 		else {
@@ -929,11 +1024,27 @@ public class CssExtParser {
 	
 	private List<Proposal> mapProposals(ResultNode result) {
 		List<Proposal> proposals = new ArrayList<Proposal>();
-		for (ResultNode r : result.findLast()) {
-			if (r.status == State.PROPOSE) {
-				proposals.add(r.proposal);
+		
+		List<Proposal> drop = new ArrayList<>();
+		
+		for (ResultNode r : result.findByState(State.PROPOSE)) {
+			
+			if (!r.next.isEmpty()) {
+				ResultNode cur = r;
+				List<ResultNode> allSubPropose = r.findByState(State.PROPOSE);
+				for (ResultNode n : allSubPropose) {
+					if (!(n.proposal instanceof MultiProposal)) {
+						drop.add(n.proposal);
+					}
+				}
+				
 			}
+			
+			proposals.add(r.proposal);
 		}
+		System.err.println("dropping " + drop);
+		proposals.removeAll(drop);
+		
 		return proposals;
 	}
 	

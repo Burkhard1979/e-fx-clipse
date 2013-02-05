@@ -1,7 +1,9 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.parser;
 
+import java.util.Collections;
+import java.util.List;
+
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
@@ -22,6 +24,23 @@ public class ParserInputCursor {
 	
 	public boolean isConsumed() {
 		return position > input.input.size()-1;
+	}
+	
+	public boolean isConsumedOrOnlyWSLeft() {
+		if (isConsumed()) {
+			return true;
+		}
+		if (input.input.size() == 0) {
+			return true;
+		}
+		boolean isWS = true;
+		for (int i = position; i < input.input.size(); i++) {
+			if (!(input.input.get(i) instanceof WSTok)) {
+				isWS = false;
+				break;
+			}
+		}
+		return isWS;
 	}
 	
 	public CssTok pollNextToken() {
@@ -78,5 +97,10 @@ public class ParserInputCursor {
 
 	public int getPosition() {
 		return position;
+	}
+	
+	public static ParserInputCursor emptyParserInputCursor() {
+		final List<CssTok> input = Collections.emptyList();
+		return new ParserInputCursor(new ParserInput(input), 0);
 	}
 }

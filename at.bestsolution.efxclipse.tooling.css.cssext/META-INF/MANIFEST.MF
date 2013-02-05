@@ -36,6 +36,7 @@ Export-Package: at.bestsolution.efxclipse.tooling.css.cssext,
  at.bestsolution.efxclipse.tooling.css.cssext.parser.antlr,
  at.bestsolution.efxclipse.tooling.css.cssext.parser.antlr.internal,
  at.bestsolution.efxclipse.tooling.css.cssext.parser.result,
+ at.bestsolution.efxclipse.tooling.css.cssext.proposal,
  at.bestsolution.efxclipse.tooling.css.cssext.scoping,
  at.bestsolution.efxclipse.tooling.css.cssext.services,
  at.bestsolution.efxclipse.tooling.css.cssext.validation

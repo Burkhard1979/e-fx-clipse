@@ -86,9 +86,12 @@ public class CssDslOccurenceComputer extends DefaultOccurrenceComputer {
 											for (CssSelector subSel : ss.getSubSelectors()) {
 												if (subSel instanceof ClassSelector) {
 													ClassSelector check = (ClassSelector) subSel;
-													if (check.getName().equals(((ClassSelector) target).getName())) {
-														ITextRegion declarationRegion = locationInFileProvider.getFullTextRegion(subSel);
-														addOccurrenceAnnotation(DECLARATION_ANNOTATION_TYPE, document, declarationRegion, m);
+													if (check.getName() != null) {
+														// TODO i don't get get a ClassSelectors name can be null
+														if (check.getName().equals(((ClassSelector) target).getName())) {
+															ITextRegion declarationRegion = locationInFileProvider.getFullTextRegion(subSel);
+															addOccurrenceAnnotation(DECLARATION_ANNOTATION_TYPE, document, declarationRegion, m);
+														}
 													}
 												}
 											}

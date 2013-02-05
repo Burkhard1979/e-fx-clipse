@@ -21,10 +21,8 @@ import com.google.inject.Inject;
  * @author ccaks
  * 
  */
-public class CssObjectDocumentationProvider implements
+public class ExtApiDelegatingDocumentationProvider implements
 		IEObjectDocumentationProvider {
-
-//	private @Inject CssDialectExtensionRegistry extension;
 
 	private @Inject CssExt ext;
 	

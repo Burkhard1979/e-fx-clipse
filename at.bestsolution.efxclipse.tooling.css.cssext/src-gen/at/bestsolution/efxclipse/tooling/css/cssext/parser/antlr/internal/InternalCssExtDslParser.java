@@ -7576,8 +7576,8 @@ public class InternalCssExtDslParser extends AbstractInternalAntlrParser {
     static final String DFA51_specialS =
         "\12\uffff}>";
     static final String[] DFA51_transitionS = {
-            "\1\4\1\uffff\1\1\1\10\2\uffff\1\7\12\uffff\1\6\3\uffff\3\6\1"+
-            "\uffff\1\5\3\uffff\1\2\7\uffff\1\3\1\uffff\1\5",
+            "\1\4\1\uffff\1\1\1\10\2\uffff\1\7\12\uffff\1\6\3\uffff\3\6"+
+            "\1\uffff\1\5\3\uffff\1\2\7\uffff\1\3\1\uffff\1\5",
             "\1\4\1\11\17\uffff\1\6\3\uffff\3\6\1\uffff\1\5\3\uffff\1\2"+
             "\11\uffff\1\5",
             "",

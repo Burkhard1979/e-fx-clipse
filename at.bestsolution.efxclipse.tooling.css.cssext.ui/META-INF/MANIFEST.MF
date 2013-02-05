@@ -44,4 +44,5 @@ Export-Package: at.bestsolution.efxclipse.tooling.css.cssext.ui;
    org.eclipse.xtext.ui.editor.contentassist.antlr",
  at.bestsolution.efxclipse.tooling.css.cssext.ui.internal;uses:="org.eclipse.ui.plugin,org.osgi.framework,com.google.inject"
 Bundle-Activator: at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.CssExtDslActivator
-Service-Component: OSGI-INF/dialectExtension.xml, OSGI-INF/cssExtProvider.xml
+Service-Component: OSGI-INF/dialectExtension.xml, OSGI-INF/cssExtProvider.xml,
+ OSGI-INF/ColorProposalContributor.xml

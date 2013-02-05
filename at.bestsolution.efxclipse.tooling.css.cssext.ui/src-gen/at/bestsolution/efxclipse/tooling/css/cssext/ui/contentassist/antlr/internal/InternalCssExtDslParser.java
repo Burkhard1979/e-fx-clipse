@@ -22404,8 +22404,8 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     static final String DFA7_specialS =
         "\12\uffff}>";
     static final String[] DFA7_transitionS = {
-            "\1\4\1\uffff\1\1\1\10\2\uffff\1\7\7\uffff\2\5\14\uffff\1\2\5"+
-            "\uffff\1\3\2\uffff\4\6",
+            "\1\4\1\uffff\1\1\1\10\2\uffff\1\7\7\uffff\2\5\14\uffff\1\2"+
+            "\5\uffff\1\3\2\uffff\4\6",
             "\1\4\1\11\14\uffff\2\5\14\uffff\1\2\10\uffff\4\6",
             "",
             "",

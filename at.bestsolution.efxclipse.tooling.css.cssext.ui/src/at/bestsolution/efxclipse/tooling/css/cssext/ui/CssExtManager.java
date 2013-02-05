@@ -44,13 +44,17 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.proposal.CssExtProposalContributor;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.SearchHelper.ElementDefinitionFilter;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.SearchHelper.PropertyDefinitionFilter;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.SearchHelper.SearchFilter;
+import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 
 public class CssExtManager implements ICssExtManager {
 
 	private @Log("cssext.manager") Logger logger;
+	
+	private List<CssExtProposalContributor> proposalContributors = new ArrayList<>();
 	
 	private static void log(String string) {
 		System.err.println("MANAGER: " + string);
@@ -306,5 +310,25 @@ public class CssExtManager implements ICssExtManager {
 		}
 		return result;
 	}
+	@Override
+	public void addCssExtProposalContributer(CssExtProposalContributor c) {
+		proposalContributors.add(c);
+	}
+	@Override
+	public void removeCssExtProposalContributer(CssExtProposalContributor c) {
+		proposalContributors.remove(c);
+	}
 	
+	@Override
+	public List<Proposal> getContributedProposalsForRule(String fqRuleName) {
+		List<Proposal> result = new ArrayList<>();
+		for (CssExtProposalContributor c : proposalContributors) {
+			if (fqRuleName.equals(c.getRule())) {
+				result.add(c.getProposal());
+				System.err.println("found " + c.getProposal() + " for " + fqRuleName);
+			}
+		}
+		
+		return result;
+	}
 }

@@ -8,17 +8,16 @@
  * Contributors:
  *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.tooling.css.ui.extapi;
+package at.bestsolution.efxclipse.tooling.css.extapi;
 
-import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
+import java.util.List;
 
 /**
- * @author ccaks
+ * @author Caksi
  *
  */
-public interface UIProposal extends Proposal {
+public interface MultiProposal extends Proposal {
 
-	public boolean show();
-	public boolean hide();
+	public Proposal getPrevious();
 	
 }

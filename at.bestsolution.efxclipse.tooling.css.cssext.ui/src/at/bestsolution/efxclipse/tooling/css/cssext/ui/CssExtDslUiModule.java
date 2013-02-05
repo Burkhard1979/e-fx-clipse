@@ -29,7 +29,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemant
 import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 import at.bestsolution.efxclipse.tooling.css.ui.CssDslUiModule;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
-import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
+import at.bestsolution.efxclipse.tooling.css.ui.hover.ExtApiDelegatingDocumentationProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.matcher.Matchers;
@@ -60,7 +60,7 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 //		binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
 		binder.bind(CssExt.class).toProvider(CssExt.OsgiCssExtServiceProvider.class);
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
-		binder.bind(IEObjectDocumentationProvider.class).to(CssObjectDocumentationProvider.class);
+		binder.bind(IEObjectDocumentationProvider.class).to(ExtApiDelegatingDocumentationProvider.class);
 		
 		super.configure(binder);
 	}
