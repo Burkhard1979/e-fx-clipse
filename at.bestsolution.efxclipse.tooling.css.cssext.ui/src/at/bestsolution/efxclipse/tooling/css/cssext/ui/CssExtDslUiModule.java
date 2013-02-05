@@ -26,6 +26,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemanticHighlightingCalculator;
+import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 import at.bestsolution.efxclipse.tooling.css.ui.CssDslUiModule;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssObjectDocumentationProvider;
@@ -56,7 +57,8 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 		binder.bindListener(Matchers.any(), new FXLoggerListener());
 		
 		// bind hovering to css provider
-		binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
+//		binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
+		binder.bind(CssExt.class).toProvider(CssExt.OsgiCssExtServiceProvider.class);
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
 		binder.bind(IEObjectDocumentationProvider.class).to(CssObjectDocumentationProvider.class);
 		

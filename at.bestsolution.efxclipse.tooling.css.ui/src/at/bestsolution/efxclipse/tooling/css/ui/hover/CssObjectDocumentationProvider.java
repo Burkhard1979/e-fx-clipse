@@ -13,7 +13,7 @@ package at.bestsolution.efxclipse.tooling.css.ui.hover;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
+import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 
 import com.google.inject.Inject;
 
@@ -24,11 +24,13 @@ import com.google.inject.Inject;
 public class CssObjectDocumentationProvider implements
 		IEObjectDocumentationProvider {
 
-	private @Inject CssDialectExtensionRegistry extension;
+//	private @Inject CssDialectExtensionRegistry extension;
 
+	private @Inject CssExt ext;
+	
 	@Override
 	public String getDocumentation(EObject o) {
-		String doku = extension.getDocumentation(o.eResource().getURI(), o);
+		String doku = ext.getDocumentation(o);
 		
 		if (doku == null) {
 			return "no docu support for this element :/";

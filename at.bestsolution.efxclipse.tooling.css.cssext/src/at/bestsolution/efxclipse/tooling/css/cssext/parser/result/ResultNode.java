@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.ParserInputCursor;
+import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 
 public class ResultNode {
 

@@ -10,31 +10,27 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.validation;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.validation.Check;
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationStatus;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
-import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
+import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
+import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 
 import com.google.inject.Inject;
  
 
 public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
-	private @Inject CssDialectExtensionRegistry extension;
+	//private @Inject CssDialectExtensionRegistry extension;
 	
+	private @Inject CssExt ext;
 	
 //	@Check
 //	public void checkGreetingStartsWithCapital(Greeting greeting) {
@@ -55,11 +51,12 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 		
 		URI uri = dec.eResource().getURI();
 		
-		List<CssProperty> properties = extension.getAllProperties(uri);
+		List<Proposal> properties = ext.getPropertyProposalsForSelector(null);
+				//extension.getAllProperties(uri);
 		
 		boolean known = false;
-		for (CssProperty p : properties) {
-			if (p.name.equals(property.getName())) {
+		for (Proposal p : properties) {
+			if (p.getProposal().equals(property.getName())) {
 				known = true;
 				break;
 			}
@@ -72,15 +69,17 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 			
 			ruleset rs = (ruleset) dec.eContainer();
 			List<selector> selectors = rs.getSelectors();
-			Set<CssProperty> selectorProps = new HashSet<>();
-			for (selector selector : selectors) {
-				selectorProps.addAll(extension.getPropertiesForSelector(uri, selector));
-			}
+//			Set<CssProperty> selectorProps = new HashSet<>();
+//			for (selector selector : selectors) {
+//				selectorProps.addAll(extension.getPropertiesForSelector(uri, selector));
+//			}
+			
+			List<Proposal> selectorProps = ext.getPropertyProposalsForSelector(selectors);
 			
 			if (selectorProps.size() > 0) {
 				boolean supported = false;
-				for (CssProperty p : selectorProps) {
-					if (p.name.equals(property.getName())) {
+				for (Proposal p : selectorProps) {
+					if (p.getProposal().equals(property.getName())) {
 						supported = true;
 						break;
 					}
@@ -91,30 +90,30 @@ public class CssDslJavaValidator extends AbstractCssDslJavaValidator {
 				}
 			}
 			
-			List<ValidationResult> result = extension.validateProperty(uri, null, property.getName(), tokens);
+//			List<ValidationResult> result = extension.validateProperty(uri, null, property.getName(), tokens);
 			
 //			System.err.println(result);
 //			 
 //			System.err.println("validation of " + property.getName());
 			
-			if (!result.isEmpty()) {
-				for (ValidationResult r : result) {
-					if (r.status == ValidationStatus.ERROR) {
-						if (r.object != null) {
-							if (r.object instanceof FuncTok) {
-								FuncTok f = (FuncTok) r.object;
-								error(r.message, f, CssDslPackage.Literals.FUNC_TOK__NAME, -1);
-							}
-							else {
-								error(r.message, r.object, null, 0);
-							}
-						}
-						else {
-							error(r.message, dec, CssDslPackage.Literals.CSS_DECLARATION__VALUE_TOKENS, r.index);
-						}
-					}
-				}
-			}
+//			if (!result.isEmpty()) {
+//				for (ValidationResult r : result) {
+//					if (r.status == ValidationStatus.ERROR) {
+//						if (r.object != null) {
+//							if (r.object instanceof FuncTok) {
+//								FuncTok f = (FuncTok) r.object;
+//								error(r.message, f, CssDslPackage.Literals.FUNC_TOK__NAME, -1);
+//							}
+//							else {
+//								error(r.message, r.object, null, 0);
+//							}
+//						}
+//						else {
+//							error(r.message, dec, CssDslPackage.Literals.CSS_DECLARATION__VALUE_TOKENS, r.index);
+//						}
+//					}
+//				}
+//			}
 		}
 	}
 //	@Check

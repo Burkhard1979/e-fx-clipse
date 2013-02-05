@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
 
 import at.bestsolution.efxclipse.runtime.core.log.Log;
 import at.bestsolution.efxclipse.runtime.core.log.Logger;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.Proposal;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
@@ -45,6 +44,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.NodeType;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.ResultNode;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
+import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
@@ -505,7 +505,40 @@ public class CssExtParser {
 //	}
 	
 	
-	
+	private Proposal createProposal(final String proposal) {
+		return new Proposal() {
+			
+			@Override
+			public String getProposal() {
+				return proposal;
+			}
+			
+			@Override
+			public int getPriority() {
+				return 0;
+			}
+			
+			@Override
+			public String getLabel() {
+				return proposal;
+			}
+			
+			@Override
+			public String getImageUrl() {
+				return null;
+			}
+			
+			@Override
+			public Object getAdditionalInfo() {
+				return null;
+			}
+			
+			@Override
+			public Type getType() {
+				return Type.Value;
+			}
+		};
+	}
 	
 	private ResultNode parseFunction(ParserInputCursor in, CSSRuleFunc ruleFunc, ConsumeWS consumeWS) {
 		ResultNode result = new ResultNode(NodeType.FUNCTION);
@@ -518,7 +551,7 @@ public class CssExtParser {
 			
 			if (tok == null) {
 				result.status = State.PROPOSE;
-				result.proposal = new Proposal(ruleFunc.getName() + "()");
+				result.proposal = createProposal(ruleFunc.getName() + "()");
 			}
 			else {
 				if (tok instanceof FuncTok) {
@@ -601,7 +634,7 @@ public class CssExtParser {
 			}
 			else {
 				result.status = State.PROPOSE;
-				result.proposal = new Proposal("url(http://efxclipse.org/)");
+				result.proposal = createProposal("url(http://efxclipse.org/)");
 			}
 		}
 		catch (Exception e) {
@@ -657,7 +690,7 @@ public class CssExtParser {
 			}
 			else {
 				result.status = State.PROPOSE;
-				result.proposal = new Proposal("0");
+				result.proposal = createProposal("0");
 			}
 		}
 		catch (Exception e) {
@@ -713,7 +746,7 @@ public class CssExtParser {
 			}
 			else {
 				result.status = State.PROPOSE;
-				result.proposal = new Proposal("0.0");
+				result.proposal = createProposal("0.0");
 			}
 		}
 		catch (Exception e) {
@@ -776,7 +809,7 @@ public class CssExtParser {
 			}
 			else {
 				result.status = State.PROPOSE;
-				result.proposal = new Proposal(r.getValue());
+				result.proposal = createProposal(r.getValue());
 			}
 			
 		}
@@ -820,7 +853,7 @@ public class CssExtParser {
 			}
 			else {
 				result.status = State.PROPOSE;
-				result.proposal = new Proposal(r.getSymbol());
+				result.proposal = createProposal(r.getSymbol());
 			}
 		}
 		catch (Exception e) {
@@ -888,7 +921,7 @@ public class CssExtParser {
 //			result.addAll(findProposals(new LinkedList<CssTok>(prefixToks), prefix, def.getRule()));
 		}
 		else {
-			result.add(new Proposal("> no rule for " + propertyName + " found!"));
+			result.add(createProposal("> no rule for " + propertyName + " found!"));
 		}
 		
 		return result;

@@ -14,10 +14,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtext.AbstractElement;
+import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
@@ -30,8 +35,10 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
 import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
+import at.bestsolution.efxclipse.tooling.css.extapi.Proposal.Type;
 
 import com.google.inject.Inject;
 
@@ -64,24 +71,28 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 				cp.setHover(hoverDispatcher);
 				
 				cp.setTriggerCharacters(new char[] { ' ' });
-				cp.setTextApplier(new IReplacementTextApplier() {
+				
+				if (p.getType() == Type.Property) {
+					// add ": " to proposal
+					cp.setTextApplier(new IReplacementTextApplier() {
+						
+						@Override
+						public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
+							document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + ": ");
+							proposal.setCursorPosition(proposal.getCursorPosition()+2);
+						}
+					});
+				}
+				if (p.getType() == Type.Value) {
 					
-					@Override
-					public void apply(IDocument document, ConfigurableCompletionProposal proposal) throws BadLocationException {
-						document.replace(proposal.getReplacementOffset(), proposal.getReplacementLength(), proposal.getReplacementString() + ": ");
-						proposal.setCursorPosition(proposal.getCursorPosition()+2);
-					}
-				});
+				}
 				
 				acceptor.accept(cp);
 			}
 		}
 	}
 	
-	public void complete_css_property(ruleset model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(model.getSelectors());
-		acceptProposals(proposals, context, acceptor);
-	}
+	
 	
 	private List<CssTok> findPrefixTokens(ContentAssistContext context) {
 		List<CssTok> prefixToks = new ArrayList<CssTok>();
@@ -110,6 +121,36 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 		final List<Proposal> proposals = cssExt.getValueProposalsForProperty(findSelectors(model), model.getProperty(), findPrefixTokens(context), context.getPrefix());
 		acceptProposals(proposals, context, acceptor);
 	}
-
-
+	
+	public void completeRuleset_Declarations(ruleset model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(model.getSelectors());
+		acceptProposals(proposals, context, acceptor);
+	}
+	
+	// known issue
+	// for some reason autocompletion for the last property in a ruleset ends up here
+	// for now i try to get the current model, but in case we fail i return the full list
+	public void completeRuleset_Declarations(stylesheet model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		
+		if (context.getPreviousModel() instanceof ruleset) {
+			ruleset ruleset = (ruleset) context.getPreviousModel();
+			final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(ruleset.getSelectors());
+			acceptProposals(proposals, context, acceptor);
+		}
+		else {
+			final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(null);
+			acceptProposals(proposals, context, acceptor);
+		}
+	}
+	
+	
+	@Override
+	public void completeKeyword(Keyword keyword,
+			ContentAssistContext contentAssistContext,
+			ICompletionProposalAcceptor acceptor) {
+		return;
+	}
+	
 }

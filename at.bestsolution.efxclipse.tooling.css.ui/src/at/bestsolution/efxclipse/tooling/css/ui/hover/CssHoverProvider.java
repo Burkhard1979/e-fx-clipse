@@ -22,19 +22,22 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
+import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 public class CssHoverProvider extends DefaultEObjectHoverProvider {
 
+//	@Inject
+//	private CssDialectExtensionRegistry extension;
+	
 	@Inject
-	private CssDialectExtensionRegistry extension;
+	private CssExt ext;
 	
 	@Inject(optional = true)
 	@Named("at.bestsolution.efxclipse.tooling.css.ui.styleSheetFileName")
@@ -158,7 +161,7 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	 */
 	@Override
 	protected String getFirstLine(EObject o) {
-		String firstLine =  extension.getDocHead(o.eResource().getURI(), o);
+		String firstLine =  ext.getDocumentationHeader(o);
 		
 		if (firstLine==null) {
 			firstLine = super.getFirstLine(o);
@@ -167,7 +170,7 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	}
 	
 	protected boolean hasHover(EObject o) {
-		String firstLine = extension.getDocHead(o.eResource().getURI(), o);
+		String firstLine = ext.getDocumentationHeader(o);
 		return firstLine != null;
 	}
 }

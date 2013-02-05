@@ -28,6 +28,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.TextStyle;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.xtext.ui.JdtHoverProvider.JavadocHoverWrapper;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
@@ -580,5 +581,15 @@ public class CssDslRealtimeProposalProvider extends AbstractCssDslProposalProvid
 //		public IInformationControlCreator getHoverControlCreator() {
 //			return javadocHover.getHoverControlCreator();
 //		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.xtext.ui.editor.contentassist.AbstractJavaBasedContentProposalProvider#completeKeyword(org.eclipse.xtext.Keyword, org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext, org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor)
+	 */
+	@Override
+	public void completeKeyword(Keyword keyword,
+			ContentAssistContext contentAssistContext,
+			ICompletionProposalAcceptor acceptor) {
+		return;
 	}
 }

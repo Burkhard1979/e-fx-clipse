@@ -13,10 +13,15 @@ package at.bestsolution.efxclipse.tooling.css.extapi;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
+
+import com.google.inject.Provider;
 
 /**
  * @author ccaks
@@ -29,4 +34,21 @@ public interface CssExt {
 	
 	public String getDocumentationHeader(EObject obj);
 	public String getDocumentation(EObject obj);
+	
+	
+	public static class OsgiCssExtServiceProvider implements Provider<CssExt> {
+
+		private CssExt instance = null;
+		
+		@Override
+		public CssExt get() {
+			if (instance == null) {
+				BundleContext context = FrameworkUtil.getBundle(CssExt.class).getBundleContext();
+				ServiceReference<CssExt> ref = context.getServiceReference(CssExt.class);
+				instance = context.getService(ref);
+			}
+			return instance;
+		}
+		
+	}
 }

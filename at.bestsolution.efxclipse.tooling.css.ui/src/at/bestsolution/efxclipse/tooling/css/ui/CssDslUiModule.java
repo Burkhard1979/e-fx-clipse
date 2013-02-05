@@ -28,6 +28,8 @@ import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
 import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
 import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry.OsgiCssDialectExtensionRegistryProvider;
+import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
+import at.bestsolution.efxclipse.tooling.css.ui.contentassist.ExtApiDelegatingProposalProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.contentassist.TemplateProposalProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.doubleclicking.CssGrammarAwareStrategy;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingCalculator;
@@ -55,6 +57,7 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		
 		binder.bind(ISemanticHighlightingCalculator.class).to(CssDslHighlightingCalculator.class);
 		binder.bind(IHighlightingConfiguration.class).to(CssDslHighlightingConfiguration.class);
 		
@@ -62,7 +65,7 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
 		binder.bind(IEObjectDocumentationProvider.class).to(CssObjectDocumentationProvider.class);
 		
-		binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
+
 		
 //		binder.bind(IFormatter.class).to(DefaultFormatter.class);
 		
@@ -79,6 +82,9 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		// setup efxclipse logger
 		binder.bind(LoggerFactory.class).toProvider(OSGiLoggerFactoryProvider.class);
 		binder.bindListener(Matchers.any(), new FXLoggerListener());
+		
+		//binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
+		binder.bind(CssExt.class).toProvider(CssExt.OsgiCssExtServiceProvider.class);
 	}
 	
 	@Override
@@ -87,7 +93,11 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 	    return TemplateProposalProvider.class;
 	  }
 	
+//	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {
+//		return at.bestsolution.efxclipse.tooling.css.ui.contentassist.CssDslRealtimeProposalProvider.class;
+//	}
+	
 	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {
-		return at.bestsolution.efxclipse.tooling.css.ui.contentassist.CssDslRealtimeProposalProvider.class;
+		return ExtApiDelegatingProposalProvider.class;
 	}
 }

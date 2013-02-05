@@ -16,16 +16,28 @@ CheckBox {
 }
 
 Invalid , lala {
-	-fx-border-width: asdf xc 1px;
+	
+	-fx-border-width: 0.0%, 0.0%, 0.0%;
+	
 	lala: dada a b c, d;
+	
 	-fx-background-image: x;
+	
+	-fx-background-color: ali;
+	
+	
+}
+
+ggg {
+	-fx-alignment: ;
+	
 }
 
 .check-box {
 	/* CheckBox element autocomplete (by styleclass) */
 	/*visibility: inherit ;*/
 	
-	
+	-fx-blend-mode: add;
 	-fx-border-width: 0.0px;
 	
 }
