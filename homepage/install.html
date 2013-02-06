@@ -87,10 +87,13 @@
   <p>
   Nightly builds: <a href="http://www.efxclipse.org/p2-repos/nightly/site/">http://www.efxclipse.org/p2-repos/nightly/site/</a>
   </p>
+  <br />
   <p>
   Please read <a href="https://groups.google.com/d/topic/efxclipse/zl-391MAkFU/discussion">these notes</a> for more information about release and nightly builds.
   </p>
   <div>
+  <span class="label important">For JDK8 users</span><br />
+  If you are living on the edge with JDK8 b75 or later, you'll need the <a href="http://www.efxclipse.org/p2-repos/nightly/site/">latest nightly builds</a> of e(fx)clipse since starting with b75 JavaFX will be on the extension classpath of your JDK8/JRE8. For autocompletion to work properly in this case, you need to modify your installed JRE such that the Javadoc location for JavaFX points to a local Javadoc resource as shown in <a href="jfx_javadoc.png">this screenshot</a>. We are going to find a better solution for this once the source code is shipped with the JDK. 
   </div>
  </section>
  <section id="for-the-lazy">
