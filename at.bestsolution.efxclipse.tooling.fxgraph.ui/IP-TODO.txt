@@ -4,6 +4,5 @@ icons/page_white_coldfusion.png
 
 Oxygene (LGPL):
 ---------------
-icons/image-x-vnd.trolltech.qpicture.png
 icons/text-rdf.png
 icons/title_banner.png
