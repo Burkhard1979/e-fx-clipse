@@ -172,8 +172,6 @@ RobotTask {
 						URLFile "edit-image-face-show.png" 		"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/edit-image-face-show.png",
 						URLFile "games-config-background.png" 	"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/games-config-background.png",
 						URLFile "player-volume.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/player-volume.png",
-						URLFile "sample.gif" 					"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/sample.gif",
-						URLFile "save_edit.gif" 				"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/save_edit.gif",
 						URLFile "system-reboot.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/system-reboot.png",
 						URLFile "tool-animator.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/tool-animator.png"
 					}
