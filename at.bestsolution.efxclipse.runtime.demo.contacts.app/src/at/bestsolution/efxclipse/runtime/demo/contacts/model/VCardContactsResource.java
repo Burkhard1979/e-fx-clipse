@@ -7,10 +7,10 @@
  * http://www.eclipse.org/legal/epl-v10.html.
  * 
  * Contributors:
- *     Kai TÃ¶dter - initial implementation
+ *     Kai T????dter - initial implementation
  ******************************************************************************/
 
-package at.bestsolution.efxclipse.runtime.demo.contacts.model.internal;
+package at.bestsolution.efxclipse.runtime.demo.contacts.model;
 
 import at.bestsolution.efxclipse.runtime.demo.contacts.BundleActivatorImpl;
 
@@ -37,9 +37,9 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.osgi.framework.Bundle;
 
-public class VCardContactsRepository extends ResourceImpl {
+public class VCardContactsResource extends ResourceImpl {
 
-	public VCardContactsRepository() {
+	public VCardContactsResource() {
 		super(URI.createPlatformResourceURI("at.bestsolution.efxclipse.runtime.demo.contacts/vcards", false));
 		
 		try {

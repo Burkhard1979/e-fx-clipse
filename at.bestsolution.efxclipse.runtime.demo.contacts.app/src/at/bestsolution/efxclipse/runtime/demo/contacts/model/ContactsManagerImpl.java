@@ -10,7 +10,6 @@
  ******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.model;
 
-import at.bestsolution.efxclipse.runtime.demo.contacts.model.internal.VCardContactsRepository;
 
 import at.bestsolution.efxclipse.runtime.demo.contacts.provider.ContactsItemProviderAdapterFactory;
 
@@ -27,7 +26,7 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
 public class ContactsManagerImpl implements ContactsManager {
 	
 	protected EditingDomain editingDomain;
-	protected VCardContactsRepository contactsResource;
+	protected VCardContactsResource contactsResource;
 	protected ComposedAdapterFactory adapterFactory;
 	
 	public ContactsManagerImpl() {
@@ -36,15 +35,11 @@ public class ContactsManagerImpl implements ContactsManager {
 		adapterFactory.addAdapterFactory(new ContactsItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		
-		contactsResource = new VCardContactsRepository();
+		contactsResource = new VCardContactsResource();
 		BasicCommandStack commandStack = new BasicCommandStack();
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack);
 		editingDomain.getResourceSet().getResources().add(contactsResource);
 	}
-	
-//	public Resource getResource() {
-//		return contactsResource;
-//	}
 	
 	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
