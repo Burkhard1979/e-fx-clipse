@@ -64,10 +64,8 @@ Bundle-Activator: at.bestsolution.efxclipse.runtime.demo.contacts.BundleActivato
 Bundle-Localization: plugin
 Service-Component: OSGI-INF/component.xml
 Export-Package: at.bestsolution.efxclipse.runtime.demo.contacts,
- at.bestsolution.efxclipse.runtime.demo.contacts.databinding,
  at.bestsolution.efxclipse.runtime.demo.contacts.handlers,
  at.bestsolution.efxclipse.runtime.demo.contacts.model,
- at.bestsolution.efxclipse.runtime.demo.contacts.model.internal,
  at.bestsolution.efxclipse.runtime.demo.contacts.processors,
  at.bestsolution.efxclipse.runtime.demo.contacts.views
 
