@@ -4,7 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="at.bestsolution.efxclipse.tooling.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/at.bestsolution.efxclipse.runtime.guice"/>
-	<classpathentry kind="lib" path="libs/aopalliance.jar"/>
-	<classpathentry kind="lib" path="libs/guice-2.0.jar"/>
+	<classpathentry kind="lib" path="libs/com.google.inject_2.0.0.v201105231817.jar"/>
+	<classpathentry kind="lib" path="libs/org.aopalliance_1.0.0.v201105210816.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
