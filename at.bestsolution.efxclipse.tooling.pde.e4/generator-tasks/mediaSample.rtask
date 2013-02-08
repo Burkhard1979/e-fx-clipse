@@ -151,7 +151,7 @@ RobotTask {
 							children = {
 								URLFile "games-config-background.png" 	"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/games-config-background.png",
 								URLFile "player-volume.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/player-volume.png",
-								URLFile "tool-animator.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/tool-animator.png"
+								URLFile "kaffeine.png"		 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/kaffeine.png"
 							}
 						},
 						Folder "resources" {
@@ -169,11 +169,11 @@ RobotTask {
 								}
 							}
 						},
-						URLFile "edit-image-face-show.png" 		"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/edit-image-face-show.png",
+						URLFile "view-preview.png" 				"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/view-preview.png",
 						URLFile "games-config-background.png" 	"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/games-config-background.png",
 						URLFile "player-volume.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/player-volume.png",
-						URLFile "system-reboot.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/system-reboot.png",
-						URLFile "tool-animator.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/tool-animator.png"
+						URLFile "system-restart.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/system-restart.png",
+						URLFile "kaffeine.png"		 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/kaffeine.png"
 					}
 				}
 			}

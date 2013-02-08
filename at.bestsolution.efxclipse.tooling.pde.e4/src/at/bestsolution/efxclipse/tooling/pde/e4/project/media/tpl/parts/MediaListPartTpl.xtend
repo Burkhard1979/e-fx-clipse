@@ -57,7 +57,7 @@ public class MediaListPart {
 				setText(item.getName());
 				switch (item.getType()) {
 				case MOVIE:
-					setGraphic(new ImageView("platform:/plugin/«rootPackage»/icons/tool-animator.png"));
+					setGraphic(new ImageView("platform:/plugin/«rootPackage»/icons/kaffeine.png"));
 					break;
 				case PICTURE:
 					setGraphic(new ImageView("platform:/plugin/«rootPackage»/icons/games-config-background.png"));
@@ -123,7 +123,7 @@ public class MediaListPart {
 		MPart p = MBasicFactory.INSTANCE.createPart();
 		p.setLabel(m.getName());
 		if( m.getType() == MediaType.MOVIE ) {
-			p.setIconURI("platform:/plugin/«rootPackage»/icons/22/tool-animator.png");	
+			p.setIconURI("platform:/plugin/«rootPackage»/icons/22/kaffeine.png");	
 		} else if( m.getType() == MediaType.PICTURE ) {
 			p.setIconURI("platform:/plugin/«rootPackage»/icons/22/games-config-background.png");
 		} else {

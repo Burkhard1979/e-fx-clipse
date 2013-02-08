@@ -134,7 +134,7 @@ public class MediaListPartTpl implements Generator<DynamicFile> {
     _builder.append("\t\t\t\t\t");
     _builder.append("setGraphic(new ImageView(\"platform:/plugin/");
     _builder.append(rootPackage, "					");
-    _builder.append("/icons/tool-animator.png\"));");
+    _builder.append("/icons/kaffeine.png\"));");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t\t\t\t");
     _builder.append("break;");
@@ -326,7 +326,7 @@ public class MediaListPartTpl implements Generator<DynamicFile> {
     _builder.append("\t\t\t");
     _builder.append("p.setIconURI(\"platform:/plugin/");
     _builder.append(rootPackage, "			");
-    _builder.append("/icons/22/tool-animator.png\");\t");
+    _builder.append("/icons/22/kaffeine.png\");\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("} else if( m.getType() == MediaType.PICTURE ) {");

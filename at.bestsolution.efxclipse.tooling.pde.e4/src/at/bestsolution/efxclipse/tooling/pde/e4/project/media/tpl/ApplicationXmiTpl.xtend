@@ -28,8 +28,8 @@ class ApplicationXmiTpl implements Generator<DynamicFile> {
     </children>
     <trimBars xmi:id="«EcoreUtil::generateUUID»">
       <children xsi:type="menu:ToolBar" xmi:id="«EcoreUtil::generateUUID»" elementId="org.efxclipse.e4.maintoolbar">
-        <children xsi:type="menu:HandledToolItem" xmi:id="«EcoreUtil::generateUUID»" elementId="org.efxclipse.e4.toolitem.open" iconURI="platform:/plugin/«rootPackage»/icons/edit-image-face-show.png" command="«openCommandId»"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="«EcoreUtil::generateUUID»" elementId="org.efxclipse.e4.toolitem.save" iconURI="platform:/plugin/«rootPackage»/icons/system-reboot.png" command="«refreshCommandId»"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="«EcoreUtil::generateUUID»" elementId="org.efxclipse.e4.toolitem.open" iconURI="platform:/plugin/«rootPackage»/icons/view-preview.png" command="«openCommandId»"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="«EcoreUtil::generateUUID»" elementId="org.efxclipse.e4.toolitem.save" iconURI="platform:/plugin/«rootPackage»/icons/system-restart.png" command="«refreshCommandId»"/>
       </children>
     </trimBars>
   </children>
