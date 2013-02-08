@@ -1,0 +1,7 @@
+Oxygene Icons (LGPL):
+---------------------
+.../icons/dialog-error.png
+.../icons/dialog-information.png
+.../icons/dialog-warning.png
+.../icons/preferences-desktop-notification.png
+.../icons/system-help.png
