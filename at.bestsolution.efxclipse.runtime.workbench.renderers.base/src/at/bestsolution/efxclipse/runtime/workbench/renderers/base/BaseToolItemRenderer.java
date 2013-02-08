@@ -44,7 +44,7 @@ public abstract class BaseToolItemRenderer<N> extends BaseItemRenderer<MToolItem
 		final WToolItem<N> widget = (WToolItem<N>) toolbarElement.getWidget();
 
 		// can we call canExecute in the none ui thread????
-		sync.syncExec(new Runnable() {
+		sync.asyncExec(new Runnable() {
 			
 			@Override
 			public void run() {
