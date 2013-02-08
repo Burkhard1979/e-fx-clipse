@@ -1,0 +1,29 @@
+famfamfam (Creative Commons 2.5)
+--------------------------------
+page_white_code_red.png
+
+Oxygene (LGPL):
+---------------
+icons/16_16/application-exit.png
+icons/16_16/debug-run.png
+icons/16_16/debug-step-into.png
+icons/16_16/dialog-information.png
+icons/16_16/format-text-direction-ltr.png
+icons/16_16/run-build-clean.png
+icons/16_16/run-build-install.png
+icons/16_16/security-high.png
+icons/16_16/security-low.png
+icons/16_16/security-medium.png
+icons/16_16/task-attempt.png
+icons/16_16/task-complete.png
+icons/16_16/task-recurring.png
+icons/16_16/task-reject.png
+icons/16_16/view-ldap-resource.png
+icons/16_16/view-presentation.png
+
+icons/32_32/dialog-close.png
+
+Eclipse JDT (EPL):
+------------------
+icons/ovr/error_co.gif
+icons/ovr/warning_co.gif
