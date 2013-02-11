@@ -131,7 +131,6 @@ RobotTask {
 						Folder "images" {
 							children = {
 								URLFile "clef.png" 					"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/clef.png",
-								URLFile "dark_dotted.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/dark_dotted.png",
 								URLFile "top-bar.png" 				"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/top-bar.png",
 								URLFile "window-close-over.png" 	"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/window-close-over.png",
 								URLFile "window-close.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/window-close.png",

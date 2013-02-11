@@ -1,7 +1,7 @@
-Ensemble (GPL):
+Ensemble (Oracle BSD):
 ---------------
+From http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
 templates/common/css/images/clef.png
-templates/common/css/images/dark_dotted.png
 templates/common/css/images/top-bar.png
 templates/common/css/images/window-close-over.png
 templates/common/css/images/window-close.png
@@ -11,8 +11,10 @@ templates/common/css/images/window-expand.png
 templates/common/css/images/window-min-over.png
 templates/common/css/images/window-min.png
 
-Oxygene (LGPL):
----------------
+Oxygene (Creative Commons 3.0 & LGPL)
+-------------------------------------
+From: svn -r 760421 co svn://anonsvn.kde.org/home/kde/trunk/kdesupport/oxygen-icons
+
 templates/common/icons/resources/22/games-config-background.png
 templates/common/icons/resources/22/player-volume.png
 templates/common/icons/resources/22/tool-animator.png
