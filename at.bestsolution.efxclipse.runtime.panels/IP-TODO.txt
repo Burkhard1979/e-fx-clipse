@@ -1,1 +1,0 @@
-VelocityTracker is a copy from Android
