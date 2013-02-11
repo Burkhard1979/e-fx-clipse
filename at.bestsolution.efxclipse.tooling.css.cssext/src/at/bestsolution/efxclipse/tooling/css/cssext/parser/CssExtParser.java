@@ -49,14 +49,10 @@ import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.ResultNode;
 import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
 import at.bestsolution.efxclipse.tooling.css.extapi.MultiProposal;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
-import at.bestsolution.efxclipse.tooling.css.extapi.Proposal.Type;
 import at.bestsolution.efxclipse.tooling.css.extapi.SimpleProposal;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
-//import org.eclipse.swt.graphics.RGB;
-//import org.eclipse.swt.widgets.ColorDialog;
-//import org.eclipse.ui.PlatformUI;
 
 public class CssExtParser {
 
@@ -71,23 +67,9 @@ public class CssExtParser {
 		NO_CONSUME;
 	}
 	
-	private boolean relevant(CSSRule r) {
-		return r instanceof CSSRuleConcat ||
-				r instanceof CSSRuleOr ||
-				r instanceof CSSRuleLiteral ||
-				r instanceof CSSRuleSymbol ||
-				r instanceof CSSRulePostfix || 
-				r instanceof CSSType;
-	}
-	
 	private ResultNode parse(ParserInputCursor input, CSSRule rule, ConsumeWS consumeWS) {
 		Assert.isNotNull(rule, "rule must not be null");
 		Assert.isNotNull(input, "input must not be null");
-//		if (relevant(rule)) {
-//			g.depth++;
-//			g.node++;
-//			print(g.depth, g.node, "-> " + l + " (rule = " + rule + ")");
-//		}	
 		ResultNode result = null;
 		
 		switch(rule.eClass().getClassifierID()) {
@@ -126,16 +108,6 @@ public class CssExtParser {
 //		}
 		return result;
 	}
-	
-	private void print(int depth, int node, String string) {
-		String d = "";
-		for (int i = 0; i < depth; i++) {
-			d += " ";
-		}
-		
-		logger.debug(d + depth + " " + string);
-	}
-	
 	
 	private ResultNode parseOr(ParserInputCursor input, CSSRuleOr or, ConsumeWS consumeWS) {
 		ResultNode orResult = new ResultNode(NodeType.OR);
@@ -449,7 +421,6 @@ public class CssExtParser {
 		int testNo = 1;
 		
 		while (!rulesLeft.isEmpty() && testNo <= maxTests) {
-			System.err.println(testNo + " <= " + maxTests);
 			// pick rule
 			final CSSRule rule = rulesLeft.poll();
 			
@@ -492,7 +463,7 @@ public class CssExtParser {
 	
 	
 	
-	private final int n = Integer.MAX_VALUE;
+//	private final int n = Integer.MAX_VALUE;
 	
 //	private boolean recParsePostfix(ParsePath g, Set<Input> input, CSSRule rule, int min, int cur,  int max, Set<ParseResult> result) {
 //		if (cur > max) return true;
@@ -647,7 +618,10 @@ public class CssExtParser {
 					if (funcName.equals(ruleFunc.getName())) {
 						result.status = State.MATCH; // func name ok, still need to match params
 						result.matched = tok;
-						ParserInput funcInput = new ParserInput(fTok.getParams());
+						
+						// TODO add parsing of function parameters
+//						ParserInput funcInput = new ParserInput(fTok.getParams());
+						
 						
 //						List<ParseResult> paramResult = parse(g, funcInput.createCursor(), ruleFunc.getParams(), true);
 						
@@ -882,7 +856,6 @@ public class CssExtParser {
 				
 				if (matchCssTok(tok, literal)) {
 					result.status = State.MATCH;
-					System.err.println("setting matched on " + System.identityHashCode(result));
 					result.matched = tok;
 					result.remainingInput = local.copy();
 					
@@ -957,7 +930,6 @@ public class CssExtParser {
 		else if (tok instanceof SymbolTok) {
 			return literal.equals(((SymbolTok)tok).getSymbol());
 		}
-//		System.err.println("problem matching " + tok);
 		return false;
 	}
 	
@@ -985,14 +957,15 @@ public class CssExtParser {
 
 		PropertyDefinition def = manager.findPropertyByName(propertyName);
 		if (def != null) {
-			ParserInput input = new ParserInput(prefixToks);
+			final ParserInput input = new ParserInput(prefixToks);
 			
+			final ParserInputCursor cursor = input.createCursor();
 			
-			System.err.println("starting with input: " + input.createCursor());
+			logger.debugf("starting with input: %s", cursor);
 			final long parseBegin = System.nanoTime();
-			final ResultNode res = parse(input.createCursor(), def.getRule(), ConsumeWS.MAY_CONSUME);
+			final ResultNode res = parse(cursor, def.getRule(), ConsumeWS.MAY_CONSUME);
 			final long parseDuration = System.nanoTime() - parseBegin;
-			logger.debug("parse needed " + String.format("%2.3f", parseDuration*10e-6) + "ms returned with " + res);
+			logger.debugf("parse needed %2.3fms returnd with %s", parseDuration*10e-6, res);
 			
 			for (ParseResultListener l : resultListener) {
 				l.parseFinished(res);
@@ -1043,15 +1016,13 @@ public class CssExtParser {
 			
 			proposals.add(r.proposal);
 		}
-		System.err.println("dropping " + drop);
+		logger.debugf("Dropping %s", drop);
 		proposals.removeAll(drop);
 		
 		return proposals;
 	}
 	
 	public List<ValidationResult> validateProperty(String element, String propertyName, List<CssTok> tokens) {
-		
-		if (0==0) return Collections.emptyList();
 		
 		// debug output
 		logger.debugf("validateProperty( %s, %s )", element, propertyName);
@@ -1069,16 +1040,16 @@ public class CssExtParser {
 		PropertyDefinition def = manager.findPropertyByName(propertyName);
 		if (def != null) {
 			
-			ParserInput input = new ParserInput(tokens);
+//			ParserInput input = new ParserInput(tokens);
 			
 			
-			ResultNode res = parse(input.createCursor(), def.getRule(), ConsumeWS.MAY_CONSUME);
+//			ResultNode res = parse(input.createCursor(), def.getRule(), ConsumeWS.MAY_CONSUME);
 			
 			boolean valid = false;
 			
-			int lastInputIndex = -1;
+//			int lastInputIndex = -1;
 			EObject lastToken = null;
-			String msg = "so ned!";
+//			String msg = "so ned!";
 			
 //			for (ParseResult p : res) {
 //				if (p.status == Status.PROPOSE) continue;
