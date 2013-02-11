@@ -6,8 +6,11 @@ css/theme2/images/purty_wood.png (http://subtlepatterns.com/?s=purty_wood&submit
 
 Oxygene (LGPL):
 ---------------
+From: svn -r 760421 co svn://anonsvn.kde.org/home/kde/trunk/kdesupport/oxygen-icons
+
 icons/22/games-config-background.png
 icons/22/tool-animator.png
+icons/22/player-volume.png
 icons/perspective/camera-photo.png
 icons/perspective/preferences-system.png
 icons/perspective/video-projector.png
