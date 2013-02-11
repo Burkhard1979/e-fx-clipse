@@ -29,6 +29,9 @@ import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.util.Tuples;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
+
 import com.google.inject.Inject;
 
 /**
@@ -67,6 +70,20 @@ public class CssGrammarAwareStrategy extends LexerTokenAndCharacterPairAwareStra
 			}
 		} else {
 			EObject o = eObjectAtOffsetHelper.resolveElementAt(resource, offset);
+			
+			// This allows us to select only the urls content on doubleclick
+			if (o instanceof URLType) {
+				final URLType urlType = (URLType) o;
+				if (urlType.getUrl() != null) {
+					ITextRegion r1 = locationInFileProvider.getFullTextRegion(o, CssDslPackage.Literals.URL_TYPE__URL, 0);
+					int mod = 0;
+					if (urlType.getUrl().startsWith("\"") || urlType.getUrl().startsWith("'")) {
+						mod = 1;
+					}
+					IRegion r = new Region(r1.getOffset() + mod, r1.getLength() - 2 * mod);
+					return Tuples.create(o, r);
+				}
+			}
 			if (o != null) {
 				ITextRegion region = locationInFileProvider.getSignificantTextRegion(o);
 				final IRegion region2 = new Region(region.getOffset(), region.getLength());
