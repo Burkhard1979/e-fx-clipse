@@ -76,6 +76,7 @@
 		<module>../at.bestsolution.efxclipse.tooling.fxgraph</module>
 		<module>../at.bestsolution.efxclipse.tooling.fxgraph.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.adaptor</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde.java7</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.fragment</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.ui</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.e4</module>
@@ -101,15 +102,31 @@
 		<module>../at.bestsolution.efxclipse.runtime.e3.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.pde4.feature</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde.juno.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature</module>
 		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature</module>
-		<module>../at.bestsolution.efxclipse.runtime.e4.feature</module>
 		<module>../at.bestsolution.efxclipse.runtime.p2.feature</module>
 		
 		<module>../at.bestsolution.efxclipse.runtime.osgi.feature.source</module>
 		<module>../at.bestsolution.efxclipse.runtime.feature.source</module>
+		<module>../at.bestsolution.efxclipse.runtime.e3.feature.source</module>
+		<module>../at.bestsolution.efxclipse.runtime.emf.feature.source</module>
+		<module>../at.bestsolution.efxclipse.runtime.jemmy.junit.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.convert.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.css.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.fxgraph.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.fxml.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.jdt.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde4.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.pde.juno.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.dsl.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.rrobot.feature.source</module>
+		<module>../at.bestsolution.efxclipse.feature.source</module>
+		<module>../at.bestsolution.efxclipse.tooling.efxbean.feature.source</module>
 		
-		<module>../at.bestsolution.efxclipse.tooling.updatesite</module>
+		<module>../at.bestsolution.efxclipse.updatesite</module>
 		
 	</modules>
 

@@ -1,1 +1,0 @@
-This files are copied from the example apps

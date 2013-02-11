@@ -1,0 +1,15 @@
+<project default="publish">
+	<property name="efx.version" value="0.8.0-SNAPSHOT" />
+	<property name="efx.update.sitezip" value="" />
+	<property name="efx.update.sitedir" value="" />
+	<property name="efx.update.host.user" value="jenkins-deploy" />
+	<property name="efx.update.host.name" value="www.efxclipse.org" />
+	<property name="efx.update.host.port" value="53023" />
+	<property name="efx.update.scp.name" value="www.efxclipse.org" />
+	<property name="efx.update.host.htdocs" value="/virtual/efxclipse.org/httpd/htdocs" />
+	<target name="publish">
+		<echo>Publshing p2-repo</echo>
+		<exec command="rsync -acz -e 'ssh -p ${efx.update.host.port}' ${efx.update.sitezip} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/dev/nightly/at.bestsolution.efxclipse.platform.updatesite-${efx.version}.zip" />
+		<exec command="rsync -acz -e 'ssh -p ${efx.update.host.port}' --delete ${efx.update.sitedir} ${efx.update.host.user}@${efx.update.scp.name}:${efx.update.host.htdocs}/p2-repos/dev/nightly" />
+	</target>
+</project>

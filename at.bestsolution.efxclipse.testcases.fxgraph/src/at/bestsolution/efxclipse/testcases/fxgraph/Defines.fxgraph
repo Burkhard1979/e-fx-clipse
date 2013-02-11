@@ -6,7 +6,7 @@ import javafx.scene.control.RadioButton
 
 component Defines {
 	define ToggleGroup id myToggleGroup,
-	define RadioButton id testRadio {
+	define RadioButton id testRadio { 
 		text : "D"
 	}
 	VBox {

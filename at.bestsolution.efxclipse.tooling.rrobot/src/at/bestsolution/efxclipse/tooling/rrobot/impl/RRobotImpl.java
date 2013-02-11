@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.tooling.rrobot.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang.text.StrSubstitutor;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -65,9 +66,17 @@ public class RRobotImpl implements RRobot {
 			task = EcoreUtil.copy(task);	
 		}
 		
+		System.err.println("ADDITIONAL: " + additionalData);
+		
 		for( Variable v : task.getVariables() ) {
 			if( !additionalData.containsKey(v.getKey()) ) {
 				additionalData.put(v.getKey(), getVariableData(v));
+			}
+		}
+		
+		for( Entry<String, Object> e : additionalData.entrySet() ) {
+			if( e.getValue() instanceof String ) {
+				e.setValue(StrSubstitutor.replace((String)e.getValue(),additionalData));
 			}
 		}
 		
@@ -83,10 +92,13 @@ public class RRobotImpl implements RRobot {
 			for( EStructuralFeature f : eo.eClass().getEAllStructuralFeatures() ) {
 				Object val = eo.eGet(f);
 				if( val instanceof String ) {
+//					System.err.println("REPLACING: " + f + " val: " + val);
 					eo.eSet(f,StrSubstitutor.replace(val, additionalData));
 				}
 			}
 		}
+		
+		System.err.println("ADDITIONAL: " + additionalData);
 		
 		List<IStatus> states = new ArrayList<IStatus>();
 		for( Project p : task.getProjects() ) {

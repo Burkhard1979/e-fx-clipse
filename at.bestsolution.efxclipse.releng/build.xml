@@ -117,8 +117,10 @@
 			<installunit name="mercurialeclipse.feature.group" os="win32" />
 			<installunit name="com.intland.hgbinary.win32.feature.group" os="win32" />
 			
+			
 			<installunit name="org.eclipse.e4.core.tools.feature.feature.group" version="4.2.1" />
 			<installunit name="at.bestsolution.efxclipse.tooling.pde4.feature.feature.group" version="4.2.1" />
+			<installunit name="at.bestsolution.efxclipse.tooling.pde.juno.feature.feature.group"  />
 			<installunit name="at.bestsolution.e4.theme.css.feature.feature.group" version="4.2.1" />
 			<installunit name="org.eclipse.ui.juno.feature.feature.group" version="4.2.1" />
 		</builder>

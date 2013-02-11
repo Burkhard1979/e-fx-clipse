@@ -22,6 +22,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.launching.IVMInstall;
 import org.eclipse.jdt.launching.JavaRuntime;
+import org.eclipse.jdt.launching.LibraryLocation;
 
 public class BuildPathSupport {
 	public static final String WEB_JAVADOC_LOCATION = "http://docs.oracle.com/javafx/2/api/";
@@ -71,6 +72,12 @@ public class BuildPathSupport {
 	}
 	
 	public static IPath[] getFxJarPath(IVMInstall i) {
+		for( LibraryLocation l : JavaRuntime.getLibraryLocations(i) ) {
+			if( "jfxrt.jar".equals(l.getSystemLibraryPath().lastSegment()) ) {
+				return null;
+			}
+		}
+		
 		IPath jarLocationPath = null;
 		IPath javadocLocation = null;
 		IPath antJarLocationPath = null;
@@ -79,10 +86,6 @@ public class BuildPathSupport {
 		File installDir = i.getInstallLocation();
 			
 		IPath[] checkPaths = {
-			// Java 8 (maybe Java7 one day)
-			new Path(installDir.getAbsolutePath()).append("jre").append("lib").append("ext").append("jfxrt.jar"),
-			new Path(installDir.getAbsolutePath()).append("lib").append("ext").append("jfxrt.jar"), // JRE
-			
 			// Java 7
 			new Path(installDir.getAbsolutePath()).append("jre").append("lib").append("jfxrt.jar"),
 			new Path(installDir.getAbsolutePath()).append("lib").append("jfxrt.jar") // JRE
@@ -91,11 +94,17 @@ public class BuildPathSupport {
 		
 		jarLocationPath = checkPaths[0];
 		
-		for( IPath p : checkPaths ) {
-			if( p.toFile().exists() ) {
-				jarLocationPath = p;
-				break;
-			}
+		if( ! jarLocationPath.toFile().exists() ) {
+			for( IPath p : checkPaths ) {
+				if( p.toFile().exists() ) {
+					jarLocationPath = p;
+					break;
+				}
+			}	
+		}
+		
+		if( ! jarLocationPath.toFile().exists() ) {
+			return null;
 		}
 		
 		javadocLocation = new Path(installDir.getParentFile().getAbsolutePath()).append("docs").append("api"); //TODO Not shipped yet

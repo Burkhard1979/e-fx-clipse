@@ -58,7 +58,7 @@ class AntTemplate {
 			«FOR SetupDirectory d : config.origProjectSourceDirs»
 			<copy todir="project">
 				<fileset dir="«d.originalPath.absolutePath»">
-					<include name="«d.relativePath.name»/**" />
+					<include name="«d.relativePath.path»/**" />
 				</fileset>
 			</copy>
 			«ENDFOR»

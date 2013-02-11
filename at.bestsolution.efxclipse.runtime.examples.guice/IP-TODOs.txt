@@ -1,0 +1,4 @@
+Orbit depndencies (Apache 2):
+-----------------------------
+libs/com.google.inject_2.0.0.v201105231817.jar
+libs/org.aopalliance_1.0.0.v201105210816.jar
