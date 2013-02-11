@@ -1,5 +1,6 @@
-Ensemble-Icons (GPL???):
-------------------------
+Ensemble-Icons (Oracle BSD):
+----------------------------
+From http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
 css/images/clef.png
 css/images/top-bar.png
 css/images/window-close-over.png
@@ -19,8 +20,10 @@ icons/alt_launcher.xpm
 icons/alt_window_16.gif
 icons/alt_window_32.gif
 
-Oxygene-Icons (LGPL???):
-------------------------
+Oxygene-Icons (Creative Commons 3.0 & LGPL):
+--------------------------------------------
+From: svn -r 760421 co svn://anonsvn.kde.org/home/kde/trunk/kdesupport/oxygen-icons
+
 icons/document-save.png
 icons/list-add-user.png
 icons/list-remove-user.png
