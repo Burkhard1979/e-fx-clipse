@@ -1031,7 +1031,8 @@ public class CssExtParser {
 			
 			if (!r.next.isEmpty()) {
 				ResultNode cur = r;
-				List<ResultNode> allSubPropose = r.findByState(State.PROPOSE);
+				List<ResultNode> allSubPropose = cur.findByState(State.PROPOSE);
+				allSubPropose.remove(cur);
 				for (ResultNode n : allSubPropose) {
 					if (!(n.proposal instanceof MultiProposal)) {
 						drop.add(n.proposal);
