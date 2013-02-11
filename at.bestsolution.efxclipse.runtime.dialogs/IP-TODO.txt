@@ -1,5 +1,6 @@
-Oxygene Icons (LGPL):
+Oxygene Icons (Creative Commons 3.0 & LGPL):
 ---------------------
+From: svn -r 760421 co svn://anonsvn.kde.org/home/kde/trunk/kdesupport/oxygen-icons
 .../icons/dialog-error.png
 .../icons/dialog-information.png
 .../icons/dialog-warning.png
