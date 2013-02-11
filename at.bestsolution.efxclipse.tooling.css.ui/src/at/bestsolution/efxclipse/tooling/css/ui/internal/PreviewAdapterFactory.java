@@ -19,6 +19,7 @@ import at.bestsolution.efxclipse.tooling.ui.editor.IFXPreviewAdapter;
 public class PreviewAdapterFactory implements IAdapterFactory {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if(adapterType == IFXPreviewAdapter.class && adaptableObject instanceof XtextEditor ) {
 			final XtextEditor editor = (XtextEditor) adaptableObject;
@@ -36,6 +37,7 @@ public class PreviewAdapterFactory implements IAdapterFactory {
 	}
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public Class[] getAdapterList() {
 		return new Class[]{IFXPreviewAdapter.class};
 	}

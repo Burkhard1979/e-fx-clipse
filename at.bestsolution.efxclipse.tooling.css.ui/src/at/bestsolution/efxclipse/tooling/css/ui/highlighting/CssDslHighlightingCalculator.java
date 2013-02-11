@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *     Christoph Caks <ccaks@bestsolution.at> - initial API and implementation
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.highlighting;
 
@@ -23,6 +23,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.IdentifierTok;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
@@ -43,11 +44,11 @@ public class CssDslHighlightingCalculator implements ISemanticHighlightingCalcul
 			Object o = it.next();
 			
 			if (o instanceof ElementSelector) {
-				ICompositeNode n = NodeModelUtils.getNode((EObject)o);
+				final ICompositeNode n = NodeModelUtils.getNode((EObject)o);
 				acceptor.addPosition(n.getOffset(), n.getLength(), CssDslHighlightingConfiguration.ELEMENT);
 			}
 			else if (o instanceof IdentifierTok) {
-				ICompositeNode n = NodeModelUtils.getNode((EObject)o);
+				final ICompositeNode n = NodeModelUtils.getNode((EObject)o);
 				acceptor.addPosition(n.getOffset(), n.getLength(), CssDslHighlightingConfiguration.DEFAULT_ID);
 			}
 			else if( o instanceof css_declaration ) {
@@ -58,22 +59,21 @@ public class CssDslHighlightingCalculator implements ISemanticHighlightingCalcul
 						acceptor.addPosition(n.getFirstChild().getOffset(), n.getFirstChild().getLength(), CssDslHighlightingConfiguration.DECLARATIONNAME);
 					}	
 				}
-			} else if( o instanceof simple_selector ) {
-				simple_selector sec = (simple_selector) o;
-				ICompositeNode n = NodeModelUtils.getNode(sec);
-								
+			} 
+			else if( o instanceof simple_selector ) {
+				final ICompositeNode n = NodeModelUtils.getNode((EObject)o);
 				acceptor.addPosition(n.getOffset(), n.getLength(), CssDslHighlightingConfiguration.SELECTOR);
 			}
 			else if (o instanceof URLType) {
-				URLType url = (URLType) o;
-				ICompositeNode n = NodeModelUtils.getNode(url);
+				final URLType url = (URLType) o;
+				final ICompositeNode n = NodeModelUtils.getNode(url);
 				acceptor.addPosition(n.getOffset(), 4, CssDslHighlightingConfiguration.FUNCTION);
 				acceptor.addPosition(n.getOffset()+4, n.getLength()-5, CssDslHighlightingConfiguration.URL);
 				acceptor.addPosition(n.getOffset() + n.getLength() - 1, 1, CssDslHighlightingConfiguration.FUNCTION);
 			}
 			else if (o instanceof FuncTok) {
-				FuncTok funcTok = (FuncTok) o;
-				ICompositeNode n = NodeModelUtils.getNode(funcTok);
+				final FuncTok funcTok = (FuncTok) o;
+				final ICompositeNode n = NodeModelUtils.getNode(funcTok);
 				
 				int nameLength = funcTok.getName().getName().length();
 				acceptor.addPosition(n.getOffset(), nameLength + 1, CssDslHighlightingConfiguration.FUNCTION);
@@ -88,6 +88,11 @@ public class CssDslHighlightingCalculator implements ISemanticHighlightingCalcul
 				}
 				
 				acceptor.addPosition(n.getOffset() + n.getLength() - 1, 1, CssDslHighlightingConfiguration.FUNCTION);
+			}
+			else if (o instanceof StringTok) {
+				final ICompositeNode n = NodeModelUtils.getNode((EObject)o);
+				
+				acceptor.addPosition(n.getOffset(), n.getLength(), CssDslHighlightingConfiguration.STRING_ID);
 			}
 		}
 	}

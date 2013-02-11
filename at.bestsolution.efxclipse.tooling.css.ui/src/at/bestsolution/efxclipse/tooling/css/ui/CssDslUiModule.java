@@ -20,14 +20,10 @@ import org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 
 import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
 import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
 import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry.OsgiCssDialectExtensionRegistryProvider;
 import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 import at.bestsolution.efxclipse.tooling.css.ui.contentassist.ExtApiDelegatingProposalProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.contentassist.TemplateProposalProvider;
@@ -37,11 +33,9 @@ import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingC
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.TokenMapper;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.hover.ExtApiDelegatingDocumentationProvider;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDslActivator;
 import at.bestsolution.efxclipse.tooling.css.ui.occurrences.CssDslOccurenceComputer;
 
 import com.google.inject.Binder;
-import com.google.inject.Provider;
 import com.google.inject.matcher.Matchers;
 import com.google.inject.name.Names;
 
@@ -65,7 +59,6 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
 		binder.bind(IEObjectDocumentationProvider.class).to(ExtApiDelegatingDocumentationProvider.class);
 		
-
 		
 //		binder.bind(IFormatter.class).to(DefaultFormatter.class);
 		

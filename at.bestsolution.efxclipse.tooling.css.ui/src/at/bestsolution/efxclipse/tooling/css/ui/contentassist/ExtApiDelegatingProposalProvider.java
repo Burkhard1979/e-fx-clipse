@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *     Christoph Caks <ccaks@bestsolution.at> - initial API and implementation
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
@@ -16,20 +16,17 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.xtext.AbstractElement;
-import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
+import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.hover.DispatchingEObjectTextHover;
 
@@ -74,7 +71,7 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 				System.err.println("PREPARING UI PROPOSAL");
 				final UIProposal uiP = (UIProposal)p;
 				cp.setTextApplier(new ReplacementTextApplier() {
-					@Override
+					//@Override
 					public String getActualReplacementString(ConfigurableCompletionProposal proposal) {
 						if (uiP.show()) {
 							return uiP.getProposal();

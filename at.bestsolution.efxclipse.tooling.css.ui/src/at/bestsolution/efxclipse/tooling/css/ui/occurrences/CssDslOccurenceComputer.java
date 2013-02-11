@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2011 BestSolution.at and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Christoph Caks <ccaks@bestsolution.at> - initial API and implementation
+ *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.occurrences;
 
 import java.util.HashMap;
@@ -15,10 +25,8 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.occurrences.DefaultOccurrenceComputer;
 import org.eclipse.xtext.util.ITextRegion;
-import org.eclipse.xtext.util.TextRegion;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
-import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;

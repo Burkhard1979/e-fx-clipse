@@ -10,13 +10,9 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.doubleclicking;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
-import org.eclipse.jface.text.ITypedRegion;
 import org.eclipse.jface.text.Region;
 import org.eclipse.jface.text.TextUtilities;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -26,8 +22,6 @@ import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.doubleClicking.LexerTokenAndCharacterPairAwareStrategy;
-import org.eclipse.xtext.ui.editor.model.ILexerTokenRegion;
-import org.eclipse.xtext.ui.editor.model.IXtextModelListener;
 import org.eclipse.xtext.ui.editor.model.PartitionTokenScanner;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.ITextRegion;
