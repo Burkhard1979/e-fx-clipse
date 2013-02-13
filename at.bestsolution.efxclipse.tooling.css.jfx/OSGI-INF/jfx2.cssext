@@ -1636,7 +1636,7 @@ package javafx {
 			 * mouse and some keyboard events, and manages scrolling automatically, so there's no need to put it 
 			 * into a ScrollPane.
 			 */
-			WebView extends Parent {
+			WebView extends Parent styleclass web-view {
 				/**
 				 * Specifies whether context menu is enabled.
 				 */
@@ -1780,9 +1780,10 @@ package javafx {
         	 * <p>An accordion is a group of {@link TitledPane TitlePanes}.  Only one TitledPane can be opened at
  			 * a time.</p>
         	 */
-        	Accordion extends Control {
-				// TODO SUPPORT SUBSTRUCTURE
-				// TODO SUPPORT STYLE_CLASS
+        	Accordion extends Control styleclass accordion {
+				substructure Desktop {
+					TitledPane styleclass first-titled-pane
+				}
 			}
 			/**
 			 * Base class for button-like UI Controls, including Hyperlinks, Buttons,
@@ -1809,7 +1810,7 @@ package javafx {
  			 * a popup or dialog appearing that allows for the user to provide the 
  			 * required information.
         	 */
-        	ComboBoxBase extends Control {
+        	ComboBoxBase extends Control styleclass combo-box-base {
         		/**
         		 * applies when the editable variable is true
         		 */
@@ -1822,7 +1823,11 @@ package javafx {
         		 * applies when the armed variable is true
         		 */
         		:armed
-        		// TODO SUPPORT SUBSTRUCTURE
+        		substructure Desktop {
+        			layout.StackPane styleclass arrow-button {
+        				layout.StackPane styleclass arrow
+        			}
+        		}
         	}
         	/**
         	 * A simple button control.  The button control can contain
@@ -1833,7 +1838,7 @@ package javafx {
  			 * <li> Cancel: A Cancel Button is the button that receives a keyboard VK_ESC press, if no other node in the scene consumes it.</li>
  			 * </ul>
         	 */
-        	Button extends ButtonBase {
+        	Button extends ButtonBase styleclass button {
         		/**
         		 * applies if this Button receives VK_ESC if the event is not otherwise consumed
         		 */
@@ -1853,7 +1858,7 @@ package javafx {
  			 * individual 'cell' inside a TableView (i.e. each row/column intersection). See 
  			 * the JavaDoc for each control separately for more detail.
         	 */
-        	Cell extends Labeled {
+        	Cell extends Labeled styleclass cell {
         		/**
         		 * The cell size. For vertical ListView or a TreeView or TableView this is the height, for a horizontal ListView this is the width.
         		 */
@@ -1870,8 +1875,10 @@ package javafx {
         		 * applies when the selected variable is true
         		 */
         		:selected
-        		// TODO SUPPORT SUBSTRUCTURE
-				// TODO SUPPORT STYLE_CLASS
+        		
+        		substructure Desktop {
+        			Labeled styleclass text
+        		}
         	}
         	/**
         	 *  A tri-state selection Control typically skinned as a box with a checkmark or
@@ -1897,17 +1904,10 @@ package javafx {
         		 * applies when the indeterminate variable is true
         		 */
         		:indeterminated
-        		// TODO SUPPORT SUBSTRUCTURE
-				// TODO SUPPORT STYLE_CLASS
-				
 				
 				substructure Desktop {
 					layout.Region styleclass box {
 						layout.Region styleclass mark
-					}
-					Label styleclass label {
-						/** Where <i> is the index of the series and <j> is the series’ color index */
-						Node styleclass chart-series-area-line series[i] default-color[j]
 					}
 				}
 				
@@ -1917,7 +1917,7 @@ package javafx {
  			 * It is intended that CheckMenuItem be used in conjunction with the
  			 * Menu or ContextMenu controls.
         	 */
-        	CheckMenuItem extends Control {
+        	CheckMenuItem extends Control styleclass check-menu-item {
         		/**
         		 * applies if this item is selected
         		 */
@@ -1929,18 +1929,25 @@ package javafx {
  			 * will display to the user these choices and allow them to pick exactly one
  			 * choice. When not showing, the current choice is displayed.
         	 */
-        	ChoiceBox extends Control {
-        		// TODO SUPPORT SUBSTRUCTURE
-				// TODO SUPPORT STYLE_CLASS
+        	ChoiceBox extends Control styleclass choice-box {
+        		substructure Desktop {
+        			layout.Region styleclass open-button {
+        				layout.Region styleclass arrow
+        			}
+        		}
         	}
         	/**
         	 * ColorPicker control allows the user to select a color from either a standard 
  			 * palette of colors with a simple one click selection OR define their own custom color.
         	 */
-        	ColorPicker extends ComboBoxBase {
+        	ColorPicker extends ComboBoxBase styleclass color-picker {
         		-fx-color-label-visible <boolean> default: true;
-        		// TODO SUPPORT SUBSTRUCTURE
-				// TODO SUPPORT STYLE_CLASS
+        		substructure Desktop {
+        			Label styleclass color-display-node
+        			layout.StackPane styleclass arrow-button {
+        				layout.StackPane styleclass arrow
+        			}
+        		}
         	}
         	/**
         	 * An implementation of the ComboBoxBase abstract class for the most common
@@ -1949,9 +1956,19 @@ package javafx {
  			 * concepts and API of ComboBox, refer to the ComboBoxBase class 
  			 * documentation.
         	 */
-        	ComboBox {
-        		// TODO SUPPORT SUBSTRUCTURE
-				// TODO SUPPORT STYLE_CLASS
+        	ComboBox styleclass combo-box  {
+        		substructure Desktop {
+        			/**
+        			 * a ListCell instance used to show the selection in the button area of a non-editable ComboBox
+        			 */
+        			ListCell styleclass list-cell
+        			TextField styleclass text-input
+        			PopupControl styleclass combo-box-popup {
+        				ListView styleclass list-view {
+        					ListCell styleclass list-cell
+        				}
+        			}
+        		}
         	}
         	/**
         	 * An HTML like label which can be a graphic and/or text which responds to rollovers and clicks.
@@ -1959,13 +1976,15 @@ package javafx {
  			 * just like a Button.  When a hyperlink is pressed and released
  			 * a ActionEvent is sent, and your application can perform some action based on this event.
         	 */
-        	Hyperlink extends ButtonBase {
+        	Hyperlink extends ButtonBase styleclass hyperlink {
         		/**
         		 * applies when the visited variable is true
         		 */
         		:visited
-        		// TODO SUPPORT SUBSTRUCTURE
-				// TODO SUPPORT STYLE_CLASS
+        		
+        		substructure Desktop {
+        			Label styleclass label
+        		}
         	}
         	/**
         	 * An implementation of Cell which contains an index property which maps
@@ -1978,7 +1997,7 @@ package javafx {
  			 * For more information about using and customizing cells, refer to the 
  			 * {@link Cell} API documentation.
         	 */
-        	IndexedCell extends Cell {
+        	IndexedCell extends Cell styleclass indexed-cell {
         		/**
         		 * applies if this cell's index is even
         		 */
@@ -1987,7 +2006,6 @@ package javafx {
         		 * applies if this cell's index is odd
         		 */
         		 :odd
-				// TODO SUPPORT STYLE_CLASS
         	}
         	/**
         	 * Label is a non-editable text control. A Label is useful for displaying
@@ -1996,8 +2014,8 @@ package javafx {
  			 * useful in that they can have mnemonics which, if used, will send focus to
  			 * the Control listed as the target of the <code>labelFor</code> property.
         	 */
-        	Label extends Labeled {
-        		// TODO SUPPORT STYLE_CLASS
+        	Label extends Labeled styleclass label {
+        		
         	}
         	/**
         	 * The Cell type used within ListView instances. In addition 
@@ -2005,8 +2023,8 @@ package javafx {
  			 * tightly bound to a ListView, allowing for better support of editing events, 
  			 * etc.
         	 */
-        	ListCell extends IndexedCell {
-				// TODO SUPPORT STYLE_CLASS
+        	ListCell extends IndexedCell styleclass list-cell {
+				
         	}
         	/**
         	 *  A ListView displays a horizontal or vertical list of items from which the
@@ -2018,7 +2036,7 @@ package javafx {
  			 * making use of ListView, as all modern IDEs are able to auto-complete far
  			 * more successfully with the additional type information.
         	 */
-        	ListView extends Control {
+        	ListView extends Control styleclass list-view {
         		/**
         		 * The orientation of the ListView - this can either be horizontal
      			 * or vertical.
@@ -2032,7 +2050,6 @@ package javafx {
 				 * applies if this ListView is vertical
 				 */
 				:vertical
-				// TODO SUPPORT STYLE_CLASS
         	}
         	/**
         	 * A popup menu of actionable items which is displayed to the user only upon request.
@@ -2041,30 +2058,30 @@ package javafx {
  			 * place to put important functionality that does not necessarily need to be
  			 * visible at all times to the user.
         	 */
-        	Menu extends Control {
+        	Menu extends Control styleclass menu {
         		/**
         		 * applies if this Menu is showing
         		 */
-        		:showing
-				// TODO SUPPORT STYLE_CLASS        		
+        		:showing	
         	}
         	/**
         	 * A MenuBar control traditionally is placed at the very top of the user
  			 * interface, and embedded within it are Menu Menus.
         	 */
-        	MenuBar extends Control {
+        	MenuBar extends Control styleclass menu-bar {
         		/**
         		 * Use the system menu bar if the current platform supports it.
         		 */
         		-fx-use-system-menu-bar <boolean> default: false;
-        		// TODO SUPPORT SUBSTRUCTURE
-        		// TODO SUPPORT STYLE_CLASS    
+        		substructure Desktop {
+        			Menu styleclass menu
+        		} 
         	}
         	/**
         	 * MenuButton is a button which, when clicked or pressed, will show a
  			 * ContextMenu
         	 */
-        	MenuButton extends ButtonBase {
+        	MenuButton extends ButtonBase styleclass menu-button {
         		/**
         		 * applies if the openVertically variable is true
         		 */
@@ -2073,21 +2090,20 @@ package javafx {
         		 * applies if the showing variable is true
         		 */
         		:showing
-        		// TODO SUPPORT STYLE_CLASS    
         	}
         	/**
         	 * MenuItem is intended to be used in conjunction with Menu to provide
  			 * options to users. MenuItem serves as the base class for the bulk of JavaFX menus
  			 * API.
         	 */
-        	MenuItem extends Control {
+        	MenuItem extends Control styleclass menu-item {
         		// TODO SUPPORT STYLE_CLASS  
         	}
         	/**
         	 * A Pagination control is used for navigation between pages of a single content,
  			 * which has been divided into smaller parts.
         	 */
-        	Pagination extends Control {
+        	Pagination extends Control styleclass pagination {
         		/**
         		 * maximum number of page indicators.
         		 */
@@ -2108,38 +2124,54 @@ package javafx {
         		 * page alignment 
         		 */
         		-fx-page-information-alignment [top | bottom | left | right] default: true;
-        		// TODO SUPPORT SUBSTRUCTURE
-        		// TODO SUPPORT STYLE_CLASS  
+        		
+        		substructure Desktop {
+        			layout.StackPane styleclass page
+        			layout.StackPane styleclass pagination-control {
+        				Button styleclass leftArrowButton {
+        					layout.StackPane styleclass leftArrow
+        				}
+        				Button styleclass rightArrowButton {
+        					layout.StackPane styleclass rightArrow
+        				}
+        				ToggleButton styleclass bullet-button
+        				ToggleButton styleclass number-button
+        				ToggleButton styleclass page-information
+        			}
+        		}
         	}
         	/**
         	 * Text field that masks entered characters.
         	 */
-        	PasswordField extends TextField {
-        		// TODO SUPPORT STYLE_CLASS  
+        	PasswordField extends TextField styleclass password-field {
+        		  
         	}
         	/**
         	 * An extension of PopupWindow
         	 */
         	PopupControl extends Control {
-        		// TODO SUPPORT STYLE_CLASS
+        		
         	}
         	/**
         	 * A specialization of the ProgressIndicator which is represented as a
  			 * horizontal bar.
         	 */
-        	ProgressBar extends ProgressIndicator {
+        	ProgressBar extends ProgressIndicator styleclass progress-bar {
         		-fx-indeterminate-bar-length @NUM default: 60;
         		-fx-indeterminate-bar-escape <boolean> default: true;
         		-fx-indeterminate-bar-flip <boolean> default: true;
         		-fx-indeterminate-bar-animation-time @NUM default: 2.0;
-        		// TODO SUPPORT SUBSTRUCTURE
-        		// TODO SUPPORT STYLE_CLASS
+        		substructure Desktop {
+        			layout.StackPane styleclass track {
+        				layout.Region styleclass bar
+        			}
+        		}
         	}
         	/**
         	 * A circular control which is used for indicating progress, either
  			 * infinite (aka indeterminate) or finite.
         	 */
-        	ProgressIndicator extends Control {
+        	ProgressIndicator extends Control styleclass progress-indicator {
         		// -fx-skin ????
         		/**
         		 * fill of the progressbar
@@ -2153,8 +2185,13 @@ package javafx {
         		 * applies if the indeterminate variable is true
         		 */
         		:indetermindate
-        		// TODO SUPPORT SUBSTRUCTURE
-        		// TODO SUPPORT STYLE_CLASS
+        		
+        		substructure Desktop {
+        			layout.StackPane styleclass indicator
+        			layout.StackPane styleclass progress
+        			text.Text styleclass percentage
+        			layout.StackPane styleclass tick
+        		}
         		
         	}
         	/**
@@ -2165,9 +2202,13 @@ package javafx {
  			 * on this event by implementing an javafx.event.EventHandler to
  			 * process the javafx.event.ActionEvent.
         	 */
-        	RadioButton extends ToggleButton {
-        		// TODO SUPPORT SUBSTRUCTURE
-        		// TODO SUPPORT STYLE_CLASS
+        	RadioButton extends ToggleButton styleclass radio-button {
+        		substructure Desktop {
+        			layout.Region styleclass radio {
+        				layout.Region styleclass dot
+        			}
+        			Label styleclass label
+        		}
         	}
         	/**
         	 * A RadioMenuItem is a MenuItem that can be toggled (it uses
@@ -2183,7 +2224,7 @@ package javafx {
         	 * Either a horizontal or vertical bar with increment and decrement buttons and
  		     * a "thumb" with which the user can interact. 
         	 */
-        	ScrollBar extends Control {
+        	ScrollBar extends Control styleclass scroll-bar {
         		/**
         		 * he orientation of the ScrollBar
         		 */
@@ -2206,8 +2247,17 @@ package javafx {
         		 * applies if this ScrollBar is horizontal
         		 */
         		:horizontal
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		
+        		substructure Desktop {
+        			layout.StackPane styleclass decrement-button {
+        				layout.StackPane styleclass decrement-arrow
+        			}
+        			layout.StackPane styleclass track
+        			layout.StackPane styleclass thumb
+        			layout.StackPane styleclass increment-button {
+        				layout.StackPane styleclass increment-arrow
+        			}
+        		}
         	}
         	/**
         	 * A Control that provides a scrolled, clipped viewport of its contents. It
@@ -2217,7 +2267,7 @@ package javafx {
  			 * or only when they are needed. The scroll bar policy can be specified
  			 * independently for the horizontal and vertical scroll bars.
         	 */
-        	ScrollPane extends Control {
+        	ScrollPane extends Control styleclass scroll-pane {
         		/**
         		 * If true and if the contained node is a Resizable, then the node will be
      			 * kept resized to match the width of the ScrollPane's viewport. If the
@@ -2258,13 +2308,16 @@ package javafx {
         		 * applies if this ScrollPane is fitToHeight
         		 */
         		:fitToHeight
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		substructure Desktop {
+        			ScrollBar styleclass scroll-bar//:vertical
+        			ScrollBar styleclass scroll-bar//:horizontal
+        			layout.StackPane styleclass corner
+        		}
         	}
         	/**
         	 *  A horizontal or vertical separator line
         	 */
-        	Separator extends Control {
+        	Separator extends Control styleclass separator {
         		/**
         		 * The orientation
         		 */
@@ -2289,8 +2342,9 @@ package javafx {
         		 * applies if this Separator is vertical
         		 */
         		:vertical 
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		substructure Desktop {
+        			layout.Region styleclass line
+        		}
         	}
         	/**
         	 * The Slider Control is used to display a continuous or discrete range of
@@ -2299,7 +2353,7 @@ package javafx {
  			 * which is dragged within the track. The Slider can optionally show tick marks
  			 * and labels indicating the different slider position values.
         	 */
-        	Slider extends Control {
+        	Slider extends Control styleclass slider {
         		/**
         		 * The orientation 
         		 */
@@ -2320,7 +2374,7 @@ package javafx {
         		 * The number of minor ticks to place between any two major ticks.
         		 */
         		-fx-minor-tick-count @NUM default: 3;
-//        		-fx-show-tick-labels <boolean> default: false;
+        		
 				/**
 				 * Indicates whether the value of the Slider should always
      			 * be aligned with the tick marks. This is honored even if the tick marks
@@ -2340,22 +2394,26 @@ package javafx {
 				 * applies if this Slider is vertical
 				 */
 				:vertical
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+				
+        		substructure Desktop {
+        			charts.NumberAxis styleclass axis
+        			layout.Region styleclass track
+        			layout.Region styleclass thumb
+        		}
         	}
         	/**
         	 * The SplitMenuButton, like the MenuButton is closely associated with
  			 * the concept of selecting a MenuItem from a menu
         	 */
-        	SplitMenuButton extends ButtonBase {
-        		// TODO SUPPORT STYLE_CLASS
+        	SplitMenuButton extends ButtonBase styleclass split-menu-button {
+        		
         	}
         	/**
         	 * A control that has two or more sides, each separated by a divider, which can be
  			 * dragged by the user to give more space to one of the sides, resulting in
  			 * the other side shrinking by an equal amount.
         	 */
-        	SplitPane extends Control {
+        	SplitPane extends Control styleclass split-pane {
         		/**
         		 * The orientation
         		 */
@@ -2368,13 +2426,18 @@ package javafx {
         		 * applies if this Slider is vertical
         		 */
         		:vertical
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		
+        		substructure Desktop {
+        			layout.StackPane styleclass split-pane-divider {
+        				layout.StackPane styleclass vertical-grabber
+        				layout.StackPane styleclass horizontal-grabber
+        			}
+        		}
         	}
         	/**
         	 * A control that allows switching between a group of Tabs
         	 */
-        	TabPane extends Control {
+        	TabPane extends Control styleclass tab-pane {
         		/**
         		 * The minimum width of the tabs in the TabPane.  This can be used to limit
      			 * the length of text in tabs to prevent truncation.  Setting the min equal
@@ -2416,14 +2479,32 @@ package javafx {
         		 * applies if the side is left
         		 */
         		:left
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		substructure Desktop {
+        			layout.StackPane styleclass tab-header-area {
+        				layout.StackPane styleclass headers-region
+        				layout.StackPane styleclass tab-header-background
+        				layout.StackPane styleclass control-buttons-tab {
+        					layout.Pane styleclass tab-down-button {
+        						layout.StackPane styleclass arrow
+        					}
+        				}
+        				Tab styleclass tab {
+        					Label styleclass tab-label
+        					layout.StackPane styleclass tab-close-button
+        				}
+        			}
+        			layout.StackPane styleclass tab-content-area
+        		}
         	}
+        	/**
+        	 * A tab in a TabPane
+        	 */
+        	Tab {}
         	/**
         	 * The TableView control is designed to visualize an unlimited number of rows
  			 * of data, broken out into columns. 
         	 */
-        	TableView extends Control {
+        	TableView extends Control styleclass table-view {
         		/**
         		 * The table column header size.
         		 */
@@ -2436,16 +2517,35 @@ package javafx {
         		 * applies if this TableView's selection model is row selection
         		 */
         		:row-selection
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		
+        		substructure Desktop {
+        			layout.Region styleclass column-resize-line
+        			layout.Region styleclass column-overlay
+        			layout.StackPane styleclass placeholder
+        			layout.StackPane styleclass column-header-background {
+        				layout.Region styleclass nested-column-header {
+        					layout.Region styleclass column-header	
+        				}
+        				layout.Region styleclass filler
+        				layout.StackPane styleclass show-hide-columns-button {
+        					layout.StackPane styleclass show-hide-column-image	
+        				}
+        				layout.StackPane styleclass column-drag-header {
+        					Label styleclass label
+        				}
+        			}
+        		}
         	}
         	/**
         	 * Text input component that allows a user to enter multiple lines of
  			 * plain text. 
         	 */
-        	TextArea extends TextInputControl {
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        	TextArea extends TextInputControl styleclass text-area {
+        		substructure Desktop {
+        			ScrollPane styleclass scroll-pane {
+        				layout.Region styleclass content
+        			}
+        		}
         	}
         	/**
         	 * Base class for text input controls.
@@ -2470,7 +2570,7 @@ package javafx {
         	 * Text input component that allows a user to enter a single line of
  			 * unformatted text. 
         	 */
-        	TextField extends TextInputControl {
+        	TextField extends TextInputControl styleclass text-field {
         		/**
         		 * Specifies how the text should be aligned when there is empty
      			 * space within the TextField.
@@ -2483,7 +2583,7 @@ package javafx {
         	/**
         	 * A TitledPane is a panel with a title that can be opened and closed.
         	 */
-        	TitledPane extends Labeled {
+        	TitledPane extends Labeled styleclass titled-pane {
         		/**
         		 * Specifies how the TitledPane should open and close.
         		 */
@@ -2500,24 +2600,31 @@ package javafx {
         		 * applies if this TitledPane is collapsed
         		 */
         		:collapsed
-        		// TODO SUPPORT SUBSTRUCTURE
+        		substructure Desktop {
+        			layout.HBox styleclass title {
+        				Label styleclass text
+        				layout.StackPane styleclass arrow-button {
+        					layout.StackPane styleclass arrow	
+        				}
+        			}
+        			layout.StackPane styleclass content
+        		}
         	}
         	/**
         	 * A ToggleButton is a specialized control which has the ability to be
  			 * selected. 
         	 */
-        	ToggleButton extends ButtonBase {
+        	ToggleButton extends ButtonBase styleclass toggle-button {
         		/**
         		 * applies if this ToggleButton is selected
         		 */
         		:selected
-        		// TODO SUPPORT STYLE_CLASS
         	}
         	/**
         	 * A ToolBar is a control which displays items horizontally
  			 * or vertically. 
         	 */
-        	ToolBar extends Control {
+        	ToolBar extends Control styleclass tool-bar {
         		/**
         		 * The orientation
         		 */
@@ -2530,15 +2637,18 @@ package javafx {
         		 * applies if this ToolBar is vertical
         		 */
         		:vertical
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		substructure Desktop {
+        			layout.StackPane styleclass tool-bar-overflow-button {
+        				layout.StackPane styleclass arrow
+        			}
+        		}
         	}
         	/**
         	 * Tooltips are common UI elements which are typically used for showing
  			 * additional information about a Control when the Control is hovered over by
  			 * the mouse
         	 */
-        	Tooltip extends PopupControl {
+        	Tooltip extends PopupControl styleclass tooltip {
         		/**
         		 * Specifies the behavior for lines of text <em>when text is multiline</em>.
         		 */
@@ -2573,13 +2683,15 @@ package javafx {
 				-fx-font-size <font-size> default: null;  		/* INHERITED */
 				-fx-font-style <font-style> default: null;  	/* INHERITED */
 				-fx-font-weight <font-weight> default: null;  	/* INHERITED */
-        		// TODO SUPPORT STYLE_CLASS
-        		// TODO SUPPORT SUBSTRUCTURE
+        		substructure Desktop {
+        			Label styleclass label
+        			layout.StackPane styleclass page-corner
+        		}
         	}
         	/**
         	 * The Cell type used with the TreeView control. 
         	 */
-        	TreeCell extends IndexedCell {
+        	TreeCell extends IndexedCell styleclass tree-cell {
         		/**
         		 * The amout of space to multiply by the treeItem.level to get the left margin
         		 */
@@ -2592,13 +2704,12 @@ package javafx {
         		 * applies if this cell is not expanded
         		 */
         		:collapsed
-        		// TODO SUPPORT STYLE_CLASS
         	}
         	/**
         	 * The TreeView control provides a view on to a tree root (of type 
  			 * TreeItem).
         	 */
-        	TreeView extends Control {
+        	TreeView extends Control styleclass tree-view {
         		
         	}			
 		}
