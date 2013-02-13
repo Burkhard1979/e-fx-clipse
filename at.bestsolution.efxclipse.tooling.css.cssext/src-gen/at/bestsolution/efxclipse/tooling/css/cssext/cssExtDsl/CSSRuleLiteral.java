@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl;
 
@@ -14,6 +11,7 @@ package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral#getDoku <em>Doku</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -24,6 +22,32 @@ package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl;
  */
 public interface CSSRuleLiteral extends CSSRule
 {
+  /**
+   * Returns the value of the '<em><b>Doku</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Doku</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Doku</em>' containment reference.
+   * @see #setDoku(Doku)
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage#getCSSRuleLiteral_Doku()
+   * @model containment="true"
+   * @generated
+   */
+  Doku getDoku();
+
+  /**
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleLiteral#getDoku <em>Doku</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Doku</em>' containment reference.
+   * @see #getDoku()
+   * @generated
+   */
+  void setDoku(Doku value);
+
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->

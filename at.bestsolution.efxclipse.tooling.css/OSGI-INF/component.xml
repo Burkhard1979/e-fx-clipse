@@ -3,6 +3,6 @@
    <implementation class="at.bestsolution.efxclipse.tooling.css.internal.CssDialectExtensionComponent"/>
    <reference bind="addExtension" cardinality="0..n" interface="at.bestsolution.efxclipse.tooling.css.CssDialectExtension" name="CssDialectExtension" policy="dynamic" unbind="removeExtension"/>
    <service>
-      <provide interface="at.bestsolution.efxclipse.tooling.css.internal.CssDialectExtensionComponent"/>
+      <provide interface="at.bestsolution.efxclipse.tooling.css.CssDialectExtensionRegistry"/>
    </service>
 </scr:component>

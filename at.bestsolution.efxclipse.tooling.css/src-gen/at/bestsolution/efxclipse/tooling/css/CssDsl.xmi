@@ -243,7 +243,7 @@
       <elements xsi:type="xtext:RuleCall" rule="//@rules.24"/>
     </alternatives>
   </rules>
-  <rules xsi:type="xtext:ParserRule" name="simple_selector">
+  <rules xsi:type="xtext:ParserRule" name="simple_selector" definesHiddenTokens="true" hiddenTokens="//@rules.56">
     <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EClass" href="http://www.bestsolution.at/efxclipse/tooling/css/CssDsl#//simple_selector"/>
     </type>
@@ -261,7 +261,7 @@
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.13"/>
         </elements>
       </elements>
-      <elements xsi:type="xtext:Assignment" cardinality="+" predicated="true" feature="subSelectors" operator="+=">
+      <elements xsi:type="xtext:Assignment" cardinality="+" feature="subSelectors" operator="+=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.13"/>
       </elements>
     </alternatives>
@@ -898,7 +898,7 @@
       <elements xsi:type="xtext:Keyword" value="&#xA;"/>
     </alternatives>
   </rules>
-  <rules xsi:type="xtext:TerminalRule" name="STRING">
+  <rules xsi:type="xtext:TerminalRule" name="CSSSTRING">
     <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
@@ -917,6 +917,18 @@
               <elements xsi:type="xtext:Keyword" value="u"/>
               <elements xsi:type="xtext:Keyword" value="&quot;"/>
               <elements xsi:type="xtext:Keyword" value="'"/>
+              <elements xsi:type="xtext:CharacterRange">
+                <left value="0"/>
+                <right value="9"/>
+              </elements>
+              <elements xsi:type="xtext:CharacterRange">
+                <left value="a"/>
+                <right value="f"/>
+              </elements>
+              <elements xsi:type="xtext:CharacterRange">
+                <left value="A"/>
+                <right value="F"/>
+              </elements>
               <elements xsi:type="xtext:Keyword" value="\"/>
             </elements>
           </elements>
@@ -943,6 +955,18 @@
               <elements xsi:type="xtext:Keyword" value="u"/>
               <elements xsi:type="xtext:Keyword" value="&quot;"/>
               <elements xsi:type="xtext:Keyword" value="'"/>
+              <elements xsi:type="xtext:CharacterRange">
+                <left value="0"/>
+                <right value="9"/>
+              </elements>
+              <elements xsi:type="xtext:CharacterRange">
+                <left value="a"/>
+                <right value="f"/>
+              </elements>
+              <elements xsi:type="xtext:CharacterRange">
+                <left value="A"/>
+                <right value="F"/>
+              </elements>
               <elements xsi:type="xtext:Keyword" value="\"/>
             </elements>
           </elements>

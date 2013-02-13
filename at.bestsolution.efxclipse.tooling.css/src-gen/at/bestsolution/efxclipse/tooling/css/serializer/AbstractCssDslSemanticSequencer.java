@@ -255,7 +255,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	 *                 op=INCLUDES | 
 	 *                 op=DASHMATCH
 	 *             ) 
-	 *             (value=Identifier | value=STRING)
+	 *             (value=Identifier | value=CSSSTRING)
 	 *         )?
 	 *     )
 	 */
@@ -405,7 +405,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     value=STRING
+	 *     value=CSSSTRING
 	 */
 	protected void sequence_StringTok(EObject context, StringTok semanticObject) {
 		if(errorAcceptor != null) {
@@ -414,7 +414,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStringTokAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getStringTokAccess().getValueCSSSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -482,7 +482,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     charset=STRING
+	 *     charset=CSSSTRING
 	 */
 	protected void sequence_charset(EObject context, charset semanticObject) {
 		if(errorAcceptor != null) {
@@ -491,7 +491,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getCharsetAccess().getCharsetSTRINGTerminalRuleCall_1_0(), semanticObject.getCharset());
+		feeder.accept(grammarAccess.getCharsetAccess().getCharsetCSSSTRINGTerminalRuleCall_1_0(), semanticObject.getCharset());
 		feeder.finish();
 	}
 	
@@ -523,7 +523,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     value=STRING
+	 *     value=CSSSTRING
 	 */
 	protected void sequence_importExpression(EObject context, importExpression semanticObject) {
 		if(errorAcceptor != null) {
@@ -532,7 +532,7 @@ public abstract class AbstractCssDslSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportExpressionAccess().getValueSTRINGTerminalRuleCall_1_0_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getImportExpressionAccess().getValueCSSSTRINGTerminalRuleCall_1_0_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

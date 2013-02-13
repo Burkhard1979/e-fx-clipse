@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.DefaultCssExtProvider">
+   <implementation class="at.bestsolution.efxclipse.tooling.css.cssext.ui.internal.DefaultCssExtProvider"/>
+   <service>
+      <provide interface="at.bestsolution.efxclipse.tooling.css.extapi.CssExt"/>
+   </service>
+   <reference bind="bindCssExtProposalContributor" cardinality="0..n" interface="at.bestsolution.efxclipse.tooling.css.cssext.proposal.CssExtProposalContributor" name="CssExtProposalContributor" policy="dynamic" unbind="unbindCssExtProposalContributor"/>
+</scr:component>

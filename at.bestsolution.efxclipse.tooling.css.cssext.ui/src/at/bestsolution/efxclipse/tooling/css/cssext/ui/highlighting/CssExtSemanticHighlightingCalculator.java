@@ -18,8 +18,9 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
@@ -42,7 +43,13 @@ public class CssExtSemanticHighlightingCalculator implements
 		
 			
 			if (node.getSemanticElement() instanceof CSSRuleRef) {
-				acceptor.addPosition(node.getOffset(), node.getLength(), CssExtHighlightingConfiguration.REFERENCES_ID);
+				CSSRuleRef ref = (CSSRuleRef) node.getSemanticElement();
+				if (ref.getRef() instanceof CSSRuleDefinition) {
+					acceptor.addPosition(node.getOffset(), node.getLength(), CssExtHighlightingConfiguration.REFERENCES_ID);
+				}
+				else if (ref.getRef() instanceof PropertyDefinition) {
+					acceptor.addPosition(node.getOffset(), node.getLength(), CssExtHighlightingConfiguration.PROPERTY_ID);
+				}
 			}
 			
 			else if (node.getSemanticElement() instanceof Doku) {
@@ -77,8 +84,17 @@ public class CssExtSemanticHighlightingCalculator implements
 				}
 			}
 			
-			else if (node.getSemanticElement() instanceof CSSRuleId) {
-				acceptor.addPosition(node.getOffset(), node.getLength(), CssExtHighlightingConfiguration.RULE_ID);
+			else if (node.getSemanticElement() instanceof CSSRuleDefinition) {
+				CSSRuleDefinition el = (CSSRuleDefinition) node.getSemanticElement();
+				BidiTreeIterator<INode> innerIt = node.getAsTreeIterable().iterator();
+				while(innerIt.hasNext()) {
+					INode n = innerIt.next();
+					if (n.getText().equals(el.getName())) {
+						acceptor.addPosition(n.getOffset(), n.getLength(), CssExtHighlightingConfiguration.RULE_ID);
+						break;
+					}
+				}
+//				acceptor.addPosition(node.getOffset(), node.getLength(), CssExtHighlightingConfiguration.RULE_ID);
 //				CSSRuleDefinition el = (CSSRuleDefinition) node.getSemanticElement();
 //				BidiTreeIterator<INode> innerIt = node.getAsTreeIterable().iterator();
 //				while(innerIt.hasNext()) {

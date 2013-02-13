@@ -1,20 +1,10 @@
 package javafx {
 	
-	package debug {
-		Debug {
-			p0 x | x x x;
-			p1 x | a b c;
-			p2 [ x | x a ] y;
-			p3 [ A | B | C ] [ D double ]? [ x [ y | z ] ]? p;
-		}
-	}
-	
 	boolean = true | false;
-	string = $".*"$; // TODO Move to lang
+	string = @STRING;
 	
 	/**
 	 * No whitespace is allowed between the number and units if provided.
-	 *  TODO wie bau ma so was ein!?
 	 * Sizes can either be a percentage or a length with units. If units are not specified then specified the 'px' is assumed. Some units are relative and others absolute.
 	 * 
 	 * Relative
@@ -34,16 +24,18 @@ package javafx {
 	 * Percentages
 	 * These are a percentage of some length, they are context sensitive so what they are relative to depends on where they are specified. Each property that supports a percentage should specify if percentage is supported and if it is what it is relative to.
 	 */
-	length =double[ px | mm | cm | in | pt | pc | em | ex ]?;
+	length = @NUM ~ [ px | mm | cm | in | pt | pc | em | ex ]?;
 	
 	size = <length> | <percentage>;
 	
 	/**
+	 * No whitespace is allowed between the number and the percent symbol.
 	 * These are a percentage of some length, typically to the width or height of a node.
 	 */
-	percentage = double $%$;
+	percentage = @NUM ~ %;
 	
 	/**
+	 * No whitespace is allowed between the number and units.
 	 * An angle is a <number> with one of the following units.
 	 * <ul>
 	 * <li>deg: angle in degrees - all other angle units are converted to degrees.</li>
@@ -52,7 +44,7 @@ package javafx {
 	 * <li>turn: angle in turns</li>
 	 * </ul>
 	 */
-	angle = double[ deg | rad | grad | turn];
+	angle = @NUM ~ [ deg | rad | grad | turn ];
 	
 	/**
 	 * A point is an {x,y} coordinate.
@@ -77,7 +69,7 @@ package javafx {
 	 * url("http://example.com")
 	 * or it can be relative to the location of the CSS file.
 	 */
-	uri = url( address ); // TODO
+	uri = @URL;
 	
 	/**
 	 * JavaFX CSS currently supports the DropShadow and InnerShadow effects from the JavaFX platform. See the class documentation in javafx.scene.effect for further details about the semantics of the various effect parameters.
@@ -88,12 +80,13 @@ package javafx {
 	 * A high-level effect that renders a shadow of the given content behind the content.
 	 * TODO params
 	 */
-	effect-dropshadow = dropshadow( <blur-type>, <color>, double, double, double, double);
+	effect-dropshadow = dropshadow( <blur-type>, <color>, @NUM, @NUM, @NUM, @NUM
+	);
 	/**
 	 * A high-level effect that renders a shadow inside the edges of the given content.
 	 * TODO params
 	 */
-	effect-innershadow = innershadow( <blur-type>, <color>, double, double, double, double);
+	effect-innershadow = innershadow( <blur-type>, <color>, @NUM, @NUM, @NUM, @NUM);
 	
 	/**
 	 * The string name of the font family. An actual font family name available on the system can be used, or one of the following generic family names can be used:
@@ -116,7 +109,11 @@ package javafx {
 	 */
 	font = [ <font-style> || <font-weight> ]? <font-size> <font-family>;
 	
+	/**
+	 * @named-color
+	 */
 	color = <named-color> | <looked-up-color> | <rgb-color> | <hsb-color> | <color-function>;
+	
 	
 	/**
 	 * CSS supports a bunch of named constant colors. Named colors can be specified with just their unquoted name for example:<br />
@@ -651,7 +648,7 @@ package javafx {
      * </tbody>
      * </table>
 	 */
-	named-color = 	aliceblue 		| anitquewhite 		| aqua 					| aquamarine 		|
+	named-color = 	/** @color(2,2,2) */ aliceblue 		| anitquewhite 		| aqua 					| aquamarine 		|
 					azure 			| beige 			| bisque 				| black 			|
 					blanchedalmond 	| blue 				| blueviolet 			| brown 			|
 					burlywood 		| cadetblue 		| chartreuse 			| chocolate 		|
@@ -688,7 +685,7 @@ package javafx {
 					tan 			| teal 				| thistle 				| tomato 			|
 					turquoise 		| violet 			| wheat 				| white 			|
 					whitesmoke 		| yellow 			| yellowgreen 			| transparent
-					; // TODO finish this!
+					;
 					
 //	annotated-named-color-1 = 	/** @color #123456 */ aliceblue |
 //								/** @color #123456 */ antiquewhite;
@@ -730,12 +727,12 @@ package javafx {
 	/**
 	 * The RGB color model is used in numerical color specifications.
 	 */
-	rgb-color = <hashcolor> | <rgb> | rgbp | <rgba>;
+	rgb-color = /** lala */<hashcolor> | /** dada */<rgb> | <rgba>;
 	
 	/**
 	 * The format of an RGB value in the functional notation is ‘rgb(’ followed by a comma-separated list of three numerical values (either three decimal integer values or three percentage values) followed by ‘)’. The integer value 255 corresponds to 100%, and to F or FF in the hexadecimal notation: rgb(255,255,255) = rgb(100%,100%,100%) = #FFF. White space characters are allowed around the numerical values.
 	 */
-	rgb = rgb(int(0->255), int(0->255), int(0->255) | <percentage>, <percentage>, <percentage>);
+	rgb = rgb(/** didi */@INT(0->255), @INT(0->255), @INT(0->255) | <percentage>, <percentage>, <percentage>);
 	
 	/**
 	 * <p>
@@ -746,9 +743,8 @@ package javafx {
      * <code>.label { -fx-text-fill: rgb(100%,0%,0%) }</code><br /> 
      * <code>.label { -fx-text-fill: rgba(100%,0%,0%,1) }</code>
 	 */
-	rgba = rgba(int(0->255), int(0->255), int(0->255), double(.0->1.0) | <percentage>, <percentage>, <percentage>, double(.0->1.0));
+	rgba = rgba(@INT(0->255), @INT(0->255), @INT(0->255), @NUM(.0->1.0) | <percentage>, <percentage>, <percentage>, @NUM(.0->1.0));
 	
-	// TODO hsb colors
 	/**
 	 * Colors can be specified using the HSB (sometimes called HSV) color model
 	 */
@@ -757,13 +753,13 @@ package javafx {
 	/**
 	 * The first number is hue, a number in the range 0 to 360 degrees. The second number is saturation, a percentage in the range 0% to 100%. The third number is brightness, also a percentage in the range 0% to 100%.
 	 */
-	hsb = hsb(double(.0->360.0), <percentage>, <percentage>);
+	hsb = hsb(@NUM(.0->360.0), <percentage>, <percentage>);
 
 	/**
 	 * The first number is hue, a number in the range 0 to 360 degrees. The second number is saturation, a percentage in the range 0% to 100%. The third number is brightness, also a percentage in the range 0% to 100%.
 	 * The fourth parameter at the end which is a alpha value in the range 0.0 to 1.0, specifying completely transparent and completely opaque, respectively
 	 */
-	hsba = hsba(double(.0->360.0), <percentage>, <percentage>, double(.0->1.0));
+	hsba = hsba(@NUM(.0->360.0), <percentage>, <percentage>, @NUM(.0->1.0));
 
 	/**
 	 * JavaFX supports some color computation functions. These compute new colors from input colors at the time the color style is applied. This enables a color theme to be specified using a single base color and to have variant colors computed from that base color. There are two color functions: derive() and ladder().
@@ -870,41 +866,41 @@ package javafx {
 			/**
 			 * Opacity can be thought of conceptually as a postprocessing operation. Conceptually, after the node (including its descendants) is rendered into an RGBA offscreen image, the opacity setting specifies how to blend the offscreen rendering into the current composite rendering. 
 			 */
-			-fx-opacity double(.0->1.0) default: 1.0;
+			-fx-opacity @NUM(.0->1.0) default: 1.0;
 			/**
 			 * This is the angle of the rotation in degrees. Zero degrees is at 3 o'clock (directly to the right). Angle values are positive clockwise. Rotation is about the center.
 			 */
-			-fx-rotate double default: 0;
+			-fx-rotate @NUM default: 0;
 			/**
 			 * Defines the factor by which coordinates are scaled about the center of the
      		 * object along the X axis of this Node.
 			 */
-			-fx-scale-x double default: 1;
+			-fx-scale-x @NUM default: 1;
 			/**
 			 * Defines the factor by which coordinates are scaled about the center of the
      		 * object along the Y axis of this Node.
 			 */
-			-fx-scale-y double default: 1;
+			-fx-scale-y @NUM default: 1;
 			/**
 			 * Defines the factor by which coordinates are scaled about the center of the
      		 * object along the Z axis of this Node.
 			 */
-			-fx-scale-z double default: 1;
+			-fx-scale-z @NUM default: 1;
 			/**
 			 * Defines the x coordinate of the translation that is added to this Node's
      		 * transform.
 			 */
-			-fx-translate-x double default: 0;
+			-fx-translate-x @NUM default: 0;
 			/**
 			 * Defines the y coordinate of the translation that is added to this Node's
      		 * transform.
 			 */
-			-fx-translate-y double default: 0;
+			-fx-translate-y @NUM default: 0;
 			/**
 			 * Defines the z coordinate of the translation that is added to this Node's
      		 * transform.
 			 */
-			-fx-translate-z double default: 0;
+			-fx-translate-z @NUM default: 0;
 			visibility <visibility> default: visible;
 			
 			/**
@@ -955,30 +951,13 @@ package javafx {
 			repeat-style = repeat-x | repeat-y | [repeat | space | round | stretch | no-repeat] [repeat | space | round | stretch | no-repeat]?; // NOTE: rewritten from  <repeat-style> = repeat-x | repeat-y | [repeat | space | round | stretch | no-repeat]{1,2} since we do not support {} yet
 			bg-size = [ <size> | auto ] [ <size> | auto ]? | cover | contain | stretch; // Note: rewritten from = [ <size> | auto ]{1,2} | cover | contain | stretch since we do not support {} yet
 			
-			border-style = <dash-style> [phase double]? [centered | inside | outside]? [line-join [miter double | bevel | round]]? [line-cap [square | butt | round]]?;
+			border-style = <dash-style> [phase @NUM]? [centered | inside | outside]? [line-join [miter @NUM | bevel | round]]? [line-cap [square | butt | round]]?;
 			dash-style = [ none | solid | dotted | dashed | <segments> ];
-			segments = segments( double, double [, double]*);
+			segments = segments( @NUM, @NUM [, @NUM]*);
 			
 			alignment = [ top-left | top-center | top-right | center-left | center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right ];
 			
 			//TODO REMOVE if attribute references are available
-			helper-background-color = <paint> [, <paint>]*; 
-			helper-background-insets = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
-			helper-background-radius = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
-			helper-background-image = <uri> [ , <uri> ]*;
-			helper-background-position = <bg-position> [ , <bg-position> ]*;
-			helper-background-repeat =<repeat-style> [ , <repeat-style> ]*;
-			helper-background-size = <bg-size> [ , <bg-size> ]*;
-			helper-border-color = [<paint> | <paint> <paint> <paint> <paint>] [ , [<paint> | <paint> <paint> <paint> <paint>] ]*;
-			helper-border-insets = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
-			helper-border-radius = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
-			helper-border-style =<border-style> [ , <border-style> ]*;
-			helper-border-width = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
-			helper-border-image-source = <uri> [ , <uri>]*;
-			helper-border-image-insets = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size> ] ]*;
-			helper-border-image-repeat = <repeat-style> [ , <repeat-style> ]*;
-			helper-border-image-slice = [<size> | <size> <size> <size> <size> ] fill? [ , [ <size> | <size><size> <size> <size> <size> ] fill? ]*;
-			helper-border-image-width = [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 			
 			/**
 			 * <p>
@@ -1057,14 +1036,14 @@ package javafx {
 				/** 
 				 * A series of paint values separated by commas.
 				 */
-				-fx-background-color <helper-background-color> default: null;
+				-fx-background-color <paint> [, <paint>]* default: null;
 				/**
 				 * A series of size values or sets of four size values, separated by commas. A single size 
 				 * value means all insets are the same. Otherwise, the four values for each inset are given in 
 				 * the order top, right, bottom, left. Each comma-separated value or set of values in the 
 				 * series applies to the corresponding background color.
 				 */
-				-fx-background-insets <helper-background-insets> default: null;
+				-fx-background-insets [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]* default: null;
 				/**
 				 * A series of radius values or sets of four radius values, separated by commas. A single radius 
 				 * value means the radius of all four corners is the same. Otherwise, the four values in the set 
@@ -1073,17 +1052,35 @@ package javafx {
 				 */
 				-fx-background-radius <size> | <size> <size> <size> <size> [ , [<size> | <size> <size> <size> <size>] ]* default: null;
 				// BACKGROUND IMAGES (see CSS Backgrounds and Borders Module Level 3: Background Image)
+				
+				/**
+				 * A series of radius values or sets of four radius values, separated by commas. A single 
+				 * radius value means the radius of all four corners is the same. Otherwise, the four values 
+				 * in the set determine the radii of the top-left, top-right, bottom-right, and bottom-left corners, 
+				 * in that order. Each comma-separated value or set of values in the series applies to the 
+				 * corresponding background color.
+				 */
+				-fx-background-radius [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]* default: null;
+				
 				/**
 				 * A series of image URIs separated by commas.
 				 */
-				-fx-background-image <helper-background-image> default: null;
+				-fx-background-image <uri> [ , <uri> ]* default: null;
 				/**
 				 * A series of <bg-position> values separated by commas. Each bg-position item in the series 
 				 * applies to the corresponding image in the background-image series.
 				 */
-				-fx-background-position <helper-background-position> default: null;
-				-fx-background-repeat <helper-background-repeat> default: null;
-				-fx-background-size <helper-background-size>;
+				-fx-background-position <bg-position> [ , <bg-position> ]* default: null;
+				/**
+				 * A series of <repeat-style> values separated by commas. Each repeat-style item in the series 
+				 * applies to the corresponding image in the background-image series.
+				 */
+				-fx-background-repeat <repeat-style> [ , <repeat-style> ]* default: null;
+				/**
+				 * A series of <bg-size> values separated by commas. Each bg-size item in the series 
+				 * applies to the corresponding image in the background-image series.
+				 */
+				-fx-background-size <bg-size> [ , <bg-size> ]*;
 				// STROKED BORDERS (see CSS Backgrounds and Borders Module Level 3: Borders)
 				/**
 				 * A series of paint values or sets of four paint values, separated by commas. For each item in 
@@ -1092,14 +1089,14 @@ package javafx {
 				 * right, bottom, and left borders of the region, in that order. If the border is not rectangular, 
 				 * only the first paint value in the set is used.
 				 */
-				-fx-border-color <helper-border-color>;
+				-fx-border-color [<paint> | <paint> <paint> <paint> <paint>] [ , [<paint> | <paint> <paint> <paint> <paint>] ]*;
 				/**
 				 * A series of inset or sets of four inset values, separated by commas. For each item in the series, 
 				 * a single inset value means that all insets are the same; and if a set of four inset values is 
 				 * specified, they are used for the top, right, bottom, and left edges of the region, in that order. 
 				 * Each item in the series of insets applies to the corresponding item in the series of border colors.
 				 */
-				-fx-border-insets <helper-border-insets>;
+				-fx-border-insets [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 				/**
 				 * A series of radius or sets of four radius values, separated by commas. For each item in the series, 
 				 * a single radius value means that all corner radii are the same; and if a set of four radius values 
@@ -1107,7 +1104,7 @@ package javafx {
 				 * corners, in that order. Each item in the series of radii applies to the corresponding item in the 
 				 * series of border colors.
 				 */
-				-fx-border-radius <helper-border-radius>;
+				-fx-border-radius [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 				/**
 				 * A series of border style values, separated by commas. Each item in the series applies to the 
 				 * corresponding item in the series of border colors.
@@ -1117,7 +1114,7 @@ package javafx {
 				 * The optional phase parameter defines the point in the dashing pattern that will correspond to the 
 				 * beginning of the stroke. This corresponds to the strokeDashOffset variable of Shape.
 				 */
-				-fx-border-style <helper-border-style>;
+				-fx-border-style <border-style> [ , <border-style> ]*;
 				/**
 				 * A series of width or sets of four width values, separated by commas. For each item in the series, 
 				 * a single width value means that all border widths are the same; and if a set of four width values 
@@ -1125,24 +1122,24 @@ package javafx {
 				 * If the border is not rectangular, only the first width value is used. Each item in the series 
 				 * of widths applies to the corresponding item in the series of border colors.
 				 */
-				-fx-border-width <helper-border-width>;
+				-fx-border-width [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 				// BORDER IMAGES (see CSS Backgrounds and Borders Module Level 3: Border Images)
 				/** 
 				 * A series of image URIs, separated by commas.
 				 */
-				-fx-border-image-source <helper-border-image-source>;
+				-fx-border-image-source <uri> [ , <uri>]*;
 				/**
 				 * A series of inset or sets of four inset values, separated by commas. For each item in the series, 
 				 * a single inset value means that all insets are the same; and if a set of four inset values is specified, 
 				 * they are used for the top, right, bottom, and left edges of the region, in that order. Each item in the 
 				 * series of insets applies to the corresponding image in the series of border images. 
 				 */
-				-fx-border-image-insets <helper-border-image-insets>;
+				-fx-border-image-insets [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size> ] ]*;
 				/**
 				 * A series of repeat-style values, separated by commas. Each item in the series applies to the corresponding image in the series 
 				 * of border images.
 				 */
-				-fx-border-image-repeat <helper-border-image-repeat>;
+				-fx-border-image-repeat <repeat-style> [ , <repeat-style> ]*;
 				/**
 				 * A series of image slice values or sets of four values, separated by commas. Each item in the series applies to the corresponding 
 				 * image in the series of border images. For each item in the series, if four values are given, they specify the size of the top, right, 
@@ -1151,7 +1148,7 @@ package javafx {
 				 * is used for the slice values for all four edges. If 'fill' is present, the middle slice is preserved, otherwise it is discarded. 
 				 * Percentage values may be used here, in which case the values are considered proportional to the source image.
 				 */
-				-fx-border-image-slice <helper-border-image-slice>;
+				-fx-border-image-slice [<size> | <size> <size> <size> <size> ] fill? [ , [ <size> | <size><size> <size> <size> <size> ] fill? ]*;
 				/**
 				 * A series of width or sets of four width values, separated by commas. For each item in the series, a single width 
 				 * value means that all border widths are the same; and if a set of four width values is specified, they are used 
@@ -1159,7 +1156,7 @@ package javafx {
 				 * first width value is used. Each item in the series of widths applies to the corresponding item in the series of border 
 				 * images. Percentage values may be used here, in which case the values are considered proportional to the border image area.
 				 */
-				-fx-border-image-width <helper-border-image-width>;
+				-fx-border-image-width [<size> | <size> <size> <size> <size>] [ , [ <size> | <size> <size> <size> <size>] ]*;
 				//Other
 				/**
 				 * A sets of four padding values, separated by commas. For each item in the series, a single padding value means that all 
@@ -1190,23 +1187,23 @@ package javafx {
 				 * This property is set by specifying -fx-background-color, optionally -fx-background-insets, and optionally -fx-background-radius. 
 				 * In order to set the background fill to null, specify the style "-fx-background-color: null;". There is no shorthand notation for 
 				 * -fx-background-fills at this time.
-				 */
-				-fx-background-fills <helper-background-color> [ <helper-background-insets> || <helper-background-radius> ] default: null;
+				 */ 
+				-fx-background-fills <-fx-background-color> [ <-fx-background-insets> || <-fx-background-radius> ] default: null;
 				/**
 				 * This property is set by specifying -fx-background-image, optionally -fx-background-position, optionally -fx-background-repeat, 
 				 * and optionally -fx-background-size. There is no shorthand notation for -fx-background-images at this time.
 				 */
-				-fx-background-images <helper-background-image> [ <helper-background-position> || <helper-background-repeat> || <helper-background-size> ] default: null;
+				-fx-background-images <-fx-background-image> [ <-fx-background-position> || <-fx-background-repeat> || <-fx-background-size> ] default: null;
 				/**
 				 * This property is set by specifying -fx-border-color with the optional -fx-border-insets, -fx-border-radius, -fx-border-style and 
 				 * -fx-border-width. There is no shorthand notation for -fx-stroke-borders at this time.
 				 */
-				-fx-stroke-borders <helper-border-color> [ <helper-border-insets> || <helper-border-radius> || <helper-border-style> || <helper-border-width> ] default: null;
+				-fx-stroke-borders <-fx-border-color> [ <-fx-border-insets> || <-fx-border-radius> || <-fx-border-style> || <-fx-border-width> ] default: null;
 				/**
 				 * This property set by specifying -fx-border-image-source with the optional -fx-border-image-insets, -fx-border-image-repeat, 
 				 * -fx-border-image-slice and -fx-border-image-width. There is no shorthand notation for -fx-image-borders at this time.
 				 */
-				-fx-image-borders <helper-border-image-source> [ <helper-border-image-insets> || <helper-border-image-repeat> || <helper-border-image-slice> || <helper-border-image-width> ] default: null;
+				-fx-image-borders <-fx-border-image-source> [ <-fx-border-image-insets> || <-fx-border-image-repeat> || <-fx-border-image-slice> || <-fx-border-image-width> ] default: null;
 				
 			}
 			/**
@@ -1351,7 +1348,7 @@ package javafx {
      			 * This property is ignored for a horizontal tilepane.
      			 * </p>
 				 */
-				-fx-pref-rows int default: 5;
+				-fx-pref-rows @INT default: 5;
 				/**
 				 * <p>
 				 * The preferred number of columns for a horizontal tilepane.
@@ -1360,7 +1357,7 @@ package javafx {
 			     * This property is ignored for a vertical tilepane.
 			     * </p>
 				 */
-				-fx-pref-columns int default: 5;
+				-fx-pref-columns @INT default: 5;
 				/**
 				 * The preferred width of each tile.
 				 */
@@ -1455,7 +1452,7 @@ package javafx {
      			 * defines the point in the dashing pattern that will correspond
      			 * to the beginning of the stroke.
 				 */
-				-fx-stroke-dash-offset double default: 0;
+				-fx-stroke-dash-offset @NUM default: 0;
 				/**
 				 * The end cap style of this Shape as one of the following
      			 * values that define possible end cap styles:
@@ -1473,7 +1470,7 @@ package javafx {
 				 * Defines the limit for the MITER line join style.
      			 * A value of less than 1.0 will be treated as 1.0.
 				 */
-				-fx-stroke-miter-limit double default: 10;
+				-fx-stroke-miter-limit @NUM default: 10;
 				/**
 				 * Defines a square pen line width. A value of 0.0 specifies a hairline
      			 * stroke. A value of less than 0.0 will be treated as 0.0.
@@ -1658,7 +1655,7 @@ package javafx {
 				/**
 				 * Specifies scale factor applied to font.
 				 */
-				-fx-font-scale double default: 1;
+				-fx-font-scale @NUM default: 1;
 				/**
 				 * Minimum width property.
 				 */
@@ -1892,7 +1889,9 @@ package javafx {
  			 *  <li><em>undefined</em>: indeterminate == true</li>
  			 * </ul>
         	 */
-        	CheckBox extends ButtonBase {
+        	CheckBox extends ButtonBase 
+        		styleclass check-box {
+        		
         		/**
         		 * applies when the selected variable is true
         		 */
@@ -1907,6 +1906,18 @@ package javafx {
         		:indeterminated
         		// TODO SUPPORT SUBSTRUCTURE
 				// TODO SUPPORT STYLE_CLASS
+				
+				
+				substructure Desktop {
+					layout.Region styleclass box {
+						layout.Region styleclass mark
+					}
+					Label styleclass label {
+						/** Where <i> is the index of the series and <j> is the series’ color index */
+						Node styleclass chart-series-area-line series[i] default-color[j]
+					}
+				}
+				
         	}
         	/**
         	 * A MenuItem that can be toggled between selected and unselected states.
@@ -2087,7 +2098,7 @@ package javafx {
         		/**
         		 * maximum number of page indicators.
         		 */
-        		-fx-max-page-indicator-count double default: 10;
+        		-fx-max-page-indicator-count @NUM default: 10;
         		/**
         		 * page arrows visible
         		 */
@@ -2124,10 +2135,10 @@ package javafx {
  			 * horizontal bar.
         	 */
         	ProgressBar extends ProgressIndicator {
-        		-fx-indeterminate-bar-length double default: 60;
+        		-fx-indeterminate-bar-length @NUM default: 60;
         		-fx-indeterminate-bar-escape <boolean> default: true;
         		-fx-indeterminate-bar-flip <boolean> default: true;
-        		-fx-indeterminate-bar-animation-time double default: 2.0;
+        		-fx-indeterminate-bar-animation-time @NUM default: 2.0;
         		// TODO SUPPORT SUBSTRUCTURE
         		// TODO SUPPORT STYLE_CLASS
         	}
@@ -2188,12 +2199,12 @@ package javafx {
         		 * The amount by which to adjust the scrollbar if the track of the bar is
      			 * clicked.
         		 */
-        		-fx-block-increment double default: 10;
+        		-fx-block-increment @NUM default: 10;
         		/**
         		 * The amount by which to adjust the ScrollBar when the increment or
      			 * decrement methods are called.
         		 */
-        		-fx-unit-increment double default: 1;
+        		-fx-unit-increment @NUM default: 1;
         		/**
         		 * applies if this ScrollBar is vertical
         		 */
@@ -2311,11 +2322,11 @@ package javafx {
         		/**
         		 * he unit distance between major tick marks.
         		 */
-        		-fx-major-tick-unit double default: 25;
+        		-fx-major-tick-unit @NUM default: 25;
         		/**
         		 * The number of minor ticks to place between any two major ticks.
         		 */
-        		-fx-minor-tick-count double default: 3;
+        		-fx-minor-tick-count @NUM default: 3;
 //        		-fx-show-tick-labels <boolean> default: false;
 				/**
 				 * Indicates whether the value of the Slider should always
@@ -2327,7 +2338,7 @@ package javafx {
 				 * The amount by which to adjust the slider if the track of the slider is
      			 * clicked.
 				 */
-				-fx-block-increment int default: 10;
+				-fx-block-increment @INT default: 10;
 				/**
 				 * applies if this Slider is horizontal
 				 */
@@ -2376,26 +2387,26 @@ package javafx {
      			 * the length of text in tabs to prevent truncation.  Setting the min equal
      			 * to the max will fix the width of the tab.  By default the min equals to the max.
         		 */
-        		-fx-tab-min-width int default: 0;
+        		-fx-tab-min-width @INT default: 0;
         		/**
         		 * Specifies the maximum width of a tab.  This can be used to limit
      			 * the length of text in tabs.  If the tab text is longer than the maximum
      			 * width the text will be truncated.  Setting the max equal
      			 * to the min will fix the width of the tab.  By default the min equals to the max
         		 */
-        		-fx-tab-max-width int default: DOUBLE_MAX;
+        		-fx-tab-max-width @INT default: DOUBLE_MAX;
         		/**
         		 * The minimum height of the tabs in the TabPane.  This can be used to limit
      			 * the height in tabs. Setting the min equal to the max will fix the height
      			 * of the tab.  By default the min equals to the max.
         		 */
-        		-fx-tab-min-height int default: 0;
+        		-fx-tab-min-height @INT default: 0;
         		/**
         		 * The maximum height if the tabs in the TabPane.  This can be used to limit
      			 * the height in tabs. Setting the max equal to the min will fix the height
      			 * of the tab.  By default the min equals to the max.
         		 */
-        		-fx-tab-max-height int default: DOUBLE_MAX;
+        		-fx-tab-max-height @INT default: DOUBLE_MAX;
         		/**
         		 * applies if the side is top
         		 */
@@ -2473,7 +2484,7 @@ package javafx {
         		 */
         		-fx-alignment [ 
         			top-left | top-center | top-right | center-left | 
-        			center | center-right bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right
+        			center | center-right | bottom-left | bottom-center | bottom-right | baseline-left | baseline-center | baseline-right
         		] default: center-left;
         	}
         	/**
@@ -2614,11 +2625,11 @@ package javafx {
 	    		/**
 	    		 * gap between bars
 	    		 */
-	    		-fx-bar-gap double default: 4;
+	    		-fx-bar-gap @NUM default: 4;
 	    		/**
 	    		 * The gap to leave between bars in separate categories
 	    		 */
-	    		-fx-category-gap double default: 10;
+	    		-fx-category-gap @NUM default: 10;
 	    	}
 	    	/**
 	    	 * Chart type that plots bubbles for the data points in a series. The extra value property of Data is used to represent
@@ -2682,7 +2693,20 @@ package javafx {
 	    		/**
 	    		 * The angle to start the first pie slice at
 	    		 */
-	    		-fx-start-angle double default: 0;
+	    		-fx-start-angle @NUM default: 0;
+	    		
+	    		substructure Desktop {
+	    			/** Where <i> is the index of the data and <j> is the series’ color index. 
+	    			 * If the data value is negative, the "negative" style class is added.
+	    			 */
+	    			Node styleclass chart-pie data[i] default-color[j]
+	    			shape.Path styleclass chart-pie-label-line
+	    			text.Text styleclass chart-pie-label
+	    			
+	    			// TODO find out what a LegendItem is -> seems that it is missing from oracles css docs
+	    			// /** Each item in the legend has the style class "pie-legend-symbol" plus the style class of the corresponding data item */
+	    			// LegendItem styleclass pie-legend-symbol
+	    		}
 	    	}
 	    	/**
 	    	 * Chart base class for all 2 axis charts. It is responsible for drawing the two
@@ -2716,11 +2740,22 @@ package javafx {
      			 * will be drawn at the zero point
 	    		 */
 	    		-fx-vertical-zero-line-visible <boolean> default: true;
+	    		
+	    		substructure Desktop {
+	    			Group styleclass plot-content
+	    			layout.Region styleclass chart-plot-background
+	    			shape.Path styleclass chart-alternative-column-fill
+	    			shape.Path styleclass chart-alternative-row-fill
+	    			shape.Path styleclass chart-vertical-grid-lines
+	    			shape.Path styleclass chart-horizontal-grid-lines
+	    			shape.Line styleclass chart-vertical-zero-line
+	    			shape.Line styleclass chart-horizontal-zero-line
+	    		}
 	    	}
 	    	/**
 	    	 * Base class for all axes in JavaFX that represents an axis drawn on a chart area.
 	    	 */
-	    	Axis extends layout.Region {
+	    	Axis extends layout.Region styleclass axis {
 	    		/**
 	    		 * The side of the plot which this axis is being drawn on
 	    		 */
@@ -2754,12 +2789,17 @@ package javafx {
 				 * true if tick mark labels should be displayed
 				 */
 				-fx-tick-labels-visible <boolean> default: true; 	
+				
+				substructure Desktop {
+					text.Text styleclass axis-label
+					shape.Path styleclass axis-tick-mark
+				}
 	    	}
 	    	/**
 	    	 * A axis who's data is defined as Numbers. It can also draw minor
  			 * tick-marks between the major ones.
 	    	 */
-	    	ValueAxis extends Axis {
+	    	ValueAxis extends Axis styleclass axis {
 	    		/**
 	    		 * The length of minor tick mark lines. Set to 0 to not display minor tick marks.
 	    		 */
@@ -2773,30 +2813,34 @@ package javafx {
 				 * true if minor tick marks should be displayed 
 				 */	 
 				-fx-minor-tick-visible <boolean> default: true; 	 
+				
+				substructure Desktop {
+					shape.Path styleclass axis-minor-tick-mark
+				}
 	    	}
 	    	/**
 	    	 * A axis class that plots a range of numbers with major tick marks every "tickUnit". You can use any Number type with
  			 * this axis, Long, Double, BigDecimal etc.
 	    	 */
-	    	NumberAxis extends ValueAxis {
+	    	NumberAxis extends ValueAxis styleclass axis {
 	    		/**
 	    		 * The value between each major tick mark in data units.
 	    		 */
-	    		-fx-tick-unit double default: 5;
+	    		-fx-tick-unit @NUM default: 5;
 	    	}
 	    	/**
 	    	 * A axis implementation that will works on string categories where each 
  			 * value as a unique category(tick mark) along the axis.
 	    	 */
-	    	CategoryAxis extends Axis {
+	    	CategoryAxis extends Axis styleclass axis {
 	    		/**
 	    		 * The margin between the axis start and the first tick-mark
 	    		 */
-	    		-fx-start-margin double default: 5;
+	    		-fx-start-margin @NUM default: 5;
 	    		/**
 	    		 * The margin between the axis start and the first tick-mark
 	    		 */
-				-fx-end-margin double default: 5;
+				-fx-end-margin @NUM default: 5;
 				/**
 				 * If this is true then half the space between ticks is left at the start and end
 				 */
@@ -2805,8 +2849,12 @@ package javafx {
 	    	/**
 	    	 * A chart legend that displays a list of items with symbols in a box
 	    	 */
-	    	Legend extends layout.Region {
-	    		
+	    	Legend extends layout.Region styleclass chart-legend {
+	    			
+	    		substructure Desktop {
+	    			control.Label styleclass chart-legend-item
+	    			Node styleclass chart-legend-item-symbol
+	    		}
 	    	}
 		}
 	}

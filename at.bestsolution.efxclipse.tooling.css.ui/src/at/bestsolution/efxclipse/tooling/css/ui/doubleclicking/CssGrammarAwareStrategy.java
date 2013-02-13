@@ -10,13 +10,9 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.doubleclicking;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
-import org.eclipse.jface.text.ITypedRegion;
 import org.eclipse.jface.text.Region;
 import org.eclipse.jface.text.TextUtilities;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -26,14 +22,15 @@ import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.doubleClicking.LexerTokenAndCharacterPairAwareStrategy;
-import org.eclipse.xtext.ui.editor.model.ILexerTokenRegion;
-import org.eclipse.xtext.ui.editor.model.IXtextModelListener;
 import org.eclipse.xtext.ui.editor.model.PartitionTokenScanner;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.util.Tuples;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+
+import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.URLType;
 
 import com.google.inject.Inject;
 
@@ -73,6 +70,20 @@ public class CssGrammarAwareStrategy extends LexerTokenAndCharacterPairAwareStra
 			}
 		} else {
 			EObject o = eObjectAtOffsetHelper.resolveElementAt(resource, offset);
+			
+			// This allows us to select only the urls content on doubleclick
+			if (o instanceof URLType) {
+				final URLType urlType = (URLType) o;
+				if (urlType.getUrl() != null) {
+					ITextRegion r1 = locationInFileProvider.getFullTextRegion(o, CssDslPackage.Literals.URL_TYPE__URL, 0);
+					int mod = 0;
+					if (urlType.getUrl().startsWith("\"") || urlType.getUrl().startsWith("'")) {
+						mod = 1;
+					}
+					IRegion r = new Region(r1.getOffset() + mod, r1.getLength() - 2 * mod);
+					return Tuples.create(o, r);
+				}
+			}
 			if (o != null) {
 				ITextRegion region = locationInFileProvider.getSignificantTextRegion(o);
 				final IRegion region2 = new Region(region.getOffset(), region.getLength());

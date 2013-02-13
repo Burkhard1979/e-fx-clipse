@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.util;
 
@@ -103,14 +100,19 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
         return createCSSRuleAdapter();
       }
       @Override
+      public Adapter caseCSSType(CSSType object)
+      {
+        return createCSSTypeAdapter();
+      }
+      @Override
       public Adapter caseElementDefinition(ElementDefinition object)
       {
         return createElementDefinitionAdapter();
       }
       @Override
-      public Adapter casePropertyDefinition(PropertyDefinition object)
+      public Adapter caseDefinition(Definition object)
       {
-        return createPropertyDefinitionAdapter();
+        return createDefinitionAdapter();
       }
       @Override
       public Adapter casePseudoClassDefinition(PseudoClassDefinition object)
@@ -118,24 +120,29 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
         return createPseudoClassDefinitionAdapter();
       }
       @Override
-      public Adapter caseCSSRuleId(CSSRuleId object)
-      {
-        return createCSSRuleIdAdapter();
-      }
-      @Override
       public Adapter caseCSSRuleRef(CSSRuleRef object)
       {
         return createCSSRuleRefAdapter();
       }
       @Override
-      public Adapter caseCSSRuleDefinition(CSSRuleDefinition object)
-      {
-        return createCSSRuleDefinitionAdapter();
-      }
-      @Override
       public Adapter caseCSSDefaultValue(CSSDefaultValue object)
       {
         return createCSSDefaultValueAdapter();
+      }
+      @Override
+      public Adapter caseSubstructureSelector(SubstructureSelector object)
+      {
+        return createSubstructureSelectorAdapter();
+      }
+      @Override
+      public Adapter caseSubstructure(Substructure object)
+      {
+        return createSubstructureAdapter();
+      }
+      @Override
+      public Adapter caseSubstructureStyleclass(SubstructureStyleclass object)
+      {
+        return createSubstructureStyleclassAdapter();
       }
       @Override
       public Adapter caseCSSRangedIntType(CSSRangedIntType object)
@@ -146,6 +153,16 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCSSRangedDoubleType(CSSRangedDoubleType object)
       {
         return createCSSRangedDoubleTypeAdapter();
+      }
+      @Override
+      public Adapter casePropertyDefinition(PropertyDefinition object)
+      {
+        return createPropertyDefinitionAdapter();
+      }
+      @Override
+      public Adapter caseCSSRuleDefinition(CSSRuleDefinition object)
+      {
+        return createCSSRuleDefinitionAdapter();
       }
       @Override
       public Adapter caseCSSRuleFunc(CSSRuleFunc object)
@@ -166,6 +183,11 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCSSRuleConcat(CSSRuleConcat object)
       {
         return createCSSRuleConcatAdapter();
+      }
+      @Override
+      public Adapter caseCSSRuleConcatWithoutSpace(CSSRuleConcatWithoutSpace object)
+      {
+        return createCSSRuleConcatWithoutSpaceAdapter();
       }
       @Override
       public Adapter caseCSSRulePostfix(CSSRulePostfix object)
@@ -295,6 +317,21 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType <em>CSS Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType
+   * @generated
+   */
+  public Adapter createCSSTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition <em>Element Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -310,16 +347,16 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition <em>Property Definition</em>}'.
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition <em>Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition
    * @generated
    */
-  public Adapter createPropertyDefinitionAdapter()
+  public Adapter createDefinitionAdapter()
   {
     return null;
   }
@@ -340,21 +377,6 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId <em>CSS Rule Id</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId
-   * @generated
-   */
-  public Adapter createCSSRuleIdAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef <em>CSS Rule Ref</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -370,21 +392,6 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition <em>CSS Rule Definition</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition
-   * @generated
-   */
-  public Adapter createCSSRuleDefinitionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSDefaultValue <em>CSS Default Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -395,6 +402,51 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCSSDefaultValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector <em>Substructure Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector
+   * @generated
+   */
+  public Adapter createSubstructureSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Substructure <em>Substructure</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Substructure
+   * @generated
+   */
+  public Adapter createSubstructureAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureStyleclass <em>Substructure Styleclass</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureStyleclass
+   * @generated
+   */
+  public Adapter createSubstructureStyleclassAdapter()
   {
     return null;
   }
@@ -425,6 +477,36 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCSSRangedDoubleTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition <em>Property Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition
+   * @generated
+   */
+  public Adapter createPropertyDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition <em>CSS Rule Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition
+   * @generated
+   */
+  public Adapter createCSSRuleDefinitionAdapter()
   {
     return null;
   }
@@ -485,6 +567,21 @@ public class CssExtDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCSSRuleConcatAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace <em>CSS Rule Concat Without Space</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleConcatWithoutSpace
+   * @generated
+   */
+  public Adapter createCSSRuleConcatWithoutSpaceAdapter()
   {
     return null;
   }
