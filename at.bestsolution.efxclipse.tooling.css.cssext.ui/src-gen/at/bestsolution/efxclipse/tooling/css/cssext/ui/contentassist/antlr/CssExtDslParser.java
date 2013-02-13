@@ -161,7 +161,7 @@ public class CssExtDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCSSDefaultValueAccess().getIvalAssignment_1(), "rule__CSSDefaultValue__IvalAssignment_1");
 					put(grammarAccess.getCSSDefaultValueAccess().getDvalAssignment_2(), "rule__CSSDefaultValue__DvalAssignment_2");
 					put(grammarAccess.getCSSDefaultValueAccess().getSvalAssignment_3(), "rule__CSSDefaultValue__SvalAssignment_3");
-					put(grammarAccess.getSubstructureSelectorAccess().getNameAssignment_1(), "rule__SubstructureSelector__NameAssignment_1");
+					put(grammarAccess.getSubstructureSelectorAccess().getSelectorNameAssignment_1(), "rule__SubstructureSelector__SelectorNameAssignment_1");
 					put(grammarAccess.getSubstructureSelectorAccess().getVarAssignment_2_1(), "rule__SubstructureSelector__VarAssignment_2_1");
 					put(grammarAccess.getSubstructureAccess().getDokuAssignment_0(), "rule__Substructure__DokuAssignment_0");
 					put(grammarAccess.getSubstructureAccess().getNameAssignment_2(), "rule__Substructure__NameAssignment_2");

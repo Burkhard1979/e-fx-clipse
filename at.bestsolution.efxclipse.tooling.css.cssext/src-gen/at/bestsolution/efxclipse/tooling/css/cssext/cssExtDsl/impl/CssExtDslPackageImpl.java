@@ -730,7 +730,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSubstructureSelector_Name()
+  public EAttribute getSubstructureSelector_SelectorName()
   {
     return (EAttribute)substructureSelectorEClass.getEStructuralFeatures().get(0);
   }
@@ -1277,7 +1277,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     createEAttribute(cssDefaultValueEClass, CSS_DEFAULT_VALUE__SVAL);
 
     substructureSelectorEClass = createEClass(SUBSTRUCTURE_SELECTOR);
-    createEAttribute(substructureSelectorEClass, SUBSTRUCTURE_SELECTOR__NAME);
+    createEAttribute(substructureSelectorEClass, SUBSTRUCTURE_SELECTOR__SELECTOR_NAME);
     createEAttribute(substructureSelectorEClass, SUBSTRUCTURE_SELECTOR__VAR);
 
     substructureEClass = createEClass(SUBSTRUCTURE);
@@ -1443,7 +1443,7 @@ public class CssExtDslPackageImpl extends EPackageImpl implements CssExtDslPacka
     initEAttribute(getCSSDefaultValue_Sval(), ecorePackage.getEString(), "sval", null, 0, 1, CSSDefaultValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(substructureSelectorEClass, SubstructureSelector.class, "SubstructureSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSubstructureSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, SubstructureSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSubstructureSelector_SelectorName(), ecorePackage.getEString(), "selectorName", null, 0, 1, SubstructureSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSubstructureSelector_Var(), ecorePackage.getEString(), "var", null, 0, 1, SubstructureSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(substructureEClass, Substructure.class, "Substructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

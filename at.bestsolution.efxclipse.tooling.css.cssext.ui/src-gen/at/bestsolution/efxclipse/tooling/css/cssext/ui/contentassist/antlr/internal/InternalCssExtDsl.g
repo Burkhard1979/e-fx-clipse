@@ -6045,9 +6045,9 @@ rule__SubstructureSelector__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getSubstructureSelectorAccess().getNameAssignment_1()); }
-(rule__SubstructureSelector__NameAssignment_1)
-{ after(grammarAccess.getSubstructureSelectorAccess().getNameAssignment_1()); }
+{ before(grammarAccess.getSubstructureSelectorAccess().getSelectorNameAssignment_1()); }
+(rule__SubstructureSelector__SelectorNameAssignment_1)
+{ after(grammarAccess.getSubstructureSelectorAccess().getSelectorNameAssignment_1()); }
 )
 
 ;
@@ -7613,14 +7613,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SubstructureSelector__NameAssignment_1
+rule__SubstructureSelector__SelectorNameAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSubstructureSelectorAccess().getNameIDTerminalRuleCall_1_0()); }
-	RULE_ID{ after(grammarAccess.getSubstructureSelectorAccess().getNameIDTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getSubstructureSelectorAccess().getSelectorNameIDTerminalRuleCall_1_0()); }
+	RULE_ID{ after(grammarAccess.getSubstructureSelectorAccess().getSelectorNameIDTerminalRuleCall_1_0()); }
 )
 
 ;

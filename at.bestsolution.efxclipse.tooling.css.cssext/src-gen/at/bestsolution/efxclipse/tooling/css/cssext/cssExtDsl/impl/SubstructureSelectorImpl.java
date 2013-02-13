@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.SubstructureSelectorImpl#getName <em>Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.SubstructureSelectorImpl#getSelectorName <em>Selector Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.SubstructureSelectorImpl#getVar <em>Var</em>}</li>
  * </ul>
  * </p>
@@ -29,24 +29,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container implements SubstructureSelector
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getSelectorName() <em>Selector Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getSelectorName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String SELECTOR_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getSelectorName() <em>Selector Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getSelectorName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String selectorName = SELECTOR_NAME_EDEFAULT;
 
   /**
    * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
@@ -94,9 +94,9 @@ public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getSelectorName()
   {
-    return name;
+    return selectorName;
   }
 
   /**
@@ -104,12 +104,12 @@ public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setSelectorName(String newSelectorName)
   {
-    String oldName = name;
-    name = newName;
+    String oldSelectorName = selectorName;
+    selectorName = newSelectorName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.SUBSTRUCTURE_SELECTOR__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.SUBSTRUCTURE_SELECTOR__SELECTOR_NAME, oldSelectorName, selectorName));
   }
 
   /**
@@ -145,8 +145,8 @@ public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__NAME:
-        return getName();
+      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__SELECTOR_NAME:
+        return getSelectorName();
       case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__VAR:
         return getVar();
     }
@@ -163,8 +163,8 @@ public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__NAME:
-        setName((String)newValue);
+      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__SELECTOR_NAME:
+        setSelectorName((String)newValue);
         return;
       case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__VAR:
         setVar((String)newValue);
@@ -183,8 +183,8 @@ public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__NAME:
-        setName(NAME_EDEFAULT);
+      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__SELECTOR_NAME:
+        setSelectorName(SELECTOR_NAME_EDEFAULT);
         return;
       case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__VAR:
         setVar(VAR_EDEFAULT);
@@ -203,8 +203,8 @@ public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__SELECTOR_NAME:
+        return SELECTOR_NAME_EDEFAULT == null ? selectorName != null : !SELECTOR_NAME_EDEFAULT.equals(selectorName);
       case CssExtDslPackage.SUBSTRUCTURE_SELECTOR__VAR:
         return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
     }
@@ -222,8 +222,8 @@ public class SubstructureSelectorImpl extends MinimalEObjectImpl.Container imple
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (selectorName: ");
+    result.append(selectorName);
     result.append(", var: ");
     result.append(var);
     result.append(')');

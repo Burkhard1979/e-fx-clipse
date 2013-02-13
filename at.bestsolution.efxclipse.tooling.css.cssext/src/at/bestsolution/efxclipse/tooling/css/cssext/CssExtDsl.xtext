@@ -185,7 +185,7 @@ CSSDefaultValue:
 ;
 
 SubstructureSelector hidden():
-	{SubstructureSelector} name=ID ('[' var=ID ']')?
+	{SubstructureSelector} selectorName=ID ('[' var=ID ']')?
 ;
 
 Substructure:
