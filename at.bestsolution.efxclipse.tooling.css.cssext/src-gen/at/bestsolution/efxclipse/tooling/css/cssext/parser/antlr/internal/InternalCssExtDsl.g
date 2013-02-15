@@ -2344,9 +2344,9 @@ ruleSubstructureSelector returns [EObject current=null]
     }
 )(
 (
-		lv_name_1_0=RULE_ID
+		lv_selectorName_1_0=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getSubstructureSelectorAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_selectorName_1_0, grammarAccess.getSubstructureSelectorAccess().getSelectorNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2354,8 +2354,8 @@ ruleSubstructureSelector returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"name",
-        		lv_name_1_0, 
+       			"selectorName",
+        		lv_selectorName_1_0, 
         		"ID");
 	    }
 

@@ -122,7 +122,7 @@ public class CssExtDslOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	protected String _text(SubstructureStyleclass n) {
 		String x =  labelProvider.getText(n.getElement()) + " -> ";
 		for (SubstructureSelector s : n.getSelectors()) {
-				x += s.getName();
+				x += s.getSelectorName();
 				if (s.getVar() != null) {
 					x+="[" + s.getVar() + "]";
 				}

@@ -710,7 +710,7 @@
             <classifier xsi:type="ecore:EClass" href="http://www.bestsolution.at/efxclipse/tooling/css/cssext/CssExtDsl#//SubstructureSelector"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="selectorName" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">

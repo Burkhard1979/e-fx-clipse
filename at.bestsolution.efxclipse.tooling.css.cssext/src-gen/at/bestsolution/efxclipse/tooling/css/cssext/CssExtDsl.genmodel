@@ -59,7 +59,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//CSSDefaultValue/sval"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//SubstructureSelector">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//SubstructureSelector/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//SubstructureSelector/selectorName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CssExtDsl.ecore#//SubstructureSelector/var"/>
     </genClasses>
     <genClasses ecoreClass="CssExtDsl.ecore#//Substructure">

@@ -537,13 +537,13 @@ public interface CssExtDslPackage extends EPackage
   int SUBSTRUCTURE_SELECTOR = 11;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Selector Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUBSTRUCTURE_SELECTOR__NAME = 0;
+  int SUBSTRUCTURE_SELECTOR__SELECTOR_NAME = 0;
 
   /**
    * The feature id for the '<em><b>Var</b></em>' attribute.
@@ -1669,15 +1669,15 @@ public interface CssExtDslPackage extends EPackage
   EClass getSubstructureSelector();
 
   /**
-   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getSelectorName <em>Selector Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getName()
+   * @return the meta object for the attribute '<em>Selector Name</em>'.
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getSelectorName()
    * @see #getSubstructureSelector()
    * @generated
    */
-  EAttribute getSubstructureSelector_Name();
+  EAttribute getSubstructureSelector_SelectorName();
 
   /**
    * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getVar <em>Var</em>}'.
@@ -2544,12 +2544,12 @@ public interface CssExtDslPackage extends EPackage
     EClass SUBSTRUCTURE_SELECTOR = eINSTANCE.getSubstructureSelector();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Selector Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SUBSTRUCTURE_SELECTOR__NAME = eINSTANCE.getSubstructureSelector_Name();
+    EAttribute SUBSTRUCTURE_SELECTOR__SELECTOR_NAME = eINSTANCE.getSubstructureSelector_SelectorName();
 
     /**
      * The meta object literal for the '<em><b>Var</b></em>' attribute feature.
