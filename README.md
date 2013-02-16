@@ -50,3 +50,4 @@ You may also look on [http://community.java.net/community/javafx](http://communi
 - Tom (creator)
 - Christoph 
 - Martin
+- Torsten Sommer
