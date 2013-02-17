@@ -4,7 +4,7 @@ This is a plugin for Eclipse which using JavaFX projects in your Eclipse. It inc
 
 
 
-## Installation for Eclipse 4.2 and 3.8 ##
+## Installation for Eclipse 4.2/3.8 and 3.7 ##
  
 - See a [wiki here](http://www.efxclipse.org/install.html) and **make sure** you use [Java 7](http://www.java.com) with latest update. Minimum version is Java 7 update 7.
 
