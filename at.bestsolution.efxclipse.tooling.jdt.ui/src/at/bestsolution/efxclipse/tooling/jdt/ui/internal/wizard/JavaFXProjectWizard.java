@@ -11,7 +11,11 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.wizard;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -20,6 +24,8 @@ import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
@@ -33,6 +39,7 @@ import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewWizardMessages;
 import org.eclipse.jdt.ui.IPackagesViewPart;
 import org.eclipse.jdt.ui.wizards.NewJavaProjectWizardPageOne;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
@@ -40,9 +47,13 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 
 import at.bestsolution.efxclipse.tooling.jdt.core.JavaFXCore;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksFactory;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersFactory;
 
 @SuppressWarnings("restriction")
 public class JavaFXProjectWizard extends NewElementWizard implements IExecutableExtension {
@@ -115,16 +126,64 @@ public class JavaFXProjectWizard extends NewElementWizard implements IExecutable
 				e1.printStackTrace();
 			}
 
-			IFile buildFile = fSecondPage.getJavaProject().getProject().getFile(new Path("build.fxbuild"));
+			final IFile buildFile = fSecondPage.getJavaProject().getProject().getFile(new Path("build.fxbuild"));
 			try {
-				StringBuilder b = new StringBuilder();
-				// TODO write as xmi file
-				b.append("jfx.build.stagingdir = ${workspace}/"+fFirstPage.getProjectName()+"/build");
-				b.append(System.getProperty("line.separator")); 
-				b.append("jfx.build.apptitle = " + fFirstPage.getProjectName());
-				ByteArrayInputStream stream = new ByteArrayInputStream(b.toString().getBytes());
-				buildFile.create(stream, true, new NullProgressMonitor());
-				stream.close();
+				AntTask task = AntTasksFactory.eINSTANCE.createAntTask();
+				task.setBuildDirectory( "${project}/build" );
+				task.setDeploy( AntTasksFactory.eINSTANCE.createDeploy() );
+				task.getDeploy().setApplication( ParametersFactory.eINSTANCE.createApplication() );
+				task.getDeploy().getApplication().setName( fFirstPage.getProjectName() );				
+				task.getDeploy().setInfo( ParametersFactory.eINSTANCE.createInfo() );
+				task.setSignjar( AntTasksFactory.eINSTANCE.createSignJar() );
+				
+				final XMIResource resource= new XMIResourceImpl();
+				resource.getContents().add( task );
+				
+				WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+					@Override
+					public void execute( IProgressMonitor monitor ) {
+
+						if ( !resource.getContents().isEmpty() ) {
+							Map<Object, Object> options = new HashMap<Object, Object>();
+							options.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
+
+							ByteArrayOutputStream streamOut = null;
+							ByteArrayInputStream streamIn = null;
+							try {
+								streamOut = new ByteArrayOutputStream();
+								resource.save( streamOut, options );
+								streamIn = new ByteArrayInputStream( streamOut.toByteArray() );
+								buildFile.create( streamIn, true, monitor );
+							}
+							catch ( IOException | CoreException e ) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							finally {
+								options.clear();
+								if (streamOut != null) {
+									try {
+										streamOut.close();
+									}
+									catch ( IOException e ) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+								if (streamIn != null) {
+									try {
+										streamIn.close();
+									}
+									catch ( IOException e ) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+							}
+						}
+					}
+				};
+				new ProgressMonitorDialog( getShell() ).run( true, false, operation );
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
