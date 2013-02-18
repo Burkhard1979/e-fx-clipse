@@ -14,6 +14,7 @@ package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -311,22 +312,31 @@ public interface AntTasksPackage extends EPackage {
 	int DEPLOY__INFO = 15;
 
 	/**
-	 * The feature id for the '<em><b>Native Package</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOY__NATIVE_PACKAGE = 16;
-
-	/**
 	 * The feature id for the '<em><b>Splash Image</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY__SPLASH_IMAGE = 17;
+	int DEPLOY__SPLASH_IMAGE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Packaging Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOY__PACKAGING_FORMAT = 17;
+
+	/**
+	 * The feature id for the '<em><b>Verbose</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOY__VERBOSE = 18;
 
 	/**
 	 * The number of structural features of the '<em>Deploy</em>' class.
@@ -335,7 +345,7 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOY_FEATURE_COUNT = 18;
+	int DEPLOY_FEATURE_COUNT = 19;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl <em>Jar</em>}' class.
@@ -455,6 +465,17 @@ public interface AntTasksPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIGN_JAR_FEATURE_COUNT = 5;
+
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat <em>Packaging Format</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl#getPackagingFormat()
+	 * @generated
+	 */
+	int PACKAGING_FORMAT = 4;
 
 
 	/**
@@ -742,17 +763,6 @@ public interface AntTasksPackage extends EPackage {
 	EReference getDeploy_Info();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isNativePackage <em>Native Package</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Native Package</em>'.
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isNativePackage()
-	 * @see #getDeploy()
-	 * @generated
-	 */
-	EAttribute getDeploy_NativePackage();
-
-	/**
 	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getSplashImage <em>Splash Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -762,6 +772,28 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDeploy_SplashImage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getPackagingFormat <em>Packaging Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Packaging Format</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getPackagingFormat()
+	 * @see #getDeploy()
+	 * @generated
+	 */
+	EAttribute getDeploy_PackagingFormat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isVerbose <em>Verbose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Verbose</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isVerbose()
+	 * @see #getDeploy()
+	 * @generated
+	 */
+	EAttribute getDeploy_Verbose();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar <em>Jar</em>}'.
@@ -881,6 +913,16 @@ public interface AntTasksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSignJar_Storetype();
+
+	/**
+	 * Returns the meta object for enum '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat <em>Packaging Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Packaging Format</em>'.
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat
+	 * @generated
+	 */
+	EEnum getPackagingFormat();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1117,20 +1159,28 @@ public interface AntTasksPackage extends EPackage {
 		EReference DEPLOY__INFO = eINSTANCE.getDeploy_Info();
 
 		/**
-		 * The meta object literal for the '<em><b>Native Package</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DEPLOY__NATIVE_PACKAGE = eINSTANCE.getDeploy_NativePackage();
-
-		/**
 		 * The meta object literal for the '<em><b>Splash Image</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DEPLOY__SPLASH_IMAGE = eINSTANCE.getDeploy_SplashImage();
+
+		/**
+		 * The meta object literal for the '<em><b>Packaging Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOY__PACKAGING_FORMAT = eINSTANCE.getDeploy_PackagingFormat();
+
+		/**
+		 * The meta object literal for the '<em><b>Verbose</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOY__VERBOSE = eINSTANCE.getDeploy_Verbose();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.JarImpl <em>Jar</em>}' class.
@@ -1223,6 +1273,16 @@ public interface AntTasksPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIGN_JAR__STORETYPE = eINSTANCE.getSignJar_Storetype();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat <em>Packaging Format</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat
+		 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.AntTasksPackageImpl#getPackagingFormat()
+		 * @generated
+		 */
+		EEnum PACKAGING_FORMAT = eINSTANCE.getPackagingFormat();
 
 	}
 

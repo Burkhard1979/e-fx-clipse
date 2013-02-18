@@ -47,8 +47,9 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getTemplate <em>Template</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getCallbacks <em>Callbacks</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getInfo <em>Info</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isNativePackage <em>Native Package</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getSplashImage <em>Splash Image</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getPackagingFormat <em>Packaging Format</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isVerbose <em>Verbose</em>}</li>
  * </ul>
  * </p>
  *
@@ -469,32 +470,6 @@ public interface Deploy extends EObject {
 	void setInfo(Info value);
 
 	/**
-	 * Returns the value of the '<em><b>Native Package</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Native Package</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Native Package</em>' attribute.
-	 * @see #setNativePackage(boolean)
-	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getDeploy_NativePackage()
-	 * @model
-	 * @generated
-	 */
-	boolean isNativePackage();
-
-	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isNativePackage <em>Native Package</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Native Package</em>' attribute.
-	 * @see #isNativePackage()
-	 * @generated
-	 */
-	void setNativePackage(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Splash Image</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -519,5 +494,58 @@ public interface Deploy extends EObject {
 	 * @generated
 	 */
 	void setSplashImage(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Packaging Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Packaging Format</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Packaging Format</em>' attribute.
+	 * @see #setPackagingFormat(String)
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getDeploy_PackagingFormat()
+	 * @model
+	 * @generated
+	 */
+	String getPackagingFormat();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#getPackagingFormat <em>Packaging Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Packaging Format</em>' attribute.
+	 * @see #getPackagingFormat()
+	 * @generated
+	 */
+	void setPackagingFormat(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Verbose</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Verbose</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Verbose</em>' attribute.
+	 * @see #setVerbose(boolean)
+	 * @see at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage#getDeploy_Verbose()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isVerbose();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy#isVerbose <em>Verbose</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Verbose</em>' attribute.
+	 * @see #isVerbose()
+	 * @generated
+	 */
+	void setVerbose(boolean value);
 
 } // Deploy

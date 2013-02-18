@@ -13,6 +13,7 @@
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -23,6 +24,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
 
 /**
@@ -83,6 +85,36 @@ public class AntTasksFactoryImpl extends EFactoryImpl implements AntTasksFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case AntTasksPackage.PACKAGING_FORMAT:
+				return createPackagingFormatFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case AntTasksPackage.PACKAGING_FORMAT:
+				return convertPackagingFormatToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AntTask createAntTask() {
 		AntTaskImpl antTask = new AntTaskImpl();
 		return antTask;
@@ -116,6 +148,26 @@ public class AntTasksFactoryImpl extends EFactoryImpl implements AntTasksFactory
 	public SignJar createSignJar() {
 		SignJarImpl signJar = new SignJarImpl();
 		return signJar;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackagingFormat createPackagingFormatFromString(EDataType eDataType, String initialValue) {
+		PackagingFormat result = PackagingFormat.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPackagingFormatToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
