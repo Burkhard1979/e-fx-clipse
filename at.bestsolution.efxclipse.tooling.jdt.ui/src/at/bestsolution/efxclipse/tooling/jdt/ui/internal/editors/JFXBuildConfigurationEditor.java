@@ -11,7 +11,7 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors;
 
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__BUILD_DIRECTORY;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.*;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__CSS_TO_BIN;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__DEPLOY;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.ANT_TASK__SIGNJAR;
@@ -21,8 +21,8 @@ import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.an
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__HEIGHT;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__INCLUDE_DT;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__INFO;
-import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__NATIVE_PACKAGE;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__OFFLINE_ALLOWED;
+import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__PACKAGING_FORMAT;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__PLACEHOLDERID;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__PLACEHOLDERREF;
 import static at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage.Literals.DEPLOY__SPLASH_IMAGE;
@@ -194,6 +194,7 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.JavaFXUIPlugin;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTask;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ApplicationToolkitType;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.Icon;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.KeyValuePair;
@@ -1052,9 +1053,24 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 					dbc.bindValue( selChange.observe( c.getCombo() ), prop.observeDetail( bean ) );
 				}
 				{
+					toolkit.createLabel( sectionClient, "Packaging Format:" ).setLayoutData( new GridData( GridData.BEGINNING, GridData.BEGINNING, false, false ) );
+					ComboViewer c = new ComboViewer( sectionClient );
+					c.getCombo().setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 3, 1 ) );
+					c.setContentProvider( new ArrayContentProvider() );
+					c.setInput( PackagingFormat.VALUES );
+					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__PACKAGING_FORMAT ) );
+					dbc.bindValue( selChange.observe( c.getCombo() ), prop.observeDetail( bean ) );
+				}
+				{
 					Button b = toolkit.createButton( sectionClient, "Convert CSS into binary form", SWT.CHECK );
 					b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 4, 1 ) );
 					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__CSS_TO_BIN ) );
+					dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
+				}
+				{
+					Button b = toolkit.createButton( sectionClient, "Enable verbose build mode (Not recommended)", SWT.CHECK );
+					b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, 4, 1 ) );
+					IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__VERBOSE ) );
 					dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 				}
 			}
@@ -1135,7 +1151,6 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
 		Composite sectionParent = scrolledForm.getBody();
 
-		dbc = new DataBindingContext();
 		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
 		IWidgetValueProperty selChange = WidgetProperties.selection();
 
@@ -1187,13 +1202,6 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 				Button b = toolkit.createButton( sectionClient, "Include deployment toolkit", SWT.CHECK );
 				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, COLUMN_COUNT, 1 ) );
 				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__INCLUDE_DT ) );
-				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
-			}
-
-			{
-				Button b = toolkit.createButton( sectionClient, "Native Package", SWT.CHECK );
-				b.setLayoutData( new GridData( GridData.FILL, GridData.CENTER, true, false, COLUMN_COUNT, 1 ) );
-				IEMFValueProperty prop = EMFEditProperties.value( editingDomain, FeaturePath.fromList( ANT_TASK__DEPLOY, DEPLOY__NATIVE_PACKAGE ) );
 				dbc.bindValue( selChange.observe( b ), prop.observeDetail( bean ) );
 			}
 
@@ -1822,7 +1830,6 @@ public class JFXBuildConfigurationEditor extends MultiPageEditorPart {
 		scrolledForm.getBody().setLayout( new GridLayout( 2, false ) );
 		Composite sectionParent = scrolledForm.getBody();
 
-		dbc = new DataBindingContext();
 		IWidgetValueProperty textModify = WidgetProperties.text( SWT.Modify );
 
 		{

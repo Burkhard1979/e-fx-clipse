@@ -14,6 +14,7 @@ package at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -23,6 +24,7 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.AntTasksPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Deploy;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.Jar;
+import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.PackagingFormat;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.SignJar;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.ParametersPackage;
 import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.parameters.impl.ParametersPackageImpl;
@@ -61,6 +63,13 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 	 * @generated
 	 */
 	private EClass signJarEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum packagingFormatEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -367,7 +376,7 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDeploy_NativePackage() {
+	public EAttribute getDeploy_SplashImage() {
 		return (EAttribute)deployEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -376,8 +385,17 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDeploy_SplashImage() {
+	public EAttribute getDeploy_PackagingFormat() {
 		return (EAttribute)deployEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeploy_Verbose() {
+		return (EAttribute)deployEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -484,6 +502,15 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getPackagingFormat() {
+		return packagingFormatEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AntTasksFactory getAntTasksFactory() {
 		return (AntTasksFactory)getEFactoryInstance();
 	}
@@ -534,8 +561,9 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 		createEReference(deployEClass, DEPLOY__TEMPLATE);
 		createEReference(deployEClass, DEPLOY__CALLBACKS);
 		createEReference(deployEClass, DEPLOY__INFO);
-		createEAttribute(deployEClass, DEPLOY__NATIVE_PACKAGE);
 		createEAttribute(deployEClass, DEPLOY__SPLASH_IMAGE);
+		createEAttribute(deployEClass, DEPLOY__PACKAGING_FORMAT);
+		createEAttribute(deployEClass, DEPLOY__VERBOSE);
 
 		jarEClass = createEClass(JAR);
 		createEReference(jarEClass, JAR__PLATFORM);
@@ -549,6 +577,9 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 		createEAttribute(signJarEClass, SIGN_JAR__KEYSTORE);
 		createEAttribute(signJarEClass, SIGN_JAR__STOREPASS);
 		createEAttribute(signJarEClass, SIGN_JAR__STORETYPE);
+
+		// Create enums
+		packagingFormatEEnum = createEEnum(PACKAGING_FORMAT);
 	}
 
 	/**
@@ -614,8 +645,9 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 		initEReference(getDeploy_Template(), theParametersPackage.getTemplate(), null, "template", null, 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDeploy_Callbacks(), theParametersPackage.getCallback(), null, "callbacks", null, 0, -1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDeploy_Info(), theParametersPackage.getInfo(), null, "info", null, 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDeploy_NativePackage(), ecorePackage.getEBoolean(), "nativePackage", null, 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDeploy_SplashImage(), ecorePackage.getEString(), "splashImage", null, 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeploy_PackagingFormat(), ecorePackage.getEString(), "packagingFormat", null, 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeploy_Verbose(), ecorePackage.getEBoolean(), "verbose", "false", 0, 1, Deploy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jarEClass, Jar.class, "Jar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJar_Platform(), theParametersPackage.getPlatform(), null, "platform", null, 0, 1, Jar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -629,6 +661,17 @@ public class AntTasksPackageImpl extends EPackageImpl implements AntTasksPackage
 		initEAttribute(getSignJar_Keystore(), ecorePackage.getEString(), "keystore", null, 0, 1, SignJar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSignJar_Storepass(), ecorePackage.getEString(), "storepass", null, 0, 1, SignJar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSignJar_Storetype(), ecorePackage.getEString(), "storetype", null, 0, 1, SignJar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(packagingFormatEEnum, PackagingFormat.class, "PackagingFormat");
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.NONE);
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.ALL);
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.IMAGE);
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.EXE);
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.MSI);
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.DMG);
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.RPM);
+		addEEnumLiteral(packagingFormatEEnum, PackagingFormat.DEB);
 
 		// Create resource
 		createResource(eNS_URI);
