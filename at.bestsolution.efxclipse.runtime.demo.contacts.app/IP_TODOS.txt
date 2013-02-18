@@ -1,5 +1,6 @@
-Ensemble-Icons (GPL???):
-------------------------
+Ensemble-Icons (Oracle BSD):
+----------------------------
+From http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
 css/images/clef.png
 css/images/top-bar.png
 css/images/window-close-over.png
@@ -9,6 +10,12 @@ css/images/window-expand-over.png
 css/images/window-expand.png
 css/images/window-min-over.png
 css/images/window-min.png
+
+e4 icons:
+---------
+css/blue.png
+css/bright.png
+css/dark.png
 
 FAM-FAM-FAM (Creative Commons Attribution 2.5 License):
 -------------------------------------------------------

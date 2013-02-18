@@ -12,18 +12,20 @@ package at.bestsolution.efxclipse.tooling.fxgraph.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
+import org.eclipse.xtext.common.types.xtext.ui.JdtHyperlinkFactory;
 import org.eclipse.xtext.formatting.IWhitespaceInformationProvider;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import com.google.inject.Binder;
-
 import at.bestsolution.efxclipse.tooling.fxgraph.ui.contentassist.ImportingTypesProposalProvider;
 import at.bestsolution.efxclipse.tooling.fxgraph.ui.formatting.FXGraphWhitespaceInformationProvider;
 import at.bestsolution.efxclipse.tooling.fxgraph.ui.hover.FXHoverProvider;
+import at.bestsolution.efxclipse.tooling.fxgraph.ui.hyperlinking.FXGraphHyperlinkHelper;
 import at.bestsolution.efxclipse.tooling.fxgraph.ui.internal.FXGraphActivator;
 import at.bestsolution.efxclipse.tooling.ui.editor.ValueOfContributionCollector;
+
+import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -54,5 +56,10 @@ public class FXGraphUiModule extends at.bestsolution.efxclipse.tooling.fxgraph.u
 	@Override
 	public Class<? extends IWhitespaceInformationProvider> bindIWhitespaceInformationProvider() {
 		return FXGraphWhitespaceInformationProvider.class;
+	}
+	
+	@Override
+	public Class<? extends org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper> bindIHyperlinkHelper() {
+		return FXGraphHyperlinkHelper.class;
 	}
 }

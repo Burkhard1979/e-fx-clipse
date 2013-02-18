@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getName <em>Name</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getSelectorName <em>Selector Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getVar <em>Var</em>}</li>
  * </ul>
  * </p>
@@ -24,30 +24,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface SubstructureSelector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Selector Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Selector Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage#getSubstructureSelector_Name()
+   * @return the value of the '<em>Selector Name</em>' attribute.
+   * @see #setSelectorName(String)
+   * @see at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage#getSubstructureSelector_SelectorName()
    * @model
    * @generated
    */
-  String getName();
+  String getSelectorName();
 
   /**
-   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.SubstructureSelector#getSelectorName <em>Selector Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Selector Name</em>' attribute.
+   * @see #getSelectorName()
    * @generated
    */
-  void setName(String value);
+  void setSelectorName(String value);
 
   /**
    * Returns the value of the '<em><b>Var</b></em>' attribute.

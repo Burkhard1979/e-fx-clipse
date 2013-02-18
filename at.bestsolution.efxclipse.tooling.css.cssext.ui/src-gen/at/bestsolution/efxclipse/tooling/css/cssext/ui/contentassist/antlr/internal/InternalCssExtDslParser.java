@@ -17385,26 +17385,26 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__SubstructureSelector__Group__1__Impl"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6042:1: rule__SubstructureSelector__Group__1__Impl : ( ( rule__SubstructureSelector__NameAssignment_1 ) ) ;
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6042:1: rule__SubstructureSelector__Group__1__Impl : ( ( rule__SubstructureSelector__SelectorNameAssignment_1 ) ) ;
     public final void rule__SubstructureSelector__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6046:1: ( ( ( rule__SubstructureSelector__NameAssignment_1 ) ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6047:1: ( ( rule__SubstructureSelector__NameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6046:1: ( ( ( rule__SubstructureSelector__SelectorNameAssignment_1 ) ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6047:1: ( ( rule__SubstructureSelector__SelectorNameAssignment_1 ) )
             {
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6047:1: ( ( rule__SubstructureSelector__NameAssignment_1 ) )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6048:1: ( rule__SubstructureSelector__NameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6047:1: ( ( rule__SubstructureSelector__SelectorNameAssignment_1 ) )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6048:1: ( rule__SubstructureSelector__SelectorNameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSubstructureSelectorAccess().getNameAssignment_1()); 
+               before(grammarAccess.getSubstructureSelectorAccess().getSelectorNameAssignment_1()); 
             }
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6049:1: ( rule__SubstructureSelector__NameAssignment_1 )
-            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6049:2: rule__SubstructureSelector__NameAssignment_1
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6049:1: ( rule__SubstructureSelector__SelectorNameAssignment_1 )
+            // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:6049:2: rule__SubstructureSelector__SelectorNameAssignment_1
             {
-            pushFollow(FOLLOW_rule__SubstructureSelector__NameAssignment_1_in_rule__SubstructureSelector__Group__1__Impl12084);
-            rule__SubstructureSelector__NameAssignment_1();
+            pushFollow(FOLLOW_rule__SubstructureSelector__SelectorNameAssignment_1_in_rule__SubstructureSelector__Group__1__Impl12084);
+            rule__SubstructureSelector__SelectorNameAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17412,7 +17412,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSubstructureSelectorAccess().getNameAssignment_1()); 
+               after(grammarAccess.getSubstructureSelectorAccess().getSelectorNameAssignment_1()); 
             }
 
             }
@@ -21867,9 +21867,9 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__CSSDefaultValue__SvalAssignment_3"
 
 
-    // $ANTLR start "rule__SubstructureSelector__NameAssignment_1"
-    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:7616:1: rule__SubstructureSelector__NameAssignment_1 : ( RULE_ID ) ;
-    public final void rule__SubstructureSelector__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__SubstructureSelector__SelectorNameAssignment_1"
+    // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:7616:1: rule__SubstructureSelector__SelectorNameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__SubstructureSelector__SelectorNameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -21881,11 +21881,11 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
             // ../at.bestsolution.efxclipse.tooling.css.cssext.ui/src-gen/at/bestsolution/efxclipse/tooling/css/cssext/ui/contentassist/antlr/internal/InternalCssExtDsl.g:7622:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSubstructureSelectorAccess().getNameIDTerminalRuleCall_1_0()); 
+               before(grammarAccess.getSubstructureSelectorAccess().getSelectorNameIDTerminalRuleCall_1_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SubstructureSelector__NameAssignment_115261); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SubstructureSelector__SelectorNameAssignment_115261); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSubstructureSelectorAccess().getNameIDTerminalRuleCall_1_0()); 
+               after(grammarAccess.getSubstructureSelectorAccess().getSelectorNameIDTerminalRuleCall_1_0()); 
             }
 
             }
@@ -21905,7 +21905,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
         }
         return ;
     }
-    // $ANTLR end "rule__SubstructureSelector__NameAssignment_1"
+    // $ANTLR end "rule__SubstructureSelector__SelectorNameAssignment_1"
 
 
     // $ANTLR start "rule__SubstructureSelector__VarAssignment_2_1"
@@ -22404,8 +22404,8 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     static final String DFA7_specialS =
         "\12\uffff}>";
     static final String[] DFA7_transitionS = {
-            "\1\4\1\uffff\1\1\1\10\2\uffff\1\7\7\uffff\2\5\14\uffff\1\2"+
-            "\5\uffff\1\3\2\uffff\4\6",
+            "\1\4\1\uffff\1\1\1\10\2\uffff\1\7\7\uffff\2\5\14\uffff\1\2\5"+
+            "\uffff\1\3\2\uffff\4\6",
             "\1\4\1\11\14\uffff\2\5\14\uffff\1\2\10\uffff\4\6",
             "",
             "",
@@ -22960,7 +22960,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     public static final BitSet FOLLOW_rule__SubstructureSelector__Group__1_in_rule__SubstructureSelector__Group__011996 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SubstructureSelector__Group__1__Impl_in_rule__SubstructureSelector__Group__112054 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_rule__SubstructureSelector__Group__2_in_rule__SubstructureSelector__Group__112057 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SubstructureSelector__NameAssignment_1_in_rule__SubstructureSelector__Group__1__Impl12084 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SubstructureSelector__SelectorNameAssignment_1_in_rule__SubstructureSelector__Group__1__Impl12084 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SubstructureSelector__Group__2__Impl_in_rule__SubstructureSelector__Group__212114 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SubstructureSelector__Group_2__0_in_rule__SubstructureSelector__Group__2__Impl12141 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SubstructureSelector__Group_2__0__Impl_in_rule__SubstructureSelector__Group_2__012178 = new BitSet(new long[]{0x0000000000000010L});
@@ -23073,7 +23073,7 @@ public class InternalCssExtDslParser extends AbstractInternalContentAssistParser
     public static final BitSet FOLLOW_RULE_INT_in_rule__CSSDefaultValue__IvalAssignment_115168 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__CSSDefaultValue__DvalAssignment_215199 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__CSSDefaultValue__SvalAssignment_315230 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__SubstructureSelector__NameAssignment_115261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__SubstructureSelector__SelectorNameAssignment_115261 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__SubstructureSelector__VarAssignment_2_115292 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDoku_in_rule__Substructure__DokuAssignment_015323 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__Substructure__NameAssignment_215354 = new BitSet(new long[]{0x0000000000000002L});
