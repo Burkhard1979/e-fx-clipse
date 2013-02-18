@@ -28,6 +28,7 @@ import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassFunction;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.PseudoClassName;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SimpleSelectorForNegation;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.StringTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.SymbolTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.UrlTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.WSTok;
@@ -49,6 +50,15 @@ public class CssDslLabelProvider extends DefaultEObjectLabelProvider {
 	@Inject
 	public CssDslLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
+	}
+	
+	String text(StringTok strTok) {
+		if (strTok.getValue() != null) {
+			return "\"" + strTok.getValue() + "\"";
+		}
+		else {
+			return "null";
+		}
 	}
 
 	String text(ruleset value) { 
