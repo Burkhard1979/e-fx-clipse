@@ -15,6 +15,7 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -42,6 +43,7 @@ class LineCell extends ListCell<Line> {
 		this.visibleItems = visibleItems;
 		
 	    lineBox = new TextFlow();
+	    lineBox.setStyle("-fx-border-width: 1px; -fx-border-style: dotted; -fx-border-color: red;");
 	        
 //	        lineBox.setBackground(new Background(new BackgroundFill(Color.RED, new CornerRadii(0), new Insets(0))));
         
@@ -53,7 +55,7 @@ class LineCell extends ListCell<Line> {
         lineNr.setTextAlignment(TextAlignment.RIGHT);
         lineNr.setPrefWidth(50);
         lineContent = new TextFlow();
-        
+        lineContent.setStyle("-fx-border-width: 1px; -fx-border-style: dotted; -fx-border-color: blue;");
         lineBox.getChildren().addAll(lineNr, lineContent);
         
         
@@ -117,7 +119,7 @@ class LineCell extends ListCell<Line> {
 	
 	private Text createText(StyledSegment segment) {
 		Text t = new Text(segment.text);
-		t.setStyle("-fx-font-family: monospace; -fx-font-size: 16px;");
+		t.setStyle("-fx-font-family: monospace; -fx-font-size: 16px; -fx-border-width: 1px; -fx-border-style: dotted; -fx-border-color: green;");
 		t.setFill(segment.color);
 		return t;
 	}
