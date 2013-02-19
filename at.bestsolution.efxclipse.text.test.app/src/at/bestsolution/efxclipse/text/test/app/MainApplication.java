@@ -41,6 +41,7 @@ import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
+import at.bestsolution.efxclipse.styledtext.exp1.StyledTextControl;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.Editor;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.EditorLine;
 import at.bestsolution.efxclipse.text.SourceViewer;
@@ -121,12 +122,13 @@ public class MainApplication extends AbstractJFXApplication {
 //		
 //		mainPane.setBottom(b);
 		
-		Editor<String> editor = new Editor<>();
-		editor.getLines().setAll("1","2","3","4");
+//		StyledTextControl control = new StyledTextControl();
+//		control.setText(getSample());
 		
-		mainPane.setCenter(editor);
+		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
 		
 		Scene s = new Scene(mainPane);
+		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
 		primaryStage.setScene(s);
 		primaryStage.setWidth(300);
 		primaryStage.setHeight(400);
@@ -210,8 +212,12 @@ public class MainApplication extends AbstractJFXApplication {
 	
 	private Tab createSourceViewer(File file) {
 		Tab tab = new Tab(file.getName());
+		tab.setContent(createSourceViewerPane(file));
+		return tab;
+	}
+	
+	private StackPane createSourceViewerPane(File file) {
 		StackPane pane = new StackPane();
-		tab.setContent(pane);
 
 		JavaTools t = new JavaTools();
 
@@ -229,8 +235,7 @@ public class MainApplication extends AbstractJFXApplication {
 		SourceViewer viewer = new SourceViewer(pane,
 				t.createDocumentPartitioner(), scanners);
 		viewer.setDocument(doc);
-
-		return tab;
+		return pane;
 	}
 	
 	private static String getFileContent(File file) {
@@ -258,5 +263,17 @@ public class MainApplication extends AbstractJFXApplication {
 //		b.append("	}\n");
 //		b.append("}");
 		return b.toString();
+	}
+	
+	private static String getSample() {
+//		StringBuilder b = new StringBuilder("package test;\n");
+//		b.append("\n");
+//		b.append("public class Test {\n");
+//		b.append("	public static void main(String[] args) {\n");
+//		b.append("		System.out.println(\"Hello World\");\n");
+//		b.append("	}\n");
+//		b.append("}");
+//		return b.toString();
+		return getFileContent(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java"));
 	}
 }

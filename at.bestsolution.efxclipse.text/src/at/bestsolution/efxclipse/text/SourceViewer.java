@@ -15,6 +15,8 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.ITypedRegion;
 
+import at.bestsolution.efxclipse.styledtext.exp1.StyleRange;
+import at.bestsolution.efxclipse.styledtext.exp1.StyledTextControl;
 import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
 import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
 import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
@@ -22,23 +24,26 @@ import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
 public class SourceViewer {
 	private Map<String, ITokenScanner> tokenScanners;
 	private IDocumentPartitioner partitioner;
-	private TextFlow control;
+	private StyledTextControl control;
 	
 	public SourceViewer(StackPane pane, IDocumentPartitioner partitioner, Map<String, ITokenScanner> tokenScanners) {
 		this.tokenScanners = new HashMap<>(tokenScanners);
 		this.partitioner = partitioner;
 		
-		control = new TextFlow();
-		ScrollPane p = new ScrollPane(control);
-		pane.getChildren().add(p);
+		control = new StyledTextControl();
+//		ScrollPane p = new ScrollPane(control);
+//		pane.getChildren().add(p);
+		pane.getChildren().add(control);
 	}
 	
 	public void setDocument(IDocument document) {
 		long start = System.currentTimeMillis();
+		control.setText(document.get());
 		partitioner.connect(document);
 		ITypedRegion[] regions = partitioner.computePartitioning(0, document.getLength());
 		
 		List<Text> textNodes = new ArrayList<>();
+		List<StyleRange> styleRanges = new ArrayList<>();
 		
 		for( ITypedRegion r : regions ) {
 			ITokenScanner scanner = tokenScanners.get(r.getType());
@@ -64,6 +69,7 @@ public class SourceViewer {
 					} else {
 						if (!firstToken) {
 							try {
+								styleRanges.add(createStyleRange(lastStart, length, lastAttribute));
 								String text = document.get(lastStart,length);
 								System.err.println("TEXT: '" + text + "'");
 								textNodes.add(createTextNode(text, lastAttribute));
@@ -81,6 +87,7 @@ public class SourceViewer {
 				}
 				
 				try {
+					styleRanges.add(createStyleRange(lastStart, length, lastAttribute));
 					String text = document.get(lastStart,length);
 					System.err.println("TEXT: '" + text + "'");
 					textNodes.add(createTextNode(text, lastAttribute));
@@ -94,8 +101,9 @@ public class SourceViewer {
 		
 		long l2 = System.currentTimeMillis();
 		System.err.println("Parsing took: " + (l2-start));
+		control.setStyleRanges(styleRanges.toArray(new StyleRange[0]));
 		
-		control.getChildren().setAll(textNodes);
+//		control.getChildren().setAll(textNodes);
 		long l3 = System.currentTimeMillis();
 		System.err.println("Rendering took: " + (l3-l2) + " for " + textNodes.size());
 	}
@@ -114,6 +122,11 @@ public class SourceViewer {
 		}
 		
 		return node;
+	}
+	
+	private StyleRange createStyleRange(int start, int length, TextAttribute attribute) {
+		System.err.println("R: " + start + ", L: " + length + ": " + attribute.fgColor);
+		return new StyleRange(start, length, attribute.fgColor, attribute.bgColor);
 	}
 
 	private TextAttribute getTokenTextAttribute(IToken token) {
