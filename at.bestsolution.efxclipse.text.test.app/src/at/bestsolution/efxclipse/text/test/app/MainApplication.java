@@ -41,7 +41,7 @@ import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
-import at.bestsolution.efxclipse.styledtext.exp1.StyledTextControl;
+import at.bestsolution.efxclipse.styledtext.StyledText;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.Editor;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.EditorLine;
 import at.bestsolution.efxclipse.text.SourceViewer;
@@ -231,10 +231,14 @@ public class MainApplication extends AbstractJFXApplication {
 		scanners.put(IJavaPartitions.JAVA_STRING, t.getStringScanner());
 		scanners.put(IJavaPartitions.JAVA_CHARACTER, t.getStringScanner());
 
+		StyledText styledText = new StyledText();
+		pane.getChildren().add(styledText);
+		
 		IDocument doc = new Document(getFileContent(file));
-		SourceViewer viewer = new SourceViewer(pane,
+		SourceViewer viewer = new SourceViewer(styledText,
 				t.createDocumentPartitioner(), scanners);
 		viewer.setDocument(doc);
+		
 		return pane;
 	}
 	

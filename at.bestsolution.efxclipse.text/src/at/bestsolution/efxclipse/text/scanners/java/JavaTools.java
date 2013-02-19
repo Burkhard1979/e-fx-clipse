@@ -50,8 +50,8 @@ public class JavaTools {
 	private JavaScanner fJavaDocScanner;
 
 	public JavaTools() {
-		Font regular = new Font("Source Sans Pro", 15);
-		Font boldFont = Font.font("Source Sans Pro", FontWeight.BOLD, 15);
+		Font regular = new Font("Courier", 15);
+		Font boldFont = Font.font("Courier", FontWeight.BOLD, 15);
 		
 		TextAttributesManager manager = new TextAttributesManager();
 		manager.registerToken(ResourceProvider.JAVA_BRACKET, Color.valueOf("rgb(0,0,0)"), null, regular);

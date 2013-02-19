@@ -5,36 +5,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javafx.scene.layout.StackPane;
-
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.ITypedRegion;
 
-import at.bestsolution.efxclipse.styledtext.exp1.StyleRange;
-import at.bestsolution.efxclipse.styledtext.exp1.StyledTextControl;
+import at.bestsolution.efxclipse.styledtext.StyleRange;
+import at.bestsolution.efxclipse.styledtext.StyledText;
 import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
 import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
 import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
 
 public class SourceViewer {
-	private Map<String, ITokenScanner> tokenScanners;
-	private IDocumentPartitioner partitioner;
-	private StyledTextControl control;
+	private final Map<String, ITokenScanner> tokenScanners;
+	private final IDocumentPartitioner partitioner;
+	private final StyledText control;
 	
-	public SourceViewer(StackPane pane, IDocumentPartitioner partitioner, Map<String, ITokenScanner> tokenScanners) {
+	public SourceViewer(StyledText control, IDocumentPartitioner partitioner, Map<String, ITokenScanner> tokenScanners) {
 		this.tokenScanners = new HashMap<>(tokenScanners);
 		this.partitioner = partitioner;
-		
-		control = new StyledTextControl();
-//		ScrollPane p = new ScrollPane(control);
-//		pane.getChildren().add(p);
-		pane.getChildren().add(control);
+		this.control = control;
 	}
 	
 	public void setDocument(IDocument document) {
 		long start = System.currentTimeMillis();
-		control.setText(document.get());
+		control.getContent().setText(document.get());
 		partitioner.connect(document);
 		ITypedRegion[] regions = partitioner.computePartitioning(0, document.getLength());
 		

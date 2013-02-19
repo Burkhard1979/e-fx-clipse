@@ -4,7 +4,8 @@ Bundle-Name: Styledtext
 Bundle-SymbolicName: at.bestsolution.efxclipse.styledtext
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: at.bestsolution.efxclipse.styledtext.exp1,
+Export-Package: at.bestsolution.efxclipse.styledtext,
+ at.bestsolution.efxclipse.styledtext.exp1,
  at.bestsolution.efxclipse.styledtext.exp2.editor
 Import-Package: com.sun.javafx;version="2.2.0",
  com.sun.javafx.css;version="2.2.0",

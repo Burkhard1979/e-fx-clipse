@@ -1,4 +1,4 @@
-package at.bestsolution.efxclipse.styledtext.exp1;
+package at.bestsolution.efxclipse.styledtext;
 
 import javafx.scene.paint.Color;
 
