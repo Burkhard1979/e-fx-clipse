@@ -6,7 +6,7 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin;
 
-public class StyledText extends Control {
+public class StyledTextArea extends Control {
 	private ObjectProperty<StyledTextContent> contentProperty = new SimpleObjectProperty<StyledTextContent>(this, "content", new DefaultContent());
 	private StyledTextRenderer renderer = new StyledTextRenderer();
 	

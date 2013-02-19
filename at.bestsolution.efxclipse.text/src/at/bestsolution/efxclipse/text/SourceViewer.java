@@ -10,7 +10,7 @@ import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.ITypedRegion;
 
 import at.bestsolution.efxclipse.styledtext.StyleRange;
-import at.bestsolution.efxclipse.styledtext.StyledText;
+import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
 import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
 import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
@@ -18,9 +18,9 @@ import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
 public class SourceViewer {
 	private final Map<String, ITokenScanner> tokenScanners;
 	private final IDocumentPartitioner partitioner;
-	private final StyledText control;
+	private final StyledTextArea control;
 	
-	public SourceViewer(StyledText control, IDocumentPartitioner partitioner, Map<String, ITokenScanner> tokenScanners) {
+	public SourceViewer(StyledTextArea control, IDocumentPartitioner partitioner, Map<String, ITokenScanner> tokenScanners) {
 		this.tokenScanners = new HashMap<>(tokenScanners);
 		this.partitioner = partitioner;
 		this.control = control;

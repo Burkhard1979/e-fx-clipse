@@ -14,19 +14,19 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
 import at.bestsolution.efxclipse.styledtext.StyleRange;
-import at.bestsolution.efxclipse.styledtext.StyledText;
+import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.behavior.StyledTextBehavior;
 
 import com.sun.javafx.scene.control.skin.BehaviorSkinBase;
 
-public class StyledTextSkin extends BehaviorSkinBase<StyledText, StyledTextBehavior> {
+public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextBehavior> {
 	private ListView<Line> listView;
 	
 	private ObservableList<Line> lineList = FXCollections.observableArrayList();
 	
 	private Set<LineCell> visibleCells = new HashSet<>();
 	
-	public StyledTextSkin(StyledText styledText) {
+	public StyledTextSkin(StyledTextArea styledText) {
 		super(styledText, new StyledTextBehavior(styledText));
 		
 		listView = new ListView<>();

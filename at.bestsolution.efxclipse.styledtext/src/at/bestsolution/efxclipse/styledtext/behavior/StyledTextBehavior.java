@@ -1,12 +1,12 @@
 package at.bestsolution.efxclipse.styledtext.behavior;
 
-import at.bestsolution.efxclipse.styledtext.StyledText;
+import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 
 import com.sun.javafx.scene.control.behavior.BehaviorBase;
 
-public class StyledTextBehavior extends BehaviorBase<StyledText> {
+public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 
-	public StyledTextBehavior(StyledText styledText) {
+	public StyledTextBehavior(StyledTextArea styledText) {
 		super(styledText);
 	}
 

@@ -41,7 +41,7 @@ import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
-import at.bestsolution.efxclipse.styledtext.StyledText;
+import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.Editor;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.EditorLine;
 import at.bestsolution.efxclipse.text.SourceViewer;
@@ -53,39 +53,39 @@ public class MainApplication extends AbstractJFXApplication {
 	protected void jfxStart(IApplicationContext applicationContext,
 			Application jfxApplication, final Stage primaryStage) {
 		BorderPane mainPane = new BorderPane();
-//		ToolBar bar = new ToolBar();
-//		final TabPane pane = new TabPane();
-//		
-//		{
-//			Button b = new Button();
-//			b.setGraphic(new ImageView(MainApplication.class.getResource("folder-development.png").toExternalForm()));
-//			b.setOnAction(new EventHandler<ActionEvent>() {
-//				
-//				@Override
-//				public void handle(ActionEvent arg0) {
-//					FileChooser chooser = new FileChooser();
-//					chooser.getExtensionFilters().add(new ExtensionFilter("Java-Files", "*.java"));
-//					File f = chooser.showOpenDialog(primaryStage);
-//					if( f != null ) {
-//						Tab t = createSourceViewer(f);
-//						pane.getTabs().add(t);
-//						pane.getSelectionModel().select(t);
-//					}
-//				}
-//			});
-//			bar.getItems().add(b);
-//		}
-//		
-//		{
-//			Button b = new Button();
-//			b.setGraphic(new ImageView(MainApplication.class.getResource("document-save.png").toExternalForm()));
-//			bar.getItems().add(b);	
-//		}
-//		
-//		mainPane.setTop(bar);
-//		
-//		
-//		mainPane.setCenter(pane);
+		ToolBar bar = new ToolBar();
+		final TabPane pane = new TabPane();
+		
+		{
+			Button b = new Button();
+			b.setGraphic(new ImageView(MainApplication.class.getResource("folder-development.png").toExternalForm()));
+			b.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent arg0) {
+					FileChooser chooser = new FileChooser();
+					chooser.getExtensionFilters().add(new ExtensionFilter("Java-Files", "*.java"));
+					File f = chooser.showOpenDialog(primaryStage);
+					if( f != null ) {
+						Tab t = createSourceViewer(f);
+						pane.getTabs().add(t);
+						pane.getSelectionModel().select(t);
+					}
+				}
+			});
+			bar.getItems().add(b);
+		}
+		
+		{
+			Button b = new Button();
+			b.setGraphic(new ImageView(MainApplication.class.getResource("document-save.png").toExternalForm()));
+			bar.getItems().add(b);	
+		}
+		
+		mainPane.setTop(bar);
+		
+		
+		mainPane.setCenter(pane);
 		
 //		final Set<LineCell> activeCells = new HashSet<>();
 //		ListView<Line> view = new ListView<>();
@@ -125,7 +125,7 @@ public class MainApplication extends AbstractJFXApplication {
 //		StyledTextControl control = new StyledTextControl();
 //		control.setText(getSample());
 		
-		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
+//		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
 		
 		Scene s = new Scene(mainPane);
 		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
@@ -231,7 +231,7 @@ public class MainApplication extends AbstractJFXApplication {
 		scanners.put(IJavaPartitions.JAVA_STRING, t.getStringScanner());
 		scanners.put(IJavaPartitions.JAVA_CHARACTER, t.getStringScanner());
 
-		StyledText styledText = new StyledText();
+		StyledTextArea styledText = new StyledTextArea();
 		pane.getChildren().add(styledText);
 		
 		IDocument doc = new Document(getFileContent(file));
