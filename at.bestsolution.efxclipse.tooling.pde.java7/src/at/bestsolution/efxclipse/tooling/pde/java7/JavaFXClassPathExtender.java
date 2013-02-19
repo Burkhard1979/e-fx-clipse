@@ -119,7 +119,9 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 					l.add(JavaCore.newAccessRule(new Path(i.getName().replace('.', '/')+"/*"),IAccessRule.K_DISCOURAGED));
 				} else if( i.getName().startsWith("netscape.javascript") ) {
 					l.add(JavaCore.newAccessRule(new Path(i.getName().replace('.', '/')+"/*"),IAccessRule.K_DISCOURAGED));
-				}
+				} else if( i.getName().startsWith("com.sun.javafx.scene.text") ) {
+					l.add(JavaCore.newAccessRule(new Path(i.getName().replace('.', '/')+"/*"),IAccessRule.K_DISCOURAGED));
+				} 
 			}
 			
 			IClasspathAttribute[] extraAttributes = {
