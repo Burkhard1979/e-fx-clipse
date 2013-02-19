@@ -192,8 +192,6 @@ public class StyledTextControl extends StackPane {
 				}
 				
 				flow.getChildren().setAll(texts);
-				
-//				flow.getChildren().setAll(new Text(arg0.getText()));
 			} else {
 				domainElement = null;
 				visibleCells.remove(this);
