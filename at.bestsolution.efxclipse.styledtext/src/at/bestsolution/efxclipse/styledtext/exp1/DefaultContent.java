@@ -10,6 +10,7 @@ public class DefaultContent implements StyledTextContent {
 	@Override
 	public void setText(String text) {
 		textStore = text.toCharArray();
+		indexLines();
 	}
 	
 	public int getCharCount() {
@@ -18,6 +19,26 @@ public class DefaultContent implements StyledTextContent {
 		return textStore.length;
 	}
 
+	public String getTextRange(int start, int length) {
+		return new String(textStore,start,length);
+	}
+	
+	public String getLine(int index) {
+		int start = lines[index][0];
+		int length = lines[index][1];
+		
+		return new String(textStore,start,length);
+	}
+	
+	public int getLineCount(){
+		return lineCount;
+	}
+	
+	public int getOffsetAtLine(int lineIndex) {
+		int start = lines[lineIndex][0];
+		return start;
+	}
+	
 	void indexLines(){
 		int start = 0;
 		lineCount = 0;

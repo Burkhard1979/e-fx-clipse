@@ -63,6 +63,7 @@ public class JavaTools {
 		manager.registerToken(ResourceProvider.JAVA_SINGLE_LINE_COMMENT, Color.valueOf("rgb(102,153,102)"), null, regular);
 		manager.registerToken(ResourceProvider.JAVA_STRING, Color.valueOf("rgb(51,0,255)"), null, regular);
 		manager.registerToken(ResourceProvider.JAVADOC_DEFAULT, Color.valueOf("rgb(51,102,204)"), null, regular);
+		manager.registerToken(ResourceProvider.JAVADOC_TAG, Color.valueOf("rgb(51,102,204)"), null, regular);
 		manager.registerToken(ResourceProvider.JAVADOC_KEYWORD, Color.valueOf("rgb(51,102,204)"), null, boldFont);
 		manager.registerToken(ResourceProvider.JAVADOC_LINK, Color.valueOf("rgb(51,102,204)"), null, regular);
 		manager.registerToken(ResourceProvider.TASK_TAG, Color.valueOf("rgb(255,255,0)"), null, regular);
