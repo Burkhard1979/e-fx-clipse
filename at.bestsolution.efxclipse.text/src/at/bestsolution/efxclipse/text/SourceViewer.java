@@ -5,12 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
-import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.ITypedRegion;
@@ -42,7 +38,6 @@ public class SourceViewer {
 		partitioner.connect(document);
 		ITypedRegion[] regions = partitioner.computePartitioning(0, document.getLength());
 		
-		List<Text> textNodes = new ArrayList<>();
 		List<StyleRange> styleRanges = new ArrayList<>();
 		
 		for( ITypedRegion r : regions ) {
@@ -68,15 +63,7 @@ public class SourceViewer {
 						firstToken= false;
 					} else {
 						if (!firstToken) {
-							try {
-								styleRanges.add(createStyleRange(lastStart, length, lastAttribute));
-								String text = document.get(lastStart,length);
-								System.err.println("TEXT: '" + text + "'");
-								textNodes.add(createTextNode(text, lastAttribute));
-							} catch (BadLocationException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+							styleRanges.add(createStyleRange(lastStart, length, lastAttribute));
 						}
 							
 						firstToken= false;
@@ -86,16 +73,7 @@ public class SourceViewer {
 					}
 				}
 				
-				try {
-					styleRanges.add(createStyleRange(lastStart, length, lastAttribute));
-					String text = document.get(lastStart,length);
-					System.err.println("TEXT: '" + text + "'");
-					textNodes.add(createTextNode(text, lastAttribute));
-				} catch (BadLocationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
+				styleRanges.add(createStyleRange(lastStart, length, lastAttribute));
 			}
 		}
 		
@@ -103,29 +81,9 @@ public class SourceViewer {
 		System.err.println("Parsing took: " + (l2-start));
 		control.setStyleRanges(styleRanges.toArray(new StyleRange[0]));
 		
-//		control.getChildren().setAll(textNodes);
-		long l3 = System.currentTimeMillis();
-		System.err.println("Rendering took: " + (l3-l2) + " for " + textNodes.size());
-	}
-	
-	private Text createTextNode(String text, TextAttribute attribute) {
-		Text node = new Text(text);
-		node.setFill(attribute.fgColor);
-		node.setFont(attribute.font);
-		
-		if( attribute.isStrikeThrough() ) {
-			node.setStrikethrough(true);
-		}
-		
-		if( attribute.isUnderline() ) {
-			node.setUnderline(true);
-		}
-		
-		return node;
 	}
 	
 	private StyleRange createStyleRange(int start, int length, TextAttribute attribute) {
-		System.err.println("R: " + start + ", L: " + length + ": " + attribute.fgColor);
 		return new StyleRange(start, length, attribute.fgColor, attribute.bgColor);
 	}
 

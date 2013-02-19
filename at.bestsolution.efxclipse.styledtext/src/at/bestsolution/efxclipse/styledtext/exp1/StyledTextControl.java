@@ -218,7 +218,6 @@ public class StyledTextControl extends StackPane {
 			for( StyleRange r : ranges ) {
 				int begin = r.start-start;
 				int end = r.start-start+r.length;
-				System.err.println( begin + " => " + end + " => " + r.foreground);
 				Segment seg = new Segment();
 				seg.text = removeLineending(line.substring(begin, end));
 				seg.fgColor = r.foreground;
