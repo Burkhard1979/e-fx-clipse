@@ -84,7 +84,9 @@ public class SourceViewer {
 	}
 	
 	private StyleRange createStyleRange(int start, int length, TextAttribute attribute) {
-		return new StyleRange(start, length, attribute.fgColor, attribute.bgColor);
+		StyleRange r = new StyleRange(start, length, attribute.fgColor, attribute.bgColor);
+		r.font = attribute.font;
+		return r;
 	}
 
 	private TextAttribute getTokenTextAttribute(IToken token) {

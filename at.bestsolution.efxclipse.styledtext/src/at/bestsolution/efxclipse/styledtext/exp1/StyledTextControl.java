@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
@@ -183,8 +182,11 @@ public class StyledTextControl extends StackPane {
 				List<Text> texts = new ArrayList<>();
 				for( Segment seg : arg0.getSegments() ) {
 					Text t = new Text(seg.text);
-					if( seg.fgColor != null ) {
-						t.setFill(seg.fgColor);
+					if( seg.style.foreground != null ) {
+						t.setFill(seg.style.foreground);
+					}
+					if( seg.style.font != null ) {
+						t.setFont(seg.style.font);
 					}
 					texts.add(t);
 				}
@@ -220,7 +222,7 @@ public class StyledTextControl extends StackPane {
 				int end = r.start-start+r.length;
 				Segment seg = new Segment();
 				seg.text = removeLineending(line.substring(begin, end));
-				seg.fgColor = r.foreground;
+				seg.style = r;
 				segments.add(seg);
 			}
 			return segments;
@@ -229,7 +231,7 @@ public class StyledTextControl extends StackPane {
 	
 	class Segment {
 		public String text;
-		public Color fgColor;
+		public StyleRange style;
 	}
 	
 	static String removeLineending(String s) {
