@@ -52,4 +52,3 @@ Export-Package: com.sun.glass.events;version="2.2.0";x-internal:=true,
  netscape.javascript;version="2.2.0"
 Bundle-ClassPath: .
 Bundle-Vendor: %Bundle-Vendor
-Import-Package: org.eclipse.swt.widgets;resolution:=optional
