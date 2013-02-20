@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javafx.event.Event;
+import javafx.event.EventDispatchChain;
+import javafx.event.EventTarget;
+
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DefaultLineTracker;
 import org.eclipse.jface.text.DocumentEvent;
@@ -22,6 +26,9 @@ import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.IRepairableDocument;
 import org.eclipse.jface.text.TextUtilities;
+
+import at.bestsolution.efxclipse.styledtext.TextChangedEvent;
+import at.bestsolution.efxclipse.styledtext.TextChangingEvent;
 
 public class DefaultDocumentAdapter implements IDocumentAdapter, IDocumentListener, IDocumentAdapterExtension {
 	/** The adapted document. */
@@ -332,14 +339,12 @@ public class DefaultDocumentAdapter implements IDocumentAdapter, IDocumentListen
 		if (!fIsForwarding)
 			return;
 
-		
-//		TextChangedEvent event= new TextChangedEvent(this);
+		TextChangedEvent event= TextChangedEvent.textChanged(this); 
 
 		if (fTextChangeListeners != null && fTextChangeListeners.size() > 0) {
 			Iterator e= new ArrayList(fTextChangeListeners).iterator();
 			while (e.hasNext())
-//				((TextChangeListener) e.next()).textChanged(event);
-				((TextChangeListener) e.next()).modified();
+				((TextChangeListener) e.next()).textChanged(event);
 		}
 	}
 
@@ -351,13 +356,13 @@ public class DefaultDocumentAdapter implements IDocumentAdapter, IDocumentListen
 		if (!fIsForwarding)
 			return;
 
-//		TextChangedEvent event = new TextChangedEvent(this);
-//
-//		if (fTextChangeListeners != null && fTextChangeListeners.size() > 0) {
-//			Iterator e= new ArrayList(fTextChangeListeners).iterator();
-//			while (e.hasNext())
-//				((TextChangeListener) e.next()).textSet(event);
-//		}
+		TextChangedEvent event = TextChangedEvent.textSet(this);
+
+		if (fTextChangeListeners != null && fTextChangeListeners.size() > 0) {
+			Iterator e= new ArrayList(fTextChangeListeners).iterator();
+			while (e.hasNext())
+				((TextChangeListener) e.next()).textSet(event);
+		}
 	}
 
 	/**
@@ -368,27 +373,35 @@ public class DefaultDocumentAdapter implements IDocumentAdapter, IDocumentListen
 		if (!fIsForwarding)
 			return;
 
-//		try {
-//		    IDocument document= fEvent.getDocument();
-//		    if (document == null)
-//		    	return;
-//
-//			TextChangingEvent event= new TextChangingEvent(this);
+		try {
+		    IDocument document= fEvent.getDocument();
+		    if (document == null)
+		    	return;
+
+			TextChangingEvent event= TextChangingEvent.textChanging(
+					this, 
+					fEvent.fOffset, 
+					fEvent.fLength,
+					document.getNumberOfLines(fEvent.fOffset, fEvent.fLength) - 1,
+					fEvent.fText,
+					(fEvent.fText == null ? 0 : fEvent.fText.length()),
+					(fEvent.fText == null ? 0 : document.computeNumberOfLines(fEvent.fText))
+					);
 //			event.start= fEvent.fOffset;
 //			event.replaceCharCount= fEvent.fLength;
 //			event.replaceLineCount= document.getNumberOfLines(fEvent.fOffset, fEvent.fLength) - 1;
 //			event.newText= fEvent.fText;
 //			event.newCharCount= (fEvent.fText == null ? 0 : fEvent.fText.length());
 //			event.newLineCount= (fEvent.fText == null ? 0 : document.computeNumberOfLines(fEvent.fText));
-//
-//			if (fTextChangeListeners != null && fTextChangeListeners.size() > 0) {
-//				Iterator e= new ArrayList(fTextChangeListeners).iterator();
-//				while (e.hasNext())
-//					 ((TextChangeListener) e.next()).textChanging(event);
-//			}
-//
-//		} catch (BadLocationException e) {
-//		}
+
+			if (fTextChangeListeners != null && fTextChangeListeners.size() > 0) {
+				Iterator e= new ArrayList(fTextChangeListeners).iterator();
+				while (e.hasNext())
+					 ((TextChangeListener) e.next()).textChanging(event); 
+			}
+
+		} catch (BadLocationException e) {
+		}
 	}
 
 	/*
@@ -413,4 +426,5 @@ public class DefaultDocumentAdapter implements IDocumentAdapter, IDocumentListen
 		fOriginalLineDelimiters= fDocument.getLegalLineDelimiters();
 		fIsForwarding= false;
 	}
+	
 }

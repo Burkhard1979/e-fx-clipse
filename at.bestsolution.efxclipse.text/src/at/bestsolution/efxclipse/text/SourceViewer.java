@@ -13,6 +13,8 @@ import org.eclipse.jface.text.ITypedRegion;
 import at.bestsolution.efxclipse.styledtext.StyleRange;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.StyledTextContent.TextChangeListener;
+import at.bestsolution.efxclipse.styledtext.TextChangedEvent;
+import at.bestsolution.efxclipse.styledtext.TextChangingEvent;
 import at.bestsolution.efxclipse.text.jface.text.DefaultDocumentAdapter;
 import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
 import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
@@ -93,10 +95,22 @@ public class SourceViewer {
 		adapter.addTextChangeListener(new TextChangeListener() {
 			
 			@Override
-			public void modified() {
+			public void textChanged(TextChangedEvent event) {
 				update();
 			}
+
+			@Override
+			public void textSet(TextChangedEvent event) {
+				update();
+			}
+
+			@Override
+			public void textChanging(TextChangingEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
 		});
+		
 		adapter.setDocument(document);
 		control.setContent(adapter);
 		partitioner.connect(document);

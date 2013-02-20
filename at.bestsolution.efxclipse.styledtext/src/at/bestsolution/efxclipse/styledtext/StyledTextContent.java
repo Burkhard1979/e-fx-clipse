@@ -12,6 +12,7 @@
 package at.bestsolution.efxclipse.styledtext;
 
 
+
 public interface StyledTextContent {
 	public String getLine(int index);
 	
@@ -30,6 +31,10 @@ public interface StyledTextContent {
 	public void replaceTextRange(int start, int replaceLength, String newText);
 	
 	interface TextChangeListener {
-		public void modified();
+		public void textChanged(TextChangedEvent event);
+
+		public void textSet(TextChangedEvent event);
+
+		public void textChanging(TextChangingEvent event);
 	}
 }
