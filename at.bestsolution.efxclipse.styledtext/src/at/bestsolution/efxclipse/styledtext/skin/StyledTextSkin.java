@@ -146,7 +146,8 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 								}
 							}
 							
-							System.err.println("NO MATCHES");
+							int offset = cell.domainElement.getLineOffset() + cell.domainElement.getLineLength();
+							getSkinnable().setCaretOffset(offset);
 						}
 						break;
 					}
@@ -276,8 +277,6 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 				return;
 			}
 			
-			System.err.println("UPDATE");
-			
 			int lineIndex = getSkinnable().getContent().getLineAtOffset(value);
 			Line lineObject = lineList.get(lineIndex);
 			for( LineCell c : visibleCells ) {
@@ -306,7 +305,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 						
 						p.setLayoutX(textNode.getLayoutX());
 						p.setLayoutY(textNode.getBaselineOffset());
-					} /*else if( ! flow.getChildren().isEmpty() ) {
+					} else if( ! flow.getChildren().isEmpty() ) {
 						textNode = (Text) flow.getChildren().get(flow.getChildren().size()-1);
 						textNode.setImpl_caretPosition(textNode.getText().length());
 						
@@ -317,16 +316,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 						
 						p.setLayoutX(textNode.getLayoutX());
 						p.setLayoutY(textNode.getBaselineOffset());
-					} else {
-						Text t = new Text(" ");
-						final Path p = (Path)container.getChildren().get(1); 
-						
-						p.getElements().clear();
-						p.getElements().addAll(t.getImpl_caretShape());
-						
-						p.setLayoutX(t.getLayoutX());
-						p.setLayoutY(t.getBaselineOffset());
-					}*/
+					}
 					
 					break;
 				}
@@ -376,8 +366,8 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 				}
 				
 				if( texts.isEmpty() ) {
-					Text t = new Text(" ");
-					t.setUserData(arg0.getOffset());
+					Text t = new Text("");
+					t.setUserData(arg0.getLineOffset());
 					texts.add(t);
 				}
 				
@@ -409,9 +399,15 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 			return removeLineending(getSkinnable().getContent().getLine(lineList.indexOf(this)));
 		}
 		
-		public int getOffset() {
+		public int getLineOffset() {
 			int idx = lineList.indexOf(this);
 			return getSkinnable().getContent().getOffsetAtLine(idx);
+		}
+		
+		public int getLineLength() {
+			int idx = lineList.indexOf(this);
+			String s = getSkinnable().getContent().getLine(idx);
+			return s == null ? 0 : s.length();
 		}
 		
 		public List<Segment> getSegments() {
