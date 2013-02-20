@@ -11,7 +11,9 @@
 *******************************************************************************/
 package at.bestsolution.efxclipse.styledtext;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
@@ -20,10 +22,23 @@ import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin;
 public class StyledTextArea extends Control {
 	private ObjectProperty<StyledTextContent> contentProperty = new SimpleObjectProperty<StyledTextContent>(this, "content", new DefaultContent());
 	private StyledTextRenderer renderer = new StyledTextRenderer();
+	private IntegerProperty caretOffsetProperty = new SimpleIntegerProperty(this, "caretOffset", -1);
 	
 	@Override
 	protected Skin<?> createDefaultSkin() {
 		return new StyledTextSkin(this);
+	}
+	
+	public IntegerProperty caretOffsetProperty() {
+		return caretOffsetProperty;
+	}
+	
+	public void setCaretOffset(int offset) {
+		caretOffsetProperty.set(offset);
+	}
+	
+	public int getCaretOffset() {
+		return caretOffsetProperty.get();
 	}
 
 	public void setContent(StyledTextContent content) {
@@ -126,6 +141,10 @@ public class StyledTextArea extends Control {
 		
 		if (styles != null && styles.length > 0) {
 			renderer.setStyleRanges(ranges, styles);
+		}
+		
+		if( getSkin() instanceof StyledTextSkin ) {
+			((StyledTextSkin)getSkin()).recalculateItems();
 		}
 	}
 	
@@ -639,6 +658,7 @@ public class StyledTextArea extends Control {
 		private int lineCount;
 		private int[][] lines = new int[50][2];
 		private int expandExp = 1;
+		private int replaceExpandExp;
 
 		@Override
 		public void setText(String text) {
@@ -672,6 +692,34 @@ public class StyledTextArea extends Control {
 			return start;
 		}
 		
+		public int getLineAtOffset(int charPosition) {
+			int position = charPosition;
+			
+			if (lineCount > 0) {
+				int lastLine = lineCount - 1;
+				if (position == lines[lastLine][0] + lines[lastLine][1]) 
+					return lastLine;
+			}
+			
+			int high = lineCount;
+			int low = -1;
+			int index = lineCount;
+			while (high - low > 1) {
+				index = (high + low) / 2;
+				int lineStart = lines[index][0];
+				int lineEnd = lineStart + lines[index][1] - 1;
+				if (position <= lineStart) {
+					high = index;
+				} else if (position <= lineEnd) {
+					high = index;
+					break;
+				} else {
+					low = index;
+				}
+			}
+			return high;
+		}
+		
 		void indexLines(){
 			int start = 0;
 			lineCount = 0;
@@ -701,7 +749,7 @@ public class StyledTextArea extends Control {
 			int size = lines.length;
 			if (lineCount == size) {
 				// expand the lines by powers of 2
-				int[][] newLines = new int[size+(int)Math.pow(2,expandExp)][2];
+				int[][] newLines = new int[size+pow2(expandExp)][2];
 				System.arraycopy(lines, 0, newLines, 0, size);
 				lines = newLines;
 				expandExp++;
@@ -709,6 +757,153 @@ public class StyledTextArea extends Control {
 			int[] range = new int[] {start, length};
 			lines[lineCount] = range;
 			lineCount++;
+		}
+		
+		public void replaceTextRange(int start, int replaceLength, String newText){
+			// first delete the text to be replaced
+//			delete(start, replaceLength, event.replaceLineCount + 1);
+			
+			// then insert the new text
+			insert(start, newText);
+		}
+		
+		void insert(int position, String text) {	
+			if (text.length() == 0) return;
+						
+			int startLine = getLineAtOffset(position);
+			int change = text.length();
+			boolean endInsert = position == getCharCount();
+
+			// during an insert the gap will be adjusted to start at
+			// position and it will be associated with startline, the
+			// inserted text will be placed in the gap		
+			int startLineOffset = getOffsetAtLine(startLine);
+			// at this point, startLineLength will include the start line
+			// and all of the newly inserted text
+			int	startLineLength = getPhysicalLine(startLine).length();
+			
+			if (change > 0) {
+				// shrink gap 
+//				gapStart += (change);
+				for (int i = 0; i < text.length(); i++) {
+					textStore[position + i]= text.charAt(i);
+				}
+			}
+				
+			// figure out the number of new lines that have been inserted
+			int [][] newLines = indexLines(startLineOffset, startLineLength, 10);
+			// only insert an empty line if it is the last line in the text
+			int numNewLines = newLines.length - 1;
+			if (newLines[numNewLines][1] == 0) {
+				// last inserted line is a new line
+				if (endInsert) {
+					// insert happening at end of the text, leave numNewLines as
+					// is since the last new line will not be concatenated with another
+					// line 
+					numNewLines += 1;
+				} else {
+					numNewLines -= 1;
+				}
+			}
+			
+			// make room for the new lines
+			expandLinesBy(numNewLines);
+			// shift down the lines after the replace line
+			for (int i = lineCount - 1; i > startLine; i--) {
+				lines[i + numNewLines]=lines[i];
+			}
+			// insert the new lines
+			for (int i = 0; i < numNewLines; i++) {
+				newLines[i][0] += startLineOffset;
+				lines[startLine + i]=newLines[i];
+			}
+			// update the last inserted line
+			if (numNewLines < newLines.length) {
+				newLines[numNewLines][0] += startLineOffset;
+				lines[startLine + numNewLines] = newLines[numNewLines];
+			}
+			
+			lineCount += numNewLines;
+//			gapLine = getLineAtPhysicalOffset(gapStart);
+		}
+		
+		void expandLinesBy(int numLines) {
+			int size = lines.length;
+			if (size - lineCount >= numLines) {
+				return;
+			}
+			int[][] newLines = new int[size+Math.max(10, numLines)][2];
+			System.arraycopy(lines, 0, newLines, 0, size);
+			lines = newLines;
+		}
+		
+		String getPhysicalLine(int index) {
+			int start = lines[index][0];
+			int length = lines[index][1];
+			return getPhysicalText(start, length);
+		}
+		
+		String getPhysicalText(int start, int length) {
+			return new String(textStore, start, length);
+		}
+		
+		int[][] indexLines(int offset, int length, int numLines){
+			int[][] indexedLines = new int[numLines][2];
+			int start = 0;
+			int lineCount = 0;
+			int i;
+			replaceExpandExp = 1;
+			for (i = start; i < length; i++) {
+				int location = i + offset; 
+//				if ((location >= gapStart) && (location < gapEnd)) {
+//					// ignore the gap
+//				} else {
+					char ch = textStore[location];				
+					if (ch == '\r') {
+						// see if the next character is a LF
+						if (location+1 < textStore.length) {
+							ch = textStore[location+1];
+							if (ch == '\n') {
+								i++;
+							} 
+						}
+						indexedLines = addLineIndex(start, i - start + 1, indexedLines, lineCount);
+						lineCount++;
+						start = i + 1;
+					} else if (ch == '\n') {
+						indexedLines = addLineIndex(start, i - start + 1, indexedLines, lineCount);
+						lineCount++;
+						start = i + 1;
+					}
+//				}
+			}
+			int[][] newLines = new int[lineCount+1][2];
+			System.arraycopy(indexedLines, 0, newLines, 0, lineCount);
+			int[] range = new int[] {start, i - start};
+			newLines[lineCount] = range;
+			return newLines; 
+		}
+		
+		int[][] addLineIndex(int start, int length, int[][] linesArray, int count) {
+			int size = linesArray.length;
+			int[][] newLines = linesArray;
+			if (count == size) {
+				newLines = new int[size+pow2(replaceExpandExp)][2];
+				replaceExpandExp++;
+				System.arraycopy(linesArray, 0, newLines, 0, size);
+			}
+			int[] range = new int[] {start, length};
+			newLines[count] = range;
+			return newLines;
+		}
+		
+		public static int pow2(int n) {
+			if (n >= 1 && n <= 30)
+				return 2 << (n - 1);
+			else if (n != 0) {
+				throw new IllegalArgumentException();
+			}
+			return 1;
 		}
 	}
 }

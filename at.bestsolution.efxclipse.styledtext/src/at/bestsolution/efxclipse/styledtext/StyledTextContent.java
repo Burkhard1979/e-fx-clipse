@@ -24,4 +24,12 @@ public interface StyledTextContent {
 	public int getLineCount();
 	
 	public int getOffsetAtLine(int lineIndex);
+	
+	public int getLineAtOffset(int charPosition);
+	
+	public void replaceTextRange(int start, int replaceLength, String newText);
+	
+	interface TextChangeListener {
+		public void modified();
+	}
 }

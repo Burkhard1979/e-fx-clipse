@@ -196,7 +196,7 @@ public class FastPartitioner implements IDocumentPartitioner, IDocumentPartition
 	 */
 	public void documentAboutToBeChanged(DocumentEvent e) {
 		if (fIsInitialized) {
-
+			System.err.println("ABOUT TO BE CHANGED");
 			Assert.isTrue(e.getDocument() == fDocument);
 
 			fPreviousDocumentLength= e.getDocument().getLength();
