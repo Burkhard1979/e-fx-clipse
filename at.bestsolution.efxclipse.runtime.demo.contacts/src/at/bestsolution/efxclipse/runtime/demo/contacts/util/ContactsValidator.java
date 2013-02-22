@@ -10,10 +10,8 @@
  */
 package at.bestsolution.efxclipse.runtime.demo.contacts.util;
 
-import at.bestsolution.efxclipse.runtime.demo.contacts.*;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
