@@ -15,11 +15,13 @@ import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 import at.bestsolution.efxclipse.runtime.demo.contacts.Group;
 
+import at.bestsolution.efxclipse.runtime.demo.contacts.util.ContactsValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -94,6 +96,15 @@ public class ContactsPackageImpl extends EPackageImpl implements ContactsPackage
 
 		// Initialize created meta-data
 		theContactsPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theContactsPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return ContactsValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theContactsPackage.freeze();
@@ -422,6 +433,26 @@ public class ContactsPackageImpl extends EPackageImpl implements ContactsPackage
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";		
+		addAnnotation
+		  (contactEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "ValidEmail\nValidFirstName\nValidLastName"
+		   });
 	}
 
 } //ContactsPackageImpl

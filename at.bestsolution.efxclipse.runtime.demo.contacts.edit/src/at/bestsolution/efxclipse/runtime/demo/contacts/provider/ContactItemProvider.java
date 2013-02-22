@@ -21,8 +21,10 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -500,10 +502,10 @@ public class ContactItemProvider
 	@Override
 	public Object getImage(Object object) {
 		Contact contact = (Contact) object;
+		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(contact);
 		Object baseImage = getResourceLocator().getImage("silk/user.png");
 
-		if ((contact.getFirstName() == null || "".equals(contact.getFirstName())) &&
-				(contact.getLastName() == null|| "".equals(contact.getLastName()))) {
+		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			Object overlayImage = getResourceLocator().getImage("silk/bullet_error.png");
 			ArrayList<Object> images = new ArrayList<Object>(2);
 			images.add(baseImage);
