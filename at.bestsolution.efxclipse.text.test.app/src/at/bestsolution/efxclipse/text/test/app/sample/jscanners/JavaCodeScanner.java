@@ -10,7 +10,7 @@
  *     Philippe Ombredanne <pombredanne@nexb.com> - https://bugs.eclipse.org/bugs/show_bug.cgi?id=150989
  *     Anton Leherbauer (Wind River Systems) - [misc] Allow custom token for WhitespaceRule - https://bugs.eclipse.org/bugs/show_bug.cgi?id=251224
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners.java;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +21,6 @@ import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
 import at.bestsolution.efxclipse.text.jface.text.rules.SingleLineRule;
 import at.bestsolution.efxclipse.text.jface.text.rules.Token;
 import at.bestsolution.efxclipse.text.jface.text.rules.WhitespaceRule;
-import at.bestsolution.efxclipse.text.scanners.AbstractJavaScanner;
-import at.bestsolution.efxclipse.text.scanners.CombinedWordRule;
-import at.bestsolution.efxclipse.text.scanners.TextAttributesManager;
 
 
 /**

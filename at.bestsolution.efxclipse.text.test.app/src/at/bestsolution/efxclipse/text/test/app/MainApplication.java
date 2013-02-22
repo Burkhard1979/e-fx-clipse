@@ -44,10 +44,11 @@ import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.Editor;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.EditorLine;
-import at.bestsolution.efxclipse.text.SourceViewer;
+import at.bestsolution.efxclipse.text.SimpleSourceViewer;
 import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
-import at.bestsolution.efxclipse.text.scanners.java.IJavaPartitions;
-import at.bestsolution.efxclipse.text.scanners.java.JavaTools;
+import at.bestsolution.efxclipse.text.jface.text.source.SourceViewer;
+import at.bestsolution.efxclipse.text.test.app.sample.jscanners.IJavaPartitions;
+import at.bestsolution.efxclipse.text.test.app.sample.jscanners.JavaTextTools;
 
 public class MainApplication extends AbstractJFXApplication {
 	protected void jfxStart(IApplicationContext applicationContext,
@@ -126,6 +127,14 @@ public class MainApplication extends AbstractJFXApplication {
 //		control.setText(getSample());
 		
 		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
+		
+		
+//		SourceViewer viewer = new SourceViewer();
+//		JavaTools textTools = new JavaTools();
+//		viewer.configure(new JavaS(textTools));
+//		
+//		textTools.setupJavaDocumentPartitioner(document, IJavaScriptPartitions.JAVA_PARTITIONING); 
+//		viewer.setDocument(document);
 		
 		Scene s = new Scene(mainPane);
 //		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
@@ -219,7 +228,7 @@ public class MainApplication extends AbstractJFXApplication {
 	private StackPane createSourceViewerPane(File file) {
 		StackPane pane = new StackPane();
 
-		JavaTools t = new JavaTools();
+		JavaTextTools t = new JavaTextTools();
 
 		Map<String, ITokenScanner> scanners = new HashMap<>();
 		scanners.put(IDocument.DEFAULT_CONTENT_TYPE, t.getCodeScanner());
@@ -235,7 +244,7 @@ public class MainApplication extends AbstractJFXApplication {
 		pane.getChildren().add(styledText);
 		
 		IDocument doc = new Document(getFileContent(file));
-		SourceViewer viewer = new SourceViewer(styledText,
+		SimpleSourceViewer viewer = new SimpleSourceViewer(styledText,
 				t.createDocumentPartitioner(), scanners);
 		viewer.setDocument(doc);
 		

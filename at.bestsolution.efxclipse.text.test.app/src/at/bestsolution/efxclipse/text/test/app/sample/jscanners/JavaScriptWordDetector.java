@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners.java;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 import at.bestsolution.efxclipse.text.jface.text.rules.IWordDetector;
 

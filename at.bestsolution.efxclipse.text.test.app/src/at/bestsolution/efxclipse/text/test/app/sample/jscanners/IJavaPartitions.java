@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners.java;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 /**
  * Definition of Java partitioning and its partitions.

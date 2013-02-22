@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 
 import org.eclipse.jface.text.BadLocationException;

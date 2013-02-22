@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners.java;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 
 import org.eclipse.jface.text.IDocument;
@@ -17,7 +17,6 @@ import at.bestsolution.efxclipse.text.jface.text.rules.ICharacterScanner;
 import at.bestsolution.efxclipse.text.jface.text.rules.IPartitionTokenScanner;
 import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
 import at.bestsolution.efxclipse.text.jface.text.rules.Token;
-import at.bestsolution.efxclipse.text.scanners.BufferedDocumentScanner;
 
 
 /**

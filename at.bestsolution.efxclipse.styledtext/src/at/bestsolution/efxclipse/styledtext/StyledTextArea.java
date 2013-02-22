@@ -15,6 +15,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin;
@@ -905,5 +906,11 @@ public class StyledTextArea extends Control {
 			}
 			return 1;
 		}
+	}
+
+	public void setTabs(int tabWidth) {
+		// TODO Auto-generated method stub
+		System.err.println("NOT IMPLEMETNED");
+		Thread.dumpStack();
 	}
 }

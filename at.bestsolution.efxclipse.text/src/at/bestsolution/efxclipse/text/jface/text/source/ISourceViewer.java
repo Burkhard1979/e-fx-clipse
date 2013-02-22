@@ -53,7 +53,7 @@ import at.bestsolution.efxclipse.text.jface.text.ITextViewer;
  * <p>
  * Clients may implement this interface and its extension interfaces or use the
  * default implementation provided by
- * {@link org.eclipse.jface.text.source.SourceViewer}.</p>
+ * {@link org.eclipse.jface.text.source.SimpleSourceViewer}.</p>
  *
  * @see org.eclipse.jface.text.source.ISourceViewerExtension
  * @see org.eclipse.jface.text.source.ISourceViewerExtension2

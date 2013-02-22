@@ -9,7 +9,7 @@
  *     IBM Corporation - initial API and implementation
  *     Michel Ishizuka <cqw10305@nifty.com> - Bug 113266 [syntax highlighting] javadoc tag names including period is not highlighting correctly
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners.java;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,7 @@ import java.util.List;
 import at.bestsolution.efxclipse.text.jface.text.rules.IRule;
 import at.bestsolution.efxclipse.text.jface.text.rules.IWordDetector;
 import at.bestsolution.efxclipse.text.jface.text.rules.Token;
-import at.bestsolution.efxclipse.text.scanners.AbstractJavaScanner;
-import at.bestsolution.efxclipse.text.scanners.CombinedWordRule;
-import at.bestsolution.efxclipse.text.scanners.CombinedWordRule.WordMatcher;
-import at.bestsolution.efxclipse.text.scanners.TextAttributesManager;
+import at.bestsolution.efxclipse.text.test.app.sample.jscanners.CombinedWordRule.WordMatcher;
 
 /**
  * Java comment scanner.

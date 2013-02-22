@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2013 IBM Corporation and others.
+ * Copyright (c) 2000, 2010 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import javafx.scene.layout.BorderStrokeStyle;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.text.IRegion;
@@ -22,8 +21,7 @@ import org.eclipse.jface.text.Region;
 
 import at.bestsolution.efxclipse.styledtext.StyleRange;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
-import at.bestsolution.efxclipse.styledtext.TextStyle.BorderStyle;
-import at.bestsolution.efxclipse.styledtext.TextStyle.UnderlineStyle;
+import at.bestsolution.efxclipse.styledtext.TextStyle;
 
 
 /**
@@ -443,13 +441,12 @@ public class TextPresentation {
 		if (merge) {
 			if (template.font != null)
 				target.font= template.font;
-			
-			target.fontStyle = template.fontStyle;
+			target.fontStyle|= template.fontStyle;
 
 //			if (template.metrics != null)
 //				target.metrics= template.metrics;
 
-			if (template.foreground != null || template.underlineStyle == UnderlineStyle.LINK)
+			if (template.foreground != null || template.underlineStyle == TextStyle.UNDERLINE_LINK)
 				target.foreground= template.foreground;
 			if (template.background != null)
 				target.background= template.background;
@@ -458,14 +455,14 @@ public class TextPresentation {
 			if (template.strikeoutColor != null)
 				target.strikeoutColor= template.strikeoutColor;
 
-//			target.underline = template.underline;
-			if (template.underlineStyle != UnderlineStyle.NONE && target.underlineStyle != UnderlineStyle.LINK)
+			target.underline|= template.underline;
+			if (template.underlineStyle != TextStyle.NONE && target.underlineStyle != TextStyle.UNDERLINE_LINK)
 				target.underlineStyle= template.underlineStyle;
 
 			if (template.underlineColor != null)
 				target.underlineColor= template.underlineColor;
 
-			if (template.borderStyle != BorderStyle.NONE)
+			if (template.borderStyle != TextStyle.NONE)
 				target.borderStyle= template.borderStyle;
 			if (template.borderColor != null)
 				target.borderColor= template.borderColor;
@@ -478,7 +475,7 @@ public class TextPresentation {
 			target.background= template.background;
 			target.strikeout= template.strikeout;
 			target.strikeoutColor= template.strikeoutColor;
-//			target.underline= template.underline;
+			target.underline= template.underline;
 			target.underlineStyle= template.underlineStyle;
 			target.underlineColor= template.underlineColor;
 			target.borderStyle= template.borderStyle;

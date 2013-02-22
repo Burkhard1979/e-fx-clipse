@@ -20,13 +20,13 @@ import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
 import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
 import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
 
-public class SourceViewer {
+public class SimpleSourceViewer {
 	private final Map<String, ITokenScanner> tokenScanners;
 	private final IDocumentPartitioner partitioner;
 	private final StyledTextArea control;
 	private IDocument document;
 	
-	public SourceViewer(StyledTextArea control, IDocumentPartitioner partitioner, Map<String, ITokenScanner> tokenScanners) {
+	public SimpleSourceViewer(StyledTextArea control, IDocumentPartitioner partitioner, Map<String, ITokenScanner> tokenScanners) {
 		this.tokenScanners = new HashMap<>(tokenScanners);
 		this.partitioner = partitioner;
 		this.control = control;
@@ -119,8 +119,8 @@ public class SourceViewer {
 	}
 	
 	private StyleRange createStyleRange(int start, int length, TextAttribute attribute) {
-		StyleRange r = new StyleRange(start, length, attribute.fgColor, attribute.bgColor);
-		r.font = attribute.font;
+		StyleRange r = new StyleRange(start, length, attribute.getForeground(), attribute.getBackground());
+		r.font = attribute.getFont();
 		return r;
 	}
 

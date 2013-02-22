@@ -43,6 +43,13 @@ Import-Package: javafx.animation;version="2.2.0",
  javafx.util.converter;version="2.2.0"
 Export-Package: at.bestsolution.efxclipse.text,
  at.bestsolution.efxclipse.text.jface.text,
+ at.bestsolution.efxclipse.text.jface.text.contentassist,
+ at.bestsolution.efxclipse.text.jface.text.formatter,
+ at.bestsolution.efxclipse.text.jface.text.hyperlink,
+ at.bestsolution.efxclipse.text.jface.text.information,
+ at.bestsolution.efxclipse.text.jface.text.presentation,
+ at.bestsolution.efxclipse.text.jface.text.quickassist,
+ at.bestsolution.efxclipse.text.jface.text.reconciler,
  at.bestsolution.efxclipse.text.jface.text.rules,
- at.bestsolution.efxclipse.text.scanners,
- at.bestsolution.efxclipse.text.scanners.java
+ at.bestsolution.efxclipse.text.jface.text.source,
+ at.bestsolution.efxclipse.text.jface.util

@@ -8,13 +8,15 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import at.bestsolution.efxclipse.styledtext.StyleRange;
+import at.bestsolution.efxclipse.styledtext.TextStyle;
 import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
 import at.bestsolution.efxclipse.text.jface.text.rules.BufferedRuleBasedScanner;
 import at.bestsolution.efxclipse.text.jface.text.rules.IRule;
@@ -114,7 +116,7 @@ public abstract class AbstractJavaScanner extends BufferedRuleBasedScanner {
 
 	private TextAttribute createTextAttribute(String colorKey) {
 		TextAttribute attribute = colorManager.getTokenAttribute(colorKey);
-		return attribute == null ? new TextAttribute(null, null, null) : attribute;
+		return attribute == null ? new TextAttribute(null, null, StyleRange.NORMAL) : attribute;
 	}
 
 	protected Token getToken(String key) {

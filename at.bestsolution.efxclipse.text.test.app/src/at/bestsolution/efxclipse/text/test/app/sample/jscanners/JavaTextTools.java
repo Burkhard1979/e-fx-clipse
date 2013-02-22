@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.scanners.java;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -18,14 +18,11 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentExtension3;
 import org.eclipse.jface.text.IDocumentPartitioner;
 
-import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
 import at.bestsolution.efxclipse.text.jface.text.rules.FastPartitioner;
 import at.bestsolution.efxclipse.text.jface.text.rules.IPartitionTokenScanner;
 import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
-import at.bestsolution.efxclipse.text.scanners.SingleTokenJavaScanner;
-import at.bestsolution.efxclipse.text.scanners.TextAttributesManager;
 
-public class JavaTools {
+public class JavaTextTools {
 	/**
 	 * Array with legal content types.
 	 * @since 3.0
@@ -49,7 +46,7 @@ public class JavaTools {
 	/** The JavaDoc scanner. */
 	private JavaScanner fJavaDocScanner;
 
-	public JavaTools() {
+	public JavaTextTools() {
 		Font regular = new Font("Courier", 15);
 		Font boldFont = Font.font("Courier", FontWeight.BOLD, 15);
 		

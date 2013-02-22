@@ -1,4 +1,4 @@
-package at.bestsolution.efxclipse.text.scanners.java;
+package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 public class ResourceProvider {
 	public static String JAVA_KEYWORD = "COLOR_org.eclipse.e4.tools.emf.ui.script.js.java_keyword"; //$NON-NLS-1$

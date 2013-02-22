@@ -405,16 +405,16 @@ public class SourceViewerConfiguration {
 		return new DefaultHyperlinkPresenter(new Color(0, 0, 255)); 
 	}
 
-//	/**
-//	 * Returns the SWT event state mask which in combination
-//	 * with the left mouse button activates hyperlinking.
-//	 * This implementation always returns the {@link SWT#MOD1}.
-//	 *
-//	 * @param sourceViewer the source viewer to be configured by this configuration
-//	 * @return the SWT event state mask to activate hyperlink mode
-//	 * @since 3.1
-//	 */
-//	public int getHyperlinkStateMask(ISourceViewer sourceViewer) {
-//		return SWT.MOD1;
-//	}
+	/**
+	 * Returns the SWT event state mask which in combination
+	 * with the left mouse button activates hyperlinking.
+	 * This implementation always returns the {@link SWT#MOD1}.
+	 *
+	 * @param sourceViewer the source viewer to be configured by this configuration
+	 * @return the SWT event state mask to activate hyperlink mode
+	 * @since 3.1
+	 */
+	public int getHyperlinkStateMask(ISourceViewer sourceViewer) {
+		return /*SWT.MOD1*/ 0;
+	}
 }
