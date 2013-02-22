@@ -53,39 +53,39 @@ public class MainApplication extends AbstractJFXApplication {
 	protected void jfxStart(IApplicationContext applicationContext,
 			Application jfxApplication, final Stage primaryStage) {
 		BorderPane mainPane = new BorderPane();
-		ToolBar bar = new ToolBar();
-		final TabPane pane = new TabPane();
-		
-		{
-			Button b = new Button();
-			b.setGraphic(new ImageView(MainApplication.class.getResource("folder-development.png").toExternalForm()));
-			b.setOnAction(new EventHandler<ActionEvent>() {
-				
-				@Override
-				public void handle(ActionEvent arg0) {
-					FileChooser chooser = new FileChooser();
-					chooser.getExtensionFilters().add(new ExtensionFilter("Java-Files", "*.java"));
-					File f = chooser.showOpenDialog(primaryStage);
-					if( f != null ) {
-						Tab t = createSourceViewer(f);
-						pane.getTabs().add(t);
-						pane.getSelectionModel().select(t);
-					}
-				}
-			});
-			bar.getItems().add(b);
-		}
-		
-		{
-			Button b = new Button();
-			b.setGraphic(new ImageView(MainApplication.class.getResource("document-save.png").toExternalForm()));
-			bar.getItems().add(b);	
-		}
-		
-		mainPane.setTop(bar);
-		
-		
-		mainPane.setCenter(pane);
+//		ToolBar bar = new ToolBar();
+//		final TabPane pane = new TabPane();
+//		
+//		{
+//			Button b = new Button();
+//			b.setGraphic(new ImageView(MainApplication.class.getResource("folder-development.png").toExternalForm()));
+//			b.setOnAction(new EventHandler<ActionEvent>() {
+//				
+//				@Override
+//				public void handle(ActionEvent arg0) {
+//					FileChooser chooser = new FileChooser();
+//					chooser.getExtensionFilters().add(new ExtensionFilter("Java-Files", "*.java"));
+//					File f = chooser.showOpenDialog(primaryStage);
+//					if( f != null ) {
+//						Tab t = createSourceViewer(f);
+//						pane.getTabs().add(t);
+//						pane.getSelectionModel().select(t);
+//					}
+//				}
+//			});
+//			bar.getItems().add(b);
+//		}
+//		
+//		{
+//			Button b = new Button();
+//			b.setGraphic(new ImageView(MainApplication.class.getResource("document-save.png").toExternalForm()));
+//			bar.getItems().add(b);	
+//		}
+//		
+//		mainPane.setTop(bar);
+//		
+//		
+//		mainPane.setCenter(pane);
 		
 //		final Set<LineCell> activeCells = new HashSet<>();
 //		ListView<Line> view = new ListView<>();
@@ -125,10 +125,10 @@ public class MainApplication extends AbstractJFXApplication {
 //		StyledTextControl control = new StyledTextControl();
 //		control.setText(getSample());
 		
-//		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
+		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
 		
 		Scene s = new Scene(mainPane);
-		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
+//		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
 		primaryStage.setScene(s);
 		primaryStage.setWidth(300);
 		primaryStage.setHeight(400);
@@ -243,29 +243,29 @@ public class MainApplication extends AbstractJFXApplication {
 	}
 	
 	private static String getFileContent(File file) {
-		StringBuilder b = new StringBuilder();
-		try {
-			FileReader r = new FileReader(file);
-			char[] buf = new char[1024];
-			int l;
-			while( (l = r.read(buf)) != -1 ) {
-				b.append(buf,0,l);
-			}
-			r.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		StringBuilder b = new StringBuilder("package test;\n");
-//		b.append("\n");
-//		b.append("public class Test {\n");
-//		b.append("  public static void main(String[] args) {\n");
-//		b.append("    System.out.println(\"Hello World\");\n");
-//		b.append("  }\n");
-//		b.append("}");
+//		StringBuilder b = new StringBuilder();
+//		try {
+//			FileReader r = new FileReader(file);
+//			char[] buf = new char[1024];
+//			int l;
+//			while( (l = r.read(buf)) != -1 ) {
+//				b.append(buf,0,l);
+//			}
+//			r.close();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		StringBuilder b = new StringBuilder("package test;\n");
+		b.append("\n");
+		b.append("public class Test {\n");
+		b.append("  public static void main(String[] args) {\n");
+		b.append("    System.out.println(\"Hello World\");\n");
+		b.append("  }\n");
+		b.append("}");
 //		StringBuilder b = new StringBuilder("public class Test {\n}");
 		return b.toString();
 	}
