@@ -75,6 +75,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 			@Override
 			public void handle(KeyEvent event) {
 				final int offset = getSkinnable().getCaretOffset();
+				
 				switch (event.getCode()) {
 				case SHIFT:
 				case ALT:
@@ -82,6 +83,9 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 					break;
 				case LEFT:
 				{
+					if( offset == 0 ) {
+						break;
+					}
 					int newOffset = offset-1;
 					int currentLine = getSkinnable().getContent().getLineAtOffset(offset);
 					int newLine = getSkinnable().getContent().getLineAtOffset(newOffset);
@@ -93,6 +97,9 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 				}
 				case RIGHT:
 				{
+					if( offset+1 > getSkinnable().getContent().getCharCount() ) {
+						break;
+					}
 					int newOffset = offset+1;
 					int currentLine = getSkinnable().getContent().getLineAtOffset(offset);
 					int newLine = getSkinnable().getContent().getLineAtOffset(newOffset);
@@ -157,8 +164,15 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 						break;
 					}
 				default:
-					getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset(), 0, event.getText());
-					getSkinnable().setCaretOffset(offset+1);
+					if( event.isMetaDown() ) {
+						// exclude meta keys
+					} else {
+						if( event.getText().length() > 0 ) {
+							getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset(), 0, event.getText());
+							getSkinnable().setCaretOffset(offset+1);	
+						}
+					}
+					
 					break;
 				}
 			}
