@@ -70,149 +70,22 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		listView.setMinHeight(0);
 		listView.setMinWidth(0);
 		
-		//FIXME This needs to be moved to the Behavior
 		listView.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
-				final int offset = getSkinnable().getCaretOffset();
-				
-				switch (event.getCode()) {
-				case SHIFT:
-				case ALT:
-				case CONTROL:
-					break;
-				case LEFT:
-				{
-					if( offset == 0 ) {
-						break;
-					}
-					int newOffset = offset-1;
-					int currentLine = getSkinnable().getContent().getLineAtOffset(offset);
-					int newLine = getSkinnable().getContent().getLineAtOffset(newOffset);
-					if( newLine != currentLine ) {
-						listView.getSelectionModel().select(newLine);
-					}
-					getSkinnable().setCaretOffset(newOffset);
-					break;
-				}
-				case RIGHT:
-				{
-					if( offset+1 > getSkinnable().getContent().getCharCount() ) {
-						break;
-					}
-					int newOffset = offset+1;
-					int currentLine = getSkinnable().getContent().getLineAtOffset(offset);
-					int newLine = getSkinnable().getContent().getLineAtOffset(newOffset);
-					if( newLine != currentLine ) {
-						listView.getSelectionModel().select(newLine);
-					}
-					getSkinnable().setCaretOffset(newOffset);
-					break;
-				}
-				case UP:
-				{
-					int rowIndex = listView.getSelectionModel().getSelectedIndex();
-					
-					if( rowIndex == 0 ) {
-						break;
-					}
-					
-					int colIdx = offset - getSkinnable().getContent().getOffsetAtLine(rowIndex);
-					rowIndex -= 1;
-					
-					int lineOffset = getSkinnable().getContent().getOffsetAtLine(rowIndex);
-					int newCaretPosition = lineOffset + colIdx;
-					int maxPosition      = lineOffset + getSkinnable().getContent().getLine(rowIndex).length();
-					
-					getSkinnable().setCaretOffset(Math.min(newCaretPosition, maxPosition));
-					break;
-				}
-				case DOWN:
-				{
-					int rowIndex = listView.getSelectionModel().getSelectedIndex();
-					if( rowIndex+1 == lineList.size() ) {
-						break;
-					}
-					
-					int colIdx = offset - getSkinnable().getContent().getOffsetAtLine(rowIndex);
-					rowIndex += 1;
-					
-					int lineOffset = getSkinnable().getContent().getOffsetAtLine(rowIndex);
-					int newCaretPosition = lineOffset + colIdx;
-					int maxPosition      = lineOffset + getSkinnable().getContent().getLine(rowIndex).length();
-					
-					getSkinnable().setCaretOffset(Math.min(newCaretPosition, maxPosition));
-					break;
-				}
-				case ENTER:
-					getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset(), 0, event.getText());
-					listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex()+1);
-					getSkinnable().setCaretOffset(offset+1);
-					break;
-				case DELETE:
-					getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset(), 1, "");
-					getSkinnable().setCaretOffset(offset);
-					break;
-				case BACK_SPACE:
-					getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset()-1, 1, "");
-					getSkinnable().setCaretOffset(offset-1);
-					break;
-				case TAB:
-					event.consume();
-					if( event.isShiftDown() ) {
-						//TODO Remove first 4 white space chars???
-						break;
-					}
-				default:
-					if( event.isMetaDown() ) {
-						// exclude meta keys
-					} else {
-						if( event.getText().length() > 0 ) {
-							getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset(), 0, event.getText());
-							getSkinnable().setCaretOffset(offset+1);	
-						}
-					}
-					
-					break;
-				}
+				getBehavior().keyPressed(event, listView.getSelectionModel().getSelectedIndex());
+				event.consume();
 			}
 		});
 
 		listView.setOnMousePressed(new EventHandler<MouseEvent>() {
 
-			@SuppressWarnings({ "deprecation" })
 			@Override
-			public void handle(MouseEvent arg0) {
-				Point2D p = new Point2D(arg0.getX(), arg0.getY());
-				for( LineCell cell : visibleCells ) {
-					if( cell.getBoundsInParent().contains(p) ) {
-						if( cell.domainElement != null ) {
-							// Calculate to cell relative
-							p = p.subtract(cell.getLayoutX(), cell.getLayoutY());
-							RegionImpl g = (RegionImpl) cell.getGraphic();
-							p = p.subtract(g.getLayoutX(), g.getLayoutY());
-							
-							TextFlow flow = (TextFlow) g.getChildren().get(0);
-							// Calculate to text flow
-							p = p.subtract(flow.getLayoutX(), flow.getLayoutY());
-							for( Node n : flow.getChildren() ) {
-								Text text = (Text) n;
-								if( text.getBoundsInParent().contains(p) ) {
-									HitInfo info = text.impl_hitTestChar(new Point2D(p.getX()-text.getLayoutX(), 0 /* See RT-28485 text.getLayoutY()*/));
-									if( info.getInsertionIndex() >= 0 ) {
-										int offset = ((Integer)text.getUserData()).intValue()+info.getInsertionIndex();
-										getSkinnable().setCaretOffset(offset);
-										return;
-									}
-								}
-							}
-							
-							int offset = cell.domainElement.getLineOffset() + cell.domainElement.getLineLength();
-							getSkinnable().setCaretOffset(offset);
-						}
-						break;
-					}
-				}
+			public void handle(MouseEvent event) {
+				getBehavior().mousePressed(event, visibleCells);
+				// The consuming does not help because it looks like the
+				// selection change happens earlier => should be push a new ListViewBehavior?
+				event.consume();
 			}
 		});
 		
@@ -230,6 +103,10 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 				Line lineObject = lineList.get(lineIndex);
 				for( LineCell c : visibleCells ) {
 					if( c.domainElement == lineObject ) {
+						// Adjust the selection
+						if( listView.getSelectionModel().getSelectedItem() != c.domainElement ) {
+							listView.getSelectionModel().select(lineObject);
+						}
 						
 						RegionImpl container = (RegionImpl)c.getGraphic();
 						TextFlow flow = (TextFlow)container.getChildren().get(0);
@@ -275,7 +152,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		}
 	}
 	
-	class LineCell extends ListCell<Line> {
+	public class LineCell extends ListCell<Line> {
 		private Line domainElement;
 		private BooleanBinding caretVisible;
 		private BooleanProperty flashProperty;
@@ -324,6 +201,10 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 					}
 				}
 			});
+		}
+		
+		public Line getDomainElement() {
+			return domainElement;
 		}
 		
 		public void update() {
@@ -447,7 +328,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		}
 	}
 	
-	class Line {
+	public class Line {
 		public String getText() {
 			return removeLineending(getSkinnable().getContent().getLine(lineList.indexOf(this)));
 		}
