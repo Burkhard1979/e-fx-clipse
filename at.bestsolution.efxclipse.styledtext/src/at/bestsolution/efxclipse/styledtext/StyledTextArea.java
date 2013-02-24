@@ -11,19 +11,93 @@
 *******************************************************************************/
 package at.bestsolution.efxclipse.styledtext;
 
+import java.lang.ref.WeakReference;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
+import javafx.scene.paint.Color;
+import at.bestsolution.efxclipse.styledtext.StyledTextContent.TextChangeListener;
 import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin;
 
 public class StyledTextArea extends Control {
-	private ObjectProperty<StyledTextContent> contentProperty = new SimpleObjectProperty<StyledTextContent>(this, "content", new DefaultContent());
+	private ObjectProperty<StyledTextContent> contentProperty = new SimpleObjectProperty<StyledTextContent>(this, "content") {
+		WeakReference<StyledTextContent> oldContent;
+		
+		protected void invalidated() {
+			if( oldContent != null && oldContent.get() != null ) {
+				oldContent.get().removeTextChangeListener(textChangeListener);
+			}
+			StyledTextContent newContent = contentProperty.get();
+			
+			if( newContent != null ) {
+				oldContent = new WeakReference<StyledTextContent>(newContent);
+				newContent.addTextChangeListener(textChangeListener);
+			} else {
+				oldContent = null;
+			}
+		}
+	};
+	
+	TextChangeListener textChangeListener = new TextChangeListener() {
+		public void textChanging(TextChangingEvent event) {
+			handleTextChanging(event);
+		}
+		public void textChanged(TextChangedEvent event) {
+			handleTextChanged(event);
+		}
+		public void textSet(TextChangedEvent event) {
+			handleTextSet(event);
+		}
+	};
+	
 	private StyledTextRenderer renderer = new StyledTextRenderer();
 	private IntegerProperty caretOffsetProperty = new SimpleIntegerProperty(this, "caretOffset", -1);
+
+	private int lastTextChangeStart;
+
+	private int lastTextChangeNewLineCount;
+
+	private int lastTextChangeNewCharCount;
+
+	private int lastTextChangeReplaceLineCount;
+
+	private int lastTextChangeReplaceCharCount;
+	
+	public StyledTextArea() {
+		contentProperty.set(new DefaultContent());
+	}
+	
+	void handleTextChanging(TextChangingEvent event) {
+		if (event.replaceCharCount < 0) {
+			event.offset += event.replaceCharCount;
+			event.replaceCharCount *= -1;
+		}
+		lastTextChangeStart = event.offset;
+		lastTextChangeNewLineCount = event.newLineCount;
+		lastTextChangeNewCharCount = event.newCharCount;
+		lastTextChangeReplaceLineCount = event.replaceLineCount;
+		lastTextChangeReplaceCharCount = event.replaceCharCount;	
+		
+		renderer.textChanging(event);
+	}
+	
+	void handleTextSet(TextChangedEvent event) {
+		
+	}
+	
+	void handleTextChanged(TextChangedEvent event) {
+//		int firstLine = getContent().getLineAtOffset(lastTextChangeStart);
+		if( getSkin() instanceof StyledTextSkin ) {
+			((StyledTextSkin)getSkin()).recalculateItems();
+		}
+		
+//		lastCharCount += lastTextChangeNewCharCount;
+//		lastCharCount -= lastTextChangeReplaceCharCount;
+	}
 	
 	@Override
 	protected Skin<?> createDefaultSkin() {
@@ -134,6 +208,17 @@ public class StyledTextArea extends Control {
 //			if (variableHeight) setVariableLineHeight();
 		}
 		
+		int rangeStart = start, rangeEnd = end;
+		if (styles != null && styles.length > 0) {
+			if (ranges != null) {
+				rangeStart = ranges[0];
+				rangeEnd = ranges[ranges.length - 2] + ranges[ranges.length - 1];
+			} else {
+				rangeStart = styles[0].start;
+				rangeEnd = styles[styles.length - 1].start + styles[styles.length - 1].length;
+			}
+		}
+		
 		if( reset ) {
 			renderer.setStyleRanges(null, null);
 		} else {
@@ -155,6 +240,34 @@ public class StyledTextArea extends Control {
 		return new StyleRange[0];
 	}
 	
+	static class LineInfo {
+		int flags;
+		Color background;
+		int alignment;
+		int indent;
+		int wrapIndent;
+		boolean justify;
+		int[] segments;
+		char[] segmentsChars;
+		int[] tabStops;
+
+		public LineInfo() {
+		}
+		public LineInfo(LineInfo info) {
+			if (info != null) {
+				flags = info.flags;
+				background = info.background;
+				alignment = info.alignment;
+				indent = info.indent;
+				wrapIndent = info.wrapIndent;
+				justify = info.justify;
+				segments = info.segments;
+				segmentsChars = info.segmentsChars;
+				tabStops = info.tabStops;
+			}
+		}
+	}
+	
 	/*******************************************************************************
 	 * Copyright (c) 2000, 2011 IBM Corporation and others.
 	 * All rights reserved. This program and the accompanying materials
@@ -165,13 +278,20 @@ public class StyledTextArea extends Control {
 	 * Contributors:
 	 *     IBM Corporation - initial API and implementation
 	 *******************************************************************************/
-	static class StyledTextRenderer {
+	class StyledTextRenderer {
+		
+		
+		
 		StyleRange[] stylesSet;
 		int stylesSetCount = 0;
 		int[] ranges;
 		int styleCount;
 		StyleRange[] styles;
 		boolean hasLinks;
+		LineInfo[] lines;
+		int lineCount;
+		int[] lineWidth;
+		int[] lineHeight;
 		
 		final static boolean COMPACT_STYLES = true;
 		final static boolean MERGE_STYLES = true;
@@ -392,6 +512,127 @@ public class StyledTextArea extends Control {
 				}
 			}
 			return high;
+		}
+		
+		void textChanging(TextChangingEvent event) {
+			int start = event.offset;
+			int newCharCount = event.newCharCount, replaceCharCount = event.replaceCharCount;
+			int newLineCount = event.newLineCount, replaceLineCount = event.replaceLineCount;
+			
+			updateRanges(start, replaceCharCount, newCharCount);	
+//			
+//			int startLine = getContent().getLineAtOffset(start);
+//			if (replaceCharCount == getContent().getCharCount()) lines = null;
+//			if (replaceLineCount == lineCount) {
+//				lineCount = newLineCount;
+//				lineWidth = new int[lineCount];
+//				lineHeight = new int[lineCount];
+//				reset(0, lineCount);
+//			} else {
+//				int delta = newLineCount - replaceLineCount;
+//				if (lineCount + delta > lineWidth.length) {
+//					int[] newWidths = new int[lineCount + delta + GROW];
+//					System.arraycopy(lineWidth, 0, newWidths, 0, lineCount);
+//					lineWidth = newWidths;			
+//					int[] newHeights = new int[lineCount + delta + GROW];
+//					System.arraycopy(lineHeight, 0, newHeights, 0, lineCount);
+//					lineHeight = newHeights;
+//				}
+//				if (lines != null) {
+//					if (lineCount + delta > lines.length) {
+//						LineInfo[] newLines = new LineInfo[lineCount + delta + GROW];
+//						System.arraycopy(lines, 0, newLines, 0, lineCount);
+//						lines = newLines;
+//					}
+//				}
+//				int startIndex = startLine + replaceLineCount + 1;
+//				int endIndex = startLine + newLineCount + 1;
+//				System.arraycopy(lineWidth, startIndex, lineWidth, endIndex, lineCount - startIndex);
+//				System.arraycopy(lineHeight, startIndex, lineHeight, endIndex, lineCount - startIndex);
+//				for (int i = startLine; i < endIndex; i++) {
+//					lineWidth[i] = lineHeight[i] = -1;
+//				}
+//				for (int i = lineCount + delta; i < lineCount; i++) {
+//					lineWidth[i] = lineHeight[i] = -1;
+//				}
+//				if (layouts != null) {
+//					int layoutStartLine = startLine - topIndex;
+//					int layoutEndLine = layoutStartLine + replaceLineCount + 1;
+//					for (int i = layoutStartLine; i < layoutEndLine; i++) {
+//						if (0 <= i && i < layouts.length) {
+//							if (layouts[i] != null) layouts[i].dispose();
+//							layouts[i] = null;
+//							if (bullets != null && bulletsIndices != null) bullets[i] = null;
+//						}
+//					}
+//					if (delta > 0) {
+//						for (int i = layouts.length - 1; i >= layoutEndLine; i--) {
+//							if (0 <= i && i < layouts.length) {
+//								endIndex = i + delta;
+//								if (0 <= endIndex && endIndex < layouts.length) {
+//									layouts[endIndex] = layouts[i];
+//									layouts[i] = null;
+//									if (bullets != null && bulletsIndices != null) {
+//										bullets[endIndex] = bullets[i];
+//										bulletsIndices[endIndex] = bulletsIndices[i];
+//										bullets[i] = null;
+//									}
+//								} else {
+//									if (layouts[i] != null) layouts[i].dispose();
+//									layouts[i] = null;
+//									if (bullets != null && bulletsIndices != null) bullets[i] = null;
+//								}
+//							}
+//						}
+//					} else if (delta < 0) {
+//						for (int i = layoutEndLine; i < layouts.length; i++) {
+//							if (0 <= i && i < layouts.length) {
+//								endIndex = i + delta;
+//								if (0 <= endIndex && endIndex < layouts.length) {
+//									layouts[endIndex] = layouts[i];
+//									layouts[i] = null;
+//									if (bullets != null && bulletsIndices != null) {
+//										bullets[endIndex] = bullets[i];
+//										bulletsIndices[endIndex] = bulletsIndices[i];
+//										bullets[i] = null;
+//									}
+//								} else {
+//									if (layouts[i] != null) layouts[i].dispose();
+//									layouts[i] = null;
+//									if (bullets != null && bulletsIndices != null) bullets[i] = null;
+//								}
+//							}
+//						}
+//					}
+//				}
+//				if (replaceLineCount != 0 || newLineCount != 0) {
+//					int startLineOffset = getContent().getOffsetAtLine(startLine);
+//					if (startLineOffset != start) startLine++;
+//					updateBullets(startLine, replaceLineCount, newLineCount, true);
+//					if (lines != null) {
+//						startIndex = startLine + replaceLineCount;
+//						endIndex = startLine + newLineCount;
+//						System.arraycopy(lines, startIndex, lines, endIndex, lineCount - startIndex);
+//						for (int i = startLine; i < endIndex; i++) {
+//							lines[i] = null;
+//						}
+//						for (int i = lineCount + delta; i < lineCount; i++) {
+//							lines[i] = null;
+//						}
+//					}
+//				}
+//				lineCount += delta;
+//				if (maxWidthLineIndex != -1 && startLine <= maxWidthLineIndex && maxWidthLineIndex <= startLine + replaceLineCount) {
+//					maxWidth = 0;
+//					maxWidthLineIndex = -1;
+//					for (int i = 0; i < lineCount; i++) {
+//						if (lineWidth[i] > maxWidth) {
+//							maxWidth = lineWidth[i];
+//							maxWidthLineIndex = i;
+//						}
+//					}
+//				}
+//			}
 		}
 		
 		int addMerge(int[] mergeRanges, StyleRange[] mergeStyles, int mergeCount, int modifyStart, int modifyEnd) {
@@ -661,10 +902,24 @@ public class StyledTextArea extends Control {
 		private int expandExp = 1;
 		private int replaceExpandExp;
 
+//		private List<TextChangeListener> textChangeListeners= new ArrayList<>(1);
+		
 		@Override
 		public void setText(String text) {
 			textStore = text.toCharArray();
 			indexLines();
+		}
+		
+		@Override
+		public void addTextChangeListener(TextChangeListener listener) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void removeTextChangeListener(TextChangeListener listener) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 		public int getCharCount() {
@@ -909,6 +1164,12 @@ public class StyledTextArea extends Control {
 	}
 
 	public void setTabs(int tabWidth) {
+		// TODO Auto-generated method stub
+		System.err.println("NOT IMPLEMETNED");
+		Thread.dumpStack();
+	}
+
+	public void setRedraw(boolean b) {
 		// TODO Auto-generated method stub
 		System.err.println("NOT IMPLEMETNED");
 		Thread.dumpStack();

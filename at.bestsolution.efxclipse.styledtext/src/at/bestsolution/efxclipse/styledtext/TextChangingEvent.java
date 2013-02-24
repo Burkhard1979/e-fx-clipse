@@ -5,8 +5,8 @@ public class TextChangingEvent {
 
 	public final StyledTextContent source;
 	
-	public final int offset;
-	public final int replaceCharCount;
+	public int offset;
+	public int replaceCharCount;
 	public final int replaceLineCount;
 	public final String newText;
 	public final int newCharCount;

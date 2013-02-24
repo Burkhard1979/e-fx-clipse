@@ -18,14 +18,14 @@ import java.util.List;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 
-import at.bestsolution.efxclipse.text.jface.text.rules.ICharacterScanner;
-import at.bestsolution.efxclipse.text.jface.text.rules.IRule;
-import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
-import at.bestsolution.efxclipse.text.jface.text.rules.IWordDetector;
-import at.bestsolution.efxclipse.text.jface.text.rules.SingleLineRule;
-import at.bestsolution.efxclipse.text.jface.text.rules.Token;
-import at.bestsolution.efxclipse.text.jface.text.rules.WhitespaceRule;
-import at.bestsolution.efxclipse.text.jface.text.rules.WordRule;
+import at.bestsolution.efxclipse.text.jface.rules.ICharacterScanner;
+import at.bestsolution.efxclipse.text.jface.rules.IRule;
+import at.bestsolution.efxclipse.text.jface.rules.IToken;
+import at.bestsolution.efxclipse.text.jface.rules.IWordDetector;
+import at.bestsolution.efxclipse.text.jface.rules.SingleLineRule;
+import at.bestsolution.efxclipse.text.jface.rules.Token;
+import at.bestsolution.efxclipse.text.jface.rules.WhitespaceRule;
+import at.bestsolution.efxclipse.text.jface.rules.WordRule;
 import at.bestsolution.efxclipse.text.test.app.sample.jscanners.CombinedWordRule.WordMatcher;
 
 /**

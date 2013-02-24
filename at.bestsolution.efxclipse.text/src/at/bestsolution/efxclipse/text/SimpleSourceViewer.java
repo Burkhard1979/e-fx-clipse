@@ -15,10 +15,10 @@ import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.StyledTextContent.TextChangeListener;
 import at.bestsolution.efxclipse.styledtext.TextChangedEvent;
 import at.bestsolution.efxclipse.styledtext.TextChangingEvent;
-import at.bestsolution.efxclipse.text.jface.text.DefaultDocumentAdapter;
-import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
-import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
-import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
+import at.bestsolution.efxclipse.text.jface.DefaultDocumentAdapter;
+import at.bestsolution.efxclipse.text.jface.TextAttribute;
+import at.bestsolution.efxclipse.text.jface.rules.IToken;
+import at.bestsolution.efxclipse.text.jface.rules.ITokenScanner;
 
 public class SimpleSourceViewer {
 	private final Map<String, ITokenScanner> tokenScanners;

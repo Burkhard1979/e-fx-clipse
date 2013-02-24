@@ -139,12 +139,15 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 								if( text.getBoundsInParent().contains(p) ) {
 									HitInfo info = text.impl_hitTestChar(new Point2D(p.getX()-text.getLayoutX(), 0 /* See RT-28485 text.getLayoutY()*/));
 									if( info.getInsertionIndex() >= 0 ) {
+										System.err.println(info.getInsertionIndex());
 										int offset = ((Integer)text.getUserData()).intValue()+info.getInsertionIndex();
 										getSkinnable().setCaretOffset(offset);
 										return;
 									}
 								}
 							}
+							
+							System.err.println("Going to line end!");
 							
 							int offset = cell.domainElement.getLineOffset() + cell.domainElement.getLineLength();
 							getSkinnable().setCaretOffset(offset);
@@ -272,42 +275,34 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		}
 		
 		public void updateCaret() {
-			int value = getSkinnable().getCaretOffset();
-			if( value < 0 ) {
+			int caretPosition = getSkinnable().getCaretOffset();
+			
+			if( caretPosition < 0 ) {
 				return;
 			}
 			
-			int lineIndex = getSkinnable().getContent().getLineAtOffset(value);
+			int lineIndex = getSkinnable().getContent().getLineAtOffset(caretPosition);
 			Line lineObject = lineList.get(lineIndex);
 			for( LineCell c : visibleCells ) {
 				if( c.domainElement == lineObject ) {
 					RegionImpl container = (RegionImpl)c.getGraphic();
 					TextFlow flow = (TextFlow)container.getChildren().get(0);
 					
+					
 					Text textNode = null;
-					for( Node n : flow.getChildren()) {
-						Integer i = (Integer) n.getUserData();
-						
-						if( i.intValue() >= value ) {
+					int relativePos = 0;
+					for( int i = flow.getChildren().size()-1; i >= 0; i-- ) {
+						Node n = flow.getChildren().get(i);
+						int offset = ((Integer) n.getUserData()).intValue();
+						if( offset <= caretPosition ) {
+							relativePos = caretPosition - offset;
+							textNode = (Text) n;
 							break;
 						}
-						textNode = (Text) n;
 					}
 					
 					if( textNode != null ) {
-						int internalChar = value - ((Integer)textNode.getUserData()).intValue();
-						textNode.setImpl_caretPosition(internalChar);
-						
-						final Path p = (Path)container.getChildren().get(1); 
-						
-						p.getElements().clear();
-						p.getElements().addAll(textNode.getImpl_caretShape());
-						
-						p.setLayoutX(textNode.getLayoutX());
-						p.setLayoutY(textNode.getBaselineOffset());
-					} else if( ! flow.getChildren().isEmpty() ) {
-						textNode = (Text) flow.getChildren().get(flow.getChildren().size()-1);
-						textNode.setImpl_caretPosition(textNode.getText().length());
+						textNode.setImpl_caretPosition(relativePos);
 						
 						final Path p = (Path)container.getChildren().get(1); 
 						

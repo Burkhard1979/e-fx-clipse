@@ -30,6 +30,10 @@ public interface StyledTextContent {
 	
 	public void replaceTextRange(int start, int replaceLength, String newText);
 	
+	public void addTextChangeListener(TextChangeListener listener);
+	
+	public void removeTextChangeListener(TextChangeListener listener);
+	
 	interface TextChangeListener {
 		public void textChanged(TextChangedEvent event);
 

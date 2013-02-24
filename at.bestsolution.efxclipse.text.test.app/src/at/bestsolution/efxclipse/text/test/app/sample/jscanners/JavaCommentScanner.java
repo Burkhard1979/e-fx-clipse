@@ -14,9 +14,9 @@ package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 import java.util.ArrayList;
 import java.util.List;
 
-import at.bestsolution.efxclipse.text.jface.text.rules.IRule;
-import at.bestsolution.efxclipse.text.jface.text.rules.IWordDetector;
-import at.bestsolution.efxclipse.text.jface.text.rules.Token;
+import at.bestsolution.efxclipse.text.jface.rules.IRule;
+import at.bestsolution.efxclipse.text.jface.rules.IWordDetector;
+import at.bestsolution.efxclipse.text.jface.rules.Token;
 import at.bestsolution.efxclipse.text.test.app.sample.jscanners.CombinedWordRule.WordMatcher;
 
 /**

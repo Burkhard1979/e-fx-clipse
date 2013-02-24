@@ -14,7 +14,7 @@ package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
 import java.util.List;
 
-import at.bestsolution.efxclipse.text.jface.text.rules.IRule;
+import at.bestsolution.efxclipse.text.jface.rules.IRule;
 
 
 /**

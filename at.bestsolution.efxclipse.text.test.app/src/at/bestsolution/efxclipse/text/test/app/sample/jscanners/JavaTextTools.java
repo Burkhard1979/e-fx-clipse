@@ -18,9 +18,10 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentExtension3;
 import org.eclipse.jface.text.IDocumentPartitioner;
 
-import at.bestsolution.efxclipse.text.jface.text.rules.FastPartitioner;
-import at.bestsolution.efxclipse.text.jface.text.rules.IPartitionTokenScanner;
-import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
+import at.bestsolution.efxclipse.text.jface.rules.FastPartitioner;
+import at.bestsolution.efxclipse.text.jface.rules.IPartitionTokenScanner;
+import at.bestsolution.efxclipse.text.jface.rules.ITokenScanner;
+
 
 public class JavaTextTools {
 	/**

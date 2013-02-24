@@ -2,11 +2,11 @@ package at.bestsolution.efxclipse.text.test.app.sample;
 
 import org.eclipse.jface.text.IDocument;
 
-import at.bestsolution.efxclipse.text.jface.text.presentation.IPresentationReconciler;
-import at.bestsolution.efxclipse.text.jface.text.presentation.PresentationReconciler;
-import at.bestsolution.efxclipse.text.jface.text.rules.DefaultDamagerRepairer;
-import at.bestsolution.efxclipse.text.jface.text.source.ISourceViewer;
-import at.bestsolution.efxclipse.text.jface.text.source.SourceViewerConfiguration;
+import at.bestsolution.efxclipse.text.jface.presentation.IPresentationReconciler;
+import at.bestsolution.efxclipse.text.jface.presentation.PresentationReconciler;
+import at.bestsolution.efxclipse.text.jface.rules.DefaultDamagerRepairer;
+import at.bestsolution.efxclipse.text.jface.source.ISourceViewer;
+import at.bestsolution.efxclipse.text.jface.source.SourceViewerConfiguration;
 import at.bestsolution.efxclipse.text.test.app.sample.jscanners.IJavaPartitions;
 import at.bestsolution.efxclipse.text.test.app.sample.jscanners.JavaTextTools;
 import at.bestsolution.efxclipse.text.test.app.sample.reconciler.JavaPresentationReconciler;

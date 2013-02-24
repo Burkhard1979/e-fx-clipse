@@ -14,7 +14,7 @@ package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 
-import at.bestsolution.efxclipse.text.jface.text.rules.ICharacterScanner;
+import at.bestsolution.efxclipse.text.jface.rules.ICharacterScanner;
 
 
 /**

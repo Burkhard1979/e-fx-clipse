@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2005 IBM Corporation and others.
+ * Copyright (c) 2000, 2013 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,20 +8,20 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
-
-import at.bestsolution.efxclipse.text.jface.rules.IWhitespaceDetector;
-
+package at.bestsolution.efxclipse.text.jface.presentation;
 
 /**
- * A java aware white space detector.
+ * Extension interface for {@link IPresentationReconciler}. Adds awareness of
+ * documents with multiple partitions.
+ *
+ * @since 3.0
  */
-public class JavaWhitespaceDetector implements IWhitespaceDetector {
+public interface IPresentationReconcilerExtension {
 
 	/**
-	 * @see IWhitespaceDetector#isWhitespace
+	 * Returns the document partitioning this presentation reconciler is using.
+	 *
+	 * @return the document partitioning this presentation reconciler is using
 	 */
-	public boolean isWhitespace(char c) {
-		return Character.isWhitespace(c);
-	}
+	String getDocumentPartitioning();
 }

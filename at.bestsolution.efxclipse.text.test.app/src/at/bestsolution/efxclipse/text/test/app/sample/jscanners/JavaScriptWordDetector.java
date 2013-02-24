@@ -10,7 +10,7 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.text.test.app.sample.jscanners;
 
-import at.bestsolution.efxclipse.text.jface.text.rules.IWordDetector;
+import at.bestsolution.efxclipse.text.jface.rules.IWordDetector;
 
 /**
  * A Java aware word detector.

@@ -45,8 +45,9 @@ import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.Editor;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.EditorLine;
 import at.bestsolution.efxclipse.text.SimpleSourceViewer;
-import at.bestsolution.efxclipse.text.jface.text.rules.ITokenScanner;
-import at.bestsolution.efxclipse.text.jface.text.source.SourceViewer;
+import at.bestsolution.efxclipse.text.jface.rules.ITokenScanner;
+import at.bestsolution.efxclipse.text.jface.source.SourceViewer;
+import at.bestsolution.efxclipse.text.test.app.sample.JavaSourceViewerConfiguration;
 import at.bestsolution.efxclipse.text.test.app.sample.jscanners.IJavaPartitions;
 import at.bestsolution.efxclipse.text.test.app.sample.jscanners.JavaTextTools;
 
@@ -126,18 +127,19 @@ public class MainApplication extends AbstractJFXApplication {
 //		StyledTextControl control = new StyledTextControl();
 //		control.setText(getSample());
 		
-		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
+//		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
 		
+		IDocument document = new Document(getFileContent(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
+		SourceViewer viewer = new SourceViewer();
+		JavaTextTools textTools = new JavaTextTools();
+		viewer.configure(new JavaSourceViewerConfiguration(textTools));
 		
-//		SourceViewer viewer = new SourceViewer();
-//		JavaTools textTools = new JavaTools();
-//		viewer.configure(new JavaS(textTools));
-//		
-//		textTools.setupJavaDocumentPartitioner(document, IJavaScriptPartitions.JAVA_PARTITIONING); 
-//		viewer.setDocument(document);
+		textTools.setupJavaDocumentPartitioner(document, IJavaPartitions.JAVA_PARTITIONING); 
+		viewer.setDocument(document);
+		mainPane.setCenter(viewer.getLayoutNode());
 		
 		Scene s = new Scene(mainPane);
-//		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
+		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
 		primaryStage.setScene(s);
 		primaryStage.setWidth(300);
 		primaryStage.setHeight(400);
@@ -145,80 +147,6 @@ public class MainApplication extends AbstractJFXApplication {
 		primaryStage.show();
 	}
 
-	class LineCell extends ListCell<Line> {
-		private Line domainObject;
-		private Set<LineCell> visibleItems;
-		private InvalidationListener listener = new InvalidationListener() {
-			
-			@Override
-			public void invalidated(Observable arg0) {
-				updateItem(domainObject, false);
-			}
-		};
-		
-		public LineCell(Set<LineCell> visibleItems) {
-			this.visibleItems = visibleItems;
-		}
-		
-		@Override
-		protected void updateItem(Line arg0, boolean arg1) {
-			if( ! arg1 ) {
-				if( domainObject != null ) {
-					domainObject.segments.removeListener(listener);
-				}
-				domainObject = arg0;
-				
-				domainObject.segments.addListener(listener);
-				
-				visibleItems.add(this);
-				TextFlow flow = (TextFlow) getGraphic();
-				if( flow == null ) {
-					flow = new TextFlow();
-				}
-				
-				List<Text> texts = new ArrayList<>(domainObject.segments.size());
-				for( StyledSegment s : domainObject.segments ) {
-					texts.add(createText(s));
-				}
-				
-				flow.getChildren().setAll(texts);
-				
-				setGraphic(flow);
-			} else {
-				if( domainObject != null ) {
-					domainObject.segments.removeListener(listener);
-				}
-				domainObject = null;
-				visibleItems.remove(this);
-			}
-			super.updateItem(arg0, arg1);
-		}
-		
-		private Text createText(StyledSegment segment) {
-			Text t = new Text(segment.text);
-			t.setFill(segment.color);
-			return t;
-		}
-	}
-	
-	class Line {
-		ObservableList<StyledSegment> segments = FXCollections.observableArrayList();
-		
-		public Line(StyledSegment... segments) {
-			this.segments.addAll(segments);
-		}
-	}
-	
-	class StyledSegment {
-		private final String text;
-		private final Color color;
-		
-		public StyledSegment(String text, Color color) {
-			this.text = text;
-			this.color = color;
-		}
-	}
-	
 	private Tab createSourceViewer(File file) {
 		Tab tab = new Tab(file.getName());
 		tab.setContent(createSourceViewerPane(file));
@@ -275,7 +203,7 @@ public class MainApplication extends AbstractJFXApplication {
 		b.append("    System.out.println(\"Hello World\");\n");
 		b.append("  }\n");
 		b.append("}");
-//		StringBuilder b = new StringBuilder("public class Test {\n}");
+//		StringBuilder b = new StringBuilder("\"Hello World\"private");
 		return b.toString();
 	}
 	

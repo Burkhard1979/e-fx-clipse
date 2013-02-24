@@ -16,11 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import at.bestsolution.efxclipse.text.jface.text.rules.ICharacterScanner;
-import at.bestsolution.efxclipse.text.jface.text.rules.IRule;
-import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
-import at.bestsolution.efxclipse.text.jface.text.rules.IWordDetector;
-import at.bestsolution.efxclipse.text.jface.text.rules.Token;
+import at.bestsolution.efxclipse.text.jface.rules.ICharacterScanner;
+import at.bestsolution.efxclipse.text.jface.rules.IRule;
+import at.bestsolution.efxclipse.text.jface.rules.IToken;
+import at.bestsolution.efxclipse.text.jface.rules.IWordDetector;
+import at.bestsolution.efxclipse.text.jface.rules.Token;
 
 
 /**

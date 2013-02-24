@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import at.bestsolution.efxclipse.styledtext.StyleRange;
-import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
+import at.bestsolution.efxclipse.text.jface.TextAttribute;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

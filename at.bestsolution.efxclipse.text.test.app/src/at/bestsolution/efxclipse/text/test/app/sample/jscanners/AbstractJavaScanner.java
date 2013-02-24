@@ -17,11 +17,11 @@ import java.util.Map;
 
 import at.bestsolution.efxclipse.styledtext.StyleRange;
 import at.bestsolution.efxclipse.styledtext.TextStyle;
-import at.bestsolution.efxclipse.text.jface.text.TextAttribute;
-import at.bestsolution.efxclipse.text.jface.text.rules.BufferedRuleBasedScanner;
-import at.bestsolution.efxclipse.text.jface.text.rules.IRule;
-import at.bestsolution.efxclipse.text.jface.text.rules.IToken;
-import at.bestsolution.efxclipse.text.jface.text.rules.Token;
+import at.bestsolution.efxclipse.text.jface.TextAttribute;
+import at.bestsolution.efxclipse.text.jface.rules.BufferedRuleBasedScanner;
+import at.bestsolution.efxclipse.text.jface.rules.IRule;
+import at.bestsolution.efxclipse.text.jface.rules.IToken;
+import at.bestsolution.efxclipse.text.jface.rules.Token;
 
 
 /**
