@@ -31,6 +31,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
@@ -149,6 +150,12 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 					getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset()-1, 1, "");
 					getSkinnable().setCaretOffset(offset-1);
 					break;
+				case TAB:
+					event.consume();
+					if( event.isShiftDown() ) {
+						//TODO Remove first 4 white space chars???
+						break;
+					}
 				default:
 					getSkinnable().getContent().replaceTextRange(getSkinnable().getCaretOffset(), 0, event.getText());
 					getSkinnable().setCaretOffset(offset+1);
@@ -156,6 +163,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 				}
 			}
 		});
+
 		listView.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 			@SuppressWarnings({ "deprecation" })
