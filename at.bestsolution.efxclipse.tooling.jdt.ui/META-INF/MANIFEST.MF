@@ -44,7 +44,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.help.ui;bundle-version="3.5.100",
  org.eclipse.help.webapp;bundle-version="3.6.0",
  org.eclipse.equinox.http.jetty;bundle-version="2.0.100",
- org.eclipse.emf.ecore.xmi;bundle-version="2.8.0"
+ org.eclipse.emf.ecore.xmi;bundle-version="2.7.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %Bundle-Vendor
