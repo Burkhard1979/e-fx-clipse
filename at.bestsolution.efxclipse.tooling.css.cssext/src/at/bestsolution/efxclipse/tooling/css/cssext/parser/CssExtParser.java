@@ -1,7 +1,6 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.parser;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,7 +15,6 @@ import org.eclipse.xtext.naming.QualifiedName;
 
 import at.bestsolution.efxclipse.runtime.core.log.Log;
 import at.bestsolution.efxclipse.runtime.core.log.Logger;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
@@ -50,6 +48,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
 import at.bestsolution.efxclipse.tooling.css.extapi.MultiProposal;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 import at.bestsolution.efxclipse.tooling.css.extapi.SimpleProposal;
+import at.bestsolution.efxclipse.tooling.css.extapi.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;

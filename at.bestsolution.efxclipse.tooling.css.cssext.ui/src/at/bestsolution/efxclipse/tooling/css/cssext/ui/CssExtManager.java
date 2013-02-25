@@ -31,7 +31,6 @@ import org.eclipse.jdt.core.JavaModelException;
 
 import at.bestsolution.efxclipse.runtime.core.log.Log;
 import at.bestsolution.efxclipse.runtime.core.log.Logger;
-import at.bestsolution.efxclipse.tooling.css.CssExtendedDialectExtension.CssProperty;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ClassSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
