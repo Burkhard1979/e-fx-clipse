@@ -13,8 +13,10 @@ package at.bestsolution.efxclipse.styledtext;
 
 import java.lang.ref.WeakReference;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Control;
@@ -1174,4 +1176,31 @@ public class StyledTextArea extends Control {
 		System.err.println("NOT IMPLEMETNED");
 		Thread.dumpStack();
 	}
+
+	public TextSelection getSelection() {
+		// TODO Auto-generated method stub
+		return new TextSelection(getCaretOffset(), 0);
+	}
+	
+	public void setSelection(TextSelection selection) {
+		if( selection.length == 0 ) {
+			setCaretOffset(selection.offset);
+		}
+	}
+	
+	public void setSelectionRange(int offset, int length) {
+		setSelection(new TextSelection(offset, length));
+	}
+
+	private BooleanProperty editableProperty = new SimpleBooleanProperty(this, "editableProperty", true);
+	
+	public void setEditable(boolean editable) {
+		editableProperty.set(editable);
+	}
+	
+	public boolean getEditable() {
+		return editableProperty.get();
+	}
+
+	
 }

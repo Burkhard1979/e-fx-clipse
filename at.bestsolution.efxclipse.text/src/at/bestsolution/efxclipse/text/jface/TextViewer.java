@@ -21,6 +21,7 @@ import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.FindReplaceDocumentAdapter;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentInformationMapping;
+import org.eclipse.jface.text.IDocumentInformationMappingExtension2;
 import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ISlaveDocumentManager;
@@ -33,7 +34,7 @@ import org.eclipse.jface.text.projection.ChildDocumentManager;
 import at.bestsolution.efxclipse.styledtext.StyleRange;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 
-public class TextViewer implements ITextViewer {
+public class TextViewer implements ITextViewer, ITextOperationTarget {
 	
 	private Node layoutNode;
 	private StyledTextArea textWidget;
@@ -74,6 +75,183 @@ public class TextViewer implements ITextViewer {
 	
 	public TextViewer() {
 		layoutNode = createLayoutNode();
+	}
+	
+	@Override
+	public boolean canDoOperation(int operation) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public void doOperation(int operation) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void setSelectedRange(int offset, int length) {
+		if (textWidget == null)
+			return;
+		
+		IRegion widgetSelection= modelRange2ClosestWidgetRange(new Region(offset, length));
+		if (widgetSelection != null) {
+
+			int[] selectionRange= new int[] { widgetSelection.getOffset(), widgetSelection.getLength() };
+			validateSelectionRange(selectionRange);
+			if (selectionRange[0] >= 0) {
+				textWidget.setSelectionRange(selectionRange[0], selectionRange[1]);
+				selectionChanged(selectionRange[0], selectionRange[1]);
+			}
+		}
+	}
+	
+	/**
+	 * Sends out a text selection changed event to all registered listeners and
+	 * registers the selection changed event to be sent out to all post selection
+	 * listeners.
+	 *
+	 * @param offset the offset of the newly selected range in the visible document
+	 * @param length the length of the newly selected range in the visible document
+	 */
+	protected void selectionChanged(int offset, int length) {
+		queuePostSelectionChanged(true);
+		fireSelectionChanged(offset, length);
+	}
+	
+	private void fireSelectionChanged(int offset, int length) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void queuePostSelectionChanged(boolean b) {
+		// TODO Auto-generated method stub
+		
+	} 
+
+	/**
+	 * Validates and adapts the given selection range if it is not a valid
+	 * widget selection. The widget selection is invalid if it starts or ends
+	 * inside a multi-character line delimiter. If so, the selection is adapted to
+	 * start <b>after</b> the divided line delimiter and to end <b>before</b>
+	 * the divided line delimiter.  The parameter passed in is changed in-place
+	 * when being adapted. An adaptation to <code>[-1, -1]</code> indicates
+	 * that the selection range could not be validated.
+	 * Subclasses may reimplement this method.
+	 *
+	 * @param selectionRange selectionRange[0] is the offset, selectionRange[1]
+	 * 				the length of the selection to validate.
+	 * @since 2.0
+	 */
+	protected void validateSelectionRange(int[] selectionRange) {
+
+		IDocument document= getVisibleDocument();
+		if (document == null) {
+			selectionRange[0]= -1;
+			selectionRange[1]= -1;
+			return;
+		}
+
+		int documentLength= document.getLength();
+		int offset= selectionRange[0];
+		int length= selectionRange[1];
+
+		if (length < 0) {
+			length= - length;
+			offset -= length;
+		}
+
+		if (offset <0)
+			offset= 0;
+
+		if (offset > documentLength)
+			offset= documentLength;
+
+		int delta= (offset + length) - documentLength;
+		if (delta > 0)
+			length -= delta;
+
+		try {
+
+			int lineNumber= document.getLineOfOffset(offset);
+			IRegion lineInformation= document.getLineInformation(lineNumber);
+
+			int lineEnd= lineInformation.getOffset() + lineInformation.getLength();
+			delta= offset - lineEnd;
+			if (delta > 0) {
+				// in the middle of a multi-character line delimiter
+				offset= lineEnd;
+				length += delta;
+				String delimiter= document.getLineDelimiter(lineNumber);
+				if (delimiter != null) {
+					int delimiterLength= delimiter.length();
+					offset += delimiterLength;
+					length -= delimiterLength;
+				}
+			}
+
+			int end= offset + length;
+			lineInformation= document.getLineInformationOfOffset(end);
+			lineEnd= lineInformation.getOffset() + lineInformation.getLength();
+			delta= end - lineEnd;
+			if (delta > 0) {
+				// in the middle of a multi-character line delimiter
+				length -= delta;
+			}
+
+		} catch (BadLocationException x) {
+			selectionRange[0]= -1;
+			selectionRange[1]= -1;
+			return;
+		}
+
+		if (selectionRange[1] < 0) {
+			selectionRange[0]= offset + length;
+			selectionRange[1]= -length;
+		} else {
+			selectionRange[0]= offset;
+			selectionRange[1]= length;
+		}
+	}
+	
+	@Override
+	public void revealRange(int offset, int length) {
+		// TODO Auto-generated method stub
+	}
+	
+	/**
+	 * Similar to {@link #modelRange2WidgetRange(IRegion)}, but more forgiving:
+	 * if <code>modelRange</code> describes a region entirely hidden in the
+	 * image, then this method returns the zero-length region at the offset of
+	 * the folded region.
+	 *
+	 * @param modelRange the model range
+	 * @return the corresponding widget range, or <code>null</code>
+	 * @since 3.1
+	 */
+	protected IRegion modelRange2ClosestWidgetRange(IRegion modelRange) {
+		if (!(informationMapping instanceof IDocumentInformationMappingExtension2))
+			return modelRange2WidgetRange(modelRange);
+
+		try {
+			if (modelRange.getLength() < 0) {
+				Region reversed= new Region(modelRange.getOffset() + modelRange.getLength(), -modelRange.getLength());
+				IRegion result= ((IDocumentInformationMappingExtension2) informationMapping).toClosestImageRegion(reversed);
+				if (result != null)
+					return new Region(result.getOffset() + result.getLength(), -result.getLength());
+			}
+			return ((IDocumentInformationMappingExtension2) informationMapping).toClosestImageRegion(modelRange);
+
+		} catch (BadLocationException x) {
+		}
+
+		return null;
+	}
+	
+	public boolean isEditable() {
+		if (textWidget == null)
+			return false;
+		return textWidget.getEditable();
 	}
 	
 	protected StyledTextArea createStyledTextControl() {

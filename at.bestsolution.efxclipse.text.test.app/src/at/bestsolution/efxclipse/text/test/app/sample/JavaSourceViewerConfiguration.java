@@ -2,6 +2,9 @@ package at.bestsolution.efxclipse.text.test.app.sample;
 
 import org.eclipse.jface.text.IDocument;
 
+import at.bestsolution.efxclipse.text.jface.contentassist.ContentAssistant;
+import at.bestsolution.efxclipse.text.jface.contentassist.IContentAssistProcessor;
+import at.bestsolution.efxclipse.text.jface.contentassist.IContentAssistant;
 import at.bestsolution.efxclipse.text.jface.presentation.IPresentationReconciler;
 import at.bestsolution.efxclipse.text.jface.presentation.PresentationReconciler;
 import at.bestsolution.efxclipse.text.jface.rules.DefaultDamagerRepairer;
@@ -65,5 +68,13 @@ public class JavaSourceViewerConfiguration extends SourceViewerConfiguration {
 
 
 		return reconciler;
+	}
+	
+	@Override
+	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
+		ContentAssistant assist = new ContentAssistant();
+		IContentAssistProcessor javaProcessor = new JavaCompletionProcessor();
+		assist.setContentAssistProcessor(javaProcessor, IDocument.DEFAULT_CONTENT_TYPE);
+		return assist;
 	}
 }
