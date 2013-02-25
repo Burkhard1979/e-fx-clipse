@@ -215,26 +215,26 @@ public interface XLinkAttributes extends EObject {
 	void setXlink__title(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Resolved Instance</b></em>' reference.
+	 * Returns the value of the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resolved Instance</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resolved Instance</em>' reference.
+	 * @return the value of the '<em>Resolved Instance</em>' containment reference.
 	 * @see #setResolvedInstance(SvgElement)
 	 * @see at.bestsolution.efxclipse.formats.svg.svg.SvgPackage#getXLinkAttributes_ResolvedInstance()
-	 * @model transient="true"
+	 * @model containment="true" transient="true"
 	 * @generated
 	 */
 	SvgElement getResolvedInstance();
 
 	/**
-	 * Sets the value of the '{@link at.bestsolution.efxclipse.formats.svg.svg.XLinkAttributes#getResolvedInstance <em>Resolved Instance</em>}' reference.
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.formats.svg.svg.XLinkAttributes#getResolvedInstance <em>Resolved Instance</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resolved Instance</em>' reference.
+	 * @param value the new value of the '<em>Resolved Instance</em>' containment reference.
 	 * @see #getResolvedInstance()
 	 * @generated
 	 */

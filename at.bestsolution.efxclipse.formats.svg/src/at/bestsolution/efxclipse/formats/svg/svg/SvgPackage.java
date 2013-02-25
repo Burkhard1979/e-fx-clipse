@@ -1328,7 +1328,7 @@ public interface SvgPackage extends EPackage {
 	int XLINK_ATTRIBUTES__XLINK_TITLE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5504,7 +5504,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_USE_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 82;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6360,7 +6360,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_IMAGE_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 82;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15011,7 +15011,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_TREF_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 82;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -15822,7 +15822,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_TEXT_PATH_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 82;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -16660,7 +16660,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_ALT_GLYPH_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 82;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -17545,7 +17545,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_ALT_GLYPH_REF_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 69;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -18978,7 +18978,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_COLOR_PROFILE_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 69;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -19672,7 +19672,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_LINEAR_GRADIENT_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 69;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -20429,7 +20429,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_RADIAL_GRADIENT_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 69;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -21853,7 +21853,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_PATTERN_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 73;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -23989,7 +23989,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_FILTER_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 69;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -33735,7 +33735,7 @@ public interface SvgPackage extends EPackage {
 	int SVG_FE_IMAGE_ELEMENT__XLINK_TITLE = SVG_ELEMENT_FEATURE_COUNT + 75;
 
 	/**
-	 * The feature id for the '<em><b>Resolved Instance</b></em>' reference.
+	 * The feature id for the '<em><b>Resolved Instance</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -40277,10 +40277,10 @@ public interface SvgPackage extends EPackage {
 	EAttribute getXLinkAttributes_Xlink__title();
 
 	/**
-	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.formats.svg.svg.XLinkAttributes#getResolvedInstance <em>Resolved Instance</em>}'.
+	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.formats.svg.svg.XLinkAttributes#getResolvedInstance <em>Resolved Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Resolved Instance</em>'.
+	 * @return the meta object for the containment reference '<em>Resolved Instance</em>'.
 	 * @see at.bestsolution.efxclipse.formats.svg.svg.XLinkAttributes#getResolvedInstance()
 	 * @see #getXLinkAttributes()
 	 * @generated
@@ -46434,7 +46434,7 @@ public interface SvgPackage extends EPackage {
 		EAttribute XLINK_ATTRIBUTES__XLINK_TITLE = eINSTANCE.getXLinkAttributes_Xlink__title();
 
 		/**
-		 * The meta object literal for the '<em><b>Resolved Instance</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Resolved Instance</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

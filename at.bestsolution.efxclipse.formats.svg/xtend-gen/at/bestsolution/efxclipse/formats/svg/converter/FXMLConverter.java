@@ -831,7 +831,7 @@ public class FXMLConverter {
         _builder.append("\t");
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -979,7 +979,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "				");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -1149,7 +1149,7 @@ public class FXMLConverter {
         _builder.append("\t");
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -1297,7 +1297,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "				");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -1412,7 +1412,7 @@ public class FXMLConverter {
         _builder.append("\t");
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -1560,7 +1560,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "				");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -1680,7 +1680,7 @@ public class FXMLConverter {
         _builder.append("\t");
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -1828,7 +1828,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "				");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -2048,7 +2048,7 @@ public class FXMLConverter {
         _builder.append("\t");
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -2196,7 +2196,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "				");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -2419,7 +2419,7 @@ public class FXMLConverter {
         _builder.append("\t");
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -2567,7 +2567,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "				");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -2694,7 +2694,7 @@ public class FXMLConverter {
         _builder.append("\t");
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "		");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -2842,7 +2842,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "				");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
@@ -2937,7 +2937,7 @@ public class FXMLConverter {
         _builder.newLine();
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "	");
         _builder.newLineIfNotEmpty();
         _builder.append("</transforms>");
@@ -3076,7 +3076,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "			");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
@@ -3167,7 +3167,7 @@ public class FXMLConverter {
         _builder.newLine();
         _builder.append("\t");
         String _transform_1 = element.getTransform();
-        CharSequence _handleTransform = this.handleTransform(_transform_1);
+        String _handleTransform = this.handleTransform(_transform_1);
         _builder.append(_handleTransform, "	");
         _builder.newLineIfNotEmpty();
         _builder.append("</transforms>");
@@ -3306,7 +3306,7 @@ public class FXMLConverter {
             _builder.append("\t\t");
             _builder.append("\t");
             String _transform_4 = clipElement.getTransform();
-            CharSequence _handleTransform_1 = this.handleTransform(_transform_4);
+            String _handleTransform_1 = this.handleTransform(_transform_4);
             _builder.append(_handleTransform_1, "			");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
@@ -3574,7 +3574,7 @@ public class FXMLConverter {
     return Colors.hexBlue(color);
   }
   
-  public CharSequence handleTransform(final String transform) {
+  public CharSequence transformElement(final String transform) {
     StringConcatenation _builder = new StringConcatenation();
     int _indexOf = transform.indexOf("(");
     int _plus = (_indexOf + 1);
@@ -3792,6 +3792,42 @@ public class FXMLConverter {
       }
     }
     return _builder;
+  }
+  
+  public String handleTransform(final String t) {
+    String transform = t;
+    int endIdx = 0;
+    StringBuilder _stringBuilder = new StringBuilder();
+    final StringBuilder builder = _stringBuilder;
+    int _indexOf = transform.indexOf(")");
+    int _endIdx = endIdx = _indexOf;
+    int _minus = (-1);
+    boolean _notEquals = (_endIdx != _minus);
+    boolean _while = _notEquals;
+    while (_while) {
+      {
+        int _plus = (endIdx + 1);
+        String _substring = transform.substring(0, _plus);
+        CharSequence _transformElement = this.transformElement(_substring);
+        builder.append(_transformElement);
+        int _plus_1 = (endIdx + 1);
+        int _length = transform.length();
+        boolean _greaterThan = (_plus_1 > _length);
+        if (_greaterThan) {
+          return builder.toString();
+        }
+        int _plus_2 = (endIdx + 1);
+        String _substring_1 = transform.substring(_plus_2);
+        String _trim = _substring_1.trim();
+        transform = _trim;
+      }
+      int _indexOf_1 = transform.indexOf(")");
+      int _endIdx_1 = endIdx = _indexOf_1;
+      int _minus_1 = (-1);
+      boolean _notEquals_1 = (_endIdx_1 != _minus_1);
+      _while = _notEquals_1;
+    }
+    return builder.toString();
   }
   
   protected CharSequence _handle(final SvgFilterElement filter) {

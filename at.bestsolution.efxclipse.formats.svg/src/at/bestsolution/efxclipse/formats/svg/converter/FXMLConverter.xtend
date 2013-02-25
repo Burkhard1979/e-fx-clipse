@@ -43,6 +43,9 @@ import at.bestsolution.efxclipse.formats.svg.svg.FilterPrimitiveElement
 import at.bestsolution.efxclipse.formats.svg.svg.SvgUseElement
 import at.bestsolution.efxclipse.formats.svg.svg.SvgPolylineElement
 import at.bestsolution.efxclipse.formats.svg.svg.SvgImageElement
+import com.sun.javafx.css.parser.Token
+import java.util.StringTokenizer
+import at.bestsolution.efxclipse.formats.svg.svg.SvgGElement
 
 class FXMLConverter {
 	private SvgSvgElement rootElement
@@ -935,7 +938,7 @@ class FXMLConverter {
 		return Colors::hexBlue(color);
 	}
 	
-	def handleTransform(String transform) '''
+	def transformElement(String transform) '''
 	«val params = transform.substring(transform.indexOf("(")+1,transform.indexOf(")"))»
 	«IF transform.startsWith("translate")»
 	<Translate
@@ -992,6 +995,22 @@ class FXMLConverter {
 	</Affine>
 	«ENDIF»
 	'''
+	
+	def handleTransform(String t) {
+		var transform = t;
+		var int endIdx;
+		val builder = new StringBuilder
+		while( (endIdx = transform.indexOf(')')) != -1 ) {
+			builder.append(transformElement(transform.substring(0,endIdx+1)))
+			
+			if( endIdx+1 > transform.length ) {
+				return builder.toString;
+			}
+			
+			transform = transform.substring(endIdx+1).trim
+		}
+		return builder.toString;
+	}
 	
 	def dispatch handle(SvgFilterElement filter) {
 		
