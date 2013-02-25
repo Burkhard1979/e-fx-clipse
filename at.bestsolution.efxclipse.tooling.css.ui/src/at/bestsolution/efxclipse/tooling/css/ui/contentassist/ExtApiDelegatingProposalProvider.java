@@ -63,27 +63,25 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 	private void acceptProposals(List<Proposal> proposals, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		for (Proposal p : proposals) {
 			
-			Image img = labelProvider.getImage(CssDslFactory.eINSTANCE.createcss_property());
-			
+			final Image img = labelProvider.getImage(CssDslFactory.eINSTANCE.createcss_property());
 			
 			if (p instanceof UIProposal) {
 				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(p.getLabel(), p.getLabel(), img, context);
-				System.err.println("PREPARING UI PROPOSAL");
 				final UIProposal uiP = (UIProposal)p;
-				cp.setTextApplier(new ReplacementTextApplier() {
-					//@Override
-					public String getActualReplacementString(ConfigurableCompletionProposal proposal) {
-						if (uiP.show()) {
-							return uiP.getProposal();
+				
+				if (cp != null) {
+					cp.setTextApplier(new ReplacementTextApplier() {
+						//@Override
+						public String getActualReplacementString(ConfigurableCompletionProposal proposal) {
+							if (uiP.show()) {
+								return uiP.getProposal();
+							}
+							return "";
 						}
-						return "";
-					}
-				});
-				
-				
-				cp.setPriority(p.getPriority());
-				
-				acceptor.accept(cp);
+					});
+					cp.setPriority(p.getPriority());
+					acceptor.accept(cp);
+				}
 			}
 			else {
 				
@@ -185,6 +183,7 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 	
 	
 	public void complete_CssTok(css_declaration model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		System.err.println("complete_CssTok prefixTok=" + findPrefixTokens(context) + "prefixString=" + context.getPrefix());
 		final List<Proposal> proposals = cssExt.getValueProposalsForProperty(findSelectors(model), model.getProperty(), findPrefixTokens(context), context.getPrefix());
 		acceptProposals(proposals, context, acceptor);
 	}
