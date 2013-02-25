@@ -1577,9 +1577,23 @@ package javafx {
 				 * Defines the font of text.
 				 */
 				-fx-font <font> default: DEFAULT;
+				/**
+				 * The string name of the font family. An actual font family name available on the system can be used, or one of the following generic family names can be used:
+				 * <ul>
+				 * <li>'serif' (e.g., Times)</li>
+				 * <li>'sans-serif' (e.g., Helvetica)</li>
+				 * <li>'cursive' (e.g., Zapf-Chancery)</li>
+				 * <li>'fantasy' (e.g., Western)</li>
+				 * <li>'monospace' (e.g., Courier)</li>
+				 */
 				-fx-font-family <font-family> default: null; 	/* INHERITED */
+				/**
+				 *  The size of the font, using the <size> syntax.
+				 */
 				-fx-font-size <font-size> default: null;  		/* INHERITED */
+				/** The font's style */
 				-fx-font-style <font-style> default: null;  	/* INHERITED */
+				/** The font's weight */
 				-fx-font-weight <font-weight> default: null;  	/* INHERITED */
 				/**
 				 * <p>

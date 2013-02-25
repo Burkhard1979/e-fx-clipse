@@ -29,7 +29,6 @@ Export-Package: at.bestsolution.efxclipse.tooling.css,
  at.bestsolution.efxclipse.tooling.css.cssDsl.util,
  at.bestsolution.efxclipse.tooling.css.extapi,
  at.bestsolution.efxclipse.tooling.css.formatting,
- at.bestsolution.efxclipse.tooling.css.generator,
  at.bestsolution.efxclipse.tooling.css.parser.antlr,
  at.bestsolution.efxclipse.tooling.css.parser.antlr.internal,
  at.bestsolution.efxclipse.tooling.css.scoping,
@@ -37,4 +36,4 @@ Export-Package: at.bestsolution.efxclipse.tooling.css,
  at.bestsolution.efxclipse.tooling.css.services,
  at.bestsolution.efxclipse.tooling.css.util,
  at.bestsolution.efxclipse.tooling.css.validation
-Service-Component: OSGI-INF/component.xml
+

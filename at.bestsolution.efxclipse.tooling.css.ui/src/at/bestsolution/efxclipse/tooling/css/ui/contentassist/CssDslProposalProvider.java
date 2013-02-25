@@ -12,7 +12,10 @@ package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,7 +51,7 @@ import com.google.inject.Inject;
  * @author ccaks
  *
  */
-public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProvider {
+public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 
 	@Inject
 	private CssExt cssExt;
@@ -63,27 +66,25 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 	private void acceptProposals(List<Proposal> proposals, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		for (Proposal p : proposals) {
 			
-			Image img = labelProvider.getImage(CssDslFactory.eINSTANCE.createcss_property());
-			
+			final Image img = labelProvider.getImage(CssDslFactory.eINSTANCE.createcss_property());
 			
 			if (p instanceof UIProposal) {
 				ConfigurableCompletionProposal cp = (ConfigurableCompletionProposal) createCompletionProposal(p.getLabel(), p.getLabel(), img, context);
-				System.err.println("PREPARING UI PROPOSAL");
 				final UIProposal uiP = (UIProposal)p;
-				cp.setTextApplier(new ReplacementTextApplier() {
-					//@Override
-					public String getActualReplacementString(ConfigurableCompletionProposal proposal) {
-						if (uiP.show()) {
-							return uiP.getProposal();
+				
+				if (cp != null) {
+					cp.setTextApplier(new ReplacementTextApplier() {
+						//@Override
+						public String getActualReplacementString(ConfigurableCompletionProposal proposal) {
+							if (uiP.show()) {
+								return uiP.getProposal();
+							}
+							return "";
 						}
-						return "";
-					}
-				});
-				
-				
-				cp.setPriority(p.getPriority());
-				
-				acceptor.accept(cp);
+					});
+					cp.setPriority(p.getPriority());
+					acceptor.accept(cp);
+				}
 			}
 			else {
 				
@@ -185,13 +186,32 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 	
 	
 	public void complete_CssTok(css_declaration model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		System.err.println("complete_CssTok prefixTok=" + findPrefixTokens(context) + "prefixString=" + context.getPrefix());
 		final List<Proposal> proposals = cssExt.getValueProposalsForProperty(findSelectors(model), model.getProperty(), findPrefixTokens(context), context.getPrefix());
+		
+		
+		
 		acceptProposals(proposals, context, acceptor);
+	}
+
+	private void filterDuplicates(ruleset model, List<Proposal> proposals) {
+		final Set<String> defined = new HashSet<>();
+		for (css_declaration d : model.getDeclarations()) {
+			defined.add(d.getProperty().getName());
+		}
+		final Iterator<Proposal> filterIterator = proposals.iterator();
+		while (filterIterator.hasNext()) {
+			Proposal curr = filterIterator.next();
+			if (defined.contains(curr.getProposal())) {
+				filterIterator.remove();
+			}
+		}
 	}
 	
 	public void completeRuleset_Declarations(ruleset model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(model.getSelectors());
+		filterDuplicates(model, proposals);
 		acceptProposals(proposals, context, acceptor);
 	}
 	
@@ -204,6 +224,7 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 		if (context.getPreviousModel() instanceof ruleset) {
 			ruleset ruleset = (ruleset) context.getPreviousModel();
 			final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(ruleset.getSelectors());
+			filterDuplicates(ruleset, proposals);
 			acceptProposals(proposals, context, acceptor);
 		}
 		else {

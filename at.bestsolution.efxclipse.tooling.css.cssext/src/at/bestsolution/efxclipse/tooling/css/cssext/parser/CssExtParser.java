@@ -1,7 +1,6 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.parser;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,7 +15,6 @@ import org.eclipse.xtext.naming.QualifiedName;
 
 import at.bestsolution.efxclipse.runtime.core.log.Log;
 import at.bestsolution.efxclipse.runtime.core.log.Logger;
-import at.bestsolution.efxclipse.tooling.css.CssDialectExtension.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
@@ -50,6 +48,7 @@ import at.bestsolution.efxclipse.tooling.css.cssext.parser.result.State;
 import at.bestsolution.efxclipse.tooling.css.extapi.MultiProposal;
 import at.bestsolution.efxclipse.tooling.css.extapi.Proposal;
 import at.bestsolution.efxclipse.tooling.css.extapi.SimpleProposal;
+import at.bestsolution.efxclipse.tooling.css.extapi.ValidationResult;
 import at.bestsolution.efxclipse.tooling.css.util.TokUtil;
 
 import com.google.inject.Inject;
@@ -936,16 +935,16 @@ public class CssExtParser {
 	public List<Proposal> findProposals(String element, String propertyName, List<CssTok> prefixToks, String prefix) {
 		
 		// TODO for now we skip the prefixstring queries
-		if (prefix.length() > 0) return Collections.emptyList();
+		//if (prefix.length() > 0) return Collections.emptyList();
 		
 		// debug output
-		logger.debugf("findProposals( %s, %s )", element, propertyName, prefix);
+		logger.debugf("findProposals( %s, %s, %s )", element, propertyName, prefix);
 		logger.debugf("prefixString: '%s'", prefix);
 		if (prefixToks.isEmpty()) {
 			logger.debug("prefixToks: none");
 		}
 		else {
-			logger.debugf("prefixToks: \n *");
+			logger.debugf("prefixToks:");
 			Iterator<CssTok> iterator = prefixToks.iterator();
 			while (iterator.hasNext()) {
 				logger.debugf(" * %s", TokUtil.toString(iterator.next()));
@@ -991,6 +990,8 @@ public class CssExtParser {
 		else {
 			result.add(createProposal("> no rule for " + propertyName + " found!"));
 		}
+		
+		logger.debugf("-> returning %s", result);
 		
 		return result;
 	}
