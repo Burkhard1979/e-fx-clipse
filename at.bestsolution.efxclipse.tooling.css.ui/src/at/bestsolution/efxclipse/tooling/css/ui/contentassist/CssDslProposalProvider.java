@@ -52,7 +52,7 @@ import com.google.inject.Inject;
  * @author ccaks
  *
  */
-public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProvider {
+public class CssDslProposalProvider extends AbstractCssDslProposalProvider {
 
 	@Inject
 	private CssExt cssExt;

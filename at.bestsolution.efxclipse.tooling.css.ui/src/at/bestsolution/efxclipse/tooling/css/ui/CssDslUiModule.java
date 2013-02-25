@@ -25,7 +25,7 @@ import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
 import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
 import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
 import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
-import at.bestsolution.efxclipse.tooling.css.ui.contentassist.ExtApiDelegatingProposalProvider;
+import at.bestsolution.efxclipse.tooling.css.ui.contentassist.CssDslProposalProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.contentassist.TemplateProposalProvider;
 import at.bestsolution.efxclipse.tooling.css.ui.doubleclicking.CssGrammarAwareStrategy;
 import at.bestsolution.efxclipse.tooling.css.ui.highlighting.CssDslHighlightingCalculator;
@@ -86,11 +86,4 @@ public class CssDslUiModule extends at.bestsolution.efxclipse.tooling.css.ui.Abs
 	    return TemplateProposalProvider.class;
 	  }
 	
-//	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {
-//		return at.bestsolution.efxclipse.tooling.css.ui.contentassist.CssDslRealtimeProposalProvider.class;
-//	}
-	
-	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {
-		return ExtApiDelegatingProposalProvider.class;
-	}
 }
