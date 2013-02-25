@@ -13,6 +13,8 @@ package at.bestsolution.efxclipse.text.jface;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 
+import at.bestsolution.efxclipse.styledtext.StyledTextArea;
+
 public interface ITextViewer {
 
 	void removeTextListener(ITextListener listener);
@@ -33,4 +35,9 @@ public interface ITextViewer {
 
 	IRegion getVisibleRegion();
 
+	public StyledTextArea getTextWidget();
+
+	void setSelectedRange(int offset, int length);
+
+	void revealRange(int offset, int length);
 }

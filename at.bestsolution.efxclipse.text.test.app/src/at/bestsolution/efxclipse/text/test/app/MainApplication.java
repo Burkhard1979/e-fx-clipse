@@ -17,6 +17,7 @@ import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,6 +27,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -46,6 +49,7 @@ import at.bestsolution.efxclipse.styledtext.exp2.editor.Editor;
 import at.bestsolution.efxclipse.styledtext.exp2.editor.EditorLine;
 import at.bestsolution.efxclipse.text.SimpleSourceViewer;
 import at.bestsolution.efxclipse.text.jface.rules.ITokenScanner;
+import at.bestsolution.efxclipse.text.jface.source.ISourceViewer;
 import at.bestsolution.efxclipse.text.jface.source.SourceViewer;
 import at.bestsolution.efxclipse.text.test.app.sample.JavaSourceViewerConfiguration;
 import at.bestsolution.efxclipse.text.test.app.sample.jscanners.IJavaPartitions;
@@ -130,7 +134,7 @@ public class MainApplication extends AbstractJFXApplication {
 //		mainPane.setCenter(createSourceViewerPane(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
 		
 		IDocument document = new Document(getFileContent(new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.text.test.app/sample/Grid.java")));
-		SourceViewer viewer = new SourceViewer();
+		final SourceViewer viewer = new SourceViewer();
 		JavaTextTools textTools = new JavaTextTools();
 		viewer.configure(new JavaSourceViewerConfiguration(textTools));
 		
@@ -140,6 +144,16 @@ public class MainApplication extends AbstractJFXApplication {
 		
 		Scene s = new Scene(mainPane);
 		s.getStylesheets().add(MainApplication.class.getResource("test.css").toExternalForm());
+		s.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				if( event.isControlDown() && event.getCode() == KeyCode.SPACE ) {
+					System.err.println("==============> EXEC");
+					viewer.doOperation(ISourceViewer.CONTENTASSIST_PROPOSALS);
+				}
+			}
+		});
 		primaryStage.setScene(s);
 		primaryStage.setWidth(300);
 		primaryStage.setHeight(400);

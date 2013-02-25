@@ -13,12 +13,16 @@ package at.bestsolution.efxclipse.text.jface.source;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.source.IAnnotationModel;
 
+import at.bestsolution.efxclipse.text.jface.ITextOperationTarget;
 import at.bestsolution.efxclipse.text.jface.TextViewer;
+import at.bestsolution.efxclipse.text.jface.contentassist.IContentAssistant;
 import at.bestsolution.efxclipse.text.jface.presentation.IPresentationReconciler;
 
 public class SourceViewer extends TextViewer implements ISourceViewer {
 
 	private IPresentationReconciler presentationReconciler;
+	private IContentAssistant contentAssistant;
+	private boolean contentAssistantInstalled;
 
 	@Override
 	public void configure(SourceViewerConfiguration configuration) {
@@ -32,6 +36,12 @@ public class SourceViewer extends TextViewer implements ISourceViewer {
 		if (presentationReconciler != null)
 			presentationReconciler.install(this);
 		
+		contentAssistant= configuration.getContentAssistant(this);
+		if (contentAssistant != null) {
+			contentAssistant.install(this);
+			
+			contentAssistantInstalled = true;
+		}
 	}
 
 	public void setDocument(IDocument document) {
@@ -58,5 +68,30 @@ public class SourceViewer extends TextViewer implements ISourceViewer {
 			super.setDocument(document, modelRangeOffset, modelRangeLength);
 		
 		//FIXME Port ruler stuff
+	}
+	
+	@Override
+	public boolean canDoOperation(int operation) {
+		if (operation == CONTENTASSIST_PROPOSALS) {
+			return contentAssistant != null && contentAssistantInstalled && isEditable();
+		}
+		return super.canDoOperation(operation);
+	}
+	
+	@Override
+	public void doOperation(int operation) {
+		if (getTextWidget() == null || (!redraws() && operation != FORMAT))
+			return;
+		
+		switch (operation) {
+		case CONTENTASSIST_PROPOSALS:
+			contentAssistant.showPossibleCompletions();
+			return;
+
+		default:
+			break;
+		}
+		
+		super.doOperation(operation);
 	}
 }

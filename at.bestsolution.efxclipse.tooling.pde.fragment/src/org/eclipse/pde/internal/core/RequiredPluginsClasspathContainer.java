@@ -53,6 +53,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 	public RequiredPluginsClasspathContainer(IPluginModelBase model, IBuild build) {
 		fModel = model;
 		fBuild = build;
+		System.err.println("LAUNCHING PATCHED CLASSPATH CONTAINER");
 	}
 
 	/*
@@ -105,6 +106,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 	}
 
 	private IClasspathEntry[] computePluginEntries() {
+		System.err.println("COMPUTING ENTRIES");
 		ArrayList<IClasspathEntry> entries = new ArrayList<IClasspathEntry>();
 		try {
 			BundleDescription desc = fModel.getBundleDescription();
@@ -115,6 +117,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 
 			// Add any library entries contributed via classpath contributor extension (Bug 363733)
 			for (IClasspathContributor cc : getClasspathContributors()) {
+				System.err.println("Consulting " + cc);
 				List<IClasspathEntry> classpathEntries = cc.getInitialEntries(desc);
 				if (classpathEntries == null || classpathEntries.isEmpty()) {
 					continue;
