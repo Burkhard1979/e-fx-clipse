@@ -140,14 +140,6 @@
     </extension>
 
 
-
-   <extension
-         point="org.eclipse.xtext.builder.participant">
-      <participant
-            class="at.bestsolution.efxclipse.tooling.css.ui.CssDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
-      </participant>
-   </extension>
-
 	<!-- Quick Outline -->
 	<extension
 		point="org.eclipse.ui.handlers">
