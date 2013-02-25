@@ -252,6 +252,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 				el = (Element) model.eContainer();
 			}
 
+			Element propertyTarget = el;
 			{
 				IJavaProject javaProject = projectProvider.getJavaProject(el.eResource().getResourceSet());
 				IType type = javaProject.findType(el.getType().getQualifiedName());
@@ -263,7 +264,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 						for (IFXProperty p : map.values()) {
 //							// The id-attribute is defined through the id keyword
 //							if (!"id".equals(p.getName())) {
-								completeElement_PropertiesProposals(p, el, context, FXGraphPackage.Literals.ELEMENT__PROPERTIES, acceptor);
+								completeElement_PropertiesProposals(p, el, context, FXGraphPackage.Literals.ELEMENT__PROPERTIES, acceptor, propertyTarget, FXGraphPackage.Literals.ELEMENT__PROPERTIES);
 //							}
 						}
 					}
@@ -296,7 +297,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 					if (fxClazz != null) {
 						Map<String, IFXProperty> map = fxClazz.getAllStaticProperties();
 						for (IFXProperty p : map.values()) {
-							completeElement_PropertiesProposals(p, el, context, FXGraphPackage.Literals.ELEMENT__STATIC_PROPERTIES, acceptor);
+							completeElement_PropertiesProposals(p, el, context, FXGraphPackage.Literals.ELEMENT__STATIC_PROPERTIES, acceptor, propertyTarget, FXGraphPackage.Literals.ELEMENT__STATIC_PROPERTIES);
 						}
 					}
 				}
@@ -308,7 +309,30 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 
 	}
 
-	private void completeElement_PropertiesProposals(IFXProperty prop, EObject model, ContentAssistContext context, EStructuralFeature typeReference, ICompletionProposalAcceptor acceptor) {
+	private void completeElement_PropertiesProposals(IFXProperty prop, final EObject model, ContentAssistContext context, EStructuralFeature typeReference, final ICompletionProposalAcceptor acceptor, Element propertyTarget, EStructuralFeature propertyListFeature) {
+		if( propertyTarget instanceof Element ) {
+			System.err.println(propertyTarget.getType());
+			List<EObject> items = (List<EObject>) propertyTarget.eGet(propertyListFeature);
+			System.err.println("ITEMS: " + items);
+			for( EObject i : items ) {
+				System.err.println(i);
+				if( i instanceof Property ) {
+					if( ((Property) i).getName().equals(prop.getName()) ) {
+						return;
+					}
+				} else if( i instanceof StaticValueProperty ) {
+					System.err.println("CHECKING STATIC");
+					if( ((StaticValueProperty) i).getName().equals(prop.getName()) ) {
+						return;
+					}
+				} else if( i instanceof StaticCallValueProperty ) {
+					if( ((StaticCallValueProperty) i).getName().equals(prop.getName()) ) {
+						return;
+					}
+				}
+			}
+		}
+		
 		if (prop instanceof IFXCollectionProperty) {
 			createCollectionPropnameProposals((IFXCollectionProperty) prop, model, context, typeReference, acceptor);
 		} else if (prop instanceof IFXMapProperty) {
@@ -1180,7 +1204,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 				if (fxClazz != null) {
 					Map<String, IFXProperty> map = fxClazz.getAllStaticProperties();
 					for (IFXProperty p : map.values()) {
-						completeElement_PropertiesProposals(p, model, context, FXGraphPackage.Literals.STATIC_CALL_VALUE_PROPERTY__NAME, acceptor);
+						completeElement_PropertiesProposals(p, model, context, FXGraphPackage.Literals.STATIC_CALL_VALUE_PROPERTY__NAME, acceptor, null, null);
 					}
 				}
 			}
@@ -1229,6 +1253,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 		}
 		
 		Element target = null;
+		Element propertyTarget = (Element) (eo instanceof Element ? eo : null);
 		
 		while( eo.eContainer() != null ) {
 			if( eo.eContainer() instanceof Element ) {
@@ -1251,7 +1276,7 @@ public class FXGraphProposalProvider extends AbstractFXGraphProposalProvider {
 				if (fxClazz != null) {
 					Map<String, IFXProperty> map = fxClazz.getAllStaticProperties();
 					for (IFXProperty p : map.values()) {
-						completeElement_PropertiesProposals(p, model, context, FXGraphPackage.Literals.STATIC_VALUE_PROPERTY__NAME, acceptor);
+						completeElement_PropertiesProposals(p, model, context, FXGraphPackage.Literals.STATIC_VALUE_PROPERTY__NAME, acceptor, propertyTarget, FXGraphPackage.Literals.ELEMENT__STATIC_PROPERTIES);
 					}
 				}
 			}

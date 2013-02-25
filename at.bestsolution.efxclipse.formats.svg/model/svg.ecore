@@ -553,7 +553,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xlink__arcrole" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xlink__title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resolvedInstance" eType="#//SvgElement"
-        transient="true"/>
+        transient="true" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterPrimitiveAttributes" abstract="true"
       interface="true">

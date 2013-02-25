@@ -1826,7 +1826,7 @@ public class SvgUseElementImpl extends EObjectImpl implements SvgUseElement {
 	protected String xlink__title = XLINK_TITLE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getResolvedInstance() <em>Resolved Instance</em>}' reference.
+	 * The cached value of the '{@link #getResolvedInstance() <em>Resolved Instance</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getResolvedInstance()
@@ -3773,14 +3773,6 @@ public class SvgUseElementImpl extends EObjectImpl implements SvgUseElement {
 	 * @generated
 	 */
 	public SvgElement getResolvedInstance() {
-		if (resolvedInstance != null && resolvedInstance.eIsProxy()) {
-			InternalEObject oldResolvedInstance = (InternalEObject)resolvedInstance;
-			resolvedInstance = (SvgElement)eResolveProxy(oldResolvedInstance);
-			if (resolvedInstance != oldResolvedInstance) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE, oldResolvedInstance, resolvedInstance));
-			}
-		}
 		return resolvedInstance;
 	}
 
@@ -3789,8 +3781,14 @@ public class SvgUseElementImpl extends EObjectImpl implements SvgUseElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SvgElement basicGetResolvedInstance() {
-		return resolvedInstance;
+	public NotificationChain basicSetResolvedInstance(SvgElement newResolvedInstance, NotificationChain msgs) {
+		SvgElement oldResolvedInstance = resolvedInstance;
+		resolvedInstance = newResolvedInstance;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE, oldResolvedInstance, newResolvedInstance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -3799,10 +3797,17 @@ public class SvgUseElementImpl extends EObjectImpl implements SvgUseElement {
 	 * @generated
 	 */
 	public void setResolvedInstance(SvgElement newResolvedInstance) {
-		SvgElement oldResolvedInstance = resolvedInstance;
-		resolvedInstance = newResolvedInstance;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE, oldResolvedInstance, resolvedInstance));
+		if (newResolvedInstance != resolvedInstance) {
+			NotificationChain msgs = null;
+			if (resolvedInstance != null)
+				msgs = ((InternalEObject)resolvedInstance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE, null, msgs);
+			if (newResolvedInstance != null)
+				msgs = ((InternalEObject)newResolvedInstance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE, null, msgs);
+			msgs = basicSetResolvedInstance(newResolvedInstance, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE, newResolvedInstance, newResolvedInstance));
 	}
 
 	/**
@@ -3993,6 +3998,8 @@ public class SvgUseElementImpl extends EObjectImpl implements SvgUseElement {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE:
+				return basicSetResolvedInstance(null, msgs);
 			case SvgPackage.SVG_USE_ELEMENT__CHILDREN:
 				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 		}
@@ -4174,8 +4181,7 @@ public class SvgUseElementImpl extends EObjectImpl implements SvgUseElement {
 			case SvgPackage.SVG_USE_ELEMENT__XLINK_TITLE:
 				return getXlink__title();
 			case SvgPackage.SVG_USE_ELEMENT__RESOLVED_INSTANCE:
-				if (resolve) return getResolvedInstance();
-				return basicGetResolvedInstance();
+				return getResolvedInstance();
 			case SvgPackage.SVG_USE_ELEMENT__CHILDREN:
 				return getChildren();
 			case SvgPackage.SVG_USE_ELEMENT__CLASS:
