@@ -52,8 +52,10 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 	
 	@Override
 	public List<IClasspathEntry> getInitialEntries(BundleDescription project) {
+		System.err.println("LOADING INITIAL ENTRIES");
 		for( String e : project.getExecutionEnvironments() ) {
 			IExecutionEnvironment env = JavaRuntime.getExecutionEnvironmentsManager().getEnvironment(e);
+			System.err.println("Searching in ENV " + env);
 			
 			if( env == null ) {
 				continue;
@@ -85,10 +87,14 @@ public class JavaFXClassPathExtender implements IClasspathContributor {
 				}
 			}
 		}
+		
+		System.err.println("NO ENTRIES FOUND");
+		
 		return Collections.emptyList();
 	}
 	
 	private IClasspathEntry getEntry(IVMInstall vm, BundleDescription project) {
+		System.err.println("CONSULTING CUSTOM LOCATION");
 		IPath[] paths = BuildPathSupport.getFxJarPath(vm);
 		if( paths == null ) {
 			return null;
