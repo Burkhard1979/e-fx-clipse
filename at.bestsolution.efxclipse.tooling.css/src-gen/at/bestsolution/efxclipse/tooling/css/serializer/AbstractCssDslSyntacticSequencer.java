@@ -219,7 +219,7 @@ public abstract class AbstractCssDslSyntacticSequencer extends AbstractSyntactic
 	
 	/**
 	 * Syntax:
-	 *     '@PAGE' | '@page'
+	 *     '@page' | '@PAGE'
 	 */
 	protected void emit_page_PAGEKeyword_1_1_or_PageKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
