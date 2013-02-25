@@ -12,7 +12,10 @@ package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,6 +36,7 @@ import org.eclipse.xtext.ui.editor.hover.DispatchingEObjectTextHover;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssDslFactory;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.css_declaration;
+import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ruleset;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.selector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.stylesheet;
@@ -185,12 +189,30 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 	public void complete_CssTok(css_declaration model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		System.err.println("complete_CssTok prefixTok=" + findPrefixTokens(context) + "prefixString=" + context.getPrefix());
 		final List<Proposal> proposals = cssExt.getValueProposalsForProperty(findSelectors(model), model.getProperty(), findPrefixTokens(context), context.getPrefix());
+		
+		
+		
 		acceptProposals(proposals, context, acceptor);
+	}
+
+	private void filterDuplicates(ruleset model, List<Proposal> proposals) {
+		final Set<String> defined = new HashSet<>();
+		for (css_declaration d : model.getDeclarations()) {
+			defined.add(d.getProperty().getName());
+		}
+		final Iterator<Proposal> filterIterator = proposals.iterator();
+		while (filterIterator.hasNext()) {
+			Proposal curr = filterIterator.next();
+			if (defined.contains(curr.getProposal())) {
+				filterIterator.remove();
+			}
+		}
 	}
 	
 	public void completeRuleset_Declarations(ruleset model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(model.getSelectors());
+		filterDuplicates(model, proposals);
 		acceptProposals(proposals, context, acceptor);
 	}
 	
@@ -203,6 +225,7 @@ public class ExtApiDelegatingProposalProvider extends AbstractCssDslProposalProv
 		if (context.getPreviousModel() instanceof ruleset) {
 			ruleset ruleset = (ruleset) context.getPreviousModel();
 			final List<Proposal> proposals = cssExt.getPropertyProposalsForSelector(ruleset.getSelectors());
+			filterDuplicates(ruleset, proposals);
 			acceptProposals(proposals, context, acceptor);
 		}
 		else {
