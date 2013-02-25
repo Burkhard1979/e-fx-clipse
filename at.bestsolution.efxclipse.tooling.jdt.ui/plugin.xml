@@ -227,11 +227,35 @@
      </renameParticipant>
    </extension>
    <extension
+         point="org.eclipse.ltk.core.refactoring.renameParticipants">
+      <renameParticipant
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.JFXRenameFXGraphParticipant"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.renameFXGraphParticipant"
+            name="rename fxgraph file">
+            <enablement>
+              <with variable="affectedNatures">
+                <iterate operator="or">
+                  <equals value="org.eclipse.jdt.core.javanature"/>
+                </iterate>
+              </with>
+            </enablement>
+     </renameParticipant>
+   </extension>
+   <extension
          point="org.eclipse.ltk.core.refactoring.moveParticipants">
       <moveParticipant
             class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.JFXMoveParticipant"
             id="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.moveParticipant"
             name="move">
+         <enablement></enablement>
+      </moveParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.moveParticipants">
+      <moveParticipant
+            class="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.JFXMoveFXGraphParticipant"
+            id="at.bestsolution.efxclipse.tooling.jdt.ui.internal.refactoring.moveFXGraphParticipant"
+            name="move fxgraph file">
          <enablement></enablement>
       </moveParticipant>
    </extension>
