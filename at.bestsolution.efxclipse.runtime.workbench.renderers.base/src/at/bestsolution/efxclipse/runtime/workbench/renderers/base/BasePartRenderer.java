@@ -27,9 +27,10 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 	
 	@PostConstruct
 	void init(IEventBroker broker) {
-		registerEventListener(broker, UIEvents.UILabel.ICONURI);
-		registerEventListener(broker, UIEvents.UILabel.LABEL);
-		registerEventListener(broker, UIEvents.UILabel.TOOLTIP);
+		registerEventListener(broker, UIEvents.UILabel.TOPIC_ICONURI);
+		registerEventListener(broker, UIEvents.UILabel.TOPIC_LABEL);
+		registerEventListener(broker, UIEvents.UILabel.TOPIC_TOOLTIP);
+		registerEventListener(broker, UIEvents.Dirtyable.TOPIC_DIRTY);
 	}
 	
 	@Override
