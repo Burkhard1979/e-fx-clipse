@@ -364,6 +364,10 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			List<WStackItem<I, IC>> l = Collections.singletonList(item);
 			stack.removeItems(l); 
 		}
+		
+		if( changedObj.getTags().contains(EPartService.REMOVE_ON_HIDE_TAG) ) {
+			container.getChildren().remove(changedObj);
+		}
 	}
 	
 	private void showElementRecursive(MUIElement element) {
