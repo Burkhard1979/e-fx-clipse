@@ -113,6 +113,7 @@ public class DefPartMenuRenderer extends BasePartMenuRenderer<Control> {
 		protected Control createWidget() {
 			final Label b = new Label();
 			Polygon p = new Polygon(6, 1, 15, 1, 11, 5, 10, 5);
+			p.getStyleClass().add("view-menu-button-icon");
 			p.setFill(Color.WHITE);
 			p.setStroke(Color.BLACK);
 			b.setGraphic(p);
