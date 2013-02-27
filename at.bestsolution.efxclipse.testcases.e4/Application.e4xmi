@@ -18,6 +18,10 @@
           </children>
           <children xsi:type="basic:PartStack" xmi:id="_A7Q9ouL-EeGP-5z69KadAQ" elementId="content.stack" containerData="80">
             <children xsi:type="basic:Part" xmi:id="_ZHcNwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C0" iconURI="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/icons/folder.png" closeable="true">
+              <menus xmi:id="_dsz2oIEQEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.4">
+                <tags>ViewMenu</tags>
+                <children xsi:type="menu:DirectMenuItem" xmi:id="_h8rwYIEQEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.5" label="View Menu 1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+              </menus>
               <toolbar xmi:id="_eiPY4IEHEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.2">
                 <children xsi:type="menu:DirectToolItem" xmi:id="_fH640IEHEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.6" label="Bl" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
               </toolbar>
@@ -49,6 +53,13 @@
           <children xsi:type="basic:Part" xmi:id="_Tp95UCZmEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.10" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 10">
             <persistedState key="fx_layout_width" value="300"/>
             <tags>content_a</tags>
+            <menus xmi:id="_xwNwMIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.5">
+              <tags>ViewMenu</tags>
+              <children xsi:type="menu:DirectMenuItem" xmi:id="_y7B9gIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.6" label="Di" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+            </menus>
+            <toolbar xmi:id="_83m7YIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.3">
+              <children xsi:type="menu:DirectToolItem" xmi:id="_9hPHMIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.7" label="DI" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+            </toolbar>
           </children>
           <children xsi:type="basic:Part" xmi:id="_uiO8QCZmEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.11" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 11">
             <persistedState key="fx_layout_grab_horizontal" value="true"/>

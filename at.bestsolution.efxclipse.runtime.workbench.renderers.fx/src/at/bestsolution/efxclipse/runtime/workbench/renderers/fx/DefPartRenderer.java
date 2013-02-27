@@ -132,20 +132,50 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
 			return stack;
 		}
 		
-		@Override
-		public void setToolbar(WToolBar<Node> widget) {
+		private void initToolbarMenu() {
 			if( toolbarMenuContainer == null ) {
 				// Ensure that everything is initialized!!!
 				getStaticLayoutNode();
+				BorderPane p = new BorderPane();
+				p.getStyleClass().add("view-toolbar-menu");
 				toolbarMenuContainer = new BorderPane();
-				dataArea.setTop(toolbarMenuContainer);
+				p.setRight(toolbarMenuContainer);
+				dataArea.setTop(p);
 			}
-			toolbarMenuContainer.setCenter((Node) widget.getStaticLayoutNode());
+		}
+		
+		private void checkToolbarMenu() {
+			if( toolbarMenuContainer.getLeft() == null && toolbarMenuContainer.getRight() == null ) {
+				toolbarMenuContainer = null;
+				dataArea.setTop(null);
+			}
+		}
+		
+		@Override
+		public void setToolbar(WToolBar<Node> widget) {
+			if( widget == null ) {
+				if( toolbarMenuContainer != null ) {
+					toolbarMenuContainer.setLeft(null);
+					checkToolbarMenu();
+				}
+			} else {
+				initToolbarMenu();
+				((Node)widget.getWidget()).getStyleClass().add("view-toolbar");
+				toolbarMenuContainer.setLeft((Node) widget.getStaticLayoutNode());
+			}
 		}
 		
 		@Override
 		public void setMenu(WMenu<Node> widget) {
-			
+			if( widget == null ) {
+				if( toolbarMenuContainer != null ) {
+					toolbarMenuContainer.setRight(null);
+					checkToolbarMenu();
+				}
+			} else {
+				initToolbarMenu();
+				toolbarMenuContainer.setRight((Node) widget.getWidget());
+			}
 		}
 	}
 }

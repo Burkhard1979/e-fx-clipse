@@ -68,6 +68,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BaseToolBarSeparatorRenderer<?> toolbarSeparatorRenderer;
 	private BaseAreaRenderer<?> areaRenderer;
 	private BasePopupMenuRenderer<?> popupMenuRenderer;
+	private BasePartMenuRenderer<?> partMenuRenderer;
 	
 	@Inject
 	public BaseWorkbenchRendererFactory(IEclipseContext context) {
@@ -120,6 +121,11 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 					toolItemMenuRenderer = make(getToolItemMenuRendererClass());
 				}
 				return (R) toolItemMenuRenderer;
+			} else if( ((EObject)modelObject).eContainer() instanceof MPart && ((MMenu)modelObject).getTags().contains(BasePartRenderer.VIEW_MENU_TAG) ) {
+				if( partMenuRenderer == null ) {
+					partMenuRenderer = make(getPartMenuRenderer());
+				}
+				return (R) partMenuRenderer;
 			} else {
 				if( menuRenderer == null ) {
 					menuRenderer = make(getMenuRendererClass());
@@ -209,5 +215,5 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BaseToolBarSeparatorRenderer<?>> getToolBarSeparatorRendererClass();
 	protected abstract Class<? extends BaseAreaRenderer<?>> getAreaRendererClass();
 	protected abstract Class<? extends BasePopupMenuRenderer<?>> getPopupMenuRendererClass();
-
+	protected abstract Class<? extends BasePartMenuRenderer<?>> getPartMenuRenderer();
 }

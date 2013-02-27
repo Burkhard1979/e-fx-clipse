@@ -16,15 +16,18 @@ import org.eclipse.e4.core.services.contributions.IContributionFactory;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPart;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBar;
 
 
 @SuppressWarnings("restriction")
 public abstract class BasePartRenderer<N,T,M> extends BaseRenderer<MPart, WPart<N,T,M>> {
+	public static final String VIEW_MENU_TAG = "ViewMenu";
 	
 	@PostConstruct
 	void init(IEventBroker broker) {
@@ -63,6 +66,14 @@ public abstract class BasePartRenderer<N,T,M> extends BaseRenderer<MPart, WPart<
 		if( element.getToolbar() != null ) {
 			WToolBar<T> toolbar = engineCreateWidget(element.getToolbar());
 			widget.setToolbar(toolbar);
+		}
+		
+		for( MMenu m : element.getMenus() ) {
+			if( m.getTags().contains(VIEW_MENU_TAG) ) {
+				WMenu<M> menu = engineCreateWidget(m);
+				widget.setMenu(menu);
+				break;
+			}
 		}
 		
 		Class<?> cl = widget.getWidget().getClass();
