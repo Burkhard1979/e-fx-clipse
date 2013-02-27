@@ -15,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 import javax.inject.Inject;
 
@@ -52,7 +51,7 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
 		return true;
 	}
 	
-	public static class PartImpl extends WLayoutedWidgetImpl<BorderPane, BorderPane, MPart> implements WPart<BorderPane,Node,Node> {
+	public static class PartImpl extends WLayoutedWidgetImpl<BorderPane, AnchorPane, MPart> implements WPart<BorderPane,Node,Node> {
 		@Inject
 		EPartService service;
 		
@@ -103,34 +102,53 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
 		}
 
 		@Override
-		protected BorderPane getWidgetNode() {
-			return getWidget();
+		protected AnchorPane getWidgetNode() {
+			if( contentArea == null ) {
+				contentArea = new AnchorPane();
+				dataArea = new BorderPane();
+				
+				AnchorPane.setTopAnchor(dataArea, 0.0);
+				AnchorPane.setLeftAnchor(dataArea, 0.0);
+				AnchorPane.setBottomAnchor(dataArea, 1.0);
+				AnchorPane.setRightAnchor(dataArea, 1.0);
+				
+				contentArea.getChildren().add(dataArea);
+				
+				Node n = getWidget();
+				if( n != null ) {
+					n.getStyleClass().add("part-content");
+					dataArea.setCenter(n);
+				} else {
+					logger.log(Level.ERROR, "No widget node to attach");
+				}				
+			}
+			return contentArea;
 		}
 		
-		@Override
-		protected Node createStaticLayoutNode() {
-			StackPane stack = new StackPane();
-			contentArea = new AnchorPane();
-			stack.getChildren().add(contentArea);
-			
-			dataArea = new BorderPane();
-			
-			AnchorPane.setTopAnchor(dataArea, 0.0);
-			AnchorPane.setLeftAnchor(dataArea, 0.0);
-			AnchorPane.setBottomAnchor(dataArea, 1.0);
-			AnchorPane.setRightAnchor(dataArea, 1.0);
-			
-			contentArea.getChildren().add(dataArea);
-			
-			Node n = getWidgetNode();
-			if( n != null ) {
-				dataArea.setCenter(n);
-			} else {
-				logger.log(Level.ERROR, "No widget node to attach");
-			}
-			
-			return stack;
-		}
+//		@Override
+//		protected Node createStaticLayoutNode() {
+//			StackPane stack = new StackPane();
+//			contentArea = new AnchorPane();
+//			stack.getChildren().add(contentArea);
+//			
+//			dataArea = new BorderPane();
+//			
+//			AnchorPane.setTopAnchor(dataArea, 0.0);
+//			AnchorPane.setLeftAnchor(dataArea, 0.0);
+//			AnchorPane.setBottomAnchor(dataArea, 1.0);
+//			AnchorPane.setRightAnchor(dataArea, 1.0);
+//			
+//			contentArea.getChildren().add(dataArea);
+//			
+//			Node n = getWidgetNode();
+//			if( n != null ) {
+//				dataArea.setCenter(n);
+//			} else {
+//				logger.log(Level.ERROR, "No widget node to attach");
+//			}
+//			
+//			return stack;
+//		}
 		
 		private void initToolbarMenu() {
 			if( toolbarMenuContainer == null ) {

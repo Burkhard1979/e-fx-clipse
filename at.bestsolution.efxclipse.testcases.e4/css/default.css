@@ -104,7 +104,10 @@
 
 .content_a {
 	-fx-background-color: #f00;
-	-fx-padding: 10;
+	
+}
+.content_a .part-content {
+	-fx-padding: 10;	
 }
 
 .content_b {
