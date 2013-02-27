@@ -20,10 +20,11 @@ import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPart;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBar;
 
 
 @SuppressWarnings("restriction")
-public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> {
+public abstract class BasePartRenderer<N,T,M> extends BaseRenderer<MPart, WPart<N,T,M>> {
 	
 	@PostConstruct
 	void init(IEventBroker broker) {
@@ -34,7 +35,7 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 	}
 	
 	@Override
-	protected void initWidget(final MPart element, final WPart<N> widget) {
+	protected void initWidget(final MPart element, final WPart<N,T,M> widget) {
 		super.initWidget(element, widget);				
 		widget.registerActivationCallback(new WCallback<Boolean, Void>() {
 			
@@ -53,11 +54,16 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 		});
 	}
 	
-	protected abstract boolean requiresFocus(WPart<N> widget);
+	protected abstract boolean requiresFocus(WPart<N,T,M> widget);
 	
 	@Override
 	public void doProcessContent(MPart element) {
-		WPart<N> widget = getWidget(element);
+		WPart<N,T,M> widget = getWidget(element);
+		
+		if( element.getToolbar() != null ) {
+			WToolBar<T> toolbar = engineCreateWidget(element.getToolbar());
+			widget.setToolbar(toolbar);
+		}
 		
 		Class<?> cl = widget.getWidget().getClass();
 		do {
@@ -65,11 +71,11 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 			cl = cl.getSuperclass();
 		} while( ! cl.getName().equals("java.lang.Object") );
 		
-		
 		IContributionFactory contributionFactory = (IContributionFactory) element.getContext().get(IContributionFactory.class
 				.getName());
 		Object newPart = contributionFactory.create(element.getContributionURI(), element.getContext());
 		element.setObject(newPart);
+		
 	}
 
 	@Override

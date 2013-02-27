@@ -12,9 +12,16 @@
                 <parameters xmi:id="_tPAAoCTjEeKY8NYIo6jIvQ" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.2"/>
               </children>
             </menus>
+            <toolbar xmi:id="_FMzQEIEGEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.0">
+              <children xsi:type="menu:DirectToolItem" xmi:id="_GVO3wIEGEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.5" label="Hello World" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+            </toolbar>
           </children>
           <children xsi:type="basic:PartStack" xmi:id="_A7Q9ouL-EeGP-5z69KadAQ" elementId="content.stack" containerData="80">
-            <children xsi:type="basic:Part" xmi:id="_ZHcNwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C0" iconURI="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/icons/folder.png" closeable="true"/>
+            <children xsi:type="basic:Part" xmi:id="_ZHcNwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C0" iconURI="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/icons/folder.png" closeable="true">
+              <toolbar xmi:id="_eiPY4IEHEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.2">
+                <children xsi:type="menu:DirectToolItem" xmi:id="_fH640IEHEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.6" label="Bl" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+              </toolbar>
+            </children>
             <children xsi:type="basic:Part" xmi:id="_cjVs4OL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C1"/>
             <children xsi:type="basic:Part" xmi:id="_f5-RgOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.2" toBeRendered="false" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C2" closeable="true"/>
             <children xsi:type="basic:Part" xmi:id="_jRKPwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.3" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C3" closeable="true"/>

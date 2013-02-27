@@ -78,7 +78,7 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	}
 
 	@Override
-	protected Class<? extends BasePartRenderer<?>> getPartRendererClass() {
+	protected Class<? extends BasePartRenderer<?,?,?>> getPartRendererClass() {
 		return DefPartRenderer.class;
 	}
 

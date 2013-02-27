@@ -56,7 +56,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	private BaseToolBarRenderer<?> toolBarRenderer;
 	private BaseToolItemRenderer<?> toolItemRenderer;
 	private BaseStackRenderer<?, ?, ?> stackRenderer;
-	private BasePartRenderer<?> partRenderer;
+	private BasePartRenderer<?,?,?> partRenderer;
 	private BaseMenuRenderer<?> menuRenderer;
 	private BaseMenuItemRenderer<?> menuItemRenderer;
 	private BaseMenuSeparatorRenderer<?> menuSeperatorRenderer;
@@ -197,7 +197,7 @@ public abstract class BaseWorkbenchRendererFactory implements RendererFactory {
 	protected abstract Class<? extends BaseToolBarRenderer<?>> getToolBarRendererClass();
 	protected abstract Class<? extends BaseToolItemRenderer<?>> getToolItemRendererClass();
 	protected abstract Class<? extends BaseStackRenderer<?,?,?>> getStackRendererClass();
-	protected abstract Class<? extends BasePartRenderer<?>> getPartRendererClass();
+	protected abstract Class<? extends BasePartRenderer<?,?,?>> getPartRendererClass();
 	protected abstract Class<? extends BaseMenuRenderer<?>> getMenuRendererClass();
 	protected abstract Class<? extends BaseMenuItemRenderer<?>> getMenuItemRendererClass();
 	protected abstract Class<? extends BaseMenuSeparatorRenderer<?>> getMenuSeparatorRendererClass();
