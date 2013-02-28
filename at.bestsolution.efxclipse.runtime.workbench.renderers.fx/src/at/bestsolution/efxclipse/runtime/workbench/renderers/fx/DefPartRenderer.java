@@ -32,7 +32,9 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 
 @SuppressWarnings("restriction")
 public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
-
+	private static final String FLOAT_TOOL_MENU_AREA_TAG = "FloatingToolBarMenuArea";
+	private static final String FULL_SPAN_TOOL_BAR = "FullSpanToolbar";
+	
 	@Override
 	protected Class<? extends WPart<BorderPane,Node,Node>> getWidgetClass(MPart part) {
 		return PartImpl.class;
@@ -124,32 +126,7 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
 			}
 			return contentArea;
 		}
-		
-//		@Override
-//		protected Node createStaticLayoutNode() {
-//			StackPane stack = new StackPane();
-//			contentArea = new AnchorPane();
-//			stack.getChildren().add(contentArea);
-//			
-//			dataArea = new BorderPane();
-//			
-//			AnchorPane.setTopAnchor(dataArea, 0.0);
-//			AnchorPane.setLeftAnchor(dataArea, 0.0);
-//			AnchorPane.setBottomAnchor(dataArea, 1.0);
-//			AnchorPane.setRightAnchor(dataArea, 1.0);
-//			
-//			contentArea.getChildren().add(dataArea);
-//			
-//			Node n = getWidgetNode();
-//			if( n != null ) {
-//				dataArea.setCenter(n);
-//			} else {
-//				logger.log(Level.ERROR, "No widget node to attach");
-//			}
-//			
-//			return stack;
-//		}
-		
+
 		private void initToolbarMenu() {
 			if( toolbarMenuContainer == null ) {
 				// Ensure that everything is initialized!!!
@@ -157,7 +134,12 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
 				BorderPane p = new BorderPane();
 				p.getStyleClass().add("view-toolbar-menu");
 				toolbarMenuContainer = new BorderPane();
-				p.setRight(toolbarMenuContainer);
+				if( getDomElement().getTags().contains(FULL_SPAN_TOOL_BAR) ) {
+					p.setCenter(toolbarMenuContainer);
+				} else {
+					p.setRight(toolbarMenuContainer);	
+				}
+				
 				dataArea.setTop(p);
 			}
 		}

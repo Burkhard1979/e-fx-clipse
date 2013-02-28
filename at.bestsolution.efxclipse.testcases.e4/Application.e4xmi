@@ -7,6 +7,7 @@
       <children xsi:type="advanced:Perspective" xmi:id="_m-PVAO6wEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.perspective.0" label="P 0">
         <children xsi:type="basic:PartSashContainer" xmi:id="_A7Q9oOL-EeGP-5z69KadAQ" horizontal="true">
           <children xsi:type="basic:Part" xmi:id="_A7Q9oeL-EeGP-5z69KadAQ" containerData="10" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ControlPanel" label="Control Stack" iconURI="">
+            <tags>FullSpanToolbar</tags>
             <menus xsi:type="menu:PopupMenu" xmi:id="_l9uLYCTjEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.popupmenu.0">
               <children xsi:type="menu:HandledMenuItem" xmi:id="_oWARYCTjEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.7" label="Switch Perspective 2" command="_kCbZQO6yEeG4lfn-YKJbJw">
                 <parameters xmi:id="_tPAAoCTjEeKY8NYIo6jIvQ" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.2"/>

@@ -22,6 +22,10 @@
 	-fx-background-color: transparent;
 }
 
+.FullSpanToolbar > * > .view-toolbar-menu {
+	-fx-background-color: green;
+}
+
 .efxSelectedRadioToolButton {
 	-light-black: orange;
 	-dark-black:  orange;
