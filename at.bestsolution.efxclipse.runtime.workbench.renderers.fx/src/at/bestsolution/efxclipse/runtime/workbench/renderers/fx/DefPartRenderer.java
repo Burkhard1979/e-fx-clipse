@@ -32,8 +32,10 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayouted
 
 @SuppressWarnings("restriction")
 public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
-	private static final String FLOAT_TOOL_MENU_AREA_TAG = "FloatingToolBarMenuArea";
-	private static final String FULL_SPAN_TOOL_BAR = "FullSpanToolbar";
+	private static final String TOOLBAR_MENU_FLOAT_TAG = "Part-ToolBarMenu-Floating";
+	private static final String TOOLBAR_MENU_BOTTOM_TAG = "Part-ToolBarMenu-Bottom";
+	
+	private static final String TOOL_BAR_FULL_SPAN_TAG = "Part-Toolbar-FullSpan";
 	
 	@Override
 	protected Class<? extends WPart<BorderPane,Node,Node>> getWidgetClass(MPart part) {
@@ -134,13 +136,17 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane,Node,Node> {
 				BorderPane p = new BorderPane();
 				p.getStyleClass().add("view-toolbar-menu");
 				toolbarMenuContainer = new BorderPane();
-				if( getDomElement().getTags().contains(FULL_SPAN_TOOL_BAR) ) {
+				if( getDomElement().getTags().contains(TOOL_BAR_FULL_SPAN_TAG) ) {
 					p.setCenter(toolbarMenuContainer);
 				} else {
 					p.setRight(toolbarMenuContainer);	
 				}
 				
-				dataArea.setTop(p);
+				if( getDomElement().getTags().contains(TOOLBAR_MENU_BOTTOM_TAG) ) {
+					dataArea.setBottom(p);
+				} else {
+					dataArea.setTop(p);	
+				}
 			}
 		}
 		

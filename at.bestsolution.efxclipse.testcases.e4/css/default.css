@@ -22,7 +22,7 @@
 	-fx-background-color: transparent;
 }
 
-.FullSpanToolbar > * > .view-toolbar-menu {
+.Part-Toolbar-FullSpan > * > .view-toolbar-menu {
 	-fx-background-color: green;
 }
 
