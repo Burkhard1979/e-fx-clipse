@@ -8,7 +8,8 @@ Require-Bundle: org.eclipse.equinox.common;bundle-version="3.6.100",
  org.eclipse.text;bundle-version="3.5.200",
  at.bestsolution.efxclipse.styledtext;bundle-version="1.0.0",
  org.eclipse.core.commands;bundle-version="3.6.1",
- com.ibm.icu;bundle-version="4.4.2"
+ com.ibm.icu;bundle-version="4.4.2",
+ at.bestsolution.efxclipse.jface;bundle-version="1.0.0"
 Import-Package: javafx.animation;version="2.2.0",
  javafx.application;version="2.2.0",
  javafx.beans;version="2.2.0",
@@ -45,5 +46,7 @@ Export-Package: at.bestsolution.efxclipse.text,
  at.bestsolution.efxclipse.text.jface,
  at.bestsolution.efxclipse.text.jface.contentassist,
  at.bestsolution.efxclipse.text.jface.presentation,
+ at.bestsolution.efxclipse.text.jface.quickassist,
+ at.bestsolution.efxclipse.text.jface.reconciler,
  at.bestsolution.efxclipse.text.jface.rules,
  at.bestsolution.efxclipse.text.jface.source

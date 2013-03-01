@@ -24,4 +24,13 @@ public interface ISourceViewer extends ITextViewer {
 	public void configure(SourceViewerConfiguration configuration);
 	public void setDocument(IDocument document, IAnnotationModel annotationModel);
 	public void setDocument(IDocument document, IAnnotationModel annotationModel, int modelRangeOffset, int modelRangeLength);
+	
+	/**
+	 * Returns this viewer's annotation model. Use
+	 * {@link ISourceViewerExtension2#getVisualAnnotationModel()}in order to
+	 * get access to the viewer's visual annotation model.
+	 *
+	 * @return this viewer's annotation model
+	 */
+	IAnnotationModel getAnnotationModel();
 }

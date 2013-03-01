@@ -45,8 +45,6 @@ import org.eclipse.jface.text.IDocument;
 
 import at.bestsolution.efxclipse.runtime.application.AbstractJFXApplication;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
-import at.bestsolution.efxclipse.styledtext.exp2.editor.Editor;
-import at.bestsolution.efxclipse.styledtext.exp2.editor.EditorLine;
 import at.bestsolution.efxclipse.text.SimpleSourceViewer;
 import at.bestsolution.efxclipse.text.jface.rules.ITokenScanner;
 import at.bestsolution.efxclipse.text.jface.source.ISourceViewer;

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jface
+Bundle-SymbolicName: at.bestsolution.efxclipse.jface
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: at.bestsolution.efxclipse.styledtext;bundle-version="1.0.0",
+ org.eclipse.equinox.common;bundle-version="3.6.100",
+ org.eclipse.core.runtime;bundle-version="3.8.0"
+Export-Package: at.bestsolution.efxclipse.jface,
+ at.bestsolution.efxclipse.jface.commands.common,
+ at.bestsolution.efxclipse.jface.preferences,
+ at.bestsolution.efxclipse.jface.resources,
+ at.bestsolution.efxclipse.jface.util

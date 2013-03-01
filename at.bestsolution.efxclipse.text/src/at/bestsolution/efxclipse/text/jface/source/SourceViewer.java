@@ -94,4 +94,11 @@ public class SourceViewer extends TextViewer implements ISourceViewer {
 		
 		super.doOperation(operation);
 	}
+	
+	@Override
+	public IAnnotationModel getAnnotationModel() {
+		System.err.println("NEEDS TO BE IMPLEMENTED");
+		Thread.dumpStack();
+		return null;
+	}
 }

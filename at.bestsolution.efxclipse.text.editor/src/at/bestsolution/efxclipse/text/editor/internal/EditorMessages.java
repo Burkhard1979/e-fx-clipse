@@ -14,5 +14,8 @@ public class EditorMessages {
 	public static String NullProvider_error = "";
 	public static String TextFileDocumentProvider_beginTask_saving = "";
 	public static String TextFileDocumentProvider_saveAsTargetOpenInEditor = "";
+	public static String AbstractMarkerAnnotationModel_connected = "";
+	public static String AbstractMarkerAnnotationModel_removeAnnotations = "";
+	public static String AbstractMarkerAnnotationModel_createMarkerUpdater = "";
 
 }
