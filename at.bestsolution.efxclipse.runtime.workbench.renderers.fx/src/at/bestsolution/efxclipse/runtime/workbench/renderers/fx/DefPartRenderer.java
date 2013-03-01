@@ -11,12 +11,18 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 
 import javax.inject.Inject;
 
@@ -64,8 +70,8 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane, Node, Node> {
 
 		private AnchorPane contentArea;
 		private BorderPane dataArea;
-		private BorderPane toolbarMenuContainer;
 
+		private StackPane expandGroup;
 		private StackPane toolbarGroup;
 		private Group menuGroup;
 		
@@ -117,10 +123,29 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane, Node, Node> {
 				menuGroup = new Group();
 				menuGroup.setVisible(false);
 				menuGroup.setManaged(false);
+				
+				expandGroup = new StackPane();
+				expandGroup.setStyle("-fx-background-color: gray");
+				expandGroup.setOpacity(0.5);
+				Node handler = new HandleGroup();//new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/format-line-spacing-normal.png")));
+				handler.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent event) {
+						toolbarGroup.getParent().setVisible(true);
+					}
+				});
+				expandGroup.getChildren().add(handler);
+				
+//				expandView = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/vcs-update-required.png")));
+//				expandView.setManaged(false);
+//				expandView.setVisible(false);
+				
 				contentArea = new AnchorPane() {
 					@Override
 					protected void layoutChildren() {
 						super.layoutChildren();
+						
 						if( menuGroup.isVisible() ) {
 							menuGroup.relocate(contentArea.getWidth()-20,0);
 						}
@@ -132,7 +157,11 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane, Node, Node> {
 				AnchorPane.setLeftAnchor(dataArea, 0.0);
 				AnchorPane.setBottomAnchor(dataArea, 1.0);
 				AnchorPane.setRightAnchor(dataArea, 1.0);
-
+				
+//				AnchorPane.setTopAnchor(expandGroup, 0.0);
+//				AnchorPane.setLeftAnchor(expandGroup, 0.0);
+//				AnchorPane.setRightAnchor(expandGroup, 1.0);
+				
 				contentArea.getChildren().addAll(dataArea, menuGroup);
 				Node n = getWidget();
 				if (n != null) {
@@ -146,20 +175,36 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane, Node, Node> {
 		}
 
 		private void initToolbarMenu() {
-			if (toolbarMenuContainer == null) {
+			if (toolbarGroup == null) {
 				// Ensure that everything is initialized!!!
 				getStaticLayoutNode();
 				
 				toolbarGroup = new StackPane();
 				
 				if (getDomElement().getTags().contains(TOOL_BAR_FULL_SPAN_TAG)) {
-					BorderPane p = new BorderPane();
+					final BorderPane p = new BorderPane();
 					p.setCenter(toolbarGroup);
 					p.getStyleClass().add("view-toolbar-container");
-					if (getDomElement().getTags().contains(TOOLBAR_MENU_BOTTOM_TAG)) {
-						dataArea.setBottom(p);
+					if( getDomElement().getTags().contains(TOOLBAR_MENU_FLOAT_TAG) ) {
+						AnchorPane.setLeftAnchor(p, 0.0);
+						AnchorPane.setRightAnchor(p, 1.0);
+						AnchorPane.setTopAnchor(p, 0.0);
+						contentArea.getChildren().add(p);
+						p.setVisible(false);
+						dataArea.setTop(expandGroup);
+						expandGroup.setVisible(true);
+						p.setOnMousePressed(new EventHandler<MouseEvent>() {
+							@Override
+							public void handle(MouseEvent event) {
+								p.setVisible(false);
+							}
+						});
 					} else {
-						dataArea.setTop(p);	
+						if (getDomElement().getTags().contains(TOOLBAR_MENU_BOTTOM_TAG)) {
+							dataArea.setBottom(p);
+						} else {
+							dataArea.setTop(p);	
+						}	
 					}
 				} else {
 					BorderPane p = new BorderPane();
@@ -184,8 +229,19 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane, Node, Node> {
 				}
 			} else {
 				initToolbarMenu();
-				((Node) widget.getWidget()).getStyleClass().add("view-toolbar");
-				toolbarGroup.getChildren().setAll((Node) widget.getWidget());
+				Node n = (Node) widget.getWidget();
+				n.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent event) {
+						if( getDomElement().getTags().contains(TOOLBAR_MENU_FLOAT_TAG) ) {
+							toolbarGroup.getParent().setVisible(false);
+						}
+					}
+				});
+				
+				n.getStyleClass().add("view-toolbar");
+				toolbarGroup.getChildren().setAll(n);
 			}
 		}
 
@@ -199,6 +255,50 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane, Node, Node> {
 			} else {
 				menuGroup.setVisible(true);
 				menuGroup.getChildren().setAll((Node) widget.getWidget());
+			}
+		}
+	}
+	
+	static class HandleGroup extends Group {
+		@Override
+		public double minHeight(double width) {
+			return 11;
+		}
+		
+		@Override
+		public double maxWidth(double height) {
+			return 20;
+		}
+		
+		public HandleGroup() {
+			{
+				Rectangle r = new Rectangle(16,1);
+				r.setFill(Color.WHITE);
+				r.setStroke(Color.BLACK);
+				r.setLayoutX(0);
+				r.setLayoutY(1);
+				r.setStrokeType(StrokeType.OUTSIDE);
+				getChildren().add(r);
+			}
+			
+			{
+				Rectangle r = new Rectangle(16,1);
+				r.setFill(Color.WHITE);
+				r.setStroke(Color.BLACK);
+				r.setLayoutX(0);
+				r.setLayoutY(4);
+				r.setStrokeType(StrokeType.OUTSIDE);
+				getChildren().add(r);
+			}
+			
+			{
+				Rectangle r = new Rectangle(16,1);
+				r.setFill(Color.WHITE);
+				r.setStroke(Color.BLACK);
+				r.setLayoutX(0);
+				r.setLayoutY(7);
+				r.setStrokeType(StrokeType.OUTSIDE);
+				getChildren().add(r);
 			}
 		}
 	}
