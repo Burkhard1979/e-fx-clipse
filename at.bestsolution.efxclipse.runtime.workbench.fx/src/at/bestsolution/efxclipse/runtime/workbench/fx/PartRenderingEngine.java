@@ -229,7 +229,7 @@ public class PartRenderingEngine implements IPresentationEngine {
 
 	@SuppressWarnings("unchecked")
 	public void removeGui(MUIElement element) {
-		MUIElement container = (element.getCurSharedRef() == null)
+		MUIElement container = (element.getCurSharedRef() != null)
 				? element.getCurSharedRef()
 				: (MUIElement) ((EObject)element).eContainer();
 		
