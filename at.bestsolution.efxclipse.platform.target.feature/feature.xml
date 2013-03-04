@@ -2079,4 +2079,18 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="at.bestsolution.efxclipse.formats.svg"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.bestsolution.efxclipse.formats.svg.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
