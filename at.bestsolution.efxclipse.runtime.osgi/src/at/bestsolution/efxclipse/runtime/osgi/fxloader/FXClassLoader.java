@@ -182,7 +182,8 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 			// used
 			// we can load those
 			Bundle[] bundles = admin.getBundles("org.eclipse.swt", null);
-
+			boolean swtAvailable = false;
+			
 			if (bundles != null) {
 				for (int i = 0; i < bundles.length; i++) {
 					if ((bundles[i].getState() & Bundle.INSTALLED) == 0) {
@@ -193,15 +194,16 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 							bundles[i].start();
 						}
 						parent = bundles[i].adapt(BundleWiring.class).getClassLoader();
+						swtAvailable = true;
 						break;
 					}
 				}
 			}
 
-			fxClassLoader = createClassloader(parent, prefService, admin, bundledata, context);
+			fxClassLoader = createClassloader(parent, prefService, admin, bundledata, context, swtAvailable);
 		}
 
-		private static URLClassLoader createJREBundledClassloader(ClassLoader parent) {
+		private static URLClassLoader createJREBundledClassloader(ClassLoader parent, boolean swtAvailable) {
 			if( FXClassLoadingConfigurator.DEBUG ) {
 				System.err.println("MyBundleClassLoader#createJREBundledClassloader - Started");
 			}
@@ -223,9 +225,29 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 					System.err.println("MyBundleClassLoader#createJREBundledClassloader - Assumed location (Java 8/Java 7): " + jarFile.getAbsolutePath());
 				}
 				
+				
+				
 				if( jarFile.exists() ) {
-					URL url = jarFile.getCanonicalFile().toURI().toURL();
-					return new URLClassLoader(new URL[] { url }, parent);
+					// if SWT is available we need to construct a new URL-Classloader with SWT
+					// bundles classloader as the parent
+					if( swtAvailable ) {
+						URL url = jarFile.getCanonicalFile().toURI().toURL();
+						return new URLClassLoader(new URL[] { url }, parent);	
+					} else {
+						// we should be able to delegate to the URL-Extension-Classloader, which is essential for ScenicView
+						// which installs an JMX-Component
+						try {
+							ClassLoader extClassLoader = ClassLoader.getSystemClassLoader().getParent();
+							if( extClassLoader.getClass().getName().equals("sun.misc.Launcher$ExtClassLoader") ) {
+								return new URLClassLoader(new URL[] {}, extClassLoader);	
+							}
+						} catch(Throwable t) {
+							t.printStackTrace();
+						}
+						URL url = jarFile.getCanonicalFile().toURI().toURL();
+						URLClassLoader cl = new URLClassLoader(new URL[] { url }, parent);
+						return cl;
+					}
 				} 
 				
 				// Java 7
@@ -254,7 +276,7 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 			return null;
 		}
 
-		private static URLClassLoader createClassloader(ClassLoader parent, ReflectivePreferenceService prefService, PackageAdmin admin, BaseData bundledata, BundleContext context) throws Exception {
+		private static URLClassLoader createClassloader(ClassLoader parent, ReflectivePreferenceService prefService, PackageAdmin admin, BaseData bundledata, BundleContext context, boolean swtAvailable) throws Exception {
 			URLClassLoader loader;
 			
 			{
@@ -262,7 +284,7 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 					System.err.println("MyBundleClassLoader#createClassloader - checking for JRE bundled javafx");
 				}
 				
-				loader = createJREBundledClassloader(parent);
+				loader = createJREBundledClassloader(parent, swtAvailable);
 			}
 			
 			if (loader != null) {
