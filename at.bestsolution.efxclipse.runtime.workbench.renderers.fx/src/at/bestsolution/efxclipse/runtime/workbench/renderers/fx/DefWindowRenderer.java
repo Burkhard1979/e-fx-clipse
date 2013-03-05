@@ -171,6 +171,9 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		@Optional
 		WindowTransitionService<Stage> windowTransitionService;
 		
+		@Inject
+		private IResourceUtilities<Image> resourceUtilities;
+		
 		boolean initDone;
 		
 		@Inject
@@ -505,6 +508,25 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		@Inject
 		public void setTitle(@Named(ATTRIBUTE_localizedLabel) String title) {
 			getWidget().setTitle(title);
+		}
+		
+		@Inject
+		public void setImageUrl(@Named(UIEvents.UILabel.ICONURI) @Optional String iconUri) {
+			if( iconUri != null ) {
+				
+				String[] split = iconUri.split(";");
+				List<Image> images = new ArrayList<>();
+				for( String uri : split ) {
+					Image img = resourceUtilities.imageDescriptorFromURI(URI.createURI(uri));
+					if( img != null ) {
+						images.add(img);
+					}
+				}
+				
+				getWidget().getIcons().setAll(images);
+			} else {
+				getWidget().getIcons().clear();
+			}
 		}
 
 		@Override
