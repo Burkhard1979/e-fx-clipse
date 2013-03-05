@@ -54,12 +54,12 @@ public class StringConverter {
             double rval = 0, gval = 0, bval = 0;
             try {
                 rval = Double.parseDouble(red);
-                gval = Integer.parseInt(green);
-                bval = Integer.parseInt(blue);
+                gval = Double.parseDouble(green);
+                bval = Double.parseDouble(blue);
             } catch (NumberFormatException e) {
                 throw new DataFormatException(e.getMessage());
             }
-            return new RGB(rval, gval, bval, 0);
+            return new RGB(rval, gval, bval, 1.0);
         } catch (NoSuchElementException e) {
             throw new DataFormatException(e.getMessage());
         }

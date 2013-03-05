@@ -16,6 +16,7 @@ import org.eclipse.jface.text.IDocumentExtension3;
 import at.bestsolution.efxclipse.text.jface.contentassist.IContentAssistant;
 import at.bestsolution.efxclipse.text.jface.presentation.IPresentationReconciler;
 import at.bestsolution.efxclipse.text.jface.presentation.PresentationReconciler;
+import at.bestsolution.efxclipse.text.jface.reconciler.IReconciler;
 
 public class SourceViewerConfiguration {
 	/**
@@ -66,6 +67,17 @@ public class SourceViewerConfiguration {
 	 * @return a content assistant or <code>null</code> if content assist should not be supported
 	 */
 	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
+		return null;
+	}
+	
+	/**
+	 * Returns the reconciler ready to be used with the given source viewer.
+	 * This implementation always returns <code>null</code>.
+	 *
+	 * @param sourceViewer the source viewer to be configured by this configuration
+	 * @return a reconciler or <code>null</code> if reconciling should not be supported
+	 */
+	public IReconciler getReconciler(ISourceViewer sourceViewer) {
 		return null;
 	}
 }

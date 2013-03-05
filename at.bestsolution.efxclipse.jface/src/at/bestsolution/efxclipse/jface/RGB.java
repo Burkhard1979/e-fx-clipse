@@ -23,7 +23,7 @@ public class RGB {
 	}
 	
 	public static RGB iRGB(int red, int green, int blue) {
-		return new RGB(red/255.0,green/255.0,blue/255.0,0);
+		return new RGB(red/255.0,green/255.0,blue/255.0,1.0);
 	}
 	
 	@Override

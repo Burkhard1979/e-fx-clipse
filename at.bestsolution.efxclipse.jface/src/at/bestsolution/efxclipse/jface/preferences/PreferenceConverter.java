@@ -4,7 +4,7 @@ import at.bestsolution.efxclipse.jface.RGB;
 import at.bestsolution.efxclipse.jface.resources.StringConverter;
 
 public class PreferenceConverter {
-	public static final RGB COLOR_DEFAULT_DEFAULT = new RGB(0, 0, 0, 0);
+	public static final RGB COLOR_DEFAULT_DEFAULT = new RGB(0, 0, 0, 1.0);
 	
 	/**
      * Returns the current value of the color-valued preference with the

@@ -49,4 +49,6 @@ Export-Package: at.bestsolution.efxclipse.text,
  at.bestsolution.efxclipse.text.jface.quickassist,
  at.bestsolution.efxclipse.text.jface.reconciler,
  at.bestsolution.efxclipse.text.jface.rules,
- at.bestsolution.efxclipse.text.jface.source
+ at.bestsolution.efxclipse.text.jface.source,
+ at.bestsolution.efxclipse.text.jface.templates,
+ at.bestsolution.efxclipse.text.jface.templates.persistence

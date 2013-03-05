@@ -17,10 +17,12 @@ import at.bestsolution.efxclipse.text.jface.ITextOperationTarget;
 import at.bestsolution.efxclipse.text.jface.TextViewer;
 import at.bestsolution.efxclipse.text.jface.contentassist.IContentAssistant;
 import at.bestsolution.efxclipse.text.jface.presentation.IPresentationReconciler;
+import at.bestsolution.efxclipse.text.jface.reconciler.IReconciler;
 
 public class SourceViewer extends TextViewer implements ISourceViewer {
 
 	private IPresentationReconciler presentationReconciler;
+	private IReconciler reconciler;
 	private IContentAssistant contentAssistant;
 	private boolean contentAssistantInstalled;
 
@@ -35,6 +37,10 @@ public class SourceViewer extends TextViewer implements ISourceViewer {
 		this.presentationReconciler= configuration.getPresentationReconciler(this);
 		if (presentationReconciler != null)
 			presentationReconciler.install(this);
+		
+		reconciler= configuration.getReconciler(this);
+		if (reconciler != null)
+			reconciler.install(this);
 		
 		contentAssistant= configuration.getContentAssistant(this);
 		if (contentAssistant != null) {

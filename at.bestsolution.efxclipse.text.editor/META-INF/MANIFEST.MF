@@ -12,5 +12,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  at.bestsolution.efxclipse.text;bundle-version="1.0.0",
  at.bestsolution.efxclipse.jface;bundle-version="1.0.0"
 Export-Package: at.bestsolution.efxclipse.text.editor,
- at.bestsolution.efxclipse.text.editor.spelling
+ at.bestsolution.efxclipse.text.editor.spelling,
+ at.bestsolution.efxclipse.text.editor.text.templates
 Bundle-Activator: at.bestsolution.efxclipse.text.editor.internal.TextEditorPlugin
+Bundle-ActivationPolicy: lazy

@@ -1,9 +1,12 @@
 package at.bestsolution.efxclipse.text.editor.internal;
 
+import java.io.IOException;
+
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.jface.text.templates.TemplateException;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -200,5 +203,25 @@ public class TextEditorPlugin implements BundleActivator {
 		if (cl instanceof BundleReference)
 			return ((BundleReference) cl).getBundle(); 
 		return null;
+	}
+
+	public static void log(CoreException e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void logErrorMessage(String format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void log(String format, TemplateException e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void log(IOException x) {
+		// TODO Auto-generated method stub
+		
 	}
 }

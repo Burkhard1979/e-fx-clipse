@@ -34,6 +34,8 @@ import org.eclipse.jface.text.TextUtilities;
 import org.eclipse.jface.text.TypedPosition;
 import org.eclipse.jface.text.TypedRegion;
 
+import at.bestsolution.efxclipse.jface.preferences.ScopedPreferenceStore;
+
 
 
 /**
@@ -159,6 +161,8 @@ public class FastPartitioner implements IDocumentPartitioner, IDocumentPartition
 	protected void initialize() {
 		fIsInitialized= true;
 		clearPositionCache();
+		System.err.println("SCANNER: " + fScanner);
+		System.err.println("DOC: " + fDocument);
 		fScanner.setRange(fDocument, 0, fDocument.getLength());
 
 		try {

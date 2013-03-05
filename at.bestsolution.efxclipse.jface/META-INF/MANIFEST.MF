@@ -12,3 +12,4 @@ Export-Package: at.bestsolution.efxclipse.jface,
  at.bestsolution.efxclipse.jface.preferences,
  at.bestsolution.efxclipse.jface.resources,
  at.bestsolution.efxclipse.jface.util
+Import-Package: javafx.scene.paint;version="2.2.0"

@@ -6,4 +6,6 @@ public interface ITextEditor {
 
 	IEditorInput getEditorInput();
 
+	boolean isEditable();
+
 }
