@@ -85,7 +85,8 @@ public class E4Application extends AbstractJFXApplication {
 	private static final String VERSION_FILENAME = "version.ini"; //$NON-NLS-1$
 	private static final String WORKSPACE_VERSION_KEY = "org.eclipse.core.runtime"; //$NON-NLS-1$
 	private static final String WORKSPACE_VERSION_VALUE = "2"; //$NON-NLS-1$
-
+	private static final String EXIT_CODE = "e4.osgi.exit.code";
+	
 	private String[] args;
 	private Object lcManager;
 	private E4Workbench workbench = null;
@@ -121,8 +122,10 @@ public class E4Application extends AbstractJFXApplication {
 
 	@Override
 	protected Object jfxStop() {
+		Object returnCode = null;
 		try {
 			if( workbenchContext != null && workbench != null ) {
+				returnCode = workbenchContext.get(EXIT_CODE);
 				// Save the model into the targetURI
 				if (lcManager != null) {
 					ContextInjectionFactory.invoke(lcManager, PreSave.class, workbenchContext, null);
@@ -135,8 +138,11 @@ public class E4Application extends AbstractJFXApplication {
 				instanceLocation.release();
 		}
 		
-		
-		return super.jfxStop();
+		if( returnCode != null ) {
+			return returnCode;
+		} else {
+			return super.jfxStop();	
+		}
 	}
 
 	public E4Workbench createE4Workbench(IApplicationContext applicationContext, Application jfxApplication, Stage primaryStage) {
