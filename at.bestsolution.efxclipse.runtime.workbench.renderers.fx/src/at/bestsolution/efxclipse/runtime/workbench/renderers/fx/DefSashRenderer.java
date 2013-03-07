@@ -190,8 +190,13 @@ public class DefSashRenderer extends BaseSashRenderer<Node> {
 		};
 		
 		private void recalcWeight() {
+			//FIXME We should not do recalcs when we are in teardown of the widget
 			double prev = 0;
 			int idx = 0;
+			// No items nothing to recalculate
+			if( items.isEmpty() ) {
+				return;
+			}
 			for( double d : getWidget().getDividerPositions() ) {
 				items.get(idx++).getDomElement().setContainerData((d - prev)*10+"");
 				prev = d;
