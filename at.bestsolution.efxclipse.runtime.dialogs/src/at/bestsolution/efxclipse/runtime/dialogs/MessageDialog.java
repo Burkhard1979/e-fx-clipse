@@ -10,15 +10,12 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.dialogs;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Window;
 import at.bestsolution.efxclipse.runtime.panels.GridLayoutPane;
@@ -111,19 +108,27 @@ public class MessageDialog extends Dialog {
 
 	@Override
 	protected Node createDialogArea() {
-		Image img = getGraphic(type);
+		GridLayoutPane b = new GridLayoutPane();
+		b.setHorizontalSpacing(20);
+		b.setNumColumns(2);
+		b.getStyleClass().add("messagedialog-" + type.name().toLowerCase());
 		
-		if( img != null ) {
-			GridLayoutPane b = new GridLayoutPane();
-			b.setHorizontalSpacing(20);
-			b.setNumColumns(2);
-			b.getChildren().add(new ImageView(img));
-			b.getChildren().add(new Label(message));
-			
-			return b;
-		} else {
-			return new Label(message);
-		}
+		ImageView view = new ImageView();
+		view.getStyleClass().add("messagedialog-icon");
+		b.getChildren().add(view);
+		
+		Label l = new Label(message);
+		l.getStyleClass().add("messagedialog-message");
+		
+		b.getChildren().add(l);
+		return b;
+	}
+	
+	@Override
+	protected List<String> getStylesheets() {
+		List<String> list = new ArrayList<>(super.getStylesheets());
+		list.add(0, MessageDialog.class.getResource("message_dialog.css").toExternalForm());
+		return list;
 	}
 	
 	@Override
@@ -150,45 +155,6 @@ public class MessageDialog extends Dialog {
 		close();
 	}
 
-	private Image getGraphic(Type type) {
-		String imgUrl = null;
-		switch (type) {
-		case CONFIRM:
-			imgUrl = "icons/preferences-desktop-notification.png";
-			break;
-		case CUSTOM:
-			break;
-		case ERROR:
-			imgUrl = "icons/dialog-error.png";
-			break;
-		case INFORMATION:
-			imgUrl = "icons/dialog-information.png";
-			break;
-		case QUESTION:
-		case QUESTION_CANCEL:
-			imgUrl = "icons/system-help.png";
-			break;
-		case WARNING:
-			imgUrl = "icons/dialog-warning.png";
-			break;
-		default:
-			break;
-		}
-		
-		if( imgUrl != null ) {
-			InputStream in = getClass().getResourceAsStream(imgUrl);
-			Image img = new Image(in);
-			try {
-				in.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return img;
-		}
-		return null;
-	}
-	
 	public static void openErrorDialog(Window parent, String title, String message) {
 		new MessageDialog(parent, title, message, Type.ERROR, 0, 0, "Ok").open();
 	}
