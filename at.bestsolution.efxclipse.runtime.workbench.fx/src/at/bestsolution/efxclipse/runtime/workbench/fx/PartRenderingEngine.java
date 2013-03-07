@@ -256,7 +256,7 @@ public class PartRenderingEngine implements IPresentationEngine {
 				}
 				
 				for( EObject c : l ) {
-					if( c instanceof UIElement ) {
+					if( c instanceof MUIElement ) {
 						if( selectedElement != c ) {
 							removeGui((MUIElement) c);
 						}
