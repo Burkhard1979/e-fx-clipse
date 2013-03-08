@@ -75,7 +75,10 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	}
 	
 	public void registerActivationCallback(WCallback<Boolean, Void> callback) {
-		activationCallbacks.add(callback);
+		// Could be that we are already disposed at this point
+		if( activationCallbacks != null ) {
+			activationCallbacks.add(callback);	
+		}
 	}
 	
 	@PostConstruct
