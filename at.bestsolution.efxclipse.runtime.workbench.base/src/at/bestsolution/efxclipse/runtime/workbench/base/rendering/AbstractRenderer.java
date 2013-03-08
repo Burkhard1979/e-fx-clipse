@@ -27,6 +27,8 @@ public abstract class AbstractRenderer<M extends MUIElement, C> {
 		
 		public abstract void childRendered(M parentElement, MUIElement element);
 		
+		public abstract void preDestroy(M element);
+		
 		public abstract void hideChild(M container, MUIElement changedObj);
 		
 		public abstract void destroyWidget(M element);

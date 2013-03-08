@@ -14,9 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,6 +22,9 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.SplitPane.Divider;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
@@ -190,6 +190,10 @@ public class DefSashRenderer extends BaseSashRenderer<Node> {
 		};
 		
 		private void recalcWeight() {
+			if( state != WidgetState.CREATED ) {
+				return;
+			}
+			
 			//FIXME We should not do recalcs when we are in teardown of the widget
 			double prev = 0;
 			int idx = 0;
@@ -201,7 +205,7 @@ public class DefSashRenderer extends BaseSashRenderer<Node> {
 				items.get(idx++).getDomElement().setContainerData((d - prev)*10+"");
 				prev = d;
 			}
-			items.get(items.size()-1).getDomElement().setContainerData((1.0-prev)*10+"");
+			items.get(items.size()-1).getDomElement().setContainerData((1.0-prev)*10+"");			
 		}
 		
 		@Override
@@ -276,6 +280,14 @@ public class DefSashRenderer extends BaseSashRenderer<Node> {
 		}
 		
 		@Override
+		public void setWidgetState(at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState state) {
+			super.setWidgetState(state);
+			if( state == WidgetState.CREATED ) {
+				updateDividers();
+			}
+		}
+		
+		@Override
 		public void removeItem(WLayoutedWidget<MPartSashContainerElement> widget) {
 			SplitPane p = getWidget();
 			p.getItems().remove(widget.getStaticLayoutNode());
@@ -294,6 +306,10 @@ public class DefSashRenderer extends BaseSashRenderer<Node> {
 				return;
 			}
 			
+			if( state != WidgetState.CREATED ) {
+				return;
+			}
+			
 			double total = 0;
 			
 			for( WLayoutedWidget<MPartSashContainerElement> w : items ) {
@@ -304,7 +320,7 @@ public class DefSashRenderer extends BaseSashRenderer<Node> {
 			for (int i = 0; i < items.size() - 1; i++) {
 				deviders[i] = (i == 0 ? 0 : deviders[i - 1]) + (items.get(i).getWeight() / total);
 			}
-			
+						
 			getWidget().setDividerPositions(deviders);
 		}
 		

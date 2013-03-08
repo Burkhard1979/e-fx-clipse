@@ -33,6 +33,7 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	private M domElement;
 	private List<WCallback<Boolean, Void>> activationCallbacks = new ArrayList<WCallback<Boolean,Void>>();
 	private boolean active;
+	protected WidgetState state = WidgetState.IN_SETUP;
 	
 	private WPropertyChangeHandler<? extends WWidget<M>> propertyChangeHandler;
 	
@@ -40,6 +41,11 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	
 	public WWidgetImpl() {
 		
+	}
+	
+	@Override
+	public void setWidgetState(at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState state) {
+		this.state = state;
 	}
 	
 	@Override

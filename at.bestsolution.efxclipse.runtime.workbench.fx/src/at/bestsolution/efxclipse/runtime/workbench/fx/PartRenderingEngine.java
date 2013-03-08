@@ -32,7 +32,6 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.UIEvents;
-import org.eclipse.e4.ui.workbench.UIEvents.UIElement;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.event.Event;
@@ -235,11 +234,15 @@ public class PartRenderingEngine implements IPresentationEngine {
 		
 		if( container != null ) {
 			AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(container);
+			AbstractRenderer<MUIElement, Object> renderer = getRendererFor(element);
+			
+			if( renderer != null ) {
+				renderer.preDestroy(element);
+			}
+			
 			if (parentRenderer != null) {
 				parentRenderer.hideChild(container, element);
 			}
-			
-			AbstractRenderer<MUIElement, Object> renderer = getRendererFor(element);
 			
 			// Check if the control is already rendered
 			if( renderer != null ) {
