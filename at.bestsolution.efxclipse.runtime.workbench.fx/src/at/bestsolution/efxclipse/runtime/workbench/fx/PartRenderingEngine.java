@@ -55,6 +55,8 @@ public class PartRenderingEngine implements IPresentationEngine {
 	
 	private final EModelService modelService;
 	
+	private MApplication app;
+	
 	@Inject
 	public PartRenderingEngine(
 			@Named(E4Workbench.RENDERER_FACTORY_URI) @Optional String factoryUrl,
@@ -240,12 +242,12 @@ public class PartRenderingEngine implements IPresentationEngine {
 				renderer.preDestroy(element);
 			}
 			
-			if (parentRenderer != null) {
-				parentRenderer.hideChild(container, element);
-			}
-			
 			// Check if the control is already rendered
 			if( renderer != null ) {
+				if (parentRenderer != null) {
+					parentRenderer.hideChild(container, element);
+				}
+				
 				// Need clean up everything below
 				EObject eo = (EObject) element;
 				// Make a defensive copy 
@@ -326,7 +328,7 @@ public class PartRenderingEngine implements IPresentationEngine {
 	}
 
 	public Object run(MApplicationElement uiRoot, IEclipseContext appContext) {
-		MApplication app = (MApplication) uiRoot;
+		app = (MApplication) uiRoot;
 		MWindow selected = app.getSelectedElement();
 		if (selected == null) {
 			for (MWindow window : app.getChildren()) {
@@ -345,7 +347,13 @@ public class PartRenderingEngine implements IPresentationEngine {
 	}
 
 	public void stop() {
-		// TODO Auto-generated method stub
-		
+		if( app != null ) {
+			for( MWindow w : app.getChildren() ) {
+				AbstractRenderer<MUIElement, Object> r = getRenderer(w);
+				if( r != null ) {
+					removeGui(w);
+				}
+			}			
+		}
 	}
 }

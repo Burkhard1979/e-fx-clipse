@@ -226,4 +226,13 @@ public abstract class BaseWindowRenderer<N> extends BaseRenderer<MWindow,WWindow
 			}	
 		}
 	}
+	
+	@Override
+	public void destroyWidget(MWindow element) {
+		if( element.getWidget() instanceof WWindow<?> ) {
+			WWindow<MWindow> w = (WWindow<MWindow>) element.getWidget();
+			w.close();
+		}
+		super.destroyWidget(element);
+	}
 }

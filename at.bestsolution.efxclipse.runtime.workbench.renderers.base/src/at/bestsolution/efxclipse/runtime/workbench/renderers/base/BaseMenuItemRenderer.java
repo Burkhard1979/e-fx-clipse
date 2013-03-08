@@ -19,6 +19,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenuItem;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState;
 
 @SuppressWarnings("restriction")
 public abstract class BaseMenuItemRenderer<N> extends BaseItemRenderer<MMenuItem, WMenuItem<N>> {
@@ -72,7 +73,10 @@ public abstract class BaseMenuItemRenderer<N> extends BaseItemRenderer<MMenuItem
 			@Override
 			public void run() {
 				try {
-					widget.setHandled(canExecute(menuElement, getModelContext(menuElement))); 	
+					IEclipseContext context = getModelContext(menuElement);
+					if( context != null && (widget.getWidgetState() == WidgetState.CREATED || widget.getWidgetState() == WidgetState.IN_SETUP ) ) {
+						widget.setHandled(canExecute(menuElement, context));	
+					}
 				} catch(Throwable t) {
 					//TODO Log it
 					t.printStackTrace();

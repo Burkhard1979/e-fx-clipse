@@ -18,6 +18,7 @@ import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolItem;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState;
 
 @SuppressWarnings("restriction")
 public abstract class BaseToolItemRenderer<N> extends BaseItemRenderer<MToolItem, WToolItem<N>> {
@@ -49,7 +50,10 @@ public abstract class BaseToolItemRenderer<N> extends BaseItemRenderer<MToolItem
 			@Override
 			public void run() {
 				try {
-					widget.setHandled(canExecute(toolbarElement, getModelContext(toolbarElement)));	
+					IEclipseContext context = getModelContext(toolbarElement);
+					if( context != null && (widget.getWidgetState() == WidgetState.CREATED || widget.getWidgetState() == WidgetState.IN_SETUP ) ) {
+						widget.setHandled(canExecute(toolbarElement, context));	
+					}
 				} catch(Throwable t) {
 					//TODO Log it
 					t.printStackTrace();

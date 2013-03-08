@@ -49,6 +49,11 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	}
 	
 	@Override
+	public at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState getWidgetState() {
+		return this.state;
+	}
+	
+	@Override
 	public void activate() {
 		this.active = true;
 		for( WCallback<Boolean, Void> c : activationCallbacks ) {

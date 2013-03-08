@@ -500,6 +500,11 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 			getWidget().toFront();
 		}
 		
+		@Override
+		public void close() {
+			getWidget().close();
+		}
+		
 		private void internalShow() {
 			if( windowTransitionService != null ) {
 				AnimationDelegate<Stage> delegate = windowTransitionService.getShowDelegate(mWindow);

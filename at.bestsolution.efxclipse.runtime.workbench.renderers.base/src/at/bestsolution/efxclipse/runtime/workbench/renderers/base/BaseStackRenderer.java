@@ -297,7 +297,7 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			if( i.getDomElement() == newElement ) {
 				stack.selectItem(idx);
 				showElementRecursive(newElement);
-				break;
+				return;
 			}
 			idx++;
 		}

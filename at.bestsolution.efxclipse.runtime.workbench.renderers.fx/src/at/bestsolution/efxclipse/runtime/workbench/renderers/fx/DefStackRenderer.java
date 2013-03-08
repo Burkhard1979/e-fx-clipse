@@ -221,7 +221,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 
 				@Override
 				public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
-					if( newValue == null ) {
+					if( newValue == null || (getWidgetState() != WidgetState.CREATED && getWidgetState() != WidgetState.IN_SETUP ) ) {
 						return;
 					}
 					final StackItemImpl w = (StackItemImpl) newValue.getUserData();

@@ -24,6 +24,7 @@ public interface WWidget<M extends MUIElement> {
 	}
 	
 	public void setWidgetState(WidgetState state);
+	public WidgetState getWidgetState();
 	public void setPropertyChangeHandler(WPropertyChangeHandler<? extends WWidget<M>> handler);
 	public void setDomElement(M domElement);
 	public M getDomElement();

@@ -50,7 +50,9 @@ public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToo
 						if( e.getRenderer() instanceof BaseItemRenderer<?,?> ) {
 							final MToolBarElement tmp = e;
 							final BaseItemRenderer<MToolBarElement,?> r = (BaseItemRenderer<MToolBarElement,?>) tmp.getRenderer();
-							r.checkEnablement(tmp);
+							if( tmp.getRenderer() != null ) {
+								r.checkEnablement(tmp);	
+							}
 						}
 					}
 					
@@ -117,7 +119,7 @@ public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToo
 		}
 		
 		@SuppressWarnings("unchecked")
-		WLayoutedWidget<MToolBarElement> widget = (WLayoutedWidget<MToolBarElement>) changedObj.getWidget();
+		WWidget<MToolBarElement> widget = (WWidget<MToolBarElement>) changedObj.getWidget();
 		if( widget != null ) {
 			toolbar.removeChild(widget);
 		}

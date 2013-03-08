@@ -29,4 +29,5 @@ public interface WWindow<N> extends WWidget<MWindow> {
 	public void removeChild(WLayoutedWidget<MWindowElement> widget); 
 	
 	public void show();
+	public void close();
 }
