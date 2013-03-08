@@ -1,6 +1,7 @@
 package at.bestsolution.efxclipse.testcases.e4.parts;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Optional;
@@ -25,8 +26,12 @@ public class ContentPanel {
 	@Inject
 	protected UISynchronize uiSync;
 
+	private MPart part;
+	
 	@Inject
 	public ContentPanel(BorderPane p, final MPart part) {
+		this.part = part;
+		System.err.println("CREATED PANEL INSTANCE: " + part);
 		f = new TextField(part.getLocalizedLabel());
 		f.setOnKeyPressed(new EventHandler<Event>() {
 
@@ -46,6 +51,11 @@ public class ContentPanel {
 	@Focus
 	void focus() {
 		f.requestFocus();
+	}
+	
+	@PreDestroy
+	void tearDown() {
+		System.err.println("Teardown " + part);
 	}
 	
 //	@Inject

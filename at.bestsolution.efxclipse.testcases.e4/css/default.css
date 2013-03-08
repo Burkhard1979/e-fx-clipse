@@ -18,12 +18,13 @@
     -fx-effect: dropshadow(two-pass-box,black,5,.2,0,0);
 }*/
 
-.view-toolbar {
+/* .view-toolbar {
 	-fx-background-color: transparent;
-}
+}*/
 
-.Part-Toolbar-FullSpan > * > .view-toolbar-menu {
+.view-toolbar-menu {
 	-fx-background-color: green;
+	-fx-opacity: 0.5;
 }
 
 .efxSelectedRadioToolButton {

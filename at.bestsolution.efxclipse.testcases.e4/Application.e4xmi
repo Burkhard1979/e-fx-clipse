@@ -20,6 +20,8 @@
           </children>
           <children xsi:type="basic:PartStack" xmi:id="_A7Q9ouL-EeGP-5z69KadAQ" elementId="content.stack" containerData="80">
             <children xsi:type="basic:Part" xmi:id="_ZHcNwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C0" iconURI="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/icons/folder.png" closeable="true">
+              <tags>Part-ToolBarMenu-Floating</tags>
+              <tags>Part-Toolbar-FullSpan</tags>
               <menus xmi:id="_dsz2oIEQEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.4">
                 <tags>ViewMenu</tags>
                 <children xsi:type="menu:DirectMenuItem" xmi:id="_h8rwYIEQEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.5" label="View Menu 1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
@@ -28,7 +30,12 @@
                 <children xsi:type="menu:DirectToolItem" xmi:id="_fH640IEHEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.6" label="Bl" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
               </toolbar>
             </children>
-            <children xsi:type="basic:Part" xmi:id="_cjVs4OL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C1"/>
+            <children xsi:type="basic:Part" xmi:id="_cjVs4OL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C1">
+              <tags>Part-ToolBarMenu-Floating</tags>
+              <toolbar xmi:id="_QPi6AIHxEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.4">
+                <children xsi:type="menu:DirectToolItem" xmi:id="_QxE5wIHxEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.8" label="DI" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+              </toolbar>
+            </children>
             <children xsi:type="basic:Part" xmi:id="_f5-RgOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.2" toBeRendered="false" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C2" closeable="true"/>
             <children xsi:type="basic:Part" xmi:id="_jRKPwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.3" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C3" closeable="true"/>
             <children xsi:type="advanced:Placeholder" xmi:id="_ddQGkPW5EeG7tr8qKhf17Q" elementId="at.bestsolution.efxclipse.testcases.e4.placeholder.0" ref="_T4J0kPW5EeG7tr8qKhf17Q"/>
