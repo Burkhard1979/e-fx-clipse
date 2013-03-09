@@ -242,7 +242,11 @@ public class FileEditorInput extends PlatformObject implements IFileEditorInput,
 //				}
 //			};
 //		}
-
+		
+		if( adapter == IFile.class ) {
+			return file;
+		}
+		
 		return super.getAdapter(adapter);
 	}
 }

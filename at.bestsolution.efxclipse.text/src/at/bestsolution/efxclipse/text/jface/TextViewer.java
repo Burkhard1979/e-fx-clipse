@@ -16,6 +16,7 @@ import java.util.List;
 
 import javafx.scene.Node;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.FindReplaceDocumentAdapter;
@@ -687,6 +688,7 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 	 * @param newInput the new input document
 	 */
 	protected void fireInputDocumentAboutToBeChanged(IDocument oldInput, IDocument newInput) {
+		System.err.println("=========> CHANGING");
 		List<ITextInputListener> listener= textInputListeners;
 		if (listener != null) {
 			for (int i= 0; i < listener.size(); i++) {
@@ -704,6 +706,7 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 	 * @param newInput the new input document
 	 */
 	protected void fireInputDocumentChanged(IDocument oldInput, IDocument newInput) {
+		System.err.println("=========> CHANGED");
 		List<ITextInputListener> listener= textInputListeners;
 		if (listener != null) {
 			for (int i= 0; i < listener.size(); i++) {
@@ -868,4 +871,62 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 				preservedText= null;
 		}
 	}
+	
+	/*
+	 * @see ITextViewerExtension4#addTextPresentationListener(ITextPresentationListener)
+	 * @since 3.0
+	 */
+	public void addTextPresentationListener(ITextPresentationListener listener) {
+
+		Assert.isNotNull(listener);
+
+		if (textPresentationListeners == null)
+			textPresentationListeners= new ArrayList();
+
+		if (!textPresentationListeners.contains(listener))
+			textPresentationListeners.add(listener);
+	}
+
+	/*
+	 * @see ITextViewerExtension4#removeTextPresentationListener(ITextPresentationListener)
+	 * @since 3.0
+	 */
+	public void removeTextPresentationListener(ITextPresentationListener listener) {
+
+		Assert.isNotNull(listener);
+
+		if (textPresentationListeners != null) {
+			textPresentationListeners.remove(listener);
+			if (textPresentationListeners.size() == 0)
+				textPresentationListeners= null;
+		}
+	}
+	
+	/**
+	 * Invalidates the given range of the text presentation.
+	 *
+	 * @param offset the offset of the range to be invalidated
+	 * @param length the length of the range to be invalidated
+	 * @since 2.1
+	 */
+	public final void invalidateTextPresentation(int offset, int length) {
+		if (visibleDocument != null) {
+
+			IRegion widgetRange= modelRange2WidgetRange(new Region(offset, length));
+			if (widgetRange != null) {
+
+				widgetCommand.event= null;
+				widgetCommand.start= widgetRange.getOffset();
+				widgetCommand.length= widgetRange.getLength();
+
+				try {
+					widgetCommand.text= visibleDocument.get(widgetRange.getOffset(), widgetRange.getLength());
+					updateTextListeners(widgetCommand);
+				} catch (BadLocationException x) {
+					// can not happen because of previous checking
+				}
+			}
+		}
+	}
+
 }

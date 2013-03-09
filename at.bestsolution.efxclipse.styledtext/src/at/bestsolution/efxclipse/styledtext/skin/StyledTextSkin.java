@@ -12,8 +12,10 @@ package at.bestsolution.efxclipse.styledtext.skin;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javafx.animation.KeyFrame;
@@ -27,16 +29,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Path;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
@@ -46,7 +49,6 @@ import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.behavior.StyledTextBehavior;
 
 import com.sun.javafx.scene.control.skin.BehaviorSkinBase;
-import com.sun.javafx.scene.text.HitInfo;
 
 @SuppressWarnings("restriction")
 public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextBehavior> {
@@ -55,6 +57,12 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 	private ObservableList<Line> lineList = FXCollections.observableArrayList();
 	
 	private Set<LineCell> visibleCells = new HashSet<>();
+
+	private Font boldFont;
+	
+	private Font boldItalicFont;
+	
+	private Font italicFont;
 	
 	public StyledTextSkin(StyledTextArea styledText) {
 		super(styledText, new StyledTextBehavior(styledText));
@@ -150,6 +158,43 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		for( LineCell l : visibleCells ) {
 			l.update();
 		}
+	}
+	
+	Font getFontByStyle(int style) {
+		switch (style) {
+			case StyleRange.BOLD:
+				if (boldFont != null) return boldFont;
+				return boldFont = createFont(style);
+			case StyleRange.ITALIC:
+				if (italicFont != null) return italicFont;
+				return italicFont = createFont(style);
+			case StyleRange.BOLD | StyleRange.ITALIC:
+				if (boldItalicFont != null) return boldItalicFont;
+				return boldItalicFont = createFont(style);
+			default:
+				return getSkinnable().fontProperty().get();
+		}
+	}
+	
+	Font createFont(int style) {
+		switch (style) {
+		case StyleRange.BOLD:
+		{
+			Font f = Font.font(getSkinnable().getFont().getFamily(), FontWeight.BOLD, getSkinnable().getFont().getSize());
+			return f;
+		}
+		case StyleRange.ITALIC:
+		{
+			Font f = Font.font(getSkinnable().getFont().getFamily(), FontPosture.ITALIC, getSkinnable().getFont().getSize());
+			return f;
+		}
+		case StyleRange.BOLD | StyleRange.ITALIC:
+		{
+			Font f = Font.font(getSkinnable().getFont().getFamily(), FontWeight.BOLD, FontPosture.ITALIC, getSkinnable().getFont().getSize());
+			return f;
+		}	
+		}
+		return null;
 	}
 	
 	public class LineCell extends ListCell<Line> {
@@ -295,6 +340,8 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 					}
 					if( seg.style.font != null ) {
 						t.setFont(seg.style.font);
+					} else {
+						t.setFont(getFontByStyle(seg.style.fontStyle));
 					}
 					texts.add(t);
 				}
@@ -374,6 +421,11 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 	class Segment {
 		public String text;
 		public StyleRange style;
+		
+		@Override
+		public String toString() {
+			return text + " => " + style;
+		}
 	}
 	
 	static String removeLineending(String s) {

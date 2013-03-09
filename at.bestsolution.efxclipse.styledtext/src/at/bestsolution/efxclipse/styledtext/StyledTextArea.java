@@ -12,6 +12,7 @@
 package at.bestsolution.efxclipse.styledtext;
 
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -22,6 +23,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import at.bestsolution.efxclipse.styledtext.StyledTextContent.TextChangeListener;
 import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin;
 
@@ -58,7 +61,7 @@ public class StyledTextArea extends Control {
 	
 	private StyledTextRenderer renderer = new StyledTextRenderer();
 	private IntegerProperty caretOffsetProperty = new SimpleIntegerProperty(this, "caretOffset", -1);
-
+	
 	private int lastTextChangeStart;
 
 	private int lastTextChangeNewLineCount;
@@ -168,6 +171,9 @@ public class StyledTextArea extends Control {
 	}
 	
 	void setStyleRanges(int start, int length, int[] ranges, StyleRange[] styles, boolean reset) {
+		System.err.println("New styles: " + Arrays.toString(styles));
+		
+		
 		int charCount = getContent().getCharCount();
 		int end = start + length;
 		if (start > end || start < 0) {
@@ -1203,4 +1209,17 @@ public class StyledTextArea extends Control {
 	}
 
 	
+	private ObjectProperty<Font> fontProperty = new SimpleObjectProperty<>(this, "fontProperty", Font.font("Courier", FontWeight.NORMAL, 15));
+
+	public void setFont(Font font) {
+		fontProperty.set(font);
+	}
+	
+	public Font getFont() {
+		return fontProperty.get();
+	}
+	
+	public ObjectProperty<Font> fontProperty() {
+		return fontProperty;
+	}
 }
