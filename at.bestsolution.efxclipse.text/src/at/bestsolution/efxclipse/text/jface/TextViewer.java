@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 
 import org.eclipse.core.runtime.Assert;
@@ -35,8 +36,9 @@ import org.eclipse.jface.text.projection.ChildDocumentManager;
 import at.bestsolution.efxclipse.styledtext.StyleRange;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.TextSelection;
+import at.bestsolution.efxclipse.styledtext.VerifyEvent;
 
-public class TextViewer implements ITextViewer, ITextOperationTarget {
+public class TextViewer implements ITextViewer, ITextViewerExtension, ITextOperationTarget {
 	
 	private Node layoutNode;
 	private StyledTextArea textWidget;
@@ -74,6 +76,11 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 	protected List<ITextPresentationListener> textPresentationListeners;
 	
 	protected boolean replaceTextPresentation= false;
+	
+	private VerifyKeyListenersManager fVerifyKeyListenersManager= new VerifyKeyListenersManager();
+	private RewriteTarget rewriteTarget;
+	private IEventConsumer eventConsumer;
+	private TextVerifyListener verifyListener= new TextVerifyListener();
 	
 	public TextViewer() {
 		layoutNode = createLayoutNode();
@@ -268,6 +275,10 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 	
 	protected Node createLayoutNode() {
 		textWidget = createStyledTextControl(); 
+		
+		verifyListener.forward(true);
+		textWidget.addEventHandler(VerifyEvent.VERIFY,verifyListener);
+		
 		return textWidget;
 	}
 	
@@ -694,7 +705,6 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 	 * @param newInput the new input document
 	 */
 	protected void fireInputDocumentAboutToBeChanged(IDocument oldInput, IDocument newInput) {
-		System.err.println("=========> CHANGING");
 		List<ITextInputListener> listener= textInputListeners;
 		if (listener != null) {
 			for (int i= 0; i < listener.size(); i++) {
@@ -712,7 +722,6 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 	 * @param newInput the new input document
 	 */
 	protected void fireInputDocumentChanged(IDocument oldInput, IDocument newInput) {
-		System.err.println("=========> CHANGED");
 		List<ITextInputListener> listener= textInputListeners;
 		if (listener != null) {
 			for (int i= 0; i < listener.size(); i++) {
@@ -798,6 +807,28 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 				l.textChanged(e);
 			}
 		}
+	}
+	
+	@Override
+	public void appendVerifyKeyListener(EventHandler<VerifyEvent> listener) {
+		int index= fVerifyKeyListenersManager.numberOfListeners();
+		fVerifyKeyListenersManager.insertListener(listener, index);
+	}
+	
+	@Override
+	public void prependVerifyKeyListener(EventHandler<VerifyEvent> listener) {
+		fVerifyKeyListenersManager.insertListener(listener, 0);
+	}
+	
+	@Override
+	public void removeVerifyKeyListener(EventHandler<VerifyEvent> listener) {
+		fVerifyKeyListenersManager.removeListener(listener);
+	}
+	
+	public IRewriteTarget getRewriteTarget() {
+		if (rewriteTarget == null)
+			rewriteTarget= new RewriteTarget();
+		return rewriteTarget;
 	}
 	
 	/**
@@ -934,5 +965,318 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 			}
 		}
 	}
+	
+	/*
+	 * @see ITextViewer#setEventConsumer(IEventConsumer)
+	 */
+	public void setEventConsumer(IEventConsumer consumer) {
+		eventConsumer= consumer;
+	}
+	
+	protected void handleVerifyEvent(VerifyEvent e) {
 
+		if (eventConsumer != null) {
+			eventConsumer.processEvent(e);
+			if (e.isConsumed())
+				return;
+		}
+		
+//		if (fTextWidget.getBlockSelection() && (e.text == null || e.text.length() < 2)) {
+//			Point sel = fTextWidget.getSelection();
+//			if (fTextWidget.getLineAtOffset(sel.x) != fTextWidget.getLineAtOffset(sel.y)) {
+//				verifyEventInBlockSelection(e);
+//				return;
+//			}
+//		}
+//
+//		IRegion modelRange= event2ModelRange(e);
+//		fDocumentCommand.setEvent(e, modelRange);
+//		customizeDocumentCommand(fDocumentCommand);
+//		if (!fDocumentCommand.fillEvent(e, modelRange)) {
+//
+//			boolean compoundChange= fDocumentCommand.getCommandCount() > 1;
+//			try {
+//
+//				fVerifyListener.forward(false);
+//
+//				if (compoundChange && fUndoManager != null)
+//					fUndoManager.beginCompoundChange();
+//
+//				fDocumentCommand.execute(getDocument());
+//
+//				if (fTextWidget != null) {
+//					int documentCaret= fDocumentCommand.caretOffset;
+//					if (documentCaret == -1) {
+//						// old behavior of document command
+//						documentCaret= fDocumentCommand.offset + (fDocumentCommand.text == null ? 0 : fDocumentCommand.text.length());
+//					}
+//
+//					int widgetCaret= modelOffset2WidgetOffset(documentCaret);
+//					if (widgetCaret == -1) {
+//						// try to move it to the closest spot
+//						IRegion region= getModelCoverage();
+//						if (region != null) {
+//							if (documentCaret <= region.getOffset())
+//								widgetCaret= 0;
+//							else if (documentCaret >= region.getOffset() + region.getLength())
+//								widgetCaret= getVisibleRegion().getLength();
+//						}
+//					}
+//
+//					if (widgetCaret != -1) {
+//						// there is a valid widget caret
+//						fTextWidget.setCaretOffset(widgetCaret);
+//					}
+//
+//					fTextWidget.showSelection();
+//				}
+//			} catch (BadLocationException x) {
+//
+//				if (TRACE_ERRORS)
+//					System.out.println(JFaceTextMessages.getString("TextViewer.error.bad_location.verifyText")); //$NON-NLS-1$
+//
+//			} finally {
+//
+//				if (compoundChange && fUndoManager != null)
+//					fUndoManager.endCompoundChange();
+//
+//				fVerifyListener.forward(true);
+//
+//			}
+//		}
+	}
+
+	/**
+	 * The viewer's manager responsible for registered verify key listeners.
+	 * Uses batches rather than robust iterators because of performance issues.
+	 * <p>
+	 * The implementation is reentrant, i.e. installed listeners may trigger
+	 * further <code>VerifyKeyEvent</code>s that may cause other listeners to be
+	 * installed, but not thread safe.
+	 * </p>
+	 * @since 2.0
+	 */
+	class VerifyKeyListenersManager implements EventHandler<VerifyEvent> {
+
+		/**
+		 * Represents a batched addListener/removeListener command.
+		 */
+		class Batch {
+			/** The index at which to insert the listener. */
+			int index;
+			/** The listener to be inserted. */
+			EventHandler<VerifyEvent> listener;
+
+			/**
+			 * Creates a new batch containing the given listener for the given index.
+			 *
+			 * @param l the listener to be added
+			 * @param i the index at which to insert the listener
+			 */
+			public Batch(EventHandler<VerifyEvent> l, int i) {
+				listener= l;
+				index= i;
+			}
+		}
+
+		/** List of registered verify key listeners. */
+		private List fListeners= new ArrayList();
+		/** List of pending batches. */
+		private List fBatched= new ArrayList();
+		/** The reentrance count. */
+		private int fReentranceCount= 0;
+
+		/*
+		 * @see VerifyKeyListener#verifyKey(VerifyEvent)
+		 */
+		public void handle(VerifyEvent event) {
+			if (fListeners.isEmpty())
+				return;
+
+			try {
+				fReentranceCount++;
+				Iterator iterator= fListeners.iterator();
+				while (iterator.hasNext() && ! event.isConsumed()) {
+					EventHandler<VerifyEvent> listener= (EventHandler<VerifyEvent>) iterator.next();
+					listener.handle(event); // we might trigger reentrant calls on GTK
+				}
+			} finally {
+				fReentranceCount--;
+			}
+			if (fReentranceCount == 0)
+				processBatchedRequests();
+		}
+
+		/**
+		 * Processes the pending batched requests.
+		 */
+		private void processBatchedRequests() {
+			if (!fBatched.isEmpty()) {
+				Iterator e= fBatched.iterator();
+				while (e.hasNext()) {
+					Batch batch= (Batch) e.next();
+					insertListener(batch.listener, batch.index);
+				}
+				fBatched.clear();
+			}
+		}
+
+		/**
+		 * Returns the number of registered verify key listeners.
+		 *
+		 * @return the number of registered verify key listeners
+		 */
+		public int numberOfListeners() {
+			return fListeners.size();
+		}
+
+		/**
+		 * Inserts the given listener at the given index or moves it
+		 * to that index.
+		 *
+		 * @param listener the listener to be inserted
+		 * @param index the index of the listener or -1 for remove
+		 */
+		public void insertListener(EventHandler<VerifyEvent> listener, int index) {
+
+			if (index == -1) {
+				removeListener(listener);
+			} else if (listener != null) {
+
+				if (fReentranceCount > 0) {
+
+					fBatched.add(new Batch(listener, index));
+
+				} else {
+
+					int idx= -1;
+
+					// find index based on identity
+					int size= fListeners.size();
+					for (int i= 0; i < size; i++) {
+						if (listener == fListeners.get(i)) {
+							idx= i;
+							break;
+						}
+					}
+
+					// move or add it
+					if (idx != index) {
+
+						if (idx != -1)
+							fListeners.remove(idx);
+
+						if (index > fListeners.size())
+							fListeners.add(listener);
+						else
+							fListeners.add(index, listener);
+					}
+
+					if (size == 0)  // checking old size, i.e. current size == size + 1
+						install();
+				}
+			}
+		}
+
+		/**
+		 * Removes the given listener.
+		 *
+		 * @param listener the listener to be removed
+		 */
+		public void removeListener(EventHandler<VerifyEvent> listener) {
+			if (listener == null)
+				return;
+
+			if (fReentranceCount > 0) {
+
+				fBatched.add(new Batch(listener, -1));
+
+			} else {
+
+				int size= fListeners.size();
+				for (int i= 0; i < size; i++) {
+					if (listener == fListeners.get(i)) {
+						fListeners.remove(i);
+						if (size == 1)  // checking old size, i.e. current size == size - 1
+							uninstall();
+						return;
+					}
+				}
+			}
+		}
+
+		/**
+		 * Installs this manager.
+		 */
+		private void install() {
+			StyledTextArea textWidget= getTextWidget();
+			if (textWidget != null )
+				textWidget.addEventHandler(VerifyEvent.VERIFY,this);
+		}
+
+		/**
+		 * Uninstalls this manager.
+		 */
+		private void uninstall() {
+			StyledTextArea textWidget= getTextWidget();
+			if (textWidget != null )
+				textWidget.removeEventHandler(VerifyEvent.VERIFY,this);
+		}
+	}
+	
+	class RewriteTarget implements IRewriteTarget {
+
+		@Override
+		public IDocument getDocument() {
+			return TextViewer.this.getDocument();
+		}
+
+		@Override
+		public void setRedraw(boolean redraw) {
+//			TextViewer.this.setRedraw(redraw);
+		}
+
+		@Override
+		public void beginCompoundChange() {
+//			if (fUndoManager != null)
+//				fUndoManager.beginCompoundChange();
+		}
+
+		@Override
+		public void endCompoundChange() {
+//			if (fUndoManager != null)
+//				fUndoManager.endCompoundChange();
+		}
+		
+	}
+	
+	/**
+	 * Internal verify listener.
+	 */
+	class TextVerifyListener implements EventHandler<VerifyEvent> {
+
+		/**
+		 * Indicates whether verify events are forwarded or ignored.
+		 * @since 2.0
+		 */
+		private boolean fForward= true;
+
+		/**
+		 * Tells the listener to forward received events.
+		 *
+		 * @param forward <code>true</code> if forwarding should be enabled.
+		 * @since 2.0
+		 */
+		public void forward(boolean forward) {
+			fForward= forward;
+		}
+
+		/*
+		 * @see VerifyListener#verifyText(VerifyEvent)
+		 */
+		public void handle(VerifyEvent e) {
+			if (fForward)
+				handleVerifyEvent(e);
+		}
+	}
 }

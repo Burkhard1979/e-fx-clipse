@@ -143,7 +143,7 @@ public class CompletionProposalPopup implements IContentAssistListener {
 //			}
 //		});
 		proposalStage.initOwner(control.getScene().getWindow());
-		proposalStage.setScene(new Scene(proposalTable,200,200));
+		proposalStage.setScene(new Scene(proposalTable,500,300));
 	}
 	
 	private void setProposals(ICompletionProposal[] proposals, boolean isFilteredSubset) {
@@ -167,6 +167,8 @@ public class CompletionProposalPopup implements IContentAssistListener {
 		fFilteredProposals= proposals;
 		
 		proposalTableList.setAll(fFilteredProposals);
+		
+		selectProposal(0, false);
 	}
 	
 	/**
@@ -453,8 +455,7 @@ public class CompletionProposalPopup implements IContentAssistListener {
 				contentAssistant.showContextInformation(info, contextInformationOffset);
 			} else
 				contentAssistant.showContextInformation(null, -1);
-
-
+			
 		} finally {
 			if (target != null)
 				target.endCompoundChange();
@@ -625,8 +626,157 @@ public class CompletionProposalPopup implements IContentAssistListener {
 	}
 	
 	public boolean verifyKey(VerifyEvent e) {
+		System.err.println("PROPOSAL RECEIVED VERIFY!!!!!!!!!!!!!!!");
 		//TODO Needs to be implemented
-		return false;
+		
+		System.err.println(e.getText().length());
+		
+		if( e.getText().length() == 0 ) {
+			int newSelection= proposalTable.getSelectionModel().getSelectedIndex();
+			int itemCount = proposalTableList.size();
+			int visibleRows = 10;
+			
+			switch (e.getCode()) {
+			case LEFT:
+			case RIGHT:
+				filterProposals();
+				return true;
+			case UP:
+				newSelection -=1;
+				if( newSelection < 0 ) {
+					newSelection=itemCount - 1;
+				}
+				break;
+			case DOWN:
+				newSelection += 1;
+				if (newSelection > itemCount - 1)
+					newSelection= 0;
+				break;
+			case PAGE_DOWN :
+				newSelection += visibleRows;
+				if (newSelection >= itemCount)
+					newSelection= itemCount - 1;
+				break;
+
+			case PAGE_UP :
+				newSelection -= visibleRows;
+				if (newSelection < 0)
+					newSelection= 0;
+				break;
+			case HOME :
+				newSelection= 0;
+				break;
+
+			case END :
+				newSelection= itemCount - 1;
+				break;
+			default:
+				return true;
+			}
+			
+			selectProposal(newSelection, e.isControlDown());
+			e.consume();
+			return false;
+		}
+		
+		switch (e.getCode()) {
+		case ESCAPE:
+			e.consume();
+			hide();
+			break;
+		case ENTER:
+			e.consume();
+			int stateMask = 0;
+			insertSelectedProposalWithMask(stateMask);
+			break;
+		case TAB:
+			e.consume();
+			proposalStage.requestFocus();
+			break;
+		default:
+			ICompletionProposal p= getSelectedProposal();
+			if (p instanceof ICompletionProposalExtension) {
+				ICompletionProposalExtension t= (ICompletionProposalExtension) p;
+				char[] triggers= t.getTriggerCharacters();
+				if (contains(triggers, e.getText().charAt(0))) {
+					e.consume();
+					hide();
+					int stateMask2 = 0;
+					insertProposal(p, e.getText().charAt(0), stateMask2, contentAssistSubjectControlAdapter.getSelectedRange().offset);
+				}
+			}
+		}
+		
+		return true;
+	}
+		
+		/**
+		 * Returns whether the given character is contained in the given array of characters.
+		 * 
+		 * @param characters the list of characters
+		 * @param c the character to look for in the list
+		 * @return <code>true</code> if character belongs to the list
+		 * @since 2.0
+		 */
+		private boolean contains(char[] characters, char c) {
+
+			if (characters == null)
+				return false;
+
+			for (int i= 0; i < characters.length; i++) {
+				if (c == characters[i])
+					return true;
+			}
+
+			return false;
+		}
+	
+	/**
+	 * Takes the selected proposal and applies it.
+	 *
+	 * @param stateMask the state mask
+	 * @since 3.2
+	 */
+	private void insertSelectedProposalWithMask(int stateMask) {
+		ICompletionProposal p= getSelectedProposal();
+		hide();
+		if (p != null)
+			insertProposal(p, (char) 0, stateMask, contentAssistSubjectControlAdapter.getSelectedRange().offset);
+	}
+	
+	private void selectProposal(int index, boolean smartToggle) {
+		ICompletionProposal oldProposal= getSelectedProposal();
+		if (oldProposal instanceof ICompletionProposalExtension2 && viewer != null)
+			((ICompletionProposalExtension2) oldProposal).unselected(viewer);
+
+		if (fFilteredProposals == null) {
+			fireSelectionEvent(null, smartToggle);
+			return;
+		}
+
+		ICompletionProposal proposal= fFilteredProposals[index];
+		if (proposal instanceof ICompletionProposalExtension2 && viewer != null)
+			((ICompletionProposalExtension2) proposal).selected(viewer, smartToggle);
+
+		fireSelectionEvent(proposal, smartToggle);
+
+		lastProposal= proposal;
+
+		proposalTable.getSelectionModel().select(index);
+		proposalTable.scrollTo(index);
+//		if (additionalInfoController != null)
+//			additionalInfoController.handleTableSelectionChanged();
+	}
+	
+	/**
+	 * Fires a selection event, see {@link ICompletionListener}.
+	 *
+	 * @param proposal the selected proposal, possibly <code>null</code>
+	 * @param smartToggle true if the smart toggle is on
+	 * @since 3.2
+	 */
+	private void fireSelectionEvent(ICompletionProposal proposal, boolean smartToggle) {
+		contentAssistant.fireSelectionEvent(proposal, smartToggle);
 	}
 	
 	private final class ProposalSelectionListener implements EventHandler<KeyEvent> {

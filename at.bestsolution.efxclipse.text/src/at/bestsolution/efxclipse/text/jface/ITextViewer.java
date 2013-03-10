@@ -45,4 +45,14 @@ public interface ITextViewer {
 	TextSelection getSelectedRange();
 
 	void invalidateTextPresentation();
+	
+	/**
+	 * Registers an event consumer with this viewer. This method has been
+	 * replaces with the {@link org.eclipse.swt.custom.VerifyKeyListener}
+	 * management methods in {@link ITextViewerExtension}.
+	 *
+	 * @param consumer the viewer's event consumer. <code>null</code> is a
+	 *            valid argument.
+	 */
+	void setEventConsumer(IEventConsumer consumer);
 }

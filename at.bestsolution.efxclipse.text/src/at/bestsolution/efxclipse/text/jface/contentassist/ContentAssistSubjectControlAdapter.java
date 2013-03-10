@@ -13,11 +13,16 @@ package at.bestsolution.efxclipse.text.jface.contentassist;
 import org.eclipse.jface.text.IDocument;
 
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
+import at.bestsolution.efxclipse.styledtext.StyledTextArea;
 import at.bestsolution.efxclipse.styledtext.TextSelection;
+import at.bestsolution.efxclipse.styledtext.VerifyEvent;
+import at.bestsolution.efxclipse.text.jface.IEventConsumer;
 import at.bestsolution.efxclipse.text.jface.ITextViewer;
+import at.bestsolution.efxclipse.text.jface.ITextViewerExtension;
 
 public class ContentAssistSubjectControlAdapter implements IContentAssistSubjectControl {
 	private ITextViewer viewer;
@@ -28,7 +33,6 @@ public class ContentAssistSubjectControlAdapter implements IContentAssistSubject
 
 	@Override
 	public void addKeyListener(EventHandler<KeyEvent> keyListener) {
-		System.err.println("SETTING HANDLER");
 		viewer.getTextWidget().addEventHandler(KeyEvent.KEY_PRESSED, keyListener);
 	}
 
@@ -95,5 +99,71 @@ public class ContentAssistSubjectControlAdapter implements IContentAssistSubject
 //			return fContentAssistSubjectControl.getLineHeight();
 
 		return viewer.getTextWidget().getLineHeight(getCaretOffset());
+	}
+	
+	public boolean prependVerifyKeyListener(EventHandler<VerifyEvent> verifyKeyListener) {
+		/*if (contentAssistSubjectControl != null) {
+			return contentAssistSubjectControl.prependVerifyKeyListener(verifyKeyListener);
+		} else */
+		if (viewer instanceof ITextViewerExtension) {
+			ITextViewerExtension e= (ITextViewerExtension) viewer;
+			e.prependVerifyKeyListener(verifyKeyListener);
+			return true;
+		} else {
+			StyledTextArea textWidget= viewer.getTextWidget();
+//			if (Helper.okToUse(textWidget)) {
+				textWidget.addEventHandler(VerifyEvent.VERIFY, verifyKeyListener);
+				return true;
+//			}
+		}
+//		return false;
+	}
+	
+	public boolean supportsVerifyKeyListener() {
+//		if (fContentAssistSubjectControl != null)
+//			return fContentAssistSubjectControl.supportsVerifyKeyListener();
+		return true;
+	}
+
+	public boolean appendVerifyKeyListener(EventHandler<VerifyEvent> verifyKeyListener) {
+		/*if (contentAssistSubjectControl != null)
+			return contentAssistSubjectControl.appendVerifyKeyListener(verifyKeyListener);
+		else */
+		if (viewer instanceof ITextViewerExtension) {
+			ITextViewerExtension extension= (ITextViewerExtension)viewer;
+			extension.appendVerifyKeyListener(verifyKeyListener);
+			return true;
+		} else {
+			StyledTextArea textWidget= viewer.getTextWidget();
+//			if (Helper.okToUse(textWidget)) {
+				textWidget.addEventHandler(VerifyEvent.VERIFY,verifyKeyListener);
+				return true;
+//			}
+		}
+//		return false;
+	}
+
+	public void setEventConsumer(IEventConsumer eventConsumer) {
+//		if (contentAssistSubjectControl != null)
+//			contentAssistSubjectControl.setEventConsumer(eventConsumer);
+//		else
+			viewer.setEventConsumer(eventConsumer);
+	}
+	
+	/*
+	 * @see org.eclipse.jface.text.contentassist.IContentAssistSubjectControl#removeVerifyKeyListener(org.eclipse.swt.custom.VerifyKeyListener)
+	 */
+	public void removeVerifyKeyListener(EventHandler<VerifyEvent> verifyKeyListener) {
+//		if (fContentAssistSubjectControl != null) {
+//			fContentAssistSubjectControl.removeVerifyKeyListener(verifyKeyListener);
+//		} else 
+		if (viewer instanceof ITextViewerExtension) {
+			ITextViewerExtension extension= (ITextViewerExtension) viewer;
+			extension.removeVerifyKeyListener(verifyKeyListener);
+		} else {
+			StyledTextArea textWidget= viewer.getTextWidget();
+//			if (Helper.okToUse(textWidget))
+				textWidget.removeEventHandler(VerifyEvent.VERIFY, verifyKeyListener);
+		}
 	}
 }

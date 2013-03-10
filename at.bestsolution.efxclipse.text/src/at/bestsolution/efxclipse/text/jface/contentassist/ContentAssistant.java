@@ -10,27 +10,22 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.text.jface.contentassist;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.Node;
+import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import org.eclipse.core.commands.ICommandListener;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.ListenerList;
@@ -42,6 +37,7 @@ import org.eclipse.jface.text.TextUtilities;
 import at.bestsolution.efxclipse.runtime.bindings.KeySequence;
 import at.bestsolution.efxclipse.styledtext.VerifyEvent;
 import at.bestsolution.efxclipse.text.jface.IContentAssistListener;
+import at.bestsolution.efxclipse.text.jface.IEventConsumer;
 import at.bestsolution.efxclipse.text.jface.ITextViewer;
 
 public class ContentAssistant implements IContentAssistant, IContentAssistantExtension, IContentAssistantExtension2, IContentAssistantExtension3, IContentAssistantExtension4 {
@@ -59,6 +55,7 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 	private String lastErrorMessage;
 	private boolean showEmptyList;
 	private ContextInformationPopup contextInfoPopup;
+	private boolean verifyKeyListenerHooked= false;
 	
 	final static int CONTEXT_SELECTOR= 0;
 	final static int PROPOSAL_SELECTOR= 1;
@@ -100,6 +97,8 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 
 	private KeySequence repeatedInvocationKeySequence;
 
+	private InternalListener internalListener;
+	
 	private Closer closer;
 	
 	public ContentAssistant() {
@@ -152,6 +151,7 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 	}
 
 	protected void install() {
+		internalListener= new InternalListener();
 		
 		AdditionalInfoController controller= null;
 //		if (informationControlCreator != null)
@@ -168,10 +168,10 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 			if ((contentAssistSubjectControlAdapter != null) && autoAssistListener == null) {
 				autoAssistListener = createAutoAssistListener();
 				// For details see https://bugs.eclipse.org/bugs/show_bug.cgi?id=49212
-//				if (contentAssistSubjectControlAdapter.supportsVerifyKeyListener())
-//					contentAssistSubjectControlAdapter.appendVerifyKeyListener(fAutoAssistListener);
-//				else
-				contentAssistSubjectControlAdapter.addKeyListener(autoAssistListener);
+				if (contentAssistSubjectControlAdapter.supportsVerifyKeyListener())
+					contentAssistSubjectControlAdapter.appendVerifyKeyListener(autoAssistListener.asVerifyEvent());
+				else
+					contentAssistSubjectControlAdapter.addKeyListener(autoAssistListener.asKeyEvent());
 			}
 		}
 	}
@@ -315,22 +315,22 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 	 * @since 3.0
 	 */
 	private void uninstallVerifyKeyListener() {
-//		if (fVerifyKeyListenerHooked) {
+		if (verifyKeyListenerHooked) {
 //			if (Helper.okToUse(fContentAssistSubjectControlAdapter.getControl()))
-//				fContentAssistSubjectControlAdapter.removeVerifyKeyListener(fInternalListener);
-//			fVerifyKeyListenerHooked= false;
-//		}
+				contentAssistSubjectControlAdapter.removeVerifyKeyListener(internalListener);
+			verifyKeyListenerHooked= false;
+		}
 	}
 	
 	/**
 	 * Installs a key listener on the text viewer's widget.
 	 */
 	private void installKeyListener() {
-//		if (!fVerifyKeyListenerHooked) {
+		if (!verifyKeyListenerHooked) {
 //			if (Helper.okToUse(fContentAssistSubjectControlAdapter.getControl())) {
-//				fVerifyKeyListenerHooked= fContentAssistSubjectControlAdapter.prependVerifyKeyListener(fInternalListener);
+				verifyKeyListenerHooked= contentAssistSubjectControlAdapter.prependVerifyKeyListener(internalListener);
 //			}
-//		}
+		}
 	}
 	
 	/**
@@ -400,6 +400,21 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 	}
 	
 	/**
+	 * Fires a selection event, see {@link ICompletionListener}.
+	 *
+	 * @param proposal the selected proposal, possibly <code>null</code>
+	 * @param smartToggle true if the smart toggle is on
+	 * @since 3.2
+	 */
+	void fireSelectionEvent(ICompletionProposal proposal, boolean smartToggle) {
+		Object[] listeners= fCompletionListeners.getListeners();
+		for (int i= 0; i < listeners.length; i++) {
+			ICompletionListener listener= (ICompletionListener)listeners[i];
+			listener.selectionChanged(proposal, smartToggle);
+		}
+	}
+	
+	/**
 	 * Returns the content assist processor for the content type of the specified document position.
 	 *
 	 * @param contentAssistSubjectControl the content assist subject control
@@ -451,23 +466,24 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 		return new AutoAssistListener();
 	}
 	
-	class AutoAssistListener implements EventHandler<KeyEvent> {
-
+	class AutoAssistListener implements EventHandler<InputEvent> {
+		public EventHandler<KeyEvent> asKeyEvent() {
+			return (EventHandler<KeyEvent>)((EventHandler<?>)this);
+		}
+		
+		public EventHandler<VerifyEvent> asVerifyEvent() {
+			return (EventHandler<VerifyEvent>)((EventHandler<?>)this);
+		}
+		
 		@Override
-		public void handle(KeyEvent event) {
-			// TODO Auto-generated method stub
-			System.err.println("HANDLING A KEY-PRESS");
-			if( event.getText().equals(".") ) {
-				System.err.println("SHOWING");
-			}
-		}
-
-		public void verifyKey(VerifyEvent event) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		
+		public void handle(InputEvent event) {
+			System.err.println("THE EVENT: " + event);
+//			// TODO Auto-generated method stub
+//			System.err.println("HANDLING A KEY-PRESS");
+//			if( event.getText().equals(".") ) {
+//				System.err.println("SHOWING");
+//			}
+		}		
 	}
 	
 	public final IHandler getHandler(String commandId) {
@@ -618,38 +634,38 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 
 //		if (acquireWidgetToken(type)) {
 //
-//			listeners[type]= listener;
-//
-//			if (closer == null && getNumberOfListeners() == 1) {
-			if( closer == null ) {
+			listeners[type]= listener;
+
+			if (closer == null && getNumberOfListeners() == 1) {
+//			if( closer == null ) {
 				closer= new Closer();
 				closer.install();
-			}
-//				contentAssistSubjectControlAdapter.setEventConsumer(internalListener);
-//				installKeyListener();
-//			} else
-//				promoteKeyListener();
-//			return true;
+//			}
+				contentAssistSubjectControlAdapter.setEventConsumer(internalListener);
+				installKeyListener();
+			} else
+				promoteKeyListener();
+			return true;
 //		}
-//
+
 //		return false;
-		return true;
+//		return true;
 	}
 	
 	void removeContentAssistListener(IContentAssistListener listener, int type) {
-//		fListeners[type]= null;
-//
-//		if (getNumberOfListeners() == 0) {
+		listeners[type]= null;
+
+		if (getNumberOfListeners() == 0) {
 
 			if (closer != null) {
 				closer.uninstall();
 				closer= null;
 			}
 
-//			uninstallVerifyKeyListener();
-//			fContentAssistSubjectControlAdapter.setEventConsumer(null);
-//		}
-//
+			uninstallVerifyKeyListener();
+			contentAssistSubjectControlAdapter.setEventConsumer(null);
+		}
+
 //		releaseWidgetToken(type);
 	}
 	
@@ -754,18 +770,40 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 				}
 			};
 			
-			node.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseHandler);
-			node.addEventFilter(MouseEvent.MOUSE_RELEASED, mouseHandler);
-			node.addEventFilter(KeyEvent.KEY_PRESSED, keyHandler);
-			System.err.println(node.getScene().getFocusOwner());
+			node.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseHandler);
+			node.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseHandler);
+			node.addEventHandler(KeyEvent.KEY_PRESSED, keyHandler);
 			node.focusedProperty().addListener(focusListener);
 		}
 
 		public void uninstall() {
-			node.removeEventFilter(MouseEvent.MOUSE_PRESSED, mouseHandler);
-			node.removeEventFilter(MouseEvent.MOUSE_RELEASED, mouseHandler);
-			node.removeEventFilter(KeyEvent.KEY_PRESSED, keyHandler);
+			node.removeEventHandler(MouseEvent.MOUSE_PRESSED, mouseHandler);
+			node.removeEventHandler(MouseEvent.MOUSE_RELEASED, mouseHandler);
+			node.removeEventHandler(KeyEvent.KEY_PRESSED, keyHandler);
 			node.focusedProperty().removeListener(focusListener);
 		}
+	}
+	
+	class InternalListener implements EventHandler<VerifyEvent>, IEventConsumer {
+
+		@Override
+		public void processEvent(VerifyEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void handle(VerifyEvent e) {
+			IContentAssistListener[] listeners= (IContentAssistListener[]) ContentAssistant.this.listeners.clone();
+			for (int i= 0; i < listeners.length; i++) {
+				if (listeners[i] != null) {
+					if (!listeners[i].verifyKey(e) || e.isConsumed())
+						break;
+				}
+			}
+			if (autoAssistListener != null)
+				autoAssistListener.handle(e);
+		}
+		
 	}
 }

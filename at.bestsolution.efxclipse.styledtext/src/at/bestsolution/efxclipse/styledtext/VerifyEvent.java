@@ -7,8 +7,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class VerifyEvent extends InputEvent {
-	 public static final EventType<KeyEvent> VERIFY =
-	            new EventType<KeyEvent>(InputEvent.ANY, "VERIFY");
+	 public static final EventType<VerifyEvent> VERIFY =
+	            new EventType<VerifyEvent>(InputEvent.ANY, "VERIFY");
 	/**
 	 * 
 	 */

@@ -50,6 +50,7 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 		Event.fireEvent(getControl(), evt);
 		
 		if( evt.isConsumed() ) {
+			event.consume();
 			return;
 		}
 		
@@ -171,11 +172,11 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 						if( text.getBoundsInParent().contains(p) ) {
 							HitInfo info = text.impl_hitTestChar(new Point2D(p.getX()-text.getLayoutX(), 0 /* See RT-28485 text.getLayoutY()*/));
 							if( info.getInsertionIndex() >= 0 ) {
-								System.err.println("Text: " + text.getText());
-								System.err.println("Text-Offset: " + text.getUserData());
-								System.err.println("INSERT INDEX: " + info.getInsertionIndex());
+//								System.err.println("Text: " + text.getText());
+//								System.err.println("Text-Offset: " + text.getUserData());
+//								System.err.println("INSERT INDEX: " + info.getInsertionIndex());
 								int offset = ((Integer)text.getUserData()).intValue()+info.getInsertionIndex();
-								System.err.println("NEW OFFSET AT: " + offset);
+//								System.err.println("NEW OFFSET AT: " + offset);
 								getControl().setCaretOffset(offset);
 								return;
 							}
@@ -189,5 +190,6 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 			}
 		}
 		getControl().requestFocus();
+		Event.fireEvent(getControl(), event.copyFor(getControl(), getControl()));
 	}
 }
