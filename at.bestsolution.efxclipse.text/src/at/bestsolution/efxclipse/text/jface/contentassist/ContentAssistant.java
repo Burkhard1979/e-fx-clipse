@@ -17,21 +17,34 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import org.eclipse.core.commands.ICommandListener;
+import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentExtension3;
 import org.eclipse.jface.text.TextUtilities;
 
+import at.bestsolution.efxclipse.runtime.bindings.KeySequence;
+import at.bestsolution.efxclipse.styledtext.VerifyEvent;
+import at.bestsolution.efxclipse.text.jface.IContentAssistListener;
 import at.bestsolution.efxclipse.text.jface.ITextViewer;
 
-public class ContentAssistant implements IContentAssistant, IContentAssistantExtension {
+public class ContentAssistant implements IContentAssistant, IContentAssistantExtension, IContentAssistantExtension2, IContentAssistantExtension3, IContentAssistantExtension4 {
 	private static final int DEFAULT_AUTO_ACTIVATION_DELAY= 500;
 	
 	private String partitioning;
@@ -42,11 +55,39 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 	private Map<String, IContentAssistProcessor> processors;
 	private int autoActivationDelay= DEFAULT_AUTO_ACTIVATION_DELAY;
 	private long lastAutoActivation= Long.MIN_VALUE;
-	private List<ICompletionListener> completionListeners = new ArrayList<>();
 	private CompletionProposalPopup proposalPopup;
 	private String lastErrorMessage;
 	private boolean showEmptyList;
 	private ContextInformationPopup contextInfoPopup;
+	
+	final static int CONTEXT_SELECTOR= 0;
+	final static int PROPOSAL_SELECTOR= 1;
+	final static int CONTEXT_INFO_POPUP= 2;
+	
+	private IContentAssistListener[] listeners= new IContentAssistListener[4];
+	
+	/**
+	 * The sorter to be used for sorting the proposals or <code>null</code> if no sorting is
+	 * requested.
+	 * 
+	 * @since 3.8
+	 */
+	private ICompletionProposalSorter sorter;
+
+	/**
+	 * The list of completion listeners.
+	 *
+	 * @since 3.2
+	 */
+	private ListenerList fCompletionListeners= new ListenerList(ListenerList.IDENTITY);
+	
+	/**
+	 * Maps handler to command identifiers.
+	 *
+	 * @since 3.4
+	 */
+	private Map handlers;
+
 	
 	/**
 	 * Prefix completion setting.
@@ -56,6 +97,10 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 	private boolean prefixCompletionEnabled = false;
 
 	private boolean autoInserting = true;
+
+	private KeySequence repeatedInvocationKeySequence;
+
+	private Closer closer;
 	
 	public ContentAssistant() {
 		partitioning= IDocumentExtension3.DEFAULT_PARTITIONING;
@@ -141,19 +186,6 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 		return autoInserting; 
 	}
 	
-	/**
-	 * Fires an event after applying a proposal, see {@link ICompletionListenerExtension2}.
-	 * 
-	 * @param proposal the applied proposal
-	 * @since 3.8
-	 */
-	void fireAppliedEvent(ICompletionProposal proposal) {
-		for (ICompletionListener listener : new ArrayList<>(completionListeners)) {
-			if (listener instanceof ICompletionListenerExtension2)
-				((ICompletionListenerExtension2)listener).applied(proposal);
-		}
-	}
-	
 	private String computeAllAutoActivationTriggers() {
 		if (processors == null)
 			return ""; //$NON-NLS-1$
@@ -180,6 +212,7 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 	}
 	
 	public String showPossibleCompletions() {
+		System.err.println("SHOW POSSIBLE COMPLETEION");
 		if (!prepareToShowCompletions(false))
 			return null;
 		if (prefixCompletionEnabled)
@@ -343,9 +376,26 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 		if (contentAssistSubjectControlAdapter != null && !isProposalPopupActive()) {
 			IContentAssistProcessor processor= getProcessor(contentAssistSubjectControlAdapter, contentAssistSubjectControlAdapter.getSelectedRange().offset);
 			ContentAssistEvent event= new ContentAssistEvent(this, processor, isAutoActivated);
-			for (ICompletionListener listener : new ArrayList<ICompletionListener>(completionListeners)) {
+			Object[] listeners= fCompletionListeners.getListeners();
+			for (int i= 0; i < listeners.length; i++) {
+				ICompletionListener listener= (ICompletionListener)listeners[i];
 				listener.assistSessionStarted(event);
 			}
+		}
+	}
+	
+	/**
+	 * Fires an event after applying a proposal, see {@link ICompletionListenerExtension2}.
+	 * 
+	 * @param proposal the applied proposal
+	 * @since 3.8
+	 */
+	void fireAppliedEvent(ICompletionProposal proposal) {
+		Object[] listeners= fCompletionListeners.getListeners();
+		for (int i= 0; i < listeners.length; i++) {
+			ICompletionListener listener= (ICompletionListener)listeners[i];
+			if (listener instanceof ICompletionListenerExtension2)
+				((ICompletionListenerExtension2)listener).applied(proposal);
 		}
 	}
 	
@@ -411,6 +461,311 @@ public class ContentAssistant implements IContentAssistant, IContentAssistantExt
 				System.err.println("SHOWING");
 			}
 		}
+
+		public void verifyKey(VerifyEvent event) {
+			// TODO Auto-generated method stub
+			
+		}
 		
+		
+	}
+	
+	public final IHandler getHandler(String commandId) {
+		if (handlers == null)
+			throw new IllegalStateException();
+
+		IHandler handler= (IHandler)handlers.get(commandId);
+		if (handler != null)
+			return handler;
+
+		Assert.isLegal(false);
+		return null;
+	}
+
+	/*
+	 * @see org.eclipse.jface.text.contentassist.IContentAssistantExtension3#setInvocationTrigger(org.eclipse.jface.bindings.keys.KeySequence)
+	 * @since 3.2
+	 */
+	public void setRepeatedInvocationTrigger(KeySequence sequence) {
+		repeatedInvocationKeySequence= sequence;
+	}
+
+	/*
+	 * @see org.eclipse.jface.text.contentassist.IContentAssistantExtension2#addCompletionListener(org.eclipse.jface.text.contentassist.ICompletionListener)
+	 * @since 3.2
+	 */
+	public void addCompletionListener(ICompletionListener listener) {
+		Assert.isLegal(listener != null);
+		fCompletionListeners.add(listener);
+	}
+
+	/*
+	 * @see org.eclipse.jface.text.contentassist.IContentAssistantExtension2#removeCompletionListener(org.eclipse.jface.text.contentassist.ICompletionListener)
+	 * @since 3.2
+	 */
+	public void removeCompletionListener(ICompletionListener listener) {
+		fCompletionListeners.remove(listener);
+	}
+
+
+	@Override
+	public void setRepeatedInvocationMode(boolean cycling) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setShowEmptyList(boolean showEmpty) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setStatusLineVisible(boolean show) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setStatusMessage(String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setEmptyMessage(String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Sets the proposal sorter.
+	 * 
+	 * @param sorter the sorter to be used, or <code>null</code> if no sorting is requested
+	 * @since 3.8
+	 */
+	public void setSorter(ICompletionProposalSorter sorter) {
+		this.sorter= sorter;
+		if (proposalPopup != null) {
+			proposalPopup.setSorter(this.sorter);
+		}
+	}
+	
+	/**
+	 * Fires a session restart event to all registered {@link ICompletionListener}s.
+	 *
+	 * @since 3.4
+	 */
+	void fireSessionRestartEvent() {
+		if (contentAssistSubjectControlAdapter != null) {
+			IContentAssistProcessor processor= getProcessor(contentAssistSubjectControlAdapter, contentAssistSubjectControlAdapter.getSelectedRange().offset);
+			ContentAssistEvent event= new ContentAssistEvent(this, processor);
+			Object[] listeners= fCompletionListeners.getListeners();
+			for (int i= 0; i < listeners.length; i++) {
+				ICompletionListener listener= (ICompletionListener)listeners[i];
+				if (listener instanceof ICompletionListenerExtension)
+					((ICompletionListenerExtension)listener).assistSessionRestarted(event);
+			}
+		}
+	}
+
+	/**
+	 * Fires a session end event to all registered {@link ICompletionListener}s.
+	 *
+	 * @since 3.2
+	 */
+	void fireSessionEndEvent() {
+		if (contentAssistSubjectControlAdapter != null) {
+			IContentAssistProcessor processor= getProcessor(contentAssistSubjectControlAdapter, contentAssistSubjectControlAdapter.getSelectedRange().offset);
+			ContentAssistEvent event= new ContentAssistEvent(this, processor);
+			Object[] listeners= fCompletionListeners.getListeners();
+			for (int i= 0; i < listeners.length; i++) {
+				ICompletionListener listener= (ICompletionListener)listeners[i];
+				listener.assistSessionEnded(event);
+			}
+		}
+	}
+	
+	/**
+	 * Hides any open pop-ups.
+	 *
+	 * @since 3.0
+	 */
+	protected void hide() {
+		if (proposalPopup != null)
+			proposalPopup.hide();
+
+//		if (contextInfoPopup != null)
+//			contextInfoPopup.hide();
+	}
+	
+	/**
+	 * Registers a content assist listener. The following are valid listener types:
+	 * <ul>
+	 *   <li>AUTO_ASSIST</li>
+	 *   <li>CONTEXT_SELECTOR</li>
+	 *   <li>PROPOSAL_SELECTOR</li>
+	 *   <li>CONTEXT_INFO_POPUP</li>
+	 * </ul>
+	 * Returns whether the listener could be added successfully. A listener can not be added if the
+	 * widget token could not be acquired.
+	 *
+	 * @param listener the listener to register
+	 * @param type the type of listener
+	 * @return <code>true</code> if the listener could be added
+	 */
+	boolean addContentAssistListener(IContentAssistListener listener, int type) {
+
+//		if (acquireWidgetToken(type)) {
+//
+//			listeners[type]= listener;
+//
+//			if (closer == null && getNumberOfListeners() == 1) {
+			if( closer == null ) {
+				closer= new Closer();
+				closer.install();
+			}
+//				contentAssistSubjectControlAdapter.setEventConsumer(internalListener);
+//				installKeyListener();
+//			} else
+//				promoteKeyListener();
+//			return true;
+//		}
+//
+//		return false;
+		return true;
+	}
+	
+	void removeContentAssistListener(IContentAssistListener listener, int type) {
+//		fListeners[type]= null;
+//
+//		if (getNumberOfListeners() == 0) {
+
+			if (closer != null) {
+				closer.uninstall();
+				closer= null;
+			}
+
+//			uninstallVerifyKeyListener();
+//			fContentAssistSubjectControlAdapter.setEventConsumer(null);
+//		}
+//
+//		releaseWidgetToken(type);
+	}
+	
+	/**
+	 * Returns whether the widget token could be acquired. The following are valid listener types:
+	 * <ul>
+	 *   <li>AUTO_ASSIST</li>
+	 *   <li>CONTEXT_SELECTOR</li>
+	 *   <li>PROPOSAL_SELECTOR</li>
+	 *   <li>CONTEXT_INFO_POPUP</li>
+	 * </ul>
+	 *
+	 * @param type the listener type for which to acquire
+	 * @return <code>true</code> if the widget token could be acquired
+	 * @since 2.0
+	 */
+	private boolean acquireWidgetToken(int type) {
+//		switch (type) {
+//			case CONTEXT_SELECTOR:
+//			case PROPOSAL_SELECTOR:
+//				if (contentAssistSubjectControl instanceof IWidgetTokenOwnerExtension) {
+//					IWidgetTokenOwnerExtension extension= (IWidgetTokenOwnerExtension) fContentAssistSubjectControl;
+//					return extension.requestWidgetToken(this, WIDGET_PRIORITY);
+//				} else if (fContentAssistSubjectControl instanceof IWidgetTokenOwner) {
+//					IWidgetTokenOwner owner= (IWidgetTokenOwner) fContentAssistSubjectControl;
+//					return owner.requestWidgetToken(this);
+//				} else if (fViewer instanceof IWidgetTokenOwnerExtension) {
+//					IWidgetTokenOwnerExtension extension= (IWidgetTokenOwnerExtension) fViewer;
+//					return extension.requestWidgetToken(this, WIDGET_PRIORITY);
+//				} else if (fViewer instanceof IWidgetTokenOwner) {
+//					IWidgetTokenOwner owner= (IWidgetTokenOwner) fViewer;
+//					return owner.requestWidgetToken(this);
+//				}
+//		}
+		return true;
+	}
+	
+	/**
+	 * Returns the number of listeners.
+	 *
+	 * @return the number of listeners
+	 * @since 2.0
+	 */
+	private int getNumberOfListeners() {
+		int count= 0;
+		for (int i= 0; i <= CONTEXT_INFO_POPUP; i++) {
+			if (listeners[i] != null)
+				++count;
+		}
+		return count;
+	}
+	
+	class Closer {
+		private Stage stage;
+		private Node node;
+		
+		private EventHandler<MouseEvent> mouseHandler;
+		private EventHandler<KeyEvent> keyHandler;
+		private ChangeListener<Boolean> focusListener;
+		
+		protected void install() {
+			System.err.println("==========> SETTING UP");
+			node = contentAssistSubjectControlAdapter.getControl();
+			stage = (Stage) node.getScene().getWindow();
+			
+			mouseHandler = new EventHandler<MouseEvent>() {
+				
+				@Override
+				public void handle(MouseEvent arg0) {
+					System.err.println("===========> MOUSE HANDLER!!!!!!!!!!");
+					hide();
+				}
+			};
+			focusListener= new ChangeListener<Boolean>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> arg0,
+						Boolean arg1, Boolean arg2) {
+					if( ! arg2.booleanValue() ) {
+						System.err.println("FOCUS LOST");
+						Platform.runLater(new Runnable() {
+							public void run() {
+								if( ! node.isFocused() && ! proposalPopup.hasFocus() ) {
+									System.err.println("CLOSE IT");
+									hide();
+								}
+							}
+						});
+						
+					} else {
+						System.err.println("FOCUS GAINED");
+					}
+				}
+			};
+			keyHandler = new EventHandler<KeyEvent>() {
+
+				@Override
+				public void handle(KeyEvent arg0) {
+					if( arg0.getCode() == KeyCode.ESCAPE ) {
+						hide();
+					}
+				}
+			};
+			
+			node.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseHandler);
+			node.addEventFilter(MouseEvent.MOUSE_RELEASED, mouseHandler);
+			node.addEventFilter(KeyEvent.KEY_PRESSED, keyHandler);
+			System.err.println(node.getScene().getFocusOwner());
+			node.focusedProperty().addListener(focusListener);
+		}
+
+		public void uninstall() {
+			node.removeEventFilter(MouseEvent.MOUSE_PRESSED, mouseHandler);
+			node.removeEventFilter(MouseEvent.MOUSE_RELEASED, mouseHandler);
+			node.removeEventFilter(KeyEvent.KEY_PRESSED, keyHandler);
+			node.focusedProperty().removeListener(focusListener);
+		}
 	}
 }

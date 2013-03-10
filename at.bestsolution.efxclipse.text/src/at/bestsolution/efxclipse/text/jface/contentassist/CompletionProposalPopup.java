@@ -11,25 +11,42 @@
 package at.bestsolution.efxclipse.text.jface.contentassist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
+
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.text.IRegion;
+import org.eclipse.jface.text.TextUtilities;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import at.bestsolution.efxclipse.styledtext.TextSelection;
+import at.bestsolution.efxclipse.styledtext.VerifyEvent;
+import at.bestsolution.efxclipse.text.jface.IContentAssistListener;
 import at.bestsolution.efxclipse.text.jface.IEditingSupport;
 import at.bestsolution.efxclipse.text.jface.IEditingSupportRegistry;
 import at.bestsolution.efxclipse.text.jface.IRewriteTarget;
 import at.bestsolution.efxclipse.text.jface.ITextViewer;
 import at.bestsolution.efxclipse.text.jface.ITextViewerExtension;
 
-public class CompletionProposalPopup {
+public class CompletionProposalPopup implements IContentAssistListener {
 	private ContentAssistant contentAssistant;
 	private ITextViewer viewer;
 	private AdditionalInfoController controller;
@@ -44,8 +61,34 @@ public class CompletionProposalPopup {
 	private ProposalSelectionListener keyListener;
 	private IDocumentListener documentListener;
 	private final List<DocumentEvent> documentEvents= new ArrayList<>();
-	private ICompletionProposal[] filteredProposals;
 	private boolean inserting;
+	private ICompletionProposalSorter sorter;
+	private ListView<ICompletionProposal> proposalTable;
+	private ObservableList<ICompletionProposal> proposalTableList;
+	/** The filter list of proposals. */
+	private ICompletionProposal[] fFilteredProposals;
+	/**
+	 * <code>true</code> if <code>fFilterRunnable</code> has been
+	 * posted, <code>false</code> if not.
+	 *
+	 * @since 3.1.1
+	 */
+	private boolean isFilterPending= false;
+	
+	/**
+	 * The (reusable) empty proposal.
+	 *
+	 * @since 3.2
+	 */
+	private final EmptyProposal emptyProposal= new EmptyProposal();
+	
+	/**
+	 * Set to true by {@link #computeFilteredProposals(int, DocumentEvent)} if
+	 * the returned proposals are a subset of {@link #fFilteredProposals},
+	 * <code>false</code> if not.
+	 * @since 3.1
+	 */
+	private boolean isFilteredSubset;
 	
 	public CompletionProposalPopup(ContentAssistant contentAssistant,
 			ITextViewer viewer, AdditionalInfoController controller) {
@@ -56,6 +99,7 @@ public class CompletionProposalPopup {
 	}
 
 	public String showProposals(final boolean autoActivated) {
+		System.err.println("SHOWING PROPOSALS");
 		final Node control= contentAssistSubjectControlAdapter.getControl();
 		
 		if (keyListener == null)
@@ -86,16 +130,250 @@ public class CompletionProposalPopup {
 	
 	private void createProposalSelector() {
 		Node control= contentAssistSubjectControlAdapter.getControl();
-		proposalStage = new Stage();
+		
+		proposalTable = new ListView<>();
+		proposalTableList = FXCollections.observableArrayList();
+		proposalTable.setItems(proposalTableList);
+		proposalStage = new Stage(StageStyle.UNDECORATED);
+//		proposalStage.setOnHidden(new EventHandler<WindowEvent>() {
+//
+//			@Override
+//			public void handle(WindowEvent arg0) {
+//				proposalStage = null;
+//			}
+//		});
 		proposalStage.initOwner(control.getScene().getWindow());
+		proposalStage.setScene(new Scene(proposalTable,200,200));
 	}
 	
 	private void setProposals(ICompletionProposal[] proposals, boolean isFilteredSubset) {
+		ICompletionProposal[] oldProposals= fFilteredProposals;
+		ICompletionProposal oldProposal= getSelectedProposal(); // may trigger filtering and a reentrant call to setProposals()
+		if (oldProposals != fFilteredProposals) // reentrant call was first - abort
+			return;
+
+		if (oldProposal instanceof ICompletionProposalExtension2 && viewer != null)
+			((ICompletionProposalExtension2) oldProposal).unselected(viewer);
+
+		if (proposals == null || proposals.length == 0) {
+			emptyProposal.fOffset= filterOffset;
+			emptyProposal.fDisplayString= "No Proposal";//emptyMessage != null ? emptyMessage : JFaceTextMessages.getString("CompletionProposalPopup.no_proposals"); //$NON-NLS-1$
+			proposals= new ICompletionProposal[] { emptyProposal };
+		}
+
+		if (sorter != null)
+			sortProposals(proposals);
+
+		fFilteredProposals= proposals;
 		
+		proposalTableList.setAll(fFilteredProposals);
 	}
 	
+	/**
+	 * Sorts the given proposal array.
+	 * 
+	 * @param proposals the new proposals to display in the popup window
+	 * @throws NullPointerException if no sorter has been set
+	 * @since 3.8
+	 */
+	private void sortProposals(final ICompletionProposal[] proposals) {
+		Arrays.sort(proposals, new Comparator<ICompletionProposal>() {
+			public int compare(ICompletionProposal o1, ICompletionProposal o2) {
+				return sorter.compare(o1,o2);
+			}
+		});
+	}
+	
+	/**
+	 * Returns the proposal selected in the proposal selector.
+	 *
+	 * @return the selected proposal
+	 * @since 2.0
+	 */
+	private ICompletionProposal getSelectedProposal() {
+		/* Make sure that there is no filter runnable pending.
+		 * See https://bugs.eclipse.org/bugs/show_bug.cgi?id=31427
+		 */
+		if (isFilterPending)
+			filterRunnable.run();
+
+//		// filter runnable may have hidden the proposals
+//		if (!Helper.okToUse(fProposalTable))
+//			return null;
+
+		int i= proposalTable.getSelectionModel().getSelectedIndex();
+		if (fFilteredProposals == null || i < 0 || i >= fFilteredProposals.length)
+			return null;
+		return fFilteredProposals[i];
+	}
+	
+	/**
+	 * The filter runnable.
+	 *
+	 * @since 3.1.1
+	 */
+	private final Runnable filterRunnable= new Runnable() {
+		public void run() {
+			if (!isFilterPending)
+				return;
+
+			isFilterPending= false;
+
+//			if (!Helper.okToUse(fContentAssistSubjectControlAdapter.getControl()))
+//				return;
+
+			int offset= contentAssistSubjectControlAdapter.getSelectedRange().offset;
+			ICompletionProposal[] proposals= null;
+			try  {
+				if (offset > -1) {
+					DocumentEvent event= TextUtilities.mergeProcessedDocumentEvents(documentEvents);
+					proposals= computeFilteredProposals(offset, event);
+				}
+			} catch (BadLocationException x)  {
+			} finally  {
+				documentEvents.clear();
+			}
+			filterOffset= offset;
+
+			if (proposals != null && proposals.length > 0)
+				setProposals(proposals, isFilteredSubset);
+			else
+				hide();
+		}
+	};
+	
+	/**
+	 * Computes the subset of already computed proposals that are still valid for
+	 * the given offset.
+	 *
+	 * @param offset the offset
+	 * @param event the merged document event
+	 * @return the set of filtered proposals
+	 * @since 3.0
+	 */
+	private ICompletionProposal[] computeFilteredProposals(int offset, DocumentEvent event) {
+
+		if (offset == invocationOffset && event == null) {
+			isFilteredSubset= false;
+			return computedProposals;
+		}
+
+		if (offset < invocationOffset) {
+			isFilteredSubset= false;
+			invocationOffset= offset;
+			contentAssistant.fireSessionRestartEvent();
+			computedProposals= computeProposals(invocationOffset);
+			return computedProposals;
+		}
+
+		ICompletionProposal[] proposals;
+		if (offset < filterOffset) {
+			proposals= computedProposals;
+			isFilteredSubset= false;
+		} else {
+			proposals= fFilteredProposals;
+			isFilteredSubset= true;
+		}
+
+		if (proposals == null) {
+			isFilteredSubset= false;
+			return null;
+		}
+
+		IDocument document= contentAssistSubjectControlAdapter.getDocument();
+		int length= proposals.length;
+		List filtered= new ArrayList(length);
+		for (int i= 0; i < length; i++) {
+
+			if (proposals[i] instanceof ICompletionProposalExtension2) {
+
+				ICompletionProposalExtension2 p= (ICompletionProposalExtension2) proposals[i];
+				if (p.validate(document, offset, event))
+					filtered.add(p);
+
+			} else if (proposals[i] instanceof ICompletionProposalExtension) {
+
+				ICompletionProposalExtension p= (ICompletionProposalExtension) proposals[i];
+				if (p.isValidFor(document, offset))
+					filtered.add(p);
+
+			} else {
+				// restore original behavior
+				isFilteredSubset= false;
+				invocationOffset= offset;
+				contentAssistant.fireSessionRestartEvent();
+				computedProposals= computeProposals(invocationOffset);
+				return computedProposals;
+			}
+		}
+
+		return (ICompletionProposal[]) filtered.toArray(new ICompletionProposal[filtered.size()]);
+	}
+
+	
 	private void displayProposals() {
-		
+		if (contentAssistant.addContentAssistListener(this, ContentAssistant.PROPOSAL_SELECTOR)) {
+			ensureDocumentListenerInstalled();
+			int caret= contentAssistSubjectControlAdapter.getCaretOffset();
+			Node n = contentAssistSubjectControlAdapter.getControl();
+			Point2D p = contentAssistSubjectControlAdapter.getLocationAtOffset(caret);
+			double height = contentAssistSubjectControlAdapter.getLineHeight();
+			p = n.localToScreen(p);
+			proposalStage.setX(p.getX());
+			proposalStage.setY(p.getY()+height);
+			proposalStage.show();
+			Stage s = (Stage) contentAssistSubjectControlAdapter.getControl().getScene().getWindow();
+			s.requestFocus();
+//			s.setFocused(true);
+			contentAssistSubjectControlAdapter.getControl().requestFocus();
+		}
+	}
+	
+	/**
+	 * Returns whether this popup has the focus.
+	 *
+	 * @return <code>true</code> if the popup has the focus
+	 */
+	public boolean hasFocus() {
+		if( proposalStage != null ) {
+			return proposalStage.isFocused();
+		}
+		return false;
+	}
+	
+	/**
+	 * Installs the document listener if not already done.
+	 *
+	 * @since 3.2
+	 */
+	private void ensureDocumentListenerInstalled() {
+		if (documentListener == null) {
+			documentListener=  new IDocumentListener()  {
+				public void documentAboutToBeChanged(DocumentEvent event) {
+					if (!inserting)
+						documentEvents.add(event);
+				}
+
+				public void documentChanged(DocumentEvent event) {
+					if (!inserting)
+						filterProposals();
+				}
+			};
+			IDocument document= contentAssistSubjectControlAdapter.getDocument();
+			if (document != null)
+				document.addDocumentListener(documentListener);
+		}
+	}
+	
+	/**
+	 * Filters the displayed proposal based on the given cursor position and the
+	 * offset of the original invocation of the content assistant.
+	 */
+	private void filterProposals() {
+		if (!isFilterPending) {
+			isFilterPending= true;
+			Platform.runLater(filterRunnable);
+		}
 	}
 	
 	/**
@@ -250,7 +528,41 @@ public class CompletionProposalPopup {
 	}
 	
 	public void hide() {
+		unregister();
+
+		if( proposalStage == null ) {
+			return;
+		}
 		
+//		if (viewer instanceof IEditingSupportRegistry) {
+//			IEditingSupportRegistry registry= (IEditingSupportRegistry) viewer;
+//			registry.unregister(fFocusHelper);
+//		}
+
+//		if (Helper.okToUse(fProposalShell)) {
+
+			contentAssistant.removeContentAssistListener(this, ContentAssistant.PROPOSAL_SELECTOR);
+
+//			popupCloser.uninstall();
+//			proposalStage.setVisible(false);
+			proposalStage.close();
+			proposalStage= null;
+//		}
+
+//		if (fMessageTextFont != null) {
+//			fMessageTextFont.dispose();
+//			fMessageTextFont= null;
+//		}
+//
+//		if (fMessageText != null) {
+//			fMessageText= null;
+//		}
+//
+//		fEmptyMessage= null;
+//
+//		fLastCompletionOffset= -1;
+
+		contentAssistant.fireSessionEndEvent();
 	}
 	
 	/**
@@ -280,7 +592,7 @@ public class CompletionProposalPopup {
 			lastProposal= null;
 		}
 
-		filteredProposals= null;
+		fFilteredProposals= null;
 		computedProposals= null;
 
 		contentAssistant.possibleCompletionsClosed();
@@ -309,6 +621,14 @@ public class CompletionProposalPopup {
 		return null;
 	}
 	
+	public void processEvent(VerifyEvent e) {
+	}
+	
+	public boolean verifyKey(VerifyEvent e) {
+		//TODO Needs to be implemented
+		return false;
+	}
+	
 	private final class ProposalSelectionListener implements EventHandler<KeyEvent> {
 
 		@Override
@@ -317,5 +637,94 @@ public class CompletionProposalPopup {
 			
 		}
 		
+	}
+
+	/**
+	 * Sets the proposal sorter.
+	 * 
+	 * @param sorter the sorter to be used, or <code>null</code> if no sorting is requested
+	 * @since 3.8
+	 * @see ContentAssistant#setSorter(ICompletionProposalSorter)
+	 */
+	public void setSorter(ICompletionProposalSorter sorter) {
+		this.sorter= sorter;
+	}
+	
+	/**
+	 * The empty proposal displayed if there is nothing else to show.
+	 *
+	 * @since 3.2
+	 */
+	private static final class EmptyProposal implements ICompletionProposal, ICompletionProposalExtension {
+
+		String fDisplayString;
+		int fOffset;
+		/*
+		 * @see ICompletionProposal#apply(IDocument)
+		 */
+		public void apply(IDocument document) {
+		}
+
+		/*
+		 * @see ICompletionProposal#getSelection(IDocument)
+		 */
+		public TextSelection getSelection(IDocument document) {
+			return new TextSelection(fOffset, 0);
+		}
+
+		/*
+		 * @see ICompletionProposal#getContextInformation()
+		 */
+		public IContextInformation getContextInformation() {
+			return null;
+		}
+
+		/*
+		 * @see ICompletionProposal#getImage()
+		 */
+		public Image getImage() {
+			return null;
+		}
+
+		/*
+		 * @see ICompletionProposal#getDisplayString()
+		 */
+		public String getDisplayString() {
+			return fDisplayString;
+		}
+
+		/*
+		 * @see ICompletionProposal#getAdditionalProposalInfo()
+		 */
+		public String getAdditionalProposalInfo() {
+			return null;
+		}
+
+		/*
+		 * @see org.eclipse.jface.text.contentassist.ICompletionProposalExtension#apply(org.eclipse.jface.text.IDocument, char, int)
+		 */
+		public void apply(IDocument document, char trigger, int offset) {
+		}
+
+		/*
+		 * @see org.eclipse.jface.text.contentassist.ICompletionProposalExtension#isValidFor(org.eclipse.jface.text.IDocument, int)
+		 */
+		public boolean isValidFor(IDocument document, int offset) {
+			return false;
+		}
+
+		/*
+		 * @see org.eclipse.jface.text.contentassist.ICompletionProposalExtension#getTriggerCharacters()
+		 */
+		public char[] getTriggerCharacters() {
+			return null;
+		}
+
+		/*
+		 * @see org.eclipse.jface.text.contentassist.ICompletionProposalExtension#getContextInformationPosition()
+		 */
+		public int getContextInformationPosition() {
+			return -1;
+		}
 	}
 }

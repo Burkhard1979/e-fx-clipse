@@ -34,6 +34,7 @@ import org.eclipse.jface.text.projection.ChildDocumentManager;
 
 import at.bestsolution.efxclipse.styledtext.StyleRange;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
+import at.bestsolution.efxclipse.styledtext.TextSelection;
 
 public class TextViewer implements ITextViewer, ITextOperationTarget {
 	
@@ -105,6 +106,11 @@ public class TextViewer implements ITextViewer, ITextOperationTarget {
 				selectionChanged(selectionRange[0], selectionRange[1]);
 			}
 		}
+	}
+	
+	@Override
+	public TextSelection getSelectedRange() {
+		return textWidget.getSelection();
 	}
 	
 	/**

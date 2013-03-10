@@ -13,6 +13,7 @@ package at.bestsolution.efxclipse.text.jface.contentassist;
 import org.eclipse.jface.text.IDocument;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import at.bestsolution.efxclipse.styledtext.TextSelection;
@@ -74,5 +75,25 @@ public class ContentAssistSubjectControlAdapter implements IContentAssistSubject
 	ContextInformationPopup createContextInfoPopup(
 			ContentAssistant contentAssistant) {
 		return new ContextInformationPopup(contentAssistant, viewer);
+	}
+	
+	public Point2D getLocationAtOffset(int offset) {
+//		if (fContentAssistSubjectControl != null)
+//			return fContentAssistSubjectControl.getLocationAtOffset(offset);
+		return viewer.getTextWidget().getLocationAtOffset(offset);
+	}
+
+	public int getCaretOffset() {
+		return viewer.getTextWidget().getCaretOffset();
+	}
+
+	/*
+	 * @see IContentAssistSubjectControl#getLineHeight()
+	 */
+	public double getLineHeight() {
+//		if (fContentAssistSubjectControl != null)
+//			return fContentAssistSubjectControl.getLineHeight();
+
+		return viewer.getTextWidget().getLineHeight(getCaretOffset());
 	}
 }

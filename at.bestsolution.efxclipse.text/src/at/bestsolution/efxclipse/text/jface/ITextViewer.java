@@ -14,6 +14,7 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
+import at.bestsolution.efxclipse.styledtext.TextSelection;
 
 public interface ITextViewer {
 
@@ -40,4 +41,8 @@ public interface ITextViewer {
 	void setSelectedRange(int offset, int length);
 
 	void revealRange(int offset, int length);
+	
+	TextSelection getSelectedRange();
+
+	void invalidateTextPresentation();
 }

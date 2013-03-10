@@ -21,18 +21,38 @@ import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
+import at.bestsolution.efxclipse.styledtext.VerifyEvent;
 import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin.LineCell;
 
 import com.sun.javafx.scene.control.behavior.BehaviorBase;
 import com.sun.javafx.scene.text.HitInfo;
 
 public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
-
 	public StyledTextBehavior(StyledTextArea styledText) {
 		super(styledText);
 	}
 
-	public void keyPressed(KeyEvent event, int currentRowIndex) {
+	@Override
+	protected void callActionForEvent(KeyEvent arg0) {
+		if( arg0.getEventType() == KeyEvent.KEY_PRESSED ) {
+			keyPressed(arg0, getControl().getContent().getLineAtOffset(getControl().getCaretOffset()));
+		}
+		super.callActionForEvent(arg0);
+	}
+	
+	@Override
+	protected void callAction(String arg0) {
+		super.callAction(arg0);
+	}
+	
+	private void keyPressed(KeyEvent event, int currentRowIndex) {
+		VerifyEvent evt = new VerifyEvent(getControl(), getControl(), event);
+		Event.fireEvent(getControl(), evt);
+		
+		if( evt.isConsumed() ) {
+			return;
+		}
+		
 		final int offset = getControl().getCaretOffset();
 		
 		switch (event.getCode()) {
@@ -120,6 +140,7 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 			if( event.isMetaDown() ) {
 				// exclude meta keys
 			} else {
+				System.err.println("ADDING TEXT");
 				if( event.getText().length() > 0 ) {
 					getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 0, event.getText());
 					getControl().setCaretOffset(offset+1);	
@@ -129,7 +150,7 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 			break;
 		}
 		
-		Event.fireEvent(getControl(), event.copyFor(getControl(), getControl()));
+//		Event.fireEvent(getControl(), event.copyFor(getControl(), getControl()));
 	}
 	
 	public void mousePressed(MouseEvent event, Set<LineCell> visibleCells) {
@@ -150,7 +171,11 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 						if( text.getBoundsInParent().contains(p) ) {
 							HitInfo info = text.impl_hitTestChar(new Point2D(p.getX()-text.getLayoutX(), 0 /* See RT-28485 text.getLayoutY()*/));
 							if( info.getInsertionIndex() >= 0 ) {
+								System.err.println("Text: " + text.getText());
+								System.err.println("Text-Offset: " + text.getUserData());
+								System.err.println("INSERT INDEX: " + info.getInsertionIndex());
 								int offset = ((Integer)text.getUserData()).intValue()+info.getInsertionIndex();
+								System.err.println("NEW OFFSET AT: " + offset);
 								getControl().setCaretOffset(offset);
 								return;
 							}
@@ -163,5 +188,6 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 				break;
 			}
 		}
+		getControl().requestFocus();
 	}
 }

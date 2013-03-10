@@ -29,6 +29,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -36,7 +37,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.PathElement;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -68,6 +71,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		super(styledText, new StyledTextBehavior(styledText));
 		
 		listView = new ListView<>();
+		listView.setFocusTraversable(false);
 		listView.setCellFactory(new Callback<ListView<Line>, ListCell<Line>>() {
 			
 			@Override
@@ -77,15 +81,6 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		});
 		listView.setMinHeight(0);
 		listView.setMinWidth(0);
-		
-		listView.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent event) {
-				getBehavior().keyPressed(event, listView.getSelectionModel().getSelectedIndex());
-				event.consume();
-			}
-		});
-
 		listView.setOnMousePressed(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -126,6 +121,77 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 				}
 			}
 		});
+	}
+	
+	public double getLineHeight(int caretPosition) {
+		int lineIndex = getSkinnable().getContent().getLineAtOffset(caretPosition);
+		Line lineObject = lineList.get(lineIndex);
+		
+		for( LineCell c : visibleCells ) {
+			if( c.domainElement == lineObject ) {
+				return c.getHeight();
+			}
+		}
+		return 0;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Point2D getCaretLocation(int caretPosition) {
+		if( caretPosition < 0 ) {
+			return null;
+		}
+		
+		int lineIndex = getSkinnable().getContent().getLineAtOffset(caretPosition);
+		Line lineObject = lineList.get(lineIndex);
+		for( LineCell c : visibleCells ) {
+			if( c.domainElement == lineObject ) {
+				RegionImpl container = (RegionImpl)c.getGraphic();
+				TextFlow flow = (TextFlow)container.getChildren().get(0);
+				
+				Text textNode = null;
+				int relativePos = 0;
+				for( int i = flow.getChildren().size()-1; i >= 0; i-- ) {
+					Node n = flow.getChildren().get(i);
+					int offset = ((Integer) n.getUserData()).intValue();
+					if( offset <= caretPosition ) {
+						relativePos = caretPosition - offset;
+						textNode = (Text) n;
+						break;
+					}
+				}
+				
+				if( textNode != null ) {
+					textNode.setImpl_caretPosition(relativePos);
+					PathElement[] elements = textNode.getImpl_caretShape();
+					int xShift = 0;
+					for( PathElement e : elements ) {
+						if( e instanceof MoveTo ) {
+							xShift +=((MoveTo)e).getX();
+						}
+					}
+					
+					Point2D rv = new Point2D(xShift, c.getLayoutY());
+					return rv;
+//					final Path p = (Path)container.getChildren().get(1); 
+//					
+//					p.getElements().clear();
+//					p.getElements().addAll(textNode.getImpl_caretShape());
+//					
+//					p.setLayoutX(textNode.getLayoutX());
+//					p.setLayoutY(textNode.getBaselineOffset());
+				}
+				
+				
+//				RegionImpl container = (RegionImpl)c.getGraphic();
+//				
+//				final Path p = (Path)container.getChildren().get(1);
+//				Point2D rv = new Point2D(p.getLayoutX(),container.getLayoutY());
+//				System.err.println("CARE-LOC: " + rv);
+//				return rv;
+			}
+		}
+		
+		return null;
 	}
 	
 	@Override
@@ -259,6 +325,7 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 		}
 		
 		public void updateCaret() {
+			//FIXME Could not pass on the Region?
 			int caretPosition = getSkinnable().getCaretOffset();
 			
 			if( caretPosition < 0 ) {
@@ -431,4 +498,5 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 	static String removeLineending(String s) {
 		return s.replace("\n","").replace("\r", "");
 	}
+
 }

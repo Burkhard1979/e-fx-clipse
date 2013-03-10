@@ -20,6 +20,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
@@ -74,6 +75,7 @@ public class StyledTextArea extends Control {
 	
 	public StyledTextArea() {
 		contentProperty.set(new DefaultContent());
+		setFocusTraversable(true);
 	}
 	
 	void handleTextChanging(TextChangingEvent event) {
@@ -171,7 +173,7 @@ public class StyledTextArea extends Control {
 	}
 	
 	void setStyleRanges(int start, int length, int[] ranges, StyleRange[] styles, boolean reset) {
-		System.err.println("New styles: " + Arrays.toString(styles));
+//		System.err.println("New styles: " + Arrays.toString(styles));
 		
 		
 		int charCount = getContent().getCharCount();
@@ -246,6 +248,21 @@ public class StyledTextArea extends Control {
 		StyleRange[] ranges = renderer.getStyleRanges(start, length, includeRanges);
 		if (ranges != null) return ranges;
 		return new StyleRange[0];
+	}
+	
+	public StyleRange getStyleRangeAtOffset(int offset) {
+		if (offset < 0 || offset >= getCharCount()) {
+			throw new IllegalArgumentException();
+		}
+//		if (!isListening(ST.LineGetStyle)) {
+			StyleRange[] ranges = renderer.getStyleRanges(offset, 1, true);
+			if (ranges != null) return ranges[0];
+//		}
+		return null;
+	}
+	
+	public int getCharCount() {
+		return contentProperty.get().getCharCount();
 	}
 	
 	static class LineInfo {
@@ -1221,5 +1238,19 @@ public class StyledTextArea extends Control {
 	
 	public ObjectProperty<Font> fontProperty() {
 		return fontProperty;
+	}
+	
+	public Point2D getLocationAtOffset(int offset) {
+		if (offset < 0 || offset > getCharCount()) {
+			throw new IllegalArgumentException();		
+		}
+		return ((StyledTextSkin)getSkin()).getCaretLocation(offset);
+	}
+
+	public double getLineHeight(int offset) {
+		if (offset < 0 || offset > getCharCount()) {
+			throw new IllegalArgumentException();		
+		}
+		return ((StyledTextSkin)getSkin()).getLineHeight(offset);
 	}
 }
