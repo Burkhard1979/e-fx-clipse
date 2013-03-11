@@ -217,6 +217,8 @@ public class LivePreviewPart extends ViewPart {
 		folder = new CTabFolder(container, SWT.BOTTOM | SWT.BORDER);
 		folder.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true, 3, 1));
 
+		document = new Document();
+		
 		parent.getDisplay().asyncExec(new Runnable() {
 
 			@Override
@@ -273,7 +275,6 @@ public class LivePreviewPart extends ViewPart {
 					sourceViewer.setEditable(false);
 					sourceViewer.getTextWidget().setFont(JFaceResources.getTextFont());
 
-					document = new Document();
 					IDocumentPartitioner partitioner = new FastPartitioner(new XMLPartitionScanner(), new String[] { XMLPartitionScanner.XML_TAG, XMLPartitionScanner.XML_COMMENT });
 					partitioner.connect(document);
 					document.setDocumentPartitioner(partitioner);
