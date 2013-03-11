@@ -58,7 +58,7 @@ public class XMLLoader {
 		XMLLoader l = new XMLLoader();
 		try {
 			// TODO use workspace file
-			File f = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/European_flag.svg");
+			File f = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/lr.svg");
 			InputStream in;
 			
 			if( f.getName().endsWith("svgz") ) {
