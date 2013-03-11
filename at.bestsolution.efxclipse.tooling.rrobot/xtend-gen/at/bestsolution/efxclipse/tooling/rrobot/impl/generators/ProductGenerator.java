@@ -31,9 +31,12 @@ public class ProductGenerator implements Generator<ProductFile> {
     _builder.append("<product name=\"");
     String _productName = file.getProductName();
     _builder.append(_productName, "");
-    _builder.append("\" id=\"");
+    _builder.append("\" uid=\"");
     String _id = file.getId();
     _builder.append(_id, "");
+    _builder.append("\" id=\"");
+    String _id_1 = file.getId();
+    _builder.append(_id_1, "");
     _builder.append("\" application=\"");
     String _application = file.getApplication();
     _builder.append(_application, "");
@@ -90,8 +93,8 @@ public class ProductGenerator implements Generator<ProductFile> {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("<feature id=\"");
-            String _id_1 = pf.getId();
-            _builder.append(_id_1, "		");
+            String _id_2 = pf.getId();
+            _builder.append(_id_2, "		");
             _builder.append("\" version=\"");
             String _version_1 = pf.getVersion();
             _builder.append(_version_1, "		");
@@ -118,8 +121,8 @@ public class ProductGenerator implements Generator<ProductFile> {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("<plugin id=\"");
-            String _id_2 = c.getId();
-            _builder.append(_id_2, "		");
+            String _id_3 = c.getId();
+            _builder.append(_id_3, "		");
             _builder.append("\" autoStart=\"");
             boolean _isAutoStart = c.isAutoStart();
             _builder.append(_isAutoStart, "		");
