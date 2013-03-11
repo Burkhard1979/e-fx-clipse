@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Controls
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.workbench.fx.controls
-Bundle-Version: 0.8.0.qualifier
-Require-Bundle: at.bestsolution.efxclipse.runtime.core;bundle-version="0.8.0"
+Bundle-Version: 0.8.1.qualifier
+Require-Bundle: at.bestsolution.efxclipse.runtime.core;bundle-version="0.8.1"
 Import-Package: com.sun.javafx;version="2.2.0",
  com.sun.javafx.css;version="2.2.0",
  com.sun.javafx.css.converters;version="2.2.0",

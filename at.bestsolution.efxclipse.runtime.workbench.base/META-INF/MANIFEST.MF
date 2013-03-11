@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Base
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.workbench.base
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.e4.core.contexts;bundle-version="1.1.0",
  org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
- at.bestsolution.efxclipse.runtime.di;bundle-version="0.8.0"
+ at.bestsolution.efxclipse.runtime.di;bundle-version="0.8.1"
 Export-Package: at.bestsolution.efxclipse.runtime.workbench.base.rendering

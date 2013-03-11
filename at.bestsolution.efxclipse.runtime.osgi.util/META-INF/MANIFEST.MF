@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.osgi.util
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javafx.animation;version="2.0.0",
  javafx.application;version="2.0.0",
@@ -36,5 +36,5 @@ Import-Package: javafx.animation;version="2.0.0",
  org.osgi.framework.wiring;version="1.0.0"
 Export-Package: at.bestsolution.efxclipse.runtime.osgi.util
 Bundle-Vendor: %Bundle-Vendor
-Require-Bundle: at.bestsolution.efxclipse.runtime.core;bundle-version="0.8.0"
+Require-Bundle: at.bestsolution.efxclipse.runtime.core;bundle-version="0.8.1"
 Bundle-ActivationPolicy: lazy
