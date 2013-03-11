@@ -1,5 +1,5 @@
 <project default="publish">
-	<property name="efx.version" value="0.8.0-SNAPSHOT" />
+	<property name="efx.version" value="0.8.1-SNAPSHOT" />
 	<property name="efx.update.sitezip" value="" />
 	<property name="efx.update.sitedir" value="" />
 	<property name="efx.update.host.user" value="jenkins-deploy" />
