@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.runtime.p2.feature"
       label="e(fx)clipse - Single - p2 update"
-      version="0.8.0.qualifier">
+      version="0.8.1.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
