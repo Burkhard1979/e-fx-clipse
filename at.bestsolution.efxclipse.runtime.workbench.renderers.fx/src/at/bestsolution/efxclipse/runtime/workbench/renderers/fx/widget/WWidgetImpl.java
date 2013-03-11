@@ -56,16 +56,20 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	@Override
 	public void activate() {
 		this.active = true;
-		for( WCallback<Boolean, Void> c : activationCallbacks ) {
-			c.call(Boolean.TRUE);
+		if( activationCallbacks != null ) {
+			for( WCallback<Boolean, Void> c : activationCallbacks ) {
+				c.call(Boolean.TRUE);
+			}	
 		}
 	}
 	
 	@Override
 	public void deactivate() {
 		this.active = false;
-		for( WCallback<Boolean, Void> c : activationCallbacks ) {
-			c.call(Boolean.FALSE);
+		if( activationCallbacks != null ) {
+			for( WCallback<Boolean, Void> c : activationCallbacks ) {
+				c.call(Boolean.FALSE);
+			}	
 		}
 	}
 	
