@@ -1758,12 +1758,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.junit4.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.junit"
          download-size="0"
          install-size="0"
@@ -1859,23 +1853,9 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
-	<plugin
-         id="org.sat4j.core.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.sat4j.pb"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-  <plugin
-         id="org.sat4j.pb.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2022,13 +2002,6 @@
          version="0.0.0"
          unpack="false"/>
 
-	<plugin
-         id="org.apache.commons.cli.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
    <plugin
          id="org.apache.commons.codec"
          download-size="0"
@@ -2099,13 +2072,6 @@
          version="0.0.0"
          unpack="false"/>
          
-   <plugin
-         id="com.google.gson.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
    <plugin
          id="org.eclipse.xtend.lib"
          download-size="0"
