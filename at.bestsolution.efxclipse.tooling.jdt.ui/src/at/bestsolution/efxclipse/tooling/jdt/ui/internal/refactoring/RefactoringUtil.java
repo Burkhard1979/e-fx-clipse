@@ -46,6 +46,7 @@ public class RefactoringUtil {
 				IType t = p.findType( je.getParent().getElementName(), je.getElementName().replace( "." + resource.getFileExtension(), "" ) );
 				if( t == null ) {
 					System.err.println("Unable to construct FQN from '"+je.getParent().getElementName()+"."+je.getElementName().replace( "." + resource.getFileExtension(), "" )+"'");
+					return "";
 				}
 				return t.getFullyQualifiedName();
 			}
