@@ -221,7 +221,7 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 
 				@Override
 				public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
-					if( newValue == null ) {
+					if( newValue == null || (getWidgetState() != WidgetState.CREATED && getWidgetState() != WidgetState.IN_SETUP ) ) {
 						return;
 					}
 					final StackItemImpl w = (StackItemImpl) newValue.getUserData();
@@ -340,6 +340,15 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 		@Inject
 		private IResourceUtilities<Image> resourceUtilities;
 		
+		private String label;
+		private boolean dirty;
+		
+		@Inject
+		public StackItemImpl(@Named(ATTRIBUTE_localizedLabel) @Optional String label, @Named(UIEvents.Dirtyable.DIRTY) @Optional boolean dirty) {
+			this.label = label;
+			this.dirty = dirty;
+		}
+		
 		@PostConstruct
 		void init() {
 			getWidget();
@@ -396,7 +405,8 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 
 		@Inject
 		public void setLabel(@Named(ATTRIBUTE_localizedLabel) @Optional String label) {
-			getWidget().setText(label);
+			this.label = label;
+			getWidget().setText(dirty ? "*" + notNull(label) : notNull(label));
 		}
 		
 		@Inject
@@ -413,9 +423,19 @@ public class DefStackRenderer extends BaseStackRenderer<Node,Object, Node> {
 			}
 		}
 		
+		@Inject
+		public void setDirty(@Named(UIEvents.Dirtyable.DIRTY) @Optional boolean dirty) {
+			this.dirty = dirty;
+			getWidget().setText(dirty ? "*" + notNull(label) : notNull(label));
+		}
+		
 		@Override
 		public void setOnCloseCallback(final WCallback<WStackItem<Object, Node>, Boolean> callback) {
 			this.closeCallback = callback;
+		}
+		
+		private static String notNull(String s) {
+			return s == null ? "" : s;
 		}
 	}
 	

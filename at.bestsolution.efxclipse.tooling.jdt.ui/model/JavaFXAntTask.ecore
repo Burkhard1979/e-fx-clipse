@@ -47,8 +47,10 @@
         eType="#//parameters/Callback" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="info" eType="#//parameters/Info"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nativePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="splashImage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packagingFormat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="verbose" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Jar">
     <eStructuralFeatures xsi:type="ecore:EReference" name="platform" eType="#//parameters/Platform"
@@ -66,6 +68,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keystore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="storepass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="storetype" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PackagingFormat">
+    <eLiterals name="none" literal="none"/>
+    <eLiterals name="all" value="1" literal="all"/>
+    <eLiterals name="image" value="2" literal="image"/>
+    <eLiterals name="exe" value="3" literal="exe"/>
+    <eLiterals name="msi" value="4" literal="msi"/>
+    <eLiterals name="dmg" value="5" literal="dmg"/>
+    <eLiterals name="rpm" value="6" literal="rpm"/>
+    <eLiterals name="deb" value="7" literal="deb"/>
   </eClassifiers>
   <eSubpackages name="parameters" nsURI="http://at.bestsolution.efxclipse.tooling.jdt/parameters/1.0"
       nsPrefix="parameters">

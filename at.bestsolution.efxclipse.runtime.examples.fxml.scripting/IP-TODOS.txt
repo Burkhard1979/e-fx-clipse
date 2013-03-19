@@ -1,0 +1,3 @@
+Groovy (Apache 2.0):
+--------------------
+libs/groovy-all-1.8.6.jar ===> Extra Licenses inside JAR

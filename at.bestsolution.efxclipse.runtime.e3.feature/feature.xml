@@ -2,11 +2,12 @@
 <feature
       id="at.bestsolution.efxclipse.runtime.e3.feature"
       label="e(fx)clipse - Single - Eclipse 3x Integration"
-      version="0.8.0.qualifier"
+      version="0.8.1.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
-      This feature provides runtime bundles which are used to write JavaFX application w/o OSGi
+      This feature provides runtime bundles which are used to write
+JavaFX application in Eclipse 3.x
    </description>
 
    <copyright url="http://www.bestsolution.at">

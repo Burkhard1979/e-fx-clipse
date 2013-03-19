@@ -1,12 +1,10 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 
@@ -33,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.PackageDefinitionImpl#getDoku <em>Doku</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.PackageDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.PackageDefinitionImpl#getRules <em>Rules</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.PackageDefinitionImpl#getSubpackages <em>Subpackages</em>}</li>
@@ -44,6 +43,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implements PackageDefinition
 {
+  /**
+   * The cached value of the '{@link #getDoku() <em>Doku</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDoku()
+   * @generated
+   * @ordered
+   */
+  protected Doku doku;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -72,7 +81,7 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected EList<CSSRuleDefinition> rules;
+  protected EList<Definition> rules;
 
   /**
    * The cached value of the '{@link #getSubpackages() <em>Subpackages</em>}' containment reference list.
@@ -120,6 +129,54 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public Doku getDoku()
+  {
+    return doku;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDoku(Doku newDoku, NotificationChain msgs)
+  {
+    Doku oldDoku = doku;
+    doku = newDoku;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssExtDslPackage.PACKAGE_DEFINITION__DOKU, oldDoku, newDoku);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDoku(Doku newDoku)
+  {
+    if (newDoku != doku)
+    {
+      NotificationChain msgs = null;
+      if (doku != null)
+        msgs = ((InternalEObject)doku).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.PACKAGE_DEFINITION__DOKU, null, msgs);
+      if (newDoku != null)
+        msgs = ((InternalEObject)newDoku).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.PACKAGE_DEFINITION__DOKU, null, msgs);
+      msgs = basicSetDoku(newDoku, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.PACKAGE_DEFINITION__DOKU, newDoku, newDoku));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getName()
   {
     return name;
@@ -143,11 +200,11 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<CSSRuleDefinition> getRules()
+  public EList<Definition> getRules()
   {
     if (rules == null)
     {
-      rules = new EObjectContainmentEList<CSSRuleDefinition>(CSSRuleDefinition.class, this, CssExtDslPackage.PACKAGE_DEFINITION__RULES);
+      rules = new EObjectContainmentEList<Definition>(Definition.class, this, CssExtDslPackage.PACKAGE_DEFINITION__RULES);
     }
     return rules;
   }
@@ -190,6 +247,8 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case CssExtDslPackage.PACKAGE_DEFINITION__DOKU:
+        return basicSetDoku(null, msgs);
       case CssExtDslPackage.PACKAGE_DEFINITION__RULES:
         return ((InternalEList<?>)getRules()).basicRemove(otherEnd, msgs);
       case CssExtDslPackage.PACKAGE_DEFINITION__SUBPACKAGES:
@@ -210,6 +269,8 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case CssExtDslPackage.PACKAGE_DEFINITION__DOKU:
+        return getDoku();
       case CssExtDslPackage.PACKAGE_DEFINITION__NAME:
         return getName();
       case CssExtDslPackage.PACKAGE_DEFINITION__RULES:
@@ -233,12 +294,15 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case CssExtDslPackage.PACKAGE_DEFINITION__DOKU:
+        setDoku((Doku)newValue);
+        return;
       case CssExtDslPackage.PACKAGE_DEFINITION__NAME:
         setName((String)newValue);
         return;
       case CssExtDslPackage.PACKAGE_DEFINITION__RULES:
         getRules().clear();
-        getRules().addAll((Collection<? extends CSSRuleDefinition>)newValue);
+        getRules().addAll((Collection<? extends Definition>)newValue);
         return;
       case CssExtDslPackage.PACKAGE_DEFINITION__SUBPACKAGES:
         getSubpackages().clear();
@@ -262,6 +326,9 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case CssExtDslPackage.PACKAGE_DEFINITION__DOKU:
+        setDoku((Doku)null);
+        return;
       case CssExtDslPackage.PACKAGE_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -288,6 +355,8 @@ public class PackageDefinitionImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case CssExtDslPackage.PACKAGE_DEFINITION__DOKU:
+        return doku != null;
       case CssExtDslPackage.PACKAGE_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case CssExtDslPackage.PACKAGE_DEFINITION__RULES:

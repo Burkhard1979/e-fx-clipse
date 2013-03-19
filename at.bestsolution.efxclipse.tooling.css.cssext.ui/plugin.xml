@@ -11,7 +11,7 @@
             default="true"
             extensions="cssext"
             id="at.bestsolution.efxclipse.tooling.css.cssext.CssExtDsl"
-            name="CssExtDsl Editor">
+            name="CSS Extension Editor">
         </editor>
     </extension>
     <extension
@@ -267,5 +267,4 @@
             </attribute>
         </markerResolutionGenerator>
     </extension>
-
 </plugin>

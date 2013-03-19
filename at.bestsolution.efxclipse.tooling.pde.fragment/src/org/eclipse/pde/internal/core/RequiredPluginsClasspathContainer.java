@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2000, 2010 IBM Corporation and others.
+ *  Copyright (c) 2000, 2013 IBM Corporation and others.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -11,46 +11,18 @@
 package org.eclipse.pde.internal.core;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
-import java.util.TreeMap;
-import java.util.Vector;
-
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.jdt.core.IClasspathAttribute;
-import org.eclipse.jdt.core.IClasspathContainer;
-import org.eclipse.jdt.core.IClasspathEntry;
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.osgi.service.resolver.BaseDescription;
-import org.eclipse.osgi.service.resolver.BundleDescription;
-import org.eclipse.osgi.service.resolver.BundleSpecification;
-import org.eclipse.osgi.service.resolver.ExportPackageDescription;
-import org.eclipse.osgi.service.resolver.HostSpecification;
-import org.eclipse.osgi.service.resolver.ImportPackageSpecification;
-import org.eclipse.osgi.service.resolver.StateHelper;
+import java.util.*;
+import org.eclipse.core.resources.*;
+import org.eclipse.core.runtime.*;
+import org.eclipse.jdt.core.*;
+import org.eclipse.osgi.service.resolver.*;
+import org.eclipse.pde.core.IClasspathContributor;
 import org.eclipse.pde.core.build.IBuild;
 import org.eclipse.pde.core.build.IBuildEntry;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
 import org.eclipse.pde.core.plugin.PluginRegistry;
 import org.eclipse.pde.internal.build.IBuildPropertiesConstants;
 import org.eclipse.pde.internal.core.ibundle.IBundlePluginModelBase;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceReference;
-
-import at.bestsolution.efxclipse.tooling.pde.adaptor.IClasspathContributor;
-import at.bestsolution.efxclipse.tooling.pde.adaptor.IClasspathContributor.Contribution;
 
 public class RequiredPluginsClasspathContainer extends PDEClasspathContainer implements IClasspathContainer {
 
@@ -61,12 +33,16 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 
 	private IClasspathEntry[] fEntries = null;
 
+	/**
+	 * Cached list of {@link IClasspathContributor} from plug-in extensions
+	 * @see #getClasspathContributors()
+	 */
+	private List<IClasspathContributor> fClasspathContributors = null;
+
 	static {
 		DEBUG = PDECore.getDefault().isDebugging() && "true".equals(Platform.getDebugOption("org.eclipse.pde.core/classpath")); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
-	private List<IClasspathContributor> contributors = new Vector<IClasspathContributor>();
-	
 	/**
 	 * Constructor for RequiredPluginsClasspathContainer.
 	 */
@@ -77,16 +53,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 	public RequiredPluginsClasspathContainer(IPluginModelBase model, IBuild build) {
 		fModel = model;
 		fBuild = build;
-		
-		BundleContext context = PDECore.getDefault().getBundleContext();
-		try {
-			for( ServiceReference<IClasspathContributor> ref : context.getServiceReferences(IClasspathContributor.class, null) ) {
-				contributors.add(context.getService(ref));
-			}
-		} catch (InvalidSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.err.println("LAUNCHING PATCHED CLASSPATH CONTAINER");
 	}
 
 	/*
@@ -139,52 +106,30 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 	}
 
 	private IClasspathEntry[] computePluginEntries() {
-		ArrayList entries = new ArrayList();
+		System.err.println("COMPUTING ENTRIES");
+		ArrayList<IClasspathEntry> entries = new ArrayList<IClasspathEntry>();
 		try {
 			BundleDescription desc = fModel.getBundleDescription();
 			if (desc == null)
 				return new IClasspathEntry[0];
 
-			Map map = retrieveVisiblePackagesFromState(desc);
+			Map<BundleDescription, ArrayList<Rule>> map = retrieveVisiblePackagesFromState(desc);
 
-			HashSet added = new HashSet();
+			// Add any library entries contributed via classpath contributor extension (Bug 363733)
+			for (IClasspathContributor cc : getClasspathContributors()) {
+				System.err.println("Consulting " + cc);
+				List<IClasspathEntry> classpathEntries = cc.getInitialEntries(desc);
+				if (classpathEntries == null || classpathEntries.isEmpty()) {
+					continue;
+				}
+				entries.addAll(classpathEntries);
+			}
+
+			HashSet<BundleDescription> added = new HashSet<BundleDescription>();
 
 			// to avoid cycles, e.g. when a bundle imports a package it exports
 			added.add(desc);
 
-			
-			
-			for( IClasspathContributor cc: contributors ) {
-				for( Contribution c : cc.getDynamicContributions(desc) ) {
-					if( c.jarLocation == null ) {
-						continue;
-					}
-					Rule[] rs = new Rule[c.rules != null ? c.rules.length : 0];
-					for( int i = 0; i < rs.length; i++ ) {
-						Rule r = new Rule();
-						r.path = c.rules[i].path;
-						r.discouraged = c.rules[i].discouraged;
-						rs[i] = r;
-					}
-					
-					IClasspathAttribute[] attr = null;
-					if( c.javaDocLocation != null ) {
-						if( c.attributes != null ) {
-							attr = new IClasspathAttribute[c.attributes.length+1];
-							System.arraycopy(c.attributes, 0, attr, 0, c.attributes.length);
-						} else {
-							attr = new IClasspathAttribute[1];
-						}
-						attr[attr.length-1] = JavaCore.newClasspathAttribute(IClasspathAttribute.JAVADOC_LOCATION_ATTRIBUTE_NAME, c.javaDocLocation);
-					} else {
-						attr = c.attributes;	
-					}
-					
-					
-					addLibraryEntry(c.jarLocation, c.sourceLocation, rs, attr, entries);
-				}
-			}
-			
 			HostSpecification host = desc.getHost();
 			if (host != null) {
 				addHostPlugin(host, added, map, entries);
@@ -210,16 +155,16 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 
 			// add Import-Package
 			// sort by symbolicName_version to get a consistent order
-			Map sortedMap = new TreeMap();
-			Iterator iter = map.keySet().iterator();
+			Map<String, BundleDescription> sortedMap = new TreeMap<String, BundleDescription>();
+			Iterator<BundleDescription> iter = map.keySet().iterator();
 			while (iter.hasNext()) {
-				BundleDescription bundle = (BundleDescription) iter.next();
+				BundleDescription bundle = iter.next();
 				sortedMap.put(bundle.toString(), bundle);
 			}
 
 			iter = sortedMap.values().iterator();
 			while (iter.hasNext()) {
-				BundleDescription bundle = (BundleDescription) iter.next();
+				BundleDescription bundle = iter.next();
 				IPluginModelBase model = PluginRegistry.findModel(bundle);
 				if (model != null && model.isEnabled())
 					addDependencyViaImportPackage(model.getBundleDescription(), added, map, entries);
@@ -230,11 +175,32 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 
 		} catch (CoreException e) {
 		}
-		return (IClasspathEntry[]) entries.toArray(new IClasspathEntry[entries.size()]);
+		return entries.toArray(new IClasspathEntry[entries.size()]);
 	}
 
-	private Map retrieveVisiblePackagesFromState(BundleDescription desc) {
-		Map visiblePackages = new HashMap();
+	/**
+	 * Return the list of {@link IClasspathContributor}s provided by the 
+	 * <code>org.eclipse.pde.core.pluginClasspathContributors</code> extension point.
+	 * @return list of classpath contributors from the extension point
+	 */
+	private List<IClasspathContributor> getClasspathContributors() {
+		if (fClasspathContributors == null) {
+			fClasspathContributors = new ArrayList<IClasspathContributor>();
+			IExtensionRegistry registry = Platform.getExtensionRegistry();
+			IConfigurationElement[] elements = registry.getConfigurationElementsFor("org.eclipse.pde.core.pluginClasspathContributors"); //$NON-NLS-1$
+			for (int i = 0; i < elements.length; i++) {
+				try {
+					fClasspathContributors.add((IClasspathContributor) elements[i].createExecutableExtension("class")); //$NON-NLS-1$
+				} catch (CoreException e) {
+					PDECore.log(e.getStatus());
+				}
+			}
+		}
+		return fClasspathContributors;
+	}
+
+	private Map<BundleDescription, ArrayList<Rule>> retrieveVisiblePackagesFromState(BundleDescription desc) {
+		Map<BundleDescription, ArrayList<Rule>> visiblePackages = new HashMap<BundleDescription, ArrayList<Rule>>();
 		StateHelper helper = Platform.getPlatformAdmin().getStateHelper();
 		addVisiblePackagesFromState(helper, desc, visiblePackages);
 		if (desc.getHost() != null)
@@ -242,7 +208,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		return visiblePackages;
 	}
 
-	private void addVisiblePackagesFromState(StateHelper helper, BundleDescription desc, Map visiblePackages) {
+	private void addVisiblePackagesFromState(StateHelper helper, BundleDescription desc, Map<BundleDescription, ArrayList<Rule>> visiblePackages) {
 		if (desc == null)
 			return;
 		ExportPackageDescription[] exports = helper.getVisiblePackages(desc);
@@ -250,9 +216,9 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 			BundleDescription exporter = exports[i].getExporter();
 			if (exporter == null)
 				continue;
-			ArrayList list = (ArrayList) visiblePackages.get(exporter);
+			ArrayList<Rule> list = visiblePackages.get(exporter);
 			if (list == null) {
-				list = new ArrayList();
+				list = new ArrayList<Rule>();
 				visiblePackages.put(exporter, list);
 			}
 			Rule rule = getRule(helper, desc, exports[i]);
@@ -269,7 +235,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		return rule;
 	}
 
-	protected void addDependencyViaImportPackage(BundleDescription desc, HashSet added, Map map, ArrayList entries) throws CoreException {
+	protected void addDependencyViaImportPackage(BundleDescription desc, HashSet<BundleDescription> added, Map<BundleDescription, ArrayList<Rule>> map, ArrayList<IClasspathEntry> entries) throws CoreException {
 		if (desc == null || !added.add(desc))
 			return;
 
@@ -284,11 +250,11 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		}
 	}
 
-	private void addDependency(BundleDescription desc, HashSet added, Map map, ArrayList entries) throws CoreException {
+	private void addDependency(BundleDescription desc, HashSet<BundleDescription> added, Map<BundleDescription, ArrayList<Rule>> map, ArrayList<IClasspathEntry> entries) throws CoreException {
 		addDependency(desc, added, map, entries, true);
 	}
 
-	private void addDependency(BundleDescription desc, HashSet added, Map map, ArrayList entries, boolean useInclusion) throws CoreException {
+	private void addDependency(BundleDescription desc, HashSet<BundleDescription> added, Map<BundleDescription, ArrayList<Rule>> map, ArrayList<IClasspathEntry> entries, boolean useInclusion) throws CoreException {
 		if (desc == null || !added.add(desc))
 			return;
 
@@ -318,40 +284,27 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		}
 	}
 
-	private boolean addPlugin(BundleDescription desc, boolean useInclusions, Map map, ArrayList entries) throws CoreException {
+	private boolean addPlugin(BundleDescription desc, boolean useInclusions, Map<BundleDescription, ArrayList<Rule>> map, ArrayList<IClasspathEntry> entries) throws CoreException {
 		IPluginModelBase model = PluginRegistry.findModel(desc);
 		if (model == null || !model.isEnabled())
 			return false;
+
 		IResource resource = model.getUnderlyingResource();
 		Rule[] rules = useInclusions ? getInclusions(map, model) : null;
-		
-		for( IClasspathContributor cp : contributors ) {
-			if( cp.isActiveFor(desc) ) {
-				for( Contribution c : cp.getContributions(desc) ) {
-					IClasspathAttribute[] attributes = new IClasspathAttribute[0];
-					if( c.jarLocation == null ) {
-						continue;
-					}
-					
-					if( c.attributes == null ) {
-						if( c.javaDocLocation != null ) {
-							attributes = new IClasspathAttribute[] {JavaCore.newClasspathAttribute(IClasspathAttribute.JAVADOC_LOCATION_ATTRIBUTE_NAME, c.javaDocLocation)};
-						}
-					} else {
-						if( c.javaDocLocation != null ) {
-							attributes = new IClasspathAttribute[c.attributes.length+1];
-							attributes[attributes.length-1] = JavaCore.newClasspathAttribute(IClasspathAttribute.JAVADOC_LOCATION_ATTRIBUTE_NAME, c.javaDocLocation);
-						} else {
-							attributes = new IClasspathAttribute[c.attributes.length];
-						}
-						System.arraycopy(c.attributes, 0, attributes, 0, c.attributes.length);
-					}
-					
-					addLibraryEntry(c.jarLocation, c.sourceLocation, rules, attributes, entries);
-				}
+
+		BundleDescription hostBundle = fModel.getBundleDescription();
+		if (desc == null)
+			return false;
+
+		// Add any library entries contributed via classpath contributor extension (Bug 363733)
+		for (IClasspathContributor cc : getClasspathContributors()) {
+			List<IClasspathEntry> classpathEntries = cc.getEntriesForDependency(hostBundle, desc);
+			if (classpathEntries == null || classpathEntries.isEmpty()) {
+				continue;
 			}
+			entries.addAll(classpathEntries);
 		}
-		
+
 		if (resource != null) {
 			addProjectEntry(resource.getProject(), rules, entries);
 		} else {
@@ -360,7 +313,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		return true;
 	}
 
-	private Rule[] getInclusions(Map map, IPluginModelBase model) {
+	private Rule[] getInclusions(Map<BundleDescription, ArrayList<Rule>> map, IPluginModelBase model) {
 		BundleDescription desc = model.getBundleDescription();
 		if (desc == null || "false".equals(System.getProperty("pde.restriction")) //$NON-NLS-1$ //$NON-NLS-2$
 				|| !(fModel instanceof IBundlePluginModelBase) || TargetPlatformHelper.getTargetVersion() < 3.1)
@@ -376,12 +329,12 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		return (rules.length == 0 && !ClasspathUtilCore.hasBundleStructure(model)) ? null : rules;
 	}
 
-	private Rule[] getInclusions(Map map, BundleDescription desc) {
-		ArrayList list = (ArrayList) map.get(desc);
+	private Rule[] getInclusions(Map<BundleDescription, ArrayList<Rule>> map, BundleDescription desc) {
+		ArrayList<?> list = map.get(desc);
 		return list != null ? (Rule[]) list.toArray(new Rule[list.size()]) : new Rule[0];
 	}
 
-	private void addHostPlugin(HostSpecification hostSpec, HashSet added, Map map, ArrayList entries) throws CoreException {
+	private void addHostPlugin(HostSpecification hostSpec, HashSet<BundleDescription> added, Map<BundleDescription, ArrayList<Rule>> map, ArrayList<IClasspathEntry> entries) throws CoreException {
 		BaseDescription desc = hostSpec.getSupplier();
 
 		if (desc instanceof BundleDescription) {
@@ -411,7 +364,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		return model != null ? ClasspathUtilCore.hasExtensibleAPI(model) : false;
 	}
 
-	protected void addExtraClasspathEntries(HashSet added, ArrayList entries) {
+	protected void addExtraClasspathEntries(HashSet<BundleDescription> added, ArrayList<IClasspathEntry> entries) {
 		IBuildEntry[] buildEntries = fBuild.getBuildEntries();
 		for (int i = 0; i < buildEntries.length; i++) {
 			String name = buildEntries[i].getName();
@@ -421,7 +374,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		}
 	}
 
-	protected void addExtraClasspathEntries(HashSet added, ArrayList entries, String[] tokens) {
+	protected void addExtraClasspathEntries(HashSet<BundleDescription> added, ArrayList<IClasspathEntry> entries, String[] tokens) {
 		for (int i = 0; i < tokens.length; i++) {
 			IPath path = Path.fromPortableString(tokens[i]);
 			if (!path.isAbsolute()) {
@@ -471,7 +424,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		}
 	}
 
-	private void addSecondaryDependencies(BundleDescription desc, HashSet added, ArrayList entries) {
+	private void addSecondaryDependencies(BundleDescription desc, HashSet<BundleDescription> added, ArrayList<IClasspathEntry> entries) {
 		try {
 			IBuildEntry entry = fBuild.getEntry(IBuildEntry.SECONDARY_DEPENDENCIES);
 			if (entry != null) {
@@ -484,11 +437,9 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 						BundleDescription bundleDesc = model.getBundleDescription();
 						if (added.contains(bundleDesc))
 							continue;
-						Map rules = new HashMap();
+						Map<BundleDescription, ArrayList<Rule>> rules = new HashMap<BundleDescription, ArrayList<Rule>>();
 						findExportedPackages(bundleDesc, desc, rules);
-						if (model != null) {
-							addDependency(bundleDesc, added, rules, entries, true);
-						}
+						addDependency(bundleDesc, added, rules, entries, true);
 					}
 				}
 			}
@@ -497,14 +448,14 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		}
 	}
 
-	protected final void findExportedPackages(BundleDescription desc, BundleDescription projectDesc, Map map) {
+	protected final void findExportedPackages(BundleDescription desc, BundleDescription projectDesc, Map<BundleDescription, ArrayList<Rule>> map) {
 		if (desc != null) {
-			Stack stack = new Stack();
+			Stack<BaseDescription> stack = new Stack<BaseDescription>();
 			stack.add(desc);
 			while (!stack.isEmpty()) {
 				BundleDescription bdesc = (BundleDescription) stack.pop();
 				ExportPackageDescription[] expkgs = bdesc.getExportPackages();
-				ArrayList rules = new ArrayList();
+				ArrayList<Rule> rules = new ArrayList<Rule>();
 				for (int i = 0; i < expkgs.length; i++) {
 					Rule rule = new Rule();
 					rule.discouraged = restrictPackage(projectDesc, expkgs[i]);
@@ -539,7 +490,7 @@ public class RequiredPluginsClasspathContainer extends PDEClasspathContainer imp
 		return (((Boolean) pkg.getDirective(ICoreConstants.INTERNAL_DIRECTIVE)).booleanValue());
 	}
 
-	private void addExtraLibrary(IPath path, IPluginModelBase model, ArrayList entries) {
+	private void addExtraLibrary(IPath path, IPluginModelBase model, ArrayList<IClasspathEntry> entries) {
 		if (path.segmentCount() > 1) {
 			IPath srcPath = null;
 			if (model != null) {

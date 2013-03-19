@@ -73,7 +73,7 @@ public class DefToolBarRenderer extends BaseToolBarRenderer<ToolBar> {
 			if( widget.getWidget() instanceof Toggle ) {
 				((Toggle)widget.getWidget()).setToggleGroup(null);
 			}
-			getWidget().getItems().add((Node) widget.getWidget());
+			getWidget().getItems().remove((Node) widget.getWidget());
 		}
 	}
 }

@@ -16,24 +16,29 @@ import org.eclipse.e4.core.services.contributions.IContributionFactory;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.workbench.UIEvents;
 
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WCallback;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPart;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBar;
 
 
 @SuppressWarnings("restriction")
-public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> {
+public abstract class BasePartRenderer<N,T,M> extends BaseRenderer<MPart, WPart<N,T,M>> {
+	public static final String VIEW_MENU_TAG = "ViewMenu";
 	
 	@PostConstruct
 	void init(IEventBroker broker) {
-		registerEventListener(broker, UIEvents.UILabel.ICONURI);
-		registerEventListener(broker, UIEvents.UILabel.LABEL);
-		registerEventListener(broker, UIEvents.UILabel.TOOLTIP);
+		registerEventListener(broker, UIEvents.UILabel.TOPIC_ICONURI);
+		registerEventListener(broker, UIEvents.UILabel.TOPIC_LABEL);
+		registerEventListener(broker, UIEvents.UILabel.TOPIC_TOOLTIP);
+		registerEventListener(broker, UIEvents.Dirtyable.TOPIC_DIRTY);
 	}
 	
 	@Override
-	protected void initWidget(final MPart element, final WPart<N> widget) {
+	protected void initWidget(final MPart element, final WPart<N,T,M> widget) {
 		super.initWidget(element, widget);				
 		widget.registerActivationCallback(new WCallback<Boolean, Void>() {
 			
@@ -52,11 +57,24 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 		});
 	}
 	
-	protected abstract boolean requiresFocus(WPart<N> widget);
+	protected abstract boolean requiresFocus(WPart<N,T,M> widget);
 	
 	@Override
 	public void doProcessContent(MPart element) {
-		WPart<N> widget = getWidget(element);
+		WPart<N,T,M> widget = getWidget(element);
+		
+		if( element.getToolbar() != null ) {
+			WToolBar<T> toolbar = engineCreateWidget(element.getToolbar());
+			widget.setToolbar(toolbar);
+		}
+		
+		for( MMenu m : element.getMenus() ) {
+			if( m.getTags().contains(VIEW_MENU_TAG) ) {
+				WMenu<M> menu = engineCreateWidget(m);
+				widget.setMenu(menu);
+				break;
+			}
+		}
 		
 		Class<?> cl = widget.getWidget().getClass();
 		do {
@@ -64,11 +82,11 @@ public abstract class BasePartRenderer<N> extends BaseRenderer<MPart, WPart<N>> 
 			cl = cl.getSuperclass();
 		} while( ! cl.getName().equals("java.lang.Object") );
 		
-		
 		IContributionFactory contributionFactory = (IContributionFactory) element.getContext().get(IContributionFactory.class
 				.getName());
 		Object newPart = contributionFactory.create(element.getContributionURI(), element.getContext());
 		element.setObject(newPart);
+		
 	}
 
 	@Override

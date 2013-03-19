@@ -34,7 +34,7 @@ public class MediaListPart {
 				setText(item.getName());
 				switch (item.getType()) {
 				case MOVIE:
-					setGraphic(new ImageView("platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/tool-animator.png"));
+					setGraphic(new ImageView("platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/kaffeine.png"));
 					break;
 				case PICTURE:
 					setGraphic(new ImageView("platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/games-config-background.png"));
@@ -102,7 +102,7 @@ public class MediaListPart {
 			MPart p = MBasicFactory.INSTANCE.createPart();
 			p.setLabel(m.getName());
 			if( m.getType() == MediaType.MOVIE ) {
-				p.setIconURI("platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/22/tool-animator.png");	
+				p.setIconURI("platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/22/kaffeine.png");	
 			} else if( m.getType() == MediaType.PICTURE ) {
 				p.setIconURI("platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/22/games-config-background.png");
 			} else {
@@ -124,12 +124,10 @@ public class MediaListPart {
 	private static ObservableList<Media> createList(boolean videos) {
 		ObservableList<Media> l = FXCollections.observableArrayList();
 		if( ! videos ) {
-			l.add(new Media(MediaType.PICTURE, "Desert",     "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/pics/pic1.jpg"));
-			l.add(new Media(MediaType.PICTURE, "Lighthouse", "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/pics/pic2.jpg"));
+			l.add(new Media(MediaType.PICTURE, "Mountains 1",     "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/pics/pic1.jpg"));
+			l.add(new Media(MediaType.PICTURE, "Mountains 2", "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/pics/pic2.jpg"));
 		} else {
 			l.add(new Media(MediaType.MOVIE,   "Grog",       "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/movs/mov1.flv"));
-			l.add(new Media(MediaType.MOVIE,   "Bourne",        "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/movs/bourne4.mp4"));
-			l.add(new Media(MediaType.MOVIE,   "Java vs .Net",        "platform:/plugin/at.bestsolution.efxclipse.runtime.examples.media/icons/resources/movs/java_vs_net.mp4"));
 		}
 		return l;
 	}

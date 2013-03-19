@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: at.bestsolution.efxclipse.tooling.rrobot.dsl
 Bundle-Vendor: My Company
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.1.qualifier
 Bundle-SymbolicName: at.bestsolution.efxclipse.tooling.rrobot.dsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,

@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.tooling.convert.feature.source"
       label="e(fx)clipse - Single - SVG &amp; FXG conversion - Source"
-      version="0.8.0.qualifier">
+      version="0.8.1.qualifier">
 
    <description url="http://efxclipse.org">
       This feature provides converter for the vector graphic formats SVG and FXG to FXML

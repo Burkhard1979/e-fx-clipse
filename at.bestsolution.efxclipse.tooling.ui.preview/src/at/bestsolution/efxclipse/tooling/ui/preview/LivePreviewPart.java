@@ -148,21 +148,21 @@ public class LivePreviewPart extends ViewPart {
 		JFaceResources.getImageRegistry().put(IMAGE_OK, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/security-high.png"));
 		JFaceResources.getImageRegistry().put(IMAGE_WARNING, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/security-medium.png"));
 		JFaceResources.getImageRegistry().put(IMAGE_ERROR, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/security-low.png"));
-		JFaceResources.getImageRegistry().put(IMAGE_PREVIEW, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/view-ldap-resource.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_PREVIEW, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/view-preview.png"));
 
-		JFaceResources.getImageRegistry().put(IMAGE_TAB_NORMAL, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/view-presentation.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_TAB_NORMAL, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/view-preview.png"));
 		JFaceResources.getImageRegistry().put(IMAGE_TAB_ERROR, new DecorationOverlayIcon(JFaceResources.getImage(IMAGE_TAB_NORMAL), Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/ovr/error_co.gif"), IDecoration.BOTTOM_LEFT));
 		JFaceResources.getImageRegistry().put(IMAGE_TAB_WARNING, new DecorationOverlayIcon(JFaceResources.getImage(IMAGE_TAB_NORMAL), Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/ovr/warning_co.gif"), IDecoration.BOTTOM_LEFT));
 
-		JFaceResources.getImageRegistry().put(IMAGE_STATUS_ERROR, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/task-reject.png"));
-		JFaceResources.getImageRegistry().put(IMAGE_STATUS_WARNING, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/task-attempt.png"));
-		JFaceResources.getImageRegistry().put(IMAGE_STATUS_OK, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/task-complete.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_STATUS_ERROR, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/dialog-error.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_STATUS_WARNING, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/dialog-warning.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_STATUS_OK, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/dialog-ok-apply.png"));
 		JFaceResources.getImageRegistry().put(IMAGE_STATUS_NOPREVIEW, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/dialog-information.png"));
 
-		JFaceResources.getImageRegistry().put(IMAGE_LOAD_CONTROLLER, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/debug-step-into.png"));
-		JFaceResources.getImageRegistry().put(IMAGE_REFRESH, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/run-build-clean.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_LOAD_CONTROLLER, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/system-switch-user.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_REFRESH, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/edit-clear.png"));
 
-		JFaceResources.getImageRegistry().put(IMAGE_FXML_CONTENT, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/application-xhtml+xml.png"));
+		JFaceResources.getImageRegistry().put(IMAGE_FXML_CONTENT, Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/16_16/page_white_code_red.png"));
 
 	}
 
@@ -217,6 +217,8 @@ public class LivePreviewPart extends ViewPart {
 		folder = new CTabFolder(container, SWT.BOTTOM | SWT.BORDER);
 		folder.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true, 3, 1));
 
+		document = new Document();
+		
 		parent.getDisplay().asyncExec(new Runnable() {
 
 			@Override
@@ -273,7 +275,6 @@ public class LivePreviewPart extends ViewPart {
 					sourceViewer.setEditable(false);
 					sourceViewer.getTextWidget().setFont(JFaceResources.getTextFont());
 
-					document = new Document();
 					IDocumentPartitioner partitioner = new FastPartitioner(new XMLPartitionScanner(), new String[] { XMLPartitionScanner.XML_TAG, XMLPartitionScanner.XML_COMMENT });
 					partitioner.connect(document);
 					document.setDocumentPartitioner(partitioner);

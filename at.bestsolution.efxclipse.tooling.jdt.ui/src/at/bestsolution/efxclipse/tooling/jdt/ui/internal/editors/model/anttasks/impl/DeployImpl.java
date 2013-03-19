@@ -57,8 +57,9 @@ import at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getTemplate <em>Template</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getCallbacks <em>Callbacks</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getInfo <em>Info</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#isNativePackage <em>Native Package</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getSplashImage <em>Splash Image</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#getPackagingFormat <em>Packaging Format</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.jdt.ui.internal.editors.model.anttasks.impl.DeployImpl#isVerbose <em>Verbose</em>}</li>
  * </ul>
  * </p>
  *
@@ -316,26 +317,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 	protected Info info;
 
 	/**
-	 * The default value of the '{@link #isNativePackage() <em>Native Package</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isNativePackage()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean NATIVE_PACKAGE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isNativePackage() <em>Native Package</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isNativePackage()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean nativePackage = NATIVE_PACKAGE_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getSplashImage() <em>Splash Image</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -354,6 +335,46 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 	 * @ordered
 	 */
 	protected String splashImage = SPLASH_IMAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPackagingFormat() <em>Packaging Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackagingFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PACKAGING_FORMAT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPackagingFormat() <em>Packaging Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackagingFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String packagingFormat = PACKAGING_FORMAT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isVerbose() <em>Verbose</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVerbose()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean VERBOSE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isVerbose() <em>Verbose</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVerbose()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean verbose = VERBOSE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -838,27 +859,6 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isNativePackage() {
-		return nativePackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNativePackage(boolean newNativePackage) {
-		boolean oldNativePackage = nativePackage;
-		nativePackage = newNativePackage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__NATIVE_PACKAGE, oldNativePackage, nativePackage));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getSplashImage() {
 		return splashImage;
 	}
@@ -873,6 +873,48 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 		splashImage = newSplashImage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__SPLASH_IMAGE, oldSplashImage, splashImage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPackagingFormat() {
+		return packagingFormat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPackagingFormat(String newPackagingFormat) {
+		String oldPackagingFormat = packagingFormat;
+		packagingFormat = newPackagingFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__PACKAGING_FORMAT, oldPackagingFormat, packagingFormat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isVerbose() {
+		return verbose;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVerbose(boolean newVerbose) {
+		boolean oldVerbose = verbose;
+		verbose = newVerbose;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AntTasksPackage.DEPLOY__VERBOSE, oldVerbose, verbose));
 	}
 
 	/**
@@ -941,10 +983,12 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return getCallbacks();
 			case AntTasksPackage.DEPLOY__INFO:
 				return getInfo();
-			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
-				return isNativePackage();
 			case AntTasksPackage.DEPLOY__SPLASH_IMAGE:
 				return getSplashImage();
+			case AntTasksPackage.DEPLOY__PACKAGING_FORMAT:
+				return getPackagingFormat();
+			case AntTasksPackage.DEPLOY__VERBOSE:
+				return isVerbose();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1007,11 +1051,14 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 			case AntTasksPackage.DEPLOY__INFO:
 				setInfo((Info)newValue);
 				return;
-			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
-				setNativePackage((Boolean)newValue);
-				return;
 			case AntTasksPackage.DEPLOY__SPLASH_IMAGE:
 				setSplashImage((String)newValue);
+				return;
+			case AntTasksPackage.DEPLOY__PACKAGING_FORMAT:
+				setPackagingFormat((String)newValue);
+				return;
+			case AntTasksPackage.DEPLOY__VERBOSE:
+				setVerbose((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1073,11 +1120,14 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 			case AntTasksPackage.DEPLOY__INFO:
 				setInfo((Info)null);
 				return;
-			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
-				setNativePackage(NATIVE_PACKAGE_EDEFAULT);
-				return;
 			case AntTasksPackage.DEPLOY__SPLASH_IMAGE:
 				setSplashImage(SPLASH_IMAGE_EDEFAULT);
+				return;
+			case AntTasksPackage.DEPLOY__PACKAGING_FORMAT:
+				setPackagingFormat(PACKAGING_FORMAT_EDEFAULT);
+				return;
+			case AntTasksPackage.DEPLOY__VERBOSE:
+				setVerbose(VERBOSE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1123,10 +1173,12 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 				return callbacks != null && !callbacks.isEmpty();
 			case AntTasksPackage.DEPLOY__INFO:
 				return info != null;
-			case AntTasksPackage.DEPLOY__NATIVE_PACKAGE:
-				return nativePackage != NATIVE_PACKAGE_EDEFAULT;
 			case AntTasksPackage.DEPLOY__SPLASH_IMAGE:
 				return SPLASH_IMAGE_EDEFAULT == null ? splashImage != null : !SPLASH_IMAGE_EDEFAULT.equals(splashImage);
+			case AntTasksPackage.DEPLOY__PACKAGING_FORMAT:
+				return PACKAGING_FORMAT_EDEFAULT == null ? packagingFormat != null : !PACKAGING_FORMAT_EDEFAULT.equals(packagingFormat);
+			case AntTasksPackage.DEPLOY__VERBOSE:
+				return verbose != VERBOSE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1159,10 +1211,12 @@ public class DeployImpl extends EObjectImpl implements Deploy {
 		result.append(updatemode);
 		result.append(", width: ");
 		result.append(width);
-		result.append(", nativePackage: ");
-		result.append(nativePackage);
 		result.append(", splashImage: ");
 		result.append(splashImage);
+		result.append(", packagingFormat: ");
+		result.append(packagingFormat);
+		result.append(", verbose: ");
+		result.append(verbose);
 		result.append(')');
 		return result.toString();
 	}

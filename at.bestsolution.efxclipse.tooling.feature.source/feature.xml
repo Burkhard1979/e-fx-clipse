@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.tooling.feature.source"
       label="e(fx)clipse - Composite - FX Tooling - Source"
-      version="0.8.0.qualifier"
+      version="0.8.1.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
@@ -146,9 +146,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <requires>
       <import feature="org.eclipse.xtext.sdk" version="2.3.1" match="greaterOrEqual"/>
-      <import feature="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.8.0" match="greaterOrEqual"/>
+      <import feature="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.8.1" match="greaterOrEqual"/>
       <import feature="at.bestsolution.efxclipse.runtime.jemmy.feature" version="3.0.0" match="greaterOrEqual"/>
-      <import feature="at.bestsolution.efxclipse.runtime.jemmy.junit.feature" version="0.8.0" match="greaterOrEqual"/>
+      <import feature="at.bestsolution.efxclipse.runtime.jemmy.junit.feature" version="0.8.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin

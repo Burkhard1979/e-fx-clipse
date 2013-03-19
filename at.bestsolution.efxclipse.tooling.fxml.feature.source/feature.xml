@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.tooling.fxml.feature.source"
       label="e(fx)clipse - Single - FXML editing support - Source"
-      version="0.8.0.qualifier"
+      version="0.8.1.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
@@ -110,7 +110,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <requires>
       <import feature="org.eclipse.wst.xml_ui.feature" version="3.3.0" match="greaterOrEqual"/>
-      <import feature="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.8.0" match="greaterOrEqual"/>
+      <import feature="at.bestsolution.efxclipse.runtime.osgi.feature" version="0.8.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin

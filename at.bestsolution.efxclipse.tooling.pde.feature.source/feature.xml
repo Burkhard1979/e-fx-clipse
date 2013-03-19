@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.tooling.pde.feature.source"
       label="e(fx)clipse - Single - PDE support - Source"
-      version="0.8.0.qualifier"
+      version="0.8.1.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
@@ -109,25 +109,15 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </license>
 
    <plugin
-         id="at.bestsolution.efxclipse.tooling.pde.adaptor.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="at.bestsolution.efxclipse.tooling.pde.fragment.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
          id="at.bestsolution.efxclipse.tooling.pde.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+   
+   <plugin
+         id="at.bestsolution.efxclipse.tooling.pde.java7.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 </feature>

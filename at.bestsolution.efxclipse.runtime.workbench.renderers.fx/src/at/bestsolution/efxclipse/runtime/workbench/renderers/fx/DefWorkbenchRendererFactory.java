@@ -19,6 +19,7 @@ import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuBarRen
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuItemRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BaseMenuSeparatorRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePartMenuRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePartRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiveRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePerspectiveStackRenderer;
@@ -78,7 +79,7 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	}
 
 	@Override
-	protected Class<? extends BasePartRenderer<?>> getPartRendererClass() {
+	protected Class<? extends BasePartRenderer<?,?,?>> getPartRendererClass() {
 		return DefPartRenderer.class;
 	}
 
@@ -135,5 +136,10 @@ public class DefWorkbenchRendererFactory extends BaseWorkbenchRendererFactory {
 	@Override
 	protected Class<? extends BasePopupMenuRenderer<?>> getPopupMenuRendererClass() {
 		return DefPopupMenuRenderer.class;
+	}
+	
+	@Override
+	protected Class<? extends BasePartMenuRenderer<?>> getPartMenuRenderer() {
+		return DefPartMenuRenderer.class;
 	}
 }

@@ -12,10 +12,6 @@ package at.bestsolution.efxclipse.runtime.core.log;
 
 import javax.inject.Provider;
 
-import at.bestsolution.efxclipse.runtime.core.log.Log;
-import at.bestsolution.efxclipse.runtime.core.log.Logger;
-import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
-
 public class JUtilLoggerFactory implements LoggerFactory, Provider<LoggerFactory> {
 
 	@Override
@@ -29,7 +25,6 @@ public class JUtilLoggerFactory implements LoggerFactory, Provider<LoggerFactory
 	}
 
 	static class LoggerImpl implements Logger {
-		@Log
 		private java.util.logging.Logger logger;
 		
 		private String name;

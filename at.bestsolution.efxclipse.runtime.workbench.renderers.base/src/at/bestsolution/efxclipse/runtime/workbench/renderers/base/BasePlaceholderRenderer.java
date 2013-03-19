@@ -52,7 +52,7 @@ public abstract class BasePlaceholderRenderer<N> extends BaseRenderer<MPlacehold
 		MUIElement ref = element.getRef();
 		ref.setCurSharedRef(element);
 		
-		Set<MPlaceholder> set = getRenderedPlaceholders(element);
+		Set<MPlaceholder> set = getRenderedPlaceholders(ref);
 		if( ! set.contains(element) ) {
 			set.add(element);
 		}
@@ -81,7 +81,8 @@ public abstract class BasePlaceholderRenderer<N> extends BaseRenderer<MPlacehold
 		
 		Set<MPlaceholder> set = renderedMap.get(refElement);
 		if( set == null || ! set.remove(element) ) {
-			return;
+//			super.destroyWidget(element);
+//			return;
 		}
 		
 		// Last reference removed so we can destroy it

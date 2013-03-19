@@ -10,11 +10,15 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.cssext.ui.labeling;
 
+import java.util.List;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 
 import com.google.inject.Inject;
 
@@ -32,13 +36,24 @@ public class CssExtDslLabelProvider extends DefaultEObjectLabelProvider {
 
 	
 	String text(CSSRuleDefinition model) {
-		return model.getName().getName() + " =";
+		return model.getName() + " =";
 	}
 	
 	String text(CSSRuleRef ruleRef) {
 		return "&lt;" + ruleRef.getRef().getName() + "&gt;";
 	}
 	
+	String image(PackageDefinition pkg) {
+		return "package_obj.gif";
+	}
+	
+	String image(List<?> pkg) {
+		return "category_obj.gif";
+	}
+	
+	String image(ElementDefinition el) {
+		return "element.gif";
+	}
 /*
 	//Labels and icons can be computed like this:
 	

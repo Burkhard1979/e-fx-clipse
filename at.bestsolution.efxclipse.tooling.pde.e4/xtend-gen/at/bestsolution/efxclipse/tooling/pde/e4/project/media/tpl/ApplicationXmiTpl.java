@@ -103,7 +103,7 @@ public class ApplicationXmiTpl implements Generator<DynamicFile> {
     _builder.append(_generateUUID_7, "        ");
     _builder.append("\" elementId=\"org.efxclipse.e4.toolitem.open\" iconURI=\"platform:/plugin/");
     _builder.append(rootPackage, "        ");
-    _builder.append("/icons/edit-image-face-show.png\" command=\"");
+    _builder.append("/icons/view-preview.png\" command=\"");
     _builder.append(openCommandId, "        ");
     _builder.append("\"/>");
     _builder.newLineIfNotEmpty();
@@ -113,7 +113,7 @@ public class ApplicationXmiTpl implements Generator<DynamicFile> {
     _builder.append(_generateUUID_8, "        ");
     _builder.append("\" elementId=\"org.efxclipse.e4.toolitem.save\" iconURI=\"platform:/plugin/");
     _builder.append(rootPackage, "        ");
-    _builder.append("/icons/system-reboot.png\" command=\"");
+    _builder.append("/icons/system-restart.png\" command=\"");
     _builder.append(refreshCommandId, "        ");
     _builder.append("\"/>");
     _builder.newLineIfNotEmpty();

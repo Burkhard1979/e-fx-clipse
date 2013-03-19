@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.platform.target.feature"
       label="Target Platform for Eclipse"
-      version="0.8.0.qualifier"
+      version="0.8.1.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://www.example.com/description">
@@ -1162,6 +1162,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.e4.ui.model.workbench.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.eclipse.e4.ui.services"
@@ -1179,6 +1186,13 @@
 
    <plugin
          id="org.eclipse.e4.ui.workbench"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.e4.ui.workbench.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1750,12 +1764,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.junit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.junit.source"
          download-size="0"
          install-size="0"
@@ -1813,6 +1821,13 @@
 
    <plugin
          id="org.eclipse.text"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.text.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1975,6 +1990,12 @@
          version="0.0.0"/>
 
    <plugin
+         id="org.apache.ant.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="org.apache.commons.cli"
          download-size="0"
          install-size="0"
@@ -2044,4 +2065,66 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="com.google.gson"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.xtend.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.lib.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.xbase.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.xbase.lib.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.bestsolution.efxclipse.formats.svg"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.bestsolution.efxclipse.formats.svg.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.bestsolution.efxclipse.runtime.log4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+  <plugin
+         id="at.bestsolution.efxclipse.runtime.log4j.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 </feature>

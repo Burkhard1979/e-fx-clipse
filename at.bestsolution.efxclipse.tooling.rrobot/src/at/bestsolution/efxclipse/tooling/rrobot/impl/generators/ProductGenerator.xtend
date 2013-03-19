@@ -15,7 +15,7 @@ class ProductGenerator implements Generator<ProductFile> {
 	def generateContent(ProductFile file, Map<String,Object> data) '''<?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="«file.productName»" id="«file.id»" application="«file.application»" version="«file.version»" useFeatures="«file instanceof ProductFileFeaturebase»" includeLaunchers="«file.includeLaunchers»">
+<product name="«file.productName»" uid="«file.id»" id="«file.id»" application="«file.application»" version="«file.version»" useFeatures="«file instanceof ProductFileFeaturebase»" includeLaunchers="«file.includeLaunchers»">
 
 	<configIni use="default">
 	</configIni>

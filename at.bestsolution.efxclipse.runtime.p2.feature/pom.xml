@@ -10,7 +10,7 @@
 		<groupId>at.bestsolution</groupId>
 		<artifactId>efxclipse.target</artifactId>
 		<relativePath>../at.bestsolution.efxclipse.platform.releng/pom.xml</relativePath>
-		<version>0.8.0-SNAPSHOT</version>
+		<version>0.8.1-SNAPSHOT</version>
 	</parent>
 
 </project>

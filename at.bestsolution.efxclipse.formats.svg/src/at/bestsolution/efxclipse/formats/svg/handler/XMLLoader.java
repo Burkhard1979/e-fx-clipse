@@ -58,7 +58,7 @@ public class XMLLoader {
 		XMLLoader l = new XMLLoader();
 		try {
 			// TODO use workspace file
-			File f = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/player.svg");
+			File f = new File("/Users/tomschindl/git/e-fx-clipse/at.bestsolution.efxclipse.formats.svg/samples/lr.svg");
 			InputStream in;
 			
 			if( f.getName().endsWith("svgz") ) {
@@ -191,7 +191,7 @@ public class XMLLoader {
 							EObject internalO = internalIt.next();
 							if( internalO instanceof CoreAttributes ) {
 								if( link.equals(internalO.eGet(SvgPackage.Literals.CORE_ATTRIBUTES__ID))) {
-									o.eSet(instanceFeature, internalO);
+									o.eSet(instanceFeature, EcoreUtil.copy(internalO));
 									break;
 								}
 							}

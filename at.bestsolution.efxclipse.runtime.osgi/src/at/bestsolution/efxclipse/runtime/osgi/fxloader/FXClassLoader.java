@@ -11,24 +11,16 @@
 package at.bestsolution.efxclipse.runtime.osgi.fxloader;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLConnection;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 import org.eclipse.osgi.baseadaptor.BaseAdaptor;
 import org.eclipse.osgi.baseadaptor.BaseData;
@@ -43,13 +35,11 @@ import org.eclipse.osgi.framework.adaptor.ClassLoaderDelegate;
 import org.eclipse.osgi.framework.log.FrameworkLog;
 import org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader;
 import org.eclipse.osgi.service.datalocation.Location;
-import org.eclipse.osgi.service.urlconversion.URLConverter;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Filter;
 import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceReference;
 import org.osgi.framework.wiring.BundleWiring;
 import org.osgi.service.packageadmin.PackageAdmin;
 import org.osgi.util.tracker.ServiceTracker;
@@ -97,7 +87,7 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 	public BaseClassLoader createClassLoader(ClassLoader parent, final ClassLoaderDelegate delegate, BundleProtectionDomain domain, BaseData data, String[] bundleclasspath) {
 		if (data.getBundle().getSymbolicName().equals("at.bestsolution.efxclipse.runtime.javafx")) {
 			try {
-				MyBundleClassLoader cl = new MyBundleClassLoader(getPackageAdmin(), getPreferencesService(), parent, delegate, domain, data, bundleclasspath, context);
+				MyBundleClassLoader cl = new MyBundleClassLoader(getPackageAdmin(), parent, delegate, domain, data, bundleclasspath, context);
 				LOADER = cl;
 				return cl;
 			} catch (Exception e) {
@@ -111,78 +101,18 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 	public void initializedClassLoader(BaseClassLoader baseClassLoader, BaseData data) {
 	}
 
-	static class ReflectivePreferenceService {
-		private ServiceTracker<?, ?> tracker;
-
-		private static final String SCOPE = "instance";
-
-		public ReflectivePreferenceService(ServiceTracker<?, ?> tracker) {
-			this.tracker = tracker;
-		}
-
-		public String getInstanceValue(String qualifier, String key, String defaultValue) {
-			// IEclipsePreferences pref =
-			// IPreferencesService.getDefault().getRootNode().node(getName()).node(qualifier)
-			// pref.get(key,defaultValue)
-
-			try {
-				Object preferenceService = tracker.getService();
-				if (preferenceService != null) {
-					Method m = preferenceService.getClass().getMethod("getRootNode");
-					Object rootNode = m.invoke(preferenceService);
-					if (rootNode == null) {
-						return null;
-					}
-					m = rootNode.getClass().getMethod("node", String.class);
-					Object instanceNode = m.invoke(rootNode, SCOPE);
-
-					if (instanceNode == null) {
-						return null;
-					}
-					m = instanceNode.getClass().getMethod("node", String.class);
-					Object pref = m.invoke(instanceNode, qualifier);
-
-					if (pref == null) {
-						return null;
-					}
-					m = pref.getClass().getMethod("get", String.class, String.class);
-					return (String) m.invoke(pref, key, defaultValue);
-				}
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (Throwable e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-
-			return null;
-		}
-	}
-
 	static class MyBundleClassLoader extends DefaultClassLoader {
 		private URLClassLoader fxClassLoader;
 
-		public MyBundleClassLoader(PackageAdmin admin, ReflectivePreferenceService prefService, ClassLoader parent, ClassLoaderDelegate delegate, ProtectionDomain domain, BaseData bundledata, String[] classpath, BundleContext context) throws Exception {
+		public MyBundleClassLoader(PackageAdmin admin, ClassLoader parent, ClassLoaderDelegate delegate, ProtectionDomain domain, BaseData bundledata, String[] classpath, BundleContext context) throws Exception {
 			super(parent, delegate, domain, bundledata, classpath);
 
 			// Trying to locate swt bundle so that if the swt integration is
 			// used
 			// we can load those
 			Bundle[] bundles = admin.getBundles("org.eclipse.swt", null);
-
+			boolean swtAvailable = false;
+			
 			if (bundles != null) {
 				for (int i = 0; i < bundles.length; i++) {
 					if ((bundles[i].getState() & Bundle.INSTALLED) == 0) {
@@ -193,15 +123,16 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 							bundles[i].start();
 						}
 						parent = bundles[i].adapt(BundleWiring.class).getClassLoader();
+						swtAvailable = true;
 						break;
 					}
 				}
 			}
 
-			fxClassLoader = createClassloader(parent, prefService, admin, bundledata, context);
+			fxClassLoader = createClassloader(parent, admin, bundledata, context, swtAvailable);
 		}
 
-		private static URLClassLoader createJREBundledClassloader(ClassLoader parent) {
+		private static URLClassLoader createJREBundledClassloader(ClassLoader parent, boolean swtAvailable) {
 			if( FXClassLoadingConfigurator.DEBUG ) {
 				System.err.println("MyBundleClassLoader#createJREBundledClassloader - Started");
 			}
@@ -223,9 +154,29 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 					System.err.println("MyBundleClassLoader#createJREBundledClassloader - Assumed location (Java 8/Java 7): " + jarFile.getAbsolutePath());
 				}
 				
+				
+				
 				if( jarFile.exists() ) {
-					URL url = jarFile.getCanonicalFile().toURI().toURL();
-					return new URLClassLoader(new URL[] { url }, parent);
+					// if SWT is available we need to construct a new URL-Classloader with SWT
+					// bundles classloader as the parent
+					if( swtAvailable ) {
+						URL url = jarFile.getCanonicalFile().toURI().toURL();
+						return new URLClassLoader(new URL[] { url }, parent);	
+					} else {
+						// we should be able to delegate to the URL-Extension-Classloader, which is essential for ScenicView
+						// which installs an JMX-Component
+						try {
+							ClassLoader extClassLoader = ClassLoader.getSystemClassLoader().getParent();
+							if( extClassLoader.getClass().getName().equals("sun.misc.Launcher$ExtClassLoader") ) {
+								return new URLClassLoader(new URL[] {}, extClassLoader);	
+							}
+						} catch(Throwable t) {
+							t.printStackTrace();
+						}
+						URL url = jarFile.getCanonicalFile().toURI().toURL();
+						URLClassLoader cl = new URLClassLoader(new URL[] { url }, parent);
+						return cl;
+					}
 				} 
 				
 				// Java 7
@@ -254,7 +205,7 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 			return null;
 		}
 
-		private static URLClassLoader createClassloader(ClassLoader parent, ReflectivePreferenceService prefService, PackageAdmin admin, BaseData bundledata, BundleContext context) throws Exception {
+		private static URLClassLoader createClassloader(ClassLoader parent, PackageAdmin admin, BaseData bundledata, BundleContext context, boolean swtAvailable) throws Exception {
 			URLClassLoader loader;
 			
 			{
@@ -262,7 +213,7 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 					System.err.println("MyBundleClassLoader#createClassloader - checking for JRE bundled javafx");
 				}
 				
-				loader = createJREBundledClassloader(parent);
+				loader = createJREBundledClassloader(parent, swtAvailable);
 			}
 			
 			if (loader != null) {
@@ -405,14 +356,6 @@ public class FXClassLoader implements ClassLoadingHook, AdaptorHook {
 	public Location getInstanceLocation() {
 		if (instanceLocationTracker != null)
 			return (Location) instanceLocationTracker.getService();
-		return null;
-	}
-
-	public ReflectivePreferenceService getPreferencesService() {
-		if (preferenceServiceTracker != null) {
-			ensureStarted("org.eclipse.equinox.preferences");
-			return new ReflectivePreferenceService(preferenceServiceTracker);
-		}
 		return null;
 	}
 

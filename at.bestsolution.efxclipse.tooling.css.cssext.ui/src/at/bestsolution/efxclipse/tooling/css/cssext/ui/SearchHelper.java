@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRule;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtension;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PackageDefinition;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition;
@@ -80,7 +81,8 @@ public class SearchHelper {
 		else if (obj instanceof PackageDefinition) {
 			PackageDefinition pkg = (PackageDefinition) obj;
 			for (ElementDefinition el : pkg.getElements()) {
-				for (PropertyDefinition prop : el.getProperties()) {
+				for (Definition d : el.getProperties()) {
+					PropertyDefinition prop = (PropertyDefinition) d;
 					if (filter.filter(prop)) {
 						result.add(prop);
 						if (filter.returnOnFirstHit()) {
@@ -118,8 +120,8 @@ public class SearchHelper {
 		}
 		else if (curr instanceof PackageDefinition) {
 			PackageDefinition pkg = (PackageDefinition) curr;
-			for (CSSRuleDefinition def : pkg.getRules()) {
-				recFindObjects(def, result, filter);
+			for (Definition def : pkg.getRules()) {
+				recFindObjects((CSSRuleDefinition) def, result, filter);
 			}
 			for (ElementDefinition el : pkg.getElements()) {
 				recFindObjects(el, result, filter);

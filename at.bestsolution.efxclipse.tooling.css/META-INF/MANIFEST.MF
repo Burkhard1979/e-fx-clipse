@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.1.qualifier
 Bundle-SymbolicName: at.bestsolution.efxclipse.tooling.css; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="2.0.0";visibility:=reexport,
@@ -24,15 +24,16 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: at.bestsolution.efxclipse.tooling.css,
- at.bestsolution.efxclipse.tooling.css.services,
  at.bestsolution.efxclipse.tooling.css.cssDsl,
  at.bestsolution.efxclipse.tooling.css.cssDsl.impl,
  at.bestsolution.efxclipse.tooling.css.cssDsl.util,
- at.bestsolution.efxclipse.tooling.css.serializer,
+ at.bestsolution.efxclipse.tooling.css.extapi,
+ at.bestsolution.efxclipse.tooling.css.formatting,
  at.bestsolution.efxclipse.tooling.css.parser.antlr,
  at.bestsolution.efxclipse.tooling.css.parser.antlr.internal,
- at.bestsolution.efxclipse.tooling.css.validation,
  at.bestsolution.efxclipse.tooling.css.scoping,
- at.bestsolution.efxclipse.tooling.css.generator,
- at.bestsolution.efxclipse.tooling.css.formatting
-Service-Component: OSGI-INF/component.xml
+ at.bestsolution.efxclipse.tooling.css.serializer,
+ at.bestsolution.efxclipse.tooling.css.services,
+ at.bestsolution.efxclipse.tooling.css.util,
+ at.bestsolution.efxclipse.tooling.css.validation
+

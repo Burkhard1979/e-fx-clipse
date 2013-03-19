@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *     Christoph Caks <ccaks@bestsolution.at> - initial API and implementation
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.hover;
 
@@ -24,20 +24,20 @@ import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 
 import at.bestsolution.efxclipse.tooling.css.cssDsl.ColorTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.CssTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.ElementSelector;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.FuncTok;
 import at.bestsolution.efxclipse.tooling.css.cssDsl.NumberTok;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.css_property;
-import at.bestsolution.efxclipse.tooling.css.cssDsl.simple_selector;
-import at.bestsolution.efxclipse.tooling.css.ui.internal.CssDialectExtensionComponent;
+import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 public class CssHoverProvider extends DefaultEObjectHoverProvider {
 
+//	@Inject
+//	private CssDialectExtensionRegistry extension;
+	
 	@Inject
-	private CssDialectExtensionComponent extension;
+	private CssExt ext;
 	
 	@Inject(optional = true)
 	@Named("at.bestsolution.efxclipse.tooling.css.ui.styleSheetFileName")
@@ -49,6 +49,9 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	private String fontSymbolicName = "org.eclipse.jdt.ui.javadocfont"; //$NON-NLS-1$ 
 
 	protected String getStyleSheet() {
+		
+		// This is a development hack to enable stylesheet reloading
+		// TODO add some kind of debug flag to disable this at runtime
 		String css = loadStyleSheet();
 	
 		if (css != null) {
@@ -158,24 +161,7 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	 */
 	@Override
 	protected String getFirstLine(EObject o) {
-		
-		//if (1-1==0) return o.toString();
-		
-		if (o instanceof css_property) {
-			// Properties
-			return extension.getDocHeadForProperty(o.eResource().getURI(), ((css_property) o).getName());
-		}
-		
-		if (o instanceof simple_selector) {
-			simple_selector s = ((simple_selector)o);
-			String elementName = null;
-			if (s.getElement() instanceof ElementSelector) {
-				elementName = ((ElementSelector)s.getElement()).getName();
-			}
-			return extension.getDocForHeadElement(o.eResource().getURI(), elementName);
-		}
-		
-		String firstLine =  extension.getDocHead(o.eResource().getURI(), o);
+		String firstLine =  ext.getDocumentationHeader(o);
 		
 		if (firstLine==null) {
 			firstLine = super.getFirstLine(o);
@@ -184,18 +170,7 @@ public class CssHoverProvider extends DefaultEObjectHoverProvider {
 	}
 	
 	protected boolean hasHover(EObject o) {
-		return true;
-//		if( o instanceof function ) {
-//			function f = (function) o;
-//			if( "rgb".equals(f.getName()) ) {
-//				return true;
-//			}
-//		} else if( o instanceof term ) {
-//			term t = (term) o;
-//			if( t.getHexColor() != null ) {
-//				return true;
-//			}
-//		}
-//		return super.hasHover(o);
+		String firstLine = ext.getDocumentationHeader(o);
+		return firstLine != null;
 	}
 }

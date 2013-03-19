@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
@@ -72,19 +69,24 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
       case CssExtDslPackage.PACKAGE_DEFINITION: return createPackageDefinition();
       case CssExtDslPackage.DOKU: return createDoku();
       case CssExtDslPackage.CSS_RULE: return createCSSRule();
+      case CssExtDslPackage.CSS_TYPE: return createCSSType();
       case CssExtDslPackage.ELEMENT_DEFINITION: return createElementDefinition();
-      case CssExtDslPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
+      case CssExtDslPackage.DEFINITION: return createDefinition();
       case CssExtDslPackage.PSEUDO_CLASS_DEFINITION: return createPseudoClassDefinition();
-      case CssExtDslPackage.CSS_RULE_ID: return createCSSRuleId();
       case CssExtDslPackage.CSS_RULE_REF: return createCSSRuleRef();
-      case CssExtDslPackage.CSS_RULE_DEFINITION: return createCSSRuleDefinition();
       case CssExtDslPackage.CSS_DEFAULT_VALUE: return createCSSDefaultValue();
+      case CssExtDslPackage.SUBSTRUCTURE_SELECTOR: return createSubstructureSelector();
+      case CssExtDslPackage.SUBSTRUCTURE: return createSubstructure();
+      case CssExtDslPackage.SUBSTRUCTURE_STYLECLASS: return createSubstructureStyleclass();
       case CssExtDslPackage.CSS_RANGED_INT_TYPE: return createCSSRangedIntType();
       case CssExtDslPackage.CSS_RANGED_DOUBLE_TYPE: return createCSSRangedDoubleType();
+      case CssExtDslPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
+      case CssExtDslPackage.CSS_RULE_DEFINITION: return createCSSRuleDefinition();
       case CssExtDslPackage.CSS_RULE_FUNC: return createCSSRuleFunc();
       case CssExtDslPackage.CSS_RULE_OR: return createCSSRuleOr();
       case CssExtDslPackage.CSS_RULE_XOR: return createCSSRuleXor();
       case CssExtDslPackage.CSS_RULE_CONCAT: return createCSSRuleConcat();
+      case CssExtDslPackage.CSS_RULE_CONCAT_WITHOUT_SPACE: return createCSSRuleConcatWithoutSpace();
       case CssExtDslPackage.CSS_RULE_POSTFIX: return createCSSRulePostfix();
       case CssExtDslPackage.CSS_RULE_BRACKET: return createCSSRuleBracket();
       case CssExtDslPackage.CSS_NUM_LITERAL: return createCSSNumLiteral();
@@ -156,6 +158,17 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
+  public CSSType createCSSType()
+  {
+    CSSTypeImpl cssType = new CSSTypeImpl();
+    return cssType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ElementDefinition createElementDefinition()
   {
     ElementDefinitionImpl elementDefinition = new ElementDefinitionImpl();
@@ -167,10 +180,10 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyDefinition createPropertyDefinition()
+  public Definition createDefinition()
   {
-    PropertyDefinitionImpl propertyDefinition = new PropertyDefinitionImpl();
-    return propertyDefinition;
+    DefinitionImpl definition = new DefinitionImpl();
+    return definition;
   }
 
   /**
@@ -189,17 +202,6 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleId createCSSRuleId()
-  {
-    CSSRuleIdImpl cssRuleId = new CSSRuleIdImpl();
-    return cssRuleId;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public CSSRuleRef createCSSRuleRef()
   {
     CSSRuleRefImpl cssRuleRef = new CSSRuleRefImpl();
@@ -211,10 +213,10 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleDefinition createCSSRuleDefinition()
+  public CSSDefaultValue createCSSDefaultValue()
   {
-    CSSRuleDefinitionImpl cssRuleDefinition = new CSSRuleDefinitionImpl();
-    return cssRuleDefinition;
+    CSSDefaultValueImpl cssDefaultValue = new CSSDefaultValueImpl();
+    return cssDefaultValue;
   }
 
   /**
@@ -222,10 +224,32 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSDefaultValue createCSSDefaultValue()
+  public SubstructureSelector createSubstructureSelector()
   {
-    CSSDefaultValueImpl cssDefaultValue = new CSSDefaultValueImpl();
-    return cssDefaultValue;
+    SubstructureSelectorImpl substructureSelector = new SubstructureSelectorImpl();
+    return substructureSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Substructure createSubstructure()
+  {
+    SubstructureImpl substructure = new SubstructureImpl();
+    return substructure;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SubstructureStyleclass createSubstructureStyleclass()
+  {
+    SubstructureStyleclassImpl substructureStyleclass = new SubstructureStyleclassImpl();
+    return substructureStyleclass;
   }
 
   /**
@@ -248,6 +272,28 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
   {
     CSSRangedDoubleTypeImpl cssRangedDoubleType = new CSSRangedDoubleTypeImpl();
     return cssRangedDoubleType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyDefinition createPropertyDefinition()
+  {
+    PropertyDefinitionImpl propertyDefinition = new PropertyDefinitionImpl();
+    return propertyDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CSSRuleDefinition createCSSRuleDefinition()
+  {
+    CSSRuleDefinitionImpl cssRuleDefinition = new CSSRuleDefinitionImpl();
+    return cssRuleDefinition;
   }
 
   /**
@@ -292,6 +338,17 @@ public class CssExtDslFactoryImpl extends EFactoryImpl implements CssExtDslFacto
   {
     CSSRuleConcatImpl cssRuleConcat = new CSSRuleConcatImpl();
     return cssRuleConcat;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CSSRuleConcatWithoutSpace createCSSRuleConcatWithoutSpace()
+  {
+    CSSRuleConcatWithoutSpaceImpl cssRuleConcatWithoutSpace = new CSSRuleConcatWithoutSpaceImpl();
+    return cssRuleConcatWithoutSpace;
   }
 
   /**

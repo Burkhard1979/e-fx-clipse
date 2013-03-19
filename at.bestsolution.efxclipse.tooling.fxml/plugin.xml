@@ -9,7 +9,7 @@
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
             extensions="fxml"
-            icon="icons/application-xhtml+xml.png"
+            icon="icons/page_white_code_red.png"
             id="at.bestsolution.efxclipse.tooling.fxml.editors.FXMLEditor"
             name="FXML Editor">
       </editor>
@@ -56,7 +56,7 @@
       <wizard
             category="at.bestsolution.efxclipse.tooling"
             class="at.bestsolution.efxclipse.tooling.fxml.wizards.NewFXMLWizard"
-            icon="icons/application-xhtml+xml.png"
+            icon="icons/page_white_code_red.png"
             id="at.bestsolution.efxclipse.tooling.fxml.wizard1"
             name="New FXML Document"
             project="false">

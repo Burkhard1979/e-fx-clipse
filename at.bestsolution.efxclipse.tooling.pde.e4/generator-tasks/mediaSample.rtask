@@ -131,7 +131,6 @@ RobotTask {
 						Folder "images" {
 							children = {
 								URLFile "clef.png" 					"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/clef.png",
-								URLFile "dark_dotted.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/dark_dotted.png",
 								URLFile "top-bar.png" 				"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/top-bar.png",
 								URLFile "window-close-over.png" 	"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/window-close-over.png",
 								URLFile "window-close.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/css/images/window-close.png",
@@ -151,7 +150,7 @@ RobotTask {
 							children = {
 								URLFile "games-config-background.png" 	"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/games-config-background.png",
 								URLFile "player-volume.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/player-volume.png",
-								URLFile "tool-animator.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/tool-animator.png"
+								URLFile "kaffeine.png"		 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/22/kaffeine.png"
 							}
 						},
 						Folder "resources" {
@@ -169,13 +168,11 @@ RobotTask {
 								}
 							}
 						},
-						URLFile "edit-image-face-show.png" 		"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/edit-image-face-show.png",
+						URLFile "view-preview.png" 				"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/view-preview.png",
 						URLFile "games-config-background.png" 	"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/games-config-background.png",
 						URLFile "player-volume.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/player-volume.png",
-						URLFile "sample.gif" 					"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/sample.gif",
-						URLFile "save_edit.gif" 				"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/save_edit.gif",
-						URLFile "system-reboot.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/system-reboot.png",
-						URLFile "tool-animator.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/tool-animator.png"
+						URLFile "system-restart.png" 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/system-restart.png",
+						URLFile "kaffeine.png"		 			"platform:/plugin/at.bestsolution.efxclipse.tooling.pde.e4/templates/common/icons/kaffeine.png"
 					}
 				}
 			}
@@ -288,6 +285,7 @@ RobotTask {
 					"org.eclipse.equinox.concurrent",
 					"org.eclipse.equinox.ds",
 					"org.eclipse.equinox.event",
+					"org.eclipse.equinox.launcher",
 					"org.eclipse.equinox.preferences",
 					"org.eclipse.equinox.registry",
 					"org.eclipse.equinox.util",

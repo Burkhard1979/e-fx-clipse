@@ -1,15 +1,14 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl;
 
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRef;
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CssExtDslPackage;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition;
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Doku;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -23,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleRefImpl#getDoku <em>Doku</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.impl.CSSRuleRefImpl#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
@@ -32,6 +32,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
 {
   /**
+   * The cached value of the '{@link #getDoku() <em>Doku</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDoku()
+   * @generated
+   * @ordered
+   */
+  protected Doku doku;
+
+  /**
    * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -39,7 +49,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * @generated
    * @ordered
    */
-  protected CSSRuleId ref;
+  protected Definition ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,12 +77,60 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleId getRef()
+  public Doku getDoku()
+  {
+    return doku;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDoku(Doku newDoku, NotificationChain msgs)
+  {
+    Doku oldDoku = doku;
+    doku = newDoku;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE_REF__DOKU, oldDoku, newDoku);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDoku(Doku newDoku)
+  {
+    if (newDoku != doku)
+    {
+      NotificationChain msgs = null;
+      if (doku != null)
+        msgs = ((InternalEObject)doku).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_RULE_REF__DOKU, null, msgs);
+      if (newDoku != null)
+        msgs = ((InternalEObject)newDoku).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CssExtDslPackage.CSS_RULE_REF__DOKU, null, msgs);
+      msgs = basicSetDoku(newDoku, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE_REF__DOKU, newDoku, newDoku));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Definition getRef()
   {
     if (ref != null && ref.eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (CSSRuleId)eResolveProxy(oldRef);
+      ref = (Definition)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
@@ -87,7 +145,7 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public CSSRuleId basicGetRef()
+  public Definition basicGetRef()
   {
     return ref;
   }
@@ -97,12 +155,28 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(CSSRuleId newRef)
+  public void setRef(Definition newRef)
   {
-    CSSRuleId oldRef = ref;
+    Definition oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, CssExtDslPackage.CSS_RULE_REF__REF, oldRef, ref));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+        return basicSetDoku(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -115,6 +189,8 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
+      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+        return getDoku();
       case CssExtDslPackage.CSS_RULE_REF__REF:
         if (resolve) return getRef();
         return basicGetRef();
@@ -132,8 +208,11 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
+      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+        setDoku((Doku)newValue);
+        return;
       case CssExtDslPackage.CSS_RULE_REF__REF:
-        setRef((CSSRuleId)newValue);
+        setRef((Definition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,8 +228,11 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
+      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+        setDoku((Doku)null);
+        return;
       case CssExtDslPackage.CSS_RULE_REF__REF:
-        setRef((CSSRuleId)null);
+        setRef((Definition)null);
         return;
     }
     super.eUnset(featureID);
@@ -166,6 +248,8 @@ public class CSSRuleRefImpl extends CSSRuleImpl implements CSSRuleRef
   {
     switch (featureID)
     {
+      case CssExtDslPackage.CSS_RULE_REF__DOKU:
+        return doku != null;
       case CssExtDslPackage.CSS_RULE_REF__REF:
         return ref != null;
     }

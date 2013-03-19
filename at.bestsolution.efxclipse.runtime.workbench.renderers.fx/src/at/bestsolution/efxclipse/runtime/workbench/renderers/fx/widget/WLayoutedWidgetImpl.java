@@ -22,24 +22,38 @@ import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.workbench.UIEvents;
 
+import at.bestsolution.efxclipse.runtime.core.log.Log;
+import at.bestsolution.efxclipse.runtime.core.log.Logger;
+import at.bestsolution.efxclipse.runtime.core.log.Logger.Level;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WLayoutedWidget;
 
 
 @SuppressWarnings("restriction")
 public abstract class WLayoutedWidgetImpl<N,NN extends Node,M extends MUIElement> extends WWidgetImpl<N,M> implements WLayoutedWidget<M> {
-	private StackPane staticLayoutGroup;
+	private Node staticLayoutGroup;
 	private double weight = 10;
 	
 	protected abstract NN getWidgetNode();
 	
+	@Inject
+	@Log
+	protected Logger logger;
+	
 	@Override
 	public Node getStaticLayoutNode() {
 		if( staticLayoutGroup == null ) {
-			Node n = getWidgetNode();
-			if( n != null ) {
-				staticLayoutGroup = new StackPane();
-				staticLayoutGroup.getChildren().add(n);
-			}
+			staticLayoutGroup = createStaticLayoutNode();
+		}
+		return staticLayoutGroup;
+	}
+	
+	protected Node createStaticLayoutNode() {
+		StackPane staticLayoutGroup = new StackPane();
+		Node n = getWidgetNode();
+		if( n != null ) {
+			staticLayoutGroup.getChildren().add(n);
+		} else {
+			logger.log(Level.ERROR, "No widget node to attach");
 		}
 		return staticLayoutGroup;
 	}

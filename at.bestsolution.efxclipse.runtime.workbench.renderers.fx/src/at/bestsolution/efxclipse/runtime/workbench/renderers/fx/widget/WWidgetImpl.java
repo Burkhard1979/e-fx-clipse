@@ -33,6 +33,7 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	private M domElement;
 	private List<WCallback<Boolean, Void>> activationCallbacks = new ArrayList<WCallback<Boolean,Void>>();
 	private boolean active;
+	protected WidgetState state = WidgetState.IN_SETUP;
 	
 	private WPropertyChangeHandler<? extends WWidget<M>> propertyChangeHandler;
 	
@@ -43,18 +44,32 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	}
 	
 	@Override
+	public void setWidgetState(at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState state) {
+		this.state = state;
+	}
+	
+	@Override
+	public at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState getWidgetState() {
+		return this.state;
+	}
+	
+	@Override
 	public void activate() {
 		this.active = true;
-		for( WCallback<Boolean, Void> c : activationCallbacks ) {
-			c.call(Boolean.TRUE);
+		if( activationCallbacks != null ) {
+			for( WCallback<Boolean, Void> c : activationCallbacks ) {
+				c.call(Boolean.TRUE);
+			}	
 		}
 	}
 	
 	@Override
 	public void deactivate() {
 		this.active = false;
-		for( WCallback<Boolean, Void> c : activationCallbacks ) {
-			c.call(Boolean.FALSE);
+		if( activationCallbacks != null ) {
+			for( WCallback<Boolean, Void> c : activationCallbacks ) {
+				c.call(Boolean.FALSE);
+			}	
 		}
 	}
 	
@@ -64,7 +79,10 @@ public abstract class WWidgetImpl<N,M extends MUIElement> implements WWidget<M> 
 	}
 	
 	public void registerActivationCallback(WCallback<Boolean, Void> callback) {
-		activationCallbacks.add(callback);
+		// Could be that we are already disposed at this point
+		if( activationCallbacks != null ) {
+			activationCallbacks.add(callback);	
+		}
 	}
 	
 	@PostConstruct

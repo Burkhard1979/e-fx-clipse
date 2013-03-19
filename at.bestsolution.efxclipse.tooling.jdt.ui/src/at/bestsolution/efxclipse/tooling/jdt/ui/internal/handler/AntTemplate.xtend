@@ -169,7 +169,6 @@ class AntTemplate {
 		val appTitle = task.getDeploy().getInfo().getTitle();
 		val appVersion = task.getDeploy().getApplication().getVersion();
 		val preloaderClass = task.getDeploy().getApplication().getPreloaderclass();
-		val nativePackage = task.getDeploy().isNativePackage();
 		
 		var preloaderPath = "";
 		if( preloaderClass == null ) {
@@ -292,17 +291,18 @@ class AntTemplate {
 			</fx:signjar>
 			«ENDIF»
 		
-			«IF (appletWidth != null && appletHeight != null) || nativePackage»
+			«IF (appletWidth != null && appletHeight != null) || task.deploy.packagingFormat != null»
 			<mkdir dir="deploy" />
 			<!-- Need to use ${basedir} because somehow the ant task is calculating the directory differently -->
 			<fx:deploy
+				«IF task.getDeploy().verbose »verbose="true" «ENDIF»
 				embedJNLP="«task.getDeploy().isEmbedjnlp()»"
 				extension="«task.getDeploy().isExtension()»"
 				«IF appletWidth != null && appletWidth.length > 0 && appletHeight != null && appletHeight.length > 0 »width="«appletWidth»" height="«appletHeight»"«ENDIF» 
 				includeDT="«task.getDeploy().isIncludeDT()»"
 				offlineAllowed="«task.getDeploy().isOfflineAllowed()»"
 				outdir="${basedir}/deploy"
-				outfile="«projectName»" «IF nativePackage»nativeBundles="all"«ENDIF»
+				outfile="«projectName»" «IF task.getDeploy().packagingFormat != null»nativeBundles="«task.getDeploy().packagingFormat»"«ENDIF»
 				«IF task.getDeploy().getPlaceholderref()?.length() > 0 »placeholderref="«task.getDeploy().getPlaceholderref()»"«ENDIF» 
 				«IF task.getDeploy().getPlaceholderid()?.length() > 0 »placeholderid="«task.getDeploy().getPlaceholderid()»"«ENDIF» 
 				«IF task.getDeploy().getUpdatemode()?.length() > 0 »updatemode="«task.getDeploy().getUpdatemode()»"«ENDIF» >

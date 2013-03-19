@@ -16,6 +16,15 @@ import org.eclipse.e4.ui.model.application.ui.MUIElement;
 
 @SuppressWarnings("restriction")
 public interface WWidget<M extends MUIElement> {
+	public enum WidgetState {
+		IN_SETUP,
+		CREATED,
+		IN_TEAR_DOWN,
+		DISPOSED
+	}
+	
+	public void setWidgetState(WidgetState state);
+	public WidgetState getWidgetState();
 	public void setPropertyChangeHandler(WPropertyChangeHandler<? extends WWidget<M>> handler);
 	public void setDomElement(M domElement);
 	public M getDomElement();

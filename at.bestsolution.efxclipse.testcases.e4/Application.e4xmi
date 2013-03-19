@@ -7,15 +7,35 @@
       <children xsi:type="advanced:Perspective" xmi:id="_m-PVAO6wEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.perspective.0" label="P 0">
         <children xsi:type="basic:PartSashContainer" xmi:id="_A7Q9oOL-EeGP-5z69KadAQ" horizontal="true">
           <children xsi:type="basic:Part" xmi:id="_A7Q9oeL-EeGP-5z69KadAQ" containerData="10" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ControlPanel" label="Control Stack" iconURI="">
+            <tags>Part-Toolbar-FullSpan</tags>
+            <tags>Part-ToolBarMenu-Bottom</tags>
             <menus xsi:type="menu:PopupMenu" xmi:id="_l9uLYCTjEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.popupmenu.0">
               <children xsi:type="menu:HandledMenuItem" xmi:id="_oWARYCTjEeKY8NYIo6jIvQ" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.7" label="Switch Perspective 2" command="_kCbZQO6yEeG4lfn-YKJbJw">
                 <parameters xmi:id="_tPAAoCTjEeKY8NYIo6jIvQ" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.2"/>
               </children>
             </menus>
+            <toolbar xmi:id="_FMzQEIEGEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.0">
+              <children xsi:type="menu:DirectToolItem" xmi:id="_GVO3wIEGEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.5" label="Hello World" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+            </toolbar>
           </children>
           <children xsi:type="basic:PartStack" xmi:id="_A7Q9ouL-EeGP-5z69KadAQ" elementId="content.stack" containerData="80">
-            <children xsi:type="basic:Part" xmi:id="_ZHcNwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C0" iconURI="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/icons/edit-image-face-show.png" closeable="true"/>
-            <children xsi:type="basic:Part" xmi:id="_cjVs4OL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C1"/>
+            <children xsi:type="basic:Part" xmi:id="_ZHcNwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C0" iconURI="platform:/plugin/at.bestsolution.efxclipse.testcases.e4/icons/folder.png" closeable="true">
+              <tags>Part-ToolBarMenu-Floating</tags>
+              <tags>Part-Toolbar-FullSpan</tags>
+              <menus xmi:id="_dsz2oIEQEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.4">
+                <tags>ViewMenu</tags>
+                <children xsi:type="menu:DirectMenuItem" xmi:id="_h8rwYIEQEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.5" label="View Menu 1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+              </menus>
+              <toolbar xmi:id="_eiPY4IEHEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.2">
+                <children xsi:type="menu:DirectToolItem" xmi:id="_fH640IEHEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.6" label="Bl" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+              </toolbar>
+            </children>
+            <children xsi:type="basic:Part" xmi:id="_cjVs4OL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C1">
+              <tags>Part-ToolBarMenu-Floating</tags>
+              <toolbar xmi:id="_QPi6AIHxEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.4">
+                <children xsi:type="menu:DirectToolItem" xmi:id="_QxE5wIHxEeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.8" label="DI" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+              </toolbar>
+            </children>
             <children xsi:type="basic:Part" xmi:id="_f5-RgOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.2" toBeRendered="false" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C2" closeable="true"/>
             <children xsi:type="basic:Part" xmi:id="_jRKPwOL-EeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.part.3" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="C3" closeable="true"/>
             <children xsi:type="advanced:Placeholder" xmi:id="_ddQGkPW5EeG7tr8qKhf17Q" elementId="at.bestsolution.efxclipse.testcases.e4.placeholder.0" ref="_T4J0kPW5EeG7tr8qKhf17Q"/>
@@ -42,6 +62,13 @@
           <children xsi:type="basic:Part" xmi:id="_Tp95UCZmEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.10" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 10">
             <persistedState key="fx_layout_width" value="300"/>
             <tags>content_a</tags>
+            <menus xmi:id="_xwNwMIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.menu.5">
+              <tags>ViewMenu</tags>
+              <children xsi:type="menu:DirectMenuItem" xmi:id="_y7B9gIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.6" label="Di" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+            </menus>
+            <toolbar xmi:id="_83m7YIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.toolbar.3">
+              <children xsi:type="menu:DirectToolItem" xmi:id="_9hPHMIE0EeKxavJ0U4_mHQ" elementId="at.bestsolution.efxclipse.testcases.e4.directtoolitem.7" label="DI" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler2"/>
+            </toolbar>
           </children>
           <children xsi:type="basic:Part" xmi:id="_uiO8QCZmEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.11" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 11">
             <persistedState key="fx_layout_grab_horizontal" value="true"/>
@@ -55,6 +82,11 @@
           <tags>fx_pagination</tags>
           <children xsi:type="basic:Part" xmi:id="_x8MQ8CaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.12" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 12"/>
           <children xsi:type="basic:Part" xmi:id="_yVlBUCaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.part.13" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Part 13"/>
+        </children>
+      </children>
+      <children xsi:type="advanced:Perspective" xmi:id="_9YqNgIfYEeKsYN0U3N_L9Q" elementId="at.bestsolution.efxclipse.testcases.e4.perspective.5" label="P5">
+        <children xsi:type="basic:Part" xmi:id="__HnCoIfYEeKsYN0U3N_L9Q" elementId="at.bestsolution.efxclipse.testcases.e4.part.14" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.parts.ContentPanel" label="Panel 14">
+          <tags>content_a</tags>
         </children>
       </children>
     </children>
@@ -71,6 +103,8 @@
           <children xsi:type="menu:DirectMenuItem" xmi:id="_-21b4ORqEeGP-5z69KadAQ" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.3" label="Radio - DI 3" type="Radio" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.DiHandler"/>
         </children>
         <children xsi:type="menu:DirectMenuItem" xmi:id="_VdrD0ER8EeKso-cEr7pQbw" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.4" label="Event Sending" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.EventSender"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_N4FhcIfmEeKsYN0U3N_L9Q" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.7" label="Exit" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.ExitHandler"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_3n7coIfmEeKsYN0U3N_L9Q" elementId="at.bestsolution.efxclipse.testcases.e4.directmenuitem.8" label="Restart" contributionURI="bundleclass://at.bestsolution.efxclipse.testcases.e4/at.bestsolution.efxclipse.testcases.e4.handlers.RestartHandler"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_d-oDwO6yEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.menu.3" label="Switch">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_jYdPMO6yEeG4lfn-YKJbJw" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.4" label="Perspective 0" command="_kCbZQO6yEeG4lfn-YKJbJw">
@@ -87,6 +121,9 @@
         </children>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_6V3RoCaCEeKqs9jU_V83wg" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.9" label="Perspective 4" command="_kCbZQO6yEeG4lfn-YKJbJw">
           <parameters xmi:id="_7xfiICaCEeKqs9jU_V83wg" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.4"/>
+        </children>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_MrnaMIfZEeKsYN0U3N_L9Q" elementId="at.bestsolution.efxclipse.testcases.e4.handledmenuitem.10" label="Perspective 5" command="_kCbZQO6yEeG4lfn-YKJbJw">
+          <parameters xmi:id="_PsE6gIfZEeKsYN0U3N_L9Q" elementId="" name="at.bestsolution.efxclipse.testcases.e4.command.2.perspective" value="at.bestsolution.efxclipse.testcases.e4.perspective.5"/>
         </children>
       </children>
     </mainMenu>

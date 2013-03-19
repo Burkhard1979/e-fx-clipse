@@ -171,15 +171,35 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		@Optional
 		WindowTransitionService<Stage> windowTransitionService;
 		
+		@Inject
+		private IResourceUtilities<Image> resourceUtilities;
+		
 		boolean initDone;
+		
+		private boolean undecorated;
 		
 		@Inject
 		public WWindowImpl(@Named(BaseRenderer.CONTEXT_DOM_ELEMENT) MWindow mWindow, @Optional KeyBindingDispatcher dispatcher) {
 			this.mWindow = mWindow;
-			this.support3d = mWindow.getPersistedState().get("fx.scene.3d") != null && Boolean.parseBoolean(mWindow.getPersistedState().get("fx.scene.3d"));
+			
+			if( mWindow.getPersistedState().get("fx.scene.3d") != null ) {
+				System.err.println("Usage of deprecated persisted state 'fx.scene.3d' please use 'efx.window.scene.3d' instead.");
+				this.support3d = Boolean.parseBoolean(mWindow.getPersistedState().get("fx.scene.3d"));	
+			} else {
+				this.support3d = Boolean.parseBoolean(mWindow.getPersistedState().get("efx.window.scene.3d"));
+			}
+			
 			this.dispatcher = dispatcher;
 			this.modelContext = mWindow.getContext();
 			this.decorationFXML = mWindow.getPersistedState().get("fx.stage.decoration");
+			
+			if( decorationFXML == null ) {
+				decorationFXML = mWindow.getPersistedState().get("efx.window.decoration.fxml");
+			} else {
+				System.err.println("Useage of deprecated persisted state 'fx.stage.decoration' please use 'efx.window.decoration.fxml' instead.");
+			}
+			
+			this.undecorated = Boolean.parseBoolean(mWindow.getPersistedState().get("efx.window.undecorated"));
 		}
 		
 		@PostConstruct
@@ -242,6 +262,10 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 				decoratorPane = new BorderPane();
 				decoratorPane.setTop(createTopDecoration(stage));
 				rootPane.setTop(decoratorPane);
+			}
+			
+			if( undecorated ) {
+				stage.initStyle(StageStyle.UNDECORATED);
 			}
 
 			// TODO Should we create the scene on show???
@@ -476,6 +500,11 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 			getWidget().toFront();
 		}
 		
+		@Override
+		public void close() {
+			getWidget().close();
+		}
+		
 		private void internalShow() {
 			if( windowTransitionService != null ) {
 				AnimationDelegate<Stage> delegate = windowTransitionService.getShowDelegate(mWindow);
@@ -505,6 +534,25 @@ public class DefWindowRenderer extends BaseWindowRenderer<Stage> {
 		@Inject
 		public void setTitle(@Named(ATTRIBUTE_localizedLabel) String title) {
 			getWidget().setTitle(title);
+		}
+		
+		@Inject
+		public void setImageUrl(@Named(UIEvents.UILabel.ICONURI) @Optional String iconUri) {
+			if( iconUri != null ) {
+				
+				String[] split = iconUri.split(";");
+				List<Image> images = new ArrayList<>();
+				for( String uri : split ) {
+					Image img = resourceUtilities.imageDescriptorFromURI(URI.createURI(uri));
+					if( img != null ) {
+						images.add(img);
+					}
+				}
+				
+				getWidget().getIcons().setAll(images);
+			} else {
+				getWidget().getIcons().clear();
+			}
 		}
 
 		@Override

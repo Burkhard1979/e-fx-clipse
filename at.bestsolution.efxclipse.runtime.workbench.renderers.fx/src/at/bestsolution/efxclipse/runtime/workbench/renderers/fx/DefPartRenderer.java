@@ -11,9 +11,18 @@
 package at.bestsolution.efxclipse.runtime.workbench.renderers.fx;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 
 import javax.inject.Inject;
 
@@ -22,34 +31,49 @@ import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
+import at.bestsolution.efxclipse.runtime.core.log.Logger.Level;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.BasePartRenderer;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WMenu;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPart;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WToolBar;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.fx.widget.WLayoutedWidgetImpl;
 
 @SuppressWarnings("restriction")
-public class DefPartRenderer extends BasePartRenderer<BorderPane> {
+public class DefPartRenderer extends BasePartRenderer<BorderPane, Node, Node> {
+	private static final String TOOLBAR_MENU_FLOAT_TAG = "Part-ToolBarMenu-Floating";
+	private static final String TOOLBAR_MENU_COLLAPSIBLE_TAG = "Part-ToolBarMenu-Collapsible";
+	private static final String TOOLBAR_MENU_BOTTOM_TAG = "Part-ToolBarMenu-Bottom";
+
+	private static final String TOOL_BAR_FULL_SPAN_TAG = "Part-Toolbar-FullSpan";
 
 	@Override
-	protected Class<? extends WPart<BorderPane>> getWidgetClass(MPart part) {
+	protected Class<? extends WPart<BorderPane, Node, Node>> getWidgetClass(MPart part) {
 		return PartImpl.class;
 	}
 
 	@Override
-	protected boolean requiresFocus(WPart<BorderPane> widget) { 
+	protected boolean requiresFocus(WPart<BorderPane, Node, Node> widget) {
 		Node n = (Node) widget.getWidget();
-		
+
 		do {
-			if( n.getUserData() == widget ) {
+			if (n.getUserData() == widget) {
 				return false;
 			}
-		} while( (n = n.getParent()) != null );
-		
+		} while ((n = n.getParent()) != null);
+
 		return true;
 	}
-	
-	public static class PartImpl extends WLayoutedWidgetImpl<BorderPane, BorderPane, MPart> implements WPart<BorderPane> {
+
+	public static class PartImpl extends WLayoutedWidgetImpl<BorderPane, AnchorPane, MPart> implements WPart<BorderPane, Node, Node> {
 		@Inject
 		EPartService service;
+
+		private AnchorPane contentArea;
+		private BorderPane dataArea;
+
+		private StackPane expandGroup;
+		private StackPane toolbarGroup;
+		private Group menuGroup;
 		
 		@Override
 		protected BorderPane createWidget() {
@@ -59,43 +83,223 @@ public class DefPartRenderer extends BasePartRenderer<BorderPane> {
 				@Override
 				public void handle(MouseEvent event) {
 					event.consume();
-					service.activate(getDomElement(),true);
-					if( !checkFocusControl() ) {
-						ContextInjectionFactory.invoke(getDomElement().getObject(), Focus.class, getDomElement().getContext(),null);
-						if( !checkFocusControl() ) {
-							p.requestFocus();	
+					service.activate(getDomElement(), true);
+					if (!checkFocusControl()) {
+						ContextInjectionFactory.invoke(getDomElement().getObject(), Focus.class, getDomElement().getContext(), null);
+						if (!checkFocusControl()) {
+							p.requestFocus();
 						}
 					}
 				}
 			});
 			return p;
 		}
-		
+
 		private boolean checkFocusControl() {
 			BorderPane check = getWidget();
-			if( check == null || check.getScene() == null ) {
+			if (check == null || check.getScene() == null) {
 				return false;
 			}
-			
+
 			Node n = check.getScene().getFocusOwner();
-			
-			if( n == null ) {
+
+			if (n == null) {
 				return false;
 			}
-			
+
 			while (n.getParent() != null) {
 				if (n.getParent() == check) {
 					return true;
 				}
 				n = n.getParent();
-				
+
 			}
 			return false;
 		}
 
 		@Override
-		protected BorderPane getWidgetNode() {
-			return getWidget();
+		protected AnchorPane getWidgetNode() {
+			if (contentArea == null) {
+				menuGroup = new Group();
+				menuGroup.setVisible(false);
+				menuGroup.setManaged(false);
+				
+				expandGroup = new StackPane();
+				expandGroup.setStyle("-fx-background-color: gray");
+				expandGroup.setOpacity(0.5);
+				Node handler = new HandleGroup();//new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/format-line-spacing-normal.png")));
+				handler.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent event) {
+						toolbarGroup.getParent().setVisible(true);
+					}
+				});
+				expandGroup.getChildren().add(handler);
+				
+//				expandView = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("/icons/vcs-update-required.png")));
+//				expandView.setManaged(false);
+//				expandView.setVisible(false);
+				
+				contentArea = new AnchorPane() {
+					@Override
+					protected void layoutChildren() {
+						super.layoutChildren();
+						
+						if( menuGroup.isVisible() ) {
+							menuGroup.relocate(contentArea.getWidth()-20,0);
+						}
+					}
+				};
+				dataArea = new BorderPane();
+
+				AnchorPane.setTopAnchor(dataArea, 0.0);
+				AnchorPane.setLeftAnchor(dataArea, 0.0);
+				AnchorPane.setBottomAnchor(dataArea, 1.0);
+				AnchorPane.setRightAnchor(dataArea, 1.0);
+				
+//				AnchorPane.setTopAnchor(expandGroup, 0.0);
+//				AnchorPane.setLeftAnchor(expandGroup, 0.0);
+//				AnchorPane.setRightAnchor(expandGroup, 1.0);
+				
+				contentArea.getChildren().addAll(dataArea, menuGroup);
+				Node n = getWidget();
+				if (n != null) {
+					n.getStyleClass().add("part-content");
+					dataArea.setCenter(n);
+				} else {
+					logger.log(Level.ERROR, "No widget node to attach");
+				}
+			}
+			return contentArea;
+		}
+
+		private void initToolbarMenu() {
+			if (toolbarGroup == null) {
+				// Ensure that everything is initialized!!!
+				getStaticLayoutNode();
+				
+				toolbarGroup = new StackPane();
+				
+				if (getDomElement().getTags().contains(TOOL_BAR_FULL_SPAN_TAG)) {
+					final BorderPane p = new BorderPane();
+					p.setCenter(toolbarGroup);
+					p.getStyleClass().add("view-toolbar-container");
+					if( getDomElement().getTags().contains(TOOLBAR_MENU_FLOAT_TAG) ) {
+						AnchorPane.setLeftAnchor(p, 0.0);
+						AnchorPane.setRightAnchor(p, 1.0);
+						AnchorPane.setTopAnchor(p, 0.0);
+						contentArea.getChildren().add(p);
+						p.setVisible(false);
+						dataArea.setTop(expandGroup);
+						expandGroup.setVisible(true);
+						p.setOnMousePressed(new EventHandler<MouseEvent>() {
+							@Override
+							public void handle(MouseEvent event) {
+								p.setVisible(false);
+							}
+						});
+					} else {
+						if (getDomElement().getTags().contains(TOOLBAR_MENU_BOTTOM_TAG)) {
+							dataArea.setBottom(p);
+						} else {
+							dataArea.setTop(p);	
+						}	
+					}
+				} else {
+					BorderPane p = new BorderPane();
+					p.setRight(toolbarGroup);
+					p.getStyleClass().add("view-toolbar-container");
+					if (getDomElement().getTags().contains(TOOLBAR_MENU_BOTTOM_TAG)) {
+						dataArea.setBottom(p);
+					} else {
+						dataArea.setTop(p);	
+					}
+				}
+			}
+		}
+
+		@Override
+		public void setToolbar(WToolBar<Node> widget) {
+			if (widget == null) {
+				if (toolbarGroup != null) {
+					toolbarGroup.getChildren().clear();
+					dataArea.setTop(null);
+					dataArea.setBottom(null);
+				}
+			} else {
+				initToolbarMenu();
+				Node n = (Node) widget.getWidget();
+				n.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent event) {
+						if( getDomElement().getTags().contains(TOOLBAR_MENU_FLOAT_TAG) ) {
+							toolbarGroup.getParent().setVisible(false);
+						}
+					}
+				});
+				
+				n.getStyleClass().add("view-toolbar");
+				toolbarGroup.getChildren().setAll(n);
+			}
+		}
+
+		@Override
+		public void setMenu(WMenu<Node> widget) {
+			if (widget == null) {
+				if (menuGroup != null) {
+					menuGroup.setVisible(false);
+					menuGroup.getChildren().clear();
+				}
+			} else {
+				menuGroup.setVisible(true);
+				menuGroup.getChildren().setAll((Node) widget.getWidget());
+			}
+		}
+	}
+	
+	static class HandleGroup extends Group {
+		@Override
+		public double minHeight(double width) {
+			return 11;
+		}
+		
+		@Override
+		public double maxWidth(double height) {
+			return 20;
+		}
+		
+		public HandleGroup() {
+			{
+				Rectangle r = new Rectangle(16,1);
+				r.setFill(Color.WHITE);
+				r.setStroke(Color.BLACK);
+				r.setLayoutX(0);
+				r.setLayoutY(1);
+				r.setStrokeType(StrokeType.OUTSIDE);
+				getChildren().add(r);
+			}
+			
+			{
+				Rectangle r = new Rectangle(16,1);
+				r.setFill(Color.WHITE);
+				r.setStroke(Color.BLACK);
+				r.setLayoutX(0);
+				r.setLayoutY(4);
+				r.setStrokeType(StrokeType.OUTSIDE);
+				getChildren().add(r);
+			}
+			
+			{
+				Rectangle r = new Rectangle(16,1);
+				r.setFill(Color.WHITE);
+				r.setStroke(Color.BLACK);
+				r.setLayoutX(0);
+				r.setLayoutY(7);
+				r.setStrokeType(StrokeType.OUTSIDE);
+				getChildren().add(r);
+			}
 		}
 	}
 }

@@ -7,7 +7,7 @@
     -fx-background-color: -mid-gray;
 }
 
-.tool-bar {
+/* .tool-bar {
     -fx-base: -dark-black;
     -fx-font-size: 12pt;
     -fx-background-color:
@@ -16,6 +16,15 @@
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: .9em 0.416667em .9em 0.416667em;
     -fx-effect: dropshadow(two-pass-box,black,5,.2,0,0);
+}*/
+
+/* .view-toolbar {
+	-fx-background-color: transparent;
+}*/
+
+.view-toolbar-menu {
+	-fx-background-color: green;
+	-fx-opacity: 0.5;
 }
 
 .efxSelectedRadioToolButton {
@@ -100,7 +109,10 @@
 
 .content_a {
 	-fx-background-color: #f00;
-	-fx-padding: 10;
+	
+}
+.content_a .part-content {
+	-fx-padding: 10;	
 }
 
 .content_b {

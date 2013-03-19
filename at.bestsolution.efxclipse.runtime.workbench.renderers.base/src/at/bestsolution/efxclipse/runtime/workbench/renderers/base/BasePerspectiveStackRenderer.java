@@ -261,10 +261,16 @@ public abstract class BasePerspectiveStackRenderer<N, I, IC> extends BaseRendere
 				stack.selectItem(idx);
 				// TODO Should we do the traversal before???
 				showElementRecursive(newElement);
-				break;
+				return;
 			}
 			idx++;
 		}
+		
+		// Looks like the child is not part of the UI yet (most likely because it got removed using IPR#removeGUI)
+		childRendered(parent, newElement);
+		stack.selectItem(parent.getChildren().indexOf(newElement));
+		// TODO Should we do the traversal before???
+		showElementRecursive(newElement);
 	}
 
 	boolean handleStackItemClose(MPerspective e, WStackItem<I, IC> item) {

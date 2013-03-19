@@ -25,6 +25,7 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicFactoryImpl;
+import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.UIEvents.Perspective;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
@@ -33,6 +34,9 @@ import at.bestsolution.efxclipse.runtime.services.PopupMenuService;
 
 @SuppressWarnings("restriction")
 public class ControlPanel {
+	
+	@Inject
+	IPresentationEngine engine;
 	
 	@SuppressWarnings("rawtypes")
 	@Inject
@@ -249,6 +253,40 @@ public class ControlPanel {
 					public void handle(ActionEvent event) {
 						MPart part = dd.getSelectionModel().getSelectedItem();
 						modelService.detach(part, 0, 0, 300, 300);
+					}
+				});
+				hbox.getChildren().add(b);
+				vbox.getChildren().add(hbox);
+			}
+			
+			{
+				HBox hbox = new HBox(10);
+				
+				final ComboBox<MPerspective> dd = new ComboBox<>();
+				dd.setCellFactory(new Callback<ListView<MPerspective>, ListCell<MPerspective>>() {
+					
+					@Override
+					public ListCell<MPerspective> call(ListView<MPerspective> param) {
+						return new ListCell<MPerspective>() {
+							@Override
+							protected void updateItem(MPerspective item, boolean empty) {
+								super.updateItem(item, empty);
+								if( item != null ) {
+									setText(item.getLocalizedLabel());
+								}
+							}
+						};
+					}
+				});
+				dd.setItems(FXCollections.observableArrayList(modelService.findElements(application, null, MPerspective.class, null)));
+				hbox.getChildren().add(dd);
+				
+				Button b = new Button("Unrender");
+				b.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						MPerspective part = dd.getSelectionModel().getSelectedItem();
+						engine.removeGui(part);
 					}
 				});
 				hbox.getChildren().add(b);

@@ -10,9 +10,25 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css;
 
+import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.formatting.IFormatter;
+import org.eclipse.xtext.formatting.impl.NullFormatter;
+
+import at.bestsolution.efxclipse.tooling.css.conversion.CssTerminalConverters;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class CssDslRuntimeModule extends at.bestsolution.efxclipse.tooling.css.AbstractCssDslRuntimeModule {
 
+	@Override
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return CssTerminalConverters.class;
+	}
+	
+	@Override
+	public Class<? extends IFormatter> bindIFormatter() {
+		return NullFormatter.class;
+	}
+	
 }

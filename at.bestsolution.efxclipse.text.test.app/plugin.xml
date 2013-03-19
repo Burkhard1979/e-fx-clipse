@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+<extension id="application" point="org.eclipse.core.runtime.applications">
+	<application thread="any" cardinality="*" visible="true" >
+		<run class="at.bestsolution.efxclipse.text.test.app.MainApplication" />
+		
+	</application>
+	
+</extension>
+<extension id="product" point="org.eclipse.core.runtime.products">
+	<product application="at.bestsolution.efxclipse.text.test.app.application" name="TextSample" >
+		<property name="appName" value="TextSample" />
+		
+	</product>
+	
+</extension>
+</plugin>

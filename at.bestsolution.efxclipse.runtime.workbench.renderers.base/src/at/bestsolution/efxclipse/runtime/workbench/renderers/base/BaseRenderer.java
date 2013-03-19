@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.ui.MContext;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.MUILabel;
@@ -39,6 +40,7 @@ import org.osgi.service.event.EventHandler;
 import at.bestsolution.efxclipse.runtime.workbench.base.rendering.AbstractRenderer;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WPropertyChangeHandler;
 import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget;
+import at.bestsolution.efxclipse.runtime.workbench.renderers.base.widget.WWidget.WidgetState;
 
 @SuppressWarnings("restriction")
 public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> extends AbstractRenderer<M, W> {
@@ -147,25 +149,34 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 					eo = (EObject) element;
 				}
 				
-				for( EAttribute e : eo.eClass().getEAllAttributes() ) {
-					context.set(e.getName(), eo.eGet(e));
-				}
-				
-				for( Entry<String,String> e : element.getPersistedState().entrySet() ) {
-					context.set(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + e.getKey(), e.getValue());
-				}
-				
-				// Localized Label/Tooltip treatment
-				if( eo instanceof MUILabel ) {
-					MUILabel l = (MUILabel) eo;
-					context.set(ATTRIBUTE_localizedLabel, l.getLocalizedLabel());
-					context.set(ATTRIBUTE_localizedTooltip, l.getLocalizedTooltip());
+				initContext(eo, context);
+				if( element instanceof MPlaceholder ) {
+					initContext((EObject) element, context);
 				}
 			} finally {
 				contextModification.remove(element);
 			}
 		}
 		return context;
+	}
+	
+	protected void initContext(EObject eo, IEclipseContext context) {
+		for( EAttribute e : eo.eClass().getEAllAttributes() ) {
+			context.set(e.getName(), eo.eGet(e));
+		}
+		
+		if( eo instanceof MApplicationElement ) {
+			for( Entry<String,String> e : ((MApplicationElement)eo).getPersistedState().entrySet() ) {
+				context.set(UIEvents.ApplicationElement.PERSISTEDSTATE + "_" + e.getKey(), e.getValue());
+			}	
+		}
+		
+		// Localized Label/Tooltip treatment
+		if( eo instanceof MUILabel ) {
+			MUILabel l = (MUILabel) eo;
+			context.set(ATTRIBUTE_localizedLabel, l.getLocalizedLabel());
+			context.set(ATTRIBUTE_localizedTooltip, l.getLocalizedTooltip());
+		}
 	}
 	
 	protected void registerEventListener(IEventBroker broker, String topic) {
@@ -237,6 +248,9 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 	@Override
 	public void destroyWidget(M element) {
 		if( element.getTransientData().containsKey(RENDERING_CONTEXT_KEY) ) {
+			if( element.getWidget() instanceof WWidget<?> ) {
+				((WWidget<?>)element.getWidget()).setWidgetState(WidgetState.DISPOSED);
+			}
 			unbindWidget(element, (W) element.getWidget());
 			
 			IEclipseContext ctx = (IEclipseContext) element.getTransientData().get(RENDERING_CONTEXT_KEY);
@@ -271,6 +285,16 @@ public abstract class BaseRenderer<M extends MUIElement, W extends WWidget<M>> e
 
 	@Override
 	public void postProcess(M element) {
+		if( element.getWidget() instanceof WWidget<?> ) {
+			((WWidget<?>)element.getWidget()).setWidgetState(WidgetState.CREATED);
+		}
+	}
+	
+	@Override
+	public void preDestroy(M element) {
+		if( element.getWidget() instanceof WWidget<?> ) {
+			((WWidget<?>)element.getWidget()).setWidgetState(WidgetState.IN_TEAR_DOWN);
+		}
 	}
 	
 	protected IPresentationEngine getPresentationEngine() {

@@ -32,7 +32,6 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.UIEvents;
-import org.eclipse.e4.ui.workbench.UIEvents.UIElement;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.event.Event;
@@ -55,6 +54,8 @@ public class PartRenderingEngine implements IPresentationEngine {
 	private final RendererFactory factory;
 	
 	private final EModelService modelService;
+	
+	private MApplication app;
 	
 	@Inject
 	public PartRenderingEngine(
@@ -229,20 +230,24 @@ public class PartRenderingEngine implements IPresentationEngine {
 
 	@SuppressWarnings("unchecked")
 	public void removeGui(MUIElement element) {
-		MUIElement container = (element.getCurSharedRef() == null)
+		MUIElement container = (element.getCurSharedRef() != null)
 				? element.getCurSharedRef()
 				: (MUIElement) ((EObject)element).eContainer();
 		
 		if( container != null ) {
 			AbstractRenderer<MUIElement, Object> parentRenderer = getRendererFor(container);
-			if (parentRenderer != null) {
-				parentRenderer.hideChild(container, element);
-			}
-			
 			AbstractRenderer<MUIElement, Object> renderer = getRendererFor(element);
+			
+			if( renderer != null ) {
+				renderer.preDestroy(element);
+			}
 			
 			// Check if the control is already rendered
 			if( renderer != null ) {
+				if (parentRenderer != null) {
+					parentRenderer.hideChild(container, element);
+				}
+				
 				// Need clean up everything below
 				EObject eo = (EObject) element;
 				// Make a defensive copy 
@@ -256,7 +261,7 @@ public class PartRenderingEngine implements IPresentationEngine {
 				}
 				
 				for( EObject c : l ) {
-					if( c instanceof UIElement ) {
+					if( c instanceof MUIElement ) {
 						if( selectedElement != c ) {
 							removeGui((MUIElement) c);
 						}
@@ -323,7 +328,7 @@ public class PartRenderingEngine implements IPresentationEngine {
 	}
 
 	public Object run(MApplicationElement uiRoot, IEclipseContext appContext) {
-		MApplication app = (MApplication) uiRoot;
+		app = (MApplication) uiRoot;
 		MWindow selected = app.getSelectedElement();
 		if (selected == null) {
 			for (MWindow window : app.getChildren()) {
@@ -342,7 +347,13 @@ public class PartRenderingEngine implements IPresentationEngine {
 	}
 
 	public void stop() {
-		// TODO Auto-generated method stub
-		
+		if( app != null ) {
+			for( MWindow w : app.getChildren() ) {
+				AbstractRenderer<MUIElement, Object> r = getRenderer(w);
+				if( r != null ) {
+					removeGui(w);
+				}
+			}			
+		}
 	}
 }

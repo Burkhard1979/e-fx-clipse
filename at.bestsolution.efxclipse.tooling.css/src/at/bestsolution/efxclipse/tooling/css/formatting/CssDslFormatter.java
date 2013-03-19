@@ -54,11 +54,12 @@ public class CssDslFormatter extends AbstractDeclarativeFormatter {
 //		c.setLinewrap(0, 1, 2).before(getGrammarAccess().getML_COMMENTRule());
 //		c.setLinewrap(0, 1, 1).after(getGrammarAccess().getML_COMMENTRule());
 		
+		c.setSpace(" ").after(f.getCss_propertyRule());
 		
-		c.setSpace(" ").before(f.getCssTokRule());
-		c.setSpace(" ").before(f.getIdentifierOrFuncTokRule());
-		c.setSpace(" ").before(f.getNumberTokRule());
-		c.setSpace(" ").before(f.getSymbolTokRule());
+		//c.setSpace(" ").before(f.getCssTokRule());
+		//c.setSpace(" ").before(f.getIdentifierOrFuncTokRule());
+		//c.setSpace(" ").before(f.getNumberTokRule());
+		//c.setSpace(" ").before(f.getSymbolTokRule());
 		
 		c.setSpace(" ").around(f.getSymbolTokRule());
 		

@@ -297,10 +297,16 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 			if( i.getDomElement() == newElement ) {
 				stack.selectItem(idx);
 				showElementRecursive(newElement);
-				break;
+				return;
 			}
 			idx++;
 		}
+		
+		// Looks like the child is not part of the UI yet (most likely because it got removed using IPR#removeGUI)
+		childRendered(parent, newElement);
+		stack.selectItem(parent.getChildren().indexOf(newElement));
+		// TODO Should we do the traversal before???
+		showElementRecursive(newElement);
 	}
 
 	boolean handleStackItemClose(MStackElement e, WStackItem<I, IC> item) {
@@ -363,6 +369,10 @@ public abstract class BaseStackRenderer<N, I, IC> extends BaseRenderer<MPartStac
 		if( item != null ) {
 			List<WStackItem<I, IC>> l = Collections.singletonList(item);
 			stack.removeItems(l); 
+		}
+		
+		if( changedObj.getTags().contains(EPartService.REMOVE_ON_HIDE_TAG) ) {
+			container.getChildren().remove(changedObj);
 		}
 	}
 	

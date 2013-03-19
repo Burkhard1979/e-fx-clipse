@@ -48,7 +48,7 @@ class ProductPomGenerator implements Generator<DynamicFile> {
 	<name>«data.description»</name>
 	<groupId>«data.groupId»</groupId>
 	<artifactId>«data.artifactId»</artifactId>
-	<packaging>eclipse-application</packaging>
+	<packaging>eclipse-repository</packaging>
 
 	<parent>
 		<groupId>«data.parentGroupId»</groupId>
@@ -56,5 +56,29 @@ class ProductPomGenerator implements Generator<DynamicFile> {
 		<relativePath>«data.parentPomPath»/pom.xml</relativePath>
 		<version>«data.parentVersion»</version>
 	</parent>
+	
+	<build>
+  	<plugins>
+    	<plugin>
+      		<groupId>org.eclipse.tycho</groupId>
+      		<artifactId>tycho-p2-director-plugin</artifactId>
+      		<version>${tycho-version}</version>
+      		<executions>
+        		<execution>
+          			<id>materialize-products</id>
+          			<goals>
+            			<goal>materialize-products</goal>
+          			</goals>
+        		</execution>
+        		<execution>
+          			<id>archive-products</id>
+          			<goals>
+            			<goal>archive-products</goal>
+          			</goals>
+        		</execution>
+      		</executions>
+    	</plugin>
+	</plugins>
+	</build>
 </project>'''	
 }

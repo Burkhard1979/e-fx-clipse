@@ -2,7 +2,7 @@
 <feature
       id="at.bestsolution.efxclipse.runtime.feature"
       label="e(fx)clipse - Composite - FX Runtime - (do not install)"
-      version="0.8.0.qualifier"
+      version="0.8.1.qualifier"
       provider-name="BestSolution.at">
 
    <description url="http://efxclipse.org">
@@ -281,6 +281,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="at.bestsolution.efxclipse.runtime.p2"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="at.bestsolution.efxclipse.runtime.log4j"
          download-size="0"
          install-size="0"
          version="0.0.0"

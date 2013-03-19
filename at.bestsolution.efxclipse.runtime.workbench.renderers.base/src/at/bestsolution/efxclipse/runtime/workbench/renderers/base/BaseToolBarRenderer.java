@@ -37,12 +37,21 @@ public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToo
 			@Override
 			public void run() {
 				while( true ) {
+					MToolBarElement[] iterationCopy;
+					
+					// not ideal because we'll probably check items are already removed
+					// from the ui
 					synchronized (widgets) {
-						for( MToolBarElement e : widgets ) {
-							if( e.getRenderer() instanceof BaseItemRenderer<?,?> ) {
-								final MToolBarElement tmp = e;
-								final BaseItemRenderer<MToolBarElement,?> r = (BaseItemRenderer<MToolBarElement,?>) tmp.getRenderer();
-								r.checkEnablement(tmp);
+						iterationCopy = widgets.toArray(new MToolBarElement[0]);
+					}
+					
+					for( int i = 0; i < iterationCopy.length; i++ ) {
+						MToolBarElement e = iterationCopy[i];
+						if( e.getRenderer() instanceof BaseItemRenderer<?,?> ) {
+							final MToolBarElement tmp = e;
+							final BaseItemRenderer<MToolBarElement,?> r = (BaseItemRenderer<MToolBarElement,?>) tmp.getRenderer();
+							if( tmp.getRenderer() != null ) {
+								r.checkEnablement(tmp);	
 							}
 						}
 					}
@@ -110,7 +119,7 @@ public abstract class BaseToolBarRenderer<N> extends BaseRenderer<MToolBar, WToo
 		}
 		
 		@SuppressWarnings("unchecked")
-		WLayoutedWidget<MToolBarElement> widget = (WLayoutedWidget<MToolBarElement>) changedObj.getWidget();
+		WWidget<MToolBarElement> widget = (WWidget<MToolBarElement>) changedObj.getWidget();
 		if( widget != null ) {
 			toolbar.removeChild(widget);
 		}

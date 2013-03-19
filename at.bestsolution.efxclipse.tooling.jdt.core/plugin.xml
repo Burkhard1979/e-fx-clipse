@@ -8,4 +8,11 @@
             id="at.bestsolution.efxclipse.tooling.jdt.core.JAVAFX_CONTAINER">
       </classpathContainerInitializer>
    </extension>
+   <extension
+         point="org.eclipse.jdt.launching.executionEnvironments">
+      <ruleParticipant
+            class="at.bestsolution.efxclipse.tooling.jdt.core.internal.FXAccessRuleParticipant"
+            id="at.bestsolution.efxclipse.tooling.jdt.core.fxrule">
+      </ruleParticipant>
+   </extension>
 </plugin>

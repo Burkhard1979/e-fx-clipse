@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage#getContact()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ValidEmail\nValidFirstName\nValidLastName'"
  * @generated
  */
 public interface Contact extends EObject {

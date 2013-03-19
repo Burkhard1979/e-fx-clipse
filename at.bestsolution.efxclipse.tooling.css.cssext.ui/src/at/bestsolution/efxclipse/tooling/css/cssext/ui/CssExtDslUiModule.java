@@ -11,14 +11,26 @@
 package at.bestsolution.efxclipse.tooling.css.cssext.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
+import at.bestsolution.efxclipse.runtime.core.log.LoggerFactory;
+import at.bestsolution.efxclipse.runtime.guice.FXLoggerListener;
+import at.bestsolution.efxclipse.runtime.guice.OSGiLoggerFactoryProvider;
+import at.bestsolution.efxclipse.tooling.css.cssext.ICssExtManager;
+import at.bestsolution.efxclipse.tooling.css.cssext.parser.CssExtParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.doc.CssExtDocParser;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtHighlightingConfiguration;
 import at.bestsolution.efxclipse.tooling.css.cssext.ui.highlighting.CssExtSemanticHighlightingCalculator;
+import at.bestsolution.efxclipse.tooling.css.extapi.CssExt;
+import at.bestsolution.efxclipse.tooling.css.ui.CssDslUiModule;
+import at.bestsolution.efxclipse.tooling.css.ui.hover.CssHoverProvider;
+import at.bestsolution.efxclipse.tooling.css.ui.hover.ExtApiDelegatingDocumentationProvider;
 
 import com.google.inject.Binder;
+import com.google.inject.matcher.Matchers;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -34,8 +46,19 @@ public class CssExtDslUiModule extends at.bestsolution.efxclipse.tooling.css.css
 		binder.bind(ISemanticHighlightingCalculator.class).to(CssExtSemanticHighlightingCalculator.class);
 		binder.bind(IHighlightingConfiguration.class).to(CssExtHighlightingConfiguration.class);
 		
+		binder.bind(CssExtParser.class).toInstance(new CssExtParser());
+		
 		binder.bind(ICssExtManager.class).toInstance(new CssExtManager());
 		binder.bind(CssExtDocParser.class).toInstance(new CssExtDocParser());
+		
+		binder.bind(LoggerFactory.class).toProvider(OSGiLoggerFactoryProvider.class);
+		binder.bindListener(Matchers.any(), new FXLoggerListener());
+		
+		// bind hovering to css provider
+//		binder.bind(CssDialectExtensionRegistry.class).toProvider(OsgiCssDialectExtensionRegistryProvider.class);
+		binder.bind(CssExt.class).toProvider(CssExt.OsgiCssExtServiceProvider.class);
+		binder.bind(IEObjectHoverProvider.class).to(CssHoverProvider.class);
+		binder.bind(IEObjectDocumentationProvider.class).to(ExtApiDelegatingDocumentationProvider.class);
 		
 		super.configure(binder);
 	}

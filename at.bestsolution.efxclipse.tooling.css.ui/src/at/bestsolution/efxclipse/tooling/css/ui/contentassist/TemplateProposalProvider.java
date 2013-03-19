@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Tom Schindl<tom.schindl@bestsolution.at> - initial API and implementation
+ *     Christoph Caks <ccaks@bestsolution.at> - initial API and implementation
  *******************************************************************************/
 package at.bestsolution.efxclipse.tooling.css.ui.contentassist;
 
@@ -25,7 +25,7 @@ import at.bestsolution.efxclipse.tooling.css.services.CssDslGrammarAccess;
 import com.google.inject.Inject;
 
 /**
- * @author Caksi
+ * @author ccaks
  *
  */
 public class TemplateProposalProvider extends DefaultTemplateProposalProvider {

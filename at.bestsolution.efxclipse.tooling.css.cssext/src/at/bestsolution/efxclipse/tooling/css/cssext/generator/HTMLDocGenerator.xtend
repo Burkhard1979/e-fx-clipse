@@ -17,11 +17,14 @@ import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleRegex
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleSymbol
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleFunc
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSDefaultValue
-import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleId
 import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.ElementDefinition
 import java.util.HashSet
 import java.util.List
 import java.util.ArrayList
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.PropertyDefinition
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSRuleDefinition
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.Definition
+import at.bestsolution.efxclipse.tooling.css.cssext.cssExtDsl.CSSType
 
 class HTMLDocGenerator {
 	def generate(Resource resource) '''
@@ -171,10 +174,10 @@ class HTMLDocGenerator {
 		</div>
 		<h2>Rules</h2>
 		«FOR r : p.rules»
-		<a name="r_«p.calcPackagename+"."+r.name.name»"></a>
-		<h3>«r.name.name»</h3>
+		<a name="r_«p.calcPackagename+"."+r.name»"></a>
+		<h3>«r.name»</h3>
 		<div style="padding-left: 40px;">
-			<code>«IF r.rule != null»«r.rule.translateRule»«ELSE»«(r.func as CSSRuleFunc).name»(«(r.func as CSSRuleFunc).params.translateRule»)«ENDIF»</code>
+			<code>«IF r.rule != null»«r.rule.translateRule»«ELSE»«((r as CSSRuleDefinition).func as CSSRuleFunc).name»(«((r as CSSRuleDefinition).func as CSSRuleFunc).params.translateRule»)«ENDIF»</code>
 			«IF r.doku != null»
 			<div class="bs-docs-description">«r?.doku?.content?.fixJDoc»</div>
 			«ENDIF»
@@ -220,7 +223,7 @@ class HTMLDocGenerator {
 									<tr>
 										<td><nobr>«prop.name»</nobr></td>
 										<td>«prop.rule.translateRule»</td>
-										<td>«prop?.getDefault()?.calcDefault»</td>
+										<td>«(prop as PropertyDefinition)?.getDefault()?.calcDefault»</td>
 										<td>«prop?.doku?.content?.fixJDoc»</td>
 									</tr>
 								«ENDFOR»
@@ -254,7 +257,7 @@ class HTMLDocGenerator {
 											<td>«IF(su as ElementDefinition).properties.get(0) == prop»<nobr>«(su as ElementDefinition).name»</nobr>«ENDIF»</td>
 											<td><nobr>«prop.name»</nobr></td>
 											<td>«prop.rule.translateRule»</td>
-											<td>«prop?.getDefault()?.calcDefault»</td>
+											<td>«(prop as PropertyDefinition)?.getDefault()?.calcDefault»</td>
 											<td>«prop?.doku?.content?.fixJDoc»</td>
 										</tr>
 									«ENDFOR»
@@ -423,7 +426,7 @@ class HTMLDocGenerator {
 		}
 		else if (r instanceof CSSRuleRef) {
 			val ref = r as CSSRuleRef;
-			result.append("&lt;<a class='bs-href' href='#r_"+(ref.getRef().findpackage as PackageDefinition).calcPackagename+"."+ref.getRef().getName()+"'>" + ref.getRef().getName() + "</a>&gt;");
+			result.append("&lt;<a class='bs-href' href='#r_"+((ref.getRef()).findpackage as PackageDefinition).calcPackagename+"."+ref.getRef().getName()+"'>" + ref.getRef().getName() + "</a>&gt;");
 		}
 		else if (r instanceof CSSRulePostfix) {
 			result.append(translateRule(( r as CSSRulePostfix).getRule()) + (r as CSSRulePostfix).getCardinality());
@@ -434,18 +437,18 @@ class HTMLDocGenerator {
 		else if (r instanceof CSSRuleSymbol) {
 			result.append((r as CSSRuleSymbol).getSymbol());
 		}
+		else if (r instanceof CSSType) {
+			return (r as CSSType).getType();
+		}
 		else {
 			if (r == null) {
 				return "null";
-			}
-			else {
-				return r.getType();
 			}
 		}
 		return result.toString;
 	}
 	
-	def findpackage(CSSRuleId rule) {
+	def findpackage(Definition rule) {
 		var e = rule.eContainer;
 		while( e != null && !(e instanceof PackageDefinition) ) {
 			e = e.eContainer;
