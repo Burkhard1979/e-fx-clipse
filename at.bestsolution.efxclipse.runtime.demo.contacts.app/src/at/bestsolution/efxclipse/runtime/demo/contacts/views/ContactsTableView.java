@@ -10,12 +10,21 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
-import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
-import java.util.ArrayList;
+import java.util.List;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener.Change;
+import javafx.collections.ListChangeListener;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
+
+import javax.inject.Inject;
+
+import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
@@ -25,21 +34,12 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
-import java.util.List;
-import javafx.collections.ListChangeListener;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.BorderPane;
-import javax.inject.Inject;
-import org.eclipse.e4.ui.model.application.MApplication;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.domain.EditingDomain;
 
 @SuppressWarnings("restriction")
 public class ContactsTableView {
 
 	@Inject
+	@SuppressWarnings("unchecked")
 	public ContactsTableView(BorderPane parent, final MApplication application, final ContactsManager contactsManager) {
 		EditingDomain editingDomain = contactsManager.getEditingDomain();
 		AdapterFactory adapterFactory = contactsManager.getAdapterFactory();
