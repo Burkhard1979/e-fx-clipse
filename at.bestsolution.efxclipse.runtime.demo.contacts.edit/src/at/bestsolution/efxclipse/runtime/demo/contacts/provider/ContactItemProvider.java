@@ -115,7 +115,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_GeneralPropertyCategory"),
 				 null));
 	}
 
@@ -137,7 +137,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_GeneralPropertyCategory"),
 				 null));
 	}
 
@@ -159,7 +159,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_GeneralPropertyCategory"),
 				 null));
 	}
 
@@ -181,7 +181,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_GeneralPropertyCategory"),
 				 null));
 	}
 
@@ -203,7 +203,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_GeneralPropertyCategory"),
 				 null));
 	}
 
@@ -225,7 +225,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_GeneralPropertyCategory"),
 				 null));
 	}
 
@@ -247,7 +247,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessAddressPropertyCategory"),
 				 null));
 	}
 
@@ -269,7 +269,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessAddressPropertyCategory"),
 				 null));
 	}
 
@@ -291,7 +291,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessAddressPropertyCategory"),
 				 null));
 	}
 
@@ -313,7 +313,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessAddressPropertyCategory"),
 				 null));
 	}
 
@@ -335,7 +335,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessAddressPropertyCategory"),
 				 null));
 	}
 
@@ -357,7 +357,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessInternetPropertyCategory"),
 				 null));
 	}
 
@@ -379,7 +379,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessInternetPropertyCategory"),
 				 null));
 	}
 
@@ -401,7 +401,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessPhonesPropertyCategory"),
 				 null));
 	}
 
@@ -423,7 +423,7 @@ public class ContactItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BusinessPhonesPropertyCategory"),
 				 null));
 	}
 

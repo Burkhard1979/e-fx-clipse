@@ -5,27 +5,32 @@
     modelName="Contacts" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false">
   <foreignModel>Contacts.ecore</foreignModel>
-  <genPackages prefix="Contacts" basePackage="at.bestsolution.efxclipse.runtime.demo" disposableProviderFactory="true"
-      ecorePackage="Contacts.ecore#/">
+  <genPackages prefix="Contacts" basePackage="at.bestsolution.efxclipse.runtime.demo"
+      disposableProviderFactory="true" ecorePackage="Contacts.ecore#/">
     <genClasses ecoreClass="Contacts.ecore#//Contact">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/firstName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/middleName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/lastName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/title"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/company"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/jobTitle"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/street"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/city"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/zip"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/state"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/country"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/email"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/webPage"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/phone"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/mobile"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/firstName"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/middleName"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/lastName"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/title"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/company"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/jobTitle"/>
+      <genFeatures createChild="false" propertyCategory="Business Address" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/street"/>
+      <genFeatures createChild="false" propertyCategory="Business Address" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/city"/>
+      <genFeatures createChild="false" propertyCategory="Business Address" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/zip"/>
+      <genFeatures createChild="false" propertyCategory="Business Address" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/state"/>
+      <genFeatures createChild="false" propertyCategory="Business Address" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/country"/>
+      <genFeatures createChild="false" propertyCategory="Business Internet" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/email"/>
+      <genFeatures createChild="false" propertyCategory="Business Internet" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/webPage"/>
+      <genFeatures createChild="false" propertyCategory="Business Phones" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/phone"/>
+      <genFeatures createChild="false" propertyCategory="Business Phones" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/mobile"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/note"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/jpegString"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Contact/sourceFile"/>
+    </genClasses>
+    <genClasses ecoreClass="Contacts.ecore#//Group">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contacts.ecore#//Group/contacts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Contacts.ecore#//Group/groups"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Contacts.ecore#//Group/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
