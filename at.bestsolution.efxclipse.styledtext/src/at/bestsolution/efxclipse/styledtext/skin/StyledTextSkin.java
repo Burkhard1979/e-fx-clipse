@@ -147,11 +147,12 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 			if( c.domainElement == lineObject ) {
 				RegionImpl container = (RegionImpl)c.getGraphic();
 				TextFlow flow = (TextFlow)container.getChildren().get(0);
-				
+				System.err.println("STARTING SCAN");
 				Text textNode = null;
 				int relativePos = 0;
 				for( int i = flow.getChildren().size()-1; i >= 0; i-- ) {
 					Node n = flow.getChildren().get(i);
+//					System.err.println(((Text)n).getText() + " => " + n.getLayoutX());
 					int offset = ((Integer) n.getUserData()).intValue();
 					if( offset <= caretPosition ) {
 						relativePos = caretPosition - offset;
@@ -163,12 +164,14 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 				if( textNode != null ) {
 					textNode.setImpl_caretPosition(relativePos);
 					PathElement[] elements = textNode.getImpl_caretShape();
-					int xShift = 0;
+					double xShift = textNode.getLayoutX();
+					System.err.println(textNode.getText() + " ====> " + xShift);
 					for( PathElement e : elements ) {
 						if( e instanceof MoveTo ) {
 							xShift +=((MoveTo)e).getX();
 						}
 					}
+					System.err.println("==> " + xShift);
 					
 					Point2D rv = new Point2D(xShift, c.getLayoutY());
 					return rv;
@@ -410,6 +413,11 @@ public class StyledTextSkin extends BehaviorSkinBase<StyledTextArea, StyledTextB
 					} else {
 						t.setFont(getFontByStyle(seg.style.fontStyle));
 					}
+					
+					if( seg.style.underline ) {
+						System.err.println("=====================> UNDERLINEING");
+					}
+					
 					texts.add(t);
 				}
 				

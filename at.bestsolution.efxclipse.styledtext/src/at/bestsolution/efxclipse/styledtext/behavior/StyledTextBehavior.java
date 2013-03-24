@@ -45,6 +45,12 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 		super.callAction(arg0);
 	}
 	
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		super.mousePressed(arg0);
+		getControl().requestFocus();
+	}
+	
 	private void keyPressed(KeyEvent event, int currentRowIndex) {
 		VerifyEvent evt = new VerifyEvent(getControl(), getControl(), event);
 		Event.fireEvent(getControl(), evt);
@@ -138,10 +144,10 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 				break;
 			}
 		default:
-			if( event.isMetaDown() ) {
+			if( event.isMetaDown() || event.isControlDown() ) {
 				// exclude meta keys
 			} else {
-				System.err.println("ADDING TEXT");
+				
 				if( event.getText().length() > 0 ) {
 					getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 0, event.getText());
 					getControl().setCaretOffset(offset+1);	
