@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECP for JavaFX UI
+Bundle-SymbolicName: at.bestsolution.efxclipse.ecp.ui
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: at.bestsolution.efxclipse.ecp.ui.ECPUIPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecp.edit;bundle-version="1.0.0",
+ at.bestsolution.efxclipse.runtime.emf.databinding.edit;bundle-version="0.8.1"
+Bundle-ActivationPolicy: lazy
+Export-Package: at.bestsolution.efxclipse.ecp.ui

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_wIZNwZO_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.application" bindingContexts="_wIZNwJO_EeK1DMHyA2N3yA">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_BinB4JPAEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.trimmedwindow.0" label="Main Window" x="20" y="20" width="800" height="600">
+    <children xsi:type="basic:PartSashContainer" xmi:id="_K08kYJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partsashcontainer.0" horizontal="true">
+      <children xsi:type="basic:PartStack" xmi:id="_MA-5sJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partstack.0">
+        <children xsi:type="basic:Part" xmi:id="_zTgCYJPAEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ProjectExplorerPart" label="Project Explorer"/>
+      </children>
+      <children xsi:type="basic:PartSashContainer" xmi:id="_pMxkkJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.partsashcontainer.1">
+        <children xsi:type="basic:PartStack" xmi:id="_NrmBYJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partstack.1">
+          <children xsi:type="basic:Part" xmi:id="_idED8JR0EeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.part.2" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelElementPart" label="Model Element" closeable="true"/>
+        </children>
+        <children xsi:type="basic:PartStack" xmi:id="_rS0rEJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.partstack.2">
+          <children xsi:type="basic:Part" xmi:id="_r9f_wJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelRepositoriesPart" label="Model Repositories"/>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_ExCa0JPCEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.menu.0">
+      <children xsi:type="menu:Menu" xmi:id="_x8DqEJSLEeK6bNllnvSnhw" elementId="" label="_File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_0g9PwJSLEeK6bNllnvSnhw" elementId="" label="Exit"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_GySg4JPCEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.menu.1" label="_Edit">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_-H4_sJSJEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.0" label="Cut"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_O8ZesJSKEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.2" label="Copy"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="__cVDEJSJEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.1" label="Paste"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_WOnSoJSLEeK6bNllnvSnhw" elementId="" label="_Repository">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_WOnSoZSLEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.0" label="New Repository"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_WOnSopSLEeK6bNllnvSnhw" elementId="" label="Commit All"/>
+      </children>
+    </mainMenu>
+  </children>
+  <rootContext xmi:id="_wIZNwJO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_wIZ00JO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_wIZ00ZO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <addons xmi:id="_wIZ00pO_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_wIZ005O_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_wIZ01JO_EeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.runtime.bindings.e4.service" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon"/>
+  <addons xmi:id="_wIZ01ZO_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_wIZ01pO_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_wIZ015O_EeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.runtime.bindings.e4.model" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingProcessingAddon"/>
+</application:Application>
