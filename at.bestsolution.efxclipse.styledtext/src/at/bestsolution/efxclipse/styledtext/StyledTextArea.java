@@ -12,7 +12,6 @@
 package at.bestsolution.efxclipse.styledtext;
 
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -30,6 +29,7 @@ import at.bestsolution.efxclipse.styledtext.StyledTextContent.TextChangeListener
 import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin;
 
 public class StyledTextArea extends Control {
+		
 	private ObjectProperty<StyledTextContent> contentProperty = new SimpleObjectProperty<StyledTextContent>(this, "content") {
 		WeakReference<StyledTextContent> oldContent;
 		
@@ -63,15 +63,15 @@ public class StyledTextArea extends Control {
 	private StyledTextRenderer renderer = new StyledTextRenderer();
 	private IntegerProperty caretOffsetProperty = new SimpleIntegerProperty(this, "caretOffset", -1);
 	
-	private int lastTextChangeStart;
-
-	private int lastTextChangeNewLineCount;
-
-	private int lastTextChangeNewCharCount;
-
-	private int lastTextChangeReplaceLineCount;
-
-	private int lastTextChangeReplaceCharCount;
+//	private int lastTextChangeStart;
+//
+//	private int lastTextChangeNewLineCount;
+//
+//	private int lastTextChangeNewCharCount;
+//
+//	private int lastTextChangeReplaceLineCount;
+//
+//	private int lastTextChangeReplaceCharCount;
 	
 	public StyledTextArea() {
 		contentProperty.set(new DefaultContent());
@@ -83,11 +83,11 @@ public class StyledTextArea extends Control {
 			event.offset += event.replaceCharCount;
 			event.replaceCharCount *= -1;
 		}
-		lastTextChangeStart = event.offset;
-		lastTextChangeNewLineCount = event.newLineCount;
-		lastTextChangeNewCharCount = event.newCharCount;
-		lastTextChangeReplaceLineCount = event.replaceLineCount;
-		lastTextChangeReplaceCharCount = event.replaceCharCount;	
+//		lastTextChangeStart = event.offset;
+//		lastTextChangeNewLineCount = event.newLineCount;
+//		lastTextChangeNewCharCount = event.newCharCount;
+//		lastTextChangeReplaceLineCount = event.replaceLineCount;
+//		lastTextChangeReplaceCharCount = event.replaceCharCount;	
 		
 		renderer.textChanging(event);
 	}
@@ -1252,5 +1252,22 @@ public class StyledTextArea extends Control {
 			throw new IllegalArgumentException();		
 		}
 		return ((StyledTextSkin)getSkin()).getLineHeight(offset);
+	}
+
+	public void showSelection() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getLineAtOffset(int caretOffset) {
+		return contentProperty.get().getLineAtOffset(caretOffset);
+	}
+
+	public int getOffsetAtLine(int lineNumber) {
+		return contentProperty.get().getOffsetAtLine(lineNumber);
+	}
+
+	public String getText(int start, int end) {
+		return contentProperty.get().getTextRange(start,  end - start + 1);
 	}
 }
