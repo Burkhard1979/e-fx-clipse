@@ -19,6 +19,7 @@ import javafx.beans.property.Property;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
@@ -31,10 +32,14 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -68,9 +73,16 @@ public class GenericDetailsView {
 
 			if (contact == null)
 				return;
+			
+//			parent.getScene().getStylesheets().a;
 
+			ScrollPane scrollPane = new ScrollPane();
+			
 			// final Accordion accordion = new Accordion();
 			VBox vBox = new VBox();
+						
+			scrollPane.setContent(vBox);
+			scrollPane.setFitToWidth(true);
 
 			TitledPane titledPane = new TitledPane();
 			titledPane.setAlignment(Pos.CENTER);
@@ -176,7 +188,7 @@ public class GenericDetailsView {
 			// accordion.getPanes().add(titledPane);
 
 			// parent.setCenter(titledPane);
-			parent.setCenter(vBox);
+			parent.setCenter(scrollPane);
 
 		} catch (Exception e) {
 			System.out.println("On noohhhh!" + e);
@@ -222,18 +234,18 @@ public class GenericDetailsView {
 			label.setPrefWidth(150);
 
 			Object feature = descriptor.getFeature(object);
-			if(feature instanceof EAttribute) {
+			if (feature instanceof EAttribute) {
 				EAttribute attribute = (EAttribute) feature;
-				if(attribute.getEAttributeType() == EcorePackage.Literals.ESTRING) {
+				if (attribute.getEAttributeType() == EcorePackage.Literals.ESTRING) {
 					TextField textField = new TextField();
 					setHgrow(textField, Priority.ALWAYS);
 					getChildren().add(textField);
-					
+
 					Property<String> textProperty = EMFEditFXProperties.value(editingDomain, object, attribute);
 					textField.textProperty().bindBidirectional(textProperty);
 				}
 			}
-			
+
 		}
 
 	}

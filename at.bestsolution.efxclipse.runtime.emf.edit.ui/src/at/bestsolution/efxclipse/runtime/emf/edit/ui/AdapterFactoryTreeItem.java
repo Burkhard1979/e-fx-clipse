@@ -16,8 +16,10 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Control;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.control.TreeView;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -35,13 +37,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 public class AdapterFactoryTreeItem extends TreeItem<Object> {
 
 	final AdapterFactory adapterFactory;
-	final TreeView<?> treeView;
+	final Control view;
 	final ObservableList<TreeItem<Object>> children;
 	final ITreeItemContentProvider provider;
 
-	public AdapterFactoryTreeItem(Object object, TreeView<?> treeView, AdapterFactory adapterFactory) {
+	public AdapterFactoryTreeItem(Object object, Control treeView, AdapterFactory adapterFactory) {
 		super(object);
-		this.treeView = treeView;
+		this.view = treeView;
 		this.adapterFactory = adapterFactory;
 		children = FXCollections.unmodifiableObservableList(super.getChildren());
 
@@ -78,7 +80,8 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 	 */
 	void updateChildren() {
 		ObservableList<TreeItem<Object>> childTreeItems = super.getChildren();
-		MultipleSelectionModel<?> selectionModel = treeView.getSelectionModel();
+		
+		MultipleSelectionModel<?> selectionModel = view instanceof TreeView<?> ? ((TreeView<?>)view).getSelectionModel() : ((TreeTableView<?>)view).getSelectionModel();
 		List<?> selection = selectionModel.getSelectedItems();
 		ArrayList<Object> selectedItems = new ArrayList<>();
 		ArrayList<TreeItem<?>> selectedTreeItems = new ArrayList<>();
@@ -115,7 +118,7 @@ public class AdapterFactoryTreeItem extends TreeItem<Object> {
 
 		// add the new tree items
 		for (Object child : provider.getChildren(getValue())) {
-			AdapterFactoryTreeItem treeItem = new AdapterFactoryTreeItem(child, treeView, adapterFactory);
+			AdapterFactoryTreeItem treeItem = new AdapterFactoryTreeItem(child, view, adapterFactory);
 
 			childTreeItems.add(treeItem);
 

@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Contacts Plug-in (Incubation)
 Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.demo.contacts.app;singleton:=true
 Bundle-Version: 0.9.1.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.core.runtime,
  at.bestsolution.efxclipse.runtime.application,
  at.bestsolution.efxclipse.runtime.workbench.fx,

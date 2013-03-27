@@ -10,6 +10,7 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
+import javafx.scene.control.Cell;
 import javafx.scene.control.SelectionMode;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import javafx.collections.ListChangeListener;
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
@@ -56,6 +58,15 @@ public class ContactsTreeView {
 		EditingDomainCellDropAdapter dropAdapter = new EditingDomainCellDropAdapter(editingDomain);
 		dropAdapter.setFeedbackHandler(new CustomFeedbackHandler());
 		treeCellFactory.addCellCreationListener(dropAdapter);
+		
+		treeCellFactory.addCellUpdateListener(new ICellUpdateListener() {
+			
+			@Override
+			public void updateItem(Cell<?> cell, Object item, boolean empty) {
+				cell.setStyle("-fx-border-color: green; -fx-border-width: 3; -fx-border-radius: 3;");
+			}
+			
+		});
 
 		treeView.setCellFactory(treeCellFactory);
 
