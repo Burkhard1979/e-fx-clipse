@@ -2,6 +2,7 @@ package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
 import javafx.beans.value.ObservableValue;
 import javafx.beans.value.ObservableValueBase;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.util.Callback;
@@ -14,7 +15,8 @@ class TreeTableProxyCellValueFactory implements
 
 			@Override
 			public Object getValue() {
-				return features.getValue();
+				TreeItem<Object> value = features.getValue();
+				return value.getValue();
 			}
 
 		};

@@ -13,13 +13,17 @@ package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 import java.util.List;
 
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ObservableValueBase;
 import javafx.collections.ListChangeListener;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Callback;
 
 import javax.inject.Inject;
 
@@ -56,22 +60,21 @@ public class ContactsTreeTableView {
 
 		tableView.getColumns().addAll(firstNameColumn, lastNameColumn);
 
-		firstNameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
-		lastNameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
 		
 		AdapterFactoryTreeTableCellFactory<Object, Object> firstNameCellFactory = new AdapterFactoryTreeTableCellFactory<>(adapterFactory, 0);
 //		firstNameCellFactory.addCellCreationListener(new CellDragAdapter());
 //		firstNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
 		firstNameColumn.setCellFactory(firstNameCellFactory);
 //		firstNameColumn.setSortable(false);
-//
-		lastNameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
+		firstNameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
+
 		AdapterFactoryTreeTableCellFactory<Object, Object> lastNameCellFactory = new AdapterFactoryTreeTableCellFactory<>(adapterFactory, 1);
 //		lastNameCellFactory.addCellCreationListener(new CellDragAdapter());
 //		lastNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
 		lastNameColumn.setCellFactory(lastNameCellFactory);
 //		lastNameColumn.setSortable(false);
-//
+		lastNameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
+
 //		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		tableView.setRoot(new AdapterFactoryTreeItem(contactsManager.getRootGroup(), tableView, adapterFactory));
 

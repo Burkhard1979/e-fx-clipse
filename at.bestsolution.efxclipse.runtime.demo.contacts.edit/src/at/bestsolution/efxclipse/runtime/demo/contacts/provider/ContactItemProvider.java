@@ -592,18 +592,24 @@ public class ContactItemProvider
 	@Override
 	public String getColumnText(Object object, int columnIndex) {
 		Contact contact = (Contact) object;
-
-		String label = null;
 		switch (columnIndex) {
 		case 0:
-			label = contact.getFirstName();
-			break;
+			return getText(object);
 		case 1:
-			label = contact.getLastName();
-			break;
+			return contact.getEmail();
+		default:
+			return super.getColumnText(object, columnIndex);
 		}
+	}
 
-		return label == null ? "n/a" : label;
+	@Override
+	public Object getColumnImage(Object object, int columnIndex) {
+		switch (columnIndex) {
+		case 0:
+			return getImage(object);
+		default:
+			return super.getColumnImage(object, columnIndex);
+		}
 	}
 
 }

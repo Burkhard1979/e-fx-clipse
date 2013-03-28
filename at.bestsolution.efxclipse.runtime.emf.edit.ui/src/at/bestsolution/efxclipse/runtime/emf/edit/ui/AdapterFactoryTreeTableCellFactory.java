@@ -73,28 +73,28 @@ public class AdapterFactoryTreeTableCellFactory<S, T> extends AdapterFactoryCell
 			protected void updateItem(Object item, boolean empty) {
 				super.updateItem(item, empty);
 				
-				setText("Column " + columnIndex);
+//				setText("Column " + columnIndex);
 
-//				// check if the item changed
-//				if (item != currentItem) {
-//
-//					// remove the adapter if attached
-//					if (currentItem instanceof Notifier)
-//						((Notifier) currentItem).eAdapters().remove(adapter);
-//
-//					// update the current item
-//					currentItem = item;
-//
-//					// attach the adapter to the new item
-//					if (currentItem instanceof Notifier)
-//						((Notifier) currentItem).eAdapters().add(adapter);
-//				}
-//
-//				// notify the listeners
-//				for (ICellUpdateListener cellUpdateListener : cellUpdateListeners)
-//					cellUpdateListener.updateItem(this, item, empty);
-//
-//				update(item);
+				// check if the item changed
+				if (item != currentItem) {
+
+					// remove the adapter if attached
+					if (currentItem instanceof Notifier)
+						((Notifier) currentItem).eAdapters().remove(adapter);
+
+					// update the current item
+					currentItem = item;
+
+					// attach the adapter to the new item
+					if (currentItem instanceof Notifier)
+						((Notifier) currentItem).eAdapters().add(adapter);
+				}
+
+				// notify the listeners
+				for (ICellUpdateListener cellUpdateListener : cellUpdateListeners)
+					cellUpdateListener.updateItem(this, item, empty);
+
+				update(item);
 			}
 			
 			@Override
@@ -121,6 +121,11 @@ public class AdapterFactoryTreeTableCellFactory<S, T> extends AdapterFactoryCell
 			}
 
 			private void update(Object item) {
+//				applyTableItemProviderStyle(item, columnIndex, this, adapterFactory);
+				
+				// setText(item == null ? "null" : item.toString());
+//				applyItemProviderStyle(item, this, adapterFactory);
+				
 				applyTableItemProviderStyle(item, columnIndex, this, adapterFactory);
 			}
 
