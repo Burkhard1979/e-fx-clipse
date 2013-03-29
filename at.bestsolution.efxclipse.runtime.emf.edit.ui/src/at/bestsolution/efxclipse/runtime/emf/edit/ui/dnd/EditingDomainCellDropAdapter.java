@@ -16,6 +16,9 @@ import java.util.Collection;
 import javafx.event.EventHandler;
 import javafx.scene.control.Cell;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TreeTableCell;
+import javafx.scene.control.TreeTableRow;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 
@@ -25,6 +28,7 @@ import org.eclipse.emf.edit.command.DragAndDropFeedback;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.CellUtil;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellCreationListener;
 
 /**
@@ -77,7 +81,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 			public void handle(DragEvent event) {
 				Object item = cell.getItem();
 
-				Cell<?> node = getRowNode(cell);
+				Cell<?> node = CellUtil.getRowNode(cell);
 
 				double y = event.getY();
 				double height = cell.getLayoutBounds().getHeight();
@@ -134,7 +138,7 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 
 			@Override
 			public void handle(DragEvent event) {
-				feedbackHandler.onFeedbackNone(getRowNode(cell));
+				feedbackHandler.onFeedbackNone(CellUtil.getRowNode(cell));
 			}
 
 		});
@@ -150,9 +154,6 @@ public class EditingDomainCellDropAdapter implements ICellCreationListener {
 		});
 	}
 
-	Cell<?> getRowNode(final Cell<?> cell) {
-		return cell instanceof TableCell ? ((TableCell<?, ?>) cell).getTableRow() : cell;
-	}
 
 	/**
 	 * This default implementation of {@link IDnDFeedbackHandler} adds a red

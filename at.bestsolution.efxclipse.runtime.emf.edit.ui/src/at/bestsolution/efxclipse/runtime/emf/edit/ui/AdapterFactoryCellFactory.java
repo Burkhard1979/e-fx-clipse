@@ -29,6 +29,9 @@ import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.ITableItemColorProvider;
+import org.eclipse.emf.edit.provider.ITableItemFontProvider;
+import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 
 /**
  * Base class for the AdapterFactoryCellFactories
@@ -42,7 +45,8 @@ public abstract class AdapterFactoryCellFactory {
 	public interface ICellCreationListener {
 
 		/**
-		 * @param cell the newly created {@link Cell}
+		 * @param cell
+		 *            the newly created {@link Cell}
 		 */
 		void cellCreated(Cell<?> cell);
 
@@ -55,9 +59,12 @@ public abstract class AdapterFactoryCellFactory {
 	public interface ICellUpdateListener {
 
 		/**
-		 * @param cell the {@link Cell} being updated
-		 * @param item as defined in {@link Cell#updateItem}
-		 * @param empty as defined in {@link Cell#updateItem}
+		 * @param cell
+		 *            the {@link Cell} being updated
+		 * @param item
+		 *            as defined in {@link Cell#updateItem}
+		 * @param empty
+		 *            as defined in {@link Cell#updateItem}
 		 */
 		void updateItem(Cell<?> cell, Object item, boolean empty);
 
@@ -220,6 +227,48 @@ public abstract class AdapterFactoryCellFactory {
 				if (image != null)
 					cell.setGraphic(image);
 			}
+		}
+	}
+
+	void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		applyTableItemProviderLabel(item, columnIndex, cell, adapterFactory);
+		applyTableItemProviderColor(item, columnIndex, cell, adapterFactory);
+		applyTableItemProviderFont(item, columnIndex, cell, adapterFactory);
+	}
+
+	void applyTableItemProviderLabel(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		ITableItemLabelProvider labelProvider = (ITableItemLabelProvider) adapterFactory.adapt(item, ITableItemLabelProvider.class);
+		if (labelProvider != null) {
+			cell.setText(labelProvider.getColumnText(item, columnIndex));
+			Object columnImage = labelProvider.getColumnImage(item, columnIndex);
+			Node graphic = graphicFromObject(columnImage);
+			cell.setGraphic(graphic);
+		} else {
+			// clear the cell if there is no item
+			cell.setText(null);
+			cell.setGraphic(null);
+		}
+	}
+
+	void applyTableItemProviderColor(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		ITableItemColorProvider colorProvider = (ITableItemColorProvider) adapterFactory.adapt(item, ITableItemColorProvider.class);
+		if (colorProvider != null) {
+			Color foreground = colorFromObject(colorProvider.getForeground(item, columnIndex));
+			if (foreground != null)
+				cell.setTextFill(foreground);
+
+			String background = cssColorFromObject(colorProvider.getBackground(item, columnIndex));
+			if (background != null)
+				cell.setStyle("-fx-background-color: " + background);
+		}
+	}
+
+	void applyTableItemProviderFont(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
+		ITableItemFontProvider fontProvider = (ITableItemFontProvider) adapterFactory.adapt(item, ITableItemFontProvider.class);
+		if (fontProvider != null) {
+			Font font = fontFromObject(fontProvider.getFont(item, columnIndex));
+			if (font != null)
+				cell.setFont(font);
 		}
 	}
 

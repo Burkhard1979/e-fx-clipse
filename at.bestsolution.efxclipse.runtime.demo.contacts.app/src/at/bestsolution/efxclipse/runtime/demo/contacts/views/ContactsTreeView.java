@@ -59,14 +59,14 @@ public class ContactsTreeView {
 		dropAdapter.setFeedbackHandler(new CustomFeedbackHandler());
 		treeCellFactory.addCellCreationListener(dropAdapter);
 		
-		treeCellFactory.addCellUpdateListener(new ICellUpdateListener() {
-			
-			@Override
-			public void updateItem(Cell<?> cell, Object item, boolean empty) {
-				cell.setStyle("-fx-border-color: green; -fx-border-width: 3; -fx-border-radius: 3;");
-			}
-			
-		});
+//		treeCellFactory.addCellUpdateListener(new ICellUpdateListener() {
+//			
+//			@Override
+//			public void updateItem(Cell<?> cell, Object item, boolean empty) {
+//				cell.setStyle("-fx-border-color: green; -fx-border-width: 3; -fx-border-radius: 3;");
+//			}
+//			
+//		});
 
 		treeView.setCellFactory(treeCellFactory);
 

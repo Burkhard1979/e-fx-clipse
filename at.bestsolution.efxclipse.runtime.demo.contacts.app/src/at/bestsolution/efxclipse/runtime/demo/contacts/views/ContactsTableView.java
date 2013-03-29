@@ -61,11 +61,11 @@ public class ContactsTableView {
 		firstNameColumn.setSortable(false);
 
 		lastNameColumn.setCellValueFactory(new ProxyCellValueFactory<Object, Object>());
-		AdapterFactoryTableCellFactory<Object, Object> lastNameCellFactory = new AdapterFactoryTableCellFactory<Object, Object>(
+		AdapterFactoryTableCellFactory<Object, Object> emailCellFactory = new AdapterFactoryTableCellFactory<Object, Object>(
 				adapterFactory, 1);
-		lastNameCellFactory.addCellCreationListener(new CellDragAdapter());
-		lastNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
-		lastNameColumn.setCellFactory(lastNameCellFactory);
+		emailCellFactory.addCellCreationListener(new CellDragAdapter());
+		emailCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
+		lastNameColumn.setCellFactory(emailCellFactory);
 		lastNameColumn.setSortable(false);
 
 		tableView.setItems(new AdapterFactoryObservableList<Object>(adapterFactory, contactsManager.getRootGroup()));
@@ -73,15 +73,13 @@ public class ContactsTableView {
 
 		// add edit support
 		tableView.setEditable(true);
-		firstNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_FirstName(),
-				editingDomain));
-		lastNameCellFactory
-				.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_LastName(), editingDomain));
+		emailCellFactory
+				.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_Email(), editingDomain));
 
 		// add the context menu
 		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager);
 		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
-		lastNameCellFactory.addCellUpdateListener(contextMenuProvider);
+		emailCellFactory.addCellUpdateListener(contextMenuProvider);
 
 		tableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
 

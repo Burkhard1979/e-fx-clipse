@@ -25,8 +25,8 @@ public class EAttributeCellEditHandler implements ICellEditHandler {
 	}
 
 	@Override
-	public boolean canEdit(Cell<?> treeCell) {
-		Object item = treeCell.getItem();
+	public boolean canEdit(Cell<?> cell) {
+		Object item = cell.getItem();
 		return item instanceof EObject && ((EObject) item).eClass().getEAllAttributes().contains(attribute);
 	}
 
@@ -44,10 +44,11 @@ public class EAttributeCellEditHandler implements ICellEditHandler {
 			}
 
 		});
-		textField.setText(string);
 		cell.setText(null);
 		cell.setGraphic(textField);
-		textField.selectAll();
+		textField.setText(string);
+//		textField.requestFocus();
+		textField.selectPositionCaret(0);//selectAll();
 	}
 
 	@Override

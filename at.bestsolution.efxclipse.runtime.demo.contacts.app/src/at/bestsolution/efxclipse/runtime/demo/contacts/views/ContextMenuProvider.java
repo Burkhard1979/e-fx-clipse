@@ -16,22 +16,15 @@ import at.bestsolution.efxclipse.runtime.demo.contacts.handlers.DeleteContactHan
 import at.bestsolution.efxclipse.runtime.demo.contacts.handlers.PasteHandler;
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryCellFactory.ICellUpdateListener;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.CellUtil;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Cell;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.MultipleSelectionModel;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TreeCell;
-import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.WindowEvent;
@@ -39,37 +32,17 @@ import javafx.stage.WindowEvent;
 public class ContextMenuProvider implements ICellUpdateListener {
 
 	ContactsManager contactsManager;
-	private DeleteContactHandler deleteHandler;
-	private MenuItem deleteMenuItem;
+	DeleteContactHandler deleteHandler;
+	MenuItem deleteMenuItem;
 	CutHandler cutHandler;
-	private MenuItem cutMenuItem;
-	private CopyHandler copyHandler;
-	private MenuItem copyMenuItem;
-	private PasteHandler pasteHandler;
-	private MenuItem pasteMenuItem;
+	MenuItem cutMenuItem;
+	CopyHandler copyHandler;
+	MenuItem copyMenuItem;
+	PasteHandler pasteHandler;
+	MenuItem pasteMenuItem;
 
 	public ContextMenuProvider(ContactsManager contactsManager) {
 		this.contactsManager = contactsManager;
-	}
-
-	static List<?> getSelectionModel(Cell<?> cell) {
-		if (cell instanceof ListCell<?>) {
-			return ((ListCell<?>) cell).getListView().getSelectionModel().getSelectedItems();
-		} else if (cell instanceof TreeCell<?>) {
-			MultipleSelectionModel<?> selectionModel = ((TreeCell<?>) cell).getTreeView().getSelectionModel();
-			ObservableList<?> selectedItems = selectionModel.getSelectedItems();
-			ArrayList<Object> unwrappedItems = new ArrayList<>(selectedItems.size());
-			for (Object object : selectedItems) {
-				TreeItem<?> treeItem = (TreeItem<?>) object;
-				unwrappedItems.add(treeItem.getValue());
-			}
-			return unwrappedItems;
-		} else if (cell instanceof TableCell<?, ?>) {
-			return ((TableCell<?, ?>) cell).getTableView().getSelectionModel().getSelectedItems();
-		} else if (cell instanceof TableRow<?>) {
-			return ((TableRow<?>) cell).getTableView().getSelectionModel().getSelectedItems();
-		}
-		return null;
 	}
 
 	@Override
@@ -82,13 +55,13 @@ public class ContextMenuProvider implements ICellUpdateListener {
 
 			@Override
 			public void handle(WindowEvent event) {
-				List<?> selectedItems = getSelectionModel(cell);
+				List<?> selectedItems = CellUtil.getSelectedItems(cell);
 				deleteMenuItem.setDisable(!deleteHandler.canExecute(selectedItems));
 				cutMenuItem.setDisable(!cutHandler.canExecute(selectedItems));
 				copyMenuItem.setDisable(!copyHandler.canExecute(selectedItems));
-				
+
 				Object item2 = cell.getItem();
-				
+
 				pasteMenuItem.setDisable(!pasteHandler.canExecute(item2));
 				contextMenu.getItems().clear();
 				contextMenu.getItems().add(deleteMenuItem);
@@ -125,7 +98,7 @@ public class ContextMenuProvider implements ICellUpdateListener {
 			public void handle(ActionEvent event) {
 				copyHandler.execute();
 			}
-			
+
 		});
 
 		pasteMenuItem = new MenuItem("Paste", getImage("icons/silk/page_paste.png"));
@@ -136,9 +109,9 @@ public class ContextMenuProvider implements ICellUpdateListener {
 			public void handle(ActionEvent event) {
 				pasteHandler.execute();
 			}
-			
+
 		});
-		
+
 	}
 
 	private ImageView getImage(String path) {

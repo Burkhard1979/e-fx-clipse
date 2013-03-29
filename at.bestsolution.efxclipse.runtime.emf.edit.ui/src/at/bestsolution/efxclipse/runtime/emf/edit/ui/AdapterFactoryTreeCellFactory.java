@@ -112,7 +112,12 @@ public class AdapterFactoryTreeCellFactory extends AdapterFactoryCellFactory imp
 
 			private void update(Object item) {
 				// setText(item == null ? "null" : item.toString());
-				applyItemProviderStyle(item, this, adapterFactory);
+				if(item != null)
+					applyItemProviderStyle(item, this, adapterFactory);
+				else {
+					setText(null);
+					setGraphic(null);
+				}
 			}
 
 		};

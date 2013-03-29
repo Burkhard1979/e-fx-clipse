@@ -10,15 +10,10 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.emf.edit.ui;
 
-import java.net.URL;
-
 import javafx.scene.Node;
 import javafx.scene.control.Cell;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.util.Callback;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -129,45 +124,6 @@ public class AdapterFactoryTableCellFactory<S, T> extends AdapterFactoryCellFact
 			cellCreationListener.cellCreated(tableCell);
 
 		return (TableCell<S, T>) tableCell;
-	}
-
-	void applyTableItemProviderStyle(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
-		
-		applyTableItemProviderLabel(item, columnIndex, cell, adapterFactory);
-		applyTableItemProviderColor(item, columnIndex, cell, adapterFactory);
-		applyTableItemProviderFont(item, columnIndex, cell, adapterFactory);
-	}
-
-	void applyTableItemProviderLabel(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
-		ITableItemLabelProvider labelProvider = (ITableItemLabelProvider) adapterFactory.adapt(item, ITableItemLabelProvider.class);
-		if (labelProvider != null) {
-			cell.setText(labelProvider.getColumnText(item, columnIndex));
-			Object columnImage = labelProvider.getColumnImage(item, columnIndex);
-			Node graphic = graphicFromObject(columnImage);
-			cell.setGraphic(graphic);
-		}
-	}
-
-	void applyTableItemProviderColor(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
-		ITableItemColorProvider colorProvider = (ITableItemColorProvider) adapterFactory.adapt(item, ITableItemColorProvider.class);
-		if (colorProvider != null) {
-			Color foreground = colorFromObject(colorProvider.getForeground(item, columnIndex));
-			if (foreground != null)
-				cell.setTextFill(foreground);
-
-			String background = cssColorFromObject(colorProvider.getBackground(item, columnIndex));
-			if (background != null)
-				cell.setStyle("-fx-background-color: " + background);
-		}
-	}
-
-	void applyTableItemProviderFont(Object item, int columnIndex, Cell<?> cell, AdapterFactory adapterFactory) {
-		ITableItemFontProvider fontProvider = (ITableItemFontProvider) adapterFactory.adapt(item, ITableItemFontProvider.class);
-		if (fontProvider != null) {
-			Font font = fontFromObject(fontProvider.getFont(item, columnIndex));
-			if (font != null)
-				cell.setFont(font);
-		}
 	}
 
 }

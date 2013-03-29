@@ -10,6 +10,13 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.StyleClassFeedbackHandler;
+
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import javafx.collections.ListChangeListener.Change;
+
+import java.util.ArrayList;
+
 import java.util.List;
 
 import javafx.beans.value.ChangeListener;
@@ -51,64 +58,77 @@ public class ContactsTreeTableView {
 		EditingDomain editingDomain = contactsManager.getEditingDomain();
 		AdapterFactory adapterFactory = contactsManager.getAdapterFactory();
 
-		TreeTableView<Object> tableView = new TreeTableView<>();
+		TreeTableView<Object> treeTableView = new TreeTableView<>();
 
-		parent.setCenter(tableView);
+		parent.setCenter(treeTableView);
 
-		TreeTableColumn<Object, Object> firstNameColumn = new TreeTableColumn<>("First Name");
-		TreeTableColumn<Object, Object> lastNameColumn = new TreeTableColumn<>("Last Name");
+		TreeTableColumn<Object, Object> nameColumn = new TreeTableColumn<>("Contact");
+		TreeTableColumn<Object, Object> emailColumn = new TreeTableColumn<>("e-Mail");
 
-		tableView.getColumns().addAll(firstNameColumn, lastNameColumn);
+		treeTableView.getColumns().addAll(nameColumn, emailColumn);
 
+		CellDragAdapter dragAdapter = new CellDragAdapter();
+		EditingDomainCellDropAdapter dropAdapter = new EditingDomainCellDropAdapter(editingDomain);
+//		dropAdapter.setFeedbackHandler(new StyleClassFeedbackHandler());
 		
 		AdapterFactoryTreeTableCellFactory<Object, Object> firstNameCellFactory = new AdapterFactoryTreeTableCellFactory<>(adapterFactory, 0);
-//		firstNameCellFactory.addCellCreationListener(new CellDragAdapter());
-//		firstNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
-		firstNameColumn.setCellFactory(firstNameCellFactory);
-//		firstNameColumn.setSortable(false);
-		firstNameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
+		firstNameCellFactory.addCellCreationListener(dragAdapter);
+		firstNameCellFactory.addCellCreationListener(dropAdapter);
+		nameColumn.setCellFactory(firstNameCellFactory);
+		nameColumn.setSortable(false);
+		nameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
 
-		AdapterFactoryTreeTableCellFactory<Object, Object> lastNameCellFactory = new AdapterFactoryTreeTableCellFactory<>(adapterFactory, 1);
-//		lastNameCellFactory.addCellCreationListener(new CellDragAdapter());
-//		lastNameCellFactory.addCellCreationListener(new EditingDomainCellDropAdapter(editingDomain));
-		lastNameColumn.setCellFactory(lastNameCellFactory);
-//		lastNameColumn.setSortable(false);
-		lastNameColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
-
-//		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		tableView.setRoot(new AdapterFactoryTreeItem(contactsManager.getRootGroup(), tableView, adapterFactory));
-
-		tableView.setShowRoot(false);
+		AdapterFactoryTreeTableCellFactory<Object, Object> emailCellFactory = new AdapterFactoryTreeTableCellFactory<>(adapterFactory, 1);
 		
+		// add drag & drop support
+		emailCellFactory.addCellCreationListener(dragAdapter);
+		emailCellFactory.addCellCreationListener(dropAdapter);
+		emailColumn.setCellFactory(emailCellFactory);
+		
+		emailColumn.setSortable(false);
+		emailColumn.setCellValueFactory(new TreeTableProxyCellValueFactory());
+
+		treeTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		treeTableView.setRoot(new AdapterFactoryTreeItem(contactsManager.getRootGroup(), treeTableView, adapterFactory));
+
+		treeTableView.setShowRoot(false);
+		
+		// add edit support
+		treeTableView.setEditable(true);
+		emailCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_Email(), editingDomain));
+
+		// add the context menu
+		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager);
+		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
+		emailCellFactory.addCellUpdateListener(contextMenuProvider);
+
+//		treeTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 //
-//		// add edit support
-//		tableView.setEditable(true);
-//		firstNameCellFactory.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_FirstName(),
-//				editingDomain));
-//		lastNameCellFactory
-//				.addCellEditHandler(new EAttributeCellEditHandler(ContactsPackage.eINSTANCE.getContact_LastName(), editingDomain));
-//
-//		// add the context menu
-//		ContextMenuProvider contextMenuProvider = new ContextMenuProvider(contactsManager);
-//		firstNameCellFactory.addCellUpdateListener(contextMenuProvider);
-//		lastNameCellFactory.addCellUpdateListener(contextMenuProvider);
-//
-//		tableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
-//
-//			@Override
-//			public void onChanged(Change<?> change) {
-//				application.getContext().set(List.class, change.getList());
+//			public void changed(ObservableValue<? extends Object> observable, Object oldValue, Object newValue) {
+//				if (newValue instanceof AdapterFactoryTreeItem) {
+//					Object value = ((AdapterFactoryTreeItem) newValue).getValue();
+//					if (value instanceof Contact)
+//						application.getContext().set(Object.class, value);
+//				}
 //			}
 //
 //		});
-//
-//		tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
-//
-//			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
-//				application.getContext().set(Object.class, arg2);
-//			}
-//
-//		});
+		
+		treeTableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
+
+			@Override
+			public void onChanged(Change<?> change) {
+				ArrayList<Object> selection = new ArrayList<Object>();
+				for (Object item : change.getList()) {
+					if (item instanceof AdapterFactoryTreeItem) {
+						Object value = ((AdapterFactoryTreeItem) item).getValue();
+						selection.add(value);
+					}
+				}
+				application.getContext().set(List.class, selection);
+			}
+			
+		});
 
 	}
 
