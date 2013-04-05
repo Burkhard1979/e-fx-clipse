@@ -90,14 +90,6 @@ public class ContactsTableView {
 
 		});
 
-		tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
-
-			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
-				application.getContext().set(Object.class, arg2);
-			}
-
-		});
-
 	}
 
 }

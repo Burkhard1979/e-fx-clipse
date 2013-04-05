@@ -3,14 +3,14 @@
   <children xsi:type="basic:TrimmedWindow" xmi:id="_BinB4JPAEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.trimmedwindow.0" label="Main Window" x="20" y="20" width="800" height="600">
     <children xsi:type="basic:PartSashContainer" xmi:id="_K08kYJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partsashcontainer.0" horizontal="true">
       <children xsi:type="basic:PartStack" xmi:id="_MA-5sJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partstack.0">
-        <children xsi:type="basic:Part" xmi:id="_zTgCYJPAEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ProjectExplorerPart" label="Project Explorer"/>
+        <children xsi:type="basic:Part" xmi:id="_zTgCYJPAEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelExplorerPart" label="Model Explorer"/>
       </children>
       <children xsi:type="basic:PartSashContainer" xmi:id="_pMxkkJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.partsashcontainer.1">
         <children xsi:type="basic:PartStack" xmi:id="_NrmBYJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partstack.1">
-          <children xsi:type="basic:Part" xmi:id="_idED8JR0EeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.part.2" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelElementPart" label="Model Element" closeable="true"/>
+          <children xsi:type="basic:Part" xmi:id="_idED8JR0EeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.part.2" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelEditorPart" label="Model Editor" closeable="true"/>
         </children>
         <children xsi:type="basic:PartStack" xmi:id="_rS0rEJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.partstack.2">
-          <children xsi:type="basic:Part" xmi:id="_r9f_wJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelRepositoriesPart" label="Model Repositories"/>
+          <children xsi:type="basic:Part" xmi:id="_r9f_wJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.part.1" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.RepositoryBrowserPart" label="Repository Browser"/>
         </children>
       </children>
     </children>

@@ -10,27 +10,14 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.StyleClassFeedbackHandler;
-
-import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
-import javafx.collections.ListChangeListener.Change;
-
 import java.util.ArrayList;
-
 import java.util.List;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.beans.value.ObservableValueBase;
 import javafx.collections.ListChangeListener;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Callback;
 
 import javax.inject.Inject;
 
@@ -40,12 +27,9 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableList;
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTableCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeTableCellFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
-import at.bestsolution.efxclipse.runtime.emf.edit.ui.ProxyCellValueFactory;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
 

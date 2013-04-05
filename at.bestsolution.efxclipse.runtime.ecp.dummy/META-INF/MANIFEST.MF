@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECP Dummy
+Bundle-SymbolicName: at.bestsolution.efxclipse.runtime.ecp.dummy
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: at.bestsolution.efxclipse.runtime.ecp.dummy.ECPDummyPlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecp.core;bundle-version="1.0.0",
+ com.google.guava;bundle-version="10.0.1",
+ org.eclipse.emf.emfstore.examplemodel;bundle-version="1.0.0",
+ org.eclipse.emf.emfstore.examplemodel.edit;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/component.xml,
+ OSGI-INF/projectManager.xml

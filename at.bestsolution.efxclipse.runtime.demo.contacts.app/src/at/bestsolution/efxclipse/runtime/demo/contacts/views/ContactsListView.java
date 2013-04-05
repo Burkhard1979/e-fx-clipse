@@ -10,6 +10,19 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
+import java.util.List;
+
+import javafx.collections.ListChangeListener;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.layout.BorderPane;
+
+import javax.inject.Inject;
+
+import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.domain.EditingDomain;
+
 import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsPackage;
 import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryListCellFactory;
@@ -17,17 +30,6 @@ import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryObservableLis
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.EAttributeCellEditHandler;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.CellDragAdapter;
 import at.bestsolution.efxclipse.runtime.emf.edit.ui.dnd.EditingDomainCellDropAdapter;
-import java.util.List;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.layout.BorderPane;
-import javax.inject.Inject;
-import org.eclipse.e4.ui.model.application.MApplication;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.domain.EditingDomain;
 
 @SuppressWarnings("restriction")
 public class ContactsListView {
@@ -66,14 +68,6 @@ public class ContactsListView {
 			@Override
 			public void onChanged(Change<?> change) {
 				application.getContext().set(List.class, change.getList());
-			}
-
-		});
-
-		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
-
-			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
-				application.getContext().set(Object.class, arg2);
 			}
 
 		});

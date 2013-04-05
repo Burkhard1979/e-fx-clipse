@@ -75,18 +75,6 @@ public class ContactsTreeView {
 		treeView.setShowRoot(false);
 		
 		treeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-		treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
-
-			public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
-				if (arg2 instanceof AdapterFactoryTreeItem) {
-					Object value = ((AdapterFactoryTreeItem) arg2).getValue();
-					if (value instanceof Contact)
-						application.getContext().set(Object.class, value);
-				}
-			}
-
-		});
 		
 		treeView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Object>() {
 

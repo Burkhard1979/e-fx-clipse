@@ -32,14 +32,10 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.MApplication;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -65,11 +61,15 @@ public class GenericDetailsView {
 	}
 
 	@Inject
-	public void setSelection(@Optional Object selectedItem) {
+	public void setSelection(@Optional List<?> selection) {
 
 		try {
+			if(selection == null || selection.isEmpty())
+				return;
 
-			Contact contact = selectedItem instanceof Contact ? (Contact) selectedItem : null;
+			Object firstElement = selection.get(0);
+			
+			Contact contact = firstElement instanceof Contact ? (Contact) firstElement : null;
 
 			if (contact == null)
 				return;
