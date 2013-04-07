@@ -24,3 +24,8 @@ Step 2:
 - add more dialogs / wizards
 - add Jemmy tests
 - add proper documentation
+
+ECP Questions:
+
+InternalChildreList contains a reference to its parent. Yet the parent needs to be passed to Provider.fillChildren(). Why?
+

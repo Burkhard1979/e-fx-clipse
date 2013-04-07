@@ -1,5 +1,6 @@
 package at.bestsolution.efxclipse.runtime.ecp.dummy;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -22,7 +23,9 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.emfstore.bowling.BowlingFactory;
+import org.eclipse.emf.emfstore.bowling.Matchup;
 import org.eclipse.emf.emfstore.bowling.Player;
+import org.eclipse.emf.emfstore.bowling.Referee;
 import org.eclipse.emf.emfstore.bowling.Tournament;
 import org.eclipse.emf.emfstore.bowling.provider.BowlingItemProviderAdapterFactory;
 
@@ -73,6 +76,10 @@ public class DummyWorkspace {
 		// populate the project
 		Tournament tournament = BowlingFactory.eINSTANCE.createTournament();
 		
+		Matchup matchup = BowlingFactory.eINSTANCE.createMatchup();
+		matchup.setNrSpectators(new BigInteger("21"));
+		tournament.getMatchups().add(matchup);
+		
 		Player hans = BowlingFactory.eINSTANCE.createPlayer();
 		hans.setName("Hans Wurst");
 		tournament.getPlayers().add(hans);
@@ -114,6 +121,10 @@ public class DummyWorkspace {
 		HashSet<ECPProject> hashSet = new HashSet<>();
 		hashSet.addAll(projects.values());
 		return Collections.unmodifiableCollection(hashSet);
+	}
+
+	public ComposedAdapterFactory getAdapterFactory() {
+		return adapterFactory;
 	}
 
 }

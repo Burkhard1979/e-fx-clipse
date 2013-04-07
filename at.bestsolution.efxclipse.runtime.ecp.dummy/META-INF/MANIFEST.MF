@@ -12,3 +12,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/component.xml,
  OSGI-INF/projectManager.xml
+Export-Package: at.bestsolution.efxclipse.runtime.ecp.dummy

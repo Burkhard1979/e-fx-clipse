@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.ecp.core.ECPRepositoryManager;
-import org.eclipse.emf.ecp.edit.ControlFactory;
+//import org.eclipse.emf.ecp.edit.ControlFactory;
 
 import at.bestsolution.efxclipse.ecp.ui.FXControlFactory;
 import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
@@ -27,7 +27,7 @@ import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
 @SuppressWarnings("restriction")
 public class ModelEditorPart {
 
-	ControlFactory controlFactory = FXControlFactory.INSTANCE;
+//	ControlFactory controlFactory = FXControlFactory.INSTANCE;
 
 	@Inject
 	public ModelEditorPart(BorderPane parent, final MApplication application, ECPRepositoryManager repositoryManager) {

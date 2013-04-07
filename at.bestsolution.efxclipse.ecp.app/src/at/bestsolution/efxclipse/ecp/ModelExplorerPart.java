@@ -21,47 +21,80 @@ import javax.inject.Inject;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.core.ECPProjectManager;
+import org.eclipse.emf.ecp.internal.core.util.ChildrenListImpl;
+import org.eclipse.emf.ecp.spi.core.InternalProvider;
+import org.eclipse.emf.ecp.spi.core.util.InternalChildrenList;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyWorkspace;
 
 @SuppressWarnings("restriction")
 public class ModelExplorerPart {
-	
+
+	static class ModelElementTreeItem extends TreeItem<Object> {
+		ModelElementTreeItem(Object item, InternalProvider provider) {
+			super(item);
+			InternalChildrenList childrenList = new ChildrenListImpl(item);
+			provider.fillChildren(null, item, childrenList);
+			for (Object child : childrenList.getChildren()) {
+				getChildren().add(new ModelElementTreeItem(child, provider));
+			}
+		}
+	}
+
 	@Inject
 	public ModelExplorerPart(BorderPane parent, final MApplication application, ECPProjectManager projectManager) {
-		
+
 		TreeView<Object> treeView = new TreeView<>();
-		
+
 		TreeItem<Object> root = new TreeItem<Object>();
-		
-		for (ECPProject project : projectManager.getProjects()) {
-			TreeItem<Object> treeItem = new TreeItem<>((Object)project);
-			root.getChildren().add(treeItem);
+
+		for (final ECPProject project : projectManager.getProjects()) {
+			
+			final InternalProvider provider = (InternalProvider) project.getProvider();
+
+			TreeItem<Object> projectTreeItem = new TreeItem<Object>(project);
+
+			for (Object element : project.getElements()) {
+				TreeItem<Object> elementTreeItem = new ModelElementTreeItem(element, provider);
+				projectTreeItem.getChildren().add(elementTreeItem);
+			}
+
+			root.getChildren().add(projectTreeItem);
 		}
-		
+
 		treeView.setRoot(root);
 		treeView.setShowRoot(false);
-		
+
 		treeView.setCellFactory(new Callback<TreeView<Object>, TreeCell<Object>>() {
-			
+
 			@Override
 			public TreeCell<Object> call(TreeView<Object> arg0) {
 				return new TreeCell<Object>() {
-					
+
 					@Override
 					protected void updateItem(Object item, boolean empty) {
 						super.updateItem(item, empty);
-						if(item instanceof ECPProject) {
+						if (item instanceof ECPProject) {
 							ECPProject project = (ECPProject) item;
 							setText(project.getName());
+						} else if (item != null) {
+							IItemLabelProvider labelProvider = (IItemLabelProvider) DummyWorkspace.INSTANCE.getAdapterFactory().adapt(item, IItemLabelProvider.class);
+							if(labelProvider != null)
+								setText(labelProvider.getText(item));
+							else
+							setText(item.toString());
 						} else {
 							setText(null);
 						}
 					}
-					
+
 				};
 			}
-			
+
 		});
-		
+
 		parent.setCenter(treeView);
 
 	}

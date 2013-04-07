@@ -21,9 +21,10 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 public class DummyProject implements ECPProject {
 	
-	EditingDomain editingDomain;
 	Resource resource;
 	String name;
+	
+	DummyWorkspace workspace = DummyWorkspace.INSTANCE;
 
 	@Override
 	public String getName() {
@@ -59,7 +60,7 @@ public class DummyProject implements ECPProject {
 
 	@Override
 	public ECPProvider getProvider() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		return DummyWorkspace.INSTANCE.getProvider();
 	}
 
 	@Override
@@ -99,7 +100,7 @@ public class DummyProject implements ECPProject {
 
 	@Override
 	public EditingDomain getEditingDomain() {
-		return editingDomain;
+		return workspace.getEditingDomain();
 	}
 
 	@Override
