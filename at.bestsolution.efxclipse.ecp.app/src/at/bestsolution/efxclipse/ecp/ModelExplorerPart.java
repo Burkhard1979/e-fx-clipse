@@ -24,10 +24,14 @@ import org.eclipse.emf.ecp.core.ECPProjectManager;
 import org.eclipse.emf.ecp.internal.core.util.ChildrenListImpl;
 import org.eclipse.emf.ecp.spi.core.InternalProvider;
 import org.eclipse.emf.ecp.spi.core.util.InternalChildrenList;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import at.bestsolution.efxclipse.ecp.provider.ECPItemProviderAdapterFactory;
+import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyProvider;
 import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyWorkspace;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeCellFactory;
+import at.bestsolution.efxclipse.runtime.emf.edit.ui.AdapterFactoryTreeItem;
 
 @SuppressWarnings("restriction")
 public class ModelExplorerPart {
@@ -48,52 +52,63 @@ public class ModelExplorerPart {
 
 		TreeView<Object> treeView = new TreeView<>();
 
-		TreeItem<Object> root = new TreeItem<Object>();
-
-		for (final ECPProject project : projectManager.getProjects()) {
-			
-			final InternalProvider provider = (InternalProvider) project.getProvider();
-
-			TreeItem<Object> projectTreeItem = new TreeItem<Object>(project);
-
-			for (Object element : project.getElements()) {
-				TreeItem<Object> elementTreeItem = new ModelElementTreeItem(element, provider);
-				projectTreeItem.getChildren().add(elementTreeItem);
-			}
-
-			root.getChildren().add(projectTreeItem);
-		}
-
-		treeView.setRoot(root);
+//		TreeItem<Object> root = new TreeItem<Object>();
+//
+//		for (final ECPProject project : projectManager.getProjects()) {
+//
+//			final InternalProvider provider = (InternalProvider) project.getProvider();
+//
+//			TreeItem<Object> projectTreeItem = new TreeItem<Object>(project);
+//
+//			for (Object element : project.getElements()) {
+//				TreeItem<Object> elementTreeItem = new ModelElementTreeItem(element, provider);
+//				projectTreeItem.getChildren().add(elementTreeItem);
+//			}
+//
+//			root.getChildren().add(projectTreeItem);
+//		}
+//
+//		treeView.setRoot(root);
 		treeView.setShowRoot(false);
 
-		treeView.setCellFactory(new Callback<TreeView<Object>, TreeCell<Object>>() {
-
-			@Override
-			public TreeCell<Object> call(TreeView<Object> arg0) {
-				return new TreeCell<Object>() {
-
-					@Override
-					protected void updateItem(Object item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item instanceof ECPProject) {
-							ECPProject project = (ECPProject) item;
-							setText(project.getName());
-						} else if (item != null) {
-							IItemLabelProvider labelProvider = (IItemLabelProvider) DummyWorkspace.INSTANCE.getAdapterFactory().adapt(item, IItemLabelProvider.class);
-							if(labelProvider != null)
-								setText(labelProvider.getText(item));
-							else
-							setText(item.toString());
-						} else {
-							setText(null);
-						}
-					}
-
-				};
-			}
-
-		});
+//		treeView.setCellFactory(new Callback<TreeView<Object>, TreeCell<Object>>() {
+//
+//			@Override
+//			public TreeCell<Object> call(TreeView<Object> arg0) {
+//				return new TreeCell<Object>() {
+//
+//					@Override
+//					protected void updateItem(Object item, boolean empty) {
+//						super.updateItem(item, empty);
+//						if (item instanceof ECPProject) {
+//							ECPProject project = (ECPProject) item;
+//							setText(project.getName());
+//						} else if (item != null) {
+//							ComposedAdapterFactory adapterFactory = DummyWorkspace.INSTANCE.getAdapterFactory();
+//							IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(item, IItemLabelProvider.class);
+//							if (labelProvider != null)
+//								setText(labelProvider.getText(item));
+//							else
+//								setText(item.toString());
+//						} else {
+//							setText(null);
+//						}
+//					}
+//
+//				};
+//			}
+//
+//		});
+		
+		//ComposedAdapterFactory adapterFactory = DummyWorkspace.INSTANCE.getAdapterFactory();
+		
+		ECPItemProviderAdapterFactory adapterFactory = new ECPItemProviderAdapterFactory(DummyWorkspace.INSTANCE.getProvider());
+		
+		AdapterFactoryTreeItem rootItem = new AdapterFactoryTreeItem(projectManager, treeView, adapterFactory);
+		
+		treeView.setRoot(rootItem);
+		
+		treeView.setCellFactory(new AdapterFactoryTreeCellFactory(adapterFactory));
 
 		parent.setCenter(treeView);
 

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.core.ECPProvider;
 import org.eclipse.emf.ecp.core.util.observer.ECPProvidersChangedObserver;
+import org.eclipse.emf.ecp.spi.core.InternalProvider;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -105,7 +106,7 @@ public class DummyWorkspace {
 		return repository;
 	}
 
-	public ECPProvider getProvider() {
+	public InternalProvider getProvider() {
 		return provider;
 	}
 

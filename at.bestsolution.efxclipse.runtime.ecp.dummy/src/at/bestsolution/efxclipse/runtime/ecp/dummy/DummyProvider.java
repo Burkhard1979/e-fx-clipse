@@ -10,7 +10,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecp.core.ECPProject;
+import org.eclipse.emf.ecp.core.ECPProjectManager;
 import org.eclipse.emf.ecp.core.ECPProvider;
 import org.eclipse.emf.ecp.core.ECPRepository;
 import org.eclipse.emf.ecp.core.util.ECPElement;
@@ -21,7 +22,6 @@ import org.eclipse.emf.ecp.spi.core.InternalRepository;
 import org.eclipse.emf.ecp.spi.core.util.AdapterProvider;
 import org.eclipse.emf.ecp.spi.core.util.InternalChildrenList;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 public class DummyProvider implements InternalProvider {
@@ -126,7 +126,6 @@ public class DummyProvider implements InternalProvider {
 	@Override
 	public void setUIProvider(AdapterProvider uiProvider) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -141,9 +140,23 @@ public class DummyProvider implements InternalProvider {
 
 	@Override
 	public void fillChildren(ECPModelContext context, Object parent, InternalChildrenList childrenList) {
-		ITreeItemContentProvider contentProvider = (ITreeItemContentProvider) DummyWorkspace.INSTANCE.getAdapterFactory().adapt(parent, ITreeItemContentProvider.class);
-		if (contentProvider != null)
-			childrenList.addChildren(contentProvider.getChildren(parent));
+
+		if (parent instanceof ECPProjectManager) {
+			childrenList.addChildren(((ECPProjectManager) parent).getProjects());
+		}
+
+		else if (parent instanceof ECPProject) {
+			childrenList.addChildren(((ECPProject) parent).getElements());
+		}
+
+		else {
+			ITreeItemContentProvider contentProvider = (ITreeItemContentProvider) DummyWorkspace.INSTANCE.getAdapterFactory().adapt(parent,
+					ITreeItemContentProvider.class);
+			if (contentProvider != null)
+				childrenList.addChildren(contentProvider.getChildren(parent));
+		}
+
+		return;
 	}
 
 	@Override

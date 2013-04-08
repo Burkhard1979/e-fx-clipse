@@ -23,7 +23,8 @@ public class DummyProviderRegistry implements ECPProviderRegistry {
 
 	@Override
 	public Collection<ECPProvider> getProviders() {
-		return Collections.singleton(workspace.getProvider());
+		ECPProvider provider = workspace.getProvider();
+		return Collections.singleton(provider);
 	}
 
 	@Override
