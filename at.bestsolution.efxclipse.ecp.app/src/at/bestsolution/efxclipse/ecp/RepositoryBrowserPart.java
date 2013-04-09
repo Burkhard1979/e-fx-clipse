@@ -16,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
@@ -41,8 +42,10 @@ public class RepositoryBrowserPart {
 					@Override
 					protected void updateItem(ECPRepository repository, boolean empty) {
 						super.updateItem(repository, empty);
-						if (repository != null)
+						if (repository != null) {
 							setText(repository.getName());
+							setGraphic(new ImageView("platform:/plugin/at.bestsolution.efxclipse.ecp.app/icons/repository.gif"));
+						}
 					}
 				};
 			}

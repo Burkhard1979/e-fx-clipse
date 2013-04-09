@@ -1,9 +1,11 @@
 package at.bestsolution.efxclipse.runtime.ecp.dummy;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,6 +15,7 @@ import java.util.Map;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.core.ECPProvider;
@@ -24,10 +27,12 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.emfstore.bowling.BowlingFactory;
+import org.eclipse.emf.emfstore.bowling.Gender;
 import org.eclipse.emf.emfstore.bowling.Matchup;
 import org.eclipse.emf.emfstore.bowling.Player;
 import org.eclipse.emf.emfstore.bowling.Referee;
 import org.eclipse.emf.emfstore.bowling.Tournament;
+import org.eclipse.emf.emfstore.bowling.TournamentType;
 import org.eclipse.emf.emfstore.bowling.provider.BowlingItemProviderAdapterFactory;
 
 public class DummyWorkspace {
@@ -43,6 +48,10 @@ public class DummyWorkspace {
 	BasicCommandStack commandStack;
 
 	ComposedAdapterFactory adapterFactory;
+
+	private Tournament tournament;
+
+	private Player hans;
 
 	public DummyWorkspace() {
 		// Create an adapter factory that yields item providers.
@@ -74,19 +83,36 @@ public class DummyWorkspace {
 		// create a project
 		DummyProject project1 = createProject("Project 1");
 		
-		// populate the project
-		Tournament tournament = BowlingFactory.eINSTANCE.createTournament();
+		tournament = BowlingFactory.eINSTANCE.createTournament();
+		
+		tournament.getPriceMoney().add(1.55);
+		tournament.getPriceMoney().add(1000.0);
+		
+		tournament.getReceivesTrophy().add(false);
+		tournament.getReceivesTrophy().add(true);
+		
+		tournament.getMatchDays().add(new Date(0));
+		tournament.getMatchDays().add(new Date());
 		
 		Matchup matchup = BowlingFactory.eINSTANCE.createMatchup();
 		matchup.setNrSpectators(new BigInteger("21"));
 		tournament.getMatchups().add(matchup);
 		
-		Player hans = BowlingFactory.eINSTANCE.createPlayer();
+		hans = BowlingFactory.eINSTANCE.createPlayer();
 		hans.setName("Hans Wurst");
+		hans.setDateOfBirth(new Date(0));
+		hans.setHeight(1.76);
+		hans.setIsProfessional(true);
+		hans.getEMails().add("h.wurst@work.com");
+		hans.getEMails().add("wursti@gmail.com");
+		hans.setNumberOfVictories(4);
+		hans.getPlayedTournamentTypes().add(TournamentType.AMATEUR);
+		hans.getPlayedTournamentTypes().add(TournamentType.PRO);
+		hans.setWinLossRatio(new BigDecimal(0.6));
+		hans.setGender(Gender.MALE);
 		tournament.getPlayers().add(hans);
+		
 		project1.getResource().getContents().add(tournament);
-		
-		
 	}
 
 	DummyProject createProject(String projectName) {
@@ -126,6 +152,14 @@ public class DummyWorkspace {
 
 	public ComposedAdapterFactory getAdapterFactory() {
 		return adapterFactory;
+	}
+	
+	public EObject getTournament() {
+		return tournament;
+	}
+	
+	public EObject getPlayer() {
+		return hans;
 	}
 
 }

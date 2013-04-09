@@ -10,41 +10,61 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.ecp;
 
+import java.util.List;
+
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.model.application.MApplication;
-import org.eclipse.emf.ecp.core.ECPRepositoryManager;
-//import org.eclipse.emf.ecp.edit.ControlFactory;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecp.edit.ECPControlContext;
+import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import at.bestsolution.efxclipse.ecp.ui.FXControlFactory;
-import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
-import at.bestsolution.efxclipse.runtime.demo.contacts.ContactsFactory;
+import at.bestsolution.efxclipse.ecp.controls.FormControlFactory;
+import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyControlContext;
+import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyWorkspace;
 
 @SuppressWarnings("restriction")
 public class ModelEditorPart {
 
-//	ControlFactory controlFactory = FXControlFactory.INSTANCE;
-
 	@Inject
-	public ModelEditorPart(BorderPane parent, final MApplication application, ECPRepositoryManager repositoryManager) {
+	public ModelEditorPart(BorderPane parent, final MApplication application) {
 		
+		FormControlFactory controlFactory = new FormControlFactory();
 
-		Contact john = ContactsFactory.eINSTANCE.createContact();
-		john.setFirstName("John");
-		john.setLastName("Doe");
-		
+		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getPlayer());
+
+		ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(composedAdapterFactory);
+		EObject modelElement = modelElementContext.getModelElement();
+		List<IItemPropertyDescriptor> propertyDescriptors = adapterFactoryItemDelegator.getPropertyDescriptors(modelElement);
+
 		VBox vBox = new VBox();
-		
+
 		Button deleteButton = new Button("delete");
 		vBox.getChildren().add(deleteButton);
-		
-		
-		parent.setCenter(vBox);
 
+		for (IItemPropertyDescriptor propertyDescriptor : propertyDescriptors) {
+			Node formControl = controlFactory.createFormControl(propertyDescriptor, modelElementContext);
+			vBox.getChildren().add(formControl);
+		}
+
+		parent.setCenter(vBox);
 	}
+
+
 
 }
