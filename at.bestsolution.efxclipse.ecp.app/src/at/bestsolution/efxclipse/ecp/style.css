@@ -1,0 +1,26 @@
+.invalid {
+	-fx-background-color: -fx-outer-border, #FF5555, #FFFAFA;
+}
+
+.theForm {
+	-fx-padding: 10;
+	-fx-spacing: 6;
+}
+
+.formControl {
+	/* -fx-min-height: 20; */
+	/* -fx-pref-height: 50; works */
+	/* -fx-padding: 10; */
+}
+
+.multiTextControl .list-view {
+	-fx-pref-height: 50;
+}
+
+.multiReferenceControl .list-view {
+	-fx-pref-height: 80;
+}
+
+.multiAttributeControl .list-view {
+	-fx-pref-height: 80;
+}

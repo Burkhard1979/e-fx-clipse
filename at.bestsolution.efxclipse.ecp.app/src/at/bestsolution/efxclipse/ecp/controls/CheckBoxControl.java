@@ -12,6 +12,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 public class CheckBoxControl extends HBox {
 
 	public CheckBoxControl(IItemPropertyDescriptor propertyDescriptor, ECPControlContext context) {
+		getStyleClass().add("formControl");
+		
 		EObject modelElement = context.getModelElement();
 
 		String displayName = propertyDescriptor.getDisplayName(modelElement);

@@ -14,20 +14,14 @@ import java.util.List;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecp.edit.ECPControlContext;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -45,14 +39,29 @@ public class ModelEditorPart {
 		
 		FormControlFactory controlFactory = new FormControlFactory();
 
-		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getPlayer());
+		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getTournament());
 
 		ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(composedAdapterFactory);
 		EObject modelElement = modelElementContext.getModelElement();
 		List<IItemPropertyDescriptor> propertyDescriptors = adapterFactoryItemDelegator.getPropertyDescriptors(modelElement);
 
+		ScrollPane scrollPane = new ScrollPane();
+		scrollPane.setFitToWidth(true);
+		
 		VBox vBox = new VBox();
+		vBox.getStyleClass().add("theForm");
+		
+		vBox.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+		
+//		final String cssDefault = "-fx-border-color: blue;\n"
+//                + "-fx-border-insets: 5;\n"
+//                + "-fx-border-width: 3;\n"
+//                + "-fx-border-style: dashed;\n";
+//		
+//		vBox.setStyle(cssDefault);
+//		
+//        pictureRegion.setStyle(cssDefault);
 
 		Button deleteButton = new Button("delete");
 		vBox.getChildren().add(deleteButton);
@@ -61,8 +70,10 @@ public class ModelEditorPart {
 			Node formControl = controlFactory.createFormControl(propertyDescriptor, modelElementContext);
 			vBox.getChildren().add(formControl);
 		}
+		
+		scrollPane.setContent(vBox);
 
-		parent.setCenter(vBox);
+		parent.setCenter(scrollPane);
 	}
 
 
