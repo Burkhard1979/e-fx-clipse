@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.emfstore.bowling.BowlingFactory;
 import org.eclipse.emf.emfstore.bowling.Gender;
+import org.eclipse.emf.emfstore.bowling.League;
 import org.eclipse.emf.emfstore.bowling.Matchup;
 import org.eclipse.emf.emfstore.bowling.Player;
 import org.eclipse.emf.emfstore.bowling.Referee;
@@ -52,6 +53,8 @@ public class DummyWorkspace {
 	private Tournament tournament;
 
 	private Player hans;
+
+	private Referee referee;
 
 	public DummyWorkspace() {
 		// Create an adapter factory that yields item providers.
@@ -98,6 +101,9 @@ public class DummyWorkspace {
 		matchup.setNrSpectators(new BigInteger("21"));
 		tournament.getMatchups().add(matchup);
 		
+		League league = BowlingFactory.eINSTANCE.createLeague();
+		league.setName("Premier League");
+		
 		hans = BowlingFactory.eINSTANCE.createPlayer();
 		hans.setName("Hans Wurst");
 		hans.setDateOfBirth(new Date(0));
@@ -111,6 +117,10 @@ public class DummyWorkspace {
 		hans.setWinLossRatio(new BigDecimal(0.6));
 		hans.setGender(Gender.MALE);
 		tournament.getPlayers().add(hans);
+		league.getPlayers().add(hans);
+		
+		referee = BowlingFactory.eINSTANCE.createReferee();
+		referee.setLeague(league);
 		
 		project1.getResource().getContents().add(tournament);
 	}
@@ -160,6 +170,10 @@ public class DummyWorkspace {
 	
 	public EObject getPlayer() {
 		return hans;
+	}
+	
+	public EObject getReferee() {
+		return referee;
 	}
 
 }

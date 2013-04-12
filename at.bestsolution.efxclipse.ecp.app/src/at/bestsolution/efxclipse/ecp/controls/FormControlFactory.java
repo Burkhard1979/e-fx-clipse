@@ -2,6 +2,7 @@ package at.bestsolution.efxclipse.ecp.controls;
 
 import javafx.scene.Node;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
@@ -24,7 +25,8 @@ public class FormControlFactory {
 		if (feature.isMany()) {
 			if (type == EcorePackage.Literals.ESTRING) {
 				return new MultiTextControl(propertyDescriptor, context);
-			} if(feature instanceof EReference) {
+			}
+			if (feature instanceof EReference) {
 				return new MultiReferenceControl(propertyDescriptor, context);
 			}
 		} else {
@@ -33,11 +35,12 @@ public class FormControlFactory {
 				return new CheckBoxControl(propertyDescriptor, context);
 			} else if (type instanceof EEnum) {
 				return new EnumControl(propertyDescriptor, context);
-			} else {
+			} else if (feature instanceof EAttribute) {
 				TextFieldControl textFieldControl = new TextFieldControl(propertyDescriptor, context);
-
 				if (type instanceof EDataType && textFieldControl.isControlFor((EDataType) type))
 					return textFieldControl;
+			} else if (feature instanceof EReference) {
+				return new ReferenceControl(propertyDescriptor, context);
 			}
 
 		}

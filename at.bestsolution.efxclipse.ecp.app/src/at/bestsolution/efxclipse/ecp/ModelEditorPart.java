@@ -39,7 +39,7 @@ public class ModelEditorPart {
 		
 		FormControlFactory controlFactory = new FormControlFactory();
 
-		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getTournament());
+		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getReferee());
 
 		ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(composedAdapterFactory);
