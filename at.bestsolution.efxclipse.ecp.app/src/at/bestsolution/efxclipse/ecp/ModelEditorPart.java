@@ -10,6 +10,7 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.ecp;
 
+import java.net.URL;
 import java.util.List;
 
 import javafx.scene.Node;
@@ -21,10 +22,13 @@ import javafx.scene.layout.VBox;
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecp.edit.ECPControlContext;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import at.bestsolution.efxclipse.ecp.controls.FormControlFactory;
@@ -35,15 +39,24 @@ import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyWorkspace;
 public class ModelEditorPart {
 
 	@Inject
-	public ModelEditorPart(BorderPane parent, final MApplication application) {
+	public ModelEditorPart(BorderPane parent, final MApplication application, MPart part) {
+		
+		part.setCloseable(true);
 		
 		FormControlFactory controlFactory = new FormControlFactory();
 
 		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getReferee());
 
-		ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(composedAdapterFactory);
+		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
 		EObject modelElement = modelElementContext.getModelElement();
+		
+		IItemLabelProvider labelProvider = (IItemLabelProvider)adapterFactory.adapt(modelElement, IItemLabelProvider.class);
+		part.setLabel(labelProvider.getText(modelElement));
+		Object image = labelProvider.getImage(modelElement);
+		if(image instanceof URL)
+			part.setIconURI(((URL) image).toExternalForm());
+		
 		List<IItemPropertyDescriptor> propertyDescriptors = adapterFactoryItemDelegator.getPropertyDescriptors(modelElement);
 
 		ScrollPane scrollPane = new ScrollPane();
@@ -53,15 +66,6 @@ public class ModelEditorPart {
 		vBox.getStyleClass().add("theForm");
 		
 		vBox.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-		
-//		final String cssDefault = "-fx-border-color: blue;\n"
-//                + "-fx-border-insets: 5;\n"
-//                + "-fx-border-width: 3;\n"
-//                + "-fx-border-style: dashed;\n";
-//		
-//		vBox.setStyle(cssDefault);
-//		
-//        pictureRegion.setStyle(cssDefault);
 
 		Button deleteButton = new Button("delete");
 		vBox.getChildren().add(deleteButton);

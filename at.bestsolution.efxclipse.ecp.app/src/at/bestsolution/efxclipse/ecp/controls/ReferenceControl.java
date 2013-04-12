@@ -2,11 +2,21 @@ package at.bestsolution.efxclipse.ecp.controls;
 
 import java.net.URL;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBuilder;
 import javafx.scene.control.Label;
+import javafx.scene.control.LabelBuilder;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.HBoxBuilder;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -15,6 +25,8 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+
+import at.bestsolution.efxclipse.ecp.dialogs.ReferenceSelectionDialog;
 
 public class ReferenceControl extends HBox {
 
@@ -44,7 +56,40 @@ public class ReferenceControl extends HBox {
 
 		hBox.getChildren().add(new ImageView(image.toExternalForm()));
 		hBox.getChildren().add(label2);
-		hBox.getChildren().add(new Button("..."));
+		Button button = new Button("...");
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent arg0) {
+				ReferenceSelectionDialog referenceSelectionDialog = new ReferenceSelectionDialog(null, null);
+				referenceSelectionDialog.showAndWait();
+				
+//				final Stage dialog = new Stage();
+//			    dialog.initModality(Modality.WINDOW_MODAL);
+////			    dialog.initOwner(primaryStage);
+//			    dialog.setScene(
+//			      new Scene(
+//			        HBoxBuilder.create().styleClass("modal-dialog").children(
+//			          LabelBuilder.create().text("Will you like this page?").build(),
+//			          ButtonBuilder.create().text("Yes").defaultButton(true).onAction(new EventHandler<ActionEvent>() {
+//			            @Override public void handle(ActionEvent actionEvent) {
+//			              dialog.close();
+//			            }
+//			          }).build(),
+//			          ButtonBuilder.create().text("No").cancelButton(true).onAction(new EventHandler<ActionEvent>() {
+//			            @Override public void handle(ActionEvent actionEvent) {
+//				              dialog.close();
+//			            }
+//			          }).build()
+//			        ).build()
+//			        , Color.TRANSPARENT
+//			      )
+//			    );
+//			    dialog.showAndWait();
+			}
+		});
+		
+		hBox.getChildren().add(button);
 
 		HBox.setHgrow(label2, Priority.ALWAYS);
 

@@ -6,7 +6,7 @@
         <children xsi:type="basic:Part" xmi:id="_zTgCYJPAEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.part.0" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelExplorerPart" label="Model Explorer"/>
       </children>
       <children xsi:type="basic:PartSashContainer" xmi:id="_pMxkkJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.partsashcontainer.1">
-        <children xsi:type="basic:PartStack" xmi:id="_NrmBYJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partstack.1">
+        <children xsi:type="basic:PartStack" xmi:id="_NrmBYJPKEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.partstacks.editors">
           <children xsi:type="basic:Part" xmi:id="_idED8JR0EeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.part.2" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelEditorPart" label="Model Editor" closeable="true"/>
         </children>
         <children xsi:type="basic:PartStack" xmi:id="_rS0rEJRxEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.partstack.2">
@@ -16,23 +16,19 @@
     </children>
     <mainMenu xmi:id="_ExCa0JPCEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.menu.0">
       <children xsi:type="menu:Menu" xmi:id="_x8DqEJSLEeK6bNllnvSnhw" elementId="" label="_File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_0g9PwJSLEeK6bNllnvSnhw" elementId="" label="Exit"/>
-      </children>
-      <children xsi:type="menu:Menu" xmi:id="_GySg4JPCEeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.ecp.app.menu.1" label="_Edit">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_-H4_sJSJEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.0" label="Cut"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_O8ZesJSKEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.2" label="Copy"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="__cVDEJSJEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.1" label="Paste"/>
-      </children>
-      <children xsi:type="menu:Menu" xmi:id="_WOnSoJSLEeK6bNllnvSnhw" elementId="" label="_Repository">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_WOnSoZSLEeK6bNllnvSnhw" elementId="at.bestsolution.efxclipse.ecp.app.handledmenuitem.0" label="New Repository"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_WOnSopSLEeK6bNllnvSnhw" elementId="" label="Commit All"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_g3-KEKNJEeKrxsf5nYgbOA" elementId="" label="Open Model Element" command="_R-d_MKNJEeKrxsf5nYgbOA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_0g9PwJSLEeK6bNllnvSnhw" elementId="" label="Exit" command="_zREoUKNJEeKrxsf5nYgbOA"/>
       </children>
     </mainMenu>
   </children>
+  <handlers xmi:id="_RAYmUKNJEeKrxsf5nYgbOA" elementId="" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.handlers.OpenModelElementHandler" command="_R-d_MKNJEeKrxsf5nYgbOA"/>
+  <handlers xmi:id="_38AGYKNJEeKrxsf5nYgbOA" elementId="" contributionURI="bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.handlers.ExitHandler" command="_zREoUKNJEeKrxsf5nYgbOA"/>
   <rootContext xmi:id="_wIZNwJO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_wIZ00JO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_wIZ00ZO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
+  <commands xmi:id="_R-d_MKNJEeKrxsf5nYgbOA" elementId="at.bestsolution.efxclipse.ecp.app.commands.openModelElement" commandName="Open Model Element"/>
+  <commands xmi:id="_zREoUKNJEeKrxsf5nYgbOA" elementId="at.bestsolution.efxclipse.ecp.app.commands.exit" commandName="Exit"/>
   <addons xmi:id="_wIZ00pO_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_wIZ005O_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_wIZ01JO_EeK1DMHyA2N3yA" elementId="at.bestsolution.efxclipse.runtime.bindings.e4.service" contributionURI="bundleclass://at.bestsolution.efxclipse.runtime.bindings.e4/at.bestsolution.efxclipse.runtime.bindings.e4.BindingServiceAddon"/>
