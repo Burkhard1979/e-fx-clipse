@@ -30,13 +30,16 @@ import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 import at.bestsolution.efxclipse.styledtext.TextSelection;
 import at.bestsolution.efxclipse.styledtext.VerifyEvent;
 import at.bestsolution.efxclipse.text.jface.IContentAssistListener;
@@ -132,6 +135,13 @@ public class CompletionProposalPopup implements IContentAssistListener {
 		Node control= contentAssistSubjectControlAdapter.getControl();
 		
 		proposalTable = new ListView<>();
+		proposalTable.setCellFactory(new Callback<ListView<ICompletionProposal>, ListCell<ICompletionProposal>>() {
+			
+			@Override
+			public ListCell<ICompletionProposal> call(ListView<ICompletionProposal> arg0) {
+				return new CompletionCell();
+			}
+		});
 		proposalTableList = FXCollections.observableArrayList();
 		proposalTable.setItems(proposalTableList);
 		proposalStage = new Stage(StageStyle.UNDECORATED);
@@ -875,6 +885,22 @@ public class CompletionProposalPopup implements IContentAssistListener {
 		 */
 		public int getContextInformationPosition() {
 			return -1;
+		}
+	}
+	
+	static class CompletionCell extends ListCell<ICompletionProposal> {
+		@Override
+		protected void updateItem(ICompletionProposal arg0, boolean arg1) {
+			super.updateItem(arg0, arg1);
+			
+			if( arg0 != null && ! arg1 ) {
+				setText(arg0.getDisplayString());
+				setGraphic(new ImageView(arg0.getImage()));
+//				System.err.println(arg0.getDisplayString() + " : " + arg0.getImage());
+			} else {
+				setGraphic(null);
+				setText(null);
+			}
 		}
 	}
 }

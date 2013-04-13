@@ -10,20 +10,20 @@
  *******************************************************************************/
 package at.bestsolution.efxclipse.runtime.demo.contacts.views;
 
-import java.util.List;
-
-import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
-
-import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
-
 import java.io.IOException;
 import java.net.URL;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+
 import javax.inject.Inject;
+
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.MApplication;
+
+import at.bestsolution.efxclipse.runtime.demo.contacts.Contact;
+import at.bestsolution.efxclipse.runtime.demo.contacts.model.ContactsManager;
 
 @SuppressWarnings("restriction")
 public class DetailsView {

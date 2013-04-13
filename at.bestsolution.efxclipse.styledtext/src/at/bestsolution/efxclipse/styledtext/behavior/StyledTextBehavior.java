@@ -20,7 +20,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import at.bestsolution.efxclipse.styledtext.ActionEvent;
 import at.bestsolution.efxclipse.styledtext.StyledTextArea;
+import at.bestsolution.efxclipse.styledtext.ActionEvent.ActionType;
 import at.bestsolution.efxclipse.styledtext.VerifyEvent;
 import at.bestsolution.efxclipse.styledtext.skin.StyledTextSkin.LineCell;
 
@@ -45,6 +47,18 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 		super.callAction(arg0);
 	}
 	
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		super.mousePressed(arg0);
+		getControl().requestFocus();
+	}
+	
+	public boolean invokeAction(ActionType action) {
+		ActionEvent evt = new ActionEvent(getControl(), getControl(), action);
+		Event.fireEvent(getControl(), evt);
+		return evt.isConsumed();
+	}
+	
 	private void keyPressed(KeyEvent event, int currentRowIndex) {
 		VerifyEvent evt = new VerifyEvent(getControl(), getControl(), event);
 		Event.fireEvent(getControl(), evt);
@@ -63,24 +77,38 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 			break;
 		case LEFT:
 		{
-			if( offset == 0 ) {
-				break;
+			if( event.isAltDown() ) {
+				invokeAction(ActionType.WORD_PREVIOUS);
+			} else {
+				if( offset == 0 ) {
+					break;
+				}
+				int newOffset = offset-1;
+				int currentLine = getControl().getContent().getLineAtOffset(offset);
+				int newLine = getControl().getContent().getLineAtOffset(newOffset);
+				getControl().setCaretOffset(newOffset);				
 			}
-			int newOffset = offset-1;
-			int currentLine = getControl().getContent().getLineAtOffset(offset);
-			int newLine = getControl().getContent().getLineAtOffset(newOffset);
-			getControl().setCaretOffset(newOffset);
 			break;
 		}
 		case RIGHT:
 		{
-			if( offset+1 > getControl().getContent().getCharCount() ) {
-				break;
+			if( event.isAltDown() ) {
+				invokeAction(ActionType.WORD_NEXT);
+			} else if(event.isMetaDown())  {
+				int currentLine = getControl().getContent().getLineAtOffset(offset);
+				int lineOffset = getControl().getContent().getOffsetAtLine(currentLine);
+				String lineContent = getControl().getContent().getLine(currentLine);
+				
+				getControl().setCaretOffset(lineOffset + lineContent.length());
+			} else {
+				if( offset+1 > getControl().getContent().getCharCount() ) {
+					break;
+				}
+				int newOffset = offset+1;
+				int currentLine = getControl().getContent().getLineAtOffset(offset);
+				int newLine = getControl().getContent().getLineAtOffset(newOffset);
+				getControl().setCaretOffset(newOffset);				
 			}
-			int newOffset = offset+1;
-			int currentLine = getControl().getContent().getLineAtOffset(offset);
-			int newLine = getControl().getContent().getLineAtOffset(newOffset);
-			getControl().setCaretOffset(newOffset);
 			break;
 		}
 		case UP:
@@ -119,29 +147,56 @@ public class StyledTextBehavior extends BehaviorBase<StyledTextArea> {
 			break;
 		}
 		case ENTER:
-			getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 0, event.getText());
+			int line = getControl().getContent().getLineAtOffset(getControl().getCaretOffset());
+			String lineContent = getControl().getContent().getLine(line);
+			
+			//FIXME Temp hack
+			char[] chars = lineContent.toCharArray();
+			String prefix = "";
+			for( int i = 0; i < chars.length; i++ ) {
+				if( chars[i] == ' ' ) {
+					prefix += " ";	
+				} else {
+					break;
+				}
+			}
+			
+			getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 0, event.getText()+prefix);
 //			listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex()+1);
-			getControl().setCaretOffset(offset+1);
+			getControl().setCaretOffset(offset+1+prefix.length());
 			break;
 		case DELETE:
-			getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 1, "");
-			getControl().setCaretOffset(offset);
+			if( event.isMetaDown() ) {
+				invokeAction(ActionType.DELETE_WORD_NEXT);
+			} else {
+				getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 1, "");
+				getControl().setCaretOffset(offset);				
+			}
 			break;
 		case BACK_SPACE:
-			getControl().getContent().replaceTextRange(getControl().getCaretOffset()-1, 1, "");
-			getControl().setCaretOffset(offset-1);
+			if( event.isMetaDown() ) {
+				invokeAction(ActionType.DELETE_WORD_PREVIOUS);
+			} else {
+				getControl().getContent().replaceTextRange(getControl().getCaretOffset()-1, 1, "");
+				getControl().setCaretOffset(offset-1);	
+			}
 			break;
 		case TAB:
 			event.consume();
 			if( event.isShiftDown() ) {
 				//TODO Remove first 4 white space chars???
 				break;
+			} else {
+				//FIXME Need to should fix this but it currently completely break cursor positioning
+				getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 0, "    ");
+				getControl().setCaretOffset(offset+4);
+				break;
 			}
 		default:
-			if( event.isMetaDown() ) {
+			if( event.isMetaDown() || event.isControlDown() ) {
 				// exclude meta keys
 			} else {
-				System.err.println("ADDING TEXT");
+				
 				if( event.getText().length() > 0 ) {
 					getControl().getContent().replaceTextRange(getControl().getCaretOffset(), 0, event.getText());
 					getControl().setCaretOffset(offset+1);	
