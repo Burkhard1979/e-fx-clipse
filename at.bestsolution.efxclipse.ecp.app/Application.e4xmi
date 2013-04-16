@@ -27,7 +27,9 @@
     <children xmi:id="_wIZ00JO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_wIZ00ZO_EeK1DMHyA2N3yA" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
-  <commands xmi:id="_R-d_MKNJEeKrxsf5nYgbOA" elementId="at.bestsolution.efxclipse.ecp.app.commands.openModelElement" commandName="Open Model Element"/>
+  <commands xmi:id="_R-d_MKNJEeKrxsf5nYgbOA" elementId="at.bestsolution.efxclipse.ecp.app.commands.openModelElement" commandName="Open Model Element">
+    <parameters xmi:id="_XSvEcKNlEeKwjd1bf4rv-A" elementId="at.bestsolution.efxclipse.ecp.app.commandparameter.modelElement" name="Model Element" typeId="theTypeID" optional="false"/>
+  </commands>
   <commands xmi:id="_zREoUKNJEeKrxsf5nYgbOA" elementId="at.bestsolution.efxclipse.ecp.app.commands.exit" commandName="Exit"/>
   <addons xmi:id="_wIZ00pO_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_wIZ005O_EeK1DMHyA2N3yA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>

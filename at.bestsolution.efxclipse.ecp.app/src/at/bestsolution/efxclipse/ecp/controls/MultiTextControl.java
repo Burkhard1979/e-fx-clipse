@@ -41,6 +41,8 @@ public class MultiTextControl extends HBox {
 		getChildren().add(label);
 
 		final EStructuralFeature feature = (EStructuralFeature) propertyDescriptor.getFeature(modelElement);
+		
+		
 
 		ListView<String> listView = new ListView<>();
 		

@@ -21,9 +21,9 @@ import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecp.edit.ECPControlContext;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
@@ -32,21 +32,35 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import at.bestsolution.efxclipse.ecp.controls.FormControlFactory;
+import at.bestsolution.efxclipse.ecp.ui.ModelElementEditor;
 import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyControlContext;
 import at.bestsolution.efxclipse.runtime.ecp.dummy.DummyWorkspace;
 
 @SuppressWarnings("restriction")
-public class ModelEditorPart {
+public class ModelEditorPart implements ModelElementEditor {
+
+	private ScrollPane scrollPane;
+	MPart part;
 
 	@Inject
 	public ModelEditorPart(BorderPane parent, final MApplication application, MPart part) {
-		
+		this.part = part;
 		part.setCloseable(true);
 		
-		FormControlFactory controlFactory = new FormControlFactory();
 
-		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getReferee());
+//		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getPlayer());
+//		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getTournament());
+//		ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getReferee());
 
+
+		scrollPane = new ScrollPane();
+		scrollPane.setFitToWidth(true);
+		
+
+		parent.setCenter(scrollPane);
+	}
+	
+	public void setInput(ECPControlContext modelElementContext) {
 		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
 		EObject modelElement = modelElementContext.getModelElement();
@@ -58,28 +72,22 @@ public class ModelEditorPart {
 			part.setIconURI(((URL) image).toExternalForm());
 		
 		List<IItemPropertyDescriptor> propertyDescriptors = adapterFactoryItemDelegator.getPropertyDescriptors(modelElement);
+		FormControlFactory controlFactory = new FormControlFactory();
 
-		ScrollPane scrollPane = new ScrollPane();
-		scrollPane.setFitToWidth(true);
-		
 		VBox vBox = new VBox();
 		vBox.getStyleClass().add("theForm");
 		
 		vBox.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
+		
 		Button deleteButton = new Button("delete");
 		vBox.getChildren().add(deleteButton);
-
+		
 		for (IItemPropertyDescriptor propertyDescriptor : propertyDescriptors) {
 			Node formControl = controlFactory.createFormControl(propertyDescriptor, modelElementContext);
 			vBox.getChildren().add(formControl);
 		}
 		
 		scrollPane.setContent(vBox);
-
-		parent.setCenter(scrollPane);
 	}
-
-
 
 }
