@@ -5,7 +5,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecp.core.ECPProvider;
 import org.eclipse.emf.ecp.core.ECPProviderRegistry;
-import org.eclipse.emf.ecp.core.util.observer.ECPProvidersChangedObserver;
+import org.eclipse.emf.ecp.core.util.observer.ECPProviderRegistryObserver;
 
 public class DummyProviderRegistry implements ECPProviderRegistry {
 
@@ -38,13 +38,15 @@ public class DummyProviderRegistry implements ECPProviderRegistry {
 	}
 
 	@Override
-	public void addObserver(ECPProvidersChangedObserver changeObserver) {
-		workspace.addProvidersChangedObserver(changeObserver);
+	public void addObserver(ECPProviderRegistryObserver changeObserver) {
+		// TODO fix this
+		// workspace.addProvidersChangedObserver(changeObserver);
 	}
 
 	@Override
-	public void removeObserver(ECPProvidersChangedObserver changeObserver) {
-		workspace.removeProvidersChangedObserver(changeObserver);
+	public void removeObserver(ECPProviderRegistryObserver changeObserver) {
+		// TODO fix this
+		// workspace.removeProvidersChangedObserver(changeObserver);
 	}
 
 }

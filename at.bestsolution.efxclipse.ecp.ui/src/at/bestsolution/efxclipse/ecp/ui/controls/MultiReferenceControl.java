@@ -1,4 +1,4 @@
-package at.bestsolution.efxclipse.ecp.controls;
+package at.bestsolution.efxclipse.ecp.ui.controls;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,26 +27,24 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-public class MultiTextControl extends HBox {
+public class MultiReferenceControl extends HBox {
 
-	public MultiTextControl(IItemPropertyDescriptor propertyDescriptor, ECPControlContext context) {
+	public MultiReferenceControl(IItemPropertyDescriptor propertyDescriptor, ECPControlContext context) {
 		final EObject modelElement = context.getModelElement();
 		final EditingDomain editingDomain = context.getEditingDomain();
 
-		getStyleClass().add("multiTextControl");
+		getStyleClass().add("multiReferenceControl");
 		
 		String displayName = propertyDescriptor.getDisplayName(modelElement);
 		Label label = new Label(displayName);
-		label.setPrefWidth(150);
+		label.getStyleClass().add(IControlConstants.CONTROL_LABEL_CLASS);
 		getChildren().add(label);
 
 		final EStructuralFeature feature = (EStructuralFeature) propertyDescriptor.getFeature(modelElement);
-		
-		
 
-		ListView<String> listView = new ListView<>();
+		ListView<Object> listView = new ListView<>();
 		
-		List<String> values = (List<String>) modelElement.eGet(feature);
+		List<Object> values = (List<Object>) modelElement.eGet(feature);
 		
 		listView.setItems(FXCollections.observableList(values));
 		

@@ -26,7 +26,7 @@ public class ECPModelElementOpenerImpl implements ECPModelElementOpener {
 		 part.setContributionURI("bundleclass://at.bestsolution.efxclipse.ecp.app/at.bestsolution.efxclipse.ecp.ModelEditorPart");
 		
 //		 part.setIconURI("platform:/plugin/de.vogella.rcp.e4.todo/icons/sample.gif");
-//		 part.setCloseable(true);
+		 part.setCloseable(true);
 		
 		 stack.getChildren().add(part);
 		 partService.showPart(part, PartState.ACTIVATE);
@@ -35,7 +35,7 @@ public class ECPModelElementOpenerImpl implements ECPModelElementOpener {
 		
 		 ModelElementEditor editor = (ModelElementEditor) part.getObject();
 		
-		 ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getReferee());
+		 ECPControlContext modelElementContext = new DummyControlContext(DummyWorkspace.INSTANCE.getPlayer());
 		
 		 editor.setInput(modelElementContext);
 	}

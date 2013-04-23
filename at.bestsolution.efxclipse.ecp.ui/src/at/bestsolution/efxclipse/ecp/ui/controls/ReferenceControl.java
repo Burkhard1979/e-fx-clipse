@@ -1,22 +1,14 @@
-package at.bestsolution.efxclipse.ecp.controls;
+package at.bestsolution.efxclipse.ecp.ui.controls;
 
 import java.net.URL;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBuilder;
 import javafx.scene.control.Label;
-import javafx.scene.control.LabelBuilder;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.HBoxBuilder;
 import javafx.scene.layout.Priority;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -25,8 +17,6 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-
-import at.bestsolution.efxclipse.ecp.dialogs.ReferenceSelectionDialog;
 
 public class ReferenceControl extends HBox {
 
@@ -37,7 +27,7 @@ public class ReferenceControl extends HBox {
 
 		String displayName = propertyDescriptor.getDisplayName(modelElement);
 		Label label = new Label(displayName);
-		label.setPrefWidth(150);
+		label.getStyleClass().add(IControlConstants.CONTROL_LABEL_CLASS);
 		getChildren().add(label);
 
 		final EReference feature = (EReference) propertyDescriptor.getFeature(modelElement);
@@ -61,8 +51,8 @@ public class ReferenceControl extends HBox {
 			
 			@Override
 			public void handle(ActionEvent arg0) {
-				ReferenceSelectionDialog referenceSelectionDialog = new ReferenceSelectionDialog(null, null);
-				referenceSelectionDialog.showAndWait();
+//				ReferenceSelectionDialog referenceSelectionDialog = new ReferenceSelectionDialog(null, null);
+//				referenceSelectionDialog.showAndWait();
 				
 //				final Stage dialog = new Stage();
 //			    dialog.initModality(Modality.WINDOW_MODAL);

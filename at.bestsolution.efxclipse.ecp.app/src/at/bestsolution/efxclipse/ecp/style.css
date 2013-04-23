@@ -24,3 +24,7 @@
 .multiAttributeControl .list-view {
 	-fx-pref-height: 80;
 }
+
+.controlLabel {
+	-fx-pref-width: 150;
+}

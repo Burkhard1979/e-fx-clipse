@@ -1,4 +1,4 @@
-package at.bestsolution.efxclipse.ecp.controls;
+package at.bestsolution.efxclipse.ecp.ui.controls;
 
 import javafx.scene.Node;
 

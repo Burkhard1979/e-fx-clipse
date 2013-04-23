@@ -24,6 +24,7 @@ import org.eclipse.emf.ecp.spi.core.util.InternalChildrenList;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+@SuppressWarnings("restriction")
 public class DummyProvider implements InternalProvider {
 
 	DummyWorkspace workspace = DummyWorkspace.INSTANCE;
@@ -63,10 +64,10 @@ public class DummyProvider implements InternalProvider {
 		return false;
 	}
 
-	@Override
-	public boolean hasUnsharedProjectSupport() {
-		return false;
-	}
+//	@Override
+//	public boolean hasUnsharedProjectSupport() {
+//		return false;
+//	}
 
 	@Override
 	public ECPProvider getProvider() {
@@ -100,17 +101,17 @@ public class DummyProvider implements InternalProvider {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void addDisposeListener(DisposeListener listener) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void removeDisposeListener(DisposeListener listener) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -125,7 +126,7 @@ public class DummyProvider implements InternalProvider {
 
 	@Override
 	public void setUIProvider(AdapterProvider uiProvider) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -169,10 +170,10 @@ public class DummyProvider implements InternalProvider {
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
-	public Collection<EPackage> getUnsupportedEPackages(Collection<EPackage> ePackages, InternalRepository repository) {
-		throw new UnsupportedOperationException();
-	}
+//	@Override
+//	public Collection<EPackage> getUnsupportedEPackages(Collection<EPackage> ePackages, InternalRepository repository) {
+//		throw new UnsupportedOperationException();
+//	}
 
 	@Override
 	public Iterator<EObject> getLinkElements(InternalProject project, EObject modelElement, EReference eReference) {
@@ -189,10 +190,10 @@ public class DummyProvider implements InternalProvider {
 		return false;
 	}
 
-	@Override
-	public void delete(InternalProject project, Collection<EObject> eObjects) {
-		throw new UnsupportedOperationException();
-	}
+//	@Override
+//	public void delete(InternalProject project, Collection<EObject> eObjects) {
+//		throw new UnsupportedOperationException();
+//	}
 
 	@Override
 	public void cloneProject(InternalProject projectToClone, InternalProject targetProject) {
@@ -216,6 +217,21 @@ public class DummyProvider implements InternalProvider {
 
 	@Override
 	public boolean contains(InternalProject project, Object object) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean canAddOfflineProjects() {
+		return false;
+	}
+
+	@Override
+	public Set<EPackage> getUnsupportedEPackages(Collection<EPackage> ePackages, InternalRepository repository) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void delete(InternalProject project, Collection<Object> objects) {
 		throw new UnsupportedOperationException();
 	}
 

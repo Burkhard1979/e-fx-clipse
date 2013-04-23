@@ -7,7 +7,7 @@ import org.eclipse.emf.ecp.core.ECPProjectManager;
 import org.eclipse.emf.ecp.core.ECPProvider;
 import org.eclipse.emf.ecp.core.ECPRepository;
 import org.eclipse.emf.ecp.core.util.ECPProperties;
-import org.eclipse.emf.ecp.core.util.observer.ECPProjectsChangedUIObserver;
+import org.eclipse.emf.ecp.core.util.observer.ECPProjectManagerObserver;
 
 public class DummyProjectManager implements ECPProjectManager {
 
@@ -49,12 +49,12 @@ public class DummyProjectManager implements ECPProjectManager {
 	}
 
 	@Override
-	public void addObserver(ECPProjectsChangedUIObserver observer) {
+	public void addObserver(ECPProjectManagerObserver observer) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void removeObserver(ECPProjectsChangedUIObserver observer) {
+	public void removeObserver(ECPProjectManagerObserver observer) {
 		throw new UnsupportedOperationException();
 	}
 

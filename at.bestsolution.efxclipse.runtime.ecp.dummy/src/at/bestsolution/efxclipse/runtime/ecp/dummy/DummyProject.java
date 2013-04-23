@@ -1,15 +1,9 @@
 package at.bestsolution.efxclipse.runtime.ecp.dummy;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecp.core.ECPProject;
 import org.eclipse.emf.ecp.core.ECPProvider;
@@ -115,63 +109,18 @@ public class DummyProject implements ECPProject {
 	}
 
 	@Override
-	public Collection<EPackage> getUnsupportedEPackages() {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public void setVisiblePackages(Set<EPackage> visiblePackages) {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public Set<EPackage> getVisiblePackages() {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public Set<EClass> getVisibleEClasses() {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public void setVisibleEClasses(Set<EClass> visibleEClasses) {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public Iterator<EObject> getReferenceCandidates(EObject eObject, EReference eReference) {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public void saveProperties() {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
 	public void saveModel() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public boolean isModelDirty() {
-		throw new UnsupportedOperationException("Not implemented yet");
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void deleteElements(Collection<EObject> eObjects) {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public boolean isModelRoot(Object object) {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
-	public boolean contains(Object object) {
-		throw new UnsupportedOperationException("Not implemented yet");
+	public void deleteElements(Collection<Object> objects) {
+		throw new UnsupportedOperationException();
 	}
 
 }

@@ -1,7 +1,6 @@
-package at.bestsolution.efxclipse.ecp.controls;
+package at.bestsolution.efxclipse.ecp.ui.controls;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,6 +10,7 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.layout.HBox;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClassifier;
@@ -18,12 +18,14 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecp.edit.Control;
 import org.eclipse.emf.ecp.edit.ECPControlContext;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-public class EnumControl extends HBox {
+@SuppressWarnings("restriction")
+public class EnumControl extends HBox implements Control {
 
 	public EnumControl(IItemPropertyDescriptor propertyDescriptor, ECPControlContext context) {
 		final EObject modelElement = context.getModelElement();
@@ -31,7 +33,7 @@ public class EnumControl extends HBox {
 
 		String displayName = propertyDescriptor.getDisplayName(modelElement);
 		Label label = new Label(displayName);
-		label.setPrefWidth(150);
+		label.getStyleClass().add(IControlConstants.CONTROL_LABEL_CLASS);
 		getChildren().add(label);
 
 		final EStructuralFeature feature = (EStructuralFeature) propertyDescriptor.getFeature(modelElement);
@@ -72,6 +74,27 @@ public class EnumControl extends HBox {
 			}
 
 		});
+	}
+	
+	@Override
+	public void handleValidation(Diagnostic diagnostic) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void resetValidation() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static class Factory implements Control.Factory {
+
+		@Override
+		public Control createControl(IItemPropertyDescriptor itemPropertyDescriptor, ECPControlContext context) {
+			return new EnumControl(itemPropertyDescriptor, context);
+		}
+		
 	}
 
 }
