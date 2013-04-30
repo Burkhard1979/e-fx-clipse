@@ -2,17 +2,14 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.impl;
 
-import at.bestsolution.efxclipse.gefx.scene.Paint;
 import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
 import at.bestsolution.efxclipse.gefx.scene.Shape;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,33 +18,75 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getFill <em>Fill</em>}</li>
- *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getStroke <em>Stroke</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getX <em>X</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getY <em>Y</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getSceneX <em>Scene X</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getSceneY <em>Scene Y</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class ShapeImpl extends NodeImpl implements Shape {
+public abstract class ShapeImpl extends EObjectImpl implements Shape {
 	/**
-	 * The cached value of the '{@link #getFill() <em>Fill</em>}' containment reference.
+	 * The default value of the '{@link #getX() <em>X</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFill()
+	 * @see #getX()
 	 * @generated
 	 * @ordered
 	 */
-	protected Paint fill;
+	protected static final double X_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getStroke() <em>Stroke</em>}' containment reference.
+	 * The cached value of the '{@link #getX() <em>X</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStroke()
+	 * @see #getX()
 	 * @generated
 	 * @ordered
 	 */
-	protected Paint stroke;
+	protected double x = X_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getY() <em>Y</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getY()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double Y_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getY()
+	 * @generated
+	 * @ordered
+	 */
+	protected double y = Y_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSceneX() <em>Scene X</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSceneX()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SCENE_X_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getSceneY() <em>Scene Y</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSceneY()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double SCENE_Y_EDEFAULT = 0.0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,8 +112,8 @@ public abstract class ShapeImpl extends NodeImpl implements Shape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Paint getFill() {
-		return fill;
+	public double getX() {
+		return x;
 	}
 
 	/**
@@ -82,92 +121,70 @@ public abstract class ShapeImpl extends NodeImpl implements Shape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFill(Paint newFill, NotificationChain msgs) {
-		Paint oldFill = fill;
-		fill = newFill;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScenePackage.SHAPE__FILL, oldFill, newFill);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public void setX(double newX) {
+		double oldX = x;
+		x = newX;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ScenePackage.SHAPE__X, oldX, x));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getY() {
+		return y;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setY(double newY) {
+		double oldY = y;
+		y = newY;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ScenePackage.SHAPE__Y, oldY, y));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public double getSceneX() {
+		EObject container = eContainer(); 
+		
+		double sceneX = x;
+		
+		while (container instanceof Shape) {
+			Shape shape = (Shape) eContainer;
+			sceneX += shape.getX();
+			container = shape.eContainer();
 		}
-		return msgs;
+		
+		return sceneX;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void setFill(Paint newFill) {
-		if (newFill != fill) {
-			NotificationChain msgs = null;
-			if (fill != null)
-				msgs = ((InternalEObject)fill).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScenePackage.SHAPE__FILL, null, msgs);
-			if (newFill != null)
-				msgs = ((InternalEObject)newFill).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScenePackage.SHAPE__FILL, null, msgs);
-			msgs = basicSetFill(newFill, msgs);
-			if (msgs != null) msgs.dispatch();
+	public double getSceneY() {
+		EObject container = eContainer(); 
+		
+		double sceneY = y;
+		
+		while (container instanceof Shape) {
+			Shape shape = (Shape) eContainer;
+			sceneY += shape.getY();
+			container = shape.eContainer();
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScenePackage.SHAPE__FILL, newFill, newFill));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Paint getStroke() {
-		return stroke;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStroke(Paint newStroke, NotificationChain msgs) {
-		Paint oldStroke = stroke;
-		stroke = newStroke;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScenePackage.SHAPE__STROKE, oldStroke, newStroke);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStroke(Paint newStroke) {
-		if (newStroke != stroke) {
-			NotificationChain msgs = null;
-			if (stroke != null)
-				msgs = ((InternalEObject)stroke).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScenePackage.SHAPE__STROKE, null, msgs);
-			if (newStroke != null)
-				msgs = ((InternalEObject)newStroke).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScenePackage.SHAPE__STROKE, null, msgs);
-			msgs = basicSetStroke(newStroke, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScenePackage.SHAPE__STROKE, newStroke, newStroke));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ScenePackage.SHAPE__FILL:
-				return basicSetFill(null, msgs);
-			case ScenePackage.SHAPE__STROKE:
-				return basicSetStroke(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		
+		return sceneY;
 	}
 
 	/**
@@ -178,10 +195,14 @@ public abstract class ShapeImpl extends NodeImpl implements Shape {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ScenePackage.SHAPE__FILL:
-				return getFill();
-			case ScenePackage.SHAPE__STROKE:
-				return getStroke();
+			case ScenePackage.SHAPE__X:
+				return getX();
+			case ScenePackage.SHAPE__Y:
+				return getY();
+			case ScenePackage.SHAPE__SCENE_X:
+				return getSceneX();
+			case ScenePackage.SHAPE__SCENE_Y:
+				return getSceneY();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -194,11 +215,11 @@ public abstract class ShapeImpl extends NodeImpl implements Shape {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ScenePackage.SHAPE__FILL:
-				setFill((Paint)newValue);
+			case ScenePackage.SHAPE__X:
+				setX((Double)newValue);
 				return;
-			case ScenePackage.SHAPE__STROKE:
-				setStroke((Paint)newValue);
+			case ScenePackage.SHAPE__Y:
+				setY((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -212,11 +233,11 @@ public abstract class ShapeImpl extends NodeImpl implements Shape {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ScenePackage.SHAPE__FILL:
-				setFill((Paint)null);
+			case ScenePackage.SHAPE__X:
+				setX(X_EDEFAULT);
 				return;
-			case ScenePackage.SHAPE__STROKE:
-				setStroke((Paint)null);
+			case ScenePackage.SHAPE__Y:
+				setY(Y_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -230,12 +251,34 @@ public abstract class ShapeImpl extends NodeImpl implements Shape {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ScenePackage.SHAPE__FILL:
-				return fill != null;
-			case ScenePackage.SHAPE__STROKE:
-				return stroke != null;
+			case ScenePackage.SHAPE__X:
+				return x != X_EDEFAULT;
+			case ScenePackage.SHAPE__Y:
+				return y != Y_EDEFAULT;
+			case ScenePackage.SHAPE__SCENE_X:
+				return getSceneX() != SCENE_X_EDEFAULT;
+			case ScenePackage.SHAPE__SCENE_Y:
+				return getSceneY() != SCENE_Y_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (x: ");
+		result.append(x);
+		result.append(", y: ");
+		result.append(y);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ShapeImpl

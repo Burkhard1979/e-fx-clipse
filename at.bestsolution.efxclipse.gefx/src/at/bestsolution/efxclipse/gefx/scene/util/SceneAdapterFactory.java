@@ -2,7 +2,11 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.util;
 
-import at.bestsolution.efxclipse.gefx.scene.*;
+import at.bestsolution.efxclipse.gefx.scene.Block;
+import at.bestsolution.efxclipse.gefx.scene.Connection;
+import at.bestsolution.efxclipse.gefx.scene.Connector;
+import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
+import at.bestsolution.efxclipse.gefx.scene.Shape;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -72,36 +76,20 @@ public class SceneAdapterFactory extends AdapterFactoryImpl {
 				return createShapeAdapter();
 			}
 			@Override
-			public Adapter caseNode(Node object) {
-				return createNodeAdapter();
+			public Adapter caseSystem(at.bestsolution.efxclipse.gefx.scene.System object) {
+				return createSystemAdapter();
 			}
 			@Override
-			public Adapter caseRectangle(Rectangle object) {
-				return createRectangleAdapter();
+			public Adapter caseBlock(Block object) {
+				return createBlockAdapter();
 			}
 			@Override
-			public Adapter casePaint(Paint object) {
-				return createPaintAdapter();
+			public Adapter caseConnection(Connection object) {
+				return createConnectionAdapter();
 			}
 			@Override
-			public Adapter caseColor(Color object) {
-				return createColorAdapter();
-			}
-			@Override
-			public Adapter caseEllipse(Ellipse object) {
-				return createEllipseAdapter();
-			}
-			@Override
-			public Adapter caseParent(Parent object) {
-				return createParentAdapter();
-			}
-			@Override
-			public Adapter caseGroup(Group object) {
-				return createGroupAdapter();
-			}
-			@Override
-			public Adapter caseScene(Scene object) {
-				return createSceneAdapter();
+			public Adapter caseConnector(Connector object) {
+				return createConnectorAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -138,114 +126,58 @@ public class SceneAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Node <em>Node</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.System <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Node
+	 * @see at.bestsolution.efxclipse.gefx.scene.System
 	 * @generated
 	 */
-	public Adapter createNodeAdapter() {
+	public Adapter createSystemAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Rectangle <em>Rectangle</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Block <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Rectangle
+	 * @see at.bestsolution.efxclipse.gefx.scene.Block
 	 * @generated
 	 */
-	public Adapter createRectangleAdapter() {
+	public Adapter createBlockAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Paint <em>Paint</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Connection <em>Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Paint
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connection
 	 * @generated
 	 */
-	public Adapter createPaintAdapter() {
+	public Adapter createConnectionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Color <em>Color</em>}'.
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Connector <em>Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Color
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connector
 	 * @generated
 	 */
-	public Adapter createColorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Ellipse <em>Ellipse</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Ellipse
-	 * @generated
-	 */
-	public Adapter createEllipseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Parent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Parent
-	 * @generated
-	 */
-	public Adapter createParentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Group <em>Group</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Group
-	 * @generated
-	 */
-	public Adapter createGroupAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.Scene <em>Scene</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Scene
-	 * @generated
-	 */
-	public Adapter createSceneAdapter() {
+	public Adapter createConnectorAdapter() {
 		return null;
 	}
 

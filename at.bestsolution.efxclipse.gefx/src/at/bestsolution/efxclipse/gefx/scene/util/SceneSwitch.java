@@ -2,7 +2,11 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.util;
 
-import at.bestsolution.efxclipse.gefx.scene.*;
+import at.bestsolution.efxclipse.gefx.scene.Block;
+import at.bestsolution.efxclipse.gefx.scene.Connection;
+import at.bestsolution.efxclipse.gefx.scene.Connector;
+import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
+import at.bestsolution.efxclipse.gefx.scene.Shape;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -69,63 +73,32 @@ public class SceneSwitch<T> extends Switch<T> {
 			case ScenePackage.SHAPE: {
 				Shape shape = (Shape)theEObject;
 				T result = caseShape(shape);
-				if (result == null) result = caseNode(shape);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ScenePackage.NODE: {
-				Node node = (Node)theEObject;
-				T result = caseNode(node);
+			case ScenePackage.SYSTEM: {
+				at.bestsolution.efxclipse.gefx.scene.System system = (at.bestsolution.efxclipse.gefx.scene.System)theEObject;
+				T result = caseSystem(system);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ScenePackage.RECTANGLE: {
-				Rectangle rectangle = (Rectangle)theEObject;
-				T result = caseRectangle(rectangle);
-				if (result == null) result = caseShape(rectangle);
-				if (result == null) result = caseNode(rectangle);
+			case ScenePackage.BLOCK: {
+				Block block = (Block)theEObject;
+				T result = caseBlock(block);
+				if (result == null) result = caseShape(block);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ScenePackage.PAINT: {
-				Paint paint = (Paint)theEObject;
-				T result = casePaint(paint);
+			case ScenePackage.CONNECTION: {
+				Connection connection = (Connection)theEObject;
+				T result = caseConnection(connection);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ScenePackage.COLOR: {
-				Color color = (Color)theEObject;
-				T result = caseColor(color);
-				if (result == null) result = casePaint(color);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ScenePackage.ELLIPSE: {
-				Ellipse ellipse = (Ellipse)theEObject;
-				T result = caseEllipse(ellipse);
-				if (result == null) result = caseShape(ellipse);
-				if (result == null) result = caseNode(ellipse);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ScenePackage.PARENT: {
-				Parent parent = (Parent)theEObject;
-				T result = caseParent(parent);
-				if (result == null) result = caseNode(parent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ScenePackage.GROUP: {
-				Group group = (Group)theEObject;
-				T result = caseGroup(group);
-				if (result == null) result = caseParent(group);
-				if (result == null) result = caseNode(group);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ScenePackage.SCENE: {
-				Scene scene = (Scene)theEObject;
-				T result = caseScene(scene);
+			case ScenePackage.CONNECTOR: {
+				Connector connector = (Connector)theEObject;
+				T result = caseConnector(connector);
+				if (result == null) result = caseShape(connector);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -149,122 +122,62 @@ public class SceneSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>System</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>System</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNode(Node object) {
+	public T caseSystem(at.bestsolution.efxclipse.gefx.scene.System object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Rectangle</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Rectangle</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Block</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRectangle(Rectangle object) {
+	public T caseBlock(Block object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Paint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Connection</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Paint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Connection</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePaint(Paint object) {
+	public T caseConnection(Connection object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Color</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Connector</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Color</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Connector</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseColor(Color object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ellipse</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ellipse</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEllipse(Ellipse object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parent</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parent</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseParent(Parent object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Group</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Group</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGroup(Group object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Scene</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Scene</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseScene(Scene object) {
+	public T caseConnector(Connector object) {
 		return null;
 	}
 

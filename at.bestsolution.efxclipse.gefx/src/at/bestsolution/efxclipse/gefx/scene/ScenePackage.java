@@ -56,25 +56,6 @@ public interface ScenePackage extends EPackage {
 	ScenePackage eINSTANCE = at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.NodeImpl <em>Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.NodeImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getNode()
-	 * @generated
-	 */
-	int NODE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl <em>Shape</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -85,68 +66,13 @@ public interface ScenePackage extends EPackage {
 	int SHAPE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Fill</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHAPE__FILL = NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Stroke</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHAPE__STROKE = NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Shape</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHAPE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.RectangleImpl <em>Rectangle</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.RectangleImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getRectangle()
-	 * @generated
-	 */
-	int RECTANGLE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Fill</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECTANGLE__FILL = SHAPE__FILL;
-
-	/**
-	 * The feature id for the '<em><b>Stroke</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECTANGLE__STROKE = SHAPE__STROKE;
-
-	/**
 	 * The feature id for the '<em><b>X</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECTANGLE__X = SHAPE_FEATURE_COUNT + 0;
+	int SHAPE__X = 0;
 
 	/**
 	 * The feature id for the '<em><b>Y</b></em>' attribute.
@@ -155,7 +81,126 @@ public interface ScenePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECTANGLE__Y = SHAPE_FEATURE_COUNT + 1;
+	int SHAPE__Y = 1;
+
+	/**
+	 * The feature id for the '<em><b>Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__SCENE_X = 2;
+
+	/**
+	 * The feature id for the '<em><b>Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__SCENE_Y = 3;
+
+	/**
+	 * The number of structural features of the '<em>Shape</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_FEATURE_COUNT = 4;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl <em>System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getSystem()
+	 * @generated
+	 */
+	int SYSTEM = 1;
+
+	/**
+	 * The feature id for the '<em><b>Connections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__CONNECTIONS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Blocks</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__BLOCKS = 1;
+
+	/**
+	 * The number of structural features of the '<em>System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.BlockImpl <em>Block</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.BlockImpl
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getBlock()
+	 * @generated
+	 */
+	int BLOCK = 2;
+
+	/**
+	 * The feature id for the '<em><b>X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__X = SHAPE__X;
+
+	/**
+	 * The feature id for the '<em><b>Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__Y = SHAPE__Y;
+
+	/**
+	 * The feature id for the '<em><b>Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__SCENE_X = SHAPE__SCENE_X;
+
+	/**
+	 * The feature id for the '<em><b>Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__SCENE_Y = SHAPE__SCENE_Y;
+
+	/**
+	 * The feature id for the '<em><b>Connectors</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__CONNECTORS = SHAPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -164,7 +209,7 @@ public interface ScenePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECTANGLE__WIDTH = SHAPE_FEATURE_COUNT + 2;
+	int BLOCK__WIDTH = SHAPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -173,248 +218,144 @@ public interface ScenePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECTANGLE__HEIGHT = SHAPE_FEATURE_COUNT + 3;
+	int BLOCK__HEIGHT = SHAPE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Rectangle</em>' class.
+	 * The feature id for the '<em><b>System</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECTANGLE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 4;
+	int BLOCK__SYSTEM = SHAPE_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.PaintImpl <em>Paint</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.PaintImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getPaint()
-	 * @generated
-	 */
-	int PAINT = 3;
-
-	/**
-	 * The number of structural features of the '<em>Paint</em>' class.
+	 * The number of structural features of the '<em>Block</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAINT_FEATURE_COUNT = 0;
+	int BLOCK_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ColorImpl <em>Color</em>}' class.
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ConnectionImpl <em>Connection</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ColorImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getColor()
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ConnectionImpl
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getConnection()
 	 * @generated
 	 */
-	int COLOR = 4;
+	int CONNECTION = 3;
 
 	/**
-	 * The feature id for the '<em><b>Red</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLOR__RED = PAINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Green</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLOR__GREEN = PAINT_FEATURE_COUNT + 1;
+	int CONNECTION__START = 0;
 
 	/**
-	 * The feature id for the '<em><b>Blue</b></em>' attribute.
+	 * The feature id for the '<em><b>End</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLOR__BLUE = PAINT_FEATURE_COUNT + 2;
+	int CONNECTION__END = 1;
 
 	/**
-	 * The feature id for the '<em><b>Opacity</b></em>' attribute.
+	 * The feature id for the '<em><b>System</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLOR__OPACITY = PAINT_FEATURE_COUNT + 3;
+	int CONNECTION__SYSTEM = 2;
 
 	/**
-	 * The number of structural features of the '<em>Color</em>' class.
+	 * The number of structural features of the '<em>Connection</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLOR_FEATURE_COUNT = PAINT_FEATURE_COUNT + 4;
+	int CONNECTION_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.EllipseImpl <em>Ellipse</em>}' class.
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ConnectorImpl <em>Connector</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.EllipseImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getEllipse()
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ConnectorImpl
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getConnector()
 	 * @generated
 	 */
-	int ELLIPSE = 5;
+	int CONNECTOR = 4;
 
 	/**
-	 * The feature id for the '<em><b>Fill</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELLIPSE__FILL = SHAPE__FILL;
-
-	/**
-	 * The feature id for the '<em><b>Stroke</b></em>' containment reference.
+	 * The feature id for the '<em><b>X</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELLIPSE__STROKE = SHAPE__STROKE;
+	int CONNECTOR__X = SHAPE__X;
 
 	/**
-	 * The feature id for the '<em><b>Center X</b></em>' attribute.
+	 * The feature id for the '<em><b>Y</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELLIPSE__CENTER_X = SHAPE_FEATURE_COUNT + 0;
+	int CONNECTOR__Y = SHAPE__Y;
 
 	/**
-	 * The feature id for the '<em><b>Center Y</b></em>' attribute.
+	 * The feature id for the '<em><b>Scene X</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELLIPSE__CENTER_Y = SHAPE_FEATURE_COUNT + 1;
+	int CONNECTOR__SCENE_X = SHAPE__SCENE_X;
 
 	/**
-	 * The feature id for the '<em><b>Radius X</b></em>' attribute.
+	 * The feature id for the '<em><b>Scene Y</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELLIPSE__RADIUS_X = SHAPE_FEATURE_COUNT + 2;
+	int CONNECTOR__SCENE_Y = SHAPE__SCENE_Y;
 
 	/**
-	 * The feature id for the '<em><b>Radius Y</b></em>' attribute.
+	 * The feature id for the '<em><b>Block</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELLIPSE__RADIUS_Y = SHAPE_FEATURE_COUNT + 3;
+	int CONNECTOR__BLOCK = SHAPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Ellipse</em>' class.
+	 * The feature id for the '<em><b>Rotation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELLIPSE_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 4;
-
-
-	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ParentImpl <em>Parent</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ParentImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getParent()
-	 * @generated
-	 */
-	int PARENT = 6;
+	int CONNECTOR__ROTATION = SHAPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * The number of structural features of the '<em>Connector</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARENT__CHILDREN = NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Parent</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARENT_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.GroupImpl <em>Group</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.GroupImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getGroup()
-	 * @generated
-	 */
-	int GROUP = 7;
-
-	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUP__CHILDREN = PARENT__CHILDREN;
-
-	/**
-	 * The number of structural features of the '<em>Group</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUP_FEATURE_COUNT = PARENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.SceneImpl <em>Scene</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.SceneImpl
-	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getScene()
-	 * @generated
-	 */
-	int SCENE = 8;
-
-	/**
-	 * The feature id for the '<em><b>Root</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENE__ROOT = 0;
-
-	/**
-	 * The number of structural features of the '<em>Scene</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENE_FEATURE_COUNT = 1;
+	int CONNECTOR_FEATURE_COUNT = SHAPE_FEATURE_COUNT + 2;
 
 
 	/**
@@ -428,260 +369,209 @@ public interface ScenePackage extends EPackage {
 	EClass getShape();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getFill <em>Fill</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Fill</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getFill()
-	 * @see #getShape()
-	 * @generated
-	 */
-	EReference getShape_Fill();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getStroke <em>Stroke</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Stroke</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getStroke()
-	 * @see #getShape()
-	 * @generated
-	 */
-	EReference getShape_Stroke();
-
-	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Node <em>Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Node</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Node
-	 * @generated
-	 */
-	EClass getNode();
-
-	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Rectangle <em>Rectangle</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Rectangle</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Rectangle
-	 * @generated
-	 */
-	EClass getRectangle();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Rectangle#getX <em>X</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Rectangle#getX()
-	 * @see #getRectangle()
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getX()
+	 * @see #getShape()
 	 * @generated
 	 */
-	EAttribute getRectangle_X();
+	EAttribute getShape_X();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Rectangle#getY <em>Y</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Rectangle#getY()
-	 * @see #getRectangle()
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getY()
+	 * @see #getShape()
 	 * @generated
 	 */
-	EAttribute getRectangle_Y();
+	EAttribute getShape_Y();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Rectangle#getWidth <em>Width</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getSceneX <em>Scene X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Scene X</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getSceneX()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EAttribute getShape_SceneX();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getSceneY <em>Scene Y</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Scene Y</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getSceneY()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EAttribute getShape_SceneY();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.System <em>System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>System</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.System
+	 * @generated
+	 */
+	EClass getSystem();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.gefx.scene.System#getConnections <em>Connections</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Connections</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.System#getConnections()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EReference getSystem_Connections();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.gefx.scene.System#getBlocks <em>Blocks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Blocks</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.System#getBlocks()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EReference getSystem_Blocks();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Block <em>Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Block</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Block
+	 * @generated
+	 */
+	EClass getBlock();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.gefx.scene.Block#getConnectors <em>Connectors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Connectors</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Block#getConnectors()
+	 * @see #getBlock()
+	 * @generated
+	 */
+	EReference getBlock_Connectors();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Block#getWidth <em>Width</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Width</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Rectangle#getWidth()
-	 * @see #getRectangle()
+	 * @see at.bestsolution.efxclipse.gefx.scene.Block#getWidth()
+	 * @see #getBlock()
 	 * @generated
 	 */
-	EAttribute getRectangle_Width();
+	EAttribute getBlock_Width();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Rectangle#getHeight <em>Height</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Block#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Rectangle#getHeight()
-	 * @see #getRectangle()
+	 * @see at.bestsolution.efxclipse.gefx.scene.Block#getHeight()
+	 * @see #getBlock()
 	 * @generated
 	 */
-	EAttribute getRectangle_Height();
+	EAttribute getBlock_Height();
 
 	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Paint <em>Paint</em>}'.
+	 * Returns the meta object for the container reference '{@link at.bestsolution.efxclipse.gefx.scene.Block#getSystem <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Paint</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Paint
+	 * @return the meta object for the container reference '<em>System</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Block#getSystem()
+	 * @see #getBlock()
 	 * @generated
 	 */
-	EClass getPaint();
+	EReference getBlock_System();
 
 	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Color <em>Color</em>}'.
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Connection <em>Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Color</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Color
+	 * @return the meta object for class '<em>Connection</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connection
 	 * @generated
 	 */
-	EClass getColor();
+	EClass getConnection();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Color#getRed <em>Red</em>}'.
+	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.gefx.scene.Connection#getStart <em>Start</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Red</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Color#getRed()
-	 * @see #getColor()
+	 * @return the meta object for the reference '<em>Start</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connection#getStart()
+	 * @see #getConnection()
 	 * @generated
 	 */
-	EAttribute getColor_Red();
+	EReference getConnection_Start();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Color#getGreen <em>Green</em>}'.
+	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.gefx.scene.Connection#getEnd <em>End</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Green</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Color#getGreen()
-	 * @see #getColor()
+	 * @return the meta object for the reference '<em>End</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connection#getEnd()
+	 * @see #getConnection()
 	 * @generated
 	 */
-	EAttribute getColor_Green();
+	EReference getConnection_End();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Color#getBlue <em>Blue</em>}'.
+	 * Returns the meta object for the container reference '{@link at.bestsolution.efxclipse.gefx.scene.Connection#getSystem <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Blue</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Color#getBlue()
-	 * @see #getColor()
+	 * @return the meta object for the container reference '<em>System</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connection#getSystem()
+	 * @see #getConnection()
 	 * @generated
 	 */
-	EAttribute getColor_Blue();
+	EReference getConnection_System();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Color#getOpacity <em>Opacity</em>}'.
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Connector <em>Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Opacity</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Color#getOpacity()
-	 * @see #getColor()
+	 * @return the meta object for class '<em>Connector</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connector
 	 * @generated
 	 */
-	EAttribute getColor_Opacity();
+	EClass getConnector();
 
 	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Ellipse <em>Ellipse</em>}'.
+	 * Returns the meta object for the container reference '{@link at.bestsolution.efxclipse.gefx.scene.Connector#getBlock <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Ellipse</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Ellipse
+	 * @return the meta object for the container reference '<em>Block</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connector#getBlock()
+	 * @see #getConnector()
 	 * @generated
 	 */
-	EClass getEllipse();
+	EReference getConnector_Block();
 
 	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Ellipse#getCenterX <em>Center X</em>}'.
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Connector#getRotation <em>Rotation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Center X</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Ellipse#getCenterX()
-	 * @see #getEllipse()
+	 * @return the meta object for the attribute '<em>Rotation</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Connector#getRotation()
+	 * @see #getConnector()
 	 * @generated
 	 */
-	EAttribute getEllipse_CenterX();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Ellipse#getCenterY <em>Center Y</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Center Y</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Ellipse#getCenterY()
-	 * @see #getEllipse()
-	 * @generated
-	 */
-	EAttribute getEllipse_CenterY();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Ellipse#getRadiusX <em>Radius X</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Radius X</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Ellipse#getRadiusX()
-	 * @see #getEllipse()
-	 * @generated
-	 */
-	EAttribute getEllipse_RadiusX();
-
-	/**
-	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Ellipse#getRadiusY <em>Radius Y</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Radius Y</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Ellipse#getRadiusY()
-	 * @see #getEllipse()
-	 * @generated
-	 */
-	EAttribute getEllipse_RadiusY();
-
-	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Parent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parent</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Parent
-	 * @generated
-	 */
-	EClass getParent();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.gefx.scene.Parent#getChildren <em>Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Children</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Parent#getChildren()
-	 * @see #getParent()
-	 * @generated
-	 */
-	EReference getParent_Children();
-
-	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Group <em>Group</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Group</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Group
-	 * @generated
-	 */
-	EClass getGroup();
-
-	/**
-	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Scene <em>Scene</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Scene</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Scene
-	 * @generated
-	 */
-	EClass getScene();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link at.bestsolution.efxclipse.gefx.scene.Scene#getRoot <em>Root</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Root</em>'.
-	 * @see at.bestsolution.efxclipse.gefx.scene.Scene#getRoot()
-	 * @see #getScene()
-	 * @generated
-	 */
-	EReference getScene_Root();
+	EAttribute getConnector_Rotation();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -716,48 +606,12 @@ public interface ScenePackage extends EPackage {
 		EClass SHAPE = eINSTANCE.getShape();
 
 		/**
-		 * The meta object literal for the '<em><b>Fill</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SHAPE__FILL = eINSTANCE.getShape_Fill();
-
-		/**
-		 * The meta object literal for the '<em><b>Stroke</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SHAPE__STROKE = eINSTANCE.getShape_Stroke();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.NodeImpl <em>Node</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.NodeImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getNode()
-		 * @generated
-		 */
-		EClass NODE = eINSTANCE.getNode();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.RectangleImpl <em>Rectangle</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.RectangleImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getRectangle()
-		 * @generated
-		 */
-		EClass RECTANGLE = eINSTANCE.getRectangle();
-
-		/**
 		 * The meta object literal for the '<em><b>X</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RECTANGLE__X = eINSTANCE.getRectangle_X();
+		EAttribute SHAPE__X = eINSTANCE.getShape_X();
 
 		/**
 		 * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
@@ -765,7 +619,67 @@ public interface ScenePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RECTANGLE__Y = eINSTANCE.getRectangle_Y();
+		EAttribute SHAPE__Y = eINSTANCE.getShape_Y();
+
+		/**
+		 * The meta object literal for the '<em><b>Scene X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE__SCENE_X = eINSTANCE.getShape_SceneX();
+
+		/**
+		 * The meta object literal for the '<em><b>Scene Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE__SCENE_Y = eINSTANCE.getShape_SceneY();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl <em>System</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getSystem()
+		 * @generated
+		 */
+		EClass SYSTEM = eINSTANCE.getSystem();
+
+		/**
+		 * The meta object literal for the '<em><b>Connections</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM__CONNECTIONS = eINSTANCE.getSystem_Connections();
+
+		/**
+		 * The meta object literal for the '<em><b>Blocks</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM__BLOCKS = eINSTANCE.getSystem_Blocks();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.BlockImpl <em>Block</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.BlockImpl
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getBlock()
+		 * @generated
+		 */
+		EClass BLOCK = eINSTANCE.getBlock();
+
+		/**
+		 * The meta object literal for the '<em><b>Connectors</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BLOCK__CONNECTORS = eINSTANCE.getBlock_Connectors();
 
 		/**
 		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
@@ -773,7 +687,7 @@ public interface ScenePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RECTANGLE__WIDTH = eINSTANCE.getRectangle_Width();
+		EAttribute BLOCK__WIDTH = eINSTANCE.getBlock_Width();
 
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
@@ -781,147 +695,75 @@ public interface ScenePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RECTANGLE__HEIGHT = eINSTANCE.getRectangle_Height();
+		EAttribute BLOCK__HEIGHT = eINSTANCE.getBlock_Height();
 
 		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.PaintImpl <em>Paint</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.PaintImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getPaint()
-		 * @generated
-		 */
-		EClass PAINT = eINSTANCE.getPaint();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ColorImpl <em>Color</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ColorImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getColor()
-		 * @generated
-		 */
-		EClass COLOR = eINSTANCE.getColor();
-
-		/**
-		 * The meta object literal for the '<em><b>Red</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>System</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COLOR__RED = eINSTANCE.getColor_Red();
+		EReference BLOCK__SYSTEM = eINSTANCE.getBlock_System();
 
 		/**
-		 * The meta object literal for the '<em><b>Green</b></em>' attribute feature.
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ConnectionImpl <em>Connection</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ConnectionImpl
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getConnection()
+		 * @generated
+		 */
+		EClass CONNECTION = eINSTANCE.getConnection();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COLOR__GREEN = eINSTANCE.getColor_Green();
+		EReference CONNECTION__START = eINSTANCE.getConnection_Start();
 
 		/**
-		 * The meta object literal for the '<em><b>Blue</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>End</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COLOR__BLUE = eINSTANCE.getColor_Blue();
+		EReference CONNECTION__END = eINSTANCE.getConnection_End();
 
 		/**
-		 * The meta object literal for the '<em><b>Opacity</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>System</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COLOR__OPACITY = eINSTANCE.getColor_Opacity();
+		EReference CONNECTION__SYSTEM = eINSTANCE.getConnection_System();
 
 		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.EllipseImpl <em>Ellipse</em>}' class.
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ConnectorImpl <em>Connector</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.EllipseImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getEllipse()
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ConnectorImpl
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getConnector()
 		 * @generated
 		 */
-		EClass ELLIPSE = eINSTANCE.getEllipse();
+		EClass CONNECTOR = eINSTANCE.getConnector();
 
 		/**
-		 * The meta object literal for the '<em><b>Center X</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELLIPSE__CENTER_X = eINSTANCE.getEllipse_CenterX();
-
-		/**
-		 * The meta object literal for the '<em><b>Center Y</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Block</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELLIPSE__CENTER_Y = eINSTANCE.getEllipse_CenterY();
+		EReference CONNECTOR__BLOCK = eINSTANCE.getConnector_Block();
 
 		/**
-		 * The meta object literal for the '<em><b>Radius X</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Rotation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELLIPSE__RADIUS_X = eINSTANCE.getEllipse_RadiusX();
-
-		/**
-		 * The meta object literal for the '<em><b>Radius Y</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELLIPSE__RADIUS_Y = eINSTANCE.getEllipse_RadiusY();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.ParentImpl <em>Parent</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ParentImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getParent()
-		 * @generated
-		 */
-		EClass PARENT = eINSTANCE.getParent();
-
-		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARENT__CHILDREN = eINSTANCE.getParent_Children();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.GroupImpl <em>Group</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.GroupImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getGroup()
-		 * @generated
-		 */
-		EClass GROUP = eINSTANCE.getGroup();
-
-		/**
-		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.SceneImpl <em>Scene</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.SceneImpl
-		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getScene()
-		 * @generated
-		 */
-		EClass SCENE = eINSTANCE.getScene();
-
-		/**
-		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SCENE__ROOT = eINSTANCE.getScene_Root();
+		EAttribute CONNECTOR__ROTATION = eINSTANCE.getConnector_Rotation();
 
 	}
 

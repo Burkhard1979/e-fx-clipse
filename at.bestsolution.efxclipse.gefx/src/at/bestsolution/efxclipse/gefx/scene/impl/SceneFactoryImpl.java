@@ -2,7 +2,11 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.impl;
 
-import at.bestsolution.efxclipse.gefx.scene.*;
+import at.bestsolution.efxclipse.gefx.scene.Block;
+import at.bestsolution.efxclipse.gefx.scene.Connection;
+import at.bestsolution.efxclipse.gefx.scene.Connector;
+import at.bestsolution.efxclipse.gefx.scene.SceneFactory;
+import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -27,7 +31,7 @@ public class SceneFactoryImpl extends EFactoryImpl implements SceneFactory {
 	 */
 	public static SceneFactory init() {
 		try {
-			SceneFactory theSceneFactory = (SceneFactory)EPackage.Registry.INSTANCE.getEFactory("http://bestsolution.at/GEFX/Scene/1.0"); 
+			SceneFactory theSceneFactory = (SceneFactory)EPackage.Registry.INSTANCE.getEFactory(ScenePackage.eNS_URI);
 			if (theSceneFactory != null) {
 				return theSceneFactory;
 			}
@@ -56,11 +60,10 @@ public class SceneFactoryImpl extends EFactoryImpl implements SceneFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ScenePackage.RECTANGLE: return createRectangle();
-			case ScenePackage.COLOR: return createColor();
-			case ScenePackage.ELLIPSE: return createEllipse();
-			case ScenePackage.GROUP: return createGroup();
-			case ScenePackage.SCENE: return createScene();
+			case ScenePackage.SYSTEM: return createSystem();
+			case ScenePackage.BLOCK: return createBlock();
+			case ScenePackage.CONNECTION: return createConnection();
+			case ScenePackage.CONNECTOR: return createConnector();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -71,9 +74,9 @@ public class SceneFactoryImpl extends EFactoryImpl implements SceneFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Rectangle createRectangle() {
-		RectangleImpl rectangle = new RectangleImpl();
-		return rectangle;
+	public at.bestsolution.efxclipse.gefx.scene.System createSystem() {
+		SystemImpl system = new SystemImpl();
+		return system;
 	}
 
 	/**
@@ -81,9 +84,9 @@ public class SceneFactoryImpl extends EFactoryImpl implements SceneFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Color createColor() {
-		ColorImpl color = new ColorImpl();
-		return color;
+	public Block createBlock() {
+		BlockImpl block = new BlockImpl();
+		return block;
 	}
 
 	/**
@@ -91,9 +94,9 @@ public class SceneFactoryImpl extends EFactoryImpl implements SceneFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Ellipse createEllipse() {
-		EllipseImpl ellipse = new EllipseImpl();
-		return ellipse;
+	public Connection createConnection() {
+		ConnectionImpl connection = new ConnectionImpl();
+		return connection;
 	}
 
 	/**
@@ -101,19 +104,9 @@ public class SceneFactoryImpl extends EFactoryImpl implements SceneFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Group createGroup() {
-		GroupImpl group = new GroupImpl();
-		return group;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Scene createScene() {
-		SceneImpl scene = new SceneImpl();
-		return scene;
+	public Connector createConnector() {
+		ConnectorImpl connector = new ConnectorImpl();
+		return connector;
 	}
 
 	/**

@@ -2,14 +2,9 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.impl;
 
-import at.bestsolution.efxclipse.gefx.scene.Color;
-import at.bestsolution.efxclipse.gefx.scene.Ellipse;
-import at.bestsolution.efxclipse.gefx.scene.Group;
-import at.bestsolution.efxclipse.gefx.scene.Node;
-import at.bestsolution.efxclipse.gefx.scene.Paint;
-import at.bestsolution.efxclipse.gefx.scene.Parent;
-import at.bestsolution.efxclipse.gefx.scene.Rectangle;
-import at.bestsolution.efxclipse.gefx.scene.Scene;
+import at.bestsolution.efxclipse.gefx.scene.Block;
+import at.bestsolution.efxclipse.gefx.scene.Connection;
+import at.bestsolution.efxclipse.gefx.scene.Connector;
 import at.bestsolution.efxclipse.gefx.scene.SceneFactory;
 import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
 import at.bestsolution.efxclipse.gefx.scene.Shape;
@@ -40,56 +35,28 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass nodeEClass = null;
+	private EClass systemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass rectangleEClass = null;
+	private EClass blockEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass paintEClass = null;
+	private EClass connectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass colorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass ellipseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass parentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass groupEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass sceneEClass = null;
+	private EClass connectorEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -166,8 +133,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getShape_Fill() {
-		return (EReference)shapeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getShape_X() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -175,8 +142,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getShape_Stroke() {
-		return (EReference)shapeEClass.getEStructuralFeatures().get(1);
+	public EAttribute getShape_Y() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -184,8 +151,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getNode() {
-		return nodeEClass;
+	public EAttribute getShape_SceneX() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -193,8 +160,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRectangle() {
-		return rectangleEClass;
+	public EAttribute getShape_SceneY() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -202,8 +169,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRectangle_X() {
-		return (EAttribute)rectangleEClass.getEStructuralFeatures().get(0);
+	public EClass getSystem() {
+		return systemEClass;
 	}
 
 	/**
@@ -211,8 +178,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRectangle_Y() {
-		return (EAttribute)rectangleEClass.getEStructuralFeatures().get(1);
+	public EReference getSystem_Connections() {
+		return (EReference)systemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -220,8 +187,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRectangle_Width() {
-		return (EAttribute)rectangleEClass.getEStructuralFeatures().get(2);
+	public EReference getSystem_Blocks() {
+		return (EReference)systemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -229,8 +196,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRectangle_Height() {
-		return (EAttribute)rectangleEClass.getEStructuralFeatures().get(3);
+	public EClass getBlock() {
+		return blockEClass;
 	}
 
 	/**
@@ -238,8 +205,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPaint() {
-		return paintEClass;
+	public EReference getBlock_Connectors() {
+		return (EReference)blockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -247,8 +214,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getColor() {
-		return colorEClass;
+	public EAttribute getBlock_Width() {
+		return (EAttribute)blockEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -256,8 +223,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getColor_Red() {
-		return (EAttribute)colorEClass.getEStructuralFeatures().get(0);
+	public EAttribute getBlock_Height() {
+		return (EAttribute)blockEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -265,8 +232,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getColor_Green() {
-		return (EAttribute)colorEClass.getEStructuralFeatures().get(1);
+	public EReference getBlock_System() {
+		return (EReference)blockEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -274,8 +241,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getColor_Blue() {
-		return (EAttribute)colorEClass.getEStructuralFeatures().get(2);
+	public EClass getConnection() {
+		return connectionEClass;
 	}
 
 	/**
@@ -283,8 +250,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getColor_Opacity() {
-		return (EAttribute)colorEClass.getEStructuralFeatures().get(3);
+	public EReference getConnection_Start() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -292,8 +259,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEllipse() {
-		return ellipseEClass;
+	public EReference getConnection_End() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -301,8 +268,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEllipse_CenterX() {
-		return (EAttribute)ellipseEClass.getEStructuralFeatures().get(0);
+	public EReference getConnection_System() {
+		return (EReference)connectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -310,8 +277,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEllipse_CenterY() {
-		return (EAttribute)ellipseEClass.getEStructuralFeatures().get(1);
+	public EClass getConnector() {
+		return connectorEClass;
 	}
 
 	/**
@@ -319,8 +286,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEllipse_RadiusX() {
-		return (EAttribute)ellipseEClass.getEStructuralFeatures().get(2);
+	public EReference getConnector_Block() {
+		return (EReference)connectorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -328,53 +295,8 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEllipse_RadiusY() {
-		return (EAttribute)ellipseEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getParent() {
-		return parentEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getParent_Children() {
-		return (EReference)parentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getGroup() {
-		return groupEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getScene() {
-		return sceneEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getScene_Root() {
-		return (EReference)sceneEClass.getEStructuralFeatures().get(0);
+	public EAttribute getConnector_Rotation() {
+		return (EAttribute)connectorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -406,38 +328,29 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 
 		// Create classes and their features
 		shapeEClass = createEClass(SHAPE);
-		createEReference(shapeEClass, SHAPE__FILL);
-		createEReference(shapeEClass, SHAPE__STROKE);
+		createEAttribute(shapeEClass, SHAPE__X);
+		createEAttribute(shapeEClass, SHAPE__Y);
+		createEAttribute(shapeEClass, SHAPE__SCENE_X);
+		createEAttribute(shapeEClass, SHAPE__SCENE_Y);
 
-		nodeEClass = createEClass(NODE);
+		systemEClass = createEClass(SYSTEM);
+		createEReference(systemEClass, SYSTEM__CONNECTIONS);
+		createEReference(systemEClass, SYSTEM__BLOCKS);
 
-		rectangleEClass = createEClass(RECTANGLE);
-		createEAttribute(rectangleEClass, RECTANGLE__X);
-		createEAttribute(rectangleEClass, RECTANGLE__Y);
-		createEAttribute(rectangleEClass, RECTANGLE__WIDTH);
-		createEAttribute(rectangleEClass, RECTANGLE__HEIGHT);
+		blockEClass = createEClass(BLOCK);
+		createEReference(blockEClass, BLOCK__CONNECTORS);
+		createEAttribute(blockEClass, BLOCK__WIDTH);
+		createEAttribute(blockEClass, BLOCK__HEIGHT);
+		createEReference(blockEClass, BLOCK__SYSTEM);
 
-		paintEClass = createEClass(PAINT);
+		connectionEClass = createEClass(CONNECTION);
+		createEReference(connectionEClass, CONNECTION__START);
+		createEReference(connectionEClass, CONNECTION__END);
+		createEReference(connectionEClass, CONNECTION__SYSTEM);
 
-		colorEClass = createEClass(COLOR);
-		createEAttribute(colorEClass, COLOR__RED);
-		createEAttribute(colorEClass, COLOR__GREEN);
-		createEAttribute(colorEClass, COLOR__BLUE);
-		createEAttribute(colorEClass, COLOR__OPACITY);
-
-		ellipseEClass = createEClass(ELLIPSE);
-		createEAttribute(ellipseEClass, ELLIPSE__CENTER_X);
-		createEAttribute(ellipseEClass, ELLIPSE__CENTER_Y);
-		createEAttribute(ellipseEClass, ELLIPSE__RADIUS_X);
-		createEAttribute(ellipseEClass, ELLIPSE__RADIUS_Y);
-
-		parentEClass = createEClass(PARENT);
-		createEReference(parentEClass, PARENT__CHILDREN);
-
-		groupEClass = createEClass(GROUP);
-
-		sceneEClass = createEClass(SCENE);
-		createEReference(sceneEClass, SCENE__ROOT);
+		connectorEClass = createEClass(CONNECTOR);
+		createEReference(connectorEClass, CONNECTOR__BLOCK);
+		createEAttribute(connectorEClass, CONNECTOR__ROTATION);
 	}
 
 	/**
@@ -468,47 +381,34 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		shapeEClass.getESuperTypes().add(this.getNode());
-		rectangleEClass.getESuperTypes().add(this.getShape());
-		colorEClass.getESuperTypes().add(this.getPaint());
-		ellipseEClass.getESuperTypes().add(this.getShape());
-		parentEClass.getESuperTypes().add(this.getNode());
-		groupEClass.getESuperTypes().add(this.getParent());
+		blockEClass.getESuperTypes().add(this.getShape());
+		connectorEClass.getESuperTypes().add(this.getShape());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(shapeEClass, Shape.class, "Shape", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getShape_Fill(), this.getPaint(), null, "fill", null, 1, 1, Shape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getShape_Stroke(), this.getPaint(), null, "stroke", null, 1, 1, Shape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_X(), ecorePackage.getEDouble(), "x", null, 1, 1, Shape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_Y(), ecorePackage.getEDouble(), "y", null, 1, 1, Shape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_SceneX(), ecorePackage.getEDouble(), "sceneX", "0", 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_SceneY(), ecorePackage.getEDouble(), "sceneY", "0", 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(nodeEClass, Node.class, "Node", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(systemEClass, at.bestsolution.efxclipse.gefx.scene.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSystem_Connections(), this.getConnection(), this.getConnection_System(), "connections", null, 0, -1, at.bestsolution.efxclipse.gefx.scene.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_Blocks(), this.getBlock(), this.getBlock_System(), "blocks", null, 0, -1, at.bestsolution.efxclipse.gefx.scene.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(rectangleEClass, Rectangle.class, "Rectangle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRectangle_X(), ecorePackage.getEDouble(), "x", null, 1, 1, Rectangle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRectangle_Y(), ecorePackage.getEDouble(), "y", null, 1, 1, Rectangle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRectangle_Width(), ecorePackage.getEDouble(), "width", null, 1, 1, Rectangle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRectangle_Height(), ecorePackage.getEDouble(), "height", null, 1, 1, Rectangle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBlock_Connectors(), this.getConnector(), this.getConnector_Block(), "connectors", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlock_Width(), ecorePackage.getEDouble(), "width", null, 1, 1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBlock_Height(), ecorePackage.getEDouble(), "height", null, 1, 1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlock_System(), this.getSystem(), this.getSystem_Blocks(), "system", null, 0, 1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(paintEClass, Paint.class, "Paint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConnection_Start(), this.getConnector(), null, "start", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_End(), this.getConnector(), null, "end", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnection_System(), this.getSystem(), this.getSystem_Connections(), "system", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getColor_Red(), ecorePackage.getEDouble(), "red", null, 1, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getColor_Green(), ecorePackage.getEDouble(), "green", null, 1, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getColor_Blue(), ecorePackage.getEDouble(), "blue", null, 1, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getColor_Opacity(), ecorePackage.getEDouble(), "opacity", null, 1, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(ellipseEClass, Ellipse.class, "Ellipse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEllipse_CenterX(), ecorePackage.getEDouble(), "centerX", null, 1, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEllipse_CenterY(), ecorePackage.getEDouble(), "centerY", null, 1, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEllipse_RadiusX(), ecorePackage.getEDouble(), "radiusX", null, 1, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEllipse_RadiusY(), ecorePackage.getEDouble(), "radiusY", null, 1, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(parentEClass, Parent.class, "Parent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParent_Children(), this.getNode(), null, "children", null, 0, -1, Parent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(sceneEClass, Scene.class, "Scene", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScene_Root(), this.getParent(), null, "root", null, 1, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(connectorEClass, Connector.class, "Connector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConnector_Block(), this.getBlock(), this.getBlock_Connectors(), "block", null, 0, 1, Connector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConnector_Rotation(), ecorePackage.getEDouble(), "rotation", null, 1, 1, Connector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

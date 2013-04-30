@@ -22,49 +22,40 @@ public interface SceneFactory extends EFactory {
 	SceneFactory eINSTANCE = at.bestsolution.efxclipse.gefx.scene.impl.SceneFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Rectangle</em>'.
+	 * Returns a new object of class '<em>System</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Rectangle</em>'.
+	 * @return a new object of class '<em>System</em>'.
 	 * @generated
 	 */
-	Rectangle createRectangle();
+	System createSystem();
 
 	/**
-	 * Returns a new object of class '<em>Color</em>'.
+	 * Returns a new object of class '<em>Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Color</em>'.
+	 * @return a new object of class '<em>Block</em>'.
 	 * @generated
 	 */
-	Color createColor();
+	Block createBlock();
 
 	/**
-	 * Returns a new object of class '<em>Ellipse</em>'.
+	 * Returns a new object of class '<em>Connection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Ellipse</em>'.
+	 * @return a new object of class '<em>Connection</em>'.
 	 * @generated
 	 */
-	Ellipse createEllipse();
+	Connection createConnection();
 
 	/**
-	 * Returns a new object of class '<em>Group</em>'.
+	 * Returns a new object of class '<em>Connector</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Group</em>'.
+	 * @return a new object of class '<em>Connector</em>'.
 	 * @generated
 	 */
-	Group createGroup();
-
-	/**
-	 * Returns a new object of class '<em>Scene</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scene</em>'.
-	 * @generated
-	 */
-	Scene createScene();
+	Connector createConnector();
 
 	/**
 	 * Returns the package supported by this factory.
