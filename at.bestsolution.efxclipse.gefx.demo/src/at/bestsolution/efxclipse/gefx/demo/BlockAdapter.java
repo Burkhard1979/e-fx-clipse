@@ -6,6 +6,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,11 +32,28 @@ public class BlockAdapter {
 		pane.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
 		rectangle = new Rectangle();
-		rectangle.setFill(Color.BISQUE);
+		rectangle.getStyleClass().add("block");
+		// object bounding box relative (proportional = true)
+		Stop[] stops = new Stop[] { new Stop(0, Color.web("#F8FFE8")), new Stop(1, Color.web("#B7DF2D"))};
+		LinearGradient lg1 = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, stops);
+		rectangle.setFill(lg1);
+//		rectangle.setFill(Color.BISQUE);
+		rectangle.setStroke(Color.BLACK);
 		pane.getChildren().add(rectangle);
+		rectangle.setStrokeWidth(1);
+		rectangle.setArcHeight(15);
+		rectangle.setArcWidth(15);
 		
 		new ResizeHandle(block, pane, Position.North);
+		new ResizeHandle(block, pane, Position.NorthEast);
 		new ResizeHandle(block, pane, Position.East);
+		new ResizeHandle(block, pane, Position.SouthEast);
+		new ResizeHandle(block, pane, Position.South);
+		new ResizeHandle(block, pane, Position.SouthWest);
+		new ResizeHandle(block, pane, Position.West);
+		new ResizeHandle(block, pane, Position.NorthWest);
+		
+//		ResizeHandle2 resizeHandle2 = new ResizeHandle2(block, pane, Position.West);
 		
 //		rightResizeHandle = new Rectangle(7, 7);
 //		rightResizeHandle.setFill(Color.BLUEVIOLET);
@@ -84,39 +104,6 @@ public class BlockAdapter {
 
 		});
 		
-//		rightResizeHandle.setOnMousePressed(new EventHandler<MouseEvent>() {
-//
-//			@Override
-//			public void handle(MouseEvent event) {
-//				resizeDrag = new ResizeDrag();
-//				resizeDrag.width = block.getWidth();
-//				resizeDrag.x = event.getSceneX();
-//				resizeDrag.blockX = block.getX();
-//			}
-//
-//		});
-//		
-//		rightResizeHandle.setOnMouseDragged(new EventHandler<MouseEvent>() {
-//
-//			@Override
-//			public void handle(MouseEvent event) {
-//				if (resizeDrag != null) {
-//					double delta = event.getSceneX() - resizeDrag.x;
-//					block.setX(resizeDrag.blockX + delta / 2);
-//					block.setWidth(resizeDrag.width + delta);
-//				}
-//			}
-//			
-//		});
-//
-//		rightResizeHandle.setOnMouseReleased(new EventHandler<MouseEvent>() {
-//
-//			@Override
-//			public void handle(MouseEvent event) {
-//				resizeDrag = null;
-//			}
-//
-//		});
 	}
 
 	void update() {
@@ -127,9 +114,6 @@ public class BlockAdapter {
 		rectangle.setLayoutY(-block.getHeight() / 2);
 		rectangle.setWidth(block.getWidth());
 		rectangle.setHeight(block.getHeight());
-		
-//		rightResizeHandle.setLayoutX(block.getWidth() / 2 - 3);
-//		rightResizeHandle.setLayoutY(0 - 3);
 	}
 
 	public Block getBlock() {

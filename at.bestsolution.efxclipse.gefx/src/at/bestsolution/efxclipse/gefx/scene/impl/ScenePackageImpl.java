@@ -2,19 +2,20 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.impl;
 
-import at.bestsolution.efxclipse.gefx.scene.Block;
-import at.bestsolution.efxclipse.gefx.scene.Connection;
-import at.bestsolution.efxclipse.gefx.scene.Connector;
-import at.bestsolution.efxclipse.gefx.scene.SceneFactory;
-import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
-import at.bestsolution.efxclipse.gefx.scene.Shape;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import at.bestsolution.efxclipse.gefx.scene.Block;
+import at.bestsolution.efxclipse.gefx.scene.Connection;
+import at.bestsolution.efxclipse.gefx.scene.Connector;
+import at.bestsolution.efxclipse.gefx.scene.LinePoint;
+import at.bestsolution.efxclipse.gefx.scene.SceneFactory;
+import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
+import at.bestsolution.efxclipse.gefx.scene.Shape;
+import at.bestsolution.efxclipse.gefx.scene.StraightLine;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,6 +58,20 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * @generated
 	 */
 	private EClass connectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linePointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass straightLineEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -196,6 +211,15 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSystem_Lines() {
+		return (EReference)systemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBlock() {
 		return blockEClass;
 	}
@@ -304,6 +328,51 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLinePoint() {
+		return linePointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLinePoint_X() {
+		return (EAttribute)linePointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLinePoint_Y() {
+		return (EAttribute)linePointEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStraightLine() {
+		return straightLineEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStraightLine_Points() {
+		return (EReference)straightLineEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SceneFactory getSceneFactory() {
 		return (SceneFactory)getEFactoryInstance();
 	}
@@ -336,6 +405,7 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__CONNECTIONS);
 		createEReference(systemEClass, SYSTEM__BLOCKS);
+		createEReference(systemEClass, SYSTEM__LINES);
 
 		blockEClass = createEClass(BLOCK);
 		createEReference(blockEClass, BLOCK__CONNECTORS);
@@ -351,6 +421,13 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		connectorEClass = createEClass(CONNECTOR);
 		createEReference(connectorEClass, CONNECTOR__BLOCK);
 		createEAttribute(connectorEClass, CONNECTOR__ROTATION);
+
+		linePointEClass = createEClass(LINE_POINT);
+		createEAttribute(linePointEClass, LINE_POINT__X);
+		createEAttribute(linePointEClass, LINE_POINT__Y);
+
+		straightLineEClass = createEClass(STRAIGHT_LINE);
+		createEReference(straightLineEClass, STRAIGHT_LINE__POINTS);
 	}
 
 	/**
@@ -394,6 +471,7 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		initEClass(systemEClass, at.bestsolution.efxclipse.gefx.scene.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Connections(), this.getConnection(), this.getConnection_System(), "connections", null, 0, -1, at.bestsolution.efxclipse.gefx.scene.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_Blocks(), this.getBlock(), this.getBlock_System(), "blocks", null, 0, -1, at.bestsolution.efxclipse.gefx.scene.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_Lines(), this.getStraightLine(), null, "lines", null, 0, -1, at.bestsolution.efxclipse.gefx.scene.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBlock_Connectors(), this.getConnector(), this.getConnector_Block(), "connectors", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -409,6 +487,13 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		initEClass(connectorEClass, Connector.class, "Connector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConnector_Block(), this.getBlock(), this.getBlock_Connectors(), "block", null, 0, 1, Connector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnector_Rotation(), ecorePackage.getEDouble(), "rotation", null, 1, 1, Connector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linePointEClass, LinePoint.class, "LinePoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLinePoint_X(), ecorePackage.getEDouble(), "x", null, 1, 1, LinePoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinePoint_Y(), ecorePackage.getEDouble(), "y", null, 1, 1, LinePoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(straightLineEClass, StraightLine.class, "StraightLine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStraightLine_Points(), this.getLinePoint(), null, "points", null, 2, -1, StraightLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

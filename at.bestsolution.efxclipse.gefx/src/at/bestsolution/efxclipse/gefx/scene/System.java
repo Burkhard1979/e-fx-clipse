@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.System#getConnections <em>Connections</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.System#getBlocks <em>Blocks</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.System#getLines <em>Lines</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,5 +60,21 @@ public interface System extends EObject {
 	 * @generated
 	 */
 	EList<Block> getBlocks();
+
+	/**
+	 * Returns the value of the '<em><b>Lines</b></em>' containment reference list.
+	 * The list contents are of type {@link at.bestsolution.efxclipse.gefx.scene.StraightLine}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Lines</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Lines</em>' containment reference list.
+	 * @see at.bestsolution.efxclipse.gefx.scene.ScenePackage#getSystem_Lines()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<StraightLine> getLines();
 
 } // System

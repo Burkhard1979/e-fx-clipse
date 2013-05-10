@@ -166,7 +166,7 @@ public class BlockImpl extends ShapeImpl implements Block {
 	 */
 	public at.bestsolution.efxclipse.gefx.scene.System getSystem() {
 		if (eContainerFeatureID() != ScenePackage.BLOCK__SYSTEM) return null;
-		return (at.bestsolution.efxclipse.gefx.scene.System)eInternalContainer();
+		return (at.bestsolution.efxclipse.gefx.scene.System)eContainer();
 	}
 
 	/**

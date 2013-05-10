@@ -154,7 +154,7 @@ public class ConnectionImpl extends EObjectImpl implements Connection {
 	 */
 	public at.bestsolution.efxclipse.gefx.scene.System getSystem() {
 		if (eContainerFeatureID() != ScenePackage.CONNECTION__SYSTEM) return null;
-		return (at.bestsolution.efxclipse.gefx.scene.System)eInternalContainer();
+		return (at.bestsolution.efxclipse.gefx.scene.System)eContainer();
 	}
 
 	/**

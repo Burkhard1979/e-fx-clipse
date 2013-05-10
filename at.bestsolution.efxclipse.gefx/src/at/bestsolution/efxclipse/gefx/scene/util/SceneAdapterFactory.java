@@ -2,18 +2,18 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.util;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+import org.eclipse.emf.ecore.EObject;
+
 import at.bestsolution.efxclipse.gefx.scene.Block;
 import at.bestsolution.efxclipse.gefx.scene.Connection;
 import at.bestsolution.efxclipse.gefx.scene.Connector;
+import at.bestsolution.efxclipse.gefx.scene.LinePoint;
 import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
 import at.bestsolution.efxclipse.gefx.scene.Shape;
-
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notifier;
-
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
-import org.eclipse.emf.ecore.EObject;
+import at.bestsolution.efxclipse.gefx.scene.StraightLine;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,6 +90,14 @@ public class SceneAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseConnector(Connector object) {
 				return createConnectorAdapter();
+			}
+			@Override
+			public Adapter caseLinePoint(LinePoint object) {
+				return createLinePointAdapter();
+			}
+			@Override
+			public Adapter caseStraightLine(StraightLine object) {
+				return createStraightLineAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -178,6 +186,34 @@ public class SceneAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.LinePoint <em>Line Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.gefx.scene.LinePoint
+	 * @generated
+	 */
+	public Adapter createLinePointAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link at.bestsolution.efxclipse.gefx.scene.StraightLine <em>Straight Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see at.bestsolution.efxclipse.gefx.scene.StraightLine
+	 * @generated
+	 */
+	public Adapter createStraightLineAdapter() {
 		return null;
 	}
 

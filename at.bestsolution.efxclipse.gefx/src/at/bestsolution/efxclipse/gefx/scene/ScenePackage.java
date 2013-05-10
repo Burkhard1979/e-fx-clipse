@@ -139,13 +139,22 @@ public interface ScenePackage extends EPackage {
 	int SYSTEM__BLOCKS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Lines</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__LINES = 2;
+
+	/**
 	 * The number of structural features of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = 2;
+	int SYSTEM_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.BlockImpl <em>Block</em>}' class.
@@ -359,6 +368,71 @@ public interface ScenePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.LinePointImpl <em>Line Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.LinePointImpl
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getLinePoint()
+	 * @generated
+	 */
+	int LINE_POINT = 5;
+
+	/**
+	 * The feature id for the '<em><b>X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_POINT__X = 0;
+
+	/**
+	 * The feature id for the '<em><b>Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_POINT__Y = 1;
+
+	/**
+	 * The number of structural features of the '<em>Line Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_POINT_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.StraightLineImpl <em>Straight Line</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.StraightLineImpl
+	 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getStraightLine()
+	 * @generated
+	 */
+	int STRAIGHT_LINE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Points</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRAIGHT_LINE__POINTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Straight Line</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRAIGHT_LINE_FEATURE_COUNT = 1;
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Shape <em>Shape</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -443,6 +517,17 @@ public interface ScenePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSystem_Blocks();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.gefx.scene.System#getLines <em>Lines</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Lines</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.System#getLines()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EReference getSystem_Lines();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Block <em>Block</em>}'.
@@ -574,6 +659,59 @@ public interface ScenePackage extends EPackage {
 	EAttribute getConnector_Rotation();
 
 	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.LinePoint <em>Line Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Line Point</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.LinePoint
+	 * @generated
+	 */
+	EClass getLinePoint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.LinePoint#getX <em>X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>X</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.LinePoint#getX()
+	 * @see #getLinePoint()
+	 * @generated
+	 */
+	EAttribute getLinePoint_X();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.LinePoint#getY <em>Y</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Y</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.LinePoint#getY()
+	 * @see #getLinePoint()
+	 * @generated
+	 */
+	EAttribute getLinePoint_Y();
+
+	/**
+	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.StraightLine <em>Straight Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Straight Line</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.StraightLine
+	 * @generated
+	 */
+	EClass getStraightLine();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link at.bestsolution.efxclipse.gefx.scene.StraightLine#getPoints <em>Points</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Points</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.StraightLine#getPoints()
+	 * @see #getStraightLine()
+	 * @generated
+	 */
+	EReference getStraightLine_Points();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -662,6 +800,14 @@ public interface ScenePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM__BLOCKS = eINSTANCE.getSystem_Blocks();
+
+		/**
+		 * The meta object literal for the '<em><b>Lines</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM__LINES = eINSTANCE.getSystem_Lines();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.BlockImpl <em>Block</em>}' class.
@@ -764,6 +910,50 @@ public interface ScenePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONNECTOR__ROTATION = eINSTANCE.getConnector_Rotation();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.LinePointImpl <em>Line Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.LinePointImpl
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getLinePoint()
+		 * @generated
+		 */
+		EClass LINE_POINT = eINSTANCE.getLinePoint();
+
+		/**
+		 * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINE_POINT__X = eINSTANCE.getLinePoint_X();
+
+		/**
+		 * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINE_POINT__Y = eINSTANCE.getLinePoint_Y();
+
+		/**
+		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.StraightLineImpl <em>Straight Line</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.StraightLineImpl
+		 * @see at.bestsolution.efxclipse.gefx.scene.impl.ScenePackageImpl#getStraightLine()
+		 * @generated
+		 */
+		EClass STRAIGHT_LINE = eINSTANCE.getStraightLine();
+
+		/**
+		 * The meta object literal for the '<em><b>Points</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRAIGHT_LINE__POINTS = eINSTANCE.getStraightLine_Points();
 
 	}
 

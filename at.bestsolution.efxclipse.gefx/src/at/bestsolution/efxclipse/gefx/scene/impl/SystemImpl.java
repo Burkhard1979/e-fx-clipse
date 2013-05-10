@@ -4,6 +4,7 @@ package at.bestsolution.efxclipse.gefx.scene.impl;
 
 import at.bestsolution.efxclipse.gefx.scene.Block;
 import at.bestsolution.efxclipse.gefx.scene.Connection;
+import at.bestsolution.efxclipse.gefx.scene.StraightLine;
 import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
 
 import java.util.Collection;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl#getConnections <em>Connections</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl#getBlocks <em>Blocks</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl#getLines <em>Lines</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,6 +57,16 @@ public class SystemImpl extends EObjectImpl implements at.bestsolution.efxclipse
 	 * @ordered
 	 */
 	protected EList<Block> blocks;
+
+	/**
+	 * The cached value of the '{@link #getLines() <em>Lines</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLines()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<StraightLine> lines;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +116,18 @@ public class SystemImpl extends EObjectImpl implements at.bestsolution.efxclipse
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<StraightLine> getLines() {
+		if (lines == null) {
+			lines = new EObjectContainmentEList<StraightLine>(StraightLine.class, this, ScenePackage.SYSTEM__LINES);
+		}
+		return lines;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -128,6 +152,8 @@ public class SystemImpl extends EObjectImpl implements at.bestsolution.efxclipse
 				return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
 			case ScenePackage.SYSTEM__BLOCKS:
 				return ((InternalEList<?>)getBlocks()).basicRemove(otherEnd, msgs);
+			case ScenePackage.SYSTEM__LINES:
+				return ((InternalEList<?>)getLines()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -144,6 +170,8 @@ public class SystemImpl extends EObjectImpl implements at.bestsolution.efxclipse
 				return getConnections();
 			case ScenePackage.SYSTEM__BLOCKS:
 				return getBlocks();
+			case ScenePackage.SYSTEM__LINES:
+				return getLines();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +193,10 @@ public class SystemImpl extends EObjectImpl implements at.bestsolution.efxclipse
 				getBlocks().clear();
 				getBlocks().addAll((Collection<? extends Block>)newValue);
 				return;
+			case ScenePackage.SYSTEM__LINES:
+				getLines().clear();
+				getLines().addAll((Collection<? extends StraightLine>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -183,6 +215,9 @@ public class SystemImpl extends EObjectImpl implements at.bestsolution.efxclipse
 			case ScenePackage.SYSTEM__BLOCKS:
 				getBlocks().clear();
 				return;
+			case ScenePackage.SYSTEM__LINES:
+				getLines().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,6 +234,8 @@ public class SystemImpl extends EObjectImpl implements at.bestsolution.efxclipse
 				return connections != null && !connections.isEmpty();
 			case ScenePackage.SYSTEM__BLOCKS:
 				return blocks != null && !blocks.isEmpty();
+			case ScenePackage.SYSTEM__LINES:
+				return lines != null && !lines.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

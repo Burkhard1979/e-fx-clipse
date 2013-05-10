@@ -2,16 +2,17 @@
  */
 package at.bestsolution.efxclipse.gefx.scene.util;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
+
 import at.bestsolution.efxclipse.gefx.scene.Block;
 import at.bestsolution.efxclipse.gefx.scene.Connection;
 import at.bestsolution.efxclipse.gefx.scene.Connector;
+import at.bestsolution.efxclipse.gefx.scene.LinePoint;
 import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
 import at.bestsolution.efxclipse.gefx.scene.Shape;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.emf.ecore.util.Switch;
+import at.bestsolution.efxclipse.gefx.scene.StraightLine;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,6 +103,18 @@ public class SceneSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ScenePackage.LINE_POINT: {
+				LinePoint linePoint = (LinePoint)theEObject;
+				T result = caseLinePoint(linePoint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ScenePackage.STRAIGHT_LINE: {
+				StraightLine straightLine = (StraightLine)theEObject;
+				T result = caseStraightLine(straightLine);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -178,6 +191,36 @@ public class SceneSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConnector(Connector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Line Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Line Point</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinePoint(LinePoint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Straight Line</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Straight Line</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStraightLine(StraightLine object) {
 		return null;
 	}
 

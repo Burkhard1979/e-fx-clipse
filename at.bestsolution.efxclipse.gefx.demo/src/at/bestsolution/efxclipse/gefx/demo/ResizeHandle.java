@@ -14,7 +14,7 @@ import at.bestsolution.efxclipse.gefx.scene.Block;
 public class ResizeHandle {
 
 	enum Position {
-		East, North
+		North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
 	}
 
 	final Block block;
@@ -27,7 +27,7 @@ public class ResizeHandle {
 		this.position = position;
 		rightResizeHandle = new Rectangle(7, 7);
 		rightResizeHandle.setFill(Color.BLUEVIOLET);
-		rightResizeHandle.setCursor(Cursor.E_RESIZE);
+		rightResizeHandle.setCursor(getCursor());
 		parent.getChildren().add(rightResizeHandle);
 
 		block.eAdapters().add(new AdapterImpl() {
@@ -58,18 +58,53 @@ public class ResizeHandle {
 			public void handle(MouseEvent event) {
 				if (resizeDrag != null) {
 
-					if (position == Position.East) {
-						double deltaX = event.getSceneX() - resizeDrag.x;
-						block.setX(resizeDrag.blockX + deltaX / 2);
-						block.setWidth(resizeDrag.width + deltaX);
+					double deltaX = 0;
+					double deltaY = 0;
+					boolean left = true;
+					boolean top = true;
+					
+					switch (position) {
+					case East:
+						deltaX = event.getSceneX() - resizeDrag.x;
+						left = false;
+						break;
+					case North:
+						deltaY = event.getSceneY() - resizeDrag.y;
+						break;
+					case NorthEast:
+						deltaX = event.getSceneX() - resizeDrag.x;
+						deltaY = event.getSceneY() - resizeDrag.y;
+						left = false;
+						break;
+					case NorthWest:
+						deltaX = event.getSceneX() - resizeDrag.x;
+						deltaY = event.getSceneY() - resizeDrag.y;
+						break;
+					case South:
+						deltaY = event.getSceneY() - resizeDrag.y;
+						top = false;
+						break;
+					case SouthEast:
+						deltaX = event.getSceneX() - resizeDrag.x;
+						deltaY = event.getSceneY() - resizeDrag.y;
+						left = false;
+						top = false;
+						break;
+					case SouthWest:
+						deltaX = event.getSceneX() - resizeDrag.x;
+						deltaY = event.getSceneY() - resizeDrag.y;
+						top = false;
+						break;
+					case West:
+						deltaX = event.getSceneX() - resizeDrag.x;
+						break;
 					}
 
-					else if (position == Position.North) {
-						double deltaY = event.getSceneY() - resizeDrag.y;
-						block.setY(resizeDrag.blockY + deltaY / 2);
-						block.setHeight(resizeDrag.height - deltaY);
-					}
+					block.setX(resizeDrag.blockX + deltaX / 2);
+					block.setY(resizeDrag.blockY + deltaY / 2);
 
+					block.setWidth(resizeDrag.width + (left ? -1 : 1) * deltaX);
+					block.setHeight(resizeDrag.height + (top ? -1 : 1) * deltaY);
 				}
 			}
 
@@ -87,16 +122,70 @@ public class ResizeHandle {
 		update();
 	}
 
-	void update() {
-		if (position == Position.East) {
-			rightResizeHandle.setLayoutX(block.getWidth() / 2 - 3);
-			rightResizeHandle.setLayoutY(-3);
+	private Cursor getCursor() {
+		switch (position) {
+		case North:
+			return Cursor.N_RESIZE;
+		case NorthEast:
+			return Cursor.NE_RESIZE;
+		case East:
+			return Cursor.E_RESIZE;
+		case SouthEast:
+			return Cursor.SE_RESIZE;
+		case South:
+			return Cursor.S_RESIZE;
+		case SouthWest:
+			return Cursor.SW_RESIZE;
+		case West:
+			return Cursor.W_RESIZE;
+		case NorthWest:
+			return Cursor.NW_RESIZE;
+		default:
+			return null;
 		}
 
-		if (position == Position.North) {
-			rightResizeHandle.setLayoutX(-3);
-			rightResizeHandle.setLayoutY(-block.getHeight() / 2 - 3);
+	}
+
+	void update() {
+		double x = 0, y = 0;
+
+		switch (position) {
+		case North:
+			x = -3;
+			y = -block.getHeight() / 2 - 3;
+			break;
+		case NorthEast:
+			x = block.getWidth() / 2 - 3;
+			y = -block.getHeight() / 2 - 3;
+			break;
+		case East:
+			x = block.getWidth() / 2 - 3;
+			y = -3;
+			break;
+		case SouthEast:
+			x = block.getWidth() / 2 - 3;
+			y = block.getHeight() / 2 - 3;
+			break;
+		case South:
+			x = -3;
+			y = block.getHeight() / 2 - 3;
+			break;
+		case SouthWest:
+			x = -block.getWidth() / 2 - 3;
+			y = block.getHeight() / 2 - 3;
+			break;
+		case West:
+			x = -block.getWidth() / 2 - 3;
+			y = -3;
+			break;
+		case NorthWest:
+			x = -block.getWidth() / 2 - 3;
+			y = -block.getHeight() / 2 - 3;
+			break;
 		}
+
+		rightResizeHandle.setLayoutX(x);
+		rightResizeHandle.setLayoutY(y);
 	}
 
 	class ResizeDrag {

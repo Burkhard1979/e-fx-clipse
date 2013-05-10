@@ -58,6 +58,24 @@ public interface SceneFactory extends EFactory {
 	Connector createConnector();
 
 	/**
+	 * Returns a new object of class '<em>Line Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Line Point</em>'.
+	 * @generated
+	 */
+	LinePoint createLinePoint();
+
+	/**
+	 * Returns a new object of class '<em>Straight Line</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Straight Line</em>'.
+	 * @generated
+	 */
+	StraightLine createStraightLine();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

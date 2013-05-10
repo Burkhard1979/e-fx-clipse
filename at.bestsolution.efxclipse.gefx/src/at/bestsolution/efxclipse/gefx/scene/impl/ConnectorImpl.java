@@ -73,7 +73,7 @@ public class ConnectorImpl extends ShapeImpl implements Connector {
 	 */
 	public Block getBlock() {
 		if (eContainerFeatureID() != ScenePackage.CONNECTOR__BLOCK) return null;
-		return (Block)eInternalContainer();
+		return (Block)eContainer();
 	}
 
 	/**
