@@ -6,8 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: at.bestsolution.efxclipse.gefx.demo.GEFXDemoPlugin
 Require-Bundle: org.eclipse.core.runtime,
  at.bestsolution.efxclipse.gefx;bundle-version="1.0.0",
- at.bestsolution.efxclipse.runtime.javafx;bundle-version="2.2.0",
- org.scala-ide.scala.library
+ at.bestsolution.efxclipse.runtime.javafx;bundle-version="2.2.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javafx.animation;version="2.2.0",

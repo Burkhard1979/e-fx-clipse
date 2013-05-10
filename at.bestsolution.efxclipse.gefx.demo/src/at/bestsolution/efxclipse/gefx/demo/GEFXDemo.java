@@ -66,10 +66,12 @@ public class GEFXDemo extends Application {
 		connector2.setRotation(-Math.PI);
 		block2.getConnectors().add(connector2);
 
-		Connection connection = SceneFactory.eINSTANCE.createConnection();
-		connection.setStart(connector);
-		connection.setEnd(connector2);
-		system.getConnections().add(connection);
+//		Connection connection = SceneFactory.eINSTANCE.createConnection();
+//		connection.setStart(connector);
+//		connection.setEnd(connector2);
+//		system.getConnections().add(connection);
+//		
+//		new CubicConnectionAdapter(connection, pane);
 
 		BlockAdapter blockAdapter = new BlockAdapter(block, pane);
 		new ConnectorAdapter(connector, blockAdapter.getPane());
@@ -77,13 +79,13 @@ public class GEFXDemo extends Application {
 		BlockAdapter blockAdapter2 = new BlockAdapter(block2, pane);
 		new ConnectorAdapter(connector2, blockAdapter2.getPane());
 
-		new CubicConnectionAdapter(connection, pane);
-
 		StraightLine straightLine = SceneFactory.eINSTANCE.createStraightLine();
+		
 		LinePoint startPoint = SceneFactory.eINSTANCE.createLinePoint();
 		startPoint.setX(200);
 		startPoint.setY(200);
 		straightLine.getPoints().add(startPoint);
+		
 		LinePoint endPoint = SceneFactory.eINSTANCE.createLinePoint();
 		endPoint.setX(300);
 		endPoint.setY(300);
@@ -92,8 +94,8 @@ public class GEFXDemo extends Application {
 		system.getLines().add(straightLine);
 
 		new StraightLineAdapter(straightLine, pane);
-		new LinePointAdapter(startPoint, pane);
-		new LinePointAdapter(endPoint, pane);
+//		new LinePointAdapter(startPoint, pane);
+//		new LinePointAdapter(endPoint, pane);
 
 		// the adapter factory adapts the JavaFX scene to the EMF objects
 		// sceneAdapterFactory.adapt(group, scene);

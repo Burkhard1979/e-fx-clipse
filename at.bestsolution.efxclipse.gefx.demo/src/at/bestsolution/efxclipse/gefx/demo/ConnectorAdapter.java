@@ -1,7 +1,5 @@
 package at.bestsolution.efxclipse.gefx.demo;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -9,17 +7,15 @@ import javafx.scene.shape.Line;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.ecore.EObject;
 
-import at.bestsolution.efxclipse.gefx.demo.DragManager.IDragListener;
 import at.bestsolution.efxclipse.gefx.scene.Block;
 import at.bestsolution.efxclipse.gefx.scene.Connector;
 
 public class ConnectorAdapter {
 
-	Connector connector;
-	Pane pane;
-	Circle circle;
+	private Connector connector;
+	private Pane pane;
+	private Circle circle;
 	private Line line;
 
 	public ConnectorAdapter(final Connector connector, Pane parent) {
@@ -34,44 +30,8 @@ public class ConnectorAdapter {
 		line = new Line();
 		pane.getChildren().add(line);
 
-		DragManager.INSTANCE.addDragListener(new IDragListener() {
+		DragManager.INSTANCE.addDragListener(this);
 
-			@Override
-			public DragManager.DragEvent handle(DragManager.DragEvent event) {
-				// get postion in scene
-				Block block = (Block) connector.eContainer();
-				
-				double x = connector.getSceneX();
-				double y = connector.getSceneY();
-				
-				if(Math.abs(x - event.getX()) < 10 && Math.abs(y - event.getY()) < 10) {
-					circle.setFill(Color.RED);
-				} else {
-					circle.setFill(Color.CADETBLUE);
-				}
-				
-				return event;					
-			}
-
-		});
-
-//		circle.setOnMouseEntered(new EventHandler<MouseEvent>() {
-//
-//			@Override
-//			public void handle(MouseEvent arg0) {
-//				circle.setFill(Color.RED);
-//			}
-//
-//		});
-//
-//		circle.setOnMouseExited(new EventHandler<MouseEvent>() {
-//
-//			@Override
-//			public void handle(MouseEvent arg0) {
-//				circle.setFill(Color.CADETBLUE);
-//			}
-//
-//		});
 
 		connector.getBlock().eAdapters().add(new AdapterImpl() {
 			@Override
@@ -81,6 +41,27 @@ public class ConnectorAdapter {
 		});
 
 		update();
+	}
+	
+	public Connector getConnector() {
+		return connector;
+	}
+	
+	public boolean handle(DragManager.DragEvent event) {
+		// get postion in scene
+		Block block = (Block) connector.eContainer();
+		
+		double x = connector.getSceneX();
+		double y = connector.getSceneY();
+		
+		if(Math.abs(x - event.getX()) < 10 && Math.abs(y - event.getY()) < 10) {
+			circle.setFill(Color.RED);
+			return true;
+		} else {
+			circle.setFill(Color.CADETBLUE);
+		}
+		
+		return false;					
 	}
 
 	void update() {

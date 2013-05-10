@@ -396,13 +396,22 @@ public interface ScenePackage extends EPackage {
 	int LINE_POINT__Y = 1;
 
 	/**
+	 * The feature id for the '<em><b>Line</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_POINT__LINE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Line Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINE_POINT_FEATURE_COUNT = 2;
+	int LINE_POINT_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.StraightLineImpl <em>Straight Line</em>}' class.
@@ -424,13 +433,22 @@ public interface ScenePackage extends EPackage {
 	int STRAIGHT_LINE__POINTS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Start Connector</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRAIGHT_LINE__START_CONNECTOR = 1;
+
+	/**
 	 * The number of structural features of the '<em>Straight Line</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRAIGHT_LINE_FEATURE_COUNT = 1;
+	int STRAIGHT_LINE_FEATURE_COUNT = 2;
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.Shape <em>Shape</em>}'.
@@ -691,6 +709,17 @@ public interface ScenePackage extends EPackage {
 	EAttribute getLinePoint_Y();
 
 	/**
+	 * Returns the meta object for the container reference '{@link at.bestsolution.efxclipse.gefx.scene.LinePoint#getLine <em>Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Line</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.LinePoint#getLine()
+	 * @see #getLinePoint()
+	 * @generated
+	 */
+	EReference getLinePoint_Line();
+
+	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.StraightLine <em>Straight Line</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -710,6 +739,17 @@ public interface ScenePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getStraightLine_Points();
+
+	/**
+	 * Returns the meta object for the reference '{@link at.bestsolution.efxclipse.gefx.scene.StraightLine#getStartConnector <em>Start Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Start Connector</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.StraightLine#getStartConnector()
+	 * @see #getStraightLine()
+	 * @generated
+	 */
+	EReference getStraightLine_StartConnector();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -938,6 +978,14 @@ public interface ScenePackage extends EPackage {
 		EAttribute LINE_POINT__Y = eINSTANCE.getLinePoint_Y();
 
 		/**
+		 * The meta object literal for the '<em><b>Line</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINE_POINT__LINE = eINSTANCE.getLinePoint_Line();
+
+		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.StraightLineImpl <em>Straight Line</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -954,6 +1002,14 @@ public interface ScenePackage extends EPackage {
 		 * @generated
 		 */
 		EReference STRAIGHT_LINE__POINTS = eINSTANCE.getStraightLine_Points();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Connector</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRAIGHT_LINE__START_CONNECTOR = eINSTANCE.getStraightLine_StartConnector();
 
 	}
 

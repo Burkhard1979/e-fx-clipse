@@ -355,6 +355,15 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLinePoint_Line() {
+		return (EReference)linePointEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStraightLine() {
 		return straightLineEClass;
 	}
@@ -366,6 +375,15 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 */
 	public EReference getStraightLine_Points() {
 		return (EReference)straightLineEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStraightLine_StartConnector() {
+		return (EReference)straightLineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -425,9 +443,11 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		linePointEClass = createEClass(LINE_POINT);
 		createEAttribute(linePointEClass, LINE_POINT__X);
 		createEAttribute(linePointEClass, LINE_POINT__Y);
+		createEReference(linePointEClass, LINE_POINT__LINE);
 
 		straightLineEClass = createEClass(STRAIGHT_LINE);
 		createEReference(straightLineEClass, STRAIGHT_LINE__POINTS);
+		createEReference(straightLineEClass, STRAIGHT_LINE__START_CONNECTOR);
 	}
 
 	/**
@@ -491,9 +511,11 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		initEClass(linePointEClass, LinePoint.class, "LinePoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLinePoint_X(), ecorePackage.getEDouble(), "x", null, 1, 1, LinePoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLinePoint_Y(), ecorePackage.getEDouble(), "y", null, 1, 1, LinePoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinePoint_Line(), this.getStraightLine(), this.getStraightLine_Points(), "line", null, 0, 1, LinePoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(straightLineEClass, StraightLine.class, "StraightLine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStraightLine_Points(), this.getLinePoint(), null, "points", null, 2, -1, StraightLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStraightLine_Points(), this.getLinePoint(), this.getLinePoint_Line(), "points", null, 2, -1, StraightLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStraightLine_StartConnector(), this.getConnector(), null, "startConnector", null, 0, 1, StraightLine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -34,6 +34,7 @@ public class StraightLineAdapter {
 		
 		for (LinePoint linePoint : straightLine.getPoints()) {
 			linePoint.eAdapters().add(linePointAdapter);
+			new LinePointAdapter(linePoint, parent);
 		}
 		
 		update();

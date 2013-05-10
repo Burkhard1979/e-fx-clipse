@@ -5,12 +5,16 @@ package at.bestsolution.efxclipse.gefx.scene.impl;
 import at.bestsolution.efxclipse.gefx.scene.LinePoint;
 import at.bestsolution.efxclipse.gefx.scene.ScenePackage;
 
+import at.bestsolution.efxclipse.gefx.scene.StraightLine;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +25,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.LinePointImpl#getX <em>X</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.LinePointImpl#getY <em>Y</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.LinePointImpl#getLine <em>Line</em>}</li>
  * </ul>
  * </p>
  *
@@ -133,6 +138,91 @@ public class LinePointImpl extends EObjectImpl implements LinePoint {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StraightLine getLine() {
+		if (eContainerFeatureID() != ScenePackage.LINE_POINT__LINE) return null;
+		return (StraightLine)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetLine(StraightLine newLine, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newLine, ScenePackage.LINE_POINT__LINE, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLine(StraightLine newLine) {
+		if (newLine != eInternalContainer() || (eContainerFeatureID() != ScenePackage.LINE_POINT__LINE && newLine != null)) {
+			if (EcoreUtil.isAncestor(this, newLine))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newLine != null)
+				msgs = ((InternalEObject)newLine).eInverseAdd(this, ScenePackage.STRAIGHT_LINE__POINTS, StraightLine.class, msgs);
+			msgs = basicSetLine(newLine, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ScenePackage.LINE_POINT__LINE, newLine, newLine));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ScenePackage.LINE_POINT__LINE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetLine((StraightLine)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ScenePackage.LINE_POINT__LINE:
+				return basicSetLine(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case ScenePackage.LINE_POINT__LINE:
+				return eInternalContainer().eInverseRemove(this, ScenePackage.STRAIGHT_LINE__POINTS, StraightLine.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -140,6 +230,8 @@ public class LinePointImpl extends EObjectImpl implements LinePoint {
 				return getX();
 			case ScenePackage.LINE_POINT__Y:
 				return getY();
+			case ScenePackage.LINE_POINT__LINE:
+				return getLine();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +249,9 @@ public class LinePointImpl extends EObjectImpl implements LinePoint {
 				return;
 			case ScenePackage.LINE_POINT__Y:
 				setY((Double)newValue);
+				return;
+			case ScenePackage.LINE_POINT__LINE:
+				setLine((StraightLine)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,6 +271,9 @@ public class LinePointImpl extends EObjectImpl implements LinePoint {
 			case ScenePackage.LINE_POINT__Y:
 				setY(Y_EDEFAULT);
 				return;
+			case ScenePackage.LINE_POINT__LINE:
+				setLine((StraightLine)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +290,8 @@ public class LinePointImpl extends EObjectImpl implements LinePoint {
 				return x != X_EDEFAULT;
 			case ScenePackage.LINE_POINT__Y:
 				return y != Y_EDEFAULT;
+			case ScenePackage.LINE_POINT__LINE:
+				return getLine() != null;
 		}
 		return super.eIsSet(featureID);
 	}

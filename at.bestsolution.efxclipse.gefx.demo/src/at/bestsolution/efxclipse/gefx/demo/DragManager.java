@@ -6,10 +6,6 @@ import java.util.List;
 import at.bestsolution.efxclipse.gefx.scene.LinePoint;
 
 public class DragManager {
-
-	public interface IDragListener {
-		DragEvent handle(DragEvent event);
-	}
 	
 	public static DragManager INSTANCE = new DragManager();
 
@@ -36,19 +32,19 @@ public class DragManager {
 
 	public LinePoint linePoint;
 	
-	private final List<IDragListener> listerners = new ArrayList<>();
+	private final List<ConnectorAdapter> conectorAdapters = new ArrayList<>();
 
-	public void addDragListener(IDragListener listener) {
-		listerners.add(listener);
+	public void addDragListener(ConnectorAdapter listener) {
+		conectorAdapters.add(listener);
 	}
 	
-	public void fireDragEvent(double x, double y) {
+	public ConnectorAdapter fireDragEvent(double x, double y) {
 		DragEvent dragEvent = new DragEvent(x, y);
-		for (IDragListener listener : listerners) {
-			dragEvent = listener.handle(dragEvent);
-			if(dragEvent == null)
-				break;
+		for (ConnectorAdapter connectorAdapter : conectorAdapters) {
+			if(connectorAdapter.handle(dragEvent))
+				return connectorAdapter;
 		}
+		return null;
 	}
 
 }

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.LinePoint#getX <em>X</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.LinePoint#getY <em>Y</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.LinePoint#getLine <em>Line</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,5 +74,33 @@ public interface LinePoint extends EObject {
 	 * @generated
 	 */
 	void setY(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Line</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link at.bestsolution.efxclipse.gefx.scene.StraightLine#getPoints <em>Points</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Line</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Line</em>' container reference.
+	 * @see #setLine(StraightLine)
+	 * @see at.bestsolution.efxclipse.gefx.scene.ScenePackage#getLinePoint_Line()
+	 * @see at.bestsolution.efxclipse.gefx.scene.StraightLine#getPoints
+	 * @model opposite="points" transient="false"
+	 * @generated
+	 */
+	StraightLine getLine();
+
+	/**
+	 * Sets the value of the '{@link at.bestsolution.efxclipse.gefx.scene.LinePoint#getLine <em>Line</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Line</em>' container reference.
+	 * @see #getLine()
+	 * @generated
+	 */
+	void setLine(StraightLine value);
 
 } // LinePoint
