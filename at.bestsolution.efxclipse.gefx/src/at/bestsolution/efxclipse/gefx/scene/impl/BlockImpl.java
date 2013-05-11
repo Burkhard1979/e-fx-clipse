@@ -352,5 +352,25 @@ public class BlockImpl extends ShapeImpl implements Block {
 		result.append(')');
 		return result.toString();
 	}
+	
+	@Override
+	public double getMinSceneX() {
+		return getSceneX() - width / 2;
+	}
+	
+	@Override
+	public double getMaxSceneX() {
+		return getSceneX() + width / 2;
+	}
+	
+	@Override
+	public double getMinSceneY() {
+		return getSceneY() - height / 2;
+	}
+	
+	@Override
+	public double getMaxSceneY() {
+		return getSceneY() + height / 2;
+	}
 
 } //BlockImpl

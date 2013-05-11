@@ -2,6 +2,7 @@ package at.bestsolution.efxclipse.gefx.demo;
 
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -15,6 +16,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 
 import at.bestsolution.efxclipse.gefx.demo.ResizeHandle.Position;
+import at.bestsolution.efxclipse.gefx.demo.SelectionManager.ISelectionListener;
 import at.bestsolution.efxclipse.gefx.scene.Block;
 
 public class BlockAdapter {
@@ -23,8 +25,7 @@ public class BlockAdapter {
 	Pane pane;
 	Rectangle rectangle;
 	Drag drag;
-//	ResizeDrag resizeDrag;
-//	Rectangle rightResizeHandle;
+	Rectangle selection;
 
 	public BlockAdapter(final Block block, Pane parent) {
 		this.block = block;
@@ -37,12 +38,23 @@ public class BlockAdapter {
 		Stop[] stops = new Stop[] { new Stop(0, Color.web("#F8FFE8")), new Stop(1, Color.web("#B7DF2D"))};
 		LinearGradient lg1 = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, stops);
 		rectangle.setFill(lg1);
-//		rectangle.setFill(Color.BISQUE);
 		rectangle.setStroke(Color.BLACK);
 		pane.getChildren().add(rectangle);
 		rectangle.setStrokeWidth(1);
 		rectangle.setArcHeight(15);
 		rectangle.setArcWidth(15);
+		
+		DropShadow dropShadow = new DropShadow();
+		dropShadow.setOffsetX(3);
+		dropShadow.setOffsetY(3);
+		dropShadow.setColor(Color.rgb(0, 0, 0, 0.2));
+		rectangle.setEffect(dropShadow);
+		
+		selection = new Rectangle();
+		selection.setStroke(Color.AQUAMARINE);
+		selection.setFill(null);
+		selection.setVisible(false);
+		pane.getChildren().add(selection);
 		
 		new ResizeHandle(block, pane, Position.North);
 		new ResizeHandle(block, pane, Position.NorthEast);
@@ -53,13 +65,6 @@ public class BlockAdapter {
 		new ResizeHandle(block, pane, Position.West);
 		new ResizeHandle(block, pane, Position.NorthWest);
 		
-//		ResizeHandle2 resizeHandle2 = new ResizeHandle2(block, pane, Position.West);
-		
-//		rightResizeHandle = new Rectangle(7, 7);
-//		rightResizeHandle.setFill(Color.BLUEVIOLET);
-//		rightResizeHandle.setCursor(Cursor.E_RESIZE);
-//		pane.getChildren().add(rightResizeHandle);
-
 		parent.getChildren().add(pane);
 		update();
 
@@ -78,6 +83,10 @@ public class BlockAdapter {
 				drag = new Drag();
 				drag.x = event.getSceneX() - pane.getLayoutX();
 				drag.y = event.getSceneY() - pane.getLayoutY();
+				
+				SelectionManager.INSTANCE.select(block, true);
+				
+				event.consume();
 			}
 
 		});
@@ -104,6 +113,15 @@ public class BlockAdapter {
 
 		});
 		
+		SelectionManager.INSTANCE.addListener(new ISelectionListener() {
+			
+			@Override
+			public void notifyChanged() {
+				selection.setVisible(SelectionManager.INSTANCE.isSelected(block));
+			}
+			
+		});
+		
 	}
 
 	void update() {
@@ -114,6 +132,11 @@ public class BlockAdapter {
 		rectangle.setLayoutY(-block.getHeight() / 2);
 		rectangle.setWidth(block.getWidth());
 		rectangle.setHeight(block.getHeight());
+		
+		selection.setLayoutX(-block.getWidth() / 2 - 2);
+		selection.setLayoutY(-block.getHeight() / 2 - 2);
+		selection.setWidth(block.getWidth() + 4);
+		selection.setHeight(block.getHeight() + 4);
 	}
 
 	public Block getBlock() {

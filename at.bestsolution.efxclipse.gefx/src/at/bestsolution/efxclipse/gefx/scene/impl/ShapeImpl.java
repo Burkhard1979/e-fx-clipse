@@ -22,6 +22,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getY <em>Y</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getSceneX <em>Scene X</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getSceneY <em>Scene Y</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getMinSceneX <em>Min Scene X</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getMaxSceneX <em>Max Scene X</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getMinSceneY <em>Min Scene Y</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.impl.ShapeImpl#getMaxSceneY <em>Max Scene Y</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +91,46 @@ public abstract class ShapeImpl extends EObjectImpl implements Shape {
 	 * @ordered
 	 */
 	protected static final double SCENE_Y_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getMinSceneX() <em>Min Scene X</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinSceneX()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MIN_SCENE_X_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getMaxSceneX() <em>Max Scene X</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxSceneX()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MAX_SCENE_X_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getMinSceneY() <em>Min Scene Y</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinSceneY()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MIN_SCENE_Y_EDEFAULT = 0.0;
+
+	/**
+	 * The default value of the '{@link #getMaxSceneY() <em>Max Scene Y</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxSceneY()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MAX_SCENE_Y_EDEFAULT = 0.0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,6 +236,50 @@ public abstract class ShapeImpl extends EObjectImpl implements Shape {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public double getMinSceneX() {
+		// TODO: implement this method to return the 'Min Scene X' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getMaxSceneX() {
+		// TODO: implement this method to return the 'Max Scene X' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getMinSceneY() {
+		// TODO: implement this method to return the 'Min Scene Y' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getMaxSceneY() {
+		// TODO: implement this method to return the 'Max Scene Y' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -203,6 +291,14 @@ public abstract class ShapeImpl extends EObjectImpl implements Shape {
 				return getSceneX();
 			case ScenePackage.SHAPE__SCENE_Y:
 				return getSceneY();
+			case ScenePackage.SHAPE__MIN_SCENE_X:
+				return getMinSceneX();
+			case ScenePackage.SHAPE__MAX_SCENE_X:
+				return getMaxSceneX();
+			case ScenePackage.SHAPE__MIN_SCENE_Y:
+				return getMinSceneY();
+			case ScenePackage.SHAPE__MAX_SCENE_Y:
+				return getMaxSceneY();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,6 +355,14 @@ public abstract class ShapeImpl extends EObjectImpl implements Shape {
 				return getSceneX() != SCENE_X_EDEFAULT;
 			case ScenePackage.SHAPE__SCENE_Y:
 				return getSceneY() != SCENE_Y_EDEFAULT;
+			case ScenePackage.SHAPE__MIN_SCENE_X:
+				return getMinSceneX() != MIN_SCENE_X_EDEFAULT;
+			case ScenePackage.SHAPE__MAX_SCENE_X:
+				return getMaxSceneX() != MAX_SCENE_X_EDEFAULT;
+			case ScenePackage.SHAPE__MIN_SCENE_Y:
+				return getMinSceneY() != MIN_SCENE_Y_EDEFAULT;
+			case ScenePackage.SHAPE__MAX_SCENE_Y:
+				return getMaxSceneY() != MAX_SCENE_Y_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

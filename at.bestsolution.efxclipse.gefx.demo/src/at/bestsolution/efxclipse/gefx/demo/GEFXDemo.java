@@ -1,14 +1,16 @@
 package at.bestsolution.efxclipse.gefx.demo;
 
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import at.bestsolution.efxclipse.gefx.scene.Block;
-import at.bestsolution.efxclipse.gefx.scene.Connection;
 import at.bestsolution.efxclipse.gefx.scene.Connector;
 import at.bestsolution.efxclipse.gefx.scene.LinePoint;
 import at.bestsolution.efxclipse.gefx.scene.SceneFactory;
@@ -34,10 +36,20 @@ public class GEFXDemo extends Application {
 		scene.getStylesheets().add(
 				getClass().getResource("style.css")
 						.toExternalForm());
+		pane.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				SelectionManager.INSTANCE.clear();
+			}
+			
+		});
 		
 		Button button = new Button("hello");
 		pane.getChildren().add(button);
-
+		
+		new SelectionAdapter(pane);
+		
 		System system = SceneFactory.eINSTANCE.createSystem();
 
 		Block block = SceneFactory.eINSTANCE.createBlock();

@@ -16,6 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.Shape#getY <em>Y</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.Shape#getSceneX <em>Scene X</em>}</li>
  *   <li>{@link at.bestsolution.efxclipse.gefx.scene.Shape#getSceneY <em>Scene Y</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMinSceneX <em>Min Scene X</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMaxSceneX <em>Max Scene X</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMinSceneY <em>Min Scene Y</em>}</li>
+ *   <li>{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMaxSceneY <em>Max Scene Y</em>}</li>
  * </ul>
  * </p>
  *
@@ -107,5 +111,65 @@ public interface Shape extends EObject {
 	 * @generated
 	 */
 	double getSceneY();
+
+	/**
+	 * Returns the value of the '<em><b>Min Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Min Scene X</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Min Scene X</em>' attribute.
+	 * @see at.bestsolution.efxclipse.gefx.scene.ScenePackage#getShape_MinSceneX()
+	 * @model transient="true" changeable="false" volatile="true"
+	 * @generated
+	 */
+	double getMinSceneX();
+
+	/**
+	 * Returns the value of the '<em><b>Max Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Scene X</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Scene X</em>' attribute.
+	 * @see at.bestsolution.efxclipse.gefx.scene.ScenePackage#getShape_MaxSceneX()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	double getMaxSceneX();
+
+	/**
+	 * Returns the value of the '<em><b>Min Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Min Scene Y</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Min Scene Y</em>' attribute.
+	 * @see at.bestsolution.efxclipse.gefx.scene.ScenePackage#getShape_MinSceneY()
+	 * @model transient="true" changeable="false" volatile="true"
+	 * @generated
+	 */
+	double getMinSceneY();
+
+	/**
+	 * Returns the value of the '<em><b>Max Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Scene Y</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Scene Y</em>' attribute.
+	 * @see at.bestsolution.efxclipse.gefx.scene.ScenePackage#getShape_MaxSceneY()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	double getMaxSceneY();
 
 } // Shape

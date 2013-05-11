@@ -184,6 +184,42 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getShape_MinSceneX() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShape_MaxSceneX() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShape_MinSceneY() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShape_MaxSceneY() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSystem() {
 		return systemEClass;
 	}
@@ -419,6 +455,10 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		createEAttribute(shapeEClass, SHAPE__Y);
 		createEAttribute(shapeEClass, SHAPE__SCENE_X);
 		createEAttribute(shapeEClass, SHAPE__SCENE_Y);
+		createEAttribute(shapeEClass, SHAPE__MIN_SCENE_X);
+		createEAttribute(shapeEClass, SHAPE__MAX_SCENE_X);
+		createEAttribute(shapeEClass, SHAPE__MIN_SCENE_Y);
+		createEAttribute(shapeEClass, SHAPE__MAX_SCENE_Y);
 
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__CONNECTIONS);
@@ -487,6 +527,10 @@ public class ScenePackageImpl extends EPackageImpl implements ScenePackage {
 		initEAttribute(getShape_Y(), ecorePackage.getEDouble(), "y", null, 1, 1, Shape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getShape_SceneX(), ecorePackage.getEDouble(), "sceneX", "0", 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getShape_SceneY(), ecorePackage.getEDouble(), "sceneY", "0", 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_MinSceneX(), ecorePackage.getEDouble(), "minSceneX", null, 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_MaxSceneX(), ecorePackage.getEDouble(), "maxSceneX", null, 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_MinSceneY(), ecorePackage.getEDouble(), "minSceneY", null, 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getShape_MaxSceneY(), ecorePackage.getEDouble(), "maxSceneY", null, 0, 1, Shape.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, at.bestsolution.efxclipse.gefx.scene.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Connections(), this.getConnection(), this.getConnection_System(), "connections", null, 0, -1, at.bestsolution.efxclipse.gefx.scene.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

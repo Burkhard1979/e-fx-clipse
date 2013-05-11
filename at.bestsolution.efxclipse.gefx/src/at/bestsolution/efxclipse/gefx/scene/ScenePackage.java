@@ -102,13 +102,49 @@ public interface ScenePackage extends EPackage {
 	int SHAPE__SCENE_Y = 3;
 
 	/**
+	 * The feature id for the '<em><b>Min Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__MIN_SCENE_X = 4;
+
+	/**
+	 * The feature id for the '<em><b>Max Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__MAX_SCENE_X = 5;
+
+	/**
+	 * The feature id for the '<em><b>Min Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__MIN_SCENE_Y = 6;
+
+	/**
+	 * The feature id for the '<em><b>Max Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__MAX_SCENE_Y = 7;
+
+	/**
 	 * The number of structural features of the '<em>Shape</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SHAPE_FEATURE_COUNT = 4;
+	int SHAPE_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl <em>System</em>}' class.
@@ -201,6 +237,42 @@ public interface ScenePackage extends EPackage {
 	 * @ordered
 	 */
 	int BLOCK__SCENE_Y = SHAPE__SCENE_Y;
+
+	/**
+	 * The feature id for the '<em><b>Min Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__MIN_SCENE_X = SHAPE__MIN_SCENE_X;
+
+	/**
+	 * The feature id for the '<em><b>Max Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__MAX_SCENE_X = SHAPE__MAX_SCENE_X;
+
+	/**
+	 * The feature id for the '<em><b>Min Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__MIN_SCENE_Y = SHAPE__MIN_SCENE_Y;
+
+	/**
+	 * The feature id for the '<em><b>Max Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__MAX_SCENE_Y = SHAPE__MAX_SCENE_Y;
 
 	/**
 	 * The feature id for the '<em><b>Connectors</b></em>' containment reference list.
@@ -338,6 +410,42 @@ public interface ScenePackage extends EPackage {
 	 * @ordered
 	 */
 	int CONNECTOR__SCENE_Y = SHAPE__SCENE_Y;
+
+	/**
+	 * The feature id for the '<em><b>Min Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR__MIN_SCENE_X = SHAPE__MIN_SCENE_X;
+
+	/**
+	 * The feature id for the '<em><b>Max Scene X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR__MAX_SCENE_X = SHAPE__MAX_SCENE_X;
+
+	/**
+	 * The feature id for the '<em><b>Min Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR__MIN_SCENE_Y = SHAPE__MIN_SCENE_Y;
+
+	/**
+	 * The feature id for the '<em><b>Max Scene Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR__MAX_SCENE_Y = SHAPE__MAX_SCENE_Y;
 
 	/**
 	 * The feature id for the '<em><b>Block</b></em>' container reference.
@@ -503,6 +611,50 @@ public interface ScenePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getShape_SceneY();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMinSceneX <em>Min Scene X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Scene X</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getMinSceneX()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EAttribute getShape_MinSceneX();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMaxSceneX <em>Max Scene X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Scene X</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getMaxSceneX()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EAttribute getShape_MaxSceneX();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMinSceneY <em>Min Scene Y</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Scene Y</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getMinSceneY()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EAttribute getShape_MinSceneY();
+
+	/**
+	 * Returns the meta object for the attribute '{@link at.bestsolution.efxclipse.gefx.scene.Shape#getMaxSceneY <em>Max Scene Y</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Scene Y</em>'.
+	 * @see at.bestsolution.efxclipse.gefx.scene.Shape#getMaxSceneY()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EAttribute getShape_MaxSceneY();
 
 	/**
 	 * Returns the meta object for class '{@link at.bestsolution.efxclipse.gefx.scene.System <em>System</em>}'.
@@ -814,6 +966,38 @@ public interface ScenePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SHAPE__SCENE_Y = eINSTANCE.getShape_SceneY();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Scene X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE__MIN_SCENE_X = eINSTANCE.getShape_MinSceneX();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Scene X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE__MAX_SCENE_X = eINSTANCE.getShape_MaxSceneX();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Scene Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE__MIN_SCENE_Y = eINSTANCE.getShape_MinSceneY();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Scene Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE__MAX_SCENE_Y = eINSTANCE.getShape_MaxSceneY();
 
 		/**
 		 * The meta object literal for the '{@link at.bestsolution.efxclipse.gefx.scene.impl.SystemImpl <em>System</em>}' class.
